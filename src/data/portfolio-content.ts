@@ -3,10 +3,11 @@ export const portfolioContent = {
   nav: {
     logo: "ayush.dev",
     links: [
-      { label: "Work", href: "#work-wrap" },
-      { label: "Journey", href: "#journey-wrap" },
-      { label: "Skills", href: "#skills" },
-      { label: "Contact", href: "#contact" },
+      { label: "Work", href: "/#work-wrap" },
+      { label: "Journey", href: "/#journey-wrap" },
+      { label: "Skills", href: "/#skills" },
+      { label: "Blog", href: "/blog" },
+      { label: "Contact", href: "/#contact" },
     ],
   },
   hero: {
