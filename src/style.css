@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bevan&family=DM+Sans:wght@400;500;600;700&family=Exo:wght@100..900&family=Geologica:wght@100..900&family=Lexend+Deca:wght@400..700&family=Merriweather+Sans:ital,wght@0,400..800;1,400..800&family=Montserrat:wght@400;500;600;700&family=Nunito:wght@400..800&family=Poppins:wght@400;500;600;700&family=Rubik:wght@400..700&family=Varela+Round&display=swap");
 @import "tailwindcss";
 @import "./theme.css";
 @import "./components/app-header/app-header.component.css";
@@ -37,7 +37,8 @@
   --primary-color-strong: var(--primary-700);
   --primary-color-subtle: var(--primary-50);
   --primary-color-on: var(--color-paper-50);
-  --primary-font: var(--font-banana);
+  /* Bevan is loaded above and is the default font for the portfolio and blog. */
+  --primary-font: var(--font-lexend-deca);
 
   --background-color: var(--color-paper-50);
   --foreground-color: var(--color-inkstone-900);
