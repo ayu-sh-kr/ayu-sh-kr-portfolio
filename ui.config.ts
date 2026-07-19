@@ -1,15 +1,15 @@
 export const uiConfig = {
   meta: {
-    name: "dota-wrap-template",
-    appType: "minimal dota-wrap web app",
+    name: "ayush-jaiswal-portfolio",
+    appType: "single-page motion portfolio",
     stylingEngine: "tailwind-v4-css-first",
     defaultMode: "light",
-    designTone: "cool monochrome interface with restrained red and purple accents",
+    designTone: "Apple-inspired pin-scroll storytelling with paper, ink, and one persimmon accent",
   },
   typography: {
     fontFamily: {
-      sans: ["\"DM Sans\"", "\"Helvetica Neue\"", "Helvetica", "Arial", "sans-serif"],
-      mono: ["\"Roboto Mono\"", "\"SFMono-Regular\"", "\"IBM Plex Mono\"", "\"Liberation Mono\"", "monospace"],
+      sans: ["-apple-system", "BlinkMacSystemFont", "SF Pro Display", "Inter", "Segoe UI", "sans-serif"],
+      mono: ["SFMono-Regular", "Consolas", "Liberation Mono", "monospace"],
     },
     fontWeight: {
       regular: 400,
@@ -20,38 +20,27 @@ export const uiConfig = {
   },
   theme: {
     colors: {
-      light: {
-        canvas: "#f8fafc",
-        surface: "#ffffff",
-        ink: "#0e1116",
-        headerText: "#0e1116",
-        muted: "#2a2d33",
-        line: "#cbd5e1",
-        focus: "#9333ea",
-      },
-      dark: {
-        canvas: "#0e1116",
-        surface: "#1c1f24",
-        ink: "#f5f5f5",
-        headerText: "#f5f5f5",
-        muted: "#cbd5e1",
-        line: "#2a2d33",
-        focus: "#c084fc",
-      },
+      paper: "#FAFAF8",
+      ink: "#1D1D1F",
+      inkSoft: "#6E6E73",
+      accent: "#FF4D00",
+      accentDeep: "#C23A00",
+      tint: "#FFF1EA",
     },
+  },
+  motion: {
+    heroPin: "180vh",
+    journeyPin: "450vh",
+    workPin: "380vh",
+    engine: "requestAnimationFrame with passive scroll and IntersectionObserver reveals",
+    reducedMotion: "static flow with all content visible",
   },
   tailwind: {
     cssThemeFile: "./src/theme.css",
-    utilityMapping: {
-      backgrounds: ["bg-canvas", "bg-surface"],
-      text: ["text-ink", "text-muted", "text-header-text"],
-      borders: ["border-line"],
-      typography: ["font-sans", "font-mono"],
-    },
     rules: [
-      "Prefer semantic token utilities over arbitrary color values.",
-      "Keep the page monochrome unless a component needs emphasis.",
-      "Use focus-visible states instead of removing outlines.",
+      "Use persimmon only for emphasis, progress, chips, CTA, and hover states.",
+      "Animate transform and opacity only.",
+      "Keep all pinned scenes readable at 360px and fully static in reduced-motion mode.",
     ],
   },
 } as const;
