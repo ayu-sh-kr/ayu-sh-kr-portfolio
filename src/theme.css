@@ -1,4 +1,45 @@
 @theme {
+
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", Inter, "Segoe UI", sans-serif;
+  --font-display: -apple-system, BlinkMacSystemFont, "SF Pro Display", Inter, "Segoe UI", sans-serif;
+  --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+
+  --color-paper-50: #fafaf8;
+  --color-paper-100: #f5f3ee;
+  --color-paper-200: #eae6de;
+  --color-paper-300: #d8d1c5;
+  --color-paper-400: #bfb5a6;
+  --color-paper-500: #9f9281;
+  --color-paper-600: #7e7162;
+  --color-paper-700: #615649;
+  --color-paper-800: #433b33;
+  --color-paper-900: #2c2722;
+  --color-paper-950: #181511;
+
+  --color-inkstone-50: #f7f7f6;
+  --color-inkstone-100: #e8e8e6;
+  --color-inkstone-200: #d0d0cd;
+  --color-inkstone-300: #afafac;
+  --color-inkstone-400: #8b8b88;
+  --color-inkstone-500: #6e6e73;
+  --color-inkstone-600: #545457;
+  --color-inkstone-700: #3e3e41;
+  --color-inkstone-800: #2b2b2e;
+  --color-inkstone-900: #1d1d1f;
+  --color-inkstone-950: #101011;
+
+  --color-persimmon-50: #fff1ea;
+  --color-persimmon-100: #ffe0d1;
+  --color-persimmon-200: #ffc1a3;
+  --color-persimmon-300: #ff9870;
+  --color-persimmon-400: #ff6a36;
+  --color-persimmon-500: #ff4d00;
+  --color-persimmon-600: #e54400;
+  --color-persimmon-700: #c23a00;
+  --color-persimmon-800: #9c3100;
+  --color-persimmon-900: #7d2b06;
+  --color-persimmon-950: #441403;
+
   --color-pure-black-50: #ffffff;
   --color-pure-black-100: #e6e6e6;
   --color-pure-black-200: #cccccc;
