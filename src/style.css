@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap");
 @import "tailwindcss";
 @import "./theme.css";
 @import "./components/app-header/app-header.component.css";
@@ -16,47 +17,73 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  --paper: #fafaf8;
-  --ink: #1d1d1f;
-  --ink-soft: #6e6e73;
-  --hairline: rgba(29, 29, 31, 0.1);
-  --accent: #ff4d00;
-  --accent-deep: #c23a00;
-  --tint: #fff1ea;
-  --surface: #ffffff;
-  --surface-hover: rgba(29, 29, 31, 0.06);
+  /* Semantic primary palette. Change the source family here to retheme the app. */
+  --primary-50: var(--color-webingo-premium-cyan-50);
+  --primary-100: var(--color-webingo-premium-cyan-100);
+  --primary-200: var(--color-webingo-premium-cyan-200);
+  --primary-300: var(--color-webingo-premium-cyan-300);
+  --primary-400: var(--color-webingo-premium-cyan-400);
+  --primary-500: var(--color-webingo-premium-cyan-500);
+  --primary-600: var(--color-webingo-premium-cyan-600);
+  --primary-700: var(--color-webingo-premium-cyan-700);
+  --primary-800: var(--color-webingo-premium-cyan-800);
+  --primary-900: var(--color-webingo-premium-cyan-900);
+  --primary-950: var(--color-webingo-premium-cyan-950);
+
+  --primary-color: var(--primary-500);
+  --primary-color-hover: var(--primary-600);
+  --primary-color-strong: var(--primary-700);
+  --primary-color-subtle: var(--primary-50);
+  --primary-color-on: var(--color-paper-50);
+  --primary-font: var(--font-banana);
+
+  --background-color: var(--color-paper-50);
+  --foreground-color: var(--color-inkstone-900);
+  --muted-color: var(--color-inkstone-500);
+  --muted-strong-color: var(--color-inkstone-400);
+  --border-color: color-mix(in srgb, var(--foreground-color) 10%, transparent);
+  --surface-color: var(--color-pure-black-50);
+  --surface-hover-color: color-mix(in srgb, var(--foreground-color) 6%, transparent);
 }
 
 html.dark {
-  --paper: #101011;
-  --ink: #f5f5f2;
-  --ink-soft: #aaa9a6;
-  --hairline: rgba(245, 245, 242, 0.16);
-  --accent: #ff7040;
-  --accent-deep: #ff9a78;
-  --tint: #2b1811;
-  --surface: #1b1b1d;
-  --surface-hover: rgba(245, 245, 242, 0.09);
+  --primary-color: var(--primary-400);
+  --primary-color-hover: var(--primary-300);
+  --primary-color-strong: var(--primary-200);
+  --primary-color-subtle: var(--primary-950);
+  --primary-color-on: var(--color-paper-50);
+
+  --background-color: var(--color-inkstone-950);
+  --foreground-color: var(--color-paper-50);
+  --muted-color: var(--color-inkstone-300);
+  --muted-strong-color: var(--color-inkstone-200);
+  --border-color: color-mix(in srgb, var(--foreground-color) 16%, transparent);
+  --surface-color: var(--color-inkstone-900);
+  --surface-hover-color: color-mix(in srgb, var(--foreground-color) 9%, transparent);
 }
 
 @media (prefers-color-scheme: dark) {
   html:not(.light) {
-    --paper: #101011;
-    --ink: #f5f5f2;
-    --ink-soft: #aaa9a6;
-    --hairline: rgba(245, 245, 242, 0.16);
-    --accent: #ff7040;
-    --accent-deep: #ff9a78;
-    --tint: #2b1811;
-    --surface: #1b1b1d;
-    --surface-hover: rgba(245, 245, 242, 0.09);
+    --primary-color: var(--primary-400);
+    --primary-color-hover: var(--primary-300);
+    --primary-color-strong: var(--primary-200);
+    --primary-color-subtle: var(--primary-950);
+    --primary-color-on: var(--color-paper-50);
+
+    --background-color: var(--color-inkstone-950);
+    --foreground-color: var(--color-paper-50);
+    --muted-color: var(--color-inkstone-300);
+    --muted-strong-color: var(--color-inkstone-200);
+    --border-color: color-mix(in srgb, var(--foreground-color) 16%, transparent);
+    --surface-color: var(--color-inkstone-900);
+    --surface-hover-color: color-mix(in srgb, var(--foreground-color) 9%, transparent);
   }
 }
 
 html {
   scroll-behavior: smooth;
   color-scheme: light dark;
-  background: var(--paper);
+  background: var(--background-color);
 }
 
 html.dark {
@@ -67,9 +94,9 @@ body {
   margin: 0;
   min-inline-size: 20rem;
   overflow-x: hidden;
-  background: var(--paper);
-  color: var(--ink);
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", Inter, "Segoe UI", sans-serif;
+  background: var(--background-color);
+  color: var(--foreground-color);
+  font-family: var(--primary-font);
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
 }
@@ -79,8 +106,8 @@ app-root {
 }
 
 ::selection {
-  background: var(--accent);
-  color: var(--paper);
+  background: var(--primary-color);
+  color: var(--primary-color-on);
 }
 
 a,
@@ -89,7 +116,7 @@ button {
 }
 
 :where(a, button):focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--primary-color);
   outline-offset: 3px;
 }
 
