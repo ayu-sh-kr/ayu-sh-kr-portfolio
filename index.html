@@ -4,7 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="color-scheme" content="light dark" />
-    <meta name="theme-color" content="#FAFAF8" />
+    <meta name="theme-color" />
+    <link rel="stylesheet" href="./src/style.css" />
     <script>
       (() => {
         const savedTheme = localStorage.getItem("theme");
@@ -14,7 +15,10 @@
         document.documentElement.classList.toggle("light", !isDark);
         document.documentElement.classList.toggle("bg-slate-950", isDark);
         document.querySelector('meta[name="color-scheme"]')?.setAttribute("content", isDark ? "dark" : "light");
-        document.querySelector('meta[name="theme-color"]')?.setAttribute("content", isDark ? "#101011" : "#FAFAF8");
+        const backgroundColor = getComputedStyle(document.documentElement).getPropertyValue("--background-color").trim();
+        if (backgroundColor) {
+          document.querySelector('meta[name="theme-color"]')?.setAttribute("content", backgroundColor);
+        }
       })();
     </script>
     <meta
@@ -28,7 +32,6 @@
       content="Production backends on the JVM and AWS. Open to backend roles and select freelance projects."
     />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="./src/style.css" />
     <title>Ayush Jaiswal — Backend Engineer (Kotlin · Spring Boot · AWS)</title>
   </head>
   <body>
