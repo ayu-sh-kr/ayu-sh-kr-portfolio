@@ -34,6 +34,9 @@ export class GeneralUtils {
     const colorSchemeMeta = document.querySelector<HTMLMetaElement>('meta[name="color-scheme"]');
     colorSchemeMeta?.setAttribute("content", isDarkMode ? "dark" : "light");
     const themeColorMeta = document.querySelector<HTMLMetaElement>('meta[name="theme-color"]');
-    themeColorMeta?.setAttribute("content", isDarkMode ? "#101011" : "#FAFAF8");
+    const backgroundColor = getComputedStyle(document.documentElement).getPropertyValue("--background-color").trim();
+    if (backgroundColor) {
+      themeColorMeta?.setAttribute("content", backgroundColor);
+    }
   }
 }
