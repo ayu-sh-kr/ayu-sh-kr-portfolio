@@ -1,15 +1,13 @@
-export class GeneralUtils {
-  private static readonly themeStorageKey = "theme";
-  private static readonly colorSchemeMetaSelector = 'meta[name="color-scheme"]';
+const THEME_KEY = "theme";
 
+export class GeneralUtils {
   static toggleDarkMode(): void {
-    const isDarkMode = document.documentElement.classList.toggle("dark");
-    document.documentElement.classList.toggle("bg-slate-950", isDarkMode);
-    localStorage.setItem(this.themeStorageKey, isDarkMode ? "dark" : "light");
-    this.syncColorSchemeMeta(isDarkMode ? "dark" : "light");
+    const isDarkMode = !this.isDarkMode();
+    this.setBrowserTheme(isDarkMode ? "dark" : "light");
+    localStorage.setItem(THEME_KEY, isDarkMode ? "dark" : "light");
     window.dispatchEvent(
       new CustomEvent("themeChange", {
-        detail: { isDarkMode: GeneralUtils.isDarkMode() },
+        detail: { isDarkMode },
       }),
     );
   }
@@ -19,27 +17,23 @@ export class GeneralUtils {
   }
 
   static getBrowserTheme(): string {
-    const theme = localStorage.getItem(this.themeStorageKey);
-    if (theme) {
-      return theme;
+    const savedTheme = localStorage.getItem(THEME_KEY);
+    if (savedTheme === "dark" || savedTheme === "light") {
+      return savedTheme;
     }
-    if (window.matchMedia?.("(prefers-color-scheme: dark)").matches) {
-      return "dark";
-    }
-    return "light";
+
+    return window.matchMedia?.("(prefers-color-scheme: dark)").matches ? "dark" : "light";
   }
 
   static setBrowserTheme(theme: string): void {
     const isDarkMode = theme === "dark";
     document.documentElement.classList.toggle("dark", isDarkMode);
+    document.documentElement.classList.toggle("light", !isDarkMode);
     document.documentElement.classList.toggle("bg-slate-950", isDarkMode);
-    this.syncColorSchemeMeta(theme);
-  }
 
-  private static syncColorSchemeMeta(theme: string): void {
-    const meta = document.querySelector<HTMLMetaElement>(this.colorSchemeMetaSelector);
-    if (meta) {
-      meta.content = theme;
-    }
+    const colorSchemeMeta = document.querySelector<HTMLMetaElement>('meta[name="color-scheme"]');
+    colorSchemeMeta?.setAttribute("content", isDarkMode ? "dark" : "light");
+    const themeColorMeta = document.querySelector<HTMLMetaElement>('meta[name="theme-color"]');
+    themeColorMeta?.setAttribute("content", isDarkMode ? "#101011" : "#FAFAF8");
   }
 }
