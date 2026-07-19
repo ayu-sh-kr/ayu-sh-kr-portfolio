@@ -25,7 +25,7 @@ export class PortfolioWorkComponent extends BaseElement {
                   <article class="work-card ${"cta" in project && project.cta ? "work-card-cta" : ""}">
                     <p class="motion-eyebrow">${project.eyebrow}</p>
                     <h3 class="mt-5 text-[1.85rem] font-semibold leading-tight tracking-[-0.025em]">${project.title}</h3>
-                    <p class="mt-4 text-[0.98rem] leading-7 text-inkstone-500 dark:text-inkstone-300">${project.body}</p>
+                    <p class="mt-4 text-[0.98rem] leading-7 text-[var(--muted-color)]">${project.body}</p>
                     <div class="mt-6 flex flex-wrap gap-2">
                       ${project.chips.map((chip) => `<span class="motion-chip">${chip}</span>`).join("")}
                     </div>

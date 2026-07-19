@@ -45,7 +45,7 @@ export class HomePage extends DotaPageElement {
         <portfolio-contact></portfolio-contact>
         <portfolio-motion-controller></portfolio-motion-controller>
       </main>
-      <footer class="px-5 py-8 text-center text-sm text-inkstone-500 dark:text-inkstone-300 sm:px-8">
+      <footer class="px-5 py-8 text-center text-sm text-[var(--muted-color)] sm:px-8">
         Built with my Dota web-component libraries · Designed as a static Vite build
       </footer>
     `;

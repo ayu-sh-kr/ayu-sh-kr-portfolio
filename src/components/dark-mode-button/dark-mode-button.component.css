@@ -7,18 +7,18 @@ dark-mode-button {
   min-inline-size: 2.5rem;
   display: inline-grid;
   place-items: center;
-  border: 1px solid var(--hairline);
+  border: 1px solid var(--border-color);
   border-radius: 999px;
-  color: var(--ink-soft);
+  color: var(--muted-color);
   background: transparent;
   cursor: pointer;
   transition: color 180ms ease, border-color 180ms ease, background-color 180ms ease, transform 180ms ease;
 }
 
 .dark-mode-button:hover {
-  color: var(--ink);
-  border-color: var(--ink-soft);
-  background: var(--surface-hover);
+  color: var(--foreground-color);
+  border-color: var(--muted-color);
+  background: var(--surface-hover-color);
   transform: translateY(-1px);
 }
 

@@ -19,9 +19,9 @@ export class PortfolioHeroComponent extends BaseElement {
           <div id="hero-inner" class="mx-auto max-w-5xl px-5 text-center sm:px-8">
             <p class="motion-eyebrow">${hero.eyebrow}</p>
             <h1 id="hero-title" class="motion-display mx-auto mt-5">
-              ${hero.titleBeforeAccent} <span class="text-persimmon-500">${hero.accent}</span>
+              ${hero.titleBeforeAccent} <span class="text-[var(--primary-color)]">${hero.accent}</span>
             </h1>
-            <p class="mx-auto mt-7 max-w-2xl text-[1.06rem] leading-8 text-inkstone-500 dark:text-inkstone-300 sm:text-xl">${hero.summary}</p>
+            <p class="mx-auto mt-7 max-w-2xl text-[1.06rem] leading-8 text-[var(--muted-color)] sm:text-xl">${hero.summary}</p>
             <div class="mt-10 flex flex-wrap justify-center gap-3">
               <a class="motion-button motion-button-ink" href="${hero.primaryCta.href}">${hero.primaryCta.label}</a>
               <a class="motion-button motion-button-ghost" href="${hero.secondaryCta.href}">${hero.secondaryCta.label}</a>

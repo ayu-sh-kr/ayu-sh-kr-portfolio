@@ -12,20 +12,20 @@ export class PortfolioServicesComponent extends BaseElement {
 
   render(): string {
     return HTML`
-      <section id="services" class="border-y border-inkstone-900/10 dark:border-paper-50/15 px-5 py-28 sm:px-8 sm:py-36" aria-labelledby="services-title">
+      <section id="services" class="border-y border-[var(--border-color)] px-5 py-28 sm:px-8 sm:py-36" aria-labelledby="services-title">
         <div class="mx-auto max-w-7xl">
           <div class="grid gap-8 lg:grid-cols-12">
             <p class="motion-eyebrow motion-reveal lg:col-span-3">How I can help</p>
             <h2 id="services-title" class="motion-title motion-reveal lg:col-span-9">Bring me the outcome, not a shopping list of frameworks.</h2>
           </div>
-          <div class="mt-16 grid border-l border-t border-inkstone-900/10 dark:border-paper-50/15 md:grid-cols-3">
+          <div class="mt-16 grid border-l border-t border-[var(--border-color)] md:grid-cols-3">
             ${portfolioContent.services
               .map(
                 (service) => `
                   <article class="service-row motion-reveal">
-                    <span class="font-mono text-xs text-inkstone-400 dark:text-inkstone-300">${service.number}</span>
+                    <span class="font-mono text-xs text-[var(--muted-strong-color)]">${service.number}</span>
                     <h3 class="mt-16 text-2xl font-semibold leading-tight tracking-[-0.02em]">${service.title}</h3>
-                    <p class="mt-5 text-[0.98rem] leading-7 text-inkstone-500 dark:text-inkstone-300">${service.body}</p>
+                    <p class="mt-5 text-[0.98rem] leading-7 text-[var(--muted-color)]">${service.body}</p>
                   </article>
                 `,
               )

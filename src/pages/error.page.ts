@@ -31,11 +31,11 @@ export class ErrorPage extends DotaPageElement {
 
   render(): string {
     return HTML`
-      <main class="relative grid min-h-[100svh] place-items-center overflow-hidden bg-paper-50 px-5 py-24 text-inkstone-900 dark:bg-inkstone-950 dark:text-paper-50">
-        <div class="relative z-10 w-full max-w-3xl border-t border-inkstone-900/15 dark:border-paper-50/15 pt-8">
+      <main class="relative grid min-h-[100svh] place-items-center overflow-hidden bg-[var(--background-color)] px-5 py-24 text-[var(--foreground-color)]">
+        <div class="relative z-10 w-full max-w-3xl border-t border-[var(--border-color)] pt-8">
           <p class="motion-eyebrow">Request failed / ${this.status}</p>
           <h1 class="motion-display mt-8">${this.message}.</h1>
-          <p class="mt-8 max-w-lg text-base leading-8 text-inkstone-500 dark:text-inkstone-300">That route does not lead anywhere yet. Return to the portfolio and keep exploring from there.</p>
+          <p class="mt-8 max-w-lg text-base leading-8 text-[var(--muted-color)]">That route does not lead anywhere yet. Return to the portfolio and keep exploring from there.</p>
           <a href="/" class="motion-button motion-button-ink mt-9">Return home <span aria-hidden="true">←</span></a>
         </div>
       </main>

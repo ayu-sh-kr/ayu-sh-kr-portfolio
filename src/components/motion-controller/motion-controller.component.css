@@ -3,7 +3,7 @@ portfolio-motion-controller {
 }
 
 .motion-eyebrow {
-  color: var(--accent-deep);
+  color: var(--primary-color-strong);
   font-size: 0.8125rem;
   font-weight: 600;
   letter-spacing: 0.08em;
@@ -44,26 +44,26 @@ portfolio-motion-controller {
 }
 
 .motion-button-ink {
-  background: var(--ink);
-  color: var(--paper);
+  background: var(--foreground-color);
+  color: var(--background-color);
 }
 
 .motion-button-ghost {
-  border: 1px solid var(--hairline);
-  color: var(--ink);
+  border: 1px solid var(--border-color);
+  color: var(--foreground-color);
 }
 
 .motion-button-ghost:hover {
-  border-color: var(--ink);
+  border-color: var(--foreground-color);
 }
 
 .motion-button-accent {
-  background: var(--accent);
-  color: var(--paper);
+  background: var(--primary-color);
+  color: var(--primary-color-on);
 }
 
 .motion-button-accent:hover {
-  background: var(--accent-deep);
+  background: var(--primary-color-hover);
 }
 
 .motion-chip {
@@ -71,19 +71,19 @@ portfolio-motion-controller {
   align-items: center;
   border-radius: 999px;
   padding: 0.32rem 0.7rem;
-  background: var(--tint);
-  color: var(--accent-deep);
+  background: var(--primary-color-subtle);
+  color: var(--primary-color-strong);
   font-size: 0.77rem;
   font-weight: 600;
 }
 
 .quiet-link {
-  color: var(--ink-soft);
+  color: var(--muted-color);
   transition: color 180ms ease;
 }
 
 .quiet-link:hover {
-  color: var(--accent-deep);
+  color: var(--primary-color-strong);
 }
 
 .pin-wrap {

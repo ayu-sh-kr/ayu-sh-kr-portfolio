@@ -14,7 +14,7 @@ export class AppHeaderComponent extends BaseElement {
     return `
       <nav id="site-nav" aria-label="Primary navigation">
         <div class="mx-auto flex max-w-7xl items-center justify-between gap-5 px-5 py-4 sm:px-8">
-          <a href="#hero-wrap" class="shrink-0 text-sm font-semibold tracking-[-0.02em] text-inkstone-900 dark:text-paper-50">${portfolioContent.nav.logo}</a>
+          <a href="#hero-wrap" class="shrink-0 text-sm font-semibold tracking-[-0.02em] text-[var(--foreground-color)]">${portfolioContent.nav.logo}</a>
           <div class="flex items-center gap-4 sm:gap-6">
             <div class="flex items-center gap-4 sm:gap-6">
               ${portfolioContent.nav.links

@@ -22,8 +22,8 @@ export class PortfolioJourneyComponent extends BaseElement {
                 <article class="journey-chapter" data-chapter="${index}">
                   <p class="motion-eyebrow">${chapter.label}</p>
                   <h3 class="motion-title mx-auto mt-5 max-w-4xl">${chapter.title}</h3>
-                  <p class="mx-auto mt-6 max-w-2xl text-lg leading-8 text-inkstone-500 dark:text-inkstone-300">${chapter.body}</p>
-                  <p class="mt-6 font-mono text-xs font-semibold uppercase tracking-[0.12em] text-inkstone-400 dark:text-inkstone-400">${chapter.meta}</p>
+                  <p class="mx-auto mt-6 max-w-2xl text-lg leading-8 text-[var(--muted-color)]">${chapter.body}</p>
+                  <p class="mt-6 font-mono text-xs font-semibold uppercase tracking-[0.12em] text-[var(--muted-strong-color)]">${chapter.meta}</p>
                 </article>
               `,
             )
