@@ -8,9 +8,6 @@ importers:
 
   .:
     dependencies:
-      '@ayu-sh-kr/dota-ui':
-        specifier: 0.0.17
-        version: 0.0.17
       '@ayu-sh-kr/dota-wrap':
         specifier: 0.0.19
         version: 0.0.19(reflect-metadata@0.2.2)
@@ -36,9 +33,6 @@ importers:
 
 packages:
 
-  '@ayu-sh-kr/dota-ast-utils@0.0.1':
-    resolution: {integrity: sha512-qqppa54Kjdf/nptJzW05ZolTxu6RRROLwcZSbhUL6jRExn3JPPSPyWNy9F5WYAWvDzdTgeOHEhsPT8Q42rW5nA==}
-
   '@ayu-sh-kr/dota-core@1.9.5':
     resolution: {integrity: sha512-L82MTHTeNclXNPfOnSxBblr7tan1ewQqAmKRVBDyIRGhFzv0tEXRYG6KTBhUq26FEZnkzsADAlo7II8NdJkiyQ==}
 
@@ -50,12 +44,6 @@ packages:
 
   '@ayu-sh-kr/dota-router@0.0.26':
     resolution: {integrity: sha512-TjFHWer3swwcSasuQJvaJbx0HCD6wOWu4na+noKh5ymHEy/FBjRaAxSt5woeZRBFCh0ND4q1NgIbht3hQGjf2g==}
-
-  '@ayu-sh-kr/dota-ui@0.0.17':
-    resolution: {integrity: sha512-Arx+wWXnJ8x+5mZFosXSPIJG3xAWIbr9wkieTRMmk2yctJ4+zTbz3nHR79Akwn1Z3ceBeqxL674285HX2Av4Eg==}
-
-  '@ayu-sh-kr/dota-web-type-json@0.0.5':
-    resolution: {integrity: sha512-Py7wNlSSOx/EwziduSvTgRONwt9vCyX1pavtcWouuunCkVGHUpSGY90t1HJ8Qka5WO2/7ObC7h1BtK3k/ZCV2Q==}
 
   '@ayu-sh-kr/dota-wrap@0.0.19':
     resolution: {integrity: sha512-NSikjeJgeqGQJLC4aRiQvNUWrPzHM2Jv9DicXMThbjLOgD1TXO9kBb7PAP26yFgqMQlJRs7WftgNk00zSQHG9Q==}
@@ -217,15 +205,6 @@ packages:
     engines: {node: '>=18'}
     cpu: [x64]
     os: [win32]
-
-  '@floating-ui/core@1.7.5':
-    resolution: {integrity: sha512-1Ih4WTWyw0+lKyFMcBHGbb5U5FtuHJuujoyyr5zTaWS5EYMeT6Jb2AuDeftsCsEuchO+mM2ij5+q9crhydzLhQ==}
-
-  '@floating-ui/dom@1.7.6':
-    resolution: {integrity: sha512-9gZSAI5XM36880PPMm//9dfiEngYoC6Am2izES1FF406YFsjvyBMmeJ2g4SAju3xWwtuynNRFL2s9hgxpLI5SQ==}
-
-  '@floating-ui/utils@0.2.11':
-    resolution: {integrity: sha512-RiB/yIh78pcIxl6lLMG0CgBXAZ2Y0eVHqMPYugu+9U0AeT6YBeiJpf7lbdJNIugFP5SIjwNRgo4DhR1Qxi26Gg==}
 
   '@jridgewell/gen-mapping@0.3.13':
     resolution: {integrity: sha512-2kkt/7niJ6MgEPxF0bYdQ6etZaA+fQvDcLKckhy1yIQOzaoKjBBjSj63/aLVjYE3qhRt5dvM+uUyfCg6UKCBbA==}
@@ -847,13 +826,6 @@ packages:
 
 snapshots:
 
-  '@ayu-sh-kr/dota-ast-utils@0.0.1':
-    dependencies:
-      '@swc/core': 1.15.43
-      fast-glob: 3.3.3
-    transitivePeerDependencies:
-      - '@swc/helpers'
-
   '@ayu-sh-kr/dota-core@1.9.5':
     dependencies:
       '@ayu-sh-kr/dota-event': 0.0.5
@@ -869,25 +841,6 @@ snapshots:
     dependencies:
       '@ayu-sh-kr/dota-core': 1.9.5
       reflect-metadata: 0.2.2
-
-  '@ayu-sh-kr/dota-ui@0.0.17':
-    dependencies:
-      '@ayu-sh-kr/dota-core': 1.9.5
-      '@ayu-sh-kr/dota-event': 0.0.5
-      '@ayu-sh-kr/dota-web-type-json': 0.0.5
-      '@floating-ui/dom': 1.7.6
-    transitivePeerDependencies:
-      - '@swc/helpers'
-
-  '@ayu-sh-kr/dota-web-type-json@0.0.5':
-    dependencies:
-      '@ayu-sh-kr/dota-ast-utils': 0.0.1
-      '@ayu-sh-kr/dota-core': 1.9.5
-      '@swc/core': 1.15.43
-      consola: 3.4.2
-      fast-glob: 3.3.3
-    transitivePeerDependencies:
-      - '@swc/helpers'
 
   '@ayu-sh-kr/dota-wrap@0.0.19(reflect-metadata@0.2.2)':
     dependencies:
@@ -979,17 +932,6 @@ snapshots:
 
   '@esbuild/win32-x64@0.28.1':
     optional: true
-
-  '@floating-ui/core@1.7.5':
-    dependencies:
-      '@floating-ui/utils': 0.2.11
-
-  '@floating-ui/dom@1.7.6':
-    dependencies:
-      '@floating-ui/core': 1.7.5
-      '@floating-ui/utils': 0.2.11
-
-  '@floating-ui/utils@0.2.11': {}
 
   '@jridgewell/gen-mapping@0.3.13':
     dependencies:
