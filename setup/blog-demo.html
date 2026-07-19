@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Blog — ayush.dev</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" />
+<style>
+  :root{
+    --paper:#FAFAF8; --ink:#1D1D1F; --ink-soft:#6E6E73;
+    --hairline:rgba(29,29,31,.1);
+    --accent:#FF4D00; --accent-deep:#C23A00; --tint:#FFF1EA;
+  }
+  html{scroll-behavior:smooth}
+  body{background:var(--paper); color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Inter,sans-serif;
+    -webkit-font-smoothing:antialiased; overflow-x:hidden}
+  ::selection{background:var(--accent); color:#fff}
+  .eyebrow{font-size:13px; font-weight:500; letter-spacing:.08em; text-transform:uppercase; color:var(--accent-deep)}
+  .soft{color:var(--ink-soft)}
+  .chip{display:inline-block; font-size:12.5px; font-weight:500; padding:.3rem .7rem; border-radius:999px;
+        background:var(--tint); color:var(--accent-deep)}
+
+  #progress{position:fixed; top:0; left:0; height:2px; width:0%; background:var(--accent); z-index:60}
+  #nav{position:fixed; inset:0 0 auto 0; z-index:50; backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
+       background:rgba(250,250,248,.72); border-bottom:1px solid transparent; transition:border-color .3s}
+  #nav.scrolled{border-bottom-color:var(--hairline)}
+  #nav a{color:var(--ink-soft); font-size:14px; transition:color .2s}
+  #nav a:hover{color:var(--ink)}
+
+  #hero-wrap{position:relative; height:140vh}
+  #hero-stage{position:sticky; top:0; height:100vh; display:flex; align-items:center; justify-content:center; overflow:hidden}
+  #hero-inner{will-change:transform; text-align:center; padding:0 1.5rem; max-width:56rem}
+  .display{font-weight:700; letter-spacing:-.035em; line-height:1.05; font-size:clamp(2.4rem,6.5vw,5rem)}
+
+  #filterbar{position:sticky; top:57px; z-index:40; backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
+       background:rgba(250,250,248,.82); border-bottom:1px solid var(--hairline)}
+  .pill{font-size:14px; font-weight:500; padding:.5rem 1.1rem; border-radius:999px; border:1px solid var(--hairline);
+        color:var(--ink-soft); transition:all .2s; cursor:pointer; background:transparent}
+  .pill:hover{border-color:var(--ink); color:var(--ink)}
+  .pill.active{background:var(--ink); border-color:var(--ink); color:#fff}
+  .pill:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+
+  .featured{display:block; background:#fff; border:1px solid var(--hairline); border-radius:24px; padding:2.2rem;
+        transition:transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s}
+  .featured:hover{transform:translateY(-4px); box-shadow:0 18px 40px -24px rgba(29,29,31,.25)}
+  .featured:hover .arr{transform:translateX(4px)}
+  .arr{display:inline-block; transition:transform .25s; color:var(--accent-deep)}
+
+  .row{display:grid; grid-template-columns:110px 1fr auto auto; gap:1.25rem; align-items:baseline;
+       padding:1.4rem .75rem; border-bottom:1px solid var(--hairline); cursor:pointer;
+       transition:background .2s; text-decoration:none; color:inherit}
+  .row:hover{background:rgba(255,77,0,.035)}
+  .row:hover .row-title{color:var(--accent-deep)}
+  .row:hover .arr{transform:translateX(4px)}
+  .row-title{font-weight:600; letter-spacing:-.01em; font-size:1.1rem; transition:color .2s}
+  .row.hidden-row{display:none}
+  @media (max-width:640px){ .row{grid-template-columns:1fr auto} .row-date,.row .chip{display:none} }
+
+  .reveal{opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s cubic-bezier(.2,.8,.2,1)}
+  .reveal.is-in{opacity:1; transform:none}
+
+  /* article view */
+  #article{display:none}
+  body.reading #index{display:none}
+  body.reading #article{display:block}
+  .prose{max-width:680px; margin:0 auto; font-size:18px; line-height:1.75}
+  .prose h2{font-size:1.6rem; font-weight:600; letter-spacing:-.02em; margin:2.5em 0 .6em}
+  .prose p{margin:0 0 1.2em}
+  .prose a{color:var(--accent-deep)} .prose a:hover{text-decoration:underline}
+  .prose blockquote{border-left:3px solid var(--accent); border-radius:0; padding:.2em 0 .2em 1.2em;
+        color:var(--ink-soft); margin:1.6em 0}
+  .prose code{background:var(--tint); color:var(--accent-deep); padding:.15em .45em; border-radius:4px; font-size:.9em;
+        font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+  .prose pre{background:#1D1D1F; color:#F5F5F4; border-radius:16px; padding:1.25rem 1.4rem; overflow-x:auto;
+        margin:1.6em 0; position:relative}
+  .prose pre code{background:transparent; color:inherit; padding:0; font-size:15px; line-height:1.6}
+  .pre-label{position:absolute; top:.7rem; right:1rem; font-size:12px; color:#8E8E93}
+  .tldr{background:var(--tint); border-radius:16px; padding:1.4rem 1.6rem; margin:2em 0}
+  .tldr ul{margin:.5em 0 0 1.1em; list-style:disc}
+  .back{font-size:15px; font-weight:500; color:var(--ink-soft); transition:color .2s}
+  .back:hover{color:var(--ink)}
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto}
+    #hero-wrap{height:auto} #hero-stage{position:static; height:auto; padding:16vh 0 8vh}
+    #hero-inner{opacity:1 !important; transform:none !important}
+    .reveal{opacity:1; transform:none; transition:none}
+    .featured,.row,.pill,.arr{transition:none}
+  }
+</style>
+</head>
+<body>
+
+<div id="progress" role="presentation"></div>
+
+<nav id="nav">
+  <div class="max-w-5xl mx-auto flex items-center justify-between px-6 py-4">
+    <span class="font-semibold tracking-tight">ayush.dev</span>
+    <div class="flex gap-6"><a href="#">Work</a><a href="#">Journey</a><a href="#" style="color:var(--ink)">Blog</a><a href="#">Contact</a></div>
+  </div>
+</nav>
+
+<!-- ============ INDEX VIEW ============ -->
+<main id="index">
+
+  <div id="hero-wrap">
+    <section id="hero-stage" aria-label="Blog intro">
+      <div id="hero-inner">
+        <p class="eyebrow mb-5">The blog</p>
+        <h1 class="display">Tutorials, takes, and the occasional <span style="color:var(--accent)">rant.</span></h1>
+        <p class="soft mt-6 text-lg max-w-xl mx-auto">Notes from running a production backend solo — what works, what broke, and what I think about it.</p>
+      </div>
+    </section>
+  </div>
+
+  <div id="filterbar">
+    <div class="max-w-5xl mx-auto px-6 py-3 flex items-center gap-2 flex-wrap">
+      <button class="pill active" data-f="all">All</button>
+      <button class="pill" data-f="tutorial">Tutorials</button>
+      <button class="pill" data-f="rant">Rants</button>
+      <button class="pill" data-f="news">News</button>
+      <button class="pill" data-f="notes">Notes</button>
+      <span class="soft text-sm ml-auto" id="count">6 posts</span>
+    </div>
+  </div>
+
+  <section class="max-w-5xl mx-auto px-6 pt-14" aria-label="Featured post">
+    <a href="#" class="featured reveal" onclick="openArticle(event)">
+      <div class="flex gap-2 items-center mb-4"><span class="chip">Tutorial</span><span class="soft text-sm">8 min read</span></div>
+      <h2 style="font-size:2.1rem; font-weight:600; letter-spacing:-.025em; line-height:1.15">Distributed locks in Redis, without the folklore</h2>
+      <p class="soft mt-3 max-w-2xl">Everyone copies the same SETNX snippet. Here's what actually matters when the lock is guarding real money — and when you don't need one at all.</p>
+      <p class="mt-5 text-sm"><span class="soft">July 12, 2026</span> &nbsp; <span class="arr">Read →</span></p>
+    </a>
+  </section>
+
+  <section class="max-w-5xl mx-auto px-6 py-14" aria-label="All posts">
+    <div id="list">
+      <a class="row reveal" data-cat="tutorial" href="#" onclick="openArticle(event)">
+        <span class="row-date soft text-sm">Jul 2, 2026</span>
+        <span><span class="row-title">Rate limiting a real API: token bucket in Spring Boot</span><br/><span class="soft text-sm">From annotation to Redis-backed bucket, with the edge cases.</span></span>
+        <span class="chip">Tutorial</span><span class="arr">→</span>
+      </a>
+      <a class="row reveal" data-cat="rant" href="#" onclick="openArticle(event)">
+        <span class="row-date soft text-sm">Jun 21, 2026</span>
+        <span><span class="row-title">Your microservices are a distributed monolith with extra invoices</span><br/><span class="soft text-sm">Five services, one deploy train, zero benefits.</span></span>
+        <span class="chip">Rant</span><span class="arr">→</span>
+      </a>
+      <a class="row reveal" data-cat="news" href="#" onclick="openArticle(event)">
+        <span class="row-date soft text-sm">Jun 10, 2026</span>
+        <span><span class="row-title">What the new Lambda pricing means if you run infra alone</span><br/><span class="soft text-sm">A solo operator's read, with actual numbers.</span></span>
+        <span class="chip">News</span><span class="arr">→</span>
+      </a>
+      <a class="row reveal" data-cat="rant" href="#" onclick="openArticle(event)">
+        <span class="row-date soft text-sm">May 30, 2026</span>
+        <span><span class="row-title">Stop putting business logic in your auth middleware</span><br/><span class="soft text-sm">It's a bouncer, not a bartender.</span></span>
+        <span class="chip">Rant</span><span class="arr">→</span>
+      </a>
+      <a class="row reveal" data-cat="notes" href="#" onclick="openArticle(event)">
+        <span class="row-date soft text-sm">May 18, 2026</span>
+        <span><span class="row-title">TIL: EventBridge scheduler quirks</span><br/><span class="soft text-sm">Two minutes that might save your cron migration.</span></span>
+        <span class="chip">Notes</span><span class="arr">→</span>
+      </a>
+      <a class="row reveal" data-cat="tutorial" href="#" onclick="openArticle(event)">
+        <span class="row-date soft text-sm">May 6, 2026</span>
+        <span><span class="row-title">Web components without the ceremony: how dota-wrap works</span><br/><span class="soft text-sm">The design decisions behind my lit-like wrapper.</span></span>
+        <span class="chip">Tutorial</span><span class="arr">→</span>
+      </a>
+    </div>
+    <p id="empty" class="soft py-12 text-center" style="display:none">Nothing here yet. These posts are brewing. <a href="#" style="color:var(--accent-deep)" onclick="setFilter('all');return false">Show everything</a></p>
+  </section>
+
+  <section class="hairline-top" style="border-top:1px solid var(--hairline)" aria-label="Subscribe">
+    <div class="max-w-5xl mx-auto px-6 py-14 flex flex-wrap items-center justify-between gap-6">
+      <div>
+        <p style="font-weight:600; font-size:1.25rem; letter-spacing:-.01em">New posts, no noise.</p>
+        <p class="soft text-sm mt-1">Occasional emails when something ships.</p>
+      </div>
+      <div class="flex gap-2">
+        <input type="email" placeholder="name@company.com" aria-label="Email address"
+               style="border:1px solid var(--hairline); border-radius:999px; padding:.7rem 1.2rem; background:#fff; font-size:15px; min-width:230px" />
+        <button class="pill active" style="padding:.7rem 1.4rem">Subscribe</button>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ ARTICLE VIEW ============ -->
+<article id="article" aria-label="Article">
+  <div class="max-w-5xl mx-auto px-6 pt-28 pb-6">
+    <a href="#" class="back" onclick="closeArticle(event)">← All posts</a>
+  </div>
+  <header class="prose text-center px-6" style="max-width:760px">
+    <div class="flex gap-2 items-center justify-center mb-5"><span class="chip">Tutorial</span><span class="soft text-sm">8 min read · July 12, 2026</span></div>
+    <h1 style="font-size:clamp(2.2rem,5vw,3.4rem); font-weight:700; letter-spacing:-.03em; line-height:1.08">Distributed locks in Redis, without the folklore</h1>
+    <p class="soft mt-5 text-base">Ayush · Backend engineer</p>
+  </header>
+
+  <div class="prose px-6 mt-14 pb-24">
+    <div class="tldr">
+      <p class="eyebrow">TL;DR</p>
+      <ul class="soft text-base">
+        <li>SETNX alone is not a lock — you need expiry and ownership.</li>
+        <li>Most "lock" problems are actually idempotency problems.</li>
+        <li>If correctness matters more than latency, use the database.</li>
+      </ul>
+    </div>
+
+    <p>Every distributed locks tutorial starts the same way: <code>SET key value NX PX 30000</code>, a triumphant paragraph, and no mention of what happens when your process pauses for 31 seconds. This post is about the second part.</p>
+
+    <h2>The lock you actually wrote</h2>
+    <p>Here is the minimal version that isn't wrong on day one — acquire with a random token, release only if you still own it:</p>
+
+    <pre><span class="pre-label">Kotlin</span><code>val token = UUID.randomUUID().toString()
+val ok = redis.set("lock:payout:$userId", token,
+                   SetArgs().nx().px(30_000))
+
+try {
+    if (ok) processPayout(userId)
+} finally {
+    releaseIfOwner("lock:payout:$userId", token)
+}</code></pre>
+
+    <p>The token matters. Without it, a slow process can delete a lock that a faster process re-acquired — and now two workers are paying out the same user.</p>
+
+    <blockquote>A lock without ownership checks is just a suggestion with a TTL.</blockquote>
+
+    <h2>When you don't need a lock at all</h2>
+    <p>In two years of running <a href="#" onclick="return false">Sacrena's backend</a>, most places I reached for a lock, what I actually needed was an idempotency key on the operation. Locks serialize; idempotency forgives. The second is almost always cheaper to reason about at 3am.</p>
+    <p><em>(Placeholder body continues — Ayush replaces this with the real article.)</em></p>
+  </div>
+
+  <div style="border-top:1px solid var(--hairline)">
+    <div class="max-w-5xl mx-auto px-6 py-10 flex justify-between items-center flex-wrap gap-4">
+      <a href="#" class="back" onclick="closeArticle(event)">← All posts</a>
+      <span class="soft text-sm">Next: Rate limiting a real API →</span>
+    </div>
+  </div>
+</article>
+
+<script>
+(function(){
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const clamp = (v,a,b)=>Math.min(b,Math.max(a,v));
+  const nav = document.getElementById('nav');
+  const heroWrap = document.getElementById('hero-wrap');
+  const heroInner = document.getElementById('hero-inner');
+  const progress = document.getElementById('progress');
+  const articleEl = document.getElementById('article');
+
+  function renderAll(){
+    nav.classList.toggle('scrolled', scrollY > 40);
+
+    if (document.body.classList.contains('reading')){
+      const r = articleEl.getBoundingClientRect();
+      const total = r.height - innerHeight;
+      progress.style.width = (clamp(-r.top/total,0,1)*100) + '%';
+    } else {
+      progress.style.width = '0%';
+      if (!reduced){
+        const r = heroWrap.getBoundingClientRect();
+        const p = clamp(-r.top/(r.height-innerHeight),0,1);
+        heroInner.style.opacity = clamp(1-p*1.4,0,1);
+        heroInner.style.transform = `scale(${1-p*0.1}) translateY(${p*-30}px)`;
+      }
+    }
+  }
+
+  let ticking=false;
+  addEventListener('scroll',()=>{ if(ticking)return; ticking=true;
+    requestAnimationFrame(()=>{renderAll(); ticking=false;}); },{passive:true});
+  addEventListener('resize',renderAll);
+
+  const io = new IntersectionObserver(es=>{
+    es.forEach(e=>{ if(e.isIntersecting){
+      const el=e.target;
+      const sib=Array.from(el.parentElement.querySelectorAll('.reveal'));
+      el.style.transitionDelay=(Math.max(0,sib.indexOf(el))*60)+'ms';
+      el.classList.add('is-in'); io.unobserve(el);
+    }});
+  },{threshold:.1});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // filtering
+  const pills=document.querySelectorAll('.pill[data-f]');
+  const rows=document.querySelectorAll('.row');
+  const count=document.getElementById('count');
+  const empty=document.getElementById('empty');
+
+  window.setFilter = function(f){
+    pills.forEach(p=>p.classList.toggle('active', p.dataset.f===f));
+    let n=0;
+    rows.forEach(r=>{
+      const show = f==='all' || r.dataset.cat===f;
+      r.classList.toggle('hidden-row', !show);
+      if(show){ n++;
+        if(!reduced){ r.style.opacity=0; r.style.transform='translateY(12px)';
+          requestAnimationFrame(()=>{ r.style.transition='opacity .25s, transform .25s';
+            r.style.opacity=1; r.style.transform='none'; });
+        }
+      }
+    });
+    count.textContent = n + (n===1?' post':' posts');
+    empty.style.display = n===0 ? 'block' : 'none';
+    location.hash = f==='all' ? '' : '#/'+f;
+  };
+  pills.forEach(p=>p.addEventListener('click',()=>setFilter(p.dataset.f)));
+  const initial=(location.hash.match(/^#\/(\w+)/)||[])[1];
+  if(initial && [...pills].some(p=>p.dataset.f===initial)) setFilter(initial);
+
+  // article view toggle
+  window.openArticle = function(e){
+    e.preventDefault();
+    document.body.classList.add('reading');
+    scrollTo({top:0, behavior: reduced ? 'auto' : 'smooth'});
+    renderAll();
+  };
+  window.closeArticle = function(e){
+    e.preventDefault();
+    document.body.classList.remove('reading');
+    scrollTo({top:0, behavior:'auto'});
+    renderAll();
+  };
+
+  renderAll();
+})();
+</script>
+</body>
+</html>
