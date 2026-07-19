@@ -1,0 +1,15 @@
+portfolio-skills {
+  display: block;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 1.25rem;
+}
+
+.skill-group {
+  min-height: 12rem;
+  padding: 1.5rem 0;
+  border-top: 1px solid var(--hairline);
+}
