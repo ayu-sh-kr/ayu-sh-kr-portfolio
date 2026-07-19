@@ -2,16 +2,34 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="color-scheme" content="light dark" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;800&display=swap"
-    />
-    <link rel="stylesheet" href="./src/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dota Wrap App</title>
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#FAFAF8" />
+    <script>
+      (() => {
+        const savedTheme = localStorage.getItem("theme");
+        const prefersDark = window.matchMedia?.("(prefers-color-scheme: dark)").matches;
+        const isDark = savedTheme ? savedTheme === "dark" : prefersDark;
+        document.documentElement.classList.toggle("dark", isDark);
+        document.documentElement.classList.toggle("light", !isDark);
+        document.documentElement.classList.toggle("bg-slate-950", isDark);
+        document.querySelector('meta[name="color-scheme"]')?.setAttribute("content", isDark ? "dark" : "light");
+        document.querySelector('meta[name="theme-color"]')?.setAttribute("content", isDark ? "#101011" : "#FAFAF8");
+      })();
+    </script>
+    <meta
+      name="description"
+      content="Ayush Jaiswal is a backend engineer with 4 years of experience building production systems with Kotlin, Spring Boot, AWS, PostgreSQL, and Redis."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Ayush Jaiswal — Backend Engineer" />
+    <meta
+      property="og:description"
+      content="Production backends on the JVM and AWS. Open to backend roles and select freelance projects."
+    />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="./src/style.css" />
+    <title>Ayush Jaiswal — Backend Engineer (Kotlin · Spring Boot · AWS)</title>
   </head>
   <body>
     <div id="app">
