@@ -10,6 +10,8 @@
 @import "./components/skills-section/skills-section.component.css";
 @import "./components/services-section/services-section.component.css";
 @import "./components/about-contact-section/about-contact-section.component.css";
+@import "./components/blog-view/blog-view.component.css";
+@import "./components/blog-view/blog-markdown-view.component.css";
 
 @source "../index.html";
 @source "../src/**/*.{ts}";
@@ -44,6 +46,17 @@
   --border-color: color-mix(in srgb, var(--foreground-color) 10%, transparent);
   --surface-color: var(--color-pure-black-50);
   --surface-hover-color: color-mix(in srgb, var(--foreground-color) 6%, transparent);
+
+  /* Editorial blog aliases use the same app-owned primary theme. */
+  --blog-paper: var(--background-color);
+  --blog-ink: var(--foreground-color);
+  --blog-ink-soft: var(--muted-color);
+  --blog-hairline: var(--border-color);
+  --blog-accent: var(--primary-color);
+  --blog-accent-deep: var(--primary-color-strong);
+  --blog-tint: var(--primary-color-subtle);
+  --blog-code: var(--primary-950);
+  --blog-code-text: var(--primary-color-on);
 }
 
 html.dark {
