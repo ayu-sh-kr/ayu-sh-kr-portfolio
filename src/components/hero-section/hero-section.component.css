@@ -1,0 +1,77 @@
+portfolio-hero {
+  display: block;
+}
+
+.hero-pin-wrap {
+  height: 180vh;
+}
+
+.hero-stage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.scroll-hint {
+  position: absolute;
+  bottom: 5vh;
+  left: 50%;
+  translate: -50% 0;
+  color: var(--ink-soft);
+  font-size: 0.75rem;
+}
+
+.scroll-hint::after {
+  width: 1px;
+  height: 2.1rem;
+  display: block;
+  margin: 0.5rem auto 0;
+  content: "";
+  background: linear-gradient(var(--ink-soft), transparent);
+  animation: scroll-drip 1.8s ease-in-out infinite;
+}
+
+@keyframes scroll-drip {
+  0% {
+    transform: scaleY(0);
+    transform-origin: top;
+  }
+
+  50% {
+    transform: scaleY(1);
+    transform-origin: top;
+  }
+
+  51% {
+    transform-origin: bottom;
+  }
+
+  100% {
+    transform: scaleY(0);
+    transform-origin: bottom;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-pin-wrap {
+    height: auto;
+  }
+
+  .hero-stage {
+    min-height: 100svh;
+    padding-block: 14vh;
+  }
+
+  #hero-inner {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .scroll-hint {
+    display: none;
+  }
+
+  .scroll-hint::after {
+    animation: none;
+  }
+}
