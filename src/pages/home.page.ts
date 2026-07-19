@@ -13,57 +13,41 @@ export class HomePage extends DotaPageElement {
 
   get seo(): SEO {
     return {
-      title: "Dota",
-      description: "A minimal Dota starter focused on a clean home page, documentation, and core workspace links.",
-      keywords: ["Dota", "Dota Wrap", "documentation", "workspace"],
+      title: "Ayush Jaiswal — Backend Engineer (Kotlin · Spring Boot · AWS)",
+      description:
+        "Backend engineer with 4 years of experience building and running production systems with Kotlin, Spring Boot, AWS, PostgreSQL, and Redis.",
+      keywords: [
+        "Ayush Jaiswal",
+        "Backend Engineer",
+        "Kotlin",
+        "Spring Boot",
+        "AWS",
+        "PostgreSQL",
+        "Redis",
+        "Freelance Backend Developer",
+      ],
       og: {
-        title: "Dota",
-        description: "A minimal Dota starter focused on a clean home page, documentation, and core workspace links.",
+        title: "Ayush Jaiswal — Backend Engineer",
+        description: "Production backends on the JVM and AWS. Open to backend roles and select freelance projects.",
       },
     };
   }
 
   render(): string {
-    // language=html
     return HTML`
-      <main class="relative min-h-screen bg-couture-black-50 dark:bg-couture-black-950">
-        <app-header></app-header>
-        <section class="relative flex min-h-screen w-full items-center justify-center overflow-clip px-5 pb-16 pt-28 sm:px-6 sm:pt-32 lg:px-8">
-          <orb-background
-            orbit-position="center"
-            orbit-speed="5"
-            orbit-direction="random"
-            orbit-count="7"
-            orbit-spacing="15"
-            orbit-color="orange"
-          ></orb-background>
-          <div class="relative z-10 mx-auto flex max-w-2xl flex-col items-center text-center">
-            <p class="font-mono text-xs uppercase tracking-[0.24em] text-muted">Dota workspace</p>
-            <h1 class="mt-4 text-4xl font-bold tracking-tight text-ink sm:text-5xl">Build on Dota without extra noise.</h1>
-            <p class="mt-5 max-w-xl text-base leading-7 text-muted sm:text-lg">
-              A minimal starting point for Dota apps, with the core workspace, docs, and page structure kept clear and close.
-            </p>
-            <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
-              <a
-                href="https://dota-workspace.vercel.app/docs?content=Getting-Started.md"
-                target="_blank"
-                rel="noreferrer"
-                class="inline-flex min-h-11 items-center justify-center rounded-full bg-couture-black-950 px-5 py-3 text-sm font-semibold text-couture-black-50 transition-colors duration-200 hover:bg-couture-black-950/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2 focus-visible:ring-offset-couture-black-50 dark:bg-couture-black-50 dark:text-couture-black-950 dark:hover:bg-couture-black-50/90 dark:focus-visible:ring-offset-couture-black-950"
-              >
-                Read documentation
-              </a>
-              <a
-                href="https://dota-workspace.vercel.app/"
-                target="_blank"
-                rel="noreferrer"
-                class="inline-flex min-h-11 items-center justify-center rounded-full border border-black/10 px-5 py-3 text-sm font-semibold text-ink transition-colors duration-200 hover:bg-black/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2 focus-visible:ring-offset-couture-black-50 dark:border-white/10 dark:hover:bg-white/5 dark:focus-visible:ring-offset-couture-black-950"
-              >
-                Open Dota home
-              </a>
-            </div>
-          </div>
-        </section>
+      <app-header></app-header>
+      <main>
+        <portfolio-hero></portfolio-hero>
+        <portfolio-journey></portfolio-journey>
+        <portfolio-work></portfolio-work>
+        <portfolio-skills></portfolio-skills>
+        <portfolio-services></portfolio-services>
+        <portfolio-contact></portfolio-contact>
+        <portfolio-motion-controller></portfolio-motion-controller>
       </main>
+      <footer class="px-5 py-8 text-center text-sm text-inkstone-500 dark:text-inkstone-300 sm:px-8">
+        Built with my Dota web-component libraries · Designed as a static Vite build
+      </footer>
     `;
   }
 }
