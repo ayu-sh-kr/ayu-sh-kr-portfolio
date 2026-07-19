@@ -1,0 +1,127 @@
+portfolio-motion-controller {
+  display: contents;
+}
+
+.motion-eyebrow {
+  color: var(--accent-deep);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.motion-display {
+  font-size: clamp(2.75rem, 8vw, 7rem);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 1.02;
+  text-wrap: balance;
+}
+
+.motion-title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 1.08;
+  text-wrap: balance;
+}
+
+.motion-button {
+  min-block-size: 3rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 999px;
+  padding: 0.8rem 1.55rem;
+  font-size: 0.93rem;
+  font-weight: 600;
+  transition: transform 220ms cubic-bezier(0.2, 0.8, 0.2, 1), background-color 180ms ease, border-color 180ms ease;
+}
+
+.motion-button:hover {
+  transform: translateY(-2px);
+}
+
+.motion-button-ink {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.motion-button-ghost {
+  border: 1px solid var(--hairline);
+  color: var(--ink);
+}
+
+.motion-button-ghost:hover {
+  border-color: var(--ink);
+}
+
+.motion-button-accent {
+  background: var(--accent);
+  color: var(--paper);
+}
+
+.motion-button-accent:hover {
+  background: var(--accent-deep);
+}
+
+.motion-chip {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  padding: 0.32rem 0.7rem;
+  background: var(--tint);
+  color: var(--accent-deep);
+  font-size: 0.77rem;
+  font-weight: 600;
+}
+
+.quiet-link {
+  color: var(--ink-soft);
+  transition: color 180ms ease;
+}
+
+.quiet-link:hover {
+  color: var(--accent-deep);
+}
+
+.pin-wrap {
+  position: relative;
+}
+
+.pin-stage {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+}
+
+#hero-inner,
+.work-rail {
+  will-change: transform;
+}
+
+.motion-reveal {
+  opacity: 0;
+  transform: translateY(1.5rem);
+  transition: opacity 700ms ease, transform 700ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.motion-reveal.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .motion-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .motion-button {
+    transition: none;
+  }
+}
