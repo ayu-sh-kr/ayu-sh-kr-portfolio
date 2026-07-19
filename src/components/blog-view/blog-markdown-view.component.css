@@ -1,0 +1,12 @@
+blog-markdown-view {
+  display: block;
+  inline-size: 100%;
+}
+
+.blog-markdown-content {
+  inline-size: 100%;
+  padding: 0;
+  color: var(--foreground-color);
+  font-size: clamp(1.1rem, 1.5vw, 1.2rem);
+  line-height: 1.8;
+}
