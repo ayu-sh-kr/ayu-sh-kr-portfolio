@@ -1,0 +1,55 @@
+dark-mode-button {
+  display: inline-block;
+}
+
+.dark-mode-button {
+  min-block-size: 2.5rem;
+  min-inline-size: 2.5rem;
+  display: inline-grid;
+  place-items: center;
+  border: 1px solid var(--hairline);
+  border-radius: 999px;
+  color: var(--ink-soft);
+  background: transparent;
+  cursor: pointer;
+  transition: color 180ms ease, border-color 180ms ease, background-color 180ms ease, transform 180ms ease;
+}
+
+.dark-mode-button:hover {
+  color: var(--ink);
+  border-color: var(--ink-soft);
+  background: var(--surface-hover);
+  transform: translateY(-1px);
+}
+
+.dark-mode-button:active {
+  transform: scale(0.94);
+}
+
+.dark-mode-button svg {
+  width: 1.05rem;
+  height: 1.05rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.7;
+}
+
+.dark-mode-button svg circle {
+  fill: currentColor;
+  stroke: none;
+}
+
+@media (pointer: coarse) {
+  .dark-mode-button {
+    min-block-size: 2.75rem;
+    min-inline-size: 2.75rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dark-mode-button {
+    transition: none;
+  }
+}
