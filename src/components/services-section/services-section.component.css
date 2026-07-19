@@ -1,0 +1,10 @@
+portfolio-services {
+  display: block;
+}
+
+.service-row {
+  min-height: 22rem;
+  padding: 2rem;
+  border-right: 1px solid var(--hairline);
+  border-bottom: 1px solid var(--hairline);
+}
