@@ -5,6 +5,7 @@ import { ErrorPage, HomePage } from "@app/pages";
 import {DefaultApplicationEventListenerRegistry, initializeApp} from "@ayu-sh-kr/dota-wrap";
 import { Router, RouterService } from "@ayu-sh-kr/dota-wrap/router";
 import { ApplicationEventService } from "@ayu-sh-kr/dota-wrap/core";
+import { registerPortfolioMarkdownTheme } from "@app/configs/markdown-theme.config.ts";
 import components from "virtual:dota-components";
 import { routeConfig } from "virtual:dota-routes";
 const applicationEventService = ApplicationEventService.getInstance();
@@ -12,6 +13,8 @@ const applicationEventPublisher = applicationEventService.getPublisher();
 const applicationEventListener = applicationEventService.getListener();
 
 let routerService!: RouterService<Router<HTMLElement>>;
+
+registerPortfolioMarkdownTheme();
 
 initializeApp({
   modules: components,
