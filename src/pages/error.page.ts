@@ -11,7 +11,7 @@ export class ErrorPage extends DotaPageElement {
   status: number = 404;
 
   @Property({ name: "message", type: String })
-  message: string = "Page Not Found";
+  message: string = "Page not found";
 
   constructor() {
     super();
@@ -19,39 +19,26 @@ export class ErrorPage extends DotaPageElement {
 
   get seo(): SEO {
     return {
-      title: "404 — Page Not Found",
-      description: "The page you requested could not be found.",
-      keywords: ["404", "error"],
+      title: "404 — Ayush Jaiswal",
+      description: "The requested portfolio page could not be found.",
+      keywords: ["404", "Ayush Jaiswal"],
       og: {
-        title: "404 — Page Not Found",
-        description: "The page you requested could not be found.",
+        title: "404 — Page not found",
+        description: "The requested portfolio page could not be found.",
       },
     };
   }
 
   render(): string {
-    // language=html
     return HTML`
-      <div class="flex min-h-screen items-center justify-center bg-canvas px-6 py-10 text-ink">
-        <div class="w-full max-w-2xl rounded-xl border border-line bg-panel/90 p-8 shadow-panel backdrop-blur-sm sm:p-12">
-          <p class="font-mono text-xs uppercase tracking-[0.24em] text-accent-400">Request Failed</p>
-          <h1 class="mt-4 font-display text-6xl font-bold tracking-tight text-brand-500 sm:text-7xl">${this.status}</h1>
-          <p class="mt-4 max-w-xl text-2xl font-semibold text-ink text-balance">${this.message}</p>
-          <p class="mt-3 max-w-lg text-base leading-7 text-muted">
-            The page you requested could not be resolved. Check the address, or return to the main route and continue from
-            there.
-          </p>
-          <div class="mt-8 flex flex-wrap items-center gap-3">
-            <a
-              href="/"
-              class="inline-flex items-center justify-center rounded-md bg-brand-500 px-5 py-3 text-sm font-semibold text-white transition-colors duration-200 hover:bg-brand-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2 focus-visible:ring-offset-canvas"
-            >
-              Return Home
-            </a>
-            <span class="text-sm text-muted">Route: <span class="font-mono text-ink">/error</span></span>
-          </div>
+      <main class="relative grid min-h-[100svh] place-items-center overflow-hidden bg-paper-50 px-5 py-24 text-inkstone-900 dark:bg-inkstone-950 dark:text-paper-50">
+        <div class="relative z-10 w-full max-w-3xl border-t border-inkstone-900/15 dark:border-paper-50/15 pt-8">
+          <p class="motion-eyebrow">Request failed / ${this.status}</p>
+          <h1 class="motion-display mt-8">${this.message}.</h1>
+          <p class="mt-8 max-w-lg text-base leading-8 text-inkstone-500 dark:text-inkstone-300">That route does not lead anywhere yet. Return to the portfolio and keep exploring from there.</p>
+          <a href="/" class="motion-button motion-button-ink mt-9">Return home <span aria-hidden="true">←</span></a>
         </div>
-      </div>
+      </main>
     `;
   }
 }
