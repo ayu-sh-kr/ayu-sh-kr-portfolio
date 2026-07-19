@@ -1,4 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bevan&family=DM+Sans:wght@400;500;600;700&family=Exo:wght@100..900&family=Geologica:wght@100..900&family=Lexend+Deca:wght@400..700&family=Merriweather+Sans:ital,wght@0,400..800;1,400..800&family=Montserrat:wght@400;500;600;700&family=Nunito:wght@400..800&family=Poppins:wght@400;500;600;700&family=Rubik:wght@400..700&family=Varela+Round&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bevan&family=Exo:wght@100..900&family=Geologica:wght@100..900&family=Lexend+Deca:wght@400..700&family=Merriweather+Sans:ital,wght@0,400..800;1,400..800&family=Montserrat:wght@400;500;600;700&family=Nunito:wght@400..800&family=Poppins:wght@400;500;600;700&family=Rubik:wght@400..700&family=Varela+Round&display=swap");
+
 @import "tailwindcss";
 @import "./theme.css";
 @import "./components/app-header/app-header.component.css";
@@ -12,6 +13,56 @@
 @import "./components/about-contact-section/about-contact-section.component.css";
 @import "./components/blog-view/blog-view.component.css";
 @import "./components/blog-view/blog-markdown-view.component.css";
+
+/*noinspection DuplicatedCode*/
+@font-face {
+  font-family: "Banana";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../public/fonts/bananas-font/Bananas Font.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Banana";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../public/fonts/bananas-font/Bananas Font Italic.ttf") format("truetype");
+}
+
+/*noinspection DuplicatedCode*/
+@font-face {
+  font-family: "DM Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../public/fonts/dm-sans/dm-sans-400.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "DM Sans";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("../public/fonts/dm-sans/dm-sans-500.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "DM Sans";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("../public/fonts/dm-sans/dm-sans-600.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "DM Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../public/fonts/dm-sans/dm-sans-700.ttf") format("truetype");
+}
 
 @source "../index.html";
 @source "../src/**/*.{ts}";
@@ -37,7 +88,7 @@
   --primary-color-strong: var(--primary-700);
   --primary-color-subtle: var(--primary-50);
   --primary-color-on: var(--color-paper-50);
-  /* Bevan is loaded above and is the default font for the portfolio and blog. */
+  /* Lexend Deca is the current default font for the portfolio and blog. */
   --primary-font: var(--font-lexend-deca);
 
   --background-color: var(--color-paper-50);
@@ -110,7 +161,7 @@ body {
   overflow-x: hidden;
   background: var(--background-color);
   color: var(--foreground-color);
-  font-family: var(--primary-font);
+  font-family: var(--primary-font), sans-serif;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
 }
