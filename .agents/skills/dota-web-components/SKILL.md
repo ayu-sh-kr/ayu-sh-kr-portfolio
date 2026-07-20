@@ -191,13 +191,18 @@ async onConnected() {
 ```
 
 ```ts
-@AfterInit()
-async afterViewInit() {
+@OnEvent("connected", true)
+async onConnected() {
   // DOM and framework bindings are ready.
+}
+
+@OnEvent("disconnected", true)
+onDisconnected() {
+  // Remove external listeners, observers, timers, and pending frames.
 }
 ```
 
-Use `@OnEvent("connected", true)` when matching existing app event style. Use `@AfterInit()` for direct component setup after the first render. In either case, avoid doing DOM work in the constructor.
+Prefer scoped `@OnEvent("connected", true)` and `@OnEvent("disconnected", true)` for component lifecycle setup and teardown. Use `@AfterInit()` only for work that specifically requires the post-init hook. Avoid `disconnectedCallback()` overrides unless the framework decorator cannot express the required behavior, and never do DOM work in the constructor.
 
 ## Events
 
