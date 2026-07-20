@@ -1,4 +1,10 @@
-import { AfterInit, BaseElement, Component } from "@ayu-sh-kr/dota-wrap/core";
+import {
+  BaseElement,
+  Component,
+  DocumentListener,
+  WindowListener,
+} from "@ayu-sh-kr/dota-wrap/core";
+import { OnEvent } from "@ayu-sh-kr/dota-wrap/event";
 
 const clamp = (value: number, min: number, max: number): number => Math.min(max, Math.max(min, value));
 
@@ -11,45 +17,39 @@ export class PortfolioMotionControllerComponent extends BaseElement {
   private frameId: number | null = null;
   private revealObserver: IntersectionObserver | null = null;
   private motionPreference: MediaQueryList | null = null;
-  private workRail: HTMLElement | null = null;
   private reducedMotion = false;
 
   constructor() {
     super();
   }
 
-  @AfterInit()
-  afterViewInit(): void {
+  @OnEvent("connected", true)
+  onConnected(): void {
     this.motionPreference = window.matchMedia("(prefers-reduced-motion: reduce)");
     this.reducedMotion = this.motionPreference.matches;
     this.motionPreference.addEventListener("change", this.handleMotionPreference);
-    window.addEventListener("scroll", this.handleScroll, { passive: true });
-    window.addEventListener("resize", this.handleResize);
-    this.workRail = document.querySelector<HTMLElement>("#work-rail");
-    this.workRail?.addEventListener("focusin", this.handleWorkFocus);
     this.setupReveals();
     this.scheduleRender();
   }
 
-  disconnectedCallback(): void {
-    window.removeEventListener("scroll", this.handleScroll);
-    window.removeEventListener("resize", this.handleResize);
+  @OnEvent("disconnected", true)
+  onDisconnected(): void {
     this.motionPreference?.removeEventListener("change", this.handleMotionPreference);
-    this.workRail?.removeEventListener("focusin", this.handleWorkFocus);
     this.revealObserver?.disconnect();
     if (this.frameId !== null) {
       cancelAnimationFrame(this.frameId);
     }
-    super.disconnectedCallback();
   }
 
-  private readonly handleScroll = (): void => {
+  @WindowListener({ event: "scroll" })
+  private handleScroll(): void {
     this.scheduleRender();
-  };
+  }
 
-  private readonly handleResize = (): void => {
+  @WindowListener({ event: "resize" })
+  private handleResize(): void {
     this.scheduleRender();
-  };
+  }
 
   private readonly handleMotionPreference = (event: MediaQueryListEvent): void => {
     this.reducedMotion = event.matches;
@@ -57,25 +57,27 @@ export class PortfolioMotionControllerComponent extends BaseElement {
     this.scheduleRender();
   };
 
-  private readonly handleWorkFocus = (event: FocusEvent): void => {
+  @DocumentListener({ event: "focusin" })
+  private handleWorkFocus(event: FocusEvent): void {
     if (this.reducedMotion) {
       return;
     }
 
     const card = (event.target as HTMLElement).closest<HTMLElement>(".work-card");
     const workWrap = document.querySelector<HTMLElement>("#work-wrap");
-    if (!card || !workWrap || !this.workRail) {
+    const workRail = document.querySelector<HTMLElement>("#work-rail");
+    if (!card || !workWrap || !workRail) {
       return;
     }
 
-    const cards = Array.from(this.workRail.querySelectorAll<HTMLElement>(".work-card"));
+    const cards = Array.from(workRail.querySelectorAll<HTMLElement>(".work-card"));
     const index = cards.indexOf(card);
     const travel = workWrap.offsetHeight - window.innerHeight;
     const progress = cards.length > 1 ? index / (cards.length - 1) : 0;
     const wrapperTop = window.scrollY + workWrap.getBoundingClientRect().top;
 
     window.scrollTo({ top: wrapperTop + travel * progress, behavior: "auto" });
-  };
+  }
 
   private scheduleRender(): void {
     if (this.ticking) {
