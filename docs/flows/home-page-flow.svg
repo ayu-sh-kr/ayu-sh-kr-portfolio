@@ -1,0 +1,178 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2200" height="2200" viewBox="0 0 2200 2200" role="img" aria-labelledby="title description">
+  <title id="title">Home page composition and interaction flow</title>
+  <desc id="description">Dota Web Components flow for the root route. initializeApp mounts app-root, AppComponent applies the saved or system theme, and HomePage renders the header, portfolio sections, motion controller, and footer. The motion controller reacts to reduced-motion preference, scroll, resize, focus, and intersection changes. The dark-mode button persists the selected theme, dispatches themeChange, and re-renders its icon and label.</desc>
+
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#52606d"/>
+    </marker>
+    <marker id="async-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#7652a8"/>
+    </marker>
+    <style>
+      .background { fill: #f7fafc; }
+      .title { font: 700 30px "Avenir Next", "Segoe UI", Arial, sans-serif; fill: #17202a; }
+      .subtitle { font: 600 15px "SFMono-Regular", "Roboto Mono", Consolas, monospace; fill: #455a64; letter-spacing: .02em; }
+      .card { stroke-width: 2; rx: 16; }
+      .route { fill: #e8f1ff; stroke: #3974c6; }
+      .component { fill: #fff7e6; stroke: #c27a18; }
+      .event { fill: #e8f8f1; stroke: #2b8a64; }
+      .async { fill: #f2ebff; stroke: #7652a8; }
+      .state { fill: #eef2f5; stroke: #52606d; }
+      .error { fill: #fff0f0; stroke: #c94b4b; }
+      .card-title { font: 700 18px "Avenir Next", "Segoe UI", Arial, sans-serif; fill: #17202a; }
+      .card-copy { font: 400 15px "Avenir Next", "Segoe UI", Arial, sans-serif; fill: #263238; }
+      .code { font: 400 13.5px "SFMono-Regular", "Roboto Mono", Consolas, monospace; fill: #455a64; }
+      .branch { font: 700 13px "SFMono-Regular", "Roboto Mono", Consolas, monospace; fill: #263238; }
+      .note { font: 400 14px "Avenir Next", "Segoe UI", Arial, sans-serif; fill: #455a64; }
+      .legend-label { font: 600 14px "Avenir Next", "Segoe UI", Arial, sans-serif; fill: #263238; }
+      .connector { fill: none; stroke: #52606d; stroke-width: 3; marker-end: url(#arrow); }
+      .async-connector { fill: none; stroke: #7652a8; stroke-width: 3; stroke-dasharray: 9 8; marker-end: url(#async-arrow); }
+    </style>
+  </defs>
+
+  <rect class="background" width="2200" height="2200"/>
+  <text class="title" x="70" y="56">Home page UI flow</text>
+  <text class="subtitle" x="70" y="84">src/pages/home.page.ts · src/app.component.ts · src/components/</text>
+
+  <g id="route-entry">
+    <rect class="card route" x="820" y="120" width="560" height="92"/>
+    <text class="card-title" x="850" y="155">Root route</text>
+    <text class="code" x="850" y="181">@Route({ path: "/" })</text>
+    <text class="card-copy" x="850" y="202">defaultRoute → HomePage</text>
+  </g>
+
+  <g id="app-initialization">
+    <rect class="card route" x="820" y="280" width="560" height="100"/>
+    <text class="card-title" x="850" y="316">initializeApp()</text>
+    <text class="code" x="850" y="342">virtual:dota-components + virtual:dota-routes</text>
+    <text class="card-copy" x="850" y="364">Mounts AppComponent as the application root.</text>
+  </g>
+
+  <g id="app-root-theme-bootstrap">
+    <rect class="card component" x="820" y="450" width="560" height="112"/>
+    <text class="card-title" x="850" y="487">&lt;app-root&gt; @AfterInit</text>
+    <text class="code" x="850" y="513">GeneralUtils.getBrowserTheme()</text>
+    <text class="card-copy" x="850" y="537">setBrowserTheme(saved preference or system theme).</text>
+  </g>
+
+  <g id="home-page">
+    <rect class="card route" x="820" y="630" width="560" height="110"/>
+    <text class="card-title" x="850" y="667">&lt;app-home&gt; HomePage</text>
+    <text class="code" x="850" y="693">DotaPageElement · SEO metadata</text>
+    <text class="card-copy" x="850" y="717">Renders the page shell as an HTML string.</text>
+  </g>
+
+  <g id="page-composition">
+    <rect class="card component" x="820" y="810" width="560" height="190"/>
+    <text class="card-title" x="850" y="847">Page composition</text>
+    <text class="code" x="850" y="873">shadow: false · global Tailwind styles</text>
+    <text class="card-copy" x="850" y="901">&lt;app-header&gt; → &lt;main&gt;</text>
+    <text class="code" x="850" y="928">&lt;portfolio-hero&gt; · &lt;portfolio-journey&gt;</text>
+    <text class="code" x="850" y="952">&lt;portfolio-work&gt; · &lt;portfolio-skills&gt;</text>
+    <text class="code" x="850" y="976">&lt;portfolio-services&gt; · &lt;portfolio-contact&gt;</text>
+    <text class="code" x="850" y="1000">&lt;portfolio-motion-controller&gt; · footer</text>
+  </g>
+
+  <g id="motion-lane">
+    <text class="subtitle" x="90" y="1050">MOTION LANE · portfolio-motion-controller</text>
+
+    <rect class="card component" x="90" y="1080" width="520" height="110"/>
+    <text class="card-title" x="120" y="1117">Motion controller @AfterInit</text>
+    <text class="code" x="120" y="1143">scroll · resize · matchMedia · IntersectionObserver</text>
+    <text class="card-copy" x="120" y="1167">Binds listeners and schedules the first render.</text>
+
+    <rect class="card component" x="90" y="1260" width="520" height="100"/>
+    <text class="card-title" x="120" y="1296">Reduced motion?</text>
+    <text class="card-copy" x="120" y="1322">prefers-reduced-motion changes the render path.</text>
+
+    <rect class="card state" x="90" y="1440" width="520" height="100"/>
+    <text class="card-title" x="120" y="1476">Reduced-motion path</text>
+    <text class="card-copy" x="120" y="1502">Keep nav scroll state; reveal elements immediately.</text>
+
+    <rect class="card async" x="700" y="1440" width="520" height="100"/>
+    <text class="card-title" x="730" y="1476">Motion listeners active</text>
+    <text class="code" x="730" y="1502">scroll / resize / motion preference</text>
+
+    <rect class="card async" x="700" y="1620" width="520" height="100"/>
+    <text class="card-title" x="730" y="1656">requestAnimationFrame</text>
+    <text class="card-copy" x="730" y="1682">scheduleRender coalesces repeated events.</text>
+
+    <rect class="card state" x="700" y="1800" width="520" height="120"/>
+    <text class="card-title" x="730" y="1837">renderAll()</text>
+    <text class="card-copy" x="730" y="1863">Updates nav, hero opacity/scale, journey chapter,</text>
+    <text class="card-copy" x="730" y="1887">spine progress, and horizontal work rail.</text>
+
+    <rect class="card state" x="1300" y="1800" width="520" height="100"/>
+    <text class="card-title" x="1330" y="1836">Work-card focus</text>
+    <text class="code" x="1330" y="1862">focusin → window.scrollTo()</text>
+    <text class="card-copy" x="1330" y="1886">Moves the work wrapper to the focused card.</text>
+  </g>
+
+  <g id="theme-lane">
+    <text class="subtitle" x="1450" y="1050">THEME LANE · header interaction</text>
+
+    <rect class="card component" x="1450" y="1080" width="520" height="100"/>
+    <text class="card-title" x="1480" y="1116">&lt;app-header&gt;</text>
+    <text class="code" x="1480" y="1142">&lt;dark-mode-button&gt;</text>
+    <text class="card-copy" x="1480" y="1164">Renders the current icon and accessible label.</text>
+
+    <rect class="card component" x="1450" y="1260" width="520" height="100"/>
+    <text class="card-title" x="1480" y="1296">Dark-mode click</text>
+    <text class="code" x="1480" y="1322">@BindEvent(click, #dark-button)</text>
+    <text class="card-copy" x="1480" y="1344">GeneralUtils.toggleDarkMode().</text>
+
+    <rect class="card async" x="1450" y="1440" width="520" height="100"/>
+    <text class="card-title" x="1480" y="1476">Persist and publish theme</text>
+    <text class="code" x="1480" y="1502">localStorage + CustomEvent("themeChange")</text>
+    <text class="card-copy" x="1480" y="1524">Document classes and theme meta are updated.</text>
+
+    <rect class="card state" x="1450" y="1620" width="520" height="100"/>
+    <text class="card-title" x="1480" y="1656">Theme controls update</text>
+    <text class="code" x="1480" y="1682">@WindowListener → updateHTML()</text>
+    <text class="card-copy" x="1480" y="1704">Icon, label, and aria-pressed reflect the theme.</text>
+  </g>
+
+  <g id="connectors">
+    <path class="connector" d="M1100 212 V280"/>
+    <path class="connector" d="M1100 380 V450"/>
+    <path class="connector" d="M1100 562 V630"/>
+    <path class="connector" d="M1100 740 V810"/>
+
+    <path class="connector" d="M820 905 H350 V1080"/>
+    <text class="branch" x="470" y="893">motion controller mounts</text>
+    <path class="connector" d="M1380 905 H1710 V1080"/>
+    <text class="branch" x="1430" y="893">header / theme control</text>
+
+    <path class="connector" d="M350 1190 V1260"/>
+    <path class="connector" d="M350 1360 V1440"/>
+    <text class="branch" x="370" y="1418">reduced</text>
+    <path class="async-connector" d="M610 1310 H960 V1440"/>
+    <text class="branch" x="650" y="1298">motion enabled</text>
+
+    <path class="async-connector" d="M960 1540 V1620"/>
+    <path class="async-connector" d="M960 1720 V1800"/>
+    <path class="async-connector" d="M1220 1490 H1250 V1760 H1560 V1800"/>
+    <text class="branch" x="1265" y="1748">focusin</text>
+
+    <path class="connector" d="M1710 1180 V1260"/>
+    <path class="connector" d="M1710 1360 V1440"/>
+    <path class="async-connector" d="M1710 1540 V1620"/>
+    <text class="branch" x="1730" y="1598">themeChange</text>
+  </g>
+
+  <g id="legend">
+    <text class="card-title" x="70" y="2020">Legend</text>
+    <rect class="route card" x="70" y="2040" width="18" height="18"/>
+    <text class="legend-label" x="98" y="2055">route / page</text>
+    <rect class="component card" x="220" y="2040" width="18" height="18"/>
+    <text class="legend-label" x="248" y="2055">custom element / lifecycle</text>
+    <rect class="event card" x="490" y="2040" width="18" height="18"/>
+    <text class="legend-label" x="518" y="2055">application event</text>
+    <rect class="async card" x="695" y="2040" width="18" height="18"/>
+    <text class="legend-label" x="723" y="2055">async / scheduled work</text>
+    <rect class="state card" x="940" y="2040" width="18" height="18"/>
+    <text class="legend-label" x="968" y="2055">rendered state</text>
+    <text class="note" x="70" y="2090">Dashed connectors represent browser events or scheduled work. Composition arrows are solid and do not imply child event order.</text>
+  </g>
+</svg>

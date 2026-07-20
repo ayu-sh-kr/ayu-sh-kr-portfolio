@@ -1,0 +1,255 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1900" height="2200" viewBox="0 0 1900 2200" role="img" aria-labelledby="title description">
+  <title id="title">Blog page and blog-view UI flow</title>
+  <desc id="description">Dota Web Components flow for the blog catalog and article routes. BlogPage renders blog-view. The view selects the catalog for /blog or resolves a post for /blog/slug. The catalog receives blog:index-data and supports hash filters. A valid article publishes metadata, fetches Markdown, handles success, failure, and abort separately, then renders Markdown and copy-code controls.</desc>
+
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#52606d"/>
+    </marker>
+    <marker id="async-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#7652a8"/>
+    </marker>
+    <style>
+      .background { fill: #f7fafc; }
+      .title { font: 700 30px "Avenir Next", "Segoe UI", Arial, sans-serif; fill: #17202a; }
+      .subtitle { font: 600 15px "SFMono-Regular", "Roboto Mono", Consolas, monospace; fill: #455a64; letter-spacing: .02em; }
+      .card { stroke-width: 2; rx: 16; }
+      .route { fill: #e8f1ff; stroke: #3974c6; }
+      .component { fill: #fff7e6; stroke: #c27a18; }
+      .event { fill: #e8f8f1; stroke: #2b8a64; }
+      .async { fill: #f2ebff; stroke: #7652a8; }
+      .state { fill: #eef2f5; stroke: #52606d; }
+      .error { fill: #fff0f0; stroke: #c94b4b; }
+      .card-title { font: 700 18px "Avenir Next", "Segoe UI", Arial, sans-serif; fill: #17202a; }
+      .card-copy { font: 400 15px "Avenir Next", "Segoe UI", Arial, sans-serif; fill: #263238; }
+      .code { font: 400 13.5px "SFMono-Regular", "Roboto Mono", Consolas, monospace; fill: #455a64; }
+      .branch { font: 700 13px "SFMono-Regular", "Roboto Mono", Consolas, monospace; fill: #263238; }
+      .note { font: 400 14px "Avenir Next", "Segoe UI", Arial, sans-serif; fill: #455a64; }
+      .legend-label { font: 600 14px "Avenir Next", "Segoe UI", Arial, sans-serif; fill: #263238; }
+      .connector { fill: none; stroke: #52606d; stroke-width: 3; marker-end: url(#arrow); }
+      .async-connector { fill: none; stroke: #7652a8; stroke-width: 3; stroke-dasharray: 9 8; marker-end: url(#async-arrow); }
+      .annotation-connector { fill: none; stroke: #7652a8; stroke-width: 3; stroke-dasharray: 9 8; }
+    </style>
+  </defs>
+
+  <rect class="background" width="1900" height="2200"/>
+  <text class="title" x="70" y="56">Blog UI flow</text>
+  <text class="subtitle" x="70" y="84">src/pages/blog.page.ts → src/components/blog-view/</text>
+
+  <!-- Primary route and composition spine. -->
+  <g id="route-entry">
+    <rect class="card route" x="720" y="120" width="460" height="92"/>
+    <text class="card-title" x="750" y="155">Route entry</text>
+    <text class="code" x="750" y="181">/blog or /blog/:slug</text>
+    <text class="card-copy" x="750" y="202">BlogPage / BlogSlugPage</text>
+  </g>
+
+  <g id="page-shell">
+    <rect class="card route" x="720" y="280" width="460" height="100"/>
+    <text class="card-title" x="750" y="316">Dota page shell</text>
+    <text class="code" x="750" y="342">&lt;app-header&gt; · &lt;blog-view&gt; · footer</text>
+    <text class="card-copy" x="750" y="364">SEO derives the current post when available.</text>
+  </g>
+
+  <g id="blog-view">
+    <rect class="card component" x="720" y="450" width="460" height="112"/>
+    <text class="card-title" x="750" y="487">&lt;blog-view&gt;</text>
+    <text class="code" x="750" y="513">@Component · @AfterInit · BaseElement</text>
+    <text class="card-copy" x="750" y="537">Reads pathname; publishes application events.</text>
+  </g>
+
+  <g id="route-decision">
+    <rect class="card component" x="720" y="630" width="460" height="100"/>
+    <text class="card-title" x="750" y="666">getBlogSlug(pathname)?</text>
+    <text class="card-copy" x="750" y="693">Empty slug selects the catalog.</text>
+    <text class="code" x="750" y="716">src/configs/blogs.config.ts</text>
+  </g>
+
+  <!-- Catalog lane: left side, independent from article loading. -->
+  <g id="catalog-lane">
+    <text class="subtitle" x="90" y="690">CATALOG LANE · /blog</text>
+
+    <rect class="card event" x="90" y="780" width="390" height="96"/>
+    <text class="card-title" x="120" y="816">Publish index data</text>
+    <text class="code" x="120" y="842">blog:index-data</text>
+    <text class="card-copy" x="120" y="863">{ posts: blogPosts }</text>
+
+    <rect class="card component" x="90" y="940" width="390" height="112"/>
+    <text class="card-title" x="120" y="977">&lt;blog-index&gt;</text>
+    <text class="code" x="120" y="1003">@OnEvent → updateHTML()</text>
+    <text class="card-copy" x="120" y="1027">Initial loading becomes the catalog.</text>
+
+    <rect class="card state" x="90" y="1120" width="390" height="112"/>
+    <text class="card-title" x="120" y="1157">Catalog rendered</text>
+    <text class="card-copy" x="120" y="1183">Featured post, rows, counts, and filters.</text>
+    <text class="code" x="120" y="1207">IntersectionObserver / scroll effects</text>
+
+    <rect class="card component" x="90" y="1300" width="390" height="112"/>
+    <text class="card-title" x="120" y="1337">Filter interaction</text>
+    <text class="card-copy" x="120" y="1363">Click replaces the URL hash.</text>
+    <text class="code" x="120" y="1387">hashchange → applyFilter()</text>
+
+    <rect class="card state" x="90" y="1480" width="390" height="100"/>
+    <text class="card-title" x="120" y="1516">Filtered catalog updated</text>
+    <text class="card-copy" x="120" y="1542">Rows, featured card, count, and empty state update.</text>
+  </g>
+
+  <!-- Slug resolution and missing-post lane. -->
+  <g id="slug-lane">
+    <text class="subtitle" x="720" y="790">ARTICLE SELECTION · /blog/:slug</text>
+
+    <rect class="card component" x="720" y="820" width="460" height="100"/>
+    <text class="card-title" x="750" y="856">Resolve post and next post</text>
+    <text class="code" x="750" y="882">getBlogPost(slug) → BlogPost | undefined</text>
+    <text class="card-copy" x="750" y="905">Next-post navigation is computed when found.</text>
+  </g>
+
+  <g id="missing-post-lane">
+    <text class="subtitle" x="1450" y="690">MISSING POST · VALID UI RESULT</text>
+
+    <rect class="card error" x="1450" y="780" width="390" height="96"/>
+    <text class="card-title" x="1480" y="816">Publish article data</text>
+    <text class="code" x="1480" y="842">blog:article-data · post: null</text>
+    <text class="card-copy" x="1480" y="863">No Markdown fetch starts.</text>
+
+    <rect class="card error" x="1450" y="940" width="390" height="112"/>
+    <text class="card-title" x="1480" y="977">Not-found article</text>
+    <text class="code" x="1480" y="1003">&lt;blog-article&gt; · ready = true</text>
+    <text class="card-copy" x="1480" y="1027">404 message and links back to /blog.</text>
+  </g>
+
+  <!-- Valid article lane: event fan-out is explicit and never serializes listeners. -->
+  <g id="article-lane">
+    <text class="subtitle" x="720" y="990">VALID ARTICLE · EVENT FAN-OUT</text>
+
+    <rect class="card event" x="720" y="1020" width="460" height="96"/>
+    <text class="card-title" x="750" y="1056">Publish article data</text>
+    <text class="code" x="750" y="1082">blog:article-data · post + nextPost</text>
+    <text class="card-copy" x="750" y="1103">Published before the Markdown fetch completes.</text>
+
+    <rect class="card component" x="520" y="1190" width="390" height="112"/>
+    <text class="card-title" x="550" y="1227">&lt;blog-article&gt;</text>
+    <text class="code" x="550" y="1253">@OnEvent(article-data)</text>
+    <text class="card-copy" x="550" y="1277">Renders metadata and Markdown loading slot.</text>
+
+    <rect class="card async" x="1010" y="1190" width="390" height="112"/>
+    <text class="card-title" x="1040" y="1227">Fetch Markdown source</text>
+    <text class="code" x="1040" y="1253">fetch(post.source) + AbortController</text>
+    <text class="card-copy" x="1040" y="1277">Only an OK response publishes source text.</text>
+
+    <rect class="card component" x="520" y="1370" width="390" height="100"/>
+    <text class="card-title" x="550" y="1406">Article shell rendered</text>
+    <text class="card-copy" x="550" y="1432">Header, metadata, footer, and loading slot.</text>
+
+    <rect class="card component" x="1010" y="1370" width="390" height="100"/>
+    <text class="card-title" x="1040" y="1406">Fetch outcome</text>
+    <text class="card-copy" x="1040" y="1432">OK · failure · AbortError</text>
+  </g>
+
+  <g id="async-results">
+    <rect class="card error" x="1450" y="1190" width="390" height="100"/>
+    <text class="card-title" x="1480" y="1226">Abort / disconnect</text>
+    <text class="code" x="1480" y="1252">disconnectedCallback() → abort()</text>
+    <text class="card-copy" x="1480" y="1274">AbortError stops silently.</text>
+
+    <rect class="card error" x="1450" y="1370" width="390" height="100"/>
+    <text class="card-title" x="1480" y="1406">Publish article error</text>
+    <text class="code" x="1480" y="1432">blog:article-error</text>
+    <text class="card-copy" x="1480" y="1454">Non-OK response or fetch exception.</text>
+
+    <rect class="card state" x="1450" y="1530" width="390" height="100"/>
+    <text class="card-title" x="1480" y="1566">Article error rendered</text>
+    <text class="card-copy" x="1480" y="1592">Error message and return link.</text>
+  </g>
+
+  <g id="markdown-lane">
+    <rect class="card event" x="1010" y="1530" width="390" height="100"/>
+    <text class="card-title" x="1040" y="1566">Publish Markdown source</text>
+    <text class="code" x="1040" y="1592">blog:markdown-source</text>
+    <text class="card-copy" x="1040" y="1614">Markdown text reaches the view.</text>
+
+    <rect class="card component" x="1010" y="1690" width="390" height="100"/>
+    <text class="card-title" x="1040" y="1726">&lt;blog-markdown-view&gt;</text>
+    <text class="code" x="1040" y="1752">@OnEvent → MDService.render()</text>
+    <text class="card-copy" x="1040" y="1774">Publishes md:render.</text>
+
+    <rect class="card state" x="1010" y="1850" width="390" height="100"/>
+    <text class="card-title" x="1040" y="1886">Markdown rendered</text>
+    <text class="card-copy" x="1040" y="1912">Removes h1, lazy-loads images, clears aria-busy.</text>
+  </g>
+
+  <g id="markdown-interaction">
+    <rect class="card component" x="1450" y="1850" width="390" height="100"/>
+    <text class="card-title" x="1480" y="1886">Copy-code interaction</text>
+    <text class="code" x="1480" y="1912">@BindEvent(click, [data-copy-code])</text>
+    <text class="card-copy" x="1480" y="1934">Clipboard write → “Copied” → “Copy”.</text>
+  </g>
+
+  <!-- Every flow connector uses only H/V segments and ends at a card midpoint. -->
+  <g id="connectors">
+    <path class="connector" d="M950 212 V280"/>
+    <path class="connector" d="M950 380 V450"/>
+    <path class="connector" d="M950 562 V630"/>
+
+    <path class="connector" d="M720 680 H285 V780"/>
+    <text class="branch" x="430" y="668">no slug</text>
+    <path class="connector" d="M950 730 V820"/>
+    <text class="branch" x="970" y="785">slug</text>
+
+    <path class="connector" d="M285 876 V940"/>
+    <path class="connector" d="M285 1052 V1120"/>
+    <path class="connector" d="M285 1232 V1300"/>
+    <path class="connector" d="M285 1412 V1480"/>
+
+    <path class="connector" d="M1180 870 H1300 V828 H1450"/>
+    <text class="branch" x="1210" y="858">post missing</text>
+    <path class="connector" d="M1645 876 V940"/>
+
+    <path class="connector" d="M950 920 V1020"/>
+    <text class="branch" x="970" y="970">post found</text>
+
+    <!-- Symmetric fan-out from article data to the article shell and fetch operation. -->
+    <path class="async-connector" d="M950 1116 V1150 H715 V1190"/>
+    <path class="async-connector" d="M950 1116 V1150 H1205 V1190"/>
+    <text class="branch" x="735" y="1142">article-data listener</text>
+    <text class="branch" x="1218" y="1142">async fetch</text>
+
+    <path class="connector" d="M715 1302 V1370"/>
+    <path class="async-connector" d="M1205 1302 V1370"/>
+
+    <!-- Fetch outcome branches occupy separate right-side lanes. -->
+    <path class="async-connector" d="M1400 1420 H1420 V1660 H1870 V1240 H1840"/>
+    <text class="branch" x="1450" y="1650">AbortError / disconnect</text>
+    <path class="async-connector" d="M1400 1420 H1420 V1420 H1450"/>
+    <text class="branch" x="1418" y="1408">failure</text>
+
+    <path class="async-connector" d="M1205 1470 V1530"/>
+    <text class="branch" x="1225" y="1508">OK</text>
+    <path class="connector" d="M1645 1470 V1530"/>
+
+    <path class="async-connector" d="M1205 1630 V1690"/>
+    <path class="async-connector" d="M1205 1790 V1850"/>
+    <text class="branch" x="1225" y="1828">md:render</text>
+    <path class="connector" d="M1400 1900 H1450"/>
+    <text class="branch" x="1412" y="1882">click</text>
+  </g>
+
+  <g id="legend">
+    <text class="card-title" x="70" y="2020">Legend</text>
+    <rect class="route card" x="70" y="2040" width="18" height="18"/>
+    <text class="legend-label" x="98" y="2055">route / page</text>
+    <rect class="component card" x="220" y="2040" width="18" height="18"/>
+    <text class="legend-label" x="248" y="2055">custom element / lifecycle</text>
+    <rect class="event card" x="490" y="2040" width="18" height="18"/>
+    <text class="legend-label" x="518" y="2055">application event</text>
+    <rect class="async card" x="695" y="2040" width="18" height="18"/>
+    <text class="legend-label" x="723" y="2055">async operation</text>
+    <rect class="state card" x="900" y="2040" width="18" height="18"/>
+    <text class="legend-label" x="928" y="2055">rendered state</text>
+    <rect class="error card" x="1095" y="2040" width="18" height="18"/>
+    <text class="legend-label" x="1123" y="2055">error / stop</text>
+    <line x1="1290" y1="2049" x2="1345" y2="2049" class="async-connector"/>
+    <text class="legend-label" x="1360" y="2055">async / post-event</text>
+    <text class="note" x="70" y="2090">Dashed connectors represent application-event or async boundaries; solid connectors represent the primary UI path.</text>
+  </g>
+</svg>
