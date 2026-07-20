@@ -14,18 +14,18 @@ export class PortfolioContactComponent extends BaseElement {
     const { contact } = portfolioContent;
 
     return HTML`
-      <section id="contact" class="border-b border-[var(--border-color)] px-5 py-32 text-center sm:px-8 sm:py-40" aria-labelledby="contact-title">
+      <section id="contact" class="border-b border-(--border-color) px-5 py-32 text-center sm:px-8 sm:py-40" aria-labelledby="contact-title">
         <div class="mx-auto max-w-6xl">
           <p class="motion-eyebrow motion-reveal">${contact.eyebrow}</p>
           <h2 id="contact-title" class="motion-display motion-reveal mx-auto mt-5 max-w-5xl text-[clamp(2.8rem,7vw,6.5rem)]">
-            ${contact.titleBeforeAccent} <span class="text-[var(--primary-color)]">${contact.accent}</span>
+            ${contact.titleBeforeAccent} <span class="text-(--primary-color)">${contact.accent}</span>
           </h2>
-          <p class="motion-reveal mx-auto mt-7 max-w-xl text-lg leading-8 text-[var(--muted-color)]">${contact.body}</p>
+          <p class="motion-reveal mx-auto mt-7 max-w-xl text-lg leading-8 text-(--muted-color)">${contact.body}</p>
           <div class="motion-reveal mt-10 flex flex-wrap justify-center gap-3">
             <a class="motion-button motion-button-accent" href="${contact.emailHref}">Email me</a>
             <a class="motion-button motion-button-ghost" href="${contact.resumeHref}">Request résumé</a>
           </div>
-          <div class="motion-reveal mt-9 flex flex-wrap justify-center gap-x-6 gap-y-3 text-sm font-medium text-[var(--muted-color)]">
+          <div class="motion-reveal mt-9 flex flex-wrap justify-center gap-x-6 gap-y-3 text-sm font-medium text-(--muted-color)">
             <a class="quiet-link" href="${contact.github}" target="_blank" rel="noreferrer">GitHub</a>
             <a class="quiet-link" href="${contact.linkedin}" target="_blank" rel="noreferrer">LinkedIn</a>
             <span>India · IST (UTC+5:30)</span>

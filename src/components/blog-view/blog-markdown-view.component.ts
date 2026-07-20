@@ -87,7 +87,7 @@ export class BlogMarkdownViewComponent extends MdViewComponent {
 
     return `
       <div class="blog-markdown-content ${getSelectionClass(theme, colorName)}"
-           style="font-family: ${theme.fontFamily}">
+           style="font-family: ${theme.fontFamily},serif">
         ${themedContent}
       </div>
     `;
