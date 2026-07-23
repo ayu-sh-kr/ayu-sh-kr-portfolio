@@ -3,11 +3,30 @@
 @import "tailwindcss";
 @import "./theme.css";
 @import "./components/app-header/app-header.component.css";
+@import "./components/app-footer/app-footer.component.css";
+@import "./components/footer-support/footer-support.component.css";
+@import "./components/footer-index/footer-index.component.css";
+@import "./components/footer-baseline/footer-baseline.component.css";
 @import "./components/dark-mode-button/dark-mode-button.component.css";
 @import "./components/hero-section/hero-section.component.css";
 @import "./components/journey-section/journey-section.component.css";
 @import "./components/motion-controller/motion-controller.component.css";
 @import "./components/projects-section/projects-section.component.css";
+@import "./components/speaking-section/speaking-section.component.css";
+@import "./components/pricing-hero/pricing-hero.component.css";
+@import "./components/pricing-switch/pricing-switch.component.css";
+@import "./components/build-offering/build-offering.component.css";
+@import "./components/pricing-estimator/pricing-estimator.component.css";
+@import "./components/pricing-estimator-type-options/pricing-estimator-type-options.component.css";
+@import "./components/pricing-estimator-stage-options/pricing-estimator-stage-options.component.css";
+@import "./components/pricing-estimator-result/pricing-estimator-result.component.css";
+@import "./components/build-pricing/build-pricing.component.css";
+@import "./components/speaking-offering/speaking-offering.component.css";
+@import "./components/speaking-pricing/speaking-pricing.component.css";
+@import "./components/pricing-faq/pricing-faq.component.css";
+@import "./components/pricing-contact/pricing-contact.component.css";
+@import "./components/pricing-sticky-contact/pricing-sticky-contact.component.css";
+@import "./pages/pricing.page.css";
 @import "./components/skills-section/skills-section.component.css";
 @import "./components/services-section/services-section.component.css";
 @import "./components/about-contact-section/about-contact-section.component.css";
@@ -98,6 +117,10 @@
   --border-color: color-mix(in srgb, var(--foreground-color) 10%, transparent);
   --surface-color: var(--color-pure-black-50);
   --surface-hover-color: color-mix(in srgb, var(--foreground-color) 6%, transparent);
+  --contrast-background-color: var(--color-inkstone-900);
+  --contrast-foreground-color: var(--color-paper-50);
+  --contrast-muted-color: var(--color-inkstone-300);
+  --contrast-border-color: color-mix(in srgb, var(--contrast-foreground-color) 18%, transparent);
 
   /* Editorial blog aliases use the same app-owned primary theme. */
   --blog-paper: var(--background-color);
@@ -125,6 +148,10 @@ html.dark {
   --border-color: color-mix(in srgb, var(--foreground-color) 16%, transparent);
   --surface-color: var(--color-inkstone-900);
   --surface-hover-color: color-mix(in srgb, var(--foreground-color) 9%, transparent);
+  --contrast-background-color: var(--color-inkstone-900);
+  --contrast-foreground-color: var(--color-paper-50);
+  --contrast-muted-color: var(--color-inkstone-300);
+  --contrast-border-color: color-mix(in srgb, var(--contrast-foreground-color) 18%, transparent);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -142,6 +169,10 @@ html.dark {
     --border-color: color-mix(in srgb, var(--foreground-color) 16%, transparent);
     --surface-color: var(--color-inkstone-900);
     --surface-hover-color: color-mix(in srgb, var(--foreground-color) 9%, transparent);
+    --contrast-background-color: var(--color-inkstone-900);
+    --contrast-foreground-color: var(--color-paper-50);
+    --contrast-muted-color: var(--color-inkstone-300);
+    --contrast-border-color: color-mix(in srgb, var(--contrast-foreground-color) 18%, transparent);
   }
 }
 

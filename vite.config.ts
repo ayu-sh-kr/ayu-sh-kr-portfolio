@@ -16,6 +16,9 @@ export default defineConfig({
       scanRoots: [resolve(__dirname)],
       outFile: "web-types.json",
       logType: "info",
+      customElementsManifest: {
+        enabled: true
+      }
     }),
   ],
   resolve: {
