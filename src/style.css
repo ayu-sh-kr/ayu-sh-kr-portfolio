@@ -85,6 +85,7 @@
 
 @source "../index.html";
 @source "../src/**/*.{ts}";
+@source "../node_modules/@ayu-sh-kr/dota-ui/dist/**/*.{js,mjs}";
 
 @custom-variant dark (&:where(.dark, .dark *));
 

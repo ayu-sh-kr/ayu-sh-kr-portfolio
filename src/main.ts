@@ -2,6 +2,7 @@ import './style.css'
 
 import { AppComponent } from "@app/app.component.ts";
 import { ErrorPage, HomePage } from "@app/pages";
+import { AccordionComponent, IconsComponent, PopoverComponent } from "@ayu-sh-kr/dota-ui";
 import {DefaultApplicationEventListenerRegistry, initializeApp} from "@ayu-sh-kr/dota-wrap";
 import { Router, RouterService } from "@ayu-sh-kr/dota-wrap/router";
 import { ApplicationEventService } from "@ayu-sh-kr/dota-wrap/core";
@@ -19,7 +20,7 @@ registerPortfolioMarkdownTheme();
 initializeApp({
   modules: components,
   routes: routeConfig,
-  externalComponents: [],
+  externalComponents: [AccordionComponent, IconsComponent, PopoverComponent],
   errorRoute: { path: "/error", component: ErrorPage },
   defaultRoute: { path: "/", component: HomePage },
   root: AppComponent,
