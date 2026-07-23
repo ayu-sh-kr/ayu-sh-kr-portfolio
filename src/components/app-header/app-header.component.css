@@ -35,14 +35,73 @@ html.dark #site-nav {
   color: var(--primary-color-strong);
 }
 
-@media (max-width: 36rem) {
-  .nav-link-optional {
+.app-header-mobile-popover {
+  display: none;
+}
+
+.app-header-menu-button {
+  display: inline-flex;
+  width: 2.75rem;
+  height: 2.75rem;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 0.75rem;
+  background: transparent;
+  color: var(--foreground-color);
+  cursor: pointer;
+  transition: background-color 180ms ease, color 180ms ease;
+}
+
+.app-header-menu-button:hover {
+  background: var(--surface-hover-color);
+}
+
+.app-header-menu-button dota-icon svg {
+  color: var(--foreground-color);
+}
+
+.app-header-mobile-panel {
+  position: absolute;
+  z-index: 1;
+  display: flex;
+  min-width: min(18rem, calc(100vw - 2.5rem));
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 1rem;
+  background: color-mix(in srgb, var(--background-color) 94%, transparent);
+  box-shadow: 0 1rem 2.5rem -1.25rem color-mix(in srgb, var(--foreground-color) 35%, transparent);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.mobile-nav-link {
+  width: 100%;
+  min-block-size: 2.75rem;
+  padding-inline: 0.75rem;
+  border-radius: 0.65rem;
+  font-size: 0.9rem;
+}
+
+.mobile-nav-link:hover {
+  background: var(--surface-hover-color);
+}
+
+@media (max-width: 47.999rem) {
+  .app-header-desktop-links {
     display: none;
+  }
+
+  .app-header-mobile-popover {
+    position: relative;
+    display: block;
   }
 }
 
-@media (pointer: coarse) {
-  .nav-link {
-    min-block-size: 2.75rem;
+@media (prefers-reduced-motion: reduce) {
+  .app-header-menu-button {
+    transition: none;
   }
 }

@@ -31,7 +31,7 @@ export class AppHeaderComponent extends BaseElement {
         <div class="mx-auto flex max-w-7xl items-center justify-between gap-5 px-5 py-4 sm:px-8">
           <a href="/" class="shrink-0 text-sm font-semibold tracking-[-0.02em] text-[var(--foreground-color)]">${portfolioContent.nav.logo}</a>
           <div class="flex items-center gap-4 sm:gap-6">
-            <div class="flex items-center gap-4 sm:gap-6">
+            <div class="app-header-desktop-links flex items-center gap-4 sm:gap-6">
               ${portfolioContent.nav.links
                 .map(
                   (link) => `
@@ -40,6 +40,30 @@ export class AppHeaderComponent extends BaseElement {
                 )
                 .join("")}
             </div>
+            <dota-popover
+              class="app-header-mobile-popover"
+              anchored-selector="#mobile-nav-panel"
+              placement="bottom-end"
+              offset="12"
+            >
+              <button class="app-header-menu-button" type="button" aria-label="Open navigation">
+                <dota-icon
+                  name="material-symbols:menu-rounded"
+                  size="xl"
+                  color="none"
+                  variant="link"
+                ></dota-icon>
+              </button>
+              <div id="mobile-nav-panel" class="app-header-mobile-panel" aria-label="Mobile navigation">
+                ${portfolioContent.nav.links
+                  .map(
+                    (link) => `
+                      <a href="${link.href}" class="nav-link mobile-nav-link">${link.label}</a>
+                    `,
+                  )
+                  .join("")}
+              </div>
+            </dota-popover>
             <dark-mode-button></dark-mode-button>
           </div>
         </div>
