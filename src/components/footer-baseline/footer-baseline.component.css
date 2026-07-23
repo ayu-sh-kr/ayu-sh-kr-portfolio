@@ -1,0 +1,34 @@
+footer-baseline {
+  display: block;
+}
+
+.footer-baseline-section {
+  border-top: 1px solid var(--border-color);
+}
+
+.footer-baseline-content {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-top: 1.25rem;
+  padding-bottom: 1.75rem;
+}
+
+.footer-baseline-copy,
+.footer-clock {
+  color: var(--muted-color);
+  font-size: 0.8125rem;
+}
+
+.footer-clock {
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+@media (max-width: 40rem) {
+  .footer-baseline-content {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
