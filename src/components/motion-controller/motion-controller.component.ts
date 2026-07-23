@@ -99,11 +99,7 @@ export class PortfolioMotionControllerComponent extends BaseElement {
   }
 
   private renderAll(): void {
-    const nav = document.querySelector<HTMLElement>("#site-nav");
-    const navIsScrolled = window.scrollY > 40;
-
     if (this.reducedMotion) {
-      nav?.classList.toggle("is-scrolled", navIsScrolled);
       return;
     }
 
@@ -117,8 +113,22 @@ export class PortfolioMotionControllerComponent extends BaseElement {
     const workWrap = document.querySelector<HTMLElement>("#work-wrap");
     const workStage = document.querySelector<HTMLElement>("#work-stage");
     const workRail = document.querySelector<HTMLElement>("#work-rail");
+    const speakingHeadWrap = document.querySelector<HTMLElement>("#sp-head-wrap");
+    const speakingHeadInner = document.querySelector<HTMLElement>("#sp-head-inner");
+    const speakingLead = document.querySelector<HTMLElement>("#speaking-title");
+    const speakingFills = Array.from(document.querySelectorAll<HTMLElement>("#speaking-title .sp-fill"));
 
-    if (!heroWrap || !heroInner || !journeyWrap || !workWrap || !workStage || !workRail) {
+    if (
+      !heroWrap ||
+      !heroInner ||
+      !journeyWrap ||
+      !workWrap ||
+      !workStage ||
+      !workRail ||
+      !speakingHeadWrap ||
+      !speakingHeadInner ||
+      !speakingLead
+    ) {
       return;
     }
 
@@ -126,11 +136,11 @@ export class PortfolioMotionControllerComponent extends BaseElement {
     const heroProgress = this.progressOf(heroWrap);
     const journeyProgress = this.progressOf(journeyWrap);
     const workProgress = this.progressOf(workWrap);
+    const speakingProgress = this.progressOf(speakingHeadWrap);
     const railDistance = Math.max(0, workRail.scrollWidth - workStage.clientWidth);
     const chapterCount = journeyChapters.length;
     const activeChapter = clamp(Math.floor(journeyProgress * chapterCount), 0, chapterCount - 1);
 
-    nav?.classList.toggle("is-scrolled", navIsScrolled);
     heroInner.style.opacity = String(clamp(1 - heroProgress * 1.4, 0, 1));
     heroInner.style.transform = `scale(${1 - heroProgress * 0.12}) translate3d(0, ${heroProgress * -40}px, 0)`;
 
@@ -152,6 +162,12 @@ export class PortfolioMotionControllerComponent extends BaseElement {
     });
 
     workRail.style.transform = `translate3d(${-workProgress * railDistance}px, 0, 0)`;
+
+    const speakingFillProgress = clamp(speakingProgress / 0.8, 0, 1) * 100;
+    const speakingScale = 0.82 + clamp(speakingProgress / 0.8, 0, 1) * 0.18;
+    speakingFills.forEach((fill) => fill.style.setProperty("--fill-progress", `${speakingFillProgress}%`));
+    speakingLead.style.transform = `scale(${speakingScale})`;
+    speakingHeadInner.classList.toggle("lit", speakingProgress > 0.06);
   }
 
   private setupReveals(): void {
