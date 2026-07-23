@@ -1,0 +1,25 @@
+pricing-estimator-result {
+  display: block;
+}
+
+/* The estimator result is intentionally a stable dark surface in both themes. */
+.pricing-estimator-result {
+  background: var(--contrast-background-color);
+  color: var(--contrast-foreground-color);
+}
+
+.pricing-estimator-result-eyebrow,
+.pricing-estimator-subline,
+.pricing-estimator-cta > p {
+  color: var(--contrast-muted-color);
+}
+
+.pricing-estimator-figure,
+.pricing-estimator-breakdown b {
+  color: var(--contrast-foreground-color);
+}
+
+.pricing-estimator-breakdown span {
+  border-color: var(--contrast-border-color);
+  color: var(--contrast-muted-color);
+}
