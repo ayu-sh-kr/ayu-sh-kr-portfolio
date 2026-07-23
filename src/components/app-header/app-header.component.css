@@ -31,6 +31,10 @@ html.dark #site-nav {
   color: var(--foreground-color);
 }
 
+.nav-link-pricing {
+  color: var(--primary-color-strong);
+}
+
 @media (max-width: 36rem) {
   .nav-link-optional {
     display: none;
