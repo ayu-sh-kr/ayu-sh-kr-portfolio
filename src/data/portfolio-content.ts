@@ -5,7 +5,9 @@ export const portfolioContent = {
     links: [
       { label: "Work", href: "/#work-wrap" },
       { label: "Journey", href: "/#journey-wrap" },
+      { label: "Speaking", href: "/#speaking" },
       { label: "Skills", href: "/#skills" },
+      { label: "Pricing", href: "/pricing" },
       { label: "Blog", href: "/blog" },
       { label: "Contact", href: "/#contact" },
     ],
@@ -83,6 +85,56 @@ export const portfolioContent = {
       cta: true,
     },
   ],
+  speaking: {
+    eyebrow: "Speaking & teaching",
+    headline: {
+      before: "I make hard systems ",
+      accent: "click.",
+    },
+    summary:
+      "Beyond shipping code, I teach it — lectures, workshops, and mentoring on backends, cloud, and AI agents for teams that want to level up fast.",
+    proof: [
+      { value: "40+", label: "sessions", prefix: "" },
+      { value: "1,200+", label: "engineers taught", prefix: "" },
+      { value: "9.4", label: "rated /10", prefix: "rated " },
+    ],
+    topics: [
+      {
+        number: "01",
+        title: "Backends that survive 3am",
+        body: "APIs, data models, and failure handling that hold up under real production load — from someone who owns the pager.",
+        chips: ["Spring Boot", "Postgres", "Redis"],
+      },
+      {
+        number: "02",
+        title: "AWS for solo operators",
+        body: "Cloud infrastructure without a platform team — the handful of services that matter and how to run them cheaply and safely.",
+        chips: ["Lambda", "SQS · SNS", "EventBridge"],
+      },
+      {
+        number: "03",
+        title: "Building AI agents that ship",
+        body: "From prompt to production: reliable agentic systems with Spring AI and LangChain, and where they break.",
+        chips: ["AI agents", "Spring AI", "LangChain"],
+      },
+      {
+        number: "04",
+        title: "The platform is your framework",
+        body: "Web components, longevity, and frontend you can still run in five years — the ideas behind the Dota libraries.",
+        chips: ["Web components", "TypeScript"],
+      },
+    ],
+    invite: {
+      eyebrow: "Invite me to speak",
+      title: "Running a meetup, cohort, or team offsite?",
+      body: "I put together talks and hands-on workshops tailored to your audience — remote or in person, IST-friendly. Tell me the room and I'll shape the session.",
+      primaryCta: {
+        label: "Invite me to speak",
+        href: "mailto:akjaiswal2003@gmail.com?subject=Speaking%20invitation",
+      },
+      secondaryCta: { label: "See topics & rates", href: "#contact" },
+    },
+  },
   skills: [
     { name: "Backend", items: ["Java", "Kotlin", "Spring Boot", "Spring AI"] },
     { name: "Cloud & infra", items: ["EC2", "Lambda", "IAM", "S3", "EventBridge", "SNS / SQS", "ECR", "Docker"] },
@@ -118,6 +170,74 @@ export const portfolioContent = {
     resumeHref: "mailto:akjaiswal2003@gmail.com?subject=Resume%20request",
     github: "https://github.com/ayu-sh-kr",
     linkedin: "https://linkedin.com/in/ayu-sh-kr",
+  },
+  footer: {
+    ghostWord: "fin",
+    support: {
+      eyebrow: "Colophon · the last page",
+      titleLead: "Built one careful hour at a time.",
+      titleSoft: "The rest is just showing up.",
+      lede: "Good software is mostly patient work.",
+      bodyBeforeHours: "The kind that accumulates quietly — design, delivery, maintenance, and the hours between an idea and something people can trust. Around",
+      hoursTarget: 35040,
+      bodyAfterHours: "hours of small decisions have gone into learning how to build systems that stay useful after launch.",
+    },
+    index: {
+      externalMarker: "↗",
+      groups: [
+        {
+          number: "01",
+          title: "Explore",
+          links: [
+            { label: "Work", href: "/#work-wrap" },
+            { label: "Journey", href: "/#journey-wrap" },
+            { label: "Skills", href: "/#skills" },
+            { label: "Speaking", href: "/#speaking" },
+          ],
+        },
+        {
+          number: "02",
+          title: "Work",
+          links: [
+            { label: "Dota Wrap", href: "https://www.npmjs.com/package/@ayu-sh-kr/dota-wrap", external: true },
+            { label: "Sacrena", href: "/#work-wrap" },
+            { label: "Webingo", href: "/#work-wrap" },
+          ],
+        },
+        {
+          number: "03",
+          title: "Engage",
+          links: [
+            { label: "Pricing", href: "/pricing" },
+            { label: "Contact", href: "/#contact" },
+            { label: "Speaking", href: "/#speaking" },
+            { label: "Hire me", href: "/pricing" },
+          ],
+        },
+        {
+          number: "04",
+          title: "Writing",
+          links: [{ label: "Blog", href: "/blog" }],
+        },
+        {
+          number: "05",
+          title: "Elsewhere",
+          links: [
+            { label: "GitHub", href: "https://github.com/ayu-sh-kr", external: true },
+            { label: "LinkedIn", href: "https://linkedin.com/in/ayu-sh-kr", external: true },
+            { label: "Email", href: "mailto:akjaiswal2003@gmail.com", external: true },
+          ],
+        },
+      ],
+    },
+    baseline: {
+      copyright: "ayush.dev",
+      role: "Backend engineer",
+      availability: "open for freelance work",
+      clockTimeZone: "Asia/Kolkata",
+      clockLocale: "en-IN",
+      clockSuffix: " IST",
+    },
   },
 } as const;
 
