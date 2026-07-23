@@ -1,0 +1,74 @@
+build-offering {
+  display: block;
+}
+
+.pricing-section {
+  max-width: 80rem;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+.pricing-build-section {
+  padding-top: 5rem;
+  padding-bottom: 2rem;
+}
+
+.pricing-section-copy {
+  max-width: 48rem;
+}
+
+.pricing-section-title {
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+  text-wrap: balance;
+}
+
+.pricing-section-lede {
+  color: var(--muted-color);
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  line-height: 1.7;
+}
+
+.pricing-value-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 3.5rem;
+  margin-top: 3rem;
+}
+
+.pricing-value-row {
+  display: grid;
+  grid-template-columns: 2rem 1fr;
+  gap: 1rem;
+  padding: 1.4rem 0;
+  border-top: 1px solid var(--border-color);
+}
+
+.pricing-value-number {
+  color: var(--primary-color-strong);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.pricing-value-row h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+
+.pricing-value-row p {
+  margin-top: 0.45rem;
+  color: var(--muted-color);
+  font-size: 0.95rem;
+  line-height: 1.65;
+}
+
+@media (max-width: 48rem) {
+  .pricing-value-grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+}
