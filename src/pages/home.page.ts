@@ -40,14 +40,13 @@ export class HomePage extends DotaPageElement {
         <portfolio-hero></portfolio-hero>
         <portfolio-journey></portfolio-journey>
         <portfolio-work></portfolio-work>
+        <portfolio-speaking></portfolio-speaking>
         <portfolio-skills></portfolio-skills>
         <portfolio-services></portfolio-services>
         <portfolio-contact></portfolio-contact>
         <portfolio-motion-controller></portfolio-motion-controller>
       </main>
-      <footer class="px-5 py-8 text-center text-sm text-[var(--muted-color)] sm:px-8">
-        Built with my Dota web-component libraries · Designed as a static Vite build
-      </footer>
+      <app-footer></app-footer>
     `;
   }
 }
