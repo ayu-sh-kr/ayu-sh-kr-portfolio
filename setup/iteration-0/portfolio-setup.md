@@ -11,7 +11,7 @@ The portfolio itself becomes a live demo of your framework. Mention this on the 
 Use `nuxi generate` for a fully static output. Good if you want file-based routing for `/`, `/projects`, `/contact` later.
 
 **Option C — Plain HTML + CSS**
-One `index.html`, one `styles.css`, zero build step. Fastest to ship. You can always migrate later.
+One `../../index.html`, one `styles.css`, zero build step. Fastest to ship. You can always migrate later.
 
 > Rule of thumb: ship Option C or A this week, don't over-engineer.
 
