@@ -12,6 +12,15 @@ export class PricingFaqComponent extends BaseElement {
 
   render(): string {
     const content = pricingContent.faq;
+    const accordionConfig = JSON.stringify({
+      container: "pricing-faq-accordion-container",
+      button: {
+        base: "pricing-faq-accordion-button",
+        size: { md: "" },
+        color: { gray: { ghost: "pricing-faq-accordion-button-color" } },
+      },
+      paragraph: "pricing-faq-accordion-answer",
+    });
 
     return HTML`
       <section class="pricing-faq-section" aria-labelledby="pricing-faq-title">
@@ -20,11 +29,13 @@ export class PricingFaqComponent extends BaseElement {
         <div class="pricing-faq-list">
           ${content.items
             .map(
-              (item) => `
-                <details class="pricing-faq-item">
-                  <summary>${item.question}<span aria-hidden="true">+</span></summary>
-                  <p>${item.answer}</p>
-                </details>
+              (item) => HTML`
+                <dota-accordion
+                  classname="pricing-faq-accordion"
+                  header="${item.question}"
+                  description="${item.answer}"
+                  config='${accordionConfig}'
+                ></dota-accordion>
               `,
             )
             .join("")}
