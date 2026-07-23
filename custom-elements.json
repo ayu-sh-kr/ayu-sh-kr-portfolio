@@ -1,0 +1,1262 @@
+{
+  "schemaVersion": "2.1.0",
+  "modules": [
+    {
+      "kind": "javascript-module",
+      "path": "src/app.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "AppComponent",
+          "customElement": true,
+          "tagName": "app-root",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "AppComponent",
+          "declaration": {
+            "name": "AppComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "app-root",
+          "declaration": {
+            "name": "AppComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/about-contact-section/about-contact-section.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "PortfolioContactComponent",
+          "customElement": true,
+          "tagName": "portfolio-contact",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "PortfolioContactComponent",
+          "declaration": {
+            "name": "PortfolioContactComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "portfolio-contact",
+          "declaration": {
+            "name": "PortfolioContactComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/app-footer/app-footer.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "AppFooterComponent",
+          "customElement": true,
+          "tagName": "app-footer",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "AppFooterComponent",
+          "declaration": {
+            "name": "AppFooterComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "app-footer",
+          "declaration": {
+            "name": "AppFooterComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/app-header/app-header.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "AppHeaderComponent",
+          "customElement": true,
+          "tagName": "app-header",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "AppHeaderComponent",
+          "declaration": {
+            "name": "AppHeaderComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "app-header",
+          "declaration": {
+            "name": "AppHeaderComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/blog-view/blog-article.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "BlogArticleComponent",
+          "customElement": true,
+          "tagName": "blog-article",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "BlogArticleComponent",
+          "declaration": {
+            "name": "BlogArticleComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "blog-article",
+          "declaration": {
+            "name": "BlogArticleComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/blog-view/blog-index.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "BlogIndexComponent",
+          "customElement": true,
+          "tagName": "blog-index",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "BlogIndexComponent",
+          "declaration": {
+            "name": "BlogIndexComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "blog-index",
+          "declaration": {
+            "name": "BlogIndexComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/blog-view/blog-markdown-view.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "BlogMarkdownViewComponent",
+          "customElement": true,
+          "tagName": "blog-markdown-view",
+          "superclass": {
+            "name": "MdViewComponent"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "BlogMarkdownViewComponent",
+          "declaration": {
+            "name": "BlogMarkdownViewComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "blog-markdown-view",
+          "declaration": {
+            "name": "BlogMarkdownViewComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/blog-view/blog-view.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "BlogViewComponent",
+          "customElement": true,
+          "tagName": "blog-view",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "BlogViewComponent",
+          "declaration": {
+            "name": "BlogViewComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "blog-view",
+          "declaration": {
+            "name": "BlogViewComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/build-offering/build-offering.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "BuildOfferingComponent",
+          "customElement": true,
+          "tagName": "build-offering",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "BuildOfferingComponent",
+          "declaration": {
+            "name": "BuildOfferingComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "build-offering",
+          "declaration": {
+            "name": "BuildOfferingComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/build-pricing/build-pricing.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "BuildPricingComponent",
+          "customElement": true,
+          "tagName": "build-pricing",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "BuildPricingComponent",
+          "declaration": {
+            "name": "BuildPricingComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "build-pricing",
+          "declaration": {
+            "name": "BuildPricingComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/dark-mode-button/dark-mode-button.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "DarkModeButtonComponent",
+          "customElement": true,
+          "tagName": "dark-mode-button",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "DarkModeButtonComponent",
+          "declaration": {
+            "name": "DarkModeButtonComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "dark-mode-button",
+          "declaration": {
+            "name": "DarkModeButtonComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/footer-baseline/footer-baseline.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "FooterBaselineComponent",
+          "customElement": true,
+          "tagName": "footer-baseline",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "FooterBaselineComponent",
+          "declaration": {
+            "name": "FooterBaselineComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "footer-baseline",
+          "declaration": {
+            "name": "FooterBaselineComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/footer-index/footer-index.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "FooterIndexComponent",
+          "customElement": true,
+          "tagName": "footer-index",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "FooterIndexComponent",
+          "declaration": {
+            "name": "FooterIndexComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "footer-index",
+          "declaration": {
+            "name": "FooterIndexComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/footer-support/footer-support.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "FooterSupportComponent",
+          "customElement": true,
+          "tagName": "footer-support",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "FooterSupportComponent",
+          "declaration": {
+            "name": "FooterSupportComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "footer-support",
+          "declaration": {
+            "name": "FooterSupportComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/hero-section/hero-section.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "PortfolioHeroComponent",
+          "customElement": true,
+          "tagName": "portfolio-hero",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "PortfolioHeroComponent",
+          "declaration": {
+            "name": "PortfolioHeroComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "portfolio-hero",
+          "declaration": {
+            "name": "PortfolioHeroComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/journey-section/journey-section.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "PortfolioJourneyComponent",
+          "customElement": true,
+          "tagName": "portfolio-journey",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "PortfolioJourneyComponent",
+          "declaration": {
+            "name": "PortfolioJourneyComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "portfolio-journey",
+          "declaration": {
+            "name": "PortfolioJourneyComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/motion-controller/motion-controller.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "PortfolioMotionControllerComponent",
+          "customElement": true,
+          "tagName": "portfolio-motion-controller",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "PortfolioMotionControllerComponent",
+          "declaration": {
+            "name": "PortfolioMotionControllerComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "portfolio-motion-controller",
+          "declaration": {
+            "name": "PortfolioMotionControllerComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pricing-contact/pricing-contact.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "PricingContactComponent",
+          "customElement": true,
+          "tagName": "pricing-contact",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "PricingContactComponent",
+          "declaration": {
+            "name": "PricingContactComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "pricing-contact",
+          "declaration": {
+            "name": "PricingContactComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pricing-estimator-result/pricing-estimator-result.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "PricingEstimatorResultComponent",
+          "customElement": true,
+          "tagName": "pricing-estimator-result",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "PricingEstimatorResultComponent",
+          "declaration": {
+            "name": "PricingEstimatorResultComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "pricing-estimator-result",
+          "declaration": {
+            "name": "PricingEstimatorResultComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pricing-estimator-stage-options/pricing-estimator-stage-options.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "PricingEstimatorStageOptionsComponent",
+          "customElement": true,
+          "tagName": "pricing-estimator-stage-options",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "PricingEstimatorStageOptionsComponent",
+          "declaration": {
+            "name": "PricingEstimatorStageOptionsComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "pricing-estimator-stage-options",
+          "declaration": {
+            "name": "PricingEstimatorStageOptionsComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pricing-estimator-type-options/pricing-estimator-type-options.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "PricingEstimatorTypeOptionsComponent",
+          "customElement": true,
+          "tagName": "pricing-estimator-type-options",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "PricingEstimatorTypeOptionsComponent",
+          "declaration": {
+            "name": "PricingEstimatorTypeOptionsComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "pricing-estimator-type-options",
+          "declaration": {
+            "name": "PricingEstimatorTypeOptionsComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pricing-estimator/pricing-estimator.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "PricingEstimatorComponent",
+          "customElement": true,
+          "tagName": "pricing-estimator",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "PricingEstimatorComponent",
+          "declaration": {
+            "name": "PricingEstimatorComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "pricing-estimator",
+          "declaration": {
+            "name": "PricingEstimatorComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pricing-faq/pricing-faq.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "PricingFaqComponent",
+          "customElement": true,
+          "tagName": "pricing-faq",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "PricingFaqComponent",
+          "declaration": {
+            "name": "PricingFaqComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "pricing-faq",
+          "declaration": {
+            "name": "PricingFaqComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pricing-hero/pricing-hero.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "PricingHeroComponent",
+          "customElement": true,
+          "tagName": "pricing-hero",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "PricingHeroComponent",
+          "declaration": {
+            "name": "PricingHeroComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "pricing-hero",
+          "declaration": {
+            "name": "PricingHeroComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pricing-sticky-contact/pricing-sticky-contact.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "PricingStickyContactComponent",
+          "customElement": true,
+          "tagName": "pricing-sticky-contact",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "PricingStickyContactComponent",
+          "declaration": {
+            "name": "PricingStickyContactComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "pricing-sticky-contact",
+          "declaration": {
+            "name": "PricingStickyContactComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pricing-switch/pricing-switch.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "PricingSwitchComponent",
+          "customElement": true,
+          "tagName": "pricing-switch",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "PricingSwitchComponent",
+          "declaration": {
+            "name": "PricingSwitchComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "pricing-switch",
+          "declaration": {
+            "name": "PricingSwitchComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/projects-section/projects-section.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "PortfolioWorkComponent",
+          "customElement": true,
+          "tagName": "portfolio-work",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "PortfolioWorkComponent",
+          "declaration": {
+            "name": "PortfolioWorkComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "portfolio-work",
+          "declaration": {
+            "name": "PortfolioWorkComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/services-section/services-section.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "PortfolioServicesComponent",
+          "customElement": true,
+          "tagName": "portfolio-services",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "PortfolioServicesComponent",
+          "declaration": {
+            "name": "PortfolioServicesComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "portfolio-services",
+          "declaration": {
+            "name": "PortfolioServicesComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/skills-section/skills-section.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "PortfolioSkillsComponent",
+          "customElement": true,
+          "tagName": "portfolio-skills",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "PortfolioSkillsComponent",
+          "declaration": {
+            "name": "PortfolioSkillsComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "portfolio-skills",
+          "declaration": {
+            "name": "PortfolioSkillsComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/speaking-offering/speaking-offering.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "SpeakingOfferingComponent",
+          "customElement": true,
+          "tagName": "speaking-offering",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "SpeakingOfferingComponent",
+          "declaration": {
+            "name": "SpeakingOfferingComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "speaking-offering",
+          "declaration": {
+            "name": "SpeakingOfferingComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/speaking-pricing/speaking-pricing.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "SpeakingPricingComponent",
+          "customElement": true,
+          "tagName": "speaking-pricing",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "SpeakingPricingComponent",
+          "declaration": {
+            "name": "SpeakingPricingComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "speaking-pricing",
+          "declaration": {
+            "name": "SpeakingPricingComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/speaking-section/speaking-section.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "PortfolioSpeakingComponent",
+          "customElement": true,
+          "tagName": "portfolio-speaking",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "PortfolioSpeakingComponent",
+          "declaration": {
+            "name": "PortfolioSpeakingComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "portfolio-speaking",
+          "declaration": {
+            "name": "PortfolioSpeakingComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/pages/blog-slug.page.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "BlogSlugPage",
+          "customElement": true,
+          "tagName": "blog-slug-page",
+          "superclass": {
+            "name": "DotaPageElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "BlogSlugPage",
+          "declaration": {
+            "name": "BlogSlugPage"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "blog-slug-page",
+          "declaration": {
+            "name": "BlogSlugPage"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/pages/blog.page.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "BlogPage",
+          "customElement": true,
+          "tagName": "blog-page",
+          "superclass": {
+            "name": "DotaPageElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "BlogPage",
+          "declaration": {
+            "name": "BlogPage"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "blog-page",
+          "declaration": {
+            "name": "BlogPage"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/pages/error.page.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "ErrorPage",
+          "customElement": true,
+          "tagName": "app-error",
+          "superclass": {
+            "name": "DotaPageElement"
+          },
+          "members": [
+            {
+              "kind": "field",
+              "name": "message",
+              "attribute": "message",
+              "type": {
+                "text": "string"
+              },
+              "default": "Page not found"
+            },
+            {
+              "kind": "field",
+              "name": "status",
+              "attribute": "status",
+              "type": {
+                "text": "string"
+              },
+              "default": "404"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "message",
+              "fieldName": "message",
+              "type": {
+                "text": "string"
+              },
+              "default": "Page not found"
+            },
+            {
+              "name": "status",
+              "fieldName": "status",
+              "type": {
+                "text": "string"
+              },
+              "default": "404"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ErrorPage",
+          "declaration": {
+            "name": "ErrorPage"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "app-error",
+          "declaration": {
+            "name": "ErrorPage"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/pages/home.page.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "HomePage",
+          "customElement": true,
+          "tagName": "app-home",
+          "superclass": {
+            "name": "DotaPageElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "HomePage",
+          "declaration": {
+            "name": "HomePage"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "app-home",
+          "declaration": {
+            "name": "HomePage"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/pages/pricing.page.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "PricingPage",
+          "customElement": true,
+          "tagName": "pricing-page",
+          "superclass": {
+            "name": "DotaPageElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "PricingPage",
+          "declaration": {
+            "name": "PricingPage"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "pricing-page",
+          "declaration": {
+            "name": "PricingPage"
+          }
+        }
+      ]
+    }
+  ]
+}
