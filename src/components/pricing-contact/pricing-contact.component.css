@@ -1,0 +1,90 @@
+pricing-contact {
+  display: block;
+}
+
+.pricing-contact-section {
+  border-top: 1px solid var(--border-color);
+}
+
+.pricing-contact-inner {
+  max-width: 56rem;
+  margin-inline: auto;
+  padding: 7rem 1.25rem;
+  text-align: center;
+}
+
+.pricing-contact-title {
+  font-size: clamp(2.4rem, 7vw, 5rem);
+  font-weight: 700;
+  letter-spacing: -0.055em;
+  line-height: 1;
+  text-wrap: balance;
+}
+
+.pricing-contact-title span {
+  color: var(--primary-color);
+}
+
+.pricing-contact-copy {
+  max-width: 36rem;
+  margin-inline: auto;
+  color: var(--muted-color);
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  line-height: 1.65;
+}
+
+.pricing-contact-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.pricing-contact-accent-button,
+.pricing-contact-ghost-button {
+  display: inline-flex;
+  min-height: 3rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  padding: 0.8rem 1.55rem;
+  font-size: 0.93rem;
+  font-weight: 600;
+  transition: transform 220ms ease, background-color 180ms ease, border-color 180ms ease;
+}
+
+.pricing-contact-accent-button {
+  background: var(--primary-color);
+  color: var(--primary-color-on);
+}
+
+.pricing-contact-accent-button:hover {
+  background: var(--primary-color-hover);
+  transform: translateY(-2px);
+}
+
+.pricing-contact-ghost-button {
+  border: 1px solid var(--border-color);
+  color: var(--foreground-color);
+}
+
+.pricing-contact-ghost-button:hover {
+  border-color: var(--foreground-color);
+  transform: translateY(-2px);
+}
+
+.pricing-contact-trust {
+  color: var(--muted-color);
+  font-size: 0.875rem;
+}
+
+.pricing-contact-trust a {
+  color: var(--primary-color-strong);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pricing-contact-accent-button,
+  .pricing-contact-ghost-button {
+    transition: none;
+  }
+}
