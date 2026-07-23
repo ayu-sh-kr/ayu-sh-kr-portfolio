@@ -1,0 +1,10 @@
+app-footer {
+  display: block;
+}
+
+.site-footer {
+  position: relative;
+  overflow: hidden;
+  background: var(--background-color);
+  color: var(--foreground-color);
+}
