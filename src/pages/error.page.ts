@@ -39,6 +39,7 @@ export class ErrorPage extends DotaPageElement {
           <a href="/" class="motion-button motion-button-ink mt-9">Return home <span aria-hidden="true">←</span></a>
         </div>
       </main>
+      <app-footer></app-footer>
     `;
   }
 }
