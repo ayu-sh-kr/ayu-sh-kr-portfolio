@@ -13,7 +13,11 @@ export default defineConfig({
     }),
     dotaWebTypeJson({
       root: resolve(__dirname),
-      scanRoots: [resolve(__dirname)],
+      scanRoots: [
+        resolve(__dirname),
+        resolve(__dirname, "node_modules/@ayu-sh-kr/dota-md"),
+        resolve(__dirname, "node_modules/@ayu-sh-kr/dota-ui"),
+      ],
       outFile: "web-types.json",
       logType: "info",
       customElementsManifest: {
