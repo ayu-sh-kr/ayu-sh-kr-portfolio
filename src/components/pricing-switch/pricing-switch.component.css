@@ -1,0 +1,63 @@
+pricing-switch {
+  display: block;
+}
+
+.pricing-switch-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 0 1.25rem 2rem;
+  text-align: center;
+}
+
+.pricing-segmented-control {
+  position: relative;
+  display: inline-flex;
+  gap: 0.25rem;
+  padding: 0.3rem;
+  border: 1px solid var(--border-color);
+  border-radius: 999px;
+  background: var(--surface-color);
+}
+
+.pricing-segmented-control > span {
+  position: absolute;
+  top: 0.3rem;
+  bottom: 0.3rem;
+  left: 0.3rem;
+  z-index: 0;
+  border-radius: 999px;
+  background: var(--foreground-color);
+  transition: width 260ms ease, transform 260ms ease;
+}
+
+.pricing-segmented-control button {
+  position: relative;
+  z-index: 1;
+  min-height: 2.5rem;
+  border: 0;
+  border-radius: 999px;
+  padding: 0.55rem 1.3rem;
+  background: transparent;
+  color: var(--muted-color);
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: color 180ms ease;
+}
+
+.pricing-segmented-control button.is-active {
+  color: var(--background-color);
+}
+
+.pricing-switch-hint {
+  color: var(--muted-color);
+  font-size: 0.875rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pricing-segmented-control > span {
+    transition: none;
+  }
+}
