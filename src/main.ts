@@ -7,6 +7,7 @@ import {DefaultApplicationEventListenerRegistry, initializeApp} from "@ayu-sh-kr
 import { Router, RouterService } from "@ayu-sh-kr/dota-wrap/router";
 import { ApplicationEventService } from "@ayu-sh-kr/dota-wrap/core";
 import { registerPortfolioMarkdownTheme } from "@app/configs/markdown-theme.config.ts";
+import { RouterUtils } from "@app/utils/router.utils.ts";
 import components from "virtual:dota-components";
 import { routeConfig } from "virtual:dota-routes";
 const applicationEventService = ApplicationEventService.getInstance();
@@ -28,6 +29,7 @@ initializeApp({
   .then((value) => {
     DefaultApplicationEventListenerRegistry.setListener(applicationEventListener);
     routerService = value.routerService;
+    RouterUtils.setRouterService(routerService);
     applicationEventPublisher.publishAsync({ name: "app:initialized", data: null });
   })
   .catch((error) => console.error(error));
