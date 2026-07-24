@@ -38,6 +38,7 @@ export class BlogViewComponent extends BaseElement {
     const nextPost = post && blogPosts.length > 1
       ? blogPosts[(blogPosts.indexOf(post) + 1) % blogPosts.length] ?? null
       : null;
+
     void this.publisher.publishAsync({
       name: BLOG_ARTICLE_DATA_EVENT,
       data: {

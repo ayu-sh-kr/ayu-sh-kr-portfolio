@@ -927,6 +927,800 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/showcase-archive/showcase-archive.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "ShowcaseArchiveComponent",
+          "customElement": true,
+          "tagName": "showcase-archive",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ShowcaseArchiveComponent",
+          "declaration": {
+            "name": "ShowcaseArchiveComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "showcase-archive",
+          "declaration": {
+            "name": "ShowcaseArchiveComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/showcase-aside/showcase-aside.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "ShowcaseAsideComponent",
+          "customElement": true,
+          "tagName": "showcase-aside",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [
+            {
+              "kind": "field",
+              "name": "kind",
+              "attribute": "kind",
+              "type": {
+                "text": "string"
+              },
+              "default": "note"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "kind",
+              "fieldName": "kind",
+              "type": {
+                "text": "string"
+              },
+              "default": "note"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ShowcaseAsideComponent",
+          "declaration": {
+            "name": "ShowcaseAsideComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "showcase-aside",
+          "declaration": {
+            "name": "ShowcaseAsideComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/showcase-cta/showcase-cta.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "ShowcaseCtaComponent",
+          "customElement": true,
+          "tagName": "showcase-cta",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ShowcaseCtaComponent",
+          "declaration": {
+            "name": "ShowcaseCtaComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "showcase-cta",
+          "declaration": {
+            "name": "ShowcaseCtaComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/showcase-faq/showcase-faq.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "ShowcaseFaqComponent",
+          "customElement": true,
+          "tagName": "showcase-faq",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ShowcaseFaqComponent",
+          "declaration": {
+            "name": "ShowcaseFaqComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "showcase-faq",
+          "declaration": {
+            "name": "ShowcaseFaqComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/showcase-featured/showcase-featured.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "ShowcaseFeaturedComponent",
+          "customElement": true,
+          "tagName": "showcase-featured",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ShowcaseFeaturedComponent",
+          "declaration": {
+            "name": "ShowcaseFeaturedComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "showcase-featured",
+          "declaration": {
+            "name": "ShowcaseFeaturedComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/showcase-figure/showcase-figure.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "ShowcaseFigureComponent",
+          "customElement": true,
+          "tagName": "showcase-figure",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [
+            {
+              "kind": "field",
+              "name": "caption",
+              "attribute": "caption",
+              "type": {
+                "text": "string"
+              },
+              "default": ""
+            },
+            {
+              "kind": "field",
+              "name": "src",
+              "attribute": "src",
+              "type": {
+                "text": "string"
+              },
+              "default": ""
+            }
+          ],
+          "attributes": [
+            {
+              "name": "caption",
+              "fieldName": "caption",
+              "type": {
+                "text": "string"
+              },
+              "default": ""
+            },
+            {
+              "name": "src",
+              "fieldName": "src",
+              "type": {
+                "text": "string"
+              },
+              "default": ""
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ShowcaseFigureComponent",
+          "declaration": {
+            "name": "ShowcaseFigureComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "showcase-figure",
+          "declaration": {
+            "name": "ShowcaseFigureComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/showcase-hero/showcase-hero.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "ShowcaseHeroComponent",
+          "customElement": true,
+          "tagName": "showcase-hero",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ShowcaseHeroComponent",
+          "declaration": {
+            "name": "ShowcaseHeroComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "showcase-hero",
+          "declaration": {
+            "name": "ShowcaseHeroComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/showcase-markdown-view/showcase-markdown-view.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "ShowcaseMarkdownViewComponent",
+          "customElement": true,
+          "tagName": "showcase-markdown-view",
+          "superclass": {
+            "name": "MdViewComponent"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ShowcaseMarkdownViewComponent",
+          "declaration": {
+            "name": "ShowcaseMarkdownViewComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "showcase-markdown-view",
+          "declaration": {
+            "name": "ShowcaseMarkdownViewComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/showcase-metrics/showcase-metrics.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "ShowcaseMetricsComponent",
+          "customElement": true,
+          "tagName": "showcase-metrics",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [
+            {
+              "kind": "field",
+              "name": "items",
+              "attribute": "items",
+              "type": {
+                "text": "string"
+              },
+              "default": ""
+            }
+          ],
+          "attributes": [
+            {
+              "name": "items",
+              "fieldName": "items",
+              "type": {
+                "text": "string"
+              },
+              "default": ""
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ShowcaseMetricsComponent",
+          "declaration": {
+            "name": "ShowcaseMetricsComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "showcase-metrics",
+          "declaration": {
+            "name": "ShowcaseMetricsComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/showcase-motion-controller/showcase-motion-controller.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "ShowcaseMotionControllerComponent",
+          "customElement": true,
+          "tagName": "showcase-motion-controller",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ShowcaseMotionControllerComponent",
+          "declaration": {
+            "name": "ShowcaseMotionControllerComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "showcase-motion-controller",
+          "declaration": {
+            "name": "ShowcaseMotionControllerComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/showcase-page/showcase-page.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "ShowcasePageComponent",
+          "customElement": true,
+          "tagName": "showcase-page-content",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ShowcasePageComponent",
+          "declaration": {
+            "name": "ShowcasePageComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "showcase-page-content",
+          "declaration": {
+            "name": "ShowcasePageComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/showcase-project-card/showcase-project-card.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "ShowcaseProjectCardComponent",
+          "customElement": true,
+          "tagName": "showcase-project-card",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [
+            {
+              "kind": "field",
+              "name": "projectSlug",
+              "attribute": "project-slug",
+              "type": {
+                "text": "string"
+              },
+              "default": ""
+            }
+          ],
+          "attributes": [
+            {
+              "name": "project-slug",
+              "fieldName": "projectSlug",
+              "type": {
+                "text": "string"
+              },
+              "default": ""
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ShowcaseProjectCardComponent",
+          "declaration": {
+            "name": "ShowcaseProjectCardComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "showcase-project-card",
+          "declaration": {
+            "name": "ShowcaseProjectCardComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/showcase-project-row/showcase-project-row.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "ShowcaseProjectRowComponent",
+          "customElement": true,
+          "tagName": "showcase-project-row",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [
+            {
+              "kind": "field",
+              "name": "projectSlug",
+              "attribute": "project-slug",
+              "type": {
+                "text": "string"
+              },
+              "default": ""
+            }
+          ],
+          "attributes": [
+            {
+              "name": "project-slug",
+              "fieldName": "projectSlug",
+              "type": {
+                "text": "string"
+              },
+              "default": ""
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ShowcaseProjectRowComponent",
+          "declaration": {
+            "name": "ShowcaseProjectRowComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "showcase-project-row",
+          "declaration": {
+            "name": "ShowcaseProjectRowComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/showcase-spotlight/showcase-spotlight.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "ShowcaseSpotlightComponent",
+          "customElement": true,
+          "tagName": "showcase-spotlight",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [
+            {
+              "kind": "field",
+              "name": "projectSlug",
+              "attribute": "project-slug",
+              "type": {
+                "text": "string"
+              },
+              "default": ""
+            }
+          ],
+          "attributes": [
+            {
+              "name": "project-slug",
+              "fieldName": "projectSlug",
+              "type": {
+                "text": "string"
+              },
+              "default": ""
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ShowcaseSpotlightComponent",
+          "declaration": {
+            "name": "ShowcaseSpotlightComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "showcase-spotlight",
+          "declaration": {
+            "name": "ShowcaseSpotlightComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/showcase-support/showcase-support.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "ShowcaseSupportComponent",
+          "customElement": true,
+          "tagName": "showcase-support",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ShowcaseSupportComponent",
+          "declaration": {
+            "name": "ShowcaseSupportComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "showcase-support",
+          "declaration": {
+            "name": "ShowcaseSupportComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/showcase-toc/showcase-toc.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "ShowcaseTocComponent",
+          "customElement": true,
+          "tagName": "showcase-toc",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ShowcaseTocComponent",
+          "declaration": {
+            "name": "ShowcaseTocComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "showcase-toc",
+          "declaration": {
+            "name": "ShowcaseTocComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/showcase-view/showcase-view.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "ShowcaseViewComponent",
+          "customElement": true,
+          "tagName": "showcase-view",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ShowcaseViewComponent",
+          "declaration": {
+            "name": "ShowcaseViewComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "showcase-view",
+          "declaration": {
+            "name": "ShowcaseViewComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/showcase-visual/showcase-visual.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "ShowcaseVisualComponent",
+          "customElement": true,
+          "tagName": "showcase-visual",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [
+            {
+              "kind": "field",
+              "name": "projectSlug",
+              "attribute": "project-slug",
+              "type": {
+                "text": "string"
+              },
+              "default": ""
+            },
+            {
+              "kind": "field",
+              "name": "variant",
+              "attribute": "variant",
+              "type": {
+                "text": "string"
+              },
+              "default": "card"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "project-slug",
+              "fieldName": "projectSlug",
+              "type": {
+                "text": "string"
+              },
+              "default": ""
+            },
+            {
+              "name": "variant",
+              "fieldName": "variant",
+              "type": {
+                "text": "string"
+              },
+              "default": "card"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ShowcaseVisualComponent",
+          "declaration": {
+            "name": "ShowcaseVisualComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "showcase-visual",
+          "declaration": {
+            "name": "ShowcaseVisualComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/showcase-working-method/showcase-working-method.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "ShowcaseWorkingMethodComponent",
+          "customElement": true,
+          "tagName": "showcase-working-method",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ShowcaseWorkingMethodComponent",
+          "declaration": {
+            "name": "ShowcaseWorkingMethodComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "showcase-working-method",
+          "declaration": {
+            "name": "ShowcaseWorkingMethodComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/skills-section/skills-section.component.js",
       "declarations": [
         {
@@ -1254,6 +2048,72 @@
           "name": "pricing-page",
           "declaration": {
             "name": "PricingPage"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/pages/showcase-slug.page.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "ShowcaseSlugPage",
+          "customElement": true,
+          "tagName": "showcase-slug-page",
+          "superclass": {
+            "name": "DotaPageElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ShowcaseSlugPage",
+          "declaration": {
+            "name": "ShowcaseSlugPage"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "showcase-slug-page",
+          "declaration": {
+            "name": "ShowcaseSlugPage"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/pages/showcase.page.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "ShowcasePage",
+          "customElement": true,
+          "tagName": "showcase-page",
+          "superclass": {
+            "name": "DotaPageElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ShowcasePage",
+          "declaration": {
+            "name": "ShowcasePage"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "showcase-page",
+          "declaration": {
+            "name": "ShowcasePage"
           }
         }
       ]
