@@ -1,8 +1,10 @@
 import { Component, DotaPageElement, HTML, HostListener, SEO, WindowListener } from "@ayu-sh-kr/dota-wrap/core";
 import { OnEvent } from "@ayu-sh-kr/dota-wrap/event";
 import { Route } from "@ayu-sh-kr/dota-wrap/router";
+import { portfolioContent } from "@app/data/portfolio-content.ts";
 
 const clamp = (value: number, min: number, max: number): number => Math.min(max, Math.max(min, value));
+const offlineContent = portfolioContent.offline;
 
 @Route({ path: "/offline" })
 @Component({
@@ -33,13 +35,9 @@ export class OfflinePage extends DotaPageElement {
 
   get seo(): SEO {
     return {
-      title: "Connection status — Ayush Jaiswal",
-      description: "Connection status and recovery options for the Ayush Jaiswal portfolio.",
-      keywords: ["Connection status", "Offline page", "Ayush Jaiswal"],
-      og: {
-        title: "Connection status — Ayush Jaiswal",
-        description: "Connection status and recovery options for the portfolio.",
-      },
+      ...offlineContent.seo,
+      keywords: [...offlineContent.seo.keywords],
+      og: { ...offlineContent.seo.og },
     };
   }
 
@@ -128,32 +126,34 @@ export class OfflinePage extends DotaPageElement {
     cue?.toggleAttribute("hidden", isOnline);
 
     if (isOnline) {
+      const content = offlineContent.states.online;
       this.getMarks().forEach((mark) => mark.classList.add("is-lit"));
-      this.querySelector<HTMLElement>("[data-offline-glyph]")?.setAttribute("aria-label", "Wi-Fi connection is active");
-      this.setText("[data-offline-nav-status]", "Connection active");
-      this.setText("[data-offline-eyebrow]", "Connection restored");
-      this.setText("[data-offline-title-lead]", "You're");
-      this.setText("[data-offline-title-accent]", "online.");
-      this.setText("[data-offline-lede]", "Your connection is working. Continue to the portfolio whenever you're ready.");
-      this.setStatus("You're connected.", true);
-      this.setCode("NETWORK · online");
+      this.querySelector<HTMLElement>("[data-offline-glyph]")?.setAttribute("aria-label", content.glyphLabel);
+      this.setText("[data-offline-nav-status]", offlineContent.nav.onlineStatus);
+      this.setText("[data-offline-eyebrow]", content.eyebrow);
+      this.setText("[data-offline-title-lead]", content.titleLead);
+      this.setText("[data-offline-title-accent]", content.titleAccent);
+      this.setText("[data-offline-lede]", content.lede);
+      this.setStatus(content.status, true);
+      this.setCode(content.code);
       this.querySelectorAll<HTMLButtonElement>("[data-offline-retry]").forEach((button) => {
-        button.textContent = "Continue to home";
+        button.textContent = content.retryLabel;
         button.disabled = false;
       });
       this.resetStageStyles();
       return;
     }
 
-    this.setText("[data-offline-nav-status]", "Offline mode");
-    this.setText("[data-offline-eyebrow]", "Connection lost");
-    this.setText("[data-offline-title-lead]", "You're");
-    this.setText("[data-offline-title-accent]", "offline.");
-    this.setText("[data-offline-lede]", "This page can't reach the server right now. It will load again when your network comes back — I'm already checking.");
-    this.setStatus("Trying to reconnect…");
-    this.setCode("ERR_NETWORK · offline");
+    const content = offlineContent.states.offline;
+    this.setText("[data-offline-nav-status]", offlineContent.nav.offlineStatus);
+    this.setText("[data-offline-eyebrow]", content.eyebrow);
+    this.setText("[data-offline-title-lead]", content.titleLead);
+    this.setText("[data-offline-title-accent]", content.titleAccent);
+    this.setText("[data-offline-lede]", content.lede);
+    this.setStatus(content.status);
+    this.setCode(content.code);
     this.querySelectorAll<HTMLButtonElement>("[data-offline-retry]").forEach((button) => {
-      button.textContent = "Try again";
+      button.textContent = content.retryLabel;
     });
     this.startGlyphSignal();
     this.startConnectivityChecks();
@@ -234,7 +234,7 @@ export class OfflinePage extends DotaPageElement {
     this.updateLastTry();
 
     if (manual) {
-      this.setStatus("Trying to reach the server…");
+      this.setStatus(offlineContent.messages.checking);
       this.setRetryDisabled(true);
     }
 
@@ -248,9 +248,9 @@ export class OfflinePage extends DotaPageElement {
       if (navigator.onLine) {
         this.applyConnectivityState(true);
       } else if (manual) {
-        this.setStatus("Still no connection. Check your network and try again.");
+        this.setStatus(offlineContent.messages.stillOffline);
       } else {
-        this.setStatus("Trying to reconnect…");
+        this.setStatus(offlineContent.states.offline.status);
       }
     }, manual ? 900 : 400);
   }
@@ -284,7 +284,9 @@ export class OfflinePage extends DotaPageElement {
     }
 
     const seconds = Math.round((Date.now() - this.lastTry) / 1000);
-    meta.textContent = seconds < 3 ? "Last tried just now" : `Last tried ${seconds}s ago`;
+    meta.textContent = seconds < 3
+      ? offlineContent.lastTry.justNow
+      : offlineContent.lastTry.secondsAgo.replace("{seconds}", String(seconds));
   }
 
   private scheduleRender(): void {
@@ -388,20 +390,20 @@ export class OfflinePage extends DotaPageElement {
 
   render(): string {
     return HTML`
-      <nav id="offline-nav" aria-label="Offline navigation">
+      <nav id="offline-nav" aria-label="${offlineContent.nav.ariaLabel}">
         <div class="offline-nav-inner">
-          <a class="offline-brand" href="/">ayush.dev</a>
-          <span class="offline-nav-status" data-offline-nav-status>Offline mode</span>
+          <a class="offline-brand" href="${offlineContent.nav.brandHref}">${offlineContent.nav.brand}</a>
+          <span class="offline-nav-status" data-offline-nav-status>${offlineContent.nav.offlineStatus}</span>
         </div>
       </nav>
 
       <main id="offline-main">
-        <div id="offline-scroll-container" aria-label="Connection help">
+        <div id="offline-scroll-container" aria-label="${offlineContent.scrollContainerLabel}">
           <offline-hero></offline-hero>
           <offline-troubleshoot inert></offline-troubleshoot>
           <footer class="offline-footer">
-            <span>Served from the portfolio edge</span>
-            <span class="offline-code" data-offline-code>ERR_NETWORK · offline</span>
+            <span>${offlineContent.footer.source}</span>
+            <span class="offline-code" data-offline-code>${offlineContent.states.offline.code}</span>
           </footer>
         </div>
       </main>

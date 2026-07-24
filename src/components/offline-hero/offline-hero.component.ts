@@ -1,4 +1,5 @@
 import { BaseElement, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
+import { portfolioContent } from "@app/data/portfolio-content.ts";
 
 @Component({
   selector: "offline-hero",
@@ -10,10 +11,13 @@ export class OfflineHeroComponent extends BaseElement {
   }
 
   render(): string {
+    const { actions, hero, states } = portfolioContent.offline;
+    const content = states.offline;
+
     return HTML`
       <section class="offline-section offline-hero-section" aria-labelledby="offline-title">
         <div class="offline-panel-inner">
-          <div class="offline-glyph" data-offline-glyph role="img" aria-label="Searching for a Wi-Fi connection">
+          <div class="offline-glyph" data-offline-glyph role="img" aria-label="${content.glyphLabel}">
             <svg viewBox="0 0 200 172" aria-hidden="true">
               <path class="offline-mark" data-offline-mark="outer" d="M20 64 A115 115 0 0 1 180 64"></path>
               <path class="offline-mark" data-offline-mark="middle" d="M48 96 A75 75 0 0 1 152 96"></path>
@@ -22,21 +26,21 @@ export class OfflineHeroComponent extends BaseElement {
             </svg>
           </div>
 
-          <p class="offline-eyebrow" data-offline-eyebrow>Connection lost</p>
-          <h1 id="offline-title" class="offline-display"><span data-offline-title-lead>You're</span> <span data-offline-title-accent>offline.</span></h1>
-          <p class="offline-lede" data-offline-lede>This page can't reach the server right now. It will load again when your network comes back — I'm already checking.</p>
+          <p class="offline-eyebrow" data-offline-eyebrow>${content.eyebrow}</p>
+          <h1 id="offline-title" class="offline-display"><span data-offline-title-lead>${content.titleLead}</span> <span data-offline-title-accent>${content.titleAccent}</span></h1>
+          <p class="offline-lede" data-offline-lede>${content.lede}</p>
           <p class="offline-status" data-offline-status aria-live="polite">
             <span class="offline-status-dot" aria-hidden="true"></span>
-            <span data-offline-status-text>Trying to reconnect…</span>
+            <span data-offline-status-text>${content.status}</span>
           </p>
           <div class="offline-actions">
-            <button class="offline-button offline-button-ink" type="button" data-offline-action="retry" data-offline-retry>Try again</button>
-            <a class="offline-button offline-button-ghost" href="/">Back to home</a>
+            <button class="offline-button offline-button-ink" type="button" data-offline-action="retry" data-offline-retry>${content.retryLabel}</button>
+            <a class="offline-button offline-button-ghost" href="${actions.homeHref}">${actions.homeLabel}</a>
           </div>
         </div>
 
         <div class="offline-cue" data-offline-cue aria-hidden="true">
-          <span>Still stuck? Ways to fix it</span>
+          <span>${hero.scrollCue}</span>
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg>
         </div>
       </section>
