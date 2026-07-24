@@ -8,6 +8,9 @@
 @import "./components/footer-index/footer-index.component.css";
 @import "./components/footer-baseline/footer-baseline.component.css";
 @import "./components/dark-mode-button/dark-mode-button.component.css";
+@import "./components/offline-page/offline-page.component.css";
+@import "./components/offline-hero/offline-hero.component.css";
+@import "./components/offline-troubleshoot/offline-troubleshoot.component.css";
 @import "./components/hero-section/hero-section.component.css";
 @import "./components/journey-section/journey-section.component.css";
 @import "./components/motion-controller/motion-controller.component.css";
