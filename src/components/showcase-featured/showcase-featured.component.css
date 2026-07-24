@@ -1,0 +1,97 @@
+.showcase-featured-section {
+  border-block-start: 1px solid var(--border-color);
+}
+
+.showcase-card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+showcase-project-card {
+  display: block;
+}
+
+.showcase-card {
+  display: block;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  border-radius: 1.5rem;
+  background: var(--surface-color);
+  color: inherit;
+  text-decoration: none;
+  transition: transform 350ms cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 350ms ease, border-color 180ms ease;
+}
+
+.showcase-card:hover {
+  border-color: color-mix(in oklab, var(--primary-color) 35%, var(--border-color));
+  box-shadow: 0 1.6rem 3rem -2rem color-mix(in oklab, var(--foreground-color) 32%, transparent);
+  transform: translateY(-0.25rem);
+}
+
+.showcase-card-cover {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 1.65;
+}
+
+.showcase-card-cover showcase-visual {
+  transition: transform 500ms cubic-bezier(0.2, 0.8, 0.2, 1), filter 300ms ease;
+}
+
+.showcase-card:hover .showcase-card-cover showcase-visual {
+  filter: brightness(1.08);
+  transform: scale(1.03);
+}
+
+.showcase-card-arrow {
+  position: absolute;
+  inset-block-start: 1rem;
+  inset-inline-end: 1rem;
+  display: grid;
+  inline-size: 2.4rem;
+  block-size: 2.4rem;
+  place-items: center;
+  border: 1px solid color-mix(in oklab, var(--contrast-foreground-color) 22%, transparent);
+  border-radius: 50%;
+  background: color-mix(in oklab, var(--contrast-background-color) 55%, transparent);
+  color: var(--contrast-foreground-color);
+  transition: transform 220ms ease, background-color 180ms ease;
+}
+
+.showcase-card:hover .showcase-card-arrow {
+  background: var(--primary-color);
+  transform: rotate(8deg);
+}
+
+.showcase-card-body {
+  padding: clamp(1.35rem, 3vw, 2rem);
+}
+
+.showcase-card-body h3 {
+  font-size: clamp(1.45rem, 3vw, 2rem);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+.showcase-card-body p {
+  color: var(--muted-color);
+  line-height: 1.65;
+  text-wrap: pretty;
+}
+
+@media (max-width: 44rem) {
+  .showcase-card-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .showcase-card,
+  .showcase-card-cover showcase-visual,
+  .showcase-card-arrow {
+    transition: none;
+  }
+}
+
