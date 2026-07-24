@@ -1,6 +1,7 @@
 import { BaseElement, Component, WindowListener } from "@ayu-sh-kr/dota-wrap/core";
 import { OnEvent } from "@ayu-sh-kr/dota-wrap/event";
 import { GeneralUtils } from "@app/utils/general.utils.ts";
+import { RouterUtils } from "@app/utils/router.utils.ts";
 
 @Component({
   selector: "app-root",
@@ -38,12 +39,11 @@ export class AppComponent extends BaseElement {
   private offlineRouteTimer: number | null = null;
 
   private navigateToOffline(): void {
-    if (window.location.pathname === "/offline") {
+    if (RouterUtils.isCurrentPath("/offline")) {
       return;
     }
 
-    window.history.pushState({ offline: true }, "", "/offline");
-    window.dispatchEvent(new PopStateEvent("popstate", { state: { offline: true } }));
+    RouterUtils.navigate("/offline");
   }
 
   render(): string {
