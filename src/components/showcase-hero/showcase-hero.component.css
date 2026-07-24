@@ -1,0 +1,52 @@
+#showcase-hero-wrap {
+  block-size: 150svh;
+}
+
+.showcase-hero-stage {
+  justify-content: center;
+  padding-block: 7rem;
+}
+
+#showcase-hero-inner {
+  will-change: transform;
+}
+
+.showcase-count {
+  color: var(--muted-color);
+  font-size: 0.9rem;
+  letter-spacing: 0.01em;
+}
+
+.showcase-count strong {
+  color: var(--foreground-color);
+  font-variant-numeric: tabular-nums;
+}
+
+.showcase-scroll-hint {
+  position: absolute;
+  inset-block-end: 2rem;
+  inset-inline-start: 50%;
+  display: inline-flex;
+  gap: 0.55rem;
+  color: var(--muted-color);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transform: translateX(-50%);
+}
+
+.showcase-scroll-hint span {
+  color: var(--primary-color);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #showcase-hero-wrap {
+    block-size: auto;
+  }
+
+  .showcase-hero-stage {
+    position: static;
+    min-block-size: 75svh;
+  }
+}
+
