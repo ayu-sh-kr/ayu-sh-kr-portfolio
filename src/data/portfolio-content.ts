@@ -22,6 +22,86 @@ export const portfolioContent = {
     primaryCta: { label: "See my work", href: "#work-wrap" },
     secondaryCta: { label: "Get in touch", href: "#contact" },
   },
+  offline: {
+    seo: {
+      title: "Connection status — Ayush Jaiswal",
+      description: "Connection status and recovery options for the Ayush Jaiswal portfolio.",
+      keywords: ["Connection status", "Offline page", "Ayush Jaiswal"],
+      og: {
+        title: "Connection status — Ayush Jaiswal",
+        description: "Connection status and recovery options for the portfolio.",
+      },
+    },
+    nav: {
+      ariaLabel: "Offline navigation",
+      brand: "ayush.dev",
+      brandHref: "/",
+      offlineStatus: "Offline mode",
+      onlineStatus: "Connection active",
+    },
+    states: {
+      offline: {
+        glyphLabel: "Searching for a Wi-Fi connection",
+        eyebrow: "Connection lost",
+        titleLead: "You're",
+        titleAccent: "offline.",
+        lede: "This page can't reach the server right now. It will load again when your network comes back — I'm already checking.",
+        status: "Trying to reconnect…",
+        code: "ERR_NETWORK · offline",
+        retryLabel: "Try again",
+      },
+      online: {
+        glyphLabel: "Wi-Fi connection is active",
+        eyebrow: "Connection restored",
+        titleLead: "You're",
+        titleAccent: "online.",
+        lede: "Your connection is working. Continue to the portfolio whenever you're ready.",
+        status: "You're connected.",
+        code: "NETWORK · online",
+        retryLabel: "Continue to home",
+      },
+    },
+    messages: {
+      checking: "Trying to reach the server…",
+      stillOffline: "Still no connection. Check your network and try again.",
+    },
+    hero: {
+      scrollCue: "Still stuck? Ways to fix it",
+    },
+    scrollContainerLabel: "Connection help",
+    actions: {
+      homeLabel: "Back to home",
+      homeHref: "/",
+    },
+    troubleshooting: {
+      eyebrow: "Get back online",
+      title: "Three things to try.",
+      tries: [
+        {
+          title: "Check Wi-Fi or data",
+          body: "Toggle it off and on, or switch to a network with a stronger signal.",
+          icon: `<svg viewBox="0 0 24 24"><path d="M5 12.5a10 10 0 0 1 14 0M8 16a5.5 5.5 0 0 1 8 0"></path><circle cx="12" cy="19.5" r="1.4"></circle></svg>`,
+        },
+        {
+          title: "Give it a second",
+          body: "Moving through a lift, tunnel, or dead spot? The signal usually returns on its own.",
+          icon: `<svg viewBox="0 0 24 24"><path d="M20 11a8 8 0 1 0-1.5 5.5"></path><path d="M20 5v6h-6"></path></svg>`,
+        },
+        {
+          title: "Might be the server",
+          body: "If everything else loads fine, it's on my side — and it won't stay down long.",
+          icon: `<svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="7" rx="1.5"></rect><rect x="4" y="13" width="16" height="7" rx="1.5"></rect><path d="M7.5 7.5h.01M7.5 16.5h.01"></path></svg>`,
+        },
+      ],
+    },
+    footer: {
+      source: "Served from the portfolio edge",
+    },
+    lastTry: {
+      justNow: "Last tried just now",
+      secondsAgo: "Last tried {seconds}s ago",
+    },
+  },
   journey: [
     {
       label: "Chapter 01 · Foundation",
