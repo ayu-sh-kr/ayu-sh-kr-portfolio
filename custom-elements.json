@@ -564,6 +564,105 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/offline-hero/offline-hero.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "OfflineHeroComponent",
+          "customElement": true,
+          "tagName": "offline-hero",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "OfflineHeroComponent",
+          "declaration": {
+            "name": "OfflineHeroComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "offline-hero",
+          "declaration": {
+            "name": "OfflineHeroComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/offline-page/offline-page.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "OfflinePage",
+          "customElement": true,
+          "tagName": "offline-page",
+          "superclass": {
+            "name": "DotaPageElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "OfflinePage",
+          "declaration": {
+            "name": "OfflinePage"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "offline-page",
+          "declaration": {
+            "name": "OfflinePage"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/offline-troubleshoot/offline-troubleshoot.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "OfflineTroubleshootComponent",
+          "customElement": true,
+          "tagName": "offline-troubleshoot",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "OfflineTroubleshootComponent",
+          "declaration": {
+            "name": "OfflineTroubleshootComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "offline-troubleshoot",
+          "declaration": {
+            "name": "OfflineTroubleshootComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/pricing-contact/pricing-contact.component.js",
       "declarations": [
         {

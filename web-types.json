@@ -1,0 +1,929 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JetBrains/web-types/master/schema/web-types.json",
+  "name": "",
+  "version": "",
+  "contributions": {
+    "html": {
+      "elements": [
+        {
+          "name": "app-error",
+          "source": {
+            "file": "./src/pages/error.page.ts",
+            "offset": 253
+          },
+          "attributes": [
+            {
+              "name": "message",
+              "default": "Page not found",
+              "required": false,
+              "value": {
+                "type": "string"
+              },
+              "source": {
+                "file": "./src/pages/error.page.ts",
+                "offset": 409
+              }
+            },
+            {
+              "name": "status",
+              "default": "404",
+              "required": false,
+              "value": {
+                "type": "string"
+              },
+              "source": {
+                "file": "./src/pages/error.page.ts",
+                "offset": 337
+              }
+            }
+          ],
+          "js": {
+            "properties": [
+              {
+                "name": "message",
+                "type": "string",
+                "default": "Page not found",
+                "source": {
+                  "file": "./src/pages/error.page.ts",
+                  "offset": 409
+                }
+              },
+              {
+                "name": "status",
+                "type": "string",
+                "default": "404",
+                "source": {
+                  "file": "./src/pages/error.page.ts",
+                  "offset": 337
+                }
+              }
+            ]
+          }
+        },
+        {
+          "name": "app-footer",
+          "source": {
+            "file": "./src/components/app-footer/app-footer.component.ts",
+            "offset": 147
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "app-header",
+          "source": {
+            "file": "./src/components/app-header/app-header.component.ts",
+            "offset": 278
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "app-home",
+          "source": {
+            "file": "./src/pages/home.page.ts",
+            "offset": 229
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "app-root",
+          "source": {
+            "file": "./src/app.component.ts",
+            "offset": 269
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "blog-article",
+          "source": {
+            "file": "./src/components/blog-view/blog-article.component.ts",
+            "offset": 807
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "blog-index",
+          "source": {
+            "file": "./src/components/blog-view/blog-index.component.ts",
+            "offset": 2291
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "blog-markdown-view",
+          "source": {
+            "file": "./src/components/blog-view/blog-markdown-view.component.ts",
+            "offset": 546
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "blog-page",
+          "source": {
+            "file": "./src/pages/blog.page.ts",
+            "offset": 221
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "blog-slug-page",
+          "source": {
+            "file": "./src/pages/blog-slug.page.ts",
+            "offset": 304
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "blog-view",
+          "source": {
+            "file": "./src/components/blog-view/blog-view.component.ts",
+            "offset": 525
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "build-offering",
+          "source": {
+            "file": "./src/components/build-offering/build-offering.component.ts",
+            "offset": 214
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "build-pricing",
+          "source": {
+            "file": "./src/components/build-pricing/build-pricing.component.ts",
+            "offset": 213
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "dark-mode-button",
+          "source": {
+            "file": "./src/components/dark-mode-button/dark-mode-button.component.ts",
+            "offset": 234
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "footer-baseline",
+          "source": {
+            "file": "./src/components/footer-baseline/footer-baseline.component.ts",
+            "offset": 273
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "footer-index",
+          "source": {
+            "file": "./src/components/footer-index/footer-index.component.ts",
+            "offset": 216
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "footer-support",
+          "source": {
+            "file": "./src/components/footer-support/footer-support.component.ts",
+            "offset": 349
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "offline-hero",
+          "source": {
+            "file": "./src/components/offline-hero/offline-hero.component.ts",
+            "offset": 149
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "offline-page",
+          "source": {
+            "file": "./src/components/offline-page/offline-page.component.ts",
+            "offset": 429
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "offline-troubleshoot",
+          "source": {
+            "file": "./src/components/offline-troubleshoot/offline-troubleshoot.component.ts",
+            "offset": 157
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "portfolio-contact",
+          "source": {
+            "file": "./src/components/about-contact-section/about-contact-section.component.ts",
+            "offset": 221
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "portfolio-hero",
+          "source": {
+            "file": "./src/components/hero-section/hero-section.component.ts",
+            "offset": 218
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "portfolio-journey",
+          "source": {
+            "file": "./src/components/journey-section/journey-section.component.ts",
+            "offset": 221
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "portfolio-motion-controller",
+          "source": {
+            "file": "./src/components/motion-controller/motion-controller.component.ts",
+            "offset": 360
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "portfolio-services",
+          "source": {
+            "file": "./src/components/services-section/services-section.component.ts",
+            "offset": 222
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "portfolio-skills",
+          "source": {
+            "file": "./src/components/skills-section/skills-section.component.ts",
+            "offset": 220
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "portfolio-speaking",
+          "source": {
+            "file": "./src/components/speaking-section/speaking-section.component.ts",
+            "offset": 650
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "portfolio-work",
+          "source": {
+            "file": "./src/components/projects-section/projects-section.component.ts",
+            "offset": 218
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "pricing-contact",
+          "source": {
+            "file": "./src/components/pricing-contact/pricing-contact.component.ts",
+            "offset": 215
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "pricing-estimator",
+          "source": {
+            "file": "./src/components/pricing-estimator/pricing-estimator.component.ts",
+            "offset": 217
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "pricing-estimator-result",
+          "source": {
+            "file": "./src/components/pricing-estimator-result/pricing-estimator-result.component.ts",
+            "offset": 583
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "pricing-estimator-stage-options",
+          "source": {
+            "file": "./src/components/pricing-estimator-stage-options/pricing-estimator-stage-options.component.ts",
+            "offset": 356
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "pricing-estimator-type-options",
+          "source": {
+            "file": "./src/components/pricing-estimator-type-options/pricing-estimator-type-options.component.ts",
+            "offset": 354
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "pricing-faq",
+          "source": {
+            "file": "./src/components/pricing-faq/pricing-faq.component.ts",
+            "offset": 211
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "pricing-hero",
+          "source": {
+            "file": "./src/components/pricing-hero/pricing-hero.component.ts",
+            "offset": 387
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "pricing-page",
+          "source": {
+            "file": "./src/pages/pricing.page.ts",
+            "offset": 303
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "pricing-sticky-contact",
+          "source": {
+            "file": "./src/components/pricing-sticky-contact/pricing-sticky-contact.component.ts",
+            "offset": 340
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "pricing-switch",
+          "source": {
+            "file": "./src/components/pricing-switch/pricing-switch.component.ts",
+            "offset": 344
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "showcase-archive",
+          "source": {
+            "file": "./src/components/showcase-archive/showcase-archive.component.ts",
+            "offset": 409
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "showcase-aside",
+          "source": {
+            "file": "./src/components/showcase-aside/showcase-aside.component.ts",
+            "offset": 224
+          },
+          "attributes": [
+            {
+              "name": "kind",
+              "default": "note",
+              "required": false,
+              "value": {
+                "type": "string"
+              },
+              "source": {
+                "file": "./src/components/showcase-aside/showcase-aside.component.ts",
+                "offset": 313
+              }
+            }
+          ],
+          "js": {
+            "properties": [
+              {
+                "name": "kind",
+                "type": "string",
+                "default": "note",
+                "source": {
+                  "file": "./src/components/showcase-aside/showcase-aside.component.ts",
+                  "offset": 313
+                }
+              }
+            ]
+          }
+        },
+        {
+          "name": "showcase-cta",
+          "source": {
+            "file": "./src/components/showcase-cta/showcase-cta.component.ts",
+            "offset": 149
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "showcase-faq",
+          "source": {
+            "file": "./src/components/showcase-faq/showcase-faq.component.ts",
+            "offset": 214
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "showcase-featured",
+          "source": {
+            "file": "./src/components/showcase-featured/showcase-featured.component.ts",
+            "offset": 229
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "showcase-figure",
+          "source": {
+            "file": "./src/components/showcase-figure/showcase-figure.component.ts",
+            "offset": 451
+          },
+          "attributes": [
+            {
+              "name": "caption",
+              "default": "",
+              "required": false,
+              "value": {
+                "type": "string"
+              },
+              "source": {
+                "file": "./src/components/showcase-figure/showcase-figure.component.ts",
+                "offset": 598
+              }
+            },
+            {
+              "name": "src",
+              "default": "",
+              "required": false,
+              "value": {
+                "type": "string"
+              },
+              "source": {
+                "file": "./src/components/showcase-figure/showcase-figure.component.ts",
+                "offset": 540
+              }
+            }
+          ],
+          "js": {
+            "properties": [
+              {
+                "name": "caption",
+                "type": "string",
+                "default": "",
+                "source": {
+                  "file": "./src/components/showcase-figure/showcase-figure.component.ts",
+                  "offset": 598
+                }
+              },
+              {
+                "name": "src",
+                "type": "string",
+                "default": "",
+                "source": {
+                  "file": "./src/components/showcase-figure/showcase-figure.component.ts",
+                  "offset": 540
+                }
+              }
+            ]
+          }
+        },
+        {
+          "name": "showcase-hero",
+          "source": {
+            "file": "./src/components/showcase-hero/showcase-hero.component.ts",
+            "offset": 216
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "showcase-markdown-view",
+          "source": {
+            "file": "./src/components/showcase-markdown-view/showcase-markdown-view.component.ts",
+            "offset": 558
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "showcase-metrics",
+          "source": {
+            "file": "./src/components/showcase-metrics/showcase-metrics.component.ts",
+            "offset": 499
+          },
+          "attributes": [
+            {
+              "name": "items",
+              "default": "",
+              "required": false,
+              "value": {
+                "type": "string"
+              },
+              "source": {
+                "file": "./src/components/showcase-metrics/showcase-metrics.component.ts",
+                "offset": 591
+              }
+            }
+          ],
+          "js": {
+            "properties": [
+              {
+                "name": "items",
+                "type": "string",
+                "default": "",
+                "source": {
+                  "file": "./src/components/showcase-metrics/showcase-metrics.component.ts",
+                  "offset": 591
+                }
+              }
+            ]
+          }
+        },
+        {
+          "name": "showcase-motion-controller",
+          "source": {
+            "file": "./src/components/showcase-motion-controller/showcase-motion-controller.component.ts",
+            "offset": 332
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "showcase-page",
+          "source": {
+            "file": "./src/pages/showcase.page.ts",
+            "offset": 242
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "showcase-page-content",
+          "source": {
+            "file": "./src/components/showcase-page/showcase-page.component.ts",
+            "offset": 233
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "showcase-project-card",
+          "source": {
+            "file": "./src/components/showcase-project-card/showcase-project-card.component.ts",
+            "offset": 244
+          },
+          "attributes": [
+            {
+              "name": "project-slug",
+              "default": "",
+              "required": false,
+              "value": {
+                "type": "string"
+              },
+              "source": {
+                "file": "./src/components/showcase-project-card/showcase-project-card.component.ts",
+                "offset": 349
+              }
+            }
+          ],
+          "js": {
+            "properties": [
+              {
+                "name": "projectSlug",
+                "type": "string",
+                "default": "",
+                "source": {
+                  "file": "./src/components/showcase-project-card/showcase-project-card.component.ts",
+                  "offset": 349
+                }
+              }
+            ]
+          }
+        },
+        {
+          "name": "showcase-project-row",
+          "source": {
+            "file": "./src/components/showcase-project-row/showcase-project-row.component.ts",
+            "offset": 243
+          },
+          "attributes": [
+            {
+              "name": "project-slug",
+              "default": "",
+              "required": false,
+              "value": {
+                "type": "string"
+              },
+              "source": {
+                "file": "./src/components/showcase-project-row/showcase-project-row.component.ts",
+                "offset": 347
+              }
+            }
+          ],
+          "js": {
+            "properties": [
+              {
+                "name": "projectSlug",
+                "type": "string",
+                "default": "",
+                "source": {
+                  "file": "./src/components/showcase-project-row/showcase-project-row.component.ts",
+                  "offset": 347
+                }
+              }
+            ]
+          }
+        },
+        {
+          "name": "showcase-slug-page",
+          "source": {
+            "file": "./src/pages/showcase-slug.page.ts",
+            "offset": 324
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "showcase-spotlight",
+          "source": {
+            "file": "./src/components/showcase-spotlight/showcase-spotlight.component.ts",
+            "offset": 241
+          },
+          "attributes": [
+            {
+              "name": "project-slug",
+              "default": "",
+              "required": false,
+              "value": {
+                "type": "string"
+              },
+              "source": {
+                "file": "./src/components/showcase-spotlight/showcase-spotlight.component.ts",
+                "offset": 344
+              }
+            }
+          ],
+          "js": {
+            "properties": [
+              {
+                "name": "projectSlug",
+                "type": "string",
+                "default": "",
+                "source": {
+                  "file": "./src/components/showcase-spotlight/showcase-spotlight.component.ts",
+                  "offset": 344
+                }
+              }
+            ]
+          }
+        },
+        {
+          "name": "showcase-support",
+          "source": {
+            "file": "./src/components/showcase-support/showcase-support.component.ts",
+            "offset": 153
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "showcase-toc",
+          "source": {
+            "file": "./src/components/showcase-toc/showcase-toc.component.ts",
+            "offset": 829
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "showcase-view",
+          "source": {
+            "file": "./src/components/showcase-view/showcase-view.component.ts",
+            "offset": 1042
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "showcase-visual",
+          "source": {
+            "file": "./src/components/showcase-visual/showcase-visual.component.ts",
+            "offset": 238
+          },
+          "attributes": [
+            {
+              "name": "project-slug",
+              "default": "",
+              "required": false,
+              "value": {
+                "type": "string"
+              },
+              "source": {
+                "file": "./src/components/showcase-visual/showcase-visual.component.ts",
+                "offset": 338
+              }
+            },
+            {
+              "name": "variant",
+              "default": "card",
+              "required": false,
+              "value": {
+                "type": "string"
+              },
+              "source": {
+                "file": "./src/components/showcase-visual/showcase-visual.component.ts",
+                "offset": 406
+              }
+            }
+          ],
+          "js": {
+            "properties": [
+              {
+                "name": "projectSlug",
+                "type": "string",
+                "default": "",
+                "source": {
+                  "file": "./src/components/showcase-visual/showcase-visual.component.ts",
+                  "offset": 338
+                }
+              },
+              {
+                "name": "variant",
+                "type": "string",
+                "default": "card",
+                "source": {
+                  "file": "./src/components/showcase-visual/showcase-visual.component.ts",
+                  "offset": 406
+                }
+              }
+            ]
+          }
+        },
+        {
+          "name": "showcase-working-method",
+          "source": {
+            "file": "./src/components/showcase-working-method/showcase-working-method.component.ts",
+            "offset": 225
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "speaking-offering",
+          "source": {
+            "file": "./src/components/speaking-offering/speaking-offering.component.ts",
+            "offset": 217
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "speaking-pricing",
+          "source": {
+            "file": "./src/components/speaking-pricing/speaking-pricing.component.ts",
+            "offset": 216
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        }
+      ]
+    }
+  }
+}
