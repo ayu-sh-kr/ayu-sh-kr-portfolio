@@ -16,9 +16,9 @@
     "vite": "^7.0.0"
   },
   "dependencies": {
-    "@ayu-sh-kr/dota-md": "0.0.9",
-    "@ayu-sh-kr/dota-ui": "0.0.20",
-    "@ayu-sh-kr/dota-wrap": "0.0.23",
+    "@ayu-sh-kr/dota-md": "latest",
+    "@ayu-sh-kr/dota-ui": "latest",
+    "@ayu-sh-kr/dota-wrap": "latest",
     "@types/node": "^26.1.0",
     "reflect-metadata": "^0.2.2"
   },
