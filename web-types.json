@@ -97,7 +97,7 @@
           "name": "app-root",
           "source": {
             "file": "./src/app.component.ts",
-            "offset": 269
+            "offset": 327
           },
           "attributes": [],
           "js": {
@@ -240,7 +240,7 @@
           "name": "offline-hero",
           "source": {
             "file": "./src/components/offline-hero/offline-hero.component.ts",
-            "offset": 149
+            "offset": 216
           },
           "attributes": [],
           "js": {
@@ -251,7 +251,7 @@
           "name": "offline-page",
           "source": {
             "file": "./src/components/offline-page/offline-page.component.ts",
-            "offset": 429
+            "offset": 603
           },
           "attributes": [],
           "js": {
@@ -262,7 +262,7 @@
           "name": "offline-troubleshoot",
           "source": {
             "file": "./src/components/offline-troubleshoot/offline-troubleshoot.component.ts",
-            "offset": 157
+            "offset": 224
           },
           "attributes": [],
           "js": {
