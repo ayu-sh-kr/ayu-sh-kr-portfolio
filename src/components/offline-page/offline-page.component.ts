@@ -2,6 +2,7 @@ import { Component, DotaPageElement, HTML, HostListener, SEO, WindowListener } f
 import { OnEvent } from "@ayu-sh-kr/dota-wrap/event";
 import { Route } from "@ayu-sh-kr/dota-wrap/router";
 import { portfolioContent } from "@app/data/portfolio-content.ts";
+import { RouterUtils } from "@app/utils/router.utils.ts";
 
 const clamp = (value: number, min: number, max: number): number => Math.min(max, Math.max(min, value));
 const offlineContent = portfolioContent.offline;
@@ -91,7 +92,7 @@ export class OfflinePage extends DotaPageElement {
 
     if (target.dataset.offlineAction === "retry") {
       if (this.isOnline) {
-        window.location.assign("/");
+        RouterUtils.navigate("/");
       } else {
         this.check(true);
       }
