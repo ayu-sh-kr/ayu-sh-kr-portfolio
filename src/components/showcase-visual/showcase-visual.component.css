@@ -1,0 +1,129 @@
+showcase-visual {
+  display: block;
+  block-size: 100%;
+}
+
+.showcase-visual {
+  position: relative;
+  display: flex;
+  min-block-size: 100%;
+  align-items: flex-end;
+  overflow: hidden;
+  isolation: isolate;
+  padding: clamp(1.2rem, 3vw, 2rem);
+  color: var(--contrast-foreground-color);
+  background: var(--contrast-background-color);
+}
+
+.showcase-visual-card {
+  min-block-size: 12rem;
+}
+
+.showcase-visual-spotlight {
+  min-block-size: clamp(20rem, 42vw, 30rem);
+}
+
+.showcase-visual::before,
+.showcase-visual::after {
+  position: absolute;
+  z-index: -1;
+  content: "";
+  border-radius: 50%;
+  background: color-mix(in oklab, var(--primary-color) 68%, transparent);
+  filter: blur(1px);
+}
+
+.showcase-visual::before {
+  inline-size: 65%;
+  aspect-ratio: 1;
+  inset-block-start: -30%;
+  inset-inline-end: -12%;
+  opacity: 0.36;
+}
+
+.showcase-visual::after {
+  inline-size: 42%;
+  aspect-ratio: 1;
+  inset-block-end: -22%;
+  inset-inline-start: -8%;
+  opacity: 0.22;
+}
+
+.showcase-visual-grid {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  opacity: 0.16;
+  background-image: linear-gradient(var(--contrast-foreground-color) 1px, transparent 1px), linear-gradient(90deg, var(--contrast-foreground-color) 1px, transparent 1px);
+  background-size: 2.25rem 2.25rem;
+  mask-image: linear-gradient(to bottom, black, transparent 85%);
+}
+
+.showcase-visual-orbit {
+  position: absolute;
+  z-index: -1;
+  border: 1px solid color-mix(in oklab, var(--primary-color) 65%, transparent);
+  border-radius: 50%;
+  transform: rotate(-24deg);
+}
+
+.showcase-visual-orbit-one {
+  inline-size: 72%;
+  aspect-ratio: 1.8;
+  inset-block-start: 11%;
+  inset-inline-start: 18%;
+}
+
+.showcase-visual-orbit-two {
+  inline-size: 49%;
+  aspect-ratio: 1.8;
+  inset-block-start: 29%;
+  inset-inline-start: 32%;
+  transform: rotate(54deg);
+}
+
+.showcase-visual-labels {
+  position: absolute;
+  inset-block-start: 1.1rem;
+  inset-inline-end: 1.1rem;
+  display: grid;
+  gap: 0.4rem;
+  justify-items: end;
+  color: var(--primary-200);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.7rem;
+  opacity: 0.9;
+}
+
+.showcase-visual strong {
+  max-inline-size: 85%;
+  font-size: clamp(1.2rem, 3vw, 2rem);
+  letter-spacing: -0.035em;
+  line-height: 1;
+}
+
+.showcase-visual-restaurant {
+  background: color-mix(in oklab, var(--contrast-background-color) 82%, var(--primary-color-strong));
+}
+
+.showcase-visual-sacrena {
+  background: color-mix(in oklab, var(--contrast-background-color) 92%, var(--foreground-color));
+}
+
+.showcase-visual-jalans {
+  background: color-mix(in oklab, var(--contrast-background-color) 72%, var(--primary-color-strong));
+}
+
+.showcase-visual-pipeline {
+  background: color-mix(in oklab, var(--contrast-background-color) 96%, var(--foreground-color));
+}
+
+.showcase-visual-rest {
+  background: color-mix(in oklab, var(--contrast-background-color) 76%, var(--primary-color-strong));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .showcase-visual-orbit {
+    transform: none;
+  }
+}
