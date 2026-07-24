@@ -4,6 +4,7 @@ export const portfolioContent = {
     logo: "ayush.dev",
     links: [
       { label: "Work", href: "/#work-wrap" },
+      { label: "Showcase", href: "/showcase" },
       { label: "Journey", href: "/#journey-wrap" },
       { label: "Speaking", href: "/#speaking" },
       { label: "Skills", href: "/#skills" },
@@ -132,7 +133,7 @@ export const portfolioContent = {
         label: "Invite me to speak",
         href: "mailto:akjaiswal2003@gmail.com?subject=Speaking%20invitation",
       },
-      secondaryCta: { label: "See topics & rates", href: "#contact" },
+      secondaryCta: { label: "See topics & rates", href: "/pricing" },
     },
   },
   skills: [
