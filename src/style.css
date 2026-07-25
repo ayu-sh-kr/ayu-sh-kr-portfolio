@@ -52,6 +52,12 @@
 @import "./components/showcase-metrics/showcase-metrics.component.css";
 @import "./components/showcase-aside/showcase-aside.component.css";
 @import "./components/showcase-figure/showcase-figure.component.css";
+@import "./components/privacy-view/privacy-view.component.css";
+@import "./components/privacy-markdown-view/privacy-markdown-view.component.css";
+@import "./components/privacy-toc/privacy-toc.component.css";
+@import "./components/terms-view/terms-view.component.css";
+@import "./components/terms-markdown-view/terms-markdown-view.component.css";
+@import "./components/terms-toc/terms-toc.component.css";
 
 /*noinspection DuplicatedCode*/
 @font-face {
