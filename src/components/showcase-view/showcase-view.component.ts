@@ -4,18 +4,7 @@ import {getShowcaseProject, getShowcaseSlug, showcaseProjects, type ShowcaseProj
 import {SHOWCASE_MARKDOWN_SOURCE_EVENT, type ShowcaseMarkdownSource} from "@app/events/showcase.events.ts";
 import {ShowcaseLoaderService} from "@app/service/showcase-loader.service.ts";
 import {portfolioMarkdownColor, portfolioMarkdownTheme} from "@app/configs/markdown-theme.config.ts";
-
-const escapeHtml = (value: string): string =>
-  value.replace(/[&<>'"]/g, (character) => {
-    const entities: Record<string, string> = {
-      "&": "&amp;",
-      "<": "&lt;",
-      ">": "&gt;",
-      "'": "&#39;",
-      '"': "&quot;",
-    };
-    return entities[character];
-  });
+import {escapeHtml} from "@app/utils/html.utils.ts";
 
 const displayStatus = (status: ShowcaseProject["status"]): string =>
   status.charAt(0).toUpperCase() + status.slice(1);

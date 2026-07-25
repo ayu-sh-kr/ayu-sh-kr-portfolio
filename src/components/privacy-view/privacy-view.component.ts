@@ -7,15 +7,7 @@ import {
   type PrivacyMarkdownSource,
 } from "@app/events/privacy.events.ts";
 import {PrivacyLoaderService, type PrivacyDocument} from "@app/service/privacy-loader.service.ts";
-
-const escapeHtml = (value: string): string =>
-  value.replace(/[&<>'"]/g, (character) => ({
-    "&": "&amp;",
-    "<": "&lt;",
-    ">": "&gt;",
-    "'": "&#39;",
-    '"': "&quot;",
-  })[character] ?? character);
+import {escapeHtml} from "@app/utils/html.utils.ts";
 
 const formatDate = (value: string): string => {
   const date = new Date(`${value}T00:00:00Z`);

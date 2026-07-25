@@ -2,6 +2,7 @@ import {AfterInit, BaseElement, Component} from "@ayu-sh-kr/dota-wrap/core";
 import {type ApplicationEvent, OnEvent} from "@ayu-sh-kr/dota-wrap/event";
 import {formatBlogDate, labelForCategory, type BlogCategory, type BlogPost} from "@app/configs/blogs.config.ts";
 import {BLOG_INDEX_DATA_EVENT} from "@app/events/blog.events.ts";
+import {escapeHtml} from "@app/utils/html.utils.ts";
 
 const filters: Array<{value: BlogCategory | "all"; label: string; hash: string}> = [
   {value: "all", label: "All", hash: "all"},
@@ -10,18 +11,6 @@ const filters: Array<{value: BlogCategory | "all"; label: string; hash: string}>
   {value: "news", label: "News", hash: "news"},
   {value: "notes", label: "Notes", hash: "notes"},
 ];
-
-const escapeHtml = (value: string): string =>
-  value.replace(/[&<>'"]/g, (character) => {
-    const entities: Record<string, string> = {
-      "&": "&amp;",
-      "<": "&lt;",
-      ">": "&gt;",
-      "'": "&#39;",
-      '"': "&quot;",
-    };
-    return entities[character];
-  });
 
 const categoryFromHash = (): BlogCategory | "all" => {
   let value = window.location.hash.replace(/^#\/?/, "");

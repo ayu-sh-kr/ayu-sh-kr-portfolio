@@ -1,15 +1,7 @@
 import {BaseElement, Component, HostListener, HTML, WindowListener} from "@ayu-sh-kr/dota-wrap/core";
 import {type ApplicationEvent, OnEvent} from "@ayu-sh-kr/dota-wrap/event";
 import {TERMS_MARKDOWN_RENDER_EVENT, type TermsSection} from "@app/events/terms.events.ts";
-
-const escapeHtml = (value: string): string =>
-  value.replace(/[&<>'"]/g, (character) => ({
-    "&": "&amp;",
-    "<": "&lt;",
-    ">": "&gt;",
-    "'": "&#39;",
-    '"': "&quot;",
-  })[character] ?? character);
+import {escapeHtml} from "@app/utils/html.utils.ts";
 
 @Component({
   selector: "terms-toc",

@@ -6,18 +6,7 @@ import {
   BLOG_ARTICLE_ERROR_EVENT,
 } from "@app/events/blog.events.ts";
 import {portfolioMarkdownColor, portfolioMarkdownTheme} from "@app/configs/markdown-theme.config.ts";
-
-const escapeHtml = (value: string): string =>
-  value.replace(/[&<>'"]/g, (character) => {
-    const entities: Record<string, string> = {
-      "&": "&amp;",
-      "<": "&lt;",
-      ">": "&gt;",
-      "'": "&#39;",
-      '"': "&quot;",
-    };
-    return entities[character];
-  });
+import {escapeHtml} from "@app/utils/html.utils.ts";
 
 @Component({
   selector: "blog-article",

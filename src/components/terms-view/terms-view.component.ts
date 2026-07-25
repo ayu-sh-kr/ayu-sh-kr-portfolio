@@ -7,15 +7,7 @@ import {
   type TermsMarkdownSource,
 } from "@app/events/terms.events.ts";
 import {TermsLoaderService, type TermsDocument} from "@app/service/terms-loader.service.ts";
-
-const escapeHtml = (value: string): string =>
-  value.replace(/[&<>'"]/g, (character) => ({
-    "&": "&amp;",
-    "<": "&lt;",
-    ">": "&gt;",
-    "'": "&#39;",
-    '"': "&quot;",
-  })[character] ?? character);
+import {escapeHtml} from "@app/utils/html.utils.ts";
 
 const formatDate = (value: string): string => {
   const date = new Date(`${value}T00:00:00Z`);

@@ -1,20 +1,9 @@
 import {BaseElement, Component, HostListener, HTML, WindowListener} from "@ayu-sh-kr/dota-wrap/core";
 import {type ApplicationEvent, OnEvent} from "@ayu-sh-kr/dota-wrap/event";
 import type {TocEntry} from "@ayu-sh-kr/dota-md";
+import {escapeHtml} from "@app/utils/html.utils.ts";
 
 type FlatTocEntry = TocEntry & {depth: number};
-
-const escapeHtml = (value: string): string =>
-  value.replace(/[&<>'"]/g, (character) => {
-    const entities: Record<string, string> = {
-      "&": "&amp;",
-      "<": "&lt;",
-      ">": "&gt;",
-      "'": "&#39;",
-      '"': "&quot;",
-    };
-    return entities[character];
-  });
 
 const flattenEntries = (entries: readonly TocEntry[], depth = 0): FlatTocEntry[] =>
   entries.flatMap((entry) => [
