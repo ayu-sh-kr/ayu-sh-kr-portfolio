@@ -2051,6 +2051,39 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/terms-toc/terms-toc.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "TermsTocComponent",
+          "customElement": true,
+          "tagName": "terms-toc",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "TermsTocComponent",
+          "declaration": {
+            "name": "TermsTocComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "terms-toc",
+          "declaration": {
+            "name": "TermsTocComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/terms-view/terms-view.component.js",
       "declarations": [
         {
