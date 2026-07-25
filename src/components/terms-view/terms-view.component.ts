@@ -8,6 +8,7 @@ import {
 } from "@app/events/terms.events.ts";
 import {TermsLoaderService, type TermsDocument} from "@app/service/terms-loader.service.ts";
 import {escapeHtml} from "@app/utils/html.utils.ts";
+import {MarkdownSourceLifecycle} from "@app/utils/markdown-lifecycle.utils.ts";
 
 const formatDate = (value: string): string => {
   const date = new Date(`${value}T00:00:00Z`);
@@ -30,10 +31,10 @@ const formatDate = (value: string): string => {
 export class TermsViewComponent extends BaseElement {
   private readonly loader = new TermsLoaderService();
   private readonly publisher = ApplicationEventService.getInstance().getPublisher();
+  private readonly sourceLifecycle = new MarkdownSourceLifecycle(this);
   private terms: TermsDocument | null = null;
   private request: AbortController | null = null;
   private frameId: number | null = null;
-  private sourceFrameId: number | null = null;
   private activeScope = "use";
   private loadError = "";
 
@@ -45,7 +46,7 @@ export class TermsViewComponent extends BaseElement {
   onConnected(): void {
     this.scheduleProgressRender();
     if (this.terms) {
-      this.publishSourceAfterRender();
+      this.sourceLifecycle.schedule(() => this.publishSource());
       return;
     }
     void this.loadTerms();
@@ -59,10 +60,7 @@ export class TermsViewComponent extends BaseElement {
       cancelAnimationFrame(this.frameId);
       this.frameId = null;
     }
-    if (this.sourceFrameId !== null) {
-      cancelAnimationFrame(this.sourceFrameId);
-      this.sourceFrameId = null;
-    }
+    this.sourceLifecycle.disconnect();
   }
 
   @WindowListener({event: "scroll"})
@@ -117,7 +115,7 @@ export class TermsViewComponent extends BaseElement {
       this.activeScope = terms.metadata.switches[0]?.target ?? terms.sections[0]?.id ?? "";
       this.loadError = "";
       this.updateHTML();
-      this.publishSourceAfterRender();
+      this.sourceLifecycle.schedule(() => this.publishSource());
       this.scheduleProgressRender();
     } catch (error) {
       if (error instanceof DOMException && error.name === "AbortError") {
@@ -143,18 +141,6 @@ export class TermsViewComponent extends BaseElement {
         markdown: this.terms.markdown,
         sections: this.terms.sections,
       } satisfies TermsMarkdownSource,
-    });
-  }
-
-  private publishSourceAfterRender(): void {
-    if (this.sourceFrameId !== null) {
-      cancelAnimationFrame(this.sourceFrameId);
-    }
-    this.sourceFrameId = requestAnimationFrame(() => {
-      this.sourceFrameId = null;
-      if (this.isConnected) {
-        this.publishSource();
-      }
     });
   }
 

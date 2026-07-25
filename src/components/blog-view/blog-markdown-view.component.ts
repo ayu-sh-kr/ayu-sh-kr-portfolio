@@ -1,35 +1,28 @@
 import {BeforeInit, BindEvent, Component} from "@ayu-sh-kr/dota-wrap/core";
 import {type ApplicationEvent, OnEvent} from "@ayu-sh-kr/dota-wrap/event";
-import {
-  applyMarkdownTheme,
-  getSelectionClass,
-  MDService,
-  MdViewComponent,
-  THEMES,
-  type ColorName,
-} from "@ayu-sh-kr/dota-md";
-import {portfolioMarkdownColor, portfolioMarkdownTheme} from "@app/configs/markdown-theme.config.ts";
+import {MdViewComponent} from "@ayu-sh-kr/dota-md";
 import {BLOG_MARKDOWN_SOURCE_EVENT} from "@app/events/blog.events.ts";
+import {MarkdownLifecycleUtils} from "@app/utils/markdown-lifecycle.utils.ts";
 
 @Component({
   selector: "blog-markdown-view",
   shadow: false,
 })
 export class BlogMarkdownViewComponent extends MdViewComponent {
+  private readonly markdownLifecycle = new MarkdownLifecycleUtils(this);
+
   constructor() {
     super();
   }
 
   @BeforeInit()
   captureInitialContent(): void {
-    if (!this.content) {
-      this.content = this.innerHTML;
-    }
+    this.markdownLifecycle.captureInitialContent();
   }
 
   @OnEvent(BLOG_MARKDOWN_SOURCE_EVENT)
   onMarkdownSource(event: ApplicationEvent<typeof BLOG_MARKDOWN_SOURCE_EVENT>): void {
-    MDService.render(event.data.markdown, {publish: true});
+    this.markdownLifecycle.renderSource(event.data.markdown);
   }
 
   @OnEvent("md:render")
@@ -54,15 +47,7 @@ export class BlogMarkdownViewComponent extends MdViewComponent {
     });
     this.closest("[data-blog-markdown]")?.setAttribute("aria-busy", "false");
 
-    if (window.location.hash) {
-      let headingId = window.location.hash.slice(1);
-      try {
-        headingId = decodeURIComponent(headingId);
-      } catch {
-        headingId = "";
-      }
-      requestAnimationFrame(() => document.getElementById(headingId)?.scrollIntoView());
-    }
+    this.markdownLifecycle.scheduleHashScroll();
   }
 
   @BindEvent({event: "click", id: "[data-copy-code]"})
@@ -73,23 +58,15 @@ export class BlogMarkdownViewComponent extends MdViewComponent {
     }
     const code = button.parentElement?.querySelector("code")?.textContent ?? "";
     void navigator.clipboard?.writeText(code);
-    button.textContent = "Copied";
-    window.setTimeout(() => {
-      button.textContent = "Copy";
-    }, 1400);
+    this.markdownLifecycle.markCopied(button, "Copied", "Copy");
+  }
+
+  @OnEvent("disconnected", true)
+  onDisconnected(): void {
+    this.markdownLifecycle.disconnect();
   }
 
   override render(): string {
-    const themeName = this.getAttribute("theme") ?? portfolioMarkdownTheme.name;
-    const colorName = (this.getAttribute("color") ?? portfolioMarkdownColor) as ColorName;
-    const theme = THEMES[themeName] ?? portfolioMarkdownTheme;
-    const themedContent = this.content ? applyMarkdownTheme(this.content, theme, colorName) : "";
-
-    return `
-      <div class="blog-markdown-content ${getSelectionClass(theme, colorName)}"
-           style="font-family: ${theme.fontFamily},serif">
-        ${themedContent}
-      </div>
-    `;
+    return this.markdownLifecycle.renderThemedContent("blog-markdown-content");
   }
 }

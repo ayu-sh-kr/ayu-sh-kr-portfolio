@@ -1,32 +1,23 @@
 import {BeforeInit, BindEvent, Component} from "@ayu-sh-kr/dota-wrap/core";
 import {ApplicationEventService} from "@ayu-sh-kr/dota-wrap/core";
 import {type ApplicationEvent, OnEvent} from "@ayu-sh-kr/dota-wrap/event";
-import {
-  applyMarkdownTheme,
-  getSelectionClass,
-  MDService,
-  MdViewComponent,
-  THEMES,
-  type ColorName,
-} from "@ayu-sh-kr/dota-md";
-import {portfolioMarkdownColor, portfolioMarkdownTheme} from "@app/configs/markdown-theme.config.ts";
+import {MdViewComponent} from "@ayu-sh-kr/dota-md";
 import {
   TERMS_MARKDOWN_RENDER_EVENT,
   TERMS_MARKDOWN_SOURCE_EVENT,
   type TermsMarkdownRender,
   type TermsSection,
 } from "@app/events/terms.events.ts";
+import {MarkdownLifecycleUtils} from "@app/utils/markdown-lifecycle.utils.ts";
 
 @Component({
   selector: "terms-markdown-view",
   shadow: false,
 })
 export class TermsMarkdownViewComponent extends MdViewComponent {
+  private readonly markdownLifecycle = new MarkdownLifecycleUtils(this);
   private readonly publisher = ApplicationEventService.getInstance().getPublisher();
-  private observer: IntersectionObserver | null = null;
-  private hashFrameId: number | null = null;
   private sections: readonly TermsSection[] = [];
-  private readonly copyResetTimers = new Map<HTMLAnchorElement, number>();
 
   constructor() {
     super();
@@ -34,15 +25,13 @@ export class TermsMarkdownViewComponent extends MdViewComponent {
 
   @BeforeInit()
   captureInitialContent(): void {
-    if (!this.content) {
-      this.content = this.innerHTML;
-    }
+    this.markdownLifecycle.captureInitialContent();
   }
 
   @OnEvent(TERMS_MARKDOWN_SOURCE_EVENT)
   onMarkdownSource(event: ApplicationEvent<typeof TERMS_MARKDOWN_SOURCE_EVENT>): void {
     this.sections = event.data.sections;
-    MDService.render(event.data.markdown, {publish: true});
+    this.markdownLifecycle.renderSource(event.data.markdown);
   }
 
   @OnEvent("md:render")
@@ -54,21 +43,15 @@ export class TermsMarkdownViewComponent extends MdViewComponent {
     }
 
     this.decorateSections(content);
-    this.decorateTables(content);
-    this.setupReveals();
+    this.markdownLifecycle.decorateResponsiveTables(content);
+    this.markdownLifecycle.setupReveals(".terms-reveal");
     this.closest("[data-terms-markdown]")?.setAttribute("aria-busy", "false");
     void this.publisher.publishAsync({
       name: TERMS_MARKDOWN_RENDER_EVENT,
       data: {sections: this.sections} satisfies TermsMarkdownRender,
     });
 
-    const headingId = this.currentHash();
-    if (headingId) {
-      this.hashFrameId = requestAnimationFrame(() => {
-        this.hashFrameId = null;
-        document.getElementById(headingId)?.scrollIntoView();
-      });
-    }
+    this.markdownLifecycle.scheduleHashScroll();
   }
 
   @BindEvent({event: "click", id: "[data-terms-anchor]"})
@@ -86,29 +69,12 @@ export class TermsMarkdownViewComponent extends MdViewComponent {
     } catch {
       // The anchor still updates the URL when clipboard access is unavailable.
     }
-    anchor.textContent = "Copied";
-
-    const previousTimer = this.copyResetTimers.get(anchor);
-    if (previousTimer !== undefined) {
-      window.clearTimeout(previousTimer);
-    }
-    const timer = window.setTimeout(() => {
-      this.copyResetTimers.delete(anchor);
-      anchor.textContent = "#";
-    }, 1400);
-    this.copyResetTimers.set(anchor, timer);
+    this.markdownLifecycle.markCopied(anchor, "Copied", "#");
   }
 
   @OnEvent("disconnected", true)
   onDisconnected(): void {
-    this.observer?.disconnect();
-    this.observer = null;
-    this.copyResetTimers.forEach((timer) => window.clearTimeout(timer));
-    this.copyResetTimers.clear();
-    if (this.hashFrameId !== null) {
-      cancelAnimationFrame(this.hashFrameId);
-      this.hashFrameId = null;
-    }
+    this.markdownLifecycle.disconnect();
   }
 
   private decorateSections(content: HTMLElement): void {
@@ -161,59 +127,7 @@ export class TermsMarkdownViewComponent extends MdViewComponent {
     });
   }
 
-  private decorateTables(content: HTMLElement): void {
-    content.querySelectorAll<HTMLTableElement>("table").forEach((table) => {
-      const labels = [...table.querySelectorAll<HTMLTableCellElement>("thead th")].map((cell) => cell.textContent?.trim() ?? "");
-      table.querySelectorAll<HTMLTableRowElement>("tbody tr").forEach((row) => {
-        [...row.cells].forEach((cell, index) => {
-          if (labels[index]) {
-            cell.dataset.label = labels[index];
-          }
-        });
-      });
-    });
-  }
-
-  private setupReveals(): void {
-    this.observer?.disconnect();
-    const sections = [...this.querySelectorAll<HTMLElement>(".terms-reveal")];
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || !("IntersectionObserver" in window)) {
-      sections.forEach((section) => section.classList.add("is-revealed"));
-      return;
-    }
-
-    this.observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) {
-          return;
-        }
-        entry.target.classList.add("is-revealed");
-        this.observer?.unobserve(entry.target);
-      });
-    }, {threshold: 0.08});
-    sections.forEach((section) => this.observer?.observe(section));
-  }
-
-  private currentHash(): string {
-    const hash = window.location.hash.slice(1);
-    try {
-      return decodeURIComponent(hash);
-    } catch {
-      return "";
-    }
-  }
-
   override render(): string {
-    const themeName = this.getAttribute("theme") ?? portfolioMarkdownTheme.name;
-    const colorName = (this.getAttribute("color") ?? portfolioMarkdownColor) as ColorName;
-    const theme = THEMES[themeName] ?? portfolioMarkdownTheme;
-    const themedContent = this.content ? applyMarkdownTheme(this.content, theme, colorName) : "";
-
-    return `
-      <div class="terms-markdown-content ${getSelectionClass(theme, colorName)}"
-           style="font-family: ${theme.fontFamily},serif">
-        ${themedContent}
-      </div>
-    `;
+    return this.markdownLifecycle.renderThemedContent("terms-markdown-content");
   }
 }
