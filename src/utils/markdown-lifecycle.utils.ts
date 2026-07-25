@@ -158,3 +158,65 @@ export class MarkdownSourceLifecycle {
     }
   }
 }
+
+/** Shared, frame-coalesced progress-bar behavior for Markdown article hosts. */
+export class MarkdownProgressLifecycle {
+  private frameId: number | null = null;
+
+  constructor(private readonly host: HTMLElement) {}
+
+  scheduleDocumentProgress(progressSelector: string): void {
+    this.schedule(progressSelector, () => {
+      const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+      return scrollable <= 0 ? 1 : window.scrollY / scrollable;
+    });
+  }
+
+  scheduleSectionProgress(
+    progressSelector: string,
+    sections: readonly {id: string}[],
+    sectionPrefix: string,
+  ): void {
+    this.schedule(progressSelector, () => {
+      const firstSection = sections[0];
+      const lastSection = sections.at(-1);
+      const first = firstSection
+        ? this.host.querySelector<HTMLElement>(`#${sectionPrefix}${firstSection.id}`)
+        : null;
+      const last = lastSection
+        ? this.host.querySelector<HTMLElement>(`#${sectionPrefix}${lastSection.id}`)
+        : null;
+      if (!first || !last) {
+        return null;
+      }
+
+      const start = first.getBoundingClientRect().top + window.scrollY;
+      const end = last.getBoundingClientRect().bottom + window.scrollY - window.innerHeight;
+      return end <= start ? 1 : (window.scrollY - start) / (end - start);
+    });
+  }
+
+  disconnect(): void {
+    if (this.frameId !== null) {
+      cancelAnimationFrame(this.frameId);
+      this.frameId = null;
+    }
+  }
+
+  private schedule(progressSelector: string, calculateProgress: () => number | null): void {
+    if (this.frameId !== null) {
+      return;
+    }
+
+    this.frameId = requestAnimationFrame(() => {
+      this.frameId = null;
+      const progressBar = this.host.querySelector<HTMLElement>(progressSelector);
+      const progress = calculateProgress();
+      if (!progressBar || progress === null) {
+        return;
+      }
+
+      progressBar.style.transform = `scaleX(${Math.min(1, Math.max(0, progress))})`;
+    });
+  }
+}
