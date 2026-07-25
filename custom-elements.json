@@ -960,6 +960,105 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/privacy-markdown-view/privacy-markdown-view.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "PrivacyMarkdownViewComponent",
+          "customElement": true,
+          "tagName": "privacy-markdown-view",
+          "superclass": {
+            "name": "MdViewComponent"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "PrivacyMarkdownViewComponent",
+          "declaration": {
+            "name": "PrivacyMarkdownViewComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "privacy-markdown-view",
+          "declaration": {
+            "name": "PrivacyMarkdownViewComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/privacy-toc/privacy-toc.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "PrivacyTocComponent",
+          "customElement": true,
+          "tagName": "privacy-toc",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "PrivacyTocComponent",
+          "declaration": {
+            "name": "PrivacyTocComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "privacy-toc",
+          "declaration": {
+            "name": "PrivacyTocComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/privacy-view/privacy-view.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "PrivacyViewComponent",
+          "customElement": true,
+          "tagName": "privacy-view",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "PrivacyViewComponent",
+          "declaration": {
+            "name": "PrivacyViewComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "privacy-view",
+          "declaration": {
+            "name": "PrivacyViewComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/projects-section/projects-section.component.js",
       "declarations": [
         {
@@ -2147,6 +2246,39 @@
           "name": "pricing-page",
           "declaration": {
             "name": "PricingPage"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/pages/privacy.page.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "PrivacyPage",
+          "customElement": true,
+          "tagName": "privacy-page",
+          "superclass": {
+            "name": "DotaPageElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "PrivacyPage",
+          "declaration": {
+            "name": "PrivacyPage"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "privacy-page",
+          "declaration": {
+            "name": "PrivacyPage"
           }
         }
       ]
