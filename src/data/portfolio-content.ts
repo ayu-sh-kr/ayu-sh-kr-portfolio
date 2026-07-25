@@ -10,7 +10,6 @@ export const portfolioContent = {
       { label: "Skills", href: "/#skills" },
       { label: "Pricing", href: "/pricing" },
       { label: "Blog", href: "/blog" },
-      { label: "Legal", href: "/legal/privacy" },
       { label: "Contact", href: "/#contact" },
     ],
   },
@@ -313,7 +312,10 @@ export const portfolioContent = {
         {
           number: "06",
           title: "Legal",
-          links: [{ label: "Privacy Policy", href: "/legal/privacy" }],
+          links: [
+            { label: "Privacy Policy", href: "/legal/privacy" },
+            { label: "Terms & Conditions", href: "/legal/terms" },
+          ],
         },
       ],
     },
