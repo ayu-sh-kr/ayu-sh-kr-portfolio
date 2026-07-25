@@ -468,6 +468,50 @@
           }
         },
         {
+          "name": "privacy-markdown-view",
+          "source": {
+            "file": "./src/components/privacy-markdown-view/privacy-markdown-view.component.ts",
+            "offset": 713
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "privacy-page",
+          "source": {
+            "file": "./src/pages/privacy.page.ts",
+            "offset": 240
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "privacy-toc",
+          "source": {
+            "file": "./src/components/privacy-toc/privacy-toc.component.ts",
+            "offset": 562
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "privacy-view",
+          "source": {
+            "file": "./src/components/privacy-view/privacy-view.component.ts",
+            "offset": 1054
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
           "name": "showcase-archive",
           "source": {
             "file": "./src/components/showcase-archive/showcase-archive.component.ts",
@@ -917,6 +961,50 @@
           "source": {
             "file": "./src/components/speaking-pricing/speaking-pricing.component.ts",
             "offset": 216
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "terms-markdown-view",
+          "source": {
+            "file": "./src/components/terms-markdown-view/terms-markdown-view.component.ts",
+            "offset": 701
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "terms-page",
+          "source": {
+            "file": "./src/pages/terms.page.ts",
+            "offset": 236
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "terms-toc",
+          "source": {
+            "file": "./src/components/terms-toc/terms-toc.component.ts",
+            "offset": 554
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "terms-view",
+          "source": {
+            "file": "./src/components/terms-view/terms-view.component.ts",
+            "offset": 1038
           },
           "attributes": [],
           "js": {

@@ -2051,6 +2051,39 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/terms-markdown-view/terms-markdown-view.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "TermsMarkdownViewComponent",
+          "customElement": true,
+          "tagName": "terms-markdown-view",
+          "superclass": {
+            "name": "MdViewComponent"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "TermsMarkdownViewComponent",
+          "declaration": {
+            "name": "TermsMarkdownViewComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "terms-markdown-view",
+          "declaration": {
+            "name": "TermsMarkdownViewComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/terms-toc/terms-toc.component.js",
       "declarations": [
         {
@@ -2411,6 +2444,39 @@
           "name": "showcase-page",
           "declaration": {
             "name": "ShowcasePage"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/pages/terms.page.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "TermsPage",
+          "customElement": true,
+          "tagName": "terms-page",
+          "superclass": {
+            "name": "DotaPageElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "TermsPage",
+          "declaration": {
+            "name": "TermsPage"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "terms-page",
+          "declaration": {
+            "name": "TermsPage"
           }
         }
       ]
