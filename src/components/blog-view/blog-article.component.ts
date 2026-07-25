@@ -1,4 +1,4 @@
-import {AfterInit, BaseElement, Component} from "@ayu-sh-kr/dota-wrap/core";
+import {BaseElement, Component, WindowListener} from "@ayu-sh-kr/dota-wrap/core";
 import {type ApplicationEvent, OnEvent} from "@ayu-sh-kr/dota-wrap/event";
 import {formatBlogDate, labelForCategory, type BlogPost} from "@app/configs/blogs.config.ts";
 import {
@@ -7,6 +7,7 @@ import {
 } from "@app/events/blog.events.ts";
 import {portfolioMarkdownColor, portfolioMarkdownTheme} from "@app/configs/markdown-theme.config.ts";
 import {escapeHtml} from "@app/utils/html.utils.ts";
+import {MarkdownProgressLifecycle} from "@app/utils/markdown-lifecycle.utils.ts";
 
 @Component({
   selector: "blog-article",
@@ -17,23 +18,20 @@ export class BlogArticleComponent extends BaseElement {
   private post: BlogPost | null = null;
   private nextPost: BlogPost | null = null;
   private loadError = "";
-  private frameId: number | null = null;
+  private readonly progressLifecycle = new MarkdownProgressLifecycle(this);
 
   constructor() {
     super();
   }
 
-  @AfterInit()
-  afterViewInit(): void {
-    window.addEventListener("scroll", this.scheduleProgressRender, {passive: true});
+  @WindowListener({event: "scroll"})
+  onScroll(): void {
+    this.scheduleProgressRender();
   }
 
-  disconnectedCallback(): void {
-    window.removeEventListener("scroll", this.scheduleProgressRender);
-    if (this.frameId !== null) {
-      cancelAnimationFrame(this.frameId);
-    }
-    super.disconnectedCallback();
+  @OnEvent("disconnected", true)
+  onDisconnected(): void {
+    this.progressLifecycle.disconnect();
   }
 
   @OnEvent(BLOG_ARTICLE_DATA_EVENT)
@@ -54,19 +52,7 @@ export class BlogArticleComponent extends BaseElement {
   }
 
   private readonly scheduleProgressRender = (): void => {
-    if (this.frameId !== null) {
-      return;
-    }
-    this.frameId = requestAnimationFrame(() => {
-      this.frameId = null;
-      const progressBar = this.querySelector<HTMLElement>("[data-blog-progress]");
-      if (!progressBar) {
-        return;
-      }
-      const scrollable = document.documentElement.scrollHeight - window.innerHeight;
-      const progress = scrollable <= 0 ? 1 : Math.min(1, Math.max(0, window.scrollY / scrollable));
-      progressBar.style.transform = `scaleX(${progress})`;
-    });
+    this.progressLifecycle.scheduleDocumentProgress("[data-blog-progress]");
   };
 
   render(): string {

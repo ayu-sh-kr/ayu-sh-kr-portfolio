@@ -8,7 +8,10 @@ import {
 } from "@app/events/privacy.events.ts";
 import {PrivacyLoaderService, type PrivacyDocument} from "@app/service/privacy-loader.service.ts";
 import {escapeHtml} from "@app/utils/html.utils.ts";
-import {MarkdownSourceLifecycle} from "@app/utils/markdown-lifecycle.utils.ts";
+import {
+  MarkdownProgressLifecycle,
+  MarkdownSourceLifecycle,
+} from "@app/utils/markdown-lifecycle.utils.ts";
 
 const formatDate = (value: string): string => {
   const date = new Date(`${value}T00:00:00Z`);
@@ -31,10 +34,10 @@ const formatDate = (value: string): string => {
 export class PrivacyViewComponent extends BaseElement {
   private readonly loader = new PrivacyLoaderService();
   private readonly publisher = ApplicationEventService.getInstance().getPublisher();
+  private readonly progressLifecycle = new MarkdownProgressLifecycle(this);
   private readonly sourceLifecycle = new MarkdownSourceLifecycle(this);
   private policy: PrivacyDocument | null = null;
   private request: AbortController | null = null;
-  private frameId: number | null = null;
   private activeScope = "visit";
   private loadError = "";
 
@@ -56,10 +59,7 @@ export class PrivacyViewComponent extends BaseElement {
   onDisconnected(): void {
     this.request?.abort();
     this.request = null;
-    if (this.frameId !== null) {
-      cancelAnimationFrame(this.frameId);
-      this.frameId = null;
-    }
+    this.progressLifecycle.disconnect();
     this.sourceLifecycle.disconnect();
   }
 
@@ -145,26 +145,11 @@ export class PrivacyViewComponent extends BaseElement {
   }
 
   private readonly scheduleProgressRender = (): void => {
-    if (this.frameId !== null) {
-      return;
-    }
-
-    this.frameId = requestAnimationFrame(() => {
-      this.frameId = null;
-      const progressBar = this.querySelector<HTMLElement>("[data-privacy-progress]");
-      const sections = this.policy?.sections ?? [];
-      const first = sections[0] ? this.querySelector<HTMLElement>(`#privacy-section-${sections[0].id}`) : null;
-      const lastSection = sections.at(-1);
-      const last = lastSection ? this.querySelector<HTMLElement>(`#privacy-section-${lastSection.id}`) : null;
-      if (!progressBar || !first || !last) {
-        return;
-      }
-
-      const start = first.getBoundingClientRect().top + window.scrollY;
-      const end = last.getBoundingClientRect().bottom + window.scrollY - window.innerHeight;
-      const progress = end <= start ? 1 : Math.min(1, Math.max(0, (window.scrollY - start) / (end - start)));
-      progressBar.style.transform = `scaleX(${progress})`;
-    });
+    this.progressLifecycle.scheduleSectionProgress(
+      "[data-privacy-progress]",
+      this.policy?.sections ?? [],
+      "privacy-section-",
+    );
   };
 
   render(): string {

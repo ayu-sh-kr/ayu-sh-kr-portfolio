@@ -1,10 +1,11 @@
-import {ApplicationEventService, BaseElement, Component, HTML} from "@ayu-sh-kr/dota-wrap/core";
+import {ApplicationEventService, BaseElement, Component, HTML, WindowListener} from "@ayu-sh-kr/dota-wrap/core";
 import {OnEvent} from "@ayu-sh-kr/dota-wrap/event";
 import {getShowcaseProject, getShowcaseSlug, showcaseProjects, type ShowcaseProject} from "@app/data/showcase-content.ts";
 import {SHOWCASE_MARKDOWN_SOURCE_EVENT, type ShowcaseMarkdownSource} from "@app/events/showcase.events.ts";
 import {ShowcaseLoaderService} from "@app/service/showcase-loader.service.ts";
 import {portfolioMarkdownColor, portfolioMarkdownTheme} from "@app/configs/markdown-theme.config.ts";
 import {escapeHtml} from "@app/utils/html.utils.ts";
+import {MarkdownProgressLifecycle} from "@app/utils/markdown-lifecycle.utils.ts";
 
 const displayStatus = (status: ShowcaseProject["status"]): string =>
   status.charAt(0).toUpperCase() + status.slice(1);
@@ -16,11 +17,11 @@ const displayStatus = (status: ShowcaseProject["status"]): string =>
 export class ShowcaseViewComponent extends BaseElement {
   private readonly publisher = ApplicationEventService.getInstance().getPublisher();
   private readonly loader = new ShowcaseLoaderService();
+  private readonly progressLifecycle = new MarkdownProgressLifecycle(this);
   private readonly project = getShowcaseProject(getShowcaseSlug(window.location.pathname)) ?? null;
   private articleRequest: AbortController | null = null;
   private loading = true;
   private loadError = "";
-  private frameId: number | null = null;
 
   constructor() {
     super();
@@ -28,7 +29,6 @@ export class ShowcaseViewComponent extends BaseElement {
 
   @OnEvent("connected", true)
   onConnected(): void {
-    window.addEventListener("scroll", this.scheduleProgressRender, {passive: true});
     this.scheduleProgressRender();
     if (this.project) {
       void this.loadArticle(this.project);
@@ -37,30 +37,17 @@ export class ShowcaseViewComponent extends BaseElement {
 
   @OnEvent("disconnected", true)
   onDisconnected(): void {
-    window.removeEventListener("scroll", this.scheduleProgressRender);
     this.articleRequest?.abort();
-    if (this.frameId !== null) {
-      cancelAnimationFrame(this.frameId);
-      this.frameId = null;
-    }
+    this.progressLifecycle.disconnect();
+  }
+
+  @WindowListener({event: "scroll"})
+  onScroll(): void {
+    this.scheduleProgressRender();
   }
 
   private readonly scheduleProgressRender = (): void => {
-    if (this.frameId !== null) {
-      return;
-    }
-
-    this.frameId = requestAnimationFrame(() => {
-      this.frameId = null;
-      const progressBar = this.querySelector<HTMLElement>("[data-showcase-progress]");
-      if (!progressBar) {
-        return;
-      }
-
-      const scrollable = document.documentElement.scrollHeight - window.innerHeight;
-      const progress = scrollable <= 0 ? 1 : Math.min(1, Math.max(0, window.scrollY / scrollable));
-      progressBar.style.transform = `scaleX(${progress})`;
-    });
+    this.progressLifecycle.scheduleDocumentProgress("[data-showcase-progress]");
   };
 
   private async loadArticle(project: ShowcaseProject): Promise<void> {
