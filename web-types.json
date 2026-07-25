@@ -108,7 +108,7 @@
           "name": "blog-article",
           "source": {
             "file": "./src/components/blog-view/blog-article.component.ts",
-            "offset": 807
+            "offset": 577
           },
           "attributes": [],
           "js": {
@@ -119,7 +119,7 @@
           "name": "blog-index",
           "source": {
             "file": "./src/components/blog-view/blog-index.component.ts",
-            "offset": 2291
+            "offset": 2061
           },
           "attributes": [],
           "js": {
@@ -493,7 +493,7 @@
           "name": "privacy-toc",
           "source": {
             "file": "./src/components/privacy-toc/privacy-toc.component.ts",
-            "offset": 562
+            "offset": 402
           },
           "attributes": [],
           "js": {
@@ -504,7 +504,7 @@
           "name": "privacy-view",
           "source": {
             "file": "./src/components/privacy-view/privacy-view.component.ts",
-            "offset": 1054
+            "offset": 894
           },
           "attributes": [],
           "js": {
@@ -593,7 +593,7 @@
           "name": "showcase-figure",
           "source": {
             "file": "./src/components/showcase-figure/showcase-figure.component.ts",
-            "offset": 451
+            "offset": 221
           },
           "attributes": [
             {
@@ -605,7 +605,7 @@
               },
               "source": {
                 "file": "./src/components/showcase-figure/showcase-figure.component.ts",
-                "offset": 598
+                "offset": 368
               }
             },
             {
@@ -617,7 +617,7 @@
               },
               "source": {
                 "file": "./src/components/showcase-figure/showcase-figure.component.ts",
-                "offset": 540
+                "offset": 310
               }
             }
           ],
@@ -629,7 +629,7 @@
                 "default": "",
                 "source": {
                   "file": "./src/components/showcase-figure/showcase-figure.component.ts",
-                  "offset": 598
+                  "offset": 368
                 }
               },
               {
@@ -638,7 +638,7 @@
                 "default": "",
                 "source": {
                   "file": "./src/components/showcase-figure/showcase-figure.component.ts",
-                  "offset": 540
+                  "offset": 310
                 }
               }
             ]
@@ -670,7 +670,7 @@
           "name": "showcase-metrics",
           "source": {
             "file": "./src/components/showcase-metrics/showcase-metrics.component.ts",
-            "offset": 499
+            "offset": 269
           },
           "attributes": [
             {
@@ -682,7 +682,7 @@
               },
               "source": {
                 "file": "./src/components/showcase-metrics/showcase-metrics.component.ts",
-                "offset": 591
+                "offset": 361
               }
             }
           ],
@@ -694,7 +694,7 @@
                 "default": "",
                 "source": {
                   "file": "./src/components/showcase-metrics/showcase-metrics.component.ts",
-                  "offset": 591
+                  "offset": 361
                 }
               }
             ]
@@ -861,7 +861,7 @@
           "name": "showcase-toc",
           "source": {
             "file": "./src/components/showcase-toc/showcase-toc.component.ts",
-            "offset": 829
+            "offset": 599
           },
           "attributes": [],
           "js": {
@@ -872,7 +872,7 @@
           "name": "showcase-view",
           "source": {
             "file": "./src/components/showcase-view/showcase-view.component.ts",
-            "offset": 1042
+            "offset": 812
           },
           "attributes": [],
           "js": {
@@ -993,7 +993,7 @@
           "name": "terms-toc",
           "source": {
             "file": "./src/components/terms-toc/terms-toc.component.ts",
-            "offset": 554
+            "offset": 394
           },
           "attributes": [],
           "js": {
@@ -1004,7 +1004,7 @@
           "name": "terms-view",
           "source": {
             "file": "./src/components/terms-view/terms-view.component.ts",
-            "offset": 1038
+            "offset": 878
           },
           "attributes": [],
           "js": {
