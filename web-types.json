@@ -108,7 +108,7 @@
           "name": "blog-article",
           "source": {
             "file": "./src/components/blog-view/blog-article.component.ts",
-            "offset": 577
+            "offset": 664
           },
           "attributes": [],
           "js": {
@@ -130,7 +130,7 @@
           "name": "blog-markdown-view",
           "source": {
             "file": "./src/components/blog-view/blog-markdown-view.component.ts",
-            "offset": 546
+            "offset": 434
           },
           "attributes": [],
           "js": {
@@ -471,7 +471,7 @@
           "name": "privacy-markdown-view",
           "source": {
             "file": "./src/components/privacy-markdown-view/privacy-markdown-view.component.ts",
-            "offset": 713
+            "offset": 601
           },
           "attributes": [],
           "js": {
@@ -504,7 +504,7 @@
           "name": "privacy-view",
           "source": {
             "file": "./src/components/privacy-view/privacy-view.component.ts",
-            "offset": 894
+            "offset": 1008
           },
           "attributes": [],
           "js": {
@@ -659,7 +659,7 @@
           "name": "showcase-markdown-view",
           "source": {
             "file": "./src/components/showcase-markdown-view/showcase-markdown-view.component.ts",
-            "offset": 558
+            "offset": 446
           },
           "attributes": [],
           "js": {
@@ -872,7 +872,7 @@
           "name": "showcase-view",
           "source": {
             "file": "./src/components/showcase-view/showcase-view.component.ts",
-            "offset": 812
+            "offset": 910
           },
           "attributes": [],
           "js": {
@@ -971,7 +971,7 @@
           "name": "terms-markdown-view",
           "source": {
             "file": "./src/components/terms-markdown-view/terms-markdown-view.component.ts",
-            "offset": 701
+            "offset": 589
           },
           "attributes": [],
           "js": {
@@ -1004,7 +1004,7 @@
           "name": "terms-view",
           "source": {
             "file": "./src/components/terms-view/terms-view.component.ts",
-            "offset": 878
+            "offset": 992
           },
           "attributes": [],
           "js": {
