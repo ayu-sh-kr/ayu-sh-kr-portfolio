@@ -2051,6 +2051,39 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/terms-view/terms-view.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "TermsViewComponent",
+          "customElement": true,
+          "tagName": "terms-view",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "TermsViewComponent",
+          "declaration": {
+            "name": "TermsViewComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "terms-view",
+          "declaration": {
+            "name": "TermsViewComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/pages/blog-slug.page.js",
       "declarations": [
         {
