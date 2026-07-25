@@ -41,6 +41,7 @@ export class TermsViewComponent extends BaseElement {
   private terms: TermsDocument | null = null;
   private request: AbortController | null = null;
   private frameId: number | null = null;
+  private sourceFrameId: number | null = null;
   private activeScope = "use";
   private loadError = "";
 
@@ -52,7 +53,7 @@ export class TermsViewComponent extends BaseElement {
   onConnected(): void {
     this.scheduleProgressRender();
     if (this.terms) {
-      this.publishSource();
+      this.publishSourceAfterRender();
       return;
     }
     void this.loadTerms();
@@ -65,6 +66,10 @@ export class TermsViewComponent extends BaseElement {
     if (this.frameId !== null) {
       cancelAnimationFrame(this.frameId);
       this.frameId = null;
+    }
+    if (this.sourceFrameId !== null) {
+      cancelAnimationFrame(this.sourceFrameId);
+      this.sourceFrameId = null;
     }
   }
 
@@ -88,7 +93,11 @@ export class TermsViewComponent extends BaseElement {
 
     event.preventDefault();
     this.activeScope = target;
-    this.updateHTML();
+    this.querySelectorAll<HTMLButtonElement>("[data-terms-scope]").forEach((scopeButton) => {
+      const isActive = scopeButton.dataset.termsScope === target;
+      scopeButton.classList.toggle("is-active", isActive);
+      scopeButton.setAttribute("aria-pressed", String(isActive));
+    });
     requestAnimationFrame(() => {
       const heading = document.getElementById(target);
       if (!heading) {
@@ -116,7 +125,7 @@ export class TermsViewComponent extends BaseElement {
       this.activeScope = terms.metadata.switches[0]?.target ?? terms.sections[0]?.id ?? "";
       this.loadError = "";
       this.updateHTML();
-      this.publishSource();
+      this.publishSourceAfterRender();
       this.scheduleProgressRender();
     } catch (error) {
       if (error instanceof DOMException && error.name === "AbortError") {
@@ -142,6 +151,18 @@ export class TermsViewComponent extends BaseElement {
         markdown: this.terms.markdown,
         sections: this.terms.sections,
       } satisfies TermsMarkdownSource,
+    });
+  }
+
+  private publishSourceAfterRender(): void {
+    if (this.sourceFrameId !== null) {
+      cancelAnimationFrame(this.sourceFrameId);
+    }
+    this.sourceFrameId = requestAnimationFrame(() => {
+      this.sourceFrameId = null;
+      if (this.isConnected) {
+        this.publishSource();
+      }
     });
   }
 
