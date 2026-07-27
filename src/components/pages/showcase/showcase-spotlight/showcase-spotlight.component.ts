@@ -1,11 +1,21 @@
 import { BaseElement, Component, HTML, Property, String } from "@ayu-sh-kr/dota-wrap/core";
 import { getShowcaseProject } from "@app/data/showcase-content.ts";
 
+/**
+ * Renders one scroll-driven spotlight case study on the showcase landing page.
+ *
+ * Project content comes from the shared catalog while the motion controller
+ * targets the emitted data attributes to animate the cover, copy, chips, and
+ * metric. The element itself remains a pure project-to-markup boundary.
+ *
+ * Selector: `showcase-spotlight`.
+ */
 @Component({
   selector: "showcase-spotlight",
   shadow: false,
 })
 export class ShowcaseSpotlightComponent extends BaseElement {
+  /** Attribute `project-slug`; identifies the spotlight project to render. */
   @Property({ name: "project-slug", type: String })
   projectSlug = "";
 
@@ -13,6 +23,7 @@ export class ShowcaseSpotlightComponent extends BaseElement {
     super();
   }
 
+  /** Renders the spotlight case study, or nothing when the slug is unknown. */
   render(): string {
     const project = getShowcaseProject(this.projectSlug);
     if (!project) {
