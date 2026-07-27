@@ -322,11 +322,6 @@ offline-page [hidden] {
     padding-block: 0;
   }
 
-  offline-page .offline-hero-section > scroll-hint {
-    position: static;
-    margin-block-start: clamp(2.5rem, 8vh, 4rem);
-  }
-
   .offline-section {
     padding-inline: 1rem;
   }

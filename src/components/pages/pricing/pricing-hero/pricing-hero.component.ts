@@ -50,6 +50,7 @@ export class PricingHeroComponent extends BaseElement {
     const bounds = this.heroWrap.getBoundingClientRect();
     const travel = Math.max(1, bounds.height - window.innerHeight);
     const progress = clamp(-bounds.top / travel, 0, 1);
+    this.querySelector<HTMLElement>("scroll-hint")?.setAttribute("progress", String(progress));
     this.heroInner.style.opacity = String(clamp(1 - progress * 1.4, 0, 1));
     this.heroInner.style.transform = `scale(${1 - progress * 0.1}) translate3d(0, ${progress * -30}px, 0)`;
   }

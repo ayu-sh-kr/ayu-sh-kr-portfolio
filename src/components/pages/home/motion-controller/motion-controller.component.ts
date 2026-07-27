@@ -174,6 +174,7 @@ export class PortfolioMotionControllerComponent extends BaseElement {
 
     heroInner.style.opacity = String(clamp(1 - heroProgress * 1.4, 0, 1));
     heroInner.style.transform = `scale(${1 - heroProgress * 0.12}) translate3d(0, ${heroProgress * -40}px, 0)`;
+    heroWrap.querySelector<HTMLElement>("scroll-hint")?.setAttribute("progress", String(heroProgress));
 
     const chapterNumber = String(activeChapter + 1).padStart(2, "0");
     if (journeyGhost) journeyGhost.textContent = chapterNumber;

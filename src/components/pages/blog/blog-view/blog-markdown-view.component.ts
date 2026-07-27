@@ -39,6 +39,7 @@ export class BlogMarkdownViewComponent extends MdViewComponent {
   @BeforeInit()
   captureInitialContent(): void {
     this.markdownLifecycle.captureInitialContent();
+    this.markdownLifecycle.startSkeletonTimeout();
   }
 
   /** Renders the raw Markdown source published for the active blog article. */
@@ -54,6 +55,7 @@ export class BlogMarkdownViewComponent extends MdViewComponent {
   @OnEvent("md:render")
   override onContentChange(event: ApplicationEvent<"md:render">): void {
     super.onContentChange(event);
+    this.markdownLifecycle.revealSkeleton();
     this.querySelector("h1")?.remove();
     this.querySelectorAll("pre").forEach((pre) => {
       pre.tabIndex = 0;
@@ -96,6 +98,6 @@ export class BlogMarkdownViewComponent extends MdViewComponent {
 
   /** Returns the themed Markdown container produced by the shared lifecycle utility. */
   override render(): string {
-    return this.markdownLifecycle.renderThemedContent("blog-markdown-content");
+    return this.markdownLifecycle.renderArticleSkeleton("blog-markdown-content");
   }
 }

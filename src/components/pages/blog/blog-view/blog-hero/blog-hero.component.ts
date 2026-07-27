@@ -61,11 +61,13 @@ export class BlogHeroComponent extends BaseElement {
       this.frameId = null;
       const heroWrap = this.querySelector<HTMLElement>("[data-blog-hero-wrap]");
       const heroInner = this.querySelector<HTMLElement>("[data-blog-hero-inner]");
+      const scrollHint = this.querySelector<HTMLElement>("scroll-hint");
       if (!heroWrap || !heroInner || this.reducedMotion) {
         return;
       }
       const travel = Math.max(1, heroWrap.offsetHeight - window.innerHeight);
       const progress = Math.min(1, Math.max(0, -heroWrap.getBoundingClientRect().top / travel));
+      scrollHint?.setAttribute("progress", String(progress));
       heroInner.style.opacity = String(Math.max(0, 1 - progress * 1.4));
       heroInner.style.transform = `translate3d(0, ${progress * -40}px, 0) scale(${1 - progress * 0.1})`;
     });

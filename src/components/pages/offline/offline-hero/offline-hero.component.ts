@@ -11,7 +11,7 @@ export class OfflineHeroComponent extends BaseElement {
   }
 
   render(): string {
-    const { actions, hero, states } = portfolioContent.offline;
+    const { actions, states } = portfolioContent.offline;
     const content = states.offline;
 
     return HTML`
@@ -39,7 +39,6 @@ export class OfflineHeroComponent extends BaseElement {
           </div>
         </div>
 
-        <scroll-hint data-offline-cue mode="vertical" label="${hero.scrollCue}"></scroll-hint>
       </section>
     `;
   }

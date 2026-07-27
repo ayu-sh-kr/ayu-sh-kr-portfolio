@@ -1,6 +1,7 @@
 .blog-hero-wrap {
   position: relative;
-  block-size: 140vh;
+  block-size: 118vh;
+  block-size: 118svh;
 }
 
 .blog-hero-stage {
