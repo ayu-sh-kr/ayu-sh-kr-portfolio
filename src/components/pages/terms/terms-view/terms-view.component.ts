@@ -69,6 +69,7 @@ export class TermsViewComponent extends BaseElement {
     this.scheduleProgressRender();
     if (this.terms) {
       this.sourceLifecycle.schedule(() => this.publishSource());
+      requestAnimationFrame(() => this.positionScopeThumb());
       return;
     }
     void this.loadTerms();
@@ -93,6 +94,12 @@ export class TermsViewComponent extends BaseElement {
     );
   }
 
+  @WindowListener({event: "resize"})
+  /** Keeps the scope switch thumb aligned after its buttons change size. */
+  positionScopeThumbOnResize(): void {
+    this.positionScopeThumb();
+  }
+
   @OnEvent(TERMS_MARKDOWN_RENDER_EVENT)
   /** Refreshes terms progress after Markdown has created the section wrappers. */
   refreshProgressAfterMarkdown(): void {
@@ -115,13 +122,14 @@ export class TermsViewComponent extends BaseElement {
       scopeButton.classList.toggle("is-active", isActive);
       scopeButton.setAttribute("aria-pressed", String(isActive));
     });
+    this.positionScopeThumb();
     requestAnimationFrame(() => {
       const heading = document.getElementById(target);
       if (!heading) {
         return;
       }
       heading.scrollIntoView({
-        behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+        behavior: "smooth",
         block: "start",
       });
     });
@@ -143,6 +151,7 @@ export class TermsViewComponent extends BaseElement {
       this.activeScope = terms.metadata.switches[0]?.target ?? terms.sections[0]?.id ?? "";
       this.loadError = "";
       this.updateHTML();
+      requestAnimationFrame(() => this.positionScopeThumb());
       this.sourceLifecycle.schedule(() => this.publishSource());
       this.scheduleProgressRender();
     } catch (error) {
@@ -156,6 +165,19 @@ export class TermsViewComponent extends BaseElement {
       this.loadError = "The terms and conditions could not be loaded right now.";
       this.updateHTML();
     }
+  }
+
+  /** Positions the demo-matched thumb below the currently selected scope button. */
+  private positionScopeThumb(): void {
+    const control = this.querySelector<HTMLElement>(".terms-scope-control");
+    const thumb = this.querySelector<HTMLElement>("[data-terms-scope-thumb]");
+    const activeButton = this.querySelector<HTMLButtonElement>(".terms-scope-button.is-active");
+    if (!control || !thumb || !activeButton) {
+      return;
+    }
+
+    thumb.style.inlineSize = `${activeButton.offsetWidth}px`;
+    thumb.style.transform = `translateX(${activeButton.offsetLeft - 4}px)`;
   }
 
   /** Publishes the loaded Markdown and section metadata to the child view. */
@@ -231,6 +253,7 @@ export class TermsViewComponent extends BaseElement {
         <section class="terms-scope" aria-labelledby="terms-scope-title">
           <p id="terms-scope-title" class="terms-eyebrow">Jump to the part that’s about you</p>
           <div class="terms-scope-control" role="tablist" aria-label="Terms audience">
+            <span class="terms-scope-thumb" data-terms-scope-thumb aria-hidden="true"></span>
             ${switches}
           </div>
         </section>
