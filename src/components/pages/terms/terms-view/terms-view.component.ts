@@ -1,5 +1,4 @@
-import {BindEvent, BaseElement, Component, HTML, WindowListener} from "@ayu-sh-kr/dota-wrap/core";
-import {ApplicationEventService} from "@ayu-sh-kr/dota-wrap/core";
+import {ApplicationEventService, BindEvent, BaseElement, Component, HTML, WindowListener} from "@ayu-sh-kr/dota-wrap/core";
 import {OnEvent} from "@ayu-sh-kr/dota-wrap/event";
 import {
   TERMS_MARKDOWN_RENDER_EVENT,
@@ -13,6 +12,7 @@ import {
   MarkdownSourceLifecycle,
 } from "@app/utils/markdown-lifecycle.utils.ts";
 
+/** Formats an authored ISO date for the terms metadata row without timezone drift. */
 const formatDate = (value: string): string => {
   const date = new Date(`${value}T00:00:00Z`);
   if (Number.isNaN(date.getTime())) {
@@ -27,18 +27,36 @@ const formatDate = (value: string): string => {
   }).format(date);
 };
 
+/**
+ * Loads and presents the terms and conditions document.
+ *
+ * After connecting, the view loads authored terms through `TermsLoaderService`,
+ * renders the document shell, and publishes Markdown to `terms-markdown-view`.
+ * It also owns audience-scope scrolling and reading progress, and aborts
+ * pending work when disconnected.
+ *
+ * Selector: `terms-view`.
+ */
 @Component({
   selector: "terms-view",
   shadow: false,
 })
 export class TermsViewComponent extends BaseElement {
+  /** Loads and normalizes the authored terms document. */
   private readonly loader = new TermsLoaderService();
+  /** Publishes terms source and completed-section events to child components. */
   private readonly publisher = ApplicationEventService.getInstance().getPublisher();
+  /** Shared helper for the terms reading-progress indicator. */
   private readonly progressLifecycle = new MarkdownProgressLifecycle(this);
+  /** Defers source publication until the Markdown child is connected. */
   private readonly sourceLifecycle = new MarkdownSourceLifecycle(this);
+  /** Loaded terms document, or null while loading or after an unavailable response. */
   private terms: TermsDocument | null = null;
+  /** Abort controller for the active terms request. */
   private request: AbortController | null = null;
+  /** ID of the audience section selected by the scope controls. */
   private activeScope = "use";
+  /** User-facing load error shown in place of the terms shell. */
   private loadError = "";
 
   constructor() {
@@ -46,7 +64,8 @@ export class TermsViewComponent extends BaseElement {
   }
 
   @OnEvent("connected", true)
-  onConnected(): void {
+  /** Starts progress tracking and loads or republishes the terms after connect. */
+  initializeTermsView(): void {
     this.scheduleProgressRender();
     if (this.terms) {
       this.sourceLifecycle.schedule(() => this.publishSource());
@@ -56,7 +75,8 @@ export class TermsViewComponent extends BaseElement {
   }
 
   @OnEvent("disconnected", true)
-  onDisconnected(): void {
+  /** Aborts loading and disconnects both document lifecycle helpers. */
+  cleanupTermsView(): void {
     this.request?.abort();
     this.request = null;
     this.progressLifecycle.disconnect();
@@ -64,17 +84,24 @@ export class TermsViewComponent extends BaseElement {
   }
 
   @WindowListener({event: "scroll"})
-  onScroll(): void {
-    this.scheduleProgressRender();
+  /** Schedules a lightweight terms progress update for the next animation frame. */
+  scheduleProgressRender(): void {
+    this.progressLifecycle.scheduleSectionProgress(
+      "[data-terms-progress]",
+      this.terms?.sections ?? [],
+      "terms-section-",
+    );
   }
 
   @OnEvent(TERMS_MARKDOWN_RENDER_EVENT)
-  onMarkdownRender(): void {
+  /** Refreshes terms progress after Markdown has created the section wrappers. */
+  refreshProgressAfterMarkdown(): void {
     this.scheduleProgressRender();
   }
 
   @BindEvent({event: "click", id: "[data-terms-scope]"})
-  onScopeClick(event: Event): void {
+  /** Updates the selected audience and scrolls to its corresponding section. */
+  scrollToScope(event: Event): void {
     const button = (event.target as HTMLElement | null)?.closest<HTMLButtonElement>("[data-terms-scope]");
     const target = button?.dataset.termsScope;
     if (!button || !target) {
@@ -100,6 +127,7 @@ export class TermsViewComponent extends BaseElement {
     });
   }
 
+  /** Loads the terms document and schedules its source for the Markdown child. */
   private async loadTerms(): Promise<void> {
     this.request?.abort();
     const request = new AbortController();
@@ -130,6 +158,7 @@ export class TermsViewComponent extends BaseElement {
     }
   }
 
+  /** Publishes the loaded Markdown and section metadata to the child view. */
   private publishSource(): void {
     if (!this.terms) {
       return;
@@ -144,14 +173,7 @@ export class TermsViewComponent extends BaseElement {
     });
   }
 
-  private readonly scheduleProgressRender = (): void => {
-    this.progressLifecycle.scheduleSectionProgress(
-      "[data-terms-progress]",
-      this.terms?.sections ?? [],
-      "terms-section-",
-    );
-  };
-
+  /** Renders the loading/error state or the complete terms reader shell. */
   render(): string {
     if (!this.terms) {
       return HTML`

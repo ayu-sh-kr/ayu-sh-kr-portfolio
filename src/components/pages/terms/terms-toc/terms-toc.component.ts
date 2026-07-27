@@ -3,12 +3,23 @@ import {type ApplicationEvent, OnEvent} from "@ayu-sh-kr/dota-wrap/event";
 import {TERMS_MARKDOWN_RENDER_EVENT, type TermsSection} from "@app/events/terms.events.ts";
 import {escapeHtml} from "@app/utils/html.utils.ts";
 
+/**
+ * Provides grouped navigation for the rendered terms sections.
+ *
+ * The Markdown view publishes section metadata after rendering. This element
+ * tracks the heading nearest the reading threshold and updates its active link;
+ * selecting a link updates the hash and scrolls to the corresponding heading.
+ *
+ * Selector: `terms-toc`.
+ */
 @Component({
   selector: "terms-toc",
   shadow: false,
 })
 export class TermsTocComponent extends BaseElement {
+  /** Sections published by the terms Markdown view. */
   private sections: readonly TermsSection[] = [];
+  /** ID of the section currently highlighted in the TOC. */
   private activeId = "";
 
   constructor() {
@@ -16,14 +27,16 @@ export class TermsTocComponent extends BaseElement {
   }
 
   @OnEvent(TERMS_MARKDOWN_RENDER_EVENT)
-  onMarkdownRender(event: ApplicationEvent<typeof TERMS_MARKDOWN_RENDER_EVENT>): void {
+  /** Replaces the TOC model after terms Markdown has finished rendering. */
+  updateSections(event: ApplicationEvent<typeof TERMS_MARKDOWN_RENDER_EVENT>): void {
     this.sections = event.data.sections;
     this.activeId = this.sections[0]?.id ?? "";
     this.updateHTML();
   }
 
   @WindowListener({event: "scroll"})
-  onScroll(): void {
+  /** Keeps the active link aligned with the section nearest the reading threshold. */
+  syncActiveSection(): void {
     let nextActiveId = this.sections[0]?.id ?? "";
     this.sections.forEach((section) => {
       const heading = document.getElementById(section.id);
@@ -39,7 +52,8 @@ export class TermsTocComponent extends BaseElement {
   }
 
   @HostListener({event: "click"})
-  onTocClick(event: MouseEvent): void {
+  /** Smooth-scrolls to a valid section selected from the delegated TOC links. */
+  scrollToSection(event: MouseEvent): void {
     const link = (event.target as HTMLElement | null)?.closest<HTMLAnchorElement>("[data-terms-toc-id]");
     const id = link?.dataset.termsTocId;
     if (!link || !id) {
@@ -61,6 +75,7 @@ export class TermsTocComponent extends BaseElement {
     this.updateHTML();
   }
 
+  /** Renders grouped section links or a placeholder before Markdown is ready. */
   render(): string {
     if (!this.sections.length) {
       return `<div class="terms-toc-placeholder" aria-hidden="true"></div>`;
