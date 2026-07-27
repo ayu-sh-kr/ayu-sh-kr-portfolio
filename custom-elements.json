@@ -1169,8 +1169,42 @@
           "superclass": {
             "name": "MdViewComponent"
           },
-          "members": [],
-          "attributes": []
+          "members": [
+            {
+              "kind": "field",
+              "name": "color",
+              "attribute": "color",
+              "type": {
+                "text": "string"
+              },
+              "default": "portfolioMarkdownColor"
+            },
+            {
+              "kind": "field",
+              "name": "theme",
+              "attribute": "theme",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "color",
+              "fieldName": "color",
+              "type": {
+                "text": "string"
+              },
+              "default": "portfolioMarkdownColor"
+            },
+            {
+              "name": "theme",
+              "fieldName": "theme",
+              "type": {
+                "text": "string"
+              }
+            }
+          ]
         }
       ],
       "exports": [
@@ -1554,8 +1588,42 @@
           "superclass": {
             "name": "MdViewComponent"
           },
-          "members": [],
-          "attributes": []
+          "members": [
+            {
+              "kind": "field",
+              "name": "color",
+              "attribute": "color",
+              "type": {
+                "text": "string"
+              },
+              "default": "portfolioMarkdownColor"
+            },
+            {
+              "kind": "field",
+              "name": "theme",
+              "attribute": "theme",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "color",
+              "fieldName": "color",
+              "type": {
+                "text": "string"
+              },
+              "default": "portfolioMarkdownColor"
+            },
+            {
+              "name": "theme",
+              "fieldName": "theme",
+              "type": {
+                "text": "string"
+              }
+            }
+          ]
         }
       ],
       "exports": [
@@ -2062,8 +2130,42 @@
           "superclass": {
             "name": "MdViewComponent"
           },
-          "members": [],
-          "attributes": []
+          "members": [
+            {
+              "kind": "field",
+              "name": "color",
+              "attribute": "color",
+              "type": {
+                "text": "string"
+              },
+              "default": "portfolioMarkdownColor"
+            },
+            {
+              "kind": "field",
+              "name": "theme",
+              "attribute": "theme",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "color",
+              "fieldName": "color",
+              "type": {
+                "text": "string"
+              },
+              "default": "portfolioMarkdownColor"
+            },
+            {
+              "name": "theme",
+              "fieldName": "theme",
+              "type": {
+                "text": "string"
+              }
+            }
+          ]
         }
       ],
       "exports": [
