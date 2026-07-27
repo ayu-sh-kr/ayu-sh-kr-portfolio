@@ -4,11 +4,22 @@ import {MdViewComponent} from "@ayu-sh-kr/dota-md";
 import {SHOWCASE_MARKDOWN_SOURCE_EVENT} from "@app/events/showcase.events.ts";
 import {MarkdownLifecycleUtils} from "@app/utils/markdown-lifecycle.utils.ts";
 
+/**
+ * Adapts the shared Markdown view for showcase case studies.
+ *
+ * The parent `showcase-view` publishes {@link SHOWCASE_MARKDOWN_SOURCE_EVENT}
+ * after loading a project. This component hands the source to the shared
+ * Markdown lifecycle utility, enhances rendered code blocks and images, and
+ * keeps the article's loading state synchronized with Markdown rendering.
+ *
+ * Selector: `showcase-markdown-view`.
+ */
 @Component({
   selector: "showcase-markdown-view",
   shadow: false,
 })
 export class ShowcaseMarkdownViewComponent extends MdViewComponent {
+  /** Shared capture, rendering, hash-scroll, and feedback lifecycle for Markdown. */
   private readonly markdownLifecycle = new MarkdownLifecycleUtils(this);
 
   constructor() {
@@ -16,16 +27,24 @@ export class ShowcaseMarkdownViewComponent extends MdViewComponent {
   }
 
   @BeforeInit()
+  /** Captures the loading placeholder before Markdown replaces the initial content. */
   captureInitialContent(): void {
     this.markdownLifecycle.captureInitialContent();
   }
 
   @OnEvent(SHOWCASE_MARKDOWN_SOURCE_EVENT)
-  onMarkdownSource(event: ApplicationEvent<typeof SHOWCASE_MARKDOWN_SOURCE_EVENT>): void {
+  /** Renders the article source published by the showcase article loader. */
+  renderMarkdownSource(event: ApplicationEvent<typeof SHOWCASE_MARKDOWN_SOURCE_EVENT>): void {
     this.markdownLifecycle.renderSource(event.data.markdown);
   }
 
   @OnEvent("md:render")
+  /**
+   * Adds showcase-specific behavior after the shared Markdown renderer updates.
+   *
+   * Code blocks receive a copy button, images are lazy-loaded, the article is
+   * marked ready, and any pending hash navigation is scheduled afterward.
+   */
   override onContentChange(event: ApplicationEvent<"md:render">): void {
     super.onContentChange(event);
     this.querySelector("h1")?.remove();
@@ -51,7 +70,8 @@ export class ShowcaseMarkdownViewComponent extends MdViewComponent {
   }
 
   @BindEvent({event: "click", id: "[data-copy-code]"})
-  handleCopy(event: Event): void {
+  /** Copies the selected code block and gives the button temporary feedback. */
+  copyCode(event: Event): void {
     const button = (event.target as HTMLElement | null)?.closest<HTMLButtonElement>("[data-copy-code]");
     if (!button) {
       return;
@@ -66,10 +86,12 @@ export class ShowcaseMarkdownViewComponent extends MdViewComponent {
   }
 
   @OnEvent("disconnected", true)
-  onDisconnected(): void {
+  /** Releases timers and listeners owned by the shared Markdown lifecycle. */
+  cleanupMarkdownLifecycle(): void {
     this.markdownLifecycle.disconnect();
   }
 
+  /** Renders Markdown content with the showcase article theme and content class. */
   override render(): string {
     return this.markdownLifecycle.renderThemedContent("showcase-markdown-content");
   }
