@@ -2446,6 +2446,15 @@
                 "text": "string"
               },
               "default": "vertical"
+            },
+            {
+              "kind": "field",
+              "name": "progress",
+              "attribute": "progress",
+              "type": {
+                "text": "string"
+              },
+              "default": "0"
             }
           ],
           "attributes": [
@@ -2464,6 +2473,14 @@
                 "text": "string"
               },
               "default": "vertical"
+            },
+            {
+              "name": "progress",
+              "fieldName": "progress",
+              "type": {
+                "text": "string"
+              },
+              "default": "0"
             }
           ]
         }
@@ -2481,6 +2498,143 @@
           "name": "scroll-hint",
           "declaration": {
             "name": "ScrollHintComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/utils/skeleton/skeleton-article/skeleton-article.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "SkeletonArticleComponent",
+          "customElement": true,
+          "tagName": "sk-article",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "SkeletonArticleComponent",
+          "declaration": {
+            "name": "SkeletonArticleComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "sk-article",
+          "declaration": {
+            "name": "SkeletonArticleComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/utils/skeleton/skeleton-cards/skeleton-cards.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "SkeletonCardsComponent",
+          "customElement": true,
+          "tagName": "sk-cards",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [
+            {
+              "kind": "field",
+              "name": "count",
+              "attribute": "n",
+              "type": {
+                "text": "string"
+              },
+              "default": "3"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "n",
+              "fieldName": "count",
+              "type": {
+                "text": "string"
+              },
+              "default": "3"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "SkeletonCardsComponent",
+          "declaration": {
+            "name": "SkeletonCardsComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "sk-cards",
+          "declaration": {
+            "name": "SkeletonCardsComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/utils/skeleton/skeleton-list/skeleton-list.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "SkeletonListComponent",
+          "customElement": true,
+          "tagName": "sk-list",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [
+            {
+              "kind": "field",
+              "name": "rows",
+              "attribute": "rows",
+              "type": {
+                "text": "string"
+              },
+              "default": "4"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "rows",
+              "fieldName": "rows",
+              "type": {
+                "text": "string"
+              },
+              "default": "4"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "SkeletonListComponent",
+          "declaration": {
+            "name": "SkeletonListComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "sk-list",
+          "declaration": {
+            "name": "SkeletonListComponent"
           }
         }
       ]

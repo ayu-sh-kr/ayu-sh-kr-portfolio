@@ -654,7 +654,7 @@
           "name": "scroll-hint",
           "source": {
             "file": "./src/components/utils/scroll-hint/scroll-hint.component.ts",
-            "offset": 765
+            "offset": 929
           },
           "attributes": [
             {
@@ -666,7 +666,7 @@
               },
               "source": {
                 "file": "./src/components/utils/scroll-hint/scroll-hint.component.ts",
-                "offset": 1086
+                "offset": 1250
               }
             },
             {
@@ -678,7 +678,19 @@
               },
               "source": {
                 "file": "./src/components/utils/scroll-hint/scroll-hint.component.ts",
-                "offset": 926
+                "offset": 1090
+              }
+            },
+            {
+              "name": "progress",
+              "default": "0",
+              "required": false,
+              "value": {
+                "type": "string"
+              },
+              "source": {
+                "file": "./src/components/utils/scroll-hint/scroll-hint.component.ts",
+                "offset": 1401
               }
             }
           ],
@@ -690,7 +702,7 @@
                 "default": "Scroll",
                 "source": {
                   "file": "./src/components/utils/scroll-hint/scroll-hint.component.ts",
-                  "offset": 1086
+                  "offset": 1250
                 }
               },
               {
@@ -699,7 +711,16 @@
                 "default": "vertical",
                 "source": {
                   "file": "./src/components/utils/scroll-hint/scroll-hint.component.ts",
-                  "offset": 926
+                  "offset": 1090
+                }
+              },
+              {
+                "name": "progress",
+                "type": "string",
+                "default": "0",
+                "source": {
+                  "file": "./src/components/utils/scroll-hint/scroll-hint.component.ts",
+                  "offset": 1401
                 }
               }
             ]
@@ -1179,6 +1200,85 @@
           "attributes": [],
           "js": {
             "properties": []
+          }
+        },
+        {
+          "name": "sk-article",
+          "source": {
+            "file": "./src/components/utils/skeleton/skeleton-article/skeleton-article.component.ts",
+            "offset": 214
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "sk-cards",
+          "source": {
+            "file": "./src/components/utils/skeleton/skeleton-cards/skeleton-cards.component.ts",
+            "offset": 233
+          },
+          "attributes": [
+            {
+              "name": "n",
+              "default": "3",
+              "required": false,
+              "value": {
+                "type": "string"
+              },
+              "source": {
+                "file": "./src/components/utils/skeleton/skeleton-cards/skeleton-cards.component.ts",
+                "offset": 393
+              }
+            }
+          ],
+          "js": {
+            "properties": [
+              {
+                "name": "count",
+                "type": "string",
+                "default": "3",
+                "source": {
+                  "file": "./src/components/utils/skeleton/skeleton-cards/skeleton-cards.component.ts",
+                  "offset": 393
+                }
+              }
+            ]
+          }
+        },
+        {
+          "name": "sk-list",
+          "source": {
+            "file": "./src/components/utils/skeleton/skeleton-list/skeleton-list.component.ts",
+            "offset": 226
+          },
+          "attributes": [
+            {
+              "name": "rows",
+              "default": "4",
+              "required": false,
+              "value": {
+                "type": "string"
+              },
+              "source": {
+                "file": "./src/components/utils/skeleton/skeleton-list/skeleton-list.component.ts",
+                "offset": 399
+              }
+            }
+          ],
+          "js": {
+            "properties": [
+              {
+                "name": "rows",
+                "type": "string",
+                "default": "4",
+                "source": {
+                  "file": "./src/components/utils/skeleton/skeleton-list/skeleton-list.component.ts",
+                  "offset": 399
+                }
+              }
+            ]
           }
         },
         {
