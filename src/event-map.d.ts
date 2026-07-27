@@ -1,5 +1,6 @@
 export {};
 
+import type { AnalyticsTrackEvent } from "@app/events/analytics.events.ts";
 import type { BlogFilterChange, BlogIndexData, BlogMarkdownSource } from "@app/events/blog.events.ts";
 import type { PrivacyMarkdownRender, PrivacyMarkdownSource } from "@app/events/privacy.events.ts";
 import type { ShowcaseMarkdownSource } from "@app/events/showcase.events.ts";
@@ -11,6 +12,7 @@ import type { TermsMarkdownRender, TermsMarkdownSource } from "@app/events/terms
 
 declare module "@ayu-sh-kr/dota-wrap/event" {
   interface ApplicationEventMap {
+    "analytics:track": AnalyticsTrackEvent;
     "app:initialized": null;
     "attribute-changed": any;
     "blog:filter-change": BlogFilterChange;

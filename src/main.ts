@@ -7,6 +7,8 @@ import {DefaultApplicationEventListenerRegistry, initializeApp} from "@ayu-sh-kr
 import { Router, RouterService } from "@ayu-sh-kr/dota-wrap/router";
 import { ApplicationEventService } from "@ayu-sh-kr/dota-wrap/core";
 import { registerPortfolioMarkdownTheme } from "@app/configs/markdown-theme.config.ts";
+import { AnalyticsEventListener } from "@app/service/analytics-event.listener.ts";
+import { AnalyticsSectionTracker } from "@app/service/analytics-section-tracker.service.ts";
 import { RouterUtils } from "@app/utils/router.utils.ts";
 import { applyRouteMetadata } from "@app/utils/seo.utils.ts";
 import components from "virtual:dota-components";
@@ -16,6 +18,7 @@ const applicationEventPublisher = applicationEventService.getPublisher();
 const applicationEventListener = applicationEventService.getListener();
 
 let routerService!: RouterService<Router<HTMLElement>>;
+const analyticsSectionTracker = new AnalyticsSectionTracker();
 
 registerPortfolioMarkdownTheme();
 
@@ -27,11 +30,16 @@ initializeApp({
   defaultRoute: { path: "/", component: HomePage },
   root: AppComponent,
   globalHooks: {
-    afterEach: [applyRouteMetadata],
+    afterEach: [
+      applyRouteMetadata,
+      (context) => analyticsSectionTracker.trackPage(context.url.pathname),
+    ],
   },
 })
   .then((value) => {
     DefaultApplicationEventListenerRegistry.setListener(applicationEventListener);
+    new AnalyticsEventListener();
+    analyticsSectionTracker.trackPage(window.location.pathname);
     routerService = value.routerService;
     RouterUtils.setRouterService(routerService);
     applicationEventPublisher.publishAsync({ name: "app:initialized", data: null });
