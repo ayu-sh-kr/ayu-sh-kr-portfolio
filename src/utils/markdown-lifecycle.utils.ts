@@ -8,11 +8,34 @@ import {
 } from "@ayu-sh-kr/dota-md";
 import {portfolioMarkdownColor, portfolioMarkdownTheme} from "@app/configs/markdown-theme.config.ts";
 
+/**
+ * Offset used to remove the leading `#` before a URL hash is decoded.
+ * Keeping it named avoids scattering the hash format through navigation logic.
+ */
 const HASH_PREFIX_LENGTH = 1;
+
+/**
+ * Duration of the temporary copied state shown by code and anchor controls.
+ * The same delay is used for every Markdown surface through `markCopied()`.
+ */
 const COPY_RESET_DELAY = 1400;
+
+/**
+ * Maximum loading interval for the article skeleton before it becomes an error
+ * state, preventing a stalled request from shimmering indefinitely.
+ */
 const SKELETON_TIMEOUT = 9000;
 
-/** Coordinates rendering, theme presentation, scrolling, reveals, tables, and copy feedback for a Markdown viewer. */
+/**
+ * Owns the browser-side behavior shared by the app's Markdown view components.
+ *
+ * The concrete blog, showcase, privacy, and terms views delegate their common
+ * work here: preserving fallback content, publishing raw Markdown to
+ * `MDService`, applying the active theme, revealing skeletons, handling hashes,
+ * decorating tables, and cleaning up asynchronous work. The helper is scoped to
+ * one `MdViewComponent`, so observers, timers, and DOM changes cannot leak into
+ * another Markdown surface.
+ */
 export class MarkdownLifecycleUtils {
   private readonly copyResetTimers = new Map<HTMLElement, number>();
   private hashFrameId: number | null = null;
@@ -26,14 +49,31 @@ export class MarkdownLifecycleUtils {
    */
   constructor(private readonly view: MdViewComponent) {}
 
-  /** Captures the view's authored child markup as initial Markdown-view content when no content is set. */
+  /**
+   * Preserves authored fallback markup before the Markdown renderer takes over.
+   *
+   * Concrete views call this from `@BeforeInit()`. The captured value is later
+   * passed through the normal theme wrapper, which keeps an accessible loading
+   * message in the real-content layer while the decorative skeleton is visible.
+   * Existing `MdViewComponent.content` is left untouched so a previously
+   * prepared view can be reconnected without losing its current source.
+   */
   captureInitialContent(): void {
     if (!this.view.content) {
       this.view.content = this.view.innerHTML;
     }
   }
 
-  /** Starts the bounded loading window for the article skeleton. */
+  /**
+   * Starts or restarts the timeout that bounds an article skeleton's loading state.
+   *
+   * The Markdown view calls this after its fallback content is captured. If no
+   * `md:render` event arrives within nine seconds, the helper removes the
+   * decorative layer, clears stale loading markup, exposes a readable status,
+   * and marks the nearest loading container as no longer busy. Calling the
+   * method again replaces the previous timer, which is useful when a view starts
+   * a new loading cycle.
+   */
   startSkeletonTimeout(): void {
     this.clearSkeletonTimeout();
     this.skeletonTimeoutId = window.setTimeout(() => {
@@ -50,7 +90,13 @@ export class MarkdownLifecycleUtils {
     }, SKELETON_TIMEOUT);
   }
 
-  /** Reveals rendered Markdown into the space reserved by its article skeleton. */
+  /**
+   * Cross-fades rendered Markdown into the space reserved by its skeleton.
+   *
+   * Concrete views call this immediately after `MdViewComponent.onContentChange`
+   * has written the new HTML. It cancels the timeout first, then marks the real
+   * content ready and lets CSS remove the decorative skeleton layer.
+   */
   revealSkeleton(): void {
     this.clearSkeletonTimeout();
     this.view.querySelector<HTMLElement>("[data-markdown-skeleton-content]")?.classList.add("is-ready");
@@ -58,19 +104,32 @@ export class MarkdownLifecycleUtils {
   }
 
   /**
-   * Publishes raw Markdown through `MDService`, causing subscribed views to receive `md:render`.
+   * Sends raw Markdown through the shared renderer and its application event flow.
    *
-   * @param markdown - Raw Markdown source to render and publish.
+   * The loader-owning parent calls this after a document request succeeds. With
+   * `publish: true`, `MDService` renders the source and publishes the resulting
+   * `md:render` payload; the concrete Markdown view receives that event and
+   * updates its own content before revealing the skeleton.
+   *
+   * @param markdown - Raw source returned by the document loader; it is rendered
+   *   as Markdown rather than inserted directly into the DOM.
    */
   renderSource(markdown: string): void {
     MDService.render(markdown, {publish: true});
   }
 
   /**
-   * Builds the themed content wrapper used by the Markdown view.
+   * Builds the themed content wrapper used by a concrete Markdown view.
    *
-   * @param contentClass - CSS class applied to the generated content wrapper.
-   * @returns HTML containing themed existing view content; it does not mutate the DOM.
+   * The current theme and accent are read from the view each time so theme or
+   * color changes are reflected on the next render. If the renderer has not
+   * supplied content yet, the wrapper contains the fallback captured during
+   * initialization. This method only returns HTML; `BaseElement` performs the
+   * actual DOM update when the owning view renders.
+   *
+   * @param contentClass - View-specific class used by the blog, showcase, legal,
+   *   and other Markdown stylesheets.
+   * @returns A themed HTML wrapper around the view's current Markdown HTML.
    */
   renderThemedContent(contentClass: string): string {
     const themeName = this.view.theme ?? portfolioMarkdownTheme.name;
@@ -86,7 +145,19 @@ export class MarkdownLifecycleUtils {
     `;
   }
 
-  /** Wraps themed Markdown in the shared article skeleton and reveal frame. */
+  /**
+   * Builds the initial article loading frame around themed Markdown content.
+   *
+   * The frame keeps the article skeleton and real content in the same grid cell,
+   * so the skeleton reserves the reader measure while Markdown is being fetched
+   * or rendered. The skeleton is explicitly hidden from assistive technology;
+   * the separate live status announces loading and can expose the timeout state.
+   *
+   * @param contentClass - Concrete Markdown content class applied by
+   *   {@link renderThemedContent}.
+   * @returns HTML containing the skeleton layer, themed content layer, and live
+   *   loading status.
+   */
   renderArticleSkeleton(contentClass: string): string {
     return `
       <div class="markdown-skeleton-frame" data-markdown-skeleton-frame>
@@ -101,7 +172,14 @@ export class MarkdownLifecycleUtils {
     `;
   }
 
-  /** Schedules scrolling to the current URL hash after the next animation frame, replacing any prior request. */
+  /**
+   * Schedules in-page navigation after rendered headings exist in the DOM.
+   *
+   * Markdown rendering can replace the heading nodes after the browser has
+   * already parsed the URL hash. This method decodes the current hash and waits
+   * one animation frame before calling `scrollIntoView`; a newer request cancels
+   * the older frame so route changes do not scroll to stale content.
+   */
   scheduleHashScroll(): void {
     this.cancelHashScroll();
     const headingId = this.currentHash();
@@ -116,11 +194,17 @@ export class MarkdownLifecycleUtils {
   }
 
   /**
-   * Adds `is-revealed` to matching sections immediately when motion is reduced or observers are unavailable;
-   * otherwise reveals each section when it intersects the viewport.
+   * Adds reveal classes to Markdown sections as they enter the viewport.
    *
-   * @param selector - CSS selector for sections inside the Markdown view.
-   * @throws DOMException when `selector` is not a valid CSS selector.
+   * Reduced-motion users and browsers without `IntersectionObserver` receive
+   * all sections immediately. Otherwise one observer watches the supplied
+   * elements, marks each intersecting element once, and unobserves it. Any
+   * observer from an earlier render is disconnected before the new section set
+   * is registered.
+   *
+   * @param selector - Valid CSS selector for the revealable sections inside the
+   *   scoped Markdown view.
+   * @throws DOMException If `selector` is not a valid CSS selector.
    */
   setupReveals(selector: string): void {
     this.observer?.disconnect();
@@ -145,9 +229,15 @@ export class MarkdownLifecycleUtils {
   }
 
   /**
-   * Adds header-derived `data-label` values to matching body cells for responsive table presentation.
+   * Adds column labels to Markdown table cells for the mobile layout.
    *
-   * @param content - Rendered Markdown container whose tables are decorated in place.
+   * The responsive table CSS reads `data-label` from each body cell when the
+   * table collapses into stacked rows. Labels come only from the rendered
+   * `<thead>` cells, and rows without a matching header are left unchanged.
+   * The supplied container is mutated in place after Markdown rendering.
+   *
+   * @param content - Rendered Markdown container whose tables are ready for
+   *   post-processing.
    */
   decorateResponsiveTables(content: HTMLElement): void {
     content.querySelectorAll<HTMLTableElement>("table").forEach((table) => {
@@ -164,12 +254,17 @@ export class MarkdownLifecycleUtils {
   }
 
   /**
-   * Shows a copied-state label and restores the default label after the shared delay.
+   * Shows temporary feedback on a copied-code or copied-anchor control.
    *
-   * @param element - Label-bearing element whose text content is updated.
-   * @param copiedLabel - Temporary label shown immediately.
-   * @param defaultLabel - Label restored after the temporary state expires.
-   * @param stateClass - Optional class applied while the copied state is visible.
+   * The label is changed immediately and an optional state class is applied for
+   * styling. Repeated calls for the same element cancel its prior reset timer,
+   * preventing an earlier copy action from restoring stale text. `disconnect()`
+   * clears any reset timers that are still pending when the view is removed.
+   *
+   * @param element - Existing control whose text and temporary state are updated.
+   * @param copiedLabel - Feedback text shown while the copy operation is fresh.
+   * @param defaultLabel - Text restored after {@link COPY_RESET_DELAY} milliseconds.
+   * @param stateClass - Optional class applied until the default label returns.
    */
   markCopied(element: HTMLElement, copiedLabel: string, defaultLabel: string, stateClass = ""): void {
     element.textContent = copiedLabel;
@@ -191,7 +286,14 @@ export class MarkdownLifecycleUtils {
     this.copyResetTimers.set(element, timer);
   }
 
-  /** Cancels pending reveal, copy-label, and hash-scroll work owned by this helper. */
+  /**
+   * Releases asynchronous work owned by this Markdown view.
+   *
+   * Concrete views call this from their scoped `disconnected` lifecycle handler.
+   * It disconnects the section observer, clears copy-feedback timers, cancels a
+   * pending hash-scroll frame, and stops the skeleton timeout so detached views
+   * cannot mutate the document later.
+   */
   disconnect(): void {
     this.observer?.disconnect();
     this.observer = null;
@@ -201,6 +303,13 @@ export class MarkdownLifecycleUtils {
     this.clearSkeletonTimeout();
   }
 
+  /**
+   * Cancels the queued hash-scroll frame before a new request or disconnect.
+   *
+   * Keeping the frame ID here makes hash navigation idempotent across repeated
+   * Markdown renders: only the latest rendered document is eligible to receive
+   * the scroll operation.
+   */
   private cancelHashScroll(): void {
     if (this.hashFrameId !== null) {
       cancelAnimationFrame(this.hashFrameId);
@@ -208,6 +317,12 @@ export class MarkdownLifecycleUtils {
     }
   }
 
+  /**
+   * Clears the active skeleton timeout without changing the rendered state.
+   *
+   * The caller decides whether the skeleton is being revealed or the view is
+   * being disconnected; this helper only releases the browser timer.
+   */
   private clearSkeletonTimeout(): void {
     if (this.skeletonTimeoutId !== null) {
       window.clearTimeout(this.skeletonTimeoutId);
@@ -215,6 +330,15 @@ export class MarkdownLifecycleUtils {
     }
   }
 
+  /**
+   * Reads and safely decodes the current URL hash for in-page navigation.
+   *
+   * A malformed percent-encoded hash is treated as absent instead of allowing
+   * navigation setup to throw during a Markdown render.
+   *
+   * @returns The decoded hash without its leading `#`, or an empty string when
+   *   no usable hash is present.
+   */
   private currentHash(): string {
     const hash = window.location.hash.slice(HASH_PREFIX_LENGTH);
     try {
@@ -225,21 +349,35 @@ export class MarkdownLifecycleUtils {
   }
 }
 
-/** Defers source publication until a newly-rendered Markdown child is connected. */
+/**
+ * Coordinates the parent-to-child Markdown source handoff.
+ *
+ * Privacy and terms parents rebuild their Markdown child after the document
+ * metadata loads. Publishing on the next animation frame gives the new child a
+ * chance to connect and subscribe before the source event is sent. The helper
+ * is intentionally scoped to the parent host so a detached or replaced child
+ * cannot receive a late publication.
+ */
 export class MarkdownSourceLifecycle {
   private frameId: number | null = null;
 
   /**
-   * Creates a source scheduler scoped to the supplied host element.
+   * Creates a source scheduler scoped to a parent Markdown host.
    *
-   * @param host - Element that must remain connected before publication is allowed.
+   * @param host - Parent element that must remain connected before the deferred
+   *   source publication is allowed.
    */
   constructor(private readonly host: HTMLElement) {}
 
   /**
-   * Schedules `publish` for the next animation frame if the host is still connected.
+   * Defers source publication until the next animation frame.
    *
-   * @param publish - Callback that publishes the source to the Markdown view.
+   * A newer schedule replaces the previous frame. When the frame runs, the
+   * callback is invoked only if the parent host is still connected, which avoids
+   * sending source to a view that was replaced by navigation or an error state.
+   *
+   * @param publish - Callback that publishes the loaded Markdown and any
+   *   associated metadata to the newly connected child view.
    */
   schedule(publish: () => void): void {
     this.cancel();
@@ -251,11 +389,22 @@ export class MarkdownSourceLifecycle {
     });
   }
 
-  /** Cancels the pending source-publication frame, if any. */
+  /**
+   * Cancels a deferred source publication during parent teardown.
+   *
+   * No callback is invoked after this method returns unless a frame has already
+   * started executing; the scheduled callback also checks host connectivity.
+   */
   disconnect(): void {
     this.cancel();
   }
 
+  /**
+   * Clears the pending animation frame used for source publication.
+   *
+   * This is shared by `schedule()` and `disconnect()` so replacing a request and
+   * tearing down the parent use identical cancellation behavior.
+   */
   private cancel(): void {
     if (this.frameId !== null) {
       cancelAnimationFrame(this.frameId);
@@ -264,22 +413,36 @@ export class MarkdownSourceLifecycle {
   }
 }
 
-/** Shared, frame-coalesced progress-bar behavior for Markdown article hosts. */
+/**
+ * Updates reading-progress indicators for Markdown article hosts.
+ *
+ * Blog and showcase articles track the whole document, while privacy and terms
+ * track the first and last rendered sections. Both modes use the same helper:
+ * scroll or resize handlers request work here, and one animation frame performs
+ * the DOM measurement and scale update. This keeps layout work out of the event
+ * handlers and gives each parent an explicit disconnect path.
+ */
 export class MarkdownProgressLifecycle {
   private frameId: number | null = null;
 
   /**
-   * Creates progress scheduling helpers scoped to the supplied article host.
+   * Creates progress scheduling helpers scoped to one article host.
    *
-   * @param host - Article host containing the progress element and rendered sections.
+   * @param host - Article host containing the progress element and, for section
+   *   progress, the rendered section elements used for measurement.
    */
   constructor(private readonly host: HTMLElement) {}
 
   /**
-   * Schedules a document-level scroll-progress update for the next animation frame.
-   * The matching element's horizontal scale is clamped to the range `0` to `1`.
+   * Schedules progress based on the document's scrollable height.
    *
-   * @param progressSelector - CSS selector for the progress element inside the host.
+   * The progress element is updated on the next animation frame and its
+   * horizontal scale is clamped between zero and one. Short documents with no
+   * scrollable range are treated as complete rather than leaving the indicator
+   * at zero.
+   *
+   * @param progressSelector - Valid selector for the progress element inside the
+   *   article host.
    */
   scheduleDocumentProgress(progressSelector: string): void {
     this.schedule(progressSelector, () => {
@@ -289,12 +452,20 @@ export class MarkdownProgressLifecycle {
   }
 
   /**
-   * Schedules progress based on the first and last section represented by the supplied IDs.
-   * The matching element's horizontal scale is clamped to the range `0` to `1`.
+   * Schedules progress across the first and last rendered Markdown sections.
    *
-   * @param progressSelector - CSS selector for the progress element inside the host.
-   * @param sections - Ordered section records whose `id` values identify rendered sections.
-   * @param sectionPrefix - ID prefix prepended to each section ID in the host DOM.
+   * The parent supplies the ordered section model it already uses for its TOC.
+   * The helper resolves the first and last corresponding DOM nodes, measures the
+   * range in document coordinates, and clamps the resulting scale between zero
+   * and one. If either node is not rendered yet, the current indicator is left
+   * unchanged so a render can schedule the calculation again.
+   *
+   * @param progressSelector - Valid selector for the progress element inside the
+   *   article host.
+   * @param sections - Ordered section records whose `id` values identify the
+   *   rendered Markdown sections.
+   * @param sectionPrefix - Prefix used to build each section element ID in the
+   *   host DOM.
    */
   scheduleSectionProgress(
     progressSelector: string,
@@ -320,7 +491,12 @@ export class MarkdownProgressLifecycle {
     });
   }
 
-  /** Cancels the pending progress frame, if any. */
+  /**
+   * Cancels the pending progress frame during article teardown.
+   *
+   * A later scroll or resize event may schedule a fresh frame after the view is
+   * connected again; this method only releases work for the current connection.
+   */
   disconnect(): void {
     if (this.frameId !== null) {
       cancelAnimationFrame(this.frameId);
@@ -328,6 +504,17 @@ export class MarkdownProgressLifecycle {
     }
   }
 
+  /**
+   * Coalesces one progress calculation into the next animation frame.
+   *
+   * Multiple scroll and resize events in the same frame share one DOM read and
+   * one style write. A `null` calculation means the required rendered sections
+   * are not available yet, so the indicator is intentionally left unchanged.
+   *
+   * @param progressSelector - Selector for the element whose `scaleX` is updated.
+   * @param calculateProgress - Callback that returns a raw progress value or
+   *   `null` when the current document cannot be measured.
+   */
   private schedule(progressSelector: string, calculateProgress: () => number | null): void {
     if (this.frameId !== null) {
       return;
