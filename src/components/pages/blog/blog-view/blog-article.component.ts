@@ -1,22 +1,21 @@
-import {BaseElement, Component, WindowListener} from "@ayu-sh-kr/dota-wrap/core";
-import {type ApplicationEvent, OnEvent} from "@ayu-sh-kr/dota-wrap/event";
-import {formatBlogDate, labelForCategory, type BlogPost} from "@app/configs/blogs.config.ts";
-import {
-  BLOG_ARTICLE_DATA_EVENT,
-  BLOG_ARTICLE_ERROR_EVENT,
-} from "@app/events/blog.events.ts";
+import {ApplicationEventService, BaseElement, Component, WindowListener} from "@ayu-sh-kr/dota-wrap/core";
+import {OnEvent} from "@ayu-sh-kr/dota-wrap/event";
+import {blogPosts, formatBlogDate, getBlogPost, getBlogSlug, labelForCategory, type BlogPost} from "@app/configs/blogs.config.ts";
+import {blogArticleContent, blogIndexContent} from "@app/data/blog-content.ts";
+import {BLOG_MARKDOWN_SOURCE_EVENT, type BlogMarkdownSource} from "@app/events/blog.events.ts";
 import {portfolioMarkdownColor, portfolioMarkdownTheme} from "@app/configs/markdown-theme.config.ts";
 import {escapeHtml} from "@app/utils/html.utils.ts";
 import {MarkdownProgressLifecycle} from "@app/utils/markdown-lifecycle.utils.ts";
+import {BlogLoaderService} from "@app/service/blog-loader.service.ts";
 
 /**
- * Renders one blog article after receiving its metadata and Markdown source events.
+ * Owns the `/blog/:slug` article surface from slug resolution through Markdown reading.
  *
- * The parent `blog-view` publishes {@link BLOG_ARTICLE_DATA_EVENT} and
- * {@link BLOG_ARTICLE_ERROR_EVENT}; the Markdown loader publishes the source
- * consumed by `blog-markdown-view`. This component owns article states (loading,
- * not found, and load error) and delegates document progress scheduling to the
- * shared Markdown lifecycle utility.
+ * After connect it resolves the catalog record, renders loading/not-found/article
+ * states, and loads the selected Markdown through `BlogLoaderService`. The raw
+ * body crosses the component boundary through {@link BLOG_MARKDOWN_SOURCE_EVENT}
+ * for `blog-markdown-view`; the child owns Markdown rendering and post-processing.
+ * Document progress and request cleanup remain local to this article boundary.
  *
  * Selector: `blog-article`.
  */
@@ -25,14 +24,33 @@ import {MarkdownProgressLifecycle} from "@app/utils/markdown-lifecycle.utils.ts"
   shadow: false,
 })
 export class BlogArticleComponent extends BaseElement {
+  private readonly publisher = ApplicationEventService.getInstance().getPublisher();
+  private readonly loader = new BlogLoaderService();
+  private readonly progressLifecycle = new MarkdownProgressLifecycle(this);
   private ready = false;
   private post: BlogPost | null = null;
   private nextPost: BlogPost | null = null;
   private loadError = "";
-  private readonly progressLifecycle = new MarkdownProgressLifecycle(this);
+  private articleRequest: AbortController | null = null;
 
   constructor() {
     super();
+  }
+
+  /** Resolves the route slug, renders article metadata, and starts Markdown loading. */
+  @OnEvent("connected", true)
+  initializeArticle(): void {
+    const post = getBlogPost(getBlogSlug(window.location.pathname)) ?? null;
+    this.post = post;
+    this.nextPost = post && blogPosts.length > 1
+      ? blogPosts[(blogPosts.indexOf(post) + 1) % blogPosts.length] ?? null
+      : null;
+    this.ready = true;
+    this.updateHTML();
+    this.scheduleProgressRender();
+    if (post) {
+      void this.loadArticle(post);
+    }
   }
 
   /** Schedules document progress updates as the article scrolls. */
@@ -41,29 +59,36 @@ export class BlogArticleComponent extends BaseElement {
     this.progressLifecycle.scheduleDocumentProgress("[data-blog-progress]");
   }
 
-  /** Disconnects the shared progress utility when the article leaves the document. */
+  /** Aborts Markdown loading and disconnects progress work when the article leaves the document. */
   @OnEvent("disconnected", true)
-  cleanupProgress(): void {
+  cleanupArticle(): void {
+    this.articleRequest?.abort();
+    this.articleRequest = null;
     this.progressLifecycle.disconnect();
   }
 
-  /** Stores route data, renders the article shell, and starts its progress indicator. */
-  @OnEvent(BLOG_ARTICLE_DATA_EVENT)
-  renderArticleData(event: ApplicationEvent<typeof BLOG_ARTICLE_DATA_EVENT>): void {
-    const data = event.data;
-    this.ready = true;
-    this.post = data.post;
-    this.nextPost = data.nextPost;
-    this.loadError = "";
-    this.updateHTML();
-    this.scheduleProgressRender();
-  }
+  /** Loads the selected Markdown and publishes it to the connected Markdown child. */
+  private async loadArticle(post: BlogPost): Promise<void> {
+    this.articleRequest?.abort();
+    const request = new AbortController();
+    this.articleRequest = request;
 
-  /** Displays a load failure in the article body and replaces the loading view. */
-  @OnEvent(BLOG_ARTICLE_ERROR_EVENT)
-  showArticleError(event: ApplicationEvent<typeof BLOG_ARTICLE_ERROR_EVENT>): void {
-    this.loadError = event.data.message;
-    this.updateHTML();
+    try {
+      const markdown = await this.loader.load(post, request.signal);
+      if (request.signal.aborted || this.articleRequest !== request) {
+        return;
+      }
+      void this.publisher.publishAsync({
+        name: BLOG_MARKDOWN_SOURCE_EVENT,
+        data: {markdown} satisfies BlogMarkdownSource,
+      });
+    } catch {
+      if (request.signal.aborted || this.articleRequest !== request) {
+        return;
+      }
+      this.loadError = blogArticleContent.loadError;
+      this.updateHTML();
+    }
   }
 
   /**
@@ -72,45 +97,45 @@ export class BlogArticleComponent extends BaseElement {
    */
   render(): string {
     if (!this.ready) {
-      return `<main class="blog-article-shell blog-container"><p class="blog-loading">Loading post…</p></main>`;
+      return `<main class="blog-article-shell blog-container"><p class="blog-loading">${blogArticleContent.loadingPost}</p></main>`;
     }
     if (!this.post) {
       return `
         <main class="blog-article-shell blog-container">
-          <a class="blog-back-link" href="/blog">← All posts</a>
-          <div class="blog-not-found"><p class="blog-eyebrow">404</p><h1>That post is not here.</h1><a class="blog-ink-button" href="/blog">Browse the blog</a></div>
+          <a class="blog-back-link" href="/blog">← ${blogArticleContent.allPostsLabel}</a>
+          <div class="blog-not-found"><p class="blog-eyebrow">${blogArticleContent.notFound.eyebrow}</p><h1>${blogArticleContent.notFound.title}</h1><a class="blog-ink-button" href="/blog">${blogArticleContent.notFound.browseLabel}</a></div>
         </main>
       `;
     }
 
     const markdown = this.loadError
-      ? `<article class="blog-prose"><p class="blog-load-error">${escapeHtml(this.loadError)} <a href="/blog">Return to all posts</a>.</p></article>`
+      ? `<article class="blog-prose"><p class="blog-load-error">${escapeHtml(this.loadError)} <a href="/blog">${blogArticleContent.returnToPostsLabel}</a>.</p></article>`
       : `<article class="blog-prose" data-blog-markdown aria-busy="true">
            <blog-markdown-view theme="${portfolioMarkdownTheme.name}" color="${portfolioMarkdownColor}">
-             <p class="blog-loading">Loading the post…</p>
+             <p class="blog-loading">${blogArticleContent.loadingArticle}</p>
            </blog-markdown-view>
          </article>`;
     const nextLink = this.nextPost
-      ? `<a href="/blog/${this.nextPost.slug}" class="blog-quiet-card blog-quiet-card-next"><span><small>Next note</small>${escapeHtml(this.nextPost.header)}</span><span>→</span></a>`
+      ? `<a href="/blog/${this.nextPost.slug}" class="blog-quiet-card blog-quiet-card-next"><span><small>${blogArticleContent.footer.nextLabel}</small>${escapeHtml(this.nextPost.header)}</span><span>→</span></a>`
       : "";
 
     return `
       <div class="blog-progress" data-blog-progress aria-hidden="true"></div>
       <main class="blog-article-shell blog-container" data-blog-article>
-        <a class="blog-back-link" href="/blog">← All posts</a>
+        <a class="blog-back-link" href="/blog">← ${blogArticleContent.allPostsLabel}</a>
         <header class="blog-article-header">
           <div class="blog-meta-row blog-article-meta">
             <span class="blog-chip">${labelForCategory(this.post.category)}</span>
-            <span>${this.post.minutes} min read · ${formatBlogDate(this.post.date)}</span>
+            <span>${this.post.minutes} ${blogIndexContent.readTimeSuffix} · ${formatBlogDate(this.post.date)}</span>
           </div>
           <h1>${escapeHtml(this.post.header)}</h1>
-          <p class="blog-article-author">Written by ${escapeHtml(this.post.writer)}</p>
+          <p class="blog-article-author">${blogArticleContent.authorPrefix} ${escapeHtml(this.post.writer)}</p>
         </header>
         ${markdown}
         <footer class="blog-article-footer">
-          <div class="blog-article-footer-meta"><span class="blog-chip">${labelForCategory(this.post.category)}</span><span>Share the useful parts.</span></div>
+          <div class="blog-article-footer-meta"><span class="blog-chip">${labelForCategory(this.post.category)}</span><span>${blogArticleContent.footer.shareCopy}</span></div>
           <div class="blog-post-nav">
-            <a href="/blog" class="blog-quiet-card"><span>←</span><span><small>Back to</small>All posts</span></a>
+            <a href="/blog" class="blog-quiet-card"><span>←</span><span><small>${blogArticleContent.footer.backLabel}</small>${blogArticleContent.allPostsLabel}</span></a>
             ${nextLink}
           </div>
         </footer>
