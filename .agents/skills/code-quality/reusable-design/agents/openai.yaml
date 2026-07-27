@@ -1,0 +1,4 @@
+interface:
+  display_name: "Reusable Design"
+  short_description: "CDD, separation of concern, KISS, and DRY"
+  default_prompt: "Use $reusable-design to structure this feature for reuse via component-driven development, separation of concern, KISS, and no duplication."
