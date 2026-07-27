@@ -6,4 +6,5 @@ minimumReleaseAgeExclude:
   - '@ayu-sh-kr/dota-md@0.0.10'
   - '@ayu-sh-kr/dota-ui@0.0.21'
   - '@ayu-sh-kr/dota-web-type-json@0.0.9'
-  - '@ayu-sh-kr/dota-wrap@0.0.24'
+  - '@ayu-sh-kr/dota-wrap@0.0.24 || 0.0.26'
+  - '@ayu-sh-kr/dota-router@0.0.30'
