@@ -6,6 +6,11 @@ const HTML_ENTITIES: Record<string, string> = {
   '"': "&quot;",
 };
 
-/** Escapes text before it is interpolated into an HTML template string. */
+/**
+ * Escapes text before it is interpolated into an HTML template string.
+ *
+ * @param value - Text that may contain HTML-significant characters.
+ * @returns The value with `&`, `<`, `>`, `'`, and `"` replaced by HTML entities.
+ */
 export const escapeHtml = (value: string): string =>
   value.replace(/[&<>'"]/g, (character) => HTML_ENTITIES[character] ?? character);
