@@ -1,5 +1,13 @@
 import { BaseElement, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
 
+/**
+ * Provides the final contact actions for the showcase support section.
+ *
+ * It stays deliberately stateless: the mail link starts a project inquiry and
+ * the pricing link hands visitors to the separate engagement options page.
+ *
+ * Selector: `showcase-cta`.
+ */
 @Component({
   selector: "showcase-cta",
   shadow: false,
@@ -9,6 +17,7 @@ export class ShowcaseCtaComponent extends BaseElement {
     super();
   }
 
+  /** Renders the inquiry and pricing actions used at the end of the page. */
   render(): string {
     return HTML`
       <div id="showcase-contact" class="showcase-cta showcase-reveal" data-showcase-reveal>
@@ -22,4 +31,3 @@ export class ShowcaseCtaComponent extends BaseElement {
     `;
   }
 }
-
