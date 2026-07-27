@@ -1,0 +1,4 @@
+interface:
+  display_name: "Code Documentation"
+  short_description: "Explanatory, maintainer-oriented TSDoc for components, methods, and types"
+  default_prompt: "Use $code-documentation to write explanatory maintainer-POV TSDoc for this component, method/API, or type — behavior, context, flow, and usage; descriptive but simple, never one-line filler."
