@@ -128,9 +128,13 @@ export class MarkdownLifecycleUtils {
    * @param element - Label-bearing element whose text content is updated.
    * @param copiedLabel - Temporary label shown immediately.
    * @param defaultLabel - Label restored after the temporary state expires.
+   * @param stateClass - Optional class applied while the copied state is visible.
    */
-  markCopied(element: HTMLElement, copiedLabel: string, defaultLabel: string): void {
+  markCopied(element: HTMLElement, copiedLabel: string, defaultLabel: string, stateClass = ""): void {
     element.textContent = copiedLabel;
+    if (stateClass) {
+      element.classList.add(stateClass);
+    }
     const previousTimer = this.copyResetTimers.get(element);
     if (previousTimer !== undefined) {
       window.clearTimeout(previousTimer);
@@ -139,6 +143,9 @@ export class MarkdownLifecycleUtils {
     const timer = window.setTimeout(() => {
       this.copyResetTimers.delete(element);
       element.textContent = defaultLabel;
+      if (stateClass) {
+        element.classList.remove(stateClass);
+      }
     }, COPY_RESET_DELAY);
     this.copyResetTimers.set(element, timer);
   }
