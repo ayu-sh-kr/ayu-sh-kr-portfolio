@@ -47,8 +47,8 @@ export class MarkdownLifecycleUtils {
    * @returns HTML containing themed existing view content; it does not mutate the DOM.
    */
   renderThemedContent(contentClass: string): string {
-    const themeName = this.view.getAttribute("theme") ?? portfolioMarkdownTheme.name;
-    const colorName = (this.view.getAttribute("color") ?? portfolioMarkdownColor) as ColorName;
+    const themeName = this.view.theme ?? portfolioMarkdownTheme.name;
+    const colorName = this.view.color ?? portfolioMarkdownColor;
     const theme = THEMES[themeName] ?? portfolioMarkdownTheme;
     const themedContent = this.view.content ? applyMarkdownTheme(this.view.content, theme, colorName) : "";
 
