@@ -1,5 +1,14 @@
 import {Component, DotaPageElement, SEO} from "@ayu-sh-kr/dota-wrap/core";
 import {Route} from "@ayu-sh-kr/dota-wrap/router";
+import {getBlogSeo} from "@app/data/blog-content.ts";
+import {toSEO} from "@app/utils/seo.utils.ts";
+
+/**
+ * Blog index route at `/blog`.
+ *
+ * The page composes the blog index and shared footer; its SEO is adapted from
+ * the blog data layer, so the route code contains no authored metadata literals.
+ */
 @Route({path: "/blog"})
 @Component({
   selector: "blog-page",
@@ -10,22 +19,16 @@ export class BlogPage extends DotaPageElement {
     super();
   }
 
+  /** Returns blog-index SEO authored by the blog data layer. */
   get seo(): SEO {
-    return {
-      title: "The blog — ayush.dev",
-      description: "Tutorials, takes, and notes from running production backends solo.",
-      keywords: ["Ayush Jaiswal", "Backend Engineering", "Kotlin", "Spring Boot", "AWS", "Redis", "Blog"],
-      og: {
-        title: "The blog — ayush.dev",
-        description: "Tutorials, takes, and notes from running production backends solo.",
-      },
-    };
+    return toSEO(getBlogSeo());
   }
 
+  /** Renders the index route shell around the three blog landing sections. */
   render(): string {
     return `
       <app-header></app-header>
-      <blog-view></blog-view>
+      <blog-index></blog-index>
       <app-footer></app-footer>
     `;
   }
