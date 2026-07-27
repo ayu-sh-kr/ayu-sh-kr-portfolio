@@ -84,7 +84,7 @@ export class TermsMarkdownViewComponent extends MdViewComponent {
     } catch {
       // The anchor still updates the URL when clipboard access is unavailable.
     }
-    this.markdownLifecycle.markCopied(anchor, "Copied", "#");
+    this.markdownLifecycle.markCopied(anchor, "Copied", "#", "copied");
   }
 
   @OnEvent("disconnected", true)
@@ -133,10 +133,13 @@ export class TermsMarkdownViewComponent extends MdViewComponent {
       wrapper.dataset.short = section.short;
       heading.parentElement?.insertBefore(wrapper, heading);
 
+      const sectionHead = document.createElement("div");
+      sectionHead.className = "terms-section-head";
       const chip = document.createElement("span");
       chip.className = "terms-audience-chip";
       chip.textContent = section.scope;
-      wrapper.append(chip);
+      sectionHead.append(chip);
+      wrapper.append(sectionHead);
 
       const start = children.indexOf(heading);
       const end = headings[index + 1] ? children.indexOf(headings[index + 1]) : children.length;
