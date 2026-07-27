@@ -1,0 +1,4 @@
+interface:
+  display_name: "Dota Event"
+  short_description: "Typed Dota event bus and listener patterns"
+  default_prompt: "Use $dota-event for typed Dota publisher/listener flows, event decorators, AutoBind services, and event-map contracts."
