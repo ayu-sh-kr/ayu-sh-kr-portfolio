@@ -10,12 +10,14 @@ import {portfolioMarkdownColor, portfolioMarkdownTheme} from "@app/configs/markd
 
 const HASH_PREFIX_LENGTH = 1;
 const COPY_RESET_DELAY = 1400;
+const SKELETON_TIMEOUT = 9000;
 
 /** Coordinates rendering, theme presentation, scrolling, reveals, tables, and copy feedback for a Markdown viewer. */
 export class MarkdownLifecycleUtils {
   private readonly copyResetTimers = new Map<HTMLElement, number>();
   private hashFrameId: number | null = null;
   private observer: IntersectionObserver | null = null;
+  private skeletonTimeoutId: number | null = null;
 
   /**
    * Creates lifecycle helpers for the supplied Markdown view.
@@ -29,6 +31,30 @@ export class MarkdownLifecycleUtils {
     if (!this.view.content) {
       this.view.content = this.view.innerHTML;
     }
+  }
+
+  /** Starts the bounded loading window for the article skeleton. */
+  startSkeletonTimeout(): void {
+    this.clearSkeletonTimeout();
+    this.skeletonTimeoutId = window.setTimeout(() => {
+      this.skeletonTimeoutId = null;
+      const layer = this.view.querySelector<HTMLElement>("[data-markdown-skeleton]");
+      const content = this.view.querySelector<HTMLElement>("[data-markdown-skeleton-content]");
+      const status = this.view.querySelector<HTMLElement>("[data-markdown-skeleton-status]");
+      layer?.classList.add("gone");
+      content?.classList.add("is-error");
+      content?.replaceChildren();
+      status?.classList.add("is-visible");
+      status?.replaceChildren(document.createTextNode("This content is taking longer than expected. Try again later."));
+      this.view.closest<HTMLElement>("[aria-busy]")?.setAttribute("aria-busy", "false");
+    }, SKELETON_TIMEOUT);
+  }
+
+  /** Reveals rendered Markdown into the space reserved by its article skeleton. */
+  revealSkeleton(): void {
+    this.clearSkeletonTimeout();
+    this.view.querySelector<HTMLElement>("[data-markdown-skeleton-content]")?.classList.add("is-ready");
+    this.view.querySelector<HTMLElement>("[data-markdown-skeleton]")?.classList.add("gone");
   }
 
   /**
@@ -56,6 +82,21 @@ export class MarkdownLifecycleUtils {
       <div class="${contentClass} ${getSelectionClass(theme, colorName)}"
            style="font-family: ${theme.fontFamily},serif">
         ${themedContent}
+      </div>
+    `;
+  }
+
+  /** Wraps themed Markdown in the shared article skeleton and reveal frame. */
+  renderArticleSkeleton(contentClass: string): string {
+    return `
+      <div class="markdown-skeleton-frame" data-markdown-skeleton-frame>
+        <div class="markdown-skeleton-layer" data-markdown-skeleton aria-hidden="true">
+          <sk-article></sk-article>
+        </div>
+        <div class="markdown-skeleton-content" data-markdown-skeleton-content>
+          ${this.renderThemedContent(contentClass)}
+        </div>
+        <p class="markdown-skeleton-status" data-markdown-skeleton-status role="status" aria-live="polite">Loading content…</p>
       </div>
     `;
   }
@@ -157,12 +198,20 @@ export class MarkdownLifecycleUtils {
     this.copyResetTimers.forEach((timer) => window.clearTimeout(timer));
     this.copyResetTimers.clear();
     this.cancelHashScroll();
+    this.clearSkeletonTimeout();
   }
 
   private cancelHashScroll(): void {
     if (this.hashFrameId !== null) {
       cancelAnimationFrame(this.hashFrameId);
       this.hashFrameId = null;
+    }
+  }
+
+  private clearSkeletonTimeout(): void {
+    if (this.skeletonTimeoutId !== null) {
+      window.clearTimeout(this.skeletonTimeoutId);
+      this.skeletonTimeoutId = null;
     }
   }
 
