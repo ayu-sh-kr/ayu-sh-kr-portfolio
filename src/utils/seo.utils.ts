@@ -1,6 +1,10 @@
 import type {SEO} from "@ayu-sh-kr/dota-wrap/core";
 import type {NavigationContext} from "@ayu-sh-kr/dota-wrap/router";
+import {getBlogSlug} from "@app/configs/blogs.config.ts";
+import {getShowcaseSlug} from "@app/data/showcase-content.ts";
 import type {PageSeoContent} from "@app/data/seo-content.ts";
+import type {AnalyticsPage} from "@app/events/analytics.events.ts";
+import {publishAnalyticsEvent} from "@app/utils/analytics.utils.ts";
 
 const SITE_ORIGIN = "https://ayu-sh-kr.com";
 
@@ -33,12 +37,54 @@ export const toSEO = (content: PageSeoContent): SEO => ({
 });
 
 /**
+ * Classifies a completed pathname for the page-view event.
+ *
+ * Route titles can change with authored content, so analytics uses stable page
+ * categories instead. Blog and showcase detail routes also retain their
+ * decoded slug for content-level reporting.
+ *
+ * @param pathname - Browser pathname after the router has committed navigation.
+ * @returns Stable page identity and the optional content slug.
+ */
+const getAnalyticsPage = (pathname: string): {page: AnalyticsPage; slug?: string} => {
+  if (pathname === "/") {
+    return {page: "home"};
+  }
+  if (pathname === "/pricing") {
+    return {page: "pricing"};
+  }
+  if (pathname === "/blog") {
+    return {page: "blog"};
+  }
+  if (pathname.startsWith("/blog/")) {
+    return {page: "blog_article", slug: getBlogSlug(pathname)};
+  }
+  if (pathname === "/showcase") {
+    return {page: "showcase"};
+  }
+  if (pathname.startsWith("/showcase/")) {
+    return {page: "showcase_article", slug: getShowcaseSlug(pathname)};
+  }
+  if (pathname === "/legal/terms") {
+    return {page: "terms"};
+  }
+  if (pathname === "/legal/privacy") {
+    return {page: "privacy"};
+  }
+  if (pathname === "/offline") {
+    return {page: "offline"};
+  }
+
+  return {page: "error"};
+};
+
+/**
  * Synchronizes route metadata after the router has rendered a page.
  *
  * `DotaPageElement` updates the title, description, keywords, and Open Graph
  * copy during page initialization. The framework SEO contract does not own the
  * canonical link or `og:url`, so this route hook fills that gap using the
- * committed URL. It also sends the single GA4 `page_view` for the completed
+ * committed URL. It also publishes the single GA4 `page_view` for the completed
  * route; `index.html` disables the automatic config page view to avoid sending
  * an early hit with the previous page title.
  *
@@ -61,8 +107,13 @@ export const applyRouteMetadata = (context: NavigationContext): void => {
   ogUrl.setAttribute("property", "og:url");
   ogUrl.content = canonicalUrl;
 
-  window.gtag?.("event", "page_view", {
-    page_title: document.title,
-    page_location: context.url.href,
+  const analyticsPage = getAnalyticsPage(context.url.pathname);
+  publishAnalyticsEvent({
+    eventName: "page_view",
+    params: {
+      page: analyticsPage.page,
+      page_path: context.url.pathname,
+      ...(analyticsPage.slug ? {slug: analyticsPage.slug} : {}),
+    },
   });
 };
