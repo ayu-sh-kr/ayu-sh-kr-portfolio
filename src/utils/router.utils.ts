@@ -15,6 +15,11 @@ export class RouterUtils {
 
   private constructor() {}
 
+  /**
+   * Installs the initialized router service and replays the latest path queued before initialization.
+   *
+   * @param routerService - Initialized application router service used for subsequent navigation.
+   */
   static setRouterService(routerService: PortfolioRouterService): void {
     this.routerService = routerService;
 
@@ -25,6 +30,11 @@ export class RouterUtils {
     }
   }
 
+  /**
+   * Navigates to a router-compatible path or queues the latest path until the router service is available.
+   *
+   * @param path - Application path accepted by the router service.
+   */
   static navigate(path: string): void {
     if (!this.routerService) {
       this.pendingPath = path;
@@ -34,6 +44,12 @@ export class RouterUtils {
     this.routerService.route(path);
   }
 
+  /**
+   * Returns whether the browser pathname exactly matches the supplied path.
+   *
+   * @param path - Path compared with `window.location.pathname`, excluding query and hash components.
+   * @returns `true` only when the two path strings are identical.
+   */
   static isCurrentPath(path: string): boolean {
     return window.location.pathname === path;
   }
