@@ -6,8 +6,8 @@ kind: privacy
 version: "1.0"
 updated: 2026-07-25
 effective: 2026-08-01
-applies: ayush.dev and client work
-contact: hello@ayush.dev
+applies: ayu-sh-kr.com and client work
+contact: akjaiswal2003@gmail.com
 
 switch:
   - { label: Visiting the site, target: visit }
@@ -27,7 +27,7 @@ related:
 
 ## Who I am {#who scope="Everyone" group="The basics" short="Who I am"}
 
-This site belongs to Ayush, an independent backend engineer working solo from India. There's no company behind it and no team reading your messages — when you email [hello@ayush.dev](mailto:hello@ayush.dev), it reaches one person.
+This site belongs to Ayush Kumar, an independent backend engineer working solo from India. There's no company behind it and no team reading your messages — when you email [akjaiswal2003@gmail.com](mailto:akjaiswal2003@gmail.com), it reaches one person.
 
 For anything that legally needs a named contact — a data request, a complaint, a takedown — use that address. I answer within a few working days.
 
@@ -146,7 +146,7 @@ Wherever you are, you can ask me to:
 - Stop using it for a particular purpose, including any marketing
 - Withdraw a consent you gave earlier, without that affecting what happened before
 
-Email [hello@ayush.dev](mailto:hello@ayush.dev?subject=Privacy%20request) with "Privacy request" in the subject. No form, no account, no fee. I'll confirm within a few days and complete it within 30. If you're unhappy with how I handle it, you can complain to your local data protection authority — and I'd appreciate hearing about it first so I can fix it.
+Email [akjaiswal2003@gmail.com](mailto:akjaiswal2003@gmail.com?subject=Privacy%20request) with "Privacy request" in the subject. No form, no account, no fee. I'll confirm within a few days and complete it within 30. If you're unhappy with how I handle it, you can complain to your local data protection authority — and I'd appreciate hearing about it first so I can fix it.
 
 ## Children {#children scope="Everyone" group="For everyone" short="Children"}
 
@@ -160,4 +160,4 @@ When this changes, the version number and date at the top change with it. Minor 
 
 One address for all of it — questions, requests, corrections, complaints:
 
-[Email me about privacy](mailto:hello@ayush.dev?subject=Privacy%20question){.btn .btn-accent}
+[Email me about privacy](mailto:akjaiswal2003@gmail.com?subject=Privacy%20question){.btn .btn-accent}

@@ -8,7 +8,7 @@ updated: 2026-07-25
 effective: 2026-08-01
 governing_law: India
 jurisdiction: Uttar Pradesh
-contact: hello@ayush.dev
+contact: akjaiswal2003@gmail.com
 
 # The segmented scope switch under the header. Jumps only — never filters.
 switch:
@@ -54,7 +54,7 @@ Sections 3–8 cover the site itself. Sections 9–19 are the default terms for 
 
 ## Who you're dealing with {#who scope="Everyone" group="The basics" short="Who you're dealing with"}
 
-Ayush — an independent backend engineer operating as a sole practitioner from India, reachable at [hello@ayush.dev](mailto:hello@ayush.dev). "I" and "me" mean him; "you" means whoever is reading, or the organisation you're reading on behalf of.
+Ayush Kumar — an independent backend engineer operating as a sole practitioner from India, reachable at [akjaiswal2003@gmail.com](mailto:akjaiswal2003@gmail.com). "I" and "me" mean him; "you" means whoever is reading, or the organisation you're reading on behalf of.
 
 ## Using the site {#use scope="Site visitors" group="Using the site" short="Using the site"}
 
@@ -202,4 +202,4 @@ The version and date at the top move when these do. Changes apply to site use fr
 
 If a clause here is a problem for your situation, say so before we start rather than after. Most of this is negotiable.
 
-[Ask about these terms](mailto:hello@ayush.dev?subject=Question%20about%20your%20terms){.btn .btn-accent}
+[Ask about these terms](mailto:akjaiswal2003@gmail.com?subject=Question%20about%20your%20terms){.btn .btn-accent}
