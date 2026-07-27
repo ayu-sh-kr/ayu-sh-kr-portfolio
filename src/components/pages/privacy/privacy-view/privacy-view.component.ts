@@ -69,6 +69,7 @@ export class PrivacyViewComponent extends BaseElement {
     this.scheduleProgressRender();
     if (this.policy) {
       this.sourceLifecycle.schedule(() => this.publishSource());
+      requestAnimationFrame(() => this.positionScopeThumb());
       return;
     }
     void this.loadPolicy();
@@ -93,6 +94,12 @@ export class PrivacyViewComponent extends BaseElement {
     );
   }
 
+  @WindowListener({event: "resize"})
+  /** Keeps the scope switch thumb aligned after its buttons change size. */
+  positionScopeThumbOnResize(): void {
+    this.positionScopeThumb();
+  }
+
   @OnEvent(PRIVACY_MARKDOWN_RENDER_EVENT)
   /** Refreshes policy progress after Markdown has created the section wrappers. */
   refreshProgressAfterMarkdown(): void {
@@ -115,13 +122,14 @@ export class PrivacyViewComponent extends BaseElement {
       scopeButton.classList.toggle("is-active", isActive);
       scopeButton.setAttribute("aria-pressed", String(isActive));
     });
+    this.positionScopeThumb();
     requestAnimationFrame(() => {
       const heading = document.getElementById(target);
       if (!heading) {
         return;
       }
       heading.scrollIntoView({
-        behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+        behavior: "smooth",
         block: "start",
       });
     });
@@ -143,6 +151,7 @@ export class PrivacyViewComponent extends BaseElement {
       this.activeScope = policy.metadata.switches[0]?.target ?? policy.sections[0]?.id ?? "";
       this.loadError = "";
       this.updateHTML();
+      requestAnimationFrame(() => this.positionScopeThumb());
       this.sourceLifecycle.schedule(() => this.publishSource());
       this.scheduleProgressRender();
     } catch (error) {
@@ -156,6 +165,19 @@ export class PrivacyViewComponent extends BaseElement {
       this.loadError = "The privacy policy could not be loaded right now.";
       this.updateHTML();
     }
+  }
+
+  /** Positions the demo-matched thumb below the currently selected scope button. */
+  private positionScopeThumb(): void {
+    const control = this.querySelector<HTMLElement>(".privacy-scope-control");
+    const thumb = this.querySelector<HTMLElement>("[data-privacy-scope-thumb]");
+    const activeButton = this.querySelector<HTMLButtonElement>(".privacy-scope-button.is-active");
+    if (!control || !thumb || !activeButton) {
+      return;
+    }
+
+    thumb.style.inlineSize = `${activeButton.offsetWidth}px`;
+    thumb.style.transform = `translateX(${activeButton.offsetLeft - 4}px)`;
   }
 
   /** Publishes the loaded Markdown and section metadata to the child view. */
@@ -231,6 +253,7 @@ export class PrivacyViewComponent extends BaseElement {
         <section class="privacy-scope" aria-labelledby="privacy-scope-title">
           <p id="privacy-scope-title" class="privacy-eyebrow">Read the part that’s about you</p>
           <div class="privacy-scope-control" role="tablist" aria-label="Privacy policy audience">
+            <span class="privacy-scope-thumb" data-privacy-scope-thumb aria-hidden="true"></span>
             ${switches}
           </div>
         </section>
