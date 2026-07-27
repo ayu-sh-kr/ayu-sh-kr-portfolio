@@ -1,6 +1,8 @@
-import {BeforeInit, BindEvent, Component} from "@ayu-sh-kr/dota-wrap/core";
+import {BeforeInit, BindEvent, Component, Property, String} from "@ayu-sh-kr/dota-wrap/core";
 import {type ApplicationEvent, OnEvent} from "@ayu-sh-kr/dota-wrap/event";
-import {MdViewComponent} from "@ayu-sh-kr/dota-md";
+import {MdViewComponent, type ColorName, type ThemeName} from "@ayu-sh-kr/dota-md";
+import {portfolioMarkdownColor, portfolioMarkdownTheme} from "@app/configs/markdown-theme.config.ts";
+import {blogArticleContent} from "@app/data/blog-content.ts";
 import {BLOG_MARKDOWN_SOURCE_EVENT} from "@app/events/blog.events.ts";
 import {MarkdownLifecycleUtils} from "@app/utils/markdown-lifecycle.utils.ts";
 
@@ -19,6 +21,14 @@ import {MarkdownLifecycleUtils} from "@app/utils/markdown-lifecycle.utils.ts";
   shadow: false,
 })
 export class BlogMarkdownViewComponent extends MdViewComponent {
+  /** Markdown theme attribute consumed by the portfolio lifecycle; defaults to the registered portfolio theme. */
+  @Property({name: "theme", type: String})
+  override theme: ThemeName = portfolioMarkdownTheme.name as ThemeName;
+
+  /** Markdown accent attribute consumed by the portfolio lifecycle; defaults to the portfolio primary color. */
+  @Property({name: "color", type: String})
+  override color: ColorName = portfolioMarkdownColor;
+
   private readonly markdownLifecycle = new MarkdownLifecycleUtils(this);
 
   constructor() {
@@ -53,7 +63,7 @@ export class BlogMarkdownViewComponent extends MdViewComponent {
       const button = document.createElement("button");
       button.type = "button";
       button.dataset.copyCode = "true";
-      button.textContent = "Copy";
+      button.textContent = blogArticleContent.markdown.copyLabel;
       button.className = "blog-copy-button";
       pre.append(button);
     });
@@ -75,7 +85,7 @@ export class BlogMarkdownViewComponent extends MdViewComponent {
     }
     const code = button.parentElement?.querySelector("code")?.textContent ?? "";
     void navigator.clipboard?.writeText(code);
-    this.markdownLifecycle.markCopied(button, "Copied", "Copy");
+    this.markdownLifecycle.markCopied(button, blogArticleContent.markdown.copiedLabel, blogArticleContent.markdown.copyLabel);
   }
 
   /** Cancels lifecycle timers and pending frames when the Markdown view disconnects. */
