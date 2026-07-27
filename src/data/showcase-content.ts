@@ -1,3 +1,6 @@
+import {siteIdentity} from "@app/data/portfolio-content.ts";
+import type {PageSeoContent} from "@app/data/seo-content.ts";
+
 /** Categories used to filter and label showcase projects. */
 export type ShowcaseProjectKind = "open source" | "product" | "client work" | "backend";
 
@@ -134,6 +137,29 @@ export const showcaseProjects: ShowcaseProject[] = [
     visual: "rest",
   },
 ];
+
+/** SEO content for the showcase index, shared by its page shell and cards. */
+export const showcaseSeo: PageSeoContent = {
+  title: `Showcase — ${siteIdentity.domain}`,
+  description: `Selected backend systems, open-source tools, and client work by ${siteIdentity.name}.`,
+  keywords: [siteIdentity.name, "Portfolio", "Backend Engineering", "Open Source", "AWS", "TypeScript"],
+  ogTitle: `Showcase — ${siteIdentity.domain}`,
+  ogDescription: `Selected backend systems, open-source tools, and client work by ${siteIdentity.name}.`,
+};
+
+/** Builds SEO content for a selected showcase article or an unknown slug. */
+export const getShowcaseSeo = (project?: Pick<ShowcaseProject, "title" | "summary">): PageSeoContent => {
+  const title = project ? `${project.title} — ${siteIdentity.domain}` : `Showcase not found — ${siteIdentity.domain}`;
+  const description = project?.summary ?? "The requested showcase could not be found.";
+
+  return {
+    title,
+    description,
+    keywords: [siteIdentity.name, "Showcase", "Backend Engineering", "Web Components", "AWS"],
+    ogTitle: title,
+    ogDescription: description,
+  };
+};
 
 /** Authored copy for the support section below the project catalog. */
 export const showcaseSupport = {
