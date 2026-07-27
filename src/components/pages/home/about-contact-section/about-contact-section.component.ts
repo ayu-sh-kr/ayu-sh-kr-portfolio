@@ -1,6 +1,15 @@
 import { BaseElement, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
 import { portfolioContent } from "@app/data/portfolio-content.ts";
 
+/**
+ * Renders the contact call-to-action section on the portfolio home page.
+ *
+ * The section reads its copy and destinations from `portfolioContent.contact`.
+ * Its email, résumé, and external profile links are rendered as static markup;
+ * the motion controller applies reveal effects after this component connects.
+ *
+ * Selector: `portfolio-contact`.
+ */
 @Component({
   selector: "portfolio-contact",
   shadow: false,
@@ -10,6 +19,10 @@ export class PortfolioContactComponent extends BaseElement {
     super();
   }
 
+  /**
+   * Returns the contact section using authored content and link destinations.
+   * Rendering stays pure so copy or URL changes only require updating the data source.
+   */
   render(): string {
     const { contact } = portfolioContent;
 

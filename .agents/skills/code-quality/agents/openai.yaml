@@ -1,4 +1,0 @@
-interface:
-  display_name: "Code Quality"
-  short_description: "Enforce clean Dota component patterns"
-  default_prompt: "Use $code-quality to review Dota components for lifecycle, event, and maintainability issues."

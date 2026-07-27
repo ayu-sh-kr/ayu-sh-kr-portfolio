@@ -6,8 +6,20 @@ import {
 } from "@ayu-sh-kr/dota-wrap/core";
 import { OnEvent } from "@ayu-sh-kr/dota-wrap/event";
 
+/** Clamps section progress before it is converted into visual transforms or opacity. */
 const clamp = (value: number, min: number, max: number): number => Math.min(max, Math.max(min, value));
 
+/**
+ * Coordinates scroll-driven motion and viewport reveals across the home page.
+ *
+ * After connection, the controller observes reduced-motion changes, watches the
+ * reveal elements, and schedules one animation-frame render for scroll/resize
+ * updates. It also maps focused work cards to their horizontal scroll position.
+ * Disconnect cleanup removes observers and cancels pending frames. The component
+ * renders no markup; it operates on the sections already composed by the page.
+ *
+ * Selector: `portfolio-motion-controller`.
+ */
 @Component({
   selector: "portfolio-motion-controller",
   shadow: false,
@@ -23,62 +35,38 @@ export class PortfolioMotionControllerComponent extends BaseElement {
     super();
   }
 
+  /**
+   * Initializes motion preference tracking, reveal observation, and the first render
+   * after the page sections have been inserted by the home-page shell.
+   */
   @OnEvent("connected", true)
-  onConnected(): void {
+  initializeMotion(): void {
     this.motionPreference = window.matchMedia("(prefers-reduced-motion: reduce)");
     this.reducedMotion = this.motionPreference.matches;
-    this.motionPreference.addEventListener("change", this.handleMotionPreference);
+    this.motionPreference.addEventListener("change", this.updateMotionPreference);
     this.setupReveals();
     this.scheduleRender();
   }
 
+  /**
+   * Stops external motion work so a disconnected page cannot keep mutating the DOM.
+   * The internal frame state is reset so a later reconnect can schedule normally.
+   */
   @OnEvent("disconnected", true)
-  onDisconnected(): void {
-    this.motionPreference?.removeEventListener("change", this.handleMotionPreference);
+  cleanupMotion(): void {
+    this.motionPreference?.removeEventListener("change", this.updateMotionPreference);
+    this.motionPreference = null;
     this.revealObserver?.disconnect();
+    this.revealObserver = null;
     if (this.frameId !== null) {
       cancelAnimationFrame(this.frameId);
     }
+    this.frameId = null;
+    this.ticking = false;
   }
 
-  @WindowListener({ event: "scroll" })
-  private handleScroll(): void {
-    this.scheduleRender();
-  }
-
-  @WindowListener({ event: "resize" })
-  private handleResize(): void {
-    this.scheduleRender();
-  }
-
-  private readonly handleMotionPreference = (event: MediaQueryListEvent): void => {
-    this.reducedMotion = event.matches;
-    this.setupReveals();
-    this.scheduleRender();
-  };
-
-  @DocumentListener({ event: "focusin" })
-  private handleWorkFocus(event: FocusEvent): void {
-    if (this.reducedMotion) {
-      return;
-    }
-
-    const card = (event.target as HTMLElement).closest<HTMLElement>(".work-card");
-    const workWrap = document.querySelector<HTMLElement>("#work-wrap");
-    const workRail = document.querySelector<HTMLElement>("#work-rail");
-    if (!card || !workWrap || !workRail) {
-      return;
-    }
-
-    const cards = Array.from(workRail.querySelectorAll<HTMLElement>(".work-card"));
-    const index = cards.indexOf(card);
-    const travel = workWrap.offsetHeight - window.innerHeight;
-    const progress = cards.length > 1 ? index / (cards.length - 1) : 0;
-    const wrapperTop = window.scrollY + workWrap.getBoundingClientRect().top;
-
-    window.scrollTo({ top: wrapperTop + travel * progress, behavior: "auto" });
-  }
-
+  /** Requests the next animation-frame render for scroll and viewport changes. */
+  @WindowListener({ event: ["scroll", "resize"] })
   private scheduleRender(): void {
     if (this.ticking) {
       return;
@@ -92,12 +80,55 @@ export class PortfolioMotionControllerComponent extends BaseElement {
     });
   }
 
+  /** Rebuilds reveal behavior when the user's reduced-motion preference changes. */
+  private readonly updateMotionPreference = (event: MediaQueryListEvent): void => {
+    this.reducedMotion = event.matches;
+    this.setupReveals();
+    this.scheduleRender();
+  };
+
+  /**
+   * Scrolls a focused work card into the matching horizontal position so keyboard
+   * users can follow the same project sequence as pointer users.
+   */
+  @DocumentListener({ event: "focusin" })
+  private scrollToFocusedWorkCard(event: FocusEvent): void {
+    if (this.reducedMotion) {
+      return;
+    }
+
+    const card = (event.target as HTMLElement | null)?.closest<HTMLElement>(".work-card");
+    const workWrap = document.querySelector<HTMLElement>("#work-wrap");
+    const workRail = document.querySelector<HTMLElement>("#work-rail");
+    if (!card || !workWrap || !workRail) {
+      return;
+    }
+
+    const cards = Array.from(workRail.querySelectorAll<HTMLElement>(".work-card"));
+    const index = cards.indexOf(card);
+    if (index < 0) {
+      return;
+    }
+
+    const travel = workWrap.offsetHeight - window.innerHeight;
+    const progress = cards.length > 1 ? index / (cards.length - 1) : 0;
+    const wrapperTop = window.scrollY + workWrap.getBoundingClientRect().top;
+
+    window.scrollTo({ top: wrapperTop + travel * progress, behavior: "auto" });
+  }
+
+  /** Converts a wrapper's viewport position into clamped scroll progress. */
   private progressOf(wrapper: HTMLElement): number {
     const rect = wrapper.getBoundingClientRect();
     const distance = rect.height - window.innerHeight;
     return distance <= 0 ? 0 : clamp(-rect.top / distance, 0, 1);
   }
 
+  /**
+   * Reads the current section geometry and applies all scroll-driven transforms.
+   * Layout reads are grouped before style writes to keep one animation frame from
+   * forcing repeated layout recalculation.
+   */
   private renderAll(): void {
     if (this.reducedMotion) {
       return;
@@ -170,8 +201,14 @@ export class PortfolioMotionControllerComponent extends BaseElement {
     speakingHeadInner.classList.toggle("lit", speakingProgress > 0.06);
   }
 
+  /**
+   * Rebuilds the intersection observer for current `.motion-reveal` elements.
+   * Reduced-motion users receive the final visible state immediately instead of
+   * waiting for observer callbacks.
+   */
   private setupReveals(): void {
     this.revealObserver?.disconnect();
+    this.revealObserver = null;
     const reveals = Array.from(document.querySelectorAll<HTMLElement>(".motion-reveal"));
 
     if (this.reducedMotion) {
@@ -201,6 +238,10 @@ export class PortfolioMotionControllerComponent extends BaseElement {
     reveals.forEach((element) => this.revealObserver?.observe(element));
   }
 
+  /**
+   * Leaves the host empty because this controller coordinates markup rendered by
+   * the home-page sections rather than owning a visual subtree of its own.
+   */
   render(): string {
     return "";
   }

@@ -2,6 +2,8 @@ import { BaseElement, Component, WindowListener } from "@ayu-sh-kr/dota-wrap/cor
 import { OnEvent } from "@ayu-sh-kr/dota-wrap/event";
 import { portfolioContent } from "@app/data/portfolio-content.ts";
 
+const SCROLLED_NAV_THRESHOLD = 40;
+
 @Component({
   selector: "app-header",
   shadow: false,
@@ -12,27 +14,28 @@ export class AppHeaderComponent extends BaseElement {
   }
 
   @OnEvent("connected", true)
-  onConnected(): void {
+  initializeScrolledState(): void {
     this.updateScrolledState();
   }
 
   @WindowListener({ event: "scroll" })
-  onScroll(): void {
-    this.updateScrolledState();
-  }
-
-  private updateScrolledState(): void {
-    this.querySelector<HTMLElement>("#site-nav")?.classList.toggle("is-scrolled", window.scrollY > 40);
+  updateScrolledState(): void {
+    this.querySelector<HTMLElement>("#site-nav")?.classList.toggle(
+      "is-scrolled",
+      window.scrollY > SCROLLED_NAV_THRESHOLD,
+    );
   }
 
   render(): string {
+    const { nav } = portfolioContent;
+
     return `
       <nav id="site-nav" aria-label="Primary navigation">
         <div class="mx-auto flex max-w-7xl items-center justify-between gap-5 px-5 py-4 sm:px-8">
-          <a href="/" class="shrink-0 text-sm font-semibold tracking-[-0.02em] text-[var(--foreground-color)]">${portfolioContent.nav.logo}</a>
+          <a href="/" class="shrink-0 text-sm font-semibold tracking-[-0.02em] text-[var(--foreground-color)]">${nav.logo}</a>
           <div class="flex items-center gap-4 sm:gap-6">
             <div class="app-header-desktop-links flex items-center gap-4 sm:gap-6">
-              ${portfolioContent.nav.links
+              ${nav.links
                 .map(
                   (link) => `
                     <a href="${link.href}" class="nav-link ${link.label === "Journey" || link.label === "Speaking" ? "nav-link-optional" : ""} ${link.label === "Pricing" ? "nav-link-pricing" : ""}">${link.label}</a>
@@ -55,7 +58,7 @@ export class AppHeaderComponent extends BaseElement {
                 ></dota-icon>
               </button>
               <div id="mobile-nav-panel" class="app-header-mobile-panel" aria-label="Mobile navigation">
-                ${portfolioContent.nav.links
+                ${nav.links
                   .map(
                     (link) => `
                       <a href="${link.href}" class="nav-link mobile-nav-link">${link.label}</a>

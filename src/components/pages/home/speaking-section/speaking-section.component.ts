@@ -2,23 +2,53 @@ import { BaseElement, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
 import { OnEvent } from "@ayu-sh-kr/dota-wrap/event";
 import { portfolioContent } from "@app/data/portfolio-content.ts";
 
+/**
+ * Mutable spring state and stable pointer handlers for one tilt-enabled topic card.
+ *
+ * The speaking section stores one instance per card so each card can animate and
+ * clean up independently when motion preferences or the component lifecycle change.
+ */
 type CardInteraction = {
+  /** Pending animation frame used to settle the card toward its target transform. */
   raf: number | null;
+  /** Current horizontal rotation in degrees. */
   rx: number;
+  /** Current vertical rotation in degrees. */
   ry: number;
+  /** Current scale applied while the pointer is over or pressing the card. */
   scale: number;
+  /** Target horizontal rotation calculated from the pointer position. */
   targetRx: number;
+  /** Target vertical rotation calculated from the pointer position. */
   targetRy: number;
+  /** Target scale reached by the spring animation. */
   targetScale: number;
+  /** Advances the spring and schedules another frame until the card settles. */
   tick: () => void;
+  /** Updates pointer-relative CSS variables and rotation targets. */
   onPointerMove: (event: PointerEvent) => void;
+  /** Raises the card slightly when the pointer enters it. */
   onPointerEnter: () => void;
+  /** Returns the card to its resting transform when the pointer leaves. */
   onPointerLeave: () => void;
+  /** Compresses the card while it is pressed. */
   onPointerDown: () => void;
+  /** Releases the pressed state and restores the hover scale. */
   onPointerUp: () => void;
+  /** Clears the pressed state and returns the card to its resting transform. */
   onPointerCancel: () => void;
 };
 
+/**
+ * Renders the speaking section and adds pointer tilt to its topic cards.
+ *
+ * Used on the home page. When connected, it watches the user's reduced-motion
+ * preference and attaches stable pointer handlers to `.topic[data-tilt]` cards.
+ * A preference change rebuilds those interactions; disconnecting removes the
+ * media-query listener, pointer listeners, and pending animation frames.
+ *
+ * Selector: `portfolio-speaking`.
+ */
 @Component({
   selector: "portfolio-speaking",
   shadow: false,
@@ -32,26 +62,43 @@ export class PortfolioSpeakingComponent extends BaseElement {
     super();
   }
 
+  /**
+   * Captures the current motion preference and attaches the change listener
+   * before creating the topic-card interactions after initial render.
+   */
   @OnEvent("connected", true)
-  onConnected(): void {
+  initializeInteractions(): void {
     this.motionPreference = window.matchMedia("(prefers-reduced-motion: reduce)");
     this.reducedMotion = this.motionPreference.matches;
-    this.motionPreference.addEventListener("change", this.handleMotionPreference);
+    this.motionPreference.addEventListener("change", this.updateMotionPreference);
     this.setupCardInteractions();
   }
 
+  /**
+   * Removes the media-query and card listeners and cancels any active card
+   * springs so a disconnected section leaves no external work behind.
+   */
   @OnEvent("disconnected", true)
-  onDisconnected(): void {
-    this.motionPreference?.removeEventListener("change", this.handleMotionPreference);
+  cleanupInteractions(): void {
+    this.motionPreference?.removeEventListener("change", this.updateMotionPreference);
     this.teardownCardInteractions();
     this.motionPreference = null;
   }
 
-  private readonly handleMotionPreference = (event: MediaQueryListEvent): void => {
+  /**
+   * Applies a changed reduced-motion preference and rebuilds card listeners so
+   * the section immediately switches between interactive and static behavior.
+   */
+  private readonly updateMotionPreference = (event: MediaQueryListEvent): void => {
     this.reducedMotion = event.matches;
     this.setupCardInteractions();
   };
 
+  /**
+   * Replaces the current card handlers with tilt interactions for every topic card.
+   * Reduced-motion users keep the cards static, so no pointer listeners or frames
+   * are created in that mode.
+   */
   private setupCardInteractions(): void {
     this.teardownCardInteractions();
 
@@ -141,6 +188,11 @@ export class PortfolioSpeakingComponent extends BaseElement {
     });
   }
 
+  /**
+   * Removes every pointer handler and pending spring frame created by setup.
+   * Called before rebuilding interactions and during disconnect so reconnects do
+   * not accumulate listeners or leave transformed cards behind.
+   */
   private teardownCardInteractions(): void {
     this.cardInteractions.forEach((state, card) => {
       card.removeEventListener("pointermove", state.onPointerMove);
@@ -158,6 +210,10 @@ export class PortfolioSpeakingComponent extends BaseElement {
     this.cardInteractions.clear();
   }
 
+  /**
+   * Returns the speaking content and topic cards from authored portfolio data.
+   * Interaction setup runs after this markup has been inserted during connection.
+   */
   render(): string {
     const { speaking } = portfolioContent;
 

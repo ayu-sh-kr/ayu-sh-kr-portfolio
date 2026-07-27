@@ -15,7 +15,7 @@ export class PortfolioSkillsComponent extends BaseElement {
       <section id="skills" class="mx-auto max-w-7xl px-5 py-28 sm:px-8 sm:py-36" aria-labelledby="skills-title">
         <p class="motion-eyebrow motion-reveal">Capabilities</p>
         <h2 id="skills-title" class="motion-title motion-reveal mt-4 max-w-4xl">
-          Backend-first.<br /><span class="text-[var(--muted-strong-color)]">Full product when it’s needed.</span>
+          Backend-first.<br /><span class="text-(--muted-strong-color)">Full product when it’s needed.</span>
         </h2>
         <div class="skills-grid mt-16">
           ${portfolioContent.skills

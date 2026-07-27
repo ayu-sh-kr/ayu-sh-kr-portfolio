@@ -1,9 +1,9 @@
 ---
-name: code-quality
-description: Use when reviewing or modifying TypeScript Dota web components for maintainability, lifecycle correctness, event wiring, cleanup, and repository conventions. Prefer scoped @OnEvent lifecycle handlers over direct callback overrides and legacy init hooks.
+name: component-lifecycle
+description: Use when reviewing or modifying TypeScript Dota web components for maintainability, lifecycle correctness, event wiring, cleanup, and repository conventions. Prefer scoped @OnEvent lifecycle handlers over direct callback overrides and legacy init hooks. Part of the code-quality skill group; pair with clean-code and reusable-design.
 ---
 
-# Code Quality
+# Component Lifecycle Quality
 
 Apply focused quality checks to Dota web components without changing behavior unnecessarily. Favor framework decorators, explicit teardown, stable handler references, and small methods that are easy to verify.
 

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Component Lifecycle Quality"
+  short_description: "Enforce clean Dota component lifecycle patterns"
+  default_prompt: "Use $component-lifecycle to review Dota components for lifecycle, event wiring, cleanup, and maintainability issues."
