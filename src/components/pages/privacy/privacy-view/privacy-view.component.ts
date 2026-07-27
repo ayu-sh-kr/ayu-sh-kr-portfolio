@@ -1,5 +1,4 @@
-import {BindEvent, BaseElement, Component, HTML, WindowListener} from "@ayu-sh-kr/dota-wrap/core";
-import {ApplicationEventService} from "@ayu-sh-kr/dota-wrap/core";
+import {ApplicationEventService, BindEvent, BaseElement, Component, HTML, WindowListener} from "@ayu-sh-kr/dota-wrap/core";
 import {OnEvent} from "@ayu-sh-kr/dota-wrap/event";
 import {
   PRIVACY_MARKDOWN_RENDER_EVENT,
@@ -13,6 +12,7 @@ import {
   MarkdownSourceLifecycle,
 } from "@app/utils/markdown-lifecycle.utils.ts";
 
+/** Formats an authored ISO date for the policy metadata row without timezone drift. */
 const formatDate = (value: string): string => {
   const date = new Date(`${value}T00:00:00Z`);
   if (Number.isNaN(date.getTime())) {
@@ -27,18 +27,36 @@ const formatDate = (value: string): string => {
   }).format(date);
 };
 
+/**
+ * Loads and presents the privacy policy document.
+ *
+ * After connecting, the view loads the authored document through
+ * `PrivacyLoaderService`, renders the policy shell, and publishes its Markdown
+ * to `privacy-markdown-view`. It also owns audience-scope scrolling and reading
+ * progress, and aborts pending work when disconnected.
+ *
+ * Selector: `privacy-view`.
+ */
 @Component({
   selector: "privacy-view",
   shadow: false,
 })
 export class PrivacyViewComponent extends BaseElement {
+  /** Loads and normalizes the authored policy document. */
   private readonly loader = new PrivacyLoaderService();
+  /** Publishes policy source and completed-section events to child components. */
   private readonly publisher = ApplicationEventService.getInstance().getPublisher();
+  /** Shared helper for the policy reading-progress indicator. */
   private readonly progressLifecycle = new MarkdownProgressLifecycle(this);
+  /** Defers source publication until the Markdown child is connected. */
   private readonly sourceLifecycle = new MarkdownSourceLifecycle(this);
+  /** Loaded policy document, or null while loading or after an unavailable response. */
   private policy: PrivacyDocument | null = null;
+  /** Abort controller for the active policy request. */
   private request: AbortController | null = null;
+  /** ID of the audience section selected by the scope controls. */
   private activeScope = "visit";
+  /** User-facing load error shown in place of the policy shell. */
   private loadError = "";
 
   constructor() {
@@ -46,7 +64,8 @@ export class PrivacyViewComponent extends BaseElement {
   }
 
   @OnEvent("connected", true)
-  onConnected(): void {
+  /** Starts progress tracking and loads or republishes the policy after connect. */
+  initializePrivacyView(): void {
     this.scheduleProgressRender();
     if (this.policy) {
       this.sourceLifecycle.schedule(() => this.publishSource());
@@ -56,7 +75,8 @@ export class PrivacyViewComponent extends BaseElement {
   }
 
   @OnEvent("disconnected", true)
-  onDisconnected(): void {
+  /** Aborts loading and disconnects both document lifecycle helpers. */
+  cleanupPrivacyView(): void {
     this.request?.abort();
     this.request = null;
     this.progressLifecycle.disconnect();
@@ -64,17 +84,24 @@ export class PrivacyViewComponent extends BaseElement {
   }
 
   @WindowListener({event: "scroll"})
-  onScroll(): void {
-    this.scheduleProgressRender();
+  /** Schedules a lightweight policy progress update for the next animation frame. */
+  scheduleProgressRender(): void {
+    this.progressLifecycle.scheduleSectionProgress(
+      "[data-privacy-progress]",
+      this.policy?.sections ?? [],
+      "privacy-section-",
+    );
   }
 
   @OnEvent(PRIVACY_MARKDOWN_RENDER_EVENT)
-  onMarkdownRender(): void {
+  /** Refreshes policy progress after Markdown has created the section wrappers. */
+  refreshProgressAfterMarkdown(): void {
     this.scheduleProgressRender();
   }
 
   @BindEvent({event: "click", id: "[data-privacy-scope]"})
-  onScopeClick(event: Event): void {
+  /** Updates the selected audience and scrolls to its corresponding section. */
+  scrollToScope(event: Event): void {
     const button = (event.target as HTMLElement | null)?.closest<HTMLButtonElement>("[data-privacy-scope]");
     const target = button?.dataset.privacyScope;
     if (!button || !target) {
@@ -100,6 +127,7 @@ export class PrivacyViewComponent extends BaseElement {
     });
   }
 
+  /** Loads the policy document and schedules its source for the Markdown child. */
   private async loadPolicy(): Promise<void> {
     this.request?.abort();
     const request = new AbortController();
@@ -130,6 +158,7 @@ export class PrivacyViewComponent extends BaseElement {
     }
   }
 
+  /** Publishes the loaded Markdown and section metadata to the child view. */
   private publishSource(): void {
     if (!this.policy) {
       return;
@@ -144,14 +173,7 @@ export class PrivacyViewComponent extends BaseElement {
     });
   }
 
-  private readonly scheduleProgressRender = (): void => {
-    this.progressLifecycle.scheduleSectionProgress(
-      "[data-privacy-progress]",
-      this.policy?.sections ?? [],
-      "privacy-section-",
-    );
-  };
-
+  /** Renders the loading/error state or the complete policy reader shell. */
   render(): string {
     if (!this.policy) {
       return HTML`
