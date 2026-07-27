@@ -7,10 +7,11 @@ export type ScrollHintMode = "horizontal" | "vertical";
 /**
  * Renders the portfolio's shared scroll cue.
  *
- * The default horizontal mode is the canonical hint used by the home hero.
- * Page heroes that continue down the document opt into vertical mode. The
- * optional label keeps contextual cues, such as the offline recovery prompt,
- * while the structure and motion remain consistent everywhere.
+ * The default vertical mode is the canonical hint used by page heroes. The
+ * optional horizontal mode keeps the same directional stroke pattern for
+ * layouts that scroll along the inline axis. The optional label keeps
+ * contextual cues, such as the offline recovery prompt, while the structure
+ * and motion remain consistent everywhere.
  *
  * Selector: `scroll-hint`.
  */
@@ -19,9 +20,9 @@ export type ScrollHintMode = "horizontal" | "vertical";
   shadow: false,
 })
 export class ScrollHintComponent extends BaseElement {
-  /** Attribute `mode`; defaults to `horizontal` when omitted or invalid. */
+  /** Attribute `mode`; defaults to `vertical` when omitted or invalid. */
   @Property({name: "mode", type: String})
-  mode: ScrollHintMode = "horizontal";
+  mode: ScrollHintMode = "vertical";
 
   /** Attribute `label`; visible copy for the hint, defaulting to `Scroll`. */
   @Property({name: "label", type: String})
@@ -33,12 +34,12 @@ export class ScrollHintComponent extends BaseElement {
 
   /** Renders the direction-specific track and safely escaped visible label. */
   render(): string {
-    const mode: ScrollHintMode = this.mode === "vertical" ? "vertical" : "horizontal";
+    const mode: ScrollHintMode = this.mode === "horizontal" ? "horizontal" : "vertical";
 
     return HTML`
       <span class="scroll-hint scroll-hint--${mode}" aria-hidden="true">
         <span class="scroll-hint__label">${escapeHtml(this.label || "Scroll")}</span>
-        <span class="scroll-hint__track"><span class="scroll-hint__indicator"></span></span>
+        <span class="scroll-hint__track"></span>
       </span>
     `;
   }

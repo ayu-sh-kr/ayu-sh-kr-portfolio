@@ -32,67 +32,70 @@ scroll-hint[hidden] {
 }
 
 .scroll-hint__track {
-  position: relative;
   display: block;
-  overflow: hidden;
-  background: color-mix(in srgb, var(--scroll-hint-color, var(--muted-color)) 35%, transparent);
+  background: linear-gradient(var(--scroll-hint-color, var(--muted-color)), transparent);
+  transform-origin: top;
 }
 
 .scroll-hint--horizontal .scroll-hint__track {
-  inline-size: 2.75rem;
+  inline-size: 2.1rem;
   block-size: 1px;
+  background: linear-gradient(to right, var(--scroll-hint-color, var(--muted-color)), transparent);
+  transform-origin: left;
+  animation: scroll-hint-horizontal 1.8s ease-in-out infinite;
 }
 
 .scroll-hint--vertical .scroll-hint__track {
   inline-size: 1px;
-  block-size: 2.75rem;
-}
-
-.scroll-hint__indicator {
-  position: absolute;
-  display: block;
-  background: var(--scroll-hint-accent, var(--primary-color));
-}
-
-.scroll-hint--horizontal .scroll-hint__indicator {
-  inset-block-start: 0;
-  inset-inline-start: 0;
-  inline-size: 1.1rem;
-  block-size: 1px;
-  animation: scroll-hint-horizontal 1.8s ease-in-out infinite;
-}
-
-.scroll-hint--vertical .scroll-hint__indicator {
-  inset-block-start: 0;
-  inset-inline-start: 0;
-  inline-size: 1px;
-  block-size: 1.1rem;
+  block-size: 2.1rem;
   animation: scroll-hint-vertical 1.8s ease-in-out infinite;
 }
 
 @keyframes scroll-hint-horizontal {
-  0%,
-  100% {
+  0% {
     opacity: 0.35;
-    transform: translateX(-100%);
+    transform: scaleX(0);
+    transform-origin: left;
   }
 
   50% {
     opacity: 1;
-    transform: translateX(250%);
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+
+  51% {
+    transform-origin: right;
+  }
+
+  100% {
+    opacity: 0.35;
+    transform: scaleX(0);
+    transform-origin: right;
   }
 }
 
 @keyframes scroll-hint-vertical {
-  0%,
-  100% {
+  0% {
     opacity: 0.35;
-    transform: translateY(-100%);
+    transform: scaleY(0);
+    transform-origin: top;
   }
 
   50% {
     opacity: 1;
-    transform: translateY(250%);
+    transform: scaleY(1);
+    transform-origin: top;
+  }
+
+  51% {
+    transform-origin: bottom;
+  }
+
+  100% {
+    opacity: 0.35;
+    transform: scaleY(0);
+    transform-origin: bottom;
   }
 }
 
@@ -101,7 +104,7 @@ scroll-hint[hidden] {
     display: none;
   }
 
-  .scroll-hint__indicator {
+  .scroll-hint__track {
     animation: none;
   }
 }
