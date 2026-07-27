@@ -90,9 +90,6 @@ export const portfolioContent = {
       checking: "Trying to reach the server…",
       stillOffline: "Still no connection. Check your network and try again.",
     },
-    hero: {
-      scrollCue: "Still stuck? Ways to fix it",
-    },
     scrollContainerLabel: "Connection help",
     actions: {
       homeLabel: "Back to home",
