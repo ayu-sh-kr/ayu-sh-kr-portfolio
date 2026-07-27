@@ -1,6 +1,15 @@
 import { BaseElement, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
 import { showcaseProjects } from "@app/data/showcase-content.ts";
 
+/**
+ * Introduces the showcase with its authored project counts and scroll cue.
+ *
+ * Counts are derived from the shared project catalog during rendering, keeping
+ * the hero truthful when projects are added or moved between categories. The
+ * motion controller later applies scroll-driven transforms to the marked nodes.
+ *
+ * Selector: `showcase-hero`.
+ */
 @Component({
   selector: "showcase-hero",
   shadow: false,
@@ -10,6 +19,7 @@ export class ShowcaseHeroComponent extends BaseElement {
     super();
   }
 
+  /** Renders the showcase headline and counts from the current project catalog. */
   render(): string {
     const openSourceCount = showcaseProjects.filter((project) => project.kind === "open source").length;
     const clientCount = showcaseProjects.filter((project) => project.kind === "client work").length;
@@ -37,4 +47,3 @@ export class ShowcaseHeroComponent extends BaseElement {
     `;
   }
 }
-
