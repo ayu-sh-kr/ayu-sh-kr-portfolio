@@ -4,15 +4,32 @@ import {
   getShowcaseProjectsByTier,
   showcaseFilters,
   ShowcaseProjectKind,
+  type ShowcaseProject,
 } from "@app/data/showcase-content.ts";
 
+/**
+ * Filters available in the archive list, including the unfiltered view.
+ *
+ * The values are also used in the URL hash so a selected archive category can
+ * be shared and restored after navigation.
+ */
 type ShowcaseFilter = "all" | ShowcaseProjectKind;
 
+/**
+ * Lists archive-tier projects and keeps the selected kind in the URL hash.
+ *
+ * The showcase page owns the surrounding layout; this element owns only the
+ * archive filter state and composes each result as a `showcase-project-row`.
+ * Hash changes update the list without reloading the page.
+ *
+ * Selector: `showcase-archive`.
+ */
 @Component({
   selector: "showcase-archive",
   shadow: false,
 })
 export class ShowcaseArchiveComponent extends BaseElement {
+  /** Current archive filter, mirrored in the optional URL hash. */
   private activeFilter: ShowcaseFilter = "all";
 
   constructor() {
@@ -20,7 +37,8 @@ export class ShowcaseArchiveComponent extends BaseElement {
   }
 
   @WindowListener({ event: "hashchange" })
-  onHashChange(): void {
+  /** Reconciles the rendered filter when browser navigation changes the hash. */
+  syncFilterWithHash(): void {
     const nextFilter = this.filterFromHash();
     if (nextFilter === this.activeFilter) {
       return;
@@ -31,7 +49,8 @@ export class ShowcaseArchiveComponent extends BaseElement {
   }
 
   @HostListener({ event: "click" })
-  onHostClick(event: MouseEvent): void {
+  /** Applies a valid archive filter selected through delegated button clicks. */
+  applyFilterFromClick(event: MouseEvent): void {
     const target = event.target as HTMLElement;
     const filterButton = target.closest<HTMLButtonElement>("[data-showcase-filter]");
     if (!filterButton) {
@@ -39,20 +58,28 @@ export class ShowcaseArchiveComponent extends BaseElement {
     }
 
     event.preventDefault();
-    this.setFilter(filterButton.dataset.showcaseFilter as ShowcaseFilter);
+    const filter = filterButton.dataset.showcaseFilter;
+    if (!filter || !showcaseFilters.some((option) => option.value === filter)) {
+      return;
+    }
+
+    this.setFilter(filter as ShowcaseFilter);
   }
 
   @OnEvent("connected", true)
-  onConnected(): void {
+  /** Initializes the archive state after the element has been rendered. */
+  initializeArchiveFilter(): void {
     this.activeFilter = this.filterFromHash();
     this.updateHTML();
   }
 
+  /** Converts the current hash to a known filter, falling back to `all`. */
   private filterFromHash(): ShowcaseFilter {
     const value = window.location.hash.replace(/^#\//, "").replaceAll("-", " ");
     return showcaseFilters.some((filter) => filter.value === value) ? (value as ShowcaseFilter) : "all";
   }
 
+  /** Updates local filter state and writes the shareable archive hash. */
   private setFilter(filter: ShowcaseFilter): void {
     this.activeFilter = filter;
     const hash = filter === "all" ? "" : `#/${filter.replaceAll(" ", "-")}`;
@@ -62,11 +89,13 @@ export class ShowcaseArchiveComponent extends BaseElement {
     this.updateHTML();
   }
 
-  private filteredProjects() {
+  /** Returns archive projects matching the selected filter. */
+  private filteredProjects(): ShowcaseProject[] {
     const archive = getShowcaseProjectsByTier("archive");
     return this.activeFilter === "all" ? archive : archive.filter((project) => project.kind === this.activeFilter);
   }
 
+  /** Renders filter controls, result count, and the current archive rows. */
   render(): string {
     const filteredProjects = this.filteredProjects();
     const archiveCount = getShowcaseProjectsByTier("archive").length;
