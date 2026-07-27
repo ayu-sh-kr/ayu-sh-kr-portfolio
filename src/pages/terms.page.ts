@@ -28,7 +28,7 @@ export class TermsPage extends DotaPageElement {
   render(): string {
     return HTML`
       <app-header></app-header>
-      <terms-view></terms-view>
+      <terms-view data-analytics-section="terms_document"></terms-view>
       <app-footer></app-footer>
     `;
   }

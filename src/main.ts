@@ -22,6 +22,11 @@ const analyticsSectionTracker = new AnalyticsSectionTracker();
 
 registerPortfolioMarkdownTheme();
 
+// The initial router transition runs during `initializeApp`. Register the
+// analytics listener first so its page and section events are not lost.
+DefaultApplicationEventListenerRegistry.setListener(applicationEventListener);
+new AnalyticsEventListener();
+
 initializeApp({
   modules: components,
   routes: [...routeConfig, { path: "/offline", component: OfflinePage }],
@@ -37,8 +42,6 @@ initializeApp({
   },
 })
   .then((value) => {
-    DefaultApplicationEventListenerRegistry.setListener(applicationEventListener);
-    new AnalyticsEventListener();
     analyticsSectionTracker.trackPage(window.location.pathname);
     routerService = value.routerService;
     RouterUtils.setRouterService(routerService);

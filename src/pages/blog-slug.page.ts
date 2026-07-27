@@ -32,7 +32,7 @@ export class BlogSlugPage extends DotaPageElement {
   render(): string {
     return `
       <app-header></app-header>
-      <blog-article></blog-article>
+      <blog-article data-analytics-section="blog_article"></blog-article>
       <app-footer></app-footer>
     `;
   }

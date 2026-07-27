@@ -30,11 +30,11 @@ export class HomePage extends DotaPageElement {
       <app-header></app-header>
       <main>
         <portfolio-hero data-analytics-section="home_hero"></portfolio-hero>
-        <portfolio-journey></portfolio-journey>
+        <portfolio-journey data-analytics-section="home_journey"></portfolio-journey>
         <portfolio-work data-analytics-section="home_work"></portfolio-work>
-        <portfolio-speaking></portfolio-speaking>
-        <portfolio-skills></portfolio-skills>
-        <portfolio-services></portfolio-services>
+        <portfolio-speaking data-analytics-section="home_speaking"></portfolio-speaking>
+        <portfolio-skills data-analytics-section="home_skills"></portfolio-skills>
+        <portfolio-services data-analytics-section="home_services"></portfolio-services>
         <portfolio-contact data-analytics-section="home_contact"></portfolio-contact>
         <portfolio-motion-controller></portfolio-motion-controller>
       </main>

@@ -29,14 +29,14 @@ export class PricingPage extends DotaPageElement {
     return HTML`
       <app-header></app-header>
       <main id="pricing-page-main">
-        <pricing-hero></pricing-hero>
+        <pricing-hero data-analytics-section="pricing_hero"></pricing-hero>
         <pricing-switch></pricing-switch>
-        <build-offering></build-offering>
+        <build-offering data-analytics-section="pricing_offering"></build-offering>
         <pricing-estimator data-analytics-section="pricing_estimator"></pricing-estimator>
         <build-pricing></build-pricing>
         <speaking-offering></speaking-offering>
         <speaking-pricing></speaking-pricing>
-        <pricing-faq></pricing-faq>
+        <pricing-faq data-analytics-section="pricing_faq"></pricing-faq>
         <pricing-contact data-analytics-section="pricing_contact"></pricing-contact>
       </main>
       <pricing-sticky-contact></pricing-sticky-contact>

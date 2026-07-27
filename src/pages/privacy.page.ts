@@ -28,7 +28,7 @@ export class PrivacyPage extends DotaPageElement {
   render(): string {
     return HTML`
       <app-header></app-header>
-      <privacy-view></privacy-view>
+      <privacy-view data-analytics-section="privacy_document"></privacy-view>
       <app-footer></app-footer>
     `;
   }

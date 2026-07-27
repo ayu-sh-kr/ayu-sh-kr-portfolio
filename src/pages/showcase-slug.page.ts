@@ -30,7 +30,7 @@ export class ShowcaseSlugPage extends DotaPageElement {
   render(): string {
     return `
       <app-header></app-header>
-      <showcase-view></showcase-view>
+      <showcase-view data-analytics-section="showcase_article"></showcase-view>
       <app-footer></app-footer>
     `;
   }
