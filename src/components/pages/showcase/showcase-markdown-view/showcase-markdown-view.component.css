@@ -22,18 +22,15 @@ showcase-markdown-view {
 
 .showcase-markdown-content h1 {
   margin-block: 0 1rem;
-  font-size: 2.25rem;
 }
 
 .showcase-markdown-content h2 {
   margin-block: 2.5em 0.6em;
-  font-size: 1.6rem;
   scroll-margin-top: 5rem;
 }
 
 .showcase-markdown-content h3 {
   margin-block: 2em 0.5em;
-  font-size: 1.25rem;
   scroll-margin-top: 5rem;
 }
 

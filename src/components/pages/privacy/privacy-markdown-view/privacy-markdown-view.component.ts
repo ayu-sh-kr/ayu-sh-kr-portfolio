@@ -1,6 +1,7 @@
-import {ApplicationEventService, BeforeInit, BindEvent, Component} from "@ayu-sh-kr/dota-wrap/core";
+import {ApplicationEventService, BeforeInit, BindEvent, Component, Property, String} from "@ayu-sh-kr/dota-wrap/core";
 import {type ApplicationEvent, OnEvent} from "@ayu-sh-kr/dota-wrap/event";
-import {MdViewComponent} from "@ayu-sh-kr/dota-md";
+import {MdViewComponent, type ColorName, type ThemeName} from "@ayu-sh-kr/dota-md";
+import {portfolioMarkdownColor, portfolioMarkdownTheme} from "@app/configs/markdown-theme.config.ts";
 import {
   PRIVACY_MARKDOWN_RENDER_EVENT,
   PRIVACY_MARKDOWN_SOURCE_EVENT,
@@ -25,6 +26,14 @@ import {MarkdownLifecycleUtils} from "@app/utils/markdown-lifecycle.utils.ts";
   shadow: false,
 })
 export class PrivacyMarkdownViewComponent extends MdViewComponent {
+  /** Portfolio theme binding declared on this concrete Dota component. */
+  @Property({name: "theme", type: String})
+  override theme: ThemeName = portfolioMarkdownTheme.name as ThemeName;
+
+  /** Portfolio color binding declared on this concrete Dota component. */
+  @Property({name: "color", type: String})
+  override color: ColorName = portfolioMarkdownColor;
+
   /** Shared capture, rendering, hash-scroll, and feedback lifecycle for Markdown. */
   private readonly markdownLifecycle = new MarkdownLifecycleUtils(this);
   /** Publisher used to notify `privacy-toc` after headings have been decorated. */
@@ -111,7 +120,7 @@ export class PrivacyMarkdownViewComponent extends MdViewComponent {
       heading.dataset.privacyHeading = section.id;
       const number = document.createElement("span");
       number.className = "privacy-section-number";
-      number.textContent = String(index + 1).padStart(2, "0");
+      number.textContent = (index + 1).toString().padStart(2, "0");
       heading.prepend(number);
 
       const anchor = document.createElement("a");

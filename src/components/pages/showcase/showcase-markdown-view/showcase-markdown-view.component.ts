@@ -1,6 +1,7 @@
-import {BeforeInit, BindEvent, Component} from "@ayu-sh-kr/dota-wrap/core";
+import {BeforeInit, BindEvent, Component, Property, String} from "@ayu-sh-kr/dota-wrap/core";
 import {type ApplicationEvent, OnEvent} from "@ayu-sh-kr/dota-wrap/event";
-import {MdViewComponent} from "@ayu-sh-kr/dota-md";
+import {MdViewComponent, type ColorName, type ThemeName} from "@ayu-sh-kr/dota-md";
+import {portfolioMarkdownColor, portfolioMarkdownTheme} from "@app/configs/markdown-theme.config.ts";
 import {SHOWCASE_MARKDOWN_SOURCE_EVENT} from "@app/events/showcase.events.ts";
 import {MarkdownLifecycleUtils} from "@app/utils/markdown-lifecycle.utils.ts";
 
@@ -19,6 +20,14 @@ import {MarkdownLifecycleUtils} from "@app/utils/markdown-lifecycle.utils.ts";
   shadow: false,
 })
 export class ShowcaseMarkdownViewComponent extends MdViewComponent {
+  /** Portfolio theme binding declared on this concrete Dota component. */
+  @Property({name: "theme", type: String})
+  override theme: ThemeName = portfolioMarkdownTheme.name as ThemeName;
+
+  /** Portfolio color binding declared on this concrete Dota component. */
+  @Property({name: "color", type: String})
+  override color: ColorName = portfolioMarkdownColor;
+
   /** Shared capture, rendering, hash-scroll, and feedback lifecycle for Markdown. */
   private readonly markdownLifecycle = new MarkdownLifecycleUtils(this);
 
