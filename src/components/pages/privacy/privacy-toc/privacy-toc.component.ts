@@ -3,12 +3,23 @@ import {type ApplicationEvent, OnEvent} from "@ayu-sh-kr/dota-wrap/event";
 import {PRIVACY_MARKDOWN_RENDER_EVENT, type PrivacySection} from "@app/events/privacy.events.ts";
 import {escapeHtml} from "@app/utils/html.utils.ts";
 
+/**
+ * Provides grouped navigation for the rendered privacy policy sections.
+ *
+ * The Markdown view publishes section metadata after rendering. This element
+ * tracks the heading nearest the reading threshold and updates its active link;
+ * selecting a link updates the hash and scrolls to the corresponding heading.
+ *
+ * Selector: `privacy-toc`.
+ */
 @Component({
   selector: "privacy-toc",
   shadow: false,
 })
 export class PrivacyTocComponent extends BaseElement {
+  /** Sections published by the privacy Markdown view. */
   private sections: readonly PrivacySection[] = [];
+  /** ID of the section currently highlighted in the TOC. */
   private activeId = "";
 
   constructor() {
@@ -16,14 +27,16 @@ export class PrivacyTocComponent extends BaseElement {
   }
 
   @OnEvent(PRIVACY_MARKDOWN_RENDER_EVENT)
-  onMarkdownRender(event: ApplicationEvent<typeof PRIVACY_MARKDOWN_RENDER_EVENT>): void {
+  /** Replaces the TOC model after privacy Markdown has finished rendering. */
+  updateSections(event: ApplicationEvent<typeof PRIVACY_MARKDOWN_RENDER_EVENT>): void {
     this.sections = event.data.sections;
     this.activeId = this.sections[0]?.id ?? "";
     this.updateHTML();
   }
 
   @WindowListener({event: "scroll"})
-  onScroll(): void {
+  /** Keeps the active link aligned with the section nearest the reading threshold. */
+  syncActiveSection(): void {
     let nextActiveId = this.sections[0]?.id ?? "";
     this.sections.forEach((section) => {
       const heading = document.getElementById(section.id);
@@ -39,7 +52,8 @@ export class PrivacyTocComponent extends BaseElement {
   }
 
   @HostListener({event: "click"})
-  onTocClick(event: MouseEvent): void {
+  /** Smooth-scrolls to a valid section selected from the delegated TOC links. */
+  scrollToSection(event: MouseEvent): void {
     const link = (event.target as HTMLElement | null)?.closest<HTMLAnchorElement>("[data-privacy-toc-id]");
     const id = link?.dataset.privacyTocId;
     if (!link || !id) {
@@ -61,6 +75,7 @@ export class PrivacyTocComponent extends BaseElement {
     this.updateHTML();
   }
 
+  /** Renders grouped section links or a placeholder before Markdown is ready. */
   render(): string {
     if (!this.sections.length) {
       return `<div class="privacy-toc-placeholder" aria-hidden="true"></div>`;
