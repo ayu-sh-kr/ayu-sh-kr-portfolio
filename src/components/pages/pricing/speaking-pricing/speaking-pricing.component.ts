@@ -1,6 +1,15 @@
 import { BaseElement, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
 import { pricingContent } from "@app/data/pricing-content.ts";
 
+/**
+ * Renders speaking-service pricing tiers and their contact CTAs.
+ *
+ * The tier formatter mirrors the build pricing boundary while reading its own
+ * `pricingContent.speakingPricing` data, keeping the two offers independent as
+ * their copy and visual treatment evolve.
+ *
+ * Selector: `speaking-pricing`.
+ */
 @Component({
   selector: "speaking-pricing",
   shadow: false,
@@ -10,6 +19,7 @@ export class SpeakingPricingComponent extends BaseElement {
     super();
   }
 
+  /** Returns the speaking pricing heading and all authored pricing tiers. */
   render(): string {
     const content = pricingContent.speakingPricing;
 
@@ -27,6 +37,7 @@ export class SpeakingPricingComponent extends BaseElement {
     `;
   }
 
+  /** Formats one speaking tier with its featured marker, bullets, and CTA. */
   private renderTier(tier: (typeof pricingContent.speakingPricing.tiers)[number], featuredLabel: string): string {
     return `
       <article class="speaking-pricing-tier ${tier.featured ? "is-featured" : ""}">

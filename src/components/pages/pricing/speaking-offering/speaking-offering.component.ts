@@ -1,6 +1,14 @@
 import { BaseElement, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
 import { pricingContent } from "@app/data/pricing-content.ts";
 
+/**
+ * Renders the speaking-services offering on the pricing page.
+ *
+ * Formats and topics are read from `pricingContent.speakingOffering`, leaving
+ * the component as a pure composition of authored content and pricing markup.
+ *
+ * Selector: `speaking-offering`.
+ */
 @Component({
   selector: "speaking-offering",
   shadow: false,
@@ -10,6 +18,7 @@ export class SpeakingOfferingComponent extends BaseElement {
     super();
   }
 
+  /** Returns speaking formats and topics from the pricing content source. */
   render(): string {
     const content = pricingContent.speakingOffering;
 
