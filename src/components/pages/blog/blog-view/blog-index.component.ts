@@ -1,10 +1,25 @@
-import {AfterInit, BaseElement, Component} from "@ayu-sh-kr/dota-wrap/core";
+import {BaseElement, BindEvent, Component, WindowListener} from "@ayu-sh-kr/dota-wrap/core";
 import {type ApplicationEvent, OnEvent} from "@ayu-sh-kr/dota-wrap/event";
 import {formatBlogDate, labelForCategory, type BlogCategory, type BlogPost} from "@app/configs/blogs.config.ts";
 import {BLOG_INDEX_DATA_EVENT} from "@app/events/blog.events.ts";
 import {escapeHtml} from "@app/utils/html.utils.ts";
 
-const filters: Array<{value: BlogCategory | "all"; label: string; hash: string}> = [
+/**
+ * Describes one filter choice shared by the rendered controls and URL parsing.
+ * Keeping the category value and hash together prevents the UI and navigation
+ * state from drifting when a filter is added or renamed.
+ */
+type BlogFilter = {
+  /** Category value applied to post rows; `all` clears category filtering. */
+  value: BlogCategory | "all";
+  /** Label shown in the filter button. */
+  label: string;
+  /** Hash fragment used to preserve the selected filter in the URL. */
+  hash: string;
+};
+
+/** Single source of truth for the filters rendered by the index and parsed from the URL. */
+const filters: readonly BlogFilter[] = [
   {value: "all", label: "All", hash: "all"},
   {value: "tutorial", label: "Tutorials", hash: "tutorials"},
   {value: "rant", label: "Rants", hash: "rants"},
@@ -12,6 +27,7 @@ const filters: Array<{value: BlogCategory | "all"; label: string; hash: string}>
   {value: "notes", label: "Notes", hash: "notes"},
 ];
 
+/** Reads and validates the current URL hash, falling back to the unfiltered index. */
 const categoryFromHash = (): BlogCategory | "all" => {
   let value = window.location.hash.replace(/^#\/?/, "");
   try {
@@ -22,6 +38,7 @@ const categoryFromHash = (): BlogCategory | "all" => {
   return filters.find((filter) => filter.hash === value || filter.value === value)?.value ?? "all";
 };
 
+/** Renders the filter controls with the current category marked as pressed. */
 const renderFilters = (currentFilter: BlogCategory | "all"): string =>
   filters.map((filter) => `
     <button class="blog-pill${currentFilter === filter.value ? " is-active" : ""}" type="button"
@@ -30,6 +47,7 @@ const renderFilters = (currentFilter: BlogCategory | "all"): string =>
     </button>
   `).join("");
 
+/** Renders one post row for the list while escaping authored text for HTML safety. */
 const renderPostRow = (post: BlogPost): string => `
   <a class="blog-row blog-reveal" data-blog-reveal data-blog-row data-blog-category="${post.category}"
      href="/blog/${post.slug}">
@@ -43,6 +61,16 @@ const renderPostRow = (post: BlogPost): string => `
   </a>
 `;
 
+/**
+ * Renders and filters the blog listing, including its featured post and reveal motion.
+ *
+ * Receives the post list through {@link BLOG_INDEX_DATA_EVENT}. Filter selection is
+ * mirrored to the URL hash, while reduced-motion changes rebuild reveal behavior.
+ * The passive scroll listener is managed manually because the listener option is
+ * part of the performance contract; component click and hash events use decorators.
+ *
+ * Selector: `blog-index`.
+ */
 @Component({
   selector: "blog-index",
   shadow: false,
@@ -59,30 +87,37 @@ export class BlogIndexComponent extends BaseElement {
     super();
   }
 
-  @AfterInit()
-  afterViewInit(): void {
+  /**
+   * Starts motion preference tracking and the passive scroll listener after the
+   * initial index markup exists.
+   */
+  @OnEvent("connected", true)
+  initializeBlogIndex(): void {
     this.motionPreference = window.matchMedia("(prefers-reduced-motion: reduce)");
     this.reducedMotion = this.motionPreference.matches;
-    this.motionPreference.addEventListener("change", this.handleMotionPreference);
-    window.addEventListener("hashchange", this.handleHashChange);
+    this.motionPreference.addEventListener("change", this.updateMotionPreference);
     window.addEventListener("scroll", this.scheduleScrollRender, {passive: true});
-    this.addEventListener("click", this.handleClick);
   }
 
-  disconnectedCallback(): void {
-    this.motionPreference?.removeEventListener("change", this.handleMotionPreference);
-    window.removeEventListener("hashchange", this.handleHashChange);
+  /** Removes manual listeners, the reveal observer, and any pending scroll frame. */
+  @OnEvent("disconnected", true)
+  cleanupBlogIndex(): void {
+    this.motionPreference?.removeEventListener("change", this.updateMotionPreference);
     window.removeEventListener("scroll", this.scheduleScrollRender);
-    this.removeEventListener("click", this.handleClick);
     this.revealObserver?.disconnect();
+    this.revealObserver = null;
     if (this.frameId !== null) {
       cancelAnimationFrame(this.frameId);
     }
-    super.disconnectedCallback();
+    this.frameId = null;
   }
 
+  /**
+   * Stores the published posts, renders the list, then applies the active filter
+   * and starts reveal/progress work against the newly inserted elements.
+   */
   @OnEvent(BLOG_INDEX_DATA_EVENT)
-  onBlogData(event: ApplicationEvent<typeof BLOG_INDEX_DATA_EVENT>): void {
+  renderBlogData(event: ApplicationEvent<typeof BLOG_INDEX_DATA_EVENT>): void {
     this.posts = event.data.posts;
     this.updateHTML();
     this.applyFilter(this.currentFilter, false);
@@ -90,18 +125,23 @@ export class BlogIndexComponent extends BaseElement {
     this.scheduleScrollRender();
   }
 
-  private readonly handleMotionPreference = (event: MediaQueryListEvent): void => {
+  /** Rebuilds reveals and scroll visuals when reduced-motion preference changes. */
+  private readonly updateMotionPreference = (event: MediaQueryListEvent): void => {
     this.reducedMotion = event.matches;
     this.setupReveals();
     this.scheduleScrollRender();
   };
 
-  private readonly handleHashChange = (): void => {
+  /** Applies the category encoded in the current URL hash to the rendered index. */
+  @WindowListener({event: "hashchange"})
+  private syncFilterWithHash(): void {
     this.currentFilter = categoryFromHash();
     this.applyFilter(this.currentFilter, false);
-  };
+  }
 
-  private readonly handleClick = (event: Event): void => {
+  /** Updates the URL and visible rows when a filter pill or empty-state reset is clicked. */
+  @BindEvent({event: "click", id: "[data-blog-filter]"})
+  private changeFilter(event: Event): void {
     const filter = (event.target as HTMLElement | null)?.closest<HTMLButtonElement>("[data-blog-filter]");
     if (!filter) {
       return;
@@ -112,9 +152,10 @@ export class BlogIndexComponent extends BaseElement {
     const filterHash = filters.find((item) => item.value === this.currentFilter)?.hash ?? "all";
     window.history.replaceState(null, "", `${window.location.pathname}${window.location.search}#/${filterHash}`);
     this.applyFilter(this.currentFilter, true);
-  };
+  }
 
-  private applyFilter(filter: BlogCategory | "all", animate: boolean): void {
+  /** Applies visibility, counts, accessibility state, and optional row entrance motion. */
+  private applyFilter(filter: BlogCategory | "all", shouldAnimate: boolean): void {
     const rows = Array.from(this.querySelectorAll<HTMLElement>("[data-blog-row]"));
     const visibleRows = rows.filter((row) => filter === "all" || row.dataset.blogCategory === filter);
     const count = this.querySelector<HTMLElement>("[data-blog-count]");
@@ -150,7 +191,7 @@ export class BlogIndexComponent extends BaseElement {
       }
     }
 
-    if (animate && !this.reducedMotion) {
+    if (shouldAnimate && !this.reducedMotion) {
       visibleRows.forEach((row, index) => {
         row.style.setProperty("--blog-row-delay", `${index * 60}ms`);
         row.classList.remove("is-filter-in");
@@ -159,6 +200,7 @@ export class BlogIndexComponent extends BaseElement {
     }
   }
 
+  /** Coalesces scroll updates into one frame and updates the blog hero progress. */
   private readonly scheduleScrollRender = (): void => {
     if (this.frameId !== null) {
       return;
@@ -181,6 +223,7 @@ export class BlogIndexComponent extends BaseElement {
     });
   };
 
+  /** Observes reveal targets or shows them immediately when motion is reduced/unavailable. */
   private setupReveals(): void {
     this.revealObserver?.disconnect();
     const reveals = Array.from(this.querySelectorAll<HTMLElement>("[data-blog-reveal]"));
@@ -204,6 +247,7 @@ export class BlogIndexComponent extends BaseElement {
     reveals.forEach((element) => this.revealObserver?.observe(element));
   }
 
+  /** Returns loading markup until posts arrive, then renders the featured card and list. */
   render(): string {
     if (!this.posts.length) {
       return `<main class="blog-index blog-container"><p class="blog-loading">Loading posts…</p></main>`;

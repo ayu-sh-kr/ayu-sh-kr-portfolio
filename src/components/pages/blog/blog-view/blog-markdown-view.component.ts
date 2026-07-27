@@ -4,6 +4,16 @@ import {MdViewComponent} from "@ayu-sh-kr/dota-md";
 import {BLOG_MARKDOWN_SOURCE_EVENT} from "@app/events/blog.events.ts";
 import {MarkdownLifecycleUtils} from "@app/utils/markdown-lifecycle.utils.ts";
 
+/**
+ * Renders blog Markdown with portfolio styling and article-specific enhancements.
+ *
+ * It captures any authored fallback content before initialization, renders source
+ * published through {@link BLOG_MARKDOWN_SOURCE_EVENT}, and post-processes Markdown output with lazy images,
+ * copy-code buttons, and hash scrolling. The shared lifecycle utility owns theme,
+ * source, progress, and disconnect behavior; this component adds blog-only details.
+ *
+ * Selector: `blog-markdown-view`.
+ */
 @Component({
   selector: "blog-markdown-view",
   shadow: false,
@@ -15,16 +25,22 @@ export class BlogMarkdownViewComponent extends MdViewComponent {
     super();
   }
 
+  /** Captures fallback Markdown before the renderer replaces the initial content. */
   @BeforeInit()
   captureInitialContent(): void {
     this.markdownLifecycle.captureInitialContent();
   }
 
+  /** Renders the raw Markdown source published for the active blog article. */
   @OnEvent(BLOG_MARKDOWN_SOURCE_EVENT)
-  onMarkdownSource(event: ApplicationEvent<typeof BLOG_MARKDOWN_SOURCE_EVENT>): void {
+  renderMarkdownSource(event: ApplicationEvent<typeof BLOG_MARKDOWN_SOURCE_EVENT>): void {
     this.markdownLifecycle.renderSource(event.data.markdown);
   }
 
+  /**
+   * Adds blog-specific behavior after Dota Markdown renders: removes the duplicate
+   * H1, enables code-copy controls, prepares images, and completes hash scrolling.
+   */
   @OnEvent("md:render")
   override onContentChange(event: ApplicationEvent<"md:render">): void {
     super.onContentChange(event);
@@ -50,8 +66,9 @@ export class BlogMarkdownViewComponent extends MdViewComponent {
     this.markdownLifecycle.scheduleHashScroll();
   }
 
+  /** Copies the nearest code block and delegates temporary button feedback to the lifecycle utility. */
   @BindEvent({event: "click", id: "[data-copy-code]"})
-  handleCopy(event: Event): void {
+  copyCode(event: Event): void {
     const button = (event.target as HTMLElement | null)?.closest<HTMLButtonElement>("[data-copy-code]");
     if (!button) {
       return;
@@ -61,11 +78,13 @@ export class BlogMarkdownViewComponent extends MdViewComponent {
     this.markdownLifecycle.markCopied(button, "Copied", "Copy");
   }
 
+  /** Cancels lifecycle timers and pending frames when the Markdown view disconnects. */
   @OnEvent("disconnected", true)
-  onDisconnected(): void {
+  cleanupMarkdownLifecycle(): void {
     this.markdownLifecycle.disconnect();
   }
 
+  /** Returns the themed Markdown container produced by the shared lifecycle utility. */
   override render(): string {
     return this.markdownLifecycle.renderThemedContent("blog-markdown-content");
   }

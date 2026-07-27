@@ -9,6 +9,17 @@ import {portfolioMarkdownColor, portfolioMarkdownTheme} from "@app/configs/markd
 import {escapeHtml} from "@app/utils/html.utils.ts";
 import {MarkdownProgressLifecycle} from "@app/utils/markdown-lifecycle.utils.ts";
 
+/**
+ * Renders one blog article after receiving its metadata and Markdown source events.
+ *
+ * The parent `blog-view` publishes {@link BLOG_ARTICLE_DATA_EVENT} and
+ * {@link BLOG_ARTICLE_ERROR_EVENT}; the Markdown loader publishes the source
+ * consumed by `blog-markdown-view`. This component owns article states (loading,
+ * not found, and load error) and delegates document progress scheduling to the
+ * shared Markdown lifecycle utility.
+ *
+ * Selector: `blog-article`.
+ */
 @Component({
   selector: "blog-article",
   shadow: false,
@@ -24,18 +35,21 @@ export class BlogArticleComponent extends BaseElement {
     super();
   }
 
+  /** Schedules document progress updates as the article scrolls. */
   @WindowListener({event: "scroll"})
-  onScroll(): void {
-    this.scheduleProgressRender();
+  scheduleProgressRender(): void {
+    this.progressLifecycle.scheduleDocumentProgress("[data-blog-progress]");
   }
 
+  /** Disconnects the shared progress utility when the article leaves the document. */
   @OnEvent("disconnected", true)
-  onDisconnected(): void {
+  cleanupProgress(): void {
     this.progressLifecycle.disconnect();
   }
 
+  /** Stores route data, renders the article shell, and starts its progress indicator. */
   @OnEvent(BLOG_ARTICLE_DATA_EVENT)
-  onArticleData(event: ApplicationEvent<typeof BLOG_ARTICLE_DATA_EVENT>): void {
+  renderArticleData(event: ApplicationEvent<typeof BLOG_ARTICLE_DATA_EVENT>): void {
     const data = event.data;
     this.ready = true;
     this.post = data.post;
@@ -45,16 +59,17 @@ export class BlogArticleComponent extends BaseElement {
     this.scheduleProgressRender();
   }
 
+  /** Displays a load failure in the article body and replaces the loading view. */
   @OnEvent(BLOG_ARTICLE_ERROR_EVENT)
-  onArticleError(event: ApplicationEvent<typeof BLOG_ARTICLE_ERROR_EVENT>): void {
+  showArticleError(event: ApplicationEvent<typeof BLOG_ARTICLE_ERROR_EVENT>): void {
     this.loadError = event.data.message;
     this.updateHTML();
   }
 
-  private readonly scheduleProgressRender = (): void => {
-    this.progressLifecycle.scheduleDocumentProgress("[data-blog-progress]");
-  };
-
+  /**
+   * Returns the loading, not-found, error, or article markup for the current state.
+   * The Markdown child is rendered only after article metadata is available.
+   */
   render(): string {
     if (!this.ready) {
       return `<main class="blog-article-shell blog-container"><p class="blog-loading">Loading post…</p></main>`;
