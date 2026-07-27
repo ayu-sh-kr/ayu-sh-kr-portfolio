@@ -1,0 +1,136 @@
+.blog-progress {
+  position: fixed;
+  z-index: 60;
+  inset: 0 0 auto;
+  block-size: 2px;
+  background: var(--blog-accent);
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+.blog-article-shell {
+  padding-block: 8.5rem 4rem;
+}
+
+.blog-back-link {
+  color: var(--blog-ink-soft);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 180ms ease;
+}
+
+.blog-back-link:hover {
+  color: var(--blog-ink);
+}
+
+.blog-article-header {
+  max-inline-size: 48rem;
+  margin: 4.5rem auto 0;
+  text-align: center;
+}
+
+.blog-article-meta {
+  justify-content: center;
+}
+
+.blog-article-header h1 {
+  margin: 1.2rem 0 0;
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1.04;
+  text-wrap: balance;
+}
+
+.blog-article-author {
+  margin: 1.25rem 0 0;
+  color: var(--blog-ink-soft);
+  font-size: 0.9375rem;
+}
+
+.blog-loading {
+  color: var(--blog-ink-soft);
+}
+
+.blog-article-footer {
+  max-inline-size: 42.5rem;
+  margin: 4rem auto 0;
+  border-block-start: 1px solid var(--blog-hairline);
+  padding-block-start: 1.5rem;
+}
+
+.blog-article-footer-meta {
+  color: var(--blog-ink-soft);
+  font-size: 0.875rem;
+}
+
+.blog-post-nav {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin-block-start: 1.75rem;
+}
+
+.blog-quiet-card {
+  display: flex;
+  min-block-size: 4.4rem;
+  align-items: center;
+  gap: 0.75rem;
+  border: 1px solid var(--blog-hairline);
+  border-radius: 0.9rem;
+  padding: 0.9rem 1rem;
+  color: var(--blog-ink);
+  text-decoration: none;
+  transition: border-color 180ms ease, background-color 180ms ease;
+}
+
+.blog-quiet-card:hover {
+  border-color: var(--blog-accent);
+  background: var(--blog-tint);
+}
+
+.blog-quiet-card span:first-child {
+  color: var(--blog-accent-deep);
+  font-size: 1.15rem;
+}
+
+.blog-quiet-card small {
+  display: block;
+  margin-block-end: 0.2rem;
+  color: var(--blog-ink-soft);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.blog-quiet-card-next {
+  justify-content: space-between;
+  text-align: right;
+}
+
+.blog-not-found {
+  max-inline-size: 42rem;
+  margin: 8rem auto;
+  text-align: center;
+}
+
+.blog-not-found h1 {
+  margin: 1rem 0 2rem;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  letter-spacing: -0.04em;
+  text-wrap: balance;
+}
+
+@media (max-width: 42rem) {
+  .blog-post-nav {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blog-back-link,
+  .blog-quiet-card {
+    transition: none;
+  }
+}
