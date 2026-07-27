@@ -7,4 +7,4 @@ export { ShowcasePage } from "@app/pages/showcase.page.ts";
 export { ShowcaseSlugPage } from "@app/pages/showcase-slug.page.ts";
 export { PrivacyPage } from "@app/pages/privacy.page.ts";
 export { TermsPage } from "@app/pages/terms.page.ts";
-export { OfflinePage } from "@app/components/offline-page/offline-page.component.ts";
+export { OfflinePage } from "@app/components/pages/offline/offline-page/offline-page.component.ts";
