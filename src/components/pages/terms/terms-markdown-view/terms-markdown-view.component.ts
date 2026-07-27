@@ -1,5 +1,4 @@
-import {BeforeInit, BindEvent, Component} from "@ayu-sh-kr/dota-wrap/core";
-import {ApplicationEventService} from "@ayu-sh-kr/dota-wrap/core";
+import {ApplicationEventService, BeforeInit, BindEvent, Component} from "@ayu-sh-kr/dota-wrap/core";
 import {type ApplicationEvent, OnEvent} from "@ayu-sh-kr/dota-wrap/event";
 import {MdViewComponent} from "@ayu-sh-kr/dota-md";
 import {
@@ -10,13 +9,25 @@ import {
 } from "@app/events/terms.events.ts";
 import {MarkdownLifecycleUtils} from "@app/utils/markdown-lifecycle.utils.ts";
 
+/**
+ * Renders the loaded terms Markdown and publishes its section model.
+ *
+ * `terms-view` supplies the source event after loading the legal document. This
+ * adapter delegates shared Markdown lifecycle work while adding terms-specific
+ * heading wrappers, section anchors, responsive tables, and reveal behavior.
+ *
+ * Selector: `terms-markdown-view`.
+ */
 @Component({
   selector: "terms-markdown-view",
   shadow: false,
 })
 export class TermsMarkdownViewComponent extends MdViewComponent {
+  /** Shared capture, rendering, hash-scroll, and feedback lifecycle for Markdown. */
   private readonly markdownLifecycle = new MarkdownLifecycleUtils(this);
+  /** Publisher used to notify `terms-toc` after headings have been decorated. */
   private readonly publisher = ApplicationEventService.getInstance().getPublisher();
+  /** Section metadata matching the headings in the currently rendered document. */
   private sections: readonly TermsSection[] = [];
 
   constructor() {
@@ -24,17 +35,20 @@ export class TermsMarkdownViewComponent extends MdViewComponent {
   }
 
   @BeforeInit()
+  /** Captures the loading placeholder before Markdown replaces the initial content. */
   captureInitialContent(): void {
     this.markdownLifecycle.captureInitialContent();
   }
 
   @OnEvent(TERMS_MARKDOWN_SOURCE_EVENT)
-  onMarkdownSource(event: ApplicationEvent<typeof TERMS_MARKDOWN_SOURCE_EVENT>): void {
+  /** Receives the loaded terms source and begins the shared Markdown render flow. */
+  renderMarkdownSource(event: ApplicationEvent<typeof TERMS_MARKDOWN_SOURCE_EVENT>): void {
     this.sections = event.data.sections;
     this.markdownLifecycle.renderSource(event.data.markdown);
   }
 
   @OnEvent("md:render")
+  /** Enhances rendered Markdown and publishes the final section model for the TOC. */
   override onContentChange(event: ApplicationEvent<"md:render">): void {
     super.onContentChange(event);
     const content = this.querySelector<HTMLElement>(".terms-markdown-content");
@@ -55,7 +69,8 @@ export class TermsMarkdownViewComponent extends MdViewComponent {
   }
 
   @BindEvent({event: "click", id: "[data-terms-anchor]"})
-  async onAnchorClick(event: Event): Promise<void> {
+  /** Copies a section's canonical URL while preserving the selected hash. */
+  async copyAnchorLink(event: Event): Promise<void> {
     const anchor = (event.target as HTMLElement | null)?.closest<HTMLAnchorElement>("[data-terms-anchor]");
     if (!anchor) {
       return;
@@ -73,10 +88,12 @@ export class TermsMarkdownViewComponent extends MdViewComponent {
   }
 
   @OnEvent("disconnected", true)
-  onDisconnected(): void {
+  /** Releases timers and listeners owned by the Markdown lifecycle helper. */
+  cleanupMarkdownLifecycle(): void {
     this.markdownLifecycle.disconnect();
   }
 
+  /** Adds IDs, numbered labels, and copyable anchors to rendered terms headings. */
   private decorateSections(content: HTMLElement): void {
     const headings = [...content.querySelectorAll<HTMLHeadingElement>("h2")];
     headings.forEach((heading, index) => {
@@ -127,6 +144,7 @@ export class TermsMarkdownViewComponent extends MdViewComponent {
     });
   }
 
+  /** Renders the terms body using the shared themed Markdown content container. */
   override render(): string {
     return this.markdownLifecycle.renderThemedContent("terms-markdown-content");
   }
