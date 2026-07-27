@@ -17,17 +17,55 @@ export type AnalyticsSurface =
   | "blog_article"
   | "showcase_article";
 
-/** Top-level sections whose visibility indicates meaningful page consumption. */
+/**
+ * Stable route identities used to compare page-level engagement in GA4.
+ *
+ * These values intentionally describe the route role rather than copying the
+ * current document title. Detail pages use the same category for every slug;
+ * the slug is carried separately in the page-view parameters.
+ */
+export type AnalyticsPage =
+  | "home"
+  | "pricing"
+  | "blog"
+  | "blog_article"
+  | "showcase"
+  | "showcase_article"
+  | "terms"
+  | "privacy"
+  | "offline"
+  | "error";
+
+/**
+ * Visible surfaces whose appearance indicates meaningful page consumption.
+ *
+ * Components opt in by setting `data-analytics-section`. The section tracker
+ * publishes one event per route and section after the element enters the
+ * viewport, keeping scroll noise out of the analytics stream.
+ */
 export type AnalyticsSection =
   | "home_hero"
+  | "home_journey"
   | "home_work"
+  | "home_speaking"
+  | "home_skills"
+  | "home_services"
   | "home_contact"
+  | "pricing_hero"
+  | "pricing_offering"
   | "blog_featured"
   | "blog_archive"
   | "blog_subscription"
+  | "blog_article"
+  | "showcase_hero"
+  | "showcase_projects"
   | "showcase_support"
+  | "showcase_article"
   | "pricing_estimator"
-  | "pricing_contact";
+  | "pricing_faq"
+  | "pricing_contact"
+  | "terms_document"
+  | "privacy_document";
 
 /** Blog or showcase content opened from a listing or related navigation. */
 export type AnalyticsProjectKind = "blog" | "showcase";
@@ -44,6 +82,19 @@ export const isAnalyticsContactMethod = (value: string | undefined): value is An
  * values describe user intent and content identity, never form contents or PII.
  */
 export type AnalyticsTrackEvent =
+  | {
+      /** Records a completed route view after the destination metadata is rendered. */
+      eventName: "page_view";
+      /** Route identity and optional content slug used to segment page engagement. */
+      params: {
+        /** Stable route category, independent of the visible page title. */
+        page: AnalyticsPage;
+        /** Browser pathname without query parameters or hash fragments. */
+        page_path: string;
+        /** Blog or showcase slug when the route is a content detail page. */
+        slug?: string;
+      };
+    }
   | {
       /** Identifies a contact or profile destination selected by the visitor. */
       eventName: "contact_click";
@@ -104,14 +155,27 @@ export type AnalyticsTrackEvent =
 
 const ANALYTICS_SECTIONS: readonly AnalyticsSection[] = [
   "home_hero",
+  "home_journey",
   "home_work",
+  "home_speaking",
+  "home_skills",
+  "home_services",
   "home_contact",
+  "pricing_hero",
+  "pricing_offering",
   "blog_featured",
   "blog_archive",
   "blog_subscription",
+  "blog_article",
+  "showcase_hero",
+  "showcase_projects",
   "showcase_support",
+  "showcase_article",
   "pricing_estimator",
   "pricing_contact",
+  "pricing_faq",
+  "terms_document",
+  "privacy_document",
 ];
 
 /** Accepts only section names that the analytics tracker is allowed to publish. */
