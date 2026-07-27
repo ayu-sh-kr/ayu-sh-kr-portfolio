@@ -63,7 +63,7 @@
         {
           "name": "app-footer",
           "source": {
-            "file": "./src/components/app-footer/app-footer.component.ts",
+            "file": "./src/components/utils/footer/app-footer/app-footer.component.ts",
             "offset": 147
           },
           "attributes": [],
@@ -74,8 +74,8 @@
         {
           "name": "app-header",
           "source": {
-            "file": "./src/components/app-header/app-header.component.ts",
-            "offset": 278
+            "file": "./src/components/utils/header/app-header/app-header.component.ts",
+            "offset": 314
           },
           "attributes": [],
           "js": {
@@ -107,7 +107,7 @@
         {
           "name": "blog-article",
           "source": {
-            "file": "./src/components/blog-view/blog-article.component.ts",
+            "file": "./src/components/pages/blog/blog-view/blog-article.component.ts",
             "offset": 664
           },
           "attributes": [],
@@ -118,7 +118,7 @@
         {
           "name": "blog-index",
           "source": {
-            "file": "./src/components/blog-view/blog-index.component.ts",
+            "file": "./src/components/pages/blog/blog-view/blog-index.component.ts",
             "offset": 2061
           },
           "attributes": [],
@@ -129,7 +129,7 @@
         {
           "name": "blog-markdown-view",
           "source": {
-            "file": "./src/components/blog-view/blog-markdown-view.component.ts",
+            "file": "./src/components/pages/blog/blog-view/blog-markdown-view.component.ts",
             "offset": 434
           },
           "attributes": [],
@@ -162,7 +162,7 @@
         {
           "name": "blog-view",
           "source": {
-            "file": "./src/components/blog-view/blog-view.component.ts",
+            "file": "./src/components/pages/blog/blog-view/blog-view.component.ts",
             "offset": 525
           },
           "attributes": [],
@@ -173,7 +173,7 @@
         {
           "name": "build-offering",
           "source": {
-            "file": "./src/components/build-offering/build-offering.component.ts",
+            "file": "./src/components/pages/pricing/build-offering/build-offering.component.ts",
             "offset": 214
           },
           "attributes": [],
@@ -184,7 +184,7 @@
         {
           "name": "build-pricing",
           "source": {
-            "file": "./src/components/build-pricing/build-pricing.component.ts",
+            "file": "./src/components/pages/pricing/build-pricing/build-pricing.component.ts",
             "offset": 213
           },
           "attributes": [],
@@ -195,7 +195,7 @@
         {
           "name": "dark-mode-button",
           "source": {
-            "file": "./src/components/dark-mode-button/dark-mode-button.component.ts",
+            "file": "./src/components/utils/theme/dark-mode-button/dark-mode-button.component.ts",
             "offset": 234
           },
           "attributes": [],
@@ -206,7 +206,7 @@
         {
           "name": "footer-baseline",
           "source": {
-            "file": "./src/components/footer-baseline/footer-baseline.component.ts",
+            "file": "./src/components/utils/footer/footer-baseline/footer-baseline.component.ts",
             "offset": 273
           },
           "attributes": [],
@@ -217,7 +217,7 @@
         {
           "name": "footer-index",
           "source": {
-            "file": "./src/components/footer-index/footer-index.component.ts",
+            "file": "./src/components/utils/footer/footer-index/footer-index.component.ts",
             "offset": 216
           },
           "attributes": [],
@@ -228,7 +228,7 @@
         {
           "name": "footer-support",
           "source": {
-            "file": "./src/components/footer-support/footer-support.component.ts",
+            "file": "./src/components/utils/footer/footer-support/footer-support.component.ts",
             "offset": 349
           },
           "attributes": [],
@@ -239,7 +239,7 @@
         {
           "name": "offline-hero",
           "source": {
-            "file": "./src/components/offline-hero/offline-hero.component.ts",
+            "file": "./src/components/pages/offline/offline-hero/offline-hero.component.ts",
             "offset": 216
           },
           "attributes": [],
@@ -250,7 +250,7 @@
         {
           "name": "offline-page",
           "source": {
-            "file": "./src/components/offline-page/offline-page.component.ts",
+            "file": "./src/components/pages/offline/offline-page/offline-page.component.ts",
             "offset": 603
           },
           "attributes": [],
@@ -261,7 +261,7 @@
         {
           "name": "offline-troubleshoot",
           "source": {
-            "file": "./src/components/offline-troubleshoot/offline-troubleshoot.component.ts",
+            "file": "./src/components/pages/offline/offline-troubleshoot/offline-troubleshoot.component.ts",
             "offset": 224
           },
           "attributes": [],
@@ -272,8 +272,8 @@
         {
           "name": "portfolio-contact",
           "source": {
-            "file": "./src/components/about-contact-section/about-contact-section.component.ts",
-            "offset": 221
+            "file": "./src/components/pages/home/about-contact-section/about-contact-section.component.ts",
+            "offset": 582
           },
           "attributes": [],
           "js": {
@@ -283,7 +283,7 @@
         {
           "name": "portfolio-hero",
           "source": {
-            "file": "./src/components/hero-section/hero-section.component.ts",
+            "file": "./src/components/pages/home/hero-section/hero-section.component.ts",
             "offset": 218
           },
           "attributes": [],
@@ -294,8 +294,8 @@
         {
           "name": "portfolio-journey",
           "source": {
-            "file": "./src/components/journey-section/journey-section.component.ts",
-            "offset": 221
+            "file": "./src/components/pages/home/journey-section/journey-section.component.ts",
+            "offset": 583
           },
           "attributes": [],
           "js": {
@@ -305,8 +305,8 @@
         {
           "name": "portfolio-motion-controller",
           "source": {
-            "file": "./src/components/motion-controller/motion-controller.component.ts",
-            "offset": 360
+            "file": "./src/components/pages/home/motion-controller/motion-controller.component.ts",
+            "offset": 989
           },
           "attributes": [],
           "js": {
@@ -316,8 +316,8 @@
         {
           "name": "portfolio-services",
           "source": {
-            "file": "./src/components/services-section/services-section.component.ts",
-            "offset": 222
+            "file": "./src/components/pages/home/services-section/services-section.component.ts",
+            "offset": 499
           },
           "attributes": [],
           "js": {
@@ -327,7 +327,7 @@
         {
           "name": "portfolio-skills",
           "source": {
-            "file": "./src/components/skills-section/skills-section.component.ts",
+            "file": "./src/components/pages/home/skills-section/skills-section.component.ts",
             "offset": 220
           },
           "attributes": [],
@@ -338,8 +338,8 @@
         {
           "name": "portfolio-speaking",
           "source": {
-            "file": "./src/components/speaking-section/speaking-section.component.ts",
-            "offset": 650
+            "file": "./src/components/pages/home/speaking-section/speaking-section.component.ts",
+            "offset": 2296
           },
           "attributes": [],
           "js": {
@@ -349,8 +349,8 @@
         {
           "name": "portfolio-work",
           "source": {
-            "file": "./src/components/projects-section/projects-section.component.ts",
-            "offset": 218
+            "file": "./src/components/pages/home/projects-section/projects-section.component.ts",
+            "offset": 569
           },
           "attributes": [],
           "js": {
@@ -360,7 +360,7 @@
         {
           "name": "pricing-contact",
           "source": {
-            "file": "./src/components/pricing-contact/pricing-contact.component.ts",
+            "file": "./src/components/pages/pricing/pricing-contact/pricing-contact.component.ts",
             "offset": 215
           },
           "attributes": [],
@@ -371,7 +371,7 @@
         {
           "name": "pricing-estimator",
           "source": {
-            "file": "./src/components/pricing-estimator/pricing-estimator.component.ts",
+            "file": "./src/components/pages/pricing/pricing-estimator/pricing-estimator.component.ts",
             "offset": 217
           },
           "attributes": [],
@@ -382,7 +382,7 @@
         {
           "name": "pricing-estimator-result",
           "source": {
-            "file": "./src/components/pricing-estimator-result/pricing-estimator-result.component.ts",
+            "file": "./src/components/pages/pricing/pricing-estimator-result/pricing-estimator-result.component.ts",
             "offset": 583
           },
           "attributes": [],
@@ -393,7 +393,7 @@
         {
           "name": "pricing-estimator-stage-options",
           "source": {
-            "file": "./src/components/pricing-estimator-stage-options/pricing-estimator-stage-options.component.ts",
+            "file": "./src/components/pages/pricing/pricing-estimator-stage-options/pricing-estimator-stage-options.component.ts",
             "offset": 356
           },
           "attributes": [],
@@ -404,7 +404,7 @@
         {
           "name": "pricing-estimator-type-options",
           "source": {
-            "file": "./src/components/pricing-estimator-type-options/pricing-estimator-type-options.component.ts",
+            "file": "./src/components/pages/pricing/pricing-estimator-type-options/pricing-estimator-type-options.component.ts",
             "offset": 354
           },
           "attributes": [],
@@ -415,7 +415,7 @@
         {
           "name": "pricing-faq",
           "source": {
-            "file": "./src/components/pricing-faq/pricing-faq.component.ts",
+            "file": "./src/components/pages/pricing/pricing-faq/pricing-faq.component.ts",
             "offset": 211
           },
           "attributes": [],
@@ -426,7 +426,7 @@
         {
           "name": "pricing-hero",
           "source": {
-            "file": "./src/components/pricing-hero/pricing-hero.component.ts",
+            "file": "./src/components/pages/pricing/pricing-hero/pricing-hero.component.ts",
             "offset": 387
           },
           "attributes": [],
@@ -448,7 +448,7 @@
         {
           "name": "pricing-sticky-contact",
           "source": {
-            "file": "./src/components/pricing-sticky-contact/pricing-sticky-contact.component.ts",
+            "file": "./src/components/pages/pricing/pricing-sticky-contact/pricing-sticky-contact.component.ts",
             "offset": 340
           },
           "attributes": [],
@@ -459,7 +459,7 @@
         {
           "name": "pricing-switch",
           "source": {
-            "file": "./src/components/pricing-switch/pricing-switch.component.ts",
+            "file": "./src/components/pages/pricing/pricing-switch/pricing-switch.component.ts",
             "offset": 344
           },
           "attributes": [],
@@ -470,7 +470,7 @@
         {
           "name": "privacy-markdown-view",
           "source": {
-            "file": "./src/components/privacy-markdown-view/privacy-markdown-view.component.ts",
+            "file": "./src/components/pages/privacy/privacy-markdown-view/privacy-markdown-view.component.ts",
             "offset": 601
           },
           "attributes": [],
@@ -492,7 +492,7 @@
         {
           "name": "privacy-toc",
           "source": {
-            "file": "./src/components/privacy-toc/privacy-toc.component.ts",
+            "file": "./src/components/pages/privacy/privacy-toc/privacy-toc.component.ts",
             "offset": 402
           },
           "attributes": [],
@@ -503,7 +503,7 @@
         {
           "name": "privacy-view",
           "source": {
-            "file": "./src/components/privacy-view/privacy-view.component.ts",
+            "file": "./src/components/pages/privacy/privacy-view/privacy-view.component.ts",
             "offset": 1008
           },
           "attributes": [],
@@ -514,7 +514,7 @@
         {
           "name": "showcase-archive",
           "source": {
-            "file": "./src/components/showcase-archive/showcase-archive.component.ts",
+            "file": "./src/components/pages/showcase/showcase-archive/showcase-archive.component.ts",
             "offset": 409
           },
           "attributes": [],
@@ -525,7 +525,7 @@
         {
           "name": "showcase-aside",
           "source": {
-            "file": "./src/components/showcase-aside/showcase-aside.component.ts",
+            "file": "./src/components/pages/showcase/showcase-aside/showcase-aside.component.ts",
             "offset": 224
           },
           "attributes": [
@@ -537,7 +537,7 @@
                 "type": "string"
               },
               "source": {
-                "file": "./src/components/showcase-aside/showcase-aside.component.ts",
+                "file": "./src/components/pages/showcase/showcase-aside/showcase-aside.component.ts",
                 "offset": 313
               }
             }
@@ -549,7 +549,7 @@
                 "type": "string",
                 "default": "note",
                 "source": {
-                  "file": "./src/components/showcase-aside/showcase-aside.component.ts",
+                  "file": "./src/components/pages/showcase/showcase-aside/showcase-aside.component.ts",
                   "offset": 313
                 }
               }
@@ -559,7 +559,7 @@
         {
           "name": "showcase-cta",
           "source": {
-            "file": "./src/components/showcase-cta/showcase-cta.component.ts",
+            "file": "./src/components/pages/showcase/showcase-cta/showcase-cta.component.ts",
             "offset": 149
           },
           "attributes": [],
@@ -570,7 +570,7 @@
         {
           "name": "showcase-faq",
           "source": {
-            "file": "./src/components/showcase-faq/showcase-faq.component.ts",
+            "file": "./src/components/pages/showcase/showcase-faq/showcase-faq.component.ts",
             "offset": 214
           },
           "attributes": [],
@@ -581,7 +581,7 @@
         {
           "name": "showcase-featured",
           "source": {
-            "file": "./src/components/showcase-featured/showcase-featured.component.ts",
+            "file": "./src/components/pages/showcase/showcase-featured/showcase-featured.component.ts",
             "offset": 229
           },
           "attributes": [],
@@ -592,7 +592,7 @@
         {
           "name": "showcase-figure",
           "source": {
-            "file": "./src/components/showcase-figure/showcase-figure.component.ts",
+            "file": "./src/components/pages/showcase/showcase-figure/showcase-figure.component.ts",
             "offset": 221
           },
           "attributes": [
@@ -604,7 +604,7 @@
                 "type": "string"
               },
               "source": {
-                "file": "./src/components/showcase-figure/showcase-figure.component.ts",
+                "file": "./src/components/pages/showcase/showcase-figure/showcase-figure.component.ts",
                 "offset": 368
               }
             },
@@ -616,7 +616,7 @@
                 "type": "string"
               },
               "source": {
-                "file": "./src/components/showcase-figure/showcase-figure.component.ts",
+                "file": "./src/components/pages/showcase/showcase-figure/showcase-figure.component.ts",
                 "offset": 310
               }
             }
@@ -628,7 +628,7 @@
                 "type": "string",
                 "default": "",
                 "source": {
-                  "file": "./src/components/showcase-figure/showcase-figure.component.ts",
+                  "file": "./src/components/pages/showcase/showcase-figure/showcase-figure.component.ts",
                   "offset": 368
                 }
               },
@@ -637,7 +637,7 @@
                 "type": "string",
                 "default": "",
                 "source": {
-                  "file": "./src/components/showcase-figure/showcase-figure.component.ts",
+                  "file": "./src/components/pages/showcase/showcase-figure/showcase-figure.component.ts",
                   "offset": 310
                 }
               }
@@ -647,7 +647,7 @@
         {
           "name": "showcase-hero",
           "source": {
-            "file": "./src/components/showcase-hero/showcase-hero.component.ts",
+            "file": "./src/components/pages/showcase/showcase-hero/showcase-hero.component.ts",
             "offset": 216
           },
           "attributes": [],
@@ -658,7 +658,7 @@
         {
           "name": "showcase-markdown-view",
           "source": {
-            "file": "./src/components/showcase-markdown-view/showcase-markdown-view.component.ts",
+            "file": "./src/components/pages/showcase/showcase-markdown-view/showcase-markdown-view.component.ts",
             "offset": 446
           },
           "attributes": [],
@@ -669,7 +669,7 @@
         {
           "name": "showcase-metrics",
           "source": {
-            "file": "./src/components/showcase-metrics/showcase-metrics.component.ts",
+            "file": "./src/components/pages/showcase/showcase-metrics/showcase-metrics.component.ts",
             "offset": 269
           },
           "attributes": [
@@ -681,7 +681,7 @@
                 "type": "string"
               },
               "source": {
-                "file": "./src/components/showcase-metrics/showcase-metrics.component.ts",
+                "file": "./src/components/pages/showcase/showcase-metrics/showcase-metrics.component.ts",
                 "offset": 361
               }
             }
@@ -693,7 +693,7 @@
                 "type": "string",
                 "default": "",
                 "source": {
-                  "file": "./src/components/showcase-metrics/showcase-metrics.component.ts",
+                  "file": "./src/components/pages/showcase/showcase-metrics/showcase-metrics.component.ts",
                   "offset": 361
                 }
               }
@@ -703,7 +703,7 @@
         {
           "name": "showcase-motion-controller",
           "source": {
-            "file": "./src/components/showcase-motion-controller/showcase-motion-controller.component.ts",
+            "file": "./src/components/pages/showcase/showcase-motion-controller/showcase-motion-controller.component.ts",
             "offset": 332
           },
           "attributes": [],
@@ -725,7 +725,7 @@
         {
           "name": "showcase-page-content",
           "source": {
-            "file": "./src/components/showcase-page/showcase-page.component.ts",
+            "file": "./src/components/pages/showcase/showcase-page/showcase-page.component.ts",
             "offset": 233
           },
           "attributes": [],
@@ -736,7 +736,7 @@
         {
           "name": "showcase-project-card",
           "source": {
-            "file": "./src/components/showcase-project-card/showcase-project-card.component.ts",
+            "file": "./src/components/pages/showcase/showcase-project-card/showcase-project-card.component.ts",
             "offset": 244
           },
           "attributes": [
@@ -748,7 +748,7 @@
                 "type": "string"
               },
               "source": {
-                "file": "./src/components/showcase-project-card/showcase-project-card.component.ts",
+                "file": "./src/components/pages/showcase/showcase-project-card/showcase-project-card.component.ts",
                 "offset": 349
               }
             }
@@ -760,7 +760,7 @@
                 "type": "string",
                 "default": "",
                 "source": {
-                  "file": "./src/components/showcase-project-card/showcase-project-card.component.ts",
+                  "file": "./src/components/pages/showcase/showcase-project-card/showcase-project-card.component.ts",
                   "offset": 349
                 }
               }
@@ -770,7 +770,7 @@
         {
           "name": "showcase-project-row",
           "source": {
-            "file": "./src/components/showcase-project-row/showcase-project-row.component.ts",
+            "file": "./src/components/pages/showcase/showcase-project-row/showcase-project-row.component.ts",
             "offset": 243
           },
           "attributes": [
@@ -782,7 +782,7 @@
                 "type": "string"
               },
               "source": {
-                "file": "./src/components/showcase-project-row/showcase-project-row.component.ts",
+                "file": "./src/components/pages/showcase/showcase-project-row/showcase-project-row.component.ts",
                 "offset": 347
               }
             }
@@ -794,7 +794,7 @@
                 "type": "string",
                 "default": "",
                 "source": {
-                  "file": "./src/components/showcase-project-row/showcase-project-row.component.ts",
+                  "file": "./src/components/pages/showcase/showcase-project-row/showcase-project-row.component.ts",
                   "offset": 347
                 }
               }
@@ -815,7 +815,7 @@
         {
           "name": "showcase-spotlight",
           "source": {
-            "file": "./src/components/showcase-spotlight/showcase-spotlight.component.ts",
+            "file": "./src/components/pages/showcase/showcase-spotlight/showcase-spotlight.component.ts",
             "offset": 241
           },
           "attributes": [
@@ -827,7 +827,7 @@
                 "type": "string"
               },
               "source": {
-                "file": "./src/components/showcase-spotlight/showcase-spotlight.component.ts",
+                "file": "./src/components/pages/showcase/showcase-spotlight/showcase-spotlight.component.ts",
                 "offset": 344
               }
             }
@@ -839,7 +839,7 @@
                 "type": "string",
                 "default": "",
                 "source": {
-                  "file": "./src/components/showcase-spotlight/showcase-spotlight.component.ts",
+                  "file": "./src/components/pages/showcase/showcase-spotlight/showcase-spotlight.component.ts",
                   "offset": 344
                 }
               }
@@ -849,7 +849,7 @@
         {
           "name": "showcase-support",
           "source": {
-            "file": "./src/components/showcase-support/showcase-support.component.ts",
+            "file": "./src/components/pages/showcase/showcase-support/showcase-support.component.ts",
             "offset": 153
           },
           "attributes": [],
@@ -860,7 +860,7 @@
         {
           "name": "showcase-toc",
           "source": {
-            "file": "./src/components/showcase-toc/showcase-toc.component.ts",
+            "file": "./src/components/pages/showcase/showcase-toc/showcase-toc.component.ts",
             "offset": 599
           },
           "attributes": [],
@@ -871,7 +871,7 @@
         {
           "name": "showcase-view",
           "source": {
-            "file": "./src/components/showcase-view/showcase-view.component.ts",
+            "file": "./src/components/pages/showcase/showcase-view/showcase-view.component.ts",
             "offset": 910
           },
           "attributes": [],
@@ -882,7 +882,7 @@
         {
           "name": "showcase-visual",
           "source": {
-            "file": "./src/components/showcase-visual/showcase-visual.component.ts",
+            "file": "./src/components/pages/showcase/showcase-visual/showcase-visual.component.ts",
             "offset": 238
           },
           "attributes": [
@@ -894,7 +894,7 @@
                 "type": "string"
               },
               "source": {
-                "file": "./src/components/showcase-visual/showcase-visual.component.ts",
+                "file": "./src/components/pages/showcase/showcase-visual/showcase-visual.component.ts",
                 "offset": 338
               }
             },
@@ -906,7 +906,7 @@
                 "type": "string"
               },
               "source": {
-                "file": "./src/components/showcase-visual/showcase-visual.component.ts",
+                "file": "./src/components/pages/showcase/showcase-visual/showcase-visual.component.ts",
                 "offset": 406
               }
             }
@@ -918,7 +918,7 @@
                 "type": "string",
                 "default": "",
                 "source": {
-                  "file": "./src/components/showcase-visual/showcase-visual.component.ts",
+                  "file": "./src/components/pages/showcase/showcase-visual/showcase-visual.component.ts",
                   "offset": 338
                 }
               },
@@ -927,7 +927,7 @@
                 "type": "string",
                 "default": "card",
                 "source": {
-                  "file": "./src/components/showcase-visual/showcase-visual.component.ts",
+                  "file": "./src/components/pages/showcase/showcase-visual/showcase-visual.component.ts",
                   "offset": 406
                 }
               }
@@ -937,7 +937,7 @@
         {
           "name": "showcase-working-method",
           "source": {
-            "file": "./src/components/showcase-working-method/showcase-working-method.component.ts",
+            "file": "./src/components/pages/showcase/showcase-working-method/showcase-working-method.component.ts",
             "offset": 225
           },
           "attributes": [],
@@ -948,7 +948,7 @@
         {
           "name": "speaking-offering",
           "source": {
-            "file": "./src/components/speaking-offering/speaking-offering.component.ts",
+            "file": "./src/components/pages/pricing/speaking-offering/speaking-offering.component.ts",
             "offset": 217
           },
           "attributes": [],
@@ -959,7 +959,7 @@
         {
           "name": "speaking-pricing",
           "source": {
-            "file": "./src/components/speaking-pricing/speaking-pricing.component.ts",
+            "file": "./src/components/pages/pricing/speaking-pricing/speaking-pricing.component.ts",
             "offset": 216
           },
           "attributes": [],
@@ -970,7 +970,7 @@
         {
           "name": "terms-markdown-view",
           "source": {
-            "file": "./src/components/terms-markdown-view/terms-markdown-view.component.ts",
+            "file": "./src/components/pages/terms/terms-markdown-view/terms-markdown-view.component.ts",
             "offset": 589
           },
           "attributes": [],
@@ -992,7 +992,7 @@
         {
           "name": "terms-toc",
           "source": {
-            "file": "./src/components/terms-toc/terms-toc.component.ts",
+            "file": "./src/components/pages/terms/terms-toc/terms-toc.component.ts",
             "offset": 394
           },
           "attributes": [],
@@ -1003,7 +1003,7 @@
         {
           "name": "terms-view",
           "source": {
-            "file": "./src/components/terms-view/terms-view.component.ts",
+            "file": "./src/components/pages/terms/terms-view/terms-view.component.ts",
             "offset": 992
           },
           "attributes": [],
