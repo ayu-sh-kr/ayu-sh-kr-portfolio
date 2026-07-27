@@ -10,3 +10,143 @@ blog-markdown-view {
   font-size: clamp(1.1rem, 1.5vw, 1.2rem);
   line-height: 1.8;
 }
+
+.blog-prose {
+  max-inline-size: 42.5rem;
+  margin: 4rem auto 0;
+  color: var(--blog-ink);
+  font-size: 1.125rem;
+  line-height: 1.75;
+}
+
+.blog-prose h1,
+.blog-prose h2,
+.blog-prose h3,
+.blog-prose h4 {
+  font-weight: 650;
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+  text-wrap: balance;
+}
+
+.blog-prose h1 {
+  margin-block: 0 1rem;
+  font-size: 2.25rem;
+}
+
+.blog-prose h2 {
+  margin-block: 2.5em 0.6em;
+  font-size: 1.6rem;
+}
+
+.blog-prose h3 {
+  margin-block: 2em 0.5em;
+  font-size: 1.25rem;
+}
+
+.blog-prose p,
+.blog-prose li,
+.blog-prose blockquote {
+  text-wrap: pretty;
+}
+
+.blog-prose p {
+  margin-block: 0 1.2em;
+}
+
+.blog-prose a {
+  color: var(--blog-accent-deep);
+  text-underline-offset: 0.18em;
+  transition: text-decoration-color 180ms ease;
+}
+
+.blog-prose a:hover {
+  text-decoration-thickness: 2px;
+}
+
+.blog-prose ul,
+.blog-prose ol {
+  margin-block: 0 1.2em;
+  padding-inline-start: 1.35em;
+}
+
+.blog-prose ul {
+  list-style: disc;
+}
+
+.blog-prose ol {
+  list-style: decimal;
+}
+
+.blog-prose blockquote {
+  margin: 1.6em 0;
+  border-inline-start: 3px solid var(--blog-accent);
+  padding: 0.2em 0 0.2em 1.2em;
+  color: var(--blog-ink-soft);
+}
+
+.blog-prose code {
+  border-radius: 4px;
+  padding: 0.15em 0.45em;
+  background: var(--blog-tint);
+  color: var(--blog-accent-deep);
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+}
+
+.blog-prose pre {
+  position: relative;
+  overflow-x: auto;
+  margin-block: 1.6em;
+  border-radius: 1rem;
+  padding: 1.25rem 1.4rem;
+  background: var(--blog-code);
+  color: var(--blog-code-text);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  scrollbar-color: var(--blog-ink-soft) transparent;
+}
+
+.blog-prose pre code {
+  padding: 0;
+  background: transparent;
+  color: inherit;
+  font-size: inherit;
+}
+
+.blog-copy-button {
+  position: absolute;
+  inset-block-start: 0.7rem;
+  inset-inline-end: 0.8rem;
+  border: 1px solid color-mix(in srgb, var(--blog-code-text) 22%, transparent);
+  border-radius: 999px;
+  padding: 0.25rem 0.6rem;
+  background: color-mix(in srgb, var(--blog-code) 80%, var(--blog-code-text));
+  color: var(--blog-code-text);
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.7rem;
+  opacity: 0;
+  transition: opacity 180ms ease;
+}
+
+.blog-prose pre:hover .blog-copy-button,
+.blog-copy-button:focus-visible {
+  opacity: 1;
+}
+
+.blog-prose img {
+  max-inline-size: 100%;
+  border-radius: 1rem;
+}
+
+.blog-load-error {
+  color: var(--blog-ink-soft);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blog-prose a,
+  .blog-copy-button {
+    transition: none;
+  }
+}
