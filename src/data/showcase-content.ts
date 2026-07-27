@@ -1,22 +1,45 @@
+/** Categories used to filter and label showcase projects. */
 export type ShowcaseProjectKind = "open source" | "product" | "client work" | "backend";
+
+/** Layout tier that determines which landing-page section renders a project. */
 export type ShowcaseProjectTier = "spotlight" | "featured" | "archive";
 
+/**
+ * Authored content and presentation metadata for one showcase project.
+ *
+ * The landing page uses the tier, labels, stack, and optional metric to compose
+ * cards and spotlights. The article view uses the slug and source to load the
+ * corresponding Markdown, while the remaining fields supply its header and
+ * navigation metadata.
+ */
 export interface ShowcaseProject {
+  /** Stable URL slug used by the landing-page links and article route. */
   slug: string;
   /** Root-relative URL for the Markdown source in `public/showcases`. */
   source: string;
+  /** Display title used in cards, spotlights, and article headers. */
   title: string;
+  /** Short value proposition shown beside the project title. */
   tagline: string;
+  /** Landing-page section in which this project appears. */
   tier: ShowcaseProjectTier;
+  /** Category shown to readers and used by archive filtering. */
   kind: ShowcaseProjectKind;
+  /** Project year displayed in metadata and archive rows. */
   year: number;
+  /** Current delivery state used in the article metadata row. */
   status: "active" | "shipped" | "archived";
+  /** Technology and capability labels shown with the project. */
   stack: string[];
+  /** Supporting description retained for project content surfaces. */
   summary: string;
+  /** Optional spotlight metric; omit it when a project has no headline measure. */
   metric?: { value: string; label: string };
+  /** CSS visual family used by `showcase-visual`. */
   visual: "workspace" | "restaurant" | "sacrena" | "jalans" | "pipeline" | "rest";
 }
 
+/** Authored project catalog shared by all showcase landing and article views. */
 export const showcaseProjects: ShowcaseProject[] = [
   {
     slug: "dota-workspace",
@@ -112,6 +135,7 @@ export const showcaseProjects: ShowcaseProject[] = [
   },
 ];
 
+/** Authored copy for the support section below the project catalog. */
 export const showcaseSupport = {
   waysOfWorking: [
     {
@@ -150,6 +174,7 @@ export const showcaseSupport = {
   ],
 };
 
+/** Filter labels and values used by the archive component and its URL hash. */
 export const showcaseFilters: Array<{ value: "all" | ShowcaseProjectKind; label: string }> = [
   { value: "all", label: "All" },
   { value: "open source", label: "Open source" },
@@ -158,9 +183,11 @@ export const showcaseFilters: Array<{ value: "all" | ShowcaseProjectKind; label:
   { value: "backend", label: "Backend" },
 ];
 
+/** Finds a project by its stable route slug. */
 export const getShowcaseProject = (slug: string): ShowcaseProject | undefined =>
   showcaseProjects.find((project) => project.slug === slug);
 
+/** Extracts and decodes a showcase slug from a `/showcase/:slug` pathname. */
 export const getShowcaseSlug = (pathname: string): string => {
   const match = /^\/showcase\/([^/]+)\/?$/.exec(pathname);
   if (!match) {
@@ -174,5 +201,6 @@ export const getShowcaseSlug = (pathname: string): string => {
   }
 };
 
+/** Returns the catalog entries assigned to one landing-page tier. */
 export const getShowcaseProjectsByTier = (tier: ShowcaseProjectTier): ShowcaseProject[] =>
   showcaseProjects.filter((project) => project.tier === tier);
