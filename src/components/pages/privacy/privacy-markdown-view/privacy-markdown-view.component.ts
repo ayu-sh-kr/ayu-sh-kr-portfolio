@@ -49,6 +49,7 @@ export class PrivacyMarkdownViewComponent extends MdViewComponent {
   /** Captures the loading placeholder before Markdown replaces the initial content. */
   captureInitialContent(): void {
     this.markdownLifecycle.captureInitialContent();
+    this.markdownLifecycle.startSkeletonTimeout();
   }
 
   @OnEvent(PRIVACY_MARKDOWN_SOURCE_EVENT)
@@ -65,6 +66,7 @@ export class PrivacyMarkdownViewComponent extends MdViewComponent {
    */
   override onContentChange(event: ApplicationEvent<"md:render">): void {
     super.onContentChange(event);
+    this.markdownLifecycle.revealSkeleton();
     const content = this.querySelector<HTMLElement>(".privacy-markdown-content");
     if (!content) {
       return;
@@ -163,6 +165,6 @@ export class PrivacyMarkdownViewComponent extends MdViewComponent {
 
   /** Renders the policy body using the shared themed Markdown content container. */
   override render(): string {
-    return this.markdownLifecycle.renderThemedContent("privacy-markdown-content");
+    return this.markdownLifecycle.renderArticleSkeleton("privacy-markdown-content");
   }
 }

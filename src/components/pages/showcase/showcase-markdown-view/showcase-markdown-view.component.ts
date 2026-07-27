@@ -39,6 +39,7 @@ export class ShowcaseMarkdownViewComponent extends MdViewComponent {
   /** Captures the loading placeholder before Markdown replaces the initial content. */
   captureInitialContent(): void {
     this.markdownLifecycle.captureInitialContent();
+    this.markdownLifecycle.startSkeletonTimeout();
   }
 
   @OnEvent(SHOWCASE_MARKDOWN_SOURCE_EVENT)
@@ -56,6 +57,7 @@ export class ShowcaseMarkdownViewComponent extends MdViewComponent {
    */
   override onContentChange(event: ApplicationEvent<"md:render">): void {
     super.onContentChange(event);
+    this.markdownLifecycle.revealSkeleton();
     this.querySelector("h1")?.remove();
     this.querySelectorAll("pre").forEach((pre) => {
       pre.tabIndex = 0;
@@ -102,6 +104,6 @@ export class ShowcaseMarkdownViewComponent extends MdViewComponent {
 
   /** Renders Markdown content with the showcase article theme and content class. */
   override render(): string {
-    return this.markdownLifecycle.renderThemedContent("showcase-markdown-content");
+    return this.markdownLifecycle.renderArticleSkeleton("showcase-markdown-content");
   }
 }

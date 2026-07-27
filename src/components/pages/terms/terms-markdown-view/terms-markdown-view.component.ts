@@ -47,6 +47,7 @@ export class TermsMarkdownViewComponent extends MdViewComponent {
   /** Captures the loading placeholder before Markdown replaces the initial content. */
   captureInitialContent(): void {
     this.markdownLifecycle.captureInitialContent();
+    this.markdownLifecycle.startSkeletonTimeout();
   }
 
   @OnEvent(TERMS_MARKDOWN_SOURCE_EVENT)
@@ -60,6 +61,7 @@ export class TermsMarkdownViewComponent extends MdViewComponent {
   /** Enhances rendered Markdown and publishes the final section model for the TOC. */
   override onContentChange(event: ApplicationEvent<"md:render">): void {
     super.onContentChange(event);
+    this.markdownLifecycle.revealSkeleton();
     const content = this.querySelector<HTMLElement>(".terms-markdown-content");
     if (!content) {
       return;
@@ -158,6 +160,6 @@ export class TermsMarkdownViewComponent extends MdViewComponent {
 
   /** Renders the terms body using the shared themed Markdown content container. */
   override render(): string {
-    return this.markdownLifecycle.renderThemedContent("terms-markdown-content");
+    return this.markdownLifecycle.renderArticleSkeleton("terms-markdown-content");
   }
 }
