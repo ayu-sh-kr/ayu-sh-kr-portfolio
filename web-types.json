@@ -612,7 +612,7 @@
           "name": "scroll-hint",
           "source": {
             "file": "./src/components/utils/scroll-hint/scroll-hint.component.ts",
-            "offset": 716
+            "offset": 765
           },
           "attributes": [
             {
@@ -624,19 +624,19 @@
               },
               "source": {
                 "file": "./src/components/utils/scroll-hint/scroll-hint.component.ts",
-                "offset": 1041
+                "offset": 1086
               }
             },
             {
               "name": "mode",
-              "default": "horizontal",
+              "default": "vertical",
               "required": false,
               "value": {
                 "type": "string"
               },
               "source": {
                 "file": "./src/components/utils/scroll-hint/scroll-hint.component.ts",
-                "offset": 879
+                "offset": 926
               }
             }
           ],
@@ -648,16 +648,16 @@
                 "default": "Scroll",
                 "source": {
                   "file": "./src/components/utils/scroll-hint/scroll-hint.component.ts",
-                  "offset": 1041
+                  "offset": 1086
                 }
               },
               {
                 "name": "mode",
                 "type": "string",
-                "default": "horizontal",
+                "default": "vertical",
                 "source": {
                   "file": "./src/components/utils/scroll-hint/scroll-hint.component.ts",
-                  "offset": 879
+                  "offset": 926
                 }
               }
             ]
