@@ -1,0 +1,107 @@
+scroll-hint {
+  display: block;
+  position: absolute;
+  inset-block-end: clamp(2rem, 5vh, 3.5rem);
+  inset-inline-start: 50%;
+  z-index: 1;
+  color: var(--scroll-hint-color, var(--muted-color));
+}
+
+scroll-hint[hidden] {
+  display: none !important;
+}
+
+.scroll-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.scroll-hint--horizontal {
+  flex-direction: row;
+  transform: translateX(-50%);
+}
+
+.scroll-hint--vertical {
+  flex-direction: column;
+  transform: translateX(-50%);
+}
+
+.scroll-hint__track {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  background: color-mix(in srgb, var(--scroll-hint-color, var(--muted-color)) 35%, transparent);
+}
+
+.scroll-hint--horizontal .scroll-hint__track {
+  inline-size: 2.75rem;
+  block-size: 1px;
+}
+
+.scroll-hint--vertical .scroll-hint__track {
+  inline-size: 1px;
+  block-size: 2.75rem;
+}
+
+.scroll-hint__indicator {
+  position: absolute;
+  display: block;
+  background: var(--scroll-hint-accent, var(--primary-color));
+}
+
+.scroll-hint--horizontal .scroll-hint__indicator {
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  inline-size: 1.1rem;
+  block-size: 1px;
+  animation: scroll-hint-horizontal 1.8s ease-in-out infinite;
+}
+
+.scroll-hint--vertical .scroll-hint__indicator {
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  inline-size: 1px;
+  block-size: 1.1rem;
+  animation: scroll-hint-vertical 1.8s ease-in-out infinite;
+}
+
+@keyframes scroll-hint-horizontal {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: translateX(-100%);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translateX(250%);
+  }
+}
+
+@keyframes scroll-hint-vertical {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: translateY(-100%);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translateY(250%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  scroll-hint {
+    display: none;
+  }
+
+  .scroll-hint__indicator {
+    animation: none;
+  }
+}
