@@ -1,6 +1,14 @@
 import { BaseElement, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
 import { getShowcaseProjectsByTier } from "@app/data/showcase-content.ts";
 
+/**
+ * Composes featured-tier projects into the showcase card grid.
+ *
+ * Project content comes from `showcaseProjects`; each card receives only its
+ * slug so `showcase-project-card` remains responsible for item rendering.
+ *
+ * Selector: `showcase-featured`.
+ */
 @Component({
   selector: "showcase-featured",
   shadow: false,
@@ -10,6 +18,7 @@ export class ShowcaseFeaturedComponent extends BaseElement {
     super();
   }
 
+  /** Renders the featured project section and delegates cards to child elements. */
   render(): string {
     const projects = getShowcaseProjectsByTier("featured");
 
@@ -29,4 +38,3 @@ export class ShowcaseFeaturedComponent extends BaseElement {
     `;
   }
 }
-
