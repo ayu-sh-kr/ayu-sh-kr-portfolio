@@ -2,6 +2,7 @@
 
 @import "tailwindcss";
 @import "./theme.css";
+@import "./components/utils/scroll-hint/scroll-hint.component.css";
 @import "./components/utils/header/app-header/app-header.component.css";
 @import "./components/utils/footer/app-footer/app-footer.component.css";
 @import "./components/utils/footer/footer-support/footer-support.component.css";
@@ -33,7 +34,15 @@
 @import "./components/pages/home/skills-section/skills-section.component.css";
 @import "./components/pages/home/services-section/services-section.component.css";
 @import "./components/pages/home/about-contact-section/about-contact-section.component.css";
-@import "./components/pages/blog/blog-view/blog-view.component.css";
+@import "./components/pages/blog/blog-view/blog-shared.css";
+@import "./components/pages/blog/blog-view/blog-index.component.css";
+@import "./components/pages/blog/blog-view/blog-hero/blog-hero.component.css";
+@import "./components/pages/blog/blog-view/blog-filter/blog-filter.component.css";
+@import "./components/pages/blog/blog-view/blog-highlighted-blog/blog-highlighted-blog.component.css";
+@import "./components/pages/blog/blog-view/blog-list-section/blog-list-section.component.css";
+@import "./components/pages/blog/blog-view/blog-list/blog-list.component.css";
+@import "./components/pages/blog/blog-view/blog-subscription/blog-subscription.component.css";
+@import "./components/pages/blog/blog-view/blog-article.component.css";
 @import "./components/pages/blog/blog-view/blog-markdown-view.component.css";
 @import "./components/pages/showcase/showcase-page/showcase-page.component.css";
 @import "./components/pages/showcase/showcase-hero/showcase-hero.component.css";
