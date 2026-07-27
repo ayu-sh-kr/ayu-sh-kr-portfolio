@@ -1,10 +1,17 @@
 scroll-hint {
+  --sh-color: var(--scroll-hint-color, var(--muted-color));
+  --sh-size: 0.72rem;
+  --sh-line-height: 2.1rem;
+  --sh-gap: 0.55rem;
+  --sh-duration: 1.8s;
+  --sh-fade-rate: 6;
   display: block;
   position: absolute;
   inset-block-end: clamp(2rem, 5vh, 3.5rem);
   inset-inline-start: 50%;
   z-index: 1;
-  color: var(--scroll-hint-color, var(--muted-color));
+  color: var(--sh-color);
+  pointer-events: none;
 }
 
 scroll-hint[hidden] {
@@ -14,8 +21,8 @@ scroll-hint[hidden] {
 .scroll-hint {
   display: inline-flex;
   align-items: center;
-  gap: 0.55rem;
-  font-size: 0.72rem;
+  gap: var(--sh-gap);
+  font-size: var(--sh-size);
   letter-spacing: 0.1em;
   text-transform: uppercase;
   white-space: nowrap;
@@ -33,22 +40,22 @@ scroll-hint[hidden] {
 
 .scroll-hint__track {
   display: block;
-  background: linear-gradient(var(--scroll-hint-color, var(--muted-color)), transparent);
+  background: linear-gradient(var(--sh-color), transparent);
+  block-size: var(--sh-line-height);
   transform-origin: top;
 }
 
 .scroll-hint--horizontal .scroll-hint__track {
   inline-size: 2.1rem;
   block-size: 1px;
-  background: linear-gradient(to right, var(--scroll-hint-color, var(--muted-color)), transparent);
+  background: linear-gradient(to right, var(--sh-color), transparent);
   transform-origin: left;
-  animation: scroll-hint-horizontal 1.8s ease-in-out infinite;
+  animation: scroll-hint-horizontal var(--sh-duration) ease-in-out infinite;
 }
 
 .scroll-hint--vertical .scroll-hint__track {
   inline-size: 1px;
-  block-size: 2.1rem;
-  animation: scroll-hint-vertical 1.8s ease-in-out infinite;
+  animation: scroll-hint-vertical var(--sh-duration) ease-in-out infinite;
 }
 
 @keyframes scroll-hint-horizontal {
