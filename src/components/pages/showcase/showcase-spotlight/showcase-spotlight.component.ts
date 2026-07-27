@@ -1,5 +1,6 @@
-import { BaseElement, Component, HTML, Property, String } from "@ayu-sh-kr/dota-wrap/core";
+import { BaseElement, BindEvent, Component, HTML, Property, String } from "@ayu-sh-kr/dota-wrap/core";
 import { getShowcaseProject } from "@app/data/showcase-content.ts";
+import { publishAnalyticsEvent } from "@app/utils/analytics.utils.ts";
 
 /**
  * Renders one scroll-driven spotlight case study on the showcase landing page.
@@ -21,6 +22,19 @@ export class ShowcaseSpotlightComponent extends BaseElement {
 
   constructor() {
     super();
+  }
+
+  /** Records a showcase project opened from a scroll-driven spotlight. */
+  @BindEvent({event: "click", id: "[data-analytics-project]"})
+  trackProjectOpen(): void {
+    if (!this.projectSlug) {
+      return;
+    }
+
+    publishAnalyticsEvent({
+      eventName: "project_open",
+      params: {kind: "showcase", slug: this.projectSlug, surface: "showcase_index"},
+    });
   }
 
   /** Renders the spotlight case study, or nothing when the slug is unknown. */
@@ -55,7 +69,7 @@ export class ShowcaseSpotlightComponent extends BaseElement {
                 ${project.stack.map((item, index) => `<span class="showcase-chip" data-showcase-chip style="--chip-index:${index}">${item}</span>`).join("")}
               </div>
               ${metric}
-              <a class="showcase-button showcase-button-ink mt-9" href="/showcase/${project.slug}">
+              <a class="showcase-button showcase-button-ink mt-9" data-analytics-project="showcase" href="/showcase/${project.slug}">
                 View case study <span aria-hidden="true">→</span>
               </a>
             </div>

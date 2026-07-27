@@ -5,10 +5,11 @@ import {blogIndexContent} from "@app/data/blog-content.ts";
 import {BLOG_FILTER_CHANGE_EVENT, BLOG_INDEX_DATA_EVENT, type BlogFilterChange, type BlogIndexData} from "@app/events/blog.events.ts";
 import {escapeHtml} from "@app/utils/html.utils.ts";
 import {BlogRevealLifecycle} from "@app/utils/blog-reveal-lifecycle.utils.ts";
+import {publishAnalyticsEvent} from "@app/utils/analytics.utils.ts";
 
 /** Renders one non-featured post row with authored text escaped for HTML safety. */
 const renderPostRow = (post: BlogPost): string => `
-  <a class="blog-row blog-reveal" data-blog-reveal href="/blog/${post.slug}">
+  <a class="blog-row blog-reveal" data-blog-reveal data-analytics-project="blog" data-analytics-slug="${post.slug}" href="/blog/${post.slug}">
     <time class="blog-row-date" datetime="${post.date}">${formatBlogDate(post.date, true)}</time>
     <span class="blog-row-copy">
       <span class="blog-row-title">${escapeHtml(post.header)}</span>
@@ -108,6 +109,21 @@ export class BlogListComponent extends BaseElement {
     void this.publisher.publishAsync({
       name: BLOG_FILTER_CHANGE_EVENT,
       data: {filter: "all"} satisfies BlogFilterChange,
+    });
+  }
+
+  /** Records an article opened from the archive before router navigation begins. */
+  @BindEvent({event: "click", id: "[data-analytics-project]"})
+  trackProjectOpen(event: Event): void {
+    const link = (event.target as HTMLElement | null)?.closest<HTMLElement>("[data-analytics-project]");
+    const slug = link?.dataset.analyticsSlug;
+    if (!slug || link?.dataset.analyticsProject !== "blog") {
+      return;
+    }
+
+    publishAnalyticsEvent({
+      eventName: "project_open",
+      params: {kind: "blog", slug, surface: "blog_index"},
     });
   }
 

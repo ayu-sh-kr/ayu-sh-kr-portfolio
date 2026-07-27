@@ -1,5 +1,6 @@
-import {BaseElement, Component} from "@ayu-sh-kr/dota-wrap/core";
+import {BaseElement, BindEvent, Component} from "@ayu-sh-kr/dota-wrap/core";
 import {blogIndexContent} from "@app/data/blog-content.ts";
+import {publishAnalyticsEvent} from "@app/utils/analytics.utils.ts";
 
 /**
  * Presents the blog's low-volume email subscription prompt.
@@ -17,6 +18,15 @@ import {blogIndexContent} from "@app/data/blog-content.ts";
 export class BlogSubscriptionComponent extends BaseElement {
   constructor() {
     super();
+  }
+
+  /** Records a subscription submit attempt while leaving the mailto form behavior unchanged. */
+  @BindEvent({event: "submit", id: ".blog-subscribe-form"})
+  trackSubscriptionSubmit(): void {
+    publishAnalyticsEvent({
+      eventName: "subscription_submit",
+      params: {status: "submitted", surface: "blog_index"},
+    });
   }
 
   /** Renders the email form used at the end of the blog index. */

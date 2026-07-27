@@ -1,5 +1,6 @@
-import { BaseElement, Component, HTML, Property, String } from "@ayu-sh-kr/dota-wrap/core";
+import { BaseElement, BindEvent, Component, HTML, Property, String } from "@ayu-sh-kr/dota-wrap/core";
 import { getShowcaseProject } from "@app/data/showcase-content.ts";
+import { publishAnalyticsEvent } from "@app/utils/analytics.utils.ts";
 
 /**
  * Renders one featured project as a navigable showcase card.
@@ -23,6 +24,19 @@ export class ShowcaseProjectCardComponent extends BaseElement {
     super();
   }
 
+  /** Records a showcase project opened from the featured project grid. */
+  @BindEvent({event: "click", id: "[data-analytics-project]"})
+  trackProjectOpen(): void {
+    if (!this.projectSlug) {
+      return;
+    }
+
+    publishAnalyticsEvent({
+      eventName: "project_open",
+      params: {kind: "showcase", slug: this.projectSlug, surface: "showcase_index"},
+    });
+  }
+
   /** Renders the matching project card, or nothing when the slug is unknown. */
   render(): string {
     const project = getShowcaseProject(this.projectSlug);
@@ -31,7 +45,7 @@ export class ShowcaseProjectCardComponent extends BaseElement {
     }
 
     return HTML`
-      <a class="showcase-card showcase-reveal" data-showcase-reveal href="/showcase/${project.slug}">
+      <a class="showcase-card showcase-reveal" data-showcase-reveal data-analytics-project="showcase" href="/showcase/${project.slug}">
         <div class="showcase-card-cover">
           <showcase-visual project-slug="${project.slug}" variant="card"></showcase-visual>
           <span class="showcase-card-arrow" aria-hidden="true">↗</span>

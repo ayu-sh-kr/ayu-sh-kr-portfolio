@@ -32,7 +32,7 @@ export class ShowcasePageComponent extends BaseElement {
         ${spotlights.map((project) => `<showcase-spotlight project-slug="${project.slug}"></showcase-spotlight>`).join("")}
         <showcase-featured></showcase-featured>
         <showcase-archive></showcase-archive>
-        <showcase-support></showcase-support>
+        <showcase-support data-analytics-section="showcase_support"></showcase-support>
         <showcase-motion-controller></showcase-motion-controller>
       </main>
     `;

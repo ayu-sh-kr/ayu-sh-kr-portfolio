@@ -29,13 +29,13 @@ export class HomePage extends DotaPageElement {
     return HTML`
       <app-header></app-header>
       <main>
-        <portfolio-hero></portfolio-hero>
+        <portfolio-hero data-analytics-section="home_hero"></portfolio-hero>
         <portfolio-journey></portfolio-journey>
-        <portfolio-work></portfolio-work>
+        <portfolio-work data-analytics-section="home_work"></portfolio-work>
         <portfolio-speaking></portfolio-speaking>
         <portfolio-skills></portfolio-skills>
         <portfolio-services></portfolio-services>
-        <portfolio-contact></portfolio-contact>
+        <portfolio-contact data-analytics-section="home_contact"></portfolio-contact>
         <portfolio-motion-controller></portfolio-motion-controller>
       </main>
       <app-footer></app-footer>

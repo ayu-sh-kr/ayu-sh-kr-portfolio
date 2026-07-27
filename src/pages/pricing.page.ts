@@ -32,12 +32,12 @@ export class PricingPage extends DotaPageElement {
         <pricing-hero></pricing-hero>
         <pricing-switch></pricing-switch>
         <build-offering></build-offering>
-        <pricing-estimator></pricing-estimator>
+        <pricing-estimator data-analytics-section="pricing_estimator"></pricing-estimator>
         <build-pricing></build-pricing>
         <speaking-offering></speaking-offering>
         <speaking-pricing></speaking-pricing>
         <pricing-faq></pricing-faq>
-        <pricing-contact></pricing-contact>
+        <pricing-contact data-analytics-section="pricing_contact"></pricing-contact>
       </main>
       <pricing-sticky-contact></pricing-sticky-contact>
       <app-footer></app-footer>

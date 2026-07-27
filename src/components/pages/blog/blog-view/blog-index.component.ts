@@ -37,9 +37,9 @@ export class BlogIndexComponent extends BaseElement {
   render(): string {
     return `
       <main class="blog-index">
-        <blog-hero></blog-hero>
-        <blog-list-section></blog-list-section>
-        <blog-subscription></blog-subscription>
+        <blog-hero data-analytics-section="blog_featured"></blog-hero>
+        <blog-list-section data-analytics-section="blog_archive"></blog-list-section>
+        <blog-subscription data-analytics-section="blog_subscription"></blog-subscription>
       </main>
     `;
   }

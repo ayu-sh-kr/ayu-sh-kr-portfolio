@@ -141,7 +141,7 @@
           "name": "blog-highlighted-blog",
           "source": {
             "file": "./src/components/pages/blog/blog-view/blog-highlighted-blog/blog-highlighted-blog.component.ts",
-            "offset": 924
+            "offset": 1004
           },
           "attributes": [],
           "js": {
@@ -163,7 +163,7 @@
           "name": "blog-list",
           "source": {
             "file": "./src/components/pages/blog/blog-view/blog-list/blog-list.component.ts",
-            "offset": 1688
+            "offset": 1822
           },
           "attributes": [],
           "js": {
@@ -260,7 +260,7 @@
           "name": "blog-subscription",
           "source": {
             "file": "./src/components/pages/blog/blog-view/blog-subscription/blog-subscription.component.ts",
-            "offset": 513
+            "offset": 593
           },
           "attributes": [],
           "js": {
@@ -370,7 +370,7 @@
           "name": "portfolio-contact",
           "source": {
             "file": "./src/components/pages/home/about-contact-section/about-contact-section.component.ts",
-            "offset": 582
+            "offset": 740
           },
           "attributes": [],
           "js": {
@@ -458,7 +458,7 @@
           "name": "pricing-contact",
           "source": {
             "file": "./src/components/pages/pricing/pricing-contact/pricing-contact.component.ts",
-            "offset": 474
+            "offset": 632
           },
           "attributes": [],
           "js": {
@@ -775,7 +775,7 @@
           "name": "showcase-cta",
           "source": {
             "file": "./src/components/pages/showcase/showcase-cta/showcase-cta.component.ts",
-            "offset": 419
+            "offset": 501
           },
           "attributes": [],
           "js": {
@@ -994,7 +994,7 @@
           "name": "showcase-project-card",
           "source": {
             "file": "./src/components/pages/showcase/showcase-project-card/showcase-project-card.component.ts",
-            "offset": 595
+            "offset": 677
           },
           "attributes": [
             {
@@ -1006,7 +1006,7 @@
               },
               "source": {
                 "file": "./src/components/pages/showcase/showcase-project-card/showcase-project-card.component.ts",
-                "offset": 787
+                "offset": 869
               }
             }
           ],
@@ -1018,7 +1018,7 @@
                 "default": "",
                 "source": {
                   "file": "./src/components/pages/showcase/showcase-project-card/showcase-project-card.component.ts",
-                  "offset": 787
+                  "offset": 869
                 }
               }
             ]
@@ -1028,7 +1028,7 @@
           "name": "showcase-project-row",
           "source": {
             "file": "./src/components/pages/showcase/showcase-project-row/showcase-project-row.component.ts",
-            "offset": 510
+            "offset": 592
           },
           "attributes": [
             {
@@ -1040,7 +1040,7 @@
               },
               "source": {
                 "file": "./src/components/pages/showcase/showcase-project-row/showcase-project-row.component.ts",
-                "offset": 700
+                "offset": 782
               }
             }
           ],
@@ -1052,7 +1052,7 @@
                 "default": "",
                 "source": {
                   "file": "./src/components/pages/showcase/showcase-project-row/showcase-project-row.component.ts",
-                  "offset": 700
+                  "offset": 782
                 }
               }
             ]
@@ -1073,7 +1073,7 @@
           "name": "showcase-spotlight",
           "source": {
             "file": "./src/components/pages/showcase/showcase-spotlight/showcase-spotlight.component.ts",
-            "offset": 598
+            "offset": 680
           },
           "attributes": [
             {
@@ -1085,7 +1085,7 @@
               },
               "source": {
                 "file": "./src/components/pages/showcase/showcase-spotlight/showcase-spotlight.component.ts",
-                "offset": 780
+                "offset": 862
               }
             }
           ],
@@ -1097,7 +1097,7 @@
                 "default": "",
                 "source": {
                   "file": "./src/components/pages/showcase/showcase-spotlight/showcase-spotlight.component.ts",
-                  "offset": 780
+                  "offset": 862
                 }
               }
             ]

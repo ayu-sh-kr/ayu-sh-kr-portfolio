@@ -1,5 +1,7 @@
-import { BaseElement, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
+import { BaseElement, BindEvent, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
+import { isAnalyticsContactMethod } from "@app/events/analytics.events.ts";
 import { portfolioContent } from "@app/data/portfolio-content.ts";
+import { publishAnalyticsEvent } from "@app/utils/analytics.utils.ts";
 
 /**
  * Renders the contact call-to-action section on the portfolio home page.
@@ -19,6 +21,21 @@ export class PortfolioContactComponent extends BaseElement {
     super();
   }
 
+  /** Publishes the selected contact destination without exposing its address or URL. */
+  @BindEvent({event: "click", id: "[data-analytics-contact]"})
+  trackContactClick(event: Event): void {
+    const link = (event.target as HTMLElement | null)?.closest<HTMLAnchorElement>("[data-analytics-contact]");
+    const method = link?.dataset.analyticsContact;
+    if (!link || !isAnalyticsContactMethod(method)) {
+      return;
+    }
+
+    publishAnalyticsEvent({
+      eventName: "contact_click",
+      params: {method, surface: "home_contact"},
+    });
+  }
+
   /**
    * Returns the contact section using authored content and link destinations.
    * Rendering stays pure so copy or URL changes only require updating the data source.
@@ -35,12 +52,12 @@ export class PortfolioContactComponent extends BaseElement {
           </h2>
           <p class="motion-reveal mx-auto mt-7 max-w-xl text-lg leading-8 text-(--muted-color)">${contact.body}</p>
           <div class="motion-reveal mt-10 flex flex-wrap justify-center gap-3">
-            <a class="motion-button motion-button-accent" href="${contact.emailHref}">Email me</a>
-            <a class="motion-button motion-button-ghost" href="${contact.resumeHref}">Request résumé</a>
+            <a class="motion-button motion-button-accent" data-analytics-contact="email" href="${contact.emailHref}">Email me</a>
+            <a class="motion-button motion-button-ghost" data-analytics-contact="resume" href="${contact.resumeHref}">Request résumé</a>
           </div>
           <div class="motion-reveal mt-9 flex flex-wrap justify-center gap-x-6 gap-y-3 text-sm font-medium text-(--muted-color)">
-            <a class="quiet-link" href="${contact.github}" target="_blank" rel="noreferrer">GitHub</a>
-            <a class="quiet-link" href="${contact.linkedin}" target="_blank" rel="noreferrer">LinkedIn</a>
+            <a class="quiet-link" data-analytics-contact="github" href="${contact.github}" target="_blank" rel="noreferrer">GitHub</a>
+            <a class="quiet-link" data-analytics-contact="linkedin" href="${contact.linkedin}" target="_blank" rel="noreferrer">LinkedIn</a>
             <span>India · IST (UTC+5:30)</span>
           </div>
         </div>

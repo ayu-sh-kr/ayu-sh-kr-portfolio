@@ -1,5 +1,6 @@
-import { BaseElement, Component, HTML, Property, String } from "@ayu-sh-kr/dota-wrap/core";
+import { BaseElement, BindEvent, Component, HTML, Property, String } from "@ayu-sh-kr/dota-wrap/core";
 import { getShowcaseProject } from "@app/data/showcase-content.ts";
+import { publishAnalyticsEvent } from "@app/utils/analytics.utils.ts";
 
 /**
  * Renders one archive project as a compact, navigable row.
@@ -22,6 +23,19 @@ export class ShowcaseProjectRowComponent extends BaseElement {
     super();
   }
 
+  /** Records a showcase project opened from the archive list. */
+  @BindEvent({event: "click", id: "[data-analytics-project]"})
+  trackProjectOpen(): void {
+    if (!this.projectSlug) {
+      return;
+    }
+
+    publishAnalyticsEvent({
+      eventName: "project_open",
+      params: {kind: "showcase", slug: this.projectSlug, surface: "showcase_index"},
+    });
+  }
+
   /** Renders the matching project summary, or nothing when the slug is unknown. */
   render(): string {
     const project = getShowcaseProject(this.projectSlug);
@@ -30,7 +44,7 @@ export class ShowcaseProjectRowComponent extends BaseElement {
     }
 
     return HTML`
-      <a class="showcase-row" data-showcase-reveal href="/showcase/${project.slug}">
+      <a class="showcase-row" data-showcase-reveal data-analytics-project="showcase" href="/showcase/${project.slug}">
         <span class="showcase-row-year">${project.year}</span>
         <span class="showcase-row-copy">
           <strong>${project.title}</strong>

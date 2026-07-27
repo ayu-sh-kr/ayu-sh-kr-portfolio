@@ -1,10 +1,11 @@
-import {BaseElement, Component} from "@ayu-sh-kr/dota-wrap/core";
+import {BaseElement, BindEvent, Component} from "@ayu-sh-kr/dota-wrap/core";
 import {type ApplicationEvent, OnEvent} from "@ayu-sh-kr/dota-wrap/event";
 import {formatBlogDate, labelForCategory, type BlogCategory, type BlogPost} from "@app/configs/blogs.config.ts";
 import {blogIndexContent} from "@app/data/blog-content.ts";
 import {BLOG_FILTER_CHANGE_EVENT, BLOG_INDEX_DATA_EVENT} from "@app/events/blog.events.ts";
 import {escapeHtml} from "@app/utils/html.utils.ts";
 import {BlogRevealLifecycle} from "@app/utils/blog-reveal-lifecycle.utils.ts";
+import {publishAnalyticsEvent} from "@app/utils/analytics.utils.ts";
 
 /**
  * Displays the catalog's featured post and hides it when its category is filtered out.
@@ -56,6 +57,21 @@ export class BlogHighlightedBlogComponent extends BaseElement {
     this.revealLifecycle.refresh();
   }
 
+  /** Records the featured article opened from the top of the blog index. */
+  @BindEvent({event: "click", id: "[data-analytics-project]"})
+  trackProjectOpen(event: Event): void {
+    const link = (event.target as HTMLElement | null)?.closest<HTMLElement>("[data-analytics-project]");
+    const slug = link?.dataset.analyticsSlug;
+    if (!slug || link?.dataset.analyticsProject !== "blog") {
+      return;
+    }
+
+    publishAnalyticsEvent({
+      eventName: "project_open",
+      params: {kind: "blog", slug, surface: "blog_index"},
+    });
+  }
+
   /** Renders the featured card only when catalog data exists and matches the active filter. */
   render(): string {
     if (!this.featured) {
@@ -65,7 +81,7 @@ export class BlogHighlightedBlogComponent extends BaseElement {
     const isVisible = this.currentFilter === "all" || this.featured.category === this.currentFilter;
     return `
       <section class="blog-container blog-featured-section" aria-label="${blogIndexContent.highlighted.ariaLabel}"${isVisible ? "" : " hidden"}>
-        <a class="blog-featured blog-reveal" data-blog-reveal data-blog-category="${this.featured.category}"
+        <a class="blog-featured blog-reveal" data-blog-reveal data-analytics-project="blog" data-analytics-slug="${this.featured.slug}" data-blog-category="${this.featured.category}"
            href="/blog/${this.featured.slug}">
           <div class="blog-meta-row"><span class="blog-chip">${labelForCategory(this.featured.category)}</span><span>${this.featured.minutes} ${blogIndexContent.readTimeSuffix}</span></div>
           <h2>${escapeHtml(this.featured.header)}</h2>
