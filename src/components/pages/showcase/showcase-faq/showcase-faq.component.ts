@@ -1,6 +1,15 @@
 import { BaseElement, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
 import { showcaseSupport } from "@app/data/showcase-content.ts";
 
+/**
+ * Renders the showcase FAQ from the shared support content model.
+ *
+ * Each authored question becomes a Dota accordion item. The component owns the
+ * accordion configuration, while question and answer copy stays in
+ * `showcaseSupport` so content changes do not require template edits.
+ *
+ * Selector: `showcase-faq`.
+ */
 @Component({
   selector: "showcase-faq",
   shadow: false,
@@ -10,6 +19,7 @@ export class ShowcaseFaqComponent extends BaseElement {
     super();
   }
 
+  /** Renders the shared FAQ entries with the showcase accordion styling contract. */
   render(): string {
     const accordionConfig = JSON.stringify({
       container: "showcase-faq-accordion",
