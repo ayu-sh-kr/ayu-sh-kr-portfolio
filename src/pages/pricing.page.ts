@@ -1,7 +1,14 @@
 import { Component, DotaPageElement, HTML, SEO } from "@ayu-sh-kr/dota-wrap/core";
 import { Route } from "@ayu-sh-kr/dota-wrap/router";
 import { pricingContent } from "@app/data/pricing-content.ts";
+import {toSEO} from "@app/utils/seo.utils.ts";
 
+/**
+ * Pricing route at `/pricing`.
+ *
+ * The page composes engagement sections and adapts `pricingContent.seo` to the
+ * framework contract, keeping commercial copy in the data layer.
+ */
 @Route({ path: "/pricing" })
 @Component({
   selector: "pricing-page",
@@ -12,18 +19,12 @@ export class PricingPage extends DotaPageElement {
     super();
   }
 
+  /** Returns pricing SEO authored in `pricingContent.seo`. */
   get seo(): SEO {
-    return {
-      title: pricingContent.seo.title,
-      description: pricingContent.seo.description,
-      keywords: [...pricingContent.seo.keywords],
-      og: {
-        title: pricingContent.seo.ogTitle,
-        description: pricingContent.seo.ogDescription,
-      },
-    };
+    return toSEO(pricingContent.seo);
   }
 
+  /** Renders the pricing sections in their reader-facing order. */
   render(): string {
     return HTML`
       <app-header></app-header>

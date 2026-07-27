@@ -1,6 +1,14 @@
 import { Component, DotaPageElement, HTML, SEO } from "@ayu-sh-kr/dota-wrap/core";
 import { Route } from "@ayu-sh-kr/dota-wrap/router";
+import {showcaseSeo} from "@app/data/showcase-content.ts";
+import {toSEO} from "@app/utils/seo.utils.ts";
 
+/**
+ * Showcase index route at `/showcase`.
+ *
+ * The page composes the project sections and adapts the catalog's index SEO;
+ * project-specific content remains owned by showcase data and child elements.
+ */
 @Route({ path: "/showcase" })
 @Component({
   selector: "showcase-page",
@@ -11,18 +19,12 @@ export class ShowcasePage extends DotaPageElement {
     super();
   }
 
+  /** Returns showcase-index SEO authored in `showcaseSeo`. */
   get seo(): SEO {
-    return {
-      title: "Showcase — ayush.dev",
-      description: "Selected backend systems, open-source tools, and client work by Ayush Jaiswal.",
-      keywords: ["Ayush Jaiswal", "Portfolio", "Backend Engineering", "Open Source", "AWS", "TypeScript"],
-      og: {
-        title: "Showcase — ayush.dev",
-        description: "Selected backend systems, open-source tools, and client work by Ayush Jaiswal.",
-      },
-    };
+    return toSEO(showcaseSeo);
   }
 
+  /** Renders the showcase content shell between the shared header and footer. */
   render(): string {
     return HTML`
       <app-header></app-header>
@@ -31,4 +33,3 @@ export class ShowcasePage extends DotaPageElement {
     `;
   }
 }
-

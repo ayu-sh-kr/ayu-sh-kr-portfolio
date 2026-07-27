@@ -1,15 +1,25 @@
 import { Component, DotaPageElement, HTML, Property, SEO, String } from "@ayu-sh-kr/dota-wrap/core";
 import { Route } from "@ayu-sh-kr/dota-wrap/router";
+import {portfolioContent} from "@app/data/portfolio-content.ts";
+import {toSEO} from "@app/utils/seo.utils.ts";
 
+/**
+ * Error route at `/error`.
+ *
+ * It exposes the requested status and message while reusing the shared error
+ * SEO content from `portfolioContent.error.seo`.
+ */
 @Route({ path: "/error" })
 @Component({
   selector: "app-error",
   shadow: false,
 })
 export class ErrorPage extends DotaPageElement {
+  /** Attribute `status`; HTTP-like status displayed in the error heading, defaulting to `404`. */
   @Property({ name: "status", type: String })
   status: number = 404;
 
+  /** Attribute `message`; user-facing error text, defaulting to `Page not found`. */
   @Property({ name: "message", type: String })
   message: string = "Page not found";
 
@@ -17,18 +27,12 @@ export class ErrorPage extends DotaPageElement {
     super();
   }
 
+  /** Returns error-page SEO authored in `portfolioContent.error.seo`. */
   get seo(): SEO {
-    return {
-      title: "404 — Ayush Jaiswal",
-      description: "The requested portfolio page could not be found.",
-      keywords: ["404", "Ayush Jaiswal"],
-      og: {
-        title: "404 — Page not found",
-        description: "The requested portfolio page could not be found.",
-      },
-    };
+    return toSEO(portfolioContent.error.seo);
   }
 
+  /** Renders the status message and return link around the shared footer. */
   render(): string {
     return HTML`
       <main class="relative grid min-h-[100svh] place-items-center overflow-hidden bg-[var(--background-color)] px-5 py-24 text-[var(--foreground-color)]">

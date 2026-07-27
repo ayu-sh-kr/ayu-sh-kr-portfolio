@@ -1,6 +1,14 @@
 import { Component, DotaPageElement, HTML, SEO } from "@ayu-sh-kr/dota-wrap/core";
 import { Route } from "@ayu-sh-kr/dota-wrap/router";
+import {portfolioContent} from "@app/data/portfolio-content.ts";
+import {toSEO} from "@app/utils/seo.utils.ts";
 
+/**
+ * Portfolio landing page routed at `/`.
+ *
+ * The shell composes the home sections, while title, description, keywords,
+ * and social metadata come from `portfolioContent.seo`.
+ */
 @Route({ path: "/" })
 @Component({
   selector: "app-home",
@@ -11,28 +19,12 @@ export class HomePage extends DotaPageElement {
     super();
   }
 
+  /** Returns home-page SEO authored in `portfolioContent.seo`. */
   get seo(): SEO {
-    return {
-      title: "Ayush Jaiswal — Backend Engineer (Kotlin · Spring Boot · AWS)",
-      description:
-        "Backend engineer with 4 years of experience building and running production systems with Kotlin, Spring Boot, AWS, PostgreSQL, and Redis.",
-      keywords: [
-        "Ayush Jaiswal",
-        "Backend Engineer",
-        "Kotlin",
-        "Spring Boot",
-        "AWS",
-        "PostgreSQL",
-        "Redis",
-        "Freelance Backend Developer",
-      ],
-      og: {
-        title: "Ayush Jaiswal — Backend Engineer",
-        description: "Production backends on the JVM and AWS. Open to backend roles and select freelance projects.",
-      },
-    };
+    return toSEO(portfolioContent.seo);
   }
 
+  /** Renders the home shell and its composed sections. */
   render(): string {
     return HTML`
       <app-header></app-header>

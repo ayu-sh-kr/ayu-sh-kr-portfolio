@@ -1,6 +1,14 @@
 import {Component, DotaPageElement, HTML, SEO} from "@ayu-sh-kr/dota-wrap/core";
 import {Route} from "@ayu-sh-kr/dota-wrap/router";
+import {privacySeo} from "@app/data/legal-content.ts";
+import {toSEO} from "@app/utils/seo.utils.ts";
 
+/**
+ * Privacy policy route at `/legal/privacy`.
+ *
+ * The document view owns policy loading and rendering; this page only composes
+ * the shell and adapts the legal data's SEO content.
+ */
 @Route({path: "/legal/privacy"})
 @Component({
   selector: "privacy-page",
@@ -11,18 +19,12 @@ export class PrivacyPage extends DotaPageElement {
     super();
   }
 
+  /** Returns privacy SEO authored in `privacySeo`. */
   get seo(): SEO {
-    return {
-      title: "Privacy Policy — ayush.dev",
-      description: "What Ayush collects, why he collects it, and how to get rid of it.",
-      keywords: ["Ayush Jaiswal", "Privacy Policy", "Data Protection", "ayush.dev"],
-      og: {
-        title: "Privacy Policy — ayush.dev",
-        description: "A plain-English privacy policy for ayush.dev and client work.",
-      },
-    };
+    return toSEO(privacySeo);
   }
 
+  /** Renders the shared header, policy view, and footer shell. */
   render(): string {
     return HTML`
       <app-header></app-header>
