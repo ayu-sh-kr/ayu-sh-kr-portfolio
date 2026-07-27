@@ -1,7 +1,32 @@
+import type {PageSeoContent} from "@app/data/seo-content.ts";
+
 // Portfolio copy lives here so content can change without touching component markup.
+export const siteIdentity = {
+  name: "Ayush Kumar",
+  brand: "ayu-sh-kr",
+  domain: "ayu-sh-kr.com",
+} as const;
+
 export const portfolioContent = {
+  seo: {
+    title: `${siteIdentity.name} — Backend Engineer (Kotlin · Spring Boot · AWS)`,
+    description:
+      "Backend engineer with 4 years of experience building and running production systems with Kotlin, Spring Boot, AWS, PostgreSQL, and Redis.",
+    keywords: [
+      siteIdentity.name,
+      "Backend Engineer",
+      "Kotlin",
+      "Spring Boot",
+      "AWS",
+      "PostgreSQL",
+      "Redis",
+      "Freelance Backend Developer",
+    ],
+    ogTitle: `${siteIdentity.name} — Backend Engineer`,
+    ogDescription: "Production backends on the JVM and AWS. Open to backend roles and select freelance projects.",
+  } satisfies PageSeoContent,
   nav: {
-    logo: "ayush.dev",
+    logo: siteIdentity.brand,
     links: [
       { label: "Work", href: "/#work-wrap" },
       { label: "Showcase", href: "/showcase" },
@@ -24,17 +49,17 @@ export const portfolioContent = {
   },
   offline: {
     seo: {
-      title: "Connection status — Ayush Jaiswal",
-      description: "Connection status and recovery options for the Ayush Jaiswal portfolio.",
-      keywords: ["Connection status", "Offline page", "Ayush Jaiswal"],
+      title: `Connection status — ${siteIdentity.name}`,
+      description: `Connection status and recovery options for the ${siteIdentity.name} portfolio.`,
+      keywords: ["Connection status", "Offline page", siteIdentity.name],
       og: {
-        title: "Connection status — Ayush Jaiswal",
+        title: `Connection status — ${siteIdentity.name}`,
         description: "Connection status and recovery options for the portfolio.",
       },
     },
     nav: {
       ariaLabel: "Offline navigation",
-      brand: "ayush.dev",
+      brand: siteIdentity.brand,
       brandHref: "/",
       offlineStatus: "Offline mode",
       onlineStatus: "Connection active",
@@ -101,6 +126,15 @@ export const portfolioContent = {
       justNow: "Last tried just now",
       secondsAgo: "Last tried {seconds}s ago",
     },
+  },
+  error: {
+    seo: {
+      title: `404 — ${siteIdentity.name}`,
+      description: "The requested portfolio page could not be found.",
+      keywords: ["404", siteIdentity.name],
+      ogTitle: "404 — Page not found",
+      ogDescription: "The requested portfolio page could not be found.",
+    } satisfies PageSeoContent,
   },
   journey: [
     {
@@ -320,7 +354,7 @@ export const portfolioContent = {
       ],
     },
     baseline: {
-      copyright: "ayush.dev",
+      copyright: siteIdentity.brand,
       role: "Backend engineer",
       availability: "open for freelance work",
       clockTimeZone: "Asia/Kolkata",
