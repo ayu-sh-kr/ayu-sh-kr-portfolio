@@ -9,6 +9,7 @@
 @import "./components/utils/footer/footer-index/footer-index.component.css";
 @import "./components/utils/footer/footer-baseline/footer-baseline.component.css";
 @import "./components/utils/theme/dark-mode-button/dark-mode-button.component.css";
+@import "./components/utils/skeleton/skeleton.component.css";
 @import "./components/pages/offline/offline-page/offline-page.component.css";
 @import "./components/pages/offline/offline-hero/offline-hero.component.css";
 @import "./components/pages/offline/offline-troubleshoot/offline-troubleshoot.component.css";
