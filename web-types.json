@@ -108,7 +108,7 @@
           "name": "blog-article",
           "source": {
             "file": "./src/components/pages/blog/blog-view/blog-article.component.ts",
-            "offset": 664
+            "offset": 1142
           },
           "attributes": [],
           "js": {
@@ -119,7 +119,7 @@
           "name": "blog-index",
           "source": {
             "file": "./src/components/pages/blog/blog-view/blog-index.component.ts",
-            "offset": 2061
+            "offset": 3351
           },
           "attributes": [],
           "js": {
@@ -130,7 +130,7 @@
           "name": "blog-markdown-view",
           "source": {
             "file": "./src/components/pages/blog/blog-view/blog-markdown-view.component.ts",
-            "offset": 434
+            "offset": 927
           },
           "attributes": [],
           "js": {
@@ -163,7 +163,7 @@
           "name": "blog-view",
           "source": {
             "file": "./src/components/pages/blog/blog-view/blog-view.component.ts",
-            "offset": 525
+            "offset": 1007
           },
           "attributes": [],
           "js": {
@@ -174,7 +174,7 @@
           "name": "build-offering",
           "source": {
             "file": "./src/components/pages/pricing/build-offering/build-offering.component.ts",
-            "offset": 214
+            "offset": 489
           },
           "attributes": [],
           "js": {
@@ -185,7 +185,7 @@
           "name": "build-pricing",
           "source": {
             "file": "./src/components/pages/pricing/build-pricing/build-pricing.component.ts",
-            "offset": 213
+            "offset": 532
           },
           "attributes": [],
           "js": {
@@ -361,7 +361,7 @@
           "name": "pricing-contact",
           "source": {
             "file": "./src/components/pages/pricing/pricing-contact/pricing-contact.component.ts",
-            "offset": 215
+            "offset": 474
           },
           "attributes": [],
           "js": {
@@ -372,7 +372,7 @@
           "name": "pricing-estimator",
           "source": {
             "file": "./src/components/pages/pricing/pricing-estimator/pricing-estimator.component.ts",
-            "offset": 217
+            "offset": 550
           },
           "attributes": [],
           "js": {
@@ -383,7 +383,7 @@
           "name": "pricing-estimator-result",
           "source": {
             "file": "./src/components/pages/pricing/pricing-estimator-result/pricing-estimator-result.component.ts",
-            "offset": 583
+            "offset": 1078
           },
           "attributes": [],
           "js": {
@@ -394,7 +394,7 @@
           "name": "pricing-estimator-stage-options",
           "source": {
             "file": "./src/components/pages/pricing/pricing-estimator-stage-options/pricing-estimator-stage-options.component.ts",
-            "offset": 356
+            "offset": 658
           },
           "attributes": [],
           "js": {
@@ -405,7 +405,7 @@
           "name": "pricing-estimator-type-options",
           "source": {
             "file": "./src/components/pages/pricing/pricing-estimator-type-options/pricing-estimator-type-options.component.ts",
-            "offset": 354
+            "offset": 685
           },
           "attributes": [],
           "js": {
@@ -416,7 +416,7 @@
           "name": "pricing-faq",
           "source": {
             "file": "./src/components/pages/pricing/pricing-faq/pricing-faq.component.ts",
-            "offset": 211
+            "offset": 514
           },
           "attributes": [],
           "js": {
@@ -427,7 +427,7 @@
           "name": "pricing-hero",
           "source": {
             "file": "./src/components/pages/pricing/pricing-hero/pricing-hero.component.ts",
-            "offset": 387
+            "offset": 817
           },
           "attributes": [],
           "js": {
@@ -449,7 +449,7 @@
           "name": "pricing-sticky-contact",
           "source": {
             "file": "./src/components/pages/pricing/pricing-sticky-contact/pricing-sticky-contact.component.ts",
-            "offset": 340
+            "offset": 950
           },
           "attributes": [],
           "js": {
@@ -460,7 +460,7 @@
           "name": "pricing-switch",
           "source": {
             "file": "./src/components/pages/pricing/pricing-switch/pricing-switch.component.ts",
-            "offset": 344
+            "offset": 881
           },
           "attributes": [],
           "js": {
@@ -471,7 +471,7 @@
           "name": "privacy-markdown-view",
           "source": {
             "file": "./src/components/pages/privacy/privacy-markdown-view/privacy-markdown-view.component.ts",
-            "offset": 601
+            "offset": 1000
           },
           "attributes": [],
           "js": {
@@ -493,7 +493,7 @@
           "name": "privacy-toc",
           "source": {
             "file": "./src/components/pages/privacy/privacy-toc/privacy-toc.component.ts",
-            "offset": 402
+            "offset": 755
           },
           "attributes": [],
           "js": {
@@ -504,7 +504,7 @@
           "name": "privacy-view",
           "source": {
             "file": "./src/components/pages/privacy/privacy-view/privacy-view.component.ts",
-            "offset": 1008
+            "offset": 1431
           },
           "attributes": [],
           "js": {
@@ -515,7 +515,7 @@
           "name": "showcase-archive",
           "source": {
             "file": "./src/components/pages/showcase/showcase-archive/showcase-archive.component.ts",
-            "offset": 409
+            "offset": 978
           },
           "attributes": [],
           "js": {
@@ -526,7 +526,7 @@
           "name": "showcase-aside",
           "source": {
             "file": "./src/components/pages/showcase/showcase-aside/showcase-aside.component.ts",
-            "offset": 224
+            "offset": 622
           },
           "attributes": [
             {
@@ -538,7 +538,7 @@
               },
               "source": {
                 "file": "./src/components/pages/showcase/showcase-aside/showcase-aside.component.ts",
-                "offset": 313
+                "offset": 796
               }
             }
           ],
@@ -550,7 +550,7 @@
                 "default": "note",
                 "source": {
                   "file": "./src/components/pages/showcase/showcase-aside/showcase-aside.component.ts",
-                  "offset": 313
+                  "offset": 796
                 }
               }
             ]
@@ -560,7 +560,7 @@
           "name": "showcase-cta",
           "source": {
             "file": "./src/components/pages/showcase/showcase-cta/showcase-cta.component.ts",
-            "offset": 149
+            "offset": 419
           },
           "attributes": [],
           "js": {
@@ -571,7 +571,7 @@
           "name": "showcase-faq",
           "source": {
             "file": "./src/components/pages/showcase/showcase-faq/showcase-faq.component.ts",
-            "offset": 214
+            "offset": 543
           },
           "attributes": [],
           "js": {
@@ -582,7 +582,7 @@
           "name": "showcase-featured",
           "source": {
             "file": "./src/components/pages/showcase/showcase-featured/showcase-featured.component.ts",
-            "offset": 229
+            "offset": 494
           },
           "attributes": [],
           "js": {
@@ -593,7 +593,7 @@
           "name": "showcase-figure",
           "source": {
             "file": "./src/components/pages/showcase/showcase-figure/showcase-figure.component.ts",
-            "offset": 221
+            "offset": 524
           },
           "attributes": [
             {
@@ -605,7 +605,7 @@
               },
               "source": {
                 "file": "./src/components/pages/showcase/showcase-figure/showcase-figure.component.ts",
-                "offset": 368
+                "offset": 833
               }
             },
             {
@@ -617,7 +617,7 @@
               },
               "source": {
                 "file": "./src/components/pages/showcase/showcase-figure/showcase-figure.component.ts",
-                "offset": 310
+                "offset": 691
               }
             }
           ],
@@ -629,7 +629,7 @@
                 "default": "",
                 "source": {
                   "file": "./src/components/pages/showcase/showcase-figure/showcase-figure.component.ts",
-                  "offset": 368
+                  "offset": 833
                 }
               },
               {
@@ -638,7 +638,7 @@
                 "default": "",
                 "source": {
                   "file": "./src/components/pages/showcase/showcase-figure/showcase-figure.component.ts",
-                  "offset": 310
+                  "offset": 691
                 }
               }
             ]
@@ -648,7 +648,7 @@
           "name": "showcase-hero",
           "source": {
             "file": "./src/components/pages/showcase/showcase-hero/showcase-hero.component.ts",
-            "offset": 216
+            "offset": 575
           },
           "attributes": [],
           "js": {
@@ -659,7 +659,7 @@
           "name": "showcase-markdown-view",
           "source": {
             "file": "./src/components/pages/showcase/showcase-markdown-view/showcase-markdown-view.component.ts",
-            "offset": 446
+            "offset": 866
           },
           "attributes": [],
           "js": {
@@ -670,7 +670,7 @@
           "name": "showcase-metrics",
           "source": {
             "file": "./src/components/pages/showcase/showcase-metrics/showcase-metrics.component.ts",
-            "offset": 269
+            "offset": 794
           },
           "attributes": [
             {
@@ -682,7 +682,7 @@
               },
               "source": {
                 "file": "./src/components/pages/showcase/showcase-metrics/showcase-metrics.component.ts",
-                "offset": 361
+                "offset": 974
               }
             }
           ],
@@ -694,7 +694,7 @@
                 "default": "",
                 "source": {
                   "file": "./src/components/pages/showcase/showcase-metrics/showcase-metrics.component.ts",
-                  "offset": 361
+                  "offset": 974
                 }
               }
             ]
@@ -704,7 +704,7 @@
           "name": "showcase-motion-controller",
           "source": {
             "file": "./src/components/pages/showcase/showcase-motion-controller/showcase-motion-controller.component.ts",
-            "offset": 332
+            "offset": 889
           },
           "attributes": [],
           "js": {
@@ -726,7 +726,7 @@
           "name": "showcase-page-content",
           "source": {
             "file": "./src/components/pages/showcase/showcase-page/showcase-page.component.ts",
-            "offset": 233
+            "offset": 577
           },
           "attributes": [],
           "js": {
@@ -737,7 +737,7 @@
           "name": "showcase-project-card",
           "source": {
             "file": "./src/components/pages/showcase/showcase-project-card/showcase-project-card.component.ts",
-            "offset": 244
+            "offset": 595
           },
           "attributes": [
             {
@@ -749,7 +749,7 @@
               },
               "source": {
                 "file": "./src/components/pages/showcase/showcase-project-card/showcase-project-card.component.ts",
-                "offset": 349
+                "offset": 787
               }
             }
           ],
@@ -761,7 +761,7 @@
                 "default": "",
                 "source": {
                   "file": "./src/components/pages/showcase/showcase-project-card/showcase-project-card.component.ts",
-                  "offset": 349
+                  "offset": 787
                 }
               }
             ]
@@ -771,7 +771,7 @@
           "name": "showcase-project-row",
           "source": {
             "file": "./src/components/pages/showcase/showcase-project-row/showcase-project-row.component.ts",
-            "offset": 243
+            "offset": 510
           },
           "attributes": [
             {
@@ -783,7 +783,7 @@
               },
               "source": {
                 "file": "./src/components/pages/showcase/showcase-project-row/showcase-project-row.component.ts",
-                "offset": 347
+                "offset": 700
               }
             }
           ],
@@ -795,7 +795,7 @@
                 "default": "",
                 "source": {
                   "file": "./src/components/pages/showcase/showcase-project-row/showcase-project-row.component.ts",
-                  "offset": 347
+                  "offset": 700
                 }
               }
             ]
@@ -816,7 +816,7 @@
           "name": "showcase-spotlight",
           "source": {
             "file": "./src/components/pages/showcase/showcase-spotlight/showcase-spotlight.component.ts",
-            "offset": 241
+            "offset": 598
           },
           "attributes": [
             {
@@ -828,7 +828,7 @@
               },
               "source": {
                 "file": "./src/components/pages/showcase/showcase-spotlight/showcase-spotlight.component.ts",
-                "offset": 344
+                "offset": 780
               }
             }
           ],
@@ -840,7 +840,7 @@
                 "default": "",
                 "source": {
                   "file": "./src/components/pages/showcase/showcase-spotlight/showcase-spotlight.component.ts",
-                  "offset": 344
+                  "offset": 780
                 }
               }
             ]
@@ -850,7 +850,7 @@
           "name": "showcase-support",
           "source": {
             "file": "./src/components/pages/showcase/showcase-support/showcase-support.component.ts",
-            "offset": 153
+            "offset": 428
           },
           "attributes": [],
           "js": {
@@ -861,7 +861,7 @@
           "name": "showcase-toc",
           "source": {
             "file": "./src/components/pages/showcase/showcase-toc/showcase-toc.component.ts",
-            "offset": 599
+            "offset": 1172
           },
           "attributes": [],
           "js": {
@@ -872,7 +872,7 @@
           "name": "showcase-view",
           "source": {
             "file": "./src/components/pages/showcase/showcase-view/showcase-view.component.ts",
-            "offset": 910
+            "offset": 1403
           },
           "attributes": [],
           "js": {
@@ -883,7 +883,7 @@
           "name": "showcase-visual",
           "source": {
             "file": "./src/components/pages/showcase/showcase-visual/showcase-visual.component.ts",
-            "offset": 238
+            "offset": 576
           },
           "attributes": [
             {
@@ -895,7 +895,7 @@
               },
               "source": {
                 "file": "./src/components/pages/showcase/showcase-visual/showcase-visual.component.ts",
-                "offset": 338
+                "offset": 758
               }
             },
             {
@@ -907,7 +907,7 @@
               },
               "source": {
                 "file": "./src/components/pages/showcase/showcase-visual/showcase-visual.component.ts",
-                "offset": 406
+                "offset": 919
               }
             }
           ],
@@ -919,7 +919,7 @@
                 "default": "",
                 "source": {
                   "file": "./src/components/pages/showcase/showcase-visual/showcase-visual.component.ts",
-                  "offset": 338
+                  "offset": 758
                 }
               },
               {
@@ -928,7 +928,7 @@
                 "default": "card",
                 "source": {
                   "file": "./src/components/pages/showcase/showcase-visual/showcase-visual.component.ts",
-                  "offset": 406
+                  "offset": 919
                 }
               }
             ]
@@ -938,7 +938,7 @@
           "name": "showcase-working-method",
           "source": {
             "file": "./src/components/pages/showcase/showcase-working-method/showcase-working-method.component.ts",
-            "offset": 225
+            "offset": 515
           },
           "attributes": [],
           "js": {
@@ -949,7 +949,7 @@
           "name": "speaking-offering",
           "source": {
             "file": "./src/components/pages/pricing/speaking-offering/speaking-offering.component.ts",
-            "offset": 217
+            "offset": 486
           },
           "attributes": [],
           "js": {
@@ -960,7 +960,7 @@
           "name": "speaking-pricing",
           "source": {
             "file": "./src/components/pages/pricing/speaking-pricing/speaking-pricing.component.ts",
-            "offset": 216
+            "offset": 531
           },
           "attributes": [],
           "js": {
@@ -971,7 +971,7 @@
           "name": "terms-markdown-view",
           "source": {
             "file": "./src/components/pages/terms/terms-markdown-view/terms-markdown-view.component.ts",
-            "offset": 589
+            "offset": 906
           },
           "attributes": [],
           "js": {
@@ -993,7 +993,7 @@
           "name": "terms-toc",
           "source": {
             "file": "./src/components/pages/terms/terms-toc/terms-toc.component.ts",
-            "offset": 394
+            "offset": 736
           },
           "attributes": [],
           "js": {
@@ -1004,7 +1004,7 @@
           "name": "terms-view",
           "source": {
             "file": "./src/components/pages/terms/terms-view/terms-view.component.ts",
-            "offset": 992
+            "offset": 1405
           },
           "attributes": [],
           "js": {
