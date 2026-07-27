@@ -1,11 +1,21 @@
 import { BaseElement, Component, HTML, Property, String } from "@ayu-sh-kr/dota-wrap/core";
 import { getShowcaseProject } from "@app/data/showcase-content.ts";
 
+/**
+ * Renders one featured project as a navigable showcase card.
+ *
+ * The parent supplies a stable `project-slug`; the shared catalog remains the
+ * source of truth for title, visual, summary, and stack data. The card delegates
+ * its cover artwork to `showcase-visual` and links to the case-study view.
+ *
+ * Selector: `showcase-project-card`.
+ */
 @Component({
   selector: "showcase-project-card",
   shadow: false,
 })
 export class ShowcaseProjectCardComponent extends BaseElement {
+  /** Attribute `project-slug`; identifies the catalog entry rendered by this card. */
   @Property({ name: "project-slug", type: String })
   projectSlug = "";
 
@@ -13,6 +23,7 @@ export class ShowcaseProjectCardComponent extends BaseElement {
     super();
   }
 
+  /** Renders the matching project card, or nothing when the slug is unknown. */
   render(): string {
     const project = getShowcaseProject(this.projectSlug);
     if (!project) {
@@ -37,4 +48,3 @@ export class ShowcaseProjectCardComponent extends BaseElement {
     `;
   }
 }
-

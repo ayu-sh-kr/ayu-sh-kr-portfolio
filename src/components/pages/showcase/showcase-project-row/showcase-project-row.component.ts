@@ -1,11 +1,20 @@
 import { BaseElement, Component, HTML, Property, String } from "@ayu-sh-kr/dota-wrap/core";
 import { getShowcaseProject } from "@app/data/showcase-content.ts";
 
+/**
+ * Renders one archive project as a compact, navigable row.
+ *
+ * The row accepts only a slug and reads the rest of its display data from the
+ * shared showcase catalog, keeping archive layout independent from content.
+ *
+ * Selector: `showcase-project-row`.
+ */
 @Component({
   selector: "showcase-project-row",
   shadow: false,
 })
 export class ShowcaseProjectRowComponent extends BaseElement {
+  /** Attribute `project-slug`; identifies the catalog entry rendered by this row. */
   @Property({ name: "project-slug", type: String })
   projectSlug = "";
 
@@ -13,6 +22,7 @@ export class ShowcaseProjectRowComponent extends BaseElement {
     super();
   }
 
+  /** Renders the matching project summary, or nothing when the slug is unknown. */
   render(): string {
     const project = getShowcaseProject(this.projectSlug);
     if (!project) {
@@ -32,4 +42,3 @@ export class ShowcaseProjectRowComponent extends BaseElement {
     `;
   }
 }
-
