@@ -13,7 +13,11 @@ terms-toc {
   max-block-size: 70vh;
   overflow-y: auto;
   color: var(--muted-color);
-  scrollbar-width: thin;
+  scrollbar-width: none;
+}
+
+.terms-toc-panel::-webkit-scrollbar {
+  display: none;
 }
 
 .terms-toc-label,
