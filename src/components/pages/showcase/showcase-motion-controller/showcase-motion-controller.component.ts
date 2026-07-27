@@ -103,6 +103,7 @@ export class ShowcaseMotionControllerComponent extends BaseElement {
     }
 
     const heroProgress = this.getScrollProgress(heroWrap);
+    heroWrap.querySelector<HTMLElement>("scroll-hint")?.setAttribute("progress", String(heroProgress));
     if (!this.reducedMotion) {
       heroInner.style.opacity = String(clamp(1 - heroProgress * 1.4, 0, 1));
       heroInner.style.transform = `scale(${1 - heroProgress * 0.1}) translate3d(0, ${heroProgress * -30}px, 0)`;
