@@ -1,4 +1,3 @@
-blog-view,
 blog-index,
 blog-article {
   display: block;
@@ -6,6 +5,19 @@ blog-article {
   color: var(--blog-ink);
   font-family: var(--primary-font);
   font-size-adjust: from-font;
+}
+
+blog-hero,
+blog-list-section,
+blog-filter,
+blog-highlighted-blog,
+blog-list,
+blog-subscription {
+  display: block;
+}
+
+.blog-list-section-shell {
+  display: block;
 }
 
 .blog-container {
@@ -690,5 +702,6 @@ blog-article {
   .blog-arrow,
   .blog-ink-button {
     transition: none;
+    animation: none;
   }
 }
