@@ -237,37 +237,6 @@ offline-page [hidden] {
   background: var(--surface-hover-color);
 }
 
-.offline-cue {
-  position: absolute;
-  bottom: 4.5vh;
-  left: 50%;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  gap: .45rem;
-  color: var(--offline-soft);
-  font-size: .75rem;
-  letter-spacing: .04em;
-  transform: translateX(-50%);
-  white-space: nowrap;
-}
-
-.offline-cue svg {
-  width: 1.1rem;
-  height: 1.1rem;
-  fill: none;
-  stroke: currentColor;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-width: 1.8;
-  animation: offline-nudge 2s ease-in-out infinite;
-}
-
-@keyframes offline-nudge {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(.3rem); }
-}
-
 .offline-meta {
   margin: 1rem 0 0;
   color: var(--offline-soft);
@@ -332,14 +301,8 @@ offline-page [hidden] {
     transition: none;
   }
 
-  .offline-cue,
-  .offline-status-dot::after,
-  .offline-cue svg {
+  .offline-status-dot::after {
     animation: none;
-  }
-
-  .offline-cue {
-    display: none;
   }
 }
 
@@ -359,10 +322,9 @@ offline-page [hidden] {
     padding-block: 0;
   }
 
-  offline-page .offline-cue {
+  offline-page .offline-hero-section > scroll-hint {
     position: static;
     margin-block-start: clamp(2.5rem, 8vh, 4rem);
-    transform: none;
   }
 
   .offline-section {

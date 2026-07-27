@@ -27,7 +27,7 @@ export class PortfolioHeroComponent extends BaseElement {
               <a class="motion-button motion-button-ghost" href="${hero.secondaryCta.href}">${hero.secondaryCta.label}</a>
             </div>
           </div>
-          <p class="scroll-hint" aria-hidden="true">Scroll</p>
+          <scroll-hint></scroll-hint>
         </section>
       </div>
     `;

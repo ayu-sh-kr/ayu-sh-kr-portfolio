@@ -39,10 +39,7 @@ export class OfflineHeroComponent extends BaseElement {
           </div>
         </div>
 
-        <div class="offline-cue" data-offline-cue aria-hidden="true">
-          <span>${hero.scrollCue}</span>
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg>
-        </div>
+        <scroll-hint data-offline-cue mode="vertical" label="${hero.scrollCue}"></scroll-hint>
       </section>
     `;
   }

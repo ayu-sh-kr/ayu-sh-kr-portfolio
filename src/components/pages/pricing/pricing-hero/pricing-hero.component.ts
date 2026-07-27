@@ -73,7 +73,7 @@ export class PricingHeroComponent extends BaseElement {
             </div>
             <p class="pricing-trust mt-6">${content.trust}</p>
           </div>
-          <p class="pricing-scroll-hint" aria-hidden="true">${content.scrollLabel}</p>
+          <scroll-hint mode="vertical" label="${content.scrollLabel}"></scroll-hint>
         </section>
       </div>
     `;

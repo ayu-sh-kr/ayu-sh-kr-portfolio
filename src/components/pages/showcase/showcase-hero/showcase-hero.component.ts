@@ -41,7 +41,7 @@ export class ShowcaseHeroComponent extends BaseElement {
               <strong>${clientCount}</strong> client
             </p>
           </div>
-          <span class="showcase-scroll-hint" aria-hidden="true">Scroll <span>↓</span></span>
+          <scroll-hint mode="vertical"></scroll-hint>
         </section>
       </div>
     `;

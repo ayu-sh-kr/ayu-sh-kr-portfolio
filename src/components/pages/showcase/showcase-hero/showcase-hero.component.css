@@ -22,23 +22,6 @@
   font-variant-numeric: tabular-nums;
 }
 
-.showcase-scroll-hint {
-  position: absolute;
-  inset-block-end: 2rem;
-  inset-inline-start: 50%;
-  display: inline-flex;
-  gap: 0.55rem;
-  color: var(--muted-color);
-  font-size: 0.75rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  transform: translateX(-50%);
-}
-
-.showcase-scroll-hint span {
-  color: var(--primary-color);
-}
-
 @media (prefers-reduced-motion: reduce) {
   #showcase-hero-wrap {
     block-size: auto;
@@ -49,4 +32,3 @@
     min-block-size: 75svh;
   }
 }
-

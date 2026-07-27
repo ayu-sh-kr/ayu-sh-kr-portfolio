@@ -52,19 +52,9 @@ pricing-hero {
   line-height: 1.65;
 }
 
-.pricing-trust,
-.pricing-scroll-hint {
+.pricing-trust {
   color: var(--muted-color);
   font-size: 0.875rem;
-}
-
-.pricing-scroll-hint {
-  position: absolute;
-  bottom: 2.5rem;
-  left: 50%;
-  transform: translateX(-50%);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
 }
 
 .pricing-accent-button,
@@ -119,7 +109,4 @@ pricing-hero {
     transition: none;
   }
 
-  .pricing-scroll-hint {
-    display: none;
-  }
 }
