@@ -1,6 +1,15 @@
 import { BaseElement, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
 import { pricingContent } from "@app/data/pricing-content.ts";
 
+/**
+ * Renders the pricing FAQ list with Dota accordion elements.
+ *
+ * Questions and answers come from `pricingContent.faq`; the shared accordion
+ * component owns expansion behavior, so this component only supplies content
+ * and the pricing-specific configuration.
+ *
+ * Selector: `pricing-faq`.
+ */
 @Component({
   selector: "pricing-faq",
   shadow: false,
@@ -10,6 +19,7 @@ export class PricingFaqComponent extends BaseElement {
     super();
   }
 
+  /** Returns the configured FAQ accordions from the authored pricing questions. */
   render(): string {
     const content = pricingContent.faq;
     const accordionConfig = JSON.stringify({

@@ -2,8 +2,18 @@ import { BaseElement, Component, HTML, WindowListener } from "@ayu-sh-kr/dota-wr
 import { OnEvent } from "@ayu-sh-kr/dota-wrap/event";
 import { pricingContent } from "@app/data/pricing-content.ts";
 
+/** Keeps hero scroll progress inside the range used by its visual transforms. */
 const clamp = (value: number, min: number, max: number): number => Math.min(max, Math.max(min, value));
 
+/**
+ * Renders the pricing page hero and synchronizes its scroll-driven presentation.
+ *
+ * After connection, it captures the rendered hero nodes and applies the same
+ * motion calculation for scroll and resize events. Reduced-motion users receive
+ * an opaque, untransformed hero instead of the animated state.
+ *
+ * Selector: `pricing-hero`.
+ */
 @Component({
   selector: "pricing-hero",
   shadow: false,
@@ -16,24 +26,17 @@ export class PricingHeroComponent extends BaseElement {
     super();
   }
 
+  /** Captures hero nodes and applies the initial motion state after rendering. */
   @OnEvent("connected", true)
-  onConnected(): void {
+  initializeHeroMotion(): void {
     this.heroWrap = this.querySelector<HTMLElement>("#pricing-hero-wrap");
     this.heroInner = this.querySelector<HTMLElement>("#pricing-hero-inner");
     this.renderHeroMotion();
   }
 
-  @WindowListener({ event: "scroll" })
-  onScroll(): void {
-    this.renderHeroMotion();
-  }
-
-  @WindowListener({ event: "resize" })
-  onResize(): void {
-    this.renderHeroMotion();
-  }
-
-  private renderHeroMotion(): void {
+  /** Recalculates the hero transform for scroll and viewport-size changes. */
+  @WindowListener({ event: ["scroll", "resize"] })
+  renderHeroMotion(): void {
     if (!this.heroWrap || !this.heroInner) {
       return;
     }
@@ -51,6 +54,7 @@ export class PricingHeroComponent extends BaseElement {
     this.heroInner.style.transform = `scale(${1 - progress * 0.1}) translate3d(0, ${progress * -30}px, 0)`;
   }
 
+  /** Returns the pricing hero content and its motion-controller anchor elements. */
   render(): string {
     const content = pricingContent.hero;
 

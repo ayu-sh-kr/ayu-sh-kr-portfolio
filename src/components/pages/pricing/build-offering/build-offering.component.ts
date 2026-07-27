@@ -1,6 +1,14 @@
 import { BaseElement, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
 import { pricingContent } from "@app/data/pricing-content.ts";
 
+/**
+ * Renders the build-services value proposition on the pricing page.
+ *
+ * Each authored value row becomes one article in the section. This component
+ * owns only pricing-page markup; copy and row content come from `pricingContent`.
+ *
+ * Selector: `build-offering`.
+ */
 @Component({
   selector: "build-offering",
   shadow: false,
@@ -10,6 +18,7 @@ export class BuildOfferingComponent extends BaseElement {
     super();
   }
 
+  /** Returns the build offering copy and value rows from the pricing data source. */
   render(): string {
     const content = pricingContent.buildOffering;
 

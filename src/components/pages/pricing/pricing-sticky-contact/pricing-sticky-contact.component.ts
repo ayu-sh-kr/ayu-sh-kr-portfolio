@@ -2,8 +2,22 @@ import { BaseElement, Component, HTML, WindowListener } from "@ayu-sh-kr/dota-wr
 import { OnEvent } from "@ayu-sh-kr/dota-wrap/event";
 import { pricingContent } from "@app/data/pricing-content.ts";
 
+/**
+ * Visual states used while the sticky contact bar enters, remains, or exits view.
+ * `icon` is the short transition state between hidden and the fully open bar.
+ */
 type StickyState = "hidden" | "icon" | "open";
 
+/**
+ * Displays a compact pricing contact bar after the visitor leaves the main CTA.
+ *
+ * An intersection observer tracks the main contact section, while scroll and
+ * resize handlers update visibility and width. Motion preference changes switch
+ * the state transitions between animated and immediate class updates; disconnect
+ * cleanup removes observers, timers, and media-query listeners.
+ *
+ * Selector: `pricing-sticky-contact`.
+ */
 @Component({
   selector: "pricing-sticky-contact",
   shadow: false,
@@ -21,38 +35,40 @@ export class PricingStickyContactComponent extends BaseElement {
     super();
   }
 
+  /** Captures the bar, starts preference tracking, and observes the main contact CTA. */
   @OnEvent("connected", true)
-  onConnected(): void {
+  initializeStickyContact(): void {
     this.stickyBar = this.querySelector<HTMLElement>("#pricing-stickybar");
     this.motionPreference = window.matchMedia("(prefers-reduced-motion: reduce)");
     this.reducedMotion = this.motionPreference.matches;
-    this.motionPreference.addEventListener("change", this.handleMotionPreference);
-    this.observeContact();
-    this.measurePill();
+    this.motionPreference.addEventListener("change", this.updateMotionPreference);
+    this.observeContactVisibility();
+    this.measureStickyBar();
     this.updateVisibility();
   }
 
+  /** Removes observers/listeners and resets state so reconnects start from hidden. */
   @OnEvent("disconnected", true)
-  onDisconnected(): void {
-    this.motionPreference?.removeEventListener("change", this.handleMotionPreference);
+  cleanupStickyContact(): void {
+    this.motionPreference?.removeEventListener("change", this.updateMotionPreference);
     this.contactObserver?.disconnect();
     this.clearTransitionTimer();
     this.motionPreference = null;
     this.contactObserver = null;
+    this.stickyBar = null;
+    this.state = "hidden";
+    this.contactVisible = false;
   }
 
-  @WindowListener({ event: "scroll" })
-  onScroll(): void {
-    this.updateVisibility();
-  }
-
+  /** Recalculates the bar width and visibility after a viewport resize. */
   @WindowListener({ event: "resize" })
-  onResize(): void {
-    this.measurePill();
+  refreshStickyLayout(): void {
+    this.measureStickyBar();
     this.updateVisibility();
   }
 
-  private readonly handleMotionPreference = (event: MediaQueryListEvent): void => {
+  /** Applies a changed motion preference and removes any transition in progress. */
+  private readonly updateMotionPreference = (event: MediaQueryListEvent): void => {
     this.reducedMotion = event.matches;
     this.clearTransitionTimer();
     if (this.stickyBar) {
@@ -61,7 +77,10 @@ export class PricingStickyContactComponent extends BaseElement {
     }
   };
 
-  private observeContact(): void {
+  /** Observes the main pricing contact section to suppress the duplicate sticky CTA. */
+  private observeContactVisibility(): void {
+    this.contactObserver?.disconnect();
+    this.contactObserver = null;
     const contact = document.querySelector<HTMLElement>("#pricing-contact");
     if (!contact) {
       return;
@@ -77,7 +96,8 @@ export class PricingStickyContactComponent extends BaseElement {
     this.contactObserver.observe(contact);
   }
 
-  private measurePill(): void {
+  /** Measures the content pill and stores its responsive width as a CSS variable. */
+  private measureStickyBar(): void {
     const body = this.querySelector<HTMLElement>(".pricing-sticky-body");
     if (!body || !this.stickyBar) {
       return;
@@ -87,6 +107,8 @@ export class PricingStickyContactComponent extends BaseElement {
     this.stickyBar.style.setProperty("--pricing-sticky-width", `${Math.min(body.scrollWidth + 8, maxWidth)}px`);
   }
 
+  /** Updates contact visibility and selects the sticky bar state for the current scroll. */
+  @WindowListener({ event: "scroll" })
   private updateVisibility(): void {
     if (!this.stickyBar) {
       return;
@@ -98,10 +120,11 @@ export class PricingStickyContactComponent extends BaseElement {
     }
 
     const shouldShow = window.scrollY > window.innerHeight * 0.55 && !this.contactVisible;
-    this.setPill(shouldShow ? "open" : "hidden");
+    this.setStickyState(shouldShow ? "open" : "hidden");
   }
 
-  private setPill(target: StickyState): void {
+  /** Applies the target visual state with reduced-motion and transition timing rules. */
+  private setStickyState(target: StickyState): void {
     if (!this.stickyBar || target === this.state) {
       return;
     }
@@ -144,6 +167,7 @@ export class PricingStickyContactComponent extends BaseElement {
     this.state = "hidden";
   }
 
+  /** Cancels the pending open/close transition timer, if one exists. */
   private clearTransitionTimer(): void {
     if (this.transitionTimer !== null) {
       window.clearTimeout(this.transitionTimer);
@@ -151,6 +175,7 @@ export class PricingStickyContactComponent extends BaseElement {
     }
   }
 
+  /** Returns the sticky contact markup; state classes are applied after connection. */
   render(): string {
     const content = pricingContent.stickyContact;
 

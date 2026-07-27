@@ -1,6 +1,14 @@
 import { BaseElement, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
 import { pricingContent } from "@app/data/pricing-content.ts";
 
+/**
+ * Renders the pricing page's contact call to action and trust links.
+ *
+ * Email, call, GitHub, and LinkedIn destinations are authored in
+ * `pricingContent.contact`, keeping this component focused on presentation.
+ *
+ * Selector: `pricing-contact`.
+ */
 @Component({
   selector: "pricing-contact",
   shadow: false,
@@ -10,6 +18,7 @@ export class PricingContactComponent extends BaseElement {
     super();
   }
 
+  /** Returns the contact section using the pricing contact content and destinations. */
   render(): string {
     const content = pricingContent.contact;
 

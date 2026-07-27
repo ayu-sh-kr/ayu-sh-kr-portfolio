@@ -2,11 +2,20 @@ import { ApplicationEventService, BaseElement, Component, HostListener, HTML, St
 import { pricingContent } from "@app/data/pricing-content.ts";
 import { PRICING_ESTIMATOR_STAGE_EVENT } from "@app/events/pricing.events.ts";
 
+/**
+ * Renders the estimator's project-stage choices and publishes valid selections.
+ *
+ * The selected stage is local UI state; {@link PRICING_ESTIMATOR_STAGE_EVENT}
+ * carries changes to the result component, which owns the calculated estimate.
+ *
+ * Selector: `pricing-estimator-stage-options`.
+ */
 @Component({
   selector: "pricing-estimator-stage-options",
   shadow: false,
 })
 export class PricingEstimatorStageOptionsComponent extends BaseElement {
+  /** Current estimator stage ID; changing it updates the selected button in render. */
   @State()
   selectedId: string = pricingContent.estimator.stages[0].id;
 
@@ -16,8 +25,12 @@ export class PricingEstimatorStageOptionsComponent extends BaseElement {
     super();
   }
 
+  /**
+   * Publishes a changed project stage after validating the clicked estimator button.
+   * @param event - Host click whose closest estimator button supplies the stage ID.
+   */
   @HostListener({ event: "click" })
-  onHostClick(event: MouseEvent): void {
+  selectStage(event: MouseEvent): void {
     const button = (event.target as HTMLElement).closest<HTMLButtonElement>("button[data-estimator-id]");
     if (!button || !this.contains(button)) {
       return;
@@ -35,6 +48,7 @@ export class PricingEstimatorStageOptionsComponent extends BaseElement {
     });
   }
 
+  /** Returns all project-stage choices with the current selection marked active. */
   render(): string {
     const content = pricingContent.estimator;
 

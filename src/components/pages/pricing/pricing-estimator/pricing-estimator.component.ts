@@ -1,6 +1,15 @@
 import { BaseElement, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
 import { pricingContent } from "@app/data/pricing-content.ts";
 
+/**
+ * Composes the pricing estimator's two selectors and calculated result.
+ *
+ * The child option components publish typed selection events, while the result
+ * component consumes them and owns the estimate state. This shell owns only the
+ * estimator section layout and introductory copy.
+ *
+ * Selector: `pricing-estimator`.
+ */
 @Component({
   selector: "pricing-estimator",
   shadow: false,
@@ -10,6 +19,7 @@ export class PricingEstimatorComponent extends BaseElement {
     super();
   }
 
+  /** Returns the estimator shell and its independently stateful child components. */
   render(): string {
     const content = pricingContent.estimator;
 

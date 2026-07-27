@@ -1,6 +1,15 @@
 import { BaseElement, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
 import { pricingContent } from "@app/data/pricing-content.ts";
 
+/**
+ * Renders the build-services pricing tiers and their conversion links.
+ *
+ * Tier data lives in `pricingContent.buildPricing`; the list renderer delegates
+ * each card to a small pure formatter so featured styling and bullet mapping stay
+ * local to the build-pricing surface.
+ *
+ * Selector: `build-pricing`.
+ */
 @Component({
   selector: "build-pricing",
   shadow: false,
@@ -10,6 +19,7 @@ export class BuildPricingComponent extends BaseElement {
     super();
   }
 
+  /** Returns the build pricing heading, tiers, and note from authored content. */
   render(): string {
     const content = pricingContent.buildPricing;
 
@@ -28,6 +38,7 @@ export class BuildPricingComponent extends BaseElement {
     `;
   }
 
+  /** Formats one build tier, including its featured marker, bullets, and CTA. */
   private renderTier(tier: (typeof pricingContent.buildPricing.tiers)[number], featuredLabel: string): string {
     return `
       <article class="build-pricing-tier ${tier.featured ? "is-featured" : ""}">

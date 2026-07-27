@@ -2,11 +2,21 @@ import { ApplicationEventService, BaseElement, Component, HostListener, HTML, St
 import { pricingContent } from "@app/data/pricing-content.ts";
 import { PRICING_ESTIMATOR_TYPE_EVENT } from "@app/events/pricing.events.ts";
 
+/**
+ * Renders the estimator's build-type choices and publishes valid selections.
+ *
+ * Selection is local state so the active button updates immediately; the
+ * published {@link PRICING_ESTIMATOR_TYPE_EVENT} is consumed by the result
+ * component to recalculate the estimate.
+ *
+ * Selector: `pricing-estimator-type-options`.
+ */
 @Component({
   selector: "pricing-estimator-type-options",
   shadow: false,
 })
 export class PricingEstimatorTypeOptionsComponent extends BaseElement {
+  /** Current estimator type ID; changing it updates the selected button in render. */
   @State()
   selectedId: string = pricingContent.estimator.types[0].id;
 
@@ -16,8 +26,12 @@ export class PricingEstimatorTypeOptionsComponent extends BaseElement {
     super();
   }
 
+  /**
+   * Publishes a changed build type after validating the clicked estimator button.
+   * @param event - Host click whose closest estimator button supplies the type ID.
+   */
   @HostListener({ event: "click" })
-  onHostClick(event: MouseEvent): void {
+  selectType(event: MouseEvent): void {
     const button = (event.target as HTMLElement).closest<HTMLButtonElement>("button[data-estimator-id]");
     if (!button || !this.contains(button)) {
       return;
@@ -35,6 +49,7 @@ export class PricingEstimatorTypeOptionsComponent extends BaseElement {
     });
   }
 
+  /** Returns all build-type choices with the current selection marked active. */
   render(): string {
     const content = pricingContent.estimator;
 
