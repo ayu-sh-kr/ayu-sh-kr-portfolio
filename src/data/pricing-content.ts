@@ -1,18 +1,21 @@
+import {siteIdentity} from "@app/data/portfolio-content.ts";
+import type {PageSeoContent} from "@app/data/seo-content.ts";
+
 export const pricingContent = {
   seo: {
-    title: "Work with Ayush — Backend, Cloud & Speaking",
+    title: `Work with ${siteIdentity.name} — Backend, Cloud & Speaking`,
     description: "Straightforward starting points for production backend work, AWS infrastructure, AI systems, talks, and team workshops.",
     keywords: [
-      "Ayush Jaiswal pricing",
+      `${siteIdentity.name} pricing`,
       "Backend development",
       "AWS infrastructure",
       "AI agents",
       "Technical speaker",
       "Team workshops",
     ],
-    ogTitle: "Work with Ayush — Backend, Cloud & Speaking",
+    ogTitle: `Work with ${siteIdentity.name} — Backend, Cloud & Speaking`,
     ogDescription: "Find the right way to work together, then start with one honest conversation.",
-  },
+  } satisfies PageSeoContent,
   footer: "Built with my Dota web-component libraries · Designed around useful conversations",
   hero: {
     eyebrow: "Speaking · building",
