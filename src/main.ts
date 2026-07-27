@@ -8,6 +8,7 @@ import { Router, RouterService } from "@ayu-sh-kr/dota-wrap/router";
 import { ApplicationEventService } from "@ayu-sh-kr/dota-wrap/core";
 import { registerPortfolioMarkdownTheme } from "@app/configs/markdown-theme.config.ts";
 import { RouterUtils } from "@app/utils/router.utils.ts";
+import { applyRouteMetadata } from "@app/utils/seo.utils.ts";
 import components from "virtual:dota-components";
 import { routeConfig } from "virtual:dota-routes";
 const applicationEventService = ApplicationEventService.getInstance();
@@ -25,6 +26,9 @@ initializeApp({
   errorRoute: { path: "/error", component: ErrorPage },
   defaultRoute: { path: "/", component: HomePage },
   root: AppComponent,
+  globalHooks: {
+    afterEach: [applyRouteMetadata],
+  },
 })
   .then((value) => {
     DefaultApplicationEventListenerRegistry.setListener(applicationEventListener);
