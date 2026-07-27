@@ -9,7 +9,7 @@
           "name": "app-error",
           "source": {
             "file": "./src/pages/error.page.ts",
-            "offset": 253
+            "offset": 532
           },
           "attributes": [
             {
@@ -21,7 +21,7 @@
               },
               "source": {
                 "file": "./src/pages/error.page.ts",
-                "offset": 409
+                "offset": 873
               }
             },
             {
@@ -33,7 +33,7 @@
               },
               "source": {
                 "file": "./src/pages/error.page.ts",
-                "offset": 337
+                "offset": 715
               }
             }
           ],
@@ -45,7 +45,7 @@
                 "default": "Page not found",
                 "source": {
                   "file": "./src/pages/error.page.ts",
-                  "offset": 409
+                  "offset": 873
                 }
               },
               {
@@ -54,7 +54,7 @@
                 "default": "404",
                 "source": {
                   "file": "./src/pages/error.page.ts",
-                  "offset": 337
+                  "offset": 715
                 }
               }
             ]
@@ -86,7 +86,7 @@
           "name": "app-home",
           "source": {
             "file": "./src/pages/home.page.ts",
-            "offset": 229
+            "offset": 527
           },
           "attributes": [],
           "js": {
@@ -108,7 +108,40 @@
           "name": "blog-article",
           "source": {
             "file": "./src/components/pages/blog/blog-view/blog-article.component.ts",
-            "offset": 1142
+            "offset": 1390
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "blog-filter",
+          "source": {
+            "file": "./src/components/pages/blog/blog-view/blog-filter/blog-filter.component.ts",
+            "offset": 1144
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "blog-hero",
+          "source": {
+            "file": "./src/components/pages/blog/blog-view/blog-hero/blog-hero.component.ts",
+            "offset": 592
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "blog-highlighted-blog",
+          "source": {
+            "file": "./src/components/pages/blog/blog-view/blog-highlighted-blog/blog-highlighted-blog.component.ts",
+            "offset": 924
           },
           "attributes": [],
           "js": {
@@ -119,7 +152,29 @@
           "name": "blog-index",
           "source": {
             "file": "./src/components/pages/blog/blog-view/blog-index.component.ts",
-            "offset": 3351
+            "offset": 747
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "blog-list",
+          "source": {
+            "file": "./src/components/pages/blog/blog-view/blog-list/blog-list.component.ts",
+            "offset": 1688
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "blog-list-section",
+          "source": {
+            "file": "./src/components/pages/blog/blog-view/blog-list-section/blog-list-section.component.ts",
+            "offset": 565
           },
           "attributes": [],
           "js": {
@@ -130,18 +185,60 @@
           "name": "blog-markdown-view",
           "source": {
             "file": "./src/components/pages/blog/blog-view/blog-markdown-view.component.ts",
-            "offset": 927
+            "offset": 1141
           },
-          "attributes": [],
+          "attributes": [
+            {
+              "name": "color",
+              "default": "portfolioMarkdownColor",
+              "required": false,
+              "value": {
+                "type": "string"
+              },
+              "source": {
+                "file": "./src/components/pages/blog/blog-view/blog-markdown-view.component.ts",
+                "offset": 1591
+              }
+            },
+            {
+              "name": "theme",
+              "required": false,
+              "value": {
+                "type": "string"
+              },
+              "source": {
+                "file": "./src/components/pages/blog/blog-view/blog-markdown-view.component.ts",
+                "offset": 1362
+              }
+            }
+          ],
           "js": {
-            "properties": []
+            "properties": [
+              {
+                "name": "color",
+                "type": "string",
+                "default": "portfolioMarkdownColor",
+                "source": {
+                  "file": "./src/components/pages/blog/blog-view/blog-markdown-view.component.ts",
+                  "offset": 1591
+                }
+              },
+              {
+                "name": "theme",
+                "type": "string",
+                "source": {
+                  "file": "./src/components/pages/blog/blog-view/blog-markdown-view.component.ts",
+                  "offset": 1362
+                }
+              }
+            ]
           }
         },
         {
           "name": "blog-page",
           "source": {
             "file": "./src/pages/blog.page.ts",
-            "offset": 221
+            "offset": 527
           },
           "attributes": [],
           "js": {
@@ -152,7 +249,7 @@
           "name": "blog-slug-page",
           "source": {
             "file": "./src/pages/blog-slug.page.ts",
-            "offset": 304
+            "offset": 723
           },
           "attributes": [],
           "js": {
@@ -160,10 +257,10 @@
           }
         },
         {
-          "name": "blog-view",
+          "name": "blog-subscription",
           "source": {
-            "file": "./src/components/pages/blog/blog-view/blog-view.component.ts",
-            "offset": 1007
+            "file": "./src/components/pages/blog/blog-view/blog-subscription/blog-subscription.component.ts",
+            "offset": 513
           },
           "attributes": [],
           "js": {
@@ -438,7 +535,7 @@
           "name": "pricing-page",
           "source": {
             "file": "./src/pages/pricing.page.ts",
-            "offset": 303
+            "offset": 539
           },
           "attributes": [],
           "js": {
@@ -482,7 +579,7 @@
           "name": "privacy-page",
           "source": {
             "file": "./src/pages/privacy.page.ts",
-            "offset": 240
+            "offset": 532
           },
           "attributes": [],
           "js": {
@@ -509,6 +606,61 @@
           "attributes": [],
           "js": {
             "properties": []
+          }
+        },
+        {
+          "name": "scroll-hint",
+          "source": {
+            "file": "./src/components/utils/scroll-hint/scroll-hint.component.ts",
+            "offset": 716
+          },
+          "attributes": [
+            {
+              "name": "label",
+              "default": "Scroll",
+              "required": false,
+              "value": {
+                "type": "string"
+              },
+              "source": {
+                "file": "./src/components/utils/scroll-hint/scroll-hint.component.ts",
+                "offset": 1041
+              }
+            },
+            {
+              "name": "mode",
+              "default": "horizontal",
+              "required": false,
+              "value": {
+                "type": "string"
+              },
+              "source": {
+                "file": "./src/components/utils/scroll-hint/scroll-hint.component.ts",
+                "offset": 879
+              }
+            }
+          ],
+          "js": {
+            "properties": [
+              {
+                "name": "label",
+                "type": "string",
+                "default": "Scroll",
+                "source": {
+                  "file": "./src/components/utils/scroll-hint/scroll-hint.component.ts",
+                  "offset": 1041
+                }
+              },
+              {
+                "name": "mode",
+                "type": "string",
+                "default": "horizontal",
+                "source": {
+                  "file": "./src/components/utils/scroll-hint/scroll-hint.component.ts",
+                  "offset": 879
+                }
+              }
+            ]
           }
         },
         {
@@ -715,7 +867,7 @@
           "name": "showcase-page",
           "source": {
             "file": "./src/pages/showcase.page.ts",
-            "offset": 242
+            "offset": 556
           },
           "attributes": [],
           "js": {
@@ -805,7 +957,7 @@
           "name": "showcase-slug-page",
           "source": {
             "file": "./src/pages/showcase-slug.page.ts",
-            "offset": 324
+            "offset": 568
           },
           "attributes": [],
           "js": {
@@ -982,7 +1134,7 @@
           "name": "terms-page",
           "source": {
             "file": "./src/pages/terms.page.ts",
-            "offset": 236
+            "offset": 514
           },
           "attributes": [],
           "js": {

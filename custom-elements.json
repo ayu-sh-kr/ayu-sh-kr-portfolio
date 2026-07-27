@@ -69,6 +69,105 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/pages/blog/blog-view/blog-filter/blog-filter.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "BlogFilterComponent",
+          "customElement": true,
+          "tagName": "blog-filter",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "BlogFilterComponent",
+          "declaration": {
+            "name": "BlogFilterComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "blog-filter",
+          "declaration": {
+            "name": "BlogFilterComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/blog/blog-view/blog-hero/blog-hero.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "BlogHeroComponent",
+          "customElement": true,
+          "tagName": "blog-hero",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "BlogHeroComponent",
+          "declaration": {
+            "name": "BlogHeroComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "blog-hero",
+          "declaration": {
+            "name": "BlogHeroComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/blog/blog-view/blog-highlighted-blog/blog-highlighted-blog.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "BlogHighlightedBlogComponent",
+          "customElement": true,
+          "tagName": "blog-highlighted-blog",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "BlogHighlightedBlogComponent",
+          "declaration": {
+            "name": "BlogHighlightedBlogComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "blog-highlighted-blog",
+          "declaration": {
+            "name": "BlogHighlightedBlogComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/pages/blog/blog-view/blog-index.component.js",
       "declarations": [
         {
@@ -102,6 +201,72 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/pages/blog/blog-view/blog-list-section/blog-list-section.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "BlogListSectionComponent",
+          "customElement": true,
+          "tagName": "blog-list-section",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "BlogListSectionComponent",
+          "declaration": {
+            "name": "BlogListSectionComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "blog-list-section",
+          "declaration": {
+            "name": "BlogListSectionComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/blog/blog-view/blog-list/blog-list.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "BlogListComponent",
+          "customElement": true,
+          "tagName": "blog-list",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "BlogListComponent",
+          "declaration": {
+            "name": "BlogListComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "blog-list",
+          "declaration": {
+            "name": "BlogListComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/pages/blog/blog-view/blog-markdown-view.component.js",
       "declarations": [
         {
@@ -112,8 +277,42 @@
           "superclass": {
             "name": "MdViewComponent"
           },
-          "members": [],
-          "attributes": []
+          "members": [
+            {
+              "kind": "field",
+              "name": "color",
+              "attribute": "color",
+              "type": {
+                "text": "string"
+              },
+              "default": "portfolioMarkdownColor"
+            },
+            {
+              "kind": "field",
+              "name": "theme",
+              "attribute": "theme",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "color",
+              "fieldName": "color",
+              "type": {
+                "text": "string"
+              },
+              "default": "portfolioMarkdownColor"
+            },
+            {
+              "name": "theme",
+              "fieldName": "theme",
+              "type": {
+                "text": "string"
+              }
+            }
+          ]
         }
       ],
       "exports": [
@@ -135,13 +334,13 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/pages/blog/blog-view/blog-view.component.js",
+      "path": "src/components/pages/blog/blog-view/blog-subscription/blog-subscription.component.js",
       "declarations": [
         {
           "kind": "class",
-          "name": "BlogViewComponent",
+          "name": "BlogSubscriptionComponent",
           "customElement": true,
-          "tagName": "blog-view",
+          "tagName": "blog-subscription",
           "superclass": {
             "name": "BaseElement"
           },
@@ -152,16 +351,16 @@
       "exports": [
         {
           "kind": "js",
-          "name": "BlogViewComponent",
+          "name": "BlogSubscriptionComponent",
           "declaration": {
-            "name": "BlogViewComponent"
+            "name": "BlogSubscriptionComponent"
           }
         },
         {
           "kind": "custom-element-definition",
-          "name": "blog-view",
+          "name": "blog-subscription",
           "declaration": {
-            "name": "BlogViewComponent"
+            "name": "BlogSubscriptionComponent"
           }
         }
       ]
@@ -2111,6 +2310,75 @@
           "name": "app-header",
           "declaration": {
             "name": "AppHeaderComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/utils/scroll-hint/scroll-hint.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "ScrollHintComponent",
+          "customElement": true,
+          "tagName": "scroll-hint",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [
+            {
+              "kind": "field",
+              "name": "label",
+              "attribute": "label",
+              "type": {
+                "text": "string"
+              },
+              "default": "Scroll"
+            },
+            {
+              "kind": "field",
+              "name": "mode",
+              "attribute": "mode",
+              "type": {
+                "text": "string"
+              },
+              "default": "horizontal"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "label",
+              "fieldName": "label",
+              "type": {
+                "text": "string"
+              },
+              "default": "Scroll"
+            },
+            {
+              "name": "mode",
+              "fieldName": "mode",
+              "type": {
+                "text": "string"
+              },
+              "default": "horizontal"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ScrollHintComponent",
+          "declaration": {
+            "name": "ScrollHintComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "scroll-hint",
+          "declaration": {
+            "name": "ScrollHintComponent"
           }
         }
       ]
