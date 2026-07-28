@@ -26,8 +26,8 @@ showcase-view {
 
 .showcase-back-link {
   color: var(--muted-color);
-  font-size: 0.9375rem;
-  font-weight: 600;
+  font-size: var(--type-control-size);
+  font-weight: var(--type-control-weight);
   text-decoration: none;
   transition: color 180ms ease;
 }
@@ -52,18 +52,18 @@ showcase-view {
 
 .showcase-article-header h1 {
   margin: 1.2rem 0 0;
-  font-size: clamp(2.2rem, 5vw, 3.6rem);
-  font-weight: 700;
-  letter-spacing: -0.04em;
-  line-height: 1.04;
+  font-size: var(--type-section-size);
+  font-weight: var(--type-section-weight);
+  letter-spacing: var(--type-section-tracking);
+  line-height: var(--type-section-leading);
   text-wrap: balance;
 }
 
 .showcase-article-tagline {
   margin: 1.25rem auto 0;
   color: var(--muted-color);
-  font-size: clamp(1rem, 1.5vw, 1.2rem);
-  line-height: 1.7;
+  font-size: var(--type-lede-size);
+  line-height: var(--type-lede-leading);
   text-wrap: pretty;
 }
 
@@ -125,8 +125,8 @@ showcase-view {
   display: block;
   margin-block-end: 0.2rem;
   color: var(--muted-color);
-  font-size: 0.7rem;
-  letter-spacing: 0.06em;
+  font-size: var(--type-label-size);
+  letter-spacing: var(--type-label-tracking);
   text-transform: uppercase;
 }
 
@@ -143,8 +143,8 @@ showcase-view {
 
 .showcase-not-found h1 {
   margin: 1rem 0 2rem;
-  font-size: clamp(2rem, 5vw, 3.5rem);
-  letter-spacing: -0.04em;
+  font-size: var(--type-section-size);
+  letter-spacing: var(--type-section-tracking);
   text-wrap: balance;
 }
 

@@ -40,8 +40,8 @@ terms-view {
   display: inline-flex;
   align-items: center;
   border-radius: 999px;
-  font-size: 0.78rem;
-  font-weight: 500;
+  font-size: var(--type-compact-size);
+  font-weight: var(--type-control-weight);
 }
 
 .terms-chip {
@@ -58,18 +58,18 @@ terms-view {
 
 .terms-header h1 {
   margin: 0.7rem 0;
-  font-size: clamp(2.2rem, 5vw, 3.4rem);
-  font-weight: 700;
-  letter-spacing: -0.04em;
-  line-height: 1.08;
+  font-size: var(--type-section-size);
+  font-weight: var(--type-section-weight);
+  letter-spacing: var(--type-section-tracking);
+  line-height: var(--type-section-leading);
   text-wrap: balance;
 }
 
 .terms-tagline {
   margin: 0;
   color: var(--muted-color);
-  font-size: clamp(1rem, 1.5vw, 1.2rem);
-  line-height: 1.7;
+  font-size: var(--type-lede-size);
+  line-height: var(--type-lede-leading);
   text-wrap: pretty;
 }
 
@@ -79,9 +79,9 @@ terms-view {
   gap: 0.5rem 1.1rem;
   margin-block-start: 1.35rem;
   color: var(--muted-color);
-  font-size: 0.9rem;
-  font-weight: 500;
-  line-height: 1.5;
+  font-size: var(--type-control-size);
+  font-weight: var(--type-control-weight);
+  line-height: var(--type-compact-leading);
 }
 
 .terms-proof span + span::before {
@@ -99,9 +99,9 @@ terms-view {
 .terms-eyebrow {
   margin: 0;
   color: var(--primary-color-strong);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.09em;
+  font-size: var(--type-label-size);
+  font-weight: var(--type-label-weight);
+  letter-spacing: var(--type-eyebrow-tracking);
   text-transform: uppercase;
 }
 
@@ -116,8 +116,8 @@ terms-view {
   margin: 0.7rem 0 0 1.1rem;
   padding-inline-start: 0;
   color: var(--foreground-color);
-  font-size: 1.03125rem;
-  line-height: 1.6;
+  font-size: var(--type-body-size);
+  line-height: var(--type-body-leading);
 }
 
 .terms-summary li {
@@ -127,8 +127,8 @@ terms-view {
 .terms-summary-note {
   margin: 0.9rem 0 0;
   color: var(--primary-color-strong);
-  font-size: 0.84375rem;
-  line-height: 1.5;
+  font-size: var(--type-compact-size);
+  line-height: var(--type-compact-leading);
   opacity: 0.8;
 }
 
@@ -161,7 +161,7 @@ terms-view {
   color: var(--muted-color);
   cursor: pointer;
   font: inherit;
-  font-size: 0.875rem;
+  font-size: var(--type-control-size);
   transition: background-color 180ms ease, color 180ms ease;
 }
 
