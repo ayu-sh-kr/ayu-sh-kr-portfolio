@@ -29,7 +29,7 @@ export class SupportStartProjectComponent extends BaseElement {
         <div class="support-start-project-panel">
           <div>
             <p class="support-start-project-eyebrow">${content.eyebrow}</p>
-            <h2 id="start-project-title" class="support-start-project-title">
+            <h2 id="start-project-title" class="support-start-project-title type-section">
               ${content.titleBeforeAccent} <span>${content.titleAccent}</span> ${content.titleAfterAccent}
             </h2>
             <p class="support-start-project-body">${content.body}</p>
