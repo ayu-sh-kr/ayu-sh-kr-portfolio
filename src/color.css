@@ -1,0 +1,207 @@
+/*
+ * Shared color grammar for every route.
+ *
+ * `theme.css` owns literal family ramps. This file turns the active family into
+ * semantic roles; components consume those roles and never reference a hue or
+ * a primary scale step directly.
+ */
+
+/* The family tier is the only place the active palette is named. */
+:root,
+[data-palette="true-matcha"] {
+  --primary-50: var(--color-true-matcha-50);
+  --primary-100: var(--color-true-matcha-100);
+  --primary-200: var(--color-true-matcha-200);
+  --primary-300: var(--color-true-matcha-300);
+  --primary-400: var(--color-true-matcha-400);
+  --primary-500: var(--color-true-matcha-500);
+  --primary-600: var(--color-true-matcha-600);
+  --primary-700: var(--color-true-matcha-700);
+  --primary-800: var(--color-true-matcha-800);
+  --primary-900: var(--color-true-matcha-900);
+  --primary-950: var(--color-true-matcha-950);
+  --primary-on-light: var(--color-paper-50);
+  --primary-on-dark: var(--color-pure-black-950);
+}
+
+/* Mix-ramp tokens keep translucent surfaces and elevation consistent by mode. */
+:root {
+  --subtle-color: light-dark(
+    color-mix(in srgb, var(--foreground-color) 5%, transparent),
+    color-mix(in srgb, var(--foreground-color) 8%, transparent)
+  );
+  --border-color: light-dark(
+    color-mix(in srgb, var(--foreground-color) 10%, transparent),
+    color-mix(in srgb, var(--foreground-color) 16%, transparent)
+  );
+  --border-strong-color: light-dark(
+    color-mix(in srgb, var(--foreground-color) 20%, transparent),
+    color-mix(in srgb, var(--foreground-color) 28%, transparent)
+  );
+  --shadow-color: light-dark(
+    color-mix(in srgb, var(--foreground-color) 25%, transparent),
+    color-mix(in srgb, var(--foreground-color) 45%, transparent)
+  );
+  --scrim-color: light-dark(
+    color-mix(in srgb, var(--foreground-color) 40%, transparent),
+    color-mix(in srgb, var(--foreground-color) 60%, transparent)
+  );
+  --primary-color-wash: light-dark(
+    color-mix(in srgb, var(--primary-color) 8%, transparent),
+    color-mix(in srgb, var(--primary-color) 14%, transparent)
+  );
+  --primary-color-ring: light-dark(
+    color-mix(in srgb, var(--primary-color) 16%, transparent),
+    color-mix(in srgb, var(--primary-color) 24%, transparent)
+  );
+}
+
+/* Semantic roles resolve from the family and the document color scheme. */
+:root {
+  --primary-color: light-dark(var(--primary-600), var(--primary-400));
+  --primary-color-hover: light-dark(var(--primary-700), var(--primary-300));
+  --primary-color-strong: light-dark(var(--primary-800), var(--primary-200));
+  --primary-color-subtle: light-dark(var(--primary-50), var(--primary-950));
+  --primary-color-on: light-dark(var(--primary-on-light), var(--primary-on-dark));
+
+  --background-color: light-dark(var(--color-paper-50), var(--color-inkstone-950));
+  --foreground-color: light-dark(var(--color-inkstone-900), var(--color-paper-50));
+  --muted-color: light-dark(var(--color-inkstone-500), var(--color-inkstone-300));
+  --muted-strong-color: light-dark(var(--color-inkstone-400), var(--color-inkstone-200));
+  --surface-color: light-dark(var(--color-pure-black-50), var(--color-inkstone-900));
+  --surface-hover-color: var(--subtle-color);
+
+  --contrast-background-color: light-dark(var(--color-inkstone-900), var(--color-paper-50));
+  --contrast-foreground-color: light-dark(var(--color-paper-50), var(--color-inkstone-950));
+  --contrast-muted-color: light-dark(var(--color-inkstone-300), var(--color-inkstone-500));
+  --contrast-border-color: color-mix(in srgb, var(--contrast-foreground-color) 18%, transparent);
+  --code-background-color: var(--primary-950);
+  --code-foreground-color: var(--color-paper-50);
+
+  --success-color: light-dark(var(--color-status-success-light), var(--color-status-success-dark));
+  --warning-color: light-dark(var(--color-status-warning-light), var(--color-status-warning-dark));
+  --danger-color: light-dark(var(--color-status-danger-light), var(--color-status-danger-dark));
+  --success-color-subtle: light-dark(color-mix(in srgb, var(--success-color) 8%, transparent), color-mix(in srgb, var(--success-color) 18%, transparent));
+  --warning-color-subtle: light-dark(color-mix(in srgb, var(--warning-color) 8%, transparent), color-mix(in srgb, var(--warning-color) 18%, transparent));
+  --danger-color-subtle: light-dark(color-mix(in srgb, var(--danger-color) 8%, transparent), color-mix(in srgb, var(--danger-color) 18%, transparent));
+  --success-color-on: light-dark(var(--color-paper-50), var(--color-pure-black-950));
+  --warning-color-on: light-dark(var(--color-paper-50), var(--color-pure-black-950));
+  --danger-color-on: light-dark(var(--color-paper-50), var(--color-pure-black-950));
+
+  --shadow-lift: 0 18px 40px -28px var(--shadow-color);
+  --shadow-pop: 0 22px 50px -24px var(--scrim-color);
+  --shadow-ring: 0 0 0 3px var(--primary-color-ring);
+  --scrim-nav: color-mix(in srgb, var(--background-color) 72%, transparent);
+  --scrim-modal: var(--scrim-color);
+  --gradient-shimmer: linear-gradient(90deg, transparent, color-mix(in srgb, var(--primary-color-subtle) 90%, transparent) 50%, transparent);
+  --gradient-placeholder: linear-gradient(135deg, var(--subtle-color), var(--border-strong-color));
+  --gradient-hotspot: radial-gradient(400px circle at var(--mx, 50%) var(--my, 50%), var(--primary-color-wash), transparent 65%);
+
+  /* Editorial aliases preserve existing blog component contracts. */
+  --blog-paper: var(--background-color);
+  --blog-ink: var(--foreground-color);
+  --blog-ink-soft: var(--muted-color);
+  --blog-hairline: var(--border-color);
+  --blog-accent: var(--primary-color);
+  --blog-accent-deep: var(--primary-color-strong);
+  --blog-tint: var(--primary-color-subtle);
+  --blog-code: var(--code-background-color);
+  --blog-code-text: var(--code-foreground-color);
+}
+
+html {
+  color-scheme: light dark;
+  background: var(--background-color);
+}
+
+html.light {
+  color-scheme: light;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+body {
+  background: var(--background-color);
+  color: var(--foreground-color);
+}
+
+::selection {
+  background: var(--primary-color);
+  color: var(--primary-color-on);
+}
+
+::placeholder {
+  color: var(--muted-color);
+  opacity: 1;
+}
+
+:where(a, button, input, textarea, select, [tabindex]):focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 3px;
+}
+
+/* Older engines receive the same relationships through the class-based toggle. */
+@supports not (color: light-dark(#000, #fff)) {
+  :root {
+    --primary-color: var(--primary-600);
+    --primary-color-hover: var(--primary-700);
+    --primary-color-strong: var(--primary-800);
+    --primary-color-subtle: var(--primary-50);
+    --primary-color-on: var(--primary-on-light);
+    --background-color: var(--color-paper-50);
+    --foreground-color: var(--color-inkstone-900);
+    --muted-color: var(--color-inkstone-500);
+    --muted-strong-color: var(--color-inkstone-400);
+    --surface-color: var(--color-pure-black-50);
+    --contrast-background-color: var(--color-inkstone-900);
+    --contrast-foreground-color: var(--color-paper-50);
+    --contrast-muted-color: var(--color-inkstone-300);
+    --border-color: color-mix(in srgb, var(--foreground-color) 10%, transparent);
+  }
+
+  html.dark {
+    --primary-color: var(--primary-400);
+    --primary-color-hover: var(--primary-300);
+    --primary-color-strong: var(--primary-200);
+    --primary-color-subtle: var(--primary-950);
+    --primary-color-on: var(--primary-on-dark);
+    --background-color: var(--color-inkstone-950);
+    --foreground-color: var(--color-paper-50);
+    --muted-color: var(--color-inkstone-300);
+    --muted-strong-color: var(--color-inkstone-200);
+    --surface-color: var(--color-inkstone-900);
+    --contrast-background-color: var(--color-paper-50);
+    --contrast-foreground-color: var(--color-inkstone-950);
+    --contrast-muted-color: var(--color-inkstone-500);
+    --border-color: color-mix(in srgb, var(--foreground-color) 16%, transparent);
+  }
+}
+
+/* Tailwind may expose only semantic relationships; palette steps remain internal. */
+@theme inline {
+  --color-background: var(--background-color);
+  --color-foreground: var(--foreground-color);
+  --color-muted: var(--muted-color);
+  --color-muted-strong: var(--muted-strong-color);
+  --color-surface: var(--surface-color);
+  --color-subtle: var(--subtle-color);
+  --color-contrast: var(--contrast-background-color);
+  --color-contrast-foreground: var(--contrast-foreground-color);
+  --color-contrast-muted: var(--contrast-muted-color);
+  --color-code: var(--code-background-color);
+  --color-code-foreground: var(--code-foreground-color);
+  --color-primary: var(--primary-color);
+  --color-primary-hover: var(--primary-color-hover);
+  --color-primary-strong: var(--primary-color-strong);
+  --color-primary-subtle: var(--primary-color-subtle);
+  --color-primary-on: var(--primary-color-on);
+  --color-success: var(--success-color);
+  --color-warning: var(--warning-color);
+  --color-danger: var(--danger-color);
+  --color-line: var(--border-color);
+  --color-line-strong: var(--border-strong-color);
+  --shadow-lift: var(--shadow-lift);
+  --shadow-pop: var(--shadow-pop);
+}
