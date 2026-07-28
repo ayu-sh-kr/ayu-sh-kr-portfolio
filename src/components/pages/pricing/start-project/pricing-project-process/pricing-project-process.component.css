@@ -1,0 +1,101 @@
+pricing-project-process {
+  display: block;
+  max-width: 80rem;
+  margin-inline: auto;
+}
+
+.pricing-project-process-section {
+  margin-top: 4.5rem;
+}
+
+.pricing-project-subsection-copy {
+  max-width: 38rem;
+  text-align: left;
+}
+
+.pricing-project-subsection-copy h3 {
+  margin-top: 0.6rem;
+  color: var(--foreground-color);
+  font-size: var(--pricing-type-subsection-size);
+  font-weight: var(--pricing-type-section-weight);
+  letter-spacing: var(--pricing-type-section-tracking);
+  line-height: var(--pricing-type-section-leading);
+}
+
+.pricing-project-subsection-copy > p:last-child {
+  margin-top: 1rem;
+  color: var(--muted-color);
+  font-size: var(--pricing-type-lede-size);
+  line-height: var(--pricing-type-lede-leading);
+}
+
+.pricing-project-process-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1px;
+  margin-top: 2.4rem;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  border-radius: 1.25rem;
+  background: var(--border-color);
+}
+
+.pricing-project-process-grid article {
+  display: flex;
+  min-height: 13rem;
+  flex-direction: column;
+  background: var(--surface-color);
+  padding: 1.35rem;
+  transition: background-color 180ms ease;
+}
+
+.pricing-project-process-grid article:hover {
+  background: var(--primary-color-subtle);
+}
+
+.pricing-project-process-grid article > span {
+  color: var(--primary-color-strong);
+  font-size: var(--pricing-type-label-size);
+  font-weight: var(--pricing-type-label-weight);
+  letter-spacing: var(--pricing-type-label-tracking);
+}
+
+.pricing-project-process-grid h4 {
+  margin-top: 0.45rem;
+  color: var(--foreground-color);
+  font-size: var(--pricing-type-card-title-size);
+  font-weight: var(--pricing-type-card-title-weight);
+  letter-spacing: var(--pricing-type-card-title-tracking);
+}
+
+.pricing-project-process-grid p {
+  margin-top: 0.5rem;
+  color: var(--muted-color);
+  font-size: var(--pricing-type-compact-size);
+  line-height: var(--pricing-type-compact-leading);
+}
+
+.pricing-project-process-grid b {
+  margin-top: auto;
+  padding-top: 0.9rem;
+  color: var(--foreground-color);
+  font-size: var(--pricing-type-compact-size);
+}
+
+@media (max-width: 60rem) {
+  .pricing-project-process-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 42rem) {
+  .pricing-project-process-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pricing-project-process-grid article {
+    transition: none;
+  }
+}
