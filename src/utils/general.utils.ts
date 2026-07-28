@@ -46,7 +46,6 @@ export class GeneralUtils {
     const isDarkMode = theme === "dark";
     document.documentElement.classList.toggle("dark", isDarkMode);
     document.documentElement.classList.toggle("light", !isDarkMode);
-    document.documentElement.classList.toggle("bg-slate-950", isDarkMode);
 
     const colorSchemeMeta = document.querySelector<HTMLMetaElement>('meta[name="color-scheme"]');
     colorSchemeMeta?.setAttribute("content", isDarkMode ? "dark" : "light");
