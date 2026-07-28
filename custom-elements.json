@@ -36,6 +36,109 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/pages/blog/article/blog-article-header/blog-article-header.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "BlogArticleHeaderComponent",
+          "customElement": true,
+          "tagName": "blog-article-header",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [
+            {
+              "kind": "field",
+              "name": "category",
+              "attribute": "category",
+              "type": {
+                "text": "string"
+              },
+              "default": ""
+            },
+            {
+              "kind": "field",
+              "name": "metadata",
+              "attribute": "metadata",
+              "type": {
+                "text": "string"
+              },
+              "default": ""
+            },
+            {
+              "kind": "field",
+              "name": "title",
+              "attribute": "title",
+              "type": {
+                "text": "string"
+              },
+              "default": ""
+            },
+            {
+              "kind": "field",
+              "name": "writer",
+              "attribute": "writer",
+              "type": {
+                "text": "string"
+              },
+              "default": ""
+            }
+          ],
+          "attributes": [
+            {
+              "name": "category",
+              "fieldName": "category",
+              "type": {
+                "text": "string"
+              },
+              "default": ""
+            },
+            {
+              "name": "metadata",
+              "fieldName": "metadata",
+              "type": {
+                "text": "string"
+              },
+              "default": ""
+            },
+            {
+              "name": "title",
+              "fieldName": "title",
+              "type": {
+                "text": "string"
+              },
+              "default": ""
+            },
+            {
+              "name": "writer",
+              "fieldName": "writer",
+              "type": {
+                "text": "string"
+              },
+              "default": ""
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "BlogArticleHeaderComponent",
+          "declaration": {
+            "name": "BlogArticleHeaderComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "blog-article-header",
+          "declaration": {
+            "name": "BlogArticleHeaderComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/pages/blog/article/blog-article/blog-article.component.js",
       "declarations": [
         {
@@ -856,6 +959,105 @@
           "name": "design-typography-guidance",
           "declaration": {
             "name": "DesignTypographyGuidanceComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/design/layout/guidance/design-layout-guidance/design-layout-guidance.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "DesignLayoutGuidanceComponent",
+          "customElement": true,
+          "tagName": "design-layout-guidance",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "DesignLayoutGuidanceComponent",
+          "declaration": {
+            "name": "DesignLayoutGuidanceComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "design-layout-guidance",
+          "declaration": {
+            "name": "DesignLayoutGuidanceComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/design/layout/overview/design-layout-overview/design-layout-overview.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "DesignLayoutOverviewComponent",
+          "customElement": true,
+          "tagName": "design-layout-overview",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "DesignLayoutOverviewComponent",
+          "declaration": {
+            "name": "DesignLayoutOverviewComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "design-layout-overview",
+          "declaration": {
+            "name": "DesignLayoutOverviewComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/design/layout/roles/design-layout-roles/design-layout-roles.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "DesignLayoutRolesComponent",
+          "customElement": true,
+          "tagName": "design-layout-roles",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "DesignLayoutRolesComponent",
+          "declaration": {
+            "name": "DesignLayoutRolesComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "design-layout-roles",
+          "declaration": {
+            "name": "DesignLayoutRolesComponent"
           }
         }
       ]
@@ -2162,6 +2364,58 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/pages/privacy/document/privacy-document-header/privacy-document-header.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "PrivacyDocumentHeaderComponent",
+          "customElement": true,
+          "tagName": "privacy-document-header",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [
+            {
+              "kind": "field",
+              "name": "metadata",
+              "attribute": "metadata",
+              "type": {
+                "text": "string"
+              },
+              "default": ""
+            }
+          ],
+          "attributes": [
+            {
+              "name": "metadata",
+              "fieldName": "metadata",
+              "type": {
+                "text": "string"
+              },
+              "default": ""
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "PrivacyDocumentHeaderComponent",
+          "declaration": {
+            "name": "PrivacyDocumentHeaderComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "privacy-document-header",
+          "declaration": {
+            "name": "PrivacyDocumentHeaderComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/pages/privacy/document/privacy-markdown-view/privacy-markdown-view.component.js",
       "declarations": [
         {
@@ -2289,6 +2543,143 @@
           "name": "privacy-view",
           "declaration": {
             "name": "PrivacyViewComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/showcase/article/showcase-article-header/showcase-article-header.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "ShowcaseArticleHeaderComponent",
+          "customElement": true,
+          "tagName": "showcase-article-header",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [
+            {
+              "kind": "field",
+              "name": "kind",
+              "attribute": "kind",
+              "type": {
+                "text": "string"
+              },
+              "default": ""
+            },
+            {
+              "kind": "field",
+              "name": "stack",
+              "attribute": "stack",
+              "type": {
+                "text": "string"
+              },
+              "default": ""
+            },
+            {
+              "kind": "field",
+              "name": "status",
+              "attribute": "status",
+              "type": {
+                "text": "string"
+              },
+              "default": ""
+            },
+            {
+              "kind": "field",
+              "name": "tagline",
+              "attribute": "tagline",
+              "type": {
+                "text": "string"
+              },
+              "default": ""
+            },
+            {
+              "kind": "field",
+              "name": "title",
+              "attribute": "title",
+              "type": {
+                "text": "string"
+              },
+              "default": ""
+            },
+            {
+              "kind": "field",
+              "name": "year",
+              "attribute": "year",
+              "type": {
+                "text": "string"
+              },
+              "default": ""
+            }
+          ],
+          "attributes": [
+            {
+              "name": "kind",
+              "fieldName": "kind",
+              "type": {
+                "text": "string"
+              },
+              "default": ""
+            },
+            {
+              "name": "stack",
+              "fieldName": "stack",
+              "type": {
+                "text": "string"
+              },
+              "default": ""
+            },
+            {
+              "name": "status",
+              "fieldName": "status",
+              "type": {
+                "text": "string"
+              },
+              "default": ""
+            },
+            {
+              "name": "tagline",
+              "fieldName": "tagline",
+              "type": {
+                "text": "string"
+              },
+              "default": ""
+            },
+            {
+              "name": "title",
+              "fieldName": "title",
+              "type": {
+                "text": "string"
+              },
+              "default": ""
+            },
+            {
+              "name": "year",
+              "fieldName": "year",
+              "type": {
+                "text": "string"
+              },
+              "default": ""
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ShowcaseArticleHeaderComponent",
+          "declaration": {
+            "name": "ShowcaseArticleHeaderComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "showcase-article-header",
+          "declaration": {
+            "name": "ShowcaseArticleHeaderComponent"
           }
         }
       ]
@@ -3321,6 +3712,58 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/pages/terms/document/terms-document-header/terms-document-header.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "TermsDocumentHeaderComponent",
+          "customElement": true,
+          "tagName": "terms-document-header",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [
+            {
+              "kind": "field",
+              "name": "metadata",
+              "attribute": "metadata",
+              "type": {
+                "text": "string"
+              },
+              "default": ""
+            }
+          ],
+          "attributes": [
+            {
+              "name": "metadata",
+              "fieldName": "metadata",
+              "type": {
+                "text": "string"
+              },
+              "default": ""
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "TermsDocumentHeaderComponent",
+          "declaration": {
+            "name": "TermsDocumentHeaderComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "terms-document-header",
+          "declaration": {
+            "name": "TermsDocumentHeaderComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/pages/terms/document/terms-markdown-view/terms-markdown-view.component.js",
       "declarations": [
         {
@@ -4001,6 +4444,39 @@
           "name": "design-color-page",
           "declaration": {
             "name": "DesignColorPage"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/pages/design-layout.page.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "DesignLayoutPage",
+          "customElement": true,
+          "tagName": "design-layout-page",
+          "superclass": {
+            "name": "DotaPageElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "DesignLayoutPage",
+          "declaration": {
+            "name": "DesignLayoutPage"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "design-layout-page",
+          "declaration": {
+            "name": "DesignLayoutPage"
           }
         }
       ]

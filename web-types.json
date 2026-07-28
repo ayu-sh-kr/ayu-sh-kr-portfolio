@@ -116,6 +116,103 @@
           }
         },
         {
+          "name": "blog-article-header",
+          "source": {
+            "file": "./src/components/pages/blog/article/blog-article-header/blog-article-header.component.ts",
+            "offset": 369
+          },
+          "attributes": [
+            {
+              "name": "category",
+              "default": "",
+              "required": false,
+              "value": {
+                "type": "string"
+              },
+              "source": {
+                "file": "./src/components/pages/blog/article/blog-article-header/blog-article-header.component.ts",
+                "offset": 530
+              }
+            },
+            {
+              "name": "metadata",
+              "default": "",
+              "required": false,
+              "value": {
+                "type": "string"
+              },
+              "source": {
+                "file": "./src/components/pages/blog/article/blog-article-header/blog-article-header.component.ts",
+                "offset": 658
+              }
+            },
+            {
+              "name": "title",
+              "default": "",
+              "required": false,
+              "value": {
+                "type": "string"
+              },
+              "source": {
+                "file": "./src/components/pages/blog/article/blog-article-header/blog-article-header.component.ts",
+                "offset": 754
+              }
+            },
+            {
+              "name": "writer",
+              "default": "",
+              "required": false,
+              "value": {
+                "type": "string"
+              },
+              "source": {
+                "file": "./src/components/pages/blog/article/blog-article-header/blog-article-header.component.ts",
+                "offset": 846
+              }
+            }
+          ],
+          "js": {
+            "properties": [
+              {
+                "name": "category",
+                "type": "string",
+                "default": "",
+                "source": {
+                  "file": "./src/components/pages/blog/article/blog-article-header/blog-article-header.component.ts",
+                  "offset": 530
+                }
+              },
+              {
+                "name": "metadata",
+                "type": "string",
+                "default": "",
+                "source": {
+                  "file": "./src/components/pages/blog/article/blog-article-header/blog-article-header.component.ts",
+                  "offset": 658
+                }
+              },
+              {
+                "name": "title",
+                "type": "string",
+                "default": "",
+                "source": {
+                  "file": "./src/components/pages/blog/article/blog-article-header/blog-article-header.component.ts",
+                  "offset": 754
+                }
+              },
+              {
+                "name": "writer",
+                "type": "string",
+                "default": "",
+                "source": {
+                  "file": "./src/components/pages/blog/article/blog-article-header/blog-article-header.component.ts",
+                  "offset": 846
+                }
+              }
+            ]
+          }
+        },
+        {
           "name": "blog-filter",
           "source": {
             "file": "./src/components/pages/blog/index/archive/blog-filter/blog-filter.component.ts",
@@ -470,6 +567,50 @@
           "source": {
             "file": "./src/components/pages/design/color/roles/design-color-roles/design-color-roles.component.ts",
             "offset": 480
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "design-layout-guidance",
+          "source": {
+            "file": "./src/components/pages/design/layout/guidance/design-layout-guidance/design-layout-guidance.component.ts",
+            "offset": 311
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "design-layout-overview",
+          "source": {
+            "file": "./src/components/pages/design/layout/overview/design-layout-overview/design-layout-overview.component.ts",
+            "offset": 290
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "design-layout-page",
+          "source": {
+            "file": "./src/pages/design-layout.page.ts",
+            "offset": 591
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "design-layout-roles",
+          "source": {
+            "file": "./src/components/pages/design/layout/roles/design-layout-roles/design-layout-roles.component.ts",
+            "offset": 283
           },
           "attributes": [],
           "js": {
@@ -1091,6 +1232,40 @@
           }
         },
         {
+          "name": "privacy-document-header",
+          "source": {
+            "file": "./src/components/pages/privacy/document/privacy-document-header/privacy-document-header.component.ts",
+            "offset": 738
+          },
+          "attributes": [
+            {
+              "name": "metadata",
+              "default": "",
+              "required": false,
+              "value": {
+                "type": "string"
+              },
+              "source": {
+                "file": "./src/components/pages/privacy/document/privacy-document-header/privacy-document-header.component.ts",
+                "offset": 923
+              }
+            }
+          ],
+          "js": {
+            "properties": [
+              {
+                "name": "metadata",
+                "type": "string",
+                "default": "",
+                "source": {
+                  "file": "./src/components/pages/privacy/document/privacy-document-header/privacy-document-header.component.ts",
+                  "offset": 923
+                }
+              }
+            ]
+          }
+        },
+        {
           "name": "privacy-markdown-view",
           "source": {
             "file": "./src/components/pages/privacy/document/privacy-markdown-view/privacy-markdown-view.component.ts",
@@ -1261,6 +1436,145 @@
           "attributes": [],
           "js": {
             "properties": []
+          }
+        },
+        {
+          "name": "showcase-article-header",
+          "source": {
+            "file": "./src/components/pages/showcase/article/showcase-article-header/showcase-article-header.component.ts",
+            "offset": 309
+          },
+          "attributes": [
+            {
+              "name": "kind",
+              "default": "",
+              "required": false,
+              "value": {
+                "type": "string"
+              },
+              "source": {
+                "file": "./src/components/pages/showcase/article/showcase-article-header/showcase-article-header.component.ts",
+                "offset": 461
+              }
+            },
+            {
+              "name": "stack",
+              "default": "",
+              "required": false,
+              "value": {
+                "type": "string"
+              },
+              "source": {
+                "file": "./src/components/pages/showcase/article/showcase-article-header/showcase-article-header.component.ts",
+                "offset": 1001
+              }
+            },
+            {
+              "name": "status",
+              "default": "",
+              "required": false,
+              "value": {
+                "type": "string"
+              },
+              "source": {
+                "file": "./src/components/pages/showcase/article/showcase-article-header/showcase-article-header.component.ts",
+                "offset": 668
+              }
+            },
+            {
+              "name": "tagline",
+              "default": "",
+              "required": false,
+              "value": {
+                "type": "string"
+              },
+              "source": {
+                "file": "./src/components/pages/showcase/article/showcase-article-header/showcase-article-header.component.ts",
+                "offset": 863
+              }
+            },
+            {
+              "name": "title",
+              "default": "",
+              "required": false,
+              "value": {
+                "type": "string"
+              },
+              "source": {
+                "file": "./src/components/pages/showcase/article/showcase-article-header/showcase-article-header.component.ts",
+                "offset": 753
+              }
+            },
+            {
+              "name": "year",
+              "default": "",
+              "required": false,
+              "value": {
+                "type": "string"
+              },
+              "source": {
+                "file": "./src/components/pages/showcase/article/showcase-article-header/showcase-article-header.component.ts",
+                "offset": 568
+              }
+            }
+          ],
+          "js": {
+            "properties": [
+              {
+                "name": "kind",
+                "type": "string",
+                "default": "",
+                "source": {
+                  "file": "./src/components/pages/showcase/article/showcase-article-header/showcase-article-header.component.ts",
+                  "offset": 461
+                }
+              },
+              {
+                "name": "stack",
+                "type": "string",
+                "default": "",
+                "source": {
+                  "file": "./src/components/pages/showcase/article/showcase-article-header/showcase-article-header.component.ts",
+                  "offset": 1001
+                }
+              },
+              {
+                "name": "status",
+                "type": "string",
+                "default": "",
+                "source": {
+                  "file": "./src/components/pages/showcase/article/showcase-article-header/showcase-article-header.component.ts",
+                  "offset": 668
+                }
+              },
+              {
+                "name": "tagline",
+                "type": "string",
+                "default": "",
+                "source": {
+                  "file": "./src/components/pages/showcase/article/showcase-article-header/showcase-article-header.component.ts",
+                  "offset": 863
+                }
+              },
+              {
+                "name": "title",
+                "type": "string",
+                "default": "",
+                "source": {
+                  "file": "./src/components/pages/showcase/article/showcase-article-header/showcase-article-header.component.ts",
+                  "offset": 753
+                }
+              },
+              {
+                "name": "year",
+                "type": "string",
+                "default": "",
+                "source": {
+                  "file": "./src/components/pages/showcase/article/showcase-article-header/showcase-article-header.component.ts",
+                  "offset": 568
+                }
+              }
+            ]
           }
         },
         {
@@ -1833,7 +2147,7 @@
           "name": "support-faq",
           "source": {
             "file": "./src/components/pages/support/faq/support-faq/support-faq.component.ts",
-            "offset": 575
+            "offset": 474
           },
           "attributes": [],
           "js": {
@@ -1904,6 +2218,40 @@
           "attributes": [],
           "js": {
             "properties": []
+          }
+        },
+        {
+          "name": "terms-document-header",
+          "source": {
+            "file": "./src/components/pages/terms/document/terms-document-header/terms-document-header.component.ts",
+            "offset": 732
+          },
+          "attributes": [
+            {
+              "name": "metadata",
+              "default": "",
+              "required": false,
+              "value": {
+                "type": "string"
+              },
+              "source": {
+                "file": "./src/components/pages/terms/document/terms-document-header/terms-document-header.component.ts",
+                "offset": 913
+              }
+            }
+          ],
+          "js": {
+            "properties": [
+              {
+                "name": "metadata",
+                "type": "string",
+                "default": "",
+                "source": {
+                  "file": "./src/components/pages/terms/document/terms-document-header/terms-document-header.component.ts",
+                  "offset": 913
+                }
+              }
+            ]
           }
         },
         {
