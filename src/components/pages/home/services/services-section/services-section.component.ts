@@ -26,7 +26,7 @@ export class PortfolioServicesComponent extends BaseElement {
 
     return HTML`
       <section id="services" class="border-y border-(--border-color) px-5 py-28 sm:px-8 sm:py-36" aria-labelledby="services-title">
-        <div class="mx-auto max-w-7xl">
+        <div class="mx-auto max-w-[var(--layout-page-max)]">
           <div class="grid gap-8 lg:grid-cols-12">
             <p class="motion-eyebrow motion-reveal lg:col-span-3">How I can help</p>
             <h2 id="services-title" class="motion-title motion-reveal lg:col-span-9">Bring me the outcome, not a shopping list of frameworks.</h2>

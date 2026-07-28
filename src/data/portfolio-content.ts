@@ -336,6 +336,15 @@ export const portfolioContent = {
         },
         {
           number: "05",
+          title: "Design",
+          links: [
+            { label: "Layout", href: "/design/layout" },
+            { label: "Color", href: "/design/color" },
+            { label: "Typography", href: "/design/typography" },
+          ],
+        },
+        {
+          number: "06",
           title: "Elsewhere",
           links: [
             { label: "GitHub", href: "https://github.com/ayu-sh-kr", external: true },
@@ -344,7 +353,7 @@ export const portfolioContent = {
           ],
         },
         {
-          number: "06",
+          number: "07",
           title: "Legal",
           links: [
             { label: "Privacy Policy", href: "/legal/privacy" },

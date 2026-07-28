@@ -4,6 +4,7 @@
 @import "./theme.css";
 @import "./color.css";
 @import "./typography.css";
+@import "./layout.css";
 @import "./components/utils/scroll-hint/scroll-hint.component.css";
 @import "./components/utils/header/app-header/app-header.component.css";
 @import "./components/utils/footer/app-footer/app-footer.component.css";
@@ -18,6 +19,13 @@
 @import "./components/pages/design/color/overview/design-color-overview/design-color-overview.component.css";
 @import "./components/pages/design/color/roles/design-color-roles/design-color-roles.component.css";
 @import "./components/pages/design/color/guidance/design-color-guidance/design-color-guidance.component.css";
+@import "./components/pages/design/layout/overview/design-layout-overview/design-layout-overview.component.css";
+@import "./components/pages/design/layout/roles/design-layout-roles/design-layout-roles.component.css";
+@import "./components/pages/design/layout/guidance/design-layout-guidance/design-layout-guidance.component.css";
+@import "./components/pages/blog/article/blog-article-header/blog-article-header.component.css";
+@import "./components/pages/showcase/article/showcase-article-header/showcase-article-header.component.css";
+@import "./components/pages/privacy/document/privacy-document-header/privacy-document-header.component.css";
+@import "./components/pages/terms/document/terms-document-header/terms-document-header.component.css";
 @import "./components/pages/offline/shell/offline-page/offline-page.component.css";
 @import "./components/pages/offline/hero/offline-hero/offline-hero.component.css";
 @import "./components/pages/offline/troubleshoot/offline-troubleshoot/offline-troubleshoot.component.css";
