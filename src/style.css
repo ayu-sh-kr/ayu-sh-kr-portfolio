@@ -57,6 +57,9 @@
 @import "./components/pages/pricing/contact/pricing-contact/pricing-contact.component.css";
 @import "./components/pages/pricing/contact/pricing-sticky-contact/pricing-sticky-contact.component.css";
 @import "./components/pages/support/help/support-section/support-section.component.css";
+@import "./components/pages/support/help/support-intro/support-intro.component.css";
+@import "./components/pages/support/help/support-quick-help/support-quick-help.component.css";
+@import "./components/pages/support/help/support-ticket/support-ticket.component.css";
 @import "./components/pages/support/overview/support-overview/support-overview.component.css";
 @import "./components/pages/support/next-steps/support-next-steps/support-next-steps.component.css";
 @import "./components/pages/support/faq/support-faq/support-faq.component.css";
