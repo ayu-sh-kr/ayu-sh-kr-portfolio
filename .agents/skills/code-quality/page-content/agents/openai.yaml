@@ -1,0 +1,4 @@
+interface:
+  display_name: "Page Content"
+  short_description: "Keep route copy in page-owned data modules"
+  default_prompt: "Use $page-content to move this route’s authored copy into a page-owned data module."
