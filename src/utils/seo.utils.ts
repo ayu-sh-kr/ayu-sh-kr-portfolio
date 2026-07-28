@@ -53,6 +53,9 @@ const getAnalyticsPage = (pathname: string): {page: AnalyticsPage; slug?: string
   if (pathname === "/pricing") {
     return {page: "pricing"};
   }
+  if (pathname === "/support") {
+    return {page: "support"};
+  }
   if (pathname === "/blog") {
     return {page: "blog"};
   }
