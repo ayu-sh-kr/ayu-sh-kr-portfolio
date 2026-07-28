@@ -9,5 +9,6 @@ export { ShowcasePage } from "@app/pages/showcase.page.ts";
 export { ShowcaseSlugPage } from "@app/pages/showcase-slug.page.ts";
 export { PrivacyPage } from "@app/pages/privacy.page.ts";
 export { TermsPage } from "@app/pages/terms.page.ts";
-export { DesignPage } from "@app/pages/design.page.ts";
+export { DesignTypographyPage } from "@app/pages/design-typography.page.ts";
+export { DesignColorPage } from "@app/pages/design-color.page.ts";
 export { OfflinePage } from "@app/components/pages/offline/shell/offline-page/offline-page.component.ts";
