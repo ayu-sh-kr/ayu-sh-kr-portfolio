@@ -1,0 +1,12 @@
+coffee-impact { display: block; }
+.coffee-impact-section { padding-block: clamp(4.5rem, 9vw, 8rem); border-top: 1px solid var(--border-color); }
+.coffee-impact-container { width: min(100% - 2.5rem, 70rem); }
+.coffee-impact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(1.5rem, 4vw, 4rem); }
+.coffee-impact-item { display: grid; align-content: start; gap: .65rem; }
+.coffee-impact-icon { display: grid; width: 2.625rem; height: 2.625rem; place-items: center; border-radius: .75rem; background: var(--primary-color-subtle); color: var(--primary-color-strong); font-size: 1.2rem; }
+.coffee-impact-item h3 { margin: .55rem 0 0; font-size: var(--type-card-title-size); font-weight: var(--type-card-title-weight); letter-spacing: var(--type-card-title-tracking); }
+.coffee-impact-item p { margin: 0; color: var(--muted-color); line-height: var(--type-body-leading); }
+[data-coffee-reveal] { transform: translateY(1.5rem); opacity: 0; transition: opacity 700ms ease var(--coffee-reveal-delay, 0ms), transform 700ms cubic-bezier(.2,.8,.2,1) var(--coffee-reveal-delay, 0ms); }
+[data-coffee-reveal].is-revealed { transform: none; opacity: 1; }
+@media (max-width: 44rem) { .coffee-impact-grid { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: reduce) { [data-coffee-reveal] { transform: none; opacity: 1; transition: none; } }
