@@ -64,7 +64,7 @@ export class SupportOverviewComponent extends BaseElement {
     const { overview } = supportContent;
 
     return HTML`
-      <section class="support-overview" aria-labelledby="support-overview-title">
+      <section class="support-overview layout-page layout-section-hero" aria-labelledby="support-overview-title">
         <p class="support-eyebrow">${overview.eyebrow}</p>
         <h1 id="support-overview-title" class="support-display">
           ${overview.titleBeforeAccent} <span>${overview.titleAccent}</span> ${overview.titleAfterAccent}

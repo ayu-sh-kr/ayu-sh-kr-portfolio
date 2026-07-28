@@ -2,12 +2,6 @@ support-overview {
   display: block;
 }
 
-.support-overview {
-  max-width: var(--layout-page-max);
-  margin-inline: auto;
-  padding: clamp(6.5rem, 11vw, 9rem) var(--layout-gutter) 0;
-}
-
 .support-eyebrow {
   color: var(--primary-color-strong);
   font-size: var(--type-eyebrow-size);

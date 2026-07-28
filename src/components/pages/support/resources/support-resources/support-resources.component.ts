@@ -17,7 +17,7 @@ export class SupportResourcesComponent extends BaseElement {
   /** Renders the authored self-serve resources as accessible links. */
   render(): string {
     return HTML`
-      <section id="shelf" class="support-resources" aria-labelledby="support-resources-title">
+      <section id="shelf" class="support-resources layout-content layout-section" aria-labelledby="support-resources-title">
         <div class="support-resources-heading">
           <p class="support-eyebrow">Before you write</p>
           <h2 id="support-resources-title" class="support-section-title">Things that answer themselves.</h2>

@@ -7,9 +7,7 @@ support-next-steps { display: block; }
 }
 
 .support-next-inner {
-  max-width: var(--layout-page-max);
-  margin-inline: auto;
-  padding: 5rem var(--layout-gutter);
+  padding: 0;
 }
 
 .support-section-title {
@@ -39,5 +37,4 @@ support-next-steps { display: block; }
 .support-step-when { display: block; margin-top: 1rem; }
 
 @media (max-width: 52rem) { .support-steps { grid-template-columns: repeat(2, 1fr); gap: 2rem 0; } .support-step:nth-child(3) { padding-inline-start: 0; border-inline-start: 0; } }
-@media (max-width: 40rem) { .support-next-inner { padding: 3.5rem 1.2rem; } }
 @media (max-width: 30rem) { .support-steps { grid-template-columns: 1fr; gap: 0; } .support-step, .support-step:nth-child(3) { min-height: auto; padding: 1.4rem 0; border-top: 1px solid var(--border-color); border-inline-start: 0; } .support-step:first-child { padding-top: 0; border-top: 0; } }

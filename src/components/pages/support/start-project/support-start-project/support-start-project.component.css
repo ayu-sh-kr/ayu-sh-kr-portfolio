@@ -2,12 +2,6 @@ support-start-project {
   display: block;
 }
 
-.support-start-project {
-  max-width: var(--layout-page-max);
-  margin-inline: auto;
-  padding: 0 var(--layout-gutter) clamp(5rem, 12vw, 8rem);
-}
-
 .support-start-project-panel {
   display: grid;
   gap: 2rem;

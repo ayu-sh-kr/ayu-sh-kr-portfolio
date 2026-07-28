@@ -25,7 +25,7 @@ export class SupportStartProjectComponent extends BaseElement {
     const content = supportContent.startProject;
 
     return HTML`
-      <section id="start-project" class="support-start-project" aria-labelledby="start-project-title">
+      <section id="start-project" class="support-start-project layout-page layout-section-end" aria-labelledby="start-project-title">
         <div class="support-start-project-panel">
           <div>
             <p class="support-start-project-eyebrow">${content.eyebrow}</p>

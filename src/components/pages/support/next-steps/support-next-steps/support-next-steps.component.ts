@@ -17,8 +17,8 @@ export class SupportNextStepsComponent extends BaseElement {
   /** Renders the message-to-resolution sequence from the support content source. */
   render(): string {
     return HTML`
-      <section id="next" class="support-next-steps" aria-labelledby="support-next-title">
-        <div class="support-next-inner">
+      <section id="next" class="support-next-steps layout-section" aria-labelledby="support-next-title">
+        <div class="support-next-inner layout-page">
           <div class="support-next-heading">
             <p class="support-eyebrow">After you send</p>
             <h2 id="support-next-title" class="support-section-title">No black box.</h2>

@@ -2,12 +2,6 @@ support-section {
   display: block;
 }
 
-.support-section {
-  max-width: var(--layout-page-max);
-  margin-inline: auto;
-  padding: 6rem var(--layout-gutter) 7rem;
-}
-
 /* opener — welcoming, answers-first, never a form */
 .support-head {
   max-width: 38rem;
@@ -88,7 +82,7 @@ support-section {
 
 .support-route > * {
   position: relative;
-  z-index: 1;
+  z-index: var(--layout-z-base);
 }
 
 .support-route-icon {

@@ -383,7 +383,7 @@ export class SupportSectionComponent extends BaseElement {
     const { opener, routes, handoff, form, success } = supportContent;
 
     return HTML`
-      <section id="support" class="support-section" aria-labelledby="support-title">
+      <section id="support" class="support-section layout-content layout-section" aria-labelledby="support-title">
         <div class="support-head support-reveal">
           <p class="support-eyebrow">${opener.eyebrow}</p>
           <h2 id="support-title" class="support-section-title">
