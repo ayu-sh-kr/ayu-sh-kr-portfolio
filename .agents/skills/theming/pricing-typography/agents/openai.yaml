@@ -1,0 +1,4 @@
+interface:
+  display_name: "Pricing Typography"
+  short_description: "Keep pricing type scales consistent"
+  default_prompt: "Use $pricing-typography to audit and align pricing page typography."
