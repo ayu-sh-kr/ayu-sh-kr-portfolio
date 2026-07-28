@@ -1,0 +1,34 @@
+#showcase-hero-wrap {
+  block-size: 118svh;
+}
+
+.showcase-hero-stage {
+  justify-content: center;
+  padding-block: 7rem;
+}
+
+#showcase-hero-inner {
+  will-change: transform;
+}
+
+.showcase-count {
+  color: var(--muted-color);
+  font-size: 0.9rem;
+  letter-spacing: 0.01em;
+}
+
+.showcase-count strong {
+  color: var(--foreground-color);
+  font-variant-numeric: tabular-nums;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #showcase-hero-wrap {
+    block-size: auto;
+  }
+
+  .showcase-hero-stage {
+    position: static;
+    min-block-size: 75svh;
+  }
+}

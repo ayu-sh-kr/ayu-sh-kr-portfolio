@@ -1,0 +1,22 @@
+showcase-figure {
+  display: block;
+}
+
+.showcase-figure {
+  margin-block: 2em;
+}
+
+.showcase-figure img {
+  display: block;
+  inline-size: 100%;
+  block-size: auto;
+  border: 1px solid var(--border-color);
+  border-radius: 1rem;
+}
+
+.showcase-figure figcaption {
+  margin-block-start: 0.6rem;
+  color: var(--muted-color);
+  font-size: 0.875rem;
+  text-align: center;
+}

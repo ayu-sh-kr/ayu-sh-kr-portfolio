@@ -1,0 +1,196 @@
+.showcase-page {
+  display: block;
+  overflow: clip;
+}
+
+.showcase-pin-wrap {
+  position: relative;
+}
+
+.showcase-pin-stage {
+  position: sticky;
+  inset-block-start: 0;
+  display: flex;
+  min-block-size: 100svh;
+  align-items: center;
+  overflow: hidden;
+}
+
+.showcase-section {
+  padding-block: clamp(5.5rem, 12vw, 9rem);
+}
+
+.showcase-eyebrow {
+  color: var(--primary-color-strong);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.showcase-display,
+.showcase-title {
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 1.02;
+  text-wrap: balance;
+}
+
+.showcase-display {
+  font-size: clamp(2.75rem, 8vw, 7rem);
+}
+
+.showcase-title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+}
+
+.showcase-lede,
+.showcase-section-note {
+  color: var(--muted-color);
+  line-height: 1.7;
+  text-wrap: pretty;
+}
+
+.showcase-lede {
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+}
+
+.showcase-section-note {
+  font-size: 0.9rem;
+}
+
+.showcase-button {
+  min-block-size: 3rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  border-radius: 999px;
+  padding: 0.8rem 1.45rem;
+  font-size: 0.93rem;
+  font-weight: 600;
+  transition: transform 220ms cubic-bezier(0.2, 0.8, 0.2, 1), background-color 180ms ease, border-color 180ms ease;
+}
+
+.showcase-button:hover {
+  transform: translateY(-2px);
+}
+
+.showcase-button-ink {
+  background: var(--foreground-color);
+  color: var(--background-color);
+}
+
+.showcase-button-ink:hover {
+  background: var(--contrast-background-color);
+}
+
+.showcase-button-accent {
+  background: var(--primary-color);
+  color: var(--primary-color-on);
+}
+
+.showcase-button-accent:hover {
+  background: var(--primary-color-hover);
+}
+
+.showcase-button-ghost {
+  border: 1px solid var(--border-color);
+  color: var(--foreground-color);
+}
+
+.showcase-button-ghost:hover {
+  border-color: var(--foreground-color);
+}
+
+.showcase-chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.showcase-chip {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  background: var(--primary-color-subtle);
+  color: var(--primary-color-strong);
+  font-size: 0.77rem;
+  font-weight: 600;
+  line-height: 1.2;
+  padding: 0.38rem 0.72rem;
+}
+
+.showcase-chip-muted {
+  background: var(--surface-hover-color);
+  color: var(--muted-color);
+}
+
+.showcase-reveal {
+  opacity: 0;
+  transform: translateY(1.5rem);
+  transition: opacity 700ms ease, transform 700ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.showcase-reveal.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+.showcase-spotlight-index {
+  position: fixed;
+  z-index: 10;
+  inset-inline-end: clamp(1rem, 3vw, 2.5rem);
+  inset-block-start: 50%;
+  display: grid;
+  gap: 0.5rem;
+  transform: translateY(-50%);
+}
+
+.showcase-spotlight-index span {
+  inline-size: 0.45rem;
+  block-size: 0.45rem;
+  border: 1px solid var(--muted-strong-color);
+  border-radius: 50%;
+  transition: transform 180ms ease, background-color 180ms ease, border-color 180ms ease;
+}
+
+.showcase-spotlight-index span.is-active {
+  border-color: var(--primary-color);
+  background: var(--primary-color);
+  transform: scale(1.35);
+}
+
+@media (max-width: 44rem) {
+  .showcase-spotlight-index {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .showcase-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .showcase-button,
+  .showcase-spotlight-index span {
+    transition: none;
+  }
+}
+
+@media (forced-colors: active) {
+  .showcase-button,
+  .showcase-card,
+  .showcase-row,
+  .showcase-filter {
+    border: 1px solid ButtonText;
+  }
+
+  .showcase-chip {
+    border: 1px solid ButtonText;
+  }
+}
+
