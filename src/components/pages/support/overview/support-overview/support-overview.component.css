@@ -3,9 +3,9 @@ support-overview {
 }
 
 .support-overview {
-  max-width: 56rem;
+  max-width: var(--layout-page-max);
   margin-inline: auto;
-  padding: clamp(6.5rem, 11vw, 9rem) 1.5rem 0;
+  padding: clamp(6.5rem, 11vw, 9rem) var(--layout-gutter) 0;
 }
 
 .support-eyebrow {

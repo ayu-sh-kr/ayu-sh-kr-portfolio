@@ -3,9 +3,9 @@ support-section {
 }
 
 .support-section {
-  max-width: 56rem;
+  max-width: var(--layout-page-max);
   margin-inline: auto;
-  padding: 6rem 1.5rem 7rem;
+  padding: 6rem var(--layout-gutter) 7rem;
 }
 
 /* opener — welcoming, answers-first, never a form */

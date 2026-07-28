@@ -1,6 +1,6 @@
 support-resources { display: block; }
 
-.support-resources { max-width: 56rem; margin-inline: auto; padding: 4.5rem 1.5rem 1rem; }
+.support-resources { max-width: var(--layout-page-max); margin-inline: auto; padding: 4.5rem var(--layout-gutter) 1rem; }
 .support-resources-heading { max-width: 38rem; }
 .support-resources-heading > p:last-child { margin-top: 1.1rem; color: var(--muted-color); font-size: 1.125rem; line-height: 1.6; }
 .support-resource-list { margin-top: 2.4rem; border-top: 1px solid var(--border-color); }

@@ -1,61 +1,60 @@
-import { BaseElement, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
-import { OnEvent } from "@ayu-sh-kr/dota-wrap/event";
+import { BaseElement, BindEvent, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
 import { supportContent } from "@app/data/support-content.ts";
 
 /**
- * Provides the long-form support reference with combined text search and category filters.
+ * Renders the support reference as shared Dota accordions.
  *
- * It owns only the FAQ interaction. The support form remains a separate element, while
- * this component sends visitors back to its `#support` anchor when no authored answer fits.
+ * The component supplies Support's authored questions and answers while
+ * `dota-accordion` owns the consistent expansion, keyboard, and motion behavior.
  *
  * Selector: `support-faq`.
  */
 @Component({ selector: "support-faq", shadow: false })
 export class SupportFaqComponent extends BaseElement {
-  /** Active filter key; `all` leaves every FAQ category eligible. */
+  /** Active filter key; `all` leaves every authored question visible. */
   private activeCategory = "all";
-  /** Listener lifetime for the rendered search controls. */
-  private controller: AbortController | null = null;
 
-  /** Connects the FAQ controls and initializes the count after the markup is ready. */
-  @OnEvent("connected", true)
-  initializeFaq(): void {
-    this.controller = new AbortController();
-    const search = this.querySelector<HTMLInputElement>("#support-faq-search");
-    const clear = this.querySelector<HTMLButtonElement>("#support-faq-clear");
-    const categories = this.querySelectorAll<HTMLButtonElement>(".support-faq-category");
-    const signal = this.controller.signal;
+  /** Creates the stateless FAQ component before its accordions are rendered. */
+  constructor() {
+    super();
+  }
 
-    search?.addEventListener("input", () => this.applyFilters(), { signal });
-    clear?.addEventListener("click", () => {
-      if (!search) return;
-      search.value = "";
-      search.focus();
-      this.applyFilters();
-    }, { signal });
-    categories.forEach((category) => category.addEventListener("click", () => {
-      this.activeCategory = category.dataset.category ?? "all";
-      categories.forEach((button) => button.classList.toggle("is-active", button === category));
-      this.applyFilters();
-    }, { signal }));
-
+  /** Filters the existing accordions as the visitor refines the search term. */
+  @BindEvent({ event: "input", id: "#support-faq-search" })
+  filterFaqs(): void {
     this.applyFilters();
   }
 
-  /** Releases the dynamic control listeners when the route changes. */
-  @OnEvent("disconnected", true)
-  cleanupFaq(): void {
-    this.controller?.abort();
-    this.controller = null;
-    this.activeCategory = "all";
+  /** Clears the search term and restores focus to the search control. */
+  @BindEvent({ event: "click", id: "#support-faq-clear" })
+  clearSearch(): void {
+    const search = this.querySelector<HTMLInputElement>("#support-faq-search");
+    if (!search) {
+      return;
+    }
+
+    search.value = "";
+    search.focus();
+    this.applyFilters();
   }
 
-  /**
-   * Applies the current search term and category together, then reports the visible count.
-   *
-   * The matching term is marked only in summaries. Bodies stay untouched so repeated input
-   * cannot compound markup or alter the authored answer HTML.
-   */
+  /** Activates a category button and filters the existing accordion hosts. */
+  @BindEvent({ event: "click", id: "[data-support-faq-category]" })
+  selectCategory(event: MouseEvent): void {
+    const button = (event.target as HTMLElement).closest<HTMLButtonElement>("[data-support-faq-category]");
+    const category = button?.dataset.supportFaqCategory;
+    if (!button || !category || category === this.activeCategory) {
+      return;
+    }
+
+    this.activeCategory = category;
+    this.querySelectorAll<HTMLButtonElement>("[data-support-faq-category]").forEach((item) => {
+      item.classList.toggle("is-active", item === button);
+    });
+    this.applyFilters();
+  }
+
+  /** Applies the combined text and category criteria without rerendering the accordions. */
   private applyFilters(): void {
     const search = this.querySelector<HTMLInputElement>("#support-faq-search");
     const clear = this.querySelector<HTMLButtonElement>("#support-faq-clear");
@@ -64,74 +63,79 @@ export class SupportFaqComponent extends BaseElement {
     const term = search?.value.trim().toLocaleLowerCase() ?? "";
     let visibleCount = 0;
 
-    this.querySelectorAll<HTMLDetailsElement>(".support-faq-item").forEach((item) => {
-      const searchableText = item.dataset.searchText ?? "";
+    this.querySelectorAll<HTMLElement>("[data-support-faq-item]").forEach((item) => {
       const matchesCategory = this.activeCategory === "all" || item.dataset.category === this.activeCategory;
-      const isVisible = matchesCategory && (!term || searchableText.includes(term));
-      item.hidden = !isVisible;
-      if (!isVisible) item.open = false;
-      if (isVisible) visibleCount += 1;
-
-      const summary = item.querySelector<HTMLElement>("summary");
-      const question = item.dataset.question ?? "";
-      if (!summary) return;
-      summary.innerHTML = term && isVisible
-        ? `${question.replace(new RegExp(this.escapeForRegExp(term), "ig"), (match) => `<mark>${match}</mark>`)}<span class="support-plus" aria-hidden="true">+</span>`
-        : `${question}<span class="support-plus" aria-hidden="true">+</span>`;
+      const matchesSearch = !term || (item.dataset.searchText ?? "").includes(term);
+      item.hidden = !matchesCategory || !matchesSearch;
+      if (!item.hidden) {
+        visibleCount += 1;
+      }
     });
 
-    const total = supportContent.faqs.length;
     if (clear) clear.classList.toggle("is-visible", Boolean(term));
+    if (count) count.innerHTML = visibleCount === supportContent.faqs.length
+      ? `<b>${visibleCount}</b> ${supportContent.faq.questionLabel}`
+      : `<b>${visibleCount}</b> of ${supportContent.faqs.length} ${supportContent.faq.questionLabel}`;
     if (empty) empty.hidden = visibleCount !== 0;
-    if (count) count.innerHTML = visibleCount === total ? `<b>${total}</b> questions` : `<b>${visibleCount}</b> of ${total} questions`;
   }
 
-  /** Escapes a visitor's search text before it becomes a case-insensitive highlighting expression. */
-  private escapeForRegExp(value: string): string {
-    return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  /** Escapes dynamic text for use in quoted accordion and data attributes. */
+  private escapeAttribute(value: string): string {
+    return value.replaceAll("&", "&amp;").replaceAll('"', "&quot;");
   }
 
-  /** Renders the searchable FAQ source; controls are connected after this initial paint. */
+  /** Returns Support's authored answers using the same shared accordion contract as Pricing. */
   render(): string {
-    const categories = [
-      ["all", "Everything"],
-      ["help", "Getting help"],
-      ["scope", "Scope & retainers"],
-      ["dota", "dota libraries"],
-      ["billing", "Billing & handover"],
-      ["security", "Security & data"],
-    ];
+    const content = supportContent.faq;
+    const accordionConfig = JSON.stringify({
+      container: "support-faq-accordion-container",
+      button: {
+        base: "support-faq-accordion-button",
+        size: { md: "" },
+        color: { gray: { ghost: "support-faq-accordion-button-color" } },
+      },
+      paragraph: "support-faq-accordion-answer",
+    });
 
     return HTML`
       <section id="faq" class="support-faq" aria-labelledby="support-faq-title">
-        <div class="support-faq-heading">
-          <p class="support-eyebrow">Questions</p>
-          <h2 id="support-faq-title" class="support-section-title">The long answers.</h2>
-          <p>Everything clients and library users actually ask, written out once so nobody has to wait on me for it.</p>
-        </div>
-
-        <div class="support-faq-search">
-          <span aria-hidden="true">⌕</span>
-          <input id="support-faq-search" type="search" placeholder="Search: invoice, retainer, staging, NDA…" aria-label="Search questions" autocomplete="off" />
-          <button id="support-faq-clear" type="button" aria-label="Clear search">×</button>
-        </div>
-        <div class="support-faq-categories" role="group" aria-label="Filter by category">
-          ${categories.map(([value, label], index) => `<button class="support-faq-category${index === 0 ? " is-active" : ""}" type="button" data-category="${value}">${label}</button>`).join("")}
-        </div>
-        <p id="support-faq-count" class="support-faq-count" aria-live="polite"></p>
-
-        <div class="support-faq-list">
-          ${supportContent.faqs.map((faq) => `
-            <details class="support-faq-item" data-category="${faq.category}" data-question="${faq.question}" data-search-text="${`${faq.question} ${faq.answer}`.replace(/<[^>]*>/g, "").toLocaleLowerCase()}">
-              <summary>${faq.question}<span class="support-plus" aria-hidden="true">+</span></summary>
-              <div class="support-faq-answer"><span>${faq.categoryLabel}</span>${faq.answer}</div>
-            </details>`).join("")}
-        </div>
-
-        <div id="support-faq-empty" class="support-faq-empty" hidden>
-          <h3>Nothing here matches that.</h3>
-          <p>Which is a perfectly good reason to ask me directly — I'll answer, then add it to this page.</p>
-          <a class="support-faq-ask" href="#support">Ask me instead</a>
+        <div class="support-faq-content">
+          <div class="support-faq-heading">
+            <p class="support-eyebrow">${content.eyebrow}</p>
+            <h2 id="support-faq-title" class="support-section-title">${content.title}</h2>
+            <p>${content.body}</p>
+          </div>
+          <div class="support-faq-search">
+            <span aria-hidden="true">⌕</span>
+            <input id="support-faq-search" type="search" placeholder="${content.searchPlaceholder}" aria-label="${content.searchAriaLabel}" autocomplete="off" />
+            <button id="support-faq-clear" type="button" aria-label="${content.clearAriaLabel}">×</button>
+          </div>
+          <div class="support-faq-categories" role="group" aria-label="${content.categoryAriaLabel}">
+            ${content.categories.map((category, index) => `<button class="support-faq-category${index === 0 ? " is-active" : ""}" type="button" data-support-faq-category="${category.value}">${category.label}</button>`).join("")}
+          </div>
+          <p id="support-faq-count" class="support-faq-count" aria-live="polite"><b>${supportContent.faqs.length}</b> ${content.questionLabel}</p>
+          <div class="support-faq-list">
+            ${supportContent.faqs
+              .map(
+                (faq) => HTML`
+                  <dota-accordion
+                    classname="support-faq-accordion"
+                    data-support-faq-item
+                    data-category="${faq.category}"
+                    data-search-text="${this.escapeAttribute(`${faq.question} ${faq.answer}`.replace(/<[^>]*>/g, "").toLocaleLowerCase())}"
+                    header="${this.escapeAttribute(faq.question)}"
+                    description="${this.escapeAttribute(faq.answer)}"
+                    config='${accordionConfig}'
+                  ></dota-accordion>
+                `,
+              )
+              .join("")}
+          </div>
+          <div id="support-faq-empty" class="support-faq-empty" hidden>
+            <h3>${content.empty.title}</h3>
+            <p>${content.empty.body}</p>
+            <a class="support-faq-ask" href="#support">${content.empty.actionLabel}</a>
+          </div>
         </div>
       </section>
     `;

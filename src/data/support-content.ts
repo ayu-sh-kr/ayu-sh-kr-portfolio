@@ -90,6 +90,31 @@ export const supportContent = {
     { category: "security", categoryLabel: "Security & data", question: "Can you sign our NDA, DPA, or vendor forms?", answer: "Usually yes, and quickly. Send it with the first message. For security questionnaires, I will be candid about which controls a one-person studio genuinely has." },
   ],
 
+  /** Labels and filter choices for the support reference accordions. */
+  faq: {
+    eyebrow: "Questions",
+    title: "The long answers.",
+    body: "Everything clients and library users actually ask, written out once so nobody has to wait on me for it.",
+    searchPlaceholder: "Search: invoice, retainer, staging, NDA…",
+    searchAriaLabel: "Search questions",
+    clearAriaLabel: "Clear search",
+    categoryAriaLabel: "Filter by category",
+    questionLabel: "questions",
+    categories: [
+      { value: "all", label: "Everything" },
+      { value: "help", label: "Getting help" },
+      { value: "scope", label: "Scope & retainers" },
+      { value: "dota", label: "dota libraries" },
+      { value: "billing", label: "Billing & handover" },
+      { value: "security", label: "Security & data" },
+    ],
+    empty: {
+      title: "Nothing here matches that.",
+      body: "Which is a perfectly good reason to ask me directly — I'll answer, then add it to this page.",
+      actionLabel: "Ask me instead",
+    },
+  },
+
   /** Self-serve destinations that resolve common requests before a message is needed. */
   resources: [
     { title: "Your handover docs", body: "In the repo I shipped, under /docs — setup, runbooks, and the why behind the odd decisions.", href: "/support#support" },

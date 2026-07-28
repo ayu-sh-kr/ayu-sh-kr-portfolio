@@ -3,9 +3,9 @@ support-start-project {
 }
 
 .support-start-project {
-  max-width: 56rem;
+  max-width: var(--layout-page-max);
   margin-inline: auto;
-  padding: 0 1.5rem clamp(5rem, 12vw, 8rem);
+  padding: 0 var(--layout-gutter) clamp(5rem, 12vw, 8rem);
 }
 
 .support-start-project-panel {
