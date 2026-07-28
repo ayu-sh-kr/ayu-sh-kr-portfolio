@@ -1,15 +1,9 @@
-.design-layout-guidance {
-  display: grid;
-  gap: clamp(2.5rem, 7vw, 7rem);
-  padding-block: var(--layout-section-space);
-}
-
 .design-layout-guidance > div {
   max-inline-size: var(--layout-content-max);
 }
 
 .design-layout-guidance h2 {
-  margin: 0.9rem 0 1.2rem;
+  margin: 0;
 }
 
 .design-layout-guidance .type-lede {
@@ -19,12 +13,12 @@
 
 .design-layout-rules {
   display: grid;
-  gap: 1px;
+  gap: var(--layout-space-1);
   margin: 0;
   padding: 0;
   overflow: hidden;
   border: 1px solid var(--border-color);
-  border-radius: 1.5rem;
+  border-radius: var(--layout-radius-lg);
   background: var(--border-color);
   list-style: none;
 }
@@ -32,10 +26,10 @@
 .design-layout-rules li {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
-  gap: 1rem;
+  gap: var(--layout-space-4);
   align-items: start;
   background: var(--surface-color);
-  padding: 1.25rem;
+  padding: var(--layout-space-5);
 }
 
 .design-layout-rules span {
@@ -46,11 +40,4 @@
 .design-layout-rules p {
   margin: 0;
   color: var(--muted-color);
-}
-
-@media (min-width: 64rem) {
-  .design-layout-guidance {
-    grid-template-columns: minmax(0, 0.8fr) minmax(25rem, 1.2fr);
-    align-items: start;
-  }
 }

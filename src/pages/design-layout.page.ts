@@ -32,6 +32,7 @@ export class DesignLayoutPage extends DotaPageElement {
       <main id="design-layout-page-main">
         <design-layout-overview></design-layout-overview>
         <design-layout-roles></design-layout-roles>
+        <design-layout-primitives></design-layout-primitives>
         <design-layout-guidance></design-layout-guidance>
       </main>
       <app-footer></app-footer>

@@ -17,13 +17,13 @@ export class DesignLayoutRolesComponent extends BaseElement {
     const { roles } = designLayoutContent;
 
     return HTML`
-      <section class="design-layout-roles layout-page" aria-labelledby="design-layout-roles-title">
-        <div class="design-layout-heading">
+      <section class="design-layout-roles layout-page layout-section" aria-labelledby="design-layout-roles-title">
+        <div class="design-layout-heading layout-stack layout-stack-sm">
           <p class="type-eyebrow">${roles.eyebrow}</p>
           <h2 id="design-layout-roles-title" class="type-section">${roles.title}</h2>
           <p class="type-lede">${roles.lede}</p>
         </div>
-        <div class="design-layout-role-grid">
+        <div class="design-layout-role-grid layout-grid-4">
           ${roles.items.map((item) => HTML`
             <article class="design-layout-role-card">
               <code>${item.token}</code>

@@ -17,13 +17,13 @@ export class DesignLayoutGuidanceComponent extends BaseElement {
     const { guidance } = designLayoutContent;
 
     return HTML`
-      <section class="design-layout-guidance layout-page" aria-labelledby="design-layout-guidance-title">
-        <div>
+      <section class="design-layout-guidance layout-page layout-section-end layout-grid-rail" aria-labelledby="design-layout-guidance-title">
+        <div class="layout-stack layout-stack-sm">
           <p class="type-eyebrow">${guidance.eyebrow}</p>
           <h2 id="design-layout-guidance-title" class="type-section">${guidance.title}</h2>
           <p class="type-lede">${guidance.lede}</p>
         </div>
-        <ol class="design-layout-rules">
+        <ol class="design-layout-rules layout-rail">
           ${guidance.rules.map((rule, index) => HTML`<li><span>${String(index + 1).padStart(2, "0")}</span><p>${rule}</p></li>`).join("")}
         </ol>
       </section>

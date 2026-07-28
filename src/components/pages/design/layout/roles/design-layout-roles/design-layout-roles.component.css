@@ -1,6 +1,5 @@
 .design-layout-roles {
   border-block: 1px solid var(--border-color);
-  padding-block: var(--layout-section-space);
 }
 
 .design-layout-heading {
@@ -8,7 +7,7 @@
 }
 
 .design-layout-heading h2 {
-  margin: 0.9rem 0 1.2rem;
+  margin: 0;
 }
 
 .design-layout-heading .type-lede {
@@ -16,21 +15,15 @@
   color: var(--muted-color);
 }
 
-.design-layout-role-grid {
-  display: grid;
-  gap: 1px;
-  margin-top: clamp(2.5rem, 5vw, 4rem);
-  overflow: hidden;
-  border: 1px solid var(--border-color);
-  border-radius: 1.5rem;
-  background: var(--border-color);
-}
+.design-layout-role-grid { margin-block-start: var(--layout-space-7); }
 
 .design-layout-role-card {
   display: grid;
-  gap: 0.8rem;
+  gap: var(--layout-space-3);
+  border: 1px solid var(--border-color);
+  border-radius: var(--layout-radius-lg);
   background: var(--surface-color);
-  padding: clamp(1.25rem, 3vw, 2rem);
+  padding: var(--layout-pad-card);
 }
 
 .design-layout-role-card code {
@@ -49,10 +42,4 @@
 .design-layout-role-card strong {
   color: var(--foreground-color);
   font-size: var(--type-section-size);
-}
-
-@media (min-width: 44rem) {
-  .design-layout-role-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
 }
