@@ -1,0 +1,4 @@
+interface:
+  display_name: "Typography"
+  short_description: "Keep typography consistent across pages"
+  default_prompt: "Use $typography to audit and align the app-wide type system."
