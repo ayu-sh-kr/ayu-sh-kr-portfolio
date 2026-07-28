@@ -433,10 +433,43 @@
           }
         },
         {
-          "name": "design-page",
+          "name": "design-color-guidance",
           "source": {
-            "file": "./src/pages/design.page.ts",
-            "offset": 577
+            "file": "./src/components/pages/design/color/guidance/design-color-guidance/design-color-guidance.component.ts",
+            "offset": 405
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "design-color-overview",
+          "source": {
+            "file": "./src/components/pages/design/color/overview/design-color-overview/design-color-overview.component.ts",
+            "offset": 571
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "design-color-page",
+          "source": {
+            "file": "./src/pages/design-color.page.ts",
+            "offset": 490
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "design-color-roles",
+          "source": {
+            "file": "./src/components/pages/design/color/roles/design-color-roles/design-color-roles.component.ts",
+            "offset": 3759
           },
           "attributes": [],
           "js": {
@@ -459,6 +492,17 @@
           "source": {
             "file": "./src/components/pages/design/overview/design-typography-overview/design-typography-overview.component.ts",
             "offset": 439
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "design-typography-page",
+          "source": {
+            "file": "./src/pages/design-typography.page.ts",
+            "offset": 545
           },
           "attributes": [],
           "js": {

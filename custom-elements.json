@@ -730,6 +730,105 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/pages/design/color/guidance/design-color-guidance/design-color-guidance.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "DesignColorGuidanceComponent",
+          "customElement": true,
+          "tagName": "design-color-guidance",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "DesignColorGuidanceComponent",
+          "declaration": {
+            "name": "DesignColorGuidanceComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "design-color-guidance",
+          "declaration": {
+            "name": "DesignColorGuidanceComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/design/color/overview/design-color-overview/design-color-overview.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "DesignColorOverviewComponent",
+          "customElement": true,
+          "tagName": "design-color-overview",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "DesignColorOverviewComponent",
+          "declaration": {
+            "name": "DesignColorOverviewComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "design-color-overview",
+          "declaration": {
+            "name": "DesignColorOverviewComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/design/color/roles/design-color-roles/design-color-roles.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "DesignColorRolesComponent",
+          "customElement": true,
+          "tagName": "design-color-roles",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "DesignColorRolesComponent",
+          "declaration": {
+            "name": "DesignColorRolesComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "design-color-roles",
+          "declaration": {
+            "name": "DesignColorRolesComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/pages/design/guidance/design-typography-guidance/design-typography-guidance.component.js",
       "declarations": [
         {
@@ -3875,13 +3974,13 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/pages/design.page.js",
+      "path": "src/pages/design-color.page.js",
       "declarations": [
         {
           "kind": "class",
-          "name": "DesignPage",
+          "name": "DesignColorPage",
           "customElement": true,
-          "tagName": "design-page",
+          "tagName": "design-color-page",
           "superclass": {
             "name": "DotaPageElement"
           },
@@ -3892,16 +3991,49 @@
       "exports": [
         {
           "kind": "js",
-          "name": "DesignPage",
+          "name": "DesignColorPage",
           "declaration": {
-            "name": "DesignPage"
+            "name": "DesignColorPage"
           }
         },
         {
           "kind": "custom-element-definition",
-          "name": "design-page",
+          "name": "design-color-page",
           "declaration": {
-            "name": "DesignPage"
+            "name": "DesignColorPage"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/pages/design-typography.page.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "DesignTypographyPage",
+          "customElement": true,
+          "tagName": "design-typography-page",
+          "superclass": {
+            "name": "DotaPageElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "DesignTypographyPage",
+          "declaration": {
+            "name": "DesignTypographyPage"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "design-typography-page",
+          "declaration": {
+            "name": "DesignTypographyPage"
           }
         }
       ]
