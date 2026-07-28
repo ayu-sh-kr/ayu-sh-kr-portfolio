@@ -5,26 +5,14 @@ showcase-view {
   font-family: var(--primary-font);
 }
 
-.showcase-container {
-  box-sizing: border-box;
-  inline-size: 100%;
-  max-inline-size: var(--layout-page-max);
-  margin-inline: auto;
-  padding-inline: var(--layout-gutter);
-}
-
 .showcase-progress {
   position: fixed;
-  z-index: 60;
+  z-index: var(--layout-z-toast);
   inset: 0 0 auto;
   block-size: 2px;
   background: var(--primary-color);
   transform: scaleX(0);
   transform-origin: left;
-}
-
-.showcase-article-shell {
-  padding-block: 8.5rem 4rem;
 }
 
 .showcase-back-link {

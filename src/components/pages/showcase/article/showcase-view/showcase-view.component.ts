@@ -120,7 +120,7 @@ export class ShowcaseViewComponent extends BaseElement {
   render(): string {
     if (!this.project) {
       return HTML`
-        <main class="showcase-article-shell showcase-container">
+        <main class="showcase-article-shell layout-page layout-section-hero">
           <a class="showcase-back-link" href="/showcase">← All showcases</a>
           <div class="showcase-not-found">
             <p class="showcase-eyebrow">404</p>
@@ -142,7 +142,7 @@ export class ShowcaseViewComponent extends BaseElement {
 
     return HTML`
       <div class="showcase-progress" data-showcase-progress aria-hidden="true"></div>
-      <main class="showcase-article-shell showcase-container">
+      <main class="showcase-article-shell layout-page layout-section-hero">
         <a class="showcase-back-link" href="/showcase">← All showcases</a>
         <showcase-article-header
           kind="${escapeHtml(this.project.kind)}"

@@ -102,8 +102,8 @@ export class ShowcaseArchiveComponent extends BaseElement {
     const countLabel = `${filteredProjects.length} ${filteredProjects.length === 1 ? "project" : "projects"}`;
 
     return HTML`
-      <section id="showcase-archive" class="showcase-section showcase-archive-section" aria-labelledby="showcase-archive-title">
-        <div class="mx-auto max-w-[var(--layout-page-max)] px-5 sm:px-8">
+      <section id="showcase-archive" class="showcase-archive-section layout-page layout-section" aria-labelledby="showcase-archive-title">
+        <div>
           <div class="showcase-archive-heading">
             <div>
               <p class="showcase-eyebrow showcase-reveal" data-showcase-reveal>Archive</p>

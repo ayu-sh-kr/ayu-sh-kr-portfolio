@@ -27,7 +27,7 @@ export class ShowcaseHeroComponent extends BaseElement {
     return HTML`
       <div id="showcase-hero-wrap" class="showcase-pin-wrap">
         <section class="showcase-pin-stage showcase-hero-stage" aria-labelledby="showcase-hero-title">
-          <div id="showcase-hero-inner" class="mx-auto max-w-5xl px-5 text-center sm:px-8">
+          <div id="showcase-hero-inner" class="layout-content layout-stack layout-stack-lg text-center">
             <p class="showcase-eyebrow">Showcase</p>
             <h1 id="showcase-hero-title" class="showcase-display mt-5">
               Things I’ve designed, built, and <span class="text-[var(--primary-color)]">shipped.</span>

@@ -16,10 +16,6 @@
   overflow: hidden;
 }
 
-.showcase-section {
-  padding-block: clamp(5.5rem, 12vw, 9rem);
-}
-
 .showcase-eyebrow {
   color: var(--primary-color-strong);
   font-size: 0.8125rem;
@@ -140,7 +136,7 @@
 
 .showcase-spotlight-index {
   position: fixed;
-  z-index: 10;
+  z-index: var(--layout-z-raised);
   inset-inline-end: clamp(1rem, 3vw, 2.5rem);
   inset-block-start: 50%;
   display: grid;
@@ -193,4 +189,3 @@
     border: 1px solid ButtonText;
   }
 }
-
