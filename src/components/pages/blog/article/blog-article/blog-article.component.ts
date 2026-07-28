@@ -97,11 +97,11 @@ export class BlogArticleComponent extends BaseElement {
    */
   render(): string {
     if (!this.ready) {
-      return `<main class="blog-article-shell blog-container"><p class="blog-loading">${blogArticleContent.loadingPost}</p></main>`;
+      return `<main class="blog-article-shell layout-page layout-section-hero"><p class="blog-loading">${blogArticleContent.loadingPost}</p></main>`;
     }
     if (!this.post) {
       return `
-        <main class="blog-article-shell blog-container">
+        <main class="blog-article-shell layout-page layout-section-hero">
           <a class="blog-back-link" href="/blog">← ${blogArticleContent.allPostsLabel}</a>
           <div class="blog-not-found"><p class="blog-eyebrow">${blogArticleContent.notFound.eyebrow}</p><h1>${blogArticleContent.notFound.title}</h1><a class="blog-ink-button" href="/blog">${blogArticleContent.notFound.browseLabel}</a></div>
         </main>
@@ -121,7 +121,7 @@ export class BlogArticleComponent extends BaseElement {
 
     return `
       <div class="blog-progress" data-blog-progress aria-hidden="true"></div>
-      <main class="blog-article-shell blog-container" data-blog-article>
+      <main class="blog-article-shell layout-page layout-section-hero" data-blog-article>
         <a class="blog-back-link" href="/blog">← ${blogArticleContent.allPostsLabel}</a>
         <blog-article-header
           category="${escapeHtml(labelForCategory(this.post.category))}"

@@ -1,6 +1,6 @@
 .blog-filterbar {
   position: sticky;
-  z-index: 40;
+  z-index: var(--layout-z-overlay);
   inset-block-start: 4rem;
   border-block-end: 1px solid var(--blog-hairline);
   background: color-mix(in srgb, var(--blog-paper) 84%, transparent);

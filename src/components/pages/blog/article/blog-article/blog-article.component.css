@@ -1,15 +1,11 @@
 .blog-progress {
   position: fixed;
-  z-index: 60;
+  z-index: var(--layout-z-toast);
   inset: 0 0 auto;
   block-size: 2px;
   background: var(--blog-accent);
   transform: scaleX(0);
   transform-origin: left;
-}
-
-.blog-article-shell {
-  padding-block: 8.5rem 4rem;
 }
 
 .blog-back-link {
