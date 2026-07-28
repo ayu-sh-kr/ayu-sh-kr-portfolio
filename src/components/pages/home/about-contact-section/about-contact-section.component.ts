@@ -47,10 +47,10 @@ export class PortfolioContactComponent extends BaseElement {
       <section id="contact" class="border-b border-(--border-color) px-5 py-32 text-center sm:px-8 sm:py-40" aria-labelledby="contact-title">
         <div class="mx-auto max-w-6xl">
           <p class="motion-eyebrow motion-reveal">${contact.eyebrow}</p>
-          <h2 id="contact-title" class="motion-display motion-reveal mx-auto mt-5 max-w-5xl text-[clamp(2.8rem,7vw,6.5rem)]">
+          <h2 id="contact-title" class="motion-display motion-reveal mx-auto mt-5 max-w-5xl">
             ${contact.titleBeforeAccent} <span class="text-(--primary-color)">${contact.accent}</span>
           </h2>
-          <p class="motion-reveal mx-auto mt-7 max-w-xl text-lg leading-8 text-(--muted-color)">${contact.body}</p>
+          <p class="motion-reveal mx-auto mt-7 max-w-xl text-[length:var(--type-lede-size)] leading-[var(--type-lede-leading)] text-(--muted-color)">${contact.body}</p>
           <div class="motion-reveal mt-10 flex flex-wrap justify-center gap-3">
             <a class="motion-button motion-button-accent" data-analytics-contact="email" href="${contact.emailHref}">Email me</a>
             <a class="motion-button motion-button-ghost" data-analytics-contact="resume" href="${contact.resumeHref}">Request résumé</a>
