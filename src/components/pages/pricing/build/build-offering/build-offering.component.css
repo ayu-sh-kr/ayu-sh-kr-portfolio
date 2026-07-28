@@ -3,9 +3,9 @@ build-offering {
 }
 
 .pricing-section {
-  max-width: 80rem;
+  max-width: var(--layout-page-max);
   margin-inline: auto;
-  padding-inline: 1.25rem;
+  padding-inline: var(--layout-gutter);
 }
 
 .pricing-build-section {
