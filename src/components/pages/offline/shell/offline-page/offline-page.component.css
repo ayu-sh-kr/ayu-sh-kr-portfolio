@@ -32,7 +32,7 @@ offline-page [hidden] {
 #offline-nav {
   position: sticky;
   inset-block-start: 0;
-  z-index: 2;
+  z-index: var(--layout-z-raised);
   border-bottom: 1px solid transparent;
   background: color-mix(in srgb, var(--offline-paper) 82%, transparent);
   backdrop-filter: blur(18px);
