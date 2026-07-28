@@ -20,7 +20,7 @@ export class SupportResourcesComponent extends BaseElement {
       <section id="shelf" class="support-resources layout-content layout-section" aria-labelledby="support-resources-title">
         <div class="support-resources-heading">
           <p class="support-eyebrow">Before you write</p>
-          <h2 id="support-resources-title" class="support-section-title">Things that answer themselves.</h2>
+          <h2 id="support-resources-title" class="type-section">Things that answer themselves.</h2>
           <p>Four places worth a look first. Between them they cover most of what lands in my inbox on a normal week.</p>
         </div>
         <div class="support-resource-list">
