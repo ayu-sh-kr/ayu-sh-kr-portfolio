@@ -1,0 +1,127 @@
+portfolio-motion-controller {
+  display: contents;
+}
+
+.motion-eyebrow {
+  color: var(--primary-color-strong);
+  font-size: var(--type-eyebrow-size);
+  font-weight: var(--type-eyebrow-weight);
+  letter-spacing: var(--type-eyebrow-tracking);
+  text-transform: uppercase;
+}
+
+.motion-display {
+  font-size: var(--type-display-size);
+  font-weight: var(--type-display-weight);
+  letter-spacing: var(--type-display-tracking);
+  line-height: var(--type-display-leading);
+  text-wrap: balance;
+}
+
+.motion-title {
+  font-size: var(--type-section-size);
+  font-weight: var(--type-section-weight);
+  letter-spacing: var(--type-section-tracking);
+  line-height: var(--type-section-leading);
+  text-wrap: balance;
+}
+
+.motion-button {
+  min-block-size: 3rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 999px;
+  padding: 0.8rem 1.55rem;
+  font-size: var(--type-control-size);
+  font-weight: var(--type-control-weight);
+  transition: transform 220ms cubic-bezier(0.2, 0.8, 0.2, 1), background-color 180ms ease, border-color 180ms ease;
+}
+
+.motion-button:hover {
+  transform: translateY(-2px);
+}
+
+.motion-button-ink {
+  background: var(--foreground-color);
+  color: var(--background-color);
+}
+
+.motion-button-ghost {
+  border: 1px solid var(--border-color);
+  color: var(--foreground-color);
+}
+
+.motion-button-ghost:hover {
+  border-color: var(--foreground-color);
+}
+
+.motion-button-accent {
+  background: var(--primary-color);
+  color: var(--primary-color-on);
+}
+
+.motion-button-accent:hover {
+  background: var(--primary-color-hover);
+}
+
+.motion-chip {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  padding: 0.32rem 0.7rem;
+  background: var(--primary-color-subtle);
+  color: var(--primary-color-strong);
+  font-size: var(--type-compact-size);
+  font-weight: var(--type-control-weight);
+}
+
+.quiet-link {
+  color: var(--muted-color);
+  transition: color 180ms ease;
+}
+
+.quiet-link:hover {
+  color: var(--primary-color-strong);
+}
+
+.pin-wrap {
+  position: relative;
+}
+
+.pin-stage {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+}
+
+#hero-inner,
+.work-rail {
+  will-change: transform;
+}
+
+.motion-reveal {
+  opacity: 0;
+  transform: translateY(1.5rem);
+  transition: opacity 700ms ease, transform 700ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.motion-reveal.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .motion-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .motion-button {
+    transition: none;
+  }
+}
