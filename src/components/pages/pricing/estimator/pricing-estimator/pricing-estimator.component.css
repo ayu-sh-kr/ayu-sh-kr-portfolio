@@ -1,0 +1,274 @@
+pricing-estimator {
+  display: block;
+}
+
+.pricing-estimator-section {
+  max-width: 80rem;
+  margin-inline: auto;
+  padding: 4rem 1.25rem;
+}
+
+.pricing-estimator-flow {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+  margin-top: 2.25rem;
+}
+
+.pricing-estimator-question {
+  min-inline-size: 0;
+  padding: 0;
+  border: 0;
+}
+
+.pricing-estimator-question legend {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 1.1rem;
+  color: var(--foreground-color);
+  font-size: var(--pricing-type-card-title-size);
+  font-weight: var(--pricing-type-card-title-weight);
+}
+
+.pricing-estimator-question legend span {
+  display: grid;
+  width: 1.8rem;
+  height: 1.8rem;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--primary-color-subtle);
+  color: var(--primary-color-strong);
+  font-size: var(--pricing-type-label-size);
+}
+
+.pricing-pick-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.8rem;
+}
+
+.pricing-pick-grid-three {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.pricing-pick {
+  position: relative;
+  display: flex;
+  min-height: 8.5rem;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.35rem;
+  padding: 1.15rem;
+  border: 1px solid var(--border-color);
+  border-radius: 1rem;
+  background: var(--surface-color);
+  color: var(--foreground-color);
+  cursor: pointer;
+  text-align: left;
+  transition: transform 220ms ease, border-color 180ms ease, background-color 180ms ease;
+}
+
+.pricing-pick:hover {
+  transform: translateY(-2px);
+  border-color: var(--primary-color);
+}
+
+.pricing-pick.is-selected {
+  border-color: var(--primary-color);
+  background: var(--primary-color-subtle);
+  box-shadow: 0 0 0 1px var(--primary-color);
+}
+
+.pricing-pick.is-selected::after {
+  position: absolute;
+  top: 0.7rem;
+  right: 0.7rem;
+  display: grid;
+  width: 1.2rem;
+  height: 1.2rem;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--primary-color);
+  color: var(--primary-color-on);
+  content: "✓";
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.pricing-pick-icon {
+  display: grid;
+  width: 1.7rem;
+  height: 1.7rem;
+  margin-bottom: 0.55rem;
+  place-items: center;
+  color: var(--primary-color-strong);
+}
+
+.pricing-pick-icon svg {
+  width: 1.35rem;
+  height: 1.35rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
+}
+
+.pricing-pick-label {
+  font-size: var(--pricing-type-card-title-size);
+  font-weight: var(--pricing-type-card-title-weight);
+}
+
+.pricing-pick-sublabel {
+  color: var(--muted-color);
+  font-size: var(--pricing-type-compact-size);
+  line-height: var(--pricing-type-compact-leading);
+}
+
+.pricing-estimator-result {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(12rem, 1fr) minmax(12rem, 0.8fr);
+  gap: 1.5rem;
+  align-items: end;
+  padding: 2rem;
+  border-radius: 1.625rem;
+  background: var(--foreground-color);
+  color: var(--background-color);
+}
+
+.pricing-estimator-result-eyebrow {
+  color: var(--muted-strong-color);
+  font-size: var(--pricing-type-label-size);
+  font-weight: var(--pricing-type-label-weight);
+  letter-spacing: var(--pricing-type-label-tracking);
+  text-transform: uppercase;
+}
+
+.pricing-estimator-figure {
+  margin-top: 0.5rem;
+  color: var(--background-color);
+  font-size: var(--pricing-type-estimate-size);
+  font-variant-numeric: tabular-nums;
+  font-weight: var(--pricing-type-display-weight);
+  letter-spacing: var(--pricing-type-display-tracking);
+  line-height: 1;
+}
+
+.pricing-estimator-figure.is-flashing {
+  animation: pricing-estimator-flash 260ms ease;
+}
+
+@keyframes pricing-estimator-flash {
+  50% {
+    opacity: 0.45;
+    transform: translateY(0.15rem);
+  }
+}
+
+.pricing-estimator-subline,
+.pricing-estimator-cta > p {
+  color: var(--muted-strong-color);
+  font-size: var(--pricing-type-compact-size);
+  line-height: var(--pricing-type-lede-leading);
+}
+
+.pricing-estimator-subline {
+  max-width: 34rem;
+  margin-top: 0.75rem;
+}
+
+.pricing-estimator-breakdown {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-content: flex-end;
+}
+
+.pricing-estimator-breakdown span {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  padding: 0.45rem 0.7rem;
+  border: 1px solid color-mix(in srgb, var(--background-color) 18%, transparent);
+  border-radius: 999px;
+  color: var(--muted-strong-color);
+  font-size: 0.75rem;
+}
+
+.pricing-estimator-breakdown b {
+  color: var(--background-color);
+  font-weight: 600;
+}
+
+.pricing-estimator-button {
+  display: inline-flex;
+  min-height: 3rem;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  border-radius: 999px;
+  padding: 0.8rem 1.2rem;
+  background: var(--primary-color);
+  color: var(--primary-color-on);
+  font-size: var(--pricing-type-control-size);
+  font-weight: var(--pricing-type-control-weight);
+  transition: background-color 180ms ease, transform 220ms ease;
+}
+
+.pricing-estimator-button:hover {
+  background: var(--primary-color-hover);
+  transform: translateY(-2px);
+}
+
+.pricing-estimator-cta .pricing-estimator-button {
+  width: 100%;
+}
+
+.pricing-estimator-cta > p {
+  margin-top: 0.75rem;
+}
+
+@media (max-width: 60rem) {
+  .pricing-pick-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .pricing-pick-grid-three {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .pricing-estimator-result {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .pricing-estimator-cta {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 40rem) {
+  .pricing-pick-grid,
+  .pricing-pick-grid-three,
+  .pricing-estimator-result {
+    grid-template-columns: 1fr;
+  }
+
+  .pricing-pick {
+    min-height: 5.5rem;
+  }
+
+  .pricing-pick-icon {
+    margin-bottom: 0.2rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pricing-pick,
+  .pricing-estimator-button,
+  .pricing-estimator-figure {
+    transition: none;
+    animation: none;
+  }
+}
