@@ -3580,6 +3580,72 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/pages/support/help/support-intro/support-intro.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "SupportIntroComponent",
+          "customElement": true,
+          "tagName": "support-intro",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "SupportIntroComponent",
+          "declaration": {
+            "name": "SupportIntroComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "support-intro",
+          "declaration": {
+            "name": "SupportIntroComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/support/help/support-quick-help/support-quick-help.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "SupportQuickHelpComponent",
+          "customElement": true,
+          "tagName": "support-quick-help",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "SupportQuickHelpComponent",
+          "declaration": {
+            "name": "SupportQuickHelpComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "support-quick-help",
+          "declaration": {
+            "name": "SupportQuickHelpComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/pages/support/help/support-section/support-section.component.js",
       "declarations": [
         {
@@ -3607,6 +3673,39 @@
           "name": "support-section",
           "declaration": {
             "name": "SupportSectionComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/support/help/support-ticket/support-ticket.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "SupportTicketComponent",
+          "customElement": true,
+          "tagName": "support-ticket",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "SupportTicketComponent",
+          "declaration": {
+            "name": "SupportTicketComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "support-ticket",
+          "declaration": {
+            "name": "SupportTicketComponent"
           }
         }
       ]

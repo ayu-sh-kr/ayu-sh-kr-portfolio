@@ -2166,6 +2166,17 @@
           }
         },
         {
+          "name": "support-intro",
+          "source": {
+            "file": "./src/components/pages/support/help/support-intro/support-intro.component.ts",
+            "offset": 526
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
           "name": "support-next-steps",
           "source": {
             "file": "./src/components/pages/support/next-steps/support-next-steps/support-next-steps.component.ts",
@@ -2199,6 +2210,17 @@
           }
         },
         {
+          "name": "support-quick-help",
+          "source": {
+            "file": "./src/components/pages/support/help/support-quick-help/support-quick-help.component.ts",
+            "offset": 726
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
           "name": "support-resources",
           "source": {
             "file": "./src/components/pages/support/resources/support-resources/support-resources.component.ts",
@@ -2213,7 +2235,7 @@
           "name": "support-section",
           "source": {
             "file": "./src/components/pages/support/help/support-section/support-section.component.ts",
-            "offset": 814
+            "offset": 666
           },
           "attributes": [],
           "js": {
@@ -2225,6 +2247,17 @@
           "source": {
             "file": "./src/components/pages/support/start-project/support-start-project/support-start-project.component.ts",
             "offset": 588
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "support-ticket",
+          "source": {
+            "file": "./src/components/pages/support/help/support-ticket/support-ticket.component.ts",
+            "offset": 765
           },
           "attributes": [],
           "js": {
