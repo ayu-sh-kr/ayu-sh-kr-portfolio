@@ -2,12 +2,6 @@ pricing-estimator {
   display: block;
 }
 
-.pricing-estimator-section {
-  max-width: var(--layout-page-max);
-  margin-inline: auto;
-  padding: 4rem var(--layout-gutter);
-}
-
 .pricing-estimator-flow {
   display: flex;
   flex-direction: column;

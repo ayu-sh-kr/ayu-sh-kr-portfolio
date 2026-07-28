@@ -4,8 +4,8 @@ pricing-sticky-contact {
 
 #pricing-stickybar {
   position: fixed;
-  z-index: 45;
-  bottom: 1.3rem;
+  z-index: var(--layout-z-toast);
+  inset-block-end: calc(var(--layout-space-4) + env(safe-area-inset-bottom, 0px));
   left: 50%;
   display: flex;
   width: 0;
@@ -105,7 +105,7 @@ pricing-sticky-contact {
 
 @media (max-width: 32.5rem) {
   #pricing-stickybar {
-    bottom: 1rem;
+    inset-block-end: calc(var(--layout-space-4) + env(safe-area-inset-bottom, 0px));
     height: 3.25rem;
   }
 
