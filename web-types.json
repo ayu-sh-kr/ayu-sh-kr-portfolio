@@ -436,7 +436,7 @@
           "name": "design-color-guidance",
           "source": {
             "file": "./src/components/pages/design/color/guidance/design-color-guidance/design-color-guidance.component.ts",
-            "offset": 405
+            "offset": 975
           },
           "attributes": [],
           "js": {
@@ -447,7 +447,7 @@
           "name": "design-color-overview",
           "source": {
             "file": "./src/components/pages/design/color/overview/design-color-overview/design-color-overview.component.ts",
-            "offset": 571
+            "offset": 593
           },
           "attributes": [],
           "js": {
@@ -458,7 +458,7 @@
           "name": "design-color-page",
           "source": {
             "file": "./src/pages/design-color.page.ts",
-            "offset": 490
+            "offset": 611
           },
           "attributes": [],
           "js": {
@@ -469,7 +469,7 @@
           "name": "design-color-roles",
           "source": {
             "file": "./src/components/pages/design/color/roles/design-color-roles/design-color-roles.component.ts",
-            "offset": 3759
+            "offset": 480
           },
           "attributes": [],
           "js": {
@@ -480,7 +480,7 @@
           "name": "design-typography-guidance",
           "source": {
             "file": "./src/components/pages/design/guidance/design-typography-guidance/design-typography-guidance.component.ts",
-            "offset": 409
+            "offset": 1001
           },
           "attributes": [],
           "js": {
@@ -491,7 +491,7 @@
           "name": "design-typography-overview",
           "source": {
             "file": "./src/components/pages/design/overview/design-typography-overview/design-typography-overview.component.ts",
-            "offset": 439
+            "offset": 650
           },
           "attributes": [],
           "js": {
@@ -502,7 +502,7 @@
           "name": "design-typography-page",
           "source": {
             "file": "./src/pages/design-typography.page.ts",
-            "offset": 545
+            "offset": 676
           },
           "attributes": [],
           "js": {
@@ -513,7 +513,7 @@
           "name": "design-typography-roles",
           "source": {
             "file": "./src/components/pages/design/roles/design-typography-roles/design-typography-roles.component.ts",
-            "offset": 2629
+            "offset": 782
           },
           "attributes": [],
           "js": {
