@@ -6,8 +6,11 @@ privacy-view {
 }
 
 .privacy-container {
-  inline-size: min(100% - 2.5rem, 72rem);
+  box-sizing: border-box;
+  inline-size: 100%;
+  max-inline-size: var(--layout-page-max);
   margin-inline: auto;
+  padding-inline: var(--layout-gutter);
 }
 
 .privacy-progress {
@@ -24,76 +27,12 @@ privacy-view {
   padding-block: 7.5rem 4rem;
 }
 
-.privacy-header {
-  max-inline-size: 45rem;
-  margin-inline: auto;
-}
-
-.privacy-chip-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-.privacy-chip,
 .privacy-scope-button {
   display: inline-flex;
   align-items: center;
   border-radius: 999px;
   font-size: var(--type-compact-size);
   font-weight: var(--type-control-weight);
-}
-
-.privacy-chip {
-  padding: 0.32rem 0.72rem;
-  background: var(--primary-color-subtle);
-  color: var(--primary-color-strong);
-}
-
-.privacy-chip-muted {
-  border: 1px solid var(--border-color);
-  background: transparent;
-  color: var(--muted-color);
-}
-
-.privacy-header h1 {
-  margin: 0.7rem 0;
-  font-size: var(--type-section-size);
-  font-weight: var(--type-section-weight);
-  letter-spacing: var(--type-section-tracking);
-  line-height: var(--type-section-leading);
-  text-wrap: balance;
-}
-
-.privacy-tagline {
-  margin: 0;
-  color: var(--muted-color);
-  font-size: var(--type-lede-size);
-  line-height: var(--type-lede-leading);
-  text-wrap: pretty;
-}
-
-.privacy-proof {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem 1.1rem;
-  margin-block-start: 1.35rem;
-  color: var(--muted-color);
-  font-size: var(--type-control-size);
-  font-weight: var(--type-control-weight);
-  line-height: var(--type-compact-leading);
-}
-
-.privacy-proof span + span::before {
-  margin-inline-end: 1rem;
-  color: var(--border-color);
-  content: "/";
-}
-
-.privacy-proof strong {
-  color: var(--foreground-color);
-  font-variant-numeric: tabular-nums;
-  font-weight: 650;
 }
 
 .privacy-eyebrow {
@@ -103,33 +42,6 @@ privacy-view {
   font-weight: var(--type-label-weight);
   letter-spacing: var(--type-eyebrow-tracking);
   text-transform: uppercase;
-}
-
-.privacy-summary {
-  margin-block-start: 2.4rem;
-  border-radius: 1.25rem;
-  padding: 1.6rem 1.8rem;
-  background: var(--primary-color-subtle);
-}
-
-.privacy-summary ul {
-  margin: 0.7rem 0 0 1.1rem;
-  padding-inline-start: 0;
-  color: var(--foreground-color);
-  font-size: var(--type-body-size);
-  line-height: var(--type-body-leading);
-}
-
-.privacy-summary li {
-  margin-block: 0.35rem;
-}
-
-.privacy-summary-note {
-  margin: 0.9rem 0 0;
-  color: var(--primary-color-strong);
-  font-size: var(--type-compact-size);
-  line-height: var(--type-compact-leading);
-  opacity: 0.8;
 }
 
 .privacy-scope {
@@ -269,10 +181,6 @@ privacy-view {
 }
 
 @media (max-width: 40rem) {
-  .privacy-container {
-    inline-size: min(100% - 2rem, 72rem);
-  }
-
   .privacy-proof {
     display: grid;
     gap: 0.35rem;

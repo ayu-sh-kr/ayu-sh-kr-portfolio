@@ -205,10 +205,7 @@ export class PrivacyViewComponent extends BaseElement {
       `;
     }
 
-    const {metadata, sections} = this.policy;
-    const summary = metadata.summary
-      .map((item) => `<li>${escapeHtml(item)}</li>`)
-      .join("");
+    const {metadata} = this.policy;
     const switches = metadata.switches.length
       ? metadata.switches
         .map((item) => `
@@ -231,24 +228,7 @@ export class PrivacyViewComponent extends BaseElement {
     return HTML`
       <div class="privacy-progress" data-privacy-progress aria-hidden="true"></div>
       <main id="top" class="privacy-shell privacy-container" data-privacy-page>
-        <header class="privacy-header">
-          <div class="privacy-chip-row">
-            <span class="privacy-chip">Privacy</span>
-            <span class="privacy-chip privacy-chip-muted">Version ${escapeHtml(metadata.version)}</span>
-          </div>
-          <h1>${escapeHtml(metadata.title)}</h1>
-          <p class="privacy-tagline">${escapeHtml(metadata.tagline)}</p>
-          <div class="privacy-proof" aria-label="Policy dates and scope">
-            <span>Last updated <strong>${formatDate(metadata.updated)}</strong></span>
-            <span>In effect from <strong>${formatDate(metadata.effective)}</strong></span>
-            <span>Applies to <strong>${escapeHtml(metadata.applies)}</strong></span>
-          </div>
-          <section class="privacy-summary" aria-labelledby="privacy-summary-title">
-            <p id="privacy-summary-title" class="privacy-eyebrow">The short version</p>
-            <ul>${summary}</ul>
-            <p class="privacy-summary-note">${escapeHtml(metadata.summaryNote)}</p>
-          </section>
-        </header>
+        <privacy-document-header metadata="${escapeHtml(JSON.stringify(metadata))}"></privacy-document-header>
 
         <section class="privacy-scope" aria-labelledby="privacy-scope-title">
           <p id="privacy-scope-title" class="privacy-eyebrow">Read the part that’s about you</p>
