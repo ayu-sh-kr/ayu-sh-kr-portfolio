@@ -2,6 +2,7 @@
 
 @import "tailwindcss";
 @import "./theme.css";
+@import "./typography.css";
 @import "./components/utils/scroll-hint/scroll-hint.component.css";
 @import "./components/utils/header/app-header/app-header.component.css";
 @import "./components/utils/footer/app-footer/app-footer.component.css";
@@ -18,19 +19,33 @@
 @import "./components/pages/home/motion-controller/motion-controller.component.css";
 @import "./components/pages/home/projects-section/projects-section.component.css";
 @import "./components/pages/home/speaking-section/speaking-section.component.css";
-@import "./components/pages/pricing/pricing-hero/pricing-hero.component.css";
-@import "./components/pages/pricing/pricing-switch/pricing-switch.component.css";
-@import "./components/pages/pricing/build-offering/build-offering.component.css";
-@import "./components/pages/pricing/pricing-estimator/pricing-estimator.component.css";
-@import "./components/pages/pricing/pricing-estimator-type-options/pricing-estimator-type-options.component.css";
-@import "./components/pages/pricing/pricing-estimator-stage-options/pricing-estimator-stage-options.component.css";
-@import "./components/pages/pricing/pricing-estimator-result/pricing-estimator-result.component.css";
-@import "./components/pages/pricing/build-pricing/build-pricing.component.css";
-@import "./components/pages/pricing/speaking-offering/speaking-offering.component.css";
-@import "./components/pages/pricing/speaking-pricing/speaking-pricing.component.css";
-@import "./components/pages/pricing/pricing-faq/pricing-faq.component.css";
-@import "./components/pages/pricing/pricing-contact/pricing-contact.component.css";
-@import "./components/pages/pricing/pricing-sticky-contact/pricing-sticky-contact.component.css";
+@import "./components/pages/pricing/hero/pricing-hero/pricing-hero.component.css";
+@import "./components/pages/pricing/service-switch/pricing-switch/pricing-switch.component.css";
+@import "./components/pages/pricing/build/build-offering/build-offering.component.css";
+@import "./components/pages/pricing/build/build-pricing/build-pricing.component.css";
+@import "./components/pages/pricing/estimator/pricing-estimator/pricing-estimator.component.css";
+@import "./components/pages/pricing/estimator/pricing-estimator-type-options/pricing-estimator-type-options.component.css";
+@import "./components/pages/pricing/estimator/pricing-estimator-stage-options/pricing-estimator-stage-options.component.css";
+@import "./components/pages/pricing/estimator/pricing-estimator-result/pricing-estimator-result.component.css";
+@import "./components/pages/pricing/speaking/speaking-offering/speaking-offering.component.css";
+@import "./components/pages/pricing/speaking/speaking-pricing/speaking-pricing.component.css";
+@import "./components/pages/pricing/start-project/pricing-start-project/pricing-start-project.component.css";
+@import "./components/pages/pricing/start-project/pricing-start-project-intro/pricing-start-project-intro.component.css";
+@import "./components/pages/pricing/start-project/pricing-project-mode-selector/pricing-project-mode-selector.component.css";
+@import "./components/pages/pricing/start-project/pricing-project-spec-form/pricing-project-spec-form.component.css";
+@import "./components/pages/pricing/start-project/pricing-project-idea-form/pricing-project-idea-form.component.css";
+@import "./components/pages/pricing/start-project/pricing-project-quote-form/pricing-project-quote-form.component.css";
+@import "./components/pages/pricing/start-project/pricing-project-process/pricing-project-process.component.css";
+@import "./components/pages/pricing/start-project/pricing-project-alternatives/pricing-project-alternatives.component.css";
+@import "./components/pages/pricing/faq/pricing-faq/pricing-faq.component.css";
+@import "./components/pages/pricing/contact/pricing-contact/pricing-contact.component.css";
+@import "./components/pages/pricing/contact/pricing-sticky-contact/pricing-sticky-contact.component.css";
+@import "./components/pages/support/support-section/support-section.component.css";
+@import "./components/pages/support/support-overview/support-overview.component.css";
+@import "./components/pages/support/support-next-steps/support-next-steps.component.css";
+@import "./components/pages/support/support-faq/support-faq.component.css";
+@import "./components/pages/support/support-resources/support-resources.component.css";
+@import "./components/pages/support/support-start-project/support-start-project.component.css";
 @import "./pages/pricing.page.css";
 @import "./components/pages/home/skills-section/skills-section.component.css";
 @import "./components/pages/home/services-section/services-section.component.css";
@@ -229,9 +244,6 @@ body {
   overflow-x: hidden;
   background: var(--background-color);
   color: var(--foreground-color);
-  font-family: var(--primary-font), sans-serif;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
 }
 
 app-root {
