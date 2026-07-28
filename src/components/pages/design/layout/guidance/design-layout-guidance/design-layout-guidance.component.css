@@ -1,0 +1,56 @@
+.design-layout-guidance {
+  display: grid;
+  gap: clamp(2.5rem, 7vw, 7rem);
+  padding-block: var(--layout-section-space);
+}
+
+.design-layout-guidance > div {
+  max-inline-size: var(--layout-content-max);
+}
+
+.design-layout-guidance h2 {
+  margin: 0.9rem 0 1.2rem;
+}
+
+.design-layout-guidance .type-lede {
+  margin: 0;
+  color: var(--muted-color);
+}
+
+.design-layout-rules {
+  display: grid;
+  gap: 1px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  border-radius: 1.5rem;
+  background: var(--border-color);
+  list-style: none;
+}
+
+.design-layout-rules li {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 1rem;
+  align-items: start;
+  background: var(--surface-color);
+  padding: 1.25rem;
+}
+
+.design-layout-rules span {
+  color: var(--primary-color-strong);
+  font-family: var(--font-mono);
+}
+
+.design-layout-rules p {
+  margin: 0;
+  color: var(--muted-color);
+}
+
+@media (min-width: 64rem) {
+  .design-layout-guidance {
+    grid-template-columns: minmax(0, 0.8fr) minmax(25rem, 1.2fr);
+    align-items: start;
+  }
+}

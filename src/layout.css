@@ -1,0 +1,34 @@
+/**
+ * Shared page geometry.
+ *
+ * Page sections use the page width and gutter tokens below; smaller measures
+ * are reserved for reading, forms, and other intentionally focused content.
+ */
+:root {
+  --layout-page-max: 80rem;
+  --layout-reading-max: 45rem;
+  --layout-content-max: 60rem;
+  --layout-gutter: clamp(1.25rem, 4vw, 3rem);
+  --layout-section-space: clamp(4.5rem, 9vw, 8rem);
+}
+
+/** Centers a full page section within the shared 80rem page measure. */
+.layout-page {
+  max-inline-size: var(--layout-page-max);
+  margin-inline: auto;
+  padding-inline: var(--layout-gutter);
+}
+
+/** Limits long-form copy to a comfortable reading measure. */
+.layout-reading {
+  max-inline-size: var(--layout-reading-max);
+  margin-inline: auto;
+  padding-inline: var(--layout-gutter);
+}
+
+/** Provides a spacious but narrower measure for dense content and forms. */
+.layout-content {
+  max-inline-size: var(--layout-content-max);
+  margin-inline: auto;
+  padding-inline: var(--layout-gutter);
+}
