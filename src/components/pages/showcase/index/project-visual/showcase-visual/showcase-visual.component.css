@@ -89,7 +89,7 @@ showcase-visual {
   display: grid;
   gap: 0.4rem;
   justify-items: end;
-  color: var(--primary-200);
+  color: var(--primary-color-strong);
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
   font-size: 0.7rem;
   opacity: 0.9;
