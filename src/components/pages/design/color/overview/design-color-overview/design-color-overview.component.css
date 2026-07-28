@@ -1,5 +1,5 @@
 .design-color-overview {
-  max-inline-size: 88rem;
+  max-inline-size: var(--layout-page-max);
   margin-inline: auto;
   padding-block: clamp(7rem, 14vw, 11rem) clamp(3.5rem, 8vw, 6rem);
 }
