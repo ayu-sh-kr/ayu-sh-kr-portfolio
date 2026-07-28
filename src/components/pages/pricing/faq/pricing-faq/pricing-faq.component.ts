@@ -33,7 +33,7 @@ export class PricingFaqComponent extends BaseElement {
     });
 
     return HTML`
-      <section class="pricing-faq-section" aria-labelledby="pricing-faq-title">
+      <section class="pricing-faq-section layout-page" aria-labelledby="pricing-faq-title">
         <div class="pricing-faq-content">
           <p class="pricing-eyebrow">${content.eyebrow}</p>
           <h2 id="pricing-faq-title" class="pricing-section-title mt-3">${content.title}</h2>

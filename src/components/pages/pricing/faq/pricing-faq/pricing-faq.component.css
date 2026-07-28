@@ -3,12 +3,7 @@ pricing-faq {
 }
 
 .pricing-faq-section {
-  padding: 4rem var(--layout-gutter);
-}
-
-.pricing-faq-content {
-  max-width: var(--layout-page-max);
-  margin-inline: auto;
+  padding-block: 4rem;
 }
 
 .pricing-faq-list {
