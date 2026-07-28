@@ -730,7 +730,7 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/pages/pricing/build-offering/build-offering.component.js",
+      "path": "src/components/pages/pricing/build/build-offering/build-offering.component.js",
       "declarations": [
         {
           "kind": "class",
@@ -763,7 +763,7 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/pages/pricing/build-pricing/build-pricing.component.js",
+      "path": "src/components/pages/pricing/build/build-pricing/build-pricing.component.js",
       "declarations": [
         {
           "kind": "class",
@@ -796,7 +796,7 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/pages/pricing/pricing-contact/pricing-contact.component.js",
+      "path": "src/components/pages/pricing/contact/pricing-contact/pricing-contact.component.js",
       "declarations": [
         {
           "kind": "class",
@@ -829,205 +829,7 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/pages/pricing/pricing-estimator-result/pricing-estimator-result.component.js",
-      "declarations": [
-        {
-          "kind": "class",
-          "name": "PricingEstimatorResultComponent",
-          "customElement": true,
-          "tagName": "pricing-estimator-result",
-          "superclass": {
-            "name": "BaseElement"
-          },
-          "members": [],
-          "attributes": []
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "PricingEstimatorResultComponent",
-          "declaration": {
-            "name": "PricingEstimatorResultComponent"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "pricing-estimator-result",
-          "declaration": {
-            "name": "PricingEstimatorResultComponent"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/pages/pricing/pricing-estimator-stage-options/pricing-estimator-stage-options.component.js",
-      "declarations": [
-        {
-          "kind": "class",
-          "name": "PricingEstimatorStageOptionsComponent",
-          "customElement": true,
-          "tagName": "pricing-estimator-stage-options",
-          "superclass": {
-            "name": "BaseElement"
-          },
-          "members": [],
-          "attributes": []
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "PricingEstimatorStageOptionsComponent",
-          "declaration": {
-            "name": "PricingEstimatorStageOptionsComponent"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "pricing-estimator-stage-options",
-          "declaration": {
-            "name": "PricingEstimatorStageOptionsComponent"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/pages/pricing/pricing-estimator-type-options/pricing-estimator-type-options.component.js",
-      "declarations": [
-        {
-          "kind": "class",
-          "name": "PricingEstimatorTypeOptionsComponent",
-          "customElement": true,
-          "tagName": "pricing-estimator-type-options",
-          "superclass": {
-            "name": "BaseElement"
-          },
-          "members": [],
-          "attributes": []
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "PricingEstimatorTypeOptionsComponent",
-          "declaration": {
-            "name": "PricingEstimatorTypeOptionsComponent"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "pricing-estimator-type-options",
-          "declaration": {
-            "name": "PricingEstimatorTypeOptionsComponent"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/pages/pricing/pricing-estimator/pricing-estimator.component.js",
-      "declarations": [
-        {
-          "kind": "class",
-          "name": "PricingEstimatorComponent",
-          "customElement": true,
-          "tagName": "pricing-estimator",
-          "superclass": {
-            "name": "BaseElement"
-          },
-          "members": [],
-          "attributes": []
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "PricingEstimatorComponent",
-          "declaration": {
-            "name": "PricingEstimatorComponent"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "pricing-estimator",
-          "declaration": {
-            "name": "PricingEstimatorComponent"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/pages/pricing/pricing-faq/pricing-faq.component.js",
-      "declarations": [
-        {
-          "kind": "class",
-          "name": "PricingFaqComponent",
-          "customElement": true,
-          "tagName": "pricing-faq",
-          "superclass": {
-            "name": "BaseElement"
-          },
-          "members": [],
-          "attributes": []
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "PricingFaqComponent",
-          "declaration": {
-            "name": "PricingFaqComponent"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "pricing-faq",
-          "declaration": {
-            "name": "PricingFaqComponent"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/pages/pricing/pricing-hero/pricing-hero.component.js",
-      "declarations": [
-        {
-          "kind": "class",
-          "name": "PricingHeroComponent",
-          "customElement": true,
-          "tagName": "pricing-hero",
-          "superclass": {
-            "name": "BaseElement"
-          },
-          "members": [],
-          "attributes": []
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "PricingHeroComponent",
-          "declaration": {
-            "name": "PricingHeroComponent"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "pricing-hero",
-          "declaration": {
-            "name": "PricingHeroComponent"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/pages/pricing/pricing-sticky-contact/pricing-sticky-contact.component.js",
+      "path": "src/components/pages/pricing/contact/pricing-sticky-contact/pricing-sticky-contact.component.js",
       "declarations": [
         {
           "kind": "class",
@@ -1060,7 +862,205 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/pages/pricing/pricing-switch/pricing-switch.component.js",
+      "path": "src/components/pages/pricing/estimator/pricing-estimator-result/pricing-estimator-result.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "PricingEstimatorResultComponent",
+          "customElement": true,
+          "tagName": "pricing-estimator-result",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "PricingEstimatorResultComponent",
+          "declaration": {
+            "name": "PricingEstimatorResultComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "pricing-estimator-result",
+          "declaration": {
+            "name": "PricingEstimatorResultComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/pricing/estimator/pricing-estimator-stage-options/pricing-estimator-stage-options.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "PricingEstimatorStageOptionsComponent",
+          "customElement": true,
+          "tagName": "pricing-estimator-stage-options",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "PricingEstimatorStageOptionsComponent",
+          "declaration": {
+            "name": "PricingEstimatorStageOptionsComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "pricing-estimator-stage-options",
+          "declaration": {
+            "name": "PricingEstimatorStageOptionsComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/pricing/estimator/pricing-estimator-type-options/pricing-estimator-type-options.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "PricingEstimatorTypeOptionsComponent",
+          "customElement": true,
+          "tagName": "pricing-estimator-type-options",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "PricingEstimatorTypeOptionsComponent",
+          "declaration": {
+            "name": "PricingEstimatorTypeOptionsComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "pricing-estimator-type-options",
+          "declaration": {
+            "name": "PricingEstimatorTypeOptionsComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/pricing/estimator/pricing-estimator/pricing-estimator.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "PricingEstimatorComponent",
+          "customElement": true,
+          "tagName": "pricing-estimator",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "PricingEstimatorComponent",
+          "declaration": {
+            "name": "PricingEstimatorComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "pricing-estimator",
+          "declaration": {
+            "name": "PricingEstimatorComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/pricing/faq/pricing-faq/pricing-faq.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "PricingFaqComponent",
+          "customElement": true,
+          "tagName": "pricing-faq",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "PricingFaqComponent",
+          "declaration": {
+            "name": "PricingFaqComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "pricing-faq",
+          "declaration": {
+            "name": "PricingFaqComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/pricing/hero/pricing-hero/pricing-hero.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "PricingHeroComponent",
+          "customElement": true,
+          "tagName": "pricing-hero",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "PricingHeroComponent",
+          "declaration": {
+            "name": "PricingHeroComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "pricing-hero",
+          "declaration": {
+            "name": "PricingHeroComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/pricing/service-switch/pricing-switch/pricing-switch.component.js",
       "declarations": [
         {
           "kind": "class",
@@ -1093,7 +1093,7 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/pages/pricing/speaking-offering/speaking-offering.component.js",
+      "path": "src/components/pages/pricing/speaking/speaking-offering/speaking-offering.component.js",
       "declarations": [
         {
           "kind": "class",
@@ -1126,7 +1126,7 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/pages/pricing/speaking-pricing/speaking-pricing.component.js",
+      "path": "src/components/pages/pricing/speaking/speaking-pricing/speaking-pricing.component.js",
       "declarations": [
         {
           "kind": "class",
@@ -1153,6 +1153,448 @@
           "name": "speaking-pricing",
           "declaration": {
             "name": "SpeakingPricingComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/pricing/start-project/pricing-project-alternatives/pricing-project-alternatives.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "PricingProjectAlternativesComponent",
+          "customElement": true,
+          "tagName": "pricing-project-alternatives",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "PricingProjectAlternativesComponent",
+          "declaration": {
+            "name": "PricingProjectAlternativesComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "pricing-project-alternatives",
+          "declaration": {
+            "name": "PricingProjectAlternativesComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/pricing/start-project/pricing-project-idea-form/pricing-project-idea-form.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "PricingProjectIdeaFormComponent",
+          "customElement": true,
+          "tagName": "pricing-project-idea-form",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [
+            {
+              "kind": "field",
+              "name": "audience",
+              "attribute": "audience",
+              "type": {
+                "text": "string"
+              },
+              "default": ""
+            },
+            {
+              "kind": "field",
+              "name": "idea",
+              "attribute": "idea",
+              "type": {
+                "text": "string"
+              },
+              "default": ""
+            },
+            {
+              "kind": "field",
+              "name": "success",
+              "attribute": "success",
+              "type": {
+                "text": "string"
+              },
+              "default": ""
+            }
+          ],
+          "attributes": [
+            {
+              "name": "audience",
+              "fieldName": "audience",
+              "type": {
+                "text": "string"
+              },
+              "default": ""
+            },
+            {
+              "name": "idea",
+              "fieldName": "idea",
+              "type": {
+                "text": "string"
+              },
+              "default": ""
+            },
+            {
+              "name": "success",
+              "fieldName": "success",
+              "type": {
+                "text": "string"
+              },
+              "default": ""
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "PricingProjectIdeaFormComponent",
+          "declaration": {
+            "name": "PricingProjectIdeaFormComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "pricing-project-idea-form",
+          "declaration": {
+            "name": "PricingProjectIdeaFormComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/pricing/start-project/pricing-project-mode-selector/pricing-project-mode-selector.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "PricingProjectModeSelectorComponent",
+          "customElement": true,
+          "tagName": "pricing-project-mode-selector",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [
+            {
+              "kind": "field",
+              "name": "selectedMode",
+              "attribute": "selected-mode",
+              "type": {
+                "text": "string"
+              },
+              "default": "spec"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "selected-mode",
+              "fieldName": "selectedMode",
+              "type": {
+                "text": "string"
+              },
+              "default": "spec"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "PricingProjectModeSelectorComponent",
+          "declaration": {
+            "name": "PricingProjectModeSelectorComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "pricing-project-mode-selector",
+          "declaration": {
+            "name": "PricingProjectModeSelectorComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/pricing/start-project/pricing-project-process/pricing-project-process.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "PricingProjectProcessComponent",
+          "customElement": true,
+          "tagName": "pricing-project-process",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "PricingProjectProcessComponent",
+          "declaration": {
+            "name": "PricingProjectProcessComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "pricing-project-process",
+          "declaration": {
+            "name": "PricingProjectProcessComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/pricing/start-project/pricing-project-quote-form/pricing-project-quote-form.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "PricingProjectQuoteFormComponent",
+          "customElement": true,
+          "tagName": "pricing-project-quote-form",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [
+            {
+              "kind": "field",
+              "name": "constraints",
+              "attribute": "constraints",
+              "type": {
+                "text": "string"
+              },
+              "default": ""
+            },
+            {
+              "kind": "field",
+              "name": "scope",
+              "attribute": "scope",
+              "type": {
+                "text": "string"
+              },
+              "default": ""
+            },
+            {
+              "kind": "field",
+              "name": "workType",
+              "attribute": "work-type",
+              "type": {
+                "text": "string"
+              },
+              "default": ""
+            }
+          ],
+          "attributes": [
+            {
+              "name": "constraints",
+              "fieldName": "constraints",
+              "type": {
+                "text": "string"
+              },
+              "default": ""
+            },
+            {
+              "name": "scope",
+              "fieldName": "scope",
+              "type": {
+                "text": "string"
+              },
+              "default": ""
+            },
+            {
+              "name": "work-type",
+              "fieldName": "workType",
+              "type": {
+                "text": "string"
+              },
+              "default": ""
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "PricingProjectQuoteFormComponent",
+          "declaration": {
+            "name": "PricingProjectQuoteFormComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "pricing-project-quote-form",
+          "declaration": {
+            "name": "PricingProjectQuoteFormComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/pricing/start-project/pricing-project-spec-form/pricing-project-spec-form.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "PricingProjectSpecFormComponent",
+          "customElement": true,
+          "tagName": "pricing-project-spec-form",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [
+            {
+              "kind": "field",
+              "name": "projectName",
+              "attribute": "project-name",
+              "type": {
+                "text": "string"
+              },
+              "default": ""
+            },
+            {
+              "kind": "field",
+              "name": "specLink",
+              "attribute": "spec-link",
+              "type": {
+                "text": "string"
+              },
+              "default": ""
+            },
+            {
+              "kind": "field",
+              "name": "specNotes",
+              "attribute": "spec-notes",
+              "type": {
+                "text": "string"
+              },
+              "default": ""
+            }
+          ],
+          "attributes": [
+            {
+              "name": "project-name",
+              "fieldName": "projectName",
+              "type": {
+                "text": "string"
+              },
+              "default": ""
+            },
+            {
+              "name": "spec-link",
+              "fieldName": "specLink",
+              "type": {
+                "text": "string"
+              },
+              "default": ""
+            },
+            {
+              "name": "spec-notes",
+              "fieldName": "specNotes",
+              "type": {
+                "text": "string"
+              },
+              "default": ""
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "PricingProjectSpecFormComponent",
+          "declaration": {
+            "name": "PricingProjectSpecFormComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "pricing-project-spec-form",
+          "declaration": {
+            "name": "PricingProjectSpecFormComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/pricing/start-project/pricing-start-project-intro/pricing-start-project-intro.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "PricingStartProjectIntroComponent",
+          "customElement": true,
+          "tagName": "pricing-start-project-intro",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "PricingStartProjectIntroComponent",
+          "declaration": {
+            "name": "PricingStartProjectIntroComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "pricing-start-project-intro",
+          "declaration": {
+            "name": "PricingStartProjectIntroComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/pricing/start-project/pricing-start-project/pricing-start-project.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "PricingStartProjectComponent",
+          "customElement": true,
+          "tagName": "pricing-start-project",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "PricingStartProjectComponent",
+          "declaration": {
+            "name": "PricingStartProjectComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "pricing-start-project",
+          "declaration": {
+            "name": "PricingStartProjectComponent"
           }
         }
       ]
@@ -2120,6 +2562,204 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/pages/support/support-faq/support-faq.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "SupportFaqComponent",
+          "customElement": true,
+          "tagName": "support-faq",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "SupportFaqComponent",
+          "declaration": {
+            "name": "SupportFaqComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "support-faq",
+          "declaration": {
+            "name": "SupportFaqComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/support/support-next-steps/support-next-steps.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "SupportNextStepsComponent",
+          "customElement": true,
+          "tagName": "support-next-steps",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "SupportNextStepsComponent",
+          "declaration": {
+            "name": "SupportNextStepsComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "support-next-steps",
+          "declaration": {
+            "name": "SupportNextStepsComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/support/support-overview/support-overview.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "SupportOverviewComponent",
+          "customElement": true,
+          "tagName": "support-overview",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "SupportOverviewComponent",
+          "declaration": {
+            "name": "SupportOverviewComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "support-overview",
+          "declaration": {
+            "name": "SupportOverviewComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/support/support-resources/support-resources.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "SupportResourcesComponent",
+          "customElement": true,
+          "tagName": "support-resources",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "SupportResourcesComponent",
+          "declaration": {
+            "name": "SupportResourcesComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "support-resources",
+          "declaration": {
+            "name": "SupportResourcesComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/support/support-section/support-section.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "SupportSectionComponent",
+          "customElement": true,
+          "tagName": "support-section",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "SupportSectionComponent",
+          "declaration": {
+            "name": "SupportSectionComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "support-section",
+          "declaration": {
+            "name": "SupportSectionComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/support/support-start-project/support-start-project.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "SupportStartProjectComponent",
+          "customElement": true,
+          "tagName": "support-start-project",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "SupportStartProjectComponent",
+          "declaration": {
+            "name": "SupportStartProjectComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "support-start-project",
+          "declaration": {
+            "name": "SupportStartProjectComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/pages/terms/terms-markdown-view/terms-markdown-view.component.js",
       "declarations": [
         {
@@ -2968,6 +3608,39 @@
           "name": "showcase-page",
           "declaration": {
             "name": "ShowcasePage"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/pages/support.page.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "SupportPage",
+          "customElement": true,
+          "tagName": "support-page",
+          "superclass": {
+            "name": "DotaPageElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "SupportPage",
+          "declaration": {
+            "name": "SupportPage"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "support-page",
+          "declaration": {
+            "name": "SupportPage"
           }
         }
       ]
