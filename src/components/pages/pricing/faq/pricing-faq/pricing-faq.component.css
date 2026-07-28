@@ -3,9 +3,12 @@ pricing-faq {
 }
 
 .pricing-faq-section {
-  max-width: 52rem;
+  padding: 4rem var(--layout-gutter);
+}
+
+.pricing-faq-content {
+  max-width: var(--layout-page-max);
   margin-inline: auto;
-  padding: 4rem 1.25rem;
 }
 
 .pricing-faq-list {
@@ -74,7 +77,6 @@ pricing-faq {
 
 .pricing-faq-accordion-answer {
   margin: 0;
-  max-width: 44rem;
   padding: 0 2rem 1.3rem 0;
   color: var(--muted-color);
   font-family: inherit;

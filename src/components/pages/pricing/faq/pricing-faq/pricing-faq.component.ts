@@ -34,21 +34,23 @@ export class PricingFaqComponent extends BaseElement {
 
     return HTML`
       <section class="pricing-faq-section" aria-labelledby="pricing-faq-title">
-        <p class="pricing-eyebrow">${content.eyebrow}</p>
-        <h2 id="pricing-faq-title" class="pricing-section-title mt-3">${content.title}</h2>
-        <div class="pricing-faq-list">
-          ${content.items
-            .map(
-              (item) => HTML`
-                <dota-accordion
-                  classname="pricing-faq-accordion"
-                  header="${item.question}"
-                  description="${item.answer}"
-                  config='${accordionConfig}'
-                ></dota-accordion>
-              `,
-            )
-            .join("")}
+        <div class="pricing-faq-content">
+          <p class="pricing-eyebrow">${content.eyebrow}</p>
+          <h2 id="pricing-faq-title" class="pricing-section-title mt-3">${content.title}</h2>
+          <div class="pricing-faq-list">
+            ${content.items
+              .map(
+                (item) => HTML`
+                  <dota-accordion
+                    classname="pricing-faq-accordion"
+                    header="${item.question}"
+                    description="${item.answer}"
+                    config='${accordionConfig}'
+                  ></dota-accordion>
+                `,
+              )
+              .join("")}
+          </div>
         </div>
       </section>
     `;
