@@ -2,16 +2,12 @@ support-faq {
   display: block;
 }
 
-.support-faq {
-  padding-block: 5.5rem 1rem;
-}
-
 .support-faq-heading {
-  max-width: 38rem;
+  max-inline-size: var(--layout-form-max);
 }
 
 .support-faq-heading > p:last-child {
-  margin-top: 1.1rem;
+  margin-block-start: var(--layout-space-4);
   color: var(--muted-color);
   font-size: var(--type-lede-size);
   line-height: var(--type-lede-leading);
@@ -20,11 +16,11 @@ support-faq {
 .support-faq-search {
   display: flex;
   align-items: center;
-  gap: 0.7rem;
-  margin-top: 2.5rem;
+  gap: var(--layout-space-3);
+  margin-block-start: var(--layout-space-7);
   border: 1px solid var(--border-color);
-  border-radius: 0.875rem;
-  padding: 0.15rem 0.25rem 0.15rem 1rem;
+  border-radius: var(--layout-radius-md);
+  padding: var(--layout-space-1) var(--layout-space-1) var(--layout-space-1) var(--layout-space-4);
   background: var(--surface-color);
   color: var(--muted-color);
 }
@@ -35,10 +31,10 @@ support-faq {
 }
 
 .support-faq-search input {
-  width: 100%;
-  min-width: 0;
+  inline-size: 100%;
+  min-inline-size: 0;
   border: 0;
-  padding: 0.8rem 0;
+  padding-block: var(--layout-space-3);
   outline: 0;
   background: transparent;
   color: var(--foreground-color);
@@ -52,10 +48,10 @@ support-faq {
 
 .support-faq-search button {
   visibility: hidden;
-  width: 2rem;
-  height: 2rem;
+  inline-size: var(--layout-space-6);
+  block-size: var(--layout-space-6);
   border: 0;
-  border-radius: 50%;
+  border-radius: var(--layout-radius-round);
   background: transparent;
   color: var(--muted-color);
   cursor: pointer;
@@ -73,17 +69,14 @@ support-faq {
 }
 
 .support-faq-categories {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-top: 1rem;
+  margin-block-start: var(--layout-space-4);
 }
 
 .support-faq-category {
-  min-height: 2.25rem;
+  min-block-size: calc(var(--layout-space-6) + var(--layout-space-1));
   border: 1px solid var(--border-color);
-  border-radius: 999px;
-  padding: 0.45rem 0.8rem;
+  border-radius: var(--layout-radius-pill);
+  padding: var(--layout-space-2) var(--layout-space-3);
   background: transparent;
   color: var(--muted-color);
   cursor: pointer;
@@ -104,7 +97,7 @@ support-faq {
 }
 
 .support-faq-count {
-  margin-top: 1.4rem;
+  margin-block-start: var(--layout-space-5);
   color: var(--muted-color);
   font-size: var(--type-compact-size);
   font-variant-numeric: tabular-nums;
@@ -116,7 +109,7 @@ support-faq {
 }
 
 .support-faq-list {
-  margin-top: 0.8rem;
+  margin-block-start: var(--layout-space-3);
   border-top: 1px solid var(--border-color);
 }
 
@@ -128,10 +121,10 @@ support-faq {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
+  gap: var(--layout-space-4);
   margin: 0;
   border: 0;
-  padding: 1.25rem 0;
+  padding-block: var(--layout-space-5);
   background: transparent;
   color: var(--foreground-color);
   cursor: pointer;
@@ -182,7 +175,7 @@ support-faq {
 
 .support-faq-accordion-answer {
   margin: 0;
-  padding: 0 2rem 1.3rem 0;
+  padding: 0 var(--layout-space-6) var(--layout-space-5) 0;
   color: var(--muted-color);
   font-family: inherit;
   font-size: var(--type-body-size);
@@ -195,10 +188,10 @@ support-faq {
 }
 
 .support-faq-empty {
-  margin-top: 2rem;
+  margin-block-start: var(--layout-space-6);
   border: 1px solid var(--border-color);
-  border-radius: 1.125rem;
-  padding: 2rem;
+  border-radius: var(--layout-radius-lg);
+  padding: var(--layout-pad-card);
   background: var(--surface-color);
 }
 
@@ -209,7 +202,7 @@ support-faq {
 }
 
 .support-faq-empty p {
-  margin-top: 0.5rem;
+  margin-block-start: var(--layout-space-2);
   color: var(--muted-color);
   font-size: var(--type-body-size);
   line-height: var(--type-body-leading);
@@ -217,19 +210,13 @@ support-faq {
 
 .support-faq-ask {
   display: inline-flex;
-  margin-top: 1.25rem;
-  border-radius: 999px;
-  padding: 0.75rem 1.2rem;
+  margin-block-start: var(--layout-space-5);
+  border-radius: var(--layout-radius-pill);
+  padding: var(--layout-space-3) var(--layout-space-5);
   background: var(--foreground-color);
   color: var(--background-color);
   font-size: var(--type-control-size);
   font-weight: var(--type-control-weight);
-}
-
-@media (max-width: 40rem) {
-  .support-faq {
-    padding-block-start: 4rem;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {

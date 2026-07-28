@@ -98,11 +98,11 @@ export class SupportFaqComponent extends BaseElement {
     });
 
     return HTML`
-      <section id="faq" class="support-faq layout-page" aria-labelledby="support-faq-title">
+      <section id="faq" class="support-faq layout-page layout-section" aria-labelledby="support-faq-title">
         <div class="support-faq-content">
           <div class="support-faq-heading">
             <p class="support-eyebrow">${content.eyebrow}</p>
-            <h2 id="support-faq-title" class="support-section-title">${content.title}</h2>
+            <h2 id="support-faq-title" class="type-section">${content.title}</h2>
             <p>${content.body}</p>
           </div>
           <div class="support-faq-search">
@@ -110,7 +110,7 @@ export class SupportFaqComponent extends BaseElement {
             <input id="support-faq-search" type="search" placeholder="${content.searchPlaceholder}" aria-label="${content.searchAriaLabel}" autocomplete="off" />
             <button id="support-faq-clear" type="button" aria-label="${content.clearAriaLabel}">×</button>
           </div>
-          <div class="support-faq-categories" role="group" aria-label="${content.categoryAriaLabel}">
+          <div class="support-faq-categories layout-row layout-row-tight" role="group" aria-label="${content.categoryAriaLabel}">
             ${content.categories.map((category, index) => `<button class="support-faq-category${index === 0 ? " is-active" : ""}" type="button" data-support-faq-category="${category.value}">${category.label}</button>`).join("")}
           </div>
           <p id="support-faq-count" class="support-faq-count" aria-live="polite"><b>${supportContent.faqs.length}</b> ${content.questionLabel}</p>
