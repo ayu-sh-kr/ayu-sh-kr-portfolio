@@ -1,0 +1,4 @@
+interface:
+  display_name: "Code Structure"
+  short_description: "Organize Dota Web code by route and section."
+  default_prompt: "Organize this Dota Web portfolio by its route, page section, and section-owned components."
