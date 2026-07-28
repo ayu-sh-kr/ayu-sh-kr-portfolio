@@ -26,7 +26,10 @@ export class DesignTypographyOverviewComponent extends BaseElement {
             <p class="type-eyebrow design-eyebrow">Design grammar / 01</p>
             <h1 id="design-overview-title" class="type-display design-overview-title">Typography that holds every page together.</h1>
             <p class="type-lede design-overview-lede">A live reference for choosing type roles. These specimens render from <code>typography.css</code>, so a token change here is the same change visitors see across the portfolio.</p>
-            <a class="design-overview-link" href="#design-roles">Browse the role specimens <span aria-hidden="true">↓</span></a>
+            <div class="design-overview-links">
+              <a class="design-overview-link" href="#design-roles">Browse the role specimens <span aria-hidden="true">↓</span></a>
+              <a class="design-overview-link" href="/design/color">Explore the color grammar <span aria-hidden="true">→</span></a>
+            </div>
           </div>
 
           <aside class="design-overview-summary" aria-label="Typography system summary">

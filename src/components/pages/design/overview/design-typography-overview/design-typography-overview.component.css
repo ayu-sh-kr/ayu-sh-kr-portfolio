@@ -45,7 +45,6 @@
 .design-overview-link {
   display: inline-flex;
   gap: 0.5rem;
-  margin-top: 2rem;
   color: var(--foreground-color);
   font-size: var(--type-control-size);
   font-weight: var(--type-control-weight);
@@ -53,6 +52,13 @@
   text-decoration-color: var(--primary-color);
   text-decoration-thickness: 2px;
   text-underline-offset: 0.35em;
+}
+
+.design-overview-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  margin-top: 2rem;
 }
 
 .design-overview-link:hover {
