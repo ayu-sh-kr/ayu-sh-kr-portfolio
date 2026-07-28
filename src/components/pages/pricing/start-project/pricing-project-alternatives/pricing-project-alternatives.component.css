@@ -1,0 +1,71 @@
+pricing-project-alternatives {
+  display: block;
+  max-width: 80rem;
+  margin-inline: auto;
+}
+
+.pricing-project-alternatives-section {
+  margin-top: 4.5rem;
+}
+
+.pricing-project-alternatives-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.8rem;
+  margin-top: 1.8rem;
+}
+
+.pricing-project-alternatives-grid a {
+  display: block;
+  border: 1px solid var(--border-color);
+  border-radius: 1.15rem;
+  background: var(--surface-color);
+  padding: 1.35rem;
+  transition: border-color 180ms ease, background-color 180ms ease, transform 180ms ease;
+}
+
+.pricing-project-alternatives-grid a:hover {
+  border-color: var(--foreground-color);
+  background: var(--surface-hover-color);
+  transform: translateY(-2px);
+}
+
+.pricing-project-alternatives-grid strong,
+.pricing-project-alternatives-grid small {
+  display: block;
+}
+
+.pricing-project-alternatives-grid strong {
+  color: var(--foreground-color);
+  font-size: var(--pricing-type-card-title-size);
+  font-weight: var(--pricing-type-card-title-weight);
+  letter-spacing: var(--pricing-type-card-title-tracking);
+}
+
+.pricing-project-alternatives-grid strong span {
+  color: var(--primary-color-strong);
+}
+
+.pricing-project-alternatives-grid small {
+  margin-top: 0.45rem;
+  color: var(--muted-color);
+  font-size: var(--pricing-type-compact-size);
+  line-height: var(--pricing-type-compact-leading);
+}
+
+.pricing-project-alternatives-grid a:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 3px;
+}
+
+@media (max-width: 42rem) {
+  .pricing-project-alternatives-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pricing-project-alternatives-grid a {
+    transition: none;
+  }
+}
