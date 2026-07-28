@@ -607,6 +607,17 @@
           }
         },
         {
+          "name": "design-layout-primitives",
+          "source": {
+            "file": "./src/components/pages/design/layout/primitives/design-layout-primitives/design-layout-primitives.component.ts",
+            "offset": 325
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
           "name": "design-layout-roles",
           "source": {
             "file": "./src/components/pages/design/layout/roles/design-layout-roles/design-layout-roles.component.ts",

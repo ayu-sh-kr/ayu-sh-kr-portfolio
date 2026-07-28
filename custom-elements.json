@@ -1031,6 +1031,39 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/pages/design/layout/primitives/design-layout-primitives/design-layout-primitives.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "DesignLayoutPrimitivesComponent",
+          "customElement": true,
+          "tagName": "design-layout-primitives",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "DesignLayoutPrimitivesComponent",
+          "declaration": {
+            "name": "DesignLayoutPrimitivesComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "design-layout-primitives",
+          "declaration": {
+            "name": "DesignLayoutPrimitivesComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/pages/design/layout/roles/design-layout-roles/design-layout-roles.component.js",
       "declarations": [
         {
