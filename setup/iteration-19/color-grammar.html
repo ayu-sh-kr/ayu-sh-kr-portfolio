@@ -1,0 +1,1342 @@
+<!DOCTYPE html>
+<html lang="en" data-palette="true-matcha">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Color grammar — ayush.dev</title>
+<meta name="description" content="The semantic color system for ayush.dev. Swap the palette, flip the mode, and watch the family contract prove itself live." />
+<style>
+/* ============================================================
+   SPECIMEN THEME  —  stands in for theme.css
+   These are the raw family ramps. In the app they live in
+   theme.css and this block does not exist. Values here are
+   representative so the page renders standalone and offline.
+   ============================================================ */
+:root{
+  /* neutrals */
+  --color-paper-50:#FAFAF8;
+  --color-inkstone-200:#D2D2D7; --color-inkstone-300:#B0B0B6;
+  --color-inkstone-400:#8A8A90; --color-inkstone-500:#6E6E73;
+  --color-inkstone-900:#1D1D1F; --color-inkstone-950:#131316;
+  --color-pure-black-50:#FFFFFF; --color-pure-black-950:#08080A;
+
+  /* true-matcha */
+  --color-true-matcha-50:#F2F7EA;  --color-true-matcha-100:#E4EFD4;
+  --color-true-matcha-200:#C7DFA8; --color-true-matcha-300:#ABCC86;
+  --color-true-matcha-400:#8FB863; --color-true-matcha-500:#6F9946;
+  --color-true-matcha-600:#4F7A2A; --color-true-matcha-700:#416522;
+  --color-true-matcha-800:#33501A; --color-true-matcha-900:#233712;
+  --color-true-matcha-950:#1B2A0E;
+
+  /* cobalt */
+  --color-cobalt-50:#EDF3FE;  --color-cobalt-100:#DFE9FD;
+  --color-cobalt-200:#C3D6FB; --color-cobalt-300:#9FBEF8;
+  --color-cobalt-400:#7BA6F5; --color-cobalt-500:#4D82E2;
+  --color-cobalt-600:#1F5FD0; --color-cobalt-700:#1A4FAD;
+  --color-cobalt-800:#153F8A; --color-cobalt-900:#0E285A;
+  --color-cobalt-950:#0B1D42;
+
+  /* persimmon */
+  --color-persimmon-50:#FFF1EA;  --color-persimmon-100:#FFE5D9;
+  --color-persimmon-200:#FFCDB8; --color-persimmon-300:#FFA47E;
+  --color-persimmon-400:#FF7A45; --color-persimmon-500:#E05A22;
+  --color-persimmon-600:#C23A00; --color-persimmon-700:#A63100;
+  --color-persimmon-800:#8A2800; --color-persimmon-900:#571900;
+  --color-persimmon-950:#3D1200;
+
+  /* sunburst — deliberately included here and NOT in color.css.
+     It satisfies every contrast anchor and fails the hue rule. */
+  --color-sunburst-50:#FEF7E6;  --color-sunburst-100:#FDF0D1;
+  --color-sunburst-200:#FBE3A8; --color-sunburst-300:#F6CC68;
+  --color-sunburst-400:#F0B429; --color-sunburst-500:#C58F14;
+  --color-sunburst-600:#9A6A00; --color-sunburst-700:#825A00;
+  --color-sunburst-800:#6B4A00; --color-sunburst-900:#4A3300;
+  --color-sunburst-950:#3A2700;
+}
+
+/* ============================================================
+   color.css §2 — FAMILIES. The swap point.
+   ============================================================ */
+:root,[data-palette="true-matcha"]{
+  --primary-50:var(--color-true-matcha-50);   --primary-100:var(--color-true-matcha-100);
+  --primary-200:var(--color-true-matcha-200); --primary-300:var(--color-true-matcha-300);
+  --primary-400:var(--color-true-matcha-400); --primary-500:var(--color-true-matcha-500);
+  --primary-600:var(--color-true-matcha-600); --primary-700:var(--color-true-matcha-700);
+  --primary-800:var(--color-true-matcha-800); --primary-900:var(--color-true-matcha-900);
+  --primary-950:var(--color-true-matcha-950);
+  --primary-on-light:var(--color-paper-50); --primary-on-dark:var(--color-pure-black-950);
+}
+[data-palette="cobalt"]{
+  --primary-50:var(--color-cobalt-50);   --primary-100:var(--color-cobalt-100);
+  --primary-200:var(--color-cobalt-200); --primary-300:var(--color-cobalt-300);
+  --primary-400:var(--color-cobalt-400); --primary-500:var(--color-cobalt-500);
+  --primary-600:var(--color-cobalt-600); --primary-700:var(--color-cobalt-700);
+  --primary-800:var(--color-cobalt-800); --primary-900:var(--color-cobalt-900);
+  --primary-950:var(--color-cobalt-950);
+  --primary-on-light:var(--color-paper-50); --primary-on-dark:var(--color-pure-black-950);
+}
+[data-palette="persimmon"]{
+  --primary-50:var(--color-persimmon-50);   --primary-100:var(--color-persimmon-100);
+  --primary-200:var(--color-persimmon-200); --primary-300:var(--color-persimmon-300);
+  --primary-400:var(--color-persimmon-400); --primary-500:var(--color-persimmon-500);
+  --primary-600:var(--color-persimmon-600); --primary-700:var(--color-persimmon-700);
+  --primary-800:var(--color-persimmon-800); --primary-900:var(--color-persimmon-900);
+  --primary-950:var(--color-persimmon-950);
+  --primary-on-light:var(--color-paper-50); --primary-on-dark:var(--color-pure-black-950);
+}
+[data-palette="sunburst"]{
+  --primary-50:var(--color-sunburst-50);   --primary-100:var(--color-sunburst-100);
+  --primary-200:var(--color-sunburst-200); --primary-300:var(--color-sunburst-300);
+  --primary-400:var(--color-sunburst-400); --primary-500:var(--color-sunburst-500);
+  --primary-600:var(--color-sunburst-600); --primary-700:var(--color-sunburst-700);
+  --primary-800:var(--color-sunburst-800); --primary-900:var(--color-sunburst-900);
+  --primary-950:var(--color-sunburst-950);
+  --primary-on-light:var(--color-paper-50); --primary-on-dark:var(--color-pure-black-950);
+}
+
+/* ============================================================
+   color.css §3 — MIX RAMP
+   ============================================================ */
+:root{
+  --subtle-color:light-dark(color-mix(in srgb,var(--foreground-color) 5%,transparent),
+                            color-mix(in srgb,var(--foreground-color) 8%,transparent));
+  --border-color:light-dark(color-mix(in srgb,var(--foreground-color) 10%,transparent),
+                            color-mix(in srgb,var(--foreground-color) 16%,transparent));
+  --border-strong-color:light-dark(color-mix(in srgb,var(--foreground-color) 20%,transparent),
+                            color-mix(in srgb,var(--foreground-color) 28%,transparent));
+  --shadow-color:light-dark(color-mix(in srgb,var(--foreground-color) 25%,transparent),
+                            color-mix(in srgb,var(--foreground-color) 45%,transparent));
+  --scrim-color:light-dark(color-mix(in srgb,var(--foreground-color) 40%,transparent),
+                            color-mix(in srgb,var(--foreground-color) 60%,transparent));
+  --primary-color-wash:light-dark(color-mix(in srgb,var(--primary-color) 8%,transparent),
+                            color-mix(in srgb,var(--primary-color) 14%,transparent));
+  --primary-color-ring:light-dark(color-mix(in srgb,var(--primary-color) 16%,transparent),
+                            color-mix(in srgb,var(--primary-color) 24%,transparent));
+}
+
+/* ============================================================
+   color.css §4 — SEMANTIC TIER  (one block, both modes)
+   ============================================================ */
+:root{
+  --primary-color:light-dark(var(--primary-600),var(--primary-400));
+  --primary-color-hover:light-dark(var(--primary-700),var(--primary-300));
+  --primary-color-strong:light-dark(var(--primary-800),var(--primary-200));
+  --primary-color-subtle:light-dark(var(--primary-50),var(--primary-950));
+  --primary-color-on:light-dark(var(--primary-on-light),var(--primary-on-dark));
+
+  --background-color:light-dark(var(--color-paper-50),var(--color-inkstone-950));
+  --foreground-color:light-dark(var(--color-inkstone-900),var(--color-paper-50));
+  --muted-color:light-dark(var(--color-inkstone-500),var(--color-inkstone-300));
+  --muted-strong-color:light-dark(var(--color-inkstone-400),var(--color-inkstone-200));
+
+  --surface-color:light-dark(var(--color-pure-black-50),var(--color-inkstone-900));
+  --surface-hover-color:var(--subtle-color);
+
+  --contrast-background-color:light-dark(var(--color-inkstone-900),var(--color-paper-50));
+  --contrast-foreground-color:light-dark(var(--color-paper-50),var(--color-inkstone-950));
+  --contrast-muted-color:light-dark(var(--color-inkstone-300),var(--color-inkstone-500));
+  --contrast-border-color:color-mix(in srgb,var(--contrast-foreground-color) 18%,transparent);
+  --code-background-color:var(--primary-950);
+  --code-foreground-color:var(--color-paper-50);
+}
+
+/* ============================================================
+   color.css §5 — STATUS
+   ============================================================ */
+:root{
+  --success-color:light-dark(#1F7A3D,#5CC98A);
+  --warning-color:light-dark(#8A6100,#E0A63A);
+  --danger-color:light-dark(#C0341A,#FF8367);
+  --success-color-subtle:light-dark(color-mix(in srgb,var(--success-color) 8%,transparent),
+                                    color-mix(in srgb,var(--success-color) 18%,transparent));
+  --warning-color-subtle:light-dark(color-mix(in srgb,var(--warning-color) 8%,transparent),
+                                    color-mix(in srgb,var(--warning-color) 18%,transparent));
+  --danger-color-subtle:light-dark(color-mix(in srgb,var(--danger-color) 8%,transparent),
+                                   color-mix(in srgb,var(--danger-color) 18%,transparent));
+  --success-color-on:light-dark(var(--color-paper-50),var(--color-pure-black-950));
+  --warning-color-on:light-dark(var(--color-paper-50),var(--color-pure-black-950));
+  --danger-color-on:light-dark(var(--color-paper-50),var(--color-pure-black-950));
+}
+
+/* ============================================================
+   color.css §7 — ELEVATION
+   ============================================================ */
+:root{
+  --shadow-lift:0 18px 40px -28px var(--shadow-color);
+  --shadow-pop:0 22px 50px -24px var(--scrim-color);
+  --shadow-ring:0 0 0 3px var(--primary-color-ring);
+  --scrim-nav:color-mix(in srgb,var(--background-color) 72%,transparent);
+  --gradient-shimmer:linear-gradient(90deg,transparent,
+      color-mix(in srgb,var(--primary-color-subtle) 90%,transparent) 50%,transparent);
+  --gradient-placeholder:linear-gradient(135deg,var(--subtle-color),var(--border-strong-color));
+}
+
+/* ============================================================
+   color.css §8 — MODE PLUMBING
+   ============================================================ */
+html{color-scheme:light dark;scroll-behavior:smooth;background:var(--background-color)}
+html.light{color-scheme:light}
+html.dark{color-scheme:dark}
+body{margin:0;min-inline-size:20rem;overflow-x:hidden;
+  background:var(--background-color);color:var(--foreground-color)}
+::selection{background:var(--primary-color);color:var(--primary-color-on)}
+::placeholder{color:var(--muted-color);opacity:1}
+a,button{-webkit-tap-highlight-color:transparent}
+:where(a,button,input,textarea,select,[tabindex]):focus-visible{
+  outline:2px solid var(--primary-color);outline-offset:3px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+/* ============================================================
+   TYPOGRAPHY  —  typography.css stands in here
+   ============================================================ */
+:root{
+  --primary-font:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,system-ui,sans-serif;
+  --font-mono:ui-monospace,SFMono-Regular,Menlo,monospace;
+  --fs-display:clamp(2.4rem,1.2rem + 5.333vw,5rem);
+  --fs-title:clamp(1.75rem,1.35rem + 1.78vw,2.9rem);
+  --fs-title-sm:clamp(1.3rem,1.1rem + .89vw,1.85rem);
+  --fs-lead:clamp(1.03rem,1.01rem + .09vw,1.1rem);
+  --ease:cubic-bezier(.2,.8,.2,1);--measure:70ch;
+}
+*{box-sizing:border-box}
+body{font-family:var(--primary-font);font-size:1rem;line-height:1.55;
+  -webkit-font-smoothing:antialiased}
+.display{font-size:var(--fs-display);font-weight:700;letter-spacing:-.035em;
+  line-height:1.05;text-wrap:balance;margin:0}
+.title{font-size:var(--fs-title);font-weight:600;letter-spacing:-.025em;
+  line-height:1.12;text-wrap:balance;margin:0}
+.title-sm{font-size:var(--fs-title-sm);font-weight:600;letter-spacing:-.02em;
+  line-height:1.2;margin:0}
+.h3{font-size:1.15rem;font-weight:600;letter-spacing:-.015em;line-height:1.3;margin:0}
+.lead{font-size:var(--fs-lead);letter-spacing:-.012em;color:var(--muted-color);
+  max-width:var(--measure);text-wrap:pretty}
+.label{font-size:.75rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--muted-color)}
+.micro{font-size:.6875rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;
+  color:var(--muted-color)}
+.meta{font-size:.8125rem;font-weight:500;line-height:1.45;color:var(--muted-color)}
+.muted{color:var(--muted-color)}
+.mono{font-family:var(--font-mono);font-variant-numeric:tabular-nums}
+.num{font-variant-numeric:tabular-nums}
+a{color:inherit;text-decoration:none}
+
+/* ============================================================
+   CHROME
+   ============================================================ */
+#nav{position:fixed;inset:0 0 auto 0;z-index:60;background:var(--scrim-nav);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border-color)}
+#nav .wrap{max-width:1220px;margin:0 auto;padding:.7rem 1.25rem;display:flex;
+  align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.brand{font-weight:600;letter-spacing:-.015em}
+.switches{display:flex;gap:.9rem;align-items:center;flex-wrap:wrap}
+.seg{display:flex;gap:.25rem;padding:.2rem;border:1px solid var(--border-color);
+  border-radius:999px;background:var(--surface-color)}
+.seg button{border:none;background:none;font-family:inherit;font-size:.75rem;font-weight:600;
+  letter-spacing:.03em;text-transform:uppercase;color:var(--muted-color);cursor:pointer;
+  padding:.34rem .66rem;border-radius:999px;display:flex;align-items:center;gap:.34rem;
+  transition:background .2s,color .2s}
+.seg button:hover{color:var(--foreground-color)}
+.seg button[aria-pressed=true]{background:var(--foreground-color);color:var(--background-color)}
+.seg button i{width:10px;height:10px;border-radius:3px;display:block;
+  border:1px solid var(--border-color)}
+main{max-width:1220px;margin:0 auto;padding:0 1.25rem 6rem}
+section[id]{scroll-margin-top:5.5rem}
+
+#layout{display:grid;grid-template-columns:180px 1fr;gap:2.6rem}
+@media(max-width:960px){#layout{grid-template-columns:1fr;gap:0}#layout>aside{display:none}}
+.toc{display:flex;flex-direction:column;gap:.1rem;position:sticky;top:6.2rem}
+.toc a{font-size:.6875rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;
+  color:var(--muted-color);padding:.4rem 0 .4rem .7rem;border-left:1px solid var(--border-color);
+  transition:color .25s,border-color .25s}
+.toc a:hover{color:var(--foreground-color)}
+.toc a.on{color:var(--primary-color-strong);border-left-color:var(--primary-color)}
+
+.sec{padding:3.4rem 0;border-top:1px solid var(--border-color)}
+.sec-num{font-size:.6875rem;font-weight:600;letter-spacing:.08em;color:var(--muted-color);margin:0 0 .4rem}
+.reveal{opacity:0;transform:translateY(14px);
+  transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+
+/* ============================================================
+   color.css §9 — COMPONENTS
+   ============================================================ */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.66rem 1.25rem;
+  border-radius:999px;font-family:inherit;font-size:.9375rem;font-weight:500;line-height:1;
+  cursor:pointer;border:1px solid transparent;
+  transition:transform .25s var(--ease),background .2s,color .2s,border-color .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn-primary{background:var(--primary-color);color:var(--primary-color-on)}
+.btn-primary:hover{background:var(--primary-color-hover)}
+.btn-contrast{background:var(--contrast-background-color);color:var(--contrast-foreground-color)}
+.btn-contrast:hover{background:color-mix(in srgb,var(--contrast-background-color) 88%,var(--foreground-color))}
+.btn-ghost{border-color:var(--border-color);color:var(--foreground-color)}
+.btn-ghost:hover{border-color:var(--foreground-color)}
+.btn[disabled]{opacity:.45;cursor:not-allowed;transform:none}
+
+.card{background:var(--background-color);border:1px solid var(--border-color);
+  border-radius:18px;padding:1.25rem}
+.panel{background:var(--surface-color);border:1px solid var(--border-color);
+  border-radius:18px;padding:1.25rem}
+.on-contrast{background:var(--contrast-background-color);color:var(--contrast-foreground-color);
+  border:1px solid var(--contrast-border-color);border-radius:18px;padding:1.25rem}
+.on-contrast .muted,.on-contrast .label,.on-contrast .meta{color:var(--contrast-muted-color)}
+.on-contrast hr{border:none;border-top:1px solid var(--contrast-border-color)}
+.note{background:var(--primary-color-subtle);border-left:2px solid var(--primary-color);
+  border-radius:0 12px 12px 0;padding:1rem 1.2rem;font-size:.9375rem;line-height:1.5}
+
+.chip{display:inline-block;font-size:.78125rem;font-weight:500;padding:.3rem .7rem;
+  border-radius:999px;background:var(--primary-color-subtle);color:var(--primary-color-strong)}
+.tag{display:inline-block;font-size:.75rem;font-weight:500;padding:.25rem .6rem;
+  border-radius:999px;border:1px solid var(--border-color);color:var(--muted-color)}
+.badge{display:inline-block;font-size:.75rem;font-weight:600;letter-spacing:.04em;
+  text-transform:uppercase;padding:.22rem .58rem;border-radius:999px}
+.badge-success{background:var(--success-color-subtle);color:var(--success-color)}
+.badge-warning{background:var(--warning-color-subtle);color:var(--warning-color)}
+.badge-danger{background:var(--danger-color-subtle);color:var(--danger-color)}
+.badge-idle{background:var(--subtle-color);color:var(--muted-color)}
+
+.field input,.field textarea{width:100%;padding:.7rem .95rem;border-radius:14px;
+  font-family:inherit;font-size:1rem;background:var(--background-color);
+  color:var(--foreground-color);border:1px solid var(--border-color)}
+.field input:focus,.field textarea:focus{outline:none;background:var(--surface-color);
+  border-color:var(--primary-color);box-shadow:var(--shadow-ring)}
+.field .hint{color:var(--muted-color)}
+
+.skeleton{height:12px;border-radius:8px;background:var(--subtle-color);
+  position:relative;overflow:hidden}
+.skeleton::after{content:"";position:absolute;inset:0;background:var(--gradient-shimmer);
+  transform:translateX(-100%);animation:sweep 1.7s var(--ease) infinite}
+@keyframes sweep{100%{transform:translateX(100%)}}
+.progress{height:9px;border-radius:999px;background:var(--subtle-color);overflow:hidden}
+.progress>i{display:block;height:100%;width:62%;background:var(--primary-color);border-radius:999px}
+
+/* ============================================================
+   PAGE-LOCAL
+   ============================================================ */
+.grid{display:grid;gap:1.1rem}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g4{grid-template-columns:repeat(4,1fr)}
+@media(max-width:900px){.g3,.g4{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:620px){.g2,.g3,.g4{grid-template-columns:1fr}}
+
+.sw{border-radius:14px;height:80px;border:1px solid var(--border-color);position:relative;overflow:hidden}
+.sw .in{position:absolute;left:.7rem;bottom:.5rem;font-size:.72rem;font-weight:500;
+  font-family:var(--font-mono)}
+.tokbtn{display:inline-flex;align-items:center;gap:.4rem;margin:.5rem 0 .1rem;padding:0;
+  border:none;background:none;font-family:var(--font-mono);font-size:.8125rem;font-weight:600;
+  color:var(--foreground-color);cursor:pointer;text-align:left}
+.tokbtn::after{content:"copy";font-family:var(--primary-font);font-size:.625rem;font-weight:600;
+  letter-spacing:.05em;text-transform:uppercase;color:var(--muted-color);opacity:0;transition:opacity .2s}
+.tokbtn:hover::after{opacity:.8}
+.tokbtn.copied::after{content:"copied";opacity:1;color:var(--success-color)}
+.sw-use{font-size:.8125rem;color:var(--muted-color);line-height:1.45;margin:.1rem 0 0}
+
+.ratio{font-family:var(--font-mono);font-size:.75rem;font-variant-numeric:tabular-nums;
+  padding:.12rem .44rem;border-radius:999px;white-space:nowrap}
+.pass{background:var(--success-color-subtle);color:var(--success-color)}
+.warn{background:var(--warning-color-subtle);color:var(--warning-color)}
+.fail{background:var(--danger-color-subtle);color:var(--danger-color)}
+
+.ramp{display:flex;border-radius:12px;overflow:hidden;border:1px solid var(--border-color)}
+.ramp div{flex:1;height:58px;display:flex;align-items:flex-end;justify-content:center;
+  padding-bottom:.35rem;font-family:var(--font-mono);font-size:.625rem;color:var(--muted-color)}
+.steps{display:flex;border-radius:12px;overflow:hidden;border:1px solid var(--border-color)}
+.steps div{flex:1;height:52px;display:flex;align-items:center;justify-content:center;
+  font-family:var(--font-mono);font-size:.625rem}
+
+.tw{overflow-x:auto;-webkit-overflow-scrolling:touch}
+table{width:100%;border-collapse:collapse;font-size:.875rem}
+th{text-align:left;font-size:.75rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--muted-color);padding:.58rem .7rem;border-bottom:1px solid var(--border-strong-color);
+  white-space:nowrap}
+td{padding:.6rem .7rem;border-bottom:1px solid var(--border-color);vertical-align:top;
+  font-variant-numeric:tabular-nums}
+td:first-child{white-space:nowrap}
+
+.mx{border:1px solid var(--border-color);border-radius:16px;overflow:hidden;background:var(--surface-color)}
+.mx-top{display:flex;gap:.4rem;flex-wrap:wrap;padding:.85rem;border-bottom:1px solid var(--border-color)}
+.gbtn{display:flex;align-items:center;gap:.45rem;padding:.4rem .78rem;border-radius:999px;
+  border:1px solid var(--border-color);background:transparent;cursor:pointer;font-family:inherit;
+  font-size:.8125rem;font-weight:500;color:var(--muted-color);transition:all .2s}
+.gbtn:hover{border-color:var(--foreground-color);color:var(--foreground-color)}
+.gbtn[aria-pressed=true]{background:var(--foreground-color);border-color:var(--foreground-color);
+  color:var(--background-color)}
+.gbtn i{width:12px;height:12px;border-radius:4px;border:1px solid var(--border-color);display:block}
+.mx-stage{padding:1.3rem;transition:background .35s var(--ease)}
+.mx-row{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.58rem 0}
+.mx-l{font-size:.9375rem;font-weight:500}
+.mx-r{display:flex;align-items:center;gap:.5rem}
+.mx-note{padding:.8rem .9rem;border-top:1px solid var(--border-color);font-size:.8125rem;
+  color:var(--muted-color);line-height:1.5;background:var(--background-color)}
+
+.contract{border:1px solid var(--border-color);border-radius:16px;overflow:hidden}
+.contract-h{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;
+  padding:.9rem 1.1rem;border-bottom:1px solid var(--border-color);background:var(--surface-color)}
+.verdict{font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  padding:.28rem .7rem;border-radius:999px}
+.crow{display:flex;align-items:flex-start;gap:.9rem;padding:.72rem 1.1rem;
+  border-bottom:1px solid var(--border-color)}
+.crow:last-child{border-bottom:none}
+.crow .n{font-family:var(--font-mono);font-size:.75rem;color:var(--muted-color);flex:0 0 1.2rem;padding-top:.15rem}
+.crow .b{flex:1;min-width:0}
+.crow .t{font-size:.875rem;font-weight:500}
+.crow .d{font-size:.75rem;color:var(--muted-color);margin-top:.15rem;line-height:1.45}
+
+.rec{border:1px solid var(--border-color);border-radius:18px;overflow:hidden;
+  background:var(--background-color)}
+.rec-h{display:flex;align-items:baseline;justify-content:space-between;gap:.7rem;
+  padding:.7rem 1rem;border-bottom:1px solid var(--border-color)}
+.rec-t{font-size:.875rem;font-weight:600;letter-spacing:-.01em}
+.rec-b{padding:1.1rem}
+.rec pre{margin:0;padding:.95rem 1.05rem;background:var(--code-background-color);
+  color:var(--code-foreground-color);font-family:var(--font-mono);font-size:.78rem;
+  line-height:1.6;overflow-x:auto;border-top:1px solid var(--border-color)}
+.rec pre b{color:var(--primary-300);font-weight:400}
+.rec pre i{color:color-mix(in srgb,var(--code-foreground-color) 55%,transparent);font-style:normal}
+
+.dd{border-radius:16px;border:1px solid var(--border-color);overflow:hidden;background:var(--surface-color)}
+.dd-h{display:flex;align-items:center;gap:.5rem;padding:.55rem .9rem;
+  border-bottom:1px solid var(--border-color);font-size:.8125rem;font-weight:600}
+.dd-b{padding:1.1rem;min-height:100px;display:flex;align-items:center;justify-content:center;
+  gap:.6rem;flex-wrap:wrap}
+.dd.yes .dd-h{color:var(--success-color)}
+.dd.no .dd-h{color:var(--danger-color)}
+.dot{width:7px;height:7px;border-radius:50%;background:currentColor;flex:0 0 auto}
+.dd-note{font-size:.8125rem;color:var(--muted-color);padding:0 .9rem .9rem;line-height:1.5;margin:0}
+
+.shade{border-radius:14px;padding:1.1rem;border:1px solid var(--border-color);background:var(--surface-color)}
+.shade.lift{box-shadow:var(--shadow-lift)}
+.shade.pop{box-shadow:var(--shadow-pop)}
+.ph{height:70px;border-radius:12px;background:var(--gradient-placeholder)}
+.rules{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.5rem}
+.rules li{display:flex;gap:.6rem;align-items:flex-start;font-size:.9375rem;line-height:1.5}
+.rules li::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--primary-color);
+  flex:0 0 auto;margin-top:.5rem}
+.check{list-style:none;margin:0;padding:0;counter-reset:c;display:grid;gap:.45rem}
+.check li{counter-increment:c;display:flex;gap:.7rem;font-size:.9375rem;line-height:1.5}
+.check li::before{content:counter(c);font-family:var(--font-mono);font-size:.75rem;
+  color:var(--muted-color);flex:0 0 1.5rem;padding-top:.12rem}
+code.tok{font-family:var(--font-mono);font-size:.88em;background:var(--primary-color-subtle);
+  color:var(--primary-color-strong);padding:.14em .42em;border-radius:4px}
+pre.diff{margin:0;padding:1.05rem 1.2rem;border-radius:16px;overflow-x:auto;
+  background:var(--code-background-color);color:var(--code-foreground-color);
+  font-family:var(--font-mono);font-size:.8rem;line-height:1.65;border:1px solid var(--border-color)}
+pre.diff b{color:var(--primary-300);font-weight:400}
+pre.diff i{color:color-mix(in srgb,var(--code-foreground-color) 55%,transparent);font-style:normal}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="wrap">
+    <a href="#top" class="brand">ayush.dev · color</a>
+    <div class="switches">
+      <div class="seg" id="palSeg" role="group" aria-label="Palette">
+        <button data-pal="true-matcha" aria-pressed="true"><i style="background:#4F7A2A"></i>matcha</button>
+        <button data-pal="cobalt" aria-pressed="false"><i style="background:#1F5FD0"></i>cobalt</button>
+        <button data-pal="persimmon" aria-pressed="false"><i style="background:#C23A00"></i>persimmon</button>
+        <button data-pal="sunburst" aria-pressed="false"><i style="background:#9A6A00"></i>sunburst</button>
+      </div>
+      <div class="seg" id="modeSeg" role="group" aria-label="Mode">
+        <button data-mode="light" aria-pressed="false">light</button>
+        <button data-mode="dark" aria-pressed="false">dark</button>
+        <button data-mode="system" aria-pressed="true">system</button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<main id="top">
+
+  <header style="padding:8.5rem 0 2.4rem">
+    <p class="micro reveal" style="margin:0 0 .9rem;color:var(--primary-color-strong)">Color grammar · v3.0</p>
+    <h1 class="display reveal">The palette is<br><span style="color:var(--primary-color-strong)">eleven lines</span> deep.</h1>
+    <p class="lead reveal" style="margin-top:1.3rem">
+      Nothing in this system names a hue. Components ask for a relationship —
+      <em>the readable brand step</em>, <em>the far ground</em>, <em>the line</em> — and the
+      relationship resolves against whichever family is mounted and whichever mode is
+      active. Switch the palette in the header and watch every block on this page follow
+      without a single component changing.
+    </p>
+    <p class="meta reveal" style="margin-top:1.2rem">
+      <code class="tok">theme.css</code> holds ramps ·
+      <code class="tok">color.css</code> holds relationships ·
+      components hold neither
+    </p>
+  </header>
+
+  <div id="layout">
+    <aside>
+      <nav class="toc" id="toc" aria-label="Sections">
+        <a href="#swap">01 The swap</a>
+        <a href="#contract">02 Contract</a>
+        <a href="#tiers">03 Tiers</a>
+        <a href="#ramp">04 Mix ramp</a>
+        <a href="#grounds">05 Grounds</a>
+        <a href="#pairings">06 Pairings</a>
+        <a href="#recipes">07 Recipes</a>
+        <a href="#variants">08 Variants</a>
+        <a href="#depth">09 Depth</a>
+        <a href="#rules">10 Rules</a>
+      </nav>
+    </aside>
+
+    <div>
+
+      <!-- 01 ================================================= -->
+      <section class="sec" id="swap" style="border-top:none;padding-top:1rem">
+        <p class="sec-num">01</p>
+        <h2 class="title reveal">The swap</h2>
+        <p class="lead reveal" style="margin:.7rem 0 1.6rem">
+          A palette change touches one block. Every derived token — brand, hover, subtle,
+          chip, focus ring, shimmer — reads through the eleven aliases, so nothing
+          downstream is opened. The current family is
+          <b id="curFam" style="color:var(--primary-color-strong)">true-matcha</b>.
+        </p>
+
+        <div class="grid g2 reveal" style="margin-bottom:1.4rem">
+<pre class="diff"><i>/* color.css §2 — the entire diff */</i>
+[data-palette="<b id="d1">true-matcha</b>"]{
+  --primary-50:  var(--color-<b id="d2">true-matcha</b>-50);
+  --primary-100: var(--color-<b id="d3">true-matcha</b>-100);
+  <i>… 900</i>
+  --primary-950: var(--color-<b id="d4">true-matcha</b>-950);
+
+  <i>/* contract §1.4 — declared here, not in the mode block */</i>
+  --primary-on-light: var(--color-paper-50);
+  --primary-on-dark:  var(--color-pure-black-950);
+}</pre>
+          <div class="card" style="display:flex;flex-direction:column;gap:.8rem;justify-content:center">
+            <p class="label" style="margin:0">What moved</p>
+            <div class="steps" id="famSteps"></div>
+            <p class="sw-use">Eleven raw steps. Everything below is derived.</p>
+            <p class="label" style="margin:.4rem 0 0">What followed</p>
+            <div style="display:flex;gap:.5rem;flex-wrap:wrap;align-items:center">
+              <button class="btn btn-primary" style="padding:.5rem 1rem;font-size:.85rem">Primary</button>
+              <span class="chip">chip</span>
+              <span class="tag">tag</span>
+            </div>
+            <div class="progress"><i></i></div>
+            <div class="skeleton"></div>
+          </div>
+        </div>
+
+        <div class="note reveal">
+          <b>Why the on-colors sit in the family block.</b> A light family — amber, lime,
+          yellow — needs dark text on its 600 step. If that decision lives in the
+          light-mode block instead, it silently claims "white sits on primary" for every
+          family that will ever be mounted, and the first light family drops every filled
+          button to roughly 2:1 with nothing raising a hand. Declaring it per family is
+          what makes the swap safe rather than merely quick.
+        </div>
+      </section>
+
+      <!-- 02 ================================================= -->
+      <section class="sec" id="contract">
+        <p class="sec-num">02</p>
+        <h2 class="title reveal">The family contract</h2>
+        <p class="lead reveal" style="margin:.7rem 0 1.6rem">
+          A ramp is not a palette until it satisfies six conditions. These are evaluated
+          live against the rendered values, for the family and mode you have selected —
+          so this is a test, not documentation. Flip through the four families and watch
+          it move.
+        </p>
+
+        <div class="contract reveal">
+          <div class="contract-h">
+            <div>
+              <p class="label" style="margin:0 0 .2rem">Checking</p>
+              <p class="h3"><span id="cFam">true-matcha</span> <span class="muted" style="font-weight:400">·</span> <span id="cMode">light</span></p>
+            </div>
+            <span class="verdict" id="verdict">—</span>
+          </div>
+          <div id="contractRows"></div>
+        </div>
+
+        <p class="meta reveal" style="margin-top:1rem">
+          Sunburst passes every contrast anchor and still fails — it sits 1° from
+          <code class="tok">--warning-color</code>, so a caution badge and the brand read
+          as the same signal. Persimmon lands 9° from <code class="tok">--danger-color</code>.
+          Neither is unusable, but both need an icon or a shape doing the work hue normally
+          does, and that is a decision worth making on purpose.
+        </p>
+      </section>
+
+      <!-- 03 ================================================= -->
+      <section class="sec" id="tiers">
+        <p class="sec-num">03</p>
+        <h2 class="title reveal">Three tiers, one direction</h2>
+        <p class="lead reveal" style="margin:.7rem 0 1.6rem">
+          Values flow one way and never back. A component that reads a ramp step has
+          skipped the contract and will break on the next family — which is why the
+          Tailwind theme exposes the semantic tier only.
+        </p>
+
+        <div class="tw reveal">
+          <table>
+            <thead><tr><th>Tier</th><th>Lives in</th><th>Looks like</th><th>Who reads it</th></tr></thead>
+            <tbody>
+              <tr><td><b>Ramp</b></td><td class="mono">theme.css</td>
+                  <td class="mono">--color-true-matcha-600</td><td>Only <span class="mono">color.css §2</span></td></tr>
+              <tr><td><b>Family</b></td><td class="mono">color.css §2</td>
+                  <td class="mono">--primary-600, --primary-on-light</td><td>Only <span class="mono">color.css §4</span></td></tr>
+              <tr><td><b>Semantic</b></td><td class="mono">color.css §4–7</td>
+                  <td class="mono">--primary-color, --border-color</td><td><b>Every component</b></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="grid g2 reveal" style="margin-top:1.4rem">
+          <div class="card">
+            <p class="label" style="margin:0 0 .7rem">Names a relationship — survives</p>
+            <ul class="rules">
+              <li><code class="tok">--primary-color-strong</code> — the emphatic brand step</li>
+              <li><code class="tok">--contrast-background-color</code> — the far ground</li>
+              <li><code class="tok">--muted-color</code> — secondary text</li>
+              <li><code class="tok">--border-color</code> — the line</li>
+            </ul>
+          </div>
+          <div class="card">
+            <p class="label" style="margin:0 0 .7rem">Names a hue — lies after a swap</p>
+            <ul class="rules">
+              <li><code class="tok">--blog-accent-deep</code> — nothing is deep in matcha</li>
+              <li><code class="tok">--blog-tint</code> — nothing is tinted</li>
+              <li><code class="tok">--blog-paper</code> — the ground is inkstone in dark</li>
+              <li><code class="tok">--blog-ink</code> — the text is paper in dark</li>
+            </ul>
+            <p class="sw-use" style="margin-top:.7rem">All nine <code class="tok">--blog-*</code>
+              aliases map onto tokens that already exist. §13 of <code class="tok">color.css</code>
+              has the find-and-replace.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 04 ================================================= -->
+      <section class="sec" id="ramp">
+        <p class="sec-num">04</p>
+        <h2 class="title reveal">Mix ramp</h2>
+        <p class="lead reveal" style="margin:.7rem 0 1.6rem">
+          Five steps, all derived from <code class="tok">--foreground-color</code>, so every
+          one inverts for free. The percentages step up in dark because a 10% line on a
+          dark ground reads lighter than a 10% line on a light one. Nothing between the
+          five steps, ever.
+        </p>
+
+        <div class="reveal" style="margin-bottom:1.2rem">
+          <div class="ramp">
+            <div style="background:var(--subtle-color)">subtle</div>
+            <div style="background:var(--border-color)">border</div>
+            <div style="background:var(--border-strong-color)">strong</div>
+            <div style="background:var(--shadow-color)">shadow</div>
+            <div style="background:var(--scrim-color)">scrim</div>
+          </div>
+        </div>
+
+        <div class="tw reveal">
+          <table>
+            <thead><tr><th>Token</th><th>Light</th><th>Dark</th><th>Use it for</th></tr></thead>
+            <tbody>
+              <tr><td class="mono">--subtle-color</td><td>5%</td><td>8%</td><td>Inert ground, skeleton base, idle badge</td></tr>
+              <tr><td class="mono">--border-color</td><td>10%</td><td>16%</td><td><b>The line.</b> Every division in the app</td></tr>
+              <tr><td class="mono">--border-strong-color</td><td>20%</td><td>28%</td><td>Structural rule — table head, section break</td></tr>
+              <tr><td class="mono">--shadow-color</td><td>25%</td><td>45%</td><td>Base of <span class="mono">--shadow-lift</span></td></tr>
+              <tr><td class="mono">--scrim-color</td><td>40%</td><td>60%</td><td>Modal scrim, base of <span class="mono">--shadow-pop</span></td></tr>
+              <tr><td class="mono">--primary-color-wash</td><td>8%</td><td>14%</td><td>Row hover, pointer hotspot</td></tr>
+              <tr><td class="mono">--primary-color-ring</td><td>16%</td><td>24%</td><td>Focus halo on fields</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="note reveal" style="margin-top:1.4rem">
+          <b>Lines carry meaning or they do not exist.</b> A border at the ramp's second
+          step is decorative — it says only "these are two different things", and it is
+          fine that a low-vision reader cannot resolve it. The moment a border means
+          something — focused, selected, invalid, hovered — it jumps to a full-strength
+          token: <code class="tok">--foreground-color</code>,
+          <code class="tok">--primary-color</code>, <code class="tok">--danger-color</code>.
+          There is no middle border.
+        </div>
+      </section>
+
+      <!-- 05 ================================================= -->
+      <section class="sec" id="grounds">
+        <p class="sec-num">05</p>
+        <h2 class="title reveal">Four grounds</h2>
+        <p class="lead reveal" style="margin:.7rem 0 1.6rem">
+          The ground is semantic, not aesthetic — choosing one is choosing what kind of
+          content is inside it. Flip to dark and check that all four remain distinct;
+          that separation is the thing most likely to collapse on a theme change.
+        </p>
+
+        <div class="grid g2">
+          <div class="reveal">
+            <div class="card">
+              <p class="label" style="margin:0 0 .5rem">--background-color</p>
+              <p class="h3">The document</p>
+              <p class="sw-use" style="margin-top:.35rem">Prose, sections, navigation, and any card
+                that is content rather than an object. The default — if you are unsure, it
+                is this one.</p>
+            </div>
+          </div>
+          <div class="reveal">
+            <div class="panel">
+              <p class="label" style="margin:0 0 .5rem">--surface-color</p>
+              <p class="h3">Human input</p>
+              <p class="sw-use" style="margin-top:.35rem">Forms, fields, anything typed into or
+                manipulated. One step toward the far end from the page. A form on the page
+                ground reads as a printout; a form on surface reads as a form.</p>
+            </div>
+          </div>
+          <div class="reveal">
+            <div class="on-contrast">
+              <p class="label" style="margin:0 0 .5rem">--contrast-background-color</p>
+              <p class="h3">Machine output <span class="muted" style="font-weight:400">— inverts</span></p>
+              <p class="sw-use muted" style="margin-top:.35rem">Totals, estimates, breakdowns —
+                the result of a calculation. Never put an input inside it.</p>
+              <hr style="margin:.8rem 0 .6rem" />
+              <div style="display:flex;justify-content:space-between">
+                <span class="meta">Estimated</span>
+                <span class="num" style="font-weight:600">₹ 180,000</span>
+              </div>
+            </div>
+          </div>
+          <div class="reveal">
+            <div style="background:var(--primary-color-subtle);border-radius:18px;padding:1.25rem;
+                        border:1px solid var(--border-color)">
+              <p class="label" style="margin:0 0 .5rem;color:var(--primary-color-strong)">--primary-color-subtle</p>
+              <p class="h3">Asides and marks</p>
+              <p class="sw-use" style="margin-top:.35rem">Notes, callouts, chips, inline code. How
+                the brand covers area without becoming loud. Never a container for primary
+                content.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="note reveal" style="margin-top:1.5rem">
+          <b>The separation law.</b> Contrast panel = numbers. Surface card = human input.
+          Plain row = the call to action. Three jobs, three grounds, never merged into one
+          surface. This is also the rule that breaks quietest in dark mode: if
+          <code class="tok">--contrast-background-color</code> and
+          <code class="tok">--surface-color</code> resolve to the same step, the estimator
+          result and a raised card render identically and nobody notices until a client
+          does. Going one step <em>deeper</em> in dark measures 1.19:1 against surface and
+          fails; inverting measures 16.10:1, which is what the light mode already had.
+          Contrast is therefore the opposite of the page, not "the dark one".
+        </div>
+
+        <div class="reveal" style="margin-top:1.2rem">
+          <p class="label" style="margin:0 0 .6rem">Ground separation, measured now</p>
+          <div class="tw"><table><tbody id="groundRows"></tbody></table></div>
+        </div>
+      </section>
+
+      <!-- 06 ================================================= -->
+      <section class="sec" id="pairings">
+        <p class="sec-num">06</p>
+        <h2 class="title reveal">Legal pairings</h2>
+        <p class="lead reveal" style="margin:.7rem 0 1.6rem">
+          Pick a ground. Every text token is measured against it live, in the current
+          family and mode. Use this before inventing a combination — it is faster than
+          arguing about one.
+        </p>
+
+        <div class="mx reveal">
+          <div class="mx-top" role="group" aria-label="Choose a ground" id="grounds-seg">
+            <button class="gbtn" data-tok="--background-color" aria-pressed="true"><i></i>background</button>
+            <button class="gbtn" data-tok="--surface-color" aria-pressed="false"><i></i>surface</button>
+            <button class="gbtn" data-tok="--primary-color-subtle" aria-pressed="false"><i></i>primary-subtle</button>
+            <button class="gbtn" data-tok="--contrast-background-color" aria-pressed="false"><i></i>contrast</button>
+            <button class="gbtn" data-tok="--primary-color" aria-pressed="false"><i></i>primary</button>
+            <button class="gbtn" data-tok="--success-color" aria-pressed="false"><i></i>success</button>
+          </div>
+          <div class="mx-stage" id="stage"></div>
+          <p class="mx-note" id="mxnote"></p>
+        </div>
+      </section>
+
+      <!-- 07 ================================================= -->
+      <section class="sec" id="recipes">
+        <p class="sec-num">07</p>
+        <h2 class="title reveal">Recipes</h2>
+        <p class="lead reveal" style="margin:.7rem 0 1.6rem">
+          Copy these. Each is the colour half of a pattern already in the app — the type
+          classes come from <code class="tok">typography.css</code> and the spacing is
+          yours to set. None of them names a family, so all of them survive the swap.
+        </p>
+
+        <div class="grid g2">
+
+          <div class="rec reveal">
+            <div class="rec-h"><span class="rec-t">Content card</span><span class="micro">background</span></div>
+            <div class="rec-b">
+              <div class="card">
+                <p class="label" style="margin:0 0 .3rem">Case study</p>
+                <p class="h3">Cutting p99 latency in half</p>
+                <p class="sw-use" style="margin-top:.3rem">Content, not an object.</p>
+              </div>
+            </div>
+<pre>&lt;div class="<b>card</b>"&gt;…&lt;/div&gt;
+
+<i>background</i> <b>--background-color</b>
+<i>border</i>     1px <b>--border-color</b>
+
+<i>tailwind</i>  class="<b>bg-background border border-line</b>"</pre>
+          </div>
+
+          <div class="rec reveal">
+            <div class="rec-h"><span class="rec-t">Input panel</span><span class="micro">surface</span></div>
+            <div class="rec-b">
+              <div class="panel field">
+                <p class="label" style="margin:0 0 .45rem">Your email</p>
+                <input type="text" value="hello@ayush.dev" readonly />
+                <p class="meta hint" style="margin:.45rem 0 0">Only used to reply.</p>
+              </div>
+            </div>
+<pre>&lt;div class="<b>panel field</b>"&gt;
+  &lt;label class="label"&gt;Your email&lt;/label&gt;
+  &lt;input type="email" /&gt;
+  &lt;p class="<b>hint</b>"&gt;Only used to reply.&lt;/p&gt;
+&lt;/div&gt;
+
+<i>focus is automatic —</i>
+border → <b>--primary-color</b>, halo → <b>--shadow-ring</b></pre>
+          </div>
+
+          <div class="rec reveal">
+            <div class="rec-h"><span class="rec-t">Result panel</span><span class="micro">contrast</span></div>
+            <div class="rec-b">
+              <div class="on-contrast">
+                <p class="label" style="margin:0 0 .6rem">Estimate</p>
+                <div style="display:flex;justify-content:space-between;padding-bottom:.45rem">
+                  <span class="meta">Backend, 3 weeks</span><span class="num">₹ 140,000</span></div>
+                <div style="display:flex;justify-content:space-between;padding:.45rem 0;
+                            border-top:1px solid var(--contrast-border-color)">
+                  <span class="meta">Integration</span><span class="num">₹ 40,000</span></div>
+                <div style="display:flex;justify-content:space-between;padding-top:.45rem;
+                            border-top:1px solid var(--contrast-border-color);font-weight:600">
+                  <span>Total</span><span class="num">₹ 180,000</span></div>
+              </div>
+            </div>
+<pre>&lt;div class="<b>on-contrast</b>"&gt;…&lt;/div&gt;
+
+<i>.on-contrast flips text, muted copy and rules
+in one class, in both modes. never place an
+input inside it.</i></pre>
+          </div>
+
+          <div class="rec reveal">
+            <div class="rec-h"><span class="rec-t">Status row</span><span class="micro">washes</span></div>
+            <div class="rec-b">
+              <div style="display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center">
+                <span class="badge badge-success">Shipped</span>
+                <span class="badge badge-warning">Delayed</span>
+                <span class="badge badge-danger">Failed</span>
+                <span class="badge badge-idle">Idle</span>
+              </div>
+            </div>
+<pre>&lt;span class="badge <b>badge-success</b>"&gt;Shipped&lt;/span&gt;
+
+<i>status is family-independent — these do not
+change when the palette does, and that is the
+point. each hue on its own wash.</i></pre>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- 08 ================================================= -->
+      <section class="sec" id="variants">
+        <p class="sec-num">08</p>
+        <h2 class="title reveal">Variants and states</h2>
+        <p class="lead reveal" style="margin:.7rem 0 1.6rem">
+          Variants are not styles to choose between — each names a level of consequence,
+          and the hierarchy is fixed.
+        </p>
+
+        <div class="panel reveal" style="margin-bottom:1.2rem">
+          <p class="label" style="margin:0 0 .8rem">Buttons</p>
+          <div style="display:flex;gap:.6rem;flex-wrap:wrap;align-items:center">
+            <button class="btn btn-primary">Start a project</button>
+            <button class="btn btn-contrast">Download résumé</button>
+            <button class="btn btn-ghost">Read the case study</button>
+            <button class="btn btn-ghost" disabled>Unavailable</button>
+          </div>
+          <div class="tw" style="margin-top:1rem">
+            <table>
+              <thead><tr><th>Variant</th><th>Rest</th><th>Hover</th><th>Means</th><th>Per view</th></tr></thead>
+              <tbody>
+                <tr><td class="mono">.btn-primary</td><td class="mono">--primary-color</td>
+                    <td class="mono">--primary-color-hover</td><td>The one thing you came here to do</td><td>Exactly 1</td></tr>
+                <tr><td class="mono">.btn-contrast</td><td class="mono">--contrast-background-color</td>
+                    <td class="mono">mix 88%</td><td>A real action, but not the one</td><td>1–2</td></tr>
+                <tr><td class="mono">.btn-ghost</td><td class="mono">transparent</td>
+                    <td class="mono">--foreground-color</td><td>Navigation, escape, secondary</td><td>Unlimited</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="tw reveal" style="margin-bottom:1.2rem">
+          <table>
+            <thead><tr><th>State</th><th>What moves</th><th>To</th></tr></thead>
+            <tbody>
+              <tr><td>Hover</td><td>Border, <em>or</em> background one ramp step. Never both</td><td class="mono">--foreground-color / --primary-color-wash</td></tr>
+              <tr><td>Focus</td><td>Outline only, never layout</td><td class="mono">2px --primary-color, offset 3px</td></tr>
+              <tr><td>Selected</td><td>Background inverts</td><td class="mono">--foreground-color + --background-color</td></tr>
+              <tr><td>Invalid</td><td>Border</td><td class="mono">--danger-color</td></tr>
+              <tr><td>Disabled</td><td>Opacity only, never colour</td><td class="mono">opacity .45</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="grid g3">
+          <div class="panel reveal field">
+            <p class="label" style="margin:0 0 .6rem">Focus ring</p>
+            <input type="text" value="hello@ayush.dev" readonly
+              style="border-color:var(--primary-color);box-shadow:var(--shadow-ring)" />
+            <p class="dd-note" style="padding:.6rem 0 0">2px outline at 3px offset, plus the ring
+              wash on fields. One treatment app-wide.</p>
+          </div>
+          <div class="panel reveal">
+            <p class="label" style="margin:0 0 .6rem">Selection</p>
+            <p style="margin:0">Drag across <span style="background:var(--primary-color);
+              color:var(--primary-color-on)">this sentence</span> to see it live.</p>
+            <p class="dd-note" style="padding:.6rem 0 0">Selection carries text, so it uses the
+              declared on-color rather than assuming white.</p>
+          </div>
+          <div class="panel reveal">
+            <p class="label" style="margin:0 0 .6rem">Disabled</p>
+            <button class="btn btn-contrast" disabled>Send</button>
+            <p class="dd-note" style="padding:.6rem 0 0">Opacity, never a grey repaint. A greyed
+              button loses its variant; a faded one keeps it.</p>
+          </div>
+        </div>
+
+        <div class="grid g2" style="margin-top:1.4rem">
+          <div class="dd yes reveal">
+            <div class="dd-h"><span class="dot"></span>Do</div>
+            <div class="dd-b">
+              <button class="btn btn-primary">Confirm</button>
+              <button class="btn btn-ghost">Cancel</button>
+            </div>
+            <p class="dd-note">One primary object per view. The ghost carries the escape, and the
+              eye has somewhere to land.</p>
+          </div>
+          <div class="dd no reveal">
+            <div class="dd-h"><span class="dot"></span>Don't</div>
+            <div class="dd-b">
+              <button class="btn btn-primary">Confirm</button>
+              <button class="btn btn-primary">Save draft</button>
+              <button class="btn btn-primary">Share</button>
+            </div>
+            <p class="dd-note">Three primaries is zero emphasis. The brand works because of its
+              ratio on screen, not its hue — and that is true of matcha exactly as it was of
+              persimmon.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 09 ================================================= -->
+      <section class="sec" id="depth">
+        <p class="sec-num">09</p>
+        <h2 class="title reveal">Depth</h2>
+        <p class="lead reveal" style="margin:.7rem 0 1.6rem">
+          Two shadows, one ring, three gradients. A shadow is the foreground at a ramp
+          step, which is why it deepens automatically in dark rather than disappearing.
+        </p>
+
+        <div class="grid g3">
+          <div class="shade lift reveal">
+            <p class="label" style="margin:0 0 .3rem">--shadow-lift</p>
+            <p class="sw-use">A card responding to the pointer.
+              <span class="mono">−28px blur off --shadow-color</span></p>
+          </div>
+          <div class="shade pop reveal">
+            <p class="label" style="margin:0 0 .3rem">--shadow-pop</p>
+            <p class="sw-use">Floating pill, modal, sticky contact.
+              <span class="mono">off --scrim-color</span></p>
+          </div>
+          <div class="shade reveal">
+            <p class="label" style="margin:0 0 .5rem">--gradient-placeholder</p>
+            <div class="ph"></div>
+            <p class="sw-use" style="margin-top:.5rem">Unloaded image. Ramp steps only — a
+              placeholder must not compete.</p>
+          </div>
+        </div>
+
+        <div class="grid g2 reveal" style="margin-top:1.2rem">
+          <div class="panel">
+            <p class="label" style="margin:0 0 .6rem">--gradient-shimmer</p>
+            <div style="display:flex;flex-direction:column;gap:.5rem">
+              <div class="skeleton"></div><div class="skeleton" style="width:72%"></div>
+            </div>
+            <p class="dd-note" style="padding:.7rem 0 0">The brand's subtle step swept across the
+              inert ground. The only animated gradient in the system.</p>
+          </div>
+          <div class="panel">
+            <p class="label" style="margin:0 0 .6rem">--scrim-nav</p>
+            <div style="height:66px;border-radius:12px;background:var(--gradient-placeholder);
+                        position:relative;overflow:hidden">
+              <div style="position:absolute;inset:0 0 auto 0;height:32px;background:var(--scrim-nav);
+                          backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+                          border-bottom:1px solid var(--border-color);display:flex;align-items:center;
+                          padding:0 .7rem"><span class="micro">ayush.dev</span></div>
+            </div>
+            <p class="dd-note" style="padding:.7rem 0 0">The page ground at 72% plus a 20px blur.
+              The header is the only element permitted to be translucent.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 10 ================================================= -->
+      <section class="sec" id="rules">
+        <p class="sec-num">10</p>
+        <h2 class="title reveal">The rules</h2>
+        <p class="lead reveal" style="margin:.7rem 0 1.6rem">
+          Everything above, compressed. If a review comment needs a citation, it is one
+          of these.
+        </p>
+
+        <div class="grid g2">
+          <div class="card reveal">
+            <p class="label" style="margin:0 0 .8rem">Always</p>
+            <ul class="rules">
+              <li>Consume the semantic tier — <code class="tok">--primary-color</code>, never <code class="tok">--primary-600</code></li>
+              <li>Pick the ground by what is inside it</li>
+              <li>Keep every alpha on the five-step mix ramp</li>
+              <li>Let status stay family-independent</li>
+              <li>Declare on-colors per family</li>
+              <li>Express disabled as opacity</li>
+              <li>Run the contract before adding a family</li>
+            </ul>
+          </div>
+          <div class="card reveal">
+            <p class="label" style="margin:0 0 .8rem">Never</p>
+            <ul class="rules">
+              <li>A hex, <code class="tok">rgb()</code> or <code class="tok">hsl()</code> in a component file</li>
+              <li>A ramp step in a component file</li>
+              <li>A hue in a token name</li>
+              <li>A second copy of the dark values</li>
+              <li>More than one primary action in a view</li>
+              <li>A middle-strength border</li>
+              <li>An input inside a contrast panel, or a total inside a surface card</li>
+              <li>A third shadow or a fourth gradient</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="panel reveal" style="margin-top:1.4rem">
+          <p class="label" style="margin:0 0 .8rem">Before you open a PR</p>
+          <ol class="check">
+            <li>Zero colour literals and zero ramp steps in the component file?</li>
+            <li>Every alpha from the five mix-ramp tokens?</li>
+            <li>Exactly one <code class="tok">.btn-primary</code> in the view?</li>
+            <li>Every text–ground pair legal in <b>both</b> modes?</li>
+            <li>Contrast panel still distinct from surface in dark?</li>
+            <li>Focus outline present and unmodified?</li>
+            <li>Only <code class="tok">--shadow-lift</code> and <code class="tok">--shadow-pop</code>?</li>
+            <li>Disabled expressed as opacity?</li>
+            <li>Checked under <code class="tok">forced-colors: active</code> and in print?</li>
+            <li>Contract still green after any theme change?</li>
+          </ol>
+        </div>
+      </section>
+
+      <footer style="padding:2.6rem 0 0;border-top:1px solid var(--border-color)">
+        <p class="micro" style="margin:0 0 .5rem">Color grammar · v3.0</p>
+        <p class="meta" style="margin:0;max-width:var(--measure)">
+          Source of truth is <code class="tok">src/color.css</code>. Adding a family means
+          copying one block in §2 and turning §02 of this page green. Every figure here is
+          read from the rendered document at runtime — resolve a token, composite it over
+          its ground, run WCAG 2.1 — so the page cannot drift from the stylesheet.
+        </p>
+      </footer>
+
+    </div>
+  </div>
+</main>
+
+<script>
+(function(){
+  'use strict';
+  var root = document.documentElement;
+
+  /* ---------- reveal ---------- */
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:.1, rootMargin:'0px 0px -5% 0px'});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+
+  /* ---------- scrollspy ---------- */
+  var links = [].slice.call(document.querySelectorAll('#toc a'));
+  var spy = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(!e.isIntersecting) return;
+      links.forEach(function(a){ a.classList.toggle('on', a.getAttribute('href') === '#' + e.target.id); });
+    });
+  }, {rootMargin:'-42% 0px -50% 0px'});
+  document.querySelectorAll('section[id]').forEach(function(s){ spy.observe(s); });
+
+  /* ---------- resolve a token to rgba, whatever syntax the engine returns ---------- */
+  var probe = document.createElement('span');
+  probe.style.cssText = 'position:fixed;left:-9999px;top:0;opacity:0;pointer-events:none';
+  document.body.appendChild(probe);
+
+  function parse(str){
+    var m = str.match(/rgba?\(([^)]+)\)/i);
+    if(m){
+      var p = m[1].split(/[\s,\/]+/).filter(Boolean).map(parseFloat);
+      return {r:p[0], g:p[1], b:p[2], a:(p.length>3 ? p[3] : 1)};
+    }
+    m = str.match(/color\(srgb\s+([^)]+)\)/i);
+    if(m){
+      var q = m[1].split(/[\s\/]+/).filter(Boolean).map(parseFloat);
+      return {r:q[0]*255, g:q[1]*255, b:q[2]*255, a:(q.length>3 ? q[3] : 1)};
+    }
+    return {r:0,g:0,b:0,a:1};
+  }
+  function token(name){
+    probe.style.color = '';
+    probe.style.color = 'var(' + name + ')';
+    return parse(getComputedStyle(probe).color);
+  }
+  function over(fg, bg){
+    if(fg.a >= 0.999) return fg;
+    return {r: fg.r*fg.a + bg.r*(1-fg.a),
+            g: fg.g*fg.a + bg.g*(1-fg.a),
+            b: fg.b*fg.a + bg.b*(1-fg.a), a:1};
+  }
+  function ch(c){ c/=255; return c<=0.03928 ? c/12.92 : Math.pow((c+0.055)/1.055, 2.4); }
+  function lum(c){ return 0.2126*ch(c.r) + 0.7152*ch(c.g) + 0.0722*ch(c.b); }
+  function cr(a, b){
+    var l1 = lum(a), l2 = lum(b);
+    if(l1 < l2){ var t = l1; l1 = l2; l2 = t; }
+    return (l1 + 0.05) / (l2 + 0.05);
+  }
+  function css(c){ return 'rgb(' + [c.r,c.g,c.b].map(Math.round).join(',') + ')'; }
+  function hue(c){
+    var r=c.r/255, g=c.g/255, b=c.b/255,
+        mx=Math.max(r,g,b), mn=Math.min(r,g,b), d=mx-mn;
+    if(d === 0) return 0;
+    var h;
+    if(mx===r) h = ((g-b)/d) % 6;
+    else if(mx===g) h = (b-r)/d + 2;
+    else h = (r-g)/d + 4;
+    h = Math.round(h*60);
+    return h < 0 ? h + 360 : h;
+  }
+  function hueGap(a, b){ var d = Math.abs(hue(a) - hue(b)); return Math.min(d, 360-d); }
+  var fmt = function(n){ return n.toFixed(2) + ':1'; };
+
+  /* ---------- switches ---------- */
+  function currentMode(){
+    if(root.classList.contains('dark')) return 'dark';
+    if(root.classList.contains('light')) return 'light';
+    return matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
+
+  document.querySelectorAll('#palSeg button').forEach(function(b){
+    b.addEventListener('click', function(){
+      document.querySelectorAll('#palSeg button').forEach(function(o){ o.setAttribute('aria-pressed','false'); });
+      b.setAttribute('aria-pressed','true');
+      root.setAttribute('data-palette', b.dataset.pal);
+      requestAnimationFrame(paintAll);
+    });
+  });
+  document.querySelectorAll('#modeSeg button').forEach(function(b){
+    b.addEventListener('click', function(){
+      document.querySelectorAll('#modeSeg button').forEach(function(o){ o.setAttribute('aria-pressed','false'); });
+      b.setAttribute('aria-pressed','true');
+      root.classList.remove('light','dark');
+      if(b.dataset.mode !== 'system') root.classList.add(b.dataset.mode);
+      requestAnimationFrame(paintAll);
+    });
+  });
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(){
+    requestAnimationFrame(paintAll);
+  });
+
+  /* ---------- 01 swap ---------- */
+  function paintSwap(){
+    var fam = root.getAttribute('data-palette');
+    ['curFam','d1','d2','d3','d4','cFam'].forEach(function(id){
+      var el = document.getElementById(id); if(el) el.textContent = fam;
+    });
+    var box = document.getElementById('famSteps');
+    box.innerHTML = '';
+    [50,100,200,300,400,500,600,700,800,900,950].forEach(function(s){
+      var c = token('--primary-' + s);
+      var d = document.createElement('div');
+      d.style.background = css(c);
+      d.style.color = cr(c, {r:255,g:255,b:255,a:1}) > 3.5 ? '#fff' : '#000';
+      d.textContent = s;
+      box.appendChild(d);
+    });
+  }
+
+  /* ---------- 02 contract ---------- */
+  var CHECKS = [
+    {t:'Brand step is readable on the page',
+     d:'--primary-color on --background-color · needs 4.5:1',
+     run:function(){ var bg=token('--background-color');
+       return {v:cr(over(token('--primary-color'),bg), bg), need:4.5}; }},
+    {t:'Declared on-color is readable on the brand',
+     d:'--primary-color-on on --primary-color · needs 4.5:1 · this is the check a light family fails',
+     run:function(){ var p=token('--primary-color');
+       return {v:cr(over(token('--primary-color-on'),p), p), need:4.5}; }},
+    {t:'Emphatic step carries emphasis',
+     d:'--primary-color-strong on --background-color · needs 7:1',
+     run:function(){ var bg=token('--background-color');
+       return {v:cr(over(token('--primary-color-strong'),bg), bg), need:7}; }},
+    {t:'Chip pairing holds',
+     d:'--primary-color-strong on --primary-color-subtle · needs 4.5:1',
+     run:function(){ var bg=over(token('--primary-color-subtle'), token('--background-color'));
+       return {v:cr(over(token('--primary-color-strong'),bg), bg), need:4.5}; }},
+    {t:'Secondary text holds',
+     d:'--muted-color on --background-color · needs 4.5:1',
+     run:function(){ var bg=token('--background-color');
+       return {v:cr(over(token('--muted-color'),bg), bg), need:4.5}; }},
+    {t:'Brand is distinct from every status hue',
+     d:'minimum hue distance to success / warning / danger · needs 30°',
+     unit:'°',
+     run:function(){ var p=token('--primary-color');
+       var g = Math.min(hueGap(p, token('--success-color')),
+                        hueGap(p, token('--warning-color')),
+                        hueGap(p, token('--danger-color')));
+       return {v:g, need:30}; }},
+    {t:'Contrast ground is distinct from surface',
+     d:'--contrast-background-color vs --surface-color · needs 1.7:1 · the dark-mode collapse',
+     run:function(){ var bg=token('--background-color');
+       return {v:cr(over(token('--contrast-background-color'),bg),
+                    over(token('--surface-color'),bg)), need:1.7}; }}
+  ];
+
+  function paintContract(){
+    var host = document.getElementById('contractRows');
+    host.innerHTML = '';
+    document.getElementById('cMode').textContent = currentMode();
+    var failed = 0, warned = 0;
+    CHECKS.forEach(function(c, i){
+      var r = c.run();
+      var ok = r.v >= r.need;
+      var near = !ok && r.v >= r.need * 0.8;
+      if(!ok){ near ? warned++ : failed++; }
+      var row = document.createElement('div');
+      row.className = 'crow';
+      row.innerHTML =
+        '<span class="n">' + (i+1) + '</span>' +
+        '<span class="b"><span class="t"></span><span class="d"></span></span>' +
+        '<span class="ratio ' + (ok ? 'pass' : (near ? 'warn' : 'fail')) + '"></span>';
+      row.querySelector('.t').textContent = c.t;
+      row.querySelector('.d').textContent = c.d;
+      row.querySelector('.ratio').textContent =
+        c.unit === '°' ? Math.round(r.v) + '°' : fmt(r.v);
+      host.appendChild(row);
+    });
+    var v = document.getElementById('verdict');
+    if(failed){ v.textContent = failed + ' failing'; v.className = 'verdict fail'; }
+    else if(warned){ v.textContent = warned + ' marginal'; v.className = 'verdict warn'; }
+    else { v.textContent = 'contract met'; v.className = 'verdict pass'; }
+  }
+
+  /* ---------- 05 ground separation ---------- */
+  var GROUNDS = ['--background-color','--surface-color','--contrast-background-color','--primary-color-subtle'];
+  function paintGrounds(){
+    var host = document.getElementById('groundRows');
+    host.innerHTML = '';
+    var base = token('--background-color');
+    for(var i=0;i<GROUNDS.length;i++){
+      for(var j=i+1;j<GROUNDS.length;j++){
+        var a = over(token(GROUNDS[i]), base), b = over(token(GROUNDS[j]), base);
+        var v = cr(a,b), ok = v >= 1.12;
+        var tr = document.createElement('tr');
+        tr.innerHTML = '<td class="mono"></td><td class="mono"></td><td></td>';
+        tr.children[0].textContent = GROUNDS[i].replace('--','').replace('-color','');
+        tr.children[1].textContent = GROUNDS[j].replace('--','').replace('-color','');
+        var s = document.createElement('span');
+        s.className = 'ratio ' + (ok ? 'pass' : 'fail');
+        s.textContent = fmt(v);
+        tr.children[2].appendChild(s);
+        host.appendChild(tr);
+      }
+    }
+  }
+
+  /* ---------- 06 pairing matrix ---------- */
+  var TEXTS = ['--foreground-color','--muted-color','--primary-color','--primary-color-strong',
+               '--success-color','--warning-color','--danger-color','--contrast-foreground-color'];
+  var activeGround = '--background-color';
+
+  function paintMatrix(){
+    var page = token('--background-color');
+    var bg = over(token(activeGround), page);
+    var stage = document.getElementById('stage');
+    stage.style.background = css(bg);
+    stage.innerHTML = '';
+    var light = lum(bg) > 0.3, pass = 0;
+
+    TEXTS.forEach(function(name){
+      var c = over(token(name), bg), v = cr(c, bg), ok = v >= 4.5;
+      if(ok) pass++;
+      var row = document.createElement('div');
+      row.className = 'mx-row';
+      row.style.borderBottom = '1px solid ' + (light ? 'rgba(0,0,0,.08)' : 'rgba(255,255,255,.12)');
+      var l = document.createElement('span');
+      l.className = 'mx-l'; l.style.color = css(c);
+      l.textContent = 'The quick brown fox — ' + name;
+      var r = document.createElement('span');
+      r.className = 'mx-r';
+      var badge = document.createElement('span');
+      badge.className = 'ratio ' + (ok ? 'pass' : (v >= 3 ? 'warn' : 'fail'));
+      badge.textContent = fmt(v);
+      var verdict = document.createElement('span');
+      verdict.className = 'micro';
+      verdict.style.color = light ? 'rgba(0,0,0,.5)' : 'rgba(255,255,255,.55)';
+      verdict.textContent = ok ? 'AA' : (v >= 3 ? '24px+' : 'no');
+      r.appendChild(badge); r.appendChild(verdict);
+      row.appendChild(l); row.appendChild(r);
+      stage.appendChild(row);
+    });
+    document.getElementById('mxnote').textContent =
+      pass + ' of ' + TEXTS.length + ' text tokens clear AA on this ground, in ' +
+      root.getAttribute('data-palette') + ' / ' + currentMode() + '. ' +
+      '4.5:1 is the threshold under 24px; 3:1 covers text at 24px and above and non-text UI.';
+
+    document.querySelectorAll('#grounds-seg .gbtn').forEach(function(b){
+      var c = over(token(b.dataset.tok), page);
+      b.querySelector('i').style.background = css(c);
+    });
+  }
+
+  document.querySelectorAll('#grounds-seg .gbtn').forEach(function(b){
+    b.addEventListener('click', function(){
+      document.querySelectorAll('#grounds-seg .gbtn').forEach(function(o){ o.setAttribute('aria-pressed','false'); });
+      b.setAttribute('aria-pressed','true');
+      activeGround = b.dataset.tok;
+      paintMatrix();
+    });
+  });
+
+  /* ---------- copy a token ---------- */
+  document.querySelectorAll('.tokbtn').forEach(function(b){
+    b.addEventListener('click', function(){
+      var text = 'var(' + b.dataset.tok + ')';
+      var done = function(){
+        b.classList.add('copied');
+        setTimeout(function(){ b.classList.remove('copied'); }, 1400);
+      };
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(text).then(done, function(){});
+      }else{ done(); }
+    });
+  });
+
+  function paintAll(){ paintSwap(); paintContract(); paintGrounds(); paintMatrix(); }
+  paintAll();
+})();
+</script>
+</body>
+</html>
