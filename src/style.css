@@ -21,6 +21,7 @@
 @import "./components/pages/design/color/guidance/design-color-guidance/design-color-guidance.component.css";
 @import "./components/pages/design/layout/overview/design-layout-overview/design-layout-overview.component.css";
 @import "./components/pages/design/layout/roles/design-layout-roles/design-layout-roles.component.css";
+@import "./components/pages/design/layout/primitives/design-layout-primitives/design-layout-primitives.component.css";
 @import "./components/pages/design/layout/guidance/design-layout-guidance/design-layout-guidance.component.css";
 @import "./components/pages/blog/article/blog-article-header/blog-article-header.component.css";
 @import "./components/pages/showcase/article/showcase-article-header/showcase-article-header.component.css";
@@ -173,7 +174,6 @@ html {
 body {
   margin: 0;
   min-inline-size: 20rem;
-  overflow-x: hidden;
 }
 
 app-root {
@@ -183,10 +183,6 @@ app-root {
 a,
 button {
   -webkit-tap-highlight-color: transparent;
-}
-
-[id] {
-  scroll-margin-top: 4rem;
 }
 
 @media (prefers-reduced-motion: reduce) {

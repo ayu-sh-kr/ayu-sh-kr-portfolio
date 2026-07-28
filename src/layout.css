@@ -1,34 +1,210 @@
 /**
  * Shared page geometry.
  *
- * Page sections use the page width and gutter tokens below; smaller measures
- * are reserved for reading, forms, and other intentionally focused content.
+ * This is the application-wide layout contract: containers, rhythm, grids,
+ * responsive breakpoints, radii, and stacking order. It deliberately sets no
+ * colours or surfaces; component styles consume semantic colour tokens.
  */
 :root {
   --layout-page-max: 80rem;
   --layout-reading-max: 45rem;
   --layout-content-max: 60rem;
+  --layout-form-max: 38rem;
   --layout-gutter: clamp(1.25rem, 4vw, 3rem);
+
   --layout-section-space: clamp(4.5rem, 9vw, 8rem);
+  --layout-section-sm: clamp(2rem, 1.5rem + 2.222vw, 3.5rem);
+  --layout-section-md: clamp(3rem, 2.167rem + 3.704vw, 5.5rem);
+  --layout-section-lg: var(--layout-section-space);
+  --layout-section-hero: clamp(6rem, 4.667rem + 5.926vw, 10rem);
+
+  --layout-space-1: 0.25rem;
+  --layout-space-2: 0.5rem;
+  --layout-space-3: 0.75rem;
+  --layout-space-4: 1rem;
+  --layout-space-5: 1.5rem;
+  --layout-space-6: 2rem;
+  --layout-space-7: 3rem;
+  --layout-space-8: 4rem;
+  --layout-space-9: 6rem;
+  --layout-space-10: 8rem;
+
+  --layout-col-sm: 220px;
+  --layout-col-md: 260px;
+  --layout-col-lg: 300px;
+
+  --layout-pad-card: clamp(1.25rem, 1rem + 1.111vw, 2rem);
+  --layout-pad-panel: clamp(1.5rem, 1.167rem + 1.481vw, 2.5rem);
+
+  --layout-radius-xs: 4px;
+  --layout-radius-sm: 8px;
+  --layout-radius-md: 14px;
+  --layout-radius-lg: 20px;
+  --layout-radius-xl: 28px;
+  --layout-radius-pill: 999px;
+  --layout-radius-round: 50%;
+
+  --layout-nav-h: 57px;
+  --layout-stick: calc(var(--layout-nav-h) + var(--layout-space-4));
+
+  --layout-z-under: -1;
+  --layout-z-base: 1;
+  --layout-z-raised: 10;
+  --layout-z-sticky: 20;
+  --layout-z-nav: 30;
+  --layout-z-overlay: 40;
+  --layout-z-modal: 50;
+  --layout-z-toast: 60;
 }
 
-/** Centers a full page section within the shared 80rem page measure. */
-.layout-page {
-  max-inline-size: var(--layout-page-max);
+.layout-page,
+.layout-reading,
+.layout-content,
+.layout-form {
   margin-inline: auto;
   padding-inline: var(--layout-gutter);
 }
 
-/** Limits long-form copy to a comfortable reading measure. */
-.layout-reading {
-  max-inline-size: var(--layout-reading-max);
-  margin-inline: auto;
-  padding-inline: var(--layout-gutter);
+.layout-page { max-inline-size: var(--layout-page-max); }
+.layout-reading { max-inline-size: var(--layout-reading-max); }
+.layout-content { max-inline-size: var(--layout-content-max); }
+.layout-form { max-inline-size: var(--layout-form-max); }
+
+.layout-bleed {
+  inline-size: 100vw;
+  margin-inline: calc(50% - 50vw);
 }
 
-/** Provides a spacious but narrower measure for dense content and forms. */
-.layout-content {
-  max-inline-size: var(--layout-content-max);
-  margin-inline: auto;
-  padding-inline: var(--layout-gutter);
+.layout-section { padding-block: var(--layout-section-md); }
+.layout-section-sm { padding-block: var(--layout-section-sm); }
+.layout-section-lg { padding-block: var(--layout-section-lg); }
+.layout-section-hero { padding-block: var(--layout-section-hero) var(--layout-section-md); }
+.layout-section-end { padding-block: var(--layout-section-md) var(--layout-section-lg); }
+.layout-section-flush { padding-block-start: 0; }
+
+.layout-stack { --layout-stack-gap: var(--layout-space-4); }
+.layout-stack > * + * { margin-block-start: var(--layout-stack-gap); }
+.layout-stack-xs { --layout-stack-gap: var(--layout-space-2); }
+.layout-stack-sm { --layout-stack-gap: var(--layout-space-3); }
+.layout-stack-lg { --layout-stack-gap: var(--layout-space-5); }
+.layout-stack-xl { --layout-stack-gap: var(--layout-space-6); }
+
+.layout-grid { display: grid; gap: var(--layout-space-5); }
+.layout-grid-tight { gap: var(--layout-space-3); }
+.layout-grid-loose { gap: var(--layout-space-6); }
+
+.layout-grid-auto,
+.layout-grid-auto-sm,
+.layout-grid-auto-lg {
+  display: grid;
+  gap: var(--layout-space-5);
+}
+
+.layout-grid-auto { grid-template-columns: repeat(auto-fit, minmax(var(--layout-col-md), 1fr)); }
+.layout-grid-auto-sm { grid-template-columns: repeat(auto-fit, minmax(var(--layout-col-sm), 1fr)); }
+.layout-grid-auto-lg { grid-template-columns: repeat(auto-fit, minmax(var(--layout-col-lg), 1fr)); }
+
+.layout-grid-2,
+.layout-grid-3,
+.layout-grid-4 {
+  display: grid;
+  gap: var(--layout-space-5);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 520px) {
+  .layout-grid-4 { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 700px) {
+  .layout-grid-2 { grid-template-columns: repeat(2, 1fr); }
+  .layout-grid-3 { grid-template-columns: repeat(3, 1fr); }
+  .layout-grid-4 { grid-template-columns: repeat(4, 1fr); }
+}
+
+.layout-grid-rail,
+.layout-grid-rail-left {
+  display: grid;
+  gap: var(--layout-space-6);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 1100px) {
+  .layout-grid-rail { grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); }
+  .layout-grid-rail-left { grid-template-columns: minmax(0, 1fr) minmax(0, 1.55fr); }
+}
+
+.layout-rail { position: static; }
+
+@media (min-width: 1100px) {
+  .layout-rail {
+    position: sticky;
+    inset-block-start: var(--layout-stick);
+    align-self: start;
+  }
+}
+
+.layout-row {
+  display: flex;
+  align-items: center;
+  gap: var(--layout-space-3);
+  flex-wrap: wrap;
+}
+
+.layout-row-tight { gap: var(--layout-space-2); }
+.layout-row-loose { gap: var(--layout-space-5); }
+.layout-row-split { justify-content: space-between; }
+.layout-row-top { align-items: flex-start; }
+.layout-row-fill > * { flex: 1 1 0; min-inline-size: 0; }
+
+.layout-pinned-bottom {
+  position: fixed;
+  inset-inline: var(--layout-gutter);
+  inset-block-end: calc(var(--layout-space-4) + env(safe-area-inset-bottom, 0px));
+  z-index: var(--layout-z-toast);
+}
+
+.layout-pinned-top {
+  position: fixed;
+  inset-inline: 0;
+  inset-block-start: 0;
+  block-size: var(--layout-nav-h);
+  z-index: var(--layout-z-nav);
+}
+
+[id] { scroll-margin-block-start: var(--layout-stick); }
+
+.layout-measure { max-inline-size: var(--layout-reading-max); }
+.layout-center { margin-inline: auto; }
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { overflow-x: clip; }
+body { min-block-size: 100svh; }
+
+img,
+svg,
+video,
+canvas {
+  max-inline-size: 100%;
+  block-size: auto;
+  display: block;
+}
+
+.layout-grid > *,
+.layout-grid-auto > *,
+.layout-grid-auto-sm > *,
+.layout-grid-auto-lg > *,
+.layout-grid-2 > *,
+.layout-grid-3 > *,
+.layout-grid-4 > *,
+.layout-grid-rail > *,
+.layout-grid-rail-left > * { min-inline-size: 0; }
+
+@media print {
+  .layout-pinned-bottom,
+  .layout-pinned-top,
+  .layout-rail { position: static; }
 }
