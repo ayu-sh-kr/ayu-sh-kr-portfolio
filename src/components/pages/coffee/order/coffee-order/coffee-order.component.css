@@ -1,0 +1,10 @@
+coffee-order { display: block; }
+.coffee-section { padding-block: clamp(4.5rem, 9vw, 8rem); }
+.coffee-container { width: min(100% - 2.5rem, 48rem); margin-inline: auto; }
+.coffee-order-heading { max-width: 38rem; }
+.coffee-order-heading .type-lede { color: var(--muted-color); }
+.coffee-order-flow { display: grid; gap: 2.15rem; margin-top: 2.5rem; }
+.coffee-order-question { min-width: 0; border: 0; padding: 0; }
+.coffee-order-question legend { display: flex; align-items: center; gap: .8rem; margin-bottom: 1.1rem; color: var(--foreground-color); font-size: 1.125rem; font-weight: var(--type-card-title-weight); letter-spacing: var(--type-card-title-tracking); }
+.coffee-order-question legend span { display: grid; width: 1.65rem; height: 1.65rem; place-items: center; border-radius: 999px; background: var(--contrast-background-color); color: var(--contrast-foreground-color); font-size: var(--type-compact-size); }
+@media (max-width: 40rem) { .coffee-order-flow { gap: 1.75rem; } }
