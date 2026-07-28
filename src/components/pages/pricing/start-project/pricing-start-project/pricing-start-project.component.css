@@ -4,11 +4,11 @@ pricing-start-project {
 
 .pricing-start-project-section {
   border-top: 1px solid var(--border-color);
-  padding: 7rem 1.25rem;
+  padding: 7rem var(--layout-gutter);
 }
 
 .pricing-start-project-section > * {
-  max-width: 80rem;
+  max-width: var(--layout-page-max);
   margin-inline: auto;
 }
 

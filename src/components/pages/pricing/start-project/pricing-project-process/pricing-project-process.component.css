@@ -1,6 +1,6 @@
 pricing-project-process {
   display: block;
-  max-width: 80rem;
+  max-width: var(--layout-page-max);
   margin-inline: auto;
 }
 

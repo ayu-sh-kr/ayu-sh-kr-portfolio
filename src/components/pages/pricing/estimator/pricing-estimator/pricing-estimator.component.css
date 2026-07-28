@@ -3,9 +3,9 @@ pricing-estimator {
 }
 
 .pricing-estimator-section {
-  max-width: 80rem;
+  max-width: var(--layout-page-max);
   margin-inline: auto;
-  padding: 4rem 1.25rem;
+  padding: 4rem var(--layout-gutter);
 }
 
 .pricing-estimator-flow {
