@@ -1069,4 +1069,10 @@
   --color-red-400: #f87171;
   --color-purple-400: #c084fc;
   --color-purple-600: #9333ea;
+  --color-status-success-light: #1f7a3d;
+  --color-status-success-dark: #5cc98a;
+  --color-status-warning-light: #8a6100;
+  --color-status-warning-dark: #e0a63a;
+  --color-status-danger-light: #c0341a;
+  --color-status-danger-dark: #ff8367;
 }
