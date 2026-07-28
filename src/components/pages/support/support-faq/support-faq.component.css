@@ -1,0 +1,39 @@
+support-faq { display: block; }
+
+.support-faq { max-width: 56rem; margin-inline: auto; padding: 5.5rem 1.5rem 1rem; }
+.support-faq-heading { max-width: 38rem; }
+.support-faq-heading > p:last-child { margin-top: 1.1rem; color: var(--muted-color); font-size: 1.125rem; line-height: 1.6; }
+
+.support-faq-search { display: flex; align-items: center; gap: 0.7rem; margin-top: 2.5rem; padding: 0.15rem 0.25rem 0.15rem 1rem; border: 1px solid var(--border-color); border-radius: 0.875rem; background: var(--surface-color); color: var(--muted-color); }
+.support-faq-search:focus-within { border-color: var(--primary-color); box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary-color) 14%, transparent); }
+.support-faq-search input { width: 100%; min-width: 0; padding: 0.8rem 0; border: 0; outline: 0; background: transparent; color: var(--foreground-color); font: inherit; font-size: 0.9375rem; }
+.support-faq-search input::placeholder { color: var(--muted-strong-color); }
+.support-faq-search button { visibility: hidden; width: 2rem; height: 2rem; border: 0; border-radius: 50%; background: transparent; color: var(--muted-color); cursor: pointer; font-size: 1.25rem; line-height: 1; }
+.support-faq-search button.is-visible { visibility: visible; }
+.support-faq-search button:hover { background: var(--surface-hover-color); color: var(--foreground-color); }
+
+.support-faq-categories { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+.support-faq-category { min-height: 2.25rem; padding: 0.45rem 0.8rem; border: 1px solid var(--border-color); border-radius: 999px; background: transparent; color: var(--muted-color); cursor: pointer; font: inherit; font-size: 0.8125rem; font-weight: 500; }
+.support-faq-category:hover { border-color: var(--foreground-color); color: var(--foreground-color); }
+.support-faq-category.is-active { border-color: var(--foreground-color); background: var(--foreground-color); color: var(--background-color); }
+.support-faq-count { margin-top: 1.4rem; color: var(--muted-color); font-size: 0.8125rem; font-variant-numeric: tabular-nums; }
+.support-faq-count b { color: var(--foreground-color); font-weight: 600; }
+
+.support-faq-list { margin-top: 0.8rem; border-top: 1px solid var(--border-color); }
+.support-faq-item { border-bottom: 1px solid var(--border-color); }
+.support-faq-item summary { display: flex; align-items: center; justify-content: space-between; gap: 1.25rem; padding: 1.1rem 0; color: var(--foreground-color); cursor: pointer; font-size: 0.975rem; font-weight: 500; list-style: none; }
+.support-faq-item summary::-webkit-details-marker { display: none; }
+.support-faq-item .support-plus { flex: 0 0 auto; color: var(--primary-color-strong); font-size: 1.25rem; font-weight: 400; transition: transform 200ms ease; }
+.support-faq-item[open] .support-plus { transform: rotate(45deg); }
+.support-faq-item mark { border-radius: 0.15rem; background: var(--primary-color-subtle); color: inherit; }
+.support-faq-answer { max-width: 52rem; padding: 0 2.4rem 1.2rem 0; color: var(--muted-color); font-size: 0.9rem; line-height: 1.65; }
+.support-faq-answer > span { display: block; width: max-content; margin-bottom: 0.55rem; padding: 0.2rem 0.5rem; border-radius: 999px; background: var(--primary-color-subtle); color: var(--primary-color-strong); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; }
+.support-faq-answer a { color: var(--primary-color-strong); font-weight: 600; }
+
+.support-faq-empty { max-width: 34rem; margin: 2rem auto 0; padding: 2rem; border: 1px solid var(--border-color); border-radius: 1.125rem; background: var(--surface-color); text-align: center; }
+.support-faq-empty h3 { font-size: 1.05rem; font-weight: 600; }
+.support-faq-empty p { margin-top: 0.5rem; color: var(--muted-color); font-size: 0.9rem; line-height: 1.6; }
+.support-faq-ask { display: inline-flex; margin-top: 1.25rem; padding: 0.75rem 1.2rem; border-radius: 999px; background: var(--foreground-color); color: var(--background-color); font-size: 0.875rem; font-weight: 600; }
+
+@media (max-width: 40rem) { .support-faq { padding: 4rem 1.2rem 1rem; } .support-faq-search input { font-size: 1rem; } }
+@media (prefers-reduced-motion: reduce) { .support-faq-item .support-plus { transition: none; } }
