@@ -433,6 +433,50 @@
           }
         },
         {
+          "name": "design-page",
+          "source": {
+            "file": "./src/pages/design.page.ts",
+            "offset": 577
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "design-typography-guidance",
+          "source": {
+            "file": "./src/components/pages/design/guidance/design-typography-guidance/design-typography-guidance.component.ts",
+            "offset": 409
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "design-typography-overview",
+          "source": {
+            "file": "./src/components/pages/design/overview/design-typography-overview/design-typography-overview.component.ts",
+            "offset": 439
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "design-typography-roles",
+          "source": {
+            "file": "./src/components/pages/design/roles/design-typography-roles/design-typography-roles.component.ts",
+            "offset": 2629
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
           "name": "footer-baseline",
           "source": {
             "file": "./src/components/utils/footer/footer-baseline/footer-baseline.component.ts",

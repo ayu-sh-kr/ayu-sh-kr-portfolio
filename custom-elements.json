@@ -730,6 +730,105 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/pages/design/guidance/design-typography-guidance/design-typography-guidance.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "DesignTypographyGuidanceComponent",
+          "customElement": true,
+          "tagName": "design-typography-guidance",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "DesignTypographyGuidanceComponent",
+          "declaration": {
+            "name": "DesignTypographyGuidanceComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "design-typography-guidance",
+          "declaration": {
+            "name": "DesignTypographyGuidanceComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/design/overview/design-typography-overview/design-typography-overview.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "DesignTypographyOverviewComponent",
+          "customElement": true,
+          "tagName": "design-typography-overview",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "DesignTypographyOverviewComponent",
+          "declaration": {
+            "name": "DesignTypographyOverviewComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "design-typography-overview",
+          "declaration": {
+            "name": "DesignTypographyOverviewComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/design/roles/design-typography-roles/design-typography-roles.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "DesignTypographyRolesComponent",
+          "customElement": true,
+          "tagName": "design-typography-roles",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "DesignTypographyRolesComponent",
+          "declaration": {
+            "name": "DesignTypographyRolesComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "design-typography-roles",
+          "declaration": {
+            "name": "DesignTypographyRolesComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/pages/home/contact/about-contact-section/about-contact-section.component.js",
       "declarations": [
         {
@@ -3770,6 +3869,39 @@
           "name": "coffee-page",
           "declaration": {
             "name": "CoffeePage"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/pages/design.page.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "DesignPage",
+          "customElement": true,
+          "tagName": "design-page",
+          "superclass": {
+            "name": "DotaPageElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "DesignPage",
+          "declaration": {
+            "name": "DesignPage"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "design-page",
+          "declaration": {
+            "name": "DesignPage"
           }
         }
       ]
