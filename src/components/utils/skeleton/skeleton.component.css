@@ -195,7 +195,7 @@ sk-cards {
 }
 
 .markdown-skeleton-layer {
-  z-index: 2;
+  z-index: var(--layout-z-raised);
   min-block-size: 25rem;
   padding-block: 1rem;
   background: var(--background-color);
