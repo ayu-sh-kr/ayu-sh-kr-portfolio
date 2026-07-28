@@ -1,0 +1,98 @@
+terms-document-header {
+  display: block;
+}
+
+.terms-header {
+  max-inline-size: var(--layout-reading-max);
+  margin-inline: auto;
+}
+
+.terms-chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.terms-chip {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  padding: 0.32rem 0.72rem;
+  background: var(--primary-color-subtle);
+  color: var(--primary-color-strong);
+  font-size: var(--type-compact-size);
+  font-weight: var(--type-control-weight);
+}
+
+.terms-chip-muted {
+  border: 1px solid var(--border-color);
+  background: transparent;
+  color: var(--muted-color);
+}
+
+.terms-header h1 {
+  margin: 0.7rem 0;
+  font-size: var(--type-section-size);
+  font-weight: var(--type-section-weight);
+  letter-spacing: var(--type-section-tracking);
+  line-height: var(--type-section-leading);
+  text-wrap: balance;
+}
+
+.terms-tagline {
+  margin: 0;
+  color: var(--muted-color);
+  font-size: var(--type-lede-size);
+  line-height: var(--type-lede-leading);
+  text-wrap: pretty;
+}
+
+.terms-proof {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.1rem;
+  margin-block-start: 1.35rem;
+  color: var(--muted-color);
+  font-size: var(--type-control-size);
+  font-weight: var(--type-control-weight);
+  line-height: var(--type-compact-leading);
+}
+
+.terms-proof span + span::before {
+  margin-inline-end: 1rem;
+  color: var(--border-color);
+  content: "/";
+}
+
+.terms-proof strong {
+  color: var(--foreground-color);
+  font-variant-numeric: tabular-nums;
+  font-weight: 650;
+}
+
+.terms-summary {
+  margin-block-start: 2.4rem;
+  border-radius: 1.25rem;
+  padding: 1.6rem 1.8rem;
+  background: var(--primary-color-subtle);
+}
+
+.terms-summary ul {
+  margin: 0.7rem 0 0 1.1rem;
+  padding-inline-start: 0;
+  color: var(--foreground-color);
+  font-size: var(--type-body-size);
+  line-height: var(--type-body-leading);
+}
+
+.terms-summary li {
+  margin-block: 0.35rem;
+}
+
+.terms-summary-note {
+  margin: 0.9rem 0 0;
+  color: var(--primary-color-strong);
+  font-size: var(--type-compact-size);
+  line-height: var(--type-compact-leading);
+  opacity: 0.8;
+}
