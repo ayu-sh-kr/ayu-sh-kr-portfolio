@@ -1,0 +1,129 @@
+.design-section {
+  padding-inline: clamp(1.25rem, 4vw, 3rem);
+}
+
+.design-overview {
+  max-inline-size: 88rem;
+  margin-inline: auto;
+  padding-block: clamp(7rem, 14vw, 11rem) clamp(3.5rem, 8vw, 6rem);
+}
+
+.design-overview-layout {
+  display: grid;
+  gap: clamp(2rem, 6vw, 6rem);
+  align-items: end;
+}
+
+.design-overview-intro {
+  max-inline-size: 54rem;
+}
+
+.design-eyebrow {
+  margin: 0;
+  color: var(--primary-color-strong);
+  font-weight: var(--type-eyebrow-weight);
+}
+
+.design-overview-title {
+  max-inline-size: 13ch;
+  margin: 1rem 0 1.5rem;
+}
+
+.design-overview-lede {
+  max-inline-size: 43rem;
+  margin: 0;
+  color: var(--muted-color);
+}
+
+.design-overview-lede code,
+.design-summary-list code {
+  color: var(--primary-color-strong);
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+}
+
+.design-overview-link {
+  display: inline-flex;
+  gap: 0.5rem;
+  margin-top: 2rem;
+  color: var(--foreground-color);
+  font-size: var(--type-control-size);
+  font-weight: var(--type-control-weight);
+  text-decoration: underline;
+  text-decoration-color: var(--primary-color);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.35em;
+}
+
+.design-overview-link:hover {
+  color: var(--primary-color-strong);
+}
+
+.design-overview-summary {
+  border: 1px solid var(--border-color);
+  border-radius: 1.5rem;
+  background: var(--surface-color);
+  padding: 1.5rem;
+}
+
+.design-summary-label {
+  margin: 0 0 1.25rem;
+  color: var(--muted-color);
+}
+
+.design-summary-list {
+  display: grid;
+  gap: 1rem;
+  margin: 0;
+}
+
+.design-summary-list div {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  border-block-end: 1px solid var(--border-color);
+  padding-block-end: 1rem;
+}
+
+.design-summary-list div:last-child {
+  border-block-end: 0;
+  padding-block-end: 0;
+}
+
+.design-summary-list dt {
+  color: var(--muted-color);
+  font-size: var(--type-compact-size);
+}
+
+.design-summary-list dd {
+  margin: 0;
+  color: var(--foreground-color);
+  font-size: var(--type-compact-size);
+  font-weight: var(--type-control-weight);
+  text-align: end;
+}
+
+.design-role-flow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  align-items: center;
+  margin-top: clamp(3rem, 7vw, 6rem);
+  color: var(--muted-color);
+  font-size: var(--type-compact-size);
+}
+
+.design-flow-item {
+  border: 1px solid var(--border-color);
+  border-radius: 999px;
+  background: var(--surface-color);
+  padding: 0.4rem 0.7rem;
+  color: var(--foreground-color);
+  font-weight: var(--type-control-weight);
+}
+
+@media (min-width: 64rem) {
+  .design-overview-layout {
+    grid-template-columns: minmax(0, 1fr) minmax(19rem, 24rem);
+  }
+}

@@ -1,0 +1,167 @@
+.design-roles {
+  max-inline-size: 88rem;
+  margin-inline: auto;
+  border-block: 1px solid var(--border-color);
+  padding-block: clamp(4.5rem, 9vw, 8rem);
+}
+
+.design-section-heading {
+  max-inline-size: 48rem;
+}
+
+.design-section-heading h2 {
+  margin: 0.9rem 0 1.2rem;
+}
+
+.design-section-heading .type-lede {
+  margin: 0;
+  color: var(--muted-color);
+}
+
+.design-role-grid {
+  display: grid;
+  gap: 1px;
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  border-radius: 1.5rem;
+  background: var(--border-color);
+}
+
+.design-role-card {
+  display: flex;
+  min-block-size: 15rem;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.75rem;
+  background: var(--surface-color);
+  padding: clamp(1.25rem, 3vw, 2rem);
+}
+
+.design-role-card-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.design-role-card-meta .type-label {
+  margin: 0;
+  color: var(--muted-color);
+}
+
+.design-role-card code {
+  color: var(--primary-color-strong);
+  font-family: var(--font-mono);
+  font-size: var(--type-compact-size);
+  overflow-wrap: anywhere;
+  text-align: end;
+}
+
+.design-role-sample {
+  margin: auto 0;
+  color: var(--foreground-color);
+}
+
+.design-role-note {
+  max-inline-size: 42ch;
+  margin: 0;
+  color: var(--muted-color);
+  font-size: var(--type-compact-size);
+  line-height: var(--type-compact-leading);
+}
+
+.design-role-card--display .design-role-sample {
+  font-size: var(--type-display-size);
+  font-weight: var(--type-display-weight);
+  letter-spacing: var(--type-display-tracking);
+  line-height: var(--type-display-leading);
+  text-wrap: balance;
+}
+
+.design-role-card--section .design-role-sample {
+  font-size: var(--type-section-size);
+  font-weight: var(--type-section-weight);
+  letter-spacing: var(--type-section-tracking);
+  line-height: var(--type-section-leading);
+  text-wrap: balance;
+}
+
+.design-role-card--subsection .design-role-sample {
+  font-size: var(--type-subsection-size);
+  font-weight: var(--type-section-weight);
+  letter-spacing: var(--type-section-tracking);
+  line-height: var(--type-section-leading);
+  text-wrap: balance;
+}
+
+.design-role-card--lede .design-role-sample {
+  color: var(--muted-color);
+  font-size: var(--type-lede-size);
+  line-height: var(--type-lede-leading);
+}
+
+.design-role-card--body .design-role-sample {
+  font-size: var(--type-body-size);
+  line-height: var(--type-body-leading);
+}
+
+.design-role-card--compact .design-role-sample {
+  color: var(--muted-color);
+  font-size: var(--type-compact-size);
+  line-height: var(--type-compact-leading);
+}
+
+.design-role-card--card .design-role-sample {
+  font-size: var(--type-card-title-size);
+  font-weight: var(--type-card-title-weight);
+  letter-spacing: var(--type-card-title-tracking);
+}
+
+.design-role-card--eyebrow .design-role-sample {
+  color: var(--primary-color-strong);
+  font-size: var(--type-eyebrow-size);
+  font-weight: var(--type-eyebrow-weight);
+  letter-spacing: var(--type-eyebrow-tracking);
+  text-transform: uppercase;
+}
+
+.design-role-card--label .design-role-sample {
+  color: var(--muted-color);
+  font-size: var(--type-label-size);
+  font-weight: var(--type-label-weight);
+  letter-spacing: var(--type-label-tracking);
+  text-transform: uppercase;
+}
+
+.design-role-card--control .design-role-sample {
+  display: inline-flex;
+  align-self: flex-start;
+  border-radius: 999px;
+  background: var(--primary-color);
+  padding: 0.8rem 1.2rem;
+  color: var(--primary-color-on);
+  font-size: var(--type-control-size);
+  font-weight: var(--type-control-weight);
+}
+
+.design-role-card--metric .design-role-sample {
+  color: var(--primary-color-strong);
+  font-size: var(--type-price-size);
+  font-weight: var(--type-section-weight);
+  letter-spacing: var(--type-price-tracking);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (min-width: 44rem) {
+  .design-role-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 78rem) {
+  .design-role-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}

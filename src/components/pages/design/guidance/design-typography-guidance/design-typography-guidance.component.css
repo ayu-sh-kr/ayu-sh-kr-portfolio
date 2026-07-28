@@ -1,0 +1,159 @@
+.design-guidance {
+  max-inline-size: 88rem;
+  margin-inline: auto;
+  padding-block: clamp(4.5rem, 9vw, 8rem);
+}
+
+.design-guidance-grid {
+  display: grid;
+  gap: 1rem;
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+}
+
+.design-guidance-card {
+  display: flex;
+  min-block-size: 18rem;
+  flex-direction: column;
+  border: 1px solid var(--border-color);
+  border-radius: 1.5rem;
+  background: var(--surface-color);
+  padding: clamp(1.25rem, 3vw, 2rem);
+}
+
+.design-guidance-card .type-label,
+.design-prose-sample .type-label,
+.design-checklist .type-label {
+  margin: 0;
+  color: var(--muted-color);
+}
+
+.design-pair-heading {
+  margin: 1rem 0 0;
+}
+
+.design-pair-lede {
+  margin: 1rem 0 auto;
+  color: var(--muted-color);
+}
+
+.design-guidance-card code {
+  margin-top: 1.5rem;
+  color: var(--primary-color-strong);
+  font-family: var(--font-mono);
+  font-size: var(--type-compact-size);
+}
+
+.design-card-heading {
+  margin: 1rem 0 0;
+  color: var(--foreground-color);
+  font-size: var(--type-card-title-size);
+  font-weight: var(--type-card-title-weight);
+  letter-spacing: var(--type-card-title-tracking);
+}
+
+.design-card-copy {
+  margin: 0.8rem 0 auto;
+  color: var(--muted-color);
+  font-size: var(--type-body-size);
+  line-height: var(--type-body-leading);
+}
+
+.design-guidance-card--contrast {
+  background: var(--contrast-background-color);
+  color: var(--contrast-foreground-color);
+}
+
+.design-guidance-card--contrast .type-label,
+.design-guidance-card--contrast .design-card-copy {
+  color: var(--contrast-muted-color);
+}
+
+.design-guidance-card--contrast .design-estimate {
+  margin: 1rem 0 0;
+  color: var(--contrast-foreground-color);
+}
+
+.design-guidance-card--contrast code {
+  color: var(--contrast-muted-color);
+}
+
+.design-prose-layout {
+  display: grid;
+  gap: 1rem;
+  margin-top: clamp(3rem, 7vw, 6rem);
+}
+
+.design-prose-sample,
+.design-checklist {
+  border: 1px solid var(--border-color);
+  border-radius: 1.5rem;
+  background: var(--surface-color);
+  padding: clamp(1.25rem, 3vw, 2rem);
+}
+
+.design-prose-sample h3 {
+  margin: 1rem 0;
+  color: var(--foreground-color);
+  font-size: var(--type-subsection-size);
+  font-weight: var(--type-section-weight);
+  letter-spacing: var(--type-section-tracking);
+  line-height: var(--type-section-leading);
+  text-wrap: balance;
+}
+
+.design-prose-sample p:not(.type-label) {
+  max-inline-size: 64ch;
+  margin: 0 0 1rem;
+  color: var(--foreground-color);
+  font-size: var(--type-body-size);
+  line-height: var(--type-body-leading);
+}
+
+.design-prose-sample a {
+  display: inline-flex;
+  gap: 0.4rem;
+  margin-top: 0.5rem;
+  color: var(--primary-color-strong);
+  font-size: var(--type-control-size);
+  font-weight: var(--type-control-weight);
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.3em;
+}
+
+.design-checklist ol {
+  display: grid;
+  gap: 0.9rem;
+  margin: 1.25rem 0 0;
+  padding: 0;
+  counter-reset: typography-check;
+  list-style: none;
+}
+
+.design-checklist li {
+  display: grid;
+  grid-template-columns: 1.7rem minmax(0, 1fr);
+  gap: 0.65rem;
+  align-items: baseline;
+  color: var(--foreground-color);
+  font-size: var(--type-compact-size);
+  line-height: var(--type-compact-leading);
+}
+
+.design-checklist li::before {
+  content: counter(typography-check, decimal-leading-zero);
+  counter-increment: typography-check;
+  color: var(--primary-color-strong);
+  font-family: var(--font-mono);
+  font-size: var(--type-label-size);
+}
+
+@media (min-width: 48rem) {
+  .design-guidance-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .design-prose-layout {
+    grid-template-columns: minmax(0, 1.65fr) minmax(17rem, 0.85fr);
+  }
+}
