@@ -1,4 +1,5 @@
 import type {PageSeoContent} from "@app/data/seo-content.ts";
+import {EMAIL, MAILTO} from "@app/data/email-config.ts";
 
 // Portfolio copy lives here so content can change without touching component markup.
 export const siteIdentity = {
@@ -242,7 +243,7 @@ export const portfolioContent = {
       body: "I put together talks and hands-on workshops tailored to your audience — remote or in person, IST-friendly. Tell me the room and I'll shape the session.",
       primaryCta: {
         label: "Invite me to speak",
-        href: "mailto:akjaiswal2003@gmail.com?subject=Speaking%20invitation",
+        href: MAILTO.helloSubject("Speaking invitation"),
       },
       secondaryCta: { label: "See topics & rates", href: "/pricing" },
     },
@@ -277,9 +278,9 @@ export const portfolioContent = {
     titleBeforeAccent: "Let’s build something",
     accent: "reliable.",
     body: "Tell me what you’re building, what is stuck, and what a good outcome looks like. I’ll reply with a useful next step.",
-    email: "akjaiswal2003@gmail.com",
-    emailHref: "mailto:akjaiswal2003@gmail.com?subject=Backend%20project%20inquiry",
-    resumeHref: "mailto:akjaiswal2003@gmail.com?subject=Resume%20request",
+    email: EMAIL.hello,
+    emailHref: MAILTO.helloSubject("Backend project inquiry"),
+    resumeHref: MAILTO.helloSubject("Resume request"),
     github: "https://github.com/ayu-sh-kr",
     linkedin: "https://linkedin.com/in/ayu-sh-kr",
   },
@@ -321,6 +322,7 @@ export const portfolioContent = {
           title: "Engage",
           links: [
             { label: "Pricing", href: "/pricing" },
+            { label: "Buy me a coffee", href: "/coffee" },
             { label: "Support", href: "/support" },
             { label: "Contact", href: "/#contact" },
             { label: "Speaking", href: "/#speaking" },
@@ -338,7 +340,7 @@ export const portfolioContent = {
           links: [
             { label: "GitHub", href: "https://github.com/ayu-sh-kr", external: true },
             { label: "LinkedIn", href: "https://linkedin.com/in/ayu-sh-kr", external: true },
-            { label: "Email", href: "mailto:akjaiswal2003@gmail.com", external: true },
+            { label: "Email", href: MAILTO.hello, external: true },
           ],
         },
         {

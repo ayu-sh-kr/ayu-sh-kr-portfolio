@@ -1,7 +1,7 @@
 import type {PageSeoContent} from "@app/data/seo-content.ts";
+import {EMAIL, MAILTO} from "@app/data/email-config.ts";
 
-/** Shared inbox used by support answers, the ticket form, and project inquiries. */
-const supportEmail = "hello@ayush.dev";
+const supportEmail = EMAIL.support;
 
 /** Renders a `+` that the stylesheet rotates to `×` when a mini-FAQ item opens. */
 const plus = `<span class="support-plus" aria-hidden="true">+</span>`;
@@ -85,7 +85,7 @@ export const supportContent = {
     { category: "billing", categoryLabel: "Billing & handover", question: "How does invoicing work?", answer: "Invoices come directly from me. Project work is billed against milestones; retainers go out on the first of the month. Terms are 14 days and both bank transfer and card work." },
     { category: "billing", categoryLabel: "Billing & handover", question: "We lost access to the AWS account. Now what?", answer: "The account is yours and is registered to your organisation. Root recovery goes through AWS and the billing contact; if I still hold an IAM role, I can help your admin re-establish access and rotate everything afterwards." },
     { category: "billing", categoryLabel: "Billing & handover", question: "Can you transfer the repository to our org?", answer: "That is the default at handover. You receive the repository, infrastructure definitions, docs, and a walkthrough — there is no lock-in." },
-    { category: "security", categoryLabel: "Security & data", question: "I found a security issue. Where do I report it?", answer: "Email <a href=\"mailto:security@ayush.dev\">security@ayush.dev</a> rather than opening a public issue. You will get an acknowledgement within 72 hours and honest updates while it is being fixed." },
+    { category: "security", categoryLabel: "Security & data", question: "I found a security issue. Where do I report it?", answer: `Email <a href="${MAILTO.support}">support@ayu-sh-kr.com</a> rather than opening a public issue. You will get an acknowledgement within 72 hours and honest updates while it is being fixed.` },
     { category: "security", categoryLabel: "Security & data", question: "What happens to what I send through this form?", answer: "It becomes an email to me and nothing else — no ticketing SaaS and no third party in the middle. Attachments are deleted once the thread is closed. Please never send live credentials or customer records." },
     { category: "security", categoryLabel: "Security & data", question: "Can you sign our NDA, DPA, or vendor forms?", answer: "Usually yes, and quickly. Send it with the first message. For security questionnaires, I will be candid about which controls a one-person studio genuinely has." },
   ],

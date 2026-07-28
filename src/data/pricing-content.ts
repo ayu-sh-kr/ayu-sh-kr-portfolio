@@ -1,5 +1,6 @@
 import {siteIdentity} from "@app/data/portfolio-content.ts";
 import type {PageSeoContent} from "@app/data/seo-content.ts";
+import {EMAIL, MAILTO} from "@app/data/email-config.ts";
 
 export const pricingContent = {
   seo: {
@@ -173,7 +174,7 @@ export const pricingContent = {
     nextSteps: ["Reply by email", "20-minute call"],
     workTypes: ["An API or service", "A whole product", "Cloud setup", "An AI feature", "Something else"],
     emailLabel: "Open the prepared email",
-    emailAddress: "akjaiswal2003@gmail.com",
+    emailAddress: EMAIL.hello,
     emailSubject: "New project brief",
     previewTitle: "What I'll receive",
     previewBody: "Updates as you type. Nothing is sent until you open the email.",
@@ -202,9 +203,9 @@ export const pricingContent = {
     titleAccent: "problem.",
     body: "One message, one honest reply — whether that's a quote, a talk slot, or “here's who you actually need.” No sales dance.",
     emailLabel: "Email me",
-    emailHref: "mailto:akjaiswal2003@gmail.com?subject=Let%27s%20work%20together",
+    emailHref: MAILTO.helloSubject("Let's work together"),
     callLabel: "Book a 20-min call",
-    callHref: "mailto:akjaiswal2003@gmail.com?subject=20-minute%20call",
+    callHref: MAILTO.helloSubject("20-minute call"),
     trust: "Usually replies within a day",
     githubLabel: "GitHub",
     githubHref: "https://github.com/ayu-sh-kr",
