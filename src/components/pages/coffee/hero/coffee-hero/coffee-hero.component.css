@@ -1,0 +1,18 @@
+coffee-hero { display: block; }
+
+#coffee-hero-wrap { position: relative; height: 140vh; height: 140svh; }
+#coffee-hero-stage { position: sticky; top: 0; display: grid; height: 100vh; height: 100svh; place-items: center; overflow: hidden; text-align: center; }
+#coffee-hero-inner { width: 100%; max-width: 60rem; padding-inline: 1.25rem; will-change: opacity, transform; }
+.coffee-eyebrow { color: var(--primary-color-strong); font-size: var(--type-eyebrow-size); font-weight: var(--type-eyebrow-weight); letter-spacing: var(--type-eyebrow-tracking); text-transform: uppercase; }
+.coffee-hero-title span { color: var(--primary-color); }
+.coffee-hero-lede { max-width: 38rem; color: var(--muted-color); }
+.coffee-hero-trust, .coffee-scroll-hint { color: var(--muted-color); font-size: var(--type-compact-size); }
+.coffee-accent-button, .coffee-ghost-button { display: inline-flex; min-height: 3rem; align-items: center; justify-content: center; border-radius: 999px; padding: .8rem 1.55rem; font-size: var(--type-control-size); font-weight: var(--type-control-weight); transition: transform 220ms cubic-bezier(.2,.8,.2,1), background-color 180ms ease, border-color 180ms ease; }
+.coffee-accent-button { background: var(--primary-color); color: var(--primary-color-on); }
+.coffee-accent-button:hover { background: var(--primary-color-hover); transform: translateY(-2px); }
+.coffee-ghost-button { border: 1px solid var(--border-color); color: var(--foreground-color); }
+.coffee-ghost-button:hover { border-color: var(--foreground-color); transform: translateY(-2px); }
+.coffee-scroll-hint { position: absolute; bottom: 5svh; left: 50%; transform: translateX(-50%); }
+.coffee-scroll-hint::after { display: block; width: 1px; height: 2rem; margin: .5rem auto 0; background: linear-gradient(var(--muted-color), transparent); content: ""; animation: coffee-drip 1.8s ease-in-out infinite; }
+@keyframes coffee-drip { 0% { transform: scaleY(0); transform-origin: top; } 50% { transform: scaleY(1); transform-origin: top; } 51% { transform-origin: bottom; } 100% { transform: scaleY(0); transform-origin: bottom; } }
+@media (prefers-reduced-motion: reduce) { #coffee-hero-wrap { height: auto; } #coffee-hero-stage { position: static; min-height: 80svh; } #coffee-hero-inner { transform: none !important; } .coffee-scroll-hint { display: none; } .coffee-accent-button, .coffee-ghost-button { transition: none; } }
