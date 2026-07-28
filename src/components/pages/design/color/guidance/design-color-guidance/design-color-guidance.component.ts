@@ -1,10 +1,21 @@
 import { BaseElement, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
+import { designColorContent } from "@app/data/design-color-content.ts";
+
+/** Preserves the visual ground and control treatment for each color-pair specimen. */
+const PAIR_LAYOUTS = [
+  { className: "design-color-pair-canvas", usesControl: false },
+  { className: "design-color-pair-surface", usesControl: false },
+  { className: "design-color-pair-action", usesControl: true },
+  { className: "design-color-pair-subtle", usesControl: false },
+  { className: "design-color-pair-contrast", usesControl: false },
+] as const;
 
 /**
  * Documents the decisions that keep color use coherent across the application.
  *
- * The specimens intentionally use the same semantic pairs as production UI so
- * maintainers can inspect their behavior in the active light or dark theme.
+ * The `/design/color` route supplies the copy and token pairings through
+ * `designColorContent`, while this element keeps their visual specimens and
+ * semantic structure consistent with production UI.
  */
 @Component({
   selector: "design-color-guidance",
@@ -18,61 +29,41 @@ export class DesignColorGuidanceComponent extends BaseElement {
 
   /** Renders contrast specimens and concise implementation guidance. */
   render(): string {
+    const { guidance } = designColorContent;
+
     return HTML`
       <section class="design-color-guidance design-section" aria-labelledby="design-color-guidance-title">
         <div class="design-color-guidance-layout">
           <div>
-            <p class="type-eyebrow design-eyebrow">Application rules</p>
-            <h2 id="design-color-guidance-title" class="type-section-heading design-section-heading">Make the theme do the work.</h2>
-            <p class="type-body design-color-guidance-copy">These pairs are the only color relationships a component needs to express. Theme aliases select their values; component CSS stays focused on intent.</p>
+            <p class="type-eyebrow design-eyebrow">${guidance.eyebrow}</p>
+            <h2 id="design-color-guidance-title" class="type-section-heading design-section-heading">${guidance.title}</h2>
+            <p class="type-body design-color-guidance-copy">${guidance.lede}</p>
           </div>
 
-          <div class="design-color-pair-grid" aria-label="Core color-pair specimens">
-            <article class="design-color-pair design-color-pair-canvas">
-              <p class="type-label">Canvas / content</p>
-              <strong class="type-card-title">Readable default</strong>
-              <span class="type-compact">--background-color + --foreground-color</span>
-            </article>
-            <article class="design-color-pair design-color-pair-surface">
-              <p class="type-label">Surface / content</p>
-              <strong class="type-card-title">Human input</strong>
-              <span class="type-compact">--surface-color + --foreground-color</span>
-            </article>
-            <article class="design-color-pair design-color-pair-action">
-              <p class="type-label">Action / on action</p>
-              <button class="type-control" type="button">Primary action</button>
-              <span class="type-compact">--primary-color + --primary-color-on</span>
-            </article>
-            <article class="design-color-pair design-color-pair-subtle">
-              <p class="type-label">Subtle / content</p>
-              <strong class="type-card-title">Aside or mark</strong>
-              <span class="type-compact">--primary-color-subtle + --foreground-color</span>
-            </article>
-            <article class="design-color-pair design-color-pair-contrast">
-              <p class="type-label">Contrast / content</p>
-              <strong class="type-card-title">Focused emphasis</strong>
-              <span class="type-compact">--contrast-background-color + --contrast-foreground-color</span>
-            </article>
+          <div class="design-color-pair-grid" aria-label="${guidance.pairAriaLabel}">
+            ${guidance.pairs.map((pair, index) => {
+              const layout = PAIR_LAYOUTS[index];
+
+              return HTML`
+                <article class="design-color-pair ${layout.className}">
+                  <p class="type-label">${pair.label}</p>
+                  ${layout.usesControl
+                    ? HTML`<button class="type-control" type="button">${pair.heading}</button>`
+                    : HTML`<strong class="type-card-title">${pair.heading}</strong>`}
+                  <span class="type-compact">${pair.token}</span>
+                </article>
+              `;
+            }).join("")}
           </div>
         </div>
 
         <div class="design-color-rule-grid">
-          <article>
-            <h3 class="type-card-title">Use semantic names</h3>
-            <p class="type-compact">Choose <code>--muted-color</code> for supporting copy, not a shade that only works on one surface.</p>
-          </article>
-          <article>
-            <h3 class="type-card-title">Keep literals in the palette</h3>
-            <p class="type-compact">Add or adjust raw color values only in <code>src/theme.css</code>; map their meaning in <code>src/color.css</code>.</p>
-          </article>
-          <article>
-            <h3 class="type-card-title">Theme state is centralized</h3>
-            <p class="type-compact">Light and dark values resolve through the same aliases. Do not add page-level theme overrides.</p>
-          </article>
-          <article>
-            <h3 class="type-card-title">Use the mix ramp</h3>
-            <p class="type-compact">Choose <code>--primary-color-ring</code> or <code>--shadow-lift</code> instead of creating a new alpha or shadow in a component.</p>
-          </article>
+          ${guidance.rules.map((rule) => HTML`
+            <article>
+              <h3 class="type-card-title">${rule.title}</h3>
+              <p class="type-compact">${rule.body}</p>
+            </article>
+          `).join("")}
         </div>
       </section>
     `;

@@ -1,5 +1,7 @@
 import { Component, DotaPageElement, HTML, SEO } from "@ayu-sh-kr/dota-wrap/core";
 import { Route } from "@ayu-sh-kr/dota-wrap/router";
+import { designColorContent } from "@app/data/design-color-content.ts";
+import { toSEO } from "@app/utils/seo.utils.ts";
 
 /**
  * Internal design reference route for the application's color grammar.
@@ -20,15 +22,7 @@ export class DesignColorPage extends DotaPageElement {
 
   /** Supplies metadata for the color design grammar route. */
   get seo(): SEO {
-    return {
-      title: "Color design grammar | ayush.dev",
-      description: "A live reference for the portfolio color system and its shared usage rules.",
-      keywords: ["design system", "color", "design grammar", "Dota Web"],
-      og: {
-        title: "Color design grammar | ayush.dev",
-        description: "Live color roles and usage rules for the portfolio theme.",
-      },
-    };
+    return toSEO(designColorContent.seo);
   }
 
   /** Renders shared chrome around the color reference sections. */
