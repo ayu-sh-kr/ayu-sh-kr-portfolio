@@ -24,7 +24,7 @@ export class SpeakingPricingComponent extends BaseElement {
     const content = pricingContent.speakingPricing;
 
     return HTML`
-      <section class="speaking-pricing-section" aria-labelledby="speaking-pricing-title">
+      <section class="speaking-pricing-section layout-page layout-section" aria-labelledby="speaking-pricing-title">
         <div class="speaking-pricing-copy">
           <p class="pricing-eyebrow">${content.eyebrow}</p>
           <h2 id="speaking-pricing-title" class="pricing-section-title mt-3">${content.title}</h2>

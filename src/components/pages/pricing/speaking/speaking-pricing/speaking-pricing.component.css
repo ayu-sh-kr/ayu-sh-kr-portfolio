@@ -2,12 +2,6 @@ speaking-pricing {
   display: block;
 }
 
-.speaking-pricing-section {
-  max-width: var(--layout-page-max);
-  margin-inline: auto;
-  padding: 4rem var(--layout-gutter);
-}
-
 .speaking-pricing-copy {
   max-width: 40rem;
   margin-bottom: 2.5rem;

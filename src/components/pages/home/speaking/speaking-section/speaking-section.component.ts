@@ -218,7 +218,7 @@ export class PortfolioSpeakingComponent extends BaseElement {
     const { speaking } = portfolioContent;
 
     return HTML`
-      <section id="speaking" aria-labelledby="speaking-title">
+      <section id="speaking" class="layout-section" aria-labelledby="speaking-title">
         <div id="sp-head-wrap">
           <div id="sp-head-stage">
             <div id="sp-head-inner">
@@ -238,7 +238,7 @@ export class PortfolioSpeakingComponent extends BaseElement {
           </div>
         </div>
 
-        <div class="speaking-content mx-auto max-w-[var(--layout-page-max)] px-5 pb-28 pt-8 sm:px-8">
+        <div class="speaking-content layout-page">
           <div class="sp-topics">
             ${speaking.topics
               .map(
