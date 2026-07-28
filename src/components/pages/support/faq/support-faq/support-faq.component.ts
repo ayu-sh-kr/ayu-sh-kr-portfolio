@@ -98,7 +98,7 @@ export class SupportFaqComponent extends BaseElement {
     });
 
     return HTML`
-      <section id="faq" class="support-faq" aria-labelledby="support-faq-title">
+      <section id="faq" class="support-faq layout-page" aria-labelledby="support-faq-title">
         <div class="support-faq-content">
           <div class="support-faq-heading">
             <p class="support-eyebrow">${content.eyebrow}</p>

@@ -3,12 +3,7 @@ support-faq {
 }
 
 .support-faq {
-  padding: 5.5rem var(--layout-gutter) 1rem;
-}
-
-.support-faq-content {
-  max-width: var(--layout-page-max);
-  margin-inline: auto;
+  padding-block: 5.5rem 1rem;
 }
 
 .support-faq-heading {
@@ -233,7 +228,7 @@ support-faq {
 
 @media (max-width: 40rem) {
   .support-faq {
-    padding: 4rem 1.2rem 1rem;
+    padding-block-start: 4rem;
   }
 }
 
