@@ -27,6 +27,7 @@ export type AnalyticsSurface =
 export type AnalyticsPage =
   | "home"
   | "pricing"
+  | "support"
   | "blog"
   | "blog_article"
   | "showcase"
