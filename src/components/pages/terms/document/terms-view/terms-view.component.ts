@@ -205,10 +205,7 @@ export class TermsViewComponent extends BaseElement {
       `;
     }
 
-    const {metadata, sections} = this.terms;
-    const summary = metadata.summary
-      .map((item) => `<li>${escapeHtml(item)}</li>`)
-      .join("");
+    const {metadata} = this.terms;
     const switches = metadata.switches.length
       ? metadata.switches
         .map((item) => `
@@ -231,24 +228,7 @@ export class TermsViewComponent extends BaseElement {
     return HTML`
       <div class="terms-progress" data-terms-progress aria-hidden="true"></div>
       <main id="top" class="terms-shell terms-container" data-terms-page>
-        <header class="terms-header">
-          <div class="terms-chip-row">
-            <span class="terms-chip">Terms</span>
-            <span class="terms-chip terms-chip-muted">Version ${escapeHtml(metadata.version)}</span>
-          </div>
-          <h1>${escapeHtml(metadata.title)}</h1>
-          <p class="terms-tagline">${escapeHtml(metadata.tagline)}</p>
-          <div class="terms-proof" aria-label="Terms dates and jurisdiction">
-            <span>Last updated <strong>${formatDate(metadata.updated)}</strong></span>
-            <span>In effect from <strong>${formatDate(metadata.effective)}</strong></span>
-            <span>Governed by the law of <strong>${escapeHtml(metadata.governingLaw)}</strong></span>
-          </div>
-          <section class="terms-summary" aria-labelledby="terms-summary-title">
-            <p id="terms-summary-title" class="terms-eyebrow">The short version</p>
-            <ul>${summary}</ul>
-            <p class="terms-summary-note">${escapeHtml(metadata.summaryNote)}</p>
-          </section>
-        </header>
+        <terms-document-header metadata="${escapeHtml(JSON.stringify(metadata))}"></terms-document-header>
 
         <section class="terms-scope" aria-labelledby="terms-scope-title">
           <p id="terms-scope-title" class="terms-eyebrow">Jump to the part that’s about you</p>
