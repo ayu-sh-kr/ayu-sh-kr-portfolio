@@ -131,7 +131,7 @@ export const supportContent = {
     titleAfterAccent: "new?",
     body: "If this is a new product, backend, cloud setup, or AI idea, take the project path. You’ll get a clearer starting point than a blank inbox — and a rough idea is enough to begin.",
     primaryLabel: "Start a project",
-    primaryHref: "/pricing#pricing-contact",
+    primaryHref: "/pricing#pricing-start-project",
     secondaryLabel: "Email the brief",
     secondaryHref: `mailto:${supportEmail}?subject=Project%20inquiry`,
     note: "Not sure what shape it should take? That is part of the first conversation.",
