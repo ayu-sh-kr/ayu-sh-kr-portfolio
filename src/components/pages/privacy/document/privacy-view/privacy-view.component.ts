@@ -199,7 +199,7 @@ export class PrivacyViewComponent extends BaseElement {
   render(): string {
     if (!this.policy) {
       return HTML`
-        <main class="privacy-shell privacy-container">
+        <main class="privacy-shell layout-page layout-section-hero">
           <p class="privacy-status" role="status">${this.loadError || "Loading the privacy policy…"}</p>
         </main>
       `;
@@ -227,7 +227,7 @@ export class PrivacyViewComponent extends BaseElement {
 
     return HTML`
       <div class="privacy-progress" data-privacy-progress aria-hidden="true"></div>
-      <main id="top" class="privacy-shell privacy-container" data-privacy-page>
+      <main id="top" class="privacy-shell layout-page layout-section-hero" data-privacy-page>
         <privacy-document-header metadata="${escapeHtml(JSON.stringify(metadata))}"></privacy-document-header>
 
         <section class="privacy-scope" aria-labelledby="privacy-scope-title">
