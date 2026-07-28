@@ -1,0 +1,9 @@
+coffee-order-checkout { display: block; }
+.coffee-order-cta { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; }
+.coffee-order-cta p { max-width: 30ch; margin: 0; color: var(--muted-color); font-size: var(--type-compact-size); }
+.coffee-thanks-card { border: 1px solid var(--border-color); border-radius: 1.375rem; padding: clamp(1.4rem, 4vw, 2rem); background: var(--surface-color); text-align: center; }
+.coffee-thanks-badge { display: grid; width: 2.875rem; height: 2.875rem; place-items: center; margin-inline: auto; border-radius: 50%; background: var(--primary-color); color: var(--primary-color-on); font-size: 1.25rem; font-weight: 700; }
+.coffee-thanks-card h3 { margin: 1rem 0 0; font-size: 1.4rem; font-weight: var(--type-card-title-weight); letter-spacing: var(--type-card-title-tracking); }
+.coffee-thanks-card p { max-width: 34ch; margin: .5rem auto 0; color: var(--muted-color); }
+.coffee-thanks-card .coffee-ghost-button { margin-top: 1.4rem; }
+@media (max-width: 40rem) { .coffee-order-cta { justify-content: center; text-align: center; } .coffee-order-cta p { max-width: 34ch; } }
