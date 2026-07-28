@@ -1,0 +1,106 @@
+pricing-project-mode-selector {
+  display: block;
+  max-width: 80rem;
+  margin: 3.5rem auto 0;
+}
+
+.pricing-project-question > p {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  color: var(--foreground-color);
+  font-size: var(--pricing-type-card-title-size);
+  font-weight: var(--pricing-type-card-title-weight);
+  letter-spacing: var(--pricing-type-card-title-tracking);
+}
+
+.pricing-project-question > p span {
+  display: grid;
+  width: 1.45rem;
+  height: 1.45rem;
+  place-items: center;
+  border-radius: 999px;
+  background: var(--foreground-color);
+  color: var(--background-color);
+  font-size: var(--pricing-type-label-size);
+}
+
+.pricing-project-modes {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin-top: 1.1rem;
+}
+
+.pricing-project-mode {
+  position: relative;
+  min-height: 8.6rem;
+  border: 1px solid var(--border-color);
+  border-radius: 1.15rem;
+  padding: 1.35rem;
+  text-align: left;
+  transition: border-color 180ms ease, background-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+}
+
+.pricing-project-mode::after {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.2rem;
+  width: 0.95rem;
+  height: 0.95rem;
+  border: 1px solid var(--border-color);
+  border-radius: 999px;
+  content: "";
+}
+
+.pricing-project-mode strong,
+.pricing-project-mode small {
+  display: block;
+  padding-right: 1.5rem;
+}
+
+.pricing-project-mode strong {
+  color: var(--foreground-color);
+  font-size: var(--pricing-type-card-title-size);
+  font-weight: var(--pricing-type-card-title-weight);
+  letter-spacing: var(--pricing-type-card-title-tracking);
+}
+
+.pricing-project-mode small {
+  margin-top: 0.4rem;
+  color: var(--muted-color);
+  font-size: var(--pricing-type-compact-size);
+  line-height: var(--pricing-type-compact-leading);
+}
+
+.pricing-project-mode:hover {
+  border-color: var(--foreground-color);
+  transform: translateY(-2px);
+}
+
+.pricing-project-mode.is-selected {
+  border-color: var(--primary-color);
+  background: var(--primary-color-subtle);
+  box-shadow: 0 0 0 1px var(--primary-color);
+}
+
+.pricing-project-mode.is-selected::after {
+  border: 4px solid var(--primary-color-on);
+  background: var(--primary-color);
+}
+
+@media (max-width: 42rem) {
+  .pricing-project-modes {
+    grid-template-columns: 1fr;
+  }
+
+  .pricing-project-mode {
+    min-height: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pricing-project-mode {
+    transition: none;
+  }
+}
