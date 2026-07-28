@@ -1,5 +1,5 @@
 .design-roles {
-  max-inline-size: 88rem;
+  max-inline-size: var(--layout-page-max);
   margin-inline: auto;
   border-block: 1px solid var(--border-color);
   padding-block: clamp(4.5rem, 9vw, 8rem);

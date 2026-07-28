@@ -1,5 +1,5 @@
 .design-guidance {
-  max-inline-size: 88rem;
+  max-inline-size: var(--layout-page-max);
   margin-inline: auto;
   padding-block: clamp(4.5rem, 9vw, 8rem);
 }
