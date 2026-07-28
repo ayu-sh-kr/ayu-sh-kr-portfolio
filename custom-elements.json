@@ -36,7 +36,7 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/pages/blog/blog-view/blog-article.component.js",
+      "path": "src/components/pages/blog/article/blog-article/blog-article.component.js",
       "declarations": [
         {
           "kind": "class",
@@ -69,205 +69,7 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/pages/blog/blog-view/blog-filter/blog-filter.component.js",
-      "declarations": [
-        {
-          "kind": "class",
-          "name": "BlogFilterComponent",
-          "customElement": true,
-          "tagName": "blog-filter",
-          "superclass": {
-            "name": "BaseElement"
-          },
-          "members": [],
-          "attributes": []
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "BlogFilterComponent",
-          "declaration": {
-            "name": "BlogFilterComponent"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "blog-filter",
-          "declaration": {
-            "name": "BlogFilterComponent"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/pages/blog/blog-view/blog-hero/blog-hero.component.js",
-      "declarations": [
-        {
-          "kind": "class",
-          "name": "BlogHeroComponent",
-          "customElement": true,
-          "tagName": "blog-hero",
-          "superclass": {
-            "name": "BaseElement"
-          },
-          "members": [],
-          "attributes": []
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "BlogHeroComponent",
-          "declaration": {
-            "name": "BlogHeroComponent"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "blog-hero",
-          "declaration": {
-            "name": "BlogHeroComponent"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/pages/blog/blog-view/blog-highlighted-blog/blog-highlighted-blog.component.js",
-      "declarations": [
-        {
-          "kind": "class",
-          "name": "BlogHighlightedBlogComponent",
-          "customElement": true,
-          "tagName": "blog-highlighted-blog",
-          "superclass": {
-            "name": "BaseElement"
-          },
-          "members": [],
-          "attributes": []
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "BlogHighlightedBlogComponent",
-          "declaration": {
-            "name": "BlogHighlightedBlogComponent"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "blog-highlighted-blog",
-          "declaration": {
-            "name": "BlogHighlightedBlogComponent"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/pages/blog/blog-view/blog-index.component.js",
-      "declarations": [
-        {
-          "kind": "class",
-          "name": "BlogIndexComponent",
-          "customElement": true,
-          "tagName": "blog-index",
-          "superclass": {
-            "name": "BaseElement"
-          },
-          "members": [],
-          "attributes": []
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "BlogIndexComponent",
-          "declaration": {
-            "name": "BlogIndexComponent"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "blog-index",
-          "declaration": {
-            "name": "BlogIndexComponent"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/pages/blog/blog-view/blog-list-section/blog-list-section.component.js",
-      "declarations": [
-        {
-          "kind": "class",
-          "name": "BlogListSectionComponent",
-          "customElement": true,
-          "tagName": "blog-list-section",
-          "superclass": {
-            "name": "BaseElement"
-          },
-          "members": [],
-          "attributes": []
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "BlogListSectionComponent",
-          "declaration": {
-            "name": "BlogListSectionComponent"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "blog-list-section",
-          "declaration": {
-            "name": "BlogListSectionComponent"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/pages/blog/blog-view/blog-list/blog-list.component.js",
-      "declarations": [
-        {
-          "kind": "class",
-          "name": "BlogListComponent",
-          "customElement": true,
-          "tagName": "blog-list",
-          "superclass": {
-            "name": "BaseElement"
-          },
-          "members": [],
-          "attributes": []
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "BlogListComponent",
-          "declaration": {
-            "name": "BlogListComponent"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "blog-list",
-          "declaration": {
-            "name": "BlogListComponent"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/pages/blog/blog-view/blog-markdown-view.component.js",
+      "path": "src/components/pages/blog/article/blog-markdown-view/blog-markdown-view.component.js",
       "declarations": [
         {
           "kind": "class",
@@ -334,7 +136,205 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/pages/blog/blog-view/blog-subscription/blog-subscription.component.js",
+      "path": "src/components/pages/blog/index/archive/blog-filter/blog-filter.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "BlogFilterComponent",
+          "customElement": true,
+          "tagName": "blog-filter",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "BlogFilterComponent",
+          "declaration": {
+            "name": "BlogFilterComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "blog-filter",
+          "declaration": {
+            "name": "BlogFilterComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/blog/index/archive/blog-highlighted-blog/blog-highlighted-blog.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "BlogHighlightedBlogComponent",
+          "customElement": true,
+          "tagName": "blog-highlighted-blog",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "BlogHighlightedBlogComponent",
+          "declaration": {
+            "name": "BlogHighlightedBlogComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "blog-highlighted-blog",
+          "declaration": {
+            "name": "BlogHighlightedBlogComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/blog/index/archive/blog-list-section/blog-list-section.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "BlogListSectionComponent",
+          "customElement": true,
+          "tagName": "blog-list-section",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "BlogListSectionComponent",
+          "declaration": {
+            "name": "BlogListSectionComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "blog-list-section",
+          "declaration": {
+            "name": "BlogListSectionComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/blog/index/archive/blog-list/blog-list.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "BlogListComponent",
+          "customElement": true,
+          "tagName": "blog-list",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "BlogListComponent",
+          "declaration": {
+            "name": "BlogListComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "blog-list",
+          "declaration": {
+            "name": "BlogListComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/blog/index/blog-index/blog-index.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "BlogIndexComponent",
+          "customElement": true,
+          "tagName": "blog-index",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "BlogIndexComponent",
+          "declaration": {
+            "name": "BlogIndexComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "blog-index",
+          "declaration": {
+            "name": "BlogIndexComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/blog/index/hero/blog-hero/blog-hero.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "BlogHeroComponent",
+          "customElement": true,
+          "tagName": "blog-hero",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "BlogHeroComponent",
+          "declaration": {
+            "name": "BlogHeroComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "blog-hero",
+          "declaration": {
+            "name": "BlogHeroComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/blog/index/subscription/blog-subscription/blog-subscription.component.js",
       "declarations": [
         {
           "kind": "class",
@@ -367,7 +367,370 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/pages/home/about-contact-section/about-contact-section.component.js",
+      "path": "src/components/pages/coffee/closing/coffee-closing/coffee-closing.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "CoffeeClosingComponent",
+          "customElement": true,
+          "tagName": "coffee-closing",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "CoffeeClosingComponent",
+          "declaration": {
+            "name": "CoffeeClosingComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "coffee-closing",
+          "declaration": {
+            "name": "CoffeeClosingComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/coffee/hero/coffee-hero/coffee-hero.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "CoffeeHeroComponent",
+          "customElement": true,
+          "tagName": "coffee-hero",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "CoffeeHeroComponent",
+          "declaration": {
+            "name": "CoffeeHeroComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "coffee-hero",
+          "declaration": {
+            "name": "CoffeeHeroComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/coffee/impact/coffee-impact/coffee-impact.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "CoffeeImpactComponent",
+          "customElement": true,
+          "tagName": "coffee-impact",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "CoffeeImpactComponent",
+          "declaration": {
+            "name": "CoffeeImpactComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "coffee-impact",
+          "declaration": {
+            "name": "CoffeeImpactComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/coffee/order/coffee-feedback-form/coffee-feedback-form.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "CoffeeFeedbackFormComponent",
+          "customElement": true,
+          "tagName": "coffee-feedback-form",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "CoffeeFeedbackFormComponent",
+          "declaration": {
+            "name": "CoffeeFeedbackFormComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "coffee-feedback-form",
+          "declaration": {
+            "name": "CoffeeFeedbackFormComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/coffee/order/coffee-order-checkout/coffee-order-checkout.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "CoffeeOrderCheckoutComponent",
+          "customElement": true,
+          "tagName": "coffee-order-checkout",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "CoffeeOrderCheckoutComponent",
+          "declaration": {
+            "name": "CoffeeOrderCheckoutComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "coffee-order-checkout",
+          "declaration": {
+            "name": "CoffeeOrderCheckoutComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/coffee/order/coffee-order-total/coffee-order-total.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "CoffeeOrderTotalComponent",
+          "customElement": true,
+          "tagName": "coffee-order-total",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "CoffeeOrderTotalComponent",
+          "declaration": {
+            "name": "CoffeeOrderTotalComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "coffee-order-total",
+          "declaration": {
+            "name": "CoffeeOrderTotalComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/coffee/order/coffee-order/coffee-order.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "CoffeeOrderComponent",
+          "customElement": true,
+          "tagName": "coffee-order",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "CoffeeOrderComponent",
+          "declaration": {
+            "name": "CoffeeOrderComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "coffee-order",
+          "declaration": {
+            "name": "CoffeeOrderComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/coffee/order/coffee-quantity-picker/coffee-quantity-picker.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "CoffeeQuantityPickerComponent",
+          "customElement": true,
+          "tagName": "coffee-quantity-picker",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "CoffeeQuantityPickerComponent",
+          "declaration": {
+            "name": "CoffeeQuantityPickerComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "coffee-quantity-picker",
+          "declaration": {
+            "name": "CoffeeQuantityPickerComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/coffee/order/coffee-size-picker/coffee-size-picker.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "CoffeeSizePickerComponent",
+          "customElement": true,
+          "tagName": "coffee-size-picker",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "CoffeeSizePickerComponent",
+          "declaration": {
+            "name": "CoffeeSizePickerComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "coffee-size-picker",
+          "declaration": {
+            "name": "CoffeeSizePickerComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/coffee/sticky/coffee-sticky/coffee-sticky.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "CoffeeStickyComponent",
+          "customElement": true,
+          "tagName": "coffee-sticky",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "CoffeeStickyComponent",
+          "declaration": {
+            "name": "CoffeeStickyComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "coffee-sticky",
+          "declaration": {
+            "name": "CoffeeStickyComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/coffee/supporters/coffee-supporters/coffee-supporters.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "CoffeeSupportersComponent",
+          "customElement": true,
+          "tagName": "coffee-supporters",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "CoffeeSupportersComponent",
+          "declaration": {
+            "name": "CoffeeSupportersComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "coffee-supporters",
+          "declaration": {
+            "name": "CoffeeSupportersComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/home/contact/about-contact-section/about-contact-section.component.js",
       "declarations": [
         {
           "kind": "class",
@@ -400,7 +763,7 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/pages/home/hero-section/hero-section.component.js",
+      "path": "src/components/pages/home/hero/hero-section/hero-section.component.js",
       "declarations": [
         {
           "kind": "class",
@@ -433,7 +796,7 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/pages/home/journey-section/journey-section.component.js",
+      "path": "src/components/pages/home/journey/journey-section/journey-section.component.js",
       "declarations": [
         {
           "kind": "class",
@@ -466,7 +829,7 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/pages/home/motion-controller/motion-controller.component.js",
+      "path": "src/components/pages/home/motion/motion-controller/motion-controller.component.js",
       "declarations": [
         {
           "kind": "class",
@@ -499,7 +862,7 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/pages/home/projects-section/projects-section.component.js",
+      "path": "src/components/pages/home/projects/projects-section/projects-section.component.js",
       "declarations": [
         {
           "kind": "class",
@@ -532,7 +895,7 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/pages/home/services-section/services-section.component.js",
+      "path": "src/components/pages/home/services/services-section/services-section.component.js",
       "declarations": [
         {
           "kind": "class",
@@ -565,7 +928,7 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/pages/home/skills-section/skills-section.component.js",
+      "path": "src/components/pages/home/skills/skills-section/skills-section.component.js",
       "declarations": [
         {
           "kind": "class",
@@ -598,7 +961,7 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/pages/home/speaking-section/speaking-section.component.js",
+      "path": "src/components/pages/home/speaking/speaking-section/speaking-section.component.js",
       "declarations": [
         {
           "kind": "class",
@@ -631,7 +994,7 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/pages/offline/offline-hero/offline-hero.component.js",
+      "path": "src/components/pages/offline/hero/offline-hero/offline-hero.component.js",
       "declarations": [
         {
           "kind": "class",
@@ -664,7 +1027,7 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/pages/offline/offline-page/offline-page.component.js",
+      "path": "src/components/pages/offline/shell/offline-page/offline-page.component.js",
       "declarations": [
         {
           "kind": "class",
@@ -697,7 +1060,7 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/pages/offline/offline-troubleshoot/offline-troubleshoot.component.js",
+      "path": "src/components/pages/offline/troubleshoot/offline-troubleshoot/offline-troubleshoot.component.js",
       "declarations": [
         {
           "kind": "class",
@@ -1601,7 +1964,7 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/pages/privacy/privacy-markdown-view/privacy-markdown-view.component.js",
+      "path": "src/components/pages/privacy/document/privacy-markdown-view/privacy-markdown-view.component.js",
       "declarations": [
         {
           "kind": "class",
@@ -1668,7 +2031,7 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/pages/privacy/privacy-toc/privacy-toc.component.js",
+      "path": "src/components/pages/privacy/document/privacy-toc/privacy-toc.component.js",
       "declarations": [
         {
           "kind": "class",
@@ -1701,7 +2064,7 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/pages/privacy/privacy-view/privacy-view.component.js",
+      "path": "src/components/pages/privacy/document/privacy-view/privacy-view.component.js",
       "declarations": [
         {
           "kind": "class",
@@ -1734,40 +2097,7 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/pages/showcase/showcase-archive/showcase-archive.component.js",
-      "declarations": [
-        {
-          "kind": "class",
-          "name": "ShowcaseArchiveComponent",
-          "customElement": true,
-          "tagName": "showcase-archive",
-          "superclass": {
-            "name": "BaseElement"
-          },
-          "members": [],
-          "attributes": []
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "ShowcaseArchiveComponent",
-          "declaration": {
-            "name": "ShowcaseArchiveComponent"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "showcase-archive",
-          "declaration": {
-            "name": "ShowcaseArchiveComponent"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/pages/showcase/showcase-aside/showcase-aside.component.js",
+      "path": "src/components/pages/showcase/article/showcase-aside/showcase-aside.component.js",
       "declarations": [
         {
           "kind": "class",
@@ -1819,106 +2149,7 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/pages/showcase/showcase-cta/showcase-cta.component.js",
-      "declarations": [
-        {
-          "kind": "class",
-          "name": "ShowcaseCtaComponent",
-          "customElement": true,
-          "tagName": "showcase-cta",
-          "superclass": {
-            "name": "BaseElement"
-          },
-          "members": [],
-          "attributes": []
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "ShowcaseCtaComponent",
-          "declaration": {
-            "name": "ShowcaseCtaComponent"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "showcase-cta",
-          "declaration": {
-            "name": "ShowcaseCtaComponent"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/pages/showcase/showcase-faq/showcase-faq.component.js",
-      "declarations": [
-        {
-          "kind": "class",
-          "name": "ShowcaseFaqComponent",
-          "customElement": true,
-          "tagName": "showcase-faq",
-          "superclass": {
-            "name": "BaseElement"
-          },
-          "members": [],
-          "attributes": []
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "ShowcaseFaqComponent",
-          "declaration": {
-            "name": "ShowcaseFaqComponent"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "showcase-faq",
-          "declaration": {
-            "name": "ShowcaseFaqComponent"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/pages/showcase/showcase-featured/showcase-featured.component.js",
-      "declarations": [
-        {
-          "kind": "class",
-          "name": "ShowcaseFeaturedComponent",
-          "customElement": true,
-          "tagName": "showcase-featured",
-          "superclass": {
-            "name": "BaseElement"
-          },
-          "members": [],
-          "attributes": []
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "ShowcaseFeaturedComponent",
-          "declaration": {
-            "name": "ShowcaseFeaturedComponent"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "showcase-featured",
-          "declaration": {
-            "name": "ShowcaseFeaturedComponent"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/pages/showcase/showcase-figure/showcase-figure.component.js",
+      "path": "src/components/pages/showcase/article/showcase-figure/showcase-figure.component.js",
       "declarations": [
         {
           "kind": "class",
@@ -1987,40 +2218,7 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/pages/showcase/showcase-hero/showcase-hero.component.js",
-      "declarations": [
-        {
-          "kind": "class",
-          "name": "ShowcaseHeroComponent",
-          "customElement": true,
-          "tagName": "showcase-hero",
-          "superclass": {
-            "name": "BaseElement"
-          },
-          "members": [],
-          "attributes": []
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "ShowcaseHeroComponent",
-          "declaration": {
-            "name": "ShowcaseHeroComponent"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "showcase-hero",
-          "declaration": {
-            "name": "ShowcaseHeroComponent"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/pages/showcase/showcase-markdown-view/showcase-markdown-view.component.js",
+      "path": "src/components/pages/showcase/article/showcase-markdown-view/showcase-markdown-view.component.js",
       "declarations": [
         {
           "kind": "class",
@@ -2087,7 +2285,7 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/pages/showcase/showcase-metrics/showcase-metrics.component.js",
+      "path": "src/components/pages/showcase/article/showcase-metrics/showcase-metrics.component.js",
       "declarations": [
         {
           "kind": "class",
@@ -2139,13 +2337,13 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/pages/showcase/showcase-motion-controller/showcase-motion-controller.component.js",
+      "path": "src/components/pages/showcase/article/showcase-toc/showcase-toc.component.js",
       "declarations": [
         {
           "kind": "class",
-          "name": "ShowcaseMotionControllerComponent",
+          "name": "ShowcaseTocComponent",
           "customElement": true,
-          "tagName": "showcase-motion-controller",
+          "tagName": "showcase-toc",
           "superclass": {
             "name": "BaseElement"
           },
@@ -2156,29 +2354,29 @@
       "exports": [
         {
           "kind": "js",
-          "name": "ShowcaseMotionControllerComponent",
+          "name": "ShowcaseTocComponent",
           "declaration": {
-            "name": "ShowcaseMotionControllerComponent"
+            "name": "ShowcaseTocComponent"
           }
         },
         {
           "kind": "custom-element-definition",
-          "name": "showcase-motion-controller",
+          "name": "showcase-toc",
           "declaration": {
-            "name": "ShowcaseMotionControllerComponent"
+            "name": "ShowcaseTocComponent"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/pages/showcase/showcase-page/showcase-page.component.js",
+      "path": "src/components/pages/showcase/article/showcase-view/showcase-view.component.js",
       "declarations": [
         {
           "kind": "class",
-          "name": "ShowcasePageComponent",
+          "name": "ShowcaseViewComponent",
           "customElement": true,
-          "tagName": "showcase-page-content",
+          "tagName": "showcase-view",
           "superclass": {
             "name": "BaseElement"
           },
@@ -2189,75 +2387,56 @@
       "exports": [
         {
           "kind": "js",
-          "name": "ShowcasePageComponent",
+          "name": "ShowcaseViewComponent",
           "declaration": {
-            "name": "ShowcasePageComponent"
+            "name": "ShowcaseViewComponent"
           }
         },
         {
           "kind": "custom-element-definition",
-          "name": "showcase-page-content",
+          "name": "showcase-view",
           "declaration": {
-            "name": "ShowcasePageComponent"
+            "name": "ShowcaseViewComponent"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/pages/showcase/showcase-project-card/showcase-project-card.component.js",
+      "path": "src/components/pages/showcase/index/archive/showcase-archive/showcase-archive.component.js",
       "declarations": [
         {
           "kind": "class",
-          "name": "ShowcaseProjectCardComponent",
+          "name": "ShowcaseArchiveComponent",
           "customElement": true,
-          "tagName": "showcase-project-card",
+          "tagName": "showcase-archive",
           "superclass": {
             "name": "BaseElement"
           },
-          "members": [
-            {
-              "kind": "field",
-              "name": "projectSlug",
-              "attribute": "project-slug",
-              "type": {
-                "text": "string"
-              },
-              "default": ""
-            }
-          ],
-          "attributes": [
-            {
-              "name": "project-slug",
-              "fieldName": "projectSlug",
-              "type": {
-                "text": "string"
-              },
-              "default": ""
-            }
-          ]
+          "members": [],
+          "attributes": []
         }
       ],
       "exports": [
         {
           "kind": "js",
-          "name": "ShowcaseProjectCardComponent",
+          "name": "ShowcaseArchiveComponent",
           "declaration": {
-            "name": "ShowcaseProjectCardComponent"
+            "name": "ShowcaseArchiveComponent"
           }
         },
         {
           "kind": "custom-element-definition",
-          "name": "showcase-project-card",
+          "name": "showcase-archive",
           "declaration": {
-            "name": "ShowcaseProjectCardComponent"
+            "name": "ShowcaseArchiveComponent"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/pages/showcase/showcase-project-row/showcase-project-row.component.js",
+      "path": "src/components/pages/showcase/index/archive/showcase-project-row/showcase-project-row.component.js",
       "declarations": [
         {
           "kind": "class",
@@ -2309,13 +2488,46 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/pages/showcase/showcase-spotlight/showcase-spotlight.component.js",
+      "path": "src/components/pages/showcase/index/featured/showcase-featured/showcase-featured.component.js",
       "declarations": [
         {
           "kind": "class",
-          "name": "ShowcaseSpotlightComponent",
+          "name": "ShowcaseFeaturedComponent",
           "customElement": true,
-          "tagName": "showcase-spotlight",
+          "tagName": "showcase-featured",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ShowcaseFeaturedComponent",
+          "declaration": {
+            "name": "ShowcaseFeaturedComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "showcase-featured",
+          "declaration": {
+            "name": "ShowcaseFeaturedComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/showcase/index/featured/showcase-project-card/showcase-project-card.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "ShowcaseProjectCardComponent",
+          "customElement": true,
+          "tagName": "showcase-project-card",
           "superclass": {
             "name": "BaseElement"
           },
@@ -2345,29 +2557,29 @@
       "exports": [
         {
           "kind": "js",
-          "name": "ShowcaseSpotlightComponent",
+          "name": "ShowcaseProjectCardComponent",
           "declaration": {
-            "name": "ShowcaseSpotlightComponent"
+            "name": "ShowcaseProjectCardComponent"
           }
         },
         {
           "kind": "custom-element-definition",
-          "name": "showcase-spotlight",
+          "name": "showcase-project-card",
           "declaration": {
-            "name": "ShowcaseSpotlightComponent"
+            "name": "ShowcaseProjectCardComponent"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/pages/showcase/showcase-support/showcase-support.component.js",
+      "path": "src/components/pages/showcase/index/hero/showcase-hero/showcase-hero.component.js",
       "declarations": [
         {
           "kind": "class",
-          "name": "ShowcaseSupportComponent",
+          "name": "ShowcaseHeroComponent",
           "customElement": true,
-          "tagName": "showcase-support",
+          "tagName": "showcase-hero",
           "superclass": {
             "name": "BaseElement"
           },
@@ -2378,29 +2590,29 @@
       "exports": [
         {
           "kind": "js",
-          "name": "ShowcaseSupportComponent",
+          "name": "ShowcaseHeroComponent",
           "declaration": {
-            "name": "ShowcaseSupportComponent"
+            "name": "ShowcaseHeroComponent"
           }
         },
         {
           "kind": "custom-element-definition",
-          "name": "showcase-support",
+          "name": "showcase-hero",
           "declaration": {
-            "name": "ShowcaseSupportComponent"
+            "name": "ShowcaseHeroComponent"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/pages/showcase/showcase-toc/showcase-toc.component.js",
+      "path": "src/components/pages/showcase/index/motion/showcase-motion-controller/showcase-motion-controller.component.js",
       "declarations": [
         {
           "kind": "class",
-          "name": "ShowcaseTocComponent",
+          "name": "ShowcaseMotionControllerComponent",
           "customElement": true,
-          "tagName": "showcase-toc",
+          "tagName": "showcase-motion-controller",
           "superclass": {
             "name": "BaseElement"
           },
@@ -2411,56 +2623,23 @@
       "exports": [
         {
           "kind": "js",
-          "name": "ShowcaseTocComponent",
+          "name": "ShowcaseMotionControllerComponent",
           "declaration": {
-            "name": "ShowcaseTocComponent"
+            "name": "ShowcaseMotionControllerComponent"
           }
         },
         {
           "kind": "custom-element-definition",
-          "name": "showcase-toc",
+          "name": "showcase-motion-controller",
           "declaration": {
-            "name": "ShowcaseTocComponent"
+            "name": "ShowcaseMotionControllerComponent"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/pages/showcase/showcase-view/showcase-view.component.js",
-      "declarations": [
-        {
-          "kind": "class",
-          "name": "ShowcaseViewComponent",
-          "customElement": true,
-          "tagName": "showcase-view",
-          "superclass": {
-            "name": "BaseElement"
-          },
-          "members": [],
-          "attributes": []
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "ShowcaseViewComponent",
-          "declaration": {
-            "name": "ShowcaseViewComponent"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "showcase-view",
-          "declaration": {
-            "name": "ShowcaseViewComponent"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/pages/showcase/showcase-visual/showcase-visual.component.js",
+      "path": "src/components/pages/showcase/index/project-visual/showcase-visual/showcase-visual.component.js",
       "declarations": [
         {
           "kind": "class",
@@ -2529,7 +2708,191 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/pages/showcase/showcase-working-method/showcase-working-method.component.js",
+      "path": "src/components/pages/showcase/index/showcase-page/showcase-page.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "ShowcasePageComponent",
+          "customElement": true,
+          "tagName": "showcase-page-content",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ShowcasePageComponent",
+          "declaration": {
+            "name": "ShowcasePageComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "showcase-page-content",
+          "declaration": {
+            "name": "ShowcasePageComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/showcase/index/spotlight/showcase-spotlight/showcase-spotlight.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "ShowcaseSpotlightComponent",
+          "customElement": true,
+          "tagName": "showcase-spotlight",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [
+            {
+              "kind": "field",
+              "name": "projectSlug",
+              "attribute": "project-slug",
+              "type": {
+                "text": "string"
+              },
+              "default": ""
+            }
+          ],
+          "attributes": [
+            {
+              "name": "project-slug",
+              "fieldName": "projectSlug",
+              "type": {
+                "text": "string"
+              },
+              "default": ""
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ShowcaseSpotlightComponent",
+          "declaration": {
+            "name": "ShowcaseSpotlightComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "showcase-spotlight",
+          "declaration": {
+            "name": "ShowcaseSpotlightComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/showcase/index/support/showcase-cta/showcase-cta.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "ShowcaseCtaComponent",
+          "customElement": true,
+          "tagName": "showcase-cta",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ShowcaseCtaComponent",
+          "declaration": {
+            "name": "ShowcaseCtaComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "showcase-cta",
+          "declaration": {
+            "name": "ShowcaseCtaComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/showcase/index/support/showcase-faq/showcase-faq.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "ShowcaseFaqComponent",
+          "customElement": true,
+          "tagName": "showcase-faq",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ShowcaseFaqComponent",
+          "declaration": {
+            "name": "ShowcaseFaqComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "showcase-faq",
+          "declaration": {
+            "name": "ShowcaseFaqComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/showcase/index/support/showcase-support/showcase-support.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "ShowcaseSupportComponent",
+          "customElement": true,
+          "tagName": "showcase-support",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ShowcaseSupportComponent",
+          "declaration": {
+            "name": "ShowcaseSupportComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "showcase-support",
+          "declaration": {
+            "name": "ShowcaseSupportComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/showcase/index/support/showcase-working-method/showcase-working-method.component.js",
       "declarations": [
         {
           "kind": "class",
@@ -2562,7 +2925,7 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/pages/support/support-faq/support-faq.component.js",
+      "path": "src/components/pages/support/faq/support-faq/support-faq.component.js",
       "declarations": [
         {
           "kind": "class",
@@ -2595,106 +2958,7 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/pages/support/support-next-steps/support-next-steps.component.js",
-      "declarations": [
-        {
-          "kind": "class",
-          "name": "SupportNextStepsComponent",
-          "customElement": true,
-          "tagName": "support-next-steps",
-          "superclass": {
-            "name": "BaseElement"
-          },
-          "members": [],
-          "attributes": []
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "SupportNextStepsComponent",
-          "declaration": {
-            "name": "SupportNextStepsComponent"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "support-next-steps",
-          "declaration": {
-            "name": "SupportNextStepsComponent"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/pages/support/support-overview/support-overview.component.js",
-      "declarations": [
-        {
-          "kind": "class",
-          "name": "SupportOverviewComponent",
-          "customElement": true,
-          "tagName": "support-overview",
-          "superclass": {
-            "name": "BaseElement"
-          },
-          "members": [],
-          "attributes": []
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "SupportOverviewComponent",
-          "declaration": {
-            "name": "SupportOverviewComponent"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "support-overview",
-          "declaration": {
-            "name": "SupportOverviewComponent"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/pages/support/support-resources/support-resources.component.js",
-      "declarations": [
-        {
-          "kind": "class",
-          "name": "SupportResourcesComponent",
-          "customElement": true,
-          "tagName": "support-resources",
-          "superclass": {
-            "name": "BaseElement"
-          },
-          "members": [],
-          "attributes": []
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "SupportResourcesComponent",
-          "declaration": {
-            "name": "SupportResourcesComponent"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "support-resources",
-          "declaration": {
-            "name": "SupportResourcesComponent"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/pages/support/support-section/support-section.component.js",
+      "path": "src/components/pages/support/help/support-section/support-section.component.js",
       "declarations": [
         {
           "kind": "class",
@@ -2727,7 +2991,106 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/pages/support/support-start-project/support-start-project.component.js",
+      "path": "src/components/pages/support/next-steps/support-next-steps/support-next-steps.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "SupportNextStepsComponent",
+          "customElement": true,
+          "tagName": "support-next-steps",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "SupportNextStepsComponent",
+          "declaration": {
+            "name": "SupportNextStepsComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "support-next-steps",
+          "declaration": {
+            "name": "SupportNextStepsComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/support/overview/support-overview/support-overview.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "SupportOverviewComponent",
+          "customElement": true,
+          "tagName": "support-overview",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "SupportOverviewComponent",
+          "declaration": {
+            "name": "SupportOverviewComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "support-overview",
+          "declaration": {
+            "name": "SupportOverviewComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/support/resources/support-resources/support-resources.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "SupportResourcesComponent",
+          "customElement": true,
+          "tagName": "support-resources",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "SupportResourcesComponent",
+          "declaration": {
+            "name": "SupportResourcesComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "support-resources",
+          "declaration": {
+            "name": "SupportResourcesComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/support/start-project/support-start-project/support-start-project.component.js",
       "declarations": [
         {
           "kind": "class",
@@ -2760,7 +3123,7 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/pages/terms/terms-markdown-view/terms-markdown-view.component.js",
+      "path": "src/components/pages/terms/document/terms-markdown-view/terms-markdown-view.component.js",
       "declarations": [
         {
           "kind": "class",
@@ -2827,7 +3190,7 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/pages/terms/terms-toc/terms-toc.component.js",
+      "path": "src/components/pages/terms/document/terms-toc/terms-toc.component.js",
       "declarations": [
         {
           "kind": "class",
@@ -2860,7 +3223,7 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/pages/terms/terms-view/terms-view.component.js",
+      "path": "src/components/pages/terms/document/terms-view/terms-view.component.js",
       "declarations": [
         {
           "kind": "class",
@@ -3374,6 +3737,39 @@
           "name": "blog-page",
           "declaration": {
             "name": "BlogPage"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/pages/coffee.page.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "CoffeePage",
+          "customElement": true,
+          "tagName": "coffee-page",
+          "superclass": {
+            "name": "DotaPageElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "CoffeePage",
+          "declaration": {
+            "name": "CoffeePage"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "coffee-page",
+          "declaration": {
+            "name": "CoffeePage"
           }
         }
       ]
