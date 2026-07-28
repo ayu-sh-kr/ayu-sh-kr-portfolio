@@ -21,10 +21,10 @@ export class SupportNextStepsComponent extends BaseElement {
         <div class="support-next-inner layout-page">
           <div class="support-next-heading">
             <p class="support-eyebrow">After you send</p>
-            <h2 id="support-next-title" class="support-section-title">No black box.</h2>
+            <h2 id="support-next-title" class="type-section">No black box.</h2>
             <p>Here is the actual path a message takes, so you know when to expect what — and when to nudge me.</p>
           </div>
-          <ol class="support-steps">
+          <ol class="support-steps layout-grid-4">
             ${supportContent.nextSteps.map((step) => `
               <li class="support-step">
                 <span class="support-step-number">${step.number}</span>
