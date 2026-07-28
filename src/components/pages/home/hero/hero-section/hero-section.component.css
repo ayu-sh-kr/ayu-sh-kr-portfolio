@@ -1,0 +1,31 @@
+portfolio-hero {
+  display: block;
+}
+
+.hero-pin-wrap {
+  height: 118vh;
+  height: 118svh;
+}
+
+.hero-stage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-pin-wrap {
+    height: auto;
+  }
+
+  .hero-stage {
+    min-height: 100svh;
+    padding-block: 14vh;
+  }
+
+  #hero-inner {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+}
