@@ -1,0 +1,98 @@
+.design-layout-primitives-heading {
+  max-inline-size: var(--layout-content-max);
+}
+
+.design-layout-primitives-heading .type-eyebrow,
+.design-layout-primitive-card .type-label,
+.design-layout-grid-specimen .type-label,
+.design-layout-chrome-specimen .type-label {
+  margin: 0;
+  color: var(--primary-color-strong);
+}
+
+.design-layout-primitives-heading .type-lede,
+.design-layout-grid-specimen > p {
+  margin: 0;
+  color: var(--muted-color);
+}
+
+.design-layout-primitives-grid,
+.design-layout-primitive-showcase {
+  margin-block-start: var(--layout-space-7);
+}
+
+.design-layout-primitive-card,
+.design-layout-grid-specimen,
+.design-layout-chrome-specimen {
+  border: 1px solid var(--border-color);
+  border-radius: var(--layout-radius-lg);
+  background: var(--surface-color);
+  padding: var(--layout-pad-card);
+}
+
+.design-layout-primitive-card h3,
+.design-layout-grid-specimen h3 {
+  margin: 0;
+}
+
+.design-layout-space-scale,
+.design-layout-rhythm-list,
+.design-layout-chrome-specimen dl {
+  display: grid;
+  gap: var(--layout-space-3);
+  margin: 0;
+}
+
+.design-layout-space-scale div,
+.design-layout-rhythm-list div,
+.design-layout-chrome-specimen dl div {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--layout-space-4);
+  border-block-end: 1px solid var(--border-color);
+  padding-block-end: var(--layout-space-3);
+}
+
+.design-layout-space-scale div:last-child,
+.design-layout-rhythm-list div:last-child,
+.design-layout-chrome-specimen dl div:last-child {
+  border-block-end: 0;
+  padding-block-end: 0;
+}
+
+.design-layout-space-scale dt,
+.design-layout-rhythm-list dt,
+.design-layout-chrome-specimen dt,
+.design-layout-space-scale dd,
+.design-layout-rhythm-list dd,
+.design-layout-chrome-specimen dd {
+  margin: 0;
+}
+
+.design-layout-space-scale code,
+.design-layout-rhythm-list code,
+.design-layout-chrome-specimen code {
+  color: var(--primary-color-strong);
+  font-family: var(--font-mono);
+  font-size: var(--type-compact-size);
+  overflow-wrap: anywhere;
+}
+
+.design-layout-space-scale dd,
+.design-layout-rhythm-list dd,
+.design-layout-chrome-specimen dd {
+  color: var(--muted-color);
+  font-size: var(--type-compact-size);
+  text-align: end;
+}
+
+.design-layout-grid-cells {
+  margin-block-start: var(--layout-space-5);
+}
+
+.design-layout-grid-cells span {
+  display: block;
+  min-block-size: var(--layout-space-10);
+  border-radius: var(--layout-radius-md);
+  background: var(--primary-color-wash);
+}
