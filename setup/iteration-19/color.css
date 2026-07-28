@@ -1,0 +1,606 @@
+/* ============================================================
+   color.css — semantic color system
+   v3.0 · ayush.dev
+
+   Sits on top of theme.css. Owns nothing but relationships: which
+   ramp step is readable where, what may sit on top of what, and how
+   that inverts in dark mode. No component ever names a hue.
+
+   ------------------------------------------------------------
+   INSTALL
+
+   In style.css, import directly after theme.css:
+
+       @import "tailwindcss";
+       @import "./theme.css";
+       @import "./color.css";        <-- here
+       @import "./typography.css";
+       …
+
+   Then DELETE from style.css:
+     · the :root{} block (--primary-50…950 and the semantic tokens)
+     · the html.dark{} block
+     · the @media (prefers-color-scheme: dark) block
+
+   All three are replaced by §2 and §4 below. The dark block and the
+   prefers-color-scheme block were byte-identical copies of each
+   other; light-dark() removes both.
+   ------------------------------------------------------------
+
+   FILE OWNERSHIP
+     theme.css        raw ramps       --color-<family>-50…950
+     color.css        relationships   --primary-*, --background-color, …
+     typography.css   type only       never a color
+     component css    consumes roles  never a ramp step, never a literal
+   ============================================================ */
+
+
+/* ============================================================
+   §1  THE FAMILY CONTRACT
+
+   A ramp is not a palette until it satisfies all six. The checker in
+   color-grammar.html evaluates these live against rendered values —
+   run it before adding a family.
+
+   1. Step 600 clears 4.5:1 on the light background.
+   2. Step 400 clears 4.5:1 on the dark background.
+   3. Step 800 clears 7:1 on light; step 200 clears 7:1 on dark.
+      These are the emphatic steps.
+   4. Each family DECLARES its own on-colors. Do not assume white.
+      A light family — amber, lime, yellow — needs a dark on-color,
+      and the contract is what forces that into the open.
+   5. Step 800 on step 50 clears 4.5:1. That pairing is every chip,
+      badge and inline code on the site. Same for 200 on 950 in dark.
+   6. Hue distance from each status hue is at least 30°. Below that,
+      the brand and a status read as the same signal.
+
+   Measured, for the families in §2:
+
+     family        600/bg  400/bg  800/bg  200/bg  chip   min hue Δ
+     true-matcha    4.84    8.13    8.72   12.85   8.37     48°  ok
+     cobalt         5.57    7.61    9.52   12.66   8.94     78°  ok
+     persimmon      5.15    7.17    8.43   12.96   7.98      9°  collides
+     sunburst       4.53    9.95    7.71   14.71   7.55      1°  collides
+
+   Persimmon sits 9° from --danger-color; sunburst sits 1° from
+   --warning-color. Both are usable, but a destructive action and the
+   brand will read alike, so those families need an icon or a shape
+   doing the work hue normally does. That is a decision, not a defect.
+   The contract exists so it gets made deliberately.
+   ============================================================ */
+
+
+/* ============================================================
+   §2  FAMILIES — THE SWAP POINT
+
+   The only place a family is named. Switch the whole app with one
+   attribute on <html>:
+
+       <html data-palette="cobalt">
+
+   Leave it off for the default. Nothing else in the codebase
+   changes. Add a family by copying a block and satisfying §1.
+   ============================================================ */
+
+:root,
+[data-palette="true-matcha"]{
+  --primary-50:  var(--color-true-matcha-50);
+  --primary-100: var(--color-true-matcha-100);
+  --primary-200: var(--color-true-matcha-200);
+  --primary-300: var(--color-true-matcha-300);
+  --primary-400: var(--color-true-matcha-400);
+  --primary-500: var(--color-true-matcha-500);
+  --primary-600: var(--color-true-matcha-600);
+  --primary-700: var(--color-true-matcha-700);
+  --primary-800: var(--color-true-matcha-800);
+  --primary-900: var(--color-true-matcha-900);
+  --primary-950: var(--color-true-matcha-950);
+
+  /* Contract §1.4 — declared by the family, never by the mode. This
+     is the line that fails silently on a light family when it lives
+     in the dark-mode block instead of here. */
+  --primary-on-light: var(--color-paper-50);
+  --primary-on-dark:  var(--color-pure-black-950);
+}
+
+[data-palette="cobalt"]{
+  --primary-50:  var(--color-cobalt-50);
+  --primary-100: var(--color-cobalt-100);
+  --primary-200: var(--color-cobalt-200);
+  --primary-300: var(--color-cobalt-300);
+  --primary-400: var(--color-cobalt-400);
+  --primary-500: var(--color-cobalt-500);
+  --primary-600: var(--color-cobalt-600);
+  --primary-700: var(--color-cobalt-700);
+  --primary-800: var(--color-cobalt-800);
+  --primary-900: var(--color-cobalt-900);
+  --primary-950: var(--color-cobalt-950);
+
+  --primary-on-light: var(--color-paper-50);
+  --primary-on-dark:  var(--color-pure-black-950);
+}
+
+[data-palette="persimmon"]{
+  --primary-50:  var(--color-persimmon-50);
+  --primary-100: var(--color-persimmon-100);
+  --primary-200: var(--color-persimmon-200);
+  --primary-300: var(--color-persimmon-300);
+  --primary-400: var(--color-persimmon-400);
+  --primary-500: var(--color-persimmon-500);
+  --primary-600: var(--color-persimmon-600);
+  --primary-700: var(--color-persimmon-700);
+  --primary-800: var(--color-persimmon-800);
+  --primary-900: var(--color-persimmon-900);
+  --primary-950: var(--color-persimmon-950);
+
+  --primary-on-light: var(--color-paper-50);
+  --primary-on-dark:  var(--color-pure-black-950);
+}
+
+
+/* ============================================================
+   §3  MIX RAMP
+
+   Five steps derived from --foreground-color, so every one inverts
+   for free. Percentages step up in dark: a 10% line on a dark ground
+   reads lighter than a 10% line on a light one. That compensation
+   already existed in the app's border token — this expresses it once
+   instead of per token.
+
+   Nothing between these five steps. Ever.
+   ============================================================ */
+
+:root{
+  --subtle-color:        light-dark(
+                           color-mix(in srgb, var(--foreground-color)  5%, transparent),
+                           color-mix(in srgb, var(--foreground-color)  8%, transparent));
+  --border-color:        light-dark(
+                           color-mix(in srgb, var(--foreground-color) 10%, transparent),
+                           color-mix(in srgb, var(--foreground-color) 16%, transparent));
+  --border-strong-color: light-dark(
+                           color-mix(in srgb, var(--foreground-color) 20%, transparent),
+                           color-mix(in srgb, var(--foreground-color) 28%, transparent));
+  --shadow-color:        light-dark(
+                           color-mix(in srgb, var(--foreground-color) 25%, transparent),
+                           color-mix(in srgb, var(--foreground-color) 45%, transparent));
+  --scrim-color:         light-dark(
+                           color-mix(in srgb, var(--foreground-color) 40%, transparent),
+                           color-mix(in srgb, var(--foreground-color) 60%, transparent));
+
+  /* Primary washes — same idea, against the brand instead of the ink. */
+  --primary-color-wash: light-dark(
+                          color-mix(in srgb, var(--primary-color)  8%, transparent),
+                          color-mix(in srgb, var(--primary-color) 14%, transparent));
+  --primary-color-ring: light-dark(
+                          color-mix(in srgb, var(--primary-color) 16%, transparent),
+                          color-mix(in srgb, var(--primary-color) 24%, transparent));
+}
+
+
+/* ============================================================
+   §4  SEMANTIC TIER
+
+   One block. light-dark() reads color-scheme, which §8 sets from the
+   .light / .dark classes and the system preference — so the class
+   toggle, the media query and the manual override all resolve here
+   without a second copy of these values existing anywhere.
+
+   Read every pair as (light value, dark value).
+   ============================================================ */
+
+:root{
+  /* ---------- brand ----------
+     Contract §1.1 / §1.2 — 600 is the first step readable on the
+     light ground, 400 the first readable on the dark one. */
+  --primary-color:        light-dark(var(--primary-600), var(--primary-400));
+  --primary-color-hover:  light-dark(var(--primary-700), var(--primary-300));
+  --primary-color-strong: light-dark(var(--primary-800), var(--primary-200));
+  --primary-color-subtle: light-dark(var(--primary-50),  var(--primary-950));
+  --primary-color-on:     light-dark(var(--primary-on-light), var(--primary-on-dark));
+  --primary-font: var(--font-lexend-deca);
+
+  /* ---------- ground and text ---------- */
+  --background-color:   light-dark(var(--color-paper-50),     var(--color-inkstone-950));
+  --foreground-color:   light-dark(var(--color-inkstone-900), var(--color-paper-50));
+  --muted-color:        light-dark(var(--color-inkstone-500), var(--color-inkstone-300));
+  --muted-strong-color: light-dark(var(--color-inkstone-400), var(--color-inkstone-200));
+
+  /* ---------- surface: one step toward the far end ---------- */
+  --surface-color:       light-dark(var(--color-pure-black-50), var(--color-inkstone-900));
+  --surface-hover-color: var(--subtle-color);
+
+  /* ---------- contrast: the inverse of the page ----------
+     Contrast is not "the dark one". It is the opposite of whatever the
+     page currently is — dark panel on a light page, light panel on a
+     dark one. That symmetry is what keeps the separation law in §6
+     intact through a mode flip.
+
+     Going one step DEEPER in dark instead of inverting does not work:
+     a near-black panel against an inkstone-900 surface measures 1.19:1
+     and the estimator result becomes indistinguishable from a raised
+     card. Inverting measures 16.10:1, matching the 16.83:1 the light
+     mode already has.
+
+     --contrast-border-color derives from the foreground, so it flips
+     with everything else and needs no second declaration. */
+  --contrast-background-color: light-dark(var(--color-inkstone-900), var(--color-paper-50));
+  --contrast-foreground-color: light-dark(var(--color-paper-50),     var(--color-inkstone-950));
+  --contrast-muted-color:      light-dark(var(--color-inkstone-300), var(--color-inkstone-500));
+  --contrast-border-color:     color-mix(in srgb, var(--contrast-foreground-color) 18%, transparent);
+
+  /* ---------- code ----------
+     Code is the one block that stays dark in both modes. It is a
+     quotation from a terminal, not a panel, so it does not invert.
+     Brand-tinted via --primary-950 so it still follows the family. */
+  --code-background-color: var(--primary-950);
+  --code-foreground-color: var(--color-paper-50);
+}
+
+
+/* ============================================================
+   §5  STATUS
+
+   Family-independent by design — a success that follows the brand is
+   not a success, it is decoration. This is therefore the only tier
+   holding literal values, and that is deliberate.
+
+   Every light step lands 5.1–5.4:1 on the light ground; every dark
+   step lands 7.7–9.0:1 on the dark one. Within a mode all three carry
+   identical optical weight, so an error never shouts louder than a
+   success. Only the hue differs.
+
+   Move these into theme.css as --color-success-* etc. if you want
+   them themable. Keep the ratios.
+   ============================================================ */
+
+:root{
+  --success-color: light-dark(#1F7A3D, #5CC98A);   /* 5.14 / 8.99 */
+  --warning-color: light-dark(#8A6100, #E0A63A);   /* 5.30 / 8.55 */
+  --danger-color:  light-dark(#C0341A, #FF8367);   /* 5.36 / 7.68 */
+
+  --success-color-subtle: light-dark(
+                            color-mix(in srgb, var(--success-color)  8%, transparent),
+                            color-mix(in srgb, var(--success-color) 18%, transparent));
+  --warning-color-subtle: light-dark(
+                            color-mix(in srgb, var(--warning-color)  8%, transparent),
+                            color-mix(in srgb, var(--warning-color) 18%, transparent));
+  --danger-color-subtle:  light-dark(
+                            color-mix(in srgb, var(--danger-color)   8%, transparent),
+                            color-mix(in srgb, var(--danger-color)  18%, transparent));
+
+  /* Text sitting ON a filled status. The dark steps are light colors. */
+  --success-color-on: light-dark(var(--color-paper-50), var(--color-pure-black-950));
+  --warning-color-on: light-dark(var(--color-paper-50), var(--color-pure-black-950));
+  --danger-color-on:  light-dark(var(--color-paper-50), var(--color-pure-black-950));
+}
+
+
+/* ============================================================
+   §6  GROUNDS
+
+   Four, and the choice is semantic rather than aesthetic. Choosing a
+   ground is choosing what kind of content is inside it.
+
+     --background-color            the document — prose, sections, content
+     --surface-color               HUMAN INPUT — forms, fields, editable
+     --contrast-background-color   MACHINE OUTPUT — totals, breakdowns
+     --primary-color-subtle        asides, notes, chips, marks
+
+   THE SEPARATION LAW
+     contrast panel = numbers · surface card = input · plain row = CTA
+
+   Three jobs, three grounds, never merged into one surface. A
+   contrast panel containing a text field is the specific mistake this
+   rule prevents.
+   ============================================================ */
+
+
+/* ============================================================
+   §7  ELEVATION AND OVERLAY
+
+   Two shadows, one ring, three gradients. A shadow is the foreground
+   at a ramp step — never a fresh alpha, never a hue.
+   ============================================================ */
+
+:root{
+  --shadow-lift: 0 18px 40px -28px var(--shadow-color);
+  --shadow-pop:  0 22px 50px -24px var(--scrim-color);
+  --shadow-ring: 0 0 0 3px var(--primary-color-ring);
+
+  --scrim-nav:   color-mix(in srgb, var(--background-color) 72%, transparent);
+  --scrim-modal: var(--scrim-color);
+
+  --gradient-shimmer: linear-gradient(90deg,
+                        transparent,
+                        color-mix(in srgb, var(--primary-color-subtle) 90%, transparent) 50%,
+                        transparent);
+  --gradient-placeholder: linear-gradient(135deg,
+                        var(--subtle-color), var(--border-strong-color));
+  --gradient-hotspot: radial-gradient(400px circle at var(--mx,50%) var(--my,50%),
+                        var(--primary-color-wash), transparent 65%);
+}
+
+
+/* ============================================================
+   §8  MODE PLUMBING
+   color-scheme is the single switch light-dark() reads.
+   ============================================================ */
+
+html{
+  color-scheme: light dark;
+  scroll-behavior: smooth;
+  background: var(--background-color);
+}
+html.light{ color-scheme: light; }
+html.dark{  color-scheme: dark; }
+
+body{
+  margin: 0;
+  min-inline-size: 20rem;
+  overflow-x: hidden;
+  background: var(--background-color);
+  color: var(--foreground-color);
+}
+
+app-root{ display: block; }
+
+::selection{ background: var(--primary-color); color: var(--primary-color-on); }
+::placeholder{ color: var(--muted-color); opacity: 1; }
+
+a, button{ -webkit-tap-highlight-color: transparent; }
+
+/* One focus treatment app-wide. Never removed, never restyled per
+   component — it is the only affordance a keyboard user has. */
+:where(a, button, input, textarea, select, [tabindex]):focus-visible{
+  outline: 2px solid var(--primary-color);
+  outline-offset: 3px;
+}
+
+[id]{ scroll-margin-top: 4rem; }
+
+@media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior: auto; }
+}
+
+/* Fallback for engines without light-dark(). Baseline since 2024 —
+   delete this block once the support floor moves. */
+@supports not (color: light-dark(#000, #fff)){
+  :root{
+    --primary-color: var(--primary-600);
+    --primary-color-hover: var(--primary-700);
+    --primary-color-strong: var(--primary-800);
+    --primary-color-subtle: var(--primary-50);
+    --primary-color-on: var(--primary-on-light);
+    --background-color: var(--color-paper-50);
+    --foreground-color: var(--color-inkstone-900);
+    --muted-color: var(--color-inkstone-500);
+    --muted-strong-color: var(--color-inkstone-400);
+    --surface-color: var(--color-pure-black-50);
+    --contrast-background-color: var(--color-inkstone-900);
+    --border-color: color-mix(in srgb, var(--foreground-color) 10%, transparent);
+  }
+  html.dark{
+    --primary-color: var(--primary-400);
+    --primary-color-hover: var(--primary-300);
+    --primary-color-strong: var(--primary-200);
+    --primary-color-subtle: var(--primary-950);
+    --primary-color-on: var(--primary-on-dark);
+    --background-color: var(--color-inkstone-950);
+    --foreground-color: var(--color-paper-50);
+    --muted-color: var(--color-inkstone-300);
+    --muted-strong-color: var(--color-inkstone-200);
+    --surface-color: var(--color-inkstone-900);
+    --contrast-background-color: var(--color-paper-50);
+    --contrast-foreground-color: var(--color-inkstone-950);
+    --contrast-muted-color: var(--color-inkstone-500);
+    --border-color: color-mix(in srgb, var(--foreground-color) 16%, transparent);
+  }
+}
+
+
+/* ============================================================
+   §9  COMPONENT COLOR
+   Color only. Size, weight and tracking belong to typography.css.
+   ============================================================ */
+
+/* ---------- buttons ---------- */
+.btn-primary{
+  background: var(--primary-color);
+  color: var(--primary-color-on);
+  border-color: transparent;
+}
+.btn-primary:hover{ background: var(--primary-color-hover); }
+
+.btn-contrast{
+  background: var(--contrast-background-color);
+  color: var(--contrast-foreground-color);
+  border-color: transparent;
+}
+.btn-contrast:hover{
+  background: color-mix(in srgb, var(--contrast-background-color) 88%, var(--foreground-color));
+}
+
+.btn-ghost{
+  background: transparent;
+  color: var(--foreground-color);
+  border-color: var(--border-color);
+}
+.btn-ghost:hover{ border-color: var(--foreground-color); }
+
+.btn:disabled, .btn[disabled]{ opacity: .45; }
+
+/* ---------- surfaces ---------- */
+.card{  background: var(--background-color); border: 1px solid var(--border-color); }
+.panel{ background: var(--surface-color);    border: 1px solid var(--border-color); }
+
+.on-contrast{
+  background: var(--contrast-background-color);
+  color: var(--contrast-foreground-color);
+  border-color: var(--contrast-border-color);
+}
+.on-contrast .muted{ color: var(--contrast-muted-color); }
+.on-contrast hr{ border-color: var(--contrast-border-color); }
+.on-contrast .btn-ghost{
+  color: var(--contrast-foreground-color);
+  border-color: var(--contrast-border-color);
+}
+.on-contrast .btn-ghost:hover{ border-color: var(--contrast-foreground-color); }
+
+.note{ background: var(--primary-color-subtle); border-left: 2px solid var(--primary-color); }
+
+/* ---------- chips, tags, badges ---------- */
+.chip{ background: var(--primary-color-subtle); color: var(--primary-color-strong); }
+.tag{  background: transparent; color: var(--muted-color); border: 1px solid var(--border-color); }
+.pill.active{
+  background: var(--foreground-color);
+  color: var(--background-color);
+  border-color: var(--foreground-color);
+}
+
+.badge-success{ background: var(--success-color-subtle); color: var(--success-color); }
+.badge-warning{ background: var(--warning-color-subtle); color: var(--warning-color); }
+.badge-danger{  background: var(--danger-color-subtle);  color: var(--danger-color); }
+.badge-idle{    background: var(--subtle-color);         color: var(--muted-color); }
+
+/* ---------- fields ---------- */
+.field input, .field textarea, .field select{
+  background: var(--background-color);
+  color: var(--foreground-color);
+  border: 1px solid var(--border-color);
+}
+.field input:focus, .field textarea:focus, .field select:focus{
+  outline: none;
+  background: var(--surface-color);
+  border-color: var(--primary-color);
+  box-shadow: var(--shadow-ring);
+}
+.field.invalid input, .field.invalid textarea{ border-color: var(--danger-color); }
+.field .hint{ color: var(--muted-color); }
+.field .error{ color: var(--danger-color); }
+
+/* The one dashed border in the system. */
+.drop{ background: var(--background-color); border: 1.5px dashed var(--border-color); }
+.drop:hover{ border-color: var(--muted-color); }
+.drop.dragging{ border-color: var(--primary-color); background: var(--primary-color-subtle); }
+
+/* ---------- feedback ---------- */
+.skeleton{ background: var(--subtle-color); }
+.skeleton::after{ background: var(--gradient-shimmer); }
+.progress{ background: var(--subtle-color); }
+.progress > i{ background: var(--primary-color); }
+.progress[data-state="error"] > i{ background: var(--danger-color); }
+
+
+/* ============================================================
+   §10  FORCED COLORS
+   High-contrast mode discards backgrounds, so the border ramp
+   vanishes entirely. Structure returns as a system border.
+   ============================================================ */
+
+@media (forced-colors: active){
+  .card, .panel, .chip, .tag, .btn,
+  .field input, .field textarea{ border: 1px solid CanvasText; }
+  :where(a, button, input, textarea, select):focus-visible{ outline: 2px solid Highlight; }
+}
+
+
+/* ============================================================
+   §11  PRINT
+   A contrast panel prints as a solid black rectangle otherwise.
+   ============================================================ */
+
+@media print{
+  html{ color-scheme: light; }
+  .on-contrast{
+    background: #fff !important;
+    color: #000 !important;
+    border: 1px solid #000 !important;
+  }
+  .chip, .badge-success, .badge-warning, .badge-danger{
+    background: transparent !important;
+    border: 1px solid currentColor;
+  }
+}
+
+
+/* ============================================================
+   §12  TAILWIND v4
+
+   Exposes the semantic tier as utilities. Ramp steps are deliberately
+   NOT exposed — a component reaching for bg-primary-600 has skipped
+   the contract and will break on the next palette.
+
+       bg-background  bg-surface  bg-contrast  bg-subtle
+       text-foreground  text-muted  text-primary  text-primary-strong
+       border-line  border-line-strong
+       shadow-lift  shadow-pop
+   ============================================================ */
+
+@theme inline{
+  --color-background:          var(--background-color);
+  --color-foreground:          var(--foreground-color);
+  --color-muted:               var(--muted-color);
+  --color-muted-strong:        var(--muted-strong-color);
+  --color-surface:             var(--surface-color);
+  --color-subtle:              var(--subtle-color);
+
+  --color-contrast:            var(--contrast-background-color);
+  --color-contrast-foreground: var(--contrast-foreground-color);
+  --color-contrast-muted:      var(--contrast-muted-color);
+  --color-code:                var(--code-background-color);
+  --color-code-foreground:     var(--code-foreground-color);
+
+  --color-primary:             var(--primary-color);
+  --color-primary-hover:       var(--primary-color-hover);
+  --color-primary-strong:      var(--primary-color-strong);
+  --color-primary-subtle:      var(--primary-color-subtle);
+  --color-primary-on:          var(--primary-color-on);
+
+  --color-success:             var(--success-color);
+  --color-warning:             var(--warning-color);
+  --color-danger:              var(--danger-color);
+
+  --color-line:                var(--border-color);
+  --color-line-strong:         var(--border-strong-color);
+
+  --shadow-lift:               var(--shadow-lift);
+  --shadow-pop:                var(--shadow-pop);
+}
+
+
+/* ============================================================
+   §13  RETIRING THE --blog-* SHIM
+
+   The blog aliases are a fourth tier that exists only to keep an old
+   vocabulary alive. Every one maps to a token that already exists, so
+   the shim can go after a find-and-replace across
+   components/pages/blog/**:
+
+     --blog-paper       →  --background-color
+     --blog-ink         →  --foreground-color
+     --blog-ink-soft    →  --muted-color
+     --blog-hairline    →  --border-color
+     --blog-accent      →  --primary-color
+     --blog-accent-deep →  --primary-color-strong
+     --blog-tint        →  --primary-color-subtle
+     --blog-code        →  --code-background-color
+     --blog-code-text   →  --code-foreground-color
+
+   Two of those names lie after a palette swap: "accent-deep" and
+   "tint" describe a hue, and there is no persimmon left to be deep or
+   tinted. That is the whole argument for the semantic tier.
+
+   Kept below so nothing breaks today. Delete once the replace is done.
+   ============================================================ */
+
+:root{
+  --blog-paper:       var(--background-color);
+  --blog-ink:         var(--foreground-color);
+  --blog-ink-soft:    var(--muted-color);
+  --blog-hairline:    var(--border-color);
+  --blog-accent:      var(--primary-color);
+  --blog-accent-deep: var(--primary-color-strong);
+  --blog-tint:        var(--primary-color-subtle);
+  --blog-code:        var(--code-background-color);
+  --blog-code-text:   var(--code-foreground-color);
+}
