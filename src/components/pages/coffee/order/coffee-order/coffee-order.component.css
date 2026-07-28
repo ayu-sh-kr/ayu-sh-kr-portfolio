@@ -1,6 +1,5 @@
 coffee-order { display: block; }
-.coffee-section { padding-block: clamp(4.5rem, 9vw, 8rem); }
-.coffee-container { width: min(100% - 2.5rem, 48rem); margin-inline: auto; }
+.coffee-container { max-inline-size: var(--layout-form-max); margin-inline: auto; }
 .coffee-order-heading { max-width: 38rem; }
 .coffee-order-heading .type-lede { color: var(--muted-color); }
 .coffee-order-flow { display: grid; gap: 2.15rem; margin-top: 2.5rem; }
