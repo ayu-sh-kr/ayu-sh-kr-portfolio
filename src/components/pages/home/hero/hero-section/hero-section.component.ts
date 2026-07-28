@@ -16,13 +16,13 @@ export class PortfolioHeroComponent extends BaseElement {
     return HTML`
       <div id="hero-wrap" class="pin-wrap hero-pin-wrap">
         <section class="pin-stage hero-stage" aria-labelledby="hero-title">
-          <div id="hero-inner" class="mx-auto max-w-5xl px-5 text-center sm:px-8">
+          <div id="hero-inner" class="layout-content layout-stack layout-stack-lg text-center">
             <p class="motion-eyebrow">${hero.eyebrow}</p>
-            <h1 id="hero-title" class="motion-display mx-auto mt-5">
+            <h1 id="hero-title" class="motion-display layout-center">
               ${hero.titleBeforeAccent} <span class="text-(--primary-color)">${hero.accent}</span>
             </h1>
-            <p class="mx-auto mt-7 max-w-2xl text-[length:var(--type-lede-size)] leading-[var(--type-lede-leading)] text-(--muted-color)">${hero.summary}</p>
-            <div class="mt-10 flex flex-wrap justify-center gap-3">
+            <p class="layout-center layout-measure text-[length:var(--type-lede-size)] leading-[var(--type-lede-leading)] text-(--muted-color)">${hero.summary}</p>
+            <div class="layout-row layout-row-tight justify-center">
               <a class="motion-button motion-button-ink" href="${hero.primaryCta.href}">${hero.primaryCta.label}</a>
               <a class="motion-button motion-button-ghost" href="${hero.secondaryCta.href}">${hero.secondaryCta.label}</a>
             </div>
