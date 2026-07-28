@@ -4,12 +4,7 @@ pricing-start-project {
 
 .pricing-start-project-section {
   border-top: 1px solid var(--border-color);
-  padding: 7rem var(--layout-gutter);
-}
-
-.pricing-start-project-section > * {
-  max-width: var(--layout-page-max);
-  margin-inline: auto;
+  padding-block: 7rem;
 }
 
 .pricing-project-workspace {
@@ -360,7 +355,7 @@ pricing-start-project {
 
 .pricing-project-complete {
   max-width: 42rem;
-  margin-top: 3rem;
+  margin: 3rem auto 0;
   padding: clamp(1.5rem, 5vw, 3rem);
   text-align: center;
 }

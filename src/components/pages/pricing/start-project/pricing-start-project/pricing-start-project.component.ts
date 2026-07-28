@@ -370,47 +370,49 @@ export class PricingStartProjectComponent extends BaseElement {
 
     return HTML`
       <section id="pricing-start-project" class="pricing-start-project-section" aria-labelledby="pricing-start-project-title">
-        <pricing-start-project-intro></pricing-start-project-intro>
-        <pricing-project-mode-selector selected-mode="${this.brief.mode}"></pricing-project-mode-selector>
+        <div class="pricing-start-project-content layout-page">
+          <pricing-start-project-intro></pricing-start-project-intro>
+          <pricing-project-mode-selector selected-mode="${this.brief.mode}"></pricing-project-mode-selector>
 
-        ${this.isPrepared ? HTML`
-          <div class="pricing-project-complete" role="status">
-            <span aria-hidden="true">✓</span><h3>${content.completionTitle}</h3>
-            <p>${content.completionBody}${this.brief.files.length ? " Add the selected files to that email before sending." : ""}</p>
-            <div><a class="pricing-project-primary-button" href="${escapeHtml(this.createEmailHref())}">${content.emailLabel} <span aria-hidden="true">→</span></a><button class="pricing-project-secondary-button" type="button" data-start-edit>Edit the brief</button></div>
-          </div>
-        ` : HTML`
-          <div class="pricing-project-workspace">
-            <form id="pricing-project-brief" class="pricing-project-form">
-              ${this.renderActiveProjectForm()}
-              <fieldset class="pricing-project-fieldset">
-                <legend>Shape of it</legend>
-                <div class="pricing-project-input-label">Where things stand <small>Pick any</small></div>
-                ${this.renderSharedChoices(content.existingOptions, "existing", this.brief.existing)}
-                <div class="pricing-project-input-label">Budget</div>
-                ${this.renderSharedChoices(content.budgetOptions, "budget", this.brief.budget)}
-                <div class="pricing-project-input-label">Timeline</div>
-                ${this.renderSharedChoices(content.timelineOptions, "timeline", this.brief.timeline)}
-                <label class="pricing-project-file-input">Attachments <small>Up to 20 MB each · optional</small><input data-start-files type="file" multiple><span>Choose files to include in your brief</span></label>
-                <p class="pricing-project-files" aria-live="polite">${this.brief.files.length ? this.brief.files.map(escapeHtml).join(" · ") : "No attachments selected"}</p>
-              </fieldset>
-              <fieldset class="pricing-project-fieldset">
-                <legend>You</legend>
-                <div class="pricing-project-field-grid"><label>Your name<input data-start-field="name" value="${escapeHtml(this.brief.name)}" autocomplete="name" required placeholder="Priya Raghavan"></label><label>Email<input data-start-field="email" value="${escapeHtml(this.brief.email)}" type="email" autocomplete="email" required placeholder="you@company.com"></label></div>
-                <div class="pricing-project-field-grid"><label>Company <small>Optional</small><input data-start-field="company" value="${escapeHtml(this.brief.company)}" autocomplete="organization" placeholder="Northwind Foods"></label><div><div class="pricing-project-input-label">Best next step</div>${this.renderSharedChoices(content.nextSteps, "next-step", this.brief.nextStep)}</div></div>
-                <label class="pricing-project-checkbox"><input data-start-nda type="checkbox" ${this.brief.needsNda ? "checked" : ""}><span>I need an NDA first. Send yours, or I will send mine.</span></label>
-              </fieldset>
-              <div class="pricing-project-submit"><p>This creates one email. Nothing is sent automatically.</p><button class="pricing-project-primary-button" type="submit">Prepare the brief <span aria-hidden="true">→</span></button></div>
-            </form>
-            <aside class="pricing-project-preview" aria-label="Project brief preview">
-              <div><h3>${content.previewTitle}</h3><p>${content.previewBody}</p><div class="pricing-project-meter" data-project-meter style="--project-brief-progress: ${percentage}%"><i></i></div><p class="pricing-project-meter-copy"><span data-project-meter-label>${percentage < 35 ? "A few useful questions" : percentage < 70 ? "A useful starting point" : "Ready for a first read"}</span><b data-project-meter-value>${percentage}%</b></p></div>
-              <dl>${previewRows.map((row) => `<div><dt>${row.label}</dt><dd data-preview-value="${row.label}" class="${row.value ? "" : "is-empty"}">${escapeHtml(row.value || "—")}</dd></div>`).join("")}</dl>
-              <p class="pricing-project-preview-foot">Prefer a regular email? <a href="mailto:${content.emailAddress}">${content.emailAddress}</a></p>
-            </aside>
-          </div>
-        `}
-        <pricing-project-process></pricing-project-process>
-        <pricing-project-alternatives></pricing-project-alternatives>
+          ${this.isPrepared ? HTML`
+            <div class="pricing-project-complete" role="status">
+              <span aria-hidden="true">✓</span><h3>${content.completionTitle}</h3>
+              <p>${content.completionBody}${this.brief.files.length ? " Add the selected files to that email before sending." : ""}</p>
+              <div><a class="pricing-project-primary-button" href="${escapeHtml(this.createEmailHref())}">${content.emailLabel} <span aria-hidden="true">→</span></a><button class="pricing-project-secondary-button" type="button" data-start-edit>Edit the brief</button></div>
+            </div>
+          ` : HTML`
+            <div class="pricing-project-workspace">
+              <form id="pricing-project-brief" class="pricing-project-form">
+                ${this.renderActiveProjectForm()}
+                <fieldset class="pricing-project-fieldset">
+                  <legend>Shape of it</legend>
+                  <div class="pricing-project-input-label">Where things stand <small>Pick any</small></div>
+                  ${this.renderSharedChoices(content.existingOptions, "existing", this.brief.existing)}
+                  <div class="pricing-project-input-label">Budget</div>
+                  ${this.renderSharedChoices(content.budgetOptions, "budget", this.brief.budget)}
+                  <div class="pricing-project-input-label">Timeline</div>
+                  ${this.renderSharedChoices(content.timelineOptions, "timeline", this.brief.timeline)}
+                  <label class="pricing-project-file-input">Attachments <small>Up to 20 MB each · optional</small><input data-start-files type="file" multiple><span>Choose files to include in your brief</span></label>
+                  <p class="pricing-project-files" aria-live="polite">${this.brief.files.length ? this.brief.files.map(escapeHtml).join(" · ") : "No attachments selected"}</p>
+                </fieldset>
+                <fieldset class="pricing-project-fieldset">
+                  <legend>You</legend>
+                  <div class="pricing-project-field-grid"><label>Your name<input data-start-field="name" value="${escapeHtml(this.brief.name)}" autocomplete="name" required placeholder="Priya Raghavan"></label><label>Email<input data-start-field="email" value="${escapeHtml(this.brief.email)}" type="email" autocomplete="email" required placeholder="you@company.com"></label></div>
+                  <div class="pricing-project-field-grid"><label>Company <small>Optional</small><input data-start-field="company" value="${escapeHtml(this.brief.company)}" autocomplete="organization" placeholder="Northwind Foods"></label><div><div class="pricing-project-input-label">Best next step</div>${this.renderSharedChoices(content.nextSteps, "next-step", this.brief.nextStep)}</div></div>
+                  <label class="pricing-project-checkbox"><input data-start-nda type="checkbox" ${this.brief.needsNda ? "checked" : ""}><span>I need an NDA first. Send yours, or I will send mine.</span></label>
+                </fieldset>
+                <div class="pricing-project-submit"><p>This creates one email. Nothing is sent automatically.</p><button class="pricing-project-primary-button" type="submit">Prepare the brief <span aria-hidden="true">→</span></button></div>
+              </form>
+              <aside class="pricing-project-preview" aria-label="Project brief preview">
+                <div><h3>${content.previewTitle}</h3><p>${content.previewBody}</p><div class="pricing-project-meter" data-project-meter style="--project-brief-progress: ${percentage}%"><i></i></div><p class="pricing-project-meter-copy"><span data-project-meter-label>${percentage < 35 ? "A few useful questions" : percentage < 70 ? "A useful starting point" : "Ready for a first read"}</span><b data-project-meter-value>${percentage}%</b></p></div>
+                <dl>${previewRows.map((row) => `<div><dt>${row.label}</dt><dd data-preview-value="${row.label}" class="${row.value ? "" : "is-empty"}">${escapeHtml(row.value || "—")}</dd></div>`).join("")}</dl>
+                <p class="pricing-project-preview-foot">Prefer a regular email? <a href="mailto:${content.emailAddress}">${content.emailAddress}</a></p>
+              </aside>
+            </div>
+          `}
+          <pricing-project-process></pricing-project-process>
+          <pricing-project-alternatives></pricing-project-alternatives>
+        </div>
       </section>
     `;
   }
