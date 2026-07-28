@@ -332,7 +332,10 @@ export const portfolioContent = {
         {
           number: "04",
           title: "Writing",
-          links: [{ label: "Blog", href: "/blog" }],
+          links: [
+            { label: "Blog", href: "/blog" },
+            { label: "Showcase", href: "/showcase" },
+          ],
         },
         {
           number: "05",
