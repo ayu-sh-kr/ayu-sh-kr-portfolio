@@ -4,7 +4,11 @@ portfolio-services {
 
 .service-row {
   min-height: 22rem;
-  padding: 2rem;
-  border-right: 1px solid var(--border-color);
-  border-bottom: 1px solid var(--border-color);
+  padding: var(--layout-pad-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--layout-radius-lg);
+}
+
+.service-grid {
+  margin-block-start: var(--layout-space-8);
 }
