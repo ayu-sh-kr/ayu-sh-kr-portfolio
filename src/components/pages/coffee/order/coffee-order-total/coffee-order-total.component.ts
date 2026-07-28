@@ -32,7 +32,7 @@ export class CoffeeOrderTotalComponent extends BaseElement {
    * Recalculates the display when the size picker publishes an authored choice.
    * @param event - Typed payload containing the selected coffee size ID.
    */
-  @OnEvent(COFFEE_ORDER_SIZE_EVENT, true)
+  @OnEvent(COFFEE_ORDER_SIZE_EVENT)
   updateSize(event: ApplicationEvent<typeof COFFEE_ORDER_SIZE_EVENT>): void {
     if (!coffeeContent.sizes.some((size) => size.id === event.data.sizeId)) {
       return;
@@ -46,7 +46,7 @@ export class CoffeeOrderTotalComponent extends BaseElement {
    * Recalculates the display for a validated preset or custom quantity.
    * @param event - Typed payload carrying the normalized number of coffees.
    */
-  @OnEvent(COFFEE_ORDER_QUANTITY_EVENT, true)
+  @OnEvent(COFFEE_ORDER_QUANTITY_EVENT)
   updateQuantity(event: ApplicationEvent<typeof COFFEE_ORDER_QUANTITY_EVENT>): void {
     if (!Number.isFinite(event.data.quantity) || event.data.quantity < 1) {
       return;
@@ -57,7 +57,7 @@ export class CoffeeOrderTotalComponent extends BaseElement {
   }
 
   /** Restores the default Latte ×1 display after the confirmation begins a new order. */
-  @OnEvent(COFFEE_ORDER_RESET_EVENT, true)
+  @OnEvent(COFFEE_ORDER_RESET_EVENT)
   resetTotal(): void {
     this.selectedSizeId = "latte";
     this.quantity = 1;
