@@ -199,7 +199,7 @@ export class TermsViewComponent extends BaseElement {
   render(): string {
     if (!this.terms) {
       return HTML`
-        <main class="terms-shell terms-container">
+        <main class="terms-shell layout-page layout-section-hero">
           <p class="terms-status" role="status">${this.loadError || "Loading the terms and conditions…"}</p>
         </main>
       `;
@@ -227,7 +227,7 @@ export class TermsViewComponent extends BaseElement {
 
     return HTML`
       <div class="terms-progress" data-terms-progress aria-hidden="true"></div>
-      <main id="top" class="terms-shell terms-container" data-terms-page>
+      <main id="top" class="terms-shell layout-page layout-section-hero" data-terms-page>
         <terms-document-header metadata="${escapeHtml(JSON.stringify(metadata))}"></terms-document-header>
 
         <section class="terms-scope" aria-labelledby="terms-scope-title">
