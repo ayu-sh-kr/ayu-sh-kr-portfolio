@@ -1,13 +1,3 @@
-:root {
-  --paper: #FAFAF8;
-  --ink: #1D1D1F;
-  --ink-soft: #6E6E73;
-  --hairline: rgba(29, 29, 31, 0.1);
-  --accent: #FF4D00;
-  --accent-deep: #C23A00;
-  --tint: #FFF1EA;
-}
-
 sk-article,
 sk-list,
 sk-cards {
@@ -16,9 +6,9 @@ sk-cards {
 
 .sk,
 .skel-layer {
-  --skeleton-paper: var(--background-color, var(--paper));
-  --skeleton-ink: var(--foreground-color, var(--ink));
-  --skeleton-tint: var(--tint);
+  --skeleton-paper: var(--background-color);
+  --skeleton-ink: var(--foreground-color);
+  --skeleton-tint: var(--primary-color-subtle);
 }
 
 .sk {
@@ -149,7 +139,7 @@ sk-cards {
   grid-template-columns: 7rem minmax(0, 1fr) auto;
   gap: 1.25rem;
   align-items: baseline;
-  border-block-end: 1px solid var(--border-color, var(--hairline));
+  border-block-end: 1px solid var(--border-color);
   padding: 1.35rem 0.75rem;
 }
 
@@ -175,10 +165,10 @@ sk-cards {
 .sk-card {
   display: grid;
   gap: 0.9rem;
-  border: 1px solid var(--border-color, var(--hairline));
+  border: 1px solid var(--border-color);
   border-radius: 1.125rem;
   padding: 1.3rem;
-  background: var(--background-color, var(--paper));
+  background: var(--background-color);
 }
 
 .sk-card-title {
@@ -208,7 +198,7 @@ sk-cards {
   z-index: 2;
   min-block-size: 25rem;
   padding-block: 1rem;
-  background: var(--background-color, var(--paper));
+  background: var(--background-color);
   transition: opacity 0.55s ease, transform 0.55s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
