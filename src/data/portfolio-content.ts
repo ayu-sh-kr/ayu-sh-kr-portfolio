@@ -321,6 +321,7 @@ export const portfolioContent = {
           title: "Engage",
           links: [
             { label: "Pricing", href: "/pricing" },
+            { label: "Support", href: "/support" },
             { label: "Contact", href: "/#contact" },
             { label: "Speaking", href: "/#speaking" },
             { label: "Hire me", href: "/pricing" },
