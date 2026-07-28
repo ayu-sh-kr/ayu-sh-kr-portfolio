@@ -123,14 +123,12 @@ export class BlogArticleComponent extends BaseElement {
       <div class="blog-progress" data-blog-progress aria-hidden="true"></div>
       <main class="blog-article-shell blog-container" data-blog-article>
         <a class="blog-back-link" href="/blog">← ${blogArticleContent.allPostsLabel}</a>
-        <header class="blog-article-header">
-          <div class="blog-meta-row blog-article-meta">
-            <span class="blog-chip">${labelForCategory(this.post.category)}</span>
-            <span>${this.post.minutes} ${blogIndexContent.readTimeSuffix} · ${formatBlogDate(this.post.date)}</span>
-          </div>
-          <h1>${escapeHtml(this.post.header)}</h1>
-          <p class="blog-article-author">${blogArticleContent.authorPrefix} ${escapeHtml(this.post.writer)}</p>
-        </header>
+        <blog-article-header
+          category="${escapeHtml(labelForCategory(this.post.category))}"
+          metadata="${escapeHtml(`${this.post.minutes} ${blogIndexContent.readTimeSuffix} · ${formatBlogDate(this.post.date)}`)}"
+          title="${escapeHtml(this.post.header)}"
+          writer="${escapeHtml(this.post.writer)}">
+        </blog-article-header>
         ${markdown}
         <footer class="blog-article-footer">
           <div class="blog-article-footer-meta"><span class="blog-chip">${labelForCategory(this.post.category)}</span><span>${blogArticleContent.footer.shareCopy}</span></div>

@@ -24,31 +24,6 @@
   color: var(--blog-ink);
 }
 
-.blog-article-header {
-  max-inline-size: 48rem;
-  margin: 4.5rem auto 0;
-  text-align: center;
-}
-
-.blog-article-meta {
-  justify-content: center;
-}
-
-.blog-article-header h1 {
-  margin: 1.2rem 0 0;
-  font-size: clamp(2.2rem, 5vw, 3.6rem);
-  font-weight: 700;
-  letter-spacing: -0.04em;
-  line-height: 1.04;
-  text-wrap: balance;
-}
-
-.blog-article-author {
-  margin: 1.25rem 0 0;
-  color: var(--blog-ink-soft);
-  font-size: 0.9375rem;
-}
-
 .blog-loading {
   color: var(--blog-ink-soft);
 }
