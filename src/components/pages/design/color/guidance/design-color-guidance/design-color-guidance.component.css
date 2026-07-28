@@ -1,0 +1,137 @@
+.design-color-guidance {
+  max-inline-size: 88rem;
+  margin-inline: auto;
+  padding-block: clamp(3.5rem, 8vw, 6rem) clamp(7rem, 14vw, 11rem);
+}
+
+.design-color-guidance-layout {
+  display: grid;
+  gap: clamp(2rem, 6vw, 5rem);
+}
+
+.design-color-guidance-copy {
+  max-inline-size: 38rem;
+  margin: 1rem 0 0;
+  color: var(--muted-color);
+}
+
+.design-color-pair-grid {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.design-color-pair {
+  display: grid;
+  gap: 0.9rem;
+  min-block-size: 11rem;
+  border: 1px solid var(--border-color);
+  border-radius: 1.25rem;
+  padding: 1.25rem;
+}
+
+.design-color-pair p,
+.design-color-pair span {
+  margin: 0;
+}
+
+.design-color-pair span {
+  align-self: end;
+}
+
+.design-color-pair-canvas {
+  background: var(--background-color);
+  color: var(--foreground-color);
+}
+
+.design-color-pair-canvas span {
+  color: var(--muted-color);
+}
+
+.design-color-pair-surface {
+  background: var(--surface-color);
+  color: var(--foreground-color);
+}
+
+.design-color-pair-surface span {
+  color: var(--muted-color);
+}
+
+.design-color-pair-action {
+  background: var(--primary-color-subtle);
+  color: var(--foreground-color);
+}
+
+.design-color-pair-action button {
+  justify-self: start;
+  border: 0;
+  border-radius: 999px;
+  background: var(--primary-color);
+  padding: 0.65rem 0.9rem;
+  color: var(--primary-color-on);
+  font: inherit;
+  font-weight: var(--type-control-weight);
+}
+
+.design-color-pair-action span {
+  color: var(--muted-strong-color);
+}
+
+.design-color-pair-subtle {
+  background: var(--primary-color-subtle);
+  color: var(--foreground-color);
+}
+
+.design-color-pair-subtle span {
+  color: var(--muted-strong-color);
+}
+
+.design-color-pair-contrast {
+  border-color: var(--contrast-border-color);
+  background: var(--contrast-background-color);
+  color: var(--contrast-foreground-color);
+}
+
+.design-color-pair-contrast span {
+  color: var(--contrast-muted-color);
+}
+
+.design-color-rule-grid {
+  display: grid;
+  gap: 1rem;
+  margin-top: clamp(3rem, 7vw, 6rem);
+}
+
+.design-color-rule-grid article {
+  border-block-start: 1px solid var(--border-color);
+  padding-top: 1rem;
+}
+
+.design-color-rule-grid h3,
+.design-color-rule-grid p {
+  margin: 0;
+}
+
+.design-color-rule-grid p {
+  margin-top: 0.6rem;
+  color: var(--muted-color);
+}
+
+.design-color-rule-grid code {
+  color: var(--primary-color-strong);
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+}
+
+@media (min-width: 48rem) {
+  .design-color-pair-grid,
+  .design-color-rule-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 64rem) {
+  .design-color-guidance-layout {
+    grid-template-columns: minmax(15rem, 0.8fr) minmax(0, 1.2fr);
+    align-items: start;
+  }
+}

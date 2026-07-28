@@ -1,0 +1,89 @@
+.design-color-roles {
+  max-inline-size: 88rem;
+  margin-inline: auto;
+  padding-block: clamp(3.5rem, 8vw, 6rem);
+}
+
+.design-color-section-intro {
+  max-inline-size: 44rem;
+}
+
+.design-color-section-copy {
+  margin: 1rem 0 0;
+  color: var(--muted-color);
+}
+
+.design-color-role-grid {
+  display: grid;
+  gap: 1rem;
+  margin-top: clamp(2rem, 5vw, 4rem);
+}
+
+.design-color-role-group {
+  border: 1px solid var(--border-color);
+  border-radius: 1.25rem;
+  background: var(--surface-color);
+  padding: 1.5rem;
+}
+
+.design-color-role-title {
+  margin: 0;
+}
+
+.design-color-role-description {
+  margin: 0.5rem 0 1.25rem;
+  color: var(--muted-color);
+}
+
+.design-color-role-list {
+  display: grid;
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.design-color-role-list li {
+  display: grid;
+  grid-template-columns: 1rem minmax(0, 1fr);
+  gap: 0.6rem;
+  align-items: center;
+  border-block-start: 1px solid var(--border-color);
+  padding-block-start: 0.75rem;
+}
+
+.design-color-role-swatch {
+  inline-size: 1rem;
+  block-size: 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 999px;
+  background: var(--design-swatch);
+}
+
+.design-color-role-label {
+  color: var(--foreground-color);
+  font-size: var(--type-compact-size);
+}
+
+.design-color-role-list code {
+  grid-column: 2;
+  color: var(--primary-color-strong);
+  font-family: var(--font-mono);
+  font-size: var(--type-compact-size);
+  overflow-wrap: anywhere;
+}
+
+@media (min-width: 48rem) {
+  .design-color-role-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .design-color-role-list li {
+    grid-template-columns: 1rem minmax(0, 1fr) minmax(7rem, auto);
+  }
+
+  .design-color-role-list code {
+    grid-column: auto;
+    text-align: end;
+  }
+}
