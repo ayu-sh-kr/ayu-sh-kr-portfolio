@@ -2,14 +2,10 @@ portfolio-skills {
   display: block;
 }
 
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
-  gap: 1.25rem;
-}
+.skills-grid { margin-block-start: var(--layout-space-8); }
 
 .skill-group {
   min-height: 12rem;
-  padding: 1.5rem 0;
+  padding-block: var(--layout-space-5);
   border-top: 1px solid var(--border-color);
 }
