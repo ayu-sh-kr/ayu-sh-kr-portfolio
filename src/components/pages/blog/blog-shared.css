@@ -1,0 +1,112 @@
+blog-index,
+blog-article {
+  display: block;
+  min-block-size: 100vh;
+  color: var(--blog-ink);
+  font-family: var(--primary-font);
+  font-size-adjust: from-font;
+}
+
+blog-hero,
+blog-list-section,
+blog-filter,
+blog-highlighted-blog,
+blog-list,
+blog-subscription {
+  display: block;
+}
+
+.blog-container {
+  inline-size: min(100% - 2.5rem, 68rem);
+  margin-inline: auto;
+}
+
+.blog-meta-row,
+.blog-featured-footer,
+.blog-article-footer-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.blog-meta-row {
+  color: var(--blog-ink-soft);
+  font-size: 0.875rem;
+}
+
+.blog-chip {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  padding: 0.32rem 0.72rem;
+  background: var(--blog-tint);
+  color: var(--blog-accent-deep);
+  font-size: 0.77rem;
+  font-weight: 700;
+}
+
+.blog-arrow {
+  display: inline-block;
+  color: var(--blog-accent-deep);
+  font-weight: 650;
+  transition: transform 220ms ease;
+}
+
+.blog-featured:hover .blog-arrow,
+.blog-row:hover .blog-arrow {
+  transform: translateX(4px);
+}
+
+.blog-reveal {
+  opacity: 0;
+  transform: translateY(1.5rem);
+  transition: opacity 700ms ease var(--blog-reveal-delay, 0ms), transform 700ms cubic-bezier(0.2, 0.8, 0.2, 1) var(--blog-reveal-delay, 0ms);
+}
+
+.blog-reveal.is-revealed,
+.blog-row.is-filter-in {
+  opacity: 1;
+  transform: none;
+}
+
+.blog-ink-button {
+  display: inline-flex;
+  min-block-size: 2.8rem;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--blog-ink);
+  border-radius: 999px;
+  padding-inline: 1.25rem;
+  background: var(--blog-ink);
+  color: var(--blog-paper);
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 650;
+  text-decoration: none;
+  transition: transform 180ms ease, opacity 180ms ease;
+}
+
+.blog-ink-button:hover {
+  opacity: 0.86;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 42rem) {
+  .blog-container {
+    inline-size: min(100% - 2rem, 68rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blog-reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .blog-arrow,
+  .blog-ink-button {
+    transition: none;
+  }
+}
