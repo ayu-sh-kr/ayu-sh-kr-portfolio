@@ -238,7 +238,7 @@ export class PortfolioSpeakingComponent extends BaseElement {
           </div>
         </div>
 
-        <div class="speaking-content mx-auto max-w-7xl px-5 pb-28 pt-8 sm:px-8">
+        <div class="speaking-content mx-auto max-w-[var(--layout-page-max)] px-5 pb-28 pt-8 sm:px-8">
           <div class="sp-topics">
             ${speaking.topics
               .map(

@@ -3,9 +3,9 @@ speaking-pricing {
 }
 
 .speaking-pricing-section {
-  max-width: 80rem;
+  max-width: var(--layout-page-max);
   margin-inline: auto;
-  padding: 4rem 1.25rem;
+  padding: 4rem var(--layout-gutter);
 }
 
 .speaking-pricing-copy {
