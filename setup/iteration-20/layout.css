@@ -1,0 +1,356 @@
+/**
+ * Shared page geometry.
+ *
+ * Page sections use the page width and gutter tokens below; smaller measures
+ * are reserved for reading, forms, and other intentionally focused content.
+ *
+ * Geometry only. This file sets measure, spacing, position, radius value and
+ * stacking order. It sets no colour, border, shadow or background — cards and
+ * panels are component-owned surfaces and consume the tokens here.
+ *
+ * Import AFTER Tailwind so the @layer blocks below append to Tailwind's
+ * existing layer order (theme, base, components, utilities):
+ *
+ *   @import "tailwindcss";
+ *   @import "./layout.css";
+ *
+ * Optional: `tailwind-theme.css` bridges these tokens into Tailwind's @theme
+ * so `sm:` / `md:` / `lg:` and `max-w-*` resolve to the system values.
+ *
+ * v2.1 — page geometry unchanged since v1. `.layout-page`, `.layout-reading`
+ * and `.layout-content` behave exactly as they always have.
+ */
+
+:root {
+  /* ---------------------------------------------------------------
+   * PAGE GEOMETRY — unchanged from v1. Do not edit without a diff pass.
+   * ------------------------------------------------------------- */
+  --layout-page-max: 80rem;      /* 1280 — 3+ columns, nav, footer   */
+  --layout-reading-max: 45rem;   /*  720 — one column of prose       */
+  --layout-content-max: 60rem;   /*  960 — one or two columns of UI  */
+  --layout-gutter: clamp(1.25rem, 4vw, 3rem);
+  --layout-section-space: clamp(4.5rem, 9vw, 8rem);
+
+  /* ---------------------------------------------------------------
+   * MEASURES — one addition.
+   * A field wider than ~600px is hard to scan back to its label.
+   * ------------------------------------------------------------- */
+  --layout-form-max: 38rem;      /*  608 — one column of form/intake */
+
+  /* ---------------------------------------------------------------
+   * SECTION RHYTHM
+   * `--layout-section-space` is the large step and keeps its v1 value.
+   * The other three are sized around it. Fluid 360 -> 1440, then lock.
+   * ------------------------------------------------------------- */
+  --layout-section-sm:   clamp(2rem, 1.5rem   + 2.222vw, 3.5rem);  /* 32 ->  56 */
+  --layout-section-md:   clamp(3rem, 2.167rem + 3.704vw, 5.5rem);  /* 48 ->  88 */
+  --layout-section-lg:   var(--layout-section-space);              /* 72 -> 128 */
+  --layout-section-hero: clamp(6rem, 4.667rem + 5.926vw, 10rem);   /* 96 -> 160 */
+
+  /* ---------------------------------------------------------------
+   * SPACE SCALE — 4px base.
+   * Deliberately a subset of Tailwind's default scale, so
+   * `var(--layout-space-5)` and `p-6` are the same 24px. The mapping is
+   * 1 2 3 4 6 8 12 16 24 32 — see SKILL.md.
+   * ------------------------------------------------------------- */
+  --layout-space-1:  0.25rem;   /*   4  = Tailwind 1  */
+  --layout-space-2:  0.5rem;    /*   8  = Tailwind 2  */
+  --layout-space-3:  0.75rem;   /*  12  = Tailwind 3  */
+  --layout-space-4:  1rem;      /*  16  = Tailwind 4  */
+  --layout-space-5:  1.5rem;    /*  24  = Tailwind 6  */
+  --layout-space-6:  2rem;      /*  32  = Tailwind 8  */
+  --layout-space-7:  3rem;      /*  48  = Tailwind 12 */
+  --layout-space-8:  4rem;      /*  64  = Tailwind 16 */
+  --layout-space-9:  6rem;      /*  96  = Tailwind 24 */
+  --layout-space-10: 8rem;      /* 128  = Tailwind 32 */
+
+  /* ---------------------------------------------------------------
+   * GRID COLUMN FLOORS — minimum track width before a grid rewraps.
+   * ------------------------------------------------------------- */
+  --layout-col-sm: 220px;
+  --layout-col-md: 260px;
+  --layout-col-lg: 300px;
+
+  /* ---------------------------------------------------------------
+   * BLOCK PADDING — for component surfaces to consume.
+   * Layout supplies the measurement; the component supplies the surface.
+   * ------------------------------------------------------------- */
+  --layout-pad-card:  clamp(1.25rem, 1rem     + 1.111vw, 2rem);   /* 20 -> 32 */
+  --layout-pad-panel: clamp(1.5rem,  1.167rem + 1.481vw, 2.5rem); /* 24 -> 40 */
+
+  /* ---------------------------------------------------------------
+   * RADII — six values. A nested element never repeats its parent's
+   * radius; step down one. Ideal inner radius is outer minus padding.
+   * ------------------------------------------------------------- */
+  --layout-radius-xs:   4px;
+  --layout-radius-sm:   8px;
+  --layout-radius-md:  14px;
+  --layout-radius-lg:  20px;
+  --layout-radius-xl:  28px;
+  --layout-radius-pill: 999px;
+  --layout-radius-round: 50%;
+
+  /* ---------------------------------------------------------------
+   * CHROME
+   * `--layout-nav-h` must match the rendered header height. If the
+   * header changes, change it here — sticky offsets and anchor offsets
+   * both derive from it.
+   * ------------------------------------------------------------- */
+  --layout-nav-h: 57px;
+  --layout-stick: calc(var(--layout-nav-h) + var(--layout-space-4));
+
+  /* ---------------------------------------------------------------
+   * STACKING ORDER — never write a bare integer z-index.
+   * Needing a value between two of these means the scheme is wrong.
+   * ------------------------------------------------------------- */
+  --layout-z-base:     1;
+  --layout-z-raised:  10;   /* hover lift, focus ring, card overlap */
+  --layout-z-sticky:  20;   /* sticky subnav, scrollspy rail        */
+  --layout-z-nav:     30;   /* site header                          */
+  --layout-z-overlay: 40;   /* scrim, active drop zone              */
+  --layout-z-modal:   50;   /* dialog, mobile menu                  */
+  --layout-z-toast:   60;   /* contact pill, progress bar, toast    */
+}
+
+/* ==================================================================
+ * BASE
+ *
+ * In @layer base so Tailwind utilities can still override. Unlayered
+ * rules beat every layered rule, which would break `max-w-none` on an
+ * image or `scroll-mt-0` on an anchor.
+ * ================================================================== */
+
+@layer base {
+
+  /* Tailwind Preflight already sets this; kept so the file also works
+   * standalone. Identical declaration, so it is a no-op alongside it. */
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html { overflow-x: clip; }
+  body { min-block-size: 100svh; }
+
+  img, svg, video, canvas {
+    max-inline-size: 100%;
+    block-size: auto;
+    display: block;
+  }
+
+  /**
+   * Anchor targets clear the fixed header. Derived from --layout-nav-h,
+   * so it stays correct when the header height changes. Remove any
+   * page-level `scroll-margin-top` that hardcodes a value.
+   */
+  [id] { scroll-margin-block-start: var(--layout-stick); }
+}
+
+/* ==================================================================
+ * COMPONENTS
+ * ================================================================== */
+
+@layer components {
+
+  /* ----------------------------------------------------------------
+   * 1. CONTAINERS
+   *
+   * Measure follows COLUMN COUNT, not page identity. Count columns at
+   * the widest breakpoint: a grid that is 3-up on desktop and 1-up on
+   * mobile is a three-column shape and gets `.layout-page`.
+   *
+   * Each class stands alone and carries its own gutter. Never nest one
+   * inside another — the gutter would apply twice.
+   * -------------------------------------------------------------- */
+
+  .layout-page,
+  .layout-reading,
+  .layout-content,
+  .layout-form {
+    margin-inline: auto;
+    padding-inline: var(--layout-gutter);
+  }
+
+  /** Centers a full page section within the shared 80rem page measure. */
+  .layout-page { max-inline-size: var(--layout-page-max); }
+
+  /** Limits long-form copy to a comfortable reading measure. */
+  .layout-reading { max-inline-size: var(--layout-reading-max); }
+
+  /** Provides a spacious but narrower measure for dense content and forms. */
+  .layout-content { max-inline-size: var(--layout-content-max); }
+
+  /** Single column of form fields, kept scannable back to their labels. */
+  .layout-form { max-inline-size: var(--layout-form-max); }
+
+  /**
+   * Breaks a child out of its container to full viewport width.
+   * For full-bleed bands and hairline dividers only.
+   */
+  .layout-bleed {
+    inline-size: 100vw;
+    margin-inline: calc(50% - 50vw);
+  }
+
+  /* ----------------------------------------------------------------
+   * 2. SECTION RHYTHM
+   *
+   * Sections own the space between blocks; a block never sets its own
+   * top margin. These set `padding-block` only, so they compose onto
+   * the same element as a container class without collision:
+   *
+   *   <section class="layout-content layout-section"> … </section>
+   * -------------------------------------------------------------- */
+
+  .layout-section    { padding-block: var(--layout-section-md); }
+  .layout-section-sm { padding-block: var(--layout-section-sm); }
+  .layout-section-lg { padding-block: var(--layout-section-lg); }
+
+  /** First section of a page, under the header. Once per page. */
+  .layout-section-hero {
+    padding-block: var(--layout-section-hero) var(--layout-section-md);
+  }
+
+  /** Last section before the footer. */
+  .layout-section-end {
+    padding-block: var(--layout-section-md) var(--layout-section-lg);
+  }
+
+  /**
+   * Opt out of top padding where a section runs straight on from the one
+   * above with no divider between them. Deliberately opt-in: a section
+   * carrying a hairline top border needs both paddings kept.
+   */
+  .layout-section-flush { padding-block-start: 0; }
+
+  /* ----------------------------------------------------------------
+   * 3. FLOW — spacing between siblings.
+   * Prefer this over per-element margins.
+   * -------------------------------------------------------------- */
+
+  .layout-stack         { --layout-stack-gap: var(--layout-space-4); }
+  .layout-stack > * + * { margin-block-start: var(--layout-stack-gap); }
+  .layout-stack-xs      { --layout-stack-gap: var(--layout-space-2); }
+  .layout-stack-sm      { --layout-stack-gap: var(--layout-space-3); }
+  .layout-stack-lg      { --layout-stack-gap: var(--layout-space-5); }
+  .layout-stack-xl      { --layout-stack-gap: var(--layout-space-6); }
+
+  /* ----------------------------------------------------------------
+   * 4. GRIDS
+   *
+   * Reach for `.layout-grid-auto` first. A fixed column count is a
+   * claim that the number carries meaning — usually it does not.
+   *
+   * Breakpoints are 520 / 700 / 1100, written min-width. No other width
+   * breakpoint belongs in this system.
+   * -------------------------------------------------------------- */
+
+  .layout-grid       { display: grid; gap: var(--layout-space-5); }
+  .layout-grid-tight { gap: var(--layout-space-3); }
+  .layout-grid-loose { gap: var(--layout-space-6); }
+
+  .layout-grid-auto,
+  .layout-grid-auto-sm,
+  .layout-grid-auto-lg { display: grid; gap: var(--layout-space-5); }
+
+  .layout-grid-auto    { grid-template-columns: repeat(auto-fit, minmax(var(--layout-col-md), 1fr)); }
+  .layout-grid-auto-sm { grid-template-columns: repeat(auto-fit, minmax(var(--layout-col-sm), 1fr)); }
+  .layout-grid-auto-lg { grid-template-columns: repeat(auto-fit, minmax(var(--layout-col-lg), 1fr)); }
+
+  /* Fixed counts. Use only when the count itself carries meaning. */
+  .layout-grid-2,
+  .layout-grid-3,
+  .layout-grid-4 {
+    display: grid;
+    gap: var(--layout-space-5);
+    grid-template-columns: 1fr;
+  }
+
+  @media (min-width: 520px) {
+    .layout-grid-4 { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (min-width: 700px) {
+    .layout-grid-2 { grid-template-columns: repeat(2, 1fr); }
+    .layout-grid-3 { grid-template-columns: repeat(3, 1fr); }
+    .layout-grid-4 { grid-template-columns: repeat(4, 1fr); }
+  }
+
+  /** Asymmetric two-column: content plus a rail. */
+  .layout-grid-rail {
+    display: grid;
+    gap: var(--layout-space-6);
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 1100px) {
+    .layout-grid-rail      { grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); }
+    .layout-grid-rail-left { grid-template-columns: minmax(0, 1fr) minmax(0, 1.55fr); }
+  }
+
+  /**
+   * Sticky sidebar inside a rail grid. Static below 1100 so it never
+   * traps a phone viewport.
+   */
+  .layout-rail { position: static; }
+  @media (min-width: 1100px) {
+    .layout-rail {
+      position: sticky;
+      inset-block-start: var(--layout-stick);
+      align-self: start;
+    }
+  }
+
+  /* ----------------------------------------------------------------
+   * 5. ROWS — horizontal groups.
+   * -------------------------------------------------------------- */
+
+  .layout-row {
+    display: flex;
+    align-items: center;
+    gap: var(--layout-space-3);
+    flex-wrap: wrap;
+  }
+  .layout-row-tight { gap: var(--layout-space-2); }
+  .layout-row-loose { gap: var(--layout-space-5); }
+  .layout-row-split { justify-content: space-between; }
+  .layout-row-top   { align-items: flex-start; }
+  .layout-row-fill > * { flex: 1 1 0; min-inline-size: 0; }
+
+  /* ----------------------------------------------------------------
+   * 6. FIXED CHROME
+   * -------------------------------------------------------------- */
+
+  .layout-pinned-bottom {
+    position: fixed;
+    inset-inline: var(--layout-gutter);
+    inset-block-end: calc(var(--layout-space-4) + env(safe-area-inset-bottom, 0px));
+    z-index: var(--layout-z-toast);
+  }
+
+  .layout-pinned-top {
+    position: fixed;
+    inset: 0 0 auto 0;
+    block-size: var(--layout-nav-h);
+    z-index: var(--layout-z-nav);
+  }
+
+  /* ----------------------------------------------------------------
+   * 7. HELPERS
+   * -------------------------------------------------------------- */
+
+  .layout-measure { max-inline-size: var(--layout-reading-max); }
+  .layout-center  { margin-inline: auto; }
+
+  /* Grid and flex children need this, or one long unbroken string blows
+   * the whole track out horizontally. */
+  .layout-grid > *,
+  .layout-grid-auto > *,
+  .layout-grid-auto-sm > *,
+  .layout-grid-auto-lg > *,
+  .layout-grid-2 > *,
+  .layout-grid-3 > *,
+  .layout-grid-4 > *,
+  .layout-grid-rail > * { min-inline-size: 0; }
+}
+
+@media print {
+  .layout-pinned-bottom,
+  .layout-pinned-top,
+  .layout-rail { position: static; }
+}

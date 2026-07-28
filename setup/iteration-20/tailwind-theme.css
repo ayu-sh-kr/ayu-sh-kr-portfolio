@@ -1,0 +1,95 @@
+/**
+ * Tailwind 4 bridge for the layout system.
+ *
+ * Optional, but without it Tailwind's utilities and the layout tokens
+ * describe two different geometries — `md:` means 768px to Tailwind and
+ * 700px to this system, `max-w-5xl` means 64rem to nobody.
+ *
+ *   @import "tailwindcss";
+ *   @import "./tailwind-theme.css";
+ *   @import "./layout.css";
+ *
+ * Tailwind 4 `@theme` only generates utilities for known namespaces, so
+ * only breakpoints, container measures and radii can be bridged. The
+ * space scale needs no bridge (see the note at the bottom) and there is
+ * no z-index namespace — keep using `var(--layout-z-*)`.
+ */
+
+@theme {
+  /* ---------------------------------------------------------------
+   * BREAKPOINTS
+   *
+   * `initial` clears Tailwind's five defaults (640/768/1024/1280/1536)
+   * so only the three system steps exist. This is the point of the
+   * bridge: it makes it impossible to write `xl:` and silently
+   * introduce a fourth breakpoint.
+   *
+   * After this, `sm:` = 520, `md:` = 700, `lg:` = 1100, and `xl:` /
+   * `2xl:` are build errors rather than drift.
+   * ------------------------------------------------------------- */
+  --breakpoint-*: initial;
+  --breakpoint-sm: 520px;
+  --breakpoint-md: 700px;
+  --breakpoint-lg: 1100px;
+
+  /* ---------------------------------------------------------------
+   * CONTAINER MEASURES  ->  max-w-*
+   *
+   * Named for content shape, matching the container classes:
+   *   max-w-form  max-w-reading  max-w-content  max-w-page
+   *
+   * The `initial` line removes Tailwind's max-w-xs … max-w-7xl scale.
+   * Enable it once markup no longer uses those utilities — grep first:
+   *   grep -rho "max-w-[0-9a-z]*" src | sort | uniq -c | sort -rn
+   *
+   * Prefer the container *classes* for page sections; these utilities
+   * are for one-off inner blocks that need a known measure.
+   * ------------------------------------------------------------- */
+  /* --container-*: initial; */
+  --container-form:    38rem;   /*  608 */
+  --container-reading: 45rem;   /*  720 */
+  --container-content: 60rem;   /*  960 */
+  --container-page:    80rem;   /* 1280 */
+
+  /* ---------------------------------------------------------------
+   * RADII  ->  rounded-*
+   *
+   * Same six values as --layout-radius-*. `initial` clears Tailwind's
+   * defaults so `rounded-md` cannot mean 6px in one file and 14px in
+   * another.
+   * ------------------------------------------------------------- */
+  --radius-*: initial;
+  --radius-xs:   4px;
+  --radius-sm:   8px;
+  --radius-md:  14px;
+  --radius-lg:  20px;
+  --radius-xl:  28px;
+  --radius-pill: 999px;
+}
+
+/**
+ * SPACING — no bridge needed.
+ *
+ * Tailwind 4 derives spacing utilities from a single `--spacing`
+ * multiplier, default 0.25rem. The layout space scale is a subset of
+ * those multiples, so the two already agree exactly:
+ *
+ *   --layout-space-1    4px   =  p-1
+ *   --layout-space-2    8px   =  p-2
+ *   --layout-space-3   12px   =  p-3
+ *   --layout-space-4   16px   =  p-4
+ *   --layout-space-5   24px   =  p-6
+ *   --layout-space-6   32px   =  p-8
+ *   --layout-space-7   48px   =  p-12
+ *   --layout-space-8   64px   =  p-16
+ *   --layout-space-9   96px   =  p-24
+ *   --layout-space-10 128px   =  p-32
+ *
+ * So Tailwind spacing utilities are allowed — but only at those ten
+ * steps. `p-5` (20px), `p-7`, `p-9`, `p-10`, `p-11`, `p-14`, `p-20` and
+ * `gap-5` are off the scale and are drift, even though Tailwind will
+ * happily generate them.
+ *
+ * Tailwind cannot enforce this. It is a review rule, and it is in the
+ * skill's self-check.
+ */
