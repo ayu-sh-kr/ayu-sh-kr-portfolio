@@ -24,19 +24,19 @@
 .blog-eyebrow {
   margin: 0;
   color: var(--blog-accent-deep);
-  font-size: 0.8125rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
+  font-size: var(--type-eyebrow-size);
+  font-weight: var(--type-eyebrow-weight);
+  letter-spacing: var(--type-eyebrow-tracking);
   text-transform: uppercase;
 }
 
 .blog-display {
   max-inline-size: 56rem;
   margin: 1.25rem auto 0;
-  font-size: clamp(2.45rem, 6.5vw, 5rem);
-  font-weight: 700;
-  letter-spacing: -0.04em;
-  line-height: 1.03;
+  font-size: var(--type-display-size);
+  font-weight: var(--type-display-weight);
+  letter-spacing: var(--type-display-tracking);
+  line-height: var(--type-display-leading);
   text-wrap: balance;
 }
 
@@ -48,8 +48,8 @@
   max-inline-size: 38rem;
   margin: 1.5rem auto 0;
   color: var(--blog-ink-soft);
-  font-size: clamp(1rem, 2vw, 1.2rem);
-  line-height: 1.7;
+  font-size: var(--type-lede-size);
+  line-height: var(--type-lede-leading);
   text-wrap: pretty;
 }
 
