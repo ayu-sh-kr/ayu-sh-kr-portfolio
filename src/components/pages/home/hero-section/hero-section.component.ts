@@ -21,7 +21,7 @@ export class PortfolioHeroComponent extends BaseElement {
             <h1 id="hero-title" class="motion-display mx-auto mt-5">
               ${hero.titleBeforeAccent} <span class="text-(--primary-color)">${hero.accent}</span>
             </h1>
-            <p class="mx-auto mt-7 max-w-2xl text-[1.06rem] leading-8 text-(--muted-color) sm:text-xl">${hero.summary}</p>
+            <p class="mx-auto mt-7 max-w-2xl text-[length:var(--type-lede-size)] leading-[var(--type-lede-leading)] text-(--muted-color)">${hero.summary}</p>
             <div class="mt-10 flex flex-wrap justify-center gap-3">
               <a class="motion-button motion-button-ink" href="${hero.primaryCta.href}">${hero.primaryCta.label}</a>
               <a class="motion-button motion-button-ghost" href="${hero.secondaryCta.href}">${hero.secondaryCta.label}</a>
