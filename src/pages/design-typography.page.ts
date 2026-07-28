@@ -1,5 +1,7 @@
 import { Component, DotaPageElement, HTML, SEO } from "@ayu-sh-kr/dota-wrap/core";
 import { Route } from "@ayu-sh-kr/dota-wrap/router";
+import { designTypographyContent } from "@app/data/design-typography-content.ts";
+import { toSEO } from "@app/utils/seo.utils.ts";
 
 /**
  * Internal typography design reference route at `/design`.
@@ -21,15 +23,7 @@ export class DesignTypographyPage extends DotaPageElement {
 
   /** Supplies metadata for the typography design grammar route. */
   get seo(): SEO {
-    return {
-      title: "Typography design grammar | ayush.dev",
-      description: "A live reference for the portfolio typography system and its shared usage rules.",
-      keywords: ["design system", "typography", "design grammar", "Dota Web"],
-      og: {
-        title: "Typography design grammar | ayush.dev",
-        description: "Live specimens and usage rules for the portfolio typography system.",
-      },
-    };
+    return toSEO(designTypographyContent.seo);
   }
 
   /** Renders shared chrome around the typography reference sections. */

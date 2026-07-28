@@ -1,4 +1,8 @@
 import { BaseElement, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
+import { designTypographyContent } from "@app/data/design-typography-content.ts";
+
+/** Identifies summary values that should render as code rather than plain text. */
+const CODE_SUMMARY_ITEMS = new Set([0, 1]);
 
 /**
  * Introduces the typography design grammar and its hierarchy.
@@ -19,52 +23,30 @@ export class DesignTypographyOverviewComponent extends BaseElement {
 
   /** Renders the route introduction, shared-token summary, and role flow. */
   render(): string {
+    const { overview } = designTypographyContent;
+
     return HTML`
       <section class="design-overview design-section" aria-labelledby="design-overview-title">
         <div class="design-overview-layout">
           <div class="design-overview-intro">
-            <p class="type-eyebrow design-eyebrow">Design grammar / 01</p>
-            <h1 id="design-overview-title" class="type-display design-overview-title">Typography that holds every page together.</h1>
-            <p class="type-lede design-overview-lede">A live reference for choosing type roles. These specimens render from <code>typography.css</code>, so a token change here is the same change visitors see across the portfolio.</p>
+            <p class="type-eyebrow design-eyebrow">${overview.eyebrow}</p>
+            <h1 id="design-overview-title" class="type-display design-overview-title">${overview.title}</h1>
+            <p class="type-lede design-overview-lede">${overview.lede}</p>
             <div class="design-overview-links">
-              <a class="design-overview-link" href="#design-roles">Browse the role specimens <span aria-hidden="true">↓</span></a>
-              <a class="design-overview-link" href="/design/color">Explore the color grammar <span aria-hidden="true">→</span></a>
+              ${overview.links.map((link) => HTML`<a class="design-overview-link" href="${link.href}">${link.label} <span aria-hidden="true">${link.indicator}</span></a>`).join("")}
             </div>
           </div>
 
-          <aside class="design-overview-summary" aria-label="Typography system summary">
-            <p class="type-label design-summary-label">Shared system</p>
+          <aside class="design-overview-summary" aria-label="${overview.summaryAriaLabel}">
+            <p class="type-label design-summary-label">${overview.summaryLabel}</p>
             <dl class="design-summary-list">
-              <div>
-                <dt>Source</dt>
-                <dd><code>src/typography.css</code></dd>
-              </div>
-              <div>
-                <dt>Family</dt>
-                <dd><code>--primary-font</code></dd>
-              </div>
-              <div>
-                <dt>Roles</dt>
-                <dd>Display to metric</dd>
-              </div>
-              <div>
-                <dt>Color</dt>
-                <dd>Semantic tokens only</dd>
-              </div>
+              ${overview.summary.map((item, index) => HTML`<div><dt>${item.label}</dt><dd>${CODE_SUMMARY_ITEMS.has(index) ? HTML`<code>${item.value}</code>` : item.value}</dd></div>`).join("")}
             </dl>
           </aside>
         </div>
 
-        <div class="design-role-flow" aria-label="Typography hierarchy">
-          <span class="design-flow-item">Display</span>
-          <span aria-hidden="true">→</span>
-          <span class="design-flow-item">Section</span>
-          <span aria-hidden="true">→</span>
-          <span class="design-flow-item">Lede</span>
-          <span aria-hidden="true">→</span>
-          <span class="design-flow-item">Body</span>
-          <span aria-hidden="true">→</span>
-          <span class="design-flow-item">Support</span>
+        <div class="design-role-flow" aria-label="${overview.roleFlowAriaLabel}">
+          ${overview.roleFlow.map((role, index) => HTML`${index ? HTML`<span aria-hidden="true">→</span>` : ""}<span class="design-flow-item">${role}</span>`).join("")}
         </div>
       </section>
     `;
