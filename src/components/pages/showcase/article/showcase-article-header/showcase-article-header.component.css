@@ -1,0 +1,39 @@
+showcase-article-header {
+  display: block;
+}
+
+.showcase-article-header {
+  max-inline-size: 48rem;
+  margin: 4.5rem auto 0;
+  text-align: center;
+}
+
+.showcase-article-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.showcase-article-header h1 {
+  margin: 1.2rem 0 0;
+  font-size: var(--type-section-size);
+  font-weight: var(--type-section-weight);
+  letter-spacing: var(--type-section-tracking);
+  line-height: var(--type-section-leading);
+  text-wrap: balance;
+}
+
+.showcase-article-tagline {
+  margin: 1.25rem auto 0;
+  color: var(--muted-color);
+  font-size: var(--type-lede-size);
+  line-height: var(--type-lede-leading);
+  text-wrap: pretty;
+}
+
+.showcase-article-header .showcase-chip-row {
+  justify-content: center;
+  margin-block-start: 1.4rem;
+}
