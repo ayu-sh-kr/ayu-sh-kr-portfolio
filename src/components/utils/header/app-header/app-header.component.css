@@ -1,7 +1,8 @@
 #site-nav {
   position: fixed;
-  z-index: 50;
-  inset: 0 0 auto;
+  z-index: var(--layout-z-nav);
+  inset-inline: 0;
+  inset-block-start: 0;
   border-bottom: 1px solid transparent;
   background: color-mix(in oklab, var(--background-color) 72%, transparent);
   backdrop-filter: blur(20px);
@@ -15,6 +16,15 @@ html.dark #site-nav {
 
 #site-nav.is-scrolled {
   border-bottom-color: var(--border-color);
+}
+
+.app-header-inner {
+  min-block-size: var(--layout-nav-h);
+  flex-wrap: nowrap;
+}
+
+.app-header-actions {
+  flex-wrap: nowrap;
 }
 
 .nav-link {
@@ -35,9 +45,8 @@ html.dark #site-nav {
   color: var(--primary-color-strong);
 }
 
-.app-header-mobile-popover {
-  display: none;
-}
+.app-header-desktop-links { display: none; }
+.app-header-mobile-popover { position: relative; display: block; }
 
 .app-header-menu-button {
   display: inline-flex;
@@ -63,7 +72,7 @@ html.dark #site-nav {
 
 .app-header-mobile-panel {
   position: absolute;
-  z-index: 1;
+  z-index: var(--layout-z-raised);
   display: flex;
   min-width: min(18rem, calc(100vw - 2.5rem));
   flex-direction: column;
@@ -89,14 +98,13 @@ html.dark #site-nav {
   background: var(--surface-hover-color);
 }
 
-@media (max-width: 47.999rem) {
+@media (min-width: 700px) {
   .app-header-desktop-links {
-    display: none;
+    display: flex;
   }
 
   .app-header-mobile-popover {
-    position: relative;
-    display: block;
+    display: none;
   }
 }
 

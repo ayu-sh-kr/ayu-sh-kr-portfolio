@@ -31,10 +31,10 @@ export class AppHeaderComponent extends BaseElement {
 
     return `
       <nav id="site-nav" aria-label="Primary navigation">
-        <div class="mx-auto flex max-w-[var(--layout-page-max)] items-center justify-between gap-5 px-5 py-4 sm:px-8">
+        <div class="app-header-inner layout-page layout-row layout-row-split">
           <a href="/" class="shrink-0 text-sm font-semibold tracking-[-0.02em] text-[var(--foreground-color)]">${nav.logo}</a>
-          <div class="flex items-center gap-4 sm:gap-6">
-            <div class="app-header-desktop-links flex items-center gap-4 sm:gap-6">
+          <div class="app-header-actions layout-row">
+            <div class="app-header-desktop-links layout-row layout-row-loose">
               ${nav.links
                 .map(
                   (link) => `

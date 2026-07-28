@@ -44,8 +44,8 @@ export class PortfolioContactComponent extends BaseElement {
     const { contact } = portfolioContent;
 
     return HTML`
-      <section id="contact" class="border-b border-(--border-color) px-5 py-32 text-center sm:px-8 sm:py-40" aria-labelledby="contact-title">
-        <div class="mx-auto max-w-[var(--layout-page-max)]">
+      <section id="contact" class="layout-page layout-section-end border-b border-(--border-color) text-center" aria-labelledby="contact-title">
+        <div class="layout-content">
           <p class="motion-eyebrow motion-reveal">${contact.eyebrow}</p>
           <h2 id="contact-title" class="motion-display motion-reveal mx-auto mt-5 max-w-5xl">
             ${contact.titleBeforeAccent} <span class="text-(--primary-color)">${contact.accent}</span>
