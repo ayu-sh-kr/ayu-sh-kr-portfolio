@@ -1,7 +1,5 @@
 pricing-project-alternatives {
   display: block;
-  max-width: var(--layout-page-max);
-  margin-inline: auto;
 }
 
 .pricing-project-alternatives-section {
