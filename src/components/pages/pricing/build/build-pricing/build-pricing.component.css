@@ -2,12 +2,6 @@ build-pricing {
   display: block;
 }
 
-.build-pricing-section {
-  max-width: var(--layout-page-max);
-  margin-inline: auto;
-  padding: 4rem var(--layout-gutter);
-}
-
 .build-pricing-copy {
   max-width: 40rem;
   margin-bottom: 2.5rem;

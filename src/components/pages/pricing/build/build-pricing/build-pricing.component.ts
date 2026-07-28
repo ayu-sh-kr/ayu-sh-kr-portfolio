@@ -24,7 +24,7 @@ export class BuildPricingComponent extends BaseElement {
     const content = pricingContent.buildPricing;
 
     return HTML`
-      <section class="build-pricing-section" aria-labelledby="build-pricing-title">
+      <section class="build-pricing-section layout-page layout-section" aria-labelledby="build-pricing-title">
         <div class="build-pricing-copy">
           <p class="pricing-eyebrow">${content.eyebrow}</p>
           <h2 id="build-pricing-title" class="pricing-section-title mt-3">${content.title}</h2>
