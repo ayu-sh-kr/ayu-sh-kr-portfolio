@@ -1,7 +1,5 @@
 pricing-project-process {
   display: block;
-  max-width: var(--layout-page-max);
-  margin-inline: auto;
 }
 
 .pricing-project-process-section {
