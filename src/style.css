@@ -11,6 +11,9 @@
 @import "./components/utils/footer/footer-baseline/footer-baseline.component.css";
 @import "./components/utils/theme/dark-mode-button/dark-mode-button.component.css";
 @import "./components/utils/skeleton/skeleton.component.css";
+@import "./components/pages/design/overview/design-typography-overview/design-typography-overview.component.css";
+@import "./components/pages/design/roles/design-typography-roles/design-typography-roles.component.css";
+@import "./components/pages/design/guidance/design-typography-guidance/design-typography-guidance.component.css";
 @import "./components/pages/offline/shell/offline-page/offline-page.component.css";
 @import "./components/pages/offline/hero/offline-hero/offline-hero.component.css";
 @import "./components/pages/offline/troubleshoot/offline-troubleshoot/offline-troubleshoot.component.css";
@@ -153,21 +156,21 @@
 
 :root {
   /* Semantic primary palette. Change the source family here to retheme the app. */
-  --primary-50: var(--color-webingo-premium-cyan-50);
-  --primary-100: var(--color-webingo-premium-cyan-100);
-  --primary-200: var(--color-webingo-premium-cyan-200);
-  --primary-300: var(--color-webingo-premium-cyan-300);
-  --primary-400: var(--color-webingo-premium-cyan-400);
-  --primary-500: var(--color-webingo-premium-cyan-500);
-  --primary-600: var(--color-webingo-premium-cyan-600);
-  --primary-700: var(--color-webingo-premium-cyan-700);
-  --primary-800: var(--color-webingo-premium-cyan-800);
-  --primary-900: var(--color-webingo-premium-cyan-900);
-  --primary-950: var(--color-webingo-premium-cyan-950);
+  --primary-50: var(--color-true-matcha-50);
+  --primary-100: var(--color-true-matcha-100);
+  --primary-200: var(--color-true-matcha-200);
+  --primary-300: var(--color-true-matcha-300);
+  --primary-400: var(--color-true-matcha-400);
+  --primary-500: var(--color-true-matcha-500);
+  --primary-600: var(--color-true-matcha-600);
+  --primary-700: var(--color-true-matcha-700);
+  --primary-800: var(--color-true-matcha-800);
+  --primary-900: var(--color-true-matcha-900);
+  --primary-950: var(--color-true-matcha-950);
 
-  --primary-color: var(--primary-500);
-  --primary-color-hover: var(--primary-600);
-  --primary-color-strong: var(--primary-700);
+  --primary-color: var(--primary-600);
+  --primary-color-hover: var(--primary-700);
+  --primary-color-strong: var(--primary-800);
   --primary-color-subtle: var(--primary-50);
   --primary-color-on: var(--color-paper-50);
   /* Lexend Deca is the current default font for the portfolio and blog. */
@@ -194,7 +197,7 @@
   --blog-accent-deep: var(--primary-color-strong);
   --blog-tint: var(--primary-color-subtle);
   --blog-code: var(--primary-950);
-  --blog-code-text: var(--primary-color-on);
+  --blog-code-text: var(--contrast-foreground-color);
 }
 
 html.dark {
@@ -202,7 +205,7 @@ html.dark {
   --primary-color-hover: var(--primary-300);
   --primary-color-strong: var(--primary-200);
   --primary-color-subtle: var(--primary-950);
-  --primary-color-on: var(--color-paper-50);
+  --primary-color-on: var(--color-pure-black-950);
 
   --background-color: var(--color-inkstone-950);
   --foreground-color: var(--color-paper-50);
@@ -223,7 +226,7 @@ html.dark {
     --primary-color-hover: var(--primary-300);
     --primary-color-strong: var(--primary-200);
     --primary-color-subtle: var(--primary-950);
-    --primary-color-on: var(--color-paper-50);
+    --primary-color-on: var(--color-pure-black-950);
 
     --background-color: var(--color-inkstone-950);
     --foreground-color: var(--color-paper-50);
