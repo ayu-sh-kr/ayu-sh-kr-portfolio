@@ -9,7 +9,7 @@ scroll-hint {
   position: absolute;
   inset-block-end: clamp(2rem, 5vh, 3.5rem);
   inset-inline-start: 50%;
-  z-index: 1;
+  z-index: var(--layout-z-base);
   color: var(--sh-color);
   pointer-events: none;
 }
