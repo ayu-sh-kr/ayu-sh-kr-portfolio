@@ -1,0 +1,60 @@
+build-offering {
+  display: block;
+}
+
+.pricing-section {
+  max-width: 80rem;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+.pricing-build-section {
+  padding-top: 5rem;
+  padding-bottom: 2rem;
+}
+
+.pricing-section-copy {
+  max-width: 48rem;
+}
+
+.pricing-value-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 3.5rem;
+  margin-top: 3rem;
+}
+
+.pricing-value-row {
+  display: grid;
+  grid-template-columns: 2rem 1fr;
+  gap: 1rem;
+  padding: 1.4rem 0;
+  border-top: 1px solid var(--border-color);
+}
+
+.pricing-value-number {
+  color: var(--primary-color-strong);
+  font-size: var(--pricing-type-label-size);
+  font-weight: var(--pricing-type-label-weight);
+  letter-spacing: var(--pricing-type-label-tracking);
+}
+
+.pricing-value-row h3 {
+  font-size: var(--pricing-type-card-title-size);
+  font-weight: var(--pricing-type-card-title-weight);
+  letter-spacing: var(--pricing-type-card-title-tracking);
+}
+
+.pricing-value-row p {
+  margin-top: 0.45rem;
+  color: var(--muted-color);
+  font-size: var(--pricing-type-body-size);
+  line-height: var(--pricing-type-body-leading);
+}
+
+@media (max-width: 48rem) {
+  .pricing-value-grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+}
