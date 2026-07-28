@@ -1,0 +1,47 @@
+pricing-start-project-intro {
+  display: block;
+  max-width: 80rem;
+  margin-inline: auto;
+}
+
+.pricing-start-project-intro {
+  max-width: 43rem;
+  text-align: left;
+}
+
+.pricing-start-project-intro h2 {
+  margin-top: 0.75rem;
+  color: var(--foreground-color);
+  font-size: var(--pricing-type-section-size);
+  font-weight: var(--pricing-type-section-weight);
+  letter-spacing: var(--pricing-type-section-tracking);
+  line-height: var(--pricing-type-section-leading);
+  text-wrap: balance;
+}
+
+.pricing-start-project-intro h2 span {
+  color: var(--primary-color);
+}
+
+.pricing-start-project-intro > p:not(.pricing-eyebrow) {
+  max-width: 39rem;
+  margin-top: 1.25rem;
+  color: var(--muted-color);
+  font-size: var(--pricing-type-lede-size);
+  line-height: var(--pricing-type-lede-leading);
+}
+
+.pricing-start-project-facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem 1.35rem;
+  margin-top: 1.5rem;
+  color: var(--muted-color);
+  font-size: var(--pricing-type-compact-size);
+}
+
+.pricing-start-project-facts li::before {
+  content: "•";
+  margin-right: 0.45rem;
+  color: var(--primary-color);
+}
