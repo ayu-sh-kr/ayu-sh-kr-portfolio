@@ -24,7 +24,7 @@ export class ShowcaseFeaturedComponent extends BaseElement {
 
     return HTML`
       <section class="showcase-section showcase-featured-section" aria-labelledby="showcase-featured-title">
-        <div class="mx-auto max-w-6xl px-5 sm:px-8">
+        <div class="mx-auto max-w-[var(--layout-page-max)] px-5 sm:px-8">
           <p class="showcase-eyebrow showcase-reveal" data-showcase-reveal>Featured</p>
           <div class="mt-4 flex flex-wrap items-end justify-between gap-5">
             <h2 id="showcase-featured-title" class="showcase-title showcase-reveal" data-showcase-reveal>Selected builds</h2>

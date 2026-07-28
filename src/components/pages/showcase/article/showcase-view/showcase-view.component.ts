@@ -144,18 +144,14 @@ export class ShowcaseViewComponent extends BaseElement {
       <div class="showcase-progress" data-showcase-progress aria-hidden="true"></div>
       <main class="showcase-article-shell showcase-container">
         <a class="showcase-back-link" href="/showcase">← All showcases</a>
-        <header class="showcase-article-header">
-          <div class="showcase-article-meta">
-            <span class="showcase-chip">${escapeHtml(this.project.kind)}</span>
-            <span class="showcase-chip showcase-chip-muted">${this.project.year}</span>
-            <span class="showcase-chip showcase-chip-muted">${formatStatus(this.project.status)}</span>
-          </div>
-          <h1>${escapeHtml(this.project.title)}</h1>
-          <p class="showcase-article-tagline">${escapeHtml(this.project.tagline)}</p>
-          <div class="showcase-chip-row" aria-label="Technology stack">
-            ${this.project.stack.map((item) => `<span class="showcase-chip showcase-chip-muted">${escapeHtml(item)}</span>`).join("")}
-          </div>
-        </header>
+        <showcase-article-header
+          kind="${escapeHtml(this.project.kind)}"
+          year="${this.project.year}"
+          status="${escapeHtml(formatStatus(this.project.status))}"
+          title="${escapeHtml(this.project.title)}"
+          tagline="${escapeHtml(this.project.tagline)}"
+          stack="${escapeHtml(this.project.stack.join("|"))}">
+        </showcase-article-header>
         <div class="showcase-reader-layout">
           <showcase-toc></showcase-toc>
           ${markdown}

@@ -103,7 +103,7 @@ export class ShowcaseArchiveComponent extends BaseElement {
 
     return HTML`
       <section id="showcase-archive" class="showcase-section showcase-archive-section" aria-labelledby="showcase-archive-title">
-        <div class="mx-auto max-w-6xl px-5 sm:px-8">
+        <div class="mx-auto max-w-[var(--layout-page-max)] px-5 sm:px-8">
           <div class="showcase-archive-heading">
             <div>
               <p class="showcase-eyebrow showcase-reveal" data-showcase-reveal>Archive</p>

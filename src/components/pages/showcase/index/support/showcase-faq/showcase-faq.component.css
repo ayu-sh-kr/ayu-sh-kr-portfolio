@@ -3,7 +3,7 @@ showcase-faq {
 }
 
 .showcase-faq-block {
-  max-inline-size: 48rem;
+  inline-size: 100%;
   padding-block-end: clamp(5rem, 10vw, 8rem);
 }
 
@@ -72,7 +72,6 @@ showcase-faq {
 }
 
 .showcase-faq-accordion-answer {
-  max-inline-size: 38rem;
   margin: 0;
   padding: 0 2rem 1.3rem 0.75rem;
   color: var(--muted-color);

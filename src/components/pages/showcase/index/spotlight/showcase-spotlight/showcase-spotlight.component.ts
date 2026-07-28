@@ -57,7 +57,7 @@ export class ShowcaseSpotlightComponent extends BaseElement {
       <div id="showcase-spotlight-${project.slug}" class="showcase-pin-wrap showcase-spotlight-wrap" data-showcase-spotlight>
         <section class="showcase-pin-stage showcase-spotlight-stage" aria-labelledby="spotlight-${project.slug}-title">
           <div class="showcase-ghost-number" aria-hidden="true">${project.year.toString().slice(-2)}</div>
-          <div class="showcase-spotlight-layout mx-auto grid w-full max-w-6xl items-center gap-10 px-5 sm:px-8 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
+          <div class="showcase-spotlight-layout mx-auto grid w-full max-w-[var(--layout-page-max)] items-center gap-10 px-5 sm:px-8 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
             <div class="showcase-spotlight-cover" data-showcase-cover>
               <showcase-visual project-slug="${project.slug}" variant="spotlight"></showcase-visual>
             </div>
