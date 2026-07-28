@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Typography — Design Grammar — ayush.dev</title>
+<style>
+/* ============================================================
+   TOKENS — typography v1.1, inlined for offline self-containment
+   ============================================================ */
+:root{
+  --paper:#FAFAF8; --ink:#1D1D1F; --ink-soft:#6E6E73;
+  --hairline:rgba(29,29,31,.1);
+  --accent:#FF4D00; --accent-deep:#C23A00; --tint:#FFF1EA;
+
+  --font-sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Inter,sans-serif;
+  --font-mono:ui-monospace,SFMono-Regular,Menlo,monospace;
+
+  --fs-display:    clamp(2.4rem,   1.2rem   + 5.333vw, 6rem);
+  --fs-display-sm: clamp(2rem,     1.467rem + 2.37vw,  3.6rem);
+  --fs-title:      clamp(1.875rem, 1.4rem   + 2.111vw, 3.3rem);
+  --fs-title-sm:   clamp(1.375rem, 1.133rem + 1.074vw, 2.1rem);
+  --fs-h2:         clamp(1.375rem, 1.25rem  + 0.556vw, 1.75rem);
+  --fs-h3:         clamp(1.188rem, 1.125rem + 0.278vw, 1.375rem);
+  --fs-lead:       clamp(1.062rem, 1.042rem + 0.093vw, 1.125rem);
+
+  --fs-body:1rem; --fs-ui:.9375rem; --fs-ui-sm:.875rem; --fs-meta:.8125rem;
+  --fs-caption:.78125rem; --fs-label:.75rem; --fs-micro:.6875rem;
+  --fs-field:var(--fs-ui);
+
+  --fw-regular:400; --fw-medium:500; --fw-semibold:600; --fw-bold:700;
+
+  --tr-display:-.03em; --tr-title:-.02em; --tr-heading:-.018em;
+  --tr-lead:-.012em; --tr-body:0; --tr-label:.06em; --tr-eyebrow:.08em;
+
+  --lh-display:1.08; --lh-title:1.12; --lh-heading:1.3;
+  --lh-ui:1.45; --lh-body:1.55; --lh-prose:1.65;
+
+  --measure:720px; --measure-sm:560px; --gutter:1.25rem;
+  --ease:cubic-bezier(.2,.8,.2,1);
+}
+@media (min-width:700px){
+  :root{
+    --tr-display:-.035em; --tr-title:-.025em; --tr-heading:-.02em; --tr-lead:-.015em;
+    --lh-display:1.05; --lh-title:1.1; --lh-heading:1.28; --lh-body:1.6; --lh-prose:1.72;
+    --gutter:1.5rem;
+  }
+}
+@media (min-width:1100px){
+  :root{ --tr-display:-.04em; --lh-display:1.04; --lh-title:1.08; --lh-heading:1.25; --lh-prose:1.75; }
+}
+@media (pointer:coarse){ :root{ --fs-field:1rem; } }
+
+/* ============================================================
+   BASE
+   ============================================================ */
+*{box-sizing:border-box}
+html{scroll-behavior:smooth; -webkit-text-size-adjust:100%; text-size-adjust:100%}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:var(--font-sans); font-size:var(--fs-body);
+  font-weight:var(--fw-regular); line-height:var(--lh-body);
+  -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+}
+::selection{background:var(--accent); color:#fff}
+a{color:inherit; text-decoration:none}
+
+/* ---------- role classes under test ---------- */
+.display{font-size:var(--fs-display); font-weight:var(--fw-bold);
+  letter-spacing:var(--tr-display); line-height:var(--lh-display); text-wrap:balance; margin:0}
+.display-sm{font-size:var(--fs-display-sm); font-weight:var(--fw-bold);
+  letter-spacing:var(--tr-display); line-height:var(--lh-display); text-wrap:balance; margin:0}
+.title{font-size:var(--fs-title); font-weight:var(--fw-semibold);
+  letter-spacing:var(--tr-title); line-height:var(--lh-title); text-wrap:balance; margin:0}
+.title-sm{font-size:var(--fs-title-sm); font-weight:var(--fw-semibold);
+  letter-spacing:var(--tr-title); line-height:var(--lh-title); text-wrap:balance; margin:0}
+.eyebrow{font-size:var(--fs-meta); font-weight:var(--fw-medium);
+  letter-spacing:var(--tr-eyebrow); text-transform:uppercase; color:var(--accent-deep)}
+.label{font-size:var(--fs-label); font-weight:var(--fw-semibold);
+  letter-spacing:var(--tr-label); text-transform:uppercase; color:var(--ink-soft)}
+.micro{font-size:var(--fs-micro); font-weight:var(--fw-semibold);
+  letter-spacing:.05em; text-transform:uppercase; color:var(--ink-soft)}
+.lead{font-size:var(--fs-lead); font-weight:var(--fw-regular); letter-spacing:var(--tr-lead);
+  line-height:var(--lh-body); color:var(--ink-soft); max-width:var(--measure); text-wrap:pretty; margin:0}
+.meta{font-size:var(--fs-meta); font-weight:var(--fw-medium); line-height:var(--lh-ui); color:var(--ink-soft)}
+.chip{display:inline-block; font-size:var(--fs-caption); font-weight:var(--fw-medium);
+  padding:.3rem .7rem; border-radius:999px; background:var(--tint); color:var(--accent-deep)}
+.soft{color:var(--ink-soft)}
+.num,time,[data-count]{font-variant-numeric:tabular-nums}
+
+/* ============================================================
+   PAGE CHROME
+   ============================================================ */
+#progress{position:fixed; top:0; left:0; height:2px; width:0%; background:var(--accent); z-index:60}
+#nav{position:fixed; inset:0 0 auto 0; z-index:50;
+  backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
+  background:rgba(250,250,248,.72); border-bottom:1px solid transparent; transition:border-color .3s}
+#nav.scrolled{border-bottom-color:var(--hairline)}
+.nav-in{max-width:1180px; margin:0 auto; padding:1rem var(--gutter);
+  display:flex; align-items:baseline; justify-content:space-between; gap:1rem}
+.nav-in strong{font-size:var(--fs-ui); font-weight:var(--fw-semibold); letter-spacing:-.01em}
+#nav a{font-size:var(--fs-ui-sm); font-weight:var(--fw-medium); color:var(--ink-soft); transition:color .2s}
+#nav a:hover{color:var(--ink)}
+
+.wrap{max-width:1180px; margin:0 auto; padding:0 var(--gutter)}
+.col{max-width:var(--measure); margin-left:0}
+
+header.page{padding:8rem 0 3rem}
+header.page .display{margin:.8rem 0 1.2rem}
+
+/* ---------- viewport meter, fixed ---------- */
+#vp{position:fixed; right:var(--gutter); bottom:1.1rem; z-index:55;
+  display:flex; align-items:center; gap:.55rem;
+  background:var(--ink); color:#fff; border-radius:999px; padding:.5rem .95rem;
+  font-size:var(--fs-label); font-weight:var(--fw-medium); letter-spacing:.02em;
+  font-variant-numeric:tabular-nums; box-shadow:0 6px 24px rgba(29,29,31,.16)}
+#vp .dot{width:6px; height:6px; border-radius:50%; background:var(--accent)}
+#vp b{font-weight:var(--fw-semibold)}
+#vp .st{opacity:.6; font-weight:var(--fw-regular)}
+
+/* ---------- TOC ---------- */
+#toc{position:fixed; top:120px; left:max(var(--gutter),calc(50% - 590px));
+  width:186px; max-height:72vh; overflow-y:auto; display:none; z-index:40}
+@media(min-width:1240px){#toc{display:block} .wrap{padding-left:230px}}
+#toc .g{font-size:var(--fs-micro); font-weight:var(--fw-semibold); letter-spacing:.07em;
+  text-transform:uppercase; color:var(--ink-soft); opacity:.75; margin:1.1rem 0 .4rem}
+#toc .g:first-child{margin-top:0}
+#toc a{display:block; font-size:var(--fs-meta); color:var(--ink-soft);
+  padding:.3rem 0 .3rem .8rem; border-left:2px solid var(--hairline);
+  line-height:1.35; transition:color .2s, border-color .2s}
+#toc a:hover{color:var(--ink)}
+#toc a.on{color:var(--accent-deep); border-left-color:var(--accent); font-weight:var(--fw-medium)}
+
+/* ============================================================
+   GRAMMAR SECTIONS
+   ============================================================ */
+section.gs{scroll-margin-top:96px; padding:3.4rem 0; border-top:1px solid var(--hairline)}
+.gs-head{display:flex; align-items:baseline; gap:.75rem; flex-wrap:wrap; margin-bottom:.5rem}
+.gs-head .n{font-size:var(--fs-label); font-weight:var(--fw-semibold); color:var(--ink-soft);
+  font-variant-numeric:tabular-nums}
+.gs > .lead{margin-bottom:2.2rem}
+
+/* ---------- the specimen block ---------- */
+.spec{border-top:1px solid var(--hairline); padding:1.7rem 0}
+.spec:first-of-type{border-top:0}
+.spec-head{display:flex; align-items:baseline; justify-content:space-between;
+  gap:1rem; margin-bottom:1rem}
+.tok{font-family:var(--font-mono); font-size:var(--fs-caption); font-weight:var(--fw-medium);
+  color:var(--ink); background:rgba(29,29,31,.05); padding:.2rem .5rem; border-radius:5px;
+  cursor:pointer; transition:background .2s, color .2s}
+.tok:hover{background:var(--tint); color:var(--accent-deep)}
+.tok.copied{background:var(--tint); color:var(--accent-deep)}
+
+/* HINT — 11.5px, regular, ink-soft @80%, lowercase, right-aligned. No badge, no colour. */
+.hint{font-size:11.5px; font-weight:var(--fw-regular); color:var(--ink-soft);
+  opacity:.8; text-transform:lowercase; text-align:right; flex:0 0 auto;
+  font-variant-numeric:tabular-nums; line-height:1.35}
+
+.spec-demo{margin:0 0 1rem}
+.spec-note{font-size:var(--fs-ui); color:var(--ink-soft); line-height:1.6;
+  max-width:var(--measure-sm); margin:0}
+.spec-note b{color:var(--ink); font-weight:var(--fw-semibold)}
+
+/* value strip */
+.vals{display:flex; flex-wrap:wrap; gap:.4rem 1.6rem; margin:.9rem 0 0}
+.vals div{display:flex; flex-direction:column; gap:.1rem}
+.vals dt{font-size:var(--fs-micro); font-weight:var(--fw-semibold); letter-spacing:.05em;
+  text-transform:uppercase; color:var(--ink-soft); opacity:.7}
+.vals dd{margin:0; font-family:var(--font-mono); font-size:var(--fs-caption);
+  font-variant-numeric:tabular-nums}
+
+/* ---------- live fluid meter ---------- */
+.fluid{border:1px solid var(--hairline); border-radius:16px; padding:1.3rem 1.4rem; background:#fff}
+.frow{display:grid; grid-template-columns:120px 1fr 62px; gap:.9rem; align-items:center;
+  padding:.55rem 0; border-bottom:1px solid var(--hairline)}
+.frow:last-child{border-bottom:0}
+.frow .fn{font-family:var(--font-mono); font-size:var(--fs-caption); color:var(--ink-soft)}
+.track{height:4px; border-radius:999px; background:rgba(29,29,31,.07); position:relative}
+.track i{position:absolute; inset:0 auto 0 0; border-radius:999px; background:var(--ink);
+  transition:width .45s var(--ease)}
+.frow .fv{font-family:var(--font-mono); font-size:var(--fs-caption);
+  font-variant-numeric:tabular-nums; text-align:right}
+.frow.at-max .track i{background:var(--accent)}
+.fluid-foot{display:flex; align-items:baseline; justify-content:space-between; gap:1rem;
+  margin-top:1rem; padding-top:.9rem; border-top:1px solid var(--hairline)}
+
+/* ---------- comparison pairs ---------- */
+.pair{display:grid; gap:1px; background:var(--hairline); border:1px solid var(--hairline);
+  border-radius:16px; overflow:hidden; margin:1rem 0 0}
+@media(min-width:720px){.pair{grid-template-columns:1fr 1fr}}
+.pane{background:#fff; padding:1.3rem 1.4rem}
+.pane .ph{display:flex; align-items:baseline; justify-content:space-between; gap:1rem; margin-bottom:.9rem}
+.pane .pt{font-size:var(--fs-micro); font-weight:var(--fw-semibold); letter-spacing:.05em;
+  text-transform:uppercase; color:var(--ink-soft)}
+.pane.good .pt{color:var(--accent-deep)}
+
+/* ---------- weight & tracking rows ---------- */
+.wrow{display:flex; align-items:baseline; justify-content:space-between; gap:1.5rem;
+  padding:.95rem 0; border-bottom:1px solid var(--hairline)}
+.wrow:last-child{border-bottom:0}
+.wrow .ws{font-size:var(--fs-h3); letter-spacing:-.02em}
+
+/* ---------- leading demo ---------- */
+.lh-demo{display:grid; gap:1.4rem; margin-top:1rem}
+@media(min-width:860px){.lh-demo{grid-template-columns:repeat(3,1fr)}}
+.lh-demo p{margin:.6rem 0 0; font-size:var(--fs-ui); color:var(--ink)}
+
+/* ---------- prose specimen ---------- */
+.prose{max-width:var(--measure); font-size:var(--fs-lead); line-height:var(--lh-prose);
+  overflow-wrap:break-word}
+.prose h2{font-size:var(--fs-h2); font-weight:var(--fw-semibold); letter-spacing:var(--tr-heading);
+  line-height:var(--lh-heading); margin:2.5em 0 .5em; text-wrap:balance}
+.prose h3{font-size:var(--fs-h3); font-weight:var(--fw-semibold); letter-spacing:var(--tr-heading);
+  line-height:var(--lh-heading); margin:2em 0 .4em; text-wrap:balance}
+.prose h2:first-child,.prose h3:first-child{margin-top:0}
+.prose p{margin:0 0 1.2em; text-wrap:pretty}
+.prose ul{margin:0 0 1.3em 1.2rem} .prose li{margin:.4em 0}
+.prose a{color:var(--accent-deep)} .prose a:hover{text-decoration:underline}
+.prose code{font-family:var(--font-mono); font-size:.9em; background:var(--tint);
+  color:var(--accent-deep); padding:.15em .45em; border-radius:4px; overflow-wrap:anywhere}
+.prose pre{font-family:var(--font-mono); font-size:clamp(.8125rem,.75rem + .28vw,.9375rem);
+  line-height:var(--lh-body); overflow-x:auto; background:var(--ink); color:#F5F5F4;
+  padding:1.15rem 1.3rem; border-radius:14px; white-space:pre}
+.prose pre code{background:transparent; color:inherit; padding:0; font-size:inherit; overflow-wrap:normal}
+@media(max-width:520px){.prose{hyphens:auto; -webkit-hyphens:auto}}
+
+/* ---------- numerals ---------- */
+.nums{display:grid; gap:1px; background:var(--hairline); border:1px solid var(--hairline);
+  border-radius:16px; overflow:hidden; margin-top:1rem}
+@media(min-width:720px){.nums{grid-template-columns:1fr 1fr}}
+.nums .pane .fig{font-size:var(--fs-title-sm); font-weight:var(--fw-semibold);
+  letter-spacing:-.02em; display:block; padding:.15rem 0}
+.prop{font-variant-numeric:normal}
+.tab{font-variant-numeric:tabular-nums}
+
+/* ---------- container query demo ---------- */
+.cqbox{container-type:inline-size; border:1px solid var(--hairline); border-radius:16px;
+  background:#fff; padding:1.4rem; resize:horizontal; overflow:auto;
+  min-width:260px; max-width:100%; width:340px}
+.cq-title{font-weight:var(--fw-semibold); letter-spacing:var(--tr-title);
+  line-height:var(--lh-title); margin:.5rem 0 .5rem; text-wrap:balance}
+.cq-lead{color:var(--ink-soft); margin:0; line-height:1.6}
+@container (max-width:400px){ .cq-title{font-size:var(--fs-title-sm)} .cq-lead{font-size:var(--fs-body)} }
+@container (min-width:401px) and (max-width:700px){ .cq-title{font-size:var(--fs-h2)} .cq-lead{font-size:var(--fs-lead)} }
+@container (min-width:701px){ .cq-title{font-size:var(--fs-title)} .cq-lead{font-size:var(--fs-lead)} }
+@supports not (container-type:inline-size){ .cq-title{font-size:var(--fs-title-sm)} .cq-lead{font-size:var(--fs-lead)} }
+
+/* ---------- rules list ---------- */
+.rules{list-style:none; margin:1rem 0 0; padding:0}
+.rules li{display:grid; grid-template-columns:auto 1fr; gap:.75rem; align-items:baseline;
+  padding:.7rem 0; border-bottom:1px solid var(--hairline); font-size:var(--fs-ui)}
+.rules li:last-child{border-bottom:0}
+.rules .m{font-family:var(--font-mono); font-size:var(--fs-caption); color:var(--ink-soft)}
+.rules .no .m{color:var(--accent-deep)}
+
+/* ---------- checklist ---------- */
+.check{list-style:none; margin:1rem 0 0; padding:0; counter-reset:c}
+.check li{counter-increment:c; display:grid; grid-template-columns:1.8rem 1fr; gap:.6rem;
+  padding:.62rem 0; border-bottom:1px solid var(--hairline); font-size:var(--fs-ui)}
+.check li:last-child{border-bottom:0}
+.check li::before{content:counter(c,decimal-leading-zero); font-size:var(--fs-label);
+  font-weight:var(--fw-semibold); color:var(--ink-soft); font-variant-numeric:tabular-nums}
+
+/* ---------- reveal ---------- */
+.reveal{opacity:0; transform:translateY(14px); transition:opacity .6s var(--ease), transform .6s var(--ease)}
+.reveal.is-in{opacity:1; transform:none}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .reveal{opacity:1; transform:none; transition:none}
+  .track i{transition:none}
+}
+
+footer.gf{border-top:1px solid var(--hairline); margin-top:2rem; padding:2.4rem 0 5rem}
+</style>
+</head>
+<body>
+
+<div id="progress"></div>
+
+<nav id="nav">
+  <div class="nav-in">
+    <strong>Design Grammar</strong>
+    <a href="#s01">Typography&nbsp;→</a>
+  </div>
+</nav>
+
+<aside id="toc" aria-label="Section navigation">
+  <p class="g">Foundation</p>
+  <a href="#s01">01 · The stack</a>
+  <a href="#s02">02 · The scale</a>
+  <a href="#s03">03 · Fluid behaviour</a>
+  <p class="g">Variables</p>
+  <a href="#s04">04 · Weight</a>
+  <a href="#s05">05 · Tracking</a>
+  <a href="#s06">06 · Leading &amp; measure</a>
+  <p class="g">Roles</p>
+  <a href="#s07">07 · Role classes</a>
+  <a href="#s08">08 · Long-form prose</a>
+  <a href="#s09">09 · Numerals</a>
+  <a href="#s10">10 · Container response</a>
+  <p class="g">Discipline</p>
+  <a href="#s11">11 · Pairings</a>
+  <a href="#s12">12 · Do &amp; don't</a>
+  <a href="#s13">13 · Ship checklist</a>
+</aside>
+
+<div id="vp" role="status" aria-live="off">
+  <span class="dot"></span><b id="vpw">—</b><span class="st" id="vps">—</span>
+</div>
+
+<div class="wrap">
+
+  <header class="page">
+    <p class="eyebrow">Design Grammar · 02</p>
+    <h1 class="display">Typography</h1>
+    <p class="lead">Fourteen roles, one stack, no exceptions. Drag the window
+      narrower and wider as you read — everything on this page that is
+      supposed to move will move, and the meter in the corner tells you
+      where you are.</p>
+    <p class="vals" style="margin-top:1.6rem">
+      <span class="chip">v1.1</span>
+      <span class="chip">system stack</span>
+      <span class="chip">zoom-safe</span>
+    </p>
+  </header>
+
+  <!-- 01 ================================================== -->
+  <section class="gs reveal" id="s01">
+    <div class="gs-head"><span class="n">01</span><h2 class="title">The stack</h2></div>
+    <p class="lead">System-native. Nothing is downloaded, so nothing can arrive
+      late, reflow, or fail offline.</p>
+
+    <div class="spec">
+      <div class="spec-head">
+        <code class="tok">--font-sans</code>
+        <span class="hint">sf pro on mac · segoe on windows · inter on linux</span>
+      </div>
+      <div class="spec-demo">
+        <p class="title-sm">Handgloves &amp; quick brown foxes 0123456789</p>
+      </div>
+      <p class="spec-note">The app looks slightly different per platform, and that is
+        accepted. Segoe UI runs narrower with a smaller x-height, so a headline
+        that lands on exactly two lines in a Mac mock may not on Windows.
+        <b>Leave slack in headline copy.</b></p>
+      <dl class="vals">
+        <div><dt>Value</dt><dd>-apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Inter</dd></div>
+      </dl>
+    </div>
+
+    <div class="spec">
+      <div class="spec-head">
+        <code class="tok">--font-mono</code>
+        <span class="hint">code, ids, hashes, paths — nothing else</span>
+      </div>
+      <div class="spec-demo">
+        <p style="font-family:var(--font-mono); font-size:var(--fs-ui)">const ratio = 1.618 // 0O1lI</p>
+      </div>
+      <p class="spec-note">Use the four-value stack. Dropping <code class="tok">SFMono-Regular</code>
+        loses the correct face on several macOS builds — that shorter variant is
+        in six of the old files and should be replaced.</p>
+    </div>
+  </section>
+
+  <!-- 02 ================================================== -->
+  <section class="gs reveal" id="s02">
+    <div class="gs-head"><span class="n">02</span><h2 class="title">The scale</h2></div>
+    <p class="lead">Seven fluid tiers, seven fixed steps. Every specimen below is
+      live — it is rendering at whatever your viewport is right now.</p>
+
+    <div class="spec">
+      <div class="spec-head"><code class="tok">.display</code>
+        <span class="hint">one per page · at the top · never two in a viewport</span></div>
+      <div class="spec-demo"><p class="display">Ship the thing</p></div>
+      <p class="spec-note">The page hero. If a second one appears in the same view,
+        the hierarchy has collapsed and one of them is really a <b>.title</b>.</p>
+      <dl class="vals">
+        <div><dt>Size</dt><dd data-probe="--fs-display">—</dd></div>
+        <div><dt>Weight</dt><dd>700</dd></div>
+        <div><dt>Tracking</dt><dd data-probe-tr="--tr-display">—</dd></div>
+        <div><dt>Leading</dt><dd data-probe-lh="--lh-display">—</dd></div>
+      </dl>
+    </div>
+
+    <div class="spec">
+      <div class="spec-head"><code class="tok">.display-sm</code>
+        <span class="hint">utility and tool pages · quieter entrance</span></div>
+      <div class="spec-demo"><p class="display-sm">Skeleton loaders</p></div>
+      <p class="spec-note">This tier exists because three utility pages independently
+        converged on the same smaller clamp. <b>That was a missing token, not drift.</b></p>
+      <dl class="vals">
+        <div><dt>Size</dt><dd data-probe="--fs-display-sm">—</dd></div>
+        <div><dt>Weight</dt><dd>700</dd></div>
+      </dl>
+    </div>
+
+    <div class="spec">
+      <div class="spec-head"><code class="tok">.title</code>
+        <span class="hint">section openers · as many as there are sections</span></div>
+      <div class="spec-demo"><p class="title">What I work on</p></div>
+      <dl class="vals">
+        <div><dt>Size</dt><dd data-probe="--fs-title">—</dd></div>
+        <div><dt>Weight</dt><dd>600</dd></div>
+        <div><dt>Tracking</dt><dd data-probe-tr="--tr-title">—</dd></div>
+      </dl>
+    </div>
+
+    <div class="spec">
+      <div class="spec-head"><code class="tok">.title-sm</code>
+        <span class="hint">cards, blocks, anything inside a grid</span></div>
+      <div class="spec-demo"><p class="title-sm">Backend systems</p></div>
+      <dl class="vals">
+        <div><dt>Size</dt><dd data-probe="--fs-title-sm">—</dd></div>
+        <div><dt>Weight</dt><dd>600</dd></div>
+      </dl>
+    </div>
+
+    <div class="spec">
+      <div class="spec-head"><code class="tok">--fs-h2 / --fs-h3</code>
+        <span class="hint">inside prose only · never as a page heading</span></div>
+      <div class="spec-demo">
+        <p style="font-size:var(--fs-h2); font-weight:600; letter-spacing:var(--tr-heading); line-height:var(--lh-heading); margin:0 0 .4rem">The problem</p>
+        <p style="font-size:var(--fs-h3); font-weight:600; letter-spacing:var(--tr-heading); line-height:var(--lh-heading); margin:0">Constraints we accepted</p>
+      </div>
+      <dl class="vals">
+        <div><dt>h2</dt><dd data-probe="--fs-h2">—</dd></div>
+        <div><dt>h3</dt><dd data-probe="--fs-h3">—</dd></div>
+      </dl>
+    </div>
+
+    <div class="spec">
+      <div class="spec-head"><code class="tok">.lead</code>
+        <span class="hint">one per section, directly under the heading</span></div>
+      <div class="spec-demo"><p class="lead">A short paragraph that introduces the
+        section and gives the reader somewhere to land before the detail starts.</p></div>
+      <dl class="vals">
+        <div><dt>Size</dt><dd data-probe="--fs-lead">—</dd></div>
+        <div><dt>Weight</dt><dd>400</dd></div>
+        <div><dt>Colour</dt><dd>--ink-soft</dd></div>
+      </dl>
+    </div>
+
+    <div class="spec">
+      <div class="spec-head"><code class="tok">body</code>
+        <span class="hint">fixed at 16px — never scales, never shrinks</span></div>
+      <div class="spec-demo"><p style="max-width:var(--measure); margin:0">Default running
+        text for the interface. Sixteen pixels is the floor for anything a person
+        has to actually read, on any device, at any width.</p></div>
+    </div>
+
+    <div class="spec">
+      <div class="spec-head"><code class="tok">.eyebrow / .label / .micro</code>
+        <span class="hint">uppercase always carries positive tracking</span></div>
+      <div class="spec-demo">
+        <p class="eyebrow" style="margin:0 0 .6rem">Case study</p>
+        <p class="label" style="margin:0 0 .6rem">Plan</p>
+        <p class="micro" style="margin:0">Section</p>
+      </div>
+      <p class="spec-note">Three uppercase tiers, each with its own weight and tracking.
+        <b>The eyebrow is the only one that carries accent colour</b> — the other
+        two are muted ink, because orange stays scarce.</p>
+      <dl class="vals">
+        <div><dt>Eyebrow</dt><dd>13px · 500 · +.08em</dd></div>
+        <div><dt>Label</dt><dd>12px · 600 · +.06em</dd></div>
+        <div><dt>Micro</dt><dd>11px · 600 · +.05em</dd></div>
+      </dl>
+    </div>
+
+    <div class="spec">
+      <div class="spec-head"><code class="tok">.meta / .chip</code>
+        <span class="hint">supporting detail · never load-bearing</span></div>
+      <div class="spec-demo">
+        <p class="meta" style="margin:0 0 .7rem">Updated 12 March 2026 · 6 min read</p>
+        <span class="chip">Postgres</span> <span class="chip">Kotlin</span> <span class="chip">AWS</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 ================================================== -->
+  <section class="gs reveal" id="s03">
+    <div class="gs-head"><span class="n">03</span><h2 class="title">Fluid behaviour</h2></div>
+    <p class="lead">Every fluid tier interpolates between a 360px and a 1440px
+      viewport, then locks. Resize the window and watch the bars fill.</p>
+
+    <div class="fluid" id="fluid">
+      <div class="frow" data-t="--fs-display" data-min="38.4" data-max="96">
+        <span class="fn">--fs-display</span><span class="track"><i></i></span><span class="fv">—</span></div>
+      <div class="frow" data-t="--fs-display-sm" data-min="32" data-max="57.6">
+        <span class="fn">--fs-display-sm</span><span class="track"><i></i></span><span class="fv">—</span></div>
+      <div class="frow" data-t="--fs-title" data-min="30" data-max="52.8">
+        <span class="fn">--fs-title</span><span class="track"><i></i></span><span class="fv">—</span></div>
+      <div class="frow" data-t="--fs-title-sm" data-min="22" data-max="33.6">
+        <span class="fn">--fs-title-sm</span><span class="track"><i></i></span><span class="fv">—</span></div>
+      <div class="frow" data-t="--fs-h2" data-min="22" data-max="28">
+        <span class="fn">--fs-h2</span><span class="track"><i></i></span><span class="fv">—</span></div>
+      <div class="frow" data-t="--fs-h3" data-min="19" data-max="22">
+        <span class="fn">--fs-h3</span><span class="track"><i></i></span><span class="fv">—</span></div>
+      <div class="frow" data-t="--fs-lead" data-min="17" data-max="18">
+        <span class="fn">--fs-lead</span><span class="track"><i></i></span><span class="fv">—</span></div>
+      <div class="fluid-foot">
+        <span class="label">Tracking &amp; leading step</span>
+        <span class="hint" id="stepState">—</span>
+      </div>
+    </div>
+
+    <div class="spec" style="margin-top:1.8rem">
+      <div class="spec-head"><code class="tok">clamp(min, Xrem + Yvw, max)</code>
+        <span class="hint">the rem term is not optional</span></div>
+      <p class="spec-note">A pure-<b>vw</b> clamp ignores the user's font-size
+        setting entirely — someone at 200% zoom gets the same headline as everyone
+        else. That fails <b>WCAG 1.4.4</b>. Giving the preferred value a rem
+        component makes part of it track the user's preference.
+        <b>Test this page at 200% zoom:</b> the specimens above must genuinely grow.</p>
+      <dl class="vals">
+        <div><dt>Wrong</dt><dd>clamp(2.6rem, 7.5vw, 6rem)</dd></div>
+        <div><dt>Right</dt><dd>clamp(2.4rem, 1.2rem + 5.333vw, 6rem)</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- 04 ================================================== -->
+  <section class="gs reveal" id="s04">
+    <div class="gs-head"><span class="n">04</span><h2 class="title">Weight</h2></div>
+    <p class="lead">Four weights. The stack has no reliable Light or ExtraBold
+      across all three platforms — asking for one gets a synthesised fake.</p>
+
+    <div class="wrow"><span class="ws" style="font-weight:400">Regular — body prose only</span>
+      <span class="hint">400 · running text</span></div>
+    <div class="wrow"><span class="ws" style="font-weight:500">Medium — the workhorse</span>
+      <span class="hint">500 · ui, meta, eyebrow, buttons</span></div>
+    <div class="wrow"><span class="ws" style="font-weight:600">Semibold — every heading up to title</span>
+      <span class="hint">600 · headings, emphasis</span></div>
+    <div class="wrow"><span class="ws" style="font-weight:700">Bold — display tier only</span>
+      <span class="hint">700 · display and display-sm</span></div>
+
+    <p class="spec-note" style="margin-top:1.4rem">Why 500 rather than 400 for UI: at
+      13–15px on a light background, Regular reads thin. Medium holds the same
+      visual density as 400 body copy at 16–18px, so <b>the whole interface reads
+      at one weight even though the numbers differ</b>. Hierarchy comes from the
+      600/400 pairing and from size — never from adding a heavier weight.</p>
+  </section>
+
+  <!-- 05 ================================================== -->
+  <section class="gs reveal" id="s05">
+    <div class="gs-head"><span class="n">05</span><h2 class="title">Tracking</h2></div>
+    <p class="lead">Type is spaced for the size it was drawn at. Scale it up and the
+      gaps scale too. So tracking runs inversely to size — and uppercase is its
+      own case entirely.</p>
+
+    <div class="pair">
+      <div class="pane">
+        <div class="ph"><span class="pt">Uppercase at 0</span><span class="hint">looks like a bug</span></div>
+        <p style="font-size:var(--fs-meta); font-weight:500; text-transform:uppercase; letter-spacing:0; color:var(--ink); margin:0">Case study</p>
+        <p class="spec-note" style="margin-top:.9rem">Capitals are drawn assuming they sit
+          inside lowercase words. Set in a row alone, they crowd.</p>
+      </div>
+      <div class="pane good">
+        <div class="ph"><span class="pt">Uppercase at +.08em</span><span class="hint">the eyebrow value</span></div>
+        <p class="eyebrow" style="color:var(--ink); margin:0">Case study</p>
+        <p class="spec-note" style="margin-top:.9rem">Corrected. Every uppercase run in
+          the system carries between +.05 and +.08em, no exceptions.</p>
+      </div>
+    </div>
+
+    <div class="pair">
+      <div class="pane">
+        <div class="ph"><span class="pt">Display at 0</span><span class="hint">airy, unresolved</span></div>
+        <p style="font-size:var(--fs-title); font-weight:700; letter-spacing:0; line-height:1.06; margin:0">Ship the thing</p>
+      </div>
+      <div class="pane good">
+        <div class="ph"><span class="pt">Display at −.04em</span><span class="hint">holds together as a shape</span></div>
+        <p style="font-size:var(--fs-title); font-weight:700; letter-spacing:-.04em; line-height:1.06; margin:0">Ship the thing</p>
+      </div>
+    </div>
+
+    <div class="spec" style="margin-top:1.8rem">
+      <div class="spec-head"><span class="label">The curve</span>
+        <span class="hint">size in, tracking out</span></div>
+      <ul class="rules">
+        <li><span class="m">≥72px</span><span>−0.04em</span></li>
+        <li><span class="m">40–72px</span><span>−0.035em</span></li>
+        <li><span class="m">28–40px</span><span>−0.03em</span></li>
+        <li><span class="m">20–28px</span><span>−0.025em</span></li>
+        <li><span class="m">18–20px</span><span>−0.02em</span></li>
+        <li><span class="m">16–18px</span><span>−0.015em</span></li>
+        <li><span class="m">≤15px lower</span><span>0 — tightening small type destroys legibility</span></li>
+        <li><span class="m">uppercase</span><span>+0.05 to +0.08em, at any size</span></li>
+      </ul>
+      <p class="spec-note" style="margin-top:1.2rem">Because the sizes are fluid, the
+        tracking is too. <b>The tokens step at 700px and 1100px</b> — use
+        <code class="tok">var(--tr-display)</code>, never a literal, or your component
+        will not follow the curve.</p>
+    </div>
+  </section>
+
+  <!-- 06 ================================================== -->
+  <section class="gs reveal" id="s06">
+    <div class="gs-head"><span class="n">06</span><h2 class="title">Leading &amp; measure</h2></div>
+    <p class="lead">Leading follows measure. The longer the line, the more vertical
+      room the eye needs to find the start of the next one.</p>
+
+    <div class="lh-demo">
+      <div>
+        <div class="spec-head"><span class="label">1.25 — headings</span></div>
+        <p style="line-height:1.25">Reads as a single block. Correct for two or three
+          lines of heading, wrong for anything you have to read at length.</p>
+      </div>
+      <div>
+        <div class="spec-head"><span class="label">1.6 — body</span></div>
+        <p style="line-height:1.6">The default for interface text. Comfortable at
+          16px across a moderate column, and tight enough to keep related content
+          visually grouped.</p>
+      </div>
+      <div>
+        <div class="spec-head"><span class="label">1.75 — prose</span></div>
+        <p style="line-height:1.75">For 18px running across a full 720px column.
+          This is what makes the legal and article pages readable at length, and
+          it should not be tightened.</p>
+      </div>
+    </div>
+
+    <div class="spec" style="margin-top:2rem">
+      <div class="spec-head"><code class="tok">--measure</code>
+        <span class="hint">720px · roughly 68–75 characters at 18px</span></div>
+      <div class="spec-demo">
+        <div style="max-width:var(--measure); border-left:2px solid var(--accent); padding-left:1rem">
+          <p style="margin:0; font-size:var(--fs-lead); line-height:var(--lh-prose)">This column is
+          exactly one measure wide. Past this point the eye starts losing its place on
+          the return sweep, and the page stops feeling like something you can read and
+          starts feeling like something you have to scan.</p>
+        </div>
+      </div>
+      <p class="spec-note">Because leading is measure-dependent and the measure
+        collapses on a phone, <b>prose leading steps down to 1.65 below 700px</b> —
+        a 40-character line does not need 1.75.</p>
+      <dl class="vals">
+        <div><dt>Reading</dt><dd>--measure · 720px</dd></div>
+        <div><dt>Intro</dt><dd>--measure-sm · 560px</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- 07 ================================================== -->
+  <section class="gs reveal" id="s07">
+    <div class="gs-head"><span class="n">07</span><h2 class="title">Role classes</h2></div>
+    <p class="lead">Fourteen roles in the order they appear on a real page.
+      Every one is a class — none of them is a set of properties you write by hand.</p>
+
+    <div class="spec">
+      <div class="spec-head"><span class="label">A section, assembled</span>
+        <span class="hint">eyebrow → title → lead → body → meta</span></div>
+      <div class="spec-demo" style="border:1px solid var(--hairline); border-radius:16px; padding:1.6rem 1.5rem; background:#fff">
+        <p class="eyebrow" style="margin:0 0 .5rem">Case study</p>
+        <p class="title" style="margin:0 0 .9rem">Cutting p99 latency in half</p>
+        <p class="lead" style="margin:0 0 1.1rem">A read-heavy endpoint was spending
+          most of its budget in the ORM. Here is what actually moved the number.</p>
+        <p style="margin:0 0 1.1rem; max-width:var(--measure)">The fix was not a
+          faster query. It was noticing that the same query was running four times
+          per request, then making that structurally impossible rather than merely
+          fixed.</p>
+        <p class="meta" style="margin:0 0 .9rem">March 2026 · 8 min read</p>
+        <span class="chip">Postgres</span> <span class="chip">Kotlin</span>
+      </div>
+      <p class="spec-note">Note what is <b>not</b> here: no second display, no
+        heavier weight for emphasis, no accent colour except the eyebrow and the
+        chips. Hierarchy is doing the work.</p>
+    </div>
+  </section>
+
+  <!-- 08 ================================================== -->
+  <section class="gs reveal" id="s08">
+    <div class="gs-head"><span class="n">08</span><h2 class="title">Long-form prose</h2></div>
+    <p class="lead">The article and legal pages run on one <code class="tok">.prose</code>
+      block. Everything inside it is defined once.</p>
+
+    <div class="prose" style="margin-top:1.4rem">
+      <h2>What the measure buys you</h2>
+      <p>Running text sits at 18px with 1.75 leading inside a 720px column. That
+        combination is not a taste call — it lands at roughly 70 characters per
+        line, which is the top of the range where the eye reliably finds the next
+        line without a conscious effort.</p>
+      <h3>Inline elements</h3>
+      <p>Links take <a href="#s08">accent-deep and underline on hover</a>, never a
+        weight change. Inline code sits in <code>--tint</code> at 0.9em so it
+        matches the x-height of the text around it rather than the cap height.</p>
+      <ul>
+        <li>Paragraph spacing is <code>1.2em</code> — expressed in em so it scales with the text</li>
+        <li>Headings carry large space above, small below: a heading belongs to what follows it</li>
+        <li>Long URLs and identifiers break rather than blowing out the column</li>
+      </ul>
+      <h3>Code blocks</h3>
+      <p>Code scrolls horizontally. It never reflows, because a wrapped line of
+        code is a different program than the one you wrote.</p>
+<pre><code>slope     = (max_px - min_px) / (1440 - 360)
+intercept = min_px - slope * 360
+preferred = (intercept/16)rem + (slope*100)vw</code></pre>
+    </div>
+  </section>
+
+  <!-- 09 ================================================== -->
+  <section class="gs reveal" id="s09">
+    <div class="gs-head"><span class="n">09</span><h2 class="title">Numerals</h2></div>
+    <p class="lead">Proportional digits have different widths. In anything that
+      updates in place or sits in a column, that reads as jitter.</p>
+
+    <div class="nums">
+      <div class="pane">
+        <div class="ph"><span class="pt">Proportional</span><span class="hint">watch the width wobble</span></div>
+        <span class="fig prop" id="np1">₹ 000,000</span>
+        <span class="fig prop" id="np2">00:00:00</span>
+      </div>
+      <div class="pane good">
+        <div class="ph"><span class="pt">Tabular</span><span class="hint">every digit one width</span></div>
+        <span class="fig tab" id="nt1">₹ 000,000</span>
+        <span class="fig tab" id="nt2">00:00:00</span>
+      </div>
+    </div>
+
+    <p class="spec-note" style="margin-top:1.3rem">Apply
+      <code class="tok">font-variant-numeric: tabular-nums</code> to prices, dates,
+      counters, timers, metrics, and every table cell. <b>Prose numbers stay
+      proportional</b> — "about 30 people" is text, not data.</p>
+  </section>
+
+  <!-- 10 ================================================== -->
+  <section class="gs reveal" id="s10">
+    <div class="gs-head"><span class="n">10</span><h2 class="title">Container response</h2></div>
+    <p class="lead">Viewport width is the wrong question for a reusable block. Drag
+      the handle in the bottom-right corner of the card.</p>
+
+    <div class="cqbox t-container" id="cqbox">
+      <p class="eyebrow" style="margin:0">Case study</p>
+      <p class="cq-title">Cutting p99 latency in half</p>
+      <p class="cq-lead">The same card in a sidebar and in a feature slot.</p>
+      <p class="hint" style="text-align:left; margin:1rem 0 0" id="cqw">—</p>
+    </div>
+
+    <p class="spec-note" style="margin-top:1.3rem">This card is at the same viewport
+      width whether it sits in a 320px sidebar or a 900px feature slot — but it
+      needs a different heading size in each. <b>Container queries can see that;
+      media queries cannot.</b> Mark reusable blocks with
+      <code class="tok">.t-container</code> and use
+      <code class="tok">.cq-title</code> inside. Page-level type stays on the
+      ordinary fluid tokens — a hero genuinely is about the viewport.</p>
+  </section>
+
+  <!-- 11 ================================================== -->
+  <section class="gs reveal" id="s11">
+    <div class="gs-head"><span class="n">11</span><h2 class="title">Pairings</h2></div>
+    <p class="lead">Which roles sit next to which. Most type mistakes are pairing
+      mistakes, not size mistakes.</p>
+    <ul class="rules">
+      <li><span class="m">eyebrow →</span><span><b>.title</b> or <b>.display</b>, never body</span></li>
+      <li><span class="m">display →</span><span><b>.lead</b>, then body. Never straight into 13px meta</span></li>
+      <li><span class="m">title →</span><span><b>.lead</b> at most once per section</span></li>
+      <li><span class="m">title-sm →</span><span>body or meta inside a card</span></li>
+      <li><span class="m">label →</span><span>tabular numerals, in a table head or stat block</span></li>
+      <li><span class="m">micro →</span><span>navigation groups and legal fine print only</span></li>
+      <li><span class="m">chip →</span><span>after the content it describes, never before</span></li>
+    </ul>
+    <p class="spec-note" style="margin-top:1.3rem">The gap between two adjacent roles
+      should be at least one full step. <b>A 20px heading above 18px body is not a
+      hierarchy</b> — it is a rendering accident that looks like one.</p>
+  </section>
+
+  <!-- 12 ================================================== -->
+  <section class="gs reveal" id="s12">
+    <div class="gs-head"><span class="n">12</span><h2 class="title">Do &amp; don't</h2></div>
+    <ul class="rules">
+      <li class="no"><span class="m">never</span><span>Hardcode a px or rem font-size in a page file</span></li>
+      <li class="no"><span class="m">never</span><span>Write a font-size media query — the tokens already handle width</span></li>
+      <li class="no"><span class="m">never</span><span>Ship a <code class="tok">vw</code>-only clamp</span></li>
+      <li class="no"><span class="m">never</span><span>Set a px root font-size — it freezes every rem in the system</span></li>
+      <li class="no"><span class="m">never</span><span>Ship a form field under 16px — iOS Safari zooms the viewport on focus</span></li>
+      <li class="no"><span class="m">never</span><span>Use a Tailwind text utility for a role in this table — the two scales disagree</span></li>
+      <li class="no"><span class="m">never</span><span>Add <code class="tok">@font-face</code>, a font <code class="tok">@import</code>, or a Google Fonts link</span></li>
+      <li class="no"><span class="m">never</span><span>Introduce 13.5, 14.5, 15.5 or 16.5px — round to the nearest step</span></li>
+      <li class="no"><span class="m">never</span><span>Set letter-spacing on lowercase body copy</span></li>
+      <li class="no"><span class="m">never</span><span>Use <code class="tok">bold</code> or <code class="tok">normal</code> keywords for weight</span></li>
+    </ul>
+    <p class="spec-note" style="margin-top:1.3rem">Adding a step to the scale is a human
+      decision. Fourteen entries is deliberate — every addition makes the next
+      choice harder and the drift easier. <b>Two files sharing a stray value is a
+      coincidence. Three is a missing token.</b></p>
+  </section>
+
+  <!-- 13 ================================================== -->
+  <section class="gs reveal" id="s13">
+    <div class="gs-head"><span class="n">13</span><h2 class="title">Ship checklist</h2></div>
+    <p class="lead">Nothing goes out without all of these.</p>
+    <ol class="check">
+      <li><span>Typography tokens loaded before page styles</span></li>
+      <li><span>Every text element on a role class or inheriting from body</span></li>
+      <li><span>Zero raw font-size declarations in the page file</span></li>
+      <li><span>Exactly one display-tier element, at the top</span></li>
+      <li><span>Every uppercase run carrying positive tracking</span></li>
+      <li><span>Every heading above 18px carrying negative tracking</span></li>
+      <li><span>Every column of digits tabular</span></li>
+      <li><span>Prose capped at 720px</span></li>
+      <li><span>Every clamp preferred term carrying a rem component</span></li>
+      <li><span>Form fields at 16px or above on touch</span></li>
+      <li><span>Checked at 320px, 768px, 1440px — and at 200% browser zoom</span></li>
+      <li><span>Checked on a landscape phone, roughly 700×360</span></li>
+    </ol>
+  </section>
+
+  <footer class="gf reveal">
+    <p class="label" style="margin:0 0 .5rem">Design Grammar</p>
+    <p class="spec-note">Typography v1.1 · specimens on this page are live, not
+      screenshots. Everything here is enforced by the typography skill and
+      documented in TYPOGRAPHY-SPEC.md.</p>
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  var $  = function(s,c){ return (c||document).querySelector(s); };
+  var $$ = function(s,c){ return Array.prototype.slice.call((c||document).querySelectorAll(s)); };
+  var cs = getComputedStyle(document.documentElement);
+  var rm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---- scroll progress + nav hairline ---- */
+  var nav = $('#nav'), bar = $('#progress'), ticking = false;
+  function onScroll(){
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + '%';
+    nav.classList.toggle('scrolled', window.scrollY > 8);
+    ticking = false;
+  }
+  window.addEventListener('scroll', function(){
+    if(!ticking){ ticking = true; requestAnimationFrame(onScroll); }
+  }, {passive:true});
+  onScroll();
+
+  /* ---- one-shot reveals ---- */
+  if(!rm){
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('is-in'); io.unobserve(e.target); }
+      });
+    }, {threshold:.08});
+    $$('.reveal').forEach(function(el){ io.observe(el); });
+  } else {
+    $$('.reveal').forEach(function(el){ el.classList.add('is-in'); });
+  }
+
+  /* ---- scrollspy ---- */
+  var links = $$('#toc a');
+  var secs  = links.map(function(a){ return $(a.getAttribute('href')); }).filter(Boolean);
+  var spy = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(!e.isIntersecting) return;
+      links.forEach(function(a){
+        a.classList.toggle('on', a.getAttribute('href') === '#' + e.target.id);
+      });
+    });
+  }, {rootMargin:'-100px 0px -65% 0px', threshold:0});
+  secs.forEach(function(s){ spy.observe(s); });
+
+  /* ---- live token readout ---- */
+  var probe = document.createElement('div');
+  probe.style.cssText = 'position:absolute;visibility:hidden;pointer-events:none;left:-9999px';
+  document.body.appendChild(probe);
+
+  function px(tokenName){
+    probe.style.fontSize = 'var(' + tokenName + ')';
+    return parseFloat(getComputedStyle(probe).fontSize);
+  }
+  function raw(tokenName){
+    return cs.getPropertyValue(tokenName).trim();
+  }
+
+  var rows = $$('#fluid .frow');
+
+  function refresh(){
+    var w = Math.round(window.innerWidth);
+    $('#vpw').textContent = w + 'px';
+    $('#vps').textContent = w < 700 ? 'base' : (w < 1100 ? 'step 1' : 'step 2');
+    $('#stepState').textContent =
+      w < 700  ? 'base — widest tracking, tightest leading' :
+      w < 1100 ? '700px step engaged' :
+                 '1100px step engaged — tightest tracking';
+
+    rows.forEach(function(r){
+      var v = px(r.dataset.t),
+          lo = parseFloat(r.dataset.min),
+          hi = parseFloat(r.dataset.max),
+          p  = Math.max(0, Math.min(1, (v - lo) / (hi - lo)));
+      $('i', r).style.width = (p * 100).toFixed(1) + '%';
+      $('.fv', r).textContent = v.toFixed(1) + 'px';
+      r.classList.toggle('at-max', p >= .999);
+    });
+
+    $$('[data-probe]').forEach(function(el){
+      el.textContent = px(el.dataset.probe).toFixed(1) + 'px';
+    });
+    $$('[data-probe-tr]').forEach(function(el){ el.textContent = raw(el.dataset.probeTr); });
+    $$('[data-probe-lh]').forEach(function(el){ el.textContent = raw(el.dataset.probeLh); });
+  }
+
+  var rafId = null;
+  window.addEventListener('resize', function(){
+    if(rafId) return;
+    rafId = requestAnimationFrame(function(){ rafId = null; refresh(); });
+  }, {passive:true});
+  refresh();
+
+  /* ---- container query width readout ---- */
+  var box = $('#cqbox'), cqw = $('#cqw');
+  function reportBox(){
+    var w = Math.round(box.getBoundingClientRect().width);
+    var tier = w <= 400 ? 'title-sm' : (w <= 700 ? 'h2' : 'title');
+    cqw.textContent = 'container ' + w + 'px — heading resolves to ' + tier;
+  }
+  if('ResizeObserver' in window){ new ResizeObserver(reportBox).observe(box); }
+  reportBox();
+
+  /* ---- numerals: proportional vs tabular ---- */
+  var money = ['12,480','9,317','108,006','74,119','1,905','66,240'];
+  var i = 0;
+  setInterval(function(){
+    i = (i + 1) % money.length;
+    var m = '\u20B9 ' + money[i];
+    $('#np1').textContent = m; $('#nt1').textContent = m;
+    var d = new Date();
+    var t = String(d.getHours()).padStart(2,'0') + ':' +
+            String(d.getMinutes()).padStart(2,'0') + ':' +
+            String(d.getSeconds()).padStart(2,'0');
+    $('#np2').textContent = t; $('#nt2').textContent = t;
+  }, 900);
+
+  /* ---- click a token to copy it ---- */
+  $$('.tok').forEach(function(el){
+    el.addEventListener('click', function(){
+      var text = el.textContent.trim();
+      var done = function(){
+        el.classList.add('copied');
+        setTimeout(function(){ el.classList.remove('copied'); }, 900);
+      };
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(text).then(done).catch(function(){});
+      } else { done(); }
+    });
+  });
+})();
+</script>
+</body>
+</html>
