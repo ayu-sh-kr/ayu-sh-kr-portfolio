@@ -5,8 +5,11 @@ import tailwindcss from "@tailwindcss/vite";
 import dotaVitePreloader from "@ayu-sh-kr/dota-wrap/preloader-plugin";
 import dotaWebTypeJson from "@ayu-sh-kr/dota-wrap/web-type-json";
 import eventMapGenerator from "@ayu-sh-kr/dota-wrap/event-map-generator";
+import { nitro } from "nitro/vite";
 
 const projectRoot = fileURLToPath(new URL(".", import.meta.url));
+const nitroPreset = process.env.NITRO_PRESET ?? (process.env.VERCEL ? "vercel" : "node");
+
 export default defineConfig({
   plugins: [
     tailwindcss(),
@@ -37,6 +40,10 @@ export default defineConfig({
       outFile: 'src/event-map.d.ts',
       moduleSpecifier: '@ayu-sh-kr/dota-wrap/event',
       logType: 'info',
+    }),
+    nitro({
+      serverDir: "./server",
+      preset: nitroPreset,
     }),
   ],
   resolve: {
