@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Alert dialog — ayush.dev</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" />
+<style>
+  :root{
+    --paper:#FAFAF8; --ink:#1D1D1F; --ink-soft:#6E6E73;
+    --hairline:rgba(29,29,31,.1);
+    --accent:#FF4D00; --accent-deep:#C23A00; --tint:#FFF1EA;
+    --ok:#1F7A3D; --err:#C23A00;
+
+    /* layout tokens consumed by this component (inlined — file must be self-contained) */
+    --layout-space-2:8px; --layout-space-3:12px; --layout-space-4:16px;
+    --layout-space-5:24px; --layout-space-6:32px;
+    --layout-radius-md:14px; --layout-radius-lg:20px; --layout-radius-xl:28px;
+    --layout-radius-round:50%;
+    --layout-z-modal:50;
+  }
+  html{scroll-behavior:smooth}
+  body{background:var(--paper); color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Inter,sans-serif;
+    -webkit-font-smoothing:antialiased; overflow-x:hidden}
+  ::selection{background:var(--accent); color:#fff}
+
+  /* ============ TYPE / CHROME PRIMITIVES (from the grammar) ============ */
+  .eyebrow{font-size:13px; font-weight:500; letter-spacing:.08em; text-transform:uppercase; color:var(--accent-deep)}
+  .soft{color:var(--ink-soft)}
+  .display{font-weight:700; letter-spacing:-.035em; line-height:1.04; font-size:clamp(2.2rem,6vw,3.6rem)}
+  .title{font-weight:600; letter-spacing:-.025em; line-height:1.1; font-size:clamp(1.5rem,4vw,2.1rem)}
+  .subtitle{font-weight:600; letter-spacing:-.015em; font-size:1.15rem}
+  .chip{display:inline-block; font-size:12.5px; font-weight:500; padding:.3rem .7rem; border-radius:999px;
+        background:var(--tint); color:var(--accent-deep)}
+  .tag{display:inline-block; font-size:12px; font-weight:500; padding:.25rem .6rem; border-radius:999px;
+       border:1px solid var(--hairline); color:var(--ink-soft)}
+  .kv{font-size:12px; color:var(--ink-soft); font-family:ui-monospace,Menlo,monospace}
+  .section-num{font-family:ui-monospace,Menlo,monospace; font-size:13px; color:var(--accent-deep); font-weight:600}
+  .panel{background:#fff; border:1px solid var(--hairline); border-radius:24px; padding:1.8rem}
+  .usecase{font-size:12.5px; color:var(--ink-soft); margin-top:.6rem; padding-top:.6rem; border-top:1px dashed var(--hairline)}
+  .usecase b{color:var(--ink)}
+  .grid2{display:grid; gap:1.25rem; grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+  .grid3{display:grid; gap:1.25rem; grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+
+  .btn{display:inline-flex; align-items:center; justify-content:center; gap:.55rem; padding:.7rem 1.3rem;
+       border-radius:999px; font-size:14px; font-weight:500; cursor:pointer; border:1px solid transparent;
+       transition:transform .25s cubic-bezier(.2,.8,.2,1), background .2s, color .2s, border-color .2s}
+  .btn:hover{transform:translateY(-2px)}
+  .btn:focus-visible{outline:2px solid var(--accent); outline-offset:3px}
+  .btn-accent{background:var(--accent); color:#fff} .btn-accent:hover{background:var(--accent-deep)}
+  .btn-ink{background:var(--ink); color:#fff} .btn-ink:hover{background:#000}
+  .btn-ghost{border-color:var(--hairline); color:var(--ink)} .btn-ghost:hover{border-color:var(--ink)}
+
+  /* stateful button — used ONLY when the dialog's primary does async work */
+  .act{position:relative; display:inline-flex; align-items:center; justify-content:center; gap:.55rem;
+    padding:.7rem 1.3rem; border-radius:999px; font-size:14px; font-weight:500; cursor:pointer;
+    border:1px solid transparent; overflow:hidden; user-select:none;
+    transition:transform .25s cubic-bezier(.2,.8,.2,1), background .2s, color .2s, border-color .2s, opacity .2s}
+  .act:hover:not([data-state="pending"]):not([disabled]){transform:translateY(-2px)}
+  .act:focus-visible{outline:2px solid var(--accent); outline-offset:3px}
+  .act[disabled]{cursor:not-allowed; opacity:.45; transform:none}
+  .act[data-state="pending"]{cursor:progress}
+  .act.v-accent{background:var(--accent); color:#fff}
+  .act.v-accent:hover:not([data-state="pending"]):not([disabled]){background:var(--accent-deep)}
+  .act.v-ink{background:var(--ink); color:#fff}
+  .act.v-ink:hover:not([data-state="pending"]):not([disabled]){background:#000}
+  .act.v-danger{background:#fff; border-color:var(--hairline); color:var(--err)}
+  .act.v-danger:hover:not([data-state="pending"]):not([disabled]){border-color:var(--err)}
+  .act .lbl{white-space:nowrap}
+  .act .glyph{display:inline-flex; width:15px; height:15px; align-items:center; justify-content:center; flex:0 0 auto}
+  .act .spinner{width:15px; height:15px; border-radius:50%; border:2px solid currentColor; border-top-color:transparent;
+    opacity:.9; animation:spin .7s linear infinite}
+  @keyframes spin{100%{transform:rotate(360deg)}}
+
+  .field{border:1px solid var(--hairline); border-radius:999px; padding:.7rem 1.2rem; background:#fff;
+    font-size:15px; color:var(--ink); width:100%; font-family:inherit}
+  .field:focus-visible, .field:focus{outline:2px solid var(--accent); outline-offset:2px}
+  @media (pointer:coarse){ .field{font-size:16px} }
+
+  #nav{position:fixed; inset:0 0 auto 0; z-index:30; backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
+       background:rgba(250,250,248,.72); border-bottom:1px solid transparent; transition:border-color .3s}
+  #nav.scrolled{border-bottom-color:var(--hairline)}
+  #nav a{color:var(--ink-soft); font-size:14px; transition:color .2s} #nav a:hover{color:var(--ink)}
+
+  .reveal{opacity:0; transform:translateY(20px); transition:opacity .7s ease, transform .7s cubic-bezier(.2,.8,.2,1)}
+  .reveal.is-in{opacity:1; transform:none}
+
+  /* ==============================================================
+     THE ALERT DIALOG
+     The browser primitive — alert / confirm / prompt — in the house
+     grammar. Native <dialog> does the hard parts: top layer, focus
+     trap, ESC, inert background, focus return to the opener.
+     Tone is COLOUR ONLY. Every tone has the same anatomy, the same
+     motion, the same keyboard contract.
+     ============================================================== */
+
+  /* surface — shared by the live dialog and the static anatomy specimen */
+  .dlg-surface{background:#fff; border:1px solid var(--hairline); border-radius:var(--layout-radius-xl)}
+
+  .dlg{
+    /* component-owned width, like .field's min-width. NOT a layout measure. */
+    --dlg-w:29rem;
+    inline-size:min(var(--dlg-w), 100%);
+    max-inline-size:38rem;                  /* never wider than --layout-form-max */
+    max-block-size:min(85svh, 34rem);
+    padding:0; margin:auto; color:var(--ink); overflow:hidden;
+    z-index:var(--layout-z-modal);          /* top layer ignores this; kept for the non-modal path */
+    box-shadow:0 12px 40px -12px rgba(29,29,31,.5);   /* the one "floats above the page" shadow */
+    opacity:0; transform:translateY(10px) scale(.97);
+    transition:opacity .18s ease, transform .18s cubic-bezier(.2,.8,.2,1);
+  }
+  /* keep the UA's display:none for the closed state — never style .dlg{display:…} bare */
+  .dlg[open]{display:grid; grid-template-rows:minmax(0,1fr)}
+  .dlg.is-in{opacity:1; transform:none;
+    transition:opacity .26s ease, transform .28s cubic-bezier(.2,.8,.2,1)}
+
+  .dlg::backdrop{background:rgba(29,29,31,.34); backdrop-filter:blur(4px); -webkit-backdrop-filter:blur(4px);
+    opacity:0; transition:opacity .22s ease}
+  .dlg.is-in::backdrop{opacity:1}
+
+  .dlg-form{display:grid; grid-template-rows:minmax(0,1fr) auto; min-block-size:0}
+  .dlg-body{padding:var(--layout-space-6) var(--layout-space-6) var(--layout-space-5); overflow-y:auto; min-block-size:0}
+  .dlg-head{display:flex; gap:var(--layout-space-4); align-items:flex-start}
+
+  .dlg-ic{flex:0 0 auto; inline-size:38px; block-size:38px; border-radius:var(--layout-radius-round);
+    display:grid; place-items:center; background:rgba(29,29,31,.06); color:var(--ink)}
+  .dlg-ic svg{inline-size:20px; block-size:20px; fill:none; stroke:currentColor; stroke-width:1.9;
+    stroke-linecap:round; stroke-linejoin:round}
+
+  .dlg-title{font-weight:600; letter-spacing:-.02em; font-size:1.22rem; line-height:1.25; text-wrap:balance}
+  .dlg-text{color:var(--ink-soft); font-size:15px; line-height:1.6; margin-top:.45rem}
+  .dlg-text:empty{display:none}
+
+  /* prompt field — label left, hint right (established hint contract) */
+  .dlg-field{margin-top:var(--layout-space-5)}
+  .dlg-lbl{display:flex; align-items:baseline; justify-content:space-between; gap:var(--layout-space-3);
+    margin-bottom:.45rem}
+  .dlg-lbl label{font-size:13.5px; font-weight:500}
+  .dlg-hint{font-size:11.5px; font-weight:400; color:var(--ink-soft); opacity:.8; text-transform:lowercase}
+
+  .dlg-err{margin-top:var(--layout-space-3); font-size:13px; color:var(--err)}
+
+  .dlg-foot{display:flex; align-items:center; justify-content:flex-end; gap:var(--layout-space-2);
+    padding:var(--layout-space-4) var(--layout-space-6) var(--layout-space-5);
+    border-top:1px solid var(--hairline)}
+
+  /* tones — colour grammar only, exactly as .act variants work */
+  .dlg[data-tone="ask"]  .dlg-ic{background:var(--tint); color:var(--accent-deep)}
+  .dlg[data-tone="risk"] .dlg-ic{background:rgba(194,58,0,.1); color:var(--err)}
+
+  @media (max-width:519px){
+    .dlg{--dlg-w:100%}
+    .dlg-body{padding:var(--layout-space-5) var(--layout-space-5) var(--layout-space-4)}
+    .dlg-foot{flex-direction:column-reverse; align-items:stretch;
+      padding:var(--layout-space-4) var(--layout-space-5) var(--layout-space-5)}
+    .dlg-foot .btn, .dlg-foot .act{inline-size:100%}
+    .dlg-foot .btn:hover, .dlg-foot .act:hover{transform:none}
+  }
+
+  html.dlg-lock, html.dlg-lock body{overflow:hidden}
+
+  /* ============ ANATOMY SPECIMEN (demo page only) ============ */
+  .anat{position:relative; padding:1.5rem; background:var(--paper); border:1px dashed var(--hairline);
+    border-radius:var(--layout-radius-xl)}
+  .anat .dlg-surface{box-shadow:0 12px 40px -12px rgba(29,29,31,.18)}
+  .callout{display:grid; grid-template-columns:96px 1fr; gap:.9rem; padding:.65rem 0;
+    border-bottom:1px solid var(--hairline); font-size:13px}
+  .callout:last-child{border-bottom:0}
+  .callout b{font-family:ui-monospace,Menlo,monospace; font-size:12px; font-weight:600; color:var(--accent-deep)}
+  .callout span{color:var(--ink-soft)}
+
+  .rules li{display:grid; grid-template-columns:auto 1fr; gap:.7rem; padding:.55rem 0;
+    border-bottom:1px solid var(--hairline); font-size:14px; line-height:1.55}
+  .rules li:last-child{border-bottom:0}
+  .rules .m{font-family:ui-monospace,Menlo,monospace; font-size:12px; color:var(--accent-deep); padding-top:.18rem}
+  .rules b{font-weight:600}
+
+  #log .line{font-family:ui-monospace,Menlo,monospace; font-size:12.5px; color:var(--ink-soft);
+    padding:.5rem .25rem; border-bottom:1px solid var(--hairline); display:flex; gap:.9rem}
+  #log .line b{color:var(--ink); font-weight:600; flex:0 0 auto}
+  #log .line .t{color:var(--accent-deep); flex:0 0 auto}
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto}
+    .dlg, .dlg::backdrop{transition:opacity .01s linear}
+    .dlg{transform:none}
+    .dlg.is-in{transform:none}
+    .act .spinner{animation:none; border-top-color:currentColor; opacity:.5}
+    .btn, .act, .reveal{transition:none} .reveal{opacity:1; transform:none}
+  }
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="max-w-5xl mx-auto flex items-center justify-between px-6 py-4">
+    <span class="font-semibold tracking-tight">ayush.dev</span>
+    <div class="flex gap-6"><a href="#">Work</a><a href="#">Blog</a><a href="#">Grammar</a><a href="#">Contact</a></div>
+  </div>
+</nav>
+
+<main class="max-w-5xl mx-auto px-6">
+
+  <!-- ============ INTRO ============ -->
+  <section class="pt-32 pb-10">
+    <p class="eyebrow mb-4 reveal">Alert dialog</p>
+    <h1 class="display reveal">The browser's own<br /><span style="color:var(--accent)">interruption,</span> in house type.</h1>
+    <p class="soft text-lg mt-6 max-w-2xl reveal">A modal that stops the page and asks one question. Not a toast, not a
+      notification — nothing else can happen until it is answered. It is a native <span class="kv">&lt;dialog&gt;</span>,
+      so the top layer, the focus trap, the ESC key, the inert background and the focus return to whatever opened it are
+      the platform's job, not mine.</p>
+    <div class="flex gap-2 mt-8 flex-wrap reveal">
+      <span class="chip">3 tones</span>
+      <span class="tag">1 node, reused</span>
+      <span class="tag">promise API</span>
+      <span class="tag">serialised queue</span>
+    </div>
+  </section>
+
+  <!-- ============ 01 TONES ============ -->
+  <section class="py-8">
+    <p class="section-num mb-2">01</p>
+    <h2 class="title mb-2 reveal">Three tones</h2>
+    <p class="soft mb-6 max-w-2xl reveal">Same anatomy, same motion, same keyboard contract. Only the glyph colour and
+      the primary button change — exactly how the action button's variants work.</p>
+
+    <div class="grid3">
+      <div class="panel reveal">
+        <div class="flex items-center gap-2 mb-2"><span class="kv">note</span><span class="tag">alert()</span></div>
+        <h3 class="subtitle">Tell them something</h3>
+        <p class="soft text-sm mt-2 mb-5">One button. Nothing to decide — the dialog exists only because the message
+          cannot wait for a quieter surface. Primary is <b>.btn-ink</b>.</p>
+        <button class="btn btn-ghost" id="t-note">Open note</button>
+      </div>
+
+      <div class="panel reveal">
+        <div class="flex items-center gap-2 mb-2"><span class="kv">ask</span><span class="tag">confirm()</span></div>
+        <h3 class="subtitle">Ask for a decision</h3>
+        <p class="soft text-sm mt-2 mb-5">Two buttons, a reversible outcome. Primary is <b>.btn-accent</b> and takes
+          focus — this is the one accent in the view.</p>
+        <button class="btn btn-ghost" id="t-ask">Open question</button>
+      </div>
+
+      <div class="panel reveal">
+        <div class="flex items-center gap-2 mb-2"><span class="kv">risk</span><span class="tag">no undo</span></div>
+        <h3 class="subtitle">Confirm a loss</h3>
+        <p class="soft text-sm mt-2 mb-5">Destructive and irreversible. Primary is <b>.act.v-danger</b>, <b>Cancel</b>
+          takes focus, and the scrim does not dismiss.</p>
+        <button class="btn btn-ghost" id="t-risk">Open danger</button>
+      </div>
+    </div>
+    <p class="usecase reveal"><b>There is no success tone.</b> A completed action reports itself on the button that
+      started it — the action button already owns <span class="kv">success</span>. A dialog that appears only to say
+      "done" is an interruption with nothing to interrupt.</p>
+  </section>
+
+  <!-- ============ 02 WITH INPUT ============ -->
+  <section class="py-8">
+    <p class="section-num mb-2">02</p>
+    <h2 class="title mb-2 reveal">With one input</h2>
+    <p class="soft mb-6 max-w-2xl reveal">The <span class="kv">prompt()</span> shape. One field, never two — a dialog
+      that needs a second field is a form, and a form belongs on a page. Enter submits, ESC cancels, the label sits left
+      with its hint right.</p>
+    <div class="grid2">
+      <div class="panel reveal">
+        <h3 class="subtitle mb-2">Name a snapshot</h3>
+        <p class="soft text-sm mb-5">Resolves with the trimmed string, or <span class="kv">null</span> if cancelled —
+          same contract as the browser's.</p>
+        <button class="btn btn-ghost" id="t-prompt">Open prompt</button>
+      </div>
+      <div class="panel reveal">
+        <h3 class="subtitle mb-2">Type-to-confirm</h3>
+        <p class="soft text-sm mb-5">A <span class="kv">risk</span> tone whose primary stays disabled until the typed
+          value matches. The guard lives in the machine, not in the button.</p>
+        <button class="btn btn-ghost" id="t-match">Delete project</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 03 ASYNC ============ -->
+  <section class="py-8">
+    <p class="section-num mb-2">03</p>
+    <h2 class="title mb-2 reveal">When the answer does work</h2>
+    <p class="soft mb-6 max-w-2xl reveal">If confirming kicks off a request, the primary is a stateful
+      <span class="kv">.act</span>, never a static <span class="kv">.btn</span>. The dialog holds itself open through
+      <span class="kv">pending</span>, closes on resolve, and reports failure in place — so the user never loses the
+      question they were answering.</p>
+    <div class="grid2">
+      <div class="panel reveal">
+        <h3 class="subtitle mb-2">Succeeds after 1.4s</h3>
+        <p class="soft text-sm mb-5">Cancel disables, ESC is ignored, the scrim is inert. Nothing can strand a request
+          mid-flight.</p>
+        <button class="btn btn-ghost" id="t-async">Publish case study</button>
+      </div>
+      <div class="panel reveal">
+        <h3 class="subtitle mb-2">Fails after 1.4s</h3>
+        <p class="soft text-sm mb-5">The button returns to idle, the reason prints under the copy, and the dialog stays
+          exactly where it was.</p>
+        <button class="btn btn-ghost" id="t-fail">Revoke API key</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 04 ANATOMY ============ -->
+  <section class="py-8">
+    <p class="section-num mb-2">04</p>
+    <h2 class="title mb-2 reveal">Anatomy</h2>
+    <p class="soft mb-6 max-w-2xl reveal">The same markup, rendered inline so it can be read without being opened.</p>
+
+    <div class="grid2 reveal">
+      <div class="anat">
+        <div class="dlg-surface">
+          <div class="dlg-form">
+            <div class="dlg-body">
+              <div class="dlg-head">
+                <span class="dlg-ic" style="background:var(--tint); color:var(--accent-deep)">
+                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.4a2.6 2.6 0 1 1 3.3 2.7c-.6.2-.9.7-.9 1.3v.5"/><circle cx="12" cy="16.4" r="1.05" fill="currentColor" stroke="none"/></svg>
+                </span>
+                <div>
+                  <h3 class="dlg-title">Discard this draft?</h3>
+                  <p class="dlg-text">Two edits from the last nine minutes haven't been saved anywhere else.</p>
+                </div>
+              </div>
+            </div>
+            <div class="dlg-foot">
+              <button class="btn btn-ghost" type="button">Keep editing</button>
+              <button class="btn btn-accent" type="button">Discard</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <p class="eyebrow mb-3">Parts</p>
+        <div class="callout"><b>.dlg</b><span>Native <span class="kv">&lt;dialog&gt;</span>. 29rem, capped at the form measure, at <span class="kv">--layout-radius-xl</span>.</span></div>
+        <div class="callout"><b>.dlg-ic</b><span>38px round dot. The only place tone appears.</span></div>
+        <div class="callout"><b>.dlg-title</b><span>One sentence, no full stop, phrased as the question being asked.</span></div>
+        <div class="callout"><b>.dlg-text</b><span>The consequence, in soft. Optional. Two lines at most.</span></div>
+        <div class="callout"><b>.dlg-foot</b><span>Hairline above, actions right, primary last in the DOM.</span></div>
+        <p class="usecase"><b>Under 520px</b> the footer becomes <span class="kv">column-reverse</span> — the primary
+          rises to the top, both buttons go full width, and the hover lift is dropped.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 05 RULES ============ -->
+  <section class="py-8">
+    <p class="section-num mb-2">05</p>
+    <h2 class="title mb-2 reveal">Rules</h2>
+    <p class="soft mb-6 max-w-2xl reveal">A modal spends the visitor's attention without asking. These keep the bill small.</p>
+    <div class="panel reveal">
+      <ul class="rules">
+        <li><span class="m">one</span><span>Never more than one dialog on screen. A second call <b>queues</b> behind the first, the way the browser serialises its own.</span></li>
+        <li><span class="m">one</span><span>One question per dialog. Two questions is a page.</span></li>
+        <li><span class="m">title</span><span>The title <b>is</b> the question. Never "Are you sure?" — say what happens.</span></li>
+        <li><span class="m">verb</span><span>The primary label is the verb from the title. <b>Discard</b>, not <b>OK</b>. <b>Delete</b>, not <b>Yes</b>.</span></li>
+        <li><span class="m">focus</span><span><b>ask</b> focuses the primary. <b>risk</b> focuses Cancel — a safe default when the key is already under a finger.</span></li>
+        <li><span class="m">scrim</span><span>Scrim click dismisses <b>note</b> and <b>ask</b>. It never dismisses <b>risk</b>, and never anything mid-<span class="kv">pending</span>.</span></li>
+        <li><span class="m">accent</span><span>The dialog is its own view, so it may carry the one <b>.btn-accent</b> — but a <b>risk</b> dialog carries none. Destruction is never the accent colour.</span></li>
+        <li><span class="m">async</span><span>Async primary is <b>.act</b>, static primary is <b>.btn</b>. Never substitute one for the other.</span></li>
+        <li><span class="m">never</span><span>No auto-dismiss, no timers, no stacking, no close X in the corner, no success tone, no scroll behind the scrim.</span></li>
+        <li><span class="m">last</span><span>If the answer can be undone instead of confirmed, undo is the better design. Reach for this last.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ 06 LOG ============ -->
+  <section class="py-8 pb-24">
+    <div class="flex items-baseline justify-between mb-3">
+      <h2 class="title" style="font-size:1.4rem">What each promise resolved to</h2>
+      <button class="soft text-sm" style="cursor:pointer" onclick="document.getElementById('log').innerHTML=''">clear</button>
+    </div>
+    <div id="log" aria-live="off"></div>
+  </section>
+
+</main>
+
+<footer class="py-8 text-center soft text-sm" style="border-top:1px solid var(--hairline)">
+  Built with the dota libraries · Served from S3 + CloudFront
+</footer>
+
+<!-- ==============================================================
+     THE ONE DIALOG NODE. Every call reuses it; nothing is created
+     or destroyed per open. Content is written in, state is read out.
+     ============================================================== -->
+<dialog class="dlg dlg-surface" id="dlg" aria-labelledby="dlgTitle" aria-describedby="dlgText">
+  <form class="dlg-form" id="dlgForm" method="dialog">
+    <div class="dlg-body">
+      <div class="dlg-head">
+        <span class="dlg-ic" id="dlgIc" aria-hidden="true"></span>
+        <div>
+          <h2 class="dlg-title" id="dlgTitle"></h2>
+          <p class="dlg-text" id="dlgText"></p>
+        </div>
+      </div>
+
+      <div class="dlg-field" id="dlgField" hidden>
+        <div class="dlg-lbl">
+          <label for="dlgInput" id="dlgLabel"></label>
+          <span class="dlg-hint" id="dlgHint"></span>
+        </div>
+        <input class="field" id="dlgInput" type="text" autocomplete="off" />
+      </div>
+
+      <p class="dlg-err" id="dlgErr" role="alert" hidden></p>
+    </div>
+
+    <div class="dlg-foot">
+      <button class="btn btn-ghost" type="button" id="dlgCancel">Cancel</button>
+      <button class="btn" type="submit" id="dlgOk"><span class="lbl">OK</span></button>
+    </div>
+  </form>
+</dialog>
+
+<script>
+/* ================================================================
+   1. THE MACHINE
+   The dialog holds no logic of its own. `Alert.*` opens it, writes
+   its content, and returns a promise. The DOM only ever reflects
+   the state the machine publishes — same separation as the action
+   button: logic in the machine, UI reflects it.
+
+   States: closed | open | pending
+   ================================================================ */
+const Alert = (function(){
+
+  const el = {
+    root:   document.getElementById('dlg'),
+    form:   document.getElementById('dlgForm'),
+    ic:     document.getElementById('dlgIc'),
+    title:  document.getElementById('dlgTitle'),
+    text:   document.getElementById('dlgText'),
+    field:  document.getElementById('dlgField'),
+    label:  document.getElementById('dlgLabel'),
+    hint:   document.getElementById('dlgHint'),
+    input:  document.getElementById('dlgInput'),
+    err:    document.getElementById('dlgErr'),
+    cancel: document.getElementById('dlgCancel'),
+    ok:     document.getElementById('dlgOk')
+  };
+
+  /* tone glyphs — one family, one circle, a different mark inside */
+  const GLYPH = {
+    note: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11.4v5"/><circle cx="12" cy="7.7" r="1.05" fill="currentColor" stroke="none"/></svg>',
+    ask:  '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.4a2.6 2.6 0 1 1 3.3 2.7c-.6.2-.9.7-.9 1.3v.5"/><circle cx="12" cy="16.4" r="1.05" fill="currentColor" stroke="none"/></svg>',
+    risk: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7.4v5.2"/><circle cx="12" cy="16.5" r="1.05" fill="currentColor" stroke="none"/></svg>'
+  };
+
+  /* primary button clothing per tone. risk never wears the accent. */
+  const PRIMARY = { note:'btn-ink', ask:'btn-accent', risk:'v-danger' };
+
+  let state = 'closed';
+  let live  = null;      // the config currently on screen
+  let queue = [];        // calls that arrived while one was open
+
+  const rm = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---- scroll lock without the scrollbar-width jump ---- */
+  function lock(on){
+    const html = document.documentElement;
+    if(on){
+      const w = window.innerWidth - html.clientWidth;
+      html.style.setProperty('padding-right', w > 0 ? w + 'px' : '');
+      html.classList.add('dlg-lock');
+    } else {
+      html.classList.remove('dlg-lock');
+      html.style.removeProperty('padding-right');
+    }
+  }
+
+  /* ---- render: write config into the one node ---- */
+  function render(cfg){
+    const tone = cfg.tone;
+    el.root.dataset.tone = tone;
+    el.root.setAttribute('role', cfg.field ? 'dialog' : 'alertdialog');
+
+    el.ic.innerHTML  = GLYPH[tone];
+    el.title.textContent = cfg.title;
+    el.text.textContent  = cfg.body || '';
+
+    /* footer */
+    el.cancel.hidden = (tone === 'note');
+    el.cancel.textContent = cfg.cancel || 'Cancel';
+    el.cancel.disabled = false;
+
+    const async = typeof cfg.onConfirm === 'function';
+    el.ok.className = async ? ('act ' + PRIMARY[tone]) : ('btn ' + PRIMARY[tone]);
+    el.ok.removeAttribute('data-state');
+    el.ok.disabled = false;
+    el.ok.querySelector('.lbl').textContent = cfg.confirm || (tone === 'note' ? 'Got it' : 'Continue');
+
+    /* field */
+    el.err.hidden = true; el.err.textContent = '';
+    if(cfg.field){
+      el.field.hidden = false;
+      el.label.textContent = cfg.field.label || '';
+      el.hint.textContent  = cfg.field.hint || '';
+      el.hint.hidden = !cfg.field.hint;
+      el.input.value = cfg.field.value || '';
+      el.input.placeholder = cfg.field.placeholder || '';
+      applyGuard();
+    } else {
+      el.field.hidden = true;
+      el.input.value = '';
+    }
+  }
+
+  /* ---- guard: the machine decides whether the primary is live ---- */
+  function applyGuard(){
+    if(!live || !live.field || state === 'pending') return;
+    const ok = typeof live.field.guard === 'function'
+      ? !!live.field.guard(el.input.value)
+      : true;
+    el.ok.disabled = !ok;
+  }
+
+  /* ---- open ---- */
+  function open(cfg){
+    return new Promise(resolve => {
+      const job = Object.assign({}, cfg, { resolve });
+      if(state !== 'closed'){ queue.push(job); return; }
+      start(job);
+    });
+  }
+
+  function start(job){
+    live = job; state = 'open';
+    render(job);
+    lock(true);
+    el.root.showModal();
+
+    /* enter on the next frame so the transition has a start value */
+    requestAnimationFrame(() => requestAnimationFrame(() => el.root.classList.add('is-in')));
+
+    /* focus: the safe control, not always the primary */
+    const target = job.field ? el.input
+                 : job.tone === 'risk' ? el.cancel
+                 : el.ok;
+    setTimeout(() => target.focus({ preventScroll:true }), rm() ? 0 : 40);
+  }
+
+  /* ---- settle: animate out, close, resolve, then drain the queue ---- */
+  function settle(value){
+    if(state === 'closed') return;
+    const job = live;
+    state = 'closed'; live = null;
+    el.root.classList.remove('is-in');
+
+    const done = () => {
+      el.root.close();
+      lock(false);
+      job.resolve(value);
+      if(queue.length) start(queue.shift());
+    };
+    rm() ? done() : setTimeout(done, 190);
+  }
+
+  /* ---- confirm path ---- */
+  async function confirm(){
+    if(!live || state === 'pending') return;
+    const job = live;
+    const value = job.field ? el.input.value.trim() : true;
+
+    if(job.field && typeof job.field.guard === 'function' && !job.field.guard(el.input.value)) return;
+    if(typeof job.onConfirm !== 'function'){ settle(value); return; }
+
+    /* async: the dialog holds itself open and locks every exit */
+    state = 'pending';
+    el.err.hidden = true;
+    el.ok.dataset.state = 'pending';
+    el.ok.disabled = true;
+    el.cancel.disabled = true;
+    el.input.disabled = true;
+    glyph('<span class="spinner"></span>');
+    const label = el.ok.querySelector('.lbl');
+    const idle  = label.textContent;
+    label.textContent = job.busy || 'Working';
+
+    try {
+      const result = await job.onConfirm(value);
+      state = 'open';
+      settle(result === undefined ? value : result);
+    } catch (e) {
+      state = 'open';
+      el.ok.removeAttribute('data-state');
+      el.ok.disabled = false;
+      el.cancel.disabled = false;
+      el.input.disabled = false;
+      clearGlyph();
+      label.textContent = idle;
+      el.err.textContent = (e && e.message) || 'That didn\u2019t work. Try again.';
+      el.err.hidden = false;
+      el.cancel.focus({ preventScroll:true });
+    }
+  }
+
+  function glyph(html){
+    let g = el.ok.querySelector('.glyph');
+    if(!g){ g = document.createElement('span'); g.className = 'glyph'; el.ok.insertBefore(g, el.ok.firstChild); }
+    g.innerHTML = html;
+  }
+  function clearGlyph(){ const g = el.ok.querySelector('.glyph'); if(g) g.remove(); }
+
+  /* ---- wiring ---- */
+  el.form.addEventListener('submit', e => { e.preventDefault(); confirm(); });
+  el.cancel.addEventListener('click', () => { if(state !== 'pending') settle(cancelValue()); });
+  el.input.addEventListener('input', applyGuard);
+
+  /* ESC — native, but intercepted so the exit animation runs and pending is respected */
+  el.root.addEventListener('cancel', e => {
+    e.preventDefault();
+    if(state === 'pending') return;
+    settle(cancelValue());
+  });
+
+  /* scrim click — note and ask only, never risk, never pending */
+  el.root.addEventListener('click', e => {
+    if(e.target !== el.root) return;                 // a ::backdrop click targets the dialog itself
+    if(state === 'pending' || !live || live.tone === 'risk') return;
+    const r = el.root.getBoundingClientRect();
+    const inside = e.clientX >= r.left && e.clientX <= r.right && e.clientY >= r.top && e.clientY <= r.bottom;
+    if(!inside) settle(cancelValue());
+  });
+
+  function cancelValue(){ return live && live.field ? null : false; }
+
+  /* ---- public API — mirrors the browser primitives ---- */
+  return {
+    note (cfg){ return open(Object.assign({ tone:'note' }, cfg)); },
+    ask  (cfg){ return open(Object.assign({ tone:'ask'  }, cfg)); },
+    risk (cfg){ return open(Object.assign({ tone:'risk' }, cfg)); },
+    prompt(cfg){ return open(Object.assign({ tone:'ask' }, cfg, { field: cfg.field || {} })); }
+  };
+})();
+
+
+/* ================================================================
+   2. DEMO PAGE ONLY — triggers and the resolution log
+   ================================================================ */
+function log(name, value){
+  const wrap = document.getElementById('log');
+  const line = document.createElement('div');
+  line.className = 'line';
+  const t = new Date().toLocaleTimeString([], { hour12:false });
+  line.innerHTML = '<span class="t">' + t + '</span><b>' + name + '</b><span>&rarr; ' +
+    (typeof value === 'string' ? '"' + value + '"' : String(value)) + '</span>';
+  wrap.prepend(line);
+}
+const wait = ms => new Promise(r => setTimeout(r, ms));
+
+document.getElementById('t-note').onclick = async () => {
+  log('note', await Alert.note({
+    title: 'Your session signed out on another device',
+    body:  'Nothing was lost — everything from this tab is still saved. Sign in again when you\u2019re ready.',
+    confirm: 'Got it'
+  }));
+};
+
+document.getElementById('t-ask').onclick = async () => {
+  log('ask', await Alert.ask({
+    title: 'Discard this draft?',
+    body:  'Two edits from the last nine minutes haven\u2019t been saved anywhere else.',
+    confirm: 'Discard', cancel: 'Keep editing'
+  }));
+};
+
+document.getElementById('t-risk').onclick = async () => {
+  log('risk', await Alert.risk({
+    title: 'Delete the staging database?',
+    body:  'Every row goes, including the seed data. There is no snapshot from the last 24 hours.',
+    confirm: 'Delete it', cancel: 'Cancel'
+  }));
+};
+
+document.getElementById('t-prompt').onclick = async () => {
+  log('prompt', await Alert.prompt({
+    title: 'Name this snapshot',
+    body:  'You\u2019ll see this name in the restore list.',
+    confirm: 'Save snapshot',
+    field: { label:'Snapshot name', hint:'40 characters max', placeholder:'pre-migration',
+             guard: v => v.trim().length > 0 && v.trim().length <= 40 }
+  }));
+};
+
+document.getElementById('t-match').onclick = async () => {
+  log('type-to-confirm', await Alert.prompt({
+    tone: 'risk',
+    title: 'Delete sacrena-api?',
+    body:  'The repository, its images in ECR, and every deploy record go with it.',
+    confirm: 'Delete repository', cancel: 'Cancel',
+    field: { label:'Type the repository name', hint:'must match exactly', placeholder:'sacrena-api',
+             guard: v => v.trim() === 'sacrena-api' }
+  }));
+};
+
+document.getElementById('t-async').onclick = async () => {
+  log('async · resolve', await Alert.ask({
+    title: 'Publish this case study?',
+    body:  'It goes live at ayush.dev/work and appears in the RSS feed within the hour.',
+    confirm: 'Publish', busy: 'Publishing', cancel: 'Not yet',
+    onConfirm: async () => { await wait(1400); return 'published'; }
+  }));
+};
+
+document.getElementById('t-fail').onclick = async () => {
+  log('async · reject', await Alert.risk({
+    title: 'Revoke the production API key?',
+    body:  'Anything still using it starts failing immediately.',
+    confirm: 'Revoke key', busy: 'Revoking', cancel: 'Cancel',
+    onConfirm: async () => { await wait(1400); throw new Error('Key is in use by 2 running tasks. Drain them first.'); }
+  }));
+};
+
+/* nav + reveal — the shared page behaviours */
+const nav = document.querySelector('#nav');
+addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 40), { passive:true });
+const io = new IntersectionObserver(es => es.forEach(e => {
+  if(e.isIntersecting){ e.target.classList.add('is-in'); io.unobserve(e.target); }
+}), { threshold:.12 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
