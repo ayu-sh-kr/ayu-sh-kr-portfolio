@@ -1,0 +1,1209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Toast v2 — Design — ayush.dev</title>
+<style>
+/* ==================================================================
+   TOKENS — verbatim subset of assets/typography.css + assets/layout.css.
+   Inlined because this file must stand alone for the service-worker
+   offline fallback. Never edit a value here; edit the source file.
+   ================================================================== */
+:root{
+  /* palette */
+  --paper:#FAFAF8; --ink:#1D1D1F; --ink-soft:#6E6E73;
+  --hairline:rgba(29,29,31,.1);
+  --accent:#FF4D00; --accent-deep:#C23A00; --tint:#FFF1EA;
+  --ok:#1F7A3D; --err:#C23A00;
+
+  /* typography.css */
+  --font-sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Inter,sans-serif;
+  --font-mono:ui-monospace,SFMono-Regular,Menlo,monospace;
+  --fs-display:clamp(2.4rem,1.2rem + 5.333vw,6rem);
+  --fs-title:clamp(1.875rem,1.4rem + 2.111vw,3.3rem);
+  --fs-title-sm:clamp(1.375rem,1.133rem + 1.074vw,2.1rem);
+  --fs-lead:clamp(1.062rem,1.042rem + 0.093vw,1.125rem);
+  --fs-body:1rem; --fs-ui:.9375rem; --fs-ui-sm:.875rem;
+  --fs-meta:.8125rem; --fs-caption:.78125rem; --fs-label:.75rem; --fs-micro:.6875rem;
+  --fw-regular:400; --fw-medium:500; --fw-semibold:600; --fw-bold:700;
+  --tr-display:-.03em; --tr-title:-.02em; --tr-body:0; --tr-lead:-.012em;
+  --tr-label:.06em; --tr-eyebrow:.08em;
+  --lh-display:1.08; --lh-title:1.12; --lh-ui:1.45; --lh-body:1.55;
+  --measure:720px; --measure-sm:560px;
+
+  /* layout.css */
+  --layout-page-max:80rem; --layout-content-max:60rem; --layout-reading-max:45rem;
+  --layout-gutter:clamp(1.25rem,4vw,3rem);
+  --layout-section-sm:clamp(2rem,1.5rem + 2.222vw,3.5rem);
+  --layout-section-md:clamp(3rem,2.167rem + 3.704vw,5.5rem);
+  --layout-section-hero:clamp(6rem,4.667rem + 5.926vw,10rem);
+  --layout-space-1:.25rem; --layout-space-2:.5rem; --layout-space-3:.75rem;
+  --layout-space-4:1rem; --layout-space-5:1.5rem; --layout-space-6:2rem;
+  --layout-space-7:3rem;
+  --layout-col-md:260px;
+  --layout-pad-panel:clamp(1.5rem,1.167rem + 1.481vw,2.5rem);
+  --layout-radius-xs:4px; --layout-radius-sm:8px; --layout-radius-md:14px;
+  --layout-radius-lg:20px; --layout-radius-xl:28px; --layout-radius-pill:999px;
+  --layout-radius-round:50%;
+  --layout-nav-h:57px; --layout-stick:calc(var(--layout-nav-h) + var(--layout-space-4));
+  --layout-z-raised:10; --layout-z-nav:30; --layout-z-toast:60;
+}
+@media (min-width:700px){
+  :root{ --tr-display:-.035em; --tr-title:-.025em; --tr-lead:-.015em;
+         --lh-display:1.05; --lh-title:1.1; --lh-body:1.6 }
+}
+@media (min-width:1100px){ :root{ --tr-display:-.04em; --lh-display:1.04; --lh-title:1.08 } }
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth; -webkit-text-size-adjust:100%; text-size-adjust:100%}
+[id]{scroll-margin-block-start:var(--layout-stick)}
+body{margin:0; min-block-size:100svh; background:var(--paper); color:var(--ink);
+  font-family:var(--font-sans); font-size:var(--fs-body); font-weight:var(--fw-regular);
+  line-height:var(--lh-body); letter-spacing:var(--tr-body); -webkit-font-smoothing:antialiased}
+img,svg{max-inline-size:100%; block-size:auto; display:block}
+::selection{background:var(--accent); color:#fff}
+
+/* ---- typography role classes ---- */
+.display{font-size:var(--fs-display); font-weight:var(--fw-bold); letter-spacing:var(--tr-display); line-height:var(--lh-display); text-wrap:balance; margin:0}
+.title{font-size:var(--fs-title); font-weight:var(--fw-semibold); letter-spacing:var(--tr-title); line-height:var(--lh-title); text-wrap:balance; margin:0}
+.title-sm{font-size:var(--fs-title-sm); font-weight:var(--fw-semibold); letter-spacing:var(--tr-title); line-height:var(--lh-title); text-wrap:balance; margin:0}
+.lead{font-size:var(--fs-lead); font-weight:var(--fw-regular); letter-spacing:var(--tr-lead); line-height:var(--lh-body); color:var(--ink-soft); max-inline-size:var(--measure); text-wrap:pretty; margin:0}
+.eyebrow{font-size:var(--fs-meta); font-weight:var(--fw-medium); letter-spacing:var(--tr-eyebrow); text-transform:uppercase; color:var(--accent-deep); margin:0}
+.label{font-size:var(--fs-label); font-weight:var(--fw-semibold); letter-spacing:var(--tr-label); text-transform:uppercase; color:var(--ink-soft); margin:0}
+.micro{font-size:var(--fs-micro); font-weight:var(--fw-semibold); letter-spacing:.05em; text-transform:uppercase; color:var(--ink-soft); margin:0}
+.meta{font-size:var(--fs-meta); font-weight:var(--fw-medium); line-height:var(--lh-ui); color:var(--ink-soft); margin:0}
+.chip{display:inline-block; font-size:var(--fs-caption); font-weight:var(--fw-medium); padding:.3rem .7rem; border-radius:var(--layout-radius-pill); background:var(--tint); color:var(--accent-deep)}
+.tag{display:inline-block; font-size:var(--fs-label); font-weight:var(--fw-medium); padding:.25rem .6rem; border-radius:var(--layout-radius-pill); border:1px solid var(--hairline); color:var(--ink-soft)}
+.soft{color:var(--ink-soft)}
+code{font-family:var(--font-mono); font-size:.9em; color:var(--accent-deep)}
+.num,[data-count],time{font-variant-numeric:tabular-nums}
+.mono{font-family:var(--font-mono)}
+
+/* ---- layout classes ---- */
+.layout-page,.layout-content{margin-inline:auto; padding-inline:var(--layout-gutter)}
+.layout-page{max-inline-size:var(--layout-page-max)}
+.layout-content{max-inline-size:var(--layout-content-max)}
+.layout-section{padding-block:var(--layout-section-md)}
+.layout-section-sm{padding-block:var(--layout-section-sm)}
+.layout-section-hero{padding-block:var(--layout-section-hero) var(--layout-section-md)}
+.layout-stack>*+*{margin-block-start:var(--layout-stack-gap,var(--layout-space-4))}
+.layout-stack-sm{--layout-stack-gap:var(--layout-space-3)}
+.layout-stack-lg{--layout-stack-gap:var(--layout-space-5)}
+.layout-grid-auto{display:grid; gap:var(--layout-space-5); grid-template-columns:repeat(auto-fit,minmax(var(--layout-col-md),1fr))}
+.layout-grid-auto>*{min-inline-size:0}
+.layout-row{display:flex; align-items:center; flex-wrap:wrap; gap:var(--layout-space-3)}
+.layout-row-tight{gap:var(--layout-space-2)}
+.layout-row-split{justify-content:space-between}
+.layout-pinned-top{position:fixed; inset:0 0 auto 0; z-index:var(--layout-z-nav)}
+
+/* ---- shared surfaces from the grammar ---- */
+.panel{background:#fff; border:1px solid var(--hairline); border-radius:var(--layout-radius-xl); padding:var(--layout-pad-panel)}
+.btn{display:inline-flex; align-items:center; justify-content:center; gap:var(--layout-space-2);
+  padding:.7rem 1.3rem; border-radius:var(--layout-radius-pill); font-family:inherit;
+  font-size:var(--fs-ui-sm); font-weight:var(--fw-medium); line-height:1; cursor:pointer;
+  border:1px solid transparent; background:none; color:inherit;
+  transition:transform .25s cubic-bezier(.2,.8,.2,1), background .2s, color .2s, border-color .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn:focus-visible{outline:2px solid var(--accent); outline-offset:3px}
+.btn-accent{background:var(--accent); color:#fff} .btn-accent:hover{background:var(--accent-deep)}
+.btn-ink{background:var(--ink); color:#fff} .btn-ink:hover{background:#000}
+.btn-ghost{border-color:var(--hairline); color:var(--ink)} .btn-ghost:hover{border-color:var(--ink)}
+.usecase{font-size:var(--fs-caption); color:var(--ink-soft); margin:var(--layout-space-3) 0 0;
+  padding-block-start:var(--layout-space-3); border-block-start:1px dashed var(--hairline)}
+.usecase b{color:var(--ink); font-weight:var(--fw-semibold)}
+.section-num{font-family:var(--font-mono); font-size:var(--fs-meta); color:var(--accent-deep); font-weight:var(--fw-semibold); margin:0}
+
+#nav{backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
+  background:rgba(250,250,248,.72); border-block-end:1px solid transparent; transition:border-color .3s}
+#nav.scrolled{border-block-end-color:var(--hairline)}
+#nav a{color:var(--ink-soft); font-size:var(--fs-ui-sm); font-weight:var(--fw-medium); text-decoration:none; transition:color .2s}
+#nav a:hover{color:var(--ink)}
+#nav .layout-page{display:flex; align-items:center; justify-content:space-between; padding-block:var(--layout-space-4)}
+
+.reveal{opacity:0; transform:translateY(20px); transition:opacity .7s ease, transform .7s cubic-bezier(.2,.8,.2,1)}
+.reveal.is-in{opacity:1; transform:none}
+
+/* ==================================================================
+   THE TOAST
+
+   Floating chrome on this site is INK. The alert dialog is a white
+   card, centred, and blocks. The toast is an ink pill, cornered, and
+   passes. The two are opposites on purpose.
+
+   ONE MOTION IDEA: the pill arrives as a dot and grows; when its time
+   runs out it shrinks back to a dot before it goes. Everything else
+   here is information, not decoration.
+
+   ONE CHANNEL PER SIGNAL. Time is a quantity, so it is drawn as a
+   LENGTH along the pill's bottom edge. State is a thing, so it stays a
+   SHAPE in the dot. A length and a figure cannot compete; two figures
+   sharing one centre — which is what a ring around a glyph is — always
+   will.
+   ================================================================== */
+
+/* ==================================================================
+   THE RAIL — one fixed anchor, six switchable corners.
+
+   Position is a data attribute, not a rebuild: data-position selects
+   the block edge (top/bottom) and the inline anchor (left/right/
+   center). Mobile always spans full width at the chosen edge — a
+   corner-anchored toast on a 360px screen is not a corner, it's the
+   whole screen with extra steps, so left/right/center only matter at
+   700px and up.
+   ================================================================== */
+#toastRail{
+  position:fixed;
+  inset-inline:var(--layout-gutter);
+  z-index:var(--layout-z-toast);
+  display:flex; flex-direction:column; align-items:stretch;
+  gap:var(--layout-space-3);
+  pointer-events:none;                /* the rail never eats clicks — only the pills are targets */
+}
+#toastRail[data-position^="bottom"]{
+  inset-block-end:calc(var(--layout-space-4) + var(--toast-lift,0px) + env(safe-area-inset-bottom,0px));
+}
+#toastRail[data-position^="top"]{
+  inset-block-start:calc(var(--layout-stick) + var(--layout-space-3));
+  flex-direction:column-reverse;      /* newest still stays nearest the anchor edge */
+}
+/* Growth direction is not a toast property — it falls out of the rail's
+   align-items, at every width. The pill's width animates from the 48px
+   circle; flex alignment decides which edge stays put while it does:
+     flex-end   -> right edge pinned, grows LEFTWARD
+     flex-start -> left edge pinned, grows RIGHTWARD
+     center     -> grows BOTH WAYS, like the pricing contact pill
+   These live outside the media query so the icon expands correctly on a
+   phone too. */
+#toastRail[data-position$="right"] { align-items:flex-end }
+#toastRail[data-position$="left"]  { align-items:flex-start }
+#toastRail[data-position$="center"]{ align-items:center }
+
+@media (min-width:700px){
+  #toastRail{ inline-size:min(var(--toast-rail-w,30rem), calc(100vw - var(--layout-gutter) * 2)) }
+  #toastRail[data-position$="right"]{ inset-inline:auto var(--layout-gutter) }
+  #toastRail[data-position$="left"]{  inset-inline:var(--layout-gutter) auto }
+  #toastRail[data-position$="center"]{ inset-inline:0; margin-inline:auto }
+}
+
+.toast{
+  --toast-h:48px;                     /* was 56 — same as the sticky contact pill, but that pill
+                                          doesn't have to sit in a stack of three; this does */
+  --toast-w-base:20rem;               /* the DEFAULT size. Content may push past it; nothing
+                                          shrinks below it. A stack of toasts should read as one
+                                          consistent object repeated, not a ragged column. */
+  position:relative;
+  display:flex; align-items:center;
+  block-size:var(--toast-h);
+  inline-size:var(--toast-h);         /* base = a circle. Always grow FROM here. */
+  max-inline-size:100%;
+  padding:0; overflow:hidden;
+  border-radius:var(--layout-radius-pill);
+  background:var(--ink); color:#fff;
+  box-shadow:0 12px 40px -12px rgba(29,29,31,.5);
+  pointer-events:auto; touch-action:pan-y; cursor:grab;
+  transform-origin:center center;
+  /* PHASE 0 — nothing. The icon scales up from zero; it does not slide,
+     fade up, or arrive at 90%. */
+  opacity:0; transform:scale(0);
+  transition:opacity .18s ease,
+             transform .3s cubic-bezier(.2,.8,.2,1),
+             inline-size .42s cubic-bezier(.2,.8,.2,1);
+}
+.toast:active{cursor:grabbing}
+/* PHASE 1 — the notification icon scales 0 -> 100 and lands as a circle.
+   Nothing expands until this has finished. */
+.toast.is-in{opacity:1; transform:scale(1)}
+/* PHASE 2 — the icon expands into the pill. Direction comes from the rail
+   (see #toastRail align-items above).
+
+   NEVER put min-inline-size here. Used width is max(inline-size,
+   min-inline-size), and min-inline-size is not in the transition list — so
+   the instant this class lands the element jumps to the floor width and the
+   inline-size transition animates invisibly underneath it. That is a snap on
+   enter and, because removing the class drops the floor instantly, a
+   perfectly smooth shrink on exit. The asymmetry is the tell.
+
+   The floor is baked into --toast-w by measure() instead, via
+   .toast-measure below. One value, already floored, animating alone. */
+.toast.is-open{
+  inline-size:var(--toast-w,var(--toast-w-base));
+}
+
+/* measuring ghost only — never on a live toast. Keeps the floor expressed
+   in CSS (so it stays unit-agnostic) without letting it reach the element
+   that has to animate. */
+.toast-measure{ min-inline-size:min(var(--toast-w-base), 100%) }
+/* dismissed by hand — it flies, full stop. NOT the same animation as
+   a natural expiry — see spec §7 for why that's deliberate. */
+.toast.is-gone{opacity:0; transition:opacity .2s ease, transform .22s cubic-bezier(.2,.8,.2,1)}
+/* natural expiry — collapses back to the circle before it goes. this
+   class removal alone (inline-size falls back to --toast-h) IS step one. */
+.toast.is-closing .toast-body{opacity:0; transition:opacity .12s ease}
+/* the hover lift only exists while the pill is open — it must not fight
+   the scale on either threshold */
+.toast.is-open:hover{transform:scale(1) translateY(-2px)}
+.toast:focus-visible{outline:2px solid var(--accent); outline-offset:3px}
+
+/* ------------------------------------------------------------------
+   THE VOLUME — hue says what happened, volume says how long you have.
+
+   Colour is taken from the grammar, not invented. The system already
+   codifies "a quantity on a dark surface":
+
+     .rail.dark      { background:rgba(255,255,255,.12) }
+     .rail.dark .fill{ background:var(--accent) }
+
+   So: neutral white for an ordinary toast, accent when there is
+   something to act on (the one purposeful accent spend), and --err
+   for failure — which is exactly what #topbar.err does.
+
+   GREEN IS NOT HERE ON PURPOSE. --ok has one sanctioned use in the
+   whole system, .act[data-state="success"], a solid fill on a button.
+   A 320x48 green wash had no relative anywhere on the site, which is
+   why it never read clearly. Success now lands on the exit circle
+   instead, reproducing .act's success state exactly.
+
+   The volume is a GRADIENT STOP, not a scaled box: its trailing edge
+   is a 2.5rem feather, and the feather scales with --p so at zero
+   nothing is left against the rounded cap. Underneath, a low base of
+   the same hue never retracts, keeping the colour readable to the end.
+   ------------------------------------------------------------------ */
+.toast-fill{
+  --p:1;                                   /* 1 = full time left, 0 = none. Driven per-frame. */
+  --tone-hi:rgba(255,255,255,.18);         /* the volume — .rail.dark track family */
+  --tone-lo:rgba(255,255,255,.06);         /* the base that never leaves */
+  --tone-0 :rgba(255,255,255,0);           /* same hue, zero alpha — never `transparent`,
+                                              which interpolates through grey */
+  position:absolute; inset:0; z-index:0;
+  background:
+    linear-gradient(90deg,
+      var(--tone-hi) 0,
+      var(--tone-hi) calc(var(--p) * 100%),
+      var(--tone-0)  calc(var(--p) * 100% + var(--p) * 2.5rem)),
+    linear-gradient(var(--tone-lo), var(--tone-lo));
+}
+/* the one purposeful accent: there is still something you can do */
+.toast.has-action .toast-fill{
+  --tone-hi:rgba(255,77,0,.32); --tone-lo:rgba(255,77,0,.1); --tone-0:rgba(255,77,0,0);
+}
+/* failure — the only non-accent hue on the surface, per #topbar.err */
+.toast[data-tone="fail"] .toast-fill{
+  --tone-hi:rgba(194,58,0,.34); --tone-lo:rgba(194,58,0,.1); --tone-0:rgba(194,58,0,0);
+}
+/* no deadline: flat, never retracts. That IS the "it's staying" signal. */
+.toast.is-sticky .toast-fill{
+  --tone-hi:rgba(255,255,255,.1); --tone-lo:rgba(255,255,255,.1);
+}
+
+/* indeterminate: no deadline exists yet, so no area is spent. A soft
+   sweep borrowed verbatim from the skeleton loader's own motion says
+   "working" without inventing a new idiom. */
+.toast.is-pending .toast-fill{--p:1}   /* no deadline yet, so no volume is spent */
+.toast.is-pending .toast-fill::after{
+  content:""; position:absolute; inset:0;
+  background:linear-gradient(90deg, transparent 0%, rgba(255,255,255,.16) 50%, transparent 100%);
+  transform:translateX(-100%); animation:toast-sweep 1.35s cubic-bezier(.35,0,.25,1) infinite;
+}
+@keyframes toast-sweep{100%{transform:translateX(100%)}}
+
+/* ------------------------------------------------------------------
+   THE GLYPH SLOT — one node, two brief appearances, never a third.
+
+   ARRIVAL: a generic notification mark, in the circle, gone before the
+   circle finishes becoming a pill. It does not travel into the body
+   and it is not tone-specific — nothing is known yet.
+
+   DEPARTURE (natural expiry only): the pill has already collapsed back
+   to the circle; this is where the outcome gets one honest beat before
+   the whole thing fades. Fail is the one moment this component ever
+   inverts — same move the alert dialog reserves for destructive focus.
+
+   It never coexists with the message. The dot is not a permanent
+   icon rail; it is a threshold the pill crosses through, twice.
+   ------------------------------------------------------------------ */
+.toast-glyph{
+  position:absolute; inset-block:0; inset-inline-start:0;
+  inline-size:var(--toast-h); block-size:var(--toast-h);
+  z-index:2; display:grid; place-items:center;
+  border-radius:var(--layout-radius-round);
+  /* no transform of its own — the container is already scaling on both
+     thresholds, and a second scale inside it reads as a wobble */
+  opacity:0;
+  transition:opacity .16s ease, background .16s ease;
+  pointer-events:none;
+}
+/* 16px at stroke-width 2.4 — .act .glyph is 15px/2.4 on a ~40px button;
+   this is the same ratio on a 48px circle. */
+.toast-glyph svg{inline-size:16px; block-size:16px; fill:none; stroke:#fff;
+  stroke-width:2.4; stroke-linecap:round; stroke-linejoin:round}
+.toast-glyph.is-shown{opacity:1}
+/* The exit circle reproduces the action button's own settled states, so the
+   visitor is reading a colour they already learned from every .act on the site.
+     .act[data-state="success"]{background:var(--ok); color:#fff}
+     .act[data-state="error"]  {background:#fff; color:var(--err)}       */
+.toast-glyph.is-done{background:var(--ok)}
+.toast-glyph.is-fail{background:#fff}
+.toast-glyph.is-fail svg{stroke:var(--err)}
+.toast-glyph.is-note{background:rgba(255,255,255,.12)}
+
+/* ---- the body: one line, never two ---- */
+.toast-body{
+  position:relative; z-index:1;
+  flex:1 1 auto; min-inline-size:0;
+  display:flex; align-items:center; gap:var(--layout-space-2);
+  padding-inline:var(--layout-space-3) var(--layout-space-4);
+  opacity:0; transition:opacity .18s ease .12s;
+}
+.toast.is-open .toast-body{opacity:1}
+.toast-msg{
+  font-size:var(--fs-ui); font-weight:var(--fw-medium); line-height:var(--lh-ui);
+  letter-spacing:var(--tr-body); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+.toast-count{
+  flex:0 0 auto; font-family:var(--font-mono); font-variant-numeric:tabular-nums;
+  font-size:var(--fs-label); font-weight:var(--fw-semibold);
+  color:rgba(255,255,255,.6); letter-spacing:0;
+}
+.toast-act{
+  position:relative; z-index:1;
+  flex:0 0 auto; margin-inline-start:auto; padding:.4rem .7rem;
+  border:0; background:none; font-family:inherit;
+  font-size:var(--fs-ui-sm); font-weight:var(--fw-medium); line-height:1;
+  color:#fff; cursor:pointer; border-radius:var(--layout-radius-pill);
+  background:rgba(255,255,255,.14);        /* .btn-ghost, inverted for a dark surface —
+                                              accent now carries the volume, so the label
+                                              must not be a second accent role beside it */
+  transition:background .2s ease; white-space:nowrap;
+}
+.toast-act:hover{background:rgba(255,255,255,.24)}
+.toast-act:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+
+.toast-sr{position:absolute; inline-size:1px; block-size:1px; padding:0; margin:-1px;
+  overflow:hidden; clip-path:inset(50%); white-space:nowrap; border:0}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  /* no scale on either threshold, no expansion — it simply appears */
+  .toast{transition:opacity .15s linear; transform:none; inline-size:var(--toast-w,20rem)}
+  .toast.is-in{transform:none}
+  .toast.is-open:hover{transform:none}
+  .toast-glyph{transition:none}
+  .toast-body{opacity:1; transition:none}
+  .toast-fill::after{animation-duration:2.6s}
+  .btn,.reveal{transition:none} .reveal{opacity:1; transform:none}
+}
+/* ---- demo-page-only helpers ---- */
+.spec{border:1px solid var(--hairline); border-radius:var(--layout-radius-lg); background:#fff;
+  padding:var(--layout-space-5)}
+.anat{background:var(--paper); border:1px dashed var(--hairline); border-radius:var(--layout-radius-xl);
+  padding:var(--layout-space-6) var(--layout-space-5); display:grid; place-items:center}
+/* MUST stay position:relative — .toast-fill is absolute/inset:0, so a static
+   parent lets it escape to the nearest positioned ancestor and paint across
+   whole sections of the page. That was a real bug, not a cosmetic one. */
+.anat .toast{position:relative; opacity:1; transform:none; inline-size:min(22rem,100%); pointer-events:none}
+.anat .toast .toast-body{opacity:1}
+.rules li{display:grid; grid-template-columns:auto 1fr; gap:var(--layout-space-3);
+  padding-block:var(--layout-space-2); border-block-end:1px solid var(--hairline);
+  font-size:var(--fs-ui-sm); line-height:var(--lh-body)}
+.rules li:last-child{border-block-end:0}
+.rules .m{font-family:var(--font-mono); font-size:var(--fs-label); color:var(--accent-deep); padding-block-start:.18rem}
+.rules b{font-weight:var(--fw-semibold)}
+ul.rules{list-style:none; margin:0; padding:0}
+#log{margin:0}
+#log .line{font-family:var(--font-mono); font-size:var(--fs-caption); color:var(--ink-soft);
+  padding-block:var(--layout-space-2); border-block-end:1px solid var(--hairline);
+  display:flex; gap:var(--layout-space-4)}
+#log .line b{color:var(--ink); font-weight:var(--fw-semibold); flex:0 0 auto}
+#log .line .t{color:var(--accent-deep); flex:0 0 auto; font-variant-numeric:tabular-nums}
+</style>
+</head>
+<body>
+<nav id="nav" class="layout-pinned-top">
+  <div class="layout-page">
+    <span style="font-weight:var(--fw-semibold); letter-spacing:-.015em">ayush.dev</span>
+    <span class="layout-row" style="gap:var(--layout-space-5)">
+      <a href="#">Work</a><a href="#">Blog</a><a href="#" style="color:var(--ink)">Grammar</a><a href="#">Contact</a>
+    </span>
+  </div>
+</nav>
+
+<main>
+
+  <!-- ============ HERO ============ -->
+  <section class="layout-content layout-section-hero">
+    <div class="layout-stack layout-stack-lg">
+      <p class="meta mono reveal" style="letter-spacing:0">design / toast · v2 — grammar-aligned</p>
+      <p class="eyebrow reveal">Toast</p>
+      <h1 class="display reveal">It fills.<br /><span style="color:var(--accent)">It runs down.</span><br />Then it's gone.</h1>
+      <p class="lead reveal">One wash of colour across the whole pill, instead of four small parts competing for the
+        same 40px. Its hue says what happened. How much of it is left says how long you have. Both are true of the
+        same layer at once, because they are different properties of it — not two shapes fighting for one centre.</p>
+      <div class="layout-row layout-row-tight reveal">
+        <span class="chip">colour = state</span>
+        <span class="tag">volume = time</span>
+        <span class="tag">swipe to dismiss</span>
+        <span class="tag">glyph on threshold only</span>
+        <span class="tag">6 rail positions</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 01 THE FILL ============ -->
+  <section class="layout-content layout-section" id="fill">
+    <div class="layout-stack layout-stack-lg">
+      <div class="layout-stack layout-stack-sm reveal">
+        <p class="section-num">01</p>
+        <h2 class="title">One layer, two honest jobs</h2>
+        <p class="lead">Both signals are required — a toast that vanishes without warning is a broken promise, and one
+          that doesn't say what happened isn't a notification. So neither gets dropped. They get put on properties that
+          don't compete: <b>hue</b> for what happened, <b>volume</b> for how long you have. The colour fills the pill
+          and retracts as the clock runs down. Every value below is taken from the grammar rather than invented — the
+          system already codifies a quantity on a dark surface, in <code class="mono">.rail.dark</code>.</p>
+        <p class="lead">The volume is two layers of one hue, not one. Underneath, a low base tint covers the whole pill
+          and never leaves — so the colour is still readable when the volume is nearly spent. On top, the volume
+          itself retracts leftward, and <b>its trailing edge is a 2.5rem feather rather than a cut</b>. Nothing
+          straight ever crosses a shape that has no straight sides, and because the feather scales down with the
+          volume, there's no sliver or remnant left against the rounded cap at the end.</p>
+      </div>
+
+      <div class="anat reveal">
+        <div class="toast is-open has-action" data-tone="note" style="--toast-w:22rem">
+          <span class="toast-fill" style="--p:.55"></span>
+          <span class="toast-body">
+            <span class="toast-msg">Draft deleted</span>
+            <button class="toast-act" type="button" tabindex="-1">Undo</button>
+          </span>
+        </div>
+      </div>
+
+      <div class="layout-grid-auto">
+        <div class="spec reveal">
+          <p class="label" style="margin-block-end:var(--layout-space-2)">Note</p>
+          <p class="meta"><code class="mono">rgba(255,255,255,.18)</code> — the <code class="mono">.rail.dark</code>
+            track family. Neutral, because nothing here needs a colour to be understood.</p>
+        </div>
+        <div class="spec reveal">
+          <p class="label" style="margin-block-end:var(--layout-space-2)">Done</p>
+          <p class="meta">Also neutral while it's open. <b>Green never touches the surface</b> — it lands on the exit
+            circle instead, solid, exactly as <code class="mono">.act</code> does on success.</p>
+        </div>
+        <div class="spec reveal">
+          <p class="label" style="margin-block-end:var(--layout-space-2)">Fail</p>
+          <p class="meta"><code class="mono">--err</code> at .34 — the one non-accent hue allowed on the surface,
+            following <code class="mono">#topbar.err</code>. Twice the time before it runs out.</p>
+        </div>
+        <div class="spec reveal">
+          <p class="label" style="margin-block-end:var(--layout-space-2)">Has an action</p>
+          <p class="meta"><code class="mono">var(--accent)</code> at .32 — <code class="mono">.rail.dark .fill</code>
+            is solid accent for exactly this job. The one purposeful accent spend on the component.</p>
+        </div>
+      </div>
+
+      <div class="spec reveal">
+        <p class="label" style="margin-block-end:var(--layout-space-2)">Where the green went</p>
+        <p class="meta"><code class="mono">--ok</code> has exactly one sanctioned use in the whole system —
+          <code class="mono">.act[data-state="success"]</code>, a solid fill on a button. A 320&times;48 green wash was
+          roughly 120&times; that area with no relative anywhere on the site, which is precisely why it never read
+          clearly. Success now lands on the exit circle: solid <code class="mono">--ok</code>, white check, the same
+          colour the visitor already learned from every action button here. Failure mirrors it —
+          <code class="mono">.act[data-state="error"]</code> is a white ground with an <code class="mono">--err</code>
+          mark, and so is the failing circle.</p>
+      </div>
+
+      <div class="spec reveal">
+        <p class="label" style="margin-block-end:var(--layout-space-2)">One default size</p>
+        <p class="meta">Every toast opens at the same <code class="mono">--toast-w-base</code> of 20rem. Longer copy
+          pushes past it, up to the rail's cap; shorter copy does <b>not</b> pull it in. A stack of three should read
+          as one consistent object repeated, not a ragged column of three different widths — and the message always
+          gets the full default measure whether or not it strictly needs it.</p>
+      </div>
+
+      <div class="layout-grid-auto">
+        <button class="btn btn-ghost" data-demo="note">Fire a note</button>
+        <button class="btn btn-ghost" data-demo="done">Fire a done</button>
+        <button class="btn btn-ghost" data-demo="fail">Fire a fail</button>
+        <button class="btn btn-ghost" data-demo="widths">Short + long, same floor</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 02 THE THRESHOLD GLYPH ============ -->
+  <section class="layout-content layout-section" id="glyph">
+    <div class="layout-stack layout-stack-lg">
+      <div class="layout-stack layout-stack-sm reveal">
+        <p class="section-num">02</p>
+        <h2 class="title">A glyph for the threshold, not the stay</h2>
+        <p class="lead">The icon is the toast, before and after it is a toast. It scales up from nothing, becomes a
+          pill, and at the end becomes an icon again and scales back to nothing. Three strict phases each way, and
+          <b>each one waits for the last to finish</b> — the expansion doesn't start until the icon has actually
+          landed. The glyph belongs to the two moments of <i>crossing</i>, never to the stay between them.</p>
+        <p class="lead">Which way it expands isn't the toast's decision — it falls out of the rail's alignment. Anchored
+          right, the right edge stays pinned and the pill grows <b>leftward</b>; anchored left, it grows
+          <b>rightward</b>; centred, it grows <b>both ways</b>, exactly like the pricing contact pill. Try it against
+          the six positions in section 06.</p>
+      </div>
+      <div class="layout-grid-auto">
+        <div class="spec reveal">
+          <p class="label" style="margin-block-end:var(--layout-space-2)">Arrives</p>
+          <p class="meta"><b>1.</b> The bell scales 0&nbsp;&rarr;&nbsp;100 as a circle, 300ms. <b>2.</b> Only then does
+            it expand into the pill, 420ms, the mark retiring as it goes. <b>3.</b> The clock arms. A bell always —
+            the outcome isn't known yet, so the mark doesn't guess at one.</p>
+          <button class="btn btn-ghost" style="margin-block-start:var(--layout-space-3)" data-demo="watch-open">Watch it land</button>
+        </div>
+        <div class="spec reveal">
+          <p class="label" style="margin-block-end:var(--layout-space-2)">Leaves, on its own time</p>
+          <p class="meta">The arrival played backwards. <b>1.</b> The pill shrinks to the circle, 420ms.
+            <b>2.</b> The outcome appears in it and holds, 340ms. <b>3.</b> The icon scales
+            100&nbsp;&rarr;&nbsp;0, 300ms. It scales away — it does not fade, or the two thresholds stop reading as
+            one gesture.</p>
+          <button class="btn btn-ghost" style="margin-block-start:var(--layout-space-3)" data-demo="watch-close">Watch one expire</button>
+        </div>
+      </div>
+      <div class="spec reveal">
+        <p class="meta"><b>Fail is the one moment this component inverts</b> — a solid white disc, ink mark, for that
+          single closing beat. Same move the alert dialog reserves for a destructive default: the site raises its
+          voice by flipping the ground it stands on, never by reaching for red.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 03 UNDO ============ -->
+  <section class="layout-content layout-section" id="undo">
+    <div class="layout-stack layout-stack-lg">
+      <div class="layout-stack layout-stack-sm reveal">
+        <p class="section-num">03</p>
+        <h2 class="title">Undo, in the fill</h2>
+        <p class="lead">An actionable toast wears accent, and the volume retracting <i>is</i> the window in which the action
+          still works. Press it and nothing new appears — the same pill swaps its tone, its line, and its fill, and
+          resets to a short run before it leaves normally.</p>
+      </div>
+      <div class="layout-grid-auto">
+        <div class="spec reveal">
+          <h3 class="title-sm">Delete with an undo window</h3>
+          <p class="meta" style="margin-block:var(--layout-space-2) var(--layout-space-5)">Seven seconds of accent,
+            retracting. Let it run out and the delete stands.</p>
+          <button class="btn btn-ghost" data-demo="undo">Delete draft</button>
+        </div>
+        <div class="spec reveal">
+          <h3 class="title-sm">Action that isn't undo</h3>
+          <p class="meta" style="margin-block:var(--layout-space-2) var(--layout-space-5)">Same mechanism, opening
+            something instead of reversing it.</p>
+          <button class="btn btn-ghost" data-demo="view">Publish case study</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 04 COALESCING ============ -->
+  <section class="layout-content layout-section" id="coalesce">
+    <div class="layout-stack layout-stack-lg">
+      <div class="layout-stack layout-stack-sm reveal">
+        <p class="section-num">04</p>
+        <h2 class="title">The same thing twice is not two things</h2>
+        <p class="lead">Give a toast an <code class="mono">id</code> and a repeat won't stack a duplicate. The pill on
+          screen refills to full, ticks a tabular <span class="mono">×n</span> counter, and that's all.</p>
+      </div>
+      <div class="spec reveal">
+        <div class="layout-row layout-row-tight">
+          <button class="btn btn-ink" data-demo="save">Save (press repeatedly)</button>
+          <button class="btn btn-ghost" data-demo="flood">Fire five different ones</button>
+        </div>
+        <p class="usecase"><b>Three at a time, maximum.</b> A fourth expires the oldest early — through the same
+          collapse-to-glyph exit as a natural timeout, since that is exactly what happened to it.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 05 PROMISE ============ -->
+  <section class="layout-content layout-section" id="promise">
+    <div class="layout-stack layout-stack-lg">
+      <div class="layout-stack layout-stack-sm reveal">
+        <p class="section-num">05</p>
+        <h2 class="title">One pill for the whole request</h2>
+        <p class="lead">Opens with the fill quietly sweeping — the same motion the skeleton loader already uses, so
+          nothing new is invented to say "working." The volume holds full while there's no deadline yet to spend. When
+          the promise settles, it switches from sweep to a full volume in the outcome's colour, and only then starts
+          retracting.</p>
+      </div>
+      <div class="layout-grid-auto">
+        <div class="spec reveal">
+          <h3 class="title-sm">Resolves</h3>
+          <p class="meta" style="margin-block:var(--layout-space-2) var(--layout-space-5)">Sweep → full green wash →
+            retracts over four seconds → gone.</p>
+          <button class="btn btn-ghost" data-demo="promise-ok">Deploy to staging</button>
+        </div>
+        <div class="spec reveal">
+          <h3 class="title-sm">Rejects</h3>
+          <p class="meta" style="margin-block:var(--layout-space-2) var(--layout-space-5)">Sweep → full red wash →
+            retracts over eight seconds, reason on the line.</p>
+          <button class="btn btn-ghost" data-demo="promise-fail">Deploy to production</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 06 POSITIONING ============ -->
+  <section class="layout-content layout-section" id="position">
+    <div class="layout-stack layout-stack-lg">
+      <div class="layout-stack layout-stack-sm reveal">
+        <p class="section-num">06</p>
+        <h2 class="title">Six corners, one property</h2>
+        <p class="lead">Position lives on the rail, not on any one toast — <code class="mono">Toast.position(name)</code>
+          sets <code class="mono">data-position</code> and every toast fired afterward opens from the new corner.
+          Toasts already on screen are left exactly where they are. Bottom-right stays the default: nearest the thumb
+          on mobile, out of the way of a right-hand cursor on desktop.</p>
+      </div>
+      <div class="panel reveal">
+        <div class="layout-grid-auto">
+          <button class="btn btn-ghost" data-pos="top-left">Top left</button>
+          <button class="btn btn-ghost" data-pos="top-center">Top center</button>
+          <button class="btn btn-ghost" data-pos="top-right">Top right</button>
+          <button class="btn btn-ghost" data-pos="bottom-left">Bottom left</button>
+          <button class="btn btn-ghost" data-pos="bottom-center">Bottom center</button>
+          <button class="btn btn-ink" data-pos="bottom-right">Bottom right · default</button>
+        </div>
+        <p class="usecase">Pick a corner, then fire a couple of toasts from section 01 above — they'll open from
+          wherever the rail is now anchored. <b>Top-*</b> stacks new toasts nearest the header; <b>bottom-*</b> stacks
+          them nearest the thumb. On a phone-width viewport every position spans the full gutter-to-gutter width
+          regardless of left/center/right — a corner-anchored toast on a 360px screen is the whole screen with extra
+          steps, so only the block edge (top or bottom) matters there.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 07 EXITS ============ -->
+  <section class="layout-content layout-section" id="exits">
+    <div class="layout-stack layout-stack-lg">
+      <div class="layout-stack layout-stack-sm reveal">
+        <p class="section-num">07</p>
+        <h2 class="title">How it leaves still tells you why</h2>
+        <p class="lead">There is no × anymore — a swipe already exists, and a visible close button next to a retracting
+          fill was two dismiss affordances doing one job. Removing it gave the line real breathing room. The two exits
+          stay deliberately different, so the outcome reads without thinking about it.</p>
+      </div>
+      <div class="layout-grid-auto">
+        <div class="spec reveal">
+          <p class="label" style="margin-block-end:var(--layout-space-2)">Ran out</p>
+          <h3 class="title-sm">It collapses, shows its outcome, then goes</h3>
+          <p class="meta" style="margin-block-start:var(--layout-space-2)">Shrinks back to the circle it arrived as,
+            holds the outcome glyph for a beat, fades. Its time simply ended, and it says so on the way out.</p>
+        </div>
+        <div class="spec reveal">
+          <p class="label" style="margin-block-end:var(--layout-space-2)">Dismissed</p>
+          <h3 class="title-sm">It flies, immediately</h3>
+          <p class="meta" style="margin-block-start:var(--layout-space-2)">Swipe it, or focus it and press
+            <span class="mono">Delete</span>. It leaves in the direction you pushed, with no collapse — you ended it
+            yourself, so it doesn't perform a countdown that already stopped mattering.</p>
+        </div>
+      </div>
+      <div class="spec reveal">
+        <p class="meta">Drag works with a mouse, a finger, or a pen — past a quarter of the pill's width it goes, short
+          of that it springs back and the fill resumes exactly where it paused. Every toast is reachable by
+          <span class="mono">Tab</span>; with one focused, <span class="mono">Delete</span>,
+          <span class="mono">Backspace</span> or <span class="mono">Esc</span> dismisses it — the keyboard equivalent of
+          a swipe, not a visible button.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 08 RULES ============ -->
+  <section class="layout-content layout-section" id="rules">
+    <div class="layout-stack layout-stack-lg">
+      <div class="layout-stack layout-stack-sm reveal">
+        <p class="section-num">08</p>
+        <h2 class="title">Rules</h2>
+      </div>
+      <div class="panel reveal">
+        <ul class="rules">
+          <li><span class="m">both</span><span><b>Neither signal is optional.</b> If a fix makes one quieter, it must move to a property that doesn't compete — it may never simply disappear.</span></li>
+          <li><span class="m">one</span><span>One layer carries both required signals: <b>hue</b> for outcome, <b>volume</b> for time. They don't fight because they aren't the same kind of mark.</span></li>
+          <li><span class="m">feather</span><span><b>The volume's trailing edge is always a feather, never a cut.</b> On a fully rounded shape a straight border is a foreign object. The feather scales with the volume so nothing is left behind at zero.</span></li>
+          <li><span class="m">base</span><span>A low base of the same hue sits under the volume and never leaves, so the colour stays readable to the end. No separate bar, badge or marker for identity — those grow geometry that fights the radius.</span></li>
+          <li><span class="m">motion</span><span>The vocabulary is reveal, lift, spin, draw, sweep, expand — all single-direction, all settling once. <b>No shakes, wiggles or oscillations.</b></span></li>
+          <li><span class="m">size</span><span>One default width for every toast. Content may push past it, never below it.</span></li>
+          <li><span class="m">glyph</span><span>The glyph exists only at the threshold — arriving or leaving. It never sits in the body while the toast is open.</span></li>
+          <li><span class="m">grep first</span><span><b>Before adding a colour, a motion or a measure, grep the grammar for it.</b> Nothing returned is usually a decision already made, not a gap to fill. Every deviation in v1 entered by solving inside the component instead of asking what the system already does.</span></li>
+          <li><span class="m">no green surface</span><span><code class="mono">--ok</code> exists once system-wide, as a solid <code class="mono">.act</code> fill. It never becomes a wash, a tint or a surface. Success belongs on the exit circle.</span></li>
+          <li><span class="m">rail.dark</span><span>Quantity on a dark surface is already codified: <code class="mono">rgba(255,255,255,.12)</code> track, accent fill. The volume follows it.</span></li>
+          <li><span class="m">exit = .act</span><span>The closing circle reproduces the action button's settled states exactly — solid <code class="mono">--ok</code> with a white check, or white with an <code class="mono">--err</code> mark.</span></li>
+          <li><span class="m">no button</span><span>No visible × anywhere. Swipe and keyboard cover dismissal; a button next to a retracting fill was redundant.</span></li>
+          <li><span class="m">three</span><span>Three on screen at most. A fourth expires the oldest through the same exit a timeout uses.</span></li>
+          <li><span class="m">pause</span><span>The volume stops retracting while a human is reading, and while the tab is hidden. Resumes, never restarts.</span></li>
+          <li><span class="m">button owns success</span><span>If a button started the work, the button reports it — <code class="mono">.act</code> already owns <span class="mono">success</span>.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ LOG ============ -->
+  <section class="layout-content layout-section-sm" id="log-section" style="padding-block-end:var(--layout-space-7)">
+    <div class="layout-row layout-row-split" style="margin-block-end:var(--layout-space-3)">
+      <h2 class="title-sm">Event log</h2>
+      <button class="btn btn-ghost" onclick="document.getElementById('log').innerHTML=''">clear</button>
+    </div>
+    <div id="log"></div>
+  </section>
+
+</main>
+
+<footer class="layout-content layout-section-sm" style="border-block-start:1px solid var(--hairline); text-align:center">
+  <p class="meta">Built with the dota libraries · Served from S3 + CloudFront</p>
+</footer>
+
+<div id="toastRail" data-position="bottom-right" role="region" aria-label="Notifications" aria-live="polite" aria-relevant="additions"></div>
+<div id="toastAlerts" class="toast-sr" aria-live="assertive" aria-atomic="true"></div>
+
+<script>
+/* ==================================================================
+   THE TOAST MACHINE
+
+   One rail, one shared rAF clock. A toast holds no logic of its own —
+   the machine owns time, tone and identity, and the DOM only ever
+   reflects what it publishes. Same separation as the action button
+   and the alert dialog.
+   ================================================================== */
+const Toast = (function(){
+
+  const rail   = document.getElementById('toastRail');
+  const alerts = document.getElementById('toastAlerts');
+  const MAX    = 3;
+  const rm     = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const DUR = { note:4000, done:4000, fail:8000, action:7000 };
+
+  /* the glyph vocabulary. GLYPH.bell is the only one used on arrival —
+     the others appear only in the closing beat, chosen by outcome. */
+  const GLYPH = {
+    bell: '<svg viewBox="0 0 24 24"><path d="M12 4a3 3 0 0 0-3 3v2.3c0 .9-.4 1.8-1 2.5L6.5 13.5h11L16 11.8c-.6-.7-1-1.6-1-2.5V7a3 3 0 0 0-3-3z"/><path d="M10.3 16.5a1.8 1.8 0 0 0 3.4 0"/></svg>',
+    done: '<svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7"/></svg>',
+    fail: '<svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg>',
+    open: '<svg viewBox="0 0 24 24"><path d="M8 16 16 8"/><path d="M9.5 8H16v6.5"/></svg>',
+    undo: '<svg viewBox="0 0 24 24"><path d="M9 13.5 4.5 9 9 4.5"/><path d="M4.5 9h10a5 5 0 0 1 0 10H9"/></svg>'
+  };
+  /* what the closing beat shows, keyed by the tone it is closing on */
+  const EXIT_GLYPH = { note:'bell', done:'done', fail:'fail' };
+
+  const live = new Map();               /* id -> record */
+  let   seq  = 0, raf = null, last = 0, paused = false;
+
+  /* ---------------- the clock ---------------- */
+  function tick(ts){
+    const dt = ts - (last || ts); last = ts;
+    live.forEach(r => {
+      if(r.sticky || r.pending || r.held || paused || !r.armed) return;
+      r.left -= dt;
+      draw(r);
+      if(r.left <= 0) expire(r);
+    });
+    raf = live.size ? requestAnimationFrame(tick) : (last = 0, null);
+  }
+  function run(){ if(!raf){ last = 0; raf = requestAnimationFrame(tick); } }
+
+  /* The volume retracts. --p drives the gradient stop, so the trailing
+     edge is a feather rather than a cut and nothing straight ever crosses
+     the pill. The base tint underneath is untouched, so the hue stays
+     readable the whole way down. */
+  function draw(r){
+    const leftPct = Math.max(0, Math.min(1, r.left / r.duration));
+    r.fillEl.style.setProperty('--p', leftPct.toFixed(4));
+  }
+
+  /* pause while a human is reading, and while the tab is hidden.
+     resume from where it stopped — never restart.
+     pointerover/out (not enter/leave) because the rail is
+     pointer-events:none and only the pills are targets — these still
+     bubble up to it. */
+  let hovering = false, focused = false;
+  const repause = () => paused = hovering || focused || document.hidden;
+
+  rail.addEventListener('pointerover', () => { hovering = true;  repause(); });
+  rail.addEventListener('pointerout',  e => { if(rail.contains(e.relatedTarget)) return;
+                                              hovering = false; repause(); });
+  rail.addEventListener('focusin',     () => { focused = true;   repause(); });
+  rail.addEventListener('focusout',    () => { setTimeout(() => {
+                                              focused = rail.contains(document.activeElement); repause(); }, 0); });
+  document.addEventListener('visibilitychange', () => { last = 0; repause(); });
+
+  /* ---------------- build ---------------- */
+  function build(cfg){
+    const el = document.createElement('div');
+    el.className = 'toast';
+    el.dataset.tone = cfg.tone;
+    el.tabIndex = 0;
+    if(cfg.action) el.classList.add('has-action');
+    if(cfg.sticky) el.classList.add('is-sticky');
+    if(cfg.pending) el.classList.add('is-pending');
+
+    el.innerHTML =
+      '<span class="toast-fill"></span>' +
+      '<span class="toast-glyph"><span class="toast-glyph-ic"></span></span>' +
+      '<span class="toast-body">' +
+        '<span class="toast-msg"></span>' +
+        '<span class="toast-count" data-count hidden></span>' +
+      '</span>' +
+      '<span class="toast-sr">Focused. Press Delete, Backspace or Escape to dismiss, or swipe.</span>';
+
+    const body = el.querySelector('.toast-body');
+    el.querySelector('.toast-msg').textContent = cfg.message;
+
+    if(cfg.action){
+      const b = document.createElement('button');
+      b.className = 'toast-act'; b.type = 'button';
+      b.textContent = cfg.action.label;
+      body.appendChild(b);
+    }
+    return el;
+  }
+
+  /* ---------------- open ---------------- */
+  function show(cfg){
+    /* coalesce: the same thing twice is not two things */
+    if(cfg.id && live.has(cfg.id)){
+      const r = live.get(cfg.id);
+      r.count += 1;
+      r.countEl.hidden = false;
+      r.countEl.textContent = '\u00d7' + r.count;
+      r.msgEl.textContent = cfg.message;
+      r.left = r.duration;
+      draw(r);
+      r.el.animate(
+        [{transform:'scale(1)'},{transform:'scale(1.02)'},{transform:'scale(1)'}],
+        { duration: rm() ? 0 : 240, easing:'cubic-bezier(.2,.8,.2,1)' }
+      );
+      return r.id;
+    }
+
+    while(live.size >= MAX) retireOldest();
+
+    const id = cfg.id || ('t' + (++seq));
+    const el = build(cfg);
+
+    const r = {
+      id, el, cfg,
+      tone: cfg.tone,
+      sticky: !!cfg.sticky,
+      pending: !!cfg.pending,
+      held: false,
+      armed: false,
+      closing: false,
+      count: 1,
+      duration: cfg.duration || (cfg.action ? DUR.action : DUR[cfg.tone]),
+      fillEl:  el.querySelector('.toast-fill'),
+      msgEl:   el.querySelector('.toast-msg'),
+      countEl: el.querySelector('.toast-count'),
+      glyphEl: el.querySelector('.toast-glyph'),
+      glyphIc: el.querySelector('.toast-glyph-ic')
+    };
+    r.left = r.duration;
+
+    live.set(id, r);
+    rail.appendChild(el);
+
+    if(cfg.tone === 'fail') alerts.textContent = cfg.message;
+
+    /* measure the natural width, then grow to it — the same technique
+       the sticky contact pill uses for --sb-w. */
+    el.style.setProperty('--toast-w', measure(el) + 'px');
+
+    /* ---- ARRIVAL, in three strict phases. Each waits for the last. ----
+       1. the notification icon scales 0 -> 100, as a circle          (300ms)
+       2. the circle expands into the pill, icon retiring as it goes  (420ms)
+       3. the clock arms
+       The icon is loaded and marked visible BEFORE phase 1 starts, so it
+       scales up with the circle rather than fading in after it. */
+    r.glyphIc.innerHTML = GLYPH.bell;        /* never tone-specific — nothing is known yet */
+    r.glyphEl.classList.add('is-note', 'is-shown');
+
+    requestAnimationFrame(() => {
+      el.classList.add('is-in');                       /* PHASE 1 */
+
+      setTimeout(() => {
+        /* PHASE 2 — only now, with the icon fully landed. It retires as
+           the pill widens; it must never ride along at full width. */
+        r.glyphEl.classList.remove('is-shown');
+        el.classList.add('is-open');
+
+        /* PHASE 3 — the clock arms once the pill has settled, so the
+           countdown and the entrance never run over each other */
+        setTimeout(() => { r.armed = true; r.left = r.duration; draw(r); }, rm() ? 0 : 420);
+      }, rm() ? 0 : 300);                              /* = phase 1 duration */
+    });
+
+    wire(r);
+    run();
+    return id;
+  }
+
+  /* width the pill wants: clone at auto width, off-screen, read, discard.
+     This function OWNS the default-width floor. `.toast-measure` applies
+     min-inline-size to the ghost, so the returned value is already floored
+     and capped — one number, which the live element can then animate to on
+     its own without a second property fighting it.
+
+     transform:none is load-bearing — the base .toast is scale(0), and
+     getBoundingClientRect() reports the SCALED box, so without this the
+     measurement comes back as 0. (It was already reading 10% short against
+     the old scale(.9) base; that is fixed here too.) */
+  function measure(el){
+    const ghost = el.cloneNode(true);
+    ghost.style.cssText = 'position:absolute; visibility:hidden; inline-size:auto; max-inline-size:none; transition:none; transform:none; opacity:0';
+    ghost.classList.add('is-open', 'toast-measure');   /* floor applied here, not on the live pill */
+    rail.appendChild(ghost);
+    const w = Math.ceil(ghost.getBoundingClientRect().width);
+    ghost.remove();
+    return Math.min(w, rail.clientWidth || w);
+  }
+
+  /* ---------------- interaction ---------------- */
+  function wire(r){
+    const act = r.el.querySelector('.toast-act');
+    if(act) act.addEventListener('click', () => {
+      act.blur();                       /* about to be removed — don't strand focus */
+      const swap = r.cfg.action.onClick && r.cfg.action.onClick(r.id);
+      if(typeof swap === 'string'){ morph(r, { tone:'done', message:swap, duration:2400 }); }
+      else fly(r, 0);
+    });
+
+    /* keyboard: focus the toast, Delete/Backspace/Esc dismisses it —
+       the keyboard equivalent of a swipe, since there is no button */
+    r.el.addEventListener('keydown', e => {
+      if(e.target !== r.el) return;                    // don't hijack the action button's own keys
+      if(['Delete','Backspace','Escape'].includes(e.key)){
+        e.preventDefault(); fly(r, 0);
+      }
+    });
+
+    /* drag to dismiss — the pill follows the pointer 1:1, no easing */
+    let x0 = null, dx = 0;
+    r.el.addEventListener('pointerdown', e => {
+      if(e.target.closest('button')) return;
+      x0 = e.clientX; dx = 0; r.held = true;
+      r.el.setPointerCapture(e.pointerId);
+      r.el.style.transition = 'none';
+    });
+    r.el.addEventListener('pointermove', e => {
+      if(x0 === null) return;
+      dx = e.clientX - x0;
+      r.el.style.transform = 'translateX(' + dx + 'px)';
+      r.el.style.opacity = Math.max(0, 1 - Math.abs(dx) / (r.el.offsetWidth * 0.9)).toFixed(3);
+    });
+    const end = () => {
+      if(x0 === null) return;
+      const far = Math.abs(dx) > r.el.offsetWidth * 0.25;
+      x0 = null; r.held = false;
+      r.el.style.transition = '';
+      if(far){ fly(r, dx); }
+      else { r.el.style.transform = ''; r.el.style.opacity = ''; }
+    };
+    r.el.addEventListener('pointerup', end);
+    r.el.addEventListener('pointercancel', end);
+  }
+
+  /* ---------------- morph in place (undo etc.) ---------------- */
+  function morph(r, next){
+    r.el.dataset.tone = next.tone;
+    r.tone = next.tone;
+    r.msgEl.textContent = next.message;
+    r.el.classList.remove('is-pending', 'has-action', 'is-sticky');
+    r.pending = false; r.sticky = false;
+    const act = r.el.querySelector('.toast-act'); if(act) act.remove();
+
+    r.duration = next.duration || DUR[next.tone];
+    r.left = r.duration;
+    r.armed = true;                       /* already open — no growth to wait for */
+    draw(r);
+
+    if(next.tone === 'fail') alerts.textContent = next.message;
+
+    r.el.style.setProperty('--toast-w', measure(r.el) + 'px');
+    run();
+  }
+
+  /* ---------------- exits ----------------
+     EXPIRE = its time ran out. Collapses to the circle, shows the
+     outcome for one beat, fades. FLY = a human ended it — immediate,
+     directional, no collapse. Different causes, different motion, so
+     the outcome reads without thinking about it. */
+  function expire(r){
+    if(r.closing) return;
+    r.closing = true;
+    live.delete(r.id);
+
+    r.el.classList.add('is-closing');
+    r.el.classList.remove('is-open');          /* width falls back to the circle, --toast-h */
+
+    /* ---- DEPARTURE, the arrival played backwards ----
+       1. the pill shrinks back to the circle it came from   (420ms)
+       2. the outcome icon appears in it and holds            (340ms)
+       3. the icon scales 100 -> 0                            (300ms)
+       Step 3 is a scale, not a fade: it has to undo step 1 of the
+       arrival, or the two thresholds don't read as the same gesture. */
+    setTimeout(() => {                                   /* PHASE 1 done */
+      const kind = EXIT_GLYPH[r.tone] || 'bell';
+      r.glyphIc.innerHTML = GLYPH[kind];
+      /* the circle takes .act's settled colours for this outcome */
+      r.glyphEl.classList.remove('is-done','is-fail','is-note');
+      r.glyphEl.classList.add(kind === 'done' ? 'is-done'
+                            : kind === 'fail' ? 'is-fail' : 'is-note');
+      r.glyphEl.classList.add('is-shown');               /* PHASE 2 */
+
+      setTimeout(() => {
+        r.el.classList.remove('is-in');                  /* PHASE 3 — scale(1) -> scale(0) */
+        setTimeout(() => remove(r), rm() ? 0 : 320);
+      }, rm() ? 0 : 340);
+    }, rm() ? 0 : 440);
+  }
+
+  function fly(r, dx){
+    if(r.closing) return;
+    r.closing = true;
+    if(!live.has(r.id)) return;
+    live.delete(r.id);
+    const dir = dx === 0 ? 1 : Math.sign(dx);
+    r.el.classList.add('is-gone');
+    r.el.style.transform = 'translateX(' + (dir * (r.el.offsetWidth + 24)) + 'px)';
+    r.el.style.opacity = '0';
+    setTimeout(() => remove(r), rm() ? 0 : 230);
+  }
+
+  function retireOldest(){
+    const first = live.values().next().value;
+    if(first) expire(first);
+  }
+
+  /* FLIP: when one leaves, the survivors glide into place rather than jump */
+  function remove(r){
+    const others = [...rail.children].filter(n => n !== r.el);
+    const before = others.map(n => n.getBoundingClientRect().top);
+    r.el.remove();
+    if(rm()) return;
+    others.forEach((n, i) => {
+      const d = before[i] - n.getBoundingClientRect().top;
+      if(!d) return;
+      n.animate([{transform:'translateY(' + d + 'px)'},{transform:'none'}],
+                { duration:260, easing:'cubic-bezier(.2,.8,.2,1)' });
+    });
+  }
+
+  const POSITIONS = ['top-left','top-center','top-right','bottom-left','bottom-center','bottom-right'];
+
+  /* ---------------- public API ---------------- */
+  const api = {
+    note(message, o){ return show(Object.assign({ tone:'note', message }, o)); },
+    done(message, o){ return show(Object.assign({ tone:'done', message }, o)); },
+    fail(message, o){ return show(Object.assign({ tone:'fail', message }, o)); },
+
+    /* switches the anchor corner. Existing toasts stay put — position
+       is a property of the rail, not of any one pill — so it only
+       affects what shows up next. */
+    position(pos){
+      if(!POSITIONS.includes(pos)){ console.warn('Toast.position: unknown position "' + pos + '"'); return; }
+      rail.dataset.position = pos;
+    },
+
+    /* one pill for the whole request: sweeps, then morphs where it stands */
+    promise(work, msgs){
+      const id = show({ tone:'note', message:msgs.pending, pending:true, id:msgs.id });
+      const r = live.get(id);
+      const p = typeof work === 'function' ? work() : work;
+      p.then(v => {
+        if(live.has(id)) morph(r, { tone:'done',
+          message: typeof msgs.done === 'function' ? msgs.done(v) : msgs.done });
+        return v;
+      }).catch(e => {
+        if(live.has(id)) morph(r, { tone:'fail',
+          message: typeof msgs.fail === 'function' ? msgs.fail(e) : msgs.fail });
+      });
+      return p;
+    },
+
+    dismiss(id){ const r = live.get(id); if(r) fly(r, 0); },
+    clear(){ [...live.values()].forEach(r => fly(r, 0)); }
+  };
+  return api;
+})();
+
+
+/* ==================================================================
+   DEMO PAGE ONLY
+   ================================================================== */
+function log(what){
+  const wrap = document.getElementById('log');
+  const line = document.createElement('div');
+  line.className = 'line';
+  line.innerHTML = '<span class="t">' + new Date().toLocaleTimeString([], {hour12:false}) +
+                   '</span><b>' + what + '</b>';
+  wrap.prepend(line);
+}
+const wait = (ms, fail) => new Promise((res, rej) =>
+  setTimeout(() => fail ? rej(new Error(fail)) : res(true), ms));
+
+const demos = {
+  note(){ Toast.note('Copied the deploy command'); },
+  done(){ Toast.done('Backup finished — 412 MB'); },
+  fail(){ Toast.fail('Couldn\u2019t reach the mail service'); },
+
+  'watch-open'(){ Toast.note('Watch the bell fade as this opens'); },
+  'watch-close'(){ Toast.done('This will collapse, then show a check', { duration:1800 }); },
+
+  undo(){
+    Toast.done('Draft deleted', {
+      action: { label:'Undo', onClick(){ log('undo pressed → restored in place'); return 'Draft restored'; } }
+    });
+  },
+
+  view(){
+    Toast.done('Case study published', {
+      action: { label:'View', onClick(){ log('view pressed'); } }
+    });
+  },
+
+  widths(){
+    Toast.note('Saved');
+    setTimeout(() => Toast.done('Deployed to staging in 41 seconds'), 320);
+  },
+
+  save(){ Toast.note('Draft saved', { id:'autosave' }); },
+
+  flood(){
+    ['Cache warmed','Sitemap regenerated','CloudFront invalidated','RSS rebuilt','Search index updated']
+      .forEach((m, i) => setTimeout(() => Toast.note(m), i * 300));
+  },
+
+  'promise-ok'(){
+    Toast.promise(wait(2000), { id:'deploy', pending:'Deploying to staging', done:'Staging is live' })
+      .then(() => log('promise resolved'));
+  },
+
+  'promise-fail'(){
+    Toast.promise(wait(2000, 'Health check failed on 2 of 4 tasks'),
+      { id:'deploy-prod', pending:'Deploying to production', fail:e => e.message })
+      .catch(() => log('promise rejected'));
+  }
+};
+
+document.querySelectorAll('[data-demo]').forEach(b => {
+  b.addEventListener('click', () => { demos[b.dataset.demo](); log(b.dataset.demo); });
+});
+
+const posButtons = document.querySelectorAll('[data-pos]');
+posButtons.forEach(b => {
+  b.addEventListener('click', () => {
+    Toast.position(b.dataset.pos);
+    posButtons.forEach(o => { o.classList.remove('btn-ink'); o.classList.add('btn-ghost'); });
+    b.classList.remove('btn-ghost'); b.classList.add('btn-ink');
+    log('position → ' + b.dataset.pos);
+  });
+});
+
+/* shared page behaviours */
+const nav = document.getElementById('nav');
+addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 40), { passive:true });
+const io = new IntersectionObserver(es => es.forEach(e => {
+  if(e.isIntersecting){ e.target.classList.add('is-in'); io.unobserve(e.target); }
+}), { threshold:.12 });
+document.querySelectorAll('.reveal').forEach(n => io.observe(n));
+</script>
+</body>
+</html>
