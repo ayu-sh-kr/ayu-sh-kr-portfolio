@@ -13,4 +13,5 @@ export { DesignTypographyPage } from "@app/pages/design-typography.page.ts";
 export { DesignColorPage } from "@app/pages/design-color.page.ts";
 export { DesignLayoutPage } from "@app/pages/design-layout.page.ts";
 export { DesignAlertPage } from "@app/pages/design-alert.page.ts";
+export { DesignToastPage } from "@app/pages/design-toast.page.ts";
 export { OfflinePage } from "@app/components/pages/offline/shell/offline-page/offline-page.component.ts";
