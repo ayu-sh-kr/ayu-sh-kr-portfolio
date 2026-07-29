@@ -13,6 +13,7 @@
 @import "./components/utils/footer/footer-baseline/footer-baseline.component.css";
 @import "./components/utils/theme/dark-mode-button/dark-mode-button.component.css";
 @import "./components/utils/alert/dota-alert/dota-alert.component.css";
+@import "./components/utils/toast/dota-toast/dota-toast.component.css";
 @import "./components/utils/skeleton/skeleton.component.css";
 @import "./components/pages/design/overview/design-typography-overview/design-typography-overview.component.css";
 @import "./components/pages/design/roles/design-typography-roles/design-typography-roles.component.css";
@@ -28,6 +29,9 @@
 @import "./components/pages/design/alert/showcase/design-alert-showcase/design-alert-showcase.component.css";
 @import "./components/pages/design/alert/custom-release/design-alert-release/design-alert-release.component.css";
 @import "./components/pages/design/alert/guidance/design-alert-guidance/design-alert-guidance.component.css";
+@import "./components/pages/design/toast/overview/design-toast-overview/design-toast-overview.component.css";
+@import "./components/pages/design/toast/showcase/design-toast-showcase/design-toast-showcase.component.css";
+@import "./components/pages/design/toast/guidance/design-toast-guidance/design-toast-guidance.component.css";
 @import "./components/pages/blog/article/blog-article-header/blog-article-header.component.css";
 @import "./components/pages/showcase/article/showcase-article-header/showcase-article-header.component.css";
 @import "./components/pages/privacy/document/privacy-document-header/privacy-document-header.component.css";
