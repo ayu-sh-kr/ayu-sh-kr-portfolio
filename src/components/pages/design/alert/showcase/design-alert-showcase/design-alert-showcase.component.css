@@ -1,0 +1,90 @@
+.design-alert-showcase-heading {
+  max-inline-size: var(--layout-content-max);
+}
+
+.design-alert-showcase-heading h2,
+.design-alert-showcase-heading p {
+  margin: 0;
+}
+
+.design-alert-showcase-heading .type-lede,
+.design-alert-specimen > p {
+  color: var(--muted-color);
+}
+
+.design-alert-showcase-grid {
+  margin-block-start: var(--layout-space-7);
+}
+
+.design-alert-specimen {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--layout-space-3);
+  min-inline-size: 0;
+  border: 1px solid var(--border-color);
+  border-radius: var(--layout-radius-lg);
+  background: var(--surface-color);
+  padding: var(--layout-pad-card);
+}
+
+.design-alert-specimen .type-label,
+.design-alert-specimen h3,
+.design-alert-specimen > p {
+  margin: 0;
+}
+
+.design-alert-specimen > p {
+  font-size: var(--type-compact-size);
+  line-height: var(--type-compact-leading);
+}
+
+.design-alert-specimen--ask .type-label,
+.design-alert-specimen--custom .type-label {
+  color: var(--primary-color-strong);
+}
+
+.design-alert-specimen--risk .type-label {
+  color: var(--danger-color);
+}
+
+.design-alert-trigger {
+  margin-block-start: auto;
+  min-block-size: 2.75rem;
+  padding-inline: var(--layout-space-5);
+  color: var(--foreground-color);
+  border: 1px solid var(--border-color);
+  border-radius: var(--layout-radius-pill);
+  background: transparent;
+  cursor: pointer;
+  font-size: var(--type-control-size);
+  font-weight: var(--type-control-weight);
+  transition: color 180ms ease, border-color 180ms ease, background-color 180ms ease, transform 180ms ease;
+}
+
+.design-alert-trigger:hover {
+  border-color: var(--primary-color);
+  background: var(--primary-color-subtle);
+  transform: translateY(-1px);
+}
+
+.design-alert-result {
+  display: grid;
+  gap: var(--layout-space-1);
+  margin-block-start: var(--layout-space-5);
+  padding: var(--layout-space-4) var(--layout-space-5);
+  color: var(--muted-color);
+  border-inline-start: 2px solid var(--primary-color);
+  font-family: var(--font-mono);
+  font-size: var(--type-compact-size);
+}
+
+.design-alert-result .type-label {
+  color: var(--primary-color-strong);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .design-alert-trigger {
+    transition: none;
+  }
+}
