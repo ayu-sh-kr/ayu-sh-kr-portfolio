@@ -5,26 +5,41 @@ showcase-metrics {
 .showcase-metrics {
   display: flex;
   flex-wrap: wrap;
-  gap: 2rem;
+  align-items: baseline;
+  gap: var(--layout-space-4);
   margin-block: 2em;
   border-block: 1px solid var(--border-color);
-  padding-block: 1.6rem;
+  padding-block: var(--layout-space-5);
 }
 
-.showcase-metric {
-  display: grid;
-  gap: 0.3rem;
+.showcase-metrics .showcase-metric {
+  display: inline-flex;
+  flex: 0 0 max-content;
+  align-items: baseline;
+  inline-size: max-content;
+  gap: var(--layout-space-2);
 }
 
-.showcase-metric strong {
+.showcase-metrics .showcase-metric strong {
   color: var(--foreground-color);
-  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  font-size: var(--type-price-size);
   font-weight: 700;
-  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: var(--type-price-tracking);
   line-height: 1;
+  white-space: nowrap;
 }
 
-.showcase-metric span {
+.showcase-metrics .showcase-metric > span {
+  display: inline-block;
+  flex: 0 0 auto;
+  min-inline-size: max-content;
+  inline-size: max-content;
+  max-inline-size: none;
+  overflow: visible;
   color: var(--muted-color);
-  font-size: 0.95rem;
+  font-size: var(--type-compact-size);
+  letter-spacing: normal;
+  line-height: var(--type-compact-leading);
+  white-space: nowrap;
 }
