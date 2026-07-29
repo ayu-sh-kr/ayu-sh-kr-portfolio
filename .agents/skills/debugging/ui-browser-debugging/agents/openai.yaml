@@ -1,0 +1,4 @@
+interface:
+  display_name: "UI Browser Debugging"
+  short_description: "Diagnose and verify browser-rendered UI bugs."
+  default_prompt: "Use $ui-browser-debugging to reproduce, diagnose, and verify this UI issue."
