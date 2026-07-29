@@ -1,0 +1,7 @@
+.design-toast-guidance h2,
+.design-toast-guidance h3,
+.design-toast-guidance p { margin: 0; }
+.design-toast-guidance__list { display: grid; gap: var(--layout-space-1); margin: 0; padding: 0; overflow: hidden; border: 1px solid var(--border-color); border-radius: var(--layout-radius-lg); background: var(--border-color); list-style: none; }
+.design-toast-guidance__list li { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: var(--layout-space-4); padding: var(--layout-space-5); background: var(--surface-color); }
+.design-toast-guidance__list span { color: var(--primary-color-strong); font-family: var(--font-mono); }
+.design-toast-guidance__list p { margin-block-start: var(--layout-space-1); color: var(--muted-color); font-size: var(--type-compact-size); line-height: var(--type-compact-leading); }
