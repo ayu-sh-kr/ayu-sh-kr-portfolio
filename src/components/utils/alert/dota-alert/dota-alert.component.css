@@ -1,0 +1,346 @@
+dota-alert {
+  display: contents;
+}
+
+.dota-alert__dialog {
+  --dota-alert-width: 29rem;
+  inline-size: min(var(--dota-alert-width), 100%);
+  max-inline-size: var(--layout-form-max);
+  max-block-size: min(85svh, 34rem);
+  margin: auto;
+  padding: 0;
+  overflow: hidden;
+  color: var(--foreground-color);
+  background: var(--surface-color);
+  border: 1px solid var(--border-color);
+  border-radius: var(--layout-radius-xl);
+  box-shadow: 0 12px 40px -12px var(--shadow-color);
+  opacity: 0;
+  transform: translateY(10px) scale(0.97);
+  transition: opacity 180ms ease, transform 180ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  z-index: var(--layout-z-modal);
+}
+
+.dota-alert__dialog[open] {
+  display: grid;
+  grid-template-rows: minmax(0, 1fr);
+}
+
+.dota-alert__dialog.is-open {
+  opacity: 1;
+  transform: none;
+  transition: opacity 260ms ease, transform 280ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.dota-alert__dialog::backdrop {
+  background: var(--scrim-modal);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  opacity: 0;
+  transition: opacity 220ms ease;
+}
+
+.dota-alert__dialog.is-open::backdrop {
+  opacity: 1;
+}
+
+.dota-alert__form,
+.dota-alert__built-in {
+  display: grid;
+  grid-template-rows: minmax(0, 1fr);
+  min-block-size: 0;
+}
+
+.dota-alert__body {
+  min-block-size: 0;
+  padding: var(--layout-space-6) var(--layout-space-6) var(--layout-space-5);
+  overflow-y: auto;
+}
+
+.dota-alert__head {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--layout-space-4);
+}
+
+.dota-alert__head > div {
+  min-inline-size: 0;
+}
+
+.dota-alert__icon {
+  display: grid;
+  flex: 0 0 auto;
+  inline-size: 2.375rem;
+  block-size: 2.375rem;
+  place-items: center;
+  color: var(--foreground-color);
+  background: var(--subtle-color);
+  border-radius: var(--layout-radius-round);
+}
+
+.dota-alert__icon svg {
+  inline-size: 1.25rem;
+  block-size: 1.25rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.9;
+}
+
+.dota-alert__icon svg circle:last-child {
+  fill: currentColor;
+  stroke: none;
+}
+
+.dota-alert__dialog[data-tone="ask"] .dota-alert__icon {
+  color: var(--primary-color-strong);
+  background: var(--primary-color-subtle);
+}
+
+.dota-alert__dialog[data-tone="risk"] .dota-alert__icon {
+  color: var(--danger-color);
+  background: var(--danger-color-subtle);
+}
+
+.dota-alert__title {
+  margin: 0;
+  font-size: var(--type-card-title-size);
+  font-weight: var(--type-card-title-weight);
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  text-wrap: balance;
+}
+
+.dota-alert__text {
+  margin: var(--layout-space-2) 0 0;
+  color: var(--muted-color);
+  font-size: var(--type-body-size);
+  line-height: var(--type-body-leading);
+}
+
+.dota-alert__text:empty {
+  display: none;
+}
+
+.dota-alert__field {
+  margin-block-start: var(--layout-space-5);
+}
+
+.dota-alert__field-label {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--layout-space-3);
+  margin-block-end: var(--layout-space-2);
+}
+
+.dota-alert__field-label label {
+  font-size: var(--type-label-size);
+  font-weight: var(--type-label-weight);
+  letter-spacing: var(--type-label-tracking);
+  text-transform: uppercase;
+}
+
+.dota-alert__hint {
+  color: var(--muted-color);
+  font-size: var(--type-compact-size);
+  line-height: var(--type-compact-leading);
+  opacity: 0.8;
+  text-transform: lowercase;
+}
+
+.dota-alert__input {
+  box-sizing: border-box;
+  inline-size: 100%;
+  padding: var(--layout-space-3) var(--layout-space-5);
+  color: var(--foreground-color);
+  background: var(--surface-color);
+  border: 1px solid var(--border-color);
+  border-radius: var(--layout-radius-pill);
+  font: inherit;
+  font-size: var(--type-body-size);
+}
+
+.dota-alert__input:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+.dota-alert__error {
+  margin: var(--layout-space-3) 0 0;
+  color: var(--danger-color);
+  font-size: var(--type-compact-size);
+  line-height: var(--type-compact-leading);
+}
+
+.dota-alert__footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--layout-space-2);
+  padding: var(--layout-space-4) var(--layout-space-6) var(--layout-space-5);
+  border-block-start: 1px solid var(--border-color);
+}
+
+.dota-alert__button,
+.dota-alert__action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--layout-space-2);
+  min-block-size: 2.75rem;
+  padding-inline: var(--layout-space-5);
+  color: var(--foreground-color);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--layout-radius-pill);
+  cursor: pointer;
+  font-size: var(--type-control-size);
+  font-weight: var(--type-control-weight);
+  transition: color 180ms ease, background-color 180ms ease, border-color 180ms ease, opacity 180ms ease, transform 250ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.dota-alert__button:hover:not([disabled]),
+.dota-alert__action:hover:not([disabled]):not([data-state="pending"]) {
+  transform: translateY(-2px);
+}
+
+.dota-alert__button[disabled],
+.dota-alert__action[disabled] {
+  cursor: not-allowed;
+  opacity: 0.45;
+  transform: none;
+}
+
+.dota-alert__button--ghost {
+  border-color: var(--border-color);
+}
+
+.dota-alert__button--ghost:hover:not([disabled]) {
+  border-color: var(--muted-color);
+  background: var(--surface-hover-color);
+}
+
+.dota-alert__button--note {
+  color: var(--contrast-foreground-color);
+  background: var(--contrast-background-color);
+}
+
+.dota-alert__button--ask,
+.dota-alert__action--ask {
+  color: var(--primary-color-on);
+  background: var(--primary-color);
+}
+
+.dota-alert__button--ask:hover:not([disabled]),
+.dota-alert__action--ask:hover:not([disabled]):not([data-state="pending"]) {
+  background: var(--primary-color-hover);
+}
+
+.dota-alert__button--risk,
+.dota-alert__action--risk {
+  color: var(--danger-color);
+  border-color: var(--border-color);
+  background: var(--surface-color);
+}
+
+.dota-alert__button--risk:hover:not([disabled]),
+.dota-alert__action--risk:hover:not([disabled]):not([data-state="pending"]) {
+  border-color: var(--danger-color);
+}
+
+.dota-alert__action--note {
+  color: var(--contrast-foreground-color);
+  background: var(--contrast-background-color);
+}
+
+.dota-alert__spinner {
+  inline-size: 0.9375rem;
+  block-size: 0.9375rem;
+  border: 2px solid currentColor;
+  border-block-start-color: transparent;
+  border-radius: var(--layout-radius-round);
+  animation: dota-alert-spin 700ms linear infinite;
+}
+
+.dota-alert__custom {
+  max-block-size: inherit;
+  overflow-y: auto;
+}
+
+.dota-alert__custom-content {
+  min-inline-size: 0;
+}
+
+.dota-alert__custom > .dota-alert__error {
+  padding: 0 var(--layout-space-6) var(--layout-space-5);
+}
+
+html.dota-alert-lock,
+html.dota-alert-lock body {
+  overflow: hidden;
+}
+
+@keyframes dota-alert-spin {
+  to { transform: rotate(360deg); }
+}
+
+@media (max-width: 519px) {
+  .dota-alert__dialog {
+    --dota-alert-width: 100%;
+  }
+
+  .dota-alert__body {
+    padding: var(--layout-space-5) var(--layout-space-5) var(--layout-space-4);
+  }
+
+  .dota-alert__footer {
+    align-items: stretch;
+    flex-direction: column-reverse;
+    padding: var(--layout-space-4) var(--layout-space-5) var(--layout-space-5);
+  }
+
+  .dota-alert__button,
+  .dota-alert__action {
+    inline-size: 100%;
+  }
+
+  .dota-alert__button:hover:not([disabled]),
+  .dota-alert__action:hover:not([disabled]):not([data-state="pending"]) {
+    transform: none;
+  }
+
+  .dota-alert__custom > .dota-alert__error {
+    padding-inline: var(--layout-space-5);
+  }
+}
+
+@media (pointer: coarse) {
+  .dota-alert__input {
+    font-size: var(--type-body-size);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dota-alert__dialog,
+  .dota-alert__dialog::backdrop {
+    transition: opacity 10ms linear;
+  }
+
+  .dota-alert__dialog,
+  .dota-alert__dialog.is-open {
+    transform: none;
+  }
+
+  .dota-alert__button,
+  .dota-alert__action {
+    transition: none;
+  }
+
+  .dota-alert__spinner {
+    animation: none;
+    border-block-start-color: currentColor;
+    opacity: 0.5;
+  }
+}
