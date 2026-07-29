@@ -1,0 +1,26 @@
+.design-toast-showcase { border-block: 1px solid var(--border-color); }
+.design-toast-showcase__heading { max-inline-size: var(--layout-content-max); }
+.design-toast-showcase__heading h2,
+.design-toast-showcase__heading p,
+.design-toast-card h3,
+.design-toast-card p,
+.design-toast-position h3,
+.design-toast-position p { margin: 0; }
+.design-toast-showcase__heading .type-lede,
+.design-toast-card > p,
+.design-toast-position > p { color: var(--muted-color); }
+.design-toast-showcase__grid { margin-block-start: var(--layout-space-7); }
+.design-toast-card { display: grid; gap: var(--layout-space-3); min-block-size: 15rem; padding: var(--layout-pad-card); border: 1px solid var(--border-color); border-radius: var(--layout-radius-lg); background: var(--surface-color); }
+.design-toast-card .type-label { color: var(--primary-color-strong); }
+.design-toast-card--fail .type-label { color: var(--danger-color); }
+.design-toast-card--done .type-label { color: var(--success-color); }
+.design-toast-card > p:last-of-type { font-size: var(--type-compact-size); line-height: var(--type-compact-leading); }
+.design-toast-card button,
+.design-toast-position__choices button { align-self: end; min-block-size: 2.75rem; padding-inline: var(--layout-space-5); color: var(--foreground-color); background: transparent; border: 1px solid var(--border-color); border-radius: var(--layout-radius-pill); cursor: pointer; font: inherit; font-size: var(--type-control-size); font-weight: var(--type-control-weight); transition: color 180ms ease, background-color 180ms ease, border-color 180ms ease, transform 250ms cubic-bezier(.2,.8,.2,1); }
+.design-toast-card button:hover,
+.design-toast-position__choices button:hover { border-color: var(--muted-color); background: var(--surface-hover-color); transform: translateY(-2px); }
+.design-toast-position { display: grid; gap: var(--layout-space-6); margin-block-start: var(--layout-space-7); padding: var(--layout-pad-card); border: 1px solid var(--border-color); border-radius: var(--layout-radius-lg); background: var(--surface-color); }
+.design-toast-position > .layout-stack > p:last-child { color: var(--muted-color); font-size: var(--type-compact-size); line-height: var(--type-compact-leading); }
+.design-toast-position__choices { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--layout-space-2); }
+.design-toast-position__choices button[aria-pressed="true"] { color: var(--primary-color-on); background: var(--primary-color); border-color: var(--primary-color); }
+@media (min-width: 700px) { .design-toast-position { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: end; } .design-toast-position__choices { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
