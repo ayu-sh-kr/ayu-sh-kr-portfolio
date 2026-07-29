@@ -833,6 +833,138 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/pages/design/alert/custom-release/design-alert-release/design-alert-release.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "DesignAlertReleaseComponent",
+          "customElement": true,
+          "tagName": "design-alert-release",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "DesignAlertReleaseComponent",
+          "declaration": {
+            "name": "DesignAlertReleaseComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "design-alert-release",
+          "declaration": {
+            "name": "DesignAlertReleaseComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/design/alert/guidance/design-alert-guidance/design-alert-guidance.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "DesignAlertGuidanceComponent",
+          "customElement": true,
+          "tagName": "design-alert-guidance",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "DesignAlertGuidanceComponent",
+          "declaration": {
+            "name": "DesignAlertGuidanceComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "design-alert-guidance",
+          "declaration": {
+            "name": "DesignAlertGuidanceComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/design/alert/overview/design-alert-overview/design-alert-overview.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "DesignAlertOverviewComponent",
+          "customElement": true,
+          "tagName": "design-alert-overview",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "DesignAlertOverviewComponent",
+          "declaration": {
+            "name": "DesignAlertOverviewComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "design-alert-overview",
+          "declaration": {
+            "name": "DesignAlertOverviewComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/design/alert/showcase/design-alert-showcase/design-alert-showcase.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "DesignAlertShowcaseComponent",
+          "customElement": true,
+          "tagName": "design-alert-showcase",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "DesignAlertShowcaseComponent",
+          "declaration": {
+            "name": "DesignAlertShowcaseComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "design-alert-showcase",
+          "declaration": {
+            "name": "DesignAlertShowcaseComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/pages/design/color/guidance/design-color-guidance/design-color-guidance.component.js",
       "declarations": [
         {
@@ -4029,6 +4161,39 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/utils/alert/dota-alert/dota-alert.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "DotaAlertComponent",
+          "customElement": true,
+          "tagName": "dota-alert",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "DotaAlertComponent",
+          "declaration": {
+            "name": "DotaAlertComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "dota-alert",
+          "declaration": {
+            "name": "DotaAlertComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/utils/footer/app-footer/app-footer.component.js",
       "declarations": [
         {
@@ -4543,6 +4708,39 @@
           "name": "coffee-page",
           "declaration": {
             "name": "CoffeePage"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/pages/design-alert.page.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "DesignAlertPage",
+          "customElement": true,
+          "tagName": "design-alert-page",
+          "superclass": {
+            "name": "DotaPageElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "DesignAlertPage",
+          "declaration": {
+            "name": "DesignAlertPage"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "design-alert-page",
+          "declaration": {
+            "name": "DesignAlertPage"
           }
         }
       ]

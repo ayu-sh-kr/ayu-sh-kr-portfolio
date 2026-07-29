@@ -530,6 +530,61 @@
           }
         },
         {
+          "name": "design-alert-guidance",
+          "source": {
+            "file": "./src/components/pages/design/alert/guidance/design-alert-guidance/design-alert-guidance.component.ts",
+            "offset": 313
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "design-alert-overview",
+          "source": {
+            "file": "./src/components/pages/design/alert/overview/design-alert-overview/design-alert-overview.component.ts",
+            "offset": 308
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "design-alert-page",
+          "source": {
+            "file": "./src/pages/design-alert.page.ts",
+            "offset": 587
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "design-alert-release",
+          "source": {
+            "file": "./src/components/pages/design/alert/custom-release/design-alert-release/design-alert-release.component.ts",
+            "offset": 602
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "design-alert-showcase",
+          "source": {
+            "file": "./src/components/pages/design/alert/showcase/design-alert-showcase/design-alert-showcase.component.ts",
+            "offset": 750
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
           "name": "design-color-guidance",
           "source": {
             "file": "./src/components/pages/design/color/guidance/design-color-guidance/design-color-guidance.component.ts",
@@ -666,6 +721,17 @@
           "source": {
             "file": "./src/components/pages/design/roles/design-typography-roles/design-typography-roles.component.ts",
             "offset": 782
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "dota-alert",
+          "source": {
+            "file": "./src/components/utils/alert/dota-alert/dota-alert.component.ts",
+            "offset": 2674
           },
           "attributes": [],
           "js": {
