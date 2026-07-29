@@ -684,6 +684,50 @@
           }
         },
         {
+          "name": "design-toast-guidance",
+          "source": {
+            "file": "./src/components/pages/design/toast/guidance/design-toast-guidance/design-toast-guidance.component.ts",
+            "offset": 529
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "design-toast-overview",
+          "source": {
+            "file": "./src/components/pages/design/toast/overview/design-toast-overview/design-toast-overview.component.ts",
+            "offset": 518
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "design-toast-page",
+          "source": {
+            "file": "./src/pages/design-toast.page.ts",
+            "offset": 649
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "design-toast-showcase",
+          "source": {
+            "file": "./src/components/pages/design/toast/showcase/design-toast-showcase/design-toast-showcase.component.ts",
+            "offset": 627
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
           "name": "design-typography-guidance",
           "source": {
             "file": "./src/components/pages/design/guidance/design-typography-guidance/design-typography-guidance.component.ts",
@@ -732,6 +776,17 @@
           "source": {
             "file": "./src/components/utils/alert/dota-alert/dota-alert.component.ts",
             "offset": 2674
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "dota-toast",
+          "source": {
+            "file": "./src/components/utils/toast/dota-toast/dota-toast.component.ts",
+            "offset": 3635
           },
           "attributes": [],
           "js": {

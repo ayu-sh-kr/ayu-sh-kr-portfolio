@@ -1295,6 +1295,105 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/pages/design/toast/guidance/design-toast-guidance/design-toast-guidance.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "DesignToastGuidanceComponent",
+          "customElement": true,
+          "tagName": "design-toast-guidance",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "DesignToastGuidanceComponent",
+          "declaration": {
+            "name": "DesignToastGuidanceComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "design-toast-guidance",
+          "declaration": {
+            "name": "DesignToastGuidanceComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/design/toast/overview/design-toast-overview/design-toast-overview.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "DesignToastOverviewComponent",
+          "customElement": true,
+          "tagName": "design-toast-overview",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "DesignToastOverviewComponent",
+          "declaration": {
+            "name": "DesignToastOverviewComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "design-toast-overview",
+          "declaration": {
+            "name": "DesignToastOverviewComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/design/toast/showcase/design-toast-showcase/design-toast-showcase.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "DesignToastShowcaseComponent",
+          "customElement": true,
+          "tagName": "design-toast-showcase",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "DesignToastShowcaseComponent",
+          "declaration": {
+            "name": "DesignToastShowcaseComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "design-toast-showcase",
+          "declaration": {
+            "name": "DesignToastShowcaseComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/pages/home/contact/about-contact-section/about-contact-section.component.js",
       "declarations": [
         {
@@ -4615,6 +4714,39 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/utils/toast/dota-toast/dota-toast.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "DotaToastComponent",
+          "customElement": true,
+          "tagName": "dota-toast",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "DotaToastComponent",
+          "declaration": {
+            "name": "DotaToastComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "dota-toast",
+          "declaration": {
+            "name": "DotaToastComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/pages/blog-slug.page.js",
       "declarations": [
         {
@@ -4807,6 +4939,39 @@
           "name": "design-layout-page",
           "declaration": {
             "name": "DesignLayoutPage"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/pages/design-toast.page.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "DesignToastPage",
+          "customElement": true,
+          "tagName": "design-toast-page",
+          "superclass": {
+            "name": "DotaPageElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "DesignToastPage",
+          "declaration": {
+            "name": "DesignToastPage"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "design-toast-page",
+          "declaration": {
+            "name": "DesignToastPage"
           }
         }
       ]
