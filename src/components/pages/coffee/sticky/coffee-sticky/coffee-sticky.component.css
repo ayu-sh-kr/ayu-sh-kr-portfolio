@@ -7,7 +7,5 @@ coffee-sticky { display: contents; }
 .coffee-sticky-body { display: flex; align-items: center; gap: .9rem; padding: 0 .55rem 0 1.5rem; transform: translateX(-.4rem); white-space: nowrap; opacity: 0; transition: opacity 220ms ease 140ms, transform 300ms ease 140ms; }
 #coffee-stickybar.is-open .coffee-sticky-body { transform: none; opacity: 1; }
 .coffee-sticky-label { font-size: var(--type-compact-size); font-weight: 500; }
-.coffee-sticky-button { display: inline-flex; min-height: 2.5rem; align-items: center; border-radius: 999px; padding: .55rem 1.15rem; background: var(--primary-color); color: var(--primary-color-on); font-size: var(--type-control-size); font-weight: var(--type-control-weight); }
-.coffee-sticky-button:hover { background: var(--primary-color-hover); }
-@media (max-width: 32.5rem) { #coffee-stickybar { inset-block-end: calc(var(--layout-space-4) + env(safe-area-inset-bottom, 0px)); height: 3.25rem; } #coffee-stickybar.is-icon { width: 3.25rem; } .coffee-sticky-icon { width: 3.25rem; height: 3.25rem; } .coffee-sticky-label { display: none; } .coffee-sticky-body { gap: .4rem; padding: 0 .45rem 0 .9rem; } .coffee-sticky-button { padding-inline: 1rem; } }
+@media (max-width: 32.5rem) { #coffee-stickybar { inset-block-end: calc(var(--layout-space-4) + env(safe-area-inset-bottom, 0px)); height: 3.25rem; } #coffee-stickybar.is-icon { width: 3.25rem; } .coffee-sticky-icon { width: 3.25rem; height: 3.25rem; } .coffee-sticky-label { display: none; } .coffee-sticky-body { gap: .4rem; padding: 0 .45rem 0 .9rem; } }
 @media (prefers-reduced-motion: reduce) { #coffee-stickybar { transition: opacity 200ms ease; } .coffee-sticky-icon, .coffee-sticky-body { transition: none; } }
