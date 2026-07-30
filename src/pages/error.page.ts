@@ -40,7 +40,7 @@ export class ErrorPage extends DotaPageElement {
           <p class="motion-eyebrow">Request failed / ${this.status}</p>
           <h1 class="motion-display mt-8">${this.message}.</h1>
           <p class="mt-8 max-w-lg text-base leading-8 text-[var(--muted-color)]">That route does not lead anywhere yet. Return to the portfolio and keep exploring from there.</p>
-          <a href="/" class="motion-button motion-button-ink mt-9">Return home <span aria-hidden="true">←</span></a>
+          <a href="/" class="app-link app-link--button app-link--ink mt-9">Return home <span aria-hidden="true">←</span></a>
         </div>
       </main>
       <app-footer></app-footer>
