@@ -23,8 +23,8 @@ export class PortfolioHeroComponent extends BaseElement {
             </h1>
             <p class="layout-center layout-measure text-[length:var(--type-lede-size)] leading-[var(--type-lede-leading)] text-(--muted-color)">${hero.summary}</p>
             <div class="layout-row layout-row-tight justify-center">
-              <a class="motion-button motion-button-ink" href="${hero.primaryCta.href}">${hero.primaryCta.label}</a>
-              <a class="motion-button motion-button-ghost" href="${hero.secondaryCta.href}">${hero.secondaryCta.label}</a>
+              <a class="app-link app-link--button app-link--ink" href="${hero.primaryCta.href}">${hero.primaryCta.label}</a>
+              <a class="app-link app-link--button app-link--ghost" href="${hero.secondaryCta.href}">${hero.secondaryCta.label}</a>
             </div>
           </div>
           <scroll-hint></scroll-hint>
