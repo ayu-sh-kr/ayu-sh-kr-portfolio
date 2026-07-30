@@ -1,5 +1,6 @@
 export {};
 
+import type { ActionButtonSettlement, ActionButtonTrigger } from "@app/events/action-button.events.ts";
 import type { AnalyticsTrackEvent } from "@app/events/analytics.events.ts";
 import type { BlogFilterChange, BlogIndexData, BlogMarkdownSource } from "@app/events/blog.events.ts";
 import type { CoffeeOrderQuantitySelection, CoffeeOrderSizeSelection } from "@app/events/coffee.events.ts";
@@ -14,6 +15,10 @@ import type { TermsMarkdownRender, TermsMarkdownSource } from "@app/events/terms
 
 declare module "@ayu-sh-kr/dota-wrap/event" {
   interface ApplicationEventMap {
+    "action:refresh": { guard: string };
+    "action:reject": ActionButtonSettlement;
+    "action:resolve": ActionButtonSettlement;
+    "action:trigger": ActionButtonTrigger;
     "analytics:track": AnalyticsTrackEvent;
     "app:initialized": null;
     "attribute-changed": any;
