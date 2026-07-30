@@ -134,7 +134,7 @@ export class SupportFaqComponent extends BaseElement {
           <div id="support-faq-empty" class="support-faq-empty" hidden>
             <h3>${content.empty.title}</h3>
             <p>${content.empty.body}</p>
-            <a class="support-faq-ask" href="#support">${content.empty.actionLabel}</a>
+            <a class="app-link app-link--button app-link--ink" href="#support">${content.empty.actionLabel}</a>
           </div>
         </div>
       </section>

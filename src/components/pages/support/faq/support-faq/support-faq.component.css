@@ -208,16 +208,7 @@ support-faq {
   line-height: var(--type-body-leading);
 }
 
-.support-faq-ask {
-  display: inline-flex;
-  margin-block-start: var(--layout-space-5);
-  border-radius: var(--layout-radius-pill);
-  padding: var(--layout-space-3) var(--layout-space-5);
-  background: var(--foreground-color);
-  color: var(--background-color);
-  font-size: var(--type-control-size);
-  font-weight: var(--type-control-weight);
-}
+.support-faq-empty .app-link--button { margin-block-start: var(--layout-space-5); }
 
 @media (prefers-reduced-motion: reduce) {
   .support-faq-accordion-button #icon {
