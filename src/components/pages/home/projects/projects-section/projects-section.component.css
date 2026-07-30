@@ -47,13 +47,6 @@ portfolio-work {
 .work-card-link {
   margin-top: auto;
   padding-top: 2rem;
-  color: var(--primary-color-strong);
-  font-size: 0.9rem;
-  font-weight: 600;
-}
-
-.work-card-link:hover {
-  color: var(--primary-color);
 }
 
 .work-drag-hint {

@@ -1,0 +1,16 @@
+.design-anchor-link-showcase { border-block-end: 1px solid var(--border-color); }
+.design-anchor-link-showcase__navigation { display: flex; flex-direction: column; gap: var(--layout-space-3); margin-block-start: var(--layout-space-8); padding: var(--layout-pad-card); border: 1px solid var(--border-color); border-radius: var(--layout-radius-xl); background: var(--surface-color); }
+.design-anchor-link-showcase__navigation h3, .design-anchor-link-showcase__navigation p, .design-anchor-link-navigation-card h4, .design-anchor-link-navigation-card p { margin: 0; }
+.design-anchor-link-showcase__navigation .type-eyebrow { color: var(--primary-color-strong); }
+.design-anchor-link-showcase__navigation > .type-lede, .design-anchor-link-navigation-card > p { color: var(--muted-color); }
+.design-anchor-link-showcase__navigation-grid { margin: 0; }
+.design-anchor-link-navigation-card { display: flex; min-block-size: calc(var(--layout-space-10) * 2); flex-direction: column; gap: var(--layout-space-3); padding: var(--layout-pad-card); border: 1px solid var(--border-color); border-radius: var(--layout-radius-lg); background: var(--background-color); }
+.design-anchor-link-navigation-card .app-link { margin-block-start: auto; }
+.design-element-specimen-card .app-link--button { margin-block-start: auto; }
+.design-anchor-link-showcase__family { display: flex; flex-direction: column; gap: var(--layout-space-3); margin-block-start: var(--layout-space-8); padding: var(--layout-pad-card); border: 1px solid var(--border-color); border-radius: var(--layout-radius-xl); background: var(--surface-color); }
+.design-anchor-link-showcase__family h3, .design-anchor-link-showcase__family > p, .design-anchor-link-text-card h4, .design-anchor-link-text-card p, .design-anchor-link-card h4, .design-anchor-link-card p { margin: 0; }
+.design-anchor-link-showcase__family .type-eyebrow { color: var(--primary-color-strong); }
+.design-anchor-link-showcase__family > .type-lede, .design-anchor-link-text-card p, .design-anchor-link-card p { color: var(--muted-color); }
+.design-anchor-link-showcase__family-grid { margin: 0; }
+.design-anchor-link-text-card, .design-anchor-link-card { display: flex; min-block-size: calc(var(--layout-space-10) * 2); flex-direction: column; gap: var(--layout-space-3); padding: var(--layout-pad-card); border: 1px solid var(--border-color); border-radius: var(--layout-radius-lg); background: var(--background-color); }
+.design-anchor-link-card .app-link { margin-block-start: auto; }

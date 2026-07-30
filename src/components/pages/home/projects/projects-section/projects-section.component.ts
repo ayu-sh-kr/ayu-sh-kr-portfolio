@@ -44,7 +44,7 @@ export class PortfolioWorkComponent extends BaseElement {
                     <div class="mt-6 flex flex-wrap gap-2">
                       ${project.chips.map((chip) => `<span class="motion-chip">${chip}</span>`).join("")}
                     </div>
-                    <a class="work-card-link" href="${project.link.href}" ${project.link.external ? 'target="_blank" rel="noreferrer"' : ""}>
+                    <a class="app-link app-link--text app-link--card work-card-link" href="${project.link.href}" ${project.link.external ? 'target="_blank" rel="noreferrer"' : ""}>
                       ${project.link.label}<span aria-hidden="true"> →</span>
                     </a>
                   </article>

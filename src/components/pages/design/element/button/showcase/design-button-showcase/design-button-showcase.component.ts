@@ -1,13 +1,13 @@
 import { BaseElement, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
 import { OnEvent } from "@ayu-sh-kr/dota-wrap/event";
-import { designButtonContent } from "@app/data/design-button-content.ts";
+import { designElementContent } from "@app/data/design-element-content.ts";
 import { actionButtonRegistry } from "@app/service/action-button-registry.service.ts";
 
 /** Resolves after a short delay so success specimens visibly enter the same pending state as real work. */
 const waitForSpecimen = (): Promise<void> => new Promise((resolve) => window.setTimeout(resolve, 850));
 
 /**
- * Live production-button specimens for the `/design/button` reference route.
+ * Live production-button specimens for the `/design/element` reference route.
  *
  * The section registers short-lived demo handlers on connect rather than manufacturing states
  * in markup. Each nested `action-button` publishes to the same dispatcher used by features;
@@ -47,19 +47,19 @@ export class DesignButtonShowcaseComponent extends BaseElement {
     this.removeHandlers = [];
   }
 
-  /** Renders all four color variants as production elements; their labels and action names come from page-owned content. */
+  /** Renders production action-button variants from the page-owned content model. */
   render(): string {
-    const { showcase } = designButtonContent;
+    const { showcase } = designElementContent;
     return HTML`
-      <section id="design-button-showcase" class="design-button-showcase layout-page layout-section" aria-labelledby="design-button-showcase-title">
-        <div class="design-button-showcase__heading layout-stack layout-stack-sm">
+      <section id="design-element-button-showcase" class="design-button-showcase layout-page layout-section" aria-labelledby="design-element-button-showcase-title">
+        <div class="design-element-showcase__heading layout-stack layout-stack-sm">
           <p class="type-eyebrow">${showcase.eyebrow}</p>
-          <h2 id="design-button-showcase-title" class="type-section">${showcase.title}</h2>
+          <h2 id="design-element-button-showcase-title" class="type-section">${showcase.title}</h2>
           <p class="type-lede">${showcase.lede}</p>
         </div>
-        <div class="design-button-showcase__grid layout-grid-auto-sm">
+        <div class="design-element-showcase__grid layout-grid-auto-sm">
           ${showcase.actions.map((item) => HTML`
-            <article class="design-button-card" data-variant="${item.variant}">
+            <article class="design-element-specimen-card" data-variant="${item.variant}">
               <p class="type-label">${item.variant}</p>
               <h3 class="type-card-title">${item.title}</h3>
               <p>${item.body}</p>

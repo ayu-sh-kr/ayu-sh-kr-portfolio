@@ -378,7 +378,7 @@ export class PricingStartProjectComponent extends BaseElement {
             <div class="pricing-project-complete" role="status">
               <span aria-hidden="true">✓</span><h3>${content.completionTitle}</h3>
               <p>${content.completionBody}${this.brief.files.length ? " Add the selected files to that email before sending." : ""}</p>
-              <div><a class="pricing-project-primary-button" href="${escapeHtml(this.createEmailHref())}">${content.emailLabel} <span aria-hidden="true">→</span></a><button class="pricing-project-secondary-button" type="button" data-start-edit>Edit the brief</button></div>
+              <div><a class="app-link app-link--button app-link--accent" href="${escapeHtml(this.createEmailHref())}">${content.emailLabel} <span aria-hidden="true">→</span></a><button class="pricing-project-secondary-button" type="button" data-start-edit>Edit the brief</button></div>
             </div>
           ` : HTML`
             <div class="pricing-project-workspace">

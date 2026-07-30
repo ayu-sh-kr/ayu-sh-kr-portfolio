@@ -36,10 +36,10 @@ export class SupportStartProjectComponent extends BaseElement {
           </div>
 
           <div class="support-start-project-actions">
-            <a class="support-start-project-primary" href="${content.primaryHref}">
+            <a class="app-link app-link--button app-link--accent" href="${content.primaryHref}">
               ${content.primaryLabel} <span aria-hidden="true">→</span>
             </a>
-            <a class="support-start-project-secondary" href="${content.secondaryHref}">${content.secondaryLabel}</a>
+            <a class="app-link app-link--button app-link--ghost" href="${content.secondaryHref}">${content.secondaryLabel}</a>
             <p class="support-start-project-note">${content.note}</p>
           </div>
         </div>

@@ -195,31 +195,6 @@ pricing-estimator {
   font-weight: 600;
 }
 
-.pricing-estimator-button {
-  display: inline-flex;
-  min-height: 3rem;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
-  gap: 0.35rem;
-  border-radius: 999px;
-  padding: 0.8rem 1.2rem;
-  background: var(--primary-color);
-  color: var(--primary-color-on);
-  font-size: var(--pricing-type-control-size);
-  font-weight: var(--pricing-type-control-weight);
-  transition: background-color 180ms ease, transform 220ms ease;
-}
-
-.pricing-estimator-button:hover {
-  background: var(--primary-color-hover);
-  transform: translateY(-2px);
-}
-
-.pricing-estimator-cta .pricing-estimator-button {
-  width: 100%;
-}
-
 .pricing-estimator-cta > p {
   margin-top: 0.75rem;
 }
@@ -260,7 +235,6 @@ pricing-estimator {
 
 @media (prefers-reduced-motion: reduce) {
   .pricing-pick,
-  .pricing-estimator-button,
   .pricing-estimator-figure {
     transition: none;
     animation: none;

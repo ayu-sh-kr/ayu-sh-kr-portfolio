@@ -69,7 +69,7 @@ export class ShowcaseSpotlightComponent extends BaseElement {
                 ${project.stack.map((item, index) => `<span class="showcase-chip" data-showcase-chip style="--chip-index:${index}">${item}</span>`).join("")}
               </div>
               ${metric}
-              <a class="showcase-button showcase-button-ink mt-9" data-analytics-project="showcase" href="/showcase/${project.slug}">
+              <a class="app-link app-link--button app-link--ink mt-9" data-analytics-project="showcase" href="/showcase/${project.slug}">
                 View case study <span aria-hidden="true">→</span>
               </a>
             </div>

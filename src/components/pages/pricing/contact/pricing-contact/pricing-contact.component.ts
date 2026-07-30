@@ -46,8 +46,8 @@ export class PricingContactComponent extends BaseElement {
           <h2 id="pricing-contact-title" class="pricing-contact-title mt-4">${content.titleBeforeAccent} <span>${content.titleAccent}</span></h2>
           <p class="pricing-contact-copy mt-6">${content.body}</p>
           <div class="pricing-contact-actions mt-10">
-            <a class="pricing-contact-accent-button" data-analytics-contact="email" href="${content.emailHref}">${content.emailLabel}</a>
-            <a class="pricing-contact-ghost-button" data-analytics-contact="call" href="${content.callHref}">${content.callLabel}</a>
+            <a class="app-link app-link--button app-link--accent" data-analytics-contact="email" href="${content.emailHref}">${content.emailLabel}</a>
+            <a class="app-link app-link--button app-link--ghost" data-analytics-contact="call" href="${content.callHref}">${content.callLabel}</a>
           </div>
           <p class="pricing-contact-trust mt-8">${content.trust} · <a data-analytics-contact="github" href="${content.githubHref}" target="_blank" rel="noreferrer">${content.githubLabel}</a> · <a data-analytics-contact="linkedin" href="${content.linkedinHref}" target="_blank" rel="noreferrer">${content.linkedinLabel}</a> · ${content.timezone}</p>
         </div>

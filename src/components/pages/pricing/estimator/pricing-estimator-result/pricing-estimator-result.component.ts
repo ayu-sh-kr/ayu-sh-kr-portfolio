@@ -159,7 +159,7 @@ export class PricingEstimatorResultComponent extends BaseElement {
           <span>${content.breakdownStageLabel} <b>${stage.label}</b></span>
         </div>
         <div class="pricing-estimator-cta">
-          <a class="pricing-estimator-button" href="#pricing-start-project">${content.quoteCta} <span aria-hidden="true">→</span></a>
+          <a class="app-link app-link--button app-link--accent app-link--full" href="#pricing-start-project">${content.quoteCta} <span aria-hidden="true">→</span></a>
           <p>${content.reassurance}</p>
         </div>
       </div>

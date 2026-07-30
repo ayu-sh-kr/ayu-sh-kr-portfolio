@@ -32,13 +32,13 @@ export class AppHeaderComponent extends BaseElement {
     return `
       <nav id="site-nav" aria-label="Primary navigation">
         <div class="app-header-inner layout-page layout-row layout-row-split">
-          <a href="/" class="shrink-0 text-sm font-semibold tracking-[-0.02em] text-[var(--foreground-color)]">${nav.logo}</a>
+          <a href="/" class="app-link app-header-brand">${nav.logo}</a>
           <div class="app-header-actions layout-row">
             <div class="app-header-desktop-links layout-row layout-row-loose">
               ${nav.links
                 .map(
                   (link) => `
-                    <a href="${link.href}" class="nav-link ${link.label === "Journey" || link.label === "Speaking" ? "nav-link-optional" : ""} ${link.label === "Pricing" ? "nav-link-pricing" : ""}">${link.label}</a>
+                    <a href="${link.href}" class="app-link app-link--nav ${link.label === "Pricing" ? "app-header-nav-pricing" : ""}">${link.label}</a>
                   `,
                 )
                 .join("")}
@@ -61,7 +61,7 @@ export class AppHeaderComponent extends BaseElement {
                 ${nav.links
                   .map(
                     (link) => `
-                      <a href="${link.href}" class="nav-link mobile-nav-link">${link.label}</a>
+                      <a href="${link.href}" class="app-link app-link--nav app-link--nav-mobile">${link.label}</a>
                     `,
                   )
                   .join("")}

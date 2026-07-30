@@ -35,7 +35,7 @@ export class OfflineHeroComponent extends BaseElement {
           </p>
           <div class="offline-actions">
             <action-button id="offline-hero-retry" action="offline.retry" variant="ink" label="${content.retryLabel}" busy-label="Checking…" done-label="Connected" fail-label="Try again" data-offline-retry></action-button>
-            <a class="offline-button offline-button-ghost" href="${actions.homeHref}">${actions.homeLabel}</a>
+            <a class="app-link app-link--button app-link--ghost" href="${actions.homeHref}">${actions.homeLabel}</a>
           </div>
         </div>
 

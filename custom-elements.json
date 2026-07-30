@@ -965,105 +965,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/pages/design/button/guidance/design-button-guidance/design-button-guidance.component.js",
-      "declarations": [
-        {
-          "kind": "class",
-          "name": "DesignButtonGuidanceComponent",
-          "customElement": true,
-          "tagName": "design-button-guidance",
-          "superclass": {
-            "name": "BaseElement"
-          },
-          "members": [],
-          "attributes": []
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "DesignButtonGuidanceComponent",
-          "declaration": {
-            "name": "DesignButtonGuidanceComponent"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "design-button-guidance",
-          "declaration": {
-            "name": "DesignButtonGuidanceComponent"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/pages/design/button/overview/design-button-overview/design-button-overview.component.js",
-      "declarations": [
-        {
-          "kind": "class",
-          "name": "DesignButtonOverviewComponent",
-          "customElement": true,
-          "tagName": "design-button-overview",
-          "superclass": {
-            "name": "BaseElement"
-          },
-          "members": [],
-          "attributes": []
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "DesignButtonOverviewComponent",
-          "declaration": {
-            "name": "DesignButtonOverviewComponent"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "design-button-overview",
-          "declaration": {
-            "name": "DesignButtonOverviewComponent"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/pages/design/button/showcase/design-button-showcase/design-button-showcase.component.js",
-      "declarations": [
-        {
-          "kind": "class",
-          "name": "DesignButtonShowcaseComponent",
-          "customElement": true,
-          "tagName": "design-button-showcase",
-          "superclass": {
-            "name": "BaseElement"
-          },
-          "members": [],
-          "attributes": []
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "DesignButtonShowcaseComponent",
-          "declaration": {
-            "name": "DesignButtonShowcaseComponent"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "design-button-showcase",
-          "declaration": {
-            "name": "DesignButtonShowcaseComponent"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/components/pages/design/color/guidance/design-color-guidance/design-color-guidance.component.js",
       "declarations": [
         {
@@ -1157,6 +1058,138 @@
           "name": "design-color-roles",
           "declaration": {
             "name": "DesignColorRolesComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/design/element/anchor/showcase/design-anchor-link-showcase/design-anchor-link-showcase.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "DesignAnchorLinkShowcaseComponent",
+          "customElement": true,
+          "tagName": "design-anchor-link-showcase",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "DesignAnchorLinkShowcaseComponent",
+          "declaration": {
+            "name": "DesignAnchorLinkShowcaseComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "design-anchor-link-showcase",
+          "declaration": {
+            "name": "DesignAnchorLinkShowcaseComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/design/element/button/showcase/design-button-showcase/design-button-showcase.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "DesignButtonShowcaseComponent",
+          "customElement": true,
+          "tagName": "design-button-showcase",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "DesignButtonShowcaseComponent",
+          "declaration": {
+            "name": "DesignButtonShowcaseComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "design-button-showcase",
+          "declaration": {
+            "name": "DesignButtonShowcaseComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/design/element/guidance/design-element-guidance/design-element-guidance.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "DesignElementGuidanceComponent",
+          "customElement": true,
+          "tagName": "design-element-guidance",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "DesignElementGuidanceComponent",
+          "declaration": {
+            "name": "DesignElementGuidanceComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "design-element-guidance",
+          "declaration": {
+            "name": "DesignElementGuidanceComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/design/element/overview/design-element-overview/design-element-overview.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "DesignElementOverviewComponent",
+          "customElement": true,
+          "tagName": "design-element-overview",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "DesignElementOverviewComponent",
+          "declaration": {
+            "name": "DesignElementOverviewComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "design-element-overview",
+          "declaration": {
+            "name": "DesignElementOverviewComponent"
           }
         }
       ]
@@ -5132,39 +5165,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/pages/design-button.page.js",
-      "declarations": [
-        {
-          "kind": "class",
-          "name": "DesignButtonPage",
-          "customElement": true,
-          "tagName": "design-button-page",
-          "superclass": {
-            "name": "DotaPageElement"
-          },
-          "members": [],
-          "attributes": []
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "DesignButtonPage",
-          "declaration": {
-            "name": "DesignButtonPage"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "design-button-page",
-          "declaration": {
-            "name": "DesignButtonPage"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/pages/design-color.page.js",
       "declarations": [
         {
@@ -5192,6 +5192,39 @@
           "name": "design-color-page",
           "declaration": {
             "name": "DesignColorPage"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/pages/design-element.page.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "DesignElementPage",
+          "customElement": true,
+          "tagName": "design-element-page",
+          "superclass": {
+            "name": "DotaPageElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "DesignElementPage",
+          "declaration": {
+            "name": "DesignElementPage"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "design-element-page",
+          "declaration": {
+            "name": "DesignElementPage"
           }
         }
       ]

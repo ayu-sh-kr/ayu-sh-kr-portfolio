@@ -1,0 +1,104 @@
+/**
+ * Shared presentation and interaction contract for prominent anchor actions.
+ *
+ * Anchors keep their native routing, hash, and external-link semantics. These
+ * classes only make their visual behaviour consistent with action-button.
+ */
+.app-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.app-link--button {
+  display: inline-flex;
+  min-block-size: var(--layout-space-7);
+  align-items: center;
+  justify-content: center;
+  gap: var(--layout-space-2);
+  padding-inline: var(--layout-space-5);
+  border: 1px solid transparent;
+  border-radius: var(--layout-radius-pill);
+  font-size: var(--type-control-size);
+  font-weight: var(--type-control-weight);
+  line-height: 1;
+  transition: transform 220ms ease, background-color 220ms ease, border-color 220ms ease, color 220ms ease, opacity 180ms ease;
+}
+
+.app-link--button:hover { transform: translateY(-2px); }
+.app-link--button:active { transform: translateY(0) scale(.98); }
+.app-link:focus-visible { outline: 3px solid var(--primary-color-ring); outline-offset: 3px; }
+
+.app-link--accent { color: var(--primary-color-on); background: var(--primary-color); border-color: var(--primary-color); }
+.app-link--accent:hover { background: var(--primary-color-hover); border-color: var(--primary-color-hover); }
+.app-link--ink { color: var(--contrast-foreground-color); background: var(--contrast-background-color); border-color: var(--contrast-background-color); }
+.app-link--ink:hover { background: var(--foreground-color); border-color: var(--foreground-color); }
+.app-link--ghost { color: var(--foreground-color); background: transparent; border-color: var(--border-color); }
+.app-link--ghost:hover { background: var(--surface-hover-color); border-color: var(--muted-color); }
+
+.app-link--compact {
+  min-block-size: calc(var(--layout-space-6) + var(--layout-space-2));
+  padding-inline: var(--layout-space-4);
+}
+
+.app-link--full { inline-size: 100%; }
+
+.app-link--text {
+  color: var(--foreground-color);
+  font-size: var(--type-control-size);
+  font-weight: var(--type-control-weight);
+  text-decoration: underline;
+  text-decoration-color: var(--primary-color);
+  text-decoration-thickness: 2px;
+  text-underline-offset: .3em;
+  transition: color 180ms ease, text-decoration-color 180ms ease;
+}
+
+.app-link--text:hover { color: var(--primary-color-strong); }
+.app-link--text-muted { color: var(--muted-strong-color); }
+
+.app-link--card {
+  display: inline-flex;
+  min-block-size: var(--layout-space-6);
+  align-items: center;
+  gap: var(--layout-space-1);
+}
+
+.app-link--nav {
+  display: inline-flex;
+  min-block-size: var(--layout-space-6);
+  align-items: center;
+  color: var(--muted-color);
+  font-size: var(--type-compact-size);
+  font-weight: var(--type-control-weight);
+  transition: color 180ms ease;
+}
+
+.app-link--nav:hover { color: var(--foreground-color); }
+
+.app-link--nav-mobile {
+  inline-size: 100%;
+  min-block-size: calc(var(--layout-space-6) + var(--layout-space-3));
+  padding-inline: var(--layout-space-3);
+  border-radius: var(--layout-radius-sm);
+}
+
+.app-link--nav-mobile:hover { background: var(--surface-hover-color); }
+
+@media (prefers-reduced-motion: reduce) {
+  .app-link--button, .app-link--text, .app-link--nav { transition: none; }
+  .app-link--button:hover, .app-link--button:active { transform: none; }
+}
+
+@media (forced-colors: active) {
+  .app-link--button {
+    border-color: ButtonText;
+    color: ButtonText;
+    background: Canvas;
+  }
+
+  .app-link--button:hover {
+    border-color: Highlight;
+    color: HighlightText;
+    background: Highlight;
+  }
+}

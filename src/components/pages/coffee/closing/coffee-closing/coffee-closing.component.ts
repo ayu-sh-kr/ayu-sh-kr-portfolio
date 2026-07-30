@@ -47,7 +47,7 @@ export class CoffeeClosingComponent extends BaseElement {
           <div class="coffee-invite" data-coffee-reveal>
             <h2 class="type-subsection">${content.title}</h2>
             <p class="type-lede mt-4">${content.body}</p>
-            <a class="coffee-accent-button mt-7" href="#coffee-order">${content.cta}</a>
+            <a class="app-link app-link--button app-link--accent mt-7" href="#coffee-order">${content.cta}</a>
           </div>
         </div>
       </section>

@@ -103,7 +103,7 @@ export class BlogArticleComponent extends BaseElement {
       return `
         <main class="blog-article-shell layout-page layout-section-hero">
           <a class="blog-back-link" href="/blog">← ${blogArticleContent.allPostsLabel}</a>
-          <div class="blog-not-found"><p class="blog-eyebrow">${blogArticleContent.notFound.eyebrow}</p><h1>${blogArticleContent.notFound.title}</h1><a class="blog-ink-button" href="/blog">${blogArticleContent.notFound.browseLabel}</a></div>
+          <div class="blog-not-found"><p class="blog-eyebrow">${blogArticleContent.notFound.eyebrow}</p><h1>${blogArticleContent.notFound.title}</h1><a class="app-link app-link--button app-link--ink" href="/blog">${blogArticleContent.notFound.browseLabel}</a></div>
         </main>
       `;
     }

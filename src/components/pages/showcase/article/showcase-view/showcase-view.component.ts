@@ -125,7 +125,7 @@ export class ShowcaseViewComponent extends BaseElement {
           <div class="showcase-not-found">
             <p class="showcase-eyebrow">404</p>
             <h1>That showcase is not here.</h1>
-            <a class="showcase-button showcase-button-ink" href="/showcase">Browse the showcase</a>
+            <a class="app-link app-link--button app-link--ink" href="/showcase">Browse the showcase</a>
           </div>
         </main>
       `;

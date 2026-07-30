@@ -26,46 +26,6 @@ portfolio-motion-controller {
   text-wrap: balance;
 }
 
-.motion-button {
-  min-block-size: 3rem;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  border-radius: 999px;
-  padding: 0.8rem 1.55rem;
-  font-size: var(--type-control-size);
-  font-weight: var(--type-control-weight);
-  transition: transform 220ms cubic-bezier(0.2, 0.8, 0.2, 1), background-color 180ms ease, border-color 180ms ease;
-}
-
-.motion-button:hover {
-  transform: translateY(-2px);
-}
-
-.motion-button-ink {
-  background: var(--foreground-color);
-  color: var(--background-color);
-}
-
-.motion-button-ghost {
-  border: 1px solid var(--border-color);
-  color: var(--foreground-color);
-}
-
-.motion-button-ghost:hover {
-  border-color: var(--foreground-color);
-}
-
-.motion-button-accent {
-  background: var(--primary-color);
-  color: var(--primary-color-on);
-}
-
-.motion-button-accent:hover {
-  background: var(--primary-color-hover);
-}
-
 .motion-chip {
   display: inline-flex;
   align-items: center;
@@ -118,10 +78,6 @@ portfolio-motion-controller {
   .motion-reveal {
     opacity: 1;
     transform: none;
-    transition: none;
-  }
-
-  .motion-button {
     transition: none;
   }
 }

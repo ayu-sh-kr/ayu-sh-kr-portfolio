@@ -53,39 +53,6 @@ pricing-hero {
   font-size: var(--pricing-type-compact-size);
 }
 
-.pricing-accent-button,
-.pricing-ghost-button {
-  display: inline-flex;
-  min-height: 3rem;
-  align-items: center;
-  justify-content: center;
-  border-radius: 999px;
-  padding: 0.8rem 1.55rem;
-  font-size: var(--pricing-type-control-size);
-  font-weight: var(--pricing-type-control-weight);
-  transition: transform 220ms cubic-bezier(0.2, 0.8, 0.2, 1), background-color 180ms ease, border-color 180ms ease;
-}
-
-.pricing-accent-button {
-  background: var(--primary-color);
-  color: var(--primary-color-on);
-}
-
-.pricing-accent-button:hover {
-  background: var(--primary-color-hover);
-  transform: translateY(-2px);
-}
-
-.pricing-ghost-button {
-  border: 1px solid var(--border-color);
-  color: var(--foreground-color);
-}
-
-.pricing-ghost-button:hover {
-  border-color: var(--foreground-color);
-  transform: translateY(-2px);
-}
-
 @media (prefers-reduced-motion: reduce) {
   #pricing-hero-wrap {
     height: auto;
@@ -99,10 +66,4 @@ pricing-hero {
   #pricing-hero-inner {
     transform: none !important;
   }
-
-  .pricing-accent-button,
-  .pricing-ghost-button {
-    transition: none;
-  }
-
 }

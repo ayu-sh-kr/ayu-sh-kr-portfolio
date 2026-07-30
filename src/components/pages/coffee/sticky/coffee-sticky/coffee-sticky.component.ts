@@ -174,7 +174,7 @@ export class CoffeeStickyComponent extends BaseElement {
     return HTML`
       <div id="coffee-stickybar" role="region" aria-label="${content.ariaLabel}">
         <span class="coffee-sticky-icon" aria-hidden="true">☕</span>
-        <span class="coffee-sticky-body"><span class="coffee-sticky-label">☕ ${content.label}</span><a class="coffee-sticky-button" href="#coffee-order">${content.cta}</a></span>
+        <span class="coffee-sticky-body"><span class="coffee-sticky-label">☕ ${content.label}</span><a class="app-link app-link--button app-link--accent app-link--compact" href="#coffee-order">${content.cta}</a></span>
       </div>
     `;
   }

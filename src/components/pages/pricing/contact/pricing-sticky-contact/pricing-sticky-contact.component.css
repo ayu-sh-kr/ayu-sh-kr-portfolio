@@ -87,22 +87,6 @@ pricing-sticky-contact {
   font-weight: 600;
 }
 
-.pricing-sticky-button {
-  display: inline-flex;
-  min-height: 2.5rem;
-  align-items: center;
-  border-radius: 999px;
-  padding: 0.55rem 1.15rem;
-  background: var(--primary-color);
-  color: var(--primary-color-on);
-  font-size: var(--pricing-type-control-size);
-  font-weight: var(--pricing-type-control-weight);
-}
-
-.pricing-sticky-button:hover {
-  background: var(--primary-color-hover);
-}
-
 @media (max-width: 32.5rem) {
   #pricing-stickybar {
     inset-block-end: calc(var(--layout-space-4) + env(safe-area-inset-bottom, 0px));
@@ -127,9 +111,6 @@ pricing-sticky-contact {
     padding: 0 0.45rem 0 0.9rem;
   }
 
-  .pricing-sticky-button {
-    padding-inline: 1rem;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {

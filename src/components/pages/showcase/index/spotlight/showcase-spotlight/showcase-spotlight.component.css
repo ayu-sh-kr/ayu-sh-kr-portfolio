@@ -38,7 +38,7 @@
 }
 
 .showcase-spotlight-copy .showcase-chip,
-.showcase-spotlight-copy .showcase-button {
+.showcase-spotlight-copy .app-link--button {
   will-change: transform, opacity;
 }
 
@@ -92,9 +92,8 @@
   }
 
   .showcase-spotlight-copy .showcase-chip,
-  .showcase-spotlight-copy .showcase-button {
+  .showcase-spotlight-copy .app-link--button {
     opacity: 1;
     transform: none;
   }
 }
-

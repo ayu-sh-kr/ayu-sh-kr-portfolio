@@ -53,7 +53,7 @@ export class BuildPricingComponent extends BaseElement {
             )
             .join("")}
         </ul>
-        <a class="${tier.featured ? "build-pricing-accent-button" : "build-pricing-ghost-button"}" href="#pricing-start-project">${tier.cta}</a>
+        <a class="app-link app-link--button ${tier.featured ? "app-link--accent" : "app-link--ghost"}" href="#pricing-start-project">${tier.cta}</a>
       </article>
     `;
   }
