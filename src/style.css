@@ -6,6 +6,7 @@
 @import "./typography.css";
 @import "./layout.css";
 @import "./components/utils/action-button/action-button.component.css";
+@import "./anchor-link.css";
 @import "./components/utils/scroll-hint/scroll-hint.component.css";
 @import "./components/utils/header/app-header/app-header.component.css";
 @import "./components/utils/footer/app-footer/app-footer.component.css";
@@ -33,9 +34,11 @@
 @import "./components/pages/design/toast/overview/design-toast-overview/design-toast-overview.component.css";
 @import "./components/pages/design/toast/showcase/design-toast-showcase/design-toast-showcase.component.css";
 @import "./components/pages/design/toast/guidance/design-toast-guidance/design-toast-guidance.component.css";
-@import "./components/pages/design/button/overview/design-button-overview/design-button-overview.component.css";
-@import "./components/pages/design/button/showcase/design-button-showcase/design-button-showcase.component.css";
-@import "./components/pages/design/button/guidance/design-button-guidance/design-button-guidance.component.css";
+@import "./components/pages/design/element/design-element.css";
+@import "./components/pages/design/element/overview/design-element-overview/design-element-overview.component.css";
+@import "./components/pages/design/element/button/showcase/design-button-showcase/design-button-showcase.component.css";
+@import "./components/pages/design/element/anchor/showcase/design-anchor-link-showcase/design-anchor-link-showcase.component.css";
+@import "./components/pages/design/element/guidance/design-element-guidance/design-element-guidance.component.css";
 @import "./components/pages/blog/article/blog-article-header/blog-article-header.component.css";
 @import "./components/pages/showcase/article/showcase-article-header/showcase-article-header.component.css";
 @import "./components/pages/privacy/document/privacy-document-header/privacy-document-header.component.css";
