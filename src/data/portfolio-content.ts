@@ -344,6 +344,7 @@ export const portfolioContent = {
             { label: "Layout", href: "/design/layout" },
             { label: "Color", href: "/design/color" },
             { label: "Typography", href: "/design/typography" },
+            { label: "Buttons", href: "/design/button" },
           ],
         },
         {
