@@ -178,65 +178,6 @@ offline-page [hidden] {
   margin-top: 2rem;
 }
 
-.offline-button {
-  display: inline-flex;
-  min-height: 2.95rem;
-  align-items: center;
-  justify-content: center;
-  padding: .75rem 1.45rem;
-  border: 1px solid transparent;
-  border-radius: 999px;
-  font: inherit;
-  font-size: .9rem;
-  font-weight: 600;
-  line-height: 1;
-  text-decoration: none;
-  cursor: pointer;
-  transition: transform 220ms ease, background-color 220ms ease, border-color 220ms ease, color 220ms ease;
-}
-
-.offline-button:hover {
-  transform: translateY(-2px);
-}
-
-.offline-button:active {
-  transform: translateY(0) scale(.98);
-}
-
-.offline-button:disabled {
-  cursor: wait;
-  opacity: .55;
-  pointer-events: none;
-}
-
-.offline-button-ink {
-  background: var(--contrast-background-color);
-  color: var(--contrast-foreground-color);
-}
-
-.offline-button-ink:hover {
-  background: var(--foreground-color);
-}
-
-.offline-button-accent {
-  background: var(--offline-accent);
-  color: var(--primary-color-on);
-}
-
-.offline-button-accent:hover {
-  background: var(--offline-accent-strong);
-}
-
-.offline-button-ghost {
-  border-color: var(--offline-hairline);
-  color: var(--offline-ink);
-}
-
-.offline-button-ghost:hover {
-  border-color: var(--offline-ink);
-  background: var(--surface-hover-color);
-}
-
 .offline-meta {
   margin: 1rem 0 0;
   color: var(--offline-soft);
@@ -330,14 +271,8 @@ offline-page [hidden] {
     font-size: .92rem;
   }
 
-  .offline-button,
-  .offline-actions > action-button {
+  .offline-actions > action-button,
+  .offline-actions > .app-link--button {
     flex: 1 1 9.5rem;
-  }
-}
-
-@media (forced-colors: active) {
-  .offline-button {
-    border: 1px solid ButtonText;
   }
 }
