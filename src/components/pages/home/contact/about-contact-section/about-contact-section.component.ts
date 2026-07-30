@@ -52,8 +52,8 @@ export class PortfolioContactComponent extends BaseElement {
           </h2>
           <p class="motion-reveal mx-auto mt-7 max-w-xl text-[length:var(--type-lede-size)] leading-[var(--type-lede-leading)] text-(--muted-color)">${contact.body}</p>
           <div class="motion-reveal mt-10 flex flex-wrap justify-center gap-3">
-            <a class="motion-button motion-button-accent" data-analytics-contact="email" href="${contact.emailHref}">Email me</a>
-            <a class="motion-button motion-button-ghost" data-analytics-contact="resume" href="${contact.resumeHref}">Request résumé</a>
+            <a class="app-link app-link--button app-link--accent" data-analytics-contact="email" href="${contact.emailHref}">Email me</a>
+            <a class="app-link app-link--button app-link--ghost" data-analytics-contact="resume" href="${contact.resumeHref}">Request résumé</a>
           </div>
           <div class="motion-reveal mt-9 flex flex-wrap justify-center gap-x-6 gap-y-3 text-sm font-medium text-(--muted-color)">
             <a class="quiet-link" data-analytics-contact="github" href="${contact.github}" target="_blank" rel="noreferrer">GitHub</a>
