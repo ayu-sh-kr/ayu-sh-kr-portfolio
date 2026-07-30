@@ -9,6 +9,7 @@ import { ApplicationEventService } from "@ayu-sh-kr/dota-wrap/core";
 import { registerPortfolioMarkdownTheme } from "@app/configs/markdown-theme.config.ts";
 import { AnalyticsEventListener } from "@app/service/analytics-event.listener.ts";
 import { AnalyticsSectionTracker } from "@app/service/analytics-section-tracker.service.ts";
+import { ActionButtonDispatcher } from "@app/service/action-button-dispatcher.service.ts";
 import { RouterUtils } from "@app/utils/router.utils.ts";
 import { applyRouteMetadata } from "@app/utils/seo.utils.ts";
 import components from "virtual:dota-components";
@@ -26,6 +27,7 @@ registerPortfolioMarkdownTheme();
 // analytics listener first so its page and section events are not lost.
 DefaultApplicationEventListenerRegistry.setListener(applicationEventListener);
 new AnalyticsEventListener();
+new ActionButtonDispatcher();
 
 initializeApp({
   modules: components,
