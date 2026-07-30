@@ -27,21 +27,17 @@ html.dark #site-nav {
   flex-wrap: nowrap;
 }
 
-.nav-link {
-  min-block-size: 2rem;
+.app-header-brand {
+  min-block-size: var(--layout-space-6);
   display: inline-flex;
   align-items: center;
-  color: var(--muted-color);
-  font-size: 0.82rem;
-  font-weight: 500;
-  transition: color 180ms ease;
-}
-
-.nav-link:hover {
   color: var(--foreground-color);
+  font-size: var(--type-compact-size);
+  font-weight: var(--type-control-weight);
+  letter-spacing: -0.02em;
 }
 
-.nav-link-pricing {
+.app-header-nav-pricing {
   color: var(--primary-color-strong);
 }
 
@@ -84,18 +80,6 @@ html.dark #site-nav {
   box-shadow: 0 1rem 2.5rem -1.25rem color-mix(in srgb, var(--foreground-color) 35%, transparent);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-}
-
-.mobile-nav-link {
-  width: 100%;
-  min-block-size: 2.75rem;
-  padding-inline: 0.75rem;
-  border-radius: 0.65rem;
-  font-size: 0.9rem;
-}
-
-.mobile-nav-link:hover {
-  background: var(--surface-hover-color);
 }
 
 @media (min-width: 700px) {
