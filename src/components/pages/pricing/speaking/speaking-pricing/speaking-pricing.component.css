@@ -101,39 +101,9 @@ speaking-pricing {
   stroke-width: 2;
 }
 
-.speaking-pricing-accent-button,
-.speaking-pricing-ghost-button {
-  display: inline-flex;
-  min-height: 3rem;
-  align-items: center;
-  justify-content: center;
-  margin-top: auto;
-  border-radius: 999px;
-  padding: 0.75rem 1.2rem;
-  font-size: var(--pricing-type-control-size);
-  font-weight: var(--pricing-type-control-weight);
+.speaking-pricing-tier > .app-link--button {
+  margin-block-start: auto;
   text-align: center;
-  transition: background-color 180ms ease, border-color 180ms ease, transform 220ms ease;
-}
-
-.speaking-pricing-accent-button {
-  background: var(--primary-color);
-  color: var(--primary-color-on);
-}
-
-.speaking-pricing-accent-button:hover {
-  background: var(--primary-color-hover);
-  transform: translateY(-2px);
-}
-
-.speaking-pricing-ghost-button {
-  border: 1px solid var(--border-color);
-  color: var(--foreground-color);
-}
-
-.speaking-pricing-ghost-button:hover {
-  border-color: var(--foreground-color);
-  transform: translateY(-2px);
 }
 
 @media (max-width: 52rem) {
@@ -147,9 +117,7 @@ speaking-pricing {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .speaking-pricing-tier,
-  .speaking-pricing-accent-button,
-  .speaking-pricing-ghost-button {
+  .speaking-pricing-tier {
     transition: none;
   }
 }

@@ -52,7 +52,7 @@ export class SpeakingPricingComponent extends BaseElement {
             )
             .join("")}
         </ul>
-        <a class="${tier.featured ? "speaking-pricing-accent-button" : "speaking-pricing-ghost-button"}" href="#pricing-contact">${tier.cta}</a>
+        <a class="app-link app-link--button ${tier.featured ? "app-link--accent" : "app-link--ghost"}" href="#pricing-contact">${tier.cta}</a>
       </article>
     `;
   }
