@@ -745,32 +745,10 @@
           }
         },
         {
-          "name": "design-button-guidance",
+          "name": "design-anchor-link-showcase",
           "source": {
-            "file": "./src/components/pages/design/button/guidance/design-button-guidance/design-button-guidance.component.ts",
-            "offset": 617
-          },
-          "attributes": [],
-          "js": {
-            "properties": []
-          }
-        },
-        {
-          "name": "design-button-overview",
-          "source": {
-            "file": "./src/components/pages/design/button/overview/design-button-overview/design-button-overview.component.ts",
-            "offset": 622
-          },
-          "attributes": [],
-          "js": {
-            "properties": []
-          }
-        },
-        {
-          "name": "design-button-page",
-          "source": {
-            "file": "./src/pages/design-button.page.ts",
-            "offset": 762
+            "file": "./src/components/pages/design/element/anchor/showcase/design-anchor-link-showcase/design-anchor-link-showcase.component.ts",
+            "offset": 556
           },
           "attributes": [],
           "js": {
@@ -780,8 +758,8 @@
         {
           "name": "design-button-showcase",
           "source": {
-            "file": "./src/components/pages/design/button/showcase/design-button-showcase/design-button-showcase.component.ts",
-            "offset": 1057
+            "file": "./src/components/pages/design/element/button/showcase/design-button-showcase/design-button-showcase.component.ts",
+            "offset": 1060
           },
           "attributes": [],
           "js": {
@@ -826,6 +804,39 @@
           "source": {
             "file": "./src/components/pages/design/color/roles/design-color-roles/design-color-roles.component.ts",
             "offset": 480
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "design-element-guidance",
+          "source": {
+            "file": "./src/components/pages/design/element/guidance/design-element-guidance/design-element-guidance.component.ts",
+            "offset": 622
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "design-element-overview",
+          "source": {
+            "file": "./src/components/pages/design/element/overview/design-element-overview/design-element-overview.component.ts",
+            "offset": 625
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "design-element-page",
+          "source": {
+            "file": "./src/pages/design-element.page.ts",
+            "offset": 776
           },
           "attributes": [],
           "js": {
