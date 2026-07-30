@@ -69,8 +69,8 @@ export class PricingHeroComponent extends BaseElement {
             </h1>
             <p class="pricing-lede mx-auto mt-6 max-w-2xl">${content.body}</p>
             <div class="mt-9 flex flex-wrap justify-center gap-3">
-              <a class="pricing-accent-button" href="${content.primaryHref}">${content.primaryCta}</a>
-              <a class="pricing-ghost-button" href="${content.secondaryHref}">${content.secondaryCta}</a>
+              <a class="app-link app-link--button app-link--accent" href="${content.primaryHref}">${content.primaryCta}</a>
+              <a class="app-link app-link--button app-link--ghost" href="${content.secondaryHref}">${content.secondaryCta}</a>
             </div>
             <p class="pricing-trust mt-6">${content.trust}</p>
           </div>
