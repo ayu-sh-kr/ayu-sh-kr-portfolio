@@ -75,8 +75,8 @@ export class CoffeeHeroComponent extends BaseElement {
             </h1>
             <p class="type-lede coffee-hero-lede mx-auto mt-6">${content.body}</p>
             <div class="mt-9 flex flex-wrap justify-center gap-3">
-              <a class="coffee-accent-button" href="#coffee-order">${content.primaryCta}</a>
-              <a class="coffee-ghost-button" href="#coffee-impact">${content.secondaryCta}</a>
+              <a class="app-link app-link--button app-link--accent" href="#coffee-order">${content.primaryCta}</a>
+              <a class="app-link app-link--button app-link--ghost" href="#coffee-impact">${content.secondaryCta}</a>
             </div>
             <p class="coffee-hero-trust mt-6">${content.trust}</p>
           </div>
