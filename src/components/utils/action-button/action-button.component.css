@@ -1,0 +1,43 @@
+action-button { display: inline-block; }
+
+.action-button {
+  display: inline-flex;
+  min-block-size: var(--layout-space-7);
+  align-items: center;
+  justify-content: center;
+  gap: var(--layout-space-2);
+  padding-inline: var(--layout-space-5);
+  border: 1px solid transparent;
+  border-radius: var(--layout-radius-pill);
+  cursor: pointer;
+  font: inherit;
+  font-size: var(--type-control-size);
+  font-weight: var(--type-control-weight);
+  line-height: 1;
+  transition: transform 220ms ease, background-color 220ms ease, border-color 220ms ease, color 220ms ease, opacity 180ms ease;
+}
+
+.action-button:hover:not(:disabled) { transform: translateY(-2px); }
+.action-button:active:not(:disabled) { transform: translateY(0) scale(.98); }
+.action-button:focus-visible { outline: 3px solid var(--primary-color-ring); outline-offset: 3px; }
+.action-button:disabled { cursor: wait; opacity: .6; }
+.action-button--accent { color: var(--primary-color-on); background: var(--primary-color); border-color: var(--primary-color); }
+.action-button--accent:hover:not(:disabled) { background: var(--primary-color-hover); border-color: var(--primary-color-hover); }
+.action-button--ink { color: var(--contrast-foreground-color); background: var(--contrast-background-color); border-color: var(--contrast-background-color); }
+.action-button--ink:hover:not(:disabled) { background: var(--foreground-color); border-color: var(--foreground-color); }
+.action-button--ghost { color: var(--foreground-color); background: transparent; border-color: var(--border-color); }
+.action-button--ghost:hover:not(:disabled) { background: var(--surface-hover-color); border-color: var(--muted-color); }
+.action-button--danger { color: var(--danger-color-on); background: var(--danger-color); border-color: var(--danger-color); }
+.action-button--danger:hover:not(:disabled) { background: color-mix(in srgb, var(--danger-color) 84%, var(--foreground-color)); border-color: currentColor; }
+.action-button__glyph { display: inline-grid; inline-size: 1em; block-size: 1em; place-items: center; font-weight: 700; }
+.action-button__spinner { inline-size: .82em; block-size: .82em; border: 2px solid currentColor; border-inline-end-color: transparent; border-radius: var(--layout-radius-round); animation: action-button-spin 700ms linear infinite; }
+.action-button[data-state="success"] .action-button__glyph { color: var(--success-color); }
+.action-button[data-state="error"] .action-button__glyph { color: var(--danger-color); }
+
+@keyframes action-button-spin { to { transform: rotate(1turn); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .action-button { transition: none; }
+  .action-button:hover:not(:disabled), .action-button:active:not(:disabled) { transform: none; }
+  .action-button__spinner { animation-duration: 1.8s; }
+}
