@@ -186,7 +186,7 @@ export class PricingStickyContactComponent extends BaseElement {
         </span>
         <span class="pricing-sticky-body">
           <span class="pricing-sticky-label"><b>${content.labelStrong}</b> ${content.label}</span>
-          <a class="pricing-sticky-button" href="#pricing-contact">${content.cta}</a>
+          <a class="app-link app-link--button app-link--accent app-link--compact" href="#pricing-contact">${content.cta}</a>
         </span>
       </div>
     `;
