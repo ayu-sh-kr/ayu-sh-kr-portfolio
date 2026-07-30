@@ -30,7 +30,7 @@ export class FooterIndexComponent extends BaseElement {
                       ${group.links
                         .map(
                           (link) => `
-                            <a class="footer-index-link" href="${link.href}" ${"external" in link && link.external ? 'target="_blank" rel="noreferrer"' : ""}>
+                            <a class="app-link app-link--nav footer-index-link" href="${link.href}" ${"external" in link && link.external ? 'target="_blank" rel="noreferrer"' : ""}>
                               <span class="footer-index-tick" aria-hidden="true">›</span>
                               <span>${link.label}</span>
                               ${"external" in link && link.external ? `<span class="footer-index-external" aria-label="External link">${externalMarker}</span>` : ""}
