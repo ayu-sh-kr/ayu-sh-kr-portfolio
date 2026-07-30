@@ -6,6 +6,166 @@
     "html": {
       "elements": [
         {
+          "name": "action-button",
+          "source": {
+            "file": "./src/components/utils/action-button/action-button.component.ts",
+            "offset": 1389
+          },
+          "attributes": [
+            {
+              "name": "action",
+              "default": "",
+              "required": false,
+              "value": {
+                "type": "string"
+              },
+              "source": {
+                "file": "./src/components/utils/action-button/action-button.component.ts",
+                "offset": 1786
+              }
+            },
+            {
+              "name": "busy-label",
+              "default": "Working…",
+              "required": false,
+              "value": {
+                "type": "string"
+              },
+              "source": {
+                "file": "./src/components/utils/action-button/action-button.component.ts",
+                "offset": 2552
+              }
+            },
+            {
+              "name": "done-label",
+              "default": "Done",
+              "required": false,
+              "value": {
+                "type": "string"
+              },
+              "source": {
+                "file": "./src/components/utils/action-button/action-button.component.ts",
+                "offset": 2737
+              }
+            },
+            {
+              "name": "fail-label",
+              "default": "Try again",
+              "required": false,
+              "value": {
+                "type": "string"
+              },
+              "source": {
+                "file": "./src/components/utils/action-button/action-button.component.ts",
+                "offset": 2923
+              }
+            },
+            {
+              "name": "guard",
+              "default": "",
+              "required": false,
+              "value": {
+                "type": "string"
+              },
+              "source": {
+                "file": "./src/components/utils/action-button/action-button.component.ts",
+                "offset": 2176
+              }
+            },
+            {
+              "name": "label",
+              "default": "Continue",
+              "required": false,
+              "value": {
+                "type": "string"
+              },
+              "source": {
+                "file": "./src/components/utils/action-button/action-button.component.ts",
+                "offset": 2361
+              }
+            },
+            {
+              "name": "variant",
+              "default": "ink",
+              "required": false,
+              "value": {
+                "type": "string"
+              },
+              "source": {
+                "file": "./src/components/utils/action-button/action-button.component.ts",
+                "offset": 1968
+              }
+            }
+          ],
+          "js": {
+            "properties": [
+              {
+                "name": "action",
+                "type": "string",
+                "default": "",
+                "source": {
+                  "file": "./src/components/utils/action-button/action-button.component.ts",
+                  "offset": 1786
+                }
+              },
+              {
+                "name": "busyLabel",
+                "type": "string",
+                "default": "Working…",
+                "source": {
+                  "file": "./src/components/utils/action-button/action-button.component.ts",
+                  "offset": 2552
+                }
+              },
+              {
+                "name": "doneLabel",
+                "type": "string",
+                "default": "Done",
+                "source": {
+                  "file": "./src/components/utils/action-button/action-button.component.ts",
+                  "offset": 2737
+                }
+              },
+              {
+                "name": "failLabel",
+                "type": "string",
+                "default": "Try again",
+                "source": {
+                  "file": "./src/components/utils/action-button/action-button.component.ts",
+                  "offset": 2923
+                }
+              },
+              {
+                "name": "guard",
+                "type": "string",
+                "default": "",
+                "source": {
+                  "file": "./src/components/utils/action-button/action-button.component.ts",
+                  "offset": 2176
+                }
+              },
+              {
+                "name": "label",
+                "type": "string",
+                "default": "Continue",
+                "source": {
+                  "file": "./src/components/utils/action-button/action-button.component.ts",
+                  "offset": 2361
+                }
+              },
+              {
+                "name": "variant",
+                "type": "string",
+                "default": "ink",
+                "source": {
+                  "file": "./src/components/utils/action-button/action-button.component.ts",
+                  "offset": 1968
+                }
+              }
+            ]
+          }
+        },
+        {
           "name": "app-error",
           "source": {
             "file": "./src/pages/error.page.ts",
@@ -357,7 +517,7 @@
           "name": "blog-subscription",
           "source": {
             "file": "./src/components/pages/blog/index/subscription/blog-subscription/blog-subscription.component.ts",
-            "offset": 593
+            "offset": 1162
           },
           "attributes": [],
           "js": {
@@ -578,6 +738,50 @@
           "source": {
             "file": "./src/components/pages/design/alert/showcase/design-alert-showcase/design-alert-showcase.component.ts",
             "offset": 750
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "design-button-guidance",
+          "source": {
+            "file": "./src/components/pages/design/button/guidance/design-button-guidance/design-button-guidance.component.ts",
+            "offset": 617
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "design-button-overview",
+          "source": {
+            "file": "./src/components/pages/design/button/overview/design-button-overview/design-button-overview.component.ts",
+            "offset": 622
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "design-button-page",
+          "source": {
+            "file": "./src/pages/design-button.page.ts",
+            "offset": 762
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "design-button-showcase",
+          "source": {
+            "file": "./src/components/pages/design/button/showcase/design-button-showcase/design-button-showcase.component.ts",
+            "offset": 1057
           },
           "attributes": [],
           "js": {
@@ -841,7 +1045,7 @@
           "name": "offline-page",
           "source": {
             "file": "./src/components/pages/offline/shell/offline-page/offline-page.component.ts",
-            "offset": 603
+            "offset": 690
           },
           "attributes": [],
           "js": {

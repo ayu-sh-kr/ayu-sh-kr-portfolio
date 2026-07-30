@@ -1,7 +1,5 @@
 {
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
-  ],
+  "buildCommand": "NITRO_PRESET=vercel pnpm build",
   "headers": [
     {
       "source": "/assets/(.*)",

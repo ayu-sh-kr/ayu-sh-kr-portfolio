@@ -1,7 +1,6 @@
 import {siteIdentity} from "@app/data/portfolio-content.ts";
 import type {BlogPost} from "@app/configs/blogs.config.ts";
 import type {PageSeoContent} from "@app/data/seo-content.ts";
-import {MAILTO} from "@app/data/email-config.ts";
 
 /**
  * Filter option rendered by the blog index and mirrored in its URL hash.
@@ -65,10 +64,12 @@ export const blogIndexContent = {
     ariaLabel: "Subscribe",
     title: "New posts, no noise.",
     copy: "Occasional emails when something ships.",
-    formAction: MAILTO.hello,
     emailLabel: "Email address",
     emailPlaceholder: "name@company.com",
     submitLabel: "Subscribe",
+    submittingLabel: "Sending…",
+    successLabel: "Recorded",
+    errorLabel: "Try again",
   },
 } as const;
 

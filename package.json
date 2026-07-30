@@ -7,10 +7,12 @@
     "dev": "vite",
     "dev:host": "vite --host",
     "build": "tsc && vite build",
+    "start": "node .output/server/index.mjs",
     "preview": "vite preview"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.3.3",
+    "nitro": "3.0.260610-beta",
     "tailwindcss": "^4.3.3",
     "typescript": "^5.9.3",
     "vite": "^7.3.6"

@@ -330,7 +330,8 @@ offline-page [hidden] {
     font-size: .92rem;
   }
 
-  .offline-button {
+  .offline-button,
+  .offline-actions > action-button {
     flex: 1 1 9.5rem;
   }
 }
