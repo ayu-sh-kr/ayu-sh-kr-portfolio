@@ -262,8 +262,8 @@ export class PortfolioSpeakingComponent extends BaseElement {
             <h3 class="motion-title sp-invite-title">${speaking.invite.title}</h3>
             <p class="mx-auto mt-4 max-w-xl leading-7 text-(--muted-color)">${speaking.invite.body}</p>
             <div class="mt-8 flex flex-wrap justify-center gap-3">
-              <a class="motion-button motion-button-accent" href="${speaking.invite.primaryCta.href}">${speaking.invite.primaryCta.label}</a>
-              <a class="motion-button motion-button-ghost" href="${speaking.invite.secondaryCta.href}">${speaking.invite.secondaryCta.label}</a>
+              <a class="app-link app-link--button app-link--accent" href="${speaking.invite.primaryCta.href}">${speaking.invite.primaryCta.label}</a>
+              <a class="app-link app-link--button app-link--ghost" href="${speaking.invite.secondaryCta.href}">${speaking.invite.secondaryCta.label}</a>
             </div>
           </div>
         </div>
