@@ -2,6 +2,7 @@ import { Component, DotaPageElement, HTML, HostListener, SEO, WindowListener } f
 import { OnEvent } from "@ayu-sh-kr/dota-wrap/event";
 import { Route } from "@ayu-sh-kr/dota-wrap/router";
 import { portfolioContent } from "@app/data/portfolio-content.ts";
+import { actionButtonRegistry } from "@app/service/action-button-registry.service.ts";
 import { RouterUtils } from "@app/utils/router.utils.ts";
 
 const clamp = (value: number, min: number, max: number): number => Math.min(max, Math.max(min, value));
@@ -29,6 +30,7 @@ export class OfflinePage extends DotaPageElement {
   private glyphIndex = 0;
   private filling = true;
   private lastTry = Date.now();
+  private removeRetryHandler: (() => void) | null = null;
 
   constructor() {
     super();
@@ -44,6 +46,7 @@ export class OfflinePage extends DotaPageElement {
 
   @OnEvent("connected", true)
   onConnected(): void {
+    this.removeRetryHandler = actionButtonRegistry.registerHandler("offline.retry", () => this.retryConnection());
     this.motionPreference = window.matchMedia("(prefers-reduced-motion: reduce)");
     this.reducedMotion = this.motionPreference.matches;
     this.motionPreference.addEventListener("change", this.handleMotionPreference);
@@ -53,6 +56,8 @@ export class OfflinePage extends DotaPageElement {
 
   @OnEvent("disconnected", true)
   onDisconnected(): void {
+    this.removeRetryHandler?.();
+    this.removeRetryHandler = null;
     this.motionPreference?.removeEventListener("change", this.handleMotionPreference);
     this.motionPreference = null;
     this.clearTimers();
@@ -81,22 +86,6 @@ export class OfflinePage extends DotaPageElement {
   @HostListener({ event: "scroll" })
   onScroll(): void {
     this.scheduleRender();
-  }
-
-  @HostListener({ event: "click" })
-  onHostClick(event: MouseEvent): void {
-    const target = (event.target as HTMLElement).closest<HTMLElement>("[data-offline-action]");
-    if (!target || !this.contains(target)) {
-      return;
-    }
-
-    if (target.dataset.offlineAction === "retry") {
-      if (this.isOnline) {
-        RouterUtils.navigate("/");
-      } else {
-        this.check(true);
-      }
-    }
   }
 
   private readonly handleMotionPreference = (event: MediaQueryListEvent): void => {
@@ -137,10 +126,7 @@ export class OfflinePage extends DotaPageElement {
       this.setText("[data-offline-lede]", content.lede);
       this.setStatus(content.status, true);
       this.setCode(content.code);
-      this.querySelectorAll<HTMLButtonElement>("[data-offline-retry]").forEach((button) => {
-        button.textContent = content.retryLabel;
-        button.disabled = false;
-      });
+      this.setRetryLabel(content.retryLabel);
       this.resetStageStyles();
       return;
     }
@@ -153,9 +139,7 @@ export class OfflinePage extends DotaPageElement {
     this.setText("[data-offline-lede]", content.lede);
     this.setStatus(content.status);
     this.setCode(content.code);
-    this.querySelectorAll<HTMLButtonElement>("[data-offline-retry]").forEach((button) => {
-      button.textContent = content.retryLabel;
-    });
+    this.setRetryLabel(content.retryLabel);
     this.startGlyphSignal();
     this.startConnectivityChecks();
   }
@@ -225,9 +209,25 @@ export class OfflinePage extends DotaPageElement {
     }, 600);
   }
 
-  private check(manual: boolean): void {
-    if (this.checking || this.isOnline) {
+  /** Navigates home when connectivity has returned, otherwise performs the named retry action. */
+  private async retryConnection(): Promise<void> {
+    if (this.isOnline) {
+      RouterUtils.navigate("/");
       return;
+    }
+
+    if (!await this.check(true)) {
+      throw new Error("The connection is still unavailable.");
+    }
+  }
+
+  /** Checks the browser connection hint and resolves with the observed result after the existing delay. */
+  private check(manual: boolean): Promise<boolean> {
+    if (this.isOnline) {
+      return Promise.resolve(true);
+    }
+    if (this.checking) {
+      return Promise.resolve(false);
     }
 
     this.checking = true;
@@ -236,24 +236,24 @@ export class OfflinePage extends DotaPageElement {
 
     if (manual) {
       this.setStatus(offlineContent.messages.checking);
-      this.setRetryDisabled(true);
     }
 
     this.clearRetryTimer();
-    this.retryTimer = window.setTimeout(() => {
-      this.retryTimer = null;
-      this.checking = false;
-      this.setRetryDisabled(false);
+    return new Promise((resolve) => {
+      this.retryTimer = window.setTimeout(() => {
+        this.retryTimer = null;
+        this.checking = false;
 
-      // Production health check can replace this browser hint with a short same-origin HEAD request.
-      if (navigator.onLine) {
-        this.applyConnectivityState(true);
-      } else if (manual) {
-        this.setStatus(offlineContent.messages.stillOffline);
-      } else {
-        this.setStatus(offlineContent.states.offline.status);
-      }
-    }, manual ? 900 : 400);
+        // Production health check can replace this browser hint with a short same-origin HEAD request.
+        if (navigator.onLine) {
+          this.applyConnectivityState(true);
+          resolve(true);
+        } else {
+          this.setStatus(manual ? offlineContent.messages.stillOffline : offlineContent.states.offline.status);
+          resolve(false);
+        }
+      }, manual ? 900 : 400);
+    });
   }
 
   private setStatus(message: string, linked = false): void {
@@ -272,9 +272,10 @@ export class OfflinePage extends DotaPageElement {
     }
   }
 
-  private setRetryDisabled(disabled: boolean): void {
-    this.querySelectorAll<HTMLButtonElement>("[data-offline-retry]").forEach((button) => {
-      button.disabled = disabled;
+  /** Updates both retry renderers when browser connectivity changes their destination label. */
+  private setRetryLabel(label: string): void {
+    this.querySelectorAll<HTMLElement>("action-button[data-offline-retry]").forEach((button) => {
+      button.setAttribute("label", label);
     });
   }
 

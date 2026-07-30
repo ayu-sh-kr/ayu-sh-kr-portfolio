@@ -36,7 +36,7 @@ export class OfflineTroubleshootComponent extends BaseElement {
           </div>
 
           <div class="offline-actions offline-actions-secondary">
-            <button class="offline-button offline-button-accent" type="button" data-offline-action="retry" data-offline-retry>${content.retryLabel}</button>
+            <action-button id="offline-troubleshoot-retry" action="offline.retry" variant="accent" label="${content.retryLabel}" busy-label="Checking…" done-label="Connected" fail-label="Try again" data-offline-retry></action-button>
             <a class="offline-button offline-button-ghost" href="${actions.homeHref}">${actions.homeLabel}</a>
           </div>
           <p class="offline-meta" data-offline-meta>${lastTry.justNow}</p>
