@@ -29,14 +29,9 @@ export const portfolioContent = {
   nav: {
     logo: siteIdentity.brand,
     links: [
-      { label: "Work", href: "/#work-wrap" },
       { label: "Showcase", href: "/showcase" },
-      { label: "Journey", href: "/#journey-wrap" },
-      { label: "Speaking", href: "/#speaking" },
-      { label: "Skills", href: "/#skills" },
-      { label: "Pricing", href: "/pricing" },
       { label: "Blog", href: "/blog" },
-      { label: "Contact", href: "/#contact" },
+      { label: "Pricing", href: "/pricing" },
     ],
   },
   hero: {
