@@ -1,6 +1,4 @@
 coffee-supporters { display: block; }
-.coffee-supporters-section { padding-block: clamp(4.5rem, 9vw, 8rem); }
-.coffee-supporters-container { width: min(100% - 2.5rem, 48rem); }
 .coffee-supporters-summary { margin: 0; color: var(--primary-color-strong); font-size: var(--type-compact-size); font-weight: 600; }
 .coffee-supporter-list { border-top: 1px solid var(--border-color); }
 .coffee-supporter-row { display: grid; grid-template-columns: auto 1fr auto auto; align-items: center; gap: 1rem; border-bottom: 1px solid var(--border-color); padding: 1.1rem .25rem; }
