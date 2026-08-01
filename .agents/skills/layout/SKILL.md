@@ -26,6 +26,11 @@ Never nest containers. Pair the chosen container with `.layout-section-hero`,
 `.layout-section-end`. Use `.layout-section-flush` only when adjacent sections
 have no divider.
 
+Each page section owns the container that constrains its content. Put the
+appropriate `.layout-*` class on the section root when possible; do not rely
+on a generic container selector from a sibling component or stylesheet for
+centering, gutters, or maximum width.
+
 Use `.layout-stack` (`-xs`, `-sm`, `-lg`, `-xl`) between direct children;
 `.layout-grid-auto` first for grids; `.layout-grid-2/-3/-4` only when the
 count matters; `.layout-grid-rail` and `.layout-rail` for a sticky side rail;
