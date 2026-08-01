@@ -42,13 +42,11 @@ export class CoffeeClosingComponent extends BaseElement {
     const content = coffeeContent.closing;
 
     return HTML`
-      <section class="coffee-closing-section" aria-label="Support invitation">
-        <div class="coffee-container coffee-closing-container">
-          <div class="coffee-invite" data-coffee-reveal>
-            <h2 class="type-subsection">${content.title}</h2>
-            <p class="type-lede mt-4">${content.body}</p>
-            <a class="app-link app-link--button app-link--accent mt-7" href="#coffee-order">${content.cta}</a>
-          </div>
+      <section class="coffee-closing-section layout-reading layout-section-end" aria-label="Support invitation">
+        <div class="coffee-invite" data-coffee-reveal>
+          <h2 class="type-subsection">${content.title}</h2>
+          <p class="type-lede mt-4">${content.body}</p>
+          <a class="app-link app-link--button app-link--accent mt-7" href="#coffee-order">${content.cta}</a>
         </div>
       </section>
     `;
