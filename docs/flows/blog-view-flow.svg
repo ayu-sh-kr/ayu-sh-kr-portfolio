@@ -34,7 +34,7 @@
 
   <rect class="background" width="1900" height="2200"/>
   <text class="title" x="70" y="56">Blog UI flow</text>
-  <text class="subtitle" x="70" y="84">src/pages/blog.page.ts → src/components/blog-view/</text>
+  <text class="subtitle" x="70" y="84">src/pages/blog/blog.page.ts → src/components/blog-view/</text>
 
   <!-- Primary route and composition spine. -->
   <g id="route-entry">
