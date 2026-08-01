@@ -26,19 +26,17 @@ export class CoffeeOrderComponent extends BaseElement {
 
     return HTML`
       <section id="coffee-order" class="coffee-order-section layout-content layout-section" aria-labelledby="coffee-order-title">
-        <div class="coffee-container">
-          <header class="coffee-order-heading">
-            <p class="coffee-eyebrow">${content.eyebrow}</p>
-            <h2 id="coffee-order-title" class="type-section mt-3">${content.title}</h2>
-            <p class="type-lede mt-4">${content.body}</p>
-          </header>
-          <div class="coffee-order-flow">
-            <coffee-size-picker></coffee-size-picker>
-            <coffee-quantity-picker></coffee-quantity-picker>
-            <coffee-order-total></coffee-order-total>
-            <coffee-feedback-form></coffee-feedback-form>
-            <coffee-order-checkout></coffee-order-checkout>
-          </div>
+        <header class="coffee-order-heading">
+          <p class="coffee-eyebrow">${content.eyebrow}</p>
+          <h2 id="coffee-order-title" class="type-section mt-3">${content.title}</h2>
+          <p class="type-lede mt-4">${content.body}</p>
+        </header>
+        <div class="coffee-order-flow">
+          <coffee-size-picker></coffee-size-picker>
+          <coffee-quantity-picker></coffee-quantity-picker>
+          <coffee-order-total></coffee-order-total>
+          <coffee-feedback-form></coffee-feedback-form>
+          <coffee-order-checkout></coffee-order-checkout>
         </div>
       </section>
     `;

@@ -1,6 +1,5 @@
 coffee-order { display: block; }
-.coffee-container { max-inline-size: var(--layout-form-max); margin-inline: auto; }
-.coffee-order-heading { max-width: 38rem; }
+.coffee-order-heading { max-inline-size: var(--layout-form-max); }
 .coffee-order-heading .type-lede { color: var(--muted-color); }
 .coffee-order-flow { display: grid; gap: 2.15rem; margin-top: 2.5rem; }
 .coffee-order-question { min-width: 0; border: 0; padding: 0; }
