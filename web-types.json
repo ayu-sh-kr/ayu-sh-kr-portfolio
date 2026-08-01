@@ -494,7 +494,7 @@
         {
           "name": "blog-page",
           "source": {
-            "file": "./src/pages/blog.page.ts",
+            "file": "./src/pages/blog/blog.page.ts",
             "offset": 527
           },
           "attributes": [],
@@ -505,7 +505,7 @@
         {
           "name": "blog-slug-page",
           "source": {
-            "file": "./src/pages/blog-slug.page.ts",
+            "file": "./src/pages/blog/blog-slug.page.ts",
             "offset": 723
           },
           "attributes": [],
@@ -714,7 +714,7 @@
         {
           "name": "design-alert-page",
           "source": {
-            "file": "./src/pages/design-alert.page.ts",
+            "file": "./src/pages/design/design-alert.page.ts",
             "offset": 587
           },
           "attributes": [],
@@ -791,7 +791,7 @@
         {
           "name": "design-color-page",
           "source": {
-            "file": "./src/pages/design-color.page.ts",
+            "file": "./src/pages/design/design-color.page.ts",
             "offset": 611
           },
           "attributes": [],
@@ -835,7 +835,7 @@
         {
           "name": "design-element-page",
           "source": {
-            "file": "./src/pages/design-element.page.ts",
+            "file": "./src/pages/design/design-element.page.ts",
             "offset": 776
           },
           "attributes": [],
@@ -868,7 +868,7 @@
         {
           "name": "design-layout-page",
           "source": {
-            "file": "./src/pages/design-layout.page.ts",
+            "file": "./src/pages/design/design-layout.page.ts",
             "offset": 591
           },
           "attributes": [],
@@ -923,7 +923,7 @@
         {
           "name": "design-toast-page",
           "source": {
-            "file": "./src/pages/design-toast.page.ts",
+            "file": "./src/pages/design/design-toast.page.ts",
             "offset": 649
           },
           "attributes": [],
@@ -967,7 +967,7 @@
         {
           "name": "design-typography-page",
           "source": {
-            "file": "./src/pages/design-typography.page.ts",
+            "file": "./src/pages/design/design-typography.page.ts",
             "offset": 676
           },
           "attributes": [],
@@ -1242,7 +1242,7 @@
         {
           "name": "pricing-page",
           "source": {
-            "file": "./src/pages/pricing.page.ts",
+            "file": "./src/pages/pricing/pricing.page.ts",
             "offset": 539
           },
           "attributes": [],
@@ -1668,7 +1668,7 @@
         {
           "name": "privacy-page",
           "source": {
-            "file": "./src/pages/privacy.page.ts",
+            "file": "./src/pages/legal/privacy.page.ts",
             "offset": 532
           },
           "attributes": [],
@@ -2158,7 +2158,7 @@
         {
           "name": "showcase-page",
           "source": {
-            "file": "./src/pages/showcase.page.ts",
+            "file": "./src/pages/showcase/showcase.page.ts",
             "offset": 556
           },
           "attributes": [],
@@ -2248,7 +2248,7 @@
         {
           "name": "showcase-slug-page",
           "source": {
-            "file": "./src/pages/showcase-slug.page.ts",
+            "file": "./src/pages/showcase/showcase-slug.page.ts",
             "offset": 568
           },
           "attributes": [],
@@ -2690,7 +2690,7 @@
         {
           "name": "terms-page",
           "source": {
-            "file": "./src/pages/terms.page.ts",
+            "file": "./src/pages/legal/terms.page.ts",
             "offset": 514
           },
           "attributes": [],

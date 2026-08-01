@@ -5033,7 +5033,7 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/pages/blog-slug.page.js",
+      "path": "src/pages/blog/blog-slug.page.js",
       "declarations": [
         {
           "kind": "class",
@@ -5066,7 +5066,7 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/pages/blog.page.js",
+      "path": "src/pages/blog/blog.page.js",
       "declarations": [
         {
           "kind": "class",
@@ -5132,7 +5132,7 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/pages/design-alert.page.js",
+      "path": "src/pages/design/design-alert.page.js",
       "declarations": [
         {
           "kind": "class",
@@ -5165,7 +5165,7 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/pages/design-color.page.js",
+      "path": "src/pages/design/design-color.page.js",
       "declarations": [
         {
           "kind": "class",
@@ -5198,7 +5198,7 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/pages/design-element.page.js",
+      "path": "src/pages/design/design-element.page.js",
       "declarations": [
         {
           "kind": "class",
@@ -5231,7 +5231,7 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/pages/design-layout.page.js",
+      "path": "src/pages/design/design-layout.page.js",
       "declarations": [
         {
           "kind": "class",
@@ -5264,7 +5264,7 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/pages/design-toast.page.js",
+      "path": "src/pages/design/design-toast.page.js",
       "declarations": [
         {
           "kind": "class",
@@ -5297,7 +5297,7 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/pages/design-typography.page.js",
+      "path": "src/pages/design/design-typography.page.js",
       "declarations": [
         {
           "kind": "class",
@@ -5432,40 +5432,7 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/pages/pricing.page.js",
-      "declarations": [
-        {
-          "kind": "class",
-          "name": "PricingPage",
-          "customElement": true,
-          "tagName": "pricing-page",
-          "superclass": {
-            "name": "DotaPageElement"
-          },
-          "members": [],
-          "attributes": []
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "PricingPage",
-          "declaration": {
-            "name": "PricingPage"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "pricing-page",
-          "declaration": {
-            "name": "PricingPage"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/pages/privacy.page.js",
+      "path": "src/pages/legal/privacy.page.js",
       "declarations": [
         {
           "kind": "class",
@@ -5498,7 +5465,73 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/pages/showcase-slug.page.js",
+      "path": "src/pages/legal/terms.page.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "TermsPage",
+          "customElement": true,
+          "tagName": "terms-page",
+          "superclass": {
+            "name": "DotaPageElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "TermsPage",
+          "declaration": {
+            "name": "TermsPage"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "terms-page",
+          "declaration": {
+            "name": "TermsPage"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/pages/pricing/pricing.page.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "PricingPage",
+          "customElement": true,
+          "tagName": "pricing-page",
+          "superclass": {
+            "name": "DotaPageElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "PricingPage",
+          "declaration": {
+            "name": "PricingPage"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "pricing-page",
+          "declaration": {
+            "name": "PricingPage"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/pages/showcase/showcase-slug.page.js",
       "declarations": [
         {
           "kind": "class",
@@ -5531,7 +5564,7 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/pages/showcase.page.js",
+      "path": "src/pages/showcase/showcase.page.js",
       "declarations": [
         {
           "kind": "class",
@@ -5591,39 +5624,6 @@
           "name": "support-page",
           "declaration": {
             "name": "SupportPage"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/pages/terms.page.js",
-      "declarations": [
-        {
-          "kind": "class",
-          "name": "TermsPage",
-          "customElement": true,
-          "tagName": "terms-page",
-          "superclass": {
-            "name": "DotaPageElement"
-          },
-          "members": [],
-          "attributes": []
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "TermsPage",
-          "declaration": {
-            "name": "TermsPage"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "terms-page",
-          "declaration": {
-            "name": "TermsPage"
           }
         }
       ]
