@@ -92,7 +92,7 @@
 @import "./components/pages/coffee/supporters/coffee-supporters/coffee-supporters.component.css";
 @import "./components/pages/coffee/closing/coffee-closing/coffee-closing.component.css";
 @import "./components/pages/coffee/sticky/coffee-sticky/coffee-sticky.component.css";
-@import "./pages/pricing.page.css";
+@import "./pages/pricing/pricing.page.css";
 @import "./components/pages/home/skills/skills-section/skills-section.component.css";
 @import "./components/pages/home/services/services-section/services-section.component.css";
 @import "./components/pages/home/contact/about-contact-section/about-contact-section.component.css";

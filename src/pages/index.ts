@@ -1,17 +1,22 @@
 export { HomePage } from "@app/pages/home.page.ts";
 export { ErrorPage } from "@app/pages/error.page.ts";
-export { BlogPage } from "@app/pages/blog.page.ts";
-export { BlogSlugPage } from "@app/pages/blog-slug.page.ts";
-export { PricingPage } from "@app/pages/pricing.page.ts";
+
+export { PricingPage } from "@app/pages/pricing/pricing.page.ts";
 export { CoffeePage } from "@app/pages/coffee.page.ts";
 export { SupportPage } from "@app/pages/support.page.ts";
-export { ShowcasePage } from "@app/pages/showcase.page.ts";
-export { ShowcaseSlugPage } from "@app/pages/showcase-slug.page.ts";
-export { PrivacyPage } from "@app/pages/privacy.page.ts";
-export { TermsPage } from "@app/pages/terms.page.ts";
-export { DesignTypographyPage } from "@app/pages/design-typography.page.ts";
-export { DesignColorPage } from "@app/pages/design-color.page.ts";
-export { DesignLayoutPage } from "@app/pages/design-layout.page.ts";
-export { DesignAlertPage } from "@app/pages/design-alert.page.ts";
-export { DesignToastPage } from "@app/pages/design-toast.page.ts";
+
+export { BlogPage } from "@app/pages/blog/blog.page.ts";
+export { BlogSlugPage } from "@app/pages/blog/blog-slug.page.ts";
+export { ShowcasePage } from "@app/pages/showcase/showcase.page.ts";
+export { ShowcaseSlugPage } from "@app/pages/showcase/showcase-slug.page.ts";
+
+export { PrivacyPage } from "@app/pages/legal/privacy.page.ts";
+export { TermsPage } from "@app/pages/legal/terms.page.ts";
+
+export { DesignTypographyPage } from "@app/pages/design/design-typography.page.ts";
+export { DesignColorPage } from "@app/pages/design/design-color.page.ts";
+export { DesignLayoutPage } from "@app/pages/design/design-layout.page.ts";
+export { DesignAlertPage } from "@app/pages/design/design-alert.page.ts";
+export { DesignToastPage } from "@app/pages/design/design-toast.page.ts";
+
 export { OfflinePage } from "@app/components/pages/offline/shell/offline-page/offline-page.component.ts";
