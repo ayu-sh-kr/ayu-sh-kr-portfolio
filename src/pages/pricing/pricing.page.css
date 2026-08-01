@@ -1,0 +1,53 @@
+pricing-page {
+  display: block;
+
+  /* Compatibility aliases keep feature CSS concise during the global migration. */
+  --pricing-type-display-size: var(--type-display-size);
+  --pricing-type-display-weight: var(--type-display-weight);
+  --pricing-type-display-tracking: var(--type-display-tracking);
+  --pricing-type-display-leading: var(--type-display-leading);
+  --pricing-type-section-size: var(--type-section-size);
+  --pricing-type-section-weight: var(--type-section-weight);
+  --pricing-type-section-tracking: var(--type-section-tracking);
+  --pricing-type-section-leading: var(--type-section-leading);
+  --pricing-type-subsection-size: var(--type-subsection-size);
+  --pricing-type-lede-size: var(--type-lede-size);
+  --pricing-type-lede-leading: var(--type-lede-leading);
+  --pricing-type-body-size: var(--type-body-size);
+  --pricing-type-body-leading: var(--type-body-leading);
+  --pricing-type-compact-size: var(--type-compact-size);
+  --pricing-type-compact-leading: var(--type-compact-leading);
+  --pricing-type-card-title-size: var(--type-card-title-size);
+  --pricing-type-card-title-weight: var(--type-card-title-weight);
+  --pricing-type-card-title-tracking: var(--type-card-title-tracking);
+  --pricing-type-label-size: var(--type-eyebrow-size);
+  --pricing-type-label-weight: var(--type-eyebrow-weight);
+  --pricing-type-label-tracking: var(--type-eyebrow-tracking);
+  --pricing-type-control-size: var(--type-control-size);
+  --pricing-type-control-weight: var(--type-control-weight);
+  --pricing-type-price-size: var(--type-price-size);
+  --pricing-type-price-tracking: var(--type-price-tracking);
+  --pricing-type-estimate-size: var(--type-estimate-size);
+}
+
+pricing-page .pricing-eyebrow {
+  color: var(--primary-color-strong);
+  font-size: var(--pricing-type-label-size);
+  font-weight: var(--pricing-type-label-weight);
+  letter-spacing: var(--pricing-type-label-tracking);
+  text-transform: uppercase;
+}
+
+pricing-page .pricing-section-title {
+  font-size: var(--pricing-type-section-size);
+  font-weight: var(--pricing-type-section-weight);
+  letter-spacing: var(--pricing-type-section-tracking);
+  line-height: var(--pricing-type-section-leading);
+  text-wrap: balance;
+}
+
+pricing-page .pricing-section-lede {
+  color: var(--muted-color);
+  font-size: var(--pricing-type-lede-size);
+  line-height: var(--pricing-type-lede-leading);
+}
