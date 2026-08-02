@@ -17,7 +17,7 @@ export class DesignAlertGuidanceComponent extends BaseElement {
     const { guidance } = designAlertContent;
 
     return HTML`
-      <section class="design-alert-guidance layout-page layout-section-end layout-grid-rail" aria-labelledby="design-alert-guidance-title">
+      <section id="design-alert-guidance" class="design-alert-guidance layout-page layout-section-end layout-grid-rail" aria-labelledby="design-alert-guidance-title">
         <div class="layout-stack layout-stack-sm">
           <p class="type-eyebrow">${guidance.eyebrow}</p>
           <h2 id="design-alert-guidance-title" class="type-section">${guidance.title}</h2>

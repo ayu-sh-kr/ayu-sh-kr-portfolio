@@ -17,12 +17,12 @@ export class DesignAlertOverviewComponent extends BaseElement {
     const { overview } = designAlertContent;
 
     return HTML`
-      <section class="design-alert-overview layout-page layout-section-hero" aria-labelledby="design-alert-overview-title">
+      <section id="design-alert-overview" class="design-alert-overview layout-page layout-section-hero" aria-labelledby="design-alert-overview-title">
         <div class="design-alert-overview-copy layout-stack layout-stack-sm">
           <p class="type-eyebrow">${overview.eyebrow}</p>
           <h1 id="design-alert-overview-title" class="type-display">${overview.title}</h1>
           <p class="type-lede">${overview.lede}</p>
-          <ul class="design-alert-overview-tags" aria-label="Alert properties">
+          <ul class="design-alert-overview-tags" aria-label="${overview.tagsAriaLabel}">
             ${overview.tags.map((tag) => HTML`<li>${tag}</li>`).join("")}
           </ul>
         </div>

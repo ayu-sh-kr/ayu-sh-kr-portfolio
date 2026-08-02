@@ -73,7 +73,7 @@ export class DesignAlertShowcaseComponent extends BaseElement {
     const { showcase } = designAlertContent;
 
     return HTML`
-      <section class="design-alert-showcase layout-page layout-section" aria-labelledby="design-alert-showcase-title">
+      <section id="design-alert-showcase" class="design-alert-showcase layout-page layout-section" aria-labelledby="design-alert-showcase-title">
         <div class="design-alert-showcase-heading layout-stack layout-stack-sm">
           <p class="type-eyebrow">${showcase.eyebrow}</p>
           <h2 id="design-alert-showcase-title" class="type-section">${showcase.title}</h2>

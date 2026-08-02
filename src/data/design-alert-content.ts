@@ -13,6 +13,7 @@ export const designAlertContent = {
     eyebrow: "Design grammar / 04",
     title: "The browser interruption, kept deliberate.",
     lede: "Alerts stop the page for one answer. They use native dialog behavior for focus, inert background, and focus return—then add the portfolio's visual grammar on top.",
+    tagsAriaLabel: "Alert properties",
     tags: ["native dialog", "one at a time", "promise API"],
   },
   showcase: {
