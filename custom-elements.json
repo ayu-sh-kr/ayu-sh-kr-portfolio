@@ -1229,6 +1229,633 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/pages/design/index/hero/design-index-hero/design-index-hero.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "DesignIndexHeroComponent",
+          "customElement": true,
+          "tagName": "design-index-hero",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "DesignIndexHeroComponent",
+          "declaration": {
+            "name": "DesignIndexHeroComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "design-index-hero",
+          "declaration": {
+            "name": "DesignIndexHeroComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/design/index/reference/design-index-reference/design-index-reference.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "DesignIndexReferenceComponent",
+          "customElement": true,
+          "tagName": "design-index-reference",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "DesignIndexReferenceComponent",
+          "declaration": {
+            "name": "DesignIndexReferenceComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "design-index-reference",
+          "declaration": {
+            "name": "DesignIndexReferenceComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/design/interaction/action/design-interaction-action.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "DesignInteractionActionComponent",
+          "customElement": true,
+          "tagName": "design-interaction-action",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "DesignInteractionActionComponent",
+          "declaration": {
+            "name": "DesignInteractionActionComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "design-interaction-action",
+          "declaration": {
+            "name": "DesignInteractionActionComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/design/interaction/checklist/design-interaction-checklist.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "DesignInteractionChecklistComponent",
+          "customElement": true,
+          "tagName": "design-interaction-checklist",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "DesignInteractionChecklistComponent",
+          "declaration": {
+            "name": "DesignInteractionChecklistComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "design-interaction-checklist",
+          "declaration": {
+            "name": "DesignInteractionChecklistComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/design/interaction/compound/design-interaction-compound.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "DesignInteractionCompoundComponent",
+          "customElement": true,
+          "tagName": "design-interaction-compound",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "DesignInteractionCompoundComponent",
+          "declaration": {
+            "name": "DesignInteractionCompoundComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "design-interaction-compound",
+          "declaration": {
+            "name": "DesignInteractionCompoundComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/design/interaction/focus/design-interaction-focus.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "DesignInteractionFocusComponent",
+          "customElement": true,
+          "tagName": "design-interaction-focus",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "DesignInteractionFocusComponent",
+          "declaration": {
+            "name": "DesignInteractionFocusComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "design-interaction-focus",
+          "declaration": {
+            "name": "DesignInteractionFocusComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/design/interaction/guardrails/design-interaction-guardrails.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "DesignInteractionGuardrailsComponent",
+          "customElement": true,
+          "tagName": "design-interaction-guardrails",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "DesignInteractionGuardrailsComponent",
+          "declaration": {
+            "name": "DesignInteractionGuardrailsComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "design-interaction-guardrails",
+          "declaration": {
+            "name": "DesignInteractionGuardrailsComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/design/interaction/hero/design-interaction-hero.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "DesignInteractionHeroComponent",
+          "customElement": true,
+          "tagName": "design-interaction-hero",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "DesignInteractionHeroComponent",
+          "declaration": {
+            "name": "DesignInteractionHeroComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "design-interaction-hero",
+          "declaration": {
+            "name": "DesignInteractionHeroComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/design/interaction/ingest/design-interaction-ingest.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "DesignInteractionIngestComponent",
+          "customElement": true,
+          "tagName": "design-interaction-ingest",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "DesignInteractionIngestComponent",
+          "declaration": {
+            "name": "DesignInteractionIngestComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "design-interaction-ingest",
+          "declaration": {
+            "name": "DesignInteractionIngestComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/design/interaction/interrupt/design-interaction-interrupt.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "DesignInteractionInterruptComponent",
+          "customElement": true,
+          "tagName": "design-interaction-interrupt",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "DesignInteractionInterruptComponent",
+          "declaration": {
+            "name": "DesignInteractionInterruptComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "design-interaction-interrupt",
+          "declaration": {
+            "name": "DesignInteractionInterruptComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/design/interaction/nav/design-interaction-nav.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "DesignInteractionNavComponent",
+          "customElement": true,
+          "tagName": "design-interaction-nav",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "DesignInteractionNavComponent",
+          "declaration": {
+            "name": "DesignInteractionNavComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "design-interaction-nav",
+          "declaration": {
+            "name": "DesignInteractionNavComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/design/interaction/pointer/design-interaction-pointer.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "DesignInteractionPointerComponent",
+          "customElement": true,
+          "tagName": "design-interaction-pointer",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "DesignInteractionPointerComponent",
+          "declaration": {
+            "name": "DesignInteractionPointerComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "design-interaction-pointer",
+          "declaration": {
+            "name": "DesignInteractionPointerComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/design/interaction/recompute/design-interaction-recompute.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "DesignInteractionRecomputeComponent",
+          "customElement": true,
+          "tagName": "design-interaction-recompute",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "DesignInteractionRecomputeComponent",
+          "declaration": {
+            "name": "DesignInteractionRecomputeComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "design-interaction-recompute",
+          "declaration": {
+            "name": "DesignInteractionRecomputeComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/design/interaction/reduced/design-interaction-reduced.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "DesignInteractionReducedComponent",
+          "customElement": true,
+          "tagName": "design-interaction-reduced",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "DesignInteractionReducedComponent",
+          "declaration": {
+            "name": "DesignInteractionReducedComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "design-interaction-reduced",
+          "declaration": {
+            "name": "DesignInteractionReducedComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/design/interaction/scroll/design-interaction-scroll.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "DesignInteractionScrollComponent",
+          "customElement": true,
+          "tagName": "design-interaction-scroll",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "DesignInteractionScrollComponent",
+          "declaration": {
+            "name": "DesignInteractionScrollComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "design-interaction-scroll",
+          "declaration": {
+            "name": "DesignInteractionScrollComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/design/interaction/selection/design-interaction-selection.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "DesignInteractionSelectionComponent",
+          "customElement": true,
+          "tagName": "design-interaction-selection",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "DesignInteractionSelectionComponent",
+          "declaration": {
+            "name": "DesignInteractionSelectionComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "design-interaction-selection",
+          "declaration": {
+            "name": "DesignInteractionSelectionComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/design/interaction/timing/design-interaction-timing.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "DesignInteractionTimingComponent",
+          "customElement": true,
+          "tagName": "design-interaction-timing",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "DesignInteractionTimingComponent",
+          "declaration": {
+            "name": "DesignInteractionTimingComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "design-interaction-timing",
+          "declaration": {
+            "name": "DesignInteractionTimingComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/design/interaction/transient/design-interaction-transient.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "DesignInteractionTransientComponent",
+          "customElement": true,
+          "tagName": "design-interaction-transient",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "DesignInteractionTransientComponent",
+          "declaration": {
+            "name": "DesignInteractionTransientComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "design-interaction-transient",
+          "declaration": {
+            "name": "DesignInteractionTransientComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/design/interaction/verbs/design-interaction-verbs.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "DesignInteractionVerbsComponent",
+          "customElement": true,
+          "tagName": "design-interaction-verbs",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "DesignInteractionVerbsComponent",
+          "declaration": {
+            "name": "DesignInteractionVerbsComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "design-interaction-verbs",
+          "declaration": {
+            "name": "DesignInteractionVerbsComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/pages/design/layout/guidance/design-layout-guidance/design-layout-guidance.component.js",
       "declarations": [
         {
@@ -5231,6 +5858,39 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/pages/design/design-interaction.page.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "DesignInteractionPage",
+          "customElement": true,
+          "tagName": "design-interaction-page",
+          "superclass": {
+            "name": "DotaPageElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "DesignInteractionPage",
+          "declaration": {
+            "name": "DesignInteractionPage"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "design-interaction-page",
+          "declaration": {
+            "name": "DesignInteractionPage"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/pages/design/design-layout.page.js",
       "declarations": [
         {
@@ -5324,6 +5984,39 @@
           "name": "design-typography-page",
           "declaration": {
             "name": "DesignTypographyPage"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/pages/design/design.page.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "DesignPage",
+          "customElement": true,
+          "tagName": "design-page",
+          "superclass": {
+            "name": "DotaPageElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "DesignPage",
+          "declaration": {
+            "name": "DesignPage"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "design-page",
+          "declaration": {
+            "name": "DesignPage"
           }
         }
       ]

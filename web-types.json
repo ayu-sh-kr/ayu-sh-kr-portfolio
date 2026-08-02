@@ -844,6 +844,226 @@
           }
         },
         {
+          "name": "design-index-hero",
+          "source": {
+            "file": "./src/components/pages/design/index/hero/design-index-hero/design-index-hero.component.ts",
+            "offset": 507
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "design-index-reference",
+          "source": {
+            "file": "./src/components/pages/design/index/reference/design-index-reference/design-index-reference.component.ts",
+            "offset": 757
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "design-interaction-action",
+          "source": {
+            "file": "./src/components/pages/design/interaction/action/design-interaction-action.component.ts",
+            "offset": 484
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "design-interaction-checklist",
+          "source": {
+            "file": "./src/components/pages/design/interaction/checklist/design-interaction-checklist.component.ts",
+            "offset": 341
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "design-interaction-compound",
+          "source": {
+            "file": "./src/components/pages/design/interaction/compound/design-interaction-compound.component.ts",
+            "offset": 338
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "design-interaction-focus",
+          "source": {
+            "file": "./src/components/pages/design/interaction/focus/design-interaction-focus.component.ts",
+            "offset": 327
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "design-interaction-guardrails",
+          "source": {
+            "file": "./src/components/pages/design/interaction/guardrails/design-interaction-guardrails.component.ts",
+            "offset": 342
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "design-interaction-hero",
+          "source": {
+            "file": "./src/components/pages/design/interaction/hero/design-interaction-hero.component.ts",
+            "offset": 337
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "design-interaction-ingest",
+          "source": {
+            "file": "./src/components/pages/design/interaction/ingest/design-interaction-ingest.component.ts",
+            "offset": 356
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "design-interaction-interrupt",
+          "source": {
+            "file": "./src/components/pages/design/interaction/interrupt/design-interaction-interrupt.component.ts",
+            "offset": 424
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "design-interaction-nav",
+          "source": {
+            "file": "./src/components/pages/design/interaction/nav/design-interaction-nav.component.ts",
+            "offset": 354
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "design-interaction-page",
+          "source": {
+            "file": "./src/pages/design/design-interaction.page.ts",
+            "offset": 677
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "design-interaction-pointer",
+          "source": {
+            "file": "./src/components/pages/design/interaction/pointer/design-interaction-pointer.component.ts",
+            "offset": 480
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "design-interaction-recompute",
+          "source": {
+            "file": "./src/components/pages/design/interaction/recompute/design-interaction-recompute.component.ts",
+            "offset": 361
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "design-interaction-reduced",
+          "source": {
+            "file": "./src/components/pages/design/interaction/reduced/design-interaction-reduced.component.ts",
+            "offset": 414
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "design-interaction-scroll",
+          "source": {
+            "file": "./src/components/pages/design/interaction/scroll/design-interaction-scroll.component.ts",
+            "offset": 344
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "design-interaction-selection",
+          "source": {
+            "file": "./src/components/pages/design/interaction/selection/design-interaction-selection.component.ts",
+            "offset": 353
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "design-interaction-timing",
+          "source": {
+            "file": "./src/components/pages/design/interaction/timing/design-interaction-timing.component.ts",
+            "offset": 338
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "design-interaction-transient",
+          "source": {
+            "file": "./src/components/pages/design/interaction/transient/design-interaction-transient.component.ts",
+            "offset": 415
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "design-interaction-verbs",
+          "source": {
+            "file": "./src/components/pages/design/interaction/verbs/design-interaction-verbs.component.ts",
+            "offset": 395
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
           "name": "design-layout-guidance",
           "source": {
             "file": "./src/components/pages/design/layout/guidance/design-layout-guidance/design-layout-guidance.component.ts",
@@ -892,6 +1112,17 @@
           "source": {
             "file": "./src/components/pages/design/layout/roles/design-layout-roles/design-layout-roles.component.ts",
             "offset": 283
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "design-page",
+          "source": {
+            "file": "./src/pages/design/design.page.ts",
+            "offset": 741
           },
           "attributes": [],
           "js": {
