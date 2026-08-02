@@ -34,6 +34,9 @@
 @import "./components/pages/design/toast/overview/design-toast-overview/design-toast-overview.component.css";
 @import "./components/pages/design/toast/showcase/design-toast-showcase/design-toast-showcase.component.css";
 @import "./components/pages/design/toast/guidance/design-toast-guidance/design-toast-guidance.component.css";
+@import "./components/pages/design/interaction/shared/design-interaction-shared.css";
+@import "./components/pages/design/index/hero/design-index-hero/design-index-hero.component.css";
+@import "./components/pages/design/index/reference/design-index-reference/design-index-reference.component.css";
 @import "./components/pages/design/element/design-element.css";
 @import "./components/pages/design/element/overview/design-element-overview/design-element-overview.component.css";
 @import "./components/pages/design/element/button/showcase/design-button-showcase/design-button-showcase.component.css";

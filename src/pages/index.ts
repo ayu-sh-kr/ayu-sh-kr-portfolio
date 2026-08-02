@@ -13,10 +13,12 @@ export { ShowcaseSlugPage } from "@app/pages/showcase/showcase-slug.page.ts";
 export { PrivacyPage } from "@app/pages/legal/privacy.page.ts";
 export { TermsPage } from "@app/pages/legal/terms.page.ts";
 
+export { DesignPage } from "@app/pages/design/design.page.ts";
 export { DesignTypographyPage } from "@app/pages/design/design-typography.page.ts";
 export { DesignColorPage } from "@app/pages/design/design-color.page.ts";
 export { DesignLayoutPage } from "@app/pages/design/design-layout.page.ts";
 export { DesignAlertPage } from "@app/pages/design/design-alert.page.ts";
 export { DesignToastPage } from "@app/pages/design/design-toast.page.ts";
+export { DesignInteractionPage } from "@app/pages/design/design-interaction.page.ts";
 
 export { OfflinePage } from "@app/components/pages/offline/shell/offline-page/offline-page.component.ts";
