@@ -11,3 +11,9 @@ dist/
 build/
 out/
 !web-types.json
+!custom-elements.json
+!node_modules/
+!.output
+!dist
+!.vercel
+!setup
