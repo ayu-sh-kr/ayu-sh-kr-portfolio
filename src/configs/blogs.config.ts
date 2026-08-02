@@ -32,6 +32,17 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "postgresql-access-control",
+    date: "2026-08-02",
+    writer: siteIdentity.name,
+    header: "PostgreSQL access control: roles and permissions that make sense",
+    description:
+      "A practical, plain-language guide to PostgreSQL roles, privileges, ownership, default grants, and row-level security.",
+    category: "tutorial",
+    source: "/blogs/tutorial/Postgres-Access-Control.md",
+    minutes: 12,
+  },
+  {
     slug: "distributed-locks-redis",
     date: "2026-07-12",
     writer: siteIdentity.name,
