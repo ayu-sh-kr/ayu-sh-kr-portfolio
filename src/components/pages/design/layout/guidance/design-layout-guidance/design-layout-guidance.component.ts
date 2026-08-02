@@ -17,7 +17,7 @@ export class DesignLayoutGuidanceComponent extends BaseElement {
     const { guidance } = designLayoutContent;
 
     return HTML`
-      <section class="design-layout-guidance layout-page layout-section-end layout-grid-rail" aria-labelledby="design-layout-guidance-title">
+      <section id="design-layout-guidance" class="design-layout-guidance layout-page layout-section-end layout-grid-rail" aria-labelledby="design-layout-guidance-title">
         <div class="layout-stack layout-stack-sm">
           <p class="type-eyebrow">${guidance.eyebrow}</p>
           <h2 id="design-layout-guidance-title" class="type-section">${guidance.title}</h2>

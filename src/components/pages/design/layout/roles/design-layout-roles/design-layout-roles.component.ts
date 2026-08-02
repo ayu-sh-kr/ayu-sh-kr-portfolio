@@ -17,7 +17,7 @@ export class DesignLayoutRolesComponent extends BaseElement {
     const { roles } = designLayoutContent;
 
     return HTML`
-      <section class="design-layout-roles layout-page layout-section" aria-labelledby="design-layout-roles-title">
+      <section id="design-layout-roles" class="design-layout-roles layout-page layout-section" aria-labelledby="design-layout-roles-title">
         <div class="design-layout-heading layout-stack layout-stack-sm">
           <p class="type-eyebrow">${roles.eyebrow}</p>
           <h2 id="design-layout-roles-title" class="type-section">${roles.title}</h2>

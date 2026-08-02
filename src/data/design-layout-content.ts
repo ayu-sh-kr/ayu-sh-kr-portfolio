@@ -13,6 +13,7 @@ export const designLayoutContent = {
     eyebrow: "Design grammar / 03",
     title: "One geometry system, built into every route.",
     lede: "Containers follow content shape; sections own vertical rhythm; grids and sticky chrome share the same responsive rules. These specimens render from src/layout.css, so the reference is the application.",
+    frame: { ariaLabel: "80rem page frame specimen", label: "Shared page frame", value: "80rem" },
   },
   roles: {
     eyebrow: "Layout roles",
@@ -49,6 +50,13 @@ export const designLayoutContent = {
       { token: "--layout-z-sticky", use: "Scrollspy or side rail" },
       { token: "--layout-z-toast", use: "Safe-area-aware sticky contact control" },
     ],
+    specimens: {
+      space: { ariaLabel: "Space scale", label: "Shared spacing", title: "One scale for every gap." },
+      rhythm: { ariaLabel: "Section rhythm", label: "Section rhythm", title: "Sections own the breathing room." },
+      gridAriaLabel: "Content-driven grid specimen",
+      chromeAriaLabel: "Chrome token reference",
+      chromeLabel: "Fixed and sticky chrome",
+    },
   },
   guidance: {
     eyebrow: "Implementation",

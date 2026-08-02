@@ -17,16 +17,16 @@ export class DesignLayoutOverviewComponent extends BaseElement {
     const { overview } = designLayoutContent;
 
     return HTML`
-      <section class="design-layout-overview layout-page layout-section-hero" aria-labelledby="design-layout-overview-title">
+      <section id="design-layout-overview" class="design-layout-overview layout-page layout-section-hero" aria-labelledby="design-layout-overview-title">
         <div class="layout-stack layout-stack-lg">
           <div class="layout-stack layout-stack-sm">
             <p class="type-eyebrow">${overview.eyebrow}</p>
             <h1 id="design-layout-overview-title" class="type-display">${overview.title}</h1>
             <p class="type-lede">${overview.lede}</p>
           </div>
-          <div class="design-layout-frame" aria-label="80rem page frame specimen">
-            <span class="type-label">Shared page frame</span>
-            <strong>80rem</strong>
+          <div class="design-layout-frame" aria-label="${overview.frame.ariaLabel}">
+            <span class="type-label">${overview.frame.label}</span>
+            <strong>${overview.frame.value}</strong>
           </div>
         </div>
       </section>
