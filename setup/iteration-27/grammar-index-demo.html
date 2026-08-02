@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Index — Design Grammar — ayush.dev</title>
+<meta name="description" content="The five grammars that build every page on ayush.dev — layout, components and colour, typography, interaction, notification — what each one settles, and where to open it." />
+<style>
+/* ==================================================================
+   TOKENS — verbatim subset of assets/typography.css + assets/layout.css.
+   Inlined because this file must stand alone for the service-worker
+   offline fallback. Never edit a value here; edit the source file.
+   ================================================================== */
+:root{
+  --paper:#FAFAF8; --ink:#1D1D1F; --ink-soft:#6E6E73;
+  --hairline:rgba(29,29,31,.1);
+  --accent:#FF4D00; --accent-deep:#C23A00; --tint:#FFF1EA;
+  --ok:#1F7A3D; --err:#C23A00;
+
+  --font-sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Inter,sans-serif;
+  --font-mono:ui-monospace,SFMono-Regular,Menlo,monospace;
+  --fs-display:clamp(2.4rem,1.2rem + 5.333vw,6rem);
+  --fs-title:clamp(1.875rem,1.4rem + 2.111vw,3.3rem);
+  --fs-title-sm:clamp(1.375rem,1.133rem + 1.074vw,2.1rem);
+  --fs-lead:clamp(1.062rem,1.042rem + 0.093vw,1.125rem);
+  --fs-body:1rem; --fs-ui:.9375rem; --fs-ui-sm:.875rem;
+  --fs-meta:.8125rem; --fs-caption:.78125rem; --fs-label:.75rem; --fs-micro:.6875rem;
+  --fs-field:.9375rem;
+  --fw-regular:400; --fw-medium:500; --fw-semibold:600; --fw-bold:700;
+  --tr-display:-.03em; --tr-title:-.02em; --tr-body:0; --tr-lead:-.012em;
+  --tr-label:.06em; --tr-eyebrow:.08em;
+  --lh-display:1.08; --lh-title:1.12; --lh-ui:1.45; --lh-body:1.55;
+  --measure:720px; --measure-sm:560px;
+
+  --layout-page-max:80rem; --layout-content-max:60rem;
+  --layout-gutter:clamp(1.25rem,4vw,3rem);
+  --layout-section-sm:clamp(2rem,1.5rem + 2.222vw,3.5rem);
+  --layout-section-md:clamp(3rem,2.167rem + 3.704vw,5.5rem);
+  --layout-section-hero:clamp(6rem,4.667rem + 5.926vw,10rem);
+  --layout-space-1:.25rem; --layout-space-2:.5rem; --layout-space-3:.75rem;
+  --layout-space-4:1rem;   --layout-space-5:1.5rem; --layout-space-6:2rem;
+  --layout-space-7:3rem;   --layout-space-8:4rem;
+  --layout-col-sm:220px; --layout-col-md:260px;
+  --layout-pad-card:clamp(1.25rem,1rem + 1.111vw,2rem);
+  --layout-pad-panel:clamp(1.5rem,1.167rem + 1.481vw,2.5rem);
+  --layout-radius-xs:4px; --layout-radius-sm:8px; --layout-radius-md:14px;
+  --layout-radius-lg:20px; --layout-radius-xl:28px; --layout-radius-pill:999px;
+  --layout-radius-round:50%;
+  --layout-nav-h:57px; --layout-stick:calc(var(--layout-nav-h) + var(--layout-space-4));
+  --layout-z-base:1; --layout-z-raised:10; --layout-z-sticky:20; --layout-z-nav:30;
+  --layout-z-overlay:40; --layout-z-modal:50; --layout-z-toast:60;
+
+  --ease:cubic-bezier(.2,.8,.2,1);
+}
+@media (min-width:700px){
+  :root{ --tr-display:-.035em; --tr-title:-.025em; --tr-lead:-.015em;
+         --lh-display:1.05; --lh-title:1.1; --lh-body:1.6 }
+}
+@media (min-width:1100px){ :root{ --tr-display:-.04em; --lh-display:1.04; --lh-title:1.08 } }
+@media (pointer:coarse){ :root{ --fs-field:1rem } }
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth; scroll-padding-block-start:var(--layout-stick);
+  -webkit-text-size-adjust:100%; text-size-adjust:100%}
+[id]{scroll-margin-block-start:var(--layout-stick)}
+body{margin:0; min-block-size:100svh; background:var(--paper); color:var(--ink);
+  font-family:var(--font-sans); font-size:var(--fs-body); font-weight:var(--fw-regular);
+  line-height:var(--lh-body); letter-spacing:var(--tr-body); -webkit-font-smoothing:antialiased}
+img,svg{max-inline-size:100%; block-size:auto; display:block}
+::selection{background:var(--accent); color:#fff}
+
+/* ---- typography role classes, verbatim ---- */
+.display{font-size:var(--fs-display); font-weight:var(--fw-bold); letter-spacing:var(--tr-display); line-height:var(--lh-display); text-wrap:balance; margin:0}
+.title{font-size:var(--fs-title); font-weight:var(--fw-semibold); letter-spacing:var(--tr-title); line-height:var(--lh-title); text-wrap:balance; margin:0}
+.title-sm{font-size:var(--fs-title-sm); font-weight:var(--fw-semibold); letter-spacing:var(--tr-title); line-height:var(--lh-title); text-wrap:balance; margin:0}
+.lead{font-size:var(--fs-lead); font-weight:var(--fw-regular); letter-spacing:var(--tr-lead); line-height:var(--lh-body); color:var(--ink-soft); max-inline-size:var(--measure); text-wrap:pretty; margin:0}
+.eyebrow{font-size:var(--fs-meta); font-weight:var(--fw-medium); letter-spacing:var(--tr-eyebrow); text-transform:uppercase; color:var(--accent-deep); margin:0}
+.label{font-size:var(--fs-label); font-weight:var(--fw-semibold); letter-spacing:var(--tr-label); text-transform:uppercase; color:var(--ink-soft); margin:0}
+.micro{font-size:var(--fs-micro); font-weight:var(--fw-semibold); letter-spacing:.05em; text-transform:uppercase; color:var(--ink-soft); margin:0}
+.meta{font-size:var(--fs-meta); font-weight:var(--fw-medium); line-height:var(--lh-ui); color:var(--ink-soft); margin:0}
+.chip{display:inline-block; font-size:var(--fs-caption); font-weight:var(--fw-medium); padding:.3rem .7rem; border-radius:var(--layout-radius-pill); background:var(--tint); color:var(--accent-deep)}
+.tag{display:inline-block; font-size:var(--fs-label); font-weight:var(--fw-medium); padding:.25rem .6rem; border-radius:var(--layout-radius-pill); border:1px solid var(--hairline); color:var(--ink-soft)}
+.soft{color:var(--ink-soft)}
+.measure{max-inline-size:var(--measure)}
+code,.mono{font-family:var(--font-mono)}
+code{font-size:.9em; color:var(--accent-deep)}
+.num,[data-count]{font-variant-numeric:tabular-nums}
+
+/* ---- layout classes ---- */
+.layout-page{margin-inline:auto; padding-inline:var(--layout-gutter); max-inline-size:var(--layout-page-max)}
+.layout-section{padding-block:var(--layout-section-md)}
+.layout-section-sm{padding-block:var(--layout-section-sm)}
+.layout-section-hero{padding-block:var(--layout-section-hero) var(--layout-section-md)}
+.layout-section-flush{padding-block-start:0}
+.layout-stack>*+*{margin-block-start:var(--layout-stack-gap,var(--layout-space-4))}
+.layout-stack-sm{--layout-stack-gap:var(--layout-space-3)}
+.layout-stack-lg{--layout-stack-gap:var(--layout-space-5)}
+.layout-grid-auto{display:grid; gap:var(--layout-space-5); grid-template-columns:repeat(auto-fit,minmax(var(--layout-col-md),1fr))}
+.layout-grid-auto-sm{display:grid; gap:var(--layout-space-4); grid-template-columns:repeat(auto-fit,minmax(var(--layout-col-sm),1fr))}
+.layout-grid-auto>*,.layout-grid-auto-sm>*{min-inline-size:0}
+.layout-grid-2{display:grid; gap:var(--layout-space-5); grid-template-columns:1fr}
+@media (min-width:700px){ .layout-grid-2{grid-template-columns:1fr 1fr} }
+.layout-grid-2>*{min-inline-size:0}
+.layout-row{display:flex; align-items:center; flex-wrap:wrap; gap:var(--layout-space-3)}
+.layout-row-tight{gap:var(--layout-space-2)}
+.layout-row-split{justify-content:space-between}
+.layout-pinned-top{position:fixed; inset:0 0 auto 0; z-index:var(--layout-z-nav)}
+
+/* the two-column shell: sticky TOC rail + entries. One container, one
+   grid inside it — the rail becomes sticky at the only breakpoint where
+   there is room for it. Identical to the other grammar pages. */
+.shell{display:grid; gap:var(--layout-space-7); grid-template-columns:1fr}
+.toc-wrap{display:none}
+@media (min-width:1100px){
+  .shell{grid-template-columns:190px minmax(0,1fr); gap:var(--layout-space-8)}
+  .toc-wrap{display:block}
+}
+.toc{position:sticky; inset-block-start:var(--layout-stick)}
+.toc .g{margin:var(--layout-space-5) 0 var(--layout-space-2)}
+.toc .g:first-child{margin-block-start:0}
+.toc a{display:block; padding-block:var(--layout-space-2); padding-inline-start:var(--layout-space-3);
+  font-size:var(--fs-meta); font-weight:var(--fw-medium); color:var(--ink-soft); text-decoration:none;
+  border-inline-start:2px solid transparent; transition:color .2s, border-color .2s}
+.toc a:hover{color:var(--ink)}
+.toc a.on{color:var(--accent-deep); border-inline-start-color:var(--accent)}
+.toc a:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+
+/* ---- surfaces ---- */
+.spec{background:#fff; border:1px solid var(--hairline); border-radius:var(--layout-radius-lg); padding:var(--layout-pad-card)}
+.spec-label{font-size:var(--fs-label); font-weight:var(--fw-semibold); letter-spacing:var(--tr-label);
+  text-transform:uppercase; color:var(--ink-soft); margin:0 0 var(--layout-space-4)}
+.kv{font-family:var(--font-mono); font-size:var(--fs-label); color:var(--ink-soft)}
+.kv.hot{color:var(--accent-deep)}
+.usecase{font-size:var(--fs-caption); color:var(--ink-soft); margin:var(--layout-space-4) 0 0;
+  padding-block-start:var(--layout-space-3); border-block-start:1px dashed var(--hairline); line-height:var(--lh-body)}
+.usecase b{color:var(--ink); font-weight:var(--fw-semibold)}
+.section-num{font-family:var(--font-mono); font-size:var(--fs-meta); color:var(--accent-deep); font-weight:var(--fw-semibold); margin:0}
+
+.btn{display:inline-flex; align-items:center; justify-content:center; gap:var(--layout-space-2);
+  padding:.7rem 1.3rem; border-radius:var(--layout-radius-pill); font-family:inherit;
+  font-size:var(--fs-ui-sm); font-weight:var(--fw-medium); line-height:1; cursor:pointer;
+  border:1px solid transparent; background:none; color:inherit; text-decoration:none;
+  transition:transform .25s var(--ease), background .2s, color .2s, border-color .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn:focus-visible{outline:2px solid var(--accent); outline-offset:3px}
+.btn-ink{background:var(--ink); color:#fff} .btn-ink:hover{background:#000}
+.btn-ghost{border-color:var(--hairline); color:var(--ink)} .btn-ghost:hover{border-color:var(--ink)}
+
+/* ---- page chrome ---- */
+#progress{position:fixed; inset-block-start:0; inset-inline-start:0; block-size:2px; inline-size:0;
+  background:var(--accent); z-index:var(--layout-z-toast)}
+#nav{backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
+  background:rgba(250,250,248,.72); border-block-end:1px solid transparent; transition:border-color .3s}
+#nav.scrolled{border-block-end-color:var(--hairline)}
+#nav .layout-page{display:flex; align-items:center; justify-content:space-between; padding-block:var(--layout-space-4)}
+#nav a{color:var(--ink-soft); font-size:var(--fs-ui-sm); font-weight:var(--fw-medium); text-decoration:none; transition:color .2s}
+#nav a:hover{color:var(--ink)}
+#nav a:focus-visible{outline:2px solid var(--accent); outline-offset:3px; border-radius:var(--layout-radius-xs)}
+.reveal{opacity:0; transform:translateY(20px); transition:opacity .7s ease, transform .7s var(--ease)}
+.reveal.is-in{opacity:1; transform:none}
+
+/* ==================================================================
+   THE DOOR — one per grammar, split by role: white body carries the
+   human half, dark panel carries the numbers. Same separation as the
+   coffee and pricing pages, and never the other way round.
+
+   Hover is one parent state (the body washes to tint — a door is a
+   route, and wash is what routes do) plus one child move (the arrow
+   travels). Nothing lifts: lift XOR nudge.
+   ================================================================== */
+.door{display:grid; grid-template-columns:1fr; text-decoration:none; color:inherit;
+  background:#fff; border:1px solid var(--hairline); border-radius:var(--layout-radius-lg);
+  overflow:hidden; transition:border-color .2s}
+@media (min-width:700px){
+  .door{grid-template-columns:minmax(0,1fr) minmax(200px,.46fr)}
+}
+.door:hover{border-color:var(--ink)}
+.door:focus-visible{outline:2px solid var(--accent); outline-offset:3px}
+.door > *{min-inline-size:0}
+
+/* ---- white side: the human half ---- */
+.door-body{padding:var(--layout-pad-card); transition:background .25s}
+.door:hover .door-body{background:var(--tint)}
+.door-l{display:block; font-size:var(--fs-label); font-weight:var(--fw-semibold);
+  letter-spacing:var(--tr-label); text-transform:uppercase; color:var(--ink-soft)}
+.door-d{display:block; margin-block-start:var(--layout-space-3); font-size:var(--fs-lead);
+  font-weight:var(--fw-medium); letter-spacing:var(--tr-lead); line-height:var(--lh-body);
+  color:var(--ink); text-wrap:pretty; max-inline-size:var(--measure-sm)}
+.door-file{display:block; margin-block-start:var(--layout-space-4)}
+.door-go{display:inline-flex; align-items:baseline; gap:var(--layout-space-2);
+  margin-block-start:var(--layout-space-5); font-size:var(--fs-ui-sm);
+  font-weight:var(--fw-semibold); color:var(--ink)}
+.door-go .arr{display:inline-block; color:var(--accent-deep); transition:transform .25s var(--ease)}
+.door:hover .arr{transform:translateX(4px)}
+
+/* ---- dark side: the numbers half ---- */
+.door-stats{background:var(--ink); color:#fff; padding:var(--layout-pad-card);
+  display:flex; flex-direction:column; justify-content:center;
+  gap:var(--layout-space-5); transition:background .25s}
+.door:hover .door-stats{background:#000}
+.door-k{font-size:var(--fs-micro); font-weight:var(--fw-semibold); letter-spacing:.05em;
+  text-transform:uppercase; color:var(--accent); font-variant-numeric:tabular-nums; margin:0}
+.stat-row{display:flex; flex-wrap:wrap; gap:var(--layout-space-5)}
+@media (min-width:700px){ .stat-row{flex-direction:column; gap:var(--layout-space-4)} }
+.stat{display:block}
+.stat b{display:block; font-size:var(--fs-title-sm); font-weight:var(--fw-semibold);
+  letter-spacing:var(--tr-title); line-height:1; font-variant-numeric:tabular-nums}
+.stat span{display:block; margin-block-start:var(--layout-space-1);
+  font-size:var(--fs-micro); font-weight:var(--fw-semibold); letter-spacing:.05em;
+  text-transform:uppercase; color:rgba(255,255,255,.55)}
+
+/* jump strip — deep links into the page above. Separate anchors, so the
+   door stays a single link and nothing nests. */
+.jump{display:flex; flex-wrap:wrap; align-items:center; gap:var(--layout-space-2);
+  margin-block-start:var(--layout-space-4); padding-inline:var(--layout-space-1)}
+.jump .micro{margin-inline-end:var(--layout-space-2)}
+.jump a{font-size:var(--fs-label); font-weight:var(--fw-medium); color:var(--ink-soft);
+  text-decoration:none; padding:.25rem .6rem; border:1px solid var(--hairline);
+  border-radius:var(--layout-radius-pill); transition:color .2s, border-color .2s}
+.jump a:hover{color:var(--ink); border-color:var(--ink)}
+.jump a:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+
+/* ==================================================================
+   06 · THE MAP — which layer owns what
+   ================================================================== */
+.map{border:1px solid var(--hairline); border-radius:var(--layout-radius-lg); background:#fff; overflow:hidden}
+.map-row{display:grid; grid-template-columns:1fr; gap:var(--layout-space-2);
+  padding:var(--layout-space-4) var(--layout-pad-card); border-block-end:1px solid var(--hairline)}
+.map-row:last-child{border-block-end:0}
+.map-row.head{display:none}
+@media (min-width:700px){
+  .map-row{grid-template-columns:8rem minmax(0,1.1fr) minmax(0,1fr) 11rem;
+    gap:var(--layout-space-4); align-items:baseline}
+  .map-row.head{display:grid; background:var(--paper)}
+}
+.map-row > *{min-inline-size:0}
+.map-l{font-size:var(--fs-ui-sm); font-weight:var(--fw-semibold)}
+.map-row .kv{overflow-wrap:anywhere}
+
+/* ==================================================================
+   07 · ROUTES — task in, grammar out
+   ================================================================== */
+.route{display:grid; grid-template-columns:1fr; gap:var(--layout-space-2);
+  padding-block:var(--layout-space-4); border-block-end:1px solid var(--hairline)}
+.route:last-child{border-block-end:0}
+@media (min-width:700px){
+  .route{grid-template-columns:minmax(0,1fr) minmax(0,1.2fr); gap:var(--layout-space-5); align-items:baseline}
+}
+.route > *{min-inline-size:0}
+.route-t{font-size:var(--fs-ui-sm); font-weight:var(--fw-semibold)}
+.route-p{font-size:var(--fs-caption); color:var(--ink-soft)}
+.route-p b{color:var(--ink); font-weight:var(--fw-semibold)}
+
+.ck{list-style:none; margin:0; padding:0; counter-reset:c}
+.ck li{counter-increment:c; display:grid; grid-template-columns:1.8rem minmax(0,1fr);
+  gap:var(--layout-space-3); padding-block:var(--layout-space-3);
+  border-block-end:1px solid var(--hairline); font-size:var(--fs-caption); color:var(--ink-soft)}
+.ck li:last-child{border-block-end:0}
+.ck li::before{content:counter(c,decimal-leading-zero); font-family:var(--font-mono);
+  font-size:var(--fs-label); font-weight:var(--fw-semibold); color:var(--accent-deep);
+  font-variant-numeric:tabular-nums}
+.ck b{color:var(--ink); font-weight:var(--fw-semibold)}
+
+/* ==================================================================
+   REDUCED MOTION — mirrored on the data attribute so the page can be
+   checked without changing an OS setting. Both blocks change together.
+   ================================================================== */
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.001ms !important; animation-iteration-count:1 !important;
+    transition-duration:.001ms !important}
+  .reveal{opacity:1; transform:none}
+}
+html[data-rm="on"] *,html[data-rm="on"] *::before,html[data-rm="on"] *::after{
+  animation-duration:.001ms !important; animation-iteration-count:1 !important;
+  transition-duration:.001ms !important}
+html[data-rm="on"]{scroll-behavior:auto}
+html[data-rm="on"] .reveal{opacity:1; transform:none}
+
+.sr{position:absolute; inline-size:1px; block-size:1px; overflow:hidden; clip-path:inset(50%); white-space:nowrap}
+footer.gf{border-block-start:1px solid var(--hairline); padding-block:var(--layout-space-6) var(--layout-space-8)}
+</style>
+</head>
+<body>
+
+<div id="progress" aria-hidden="true"></div>
+
+<nav id="nav" class="layout-pinned-top">
+  <div class="layout-page">
+    <span style="font-weight:var(--fw-semibold); letter-spacing:-.015em">ayush.dev</span>
+    <span class="layout-row" style="gap:var(--layout-space-5)">
+      <a href="#">Work</a><a href="#">Blog</a><a href="#" style="color:var(--ink)">Grammar</a><a href="#">Contact</a>
+    </span>
+  </div>
+</nav>
+
+<main class="layout-page">
+
+<!-- ============ INTRO ============ -->
+<section class="layout-section-hero">
+  <p class="eyebrow reveal" style="margin-block-end:var(--layout-space-4)">Design grammar · 00</p>
+  <h1 class="display reveal">Five grammars. <span style="color:var(--accent)">One vocabulary.</span> Start here.</h1>
+  <p class="lead reveal" style="margin-block-start:var(--layout-space-5)">Every page on this site is
+    assembled from five decision layers. Each one has its own reference page, each page is live rather
+    than a screenshot, and each answers exactly one class of question. This page is the door to all of
+    them — what each layer settles, and where to go when two of them seem to disagree.</p>
+  <div class="layout-row layout-row-tight reveal" style="margin-block-start:var(--layout-space-6)">
+    <span class="chip">5 grammars</span>
+    <span class="tag">2 token files</span>
+    <span class="tag">1 accent</span>
+    <span class="tag">0 webfonts</span>
+  </div>
+</section>
+
+<div class="shell">
+
+  <!-- ============ TOC ============ -->
+  <aside class="toc-wrap" aria-label="Section navigation">
+    <div class="toc">
+      <p class="micro g">Structure</p>
+      <a href="#components">01 · Components</a>
+      <a href="#typography">02 · Typography</a>
+      <p class="micro g">Behaviour</p>
+      <a href="#interaction">03 · Interaction</a>
+      <a href="#layout">04 · Layout</a>
+      <a href="#notification">05 · Notification</a>
+      <p class="micro g">Contract</p>
+      <a href="#map">06 · Who owns what</a>
+      <a href="#routes">07 · Where to start</a>
+      <a href="#ship">08 · Ship</a>
+    </div>
+  </aside>
+
+  <div>
+
+  <!-- ============ 01 COMPONENTS ============ -->
+  <section class="layout-section layout-section-flush" id="components">
+    <p class="section-num" style="margin-block-end:var(--layout-space-2)">01</p>
+    <h2 class="title reveal">Components &amp; colour</h2>
+    <p class="lead reveal" style="margin-block:var(--layout-space-3) var(--layout-space-6)">The parts bin.
+      Six colour tokens and one hairline, then every surface, button, chip, field and feedback state built
+      from them. If you are about to write a new component, check here first — it probably already exists
+      under a name.</p>
+
+    <a class="door reveal" href="design-grammar.html">
+      <span class="door-body">
+        <span class="door-l">What it settles</span>
+        <span class="door-d">Every part you can put on a page — and the six colours everything on this site is made from.</span>
+        <span class="door-file kv">design-grammar.html</span>
+        <span class="door-go">Open the page <span class="arr" aria-hidden="true">→</span></span>
+      </span>
+      <span class="door-stats">
+        <span class="door-k">Grammar 01</span>
+        <span class="stat-row">
+          <span class="stat"><b>10</b><span>sections</span></span>
+          <span class="stat"><b>6</b><span>colour tokens</span></span>
+          <span class="stat"><b>1</b><span>accent</span></span>
+        </span>
+      </span>
+    </a>
+
+    <nav class="jump" aria-label="Sections inside components and colour">
+      <p class="micro">Jump to</p>
+      <a href="design-grammar.html#tokens">Colour</a>
+      <a href="design-grammar.html#buttons">Buttons</a>
+      <a href="design-grammar.html#action">Action states</a>
+      <a href="design-grammar.html#surfaces">Surfaces</a>
+      <a href="design-grammar.html#forms">Forms</a>
+      <a href="design-grammar.html#feedback">Feedback</a>
+      <a href="design-grammar.html#numeric">Numerics</a>
+    </nav>
+  </section>
+
+  <!-- ============ 02 TYPOGRAPHY ============ -->
+  <section class="layout-section" id="typography">
+    <p class="section-num" style="margin-block-end:var(--layout-space-2)">02</p>
+    <h2 class="title reveal">Typography</h2>
+    <p class="lead reveal" style="margin-block:var(--layout-space-3) var(--layout-space-6)">Fourteen roles,
+      one system stack, nothing downloaded. Seven tiers scale with the viewport and seven are fixed on
+      purpose. Resize the window while reading it — everything that should move, moves, and a meter in the
+      corner tells you where you are.</p>
+
+    <a class="door reveal" href="typography-demo.html">
+      <span class="door-body">
+        <span class="door-l">What it settles</span>
+        <span class="door-d">How every piece of text is sized, weighted, tracked and led. Nothing is downloaded, so nothing can arrive late.</span>
+        <span class="door-file kv">typography-demo.html · assets/typography.css</span>
+        <span class="door-go">Open the page <span class="arr" aria-hidden="true">→</span></span>
+      </span>
+      <span class="door-stats">
+        <span class="door-k">Grammar 02</span>
+        <span class="stat-row">
+          <span class="stat"><b>14</b><span>roles</span></span>
+          <span class="stat"><b>7</b><span>fluid tiers</span></span>
+          <span class="stat"><b>7</b><span>fixed steps</span></span>
+          <span class="stat"><b>0</b><span>webfonts</span></span>
+        </span>
+      </span>
+    </a>
+
+    <nav class="jump" aria-label="Sections inside typography">
+      <p class="micro">Jump to</p>
+      <a href="typography-demo.html#s01">The stack</a>
+      <a href="typography-demo.html#s02">The scale</a>
+      <a href="typography-demo.html#s03">Fluid behaviour</a>
+      <a href="typography-demo.html#s05">Tracking</a>
+      <a href="typography-demo.html#s07">Role classes</a>
+      <a href="typography-demo.html#s09">Numerals</a>
+      <a href="typography-demo.html#s12">Do &amp; don't</a>
+    </nav>
+  </section>
+
+  <!-- ============ 03 INTERACTION ============ -->
+  <section class="layout-section" id="interaction">
+    <p class="section-num" style="margin-block-end:var(--layout-space-2)">03</p>
+    <h2 class="title reveal">Interaction</h2>
+    <p class="lead reveal" style="margin-block:var(--layout-space-3) var(--layout-space-6)">Nine families of
+      behaviour, sixteen verbs, one spatial curve. Every specimen on that page is live — hover it, focus it,
+      scroll it, break it. If a motion you are about to write is not one of the nine, it is drift.</p>
+
+    <a class="door reveal" href="interaction-grammar-v2.html">
+      <span class="door-body">
+        <span class="door-l">What it settles</span>
+        <span class="door-d">How anything here is allowed to move, what is allowed to trigger it, and how long it gets.</span>
+        <span class="door-file kv">interaction-grammar-v2.html</span>
+        <span class="door-go">Open the page <span class="arr" aria-hidden="true">→</span></span>
+      </span>
+      <span class="door-stats">
+        <span class="door-k">Grammar 03</span>
+        <span class="stat-row">
+          <span class="stat"><b>9</b><span>families</span></span>
+          <span class="stat"><b>16</b><span>verbs</span></span>
+          <span class="stat"><b>6</b><span>durations</span></span>
+          <span class="stat"><b>1</b><span>focus ring</span></span>
+        </span>
+      </span>
+    </a>
+
+    <nav class="jump" aria-label="Sections inside interaction">
+      <p class="micro">Jump to</p>
+      <a href="interaction-grammar-v2.html#pointer">Pointer</a>
+      <a href="interaction-grammar-v2.html#focus">Focus</a>
+      <a href="interaction-grammar-v2.html#scroll">Scroll</a>
+      <a href="interaction-grammar-v2.html#action">Action</a>
+      <a href="interaction-grammar-v2.html#timing">Timing</a>
+      <a href="interaction-grammar-v2.html#reduced">Reduced motion</a>
+      <a href="interaction-grammar-v2.html#never">Never</a>
+    </nav>
+  </section>
+
+  <!-- ============ 04 LAYOUT ============ -->
+  <section class="layout-section" id="layout">
+    <p class="section-num" style="margin-block-end:var(--layout-space-2)">04</p>
+    <h2 class="title reveal">Layout</h2>
+    <p class="lead reveal" style="margin-block:var(--layout-space-3) var(--layout-space-6)">Geometry only —
+      measure, spacing, rhythm, grids, radius and stacking order, and not one colour or border. Measure
+      follows column count, not page identity: a three-up grid is a three-column shape wherever it lives.
+      There are three breakpoints, and adding a fourth is a human decision.</p>
+
+    <a class="door reveal" href="layout-grammar.html">
+      <span class="door-body">
+        <span class="door-l">What it settles</span>
+        <span class="door-d">Where things sit, how far apart they sit, and what happens to that when the window changes.</span>
+        <span class="door-file kv">layout-grammar.html · assets/layout.css</span>
+        <span class="door-go">Open the page <span class="arr" aria-hidden="true">→</span></span>
+      </span>
+      <span class="door-stats">
+        <span class="door-k">Grammar 04</span>
+        <span class="stat-row">
+          <span class="stat"><b>4</b><span>measures</span></span>
+          <span class="stat"><b>10</b><span>space steps</span></span>
+          <span class="stat"><b>3</b><span>breakpoints</span></span>
+          <span class="stat"><b>7</b><span>z-levels</span></span>
+        </span>
+      </span>
+    </a>
+
+    <nav class="jump" aria-label="Sections inside layout">
+      <p class="micro">Jump to</p>
+      <a href="layout-grammar.html#containers">Containers</a>
+      <a href="layout-grammar.html#space">Space scale</a>
+      <a href="layout-grammar.html#rhythm">Rhythm</a>
+      <a href="layout-grammar.html#grids">Grids</a>
+      <a href="layout-grammar.html#breakpoints">Breakpoints</a>
+      <a href="layout-grammar.html#radii">Radii</a>
+      <a href="layout-grammar.html#stacking">Stacking</a>
+    </nav>
+  </section>
+
+  <!-- ============ 05 NOTIFICATION ============ -->
+  <section class="layout-section" id="notification">
+    <p class="section-num" style="margin-block-end:var(--layout-space-2)">05</p>
+    <h2 class="title reveal">Notification</h2>
+    <p class="lead reveal" style="margin-block:var(--layout-space-3) var(--layout-space-6)">Two surfaces for
+      two jobs. The toast reports something that already happened and takes its own time to leave; the alert
+      stops the page and waits for an answer. Colour carries state, volume carries time, and neither is ever
+      allowed to interrupt work that is already underway.</p>
+
+    <a class="door reveal" href="toast-v2-demo.html">
+      <span class="door-body">
+        <span class="door-l">What it settles</span>
+        <span class="door-d">What the site says back once it has already done the thing.</span>
+        <span class="door-file kv">toast-v2-demo.html</span>
+        <span class="door-go">Open the page <span class="arr" aria-hidden="true">→</span></span>
+      </span>
+      <span class="door-stats">
+        <span class="door-k">Grammar 05</span>
+        <span class="stat-row">
+          <span class="stat"><b>8</b><span>sections</span></span>
+          <span class="stat"><b>6</b><span>rail positions</span></span>
+          <span class="stat"><b>1</b><span>undo window</span></span>
+        </span>
+      </span>
+    </a>
+
+    <a class="door reveal" href="alert-demo.html" style="margin-block-start:var(--layout-space-4)">
+      <span class="door-body">
+        <span class="door-l">What it settles</span>
+        <span class="door-d">What the site asks before it does something it cannot take back.</span>
+        <span class="door-file kv">alert-demo.html</span>
+        <span class="door-go">Open the page <span class="arr" aria-hidden="true">→</span></span>
+      </span>
+      <span class="door-stats">
+        <span class="door-k">Grammar 05</span>
+        <span class="stat-row">
+          <span class="stat"><b>3</b><span>tones</span></span>
+          <span class="stat"><b>1</b><span>native element</span></span>
+          <span class="stat"><b>1</b><span>focus trap</span></span>
+        </span>
+      </span>
+    </a>
+
+    <nav class="jump" aria-label="Sections inside notification">
+      <p class="micro">Jump to</p>
+      <a href="toast-v2-demo.html#fill">The fill</a>
+      <a href="toast-v2-demo.html#undo">Undo</a>
+      <a href="toast-v2-demo.html#coalesce">Coalescing</a>
+      <a href="toast-v2-demo.html#promise">Promise pill</a>
+      <a href="toast-v2-demo.html#position">Positions</a>
+      <a href="toast-v2-demo.html#exits">Exits</a>
+      <a href="toast-v2-demo.html#rules">Rules</a>
+    </nav>
+  </section>
+
+  <!-- ============ 06 THE MAP ============ -->
+  <section class="layout-section" id="map">
+    <p class="section-num" style="margin-block-end:var(--layout-space-2)">06</p>
+    <h2 class="title reveal">Who owns what</h2>
+    <p class="lead reveal" style="margin-block:var(--layout-space-3) var(--layout-space-6)">Each layer owns
+      exactly one thing and is forbidden the others. That is the whole reason two grammars can never
+      genuinely contradict each other — if they appear to, one of them is doing a job that is not its own.</p>
+
+    <div class="map reveal">
+      <div class="map-row head">
+        <p class="label">Layer</p><p class="label">Owns</p><p class="label">Never touches</p><p class="label">Source</p>
+      </div>
+      <div class="map-row">
+        <p class="map-l">Layout</p>
+        <p class="meta">Measure, spacing, rhythm, grid, radius value, z-order</p>
+        <p class="meta">Colour, border, shadow, background, type size</p>
+        <p class="kv">assets/layout.css</p>
+      </div>
+      <div class="map-row">
+        <p class="map-l">Typography</p>
+        <p class="meta">Size, weight, tracking, leading, measure cap</p>
+        <p class="meta">Position, padding, colour of a surface</p>
+        <p class="kv">assets/typography.css</p>
+      </div>
+      <div class="map-row">
+        <p class="map-l">Components</p>
+        <p class="meta">Surfaces: colour, border, shadow — consuming the two above</p>
+        <p class="meta">Its own measures, its own type scale</p>
+        <p class="kv">design-grammar.html</p>
+      </div>
+      <div class="map-row">
+        <p class="map-l">Interaction</p>
+        <p class="meta">State change over time: curve, duration, trigger, verb</p>
+        <p class="meta">Static appearance at rest</p>
+        <p class="kv">interaction-grammar-v2.html</p>
+      </div>
+      <div class="map-row">
+        <p class="map-l">Notification</p>
+        <p class="meta">What the system says back, and for how long</p>
+        <p class="meta">Anything the user asked for directly</p>
+        <p class="kv">toast-v2-demo.html · alert-demo.html</p>
+      </div>
+    </div>
+
+    <div class="spec reveal" style="margin-block-start:var(--layout-space-5)">
+      <p class="spec-label">Order of precedence</p>
+      <p class="meta">Read them in the order a page is actually built:
+        <b style="color:var(--ink)">layout</b> puts things in place,
+        <b style="color:var(--ink)">typography</b> decides what the text in them is,
+        <b style="color:var(--ink)">components</b> gives them a surface,
+        <b style="color:var(--ink)">interaction</b> decides how they respond, and
+        <b style="color:var(--ink)">notification</b> is what happens after. A later layer may consume an
+        earlier one's tokens. It may never redefine them.</p>
+      <p class="usecase"><b>When two grammars disagree, neither wins.</b> A conflict means the rule was
+        written into the wrong layer — move it, rather than adding an override.</p>
+    </div>
+  </section>
+
+  <!-- ============ 07 ROUTES ============ -->
+  <section class="layout-section" id="routes">
+    <p class="section-num" style="margin-block-end:var(--layout-space-2)">07</p>
+    <h2 class="title reveal">Where to start</h2>
+    <p class="lead reveal" style="margin-block:var(--layout-space-3) var(--layout-space-6)">Five common
+      tasks and the order to read in. Nobody needs all five pages at once.</p>
+
+    <div class="spec reveal">
+      <div class="route">
+        <p class="route-t">Building a new page from nothing</p>
+        <p class="route-p"><b>04 layout</b> for the container and rhythm, then <b>02 typography</b> for the
+          hero trio, then <b>01 components</b> for everything inside.</p>
+      </div>
+      <div class="route">
+        <p class="route-t">Adding one section to a page that exists</p>
+        <p class="route-p"><b>04 layout</b> only — pick a section class and a grid, and reuse whatever the
+          neighbouring sections already use.</p>
+      </div>
+      <div class="route">
+        <p class="route-t">A control that does work when clicked</p>
+        <p class="route-p"><b>01 components</b> for the action-state machine, then <b>05 notification</b> for
+          what it says when it finishes. Static <code>.btn</code> and stateful <code>.act</code> are not
+          substitutes for each other.</p>
+      </div>
+      <div class="route">
+        <p class="route-t">Something is moving and it feels wrong</p>
+        <p class="route-p"><b>03 interaction</b> — check it against the nine families and the timing table.
+          One motion idea per section; two competing ones read as a bug.</p>
+      </div>
+      <div class="route">
+        <p class="route-t">Reviewing an existing page for drift</p>
+        <p class="route-p"><b>02 typography</b> and <b>04 layout</b> both end in an audit block. Grep the
+          file, compare against the scale, and report counts before changing anything.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 08 SHIP ============ -->
+  <section class="layout-section" id="ship">
+    <p class="section-num" style="margin-block-end:var(--layout-space-2)">08</p>
+    <h2 class="title reveal">Before it ships</h2>
+    <p class="lead reveal" style="margin-block:var(--layout-space-3) var(--layout-space-6)">The six checks
+      that catch nearly everything. Each page carries its own longer list; this is the shared floor.</p>
+
+    <div class="spec reveal">
+      <ol class="ck">
+        <li><span>Exactly one <b>.display</b> on the page, at the top, and one <b>.btn-accent</b> per
+          view.</span></li>
+        <li><span>Zero raw <b>font-size</b>, <b>max-width</b>, <b>padding</b> or <b>z-index</b> values in the
+          page file — tokens only.</span></li>
+        <li><span>Every clamp that sets a font-size carries a <b>rem</b> term in its preferred value.</span></li>
+        <li><span>Nested radii step <b>down</b> from their parent; a child never repeats it.</span></li>
+        <li><span>One motion idea per section, and a <b>reduced-motion</b> block that mirrors every
+          animation.</span></li>
+        <li><span>Checked at <b>320</b>, <b>768</b>, <b>1440</b> and at <b>200%</b> browser zoom, with no
+          horizontal scrollbar.</span></li>
+      </ol>
+      <p class="usecase"><b>Accent is scarce.</b> If the orange is doing decoration rather than carrying a
+        single point of meaning, take it out before anything else.</p>
+    </div>
+
+    <div class="layout-row reveal" style="margin-block-start:var(--layout-space-6)">
+      <a class="btn btn-ink" href="design-grammar.html">Open 01 components</a>
+      <a class="btn btn-ghost" href="#components">Back to the top</a>
+    </div>
+  </section>
+
+  </div>
+</div>
+
+<footer class="gf">
+  <p class="label" style="margin-block-end:var(--layout-space-2)">Design grammar · 00</p>
+  <p class="meta measure">Index. Five reference pages, one vocabulary — 01 components, 02 typography,
+    03 interaction, 04 layout, 05 notification. Enforcement rules in
+    <span class="kv">grammar-index-agent-instructions.md</span>.</p>
+</footer>
+
+</main>
+
+<div class="sr" id="alerts" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+  'use strict';
+  var $  = function(s,c){ return (c||document).querySelector(s); };
+  var $$ = function(s,c){ return Array.prototype.slice.call((c||document).querySelectorAll(s)); };
+
+  /* ============================================================
+     SCROLL — one passive listener, one rAF, one render function.
+     ============================================================ */
+  var nav = $('#nav'), bar = $('#progress'), ticking = false;
+
+  function render(){
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    var p = h > 0 ? (window.scrollY / h) * 100 : 0;
+    bar.style.width = p + '%';
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+    ticking = false;
+  }
+  function onScroll(){ if(!ticking){ ticking = true; requestAnimationFrame(render); } }
+  addEventListener('scroll', onScroll, {passive:true});
+  addEventListener('resize', onScroll, {passive:true});
+  render();
+
+  /* reveal — once, then unobserve */
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('is-in'); io.unobserve(e.target); }
+    });
+  }, {threshold:.12});
+  $$('.reveal').forEach(function(el){ io.observe(el); });
+
+  /* scrollspy — the rail follows the section in the reading band */
+  var links = $$('.toc a');
+  var spy = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(!e.isIntersecting) return;
+      var link = links.filter(function(l){ return l.getAttribute('href') === '#' + e.target.id; })[0];
+      if(!link) return;
+      links.forEach(function(l){ l.classList.remove('on'); });
+      link.classList.add('on');
+    });
+  }, {rootMargin:'-40% 0px -50% 0px'});
+  $$('main section[id]').forEach(function(s){ spy.observe(s); });
+})();
+</script>
+</body>
+</html>
