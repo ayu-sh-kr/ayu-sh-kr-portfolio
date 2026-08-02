@@ -33,11 +33,11 @@ export class DesignElementGuidanceComponent extends BaseElement {
               <h3 class="type-card-title">${group.label}</h3>
               <dl>
                 <div>
-                  <dt>Use</dt>
+                  <dt>${guidance.labels.use}</dt>
                   <dd>${group.use}</dd>
                 </div>
                 <div>
-                  <dt>Examples</dt>
+                  <dt>${guidance.labels.examples}</dt>
                   <dd>${group.examples}</dd>
                 </div>
               </dl>

@@ -38,7 +38,7 @@ export class DesignElementOverviewComponent extends BaseElement {
             </dl>
           </div>
         </div>
-        <ul class="design-element-overview__tags layout-row layout-row-tight" aria-label="Action control traits">
+        <ul class="design-element-overview__tags layout-row layout-row-tight" aria-label="${overview.tagsAriaLabel}">
           ${overview.tags.map((tag) => HTML`<li>${tag}</li>`).join("")}
         </ul>
       </section>

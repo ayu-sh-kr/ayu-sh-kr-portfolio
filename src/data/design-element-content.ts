@@ -26,6 +26,7 @@ export const designElementContent = {
       { label: "Work owner", value: "Feature handler" },
       { label: "Anchor grammar", value: "app-link classes" },
     ],
+    tagsAriaLabel: "Action control traits",
     tags: ["async work", "anchor navigation", "native validity", "reduced motion"],
   },
   showcase: {
@@ -82,6 +83,7 @@ export const designElementContent = {
     eyebrow: "Choose the right control",
     title: "“Looks like a button” is not enough of a rule.",
     lede: "The audit groups controls by behavior before styling. This prevents a navigation link, a filter pill, and a server action from sharing misleading semantics just because they have a rounded outline.",
+    labels: { use: "Use", examples: "Examples" },
     groups: [
       { label: "Async action-button", use: "Starts work and waits for a result.", examples: "Blog subscription and offline retry.", rule: "Give it a unique id, action handler, matching labels, and a guard when form prerequisites apply." },
       { label: "Navigation link", use: "Changes URL or moves to a destination.", examples: "Hero CTAs, article reads, and “back home” links.", rule: "Keep a real anchor with href. Its visual treatment may be button-like, but its semantics remain navigation." },
