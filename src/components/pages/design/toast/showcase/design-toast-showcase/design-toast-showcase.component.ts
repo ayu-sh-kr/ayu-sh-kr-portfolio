@@ -29,6 +29,7 @@ export class DesignToastShowcaseComponent extends BaseElement {
    */
   @HostListener({ event: "click" })
   handleClick(event: MouseEvent): void {
+    const { messages } = designToastContent.showcase;
     const target = event.target as HTMLElement;
     const position = target.closest<HTMLButtonElement>("[data-toast-position]")?.dataset.toastPosition as ToastPosition | undefined;
     if (position) {
@@ -44,26 +45,26 @@ export class DesignToastShowcaseComponent extends BaseElement {
     }
     switch (specimen) {
       case "note":
-        Toast.note("Copied the deploy command");
+        Toast.note(messages.note);
         break;
       case "done":
-        Toast.done("Backup finished — 412 MB");
+        Toast.done(messages.done);
         break;
       case "fail":
-        Toast.fail("Couldn’t reach the mail service");
+        Toast.fail(messages.fail);
         break;
       case "undo":
-        Toast.done("Draft deleted", {
-          action: { label: "Undo", onClick: () => "Draft restored" },
+        Toast.done(messages.undo.message, {
+          action: { label: messages.undo.label, onClick: () => messages.undo.result },
         });
         break;
       case "coalesce":
-        Toast.note("Draft saved", { id: "design-toast-autosave" });
+        Toast.note(messages.coalesce, { id: "design-toast-autosave" });
         break;
       case "promise":
         void Toast.promise(
           new Promise<boolean>((resolve) => window.setTimeout(() => resolve(true), 1800)),
-          { id: "design-toast-deploy", pending: "Deploying to staging", done: "Staging is live", fail: "Deployment failed" },
+          { id: "design-toast-deploy", ...messages.promise },
         );
         break;
       default:
@@ -75,7 +76,7 @@ export class DesignToastShowcaseComponent extends BaseElement {
   render(): string {
     const { showcase } = designToastContent;
     return HTML`
-      <section class="design-toast-showcase layout-page layout-section" aria-labelledby="design-toast-showcase-title">
+      <section id="design-toast-showcase" class="design-toast-showcase layout-page layout-section" aria-labelledby="design-toast-showcase-title">
         <div class="design-toast-showcase__heading layout-stack layout-stack-sm">
           <p class="type-eyebrow">${showcase.eyebrow}</p>
           <h2 id="design-toast-showcase-title" class="type-section">${showcase.title}</h2>
@@ -93,11 +94,11 @@ export class DesignToastShowcaseComponent extends BaseElement {
         </div>
         <div class="design-toast-position">
           <div class="layout-stack layout-stack-sm">
-            <p class="type-eyebrow">Rail position</p>
-            <h3 class="type-subsection">Six corners, one property.</h3>
-            <p>Position belongs to the shared rail, so it changes where later notifications open without rebuilding the host.</p>
+            <p class="type-eyebrow">${showcase.position.eyebrow}</p>
+            <h3 class="type-subsection">${showcase.position.title}</h3>
+            <p>${showcase.position.lede}</p>
           </div>
-          <div class="design-toast-position__choices" aria-label="Toast rail position">
+          <div class="design-toast-position__choices" aria-label="${showcase.position.ariaLabel}">
             ${showcase.positions.map((position) => HTML`<button type="button" data-toast-position="${position.id}" aria-pressed="${String(this.selectedPosition === position.id)}">${position.label}</button>`).join("")}
           </div>
         </div>

@@ -20,7 +20,7 @@ export class DesignToastGuidanceComponent extends BaseElement {
   render(): string {
     const { guidance } = designToastContent;
     return HTML`
-      <section class="design-toast-guidance layout-page layout-section-end layout-grid-rail" aria-labelledby="design-toast-guidance-title">
+      <section id="design-toast-guidance" class="design-toast-guidance layout-page layout-section-end layout-grid-rail" aria-labelledby="design-toast-guidance-title">
         <div class="layout-stack layout-stack-sm">
           <p class="type-eyebrow">${guidance.eyebrow}</p>
           <h2 id="design-toast-guidance-title" class="type-section">${guidance.title}</h2>

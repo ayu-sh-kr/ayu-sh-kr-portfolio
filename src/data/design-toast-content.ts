@@ -13,6 +13,7 @@ export const designToastContent = {
     eyebrow: "Design grammar / 05",
     title: "It fills. It runs down. Then it is gone.",
     lede: "Toasts pass through the edge of a page without interrupting it. Their fill carries two signals at once: hue tells you what happened; its remaining length tells you how long the message will stay.",
+    tagsAriaLabel: "Toast properties",
     tags: ["non-blocking", "three at a time", "swipe to dismiss", "promise API"],
   },
   showcase: {
@@ -31,6 +32,20 @@ export const designToastContent = {
       { id: "top-left", label: "Top left" }, { id: "top-center", label: "Top center" }, { id: "top-right", label: "Top right" },
       { id: "bottom-left", label: "Bottom left" }, { id: "bottom-center", label: "Bottom center" }, { id: "bottom-right", label: "Bottom right" },
     ],
+    messages: {
+      note: "Copied the deploy command",
+      done: "Backup finished — 412 MB",
+      fail: "Couldn’t reach the mail service",
+      undo: { message: "Draft deleted", label: "Undo", result: "Draft restored" },
+      coalesce: "Draft saved",
+      promise: { pending: "Deploying to staging", done: "Staging is live", fail: "Deployment failed" },
+    },
+    position: {
+      eyebrow: "Rail position",
+      title: "Six corners, one property.",
+      lede: "Position belongs to the shared rail, so it changes where later notifications open without rebuilding the host.",
+      ariaLabel: "Toast rail position",
+    },
   },
   guidance: {
     eyebrow: "Use it well",
