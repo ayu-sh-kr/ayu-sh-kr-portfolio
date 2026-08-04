@@ -9,84 +9,79 @@
 export const coffeeContent = {
   /** Metadata used by the routed page to describe this support surface. */
   seo: {
-    title: "Buy Ayush a coffee | ayush.dev",
-    description: "A small, one-time way to support dota, writing, talks, and independent experiments.",
-    keywords: ["buy me a coffee", "support dota", "Ayush Jaiswal"],
-    ogTitle: "Buy Ayush a coffee",
-    ogDescription: "A small, one-time way to keep the work going.",
+    title: "Support independent engineering work | ayu-sh-kr.com",
+    description: "A demonstration of one-time support for Dota, technical writing, and independent engineering work.",
+    keywords: ["support open source", "Dota", "independent engineering", "Ayush Kumar"],
+    ogTitle: "Support independent engineering work",
+    ogDescription: "One-time support for Dota maintenance, technical writing, and independent experiments.",
   },
   /** Compact pinned introduction that links directly into the order flow. */
   hero: {
     eyebrow: "Support the work",
-    titleBeforeAccent: "This runs on",
-    titleAccent: "caffeine.",
-    titleAfterBreak: "Not VC money.",
-    body: "dota, the blog, the talks — it’s one engineer and a coffee habit. If something here saved you a weekend, a coffee keeps it going.",
-    primaryCta: "Buy a coffee ↓",
-    secondaryCta: "See what it funds",
-    trust: "One-time · no account needed · goes straight to Ayush",
+    titleBeforeAccent: "Support the",
+    titleAccent: "independent work.",
+    titleAfterBreak: "Dota, writing, and practical experiments.",
+    body: "This is a one-time support page for the maintenance of Dota, technical writing, and independent engineering work. The checkout shown here is currently a demonstration and does not collect payment.",
+    primaryCta: "Review support options ↓",
+    secondaryCta: "See what support funds",
+    trust: "One-time support · no account required · demonstration checkout",
   },
   /** The price at which the cup illustration is shown as full. */
   cupMaximum: 60,
   /** Fixed coffee choices that determine the current order price. */
   sizes: [
-    { id: "espresso", name: "Espresso", price: 3, description: "A quick nod of thanks", featured: undefined },
-    { id: "latte", name: "Latte", price: 5, description: "Standard-issue gratitude", featured: "Most picked" },
-    { id: "cold-brew", name: "Cold Brew", price: 10, description: "For when it really helped", featured: undefined },
+    { id: "espresso", name: "Espresso", price: 3, description: "A small one-time contribution", featured: undefined },
+    { id: "latte", name: "Latte", price: 5, description: "A standard support option", featured: "Common choice" },
+    { id: "cold-brew", name: "Cold Brew", price: 10, description: "A larger one-time contribution", featured: undefined },
   ],
   /** Preset quantity buttons offered before an optional custom quantity. */
   quantities: [1, 3, 5],
   /** Copy surrounding the order controls, form, and demo confirmation. */
   order: {
-    eyebrow: "Pick your order",
-    title: "Two taps. That’s it.",
-    body: "No account, no subscription trap — just a coffee, and a note if you’ve got one.",
-    sizeQuestion: "Pick a size",
-    quantityQuestion: "How many?",
+    eyebrow: "Choose support",
+    title: "Select a one-time amount.",
+    body: "Choose an amount and, if useful, leave a note. The current flow is a checkout demonstration; no payment information is requested or stored.",
+    sizeQuestion: "Choose an amount",
+    quantityQuestion: "Quantity",
     customLabel: "Custom",
     customHint: "coffees",
     totalEyebrow: "Your total",
-    checkoutNotice: "Demo checkout — wire up Stripe, Razorpay, or UPI here. No card charged.",
+    checkoutNotice: "Demonstration checkout only. No payment is collected.",
     nameLabel: "Your name (optional)",
-    namePlaceholder: "How should Ayush thank you?",
+    namePlaceholder: "How should the acknowledgement be addressed?",
     noteLabel: "Leave a note (optional)",
-    notePlaceholder: "A small note goes a long way.",
-    submitLabel: "Complete order →",
-    thanksTitle: "Thanks — truly.",
-    anotherLabel: "Buy another",
+    notePlaceholder: "Add a short note if you would like to.",
+    submitLabel: "Preview support →",
+    thanksTitle: "Support preview complete.",
+    anotherLabel: "Review another option",
   },
   /** Three independent outcomes funded by small one-time support. */
   impact: {
     eyebrow: "Where it goes",
-    title: "Not a tip jar. A tank of gas.",
+    title: "What one-time support can sustain.",
     items: [
-      { icon: "⌘", title: "Keeps dota open source", body: "Time to make the framework clearer, faster, and more useful to the people building with it." },
-      { icon: "✦", title: "Funds the experiments", body: "The prototypes, essays, and awkward first versions that turn into useful work later." },
-      { icon: "☕", title: "Buys the coffee, literally", body: "A tiny ritual that gets one engineer through the long, focused parts of making things." },
+      { icon: "⌘", title: "Dota maintenance", body: "Time for documentation, examples, fixes, and releases across the Dota web-component libraries." },
+      { icon: "✦", title: "Technical writing and experiments", body: "Space to document engineering decisions and test focused ideas before they become reusable work." },
+      { icon: "☕", title: "Independent engineering time", body: "A modest contribution to the time and tools required to maintain public work alongside client delivery." },
     ],
   },
-  /** Latest support messages shown as a lightweight, intentionally non-curated wall. */
+  /** Verified support activity replaces the empty state when a payment provider is connected. */
   supporters: {
-    summary: "142 coffees · $687 raised so far",
-    title: "A few kind people",
-    entries: [
-      { name: "Mira", note: "dota made my first custom element feel obvious.", amount: "$5", when: "2 hours ago" },
-      { name: "Anonymous", note: "For the blog post that saved a release.", amount: "$10", when: "Yesterday" },
-      { name: "Rohan", note: "Keep writing the practical stuff.", amount: "$3", when: "3 days ago" },
-      { name: "Anonymous", note: undefined, amount: "$5", when: "Last week" },
-    ],
+    summary: "Verified contributions will appear here after checkout is connected.",
+    title: "Support activity",
+    entries: [] as readonly { name: string; note?: string; amount: string; when: string }[],
   },
   /** Final, quiet invitation back to the order controls. */
   closing: {
-    title: "Enjoying the work?",
-    body: "A coffee is a quick way to say so — and it genuinely helps.",
-    cta: "Buy a coffee ↓",
+    title: "Has this work been useful?",
+    body: "Review the one-time support options if you would like to contribute to ongoing Dota maintenance and independent engineering work.",
+    cta: "Review support options ↓",
   },
   /** Floating return-to-order action shown once a visitor has passed the hero. */
   sticky: {
-    ariaLabel: "Buy a coffee",
-    label: "Enjoying this?",
-    cta: "Buy a coffee",
+    ariaLabel: "Review support options",
+    label: "Support the work",
+    cta: "Review options",
   },
 } as const;
 
