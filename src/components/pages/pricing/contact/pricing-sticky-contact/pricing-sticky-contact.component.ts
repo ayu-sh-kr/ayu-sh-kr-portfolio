@@ -99,12 +99,20 @@ export class PricingStickyContactComponent extends BaseElement {
   /** Measures the content pill and stores its responsive width as a CSS variable. */
   private measureStickyBar(): void {
     const body = this.querySelector<HTMLElement>(".pricing-sticky-body");
-    if (!body || !this.stickyBar) {
+    const label = this.querySelector<HTMLElement>(".pricing-sticky-label");
+    const action = this.querySelector<HTMLElement>(".pricing-sticky-body .app-link");
+    if (!body || !label || !action || !this.stickyBar) {
       return;
     }
 
-    const maxWidth = Math.max(0, Math.min(560, window.innerWidth - 24));
-    this.stickyBar.style.setProperty("--pricing-sticky-width", `${Math.min(body.scrollWidth + 8, maxWidth)}px`);
+    const bodyStyle = window.getComputedStyle(body);
+    const labelVisible = window.getComputedStyle(label).display !== "none";
+    const contentWidth = action.scrollWidth
+      + Number.parseFloat(bodyStyle.paddingInlineStart)
+      + Number.parseFloat(bodyStyle.paddingInlineEnd)
+      + (labelVisible ? label.scrollWidth + Number.parseFloat(bodyStyle.columnGap) : 0);
+    const maxWidth = Math.max(0, window.innerWidth - 24);
+    this.stickyBar.style.setProperty("--pricing-sticky-width", `${Math.min(contentWidth + 8, maxWidth)}px`);
   }
 
   /** Updates contact visibility and selects the sticky bar state for the current scroll. */
