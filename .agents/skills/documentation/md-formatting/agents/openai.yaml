@@ -1,0 +1,4 @@
+interface:
+  display_name: "Markdown Formatting"
+  short_description: "Format blog Markdown without rewriting"
+  default_prompt: "Use $md-formatting to add a heading and reflow a Markdown blog draft without changing the wording."
