@@ -20,7 +20,8 @@ action-button { display: inline-block; }
 .action-button:hover:not(:disabled) { transform: translateY(-2px); }
 .action-button:active:not(:disabled) { transform: translateY(0) scale(.98); }
 .action-button:focus-visible { outline: 3px solid var(--primary-color-ring); outline-offset: 3px; }
-.action-button:disabled { cursor: wait; opacity: .6; }
+.action-button:disabled { cursor: not-allowed; opacity: .6; }
+.action-button[data-state="pending"]:disabled { cursor: wait; }
 .action-button--accent { color: var(--primary-color-on); background: var(--primary-color); border-color: var(--primary-color); }
 .action-button--accent:hover:not(:disabled) { background: var(--primary-color-hover); border-color: var(--primary-color-hover); }
 .action-button--ink { color: var(--contrast-foreground-color); background: var(--contrast-background-color); border-color: var(--contrast-background-color); }
