@@ -72,6 +72,7 @@
 @import "./components/pages/pricing/start-project/pricing-project-quote-form/pricing-project-quote-form.component.css";
 @import "./components/pages/pricing/start-project/pricing-project-process/pricing-project-process.component.css";
 @import "./components/pages/pricing/start-project/pricing-project-alternatives/pricing-project-alternatives.component.css";
+@import "./components/utils/faq/dota-faq-accordion.css";
 @import "./components/pages/pricing/faq/pricing-faq/pricing-faq.component.css";
 @import "./components/pages/pricing/contact/pricing-contact/pricing-contact.component.css";
 @import "./components/pages/pricing/contact/pricing-sticky-contact/pricing-sticky-contact.component.css";
