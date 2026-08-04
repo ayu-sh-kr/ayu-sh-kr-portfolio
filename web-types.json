@@ -420,7 +420,7 @@
           "name": "blog-list",
           "source": {
             "file": "./src/components/pages/blog/index/archive/blog-list/blog-list.component.ts",
-            "offset": 1836
+            "offset": 1816
           },
           "attributes": [],
           "js": {
