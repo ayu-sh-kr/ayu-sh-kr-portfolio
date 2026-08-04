@@ -1452,7 +1452,7 @@
           "name": "pricing-faq",
           "source": {
             "file": "./src/components/pages/pricing/faq/pricing-faq/pricing-faq.component.ts",
-            "offset": 514
+            "offset": 633
           },
           "attributes": [],
           "js": {
@@ -2204,7 +2204,7 @@
           "name": "showcase-faq",
           "source": {
             "file": "./src/components/pages/showcase/index/support/showcase-faq/showcase-faq.component.ts",
-            "offset": 543
+            "offset": 662
           },
           "attributes": [],
           "js": {
@@ -2725,7 +2725,7 @@
           "name": "support-faq",
           "source": {
             "file": "./src/components/pages/support/faq/support-faq/support-faq.component.ts",
-            "offset": 474
+            "offset": 593
           },
           "attributes": [],
           "js": {
@@ -2780,7 +2780,7 @@
           "name": "support-quick-help",
           "source": {
             "file": "./src/components/pages/support/help/support-quick-help/support-quick-help.component.ts",
-            "offset": 726
+            "offset": 900
           },
           "attributes": [],
           "js": {
