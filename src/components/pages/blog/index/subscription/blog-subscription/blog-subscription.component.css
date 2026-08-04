@@ -25,8 +25,13 @@
 }
 
 .blog-subscribe-form {
+  display: grid;
+  gap: var(--layout-space-2);
+}
+
+.blog-subscribe-controls {
   display: flex;
-  gap: 0.5rem;
+  gap: var(--layout-space-2);
 }
 
 .blog-subscribe-form input {
@@ -40,12 +45,20 @@
   font-size: 0.9rem;
 }
 
+.blog-subscribe-hint {
+  margin: 0;
+  color: var(--blog-ink-soft);
+  font-size: var(--type-compact-size);
+  line-height: var(--type-compact-leading);
+}
+
 @media (max-width: 42rem) {
-  .blog-subscribe-form {
+  .blog-subscribe-form,
+  .blog-subscribe-controls {
     inline-size: 100%;
   }
 
-  .blog-subscribe-form input {
+  .blog-subscribe-controls input {
     min-inline-size: 0;
     flex: 1;
   }
