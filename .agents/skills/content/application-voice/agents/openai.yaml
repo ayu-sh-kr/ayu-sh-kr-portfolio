@@ -1,0 +1,4 @@
+interface:
+  display_name: "Application Voice"
+  short_description: "Write composed, evidence-led portfolio content"
+  default_prompt: "Use $application-voice to revise this portfolio content for a professional, calm, and evidence-led voice."
