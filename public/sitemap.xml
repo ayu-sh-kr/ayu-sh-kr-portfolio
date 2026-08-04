@@ -7,6 +7,14 @@
         <loc>https://ayu-sh-kr.com/blog</loc>
     </url>
     <url>
+        <loc>https://ayu-sh-kr.com/blog/aws-app-config-spring-boot-integration</loc>
+        <lastmod>2026-08-04</lastmod>
+    </url>
+    <url>
+        <loc>https://ayu-sh-kr.com/blog/postgresql-access-control</loc>
+        <lastmod>2026-08-02</lastmod>
+    </url>
+    <url>
         <loc>https://ayu-sh-kr.com/blog/distributed-locks-redis</loc>
         <lastmod>2026-07-12</lastmod>
     </url>
@@ -23,12 +31,12 @@
         <lastmod>2026-06-10</lastmod>
     </url>
     <url>
-        <loc>https://ayu-sh-kr.com/blog/eventbridge-scheduler-quirks</loc>
-        <lastmod>2026-05-18</lastmod>
-    </url>
-    <url>
         <loc>https://ayu-sh-kr.com/blog/business-logic-auth-middleware</loc>
         <lastmod>2026-05-30</lastmod>
+    </url>
+    <url>
+        <loc>https://ayu-sh-kr.com/blog/eventbridge-scheduler-quirks</loc>
+        <lastmod>2026-05-18</lastmod>
     </url>
     <url>
         <loc>https://ayu-sh-kr.com/showcase</loc>
@@ -41,6 +49,9 @@
     </url>
     <url>
         <loc>https://ayu-sh-kr.com/showcase/sacrena</loc>
+    </url>
+    <url>
+        <loc>https://ayu-sh-kr.com/showcase/indiknots</loc>
     </url>
     <url>
         <loc>https://ayu-sh-kr.com/showcase/jalans</loc>
@@ -64,6 +75,9 @@
         <loc>https://ayu-sh-kr.com/support</loc>
     </url>
     <url>
+        <loc>https://ayu-sh-kr.com/design</loc>
+    </url>
+    <url>
         <loc>https://ayu-sh-kr.com/design/typography</loc>
     </url>
     <url>
@@ -77,6 +91,12 @@
     </url>
     <url>
         <loc>https://ayu-sh-kr.com/design/alert</loc>
+    </url>
+    <url>
+        <loc>https://ayu-sh-kr.com/design/toast</loc>
+    </url>
+    <url>
+        <loc>https://ayu-sh-kr.com/design/interaction</loc>
     </url>
     <url>
         <loc>https://ayu-sh-kr.com/legal/privacy</loc>

@@ -398,7 +398,7 @@
           "name": "blog-highlighted-blog",
           "source": {
             "file": "./src/components/pages/blog/index/archive/blog-highlighted-blog/blog-highlighted-blog.component.ts",
-            "offset": 1004
+            "offset": 1022
           },
           "attributes": [],
           "js": {
@@ -409,7 +409,7 @@
           "name": "blog-index",
           "source": {
             "file": "./src/components/pages/blog/index/blog-index/blog-index.component.ts",
-            "offset": 747
+            "offset": 773
           },
           "attributes": [],
           "js": {
@@ -420,7 +420,7 @@
           "name": "blog-list",
           "source": {
             "file": "./src/components/pages/blog/index/archive/blog-list/blog-list.component.ts",
-            "offset": 1822
+            "offset": 1836
           },
           "attributes": [],
           "js": {
