@@ -66,12 +66,6 @@ portfolio-speaking {
   -webkit-text-fill-color: transparent;
 }
 
-.sp-fill-accent {
-  color: var(--primary-color);
-  background-image: none;
-  -webkit-text-fill-color: var(--primary-color);
-}
-
 .sp-sub {
   max-width: 34rem;
   margin-top: 1.6rem;
@@ -266,11 +260,6 @@ portfolio-speaking {
     color: var(--foreground-color);
     background: none;
     -webkit-text-fill-color: var(--foreground-color);
-  }
-
-  .sp-fill-accent {
-    color: var(--primary-color);
-    -webkit-text-fill-color: var(--primary-color);
   }
 
   .topic,

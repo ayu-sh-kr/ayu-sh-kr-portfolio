@@ -224,7 +224,7 @@ export class PortfolioSpeakingComponent extends BaseElement {
             <div id="sp-head-inner">
               <p class="motion-eyebrow mb-5">${speaking.eyebrow}</p>
               <h2 id="speaking-title" class="sp-lead">
-                <span class="sp-fill">${speaking.headline.before}</span><span class="sp-fill sp-fill-accent">${speaking.headline.accent}</span>
+                <span class="sp-fill">${speaking.headline.before}${speaking.headline.accent}</span>
               </h2>
               <p class="sp-sub">${speaking.summary}</p>
               <p class="sp-proof">
