@@ -3,9 +3,9 @@ slug: privacy
 title: Privacy Policy
 tagline: What I collect, why I collect it, and how to get rid of it.
 kind: privacy
-version: "1.0"
-updated: 2026-07-25
-effective: 2026-08-01
+version: "1.1"
+updated: 2026-08-04
+effective: 2026-08-04
 applies: ayu-sh-kr.com and client work
 contact: akjaiswal2003@gmail.com
 
@@ -14,9 +14,10 @@ switch:
   - { label: Working with me, target: client-data }
 
 summary:
-  - I don't sell your data, run ad trackers, or build profiles on you.
-  - Site analytics are anonymous and counted in aggregate — no cookies, no cross-site tracking.
-  - I only have your email if you wrote to me or subscribed. Unsubscribing removes it.
+  - I don't sell your data or use this site to build advertising profiles.
+  - The site uses Google Analytics 4 for broad page and interaction measurement; it may use first-party analytics identifiers.
+  - I don't intentionally send form contents, email addresses, messages, or client data to Google Analytics.
+  - I retain your email when you write to me; the current blog subscription endpoint does not store addresses or send newsletters.
   - Client project data stays under your contract, lives in your accounts where possible, and is deleted when you ask.
 summary_note: This box is a summary, not the policy. The sections below are what actually applies.
 
@@ -39,27 +40,29 @@ Everything from section 10 onward applies either way. Each section carries a lab
 
 ## When you visit the site {#visit scope="Site visitors" group="As a visitor" short="When you visit"}
 
-The site is static files served from S3 behind CloudFront. Loading a page produces two things: a server log entry and an anonymous analytics event.
+The site is deployed on Vercel using a client-rendered application and Nitro server routes. The site also loads Google Analytics 4 through Google's `gtag.js` tag. GA4 helps me understand broad page use and selected interactions so I can improve the site.
+
+The application sends stable, non-content event information such as a page category, page path, section, article or project slug, selected contact method, or CTA action. It does not intentionally send email addresses, form fields, message contents, or client project data to GA4. Google may also process standard browser, device, approximate location, and first-party identifier data under its own terms and controls.
 
 | What's recorded | Why | Kept for |
 | --- | --- | --- |
-| Page path and referrer | To know which posts people actually read | 24 months, aggregated |
-| Country and device type | To catch layout problems on real devices | 24 months, aggregated |
-| IP address in server logs | Abuse protection and error diagnosis | 30 days, then deleted |
+| Page path, referrer, and broad interaction labels | To understand which pages and interactions are useful | Analytics property retention setting |
+| Approximate location and browser/device context | To understand broad audience patterns and catch compatibility problems | Analytics property retention setting |
+| Operational request and server log data | Abuse protection and error diagnosis | 30 days, then deleted |
 
-Analytics are cookieless and don't follow you to other sites. I can tell you that a post got 400 reads from twelve countries. I can't tell you that *you* read it.
+Analytics are reported in aggregate for this site. I can tell you that a post was read by visitors from several countries; I do not use GA4 to identify you by name or connect your analytics activity to the messages or project data I hold.
 
 ## Cookies and local storage {#cookies scope="Site visitors" group="As a visitor" short="Cookies"}
 
-There are no advertising, marketing, or cross-site cookies on this site, which is why you've never seen a consent banner here.
+The GA4 JavaScript tag may set first-party analytics cookies or use similar identifiers to distinguish visits and sessions. The application does not deliberately set advertising or cross-site marketing cookies.
 
 The site may store one preference locally in your browser — such as a reduced-motion or theme choice. It never leaves your device, and clearing site data removes it.
 
 ## The newsletter {#newsletter scope="Site visitors" group="As a visitor" short="The newsletter"}
 
-Subscribing stores your email address and the date you confirmed it. That's the whole record. I use it to send occasional posts and nothing else — no partner mail, no list sharing, no selling.
+The blog subscription form currently reaches a same-origin placeholder endpoint. It validates that the request contains an email address, records only that a request with an email was received, and does not store the address, send email, or create a newsletter subscription.
 
-Every email has an unsubscribe link that works immediately. Unsubscribing deletes the address rather than parking it on a suppression list, unless you've asked me never to contact you again.
+If a newsletter provider is connected later, this section and the summary above will be updated before the provider starts receiving subscription addresses.
 
 ## When you get in touch {#reach scope="Site visitors" group="As a visitor" short="When you get in touch"}
 
@@ -100,20 +103,21 @@ A one-person operation still runs on other people's services. These are the only
 
 | Service | What it handles | Where |
 | --- | --- | --- |
-| AWS | Hosting, storage, logs, client infrastructure | Mumbai (ap-south-1) |
-| Analytics provider | Anonymous page counts | EU |
-| Email provider | My inbox and the newsletter | EU / US |
+| Vercel | Portfolio hosting, deployment, server routes, and operational delivery | Per Vercel's service and deployment configuration |
+| Google Analytics 4 | Pseudonymous page and interaction measurement | Per Google's processing and retention configuration |
+| AWS | Client project infrastructure where relevant; not this portfolio's hosting | Account and region chosen for the engagement |
+| Email provider | My inbox; a newsletter service only if one is enabled | EU / US |
 | Scheduling tool | Call bookings | EU / US |
 | Payment processor | Invoices and transfers | Per provider |
 
-I don't add a new service that touches personal data without a reason, and for client work I'll tell you before I do.
+I don't add a new service that touches personal data without a reason, and for client work I'll tell you before I do. Each provider may process the data needed to provide its service under its own terms and privacy policy.
 
 ## How long I keep things {#retention scope="Everyone" group="For everyone" short="How long I keep it"}
 
 | Data | Kept for |
 | --- | --- |
 | Server logs | 30 days |
-| Aggregate analytics | 24 months |
+| Analytics data | According to the configured GA4 property retention setting |
 | Newsletter address | Until you unsubscribe |
 | Emails and enquiries | 24 months from the last reply |
 | Client project material | Duration of the engagement, plus 90 days |
@@ -123,7 +127,7 @@ Financial records are the one category I can't delete on request — keeping the
 
 ## Where your data lives {#transfers scope="Everyone" group="For everyone" short="Where it lives"}
 
-I work from India, so anything I can read is effectively processed here. The services in section 10 store data in the EU, the US, or India depending on the provider.
+I work from India, so anything I can read is effectively processed here. The portfolio is deployed through Vercel, and analytics data is processed by Google Analytics. Depending on the provider, account, and configuration, data may be processed outside India.
 
 If you're in the EU or UK and that matters to your compliance story, say so early — client infrastructure can be pinned to a region you choose, and it's much easier to decide that before anything is built.
 
