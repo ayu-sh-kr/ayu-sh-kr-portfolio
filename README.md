@@ -83,6 +83,8 @@ Keep authored copy in the corresponding data module under `src/data/`; routes an
 - Update [public/sitemap.xml](public/sitemap.xml) whenever a public, indexable route or article changes.
 
 Markdown is fetched from `public/` at runtime; a missing source file will render the associated article error state.
+See [Markdown pages](docs/markdown-pages.md) for the page-family contracts, supported authoring patterns, and the editing checklist.
+See [Content automation plugin](docs/content-automation-plugin.md) for the audited plan to generate typed catalogues, routes, grouping, and sitemap entries from Markdown.
 
 ## Project layout
 
