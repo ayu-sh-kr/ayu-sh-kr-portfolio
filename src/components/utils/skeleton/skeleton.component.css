@@ -187,6 +187,7 @@ sk-cards {
 .markdown-skeleton-frame {
   position: relative;
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
 }
 
 .markdown-skeleton-content,
