@@ -11,7 +11,7 @@ export const BLOG_MARKDOWN_SOURCE_EVENT = "blog:markdown-source";
 
 /** Payload sent to index children so each child can render from the same catalog snapshot. */
 export type BlogIndexData = {
-  /** Authored posts in their display and next-post navigation order. */
+  /** Newest-first catalog snapshot consumed by the index filter, highlight, and archive. */
   posts: readonly BlogPost[];
 };
 
