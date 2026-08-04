@@ -26,11 +26,27 @@ export type BlogPost = {
   source: string;
   /** Estimated reading time in minutes. */
   minutes: number;
-  /** Marks the post shown in the highlighted index section; only one is expected. */
-  featured?: boolean;
 };
 
-export const blogPosts: BlogPost[] = [
+/**
+ * Authored blog catalog used by article routes and index-derived views.
+ *
+ * Posts do not need a manual featured flag or display order. The index uses
+ * {@link getBlogPostsForIndex} and {@link getLatestBlogPost} below to derive
+ * both from each post's ISO `date`.
+ */
+export const blogPosts: readonly BlogPost[] = [
+  {
+    slug: "aws-app-config-spring-boot-integration",
+    date: "2026-08-04",
+    writer: siteIdentity.name,
+    header: "AWS AppConfig Spring Boot Integration",
+    description:
+      "Loading and refreshing AWS AppConfig in Spring Boot, including Config Data, AppConfig Agent, Spring Cloud, and immutable Kotlin properties.",
+    category: "tutorial",
+    source: "/blogs/tutorial/Aws-App-Config-Spring-Boot-Integration.md",
+    minutes: 14,
+  },
   {
     slug: "postgresql-access-control",
     date: "2026-08-02",
@@ -52,7 +68,6 @@ export const blogPosts: BlogPost[] = [
     category: "tutorial",
     source: "/blogs/tutorial/Distributed-Locks-Redis.md",
     minutes: 8,
-    featured: true,
   },
   {
     slug: "rate-limiting-token-bucket-spring-boot",
@@ -105,6 +120,34 @@ export const blogPosts: BlogPost[] = [
     minutes: 6,
   },
 ];
+
+/**
+ * Orders the catalog for the blog index without changing the authored catalog.
+ *
+ * The index calls this before publishing its data event, so a newly added post
+ * appears in date order even when its object is appended anywhere in
+ * `blogPosts`. ISO dates sort correctly as strings, with the newest first.
+ *
+ * @returns A new newest-first catalog array for the index's children.
+ */
+export const getBlogPostsForIndex = (): readonly BlogPost[] =>
+  [...blogPosts].sort((first, second) => second.date.localeCompare(first.date));
+
+/**
+ * Finds the newest post that belongs in the highlighted index card.
+ *
+ * Both the highlighted card and archive call this with the same catalog event
+ * payload. Keeping the decision here ensures the newest configured post moves
+ * out of the archive automatically, regardless of its position in `blogPosts`.
+ *
+ * @param posts - Catalog records received by an index component.
+ * @returns The post with the latest ISO date, or `undefined` for an empty catalog.
+ */
+export const getLatestBlogPost = (posts: readonly BlogPost[]): BlogPost | undefined =>
+  posts.reduce<BlogPost | undefined>(
+    (latestPost, post) => !latestPost || post.date > latestPost.date ? post : latestPost,
+    undefined,
+  );
 
 /**
  * Resolves the authored catalog entry consumed by the article route and SEO.
