@@ -21,7 +21,7 @@ export type BlogFilterOption = {
 export const blogFilters: readonly BlogFilterOption[] = [
   {value: "all", label: "All", hash: "all"},
   {value: "tutorial", label: "Tutorials", hash: "tutorials"},
-  {value: "rant", label: "Rants", hash: "rants"},
+  {value: "rant", label: "Commentary", hash: "rants"},
   {value: "news", label: "News", hash: "news"},
   {value: "notes", label: "Notes", hash: "notes"},
 ];
@@ -34,10 +34,10 @@ export const blogFilters: readonly BlogFilterOption[] = [
  */
 export const blogIndexContent = {
   hero: {
-    eyebrow: "The blog",
-    titleBeforeAccent: "Tutorials, takes, and the occasional",
-    titleAccent: "rant.",
-    summary: "Notes from running a production backend solo — what works, what broke, and what I think about it.",
+    eyebrow: "Writing",
+    titleBeforeAccent: "Engineering notes from",
+    titleAccent: "production.",
+    summary: "Articles on backend systems, cloud infrastructure, and the technical decisions involved in operating software in production.",
     scrollHint: "Scroll",
   },
   filter: {
@@ -53,22 +53,23 @@ export const blogIndexContent = {
   list: {
     ariaLabel: "All posts",
     loading: "Loading posts…",
-    emptyPrefix: "Nothing here yet. The",
-    emptySuffix: "posts are brewing.",
-    resetLabel: "Show everything",
+    emptyPrefix: "There are no",
+    emptySuffix: "posts in this category yet.",
+    resetLabel: "View all posts",
   },
   listSection: {
     ariaLabel: "Browse blog posts",
   },
   subscription: {
     ariaLabel: "Subscribe",
-    title: "New posts, no noise.",
-    copy: "Occasional emails when something ships.",
+    title: "Receive new articles",
+    copy: "Occasional email updates when a new article is published.",
     emailLabel: "Email address",
     emailPlaceholder: "name@company.com",
+    emailHint: "Enter a valid email to enable Subscribe.",
     submitLabel: "Subscribe",
     submittingLabel: "Sending…",
-    successLabel: "Recorded",
+    successLabel: "Subscribed",
     errorLabel: "Try again",
   },
 } as const;
@@ -84,17 +85,17 @@ export const blogArticleContent = {
   loadingPost: "Loading post…",
   notFound: {
     eyebrow: "404",
-    title: "That post is not here.",
+    title: "Article not found",
     browseLabel: "Browse the blog",
   },
   loadingArticle: "Loading the post…",
-  loadError: "This post could not be loaded right now.",
+  loadError: "This article could not be loaded.",
   returnToPostsLabel: "Return to all posts",
   authorPrefix: "Written by",
   footer: {
-    shareCopy: "Share the useful parts.",
+    shareCopy: "Share this article",
     backLabel: "Back to",
-    nextLabel: "Next note",
+    nextLabel: "Next article",
   },
   markdown: {
     copyLabel: "Copy",
@@ -113,8 +114,8 @@ const blogKeywords = [siteIdentity.name, "Backend Engineering", "Kotlin", "Sprin
  * returned data to the page SEO contract.
  */
 export const getBlogSeo = (post?: Pick<BlogPost, "header" | "description">): PageSeoContent => {
-  const title = post ? `${post.header} — ${siteIdentity.domain}` : `The blog — ${siteIdentity.domain}`;
-  const description = post?.description ?? "Tutorials, takes, and notes from running production backends solo.";
+  const title = post ? `${post.header} — ${siteIdentity.domain}` : `Engineering writing — ${siteIdentity.domain}`;
+  const description = post?.description ?? "Articles on backend engineering, cloud infrastructure, and operating production systems.";
 
   return {
     title,
