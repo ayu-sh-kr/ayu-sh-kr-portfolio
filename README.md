@@ -55,7 +55,7 @@ pnpm build
 pnpm preview
 ```
 
-`pnpm build` type-checks the application, generates Dota component/route metadata, and writes the deployable site to `dist/`.
+`pnpm build` type-checks the application, generates Dota component/route and event metadata, and writes the Nitro output to `.output/`. A Vercel deployment uses the same build with `NITRO_PRESET=vercel`.
 
 ## Routes
 
@@ -68,7 +68,8 @@ pnpm preview
 | `/coffee` | One-time support flow |
 | `/support` | Support and project handoff information |
 | `/legal/privacy`, `/legal/terms` | Legal Markdown documents |
-| `/design/typography`, `/design/color`, `/design/layout`, `/design/alert`, `/design/toast` | Live design-system references |
+| `/design` | Design-system overview |
+| `/design/typography`, `/design/color`, `/design/element`, `/design/layout`, `/design/alert`, `/design/toast`, `/design/interaction` | Live design-system references |
 | `/offline`, `/error` | Connection and error states |
 
 Direct navigation to these client-side routes is served by Nitro's generated Vercel fallback, then the browser-side router renders the matching page. See [Vercel routing](docs/vercel-routing.md) for the legacy static rewrite and current Nitro flow.
@@ -110,7 +111,18 @@ docs/flows/        Architecture and interaction-flow diagrams
 
 For Vercel, `vercel.json` runs the Nitro Vercel build and caches fingerprinted `/assets/` files for one year. Nitro generates `.vercel/output/` with static files, a server function, and the deployment route table; do not edit that generated directory. See [Vercel routing](docs/vercel-routing.md) for the request flow and configuration ownership.
 
-The deployed domain is encoded in [src/data/portfolio-content.ts](src/data/portfolio-content.ts) and [src/utils/seo.utils.ts](src/utils/seo.utils.ts). Change both the site identity and `SITE_ORIGIN` before deploying a fork to another domain.
+The deployed domain is encoded in [src/data/portfolio-content.ts](src/data/portfolio-content.ts) and [src/utils/seo.utils.ts](src/utils/seo.utils.ts). Change both the site identity and `SITE_ORIGIN` before deploying a fork to another domain. The root package is named `ayu-sh-kr-portfolio` and remains private, so it is not publishable to npm.
+
+## Server endpoints
+
+Nitro owns the same-origin server routes used alongside the client-rendered application:
+
+| Endpoint | Purpose | Current behavior |
+| --- | --- | --- |
+| `GET /api/hello` | Health check | Returns a small JSON response from Nitro |
+| `POST /api/subscription` | Blog subscription form handoff | Validates the request, logs only the source and presence of an email, and returns `{ accepted: true }` without storing the address or sending email |
+
+The subscription endpoint is a placeholder integration boundary, not a connected newsletter provider.
 
 ## Analytics and privacy
 
@@ -118,18 +130,40 @@ GA4 is loaded in [index.html](index.html). Components publish typed, privacy-con
 
 Before deploying, confirm that the privacy policy accurately reflects the chosen analytics and hosting configuration, and update the GA measurement ID when deploying a separate site.
 
-## Project audit — July 2026
+### Emitted GA4 events
 
-The repository currently builds successfully and `pnpm audit --prod` reports no known production dependency vulnerabilities.
+The application uses one internal `analytics:track` event to carry typed facts to the Google Analytics listener. That internal event is not sent to GA4 directly. The listener forwards these event names through `gtag("event", ...)` and adds `page_title` and `page_location` to every event:
+
+| Event | Emitted when | Custom parameters |
+| --- | --- | --- |
+| `page_view` | A route finishes rendering | `page`, `page_path`, optional `slug` |
+| `section_view` | A marked section enters the viewport | `section`, `page_path` |
+| `contact_click` | A contact or profile destination is selected | `method`, `surface` |
+| `cta_click` | A showcase call-to-action is selected | `action`, `surface` |
+| `project_open` | A blog article or showcase project is opened | `kind`, `slug`, `surface` |
+| `subscription_submit` | A blog subscription request succeeds | `status`, `surface` |
+
+The current parameter values are intentionally stable identifiers rather than visible copy. Contact methods are `email`, `resume`, `call`, `github`, and `linkedin`; project kinds are `blog` and `showcase`; CTA actions are `conversation` and `pricing`. Section identifiers are declared in [src/events/analytics.events.ts](src/events/analytics.events.ts).
+
+### GA4 registration
+
+These application events do not need to be created in the GA4 interface before the site sends them. Once the Google tag is loaded, GA4 can collect an event sent with `gtag("event", eventName, parameters)`. Use Realtime or DebugView to verify the events after deployment.
+
+Register an event parameter as an event-scoped custom dimension only when it needs to be used in detailed reports, explorations, or audiences. Mark an event as a key event only when it represents an important business outcome, such as `subscription_submit` or a qualified contact action.
+
+See Google’s guides for [setting up GA4 events](https://developers.google.com/analytics/devguides/collection/ga4/events), [event parameters](https://support.google.com/analytics/answer/13675006), [custom dimensions](https://support.google.com/analytics/answer/14239696), and [key events](https://support.google.com/analytics/answer/13128484).
+
+## Project audit — August 2026
+
+The repository currently passes `pnpm build`; `pnpm audit --prod` reports no known production dependency vulnerabilities. The build reports 19 decorated route candidates, with `/offline` added explicitly during bootstrap, and emits a single client JavaScript bundle of about 1.90 MB (540 kB gzip), which still triggers Vite's 500 kB warning.
 
 Items to address before a public deployment:
 
-1. **Privacy-policy alignment:** the site loads standard GA4 `gtag.js`, while the policy describes analytics as cookie-free and anonymous. Standard GA4 may use first-party identifiers unless it is explicitly configured otherwise. The policy also describes AWS/CloudFront hosting whereas this repository is configured for Vercel. Verify the live stack and update the policy or implementation accordingly.
-2. **Initial JavaScript size:** the production entry bundle is about 1.82 MB (520 kB gzip), above Vite’s 500 kB warning threshold. Lazy-loading non-core routes such as design references, articles, or pricing flows would reduce first-load cost.
-3. **Sitemap coverage:** `/design/toast` is a public route but is absent from `public/sitemap.xml`. Add it if the reference page should be indexed.
-4. **Quality automation:** there are no lint or test scripts. Add a test runner and a lint/format command, then run them in CI alongside `pnpm build`.
-5. **Repository metadata:** there is no licence file and the package is still named `dota-wrap-template`. Add an explicit licence and rename the package if this is intended to be published or reused.
+1. **Privacy-policy alignment:** the policy now describes the deployed Vercel hosting and the standard GA4 tag at an abstract level. Before public deployment, verify the actual GA4 property retention and regional consent requirements against the live configuration.
+2. **Initial JavaScript size:** the production entry bundle is about 1.90 MB (540 kB gzip), above Vite's 500 kB warning threshold. Lazy-loading non-core routes such as design references, articles, or pricing flows would reduce first-load cost.
+3. **Quality automation:** there are no lint or test scripts. Add a test runner and a lint/format command, then run them in CI alongside `pnpm build`.
+The current `public/sitemap.xml` contains 32 URLs, including all eight configured blog posts, all eight showcase projects, the design references, and the public legal and product routes. Recheck it whenever a public route or catalogue entry changes.
 
 ## Licence
 
-No project licence is currently included. Do not assume reuse rights until the owner adds one.
+The repository uses the [Portfolio Source and Design Licence](LICENSE). It allows people to read, study, and reuse adapted technical code, including in their own projects, but it does not allow publishing this repository as-is, selling it as a template, or reusing this project's distinctive UI design, content, branding, illustrations, or other project-specific creative assets. Third-party fonts and assets remain under their own licences.
