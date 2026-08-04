@@ -3,9 +3,6 @@ import {EMAIL, MAILTO} from "@app/data/email-config.ts";
 
 const supportEmail = EMAIL.support;
 
-/** Renders a `+` that the stylesheet rotates to `×` when a mini-FAQ item opens. */
-const plus = `<span class="support-plus" aria-hidden="true">+</span>`;
-
 /**
  * Framework-neutral copy for the standalone support page.
  *
@@ -147,13 +144,11 @@ export const supportContent = {
       answerTitle: "Report a production incident",
       answerHtml: `<p>For a live production issue, email
         <a href="mailto:${supportEmail}?subject=Urgent%3A%20something%27s%20down">${supportEmail}</a>
-        with <b>URGENT</b> in the subject. Include the affected service, environment, start time, visible impact, and any relevant error or alarm details.</p>
-        <div class="support-mini-faq">
-          <details><summary>Include the operating context ${plus}</summary>
-            <p>State the environment, affected endpoint or job, expected behaviour, observed behaviour, and the most relevant timestamp. This makes the first investigation more specific.</p></details>
-          <details><summary>Check the platform signal ${plus}</summary>
-            <p>For AWS-hosted systems, check the AWS Health Dashboard for the relevant Region and service. Record the result alongside application alarms and health checks.</p></details>
-        </div>`,
+        with <b>URGENT</b> in the subject. Include the affected service, environment, start time, visible impact, and any relevant error or alarm details.</p>`,
+      miniFaqs: [
+        { question: "Include the operating context", answer: "State the environment, affected endpoint or job, expected behaviour, observed behaviour, and the most relevant timestamp. This makes the first investigation more specific." },
+        { question: "Check the platform signal", answer: "For AWS-hosted systems, check the AWS Health Dashboard for the relevant Region and service. Record the result alongside application alarms and health checks." },
+      ],
     },
     {
       id: "howto",
@@ -161,13 +156,11 @@ export const supportContent = {
       label: "Using or configuring a system",
       sublabel: "Project operation, a handover step, or a Dota library",
       answerTitle: "Find the relevant operating guidance",
-      answerHtml: `<p>Start with the handover material, repository documentation, and deployment guidance supplied for the project. For Dota libraries, review the relevant README and release notes before changing an integration.</p>
-        <div class="support-mini-faq">
-          <details><summary>Cannot find the handover material? ${plus}</summary>
-            <p>Send the repository or project name, the environment, and the operation you need to perform. The missing material can then be identified or the request can be scoped.</p></details>
-          <details><summary>Need a new capability? ${plus}</summary>
-            <p>Describe the intended outcome and the system it affects. New capability work is assessed separately from support so its scope and delivery constraints are explicit.</p></details>
-        </div>`,
+      answerHtml: `<p>Start with the handover material, repository documentation, and deployment guidance supplied for the project. For Dota libraries, review the relevant README and release notes before changing an integration.</p>`,
+      miniFaqs: [
+        { question: "Cannot find the handover material?", answer: "Send the repository or project name, the environment, and the operation you need to perform. The missing material can then be identified or the request can be scoped." },
+        { question: "Need a new capability?", answer: "Describe the intended outcome and the system it affects. New capability work is assessed separately from support so its scope and delivery constraints are explicit." },
+      ],
     },
     {
       id: "billing",
@@ -175,13 +168,11 @@ export const supportContent = {
       label: "Billing, access, or handover",
       sublabel: "Invoices, repository access, AWS accounts, and delivery material",
       answerTitle: "Resolve billing or access safely",
-      answerHtml: `<p>Include the project, authorised contact, and the specific invoice, account, repository, or access change required. Access changes may need confirmation from the relevant account owner.</p>
-        <div class="support-mini-faq">
-          <details><summary>I need a past invoice ${plus}</summary>
-            <p>Send the approximate date, project, and billing contact. The invoice request can then be matched to the relevant engagement records.</p></details>
-          <details><summary>Transferring an account or repository ${plus}</summary>
-            <p>Provide the destination organisation, authorised administrator, and required access level. The handover can then be planned with appropriate ownership and access controls.</p></details>
-        </div>`,
+      answerHtml: `<p>Include the project, authorised contact, and the specific invoice, account, repository, or access change required. Access changes may need confirmation from the relevant account owner.</p>`,
+      miniFaqs: [
+        { question: "I need a past invoice", answer: "Send the approximate date, project, and billing contact. The invoice request can then be matched to the relevant engagement records." },
+        { question: "Transferring an account or repository", answer: "Provide the destination organisation, authorised administrator, and required access level. The handover can then be planned with appropriate ownership and access controls." },
+      ],
     },
   ],
 
