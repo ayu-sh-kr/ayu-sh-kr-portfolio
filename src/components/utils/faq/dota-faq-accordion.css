@@ -1,0 +1,102 @@
+/*
+ * Shared visual contract for FAQ disclosures. Page components own only their
+ * surrounding layout; Dota's accordion supplies the interaction and this file
+ * supplies its common presentation.
+ */
+.dota-faq-accordion {
+  border-block-end: 1px solid var(--border-color);
+}
+
+.dota-faq-accordion-button {
+  display: flex;
+  inline-size: 100%;
+  min-inline-size: 0;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--layout-space-4);
+  margin: 0;
+  border: 0;
+  padding: var(--layout-space-5) var(--layout-space-3);
+  background: transparent;
+  color: var(--foreground-color);
+  cursor: pointer;
+  font: inherit;
+  font-size: var(--type-card-title-size);
+  font-weight: var(--type-card-title-weight);
+  letter-spacing: var(--type-card-title-tracking);
+  text-align: start;
+  transition: color 180ms ease;
+}
+
+.dota-faq-accordion-button > div:first-child {
+  min-inline-size: 0;
+}
+
+.dota-faq-accordion-button > div:first-child > span {
+  display: block;
+  overflow: visible;
+  word-break: normal;
+  overflow-wrap: anywhere;
+  -webkit-line-clamp: unset;
+}
+
+.dota-faq-accordion-button:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 3px;
+}
+
+.dota-faq-accordion-button:hover {
+  background: transparent;
+  color: var(--foreground-color);
+  text-decoration: none;
+}
+
+.dota-faq-accordion .description {
+  display: grid;
+  min-block-size: 0;
+  grid-template-rows: 0fr;
+  overflow: hidden;
+  transition: grid-template-rows 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dota-faq-accordion .description.description-active {
+  grid-template-rows: 1fr;
+}
+
+.dota-faq-accordion .description > .accordion-content {
+  min-block-size: 0;
+  overflow: hidden;
+}
+
+.dota-faq-accordion-button #icon {
+  flex: 0 0 auto;
+  color: var(--primary-color);
+  transition: transform 180ms ease;
+}
+
+.dota-faq-accordion-button #icon.active {
+  transform: rotate(90deg);
+}
+
+.dota-faq-accordion-answer {
+  margin: 0;
+  padding: 0 var(--layout-space-3) var(--layout-space-5);
+  color: var(--muted-color);
+  font: inherit;
+  font-size: var(--type-body-size);
+  line-height: var(--type-body-leading);
+  text-wrap: pretty;
+}
+
+.dota-faq-accordion-answer a {
+  color: var(--primary-color-strong);
+  font-weight: 600;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dota-faq-accordion-button,
+  .dota-faq-accordion .description,
+  .dota-faq-accordion-button #icon {
+    transition: none;
+  }
+}
