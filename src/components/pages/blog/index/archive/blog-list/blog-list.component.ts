@@ -1,13 +1,13 @@
 import {ApplicationEventService, BaseElement, BindEvent, Component} from "@ayu-sh-kr/dota-wrap/core";
 import {type ApplicationEvent, OnEvent} from "@ayu-sh-kr/dota-wrap/event";
-import {formatBlogDate, labelForCategory, type BlogCategory, type BlogPost} from "@app/configs/blogs.config.ts";
+import {formatBlogDate, getLatestBlogPost, labelForCategory, type BlogCategory, type BlogPost} from "@app/configs/blogs.config.ts";
 import {blogIndexContent} from "@app/data/blog-content.ts";
 import {BLOG_FILTER_CHANGE_EVENT, BLOG_INDEX_DATA_EVENT, type BlogFilterChange, type BlogIndexData} from "@app/events/blog.events.ts";
 import {escapeHtml} from "@app/utils/html.utils.ts";
 import {BlogRevealLifecycle} from "@app/utils/blog-reveal-lifecycle.utils.ts";
 import {publishAnalyticsEvent} from "@app/utils/analytics.utils.ts";
 
-/** Renders one non-featured post row with authored text escaped for HTML safety. */
+/** Renders one archive post row with authored text escaped for HTML safety. */
 const renderPostRow = (post: BlogPost): string => `
   <a class="blog-row blog-reveal" data-blog-reveal data-analytics-project="blog" data-analytics-slug="${post.slug}" href="/blog/${post.slug}">
     <time class="blog-row-date" datetime="${post.date}">${formatBlogDate(post.date, true)}</time>
@@ -73,7 +73,7 @@ export class BlogListComponent extends BaseElement {
     }
   }
 
-  /** Stores the authored catalog and renders its non-featured rows. */
+  /** Stores the newest-first catalog and renders every row except the latest highlighted post. */
   @OnEvent(BLOG_INDEX_DATA_EVENT)
   receiveBlogData(event: ApplicationEvent<typeof BLOG_INDEX_DATA_EVENT>): void {
     this.posts = event.data.posts;
@@ -134,17 +134,18 @@ export class BlogListComponent extends BaseElement {
       : !this.posts.length
         ? `<p class="blog-load-error" role="alert">Couldn’t load posts right now. Try refreshing.</p>`
         : (() => {
-          const featured = this.posts.find((post) => post.featured) ?? this.posts[0];
+          const highlightedPost = getLatestBlogPost(this.posts);
           const rows = this.posts.filter((post) => {
-            const isNotFeatured = post.slug !== featured.slug;
+            const isNotHighlighted = post.slug !== highlightedPost?.slug;
             const matchesFilter = this.currentFilter === "all" || post.category === this.currentFilter;
-            return isNotFeatured && matchesFilter;
+            return isNotHighlighted && matchesFilter;
           });
-          const hasVisibleFeatured = this.currentFilter === "all" || featured.category === this.currentFilter;
+          const hasVisibleHighlightedPost = highlightedPost !== undefined
+            && (this.currentFilter === "all" || highlightedPost.category === this.currentFilter);
 
           return `
             <div class="blog-list">${rows.map(renderPostRow).join("")}</div>
-            ${rows.length || hasVisibleFeatured ? "" : `<p class="blog-empty">${blogIndexContent.list.emptyPrefix} ${this.currentFilter} ${blogIndexContent.list.emptySuffix} <button type="button" data-blog-filter-reset>${blogIndexContent.list.resetLabel}</button></p>`}
+            ${rows.length || hasVisibleHighlightedPost ? "" : `<p class="blog-empty">${blogIndexContent.list.emptyPrefix} ${this.currentFilter} ${blogIndexContent.list.emptySuffix} <button type="button" data-blog-filter-reset>${blogIndexContent.list.resetLabel}</button></p>`}
           `;
         })();
 
