@@ -175,7 +175,7 @@ support-faq {
 
 .support-faq-accordion-answer {
   margin: 0;
-  padding: 0 var(--layout-space-6) var(--layout-space-5) 0;
+  padding: 0 var(--layout-space-6) var(--layout-space-5) var(--layout-space-3);
   color: var(--muted-color);
   font-family: inherit;
   font-size: var(--type-body-size);
