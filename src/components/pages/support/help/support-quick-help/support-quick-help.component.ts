@@ -1,6 +1,8 @@
 import { BaseElement, BindEvent, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
 import { OnEvent } from "@ayu-sh-kr/dota-wrap/event";
+import { DOTA_FAQ_ACCORDION_CLASS, DOTA_FAQ_ACCORDION_CONFIG } from "@app/components/utils/faq/dota-faq-accordion.ts";
 import { supportContent } from "@app/data/support-content.ts";
+import { escapeHtml } from "@app/utils/html.utils.ts";
 
 /**
  * Resolves common support requests through one expanded quick-help answer at a time.
@@ -75,7 +77,20 @@ export class SupportQuickHelpComponent extends BaseElement {
       item.classList.toggle("is-open", item === button);
       item.setAttribute("aria-expanded", String(item === button));
     });
-    answerContent.innerHTML = `<h3>${route.answerTitle}</h3>${route.answerHtml}`;
+    answerContent.innerHTML = HTML`
+      <h3>${escapeHtml(route.answerTitle)}</h3>
+      ${route.answerHtml}
+      <div class="support-mini-faq">
+        ${route.miniFaqs.map((faq) => HTML`
+          <dota-accordion
+            classname="${DOTA_FAQ_ACCORDION_CLASS}"
+            header="${escapeHtml(faq.question)}"
+            description="${escapeHtml(faq.answer)}"
+            config='${DOTA_FAQ_ACCORDION_CONFIG}'
+          ></dota-accordion>
+        `).join("")}
+      </div>
+    `;
     answer.classList.add("is-open");
     this.openRoute = routeId;
   }

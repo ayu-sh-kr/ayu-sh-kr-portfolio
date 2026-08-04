@@ -21,14 +21,7 @@ support-quick-help { display: block; }
 .support-answer-inner p { color: var(--muted-color); font-size: var(--type-body-size); line-height: var(--type-body-leading); }
 .support-answer-inner a { color: var(--primary-color-strong); font-weight: 500; }
 .support-answer-inner a:hover { text-decoration: underline; }
-.support-mini-faq { margin-block-start: var(--layout-space-4); padding-block-start: var(--layout-space-2); border-top: 1px solid var(--border-color); }
-.support-mini-faq details { border-bottom: 1px solid var(--border-color); }
-.support-mini-faq details:last-child { border-bottom: 0; }
-.support-mini-faq summary { display: flex; align-items: center; justify-content: space-between; gap: var(--layout-space-4); padding-block: var(--layout-space-3); font-size: var(--type-body-size); font-weight: 500; list-style: none; cursor: pointer; }
-.support-mini-faq summary::-webkit-details-marker { display: none; }
-.support-mini-faq summary .support-plus { flex: 0 0 auto; color: var(--primary-color-strong); transition: transform 300ms ease; }
-.support-mini-faq details[open] summary .support-plus { transform: rotate(45deg); }
-.support-mini-faq details p { padding: 0 0 var(--layout-space-3); }
+.support-mini-faq { margin-block-start: var(--layout-space-4); border-block-start: 1px solid var(--border-color); }
 
 @media (prefers-reduced-motion: reduce) {
   .support-route, .support-answer { transition: none; }
