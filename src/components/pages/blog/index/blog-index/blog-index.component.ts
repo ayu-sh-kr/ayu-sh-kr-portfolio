@@ -1,15 +1,15 @@
 import {ApplicationEventService, BaseElement, Component} from "@ayu-sh-kr/dota-wrap/core";
 import {OnEvent} from "@ayu-sh-kr/dota-wrap/event";
-import {blogPosts} from "@app/configs/blogs.config.ts";
+import {getBlogPostsForIndex} from "@app/configs/blogs.config.ts";
 import {BLOG_INDEX_DATA_EVENT, type BlogIndexData} from "@app/events/blog.events.ts";
 
 /**
  * Composes the blog index sections in their reading order.
  *
- * This shell publishes the authored catalog after its children have registered
- * their listeners. The grouped list section then distributes no props: filter,
- * highlighted-card, and row components receive the catalog through application
- * events and remain independently replaceable.
+ * This shell publishes the newest-first configured catalog after its children
+ * have registered their listeners. The grouped list section then distributes no
+ * props: filter, highlighted-card, and row components receive the catalog through
+ * application events and remain independently replaceable.
  *
  * Selector: `blog-index`.
  */
@@ -24,12 +24,12 @@ export class BlogIndexComponent extends BaseElement {
     super();
   }
 
-  /** Publishes the catalog after the composed index children are ready to receive it. */
+  /** Publishes the newest-first catalog after the composed index children are ready to receive it. */
   @OnEvent("connected", true)
   publishBlogData(): void {
     void this.publisher.publishAsync({
       name: BLOG_INDEX_DATA_EVENT,
-      data: {posts: blogPosts} satisfies BlogIndexData,
+      data: {posts: getBlogPostsForIndex()} satisfies BlogIndexData,
     });
   }
 
