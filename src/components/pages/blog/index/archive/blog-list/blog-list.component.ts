@@ -2,7 +2,7 @@ import {ApplicationEventService, BaseElement, BindEvent, Component} from "@ayu-s
 import {type ApplicationEvent, OnEvent} from "@ayu-sh-kr/dota-wrap/event";
 import {formatBlogDate, getLatestBlogPost, labelForCategory, type BlogCategory, type BlogPost} from "@app/configs/blogs.config.ts";
 import {blogIndexContent} from "@app/data/blog-content.ts";
-import {BLOG_FILTER_CHANGE_EVENT, BLOG_INDEX_DATA_EVENT, type BlogFilterChange, type BlogIndexData} from "@app/events/blog.events.ts";
+import {BLOG_FILTER_CHANGE_EVENT, BLOG_INDEX_DATA_EVENT, type BlogFilterChange} from "@app/events/blog.events.ts";
 import {escapeHtml} from "@app/utils/html.utils.ts";
 import {BlogRevealLifecycle} from "@app/utils/blog-reveal-lifecycle.utils.ts";
 import {publishAnalyticsEvent} from "@app/utils/analytics.utils.ts";
