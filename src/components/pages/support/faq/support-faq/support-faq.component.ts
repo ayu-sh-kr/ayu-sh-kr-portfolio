@@ -1,4 +1,5 @@
 import { BaseElement, BindEvent, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
+import { DOTA_FAQ_ACCORDION_CLASS, DOTA_FAQ_ACCORDION_CONFIG } from "@app/components/utils/faq/dota-faq-accordion.ts";
 import { supportContent } from "@app/data/support-content.ts";
 
 /**
@@ -87,15 +88,6 @@ export class SupportFaqComponent extends BaseElement {
   /** Returns Support's authored answers using the same shared accordion contract as Pricing. */
   render(): string {
     const content = supportContent.faq;
-    const accordionConfig = JSON.stringify({
-      container: "support-faq-accordion-container",
-      button: {
-        base: "support-faq-accordion-button",
-        size: { md: "" },
-        color: { gray: { ghost: "support-faq-accordion-button-color" } },
-      },
-      paragraph: "support-faq-accordion-answer",
-    });
 
     return HTML`
       <section id="faq" class="support-faq layout-page layout-section" aria-labelledby="support-faq-title">
@@ -119,13 +111,13 @@ export class SupportFaqComponent extends BaseElement {
               .map(
                 (faq) => HTML`
                   <dota-accordion
-                    classname="support-faq-accordion"
+                    classname="${DOTA_FAQ_ACCORDION_CLASS}"
                     data-support-faq-item
                     data-category="${faq.category}"
                     data-search-text="${this.escapeAttribute(`${faq.question} ${faq.answer}`.replace(/<[^>]*>/g, "").toLocaleLowerCase())}"
                     header="${this.escapeAttribute(faq.question)}"
                     description="${this.escapeAttribute(faq.answer)}"
-                    config='${accordionConfig}'
+                    config='${DOTA_FAQ_ACCORDION_CONFIG}'
                   ></dota-accordion>
                 `,
               )
