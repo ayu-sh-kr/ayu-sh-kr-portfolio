@@ -8,6 +8,16 @@ import eventMapGenerator from "@ayu-sh-kr/dota-wrap/event-map-generator";
 import dotaSsg from "@ayu-sh-kr/dota-ssr/vite";
 
 const projectRoot = fileURLToPath(new URL(".", import.meta.url));
+const blogRoutes = [
+  "/blog/aws-app-config-spring-boot-integration",
+  "/blog/postgresql-access-control",
+  "/blog/distributed-locks-redis",
+  "/blog/rate-limiting-token-bucket-spring-boot",
+  "/blog/distributed-monolith-extra-invoices",
+  "/blog/lambda-pricing-infra-alone",
+  "/blog/eventbridge-scheduler-quirks",
+  "/blog/business-logic-auth-middleware",
+];
 
 export default defineConfig({
   plugins: [
@@ -44,6 +54,7 @@ export default defineConfig({
       root: projectRoot,
       entry: "/src/main.ts",
       autoDetectRoutes: true,
+      routes: ["/offline", ...blogRoutes],
       logType: "info",
       vercel: true,
     }),

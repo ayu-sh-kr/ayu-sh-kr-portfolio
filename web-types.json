@@ -169,7 +169,7 @@
           "name": "app-error",
           "source": {
             "file": "./src/pages/error.page.ts",
-            "offset": 532
+            "offset": 543
           },
           "attributes": [
             {
@@ -181,7 +181,7 @@
               },
               "source": {
                 "file": "./src/pages/error.page.ts",
-                "offset": 873
+                "offset": 884
               }
             },
             {
@@ -193,7 +193,7 @@
               },
               "source": {
                 "file": "./src/pages/error.page.ts",
-                "offset": 715
+                "offset": 726
               }
             }
           ],
@@ -205,7 +205,7 @@
                 "default": "Page not found",
                 "source": {
                   "file": "./src/pages/error.page.ts",
-                  "offset": 873
+                  "offset": 884
                 }
               },
               {
@@ -214,7 +214,7 @@
                 "default": "404",
                 "source": {
                   "file": "./src/pages/error.page.ts",
-                  "offset": 715
+                  "offset": 726
                 }
               }
             ]
@@ -268,7 +268,7 @@
           "name": "blog-article",
           "source": {
             "file": "./src/components/pages/blog/article/blog-article/blog-article.component.ts",
-            "offset": 1390
+            "offset": 1451
           },
           "attributes": [],
           "js": {
@@ -442,7 +442,7 @@
           "name": "blog-markdown-view",
           "source": {
             "file": "./src/components/pages/blog/article/blog-markdown-view/blog-markdown-view.component.ts",
-            "offset": 1189
+            "offset": 1202
           },
           "attributes": [
             {
@@ -454,7 +454,7 @@
               },
               "source": {
                 "file": "./src/components/pages/blog/article/blog-markdown-view/blog-markdown-view.component.ts",
-                "offset": 1639
+                "offset": 1652
               }
             },
             {
@@ -465,7 +465,7 @@
               },
               "source": {
                 "file": "./src/components/pages/blog/article/blog-markdown-view/blog-markdown-view.component.ts",
-                "offset": 1410
+                "offset": 1423
               }
             }
           ],
@@ -477,7 +477,7 @@
                 "default": "portfolioMarkdownColor",
                 "source": {
                   "file": "./src/components/pages/blog/article/blog-markdown-view/blog-markdown-view.component.ts",
-                  "offset": 1639
+                  "offset": 1652
                 }
               },
               {
@@ -485,7 +485,7 @@
                 "type": "string",
                 "source": {
                   "file": "./src/components/pages/blog/article/blog-markdown-view/blog-markdown-view.component.ts",
-                  "offset": 1410
+                  "offset": 1423
                 }
               }
             ]
@@ -495,7 +495,7 @@
           "name": "blog-page",
           "source": {
             "file": "./src/pages/blog/blog.page.ts",
-            "offset": 527
+            "offset": 538
           },
           "attributes": [],
           "js": {
@@ -627,7 +627,7 @@
           "name": "coffee-page",
           "source": {
             "file": "./src/pages/coffee.page.ts",
-            "offset": 747
+            "offset": 758
           },
           "attributes": [],
           "js": {
@@ -715,7 +715,7 @@
           "name": "design-alert-page",
           "source": {
             "file": "./src/pages/design/design-alert.page.ts",
-            "offset": 587
+            "offset": 598
           },
           "attributes": [],
           "js": {
@@ -792,7 +792,7 @@
           "name": "design-color-page",
           "source": {
             "file": "./src/pages/design/design-color.page.ts",
-            "offset": 611
+            "offset": 622
           },
           "attributes": [],
           "js": {
@@ -836,7 +836,7 @@
           "name": "design-element-page",
           "source": {
             "file": "./src/pages/design/design-element.page.ts",
-            "offset": 776
+            "offset": 787
           },
           "attributes": [],
           "js": {
@@ -968,7 +968,7 @@
           "name": "design-interaction-page",
           "source": {
             "file": "./src/pages/design/design-interaction.page.ts",
-            "offset": 677
+            "offset": 688
           },
           "attributes": [],
           "js": {
@@ -1089,7 +1089,7 @@
           "name": "design-layout-page",
           "source": {
             "file": "./src/pages/design/design-layout.page.ts",
-            "offset": 591
+            "offset": 602
           },
           "attributes": [],
           "js": {
@@ -1122,7 +1122,7 @@
           "name": "design-page",
           "source": {
             "file": "./src/pages/design/design.page.ts",
-            "offset": 741
+            "offset": 752
           },
           "attributes": [],
           "js": {
@@ -1155,7 +1155,7 @@
           "name": "design-toast-page",
           "source": {
             "file": "./src/pages/design/design-toast.page.ts",
-            "offset": 649
+            "offset": 660
           },
           "attributes": [],
           "js": {
@@ -1199,7 +1199,7 @@
           "name": "design-typography-page",
           "source": {
             "file": "./src/pages/design/design-typography.page.ts",
-            "offset": 676
+            "offset": 687
           },
           "attributes": [],
           "js": {
@@ -1287,7 +1287,7 @@
           "name": "offline-page",
           "source": {
             "file": "./src/components/pages/offline/shell/offline-page/offline-page.component.ts",
-            "offset": 690
+            "offset": 701
           },
           "attributes": [],
           "js": {
@@ -1474,7 +1474,7 @@
           "name": "pricing-page",
           "source": {
             "file": "./src/pages/pricing/pricing.page.ts",
-            "offset": 539
+            "offset": 550
           },
           "attributes": [],
           "js": {
@@ -1847,7 +1847,7 @@
           "name": "privacy-markdown-view",
           "source": {
             "file": "./src/components/pages/privacy/document/privacy-markdown-view/privacy-markdown-view.component.ts",
-            "offset": 1200
+            "offset": 1229
           },
           "attributes": [
             {
@@ -1859,7 +1859,7 @@
               },
               "source": {
                 "file": "./src/components/pages/privacy/document/privacy-markdown-view/privacy-markdown-view.component.ts",
-                "offset": 1575
+                "offset": 1604
               }
             },
             {
@@ -1870,7 +1870,7 @@
               },
               "source": {
                 "file": "./src/components/pages/privacy/document/privacy-markdown-view/privacy-markdown-view.component.ts",
-                "offset": 1384
+                "offset": 1413
               }
             }
           ],
@@ -1882,7 +1882,7 @@
                 "default": "portfolioMarkdownColor",
                 "source": {
                   "file": "./src/components/pages/privacy/document/privacy-markdown-view/privacy-markdown-view.component.ts",
-                  "offset": 1575
+                  "offset": 1604
                 }
               },
               {
@@ -1890,7 +1890,7 @@
                 "type": "string",
                 "source": {
                   "file": "./src/components/pages/privacy/document/privacy-markdown-view/privacy-markdown-view.component.ts",
-                  "offset": 1384
+                  "offset": 1413
                 }
               }
             ]
@@ -1900,7 +1900,7 @@
           "name": "privacy-page",
           "source": {
             "file": "./src/pages/legal/privacy.page.ts",
-            "offset": 532
+            "offset": 543
           },
           "attributes": [],
           "js": {
@@ -1922,7 +1922,7 @@
           "name": "privacy-view",
           "source": {
             "file": "./src/components/pages/privacy/document/privacy-view/privacy-view.component.ts",
-            "offset": 1473
+            "offset": 1486
           },
           "attributes": [],
           "js": {
@@ -2292,7 +2292,7 @@
           "name": "showcase-markdown-view",
           "source": {
             "file": "./src/components/pages/showcase/article/showcase-markdown-view/showcase-markdown-view.component.ts",
-            "offset": 1066
+            "offset": 1095
           },
           "attributes": [
             {
@@ -2304,7 +2304,7 @@
               },
               "source": {
                 "file": "./src/components/pages/showcase/article/showcase-markdown-view/showcase-markdown-view.component.ts",
-                "offset": 1442
+                "offset": 1471
               }
             },
             {
@@ -2315,7 +2315,7 @@
               },
               "source": {
                 "file": "./src/components/pages/showcase/article/showcase-markdown-view/showcase-markdown-view.component.ts",
-                "offset": 1251
+                "offset": 1280
               }
             }
           ],
@@ -2327,7 +2327,7 @@
                 "default": "portfolioMarkdownColor",
                 "source": {
                   "file": "./src/components/pages/showcase/article/showcase-markdown-view/showcase-markdown-view.component.ts",
-                  "offset": 1442
+                  "offset": 1471
                 }
               },
               {
@@ -2335,7 +2335,7 @@
                 "type": "string",
                 "source": {
                   "file": "./src/components/pages/showcase/article/showcase-markdown-view/showcase-markdown-view.component.ts",
-                  "offset": 1251
+                  "offset": 1280
                 }
               }
             ]
@@ -2390,7 +2390,7 @@
           "name": "showcase-page",
           "source": {
             "file": "./src/pages/showcase/showcase.page.ts",
-            "offset": 556
+            "offset": 567
           },
           "attributes": [],
           "js": {
@@ -2547,7 +2547,7 @@
           "name": "showcase-view",
           "source": {
             "file": "./src/components/pages/showcase/article/showcase-view/showcase-view.component.ts",
-            "offset": 1445
+            "offset": 1458
           },
           "attributes": [],
           "js": {
@@ -2769,7 +2769,7 @@
           "name": "support-page",
           "source": {
             "file": "./src/pages/support.page.ts",
-            "offset": 758
+            "offset": 769
           },
           "attributes": [],
           "js": {
@@ -2869,7 +2869,7 @@
           "name": "terms-markdown-view",
           "source": {
             "file": "./src/components/pages/terms/document/terms-markdown-view/terms-markdown-view.component.ts",
-            "offset": 1164
+            "offset": 1177
           },
           "attributes": [
             {
@@ -2881,7 +2881,7 @@
               },
               "source": {
                 "file": "./src/components/pages/terms/document/terms-markdown-view/terms-markdown-view.component.ts",
-                "offset": 1537
+                "offset": 1550
               }
             },
             {
@@ -2892,7 +2892,7 @@
               },
               "source": {
                 "file": "./src/components/pages/terms/document/terms-markdown-view/terms-markdown-view.component.ts",
-                "offset": 1346
+                "offset": 1359
               }
             }
           ],
@@ -2904,7 +2904,7 @@
                 "default": "portfolioMarkdownColor",
                 "source": {
                   "file": "./src/components/pages/terms/document/terms-markdown-view/terms-markdown-view.component.ts",
-                  "offset": 1537
+                  "offset": 1550
                 }
               },
               {
@@ -2912,7 +2912,7 @@
                 "type": "string",
                 "source": {
                   "file": "./src/components/pages/terms/document/terms-markdown-view/terms-markdown-view.component.ts",
-                  "offset": 1346
+                  "offset": 1359
                 }
               }
             ]
@@ -2922,7 +2922,7 @@
           "name": "terms-page",
           "source": {
             "file": "./src/pages/legal/terms.page.ts",
-            "offset": 514
+            "offset": 525
           },
           "attributes": [],
           "js": {
@@ -2944,7 +2944,7 @@
           "name": "terms-view",
           "source": {
             "file": "./src/components/pages/terms/document/terms-view/terms-view.component.ts",
-            "offset": 1447
+            "offset": 1460
           },
           "attributes": [],
           "js": {
