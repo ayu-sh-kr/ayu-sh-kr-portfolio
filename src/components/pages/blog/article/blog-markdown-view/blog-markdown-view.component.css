@@ -111,6 +111,44 @@ blog-markdown-view {
   font-size: inherit;
 }
 
+.blog-prose table {
+  inline-size: 100%;
+  margin-block: var(--layout-space-6);
+  border-block: 1px solid var(--blog-hairline);
+  border-collapse: separate;
+  border-spacing: 0;
+  color: var(--blog-ink);
+  font-size: var(--type-compact-size);
+  line-height: var(--type-compact-leading);
+  scrollbar-color: var(--blog-ink-soft) transparent;
+}
+
+.blog-prose th,
+.blog-prose td {
+  min-inline-size: 10.5rem;
+  border-block-end: 1px solid var(--blog-hairline);
+  padding: var(--layout-space-4) var(--layout-space-5);
+  font-size: var(--type-compact-size);
+  text-align: start;
+  vertical-align: top;
+}
+
+.blog-prose th {
+  background: color-mix(in srgb, var(--blog-tint) 72%, transparent);
+  color: var(--blog-accent-deep);
+  font-weight: var(--type-label-weight);
+  letter-spacing: var(--type-label-tracking);
+}
+
+.blog-prose td:first-child {
+  color: var(--blog-ink);
+  font-weight: var(--type-card-title-weight);
+}
+
+.blog-prose tr:last-child td {
+  border-block-end: 0;
+}
+
 .blog-copy-button {
   position: absolute;
   inset-block-start: 0.7rem;
