@@ -9,7 +9,7 @@ import {toSEO} from "@app/utils/seo.utils.ts";
  * The shell composes the home sections, while title, description, keywords,
  * and social metadata come from `portfolioContent.seo`.
  */
-@Route({ path: "/" })
+@Route({ path: "/", ssr: true })
 @Component({
   selector: "app-home",
   shadow: false,
