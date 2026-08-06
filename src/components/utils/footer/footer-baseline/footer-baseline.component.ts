@@ -18,6 +18,10 @@ export class FooterBaselineComponent extends BaseElement {
   onConnected(): void {
     this.clock = this.querySelector<HTMLElement>(".footer-clock");
     this.updateClock();
+    if (import.meta.env.SSR) {
+      return;
+    }
+
     this.clockTimer = window.setInterval(() => this.updateClock(), 1000);
   }
 
