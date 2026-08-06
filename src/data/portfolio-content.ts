@@ -4,17 +4,20 @@ import {EMAIL, MAILTO} from "@app/data/email-config.ts";
 // Portfolio copy lives here so content can change without touching component markup.
 export const siteIdentity = {
   name: "Ayush Kumar",
+  fullName: "Ayush Kumar Jaiswal",
   brand: "ayu-sh-kr",
   domain: "ayu-sh-kr.com",
 } as const;
 
 export const portfolioContent = {
   seo: {
-    title: `${siteIdentity.name} — Backend Engineer (Kotlin · Spring Boot · AWS)`,
+    title: `${siteIdentity.fullName} (Ayush Kumar) — Backend Engineer (Kotlin · Spring Boot · AWS)`,
     description:
-      "Backend engineer with 4 years of experience building and running production systems with Kotlin, Spring Boot, AWS, PostgreSQL, and Redis.",
+      "Ayush Kumar Jaiswal (Ayush Kumar) is a backend engineer with 4 years of experience building and running production systems with Kotlin, Spring Boot, AWS, PostgreSQL, and Redis.",
     keywords: [
+      "Ayush",
       siteIdentity.name,
+      siteIdentity.fullName,
       "Backend Engineer",
       "Kotlin",
       "Spring Boot",
@@ -23,7 +26,7 @@ export const portfolioContent = {
       "Redis",
       "Freelance Backend Developer",
     ],
-    ogTitle: `${siteIdentity.name} — Backend Engineer`,
+    ogTitle: `${siteIdentity.fullName} (Ayush Kumar) — Backend Engineer`,
     ogDescription: "Backend systems on the JVM and AWS, with end-to-end responsibility for delivery and operations.",
   } satisfies PageSeoContent,
   nav: {
