@@ -12,15 +12,17 @@
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.3.3",
-    "nitro": "3.0.260610-beta",
+    "happy-dom": "^20.11.1",
     "tailwindcss": "^4.3.3",
     "typescript": "^5.9.3",
     "vite": "^7.3.6"
   },
   "dependencies": {
-    "@ayu-sh-kr/dota-md": "latest",
-    "@ayu-sh-kr/dota-ui": "latest",
-    "@ayu-sh-kr/dota-wrap": "0.0.26",
+    "@ayu-sh-kr/dota-md": "0.0.12",
+    "@ayu-sh-kr/dota-rendering": "0.1.1",
+    "@ayu-sh-kr/dota-ssr": "0.0.2",
+    "@ayu-sh-kr/dota-ui": "0.0.23",
+    "@ayu-sh-kr/dota-wrap": "0.0.27",
     "@types/node": "^26.1.1",
     "reflect-metadata": "^0.2.2"
   },
