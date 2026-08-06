@@ -1,5 +1,6 @@
 {
-  "buildCommand": "NITRO_PRESET=vercel pnpm build",
+  "buildCommand": "pnpm build",
+  "outputDirectory": "dist",
   "headers": [
     {
       "source": "/assets/(.*)",
@@ -9,6 +10,13 @@
           "value": "public, max-age=31536000, immutable"
         }
       ]
+    }
+  ],
+  "redirects": [],
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ]
 }

@@ -246,7 +246,7 @@
           "name": "app-home",
           "source": {
             "file": "./src/pages/home.page.ts",
-            "offset": 527
+            "offset": 538
           },
           "attributes": [],
           "js": {
@@ -442,7 +442,7 @@
           "name": "blog-markdown-view",
           "source": {
             "file": "./src/components/pages/blog/article/blog-markdown-view/blog-markdown-view.component.ts",
-            "offset": 1141
+            "offset": 1189
           },
           "attributes": [
             {
@@ -454,7 +454,7 @@
               },
               "source": {
                 "file": "./src/components/pages/blog/article/blog-markdown-view/blog-markdown-view.component.ts",
-                "offset": 1591
+                "offset": 1639
               }
             },
             {
@@ -465,7 +465,7 @@
               },
               "source": {
                 "file": "./src/components/pages/blog/article/blog-markdown-view/blog-markdown-view.component.ts",
-                "offset": 1362
+                "offset": 1410
               }
             }
           ],
@@ -477,7 +477,7 @@
                 "default": "portfolioMarkdownColor",
                 "source": {
                   "file": "./src/components/pages/blog/article/blog-markdown-view/blog-markdown-view.component.ts",
-                  "offset": 1591
+                  "offset": 1639
                 }
               },
               {
@@ -485,7 +485,7 @@
                 "type": "string",
                 "source": {
                   "file": "./src/components/pages/blog/article/blog-markdown-view/blog-markdown-view.component.ts",
-                  "offset": 1362
+                  "offset": 1410
                 }
               }
             ]
@@ -517,7 +517,7 @@
           "name": "blog-subscription",
           "source": {
             "file": "./src/components/pages/blog/index/subscription/blog-subscription/blog-subscription.component.ts",
-            "offset": 1162
+            "offset": 917
           },
           "attributes": [],
           "js": {
@@ -704,7 +704,7 @@
           "name": "design-alert-overview",
           "source": {
             "file": "./src/components/pages/design/alert/overview/design-alert-overview/design-alert-overview.component.ts",
-            "offset": 308
+            "offset": 352
           },
           "attributes": [],
           "js": {
@@ -781,7 +781,7 @@
           "name": "design-color-overview",
           "source": {
             "file": "./src/components/pages/design/color/overview/design-color-overview/design-color-overview.component.ts",
-            "offset": 593
+            "offset": 637
           },
           "attributes": [],
           "js": {
@@ -825,7 +825,7 @@
           "name": "design-element-overview",
           "source": {
             "file": "./src/components/pages/design/element/overview/design-element-overview/design-element-overview.component.ts",
-            "offset": 625
+            "offset": 669
           },
           "attributes": [],
           "js": {
@@ -1078,7 +1078,7 @@
           "name": "design-layout-overview",
           "source": {
             "file": "./src/components/pages/design/layout/overview/design-layout-overview/design-layout-overview.component.ts",
-            "offset": 290
+            "offset": 334
           },
           "attributes": [],
           "js": {
@@ -1144,7 +1144,7 @@
           "name": "design-toast-overview",
           "source": {
             "file": "./src/components/pages/design/toast/overview/design-toast-overview/design-toast-overview.component.ts",
-            "offset": 518
+            "offset": 562
           },
           "attributes": [],
           "js": {
@@ -1188,7 +1188,7 @@
           "name": "design-typography-overview",
           "source": {
             "file": "./src/components/pages/design/overview/design-typography-overview/design-typography-overview.component.ts",
-            "offset": 650
+            "offset": 694
           },
           "attributes": [],
           "js": {
@@ -1847,7 +1847,7 @@
           "name": "privacy-markdown-view",
           "source": {
             "file": "./src/components/pages/privacy/document/privacy-markdown-view/privacy-markdown-view.component.ts",
-            "offset": 1152
+            "offset": 1200
           },
           "attributes": [
             {
@@ -1859,7 +1859,7 @@
               },
               "source": {
                 "file": "./src/components/pages/privacy/document/privacy-markdown-view/privacy-markdown-view.component.ts",
-                "offset": 1527
+                "offset": 1575
               }
             },
             {
@@ -1870,7 +1870,7 @@
               },
               "source": {
                 "file": "./src/components/pages/privacy/document/privacy-markdown-view/privacy-markdown-view.component.ts",
-                "offset": 1336
+                "offset": 1384
               }
             }
           ],
@@ -1882,7 +1882,7 @@
                 "default": "portfolioMarkdownColor",
                 "source": {
                   "file": "./src/components/pages/privacy/document/privacy-markdown-view/privacy-markdown-view.component.ts",
-                  "offset": 1527
+                  "offset": 1575
                 }
               },
               {
@@ -1890,7 +1890,7 @@
                 "type": "string",
                 "source": {
                   "file": "./src/components/pages/privacy/document/privacy-markdown-view/privacy-markdown-view.component.ts",
-                  "offset": 1336
+                  "offset": 1384
                 }
               }
             ]
@@ -1922,7 +1922,7 @@
           "name": "privacy-view",
           "source": {
             "file": "./src/components/pages/privacy/document/privacy-view/privacy-view.component.ts",
-            "offset": 1431
+            "offset": 1473
           },
           "attributes": [],
           "js": {
@@ -2292,7 +2292,7 @@
           "name": "showcase-markdown-view",
           "source": {
             "file": "./src/components/pages/showcase/article/showcase-markdown-view/showcase-markdown-view.component.ts",
-            "offset": 1018
+            "offset": 1066
           },
           "attributes": [
             {
@@ -2304,7 +2304,7 @@
               },
               "source": {
                 "file": "./src/components/pages/showcase/article/showcase-markdown-view/showcase-markdown-view.component.ts",
-                "offset": 1394
+                "offset": 1442
               }
             },
             {
@@ -2315,7 +2315,7 @@
               },
               "source": {
                 "file": "./src/components/pages/showcase/article/showcase-markdown-view/showcase-markdown-view.component.ts",
-                "offset": 1203
+                "offset": 1251
               }
             }
           ],
@@ -2327,7 +2327,7 @@
                 "default": "portfolioMarkdownColor",
                 "source": {
                   "file": "./src/components/pages/showcase/article/showcase-markdown-view/showcase-markdown-view.component.ts",
-                  "offset": 1394
+                  "offset": 1442
                 }
               },
               {
@@ -2335,7 +2335,7 @@
                 "type": "string",
                 "source": {
                   "file": "./src/components/pages/showcase/article/showcase-markdown-view/showcase-markdown-view.component.ts",
-                  "offset": 1203
+                  "offset": 1251
                 }
               }
             ]
@@ -2547,7 +2547,7 @@
           "name": "showcase-view",
           "source": {
             "file": "./src/components/pages/showcase/article/showcase-view/showcase-view.component.ts",
-            "offset": 1403
+            "offset": 1445
           },
           "attributes": [],
           "js": {
@@ -2758,7 +2758,7 @@
           "name": "support-overview",
           "source": {
             "file": "./src/components/pages/support/overview/support-overview/support-overview.component.ts",
-            "offset": 632
+            "offset": 676
           },
           "attributes": [],
           "js": {
@@ -2869,7 +2869,7 @@
           "name": "terms-markdown-view",
           "source": {
             "file": "./src/components/pages/terms/document/terms-markdown-view/terms-markdown-view.component.ts",
-            "offset": 1058
+            "offset": 1164
           },
           "attributes": [
             {
@@ -2881,7 +2881,7 @@
               },
               "source": {
                 "file": "./src/components/pages/terms/document/terms-markdown-view/terms-markdown-view.component.ts",
-                "offset": 1431
+                "offset": 1537
               }
             },
             {
@@ -2892,7 +2892,7 @@
               },
               "source": {
                 "file": "./src/components/pages/terms/document/terms-markdown-view/terms-markdown-view.component.ts",
-                "offset": 1240
+                "offset": 1346
               }
             }
           ],
@@ -2904,7 +2904,7 @@
                 "default": "portfolioMarkdownColor",
                 "source": {
                   "file": "./src/components/pages/terms/document/terms-markdown-view/terms-markdown-view.component.ts",
-                  "offset": 1431
+                  "offset": 1537
                 }
               },
               {
@@ -2912,7 +2912,7 @@
                 "type": "string",
                 "source": {
                   "file": "./src/components/pages/terms/document/terms-markdown-view/terms-markdown-view.component.ts",
-                  "offset": 1240
+                  "offset": 1346
                 }
               }
             ]
@@ -2944,7 +2944,7 @@
           "name": "terms-view",
           "source": {
             "file": "./src/components/pages/terms/document/terms-view/terms-view.component.ts",
-            "offset": 1405
+            "offset": 1447
           },
           "attributes": [],
           "js": {
