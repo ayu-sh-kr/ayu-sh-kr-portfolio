@@ -9,7 +9,7 @@ import { toSEO } from "@app/utils/seo.utils.ts";
  * It documents the geometry consumed by route sections so maintainers can
  * verify shared alignment without inspecting each page independently.
  */
-@Route({ path: "/design/layout" })
+@Route({ path: "/design/layout", ssr: true })
 @Component({
   selector: "design-layout-page",
   shadow: false,

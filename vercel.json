@@ -1,5 +1,6 @@
 {
-  "buildCommand": "NITRO_PRESET=vercel pnpm build",
+  "buildCommand": "pnpm build",
+  "outputDirectory": "dist",
   "headers": [
     {
       "source": "/assets/(.*)",
@@ -9,6 +10,139 @@
           "value": "public, max-age=31536000, immutable"
         }
       ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/blog",
+      "destination": "/blog/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/aws-app-config-spring-boot-integration",
+      "destination": "/blog/aws-app-config-spring-boot-integration/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/business-logic-auth-middleware",
+      "destination": "/blog/business-logic-auth-middleware/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/distributed-locks-redis",
+      "destination": "/blog/distributed-locks-redis/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/distributed-monolith-extra-invoices",
+      "destination": "/blog/distributed-monolith-extra-invoices/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/eventbridge-scheduler-quirks",
+      "destination": "/blog/eventbridge-scheduler-quirks/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/lambda-pricing-infra-alone",
+      "destination": "/blog/lambda-pricing-infra-alone/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/postgresql-access-control",
+      "destination": "/blog/postgresql-access-control/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/rate-limiting-token-bucket-spring-boot",
+      "destination": "/blog/rate-limiting-token-bucket-spring-boot/",
+      "permanent": true
+    },
+    {
+      "source": "/coffee",
+      "destination": "/coffee/",
+      "permanent": true
+    },
+    {
+      "source": "/design",
+      "destination": "/design/",
+      "permanent": true
+    },
+    {
+      "source": "/design/alert",
+      "destination": "/design/alert/",
+      "permanent": true
+    },
+    {
+      "source": "/design/color",
+      "destination": "/design/color/",
+      "permanent": true
+    },
+    {
+      "source": "/design/element",
+      "destination": "/design/element/",
+      "permanent": true
+    },
+    {
+      "source": "/design/interaction",
+      "destination": "/design/interaction/",
+      "permanent": true
+    },
+    {
+      "source": "/design/layout",
+      "destination": "/design/layout/",
+      "permanent": true
+    },
+    {
+      "source": "/design/toast",
+      "destination": "/design/toast/",
+      "permanent": true
+    },
+    {
+      "source": "/design/typography",
+      "destination": "/design/typography/",
+      "permanent": true
+    },
+    {
+      "source": "/error",
+      "destination": "/error/",
+      "permanent": true
+    },
+    {
+      "source": "/legal/privacy",
+      "destination": "/legal/privacy/",
+      "permanent": true
+    },
+    {
+      "source": "/legal/terms",
+      "destination": "/legal/terms/",
+      "permanent": true
+    },
+    {
+      "source": "/offline",
+      "destination": "/offline/",
+      "permanent": true
+    },
+    {
+      "source": "/pricing",
+      "destination": "/pricing/",
+      "permanent": true
+    },
+    {
+      "source": "/showcase",
+      "destination": "/showcase/",
+      "permanent": true
+    },
+    {
+      "source": "/support",
+      "destination": "/support/",
+      "permanent": true
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ]
 }

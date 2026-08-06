@@ -1,4 +1,5 @@
-import { BaseElement, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
+import { BaseElement, Component } from "@ayu-sh-kr/dota-wrap/core";
+import { html } from "@ayu-sh-kr/dota-rendering";
 import { designLayoutContent } from "@app/data/design-layout-content.ts";
 
 /** Introduces the shared page frame and its purpose. */
@@ -13,10 +14,10 @@ export class DesignLayoutOverviewComponent extends BaseElement {
   }
 
   /** Renders the layout introduction and a live page-frame specimen. */
-  render(): string {
+  render() {
     const { overview } = designLayoutContent;
 
-    return HTML`
+    return html`
       <section id="design-layout-overview" class="design-layout-overview layout-page layout-section-hero" aria-labelledby="design-layout-overview-title">
         <div class="layout-stack layout-stack-lg">
           <div class="layout-stack layout-stack-sm">

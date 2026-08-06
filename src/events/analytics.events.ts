@@ -133,17 +133,6 @@ export type AnalyticsTrackEvent =
       };
     }
   | {
-      /** Identifies a subscription form submission attempt. */
-      eventName: "subscription_submit";
-      /** Form state and stable form location. */
-      params: {
-        /** Current outcome observed at submit time. */
-        status: "submitted";
-        /** Stable surface identifier for the subscription form. */
-        surface: "blog_index";
-      };
-    }
-  | {
       /** Identifies a meaningful section entering the viewport. */
       eventName: "section_view";
       /** Section identity and route path used for grouping. */

@@ -11,7 +11,7 @@ import { toSEO } from "@app/utils/seo.utils.ts";
  *
  * Selector: `design-toast-page`.
  */
-@Route({ path: "/design/toast" })
+@Route({ path: "/design/toast", ssr: true })
 @Component({ selector: "design-toast-page", shadow: false })
 export class DesignToastPage extends DotaPageElement {
   /** Creates the route shell; child sections own authored content and demos. */

@@ -9,7 +9,7 @@ import {toSEO} from "@app/utils/seo.utils.ts";
  * The page composes the blog index and shared footer; its SEO is adapted from
  * the blog data layer, so the route code contains no authored metadata literals.
  */
-@Route({path: "/blog"})
+@Route({path: "/blog", ssr: true})
 @Component({
   selector: "blog-page",
   shadow: false,

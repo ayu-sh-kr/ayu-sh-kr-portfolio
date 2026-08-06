@@ -1,4 +1,5 @@
-import {ApplicationEventService, BindEvent, BaseElement, Component, HTML, WindowListener} from "@ayu-sh-kr/dota-wrap/core";
+import {ApplicationEventService, BindEvent, BaseElement, Component, WindowListener} from "@ayu-sh-kr/dota-wrap/core";
+import {html, trustedHTML} from "@ayu-sh-kr/dota-rendering";
 import {OnEvent} from "@ayu-sh-kr/dota-wrap/event";
 import {
   PRIVACY_MARKDOWN_RENDER_EVENT,
@@ -196,9 +197,9 @@ export class PrivacyViewComponent extends BaseElement {
   }
 
   /** Renders the loading/error state or the complete policy reader shell. */
-  render(): string {
+  render() {
     if (!this.policy) {
-      return HTML`
+      return html`
         <main class="privacy-shell layout-page layout-section-hero">
           <p class="privacy-status" role="status">${this.loadError || "Loading the privacy policy…"}</p>
         </main>
@@ -225,30 +226,30 @@ export class PrivacyViewComponent extends BaseElement {
       `)
       .join("");
 
-    return HTML`
+    return html`
       <div class="privacy-progress" data-privacy-progress aria-hidden="true"></div>
       <main id="top" class="privacy-shell layout-page layout-section-hero" data-privacy-page>
-        <privacy-document-header metadata="${escapeHtml(JSON.stringify(metadata))}"></privacy-document-header>
+        <privacy-document-header metadata="${JSON.stringify(metadata)}"></privacy-document-header>
 
         <section class="privacy-scope" aria-labelledby="privacy-scope-title">
           <p id="privacy-scope-title" class="privacy-eyebrow">Read the part that’s about you</p>
           <div class="privacy-scope-control" role="tablist" aria-label="Privacy policy audience">
             <span class="privacy-scope-thumb" data-privacy-scope-thumb aria-hidden="true"></span>
-            ${switches}
+            ${trustedHTML(switches)}
           </div>
         </section>
 
         <div class="privacy-reader-layout">
           <privacy-toc></privacy-toc>
           <article class="privacy-prose" data-privacy-markdown aria-busy="true">
-            <privacy-markdown-view theme="${escapeHtml("portfolio")}" color="${escapeHtml("primary")}">
+            <privacy-markdown-view theme="portfolio" color="primary">
               <p class="privacy-status">Loading the policy text…</p>
             </privacy-markdown-view>
           </article>
         </div>
 
         <footer class="privacy-footer">
-          <div class="privacy-related-grid">${related}</div>
+          <div class="privacy-related-grid">${trustedHTML(related)}</div>
           <div class="privacy-footer-meta">
             <span>Privacy Policy · Version ${escapeHtml(metadata.version)} · Updated ${formatDate(metadata.updated)}</span>
             <a href="#top" data-privacy-top>Back to top ↑</a>

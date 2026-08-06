@@ -5,10 +5,19 @@ import tailwindcss from "@tailwindcss/vite";
 import dotaVitePreloader from "@ayu-sh-kr/dota-wrap/preloader-plugin";
 import dotaWebTypeJson from "@ayu-sh-kr/dota-wrap/web-type-json";
 import eventMapGenerator from "@ayu-sh-kr/dota-wrap/event-map-generator";
-import { nitro } from "nitro/vite";
+import dotaSsg from "@ayu-sh-kr/dota-ssr/vite";
 
 const projectRoot = fileURLToPath(new URL(".", import.meta.url));
-const nitroPreset = process.env.NITRO_PRESET ?? (process.env.VERCEL ? "vercel" : "node");
+const blogRoutes = [
+  "/blog/aws-app-config-spring-boot-integration",
+  "/blog/postgresql-access-control",
+  "/blog/distributed-locks-redis",
+  "/blog/rate-limiting-token-bucket-spring-boot",
+  "/blog/distributed-monolith-extra-invoices",
+  "/blog/lambda-pricing-infra-alone",
+  "/blog/eventbridge-scheduler-quirks",
+  "/blog/business-logic-auth-middleware",
+];
 
 export default defineConfig({
   plugins: [
@@ -41,9 +50,13 @@ export default defineConfig({
       moduleSpecifier: '@ayu-sh-kr/dota-wrap/event',
       logType: 'info',
     }),
-    nitro({
-      serverDir: "./server",
-      preset: nitroPreset,
+    dotaSsg({
+      root: projectRoot,
+      entry: "/src/main.ts",
+      autoDetectRoutes: true,
+      routes: ["/offline", ...blogRoutes],
+      logType: "info",
+      vercel: true,
     }),
   ],
   resolve: {

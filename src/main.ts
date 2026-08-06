@@ -3,6 +3,7 @@ import './style.css'
 import { AppComponent } from "@app/app.component.ts";
 import { ErrorPage, HomePage, OfflinePage } from "@app/pages";
 import { AccordionComponent, IconsComponent, PopoverComponent } from "@ayu-sh-kr/dota-ui";
+import {dotaHydration} from "@ayu-sh-kr/dota-ssr";
 import {DefaultApplicationEventListenerRegistry, initializeApp} from "@ayu-sh-kr/dota-wrap";
 import { Router, RouterService } from "@ayu-sh-kr/dota-wrap/router";
 import { ApplicationEventService } from "@ayu-sh-kr/dota-wrap/core";
@@ -29,13 +30,14 @@ DefaultApplicationEventListenerRegistry.setListener(applicationEventListener);
 new AnalyticsEventListener();
 new ActionButtonDispatcher();
 
-initializeApp({
+export const applicationReady = initializeApp({
   modules: components,
   routes: [...routeConfig, { path: "/offline", component: OfflinePage }],
   externalComponents: [AccordionComponent, IconsComponent, PopoverComponent],
   errorRoute: { path: "/error", component: ErrorPage },
   defaultRoute: { path: "/", component: HomePage },
   root: AppComponent,
+  plugins: [dotaHydration()],
   globalHooks: {
     afterEach: [
       applyRouteMetadata,
@@ -48,7 +50,8 @@ initializeApp({
     routerService = value.routerService;
     RouterUtils.setRouterService(routerService);
     applicationEventPublisher.publishAsync({ name: "app:initialized", data: null });
-  })
-  .catch((error) => console.error(error));
+  });
+
+applicationReady.catch((error) => console.error(error));
 
 export { routerService, applicationEventService, applicationEventPublisher, applicationEventListener };

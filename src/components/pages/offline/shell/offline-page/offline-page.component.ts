@@ -8,7 +8,7 @@ import { RouterUtils } from "@app/utils/router.utils.ts";
 const clamp = (value: number, min: number, max: number): number => Math.min(max, Math.max(min, value));
 const offlineContent = portfolioContent.offline;
 
-@Route({ path: "/offline" })
+@Route({ path: "/offline", ssr: true })
 @Component({
   selector: "offline-page",
   shadow: false,

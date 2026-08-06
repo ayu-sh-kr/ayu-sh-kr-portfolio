@@ -9,7 +9,7 @@ import {toSEO} from "@app/utils/seo.utils.ts";
  * The page composes engagement sections and adapts `pricingContent.seo` to the
  * framework contract, keeping commercial copy in the data layer.
  */
-@Route({ path: "/pricing" })
+@Route({ path: "/pricing", ssr: true })
 @Component({
   selector: "pricing-page",
   shadow: false,

@@ -1,4 +1,5 @@
 import {BeforeInit, BindEvent, Component, Property, String} from "@ayu-sh-kr/dota-wrap/core";
+import {html, trustedHTML} from "@ayu-sh-kr/dota-rendering";
 import {type ApplicationEvent, OnEvent} from "@ayu-sh-kr/dota-wrap/event";
 import {MdViewComponent, type ColorName, type ThemeName} from "@ayu-sh-kr/dota-md";
 import {portfolioMarkdownColor, portfolioMarkdownTheme} from "@app/configs/markdown-theme.config.ts";
@@ -97,7 +98,7 @@ export class BlogMarkdownViewComponent extends MdViewComponent {
   }
 
   /** Returns the themed Markdown container produced by the shared lifecycle utility. */
-  override render(): string {
-    return this.markdownLifecycle.renderArticleSkeleton("blog-markdown-content");
+  override render() {
+    return html`${trustedHTML(this.markdownLifecycle.renderArticleSkeleton("blog-markdown-content"))}`;
   }
 }

@@ -66,11 +66,11 @@ export const blogIndexContent = {
     copy: "Occasional email updates when a new article is published.",
     emailLabel: "Email address",
     emailPlaceholder: "name@company.com",
-    emailHint: "Enter a valid email to enable Subscribe.",
+    emailHint: "Email updates are not available yet.",
     submitLabel: "Subscribe",
-    submittingLabel: "Sending…",
+    submittingLabel: "Checking…",
     successLabel: "Subscribed",
-    errorLabel: "Try again",
+    errorLabel: "Updates unavailable",
   },
 } as const;
 

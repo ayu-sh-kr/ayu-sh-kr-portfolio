@@ -1,4 +1,5 @@
-import { BaseElement, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
+import { BaseElement, Component } from "@ayu-sh-kr/dota-wrap/core";
+import { html } from "@ayu-sh-kr/dota-rendering";
 import { designToastContent } from "@app/data/design-toast-content.ts";
 
 /**
@@ -17,16 +18,16 @@ export class DesignToastOverviewComponent extends BaseElement {
   }
 
   /** Renders the route introduction and toast contract tags. */
-  render(): string {
+  render() {
     const { overview } = designToastContent;
-    return HTML`
+    return html`
       <section id="design-toast-overview" class="design-toast-overview layout-page layout-section-hero" aria-labelledby="design-toast-overview-title">
         <div class="design-toast-overview__copy layout-stack layout-stack-sm">
           <p class="type-eyebrow">${overview.eyebrow}</p>
           <h1 id="design-toast-overview-title" class="type-display">${overview.title}</h1>
           <p class="type-lede">${overview.lede}</p>
           <ul class="design-toast-overview__tags" aria-label="${overview.tagsAriaLabel}">
-            ${overview.tags.map((tag) => HTML`<li>${tag}</li>`).join("")}
+            ${overview.tags.map((tag) => html`<li>${tag}</li>`)}
           </ul>
         </div>
       </section>

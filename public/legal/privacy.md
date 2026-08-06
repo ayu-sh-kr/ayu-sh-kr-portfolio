@@ -3,9 +3,9 @@ slug: privacy
 title: Privacy Policy
 tagline: What I collect, why I collect it, and how to get rid of it.
 kind: privacy
-version: "1.1"
-updated: 2026-08-04
-effective: 2026-08-04
+version: "1.2"
+updated: 2026-08-06
+effective: 2026-08-06
 applies: ayu-sh-kr.com and client work
 contact: akjaiswal2003@gmail.com
 
@@ -17,7 +17,7 @@ summary:
   - I don't sell your data or use this site to build advertising profiles.
   - The site uses Google Analytics 4 for broad page and interaction measurement; it may use first-party analytics identifiers.
   - I don't intentionally send form contents, email addresses, messages, or client data to Google Analytics.
-  - I retain your email when you write to me; the current blog subscription endpoint does not store addresses or send newsletters.
+  - I retain your email when you write to me; the site does not provide a newsletter subscription endpoint.
   - Client project data stays under your contract, lives in your accounts where possible, and is deleted when you ask.
 summary_note: This box is a summary, not the policy. The sections below are what actually applies.
 
@@ -40,7 +40,7 @@ Everything from section 10 onward applies either way. Each section carries a lab
 
 ## When you visit the site {#visit scope="Site visitors" group="As a visitor" short="When you visit"}
 
-The site is deployed on Vercel using a client-rendered application and Nitro server routes. The site also loads Google Analytics 4 through Google's `gtag.js` tag. GA4 helps me understand broad page use and selected interactions so I can improve the site.
+The site is deployed on Vercel as a client-rendered static application. The site also loads Google Analytics 4 through Google's `gtag.js` tag. GA4 helps me understand broad page use and selected interactions so I can improve the site.
 
 The application sends stable, non-content event information such as a page category, page path, section, article or project slug, selected contact method, or CTA action. It does not intentionally send email addresses, form fields, message contents, or client project data to GA4. Google may also process standard browser, device, approximate location, and first-party identifier data under its own terms and controls.
 
@@ -48,7 +48,7 @@ The application sends stable, non-content event information such as a page categ
 | --- | --- | --- |
 | Page path, referrer, and broad interaction labels | To understand which pages and interactions are useful | Analytics property retention setting |
 | Approximate location and browser/device context | To understand broad audience patterns and catch compatibility problems | Analytics property retention setting |
-| Operational request and server log data | Abuse protection and error diagnosis | 30 days, then deleted |
+| Vercel request and deployment logs | Abuse protection and error diagnosis | Vercel's configured retention period |
 
 Analytics are reported in aggregate for this site. I can tell you that a post was read by visitors from several countries; I do not use GA4 to identify you by name or connect your analytics activity to the messages or project data I hold.
 
@@ -60,7 +60,7 @@ The site may store one preference locally in your browser — such as a reduced-
 
 ## The newsletter {#newsletter scope="Site visitors" group="As a visitor" short="The newsletter"}
 
-The blog subscription form currently reaches a same-origin placeholder endpoint. It validates that the request contains an email address, records only that a request with an email was received, and does not store the address, send email, or create a newsletter subscription.
+The site does not provide a newsletter subscription endpoint. The article-updates link opens your email client, and I receive an address only if you choose to send an email.
 
 If a newsletter provider is connected later, this section and the summary above will be updated before the provider starts receiving subscription addresses.
 
