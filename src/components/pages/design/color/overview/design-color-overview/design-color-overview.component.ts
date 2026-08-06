@@ -33,14 +33,14 @@ export class DesignColorOverviewComponent extends BaseElement {
             <h1 id="design-color-overview-title" class="type-display design-color-overview-title">${overview.title}</h1>
             <p class="type-lede design-color-overview-lede">${overview.lede}</p>
             <div class="design-overview-links">
-              ${overview.links.map((link) => html`<a class="design-overview-link" href="${link.href}">${link.label} <span aria-hidden="true">${link.indicator}</span></a>`).join("")}
+              ${overview.links.map((link) => html`<a class="design-overview-link" href="${link.href}">${link.label} <span aria-hidden="true">${link.indicator}</span></a>`)}
             </div>
           </div>
 
           <aside class="design-overview-summary" aria-label="${overview.summaryAriaLabel}">
             <p class="type-label design-summary-label">${overview.summaryLabel}</p>
             <dl class="design-summary-list">
-              ${overview.summary.map((item, index) => html`<div><dt>${item.label}</dt><dd>${CODE_SUMMARY_ITEMS.has(index) ? html`<code>${item.value}</code>` : item.value}</dd></div>`).join("")}
+              ${overview.summary.map((item, index) => html`<div><dt>${item.label}</dt><dd>${CODE_SUMMARY_ITEMS.has(index) ? html`<code>${item.value}</code>` : item.value}</dd></div>`)}
             </dl>
           </aside>
         </div>
@@ -51,7 +51,7 @@ export class DesignColorOverviewComponent extends BaseElement {
               <span class="design-primary-swatch-color" style="--design-swatch: var(--primary-${shade});"></span>
               <span class="type-label design-primary-swatch-label">${shade}</span>
             </div>
-          `).join("")}
+          `)}
         </div>
       </section>
     `;

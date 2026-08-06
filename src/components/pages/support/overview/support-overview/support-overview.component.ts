@@ -24,6 +24,10 @@ export class SupportOverviewComponent extends BaseElement {
   @OnEvent("connected", true)
   initializeDeskClock(): void {
     this.renderDeskAvailability();
+    if (import.meta.env.SSR) {
+      return;
+    }
+
     this.deskClock = window.setInterval(() => this.renderDeskAvailability(), 60_000);
   }
 

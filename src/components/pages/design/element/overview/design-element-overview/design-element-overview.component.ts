@@ -29,18 +29,18 @@ export class DesignElementOverviewComponent extends BaseElement {
             <h1 id="design-element-overview-title" class="type-display">${overview.title}</h1>
             <p class="type-lede">${overview.lede}</p>
             <div class="design-element-overview__links layout-row layout-row-loose">
-              ${overview.links.map((link) => html`<a class="app-link app-link--text" href="${link.href}">${link.label} <span aria-hidden="true">${link.indicator}</span></a>`).join("")}
+              ${overview.links.map((link) => html`<a class="app-link app-link--text" href="${link.href}">${link.label} <span aria-hidden="true">${link.indicator}</span></a>`)}
             </div>
           </div>
           <aside class="design-element-overview__summary" aria-label="${overview.summaryAriaLabel}">
             <p class="type-label">${overview.summaryLabel}</p>
             <dl>
-              ${overview.summary.map((item) => html`<div><dt>${item.label}</dt><dd><code>${item.value}</code></dd></div>`).join("")}
+              ${overview.summary.map((item) => html`<div><dt>${item.label}</dt><dd><code>${item.value}</code></dd></div>`)}
             </dl>
           </div>
         </div>
         <ul class="design-element-overview__tags layout-row layout-row-tight" aria-label="${overview.tagsAriaLabel}">
-          ${overview.tags.map((tag) => html`<li>${tag}</li>`).join("")}
+          ${overview.tags.map((tag) => html`<li>${tag}</li>`)}
         </ul>
       </section>
     `;

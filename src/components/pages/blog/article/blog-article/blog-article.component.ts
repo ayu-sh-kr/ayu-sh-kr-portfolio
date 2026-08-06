@@ -1,4 +1,5 @@
 import {ApplicationEventService, BaseElement, Component, WindowListener} from "@ayu-sh-kr/dota-wrap/core";
+import {html, trustedHTML} from "@ayu-sh-kr/dota-rendering";
 import {OnEvent} from "@ayu-sh-kr/dota-wrap/event";
 import {blogPosts, formatBlogDate, getBlogPost, getBlogSlug, labelForCategory, type BlogPost} from "@app/configs/blogs.config.ts";
 import {blogArticleContent, blogIndexContent} from "@app/data/blog-content.ts";
@@ -95,17 +96,17 @@ export class BlogArticleComponent extends BaseElement {
    * Returns the loading, not-found, error, or article markup for the current state.
    * The Markdown child is rendered only after article metadata is available.
    */
-  render(): string {
+  render() {
     if (!this.ready) {
-      return `<main class="blog-article-shell layout-page layout-section-hero"><p class="blog-loading">${blogArticleContent.loadingPost}</p></main>`;
+      return html`${trustedHTML(`<main class="blog-article-shell layout-page layout-section-hero"><p class="blog-loading">${blogArticleContent.loadingPost}</p></main>`)}`;
     }
     if (!this.post) {
-      return `
+      return html`${trustedHTML(`
         <main class="blog-article-shell layout-page layout-section-hero">
           <a class="blog-back-link" href="/blog">← ${blogArticleContent.allPostsLabel}</a>
           <div class="blog-not-found"><p class="blog-eyebrow">${blogArticleContent.notFound.eyebrow}</p><h1>${blogArticleContent.notFound.title}</h1><a class="app-link app-link--button app-link--ink" href="/blog">${blogArticleContent.notFound.browseLabel}</a></div>
         </main>
-      `;
+      `)}`;
     }
 
     const markdown = this.loadError
@@ -119,7 +120,7 @@ export class BlogArticleComponent extends BaseElement {
       ? `<a href="/blog/${this.nextPost.slug}" class="blog-quiet-card blog-quiet-card-next"><span><small>${blogArticleContent.footer.nextLabel}</small>${escapeHtml(this.nextPost.header)}</span><span>→</span></a>`
       : "";
 
-    return `
+    return html`${trustedHTML(`
       <div class="blog-progress" data-blog-progress aria-hidden="true"></div>
       <main class="blog-article-shell layout-page layout-section-hero" data-blog-article>
         <a class="blog-back-link" href="/blog">← ${blogArticleContent.allPostsLabel}</a>
@@ -138,6 +139,6 @@ export class BlogArticleComponent extends BaseElement {
           </div>
         </footer>
       </main>
-    `;
+    `)}`;
   }
 }

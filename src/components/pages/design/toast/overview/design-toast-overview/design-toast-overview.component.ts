@@ -27,7 +27,7 @@ export class DesignToastOverviewComponent extends BaseElement {
           <h1 id="design-toast-overview-title" class="type-display">${overview.title}</h1>
           <p class="type-lede">${overview.lede}</p>
           <ul class="design-toast-overview__tags" aria-label="${overview.tagsAriaLabel}">
-            ${overview.tags.map((tag) => html`<li>${tag}</li>`).join("")}
+            ${overview.tags.map((tag) => html`<li>${tag}</li>`)}
           </ul>
         </div>
       </section>

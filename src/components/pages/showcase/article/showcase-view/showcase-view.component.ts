@@ -1,5 +1,5 @@
 import {ApplicationEventService, BaseElement, Component, WindowListener} from "@ayu-sh-kr/dota-wrap/core";
-import {html} from "@ayu-sh-kr/dota-rendering";
+import {html, trustedHTML} from "@ayu-sh-kr/dota-rendering";
 import {OnEvent} from "@ayu-sh-kr/dota-wrap/event";
 import {getShowcaseProject, getShowcaseSlug, showcaseProjects, type ShowcaseProject} from "@app/data/showcase-content.ts";
 import {SHOWCASE_MARKDOWN_SOURCE_EVENT, type ShowcaseMarkdownSource} from "@app/events/showcase.events.ts";
@@ -146,20 +146,20 @@ export class ShowcaseViewComponent extends BaseElement {
       <main class="showcase-article-shell layout-page layout-section-hero">
         <a class="showcase-back-link" href="/showcase">← All showcases</a>
         <showcase-article-header
-          kind="${escapeHtml(this.project.kind)}"
+          kind="${this.project.kind}"
           year="${this.project.year}"
-          status="${escapeHtml(formatStatus(this.project.status))}"
-          title="${escapeHtml(this.project.title)}"
-          tagline="${escapeHtml(this.project.tagline)}"
-          stack="${escapeHtml(this.project.stack.join("|"))}">
+          status="${formatStatus(this.project.status)}"
+          title="${this.project.title}"
+          tagline="${this.project.tagline}"
+          stack="${this.project.stack.join("|")}">
         </showcase-article-header>
         <div class="showcase-reader-layout">
           <showcase-toc></showcase-toc>
-          ${markdown}
+          ${trustedHTML(markdown)}
         </div>
         <footer class="showcase-article-footer">
           <a class="showcase-quiet-card" href="/showcase"><span>←</span><span><small>Back to</small>All showcases</span></a>
-          ${next ? `<a class="showcase-quiet-card showcase-quiet-card-next" href="/showcase/${next.slug}"><span><small>Next case study</small>${escapeHtml(next.title)}</span><span>→</span></a>` : ""}
+          ${trustedHTML(next ? `<a class="showcase-quiet-card showcase-quiet-card-next" href="/showcase/${next.slug}"><span><small>Next case study</small>${escapeHtml(next.title)}</span><span>→</span></a>` : "")}
         </footer>
       </main>
     `;
