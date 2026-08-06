@@ -23,6 +23,10 @@ rewriting of AI-flavored filler.
 - Prefer direct technical phrasing over promotional, speculative, or
   conversational filler when copy edits are requested.
 - Preserve links, code fences, inline code, bullets, and emphasis exactly.
+- When technical highlighting is requested, use inline code for concise identifiers
+  and concepts such as `SSR`, `hydration`, `DOM`, APIs, commands, filenames,
+  and configuration keys. Do not wrap ordinary prose, whole sentences, or search
+  keywords mechanically.
 - Treat placeholder labels or inline notes as structure, not prose, when they are clearly not part of the draft text.
 
 ## Workflow
@@ -30,6 +34,7 @@ rewriting of AI-flavored filler.
 1. Read the source as text, not as prose to rewrite.
 2. Apply structural Markdown changes first.
 3. Reflow paragraph lines for readability.
-4. Rewrite AI-flavored filler into direct prose only when the user asks
+4. Apply inline technical highlighting only when requested and keep it selective.
+5. Rewrite AI-flavored filler into direct prose only when the user asks
    for copy edits.
-5. Verify the rendered result still says the same thing.
+6. Verify the rendered result still says the same thing.

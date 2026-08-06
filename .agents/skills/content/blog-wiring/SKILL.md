@@ -1,80 +1,47 @@
 ---
 name: blog-wiring
-description: Use when adding or updating blog markdown in this workspace and wiring it into dota-web. Covers where blog files belong, how to register them in blogs.config.ts, and the path and category conventions the app expects.
+description: Use when adding or updating blog Markdown in this workspace and wiring it into the Dota Web blog listing and article routes. Covers the public source location, live blog catalog shape, metadata, and route validation.
 ---
 
 # Blog Wiring
 
-Use this skill when a markdown blog post already exists, or is being created, and needs to appear in the Dota Web blog listing and content pages.
+Use this skill when a Markdown post is being created or updated and must appear in the Dota Web blog.
 
-## What To Wire
+## Source of truth
 
-This workspace does not auto-discover blog markdown. Every post must be registered manually in [blogs.config.ts](/Volumes/project-workspace/dota/dota-workspace/packages/apps/dota-web/src/configs/blogs.config.ts).
+Do not assume this workspace auto-discovers Markdown. Read the current `BlogPost` type and nearby entries in [blogs.config.ts](/Volumes/project-workspace/dota/ayu-sh-kr-portfolio/src/configs/blogs.config.ts) before editing. The catalog and route implementation are the source of truth; this skill records the workflow, not a frozen schema.
 
-The markdown file lives under:
+Place the Markdown source under:
 
-```text
-packages/apps/dota-web/public/blogs/<category-lowercase>/<File-Name>.md
-```
+~~~text
+public/blogs/<category-folder>/<File-Name>.md
+~~~
 
-The config entry provides the metadata used by the listing page and suggestions.
+## Current catalog convention
 
-## Category Convention
+At the time of writing, each `blogPosts` entry provides a stable `slug`, ISO `date`, `writer`, `header`, SEO `description` and `keywords`, `category`, root-relative `source`, and `minutes`. Use the actual type if it changes.
 
-The `category` field in `blogs.config.ts` must match one of the configured `BlogCategory` values:
+Keep category and source aligned:
 
-- `Tutorial`
-- `Tools`
-- `News`
-- `Rant`
-- `Others`
+~~~ts
+category: "tutorial",
+source: "/blogs/tutorial/My-Post.md",
+~~~
 
-The folder on disk should be the lowercase form of that category. This matters because blog loading uses:
+## Wiring steps
 
-```text
-/blogs/${category.toLowerCase()}/${blog}
-```
+1. Create or confirm the Markdown file under `public/blogs/`.
+2. Read the live catalog type and route code.
+3. Add a complete catalog entry with accurate metadata, keywords, and reading time.
+4. Confirm that the configured `source` exists and the `slug` matches the article route.
+5. Check the diff for whitespace and leave unrelated worktree changes untouched.
 
-Example:
+## Common mistakes
 
-```text
-category: "Tutorial"
-path: "Chat-Memory.md"
-
--> loads from public/blogs/tutorial/Chat-Memory.md
-```
-
-## Required Config Fields
-
-Add a new object to `blogPosts` with these fields:
-
-- `date`
-- `writer`
-- `header`
-- `description`
-- `category`
-- `path`
-
-Use only the filename in `path`, not the full folder path.
-
-## Wiring Steps
-
-1. Confirm the markdown file exists in the matching category folder under `public/blogs/`.
-2. Open [blogs.config.ts](/Volumes/project-workspace/dota/dota-workspace/packages/apps/dota-web/src/configs/blogs.config.ts).
-3. Add a `blogPosts` entry with the display metadata.
-4. Set `category` to the logical blog category and `path` to the markdown filename only.
-5. Verify the route shape stays valid:
-
-```text
-/blogs/content?category=<Category>&blog=<File-Name>.md
-```
-
-## Common Mistakes
-
-The most common failure here is mixing folder paths with filenames. Keep `path` as `My-Post.md`, not `tutorial/My-Post.md`.
-
-Another common mistake is a category-folder mismatch. If the config says `Tutorial` but the file is stored under `public/blogs/tools/`, the content route will request the wrong file.
+- Following an obsolete `path` field or category list rather than the live `BlogPost` type.
+- Pointing `source` at a folder or filename that does not exist under `public`.
+- Adding a title and description that differ from the article's actual scope or contain keyword padding.
 
 ## Summary
 
-To wire a blog in this repo, place the markdown file in the right `public/blogs/<category>/` folder, then add a matching metadata entry in `blogPosts`. The category controls the folder, and the `path` field should contain only the filename.
+Place the Markdown file under `public/blogs/`, then register it through the current `blogPosts` contract. Verify the source and slug against the code that resolves the article.

@@ -58,7 +58,7 @@ Do not reduce a case study to a stack list, decorative slogan, or “built from 
 
 Start with the decision a reader needs to make, then establish the invariant, constraint, or failure mode. Explain the smallest safe approach before expanding to alternatives. End with a practical rule, not a sales pitch.
 
-Use a confident technical voice without pretending that one pattern solves every situation. Distinguish what is required, what is recommended, and what depends on the system. Prefer short paragraphs, descriptive headings, and examples that teach a decision.
+Write as the author speaking directly to the reader. Use “you” to connect a technical decision to the reader’s system and “we” to walk through reasoning or examples together. Do not make the post sound like a detached textbook: retain a confident technical voice without pretending that one pattern solves every situation. Distinguish what is required, what is recommended, and what depends on the system. Prefer short paragraphs, descriptive headings, and examples that teach a decision.
 
 ### Newsletter copy
 
