@@ -1,4 +1,5 @@
-import {ApplicationEventService, BaseElement, Component, HTML, WindowListener} from "@ayu-sh-kr/dota-wrap/core";
+import {ApplicationEventService, BaseElement, Component, WindowListener} from "@ayu-sh-kr/dota-wrap/core";
+import {html} from "@ayu-sh-kr/dota-rendering";
 import {OnEvent} from "@ayu-sh-kr/dota-wrap/event";
 import {getShowcaseProject, getShowcaseSlug, showcaseProjects, type ShowcaseProject} from "@app/data/showcase-content.ts";
 import {SHOWCASE_MARKDOWN_SOURCE_EVENT, type ShowcaseMarkdownSource} from "@app/events/showcase.events.ts";
@@ -117,9 +118,9 @@ export class ShowcaseViewComponent extends BaseElement {
   }
 
   /** Renders the not-found state, loading/error article, and next-project footer. */
-  render(): string {
+  render() {
     if (!this.project) {
-      return HTML`
+      return html`
         <main class="showcase-article-shell layout-page layout-section-hero">
           <a class="showcase-back-link" href="/showcase">← All showcases</a>
           <div class="showcase-not-found">
@@ -140,7 +141,7 @@ export class ShowcaseViewComponent extends BaseElement {
           </showcase-markdown-view>
         </article>`;
 
-    return HTML`
+    return html`
       <div class="showcase-progress" data-showcase-progress aria-hidden="true"></div>
       <main class="showcase-article-shell layout-page layout-section-hero">
         <a class="showcase-back-link" href="/showcase">← All showcases</a>
