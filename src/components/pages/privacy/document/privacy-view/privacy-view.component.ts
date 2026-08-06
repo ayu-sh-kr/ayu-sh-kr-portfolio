@@ -1,4 +1,5 @@
-import {ApplicationEventService, BindEvent, BaseElement, Component, HTML, WindowListener} from "@ayu-sh-kr/dota-wrap/core";
+import {ApplicationEventService, BindEvent, BaseElement, Component, WindowListener} from "@ayu-sh-kr/dota-wrap/core";
+import {html} from "@ayu-sh-kr/dota-rendering";
 import {OnEvent} from "@ayu-sh-kr/dota-wrap/event";
 import {
   PRIVACY_MARKDOWN_RENDER_EVENT,
@@ -196,9 +197,9 @@ export class PrivacyViewComponent extends BaseElement {
   }
 
   /** Renders the loading/error state or the complete policy reader shell. */
-  render(): string {
+  render() {
     if (!this.policy) {
-      return HTML`
+      return html`
         <main class="privacy-shell layout-page layout-section-hero">
           <p class="privacy-status" role="status">${this.loadError || "Loading the privacy policy…"}</p>
         </main>
@@ -225,7 +226,7 @@ export class PrivacyViewComponent extends BaseElement {
       `)
       .join("");
 
-    return HTML`
+    return html`
       <div class="privacy-progress" data-privacy-progress aria-hidden="true"></div>
       <main id="top" class="privacy-shell layout-page layout-section-hero" data-privacy-page>
         <privacy-document-header metadata="${escapeHtml(JSON.stringify(metadata))}"></privacy-document-header>
