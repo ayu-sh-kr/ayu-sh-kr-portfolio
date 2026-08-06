@@ -20,6 +20,8 @@ export type BlogPost = {
   header: string;
   /** Short summary used for index discovery and article SEO description. */
   description: string;
+  /** Topic-specific terms used in the article's search metadata. */
+  keywords: readonly string[];
   /** Filter category shown beside the post metadata. */
   category: BlogCategory;
   /** Root-relative URL for the Markdown source in `public/blogs`. */
@@ -43,6 +45,7 @@ export const blogPosts: readonly BlogPost[] = [
     header: "AWS AppConfig Spring Boot Integration",
     description:
       "Loading and refreshing AWS AppConfig in Spring Boot, including Config Data, AppConfig Agent, Spring Cloud, and immutable Kotlin properties.",
+    keywords: ["AWS AppConfig", "Spring Boot", "Kotlin", "Spring Cloud", "AWS configuration"],
     category: "tutorial",
     source: "/blogs/tutorial/Aws-App-Config-Spring-Boot-Integration.md",
     minutes: 14,
@@ -54,6 +57,7 @@ export const blogPosts: readonly BlogPost[] = [
     header: "PostgreSQL access control: roles and permissions that make sense",
     description:
       "A practical, plain-language guide to PostgreSQL roles, privileges, ownership, default grants, and row-level security.",
+    keywords: ["PostgreSQL", "PostgreSQL roles", "database permissions", "row-level security", "SQL security"],
     category: "tutorial",
     source: "/blogs/tutorial/Postgres-Access-Control.md",
     minutes: 12,
@@ -65,6 +69,7 @@ export const blogPosts: readonly BlogPost[] = [
     header: "Distributed locks in Redis, without the folklore",
     description:
       "Everyone copies the same SETNX snippet. Here is what actually matters when a lock is guarding real money — and when you do not need one at all.",
+    keywords: ["Redis", "distributed locks", "SETNX", "distributed systems", "concurrency"],
     category: "tutorial",
     source: "/blogs/tutorial/Distributed-Locks-Redis.md",
     minutes: 9,
@@ -75,6 +80,7 @@ export const blogPosts: readonly BlogPost[] = [
     writer: siteIdentity.name,
     header: "Rate limiting a real API: token bucket in Spring Boot",
     description: "From annotation to Redis-backed bucket, with the edge cases that show up after launch.",
+    keywords: ["rate limiting", "token bucket", "Spring Boot", "Redis", "API rate limiting"],
     category: "tutorial",
     source: "/blogs/tutorial/Rate-Limiting-Token-Bucket.md",
     minutes: 11,
@@ -86,6 +92,7 @@ export const blogPosts: readonly BlogPost[] = [
     header: "When microservices become a distributed monolith",
     description:
       "How to use delivery, ownership, and incident evidence to decide whether a service boundary is earning its operational cost.",
+    keywords: ["microservices", "distributed monolith", "service architecture", "software architecture", "system design"],
     category: "rant",
     source: "/blogs/rant/Distributed-Monolith-Extra-Invoices.md",
     minutes: 5,
@@ -97,6 +104,7 @@ export const blogPosts: readonly BlogPost[] = [
     header: "What Lambda pricing means when you operate infrastructure alone",
     description:
       "A practical cost review that separates Lambda Functions from MicroVMs and accounts for the infrastructure around either choice.",
+    keywords: ["AWS Lambda pricing", "AWS cost", "serverless", "cloud infrastructure", "AWS architecture"],
     category: "news",
     source: "/blogs/news/Lambda-Pricing-Infra-Alone.md",
     minutes: 5,
@@ -108,6 +116,7 @@ export const blogPosts: readonly BlogPost[] = [
     header: "Operating EventBridge Scheduler with explicit delivery rules",
     description:
       "A practical guide to time zones, idempotent targets, retries, dead-letter queues, and schedule ownership.",
+    keywords: ["EventBridge Scheduler", "AWS EventBridge", "idempotency", "dead-letter queues", "AWS scheduling"],
     category: "notes",
     source: "/blogs/others/EventBridge-Scheduler-Quirks.md",
     minutes: 5,
@@ -119,6 +128,7 @@ export const blogPosts: readonly BlogPost[] = [
     header: "Keep business rules out of authentication middleware",
     description:
       "Why authentication belongs at the boundary while resource-level authorization and policy remain with the use case.",
+    keywords: ["authentication middleware", "authorization", "business logic", "application architecture", "security design"],
     category: "rant",
     source: "/blogs/rant/Business-Logic-Auth-Middleware.md",
     minutes: 5,
