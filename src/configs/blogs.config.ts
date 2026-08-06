@@ -39,6 +39,27 @@ export type BlogPost = {
  */
 export const blogPosts: readonly BlogPost[] = [
   {
+    slug: "ssr-vs-ssg-rendering-hydration-dom",
+    date: "2026-08-07",
+    writer: siteIdentity.name,
+    header: "SSR vs SSG for SEO and AI-built websites",
+    description:
+      "Why AI-generated websites fail SEO, how SSR and SSG affect crawling, and what to check when your website is not showing up on Google.",
+    keywords: [
+      "SSR vs SSG for SEO",
+      "AI website SEO",
+      "AI-generated website SEO",
+      "why is my website not showing up on Google",
+      "website not ranking",
+      "server-side rendering SEO",
+      "static site generation SEO",
+      "JavaScript SEO",
+    ],
+    category: "tutorial",
+    source: "/blogs/tutorial/SSR-vs-SSG-Rendering-Hydration-DOM.md",
+    minutes: 21,
+  },
+  {
     slug: "aws-app-config-spring-boot-integration",
     date: "2026-08-04",
     writer: siteIdentity.name,
