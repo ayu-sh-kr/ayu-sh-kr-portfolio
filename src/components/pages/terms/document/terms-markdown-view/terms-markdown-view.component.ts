@@ -1,5 +1,5 @@
 import {ApplicationEventService, BeforeInit, BindEvent, Component, Property, String} from "@ayu-sh-kr/dota-wrap/core";
-import {html} from "@ayu-sh-kr/dota-rendering";
+import {html, trustedHTML} from "@ayu-sh-kr/dota-rendering";
 import {type ApplicationEvent, OnEvent} from "@ayu-sh-kr/dota-wrap/event";
 import {MdViewComponent, type ColorName, type ThemeName} from "@ayu-sh-kr/dota-md";
 import {portfolioMarkdownColor, portfolioMarkdownTheme} from "@app/configs/markdown-theme.config.ts";
@@ -162,6 +162,6 @@ export class TermsMarkdownViewComponent extends MdViewComponent {
 
   /** Renders the terms body using the shared themed Markdown content container. */
   override render(): TemplateResult {
-    return html`${this.markdownLifecycle.renderArticleSkeleton("terms-markdown-content")}`;
+    return html`${trustedHTML(this.markdownLifecycle.renderArticleSkeleton("terms-markdown-content"))}`;
   }
 }

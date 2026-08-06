@@ -11,7 +11,7 @@ import { toSEO } from "@app/utils/seo.utils.ts";
  * is derived from `designElementContent`, while the button showcase registers its own temporary demo
  * handlers only for the lifetime of this route.
  */
-@Route({ path: "/design/element" })
+@Route({ path: "/design/element", ssr: true })
 @Component({ selector: "design-element-page", shadow: false })
 export class DesignElementPage extends DotaPageElement {
   /** Creates the route shell; child sections own authored copy, demo handlers, and their teardown. */

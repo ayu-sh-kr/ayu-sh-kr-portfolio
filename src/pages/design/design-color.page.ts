@@ -9,7 +9,7 @@ import { toSEO } from "@app/utils/seo.utils.ts";
  * The page renders the active semantic tokens instead of a copied palette, so
  * it remains a reliable visual check for the colors every public route uses.
  */
-@Route({ path: "/design/color" })
+@Route({ path: "/design/color", ssr: true })
 @Component({
   selector: "design-color-page",
   shadow: false,

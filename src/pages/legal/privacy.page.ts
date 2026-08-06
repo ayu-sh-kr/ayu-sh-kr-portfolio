@@ -9,7 +9,7 @@ import {toSEO} from "@app/utils/seo.utils.ts";
  * The document view owns policy loading and rendering; this page only composes
  * the shell and adapts the legal data's SEO content.
  */
-@Route({path: "/legal/privacy"})
+@Route({path: "/legal/privacy", ssr: true})
 @Component({
   selector: "privacy-page",
   shadow: false,

@@ -10,7 +10,7 @@ import { toSEO } from "@app/utils/seo.utils.ts";
  * color systems, giving maintainers one route to verify the grammar public
  * pages inherit. SEO is supplied through the page lifecycle.
  */
-@Route({ path: "/design/typography" })
+@Route({ path: "/design/typography", ssr: true })
 @Component({
   selector: "design-typography-page",
   shadow: false,

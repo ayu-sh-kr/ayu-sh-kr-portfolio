@@ -9,7 +9,7 @@ import {toSEO} from "@app/utils/seo.utils.ts";
  * The page composes the project sections and adapts the catalog's index SEO;
  * project-specific content remains owned by showcase data and child elements.
  */
-@Route({ path: "/showcase" })
+@Route({ path: "/showcase", ssr: true })
 @Component({
   selector: "showcase-page",
   shadow: false,

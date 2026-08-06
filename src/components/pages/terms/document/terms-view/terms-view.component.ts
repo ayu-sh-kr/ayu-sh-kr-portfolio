@@ -1,5 +1,5 @@
 import {ApplicationEventService, BindEvent, BaseElement, Component, WindowListener} from "@ayu-sh-kr/dota-wrap/core";
-import {html} from "@ayu-sh-kr/dota-rendering";
+import {html, trustedHTML} from "@ayu-sh-kr/dota-rendering";
 import {OnEvent} from "@ayu-sh-kr/dota-wrap/event";
 import {
   TERMS_MARKDOWN_RENDER_EVENT,
@@ -229,27 +229,27 @@ export class TermsViewComponent extends BaseElement {
     return html`
       <div class="terms-progress" data-terms-progress aria-hidden="true"></div>
       <main id="top" class="terms-shell layout-page layout-section-hero" data-terms-page>
-        <terms-document-header metadata="${escapeHtml(JSON.stringify(metadata))}"></terms-document-header>
+        <terms-document-header metadata="${JSON.stringify(metadata)}"></terms-document-header>
 
         <section class="terms-scope" aria-labelledby="terms-scope-title">
           <p id="terms-scope-title" class="terms-eyebrow">Jump to the part that’s about you</p>
           <div class="terms-scope-control" role="tablist" aria-label="Terms audience">
             <span class="terms-scope-thumb" data-terms-scope-thumb aria-hidden="true"></span>
-            ${switches}
+            ${trustedHTML(switches)}
           </div>
         </section>
 
         <div class="terms-reader-layout">
           <terms-toc></terms-toc>
           <article class="terms-prose" data-terms-markdown aria-busy="true">
-            <terms-markdown-view theme="${escapeHtml("portfolio")}" color="${escapeHtml("primary")}">
+            <terms-markdown-view theme="portfolio" color="primary">
               <p class="terms-status">Loading the terms text…</p>
             </terms-markdown-view>
           </article>
         </div>
 
         <footer class="terms-footer">
-          <div class="terms-related-grid">${related}</div>
+          <div class="terms-related-grid">${trustedHTML(related)}</div>
           <div class="terms-footer-meta">
             <span>Terms &amp; Conditions · Version ${escapeHtml(metadata.version)} · Updated ${formatDate(metadata.updated)}</span>
             <a href="#top" data-terms-top>Back to top ↑</a>

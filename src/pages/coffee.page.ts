@@ -12,7 +12,7 @@ import { toSEO } from "@app/utils/seo.utils.ts";
  * SEO comes from the authored content module and is applied by `DotaPageElement`
  * during route initialization.
  */
-@Route({ path: "/coffee" })
+@Route({ path: "/coffee", ssr: true })
 @Component({
   selector: "coffee-page",
   shadow: false,

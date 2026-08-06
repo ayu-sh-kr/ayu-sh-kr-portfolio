@@ -13,7 +13,7 @@ import { toSEO } from "@app/utils/seo.utils.ts";
  * SEO is exposed through the `seo` getter for `DotaPageElement` to apply during
  * route initialization.
  */
-@Route({ path: "/support" })
+@Route({ path: "/support", ssr: true })
 @Component({
   selector: "support-page",
   shadow: false,

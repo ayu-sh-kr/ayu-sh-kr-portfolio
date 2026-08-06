@@ -13,7 +13,7 @@ import { toSEO } from "@app/utils/seo.utils.ts";
  *
  * Selector: `design-page`.
  */
-@Route({ path: "/design" })
+@Route({ path: "/design", ssr: true })
 @Component({ selector: "design-page", shadow: false })
 export class DesignPage extends DotaPageElement {
   /** Creates the static route shell; child sections own the index presentation and scroll state. */

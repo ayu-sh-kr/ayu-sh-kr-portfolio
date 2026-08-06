@@ -10,7 +10,7 @@ import { toSEO } from "@app/utils/seo.utils.ts";
  * section owns one trigger family or contract, keeping its live specimen and
  * implementation guidance together as the reference expands.
  */
-@Route({ path: "/design/interaction" })
+@Route({ path: "/design/interaction", ssr: true })
 @Component({ selector: "design-interaction-page", shadow: false })
 export class DesignInteractionPage extends DotaPageElement {
   /** Creates the route shell; each composed section owns its temporary demo state. */

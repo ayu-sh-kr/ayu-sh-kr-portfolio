@@ -9,7 +9,7 @@ import { toSEO } from "@app/utils/seo.utils.ts";
  * The route keeps alert examples out of product flows while exercising the same
  * singleton dialog that application handlers import through {@link Alert}.
  */
-@Route({ path: "/design/alert" })
+@Route({ path: "/design/alert", ssr: true })
 @Component({
   selector: "design-alert-page",
   shadow: false,

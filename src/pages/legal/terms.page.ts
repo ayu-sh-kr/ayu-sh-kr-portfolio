@@ -9,7 +9,7 @@ import {toSEO} from "@app/utils/seo.utils.ts";
  * The document view owns terms loading and rendering; this page only composes
  * the shell and adapts the legal data's SEO content.
  */
-@Route({path: "/legal/terms"})
+@Route({path: "/legal/terms", ssr: true})
 @Component({
   selector: "terms-page",
   shadow: false,

@@ -9,7 +9,7 @@ import {toSEO} from "@app/utils/seo.utils.ts";
  * It exposes the requested status and message while reusing the shared error
  * SEO content from `portfolioContent.error.seo`.
  */
-@Route({ path: "/error" })
+@Route({ path: "/error", ssr: true })
 @Component({
   selector: "app-error",
   shadow: false,
