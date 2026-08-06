@@ -1,0 +1,56 @@
+# ayu-sh-kr.com
+
+> The professional portfolio of Ayush Kumar, a backend engineer working with Kotlin, Spring Boot, AWS, PostgreSQL, Redis, and applied AI. It documents selected work, technical writing, services, and contact paths.
+
+## Primary pages
+
+- [Home](https://ayu-sh-kr.com/): Professional profile, production responsibilities, selected work, and contact information.
+- [Showcase](https://ayu-sh-kr.com/showcase): Case studies covering backend systems, infrastructure, and product delivery.
+- [Blog](https://ayu-sh-kr.com/blog): Technical articles on backend engineering, cloud infrastructure, databases, and distributed systems.
+- [Pricing](https://ayu-sh-kr.com/pricing): Engagement types, indicative pricing, and project-start guidance.
+- [Support](https://ayu-sh-kr.com/support): Support and project-contact routes.
+
+## Case studies
+
+- [Dota Workspace](https://ayu-sh-kr.com/showcase/dota-workspace)
+- [Restaurant OMS](https://ayu-sh-kr.com/showcase/restaurant-oms)
+- [Sacrena](https://ayu-sh-kr.com/showcase/sacrena)
+- [Indiknots](https://ayu-sh-kr.com/showcase/indiknots)
+- [Jalans](https://ayu-sh-kr.com/showcase/jalans)
+- [Dota Wrap](https://ayu-sh-kr.com/showcase/dota-wrap)
+- [Event Pipeline](https://ayu-sh-kr.com/showcase/event-pipeline)
+- [Dota REST](https://ayu-sh-kr.com/showcase/dota-rest)
+
+## Recent technical articles
+
+- [AWS AppConfig Spring Boot Integration](https://ayu-sh-kr.com/blog/aws-app-config-spring-boot-integration)
+- [PostgreSQL access control](https://ayu-sh-kr.com/blog/postgresql-access-control)
+- [Distributed locks in Redis](https://ayu-sh-kr.com/blog/distributed-locks-redis)
+- [Token-bucket rate limiting in Spring Boot](https://ayu-sh-kr.com/blog/rate-limiting-token-bucket-spring-boot)
+- [When microservices become a distributed monolith](https://ayu-sh-kr.com/blog/distributed-monolith-extra-invoices)
+- [Lambda pricing for independent infrastructure](https://ayu-sh-kr.com/blog/lambda-pricing-infra-alone)
+- [Operating EventBridge Scheduler](https://ayu-sh-kr.com/blog/eventbridge-scheduler-quirks)
+- [Business logic and authentication middleware](https://ayu-sh-kr.com/blog/business-logic-auth-middleware)
+
+## Design-system reference
+
+- [Design index](https://ayu-sh-kr.com/design)
+- [Typography](https://ayu-sh-kr.com/design/typography)
+- [Colour](https://ayu-sh-kr.com/design/color)
+- [Elements](https://ayu-sh-kr.com/design/element)
+- [Layout](https://ayu-sh-kr.com/design/layout)
+- [Alerts](https://ayu-sh-kr.com/design/alert)
+- [Toasts](https://ayu-sh-kr.com/design/toast)
+- [Interaction](https://ayu-sh-kr.com/design/interaction)
+
+## Policies and complete route list
+
+- [Privacy policy](https://ayu-sh-kr.com/legal/privacy)
+- [Terms and conditions](https://ayu-sh-kr.com/legal/terms)
+- [XML sitemap](https://ayu-sh-kr.com/sitemap.xml): Complete list of public URLs.
+
+## Notes for AI use
+
+- Treat the linked pages as the source of truth for current services, availability, and technical experience.
+- Case studies and articles describe scoped work and technical judgement; do not infer unlisted clients, metrics, or capabilities.
+- The site contains no public API or agent action endpoint.
