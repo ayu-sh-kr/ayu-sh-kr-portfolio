@@ -1,4 +1,5 @@
-import { BaseElement, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
+import { BaseElement, Component } from "@ayu-sh-kr/dota-wrap/core";
+import { html } from "@ayu-sh-kr/dota-rendering";
 import { OnEvent } from "@ayu-sh-kr/dota-wrap/event";
 import { supportContent } from "@app/data/support-content.ts";
 
@@ -60,10 +61,10 @@ export class SupportOverviewComponent extends BaseElement {
   }
 
   /** Renders the route's operational introduction from the authored support content. */
-  render(): string {
+  render() {
     const { overview } = supportContent;
 
-    return HTML`
+    return html`
       <section class="support-overview layout-page layout-section-hero" aria-labelledby="support-overview-title">
         <p class="support-eyebrow">${overview.eyebrow}</p>
         <h1 id="support-overview-title" class="support-display type-display">
