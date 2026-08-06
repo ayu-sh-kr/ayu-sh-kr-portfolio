@@ -1,4 +1,5 @@
-import { BaseElement, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
+import { BaseElement, Component } from "@ayu-sh-kr/dota-wrap/core";
+import { html } from "@ayu-sh-kr/dota-rendering";
 import { designElementContent } from "@app/data/design-element-content.ts";
 
 /**
@@ -18,9 +19,9 @@ export class DesignElementOverviewComponent extends BaseElement {
   }
 
   /** Renders the design page's introductory copy and compact trait list from its authored content model. */
-  render(): string {
+  render() {
     const { overview } = designElementContent;
-    return HTML`
+    return html`
       <section class="design-element-overview layout-page layout-section-hero" aria-labelledby="design-element-overview-title">
         <div class="design-element-overview__layout layout-grid-rail">
           <div class="design-element-overview__intro">
@@ -28,18 +29,18 @@ export class DesignElementOverviewComponent extends BaseElement {
             <h1 id="design-element-overview-title" class="type-display">${overview.title}</h1>
             <p class="type-lede">${overview.lede}</p>
             <div class="design-element-overview__links layout-row layout-row-loose">
-              ${overview.links.map((link) => HTML`<a class="app-link app-link--text" href="${link.href}">${link.label} <span aria-hidden="true">${link.indicator}</span></a>`).join("")}
+              ${overview.links.map((link) => html`<a class="app-link app-link--text" href="${link.href}">${link.label} <span aria-hidden="true">${link.indicator}</span></a>`).join("")}
             </div>
           </div>
           <aside class="design-element-overview__summary" aria-label="${overview.summaryAriaLabel}">
             <p class="type-label">${overview.summaryLabel}</p>
             <dl>
-              ${overview.summary.map((item) => HTML`<div><dt>${item.label}</dt><dd><code>${item.value}</code></dd></div>`).join("")}
+              ${overview.summary.map((item) => html`<div><dt>${item.label}</dt><dd><code>${item.value}</code></dd></div>`).join("")}
             </dl>
           </div>
         </div>
         <ul class="design-element-overview__tags layout-row layout-row-tight" aria-label="${overview.tagsAriaLabel}">
-          ${overview.tags.map((tag) => HTML`<li>${tag}</li>`).join("")}
+          ${overview.tags.map((tag) => html`<li>${tag}</li>`).join("")}
         </ul>
       </section>
     `;
