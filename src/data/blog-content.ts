@@ -104,7 +104,7 @@ export const blogArticleContent = {
 } as const;
 
 /** Shared search terms for the blog index and article pages. */
-const blogKeywords = [siteIdentity.name, "Backend Engineering", "Kotlin", "Spring Boot", "AWS", "Redis", "Blog"] as const;
+const blogKeywords = [siteIdentity.name, siteIdentity.fullName, "Backend Engineering", "Kotlin", "Spring Boot", "AWS", "Redis", "Blog"] as const;
 
 /**
  * Builds SEO content for the blog index or one selected blog article.
@@ -113,14 +113,14 @@ const blogKeywords = [siteIdentity.name, "Backend Engineering", "Kotlin", "Sprin
  * text remain here, so route classes only resolve the current slug and adapt the
  * returned data to the page SEO contract.
  */
-export const getBlogSeo = (post?: Pick<BlogPost, "header" | "description">): PageSeoContent => {
+export const getBlogSeo = (post?: Pick<BlogPost, "header" | "description" | "keywords">): PageSeoContent => {
   const title = post ? `${post.header} — ${siteIdentity.domain}` : `Engineering writing — ${siteIdentity.domain}`;
   const description = post?.description ?? "Articles on backend engineering, cloud infrastructure, and operating production systems.";
 
   return {
     title,
     description,
-    keywords: blogKeywords,
+    keywords: [...blogKeywords, ...(post?.keywords ?? [])],
     ogTitle: title,
     ogDescription: description,
   };
