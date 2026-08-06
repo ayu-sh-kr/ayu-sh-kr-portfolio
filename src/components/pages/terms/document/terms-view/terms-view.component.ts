@@ -1,4 +1,5 @@
-import {ApplicationEventService, BindEvent, BaseElement, Component, HTML, WindowListener} from "@ayu-sh-kr/dota-wrap/core";
+import {ApplicationEventService, BindEvent, BaseElement, Component, WindowListener} from "@ayu-sh-kr/dota-wrap/core";
+import {html} from "@ayu-sh-kr/dota-rendering";
 import {OnEvent} from "@ayu-sh-kr/dota-wrap/event";
 import {
   TERMS_MARKDOWN_RENDER_EVENT,
@@ -196,9 +197,9 @@ export class TermsViewComponent extends BaseElement {
   }
 
   /** Renders the loading/error state or the complete terms reader shell. */
-  render(): string {
+  render() {
     if (!this.terms) {
-      return HTML`
+      return html`
         <main class="terms-shell layout-page layout-section-hero">
           <p class="terms-status" role="status">${this.loadError || "Loading the terms and conditions…"}</p>
         </main>
@@ -225,7 +226,7 @@ export class TermsViewComponent extends BaseElement {
       `)
       .join("");
 
-    return HTML`
+    return html`
       <div class="terms-progress" data-terms-progress aria-hidden="true"></div>
       <main id="top" class="terms-shell layout-page layout-section-hero" data-terms-page>
         <terms-document-header metadata="${escapeHtml(JSON.stringify(metadata))}"></terms-document-header>
