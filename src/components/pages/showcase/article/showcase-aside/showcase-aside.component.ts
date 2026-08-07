@@ -30,7 +30,7 @@ export class ShowcaseAsideComponent extends BaseElement {
 
   @BeforeInit()
   /** Saves Markdown-provided child content before the component renders over it. */
-  captureContent(): void {
+  beforeViewInit(): void {
     this.content = this.innerHTML.trim();
   }
 

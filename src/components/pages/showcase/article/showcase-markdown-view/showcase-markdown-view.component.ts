@@ -38,7 +38,7 @@ export class ShowcaseMarkdownViewComponent extends MdViewComponent {
 
   @BeforeInit()
   /** Captures the loading placeholder before Markdown replaces the initial content. */
-  captureInitialContent(): void {
+  beforeViewInit(): void {
     this.markdownLifecycle.captureInitialContent();
     this.markdownLifecycle.startSkeletonTimeout();
   }
