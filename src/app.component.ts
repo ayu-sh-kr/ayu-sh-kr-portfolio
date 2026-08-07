@@ -1,4 +1,5 @@
 import { BaseElement, Component, WindowListener } from "@ayu-sh-kr/dota-wrap/core";
+import {html} from "@ayu-sh-kr/dota-wrap/rendering";
 import { OnEvent } from "@ayu-sh-kr/dota-wrap/event";
 import { GeneralUtils } from "@app/utils/general.utils.ts";
 import { RouterUtils } from "@app/utils/router.utils.ts";
@@ -46,7 +47,7 @@ export class AppComponent extends BaseElement {
     RouterUtils.navigate("/offline");
   }
 
-  render(): string {
-    return "";
+  render() {
+    return html``;
   }
 }
