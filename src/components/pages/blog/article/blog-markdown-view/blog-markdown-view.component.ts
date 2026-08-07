@@ -60,15 +60,21 @@ export class BlogMarkdownViewComponent extends MdViewComponent {
     this.querySelector("h1")?.remove();
     this.querySelectorAll("pre").forEach((pre) => {
       pre.tabIndex = 0;
-      if (pre.querySelector("[data-copy-code]")) {
+      if (pre.parentElement?.classList.contains("blog-code-block")) {
         return;
       }
+
+      const codeBlock = document.createElement("div");
+      codeBlock.className = "blog-code-block";
+      pre.replaceWith(codeBlock);
+      codeBlock.append(pre);
+
       const button = document.createElement("button");
       button.type = "button";
       button.dataset.copyCode = "true";
       button.textContent = blogArticleContent.markdown.copyLabel;
       button.className = "blog-copy-button";
-      pre.append(button);
+      codeBlock.append(button);
     });
     this.querySelectorAll("img").forEach((image) => {
       image.loading = "lazy";

@@ -75,6 +75,12 @@ blog-markdown-view {
   list-style: decimal;
 }
 
+.blog-code-block {
+  position: relative;
+  inline-size: 100%;
+  min-inline-size: 0;
+}
+
 .blog-prose blockquote {
   margin: 1.6em 0;
   border-inline-start: 3px solid var(--blog-accent);
@@ -162,10 +168,11 @@ blog-markdown-view {
   font: inherit;
   font-size: 0.7rem;
   opacity: 0;
+  z-index: var(--layout-z-raised);
   transition: opacity 180ms ease;
 }
 
-.blog-prose pre:hover .blog-copy-button,
+.blog-code-block:hover .blog-copy-button,
 .blog-copy-button:focus-visible {
   opacity: 1;
 }
