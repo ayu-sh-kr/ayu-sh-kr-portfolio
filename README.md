@@ -20,7 +20,7 @@ The app is built with native web components through [Dota Wrap](https://www.npmj
 | Area | Choice |
 | --- | --- |
 | Language | TypeScript (strict mode) |
-| Build and development server | Vite 7 |
+| Build and development server | Vite 8 with Dota Wrap's composed integrations |
 | UI model | Native custom elements via Dota Wrap |
 | Styling | Tailwind CSS 4 plus shared CSS tokens |
 | Markdown | `@ayu-sh-kr/dota-md` with a local theme configuration |
@@ -30,7 +30,7 @@ The app is built with native web components through [Dota Wrap](https://www.npmj
 
 ## Requirements
 
-- Node.js `^20.19.0` or `>=22.12.0` (required by Vite 7)
+- Node.js `^20.19.0` or `>=22.12.0` (required by Vite 8)
 - pnpm 11 or newer
 
 ## Run locally
