@@ -1,5 +1,5 @@
 import {ApplicationEventService, BeforeInit, BindEvent, Component, Property, String} from "@ayu-sh-kr/dota-wrap/core";
-import {html, TemplateResult, trustedHTML} from "@ayu-sh-kr/dota-rendering";
+import {html, TemplateResult, trustedHTML} from "@ayu-sh-kr/dota-wrap/rendering";
 import {type ApplicationEvent, OnEvent} from "@ayu-sh-kr/dota-wrap/event";
 import {MdViewComponent, type ColorName, type ThemeName} from "@ayu-sh-kr/dota-md";
 import {portfolioMarkdownColor, portfolioMarkdownTheme} from "@app/configs/markdown-theme.config.ts";

@@ -1,5 +1,5 @@
 import { BaseElement, Component } from "@ayu-sh-kr/dota-wrap/core";
-import { html } from "@ayu-sh-kr/dota-rendering";
+import { html } from "@ayu-sh-kr/dota-wrap/rendering";
 import { OnEvent } from "@ayu-sh-kr/dota-wrap/event";
 import { supportContent } from "@app/data/support-content.ts";
 

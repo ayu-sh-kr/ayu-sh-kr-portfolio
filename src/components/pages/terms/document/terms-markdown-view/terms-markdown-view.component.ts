@@ -1,5 +1,5 @@
 import {ApplicationEventService, BeforeInit, BindEvent, Component, Property, String} from "@ayu-sh-kr/dota-wrap/core";
-import {html, trustedHTML} from "@ayu-sh-kr/dota-rendering";
+import {html, trustedHTML} from "@ayu-sh-kr/dota-wrap/rendering";
 import {type ApplicationEvent, OnEvent} from "@ayu-sh-kr/dota-wrap/event";
 import {MdViewComponent, type ColorName, type ThemeName} from "@ayu-sh-kr/dota-md";
 import {portfolioMarkdownColor, portfolioMarkdownTheme} from "@app/configs/markdown-theme.config.ts";
@@ -10,7 +10,7 @@ import {
   type TermsSection,
 } from "@app/events/terms.events.ts";
 import {MarkdownLifecycleUtils} from "@app/utils/markdown-lifecycle.utils.ts";
-import {TemplateResult} from "@ayu-sh-kr/dota-rendering";
+import {TemplateResult} from "@ayu-sh-kr/dota-wrap/rendering";
 
 /**
  * Renders the loaded terms Markdown and publishes its section model.

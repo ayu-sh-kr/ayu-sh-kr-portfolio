@@ -1,5 +1,5 @@
 import {ApplicationEventService, BaseElement, Component, WindowListener} from "@ayu-sh-kr/dota-wrap/core";
-import {html, trustedHTML} from "@ayu-sh-kr/dota-rendering";
+import {html, trustedHTML} from "@ayu-sh-kr/dota-wrap/rendering";
 import {OnEvent} from "@ayu-sh-kr/dota-wrap/event";
 import {getShowcaseProject, getShowcaseSlug, showcaseProjects, type ShowcaseProject} from "@app/data/showcase-content.ts";
 import {SHOWCASE_MARKDOWN_SOURCE_EVENT, type ShowcaseMarkdownSource} from "@app/events/showcase.events.ts";
