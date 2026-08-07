@@ -257,7 +257,7 @@
           "name": "app-root",
           "source": {
             "file": "./src/app.component.ts",
-            "offset": 327
+            "offset": 380
           },
           "attributes": [],
           "js": {
@@ -268,7 +268,7 @@
           "name": "blog-article",
           "source": {
             "file": "./src/components/pages/blog/article/blog-article/blog-article.component.ts",
-            "offset": 1456
+            "offset": 1468
           },
           "attributes": [],
           "js": {
