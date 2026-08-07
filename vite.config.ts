@@ -9,6 +9,7 @@ import dotaSsg from "@ayu-sh-kr/dota-ssr/vite";
 
 const projectRoot = fileURLToPath(new URL(".", import.meta.url));
 const blogRoutes = [
+  "/blog/ssr-vs-ssg-rendering-hydration-dom",
   "/blog/aws-app-config-spring-boot-integration",
   "/blog/postgresql-access-control",
   "/blog/distributed-locks-redis",
@@ -17,6 +18,16 @@ const blogRoutes = [
   "/blog/lambda-pricing-infra-alone",
   "/blog/eventbridge-scheduler-quirks",
   "/blog/business-logic-auth-middleware",
+];
+const showcaseRoutes = [
+  "/showcase/dota-workspace",
+  "/showcase/restaurant-oms",
+  "/showcase/sacrena",
+  "/showcase/indiknots",
+  "/showcase/jalans",
+  "/showcase/dota-wrap",
+  "/showcase/event-pipeline",
+  "/showcase/dota-rest",
 ];
 
 export default defineConfig({
@@ -54,7 +65,7 @@ export default defineConfig({
       root: projectRoot,
       entry: "/src/main.ts",
       autoDetectRoutes: true,
-      routes: ["/offline", ...blogRoutes],
+      routes: ["/offline", ...blogRoutes, ...showcaseRoutes],
       logType: "info",
       vercel: true,
     }),
