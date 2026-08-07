@@ -1,8 +1,8 @@
-# PostgreSQL access control: a practical guide to roles and permissions
+# PostgreSQL permissions and database access control: roles, GRANTs
 
-Access control in PostgreSQL is the set of rules that answers a simple question: *who is allowed to do what?* A database can hold customer details, payroll records, application data, and internal reports side by side. The goal is to let each person or service do its job without giving it a master key to everything else.
+Database permissions are the rules that answer a simple question: *who is allowed to do what?* PostgreSQL provides the concrete model for this guide, but the underlying access-control problem is shared by relational databases: a database can hold customer details, payroll records, application data, and internal reports side by side. The goal is to let each person or service do its job without giving it a master key to everything else.
 
-PostgreSQL gives us the building blocks to do that well. The terminology can look intimidating at first, but the underlying model is refreshingly small: roles represent identities, privileges describe allowed actions, and ownership controls who manages an object. Once those ideas click, permission errors become much easier to understand and permission designs become far less fragile.
+PostgreSQL gives us the building blocks to do that well. This guide explains database roles and permissions, `GRANT` and `REVOKE`, database, schema, and table privileges, ownership, default privileges, and row-level security. The SQL syntax is PostgreSQL-specific, while the principles—authorization, least privilege, separation of ownership, and explicit access paths—apply more broadly to database security. Once those ideas click, permission errors become much easier to understand and permission designs become far less fragile.
 
 ## Start with the route to a table
 
@@ -14,6 +14,20 @@ Suppose an application needs to read `sales.orders`. Reading a table is not one 
 4. If row-level security is enabled, the requested rows must also match its policy.
 
 This layered approach is deliberate. A schema is a namespace, similar to a folder, and a table belongs inside one. Access at one layer does not automatically bypass another. When PostgreSQL says “permission denied,” it is usually pointing to one missing link in this chain.
+
+## Troubleshoot `permission denied` errors
+
+When PostgreSQL reports `permission denied for table`, `permission denied for schema`, or `permission denied for database`, check the connection, schema, and object privileges separately. Testing each layer with PostgreSQL's privilege functions is faster than guessing which `GRANT` is missing:
+
+```sql
+SELECT current_user, session_user;
+
+SELECT has_database_privilege(current_user, current_database(), 'CONNECT') AS can_connect;
+SELECT has_schema_privilege(current_user, 'sales', 'USAGE') AS can_use_schema;
+SELECT has_table_privilege(current_user, 'sales.orders', 'SELECT') AS can_select;
+```
+
+For a `false` result, grant only the missing capability to the appropriate role. A `true` result for all three checks means the next places to inspect are role membership and inheritance, row-level security policies, and whether the query touches a sequence or function in addition to the table. In `psql`, `\du`, `\dn+`, and `\dp sales.orders` are useful summaries of roles, schema grants, and table privileges.
 
 ## Roles are PostgreSQL's idea of identity
 
