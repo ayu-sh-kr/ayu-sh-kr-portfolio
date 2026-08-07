@@ -103,15 +103,16 @@ export const blogArticleContent = {
   },
 } as const;
 
-/** Shared search terms for the blog index and article pages. */
-const blogKeywords = [siteIdentity.name, siteIdentity.fullName, "Backend Engineering", "Kotlin", "Spring Boot", "AWS", "Redis", "Blog"] as const;
+/** Search terms used by the blog index and unknown-article fallback. */
+const blogIndexKeywords = [siteIdentity.name, siteIdentity.fullName, "Backend Engineering", "Blog"] as const;
 
 /**
  * Builds SEO content for the blog index or one selected blog article.
  *
- * Article copy comes from the authored `BlogPost`; shared keywords and fallback
- * text remain here, so route classes only resolve the current slug and adapt the
- * returned data to the page SEO contract.
+ * Article copy comes from the authored `BlogPost`. Article routes use only their
+ * topic-specific terms; the broader blog terms stay with the index and fallback.
+ * Route classes only resolve the current slug and adapt the returned data to the
+ * page SEO contract.
  */
 export const getBlogSeo = (post?: Pick<BlogPost, "header" | "description" | "keywords">): PageSeoContent => {
   const title = post ? `${post.header} — ${siteIdentity.domain}` : `Engineering writing — ${siteIdentity.domain}`;
@@ -120,7 +121,7 @@ export const getBlogSeo = (post?: Pick<BlogPost, "header" | "description" | "key
   return {
     title,
     description,
-    keywords: [...blogKeywords, ...(post?.keywords ?? [])],
+    keywords: post ? [...post.keywords] : [...blogIndexKeywords],
     ogTitle: title,
     ogDescription: description,
   };
@@ -130,7 +131,7 @@ export const getBlogSeo = (post?: Pick<BlogPost, "header" | "description" | "key
 export const blogNotFoundSeo: PageSeoContent = {
   title: `Post not found — ${siteIdentity.domain}`,
   description: "The requested blog post could not be found.",
-  keywords: blogKeywords,
+  keywords: blogIndexKeywords,
   ogTitle: `Post not found — ${siteIdentity.domain}`,
   ogDescription: "The requested blog post could not be found.",
 };
