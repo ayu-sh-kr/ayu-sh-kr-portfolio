@@ -1,4 +1,4 @@
-import {ApplicationEventService, BaseElement, Component, WindowListener} from "@ayu-sh-kr/dota-wrap/core";
+import {ApplicationEventService, BaseElement, BeforeInit, Component, WindowListener} from "@ayu-sh-kr/dota-wrap/core";
 import {html, trustedHTML} from "@ayu-sh-kr/dota-wrap/rendering";
 import {OnEvent} from "@ayu-sh-kr/dota-wrap/event";
 import {blogPosts, formatBlogDate, getBlogPost, getBlogSlug, labelForCategory, type BlogPost} from "@app/configs/blogs.config.ts";
@@ -28,7 +28,7 @@ export class BlogArticleComponent extends BaseElement {
   private readonly publisher = ApplicationEventService.getInstance().getPublisher();
   private readonly loader = new BlogLoaderService();
   private readonly progressLifecycle = new MarkdownProgressLifecycle(this);
-  private ready = false;
+  private hasHydratedArticle = false;
   private post: BlogPost | null = null;
   private nextPost: BlogPost | null = null;
   private loadError = "";
@@ -36,6 +36,13 @@ export class BlogArticleComponent extends BaseElement {
 
   constructor() {
     super();
+  }
+
+  /** Records whether SSG already supplied the rendered article before hydration. */
+  @BeforeInit()
+  beforeViewInit(): void {
+    this.hasHydratedArticle = this.hasAttribute("data-dh-c")
+      || this.querySelector("[data-blog-markdown] .blog-markdown-content") !== null;
   }
 
   /** Resolves the route slug, renders article metadata, and starts Markdown loading. */
@@ -46,12 +53,12 @@ export class BlogArticleComponent extends BaseElement {
     this.nextPost = post && blogPosts.length > 1
       ? blogPosts[(blogPosts.indexOf(post) + 1) % blogPosts.length] ?? null
       : null;
-    this.ready = true;
-    this.updateHTML();
     this.scheduleProgressRender();
-    if (post) {
-      void this.loadArticle(post);
+    if (!post || this.hasHydratedArticle) {
+      return;
     }
+
+    void this.loadArticle(post);
   }
 
   /** Schedules document progress updates as the article scrolls. */
@@ -93,14 +100,13 @@ export class BlogArticleComponent extends BaseElement {
   }
 
   /**
-   * Returns the loading, not-found, error, or article markup for the current state.
-   * The Markdown child is rendered only after article metadata is available.
+   * Returns the not-found, error, or article markup for the current route.
+   * The route slug is available before the connected lifecycle event, allowing
+   * the client to hydrate the same article shell that SSG produced.
    */
   render() {
-    if (!this.ready) {
-      return html`${trustedHTML(`<main class="blog-article-shell layout-page layout-section-hero"><p class="blog-loading">${blogArticleContent.loadingPost}</p></main>`)}`;
-    }
-    if (!this.post) {
+    const post = this.post ?? getBlogPost(getBlogSlug(window.location.pathname)) ?? null;
+    if (!post) {
       return html`${trustedHTML(`
         <main class="blog-article-shell layout-page layout-section-hero">
           <a class="blog-back-link" href="/blog">← ${blogArticleContent.allPostsLabel}</a>
@@ -116,23 +122,26 @@ export class BlogArticleComponent extends BaseElement {
              <p class="blog-loading">${blogArticleContent.loadingArticle}</p>
            </blog-markdown-view>
          </article>`;
-    const nextLink = this.nextPost
-      ? `<a href="/blog/${this.nextPost.slug}" class="blog-quiet-card blog-quiet-card-next"><span><small>${blogArticleContent.footer.nextLabel}</small>${escapeHtml(this.nextPost.header)}</span><span>→</span></a>`
+    const nextPost = this.nextPost ?? (blogPosts.length > 1
+      ? blogPosts[(blogPosts.indexOf(post) + 1) % blogPosts.length] ?? null
+      : null);
+    const nextLink = nextPost
+      ? `<a href="/blog/${nextPost.slug}" class="blog-quiet-card blog-quiet-card-next"><span><small>${blogArticleContent.footer.nextLabel}</small>${escapeHtml(nextPost.header)}</span><span>→</span></a>`
       : "";
 
     return html`${trustedHTML(`
       <div class="blog-progress" data-blog-progress aria-hidden="true"></div>
       <main class="blog-article-shell layout-page layout-section-hero" data-blog-article>
         <a class="blog-back-link" href="/blog">← ${blogArticleContent.allPostsLabel}</a>
-        <blog-article-header
-          category="${escapeHtml(labelForCategory(this.post.category))}"
-          metadata="${escapeHtml(`${this.post.minutes} ${blogIndexContent.readTimeSuffix} · ${formatBlogDate(this.post.date)}`)}"
-          title="${escapeHtml(this.post.header)}"
-          writer="${escapeHtml(this.post.writer)}">
+          <blog-article-header
+          category="${escapeHtml(labelForCategory(post.category))}"
+          metadata="${escapeHtml(`${post.minutes} ${blogIndexContent.readTimeSuffix} · ${formatBlogDate(post.date)}`)}"
+          title="${escapeHtml(post.header)}"
+          writer="${escapeHtml(post.writer)}">
         </blog-article-header>
         ${markdown}
         <footer class="blog-article-footer">
-          <div class="blog-article-footer-meta"><span class="blog-chip">${labelForCategory(this.post.category)}</span><span>${blogArticleContent.footer.shareCopy}</span></div>
+          <div class="blog-article-footer-meta"><span class="blog-chip">${labelForCategory(post.category)}</span><span>${blogArticleContent.footer.shareCopy}</span></div>
           <div class="blog-post-nav">
             <a href="/blog" class="blog-quiet-card"><span>←</span><span><small>${blogArticleContent.footer.backLabel}</small>${blogArticleContent.allPostsLabel}</span></a>
             ${nextLink}
