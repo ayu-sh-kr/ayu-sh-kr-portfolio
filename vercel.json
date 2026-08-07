@@ -59,6 +59,11 @@
       "permanent": true
     },
     {
+      "source": "/blog/ssr-vs-ssg-rendering-hydration-dom",
+      "destination": "/blog/ssr-vs-ssg-rendering-hydration-dom/",
+      "permanent": true
+    },
+    {
       "source": "/coffee",
       "destination": "/coffee/",
       "permanent": true
@@ -131,6 +136,46 @@
     {
       "source": "/showcase",
       "destination": "/showcase/",
+      "permanent": true
+    },
+    {
+      "source": "/showcase/dota-rest",
+      "destination": "/showcase/dota-rest/",
+      "permanent": true
+    },
+    {
+      "source": "/showcase/dota-workspace",
+      "destination": "/showcase/dota-workspace/",
+      "permanent": true
+    },
+    {
+      "source": "/showcase/dota-wrap",
+      "destination": "/showcase/dota-wrap/",
+      "permanent": true
+    },
+    {
+      "source": "/showcase/event-pipeline",
+      "destination": "/showcase/event-pipeline/",
+      "permanent": true
+    },
+    {
+      "source": "/showcase/indiknots",
+      "destination": "/showcase/indiknots/",
+      "permanent": true
+    },
+    {
+      "source": "/showcase/jalans",
+      "destination": "/showcase/jalans/",
+      "permanent": true
+    },
+    {
+      "source": "/showcase/restaurant-oms",
+      "destination": "/showcase/restaurant-oms/",
+      "permanent": true
+    },
+    {
+      "source": "/showcase/sacrena",
+      "destination": "/showcase/sacrena/",
       "permanent": true
     },
     {
