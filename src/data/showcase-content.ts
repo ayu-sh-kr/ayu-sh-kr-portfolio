@@ -81,7 +81,7 @@ export const showcaseProjects: ShowcaseProject[] = [
     year: 2025,
     status: "active",
     stack: ["Kotlin", "AWS", "Redis"],
-    summary: "Production ownership across APIs, data, deployments, reliability, and security.",
+    summary: "A production dating-app backend shaped around secure onboarding, durable data, and reliable operations across APIs, scheduled workflows, and AWS infrastructure.",
     visual: "sacrena",
   },
   {
