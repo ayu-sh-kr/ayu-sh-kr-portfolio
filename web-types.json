@@ -268,7 +268,7 @@
           "name": "blog-article",
           "source": {
             "file": "./src/components/pages/blog/article/blog-article/blog-article.component.ts",
-            "offset": 1451
+            "offset": 1456
           },
           "attributes": [],
           "js": {
@@ -442,7 +442,7 @@
           "name": "blog-markdown-view",
           "source": {
             "file": "./src/components/pages/blog/article/blog-markdown-view/blog-markdown-view.component.ts",
-            "offset": 1202
+            "offset": 1207
           },
           "attributes": [
             {
@@ -454,7 +454,7 @@
               },
               "source": {
                 "file": "./src/components/pages/blog/article/blog-markdown-view/blog-markdown-view.component.ts",
-                "offset": 1652
+                "offset": 1657
               }
             },
             {
@@ -465,7 +465,7 @@
               },
               "source": {
                 "file": "./src/components/pages/blog/article/blog-markdown-view/blog-markdown-view.component.ts",
-                "offset": 1423
+                "offset": 1428
               }
             }
           ],
@@ -477,7 +477,7 @@
                 "default": "portfolioMarkdownColor",
                 "source": {
                   "file": "./src/components/pages/blog/article/blog-markdown-view/blog-markdown-view.component.ts",
-                  "offset": 1652
+                  "offset": 1657
                 }
               },
               {
@@ -485,7 +485,7 @@
                 "type": "string",
                 "source": {
                   "file": "./src/components/pages/blog/article/blog-markdown-view/blog-markdown-view.component.ts",
-                  "offset": 1423
+                  "offset": 1428
                 }
               }
             ]
@@ -704,7 +704,7 @@
           "name": "design-alert-overview",
           "source": {
             "file": "./src/components/pages/design/alert/overview/design-alert-overview/design-alert-overview.component.ts",
-            "offset": 352
+            "offset": 357
           },
           "attributes": [],
           "js": {
@@ -781,7 +781,7 @@
           "name": "design-color-overview",
           "source": {
             "file": "./src/components/pages/design/color/overview/design-color-overview/design-color-overview.component.ts",
-            "offset": 637
+            "offset": 642
           },
           "attributes": [],
           "js": {
@@ -825,7 +825,7 @@
           "name": "design-element-overview",
           "source": {
             "file": "./src/components/pages/design/element/overview/design-element-overview/design-element-overview.component.ts",
-            "offset": 669
+            "offset": 674
           },
           "attributes": [],
           "js": {
@@ -1078,7 +1078,7 @@
           "name": "design-layout-overview",
           "source": {
             "file": "./src/components/pages/design/layout/overview/design-layout-overview/design-layout-overview.component.ts",
-            "offset": 334
+            "offset": 339
           },
           "attributes": [],
           "js": {
@@ -1144,7 +1144,7 @@
           "name": "design-toast-overview",
           "source": {
             "file": "./src/components/pages/design/toast/overview/design-toast-overview/design-toast-overview.component.ts",
-            "offset": 562
+            "offset": 567
           },
           "attributes": [],
           "js": {
@@ -1188,7 +1188,7 @@
           "name": "design-typography-overview",
           "source": {
             "file": "./src/components/pages/design/overview/design-typography-overview/design-typography-overview.component.ts",
-            "offset": 694
+            "offset": 699
           },
           "attributes": [],
           "js": {
@@ -1847,7 +1847,7 @@
           "name": "privacy-markdown-view",
           "source": {
             "file": "./src/components/pages/privacy/document/privacy-markdown-view/privacy-markdown-view.component.ts",
-            "offset": 1229
+            "offset": 1234
           },
           "attributes": [
             {
@@ -1859,7 +1859,7 @@
               },
               "source": {
                 "file": "./src/components/pages/privacy/document/privacy-markdown-view/privacy-markdown-view.component.ts",
-                "offset": 1604
+                "offset": 1609
               }
             },
             {
@@ -1870,7 +1870,7 @@
               },
               "source": {
                 "file": "./src/components/pages/privacy/document/privacy-markdown-view/privacy-markdown-view.component.ts",
-                "offset": 1413
+                "offset": 1418
               }
             }
           ],
@@ -1882,7 +1882,7 @@
                 "default": "portfolioMarkdownColor",
                 "source": {
                   "file": "./src/components/pages/privacy/document/privacy-markdown-view/privacy-markdown-view.component.ts",
-                  "offset": 1604
+                  "offset": 1609
                 }
               },
               {
@@ -1890,7 +1890,7 @@
                 "type": "string",
                 "source": {
                   "file": "./src/components/pages/privacy/document/privacy-markdown-view/privacy-markdown-view.component.ts",
-                  "offset": 1413
+                  "offset": 1418
                 }
               }
             ]
@@ -1922,7 +1922,7 @@
           "name": "privacy-view",
           "source": {
             "file": "./src/components/pages/privacy/document/privacy-view/privacy-view.component.ts",
-            "offset": 1486
+            "offset": 1491
           },
           "attributes": [],
           "js": {
@@ -2292,7 +2292,7 @@
           "name": "showcase-markdown-view",
           "source": {
             "file": "./src/components/pages/showcase/article/showcase-markdown-view/showcase-markdown-view.component.ts",
-            "offset": 1095
+            "offset": 1100
           },
           "attributes": [
             {
@@ -2304,7 +2304,7 @@
               },
               "source": {
                 "file": "./src/components/pages/showcase/article/showcase-markdown-view/showcase-markdown-view.component.ts",
-                "offset": 1471
+                "offset": 1476
               }
             },
             {
@@ -2315,7 +2315,7 @@
               },
               "source": {
                 "file": "./src/components/pages/showcase/article/showcase-markdown-view/showcase-markdown-view.component.ts",
-                "offset": 1280
+                "offset": 1285
               }
             }
           ],
@@ -2327,7 +2327,7 @@
                 "default": "portfolioMarkdownColor",
                 "source": {
                   "file": "./src/components/pages/showcase/article/showcase-markdown-view/showcase-markdown-view.component.ts",
-                  "offset": 1471
+                  "offset": 1476
                 }
               },
               {
@@ -2335,7 +2335,7 @@
                 "type": "string",
                 "source": {
                   "file": "./src/components/pages/showcase/article/showcase-markdown-view/showcase-markdown-view.component.ts",
-                  "offset": 1280
+                  "offset": 1285
                 }
               }
             ]
@@ -2547,7 +2547,7 @@
           "name": "showcase-view",
           "source": {
             "file": "./src/components/pages/showcase/article/showcase-view/showcase-view.component.ts",
-            "offset": 1458
+            "offset": 1463
           },
           "attributes": [],
           "js": {
@@ -2758,7 +2758,7 @@
           "name": "support-overview",
           "source": {
             "file": "./src/components/pages/support/overview/support-overview/support-overview.component.ts",
-            "offset": 676
+            "offset": 681
           },
           "attributes": [],
           "js": {
@@ -2869,7 +2869,7 @@
           "name": "terms-markdown-view",
           "source": {
             "file": "./src/components/pages/terms/document/terms-markdown-view/terms-markdown-view.component.ts",
-            "offset": 1177
+            "offset": 1187
           },
           "attributes": [
             {
@@ -2881,7 +2881,7 @@
               },
               "source": {
                 "file": "./src/components/pages/terms/document/terms-markdown-view/terms-markdown-view.component.ts",
-                "offset": 1550
+                "offset": 1560
               }
             },
             {
@@ -2892,7 +2892,7 @@
               },
               "source": {
                 "file": "./src/components/pages/terms/document/terms-markdown-view/terms-markdown-view.component.ts",
-                "offset": 1359
+                "offset": 1369
               }
             }
           ],
@@ -2904,7 +2904,7 @@
                 "default": "portfolioMarkdownColor",
                 "source": {
                   "file": "./src/components/pages/terms/document/terms-markdown-view/terms-markdown-view.component.ts",
-                  "offset": 1550
+                  "offset": 1560
                 }
               },
               {
@@ -2912,7 +2912,7 @@
                 "type": "string",
                 "source": {
                   "file": "./src/components/pages/terms/document/terms-markdown-view/terms-markdown-view.component.ts",
-                  "offset": 1359
+                  "offset": 1369
                 }
               }
             ]
@@ -2944,7 +2944,7 @@
           "name": "terms-view",
           "source": {
             "file": "./src/components/pages/terms/document/terms-view/terms-view.component.ts",
-            "offset": 1460
+            "offset": 1465
           },
           "attributes": [],
           "js": {

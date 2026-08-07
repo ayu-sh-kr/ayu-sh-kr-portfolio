@@ -2,10 +2,7 @@ import { defineConfig } from "vite";
 import { resolve } from "path";
 import {fileURLToPath} from "node:url";
 import tailwindcss from "@tailwindcss/vite";
-import dotaVitePreloader from "@ayu-sh-kr/dota-wrap/preloader-plugin";
-import dotaWebTypeJson from "@ayu-sh-kr/dota-wrap/web-type-json";
-import eventMapGenerator from "@ayu-sh-kr/dota-wrap/event-map-generator";
-import dotaSsg from "@ayu-sh-kr/dota-ssr/vite";
+import {dotaVitePlugins} from "@ayu-sh-kr/dota-wrap/vite";
 
 const projectRoot = fileURLToPath(new URL(".", import.meta.url));
 const blogRoutes = [
@@ -33,41 +30,27 @@ const showcaseRoutes = [
 export default defineConfig({
   plugins: [
     tailwindcss(),
-    dotaVitePreloader({
-      root: resolve(__dirname),
-      logType: "info",
-    }),
-    dotaWebTypeJson({
-      root: resolve(__dirname),
-      scanRoots: [
-        resolve(__dirname),
-        resolve(__dirname, "node_modules/@ayu-sh-kr/dota-md"),
-        resolve(__dirname, "node_modules/@ayu-sh-kr/dota-ui"),
-      ],
-      outFile: "web-types.json",
-      logType: "info",
-      customElementsManifest: {
-        enabled: true
-      }
-    }),
-    eventMapGenerator({
+    ...dotaVitePlugins({
       root: projectRoot,
+      logType: "info",
       scanRoots: [
         projectRoot,
-        resolve(projectRoot, 'node_modules/@ayu-sh-kr/dota-md'),
-        resolve(projectRoot, 'node_modules/@ayu-sh-kr/dota-ui'),
+        resolve(projectRoot, "node_modules/@ayu-sh-kr/dota-md"),
+        resolve(projectRoot, "node_modules/@ayu-sh-kr/dota-ui"),
       ],
-      outFile: 'src/event-map.d.ts',
-      moduleSpecifier: '@ayu-sh-kr/dota-wrap/event',
-      logType: 'info',
-    }),
-    dotaSsg({
-      root: projectRoot,
-      entry: "/src/main.ts",
-      autoDetectRoutes: true,
-      routes: ["/offline", ...blogRoutes, ...showcaseRoutes],
-      logType: "info",
-      vercel: true,
+      webTypes: {
+        outFile: "web-types.json",
+        customElementsManifest: { enabled: true },
+      },
+      eventMap: {
+        outFile: "src/event-map.d.ts",
+      },
+      ssg: {
+        entry: "/src/main.ts",
+        autoDetectRoutes: true,
+        routes: ["/offline", ...blogRoutes, ...showcaseRoutes],
+        vercel: true,
+      },
     }),
   ],
   resolve: {
