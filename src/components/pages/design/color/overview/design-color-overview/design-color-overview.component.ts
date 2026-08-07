@@ -1,5 +1,5 @@
 import { BaseElement, Component } from "@ayu-sh-kr/dota-wrap/core";
-import { html } from "@ayu-sh-kr/dota-rendering";
+import { html } from "@ayu-sh-kr/dota-wrap/rendering";
 import { designColorContent } from "@app/data/design-color-content.ts";
 
 /** Identifies summary values that should render as code rather than plain text. */
