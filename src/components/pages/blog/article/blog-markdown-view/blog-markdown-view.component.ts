@@ -31,6 +31,7 @@ export class BlogMarkdownViewComponent extends MdViewComponent {
   override color: ColorName = portfolioMarkdownColor;
 
   private readonly markdownLifecycle = new MarkdownLifecycleUtils(this);
+  private hasHydratedContent = false;
 
   constructor() {
     super();
@@ -38,9 +39,13 @@ export class BlogMarkdownViewComponent extends MdViewComponent {
 
   /** Captures fallback Markdown before the renderer replaces the initial content. */
   @BeforeInit()
-  captureInitialContent(): void {
+  beforeViewInit(): void {
+    this.hasHydratedContent = this.hasAttribute("data-dh-c")
+      && this.querySelector(".blog-markdown-content") !== null;
     this.markdownLifecycle.captureInitialContent();
-    this.markdownLifecycle.startSkeletonTimeout();
+    if (!this.hasHydratedContent) {
+      this.markdownLifecycle.startSkeletonTimeout();
+    }
   }
 
   /** Renders the raw Markdown source published for the active blog article. */
