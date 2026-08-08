@@ -2,7 +2,8 @@
 :root {
   /* Lexend Deca is the current default font for the portfolio and blog. */
   --primary-font: var(--font-lexend-deca);
-  --type-display-size: clamp(2.75rem, 1.33rem + 6.3vw, 7rem);
+  /* Keep display type legible without letting short viewports force hero overflow. */
+  --type-display-size: clamp(2.75rem, 1.33rem + min(6.3vw, 8svh), 7rem);
   --type-display-weight: 700;
   --type-display-tracking: -0.04em;
   --type-display-leading: 1;
