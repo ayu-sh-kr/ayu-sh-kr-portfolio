@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 420" role="img" aria-labelledby="diagram-title diagram-description">
+  <title id="diagram-title">Thought interface loop</title>
+  <desc id="diagram-description">A two-row flow from intention through signal, interpretation, representation, review, and action.</desc>
+
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#5d702d"/>
+    </marker>
+    <filter id="shadow" x="-10%" y="-20%" width="120%" height="150%">
+      <feDropShadow dx="0" dy="5" stdDeviation="7" flood-color="#242c12" flood-opacity="0.10"/>
+    </filter>
+  </defs>
+
+  <rect width="1000" height="420" rx="24" fill="#f8faf2"/>
+  <text x="60" y="56" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="28" font-weight="700" fill="#242c12">A thought interface loop</text>
+  <text x="60" y="82" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="15" fill="#4c5c25">Intent becomes an output only after interpretation and review.</text>
+
+  <g id="connectors" fill="none" stroke="#5d702d" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)">
+    <path d="M 200 160 H 245"/>
+    <path d="M 465 160 H 510"/>
+    <path d="M 730 160 H 775"/>
+    <path d="M 860 202 V 238 H 620 V 268"/>
+    <path d="M 510 310 H 465"/>
+  </g>
+
+  <g id="nodes" font-family="Inter, ui-sans-serif, system-ui, sans-serif" filter="url(#shadow)">
+    <g id="intention">
+      <rect x="60" y="118" width="140" height="84" rx="14" fill="#ecf0df" stroke="#92a951" stroke-width="2"/>
+      <text x="82" y="151" font-size="12" font-weight="700" letter-spacing="1.2" fill="#5d702d">START</text>
+      <text x="82" y="178" font-size="18" font-weight="700" fill="#242c12">Intention</text>
+    </g>
+
+    <g id="signal">
+      <rect x="245" y="118" width="220" height="84" rx="14" fill="#ffffff" stroke="#d9e2bd" stroke-width="2"/>
+      <text x="267" y="151" font-size="12" font-weight="700" letter-spacing="1.2" fill="#5d702d">CAPTURE</text>
+      <text x="267" y="178" font-size="18" font-weight="700" fill="#242c12">Neural signal</text>
+    </g>
+
+    <g id="interpretation">
+      <rect x="510" y="118" width="220" height="84" rx="14" fill="#d9e2bd" stroke="#92a951" stroke-width="2"/>
+      <text x="532" y="151" font-size="12" font-weight="700" letter-spacing="1.2" fill="#4c5c25">INTERPRET</text>
+      <text x="532" y="178" font-size="18" font-weight="700" fill="#242c12">Meaning</text>
+    </g>
+
+    <g id="representation">
+      <rect x="775" y="118" width="170" height="84" rx="14" fill="#ecf0df" stroke="#92a951" stroke-width="2"/>
+      <text x="797" y="151" font-size="12" font-weight="700" letter-spacing="1.2" fill="#5d702d">CREATE</text>
+      <text x="797" y="178" font-size="18" font-weight="700" fill="#242c12">Output</text>
+    </g>
+
+    <g id="review">
+      <rect x="510" y="268" width="220" height="84" rx="14" fill="#ffffff" stroke="#d9e2bd" stroke-width="2"/>
+      <text x="532" y="301" font-size="12" font-weight="700" letter-spacing="1.2" fill="#5d702d">CHECK</text>
+      <text x="532" y="328" font-size="18" font-weight="700" fill="#242c12">Review</text>
+    </g>
+
+    <g id="action">
+      <rect x="245" y="268" width="220" height="84" rx="14" fill="#d9e2bd" stroke="#92a951" stroke-width="2"/>
+      <text x="267" y="301" font-size="12" font-weight="700" letter-spacing="1.2" fill="#4c5c25">COMMIT</text>
+      <text x="267" y="328" font-size="18" font-weight="700" fill="#242c12">Action</text>
+    </g>
+  </g>
+</svg>
