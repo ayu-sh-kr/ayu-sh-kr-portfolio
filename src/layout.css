@@ -82,6 +82,33 @@
 .layout-section-end { padding-block: var(--layout-section-md) var(--layout-section-lg); }
 .layout-section-flush { padding-block-start: 0; }
 
+/* Shared grammar for scroll-pinned route heroes. The content owns its height;
+ * the wrapper owns scroll travel and the cue remains a real grid row. */
+.layout-hero-pin-wrap {
+  position: relative;
+  block-size: 118svh;
+}
+
+.layout-hero-pin-wrap--long { block-size: 140svh; }
+
+.layout-hero-pin-stage {
+  position: sticky;
+  inset-block-start: 0;
+  display: grid;
+  grid-template-rows: auto auto;
+  align-content: center;
+  justify-items: center;
+  gap: var(--layout-space-5);
+  min-block-size: 100svh;
+  padding-block: var(--layout-space-8) var(--layout-space-6);
+  overflow: clip;
+}
+
+.layout-hero-pin-stage > scroll-hint {
+  position: static;
+  transform: none;
+}
+
 .layout-stack { --layout-stack-gap: var(--layout-space-4); }
 .layout-stack > * + * { margin-block-start: var(--layout-stack-gap); }
 .layout-stack-xs { --layout-stack-gap: var(--layout-space-2); }
