@@ -1,0 +1,4 @@
+interface:
+  display_name: "Blog SVG Diagrams"
+  short_description: "Compact SVG diagrams for blog explanations"
+  default_prompt: "Use $blog-svg-diagrams to create or repair a compact, theme-matched SVG for a blog article."
