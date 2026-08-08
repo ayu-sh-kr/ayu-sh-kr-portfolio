@@ -66,8 +66,8 @@ export class CoffeeHeroComponent extends BaseElement {
     const content = coffeeContent.hero;
 
     return HTML`
-      <div id="coffee-hero-wrap">
-        <section id="coffee-hero-stage" aria-labelledby="coffee-hero-title">
+      <div id="coffee-hero-wrap" class="layout-hero-pin-wrap layout-hero-pin-wrap--long">
+        <section id="coffee-hero-stage" class="layout-hero-pin-stage" aria-labelledby="coffee-hero-title">
           <div id="coffee-hero-inner">
             <p class="coffee-eyebrow">${content.eyebrow}</p>
             <h1 id="coffee-hero-title" class="type-display coffee-hero-title mt-5">

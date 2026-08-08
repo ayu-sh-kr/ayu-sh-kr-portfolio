@@ -1,19 +1,6 @@
 coffee-hero { display: block; }
 
-#coffee-hero-wrap { position: relative; block-size: 140svh; }
-#coffee-hero-stage {
-  position: sticky;
-  inset-block-start: 0;
-  display: grid;
-  grid-template-rows: auto auto;
-  align-content: center;
-  justify-items: center;
-  gap: var(--layout-space-5);
-  min-block-size: 100svh;
-  padding-block: var(--layout-space-8) var(--layout-space-6);
-  overflow: clip;
-  text-align: center;
-}
+#coffee-hero-stage { text-align: center; }
 #coffee-hero-inner { inline-size: 100%; max-inline-size: var(--layout-page-max); padding-inline: var(--layout-gutter); will-change: opacity, transform; }
 .coffee-eyebrow { color: var(--primary-color-strong); font-size: var(--type-eyebrow-size); font-weight: var(--type-eyebrow-weight); letter-spacing: var(--type-eyebrow-tracking); text-transform: uppercase; }
 .coffee-hero-title span { color: var(--primary-color); }
@@ -24,7 +11,6 @@ coffee-hero { display: block; }
 .coffee-accent-button:hover { background: var(--primary-color-hover); transform: translateY(-2px); }
 .coffee-ghost-button { border: 1px solid var(--border-color); color: var(--foreground-color); }
 .coffee-ghost-button:hover { border-color: var(--foreground-color); transform: translateY(-2px); }
-.coffee-scroll-hint { position: static; transform: none; }
 .coffee-scroll-hint::after { display: block; inline-size: 1px; block-size: var(--layout-space-6); margin-block-start: var(--layout-space-2); margin-inline: auto; background: linear-gradient(var(--muted-color), transparent); content: ""; animation: coffee-drip 1.8s ease-in-out infinite; }
 @keyframes coffee-drip { 0% { transform: scaleY(0); transform-origin: top; } 50% { transform: scaleY(1); transform-origin: top; } 51% { transform-origin: bottom; } 100% { transform: scaleY(0); transform-origin: bottom; } }
-@media (prefers-reduced-motion: reduce) { #coffee-hero-wrap { block-size: auto; } #coffee-hero-stage { position: static; min-block-size: 80svh; } #coffee-hero-inner { transform: none !important; } .coffee-scroll-hint { display: none; } .coffee-accent-button, .coffee-ghost-button { transition: none; } }
+@media (prefers-reduced-motion: reduce) { #coffee-hero-inner { transform: none !important; } .coffee-scroll-hint { display: none; } .coffee-accent-button, .coffee-ghost-button { transition: none; } }
