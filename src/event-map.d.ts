@@ -2,7 +2,7 @@ export {};
 
 import type { ActionButtonSettlement, ActionButtonTrigger } from "@app/events/action-button.events.ts";
 import type { AnalyticsTrackEvent } from "@app/events/analytics.events.ts";
-import type { BlogFilterChange, BlogIndexData, BlogMarkdownSource } from "@app/events/blog.events.ts";
+import type { BlogFilterChange, BlogMarkdownSource } from "@app/events/blog.events.ts";
 import type { CoffeeOrderQuantitySelection, CoffeeOrderSizeSelection } from "@app/events/coffee.events.ts";
 import type { PricingStartProjectField, PricingStartProjectMode } from "@app/events/pricing.events.ts";
 import type { PrivacyMarkdownRender, PrivacyMarkdownSource } from "@app/events/privacy.events.ts";
@@ -23,7 +23,6 @@ declare module "@ayu-sh-kr/dota-wrap/event" {
     "app:initialized": null;
     "attribute-changed": any;
     "blog:filter-change": BlogFilterChange;
-    "blog:index-data": BlogIndexData;
     "blog:markdown-source": BlogMarkdownSource;
     "coffee:order-complete": null;
     "coffee:order-quantity": CoffeeOrderQuantitySelection;
