@@ -76,8 +76,8 @@ export class BlogHeroComponent extends BaseElement {
   /** Returns the static blog introduction markup. */
   render(): string {
     return `
-      <div class="blog-hero-wrap" data-blog-hero-wrap>
-        <section class="blog-hero-stage" aria-labelledby="blog-title">
+      <div class="layout-hero-pin-wrap blog-hero-wrap" data-blog-hero-wrap>
+        <section class="layout-hero-pin-stage blog-hero-stage" aria-labelledby="blog-title">
           <div class="blog-hero-inner" data-blog-hero-inner>
             <p class="blog-eyebrow">${blogIndexContent.hero.eyebrow}</p>
             <h1 id="blog-title" class="blog-display">${blogIndexContent.hero.titleBeforeAccent} <span>${blogIndexContent.hero.titleAccent}</span></h1>
