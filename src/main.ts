@@ -3,16 +3,16 @@ import './style.css'
 import { AppComponent } from "@app/app.component.ts";
 import { ErrorPage, HomePage, OfflinePage } from "@app/pages";
 import { AccordionComponent, IconsComponent, PopoverComponent } from "@ayu-sh-kr/dota-ui";
-import {DefaultApplicationEventListenerRegistry, initializeApp} from "@ayu-sh-kr/dota-wrap";
+import { DefaultApplicationEventListenerRegistry, initializeApp } from "@ayu-sh-kr/dota-wrap";
 import { Router, RouterService } from "@ayu-sh-kr/dota-wrap/router";
 import { ApplicationEventService } from "@ayu-sh-kr/dota-wrap/core";
+import { dotaHydration } from "@ayu-sh-kr/dota-wrap/ssr";
 import { registerPortfolioMarkdownTheme } from "@app/configs/markdown-theme.config.ts";
 import { AnalyticsEventListener } from "@app/service/analytics-event.listener.ts";
 import { AnalyticsSectionTracker } from "@app/service/analytics-section-tracker.service.ts";
 import { ActionButtonDispatcher } from "@app/service/action-button-dispatcher.service.ts";
 import { RouterUtils } from "@app/utils/router.utils.ts";
 import { applyRouteMetadata } from "@app/utils/seo.utils.ts";
-import {preserveInitialStaticRoute} from "@app/utils/ssg-hydration.utils.ts";
 import components from "virtual:dota-components";
 import { routeConfig } from "virtual:dota-routes";
 const applicationEventService = ApplicationEventService.getInstance();
@@ -37,7 +37,7 @@ export const applicationReady = initializeApp({
   errorRoute: { path: "/error", component: ErrorPage },
   defaultRoute: { path: "/", component: HomePage },
   root: AppComponent,
-  plugins: [preserveInitialStaticRoute],
+  plugins: [dotaHydration({ mismatch: "warn" })],
   globalHooks: {
     afterEach: [
       applyRouteMetadata,
