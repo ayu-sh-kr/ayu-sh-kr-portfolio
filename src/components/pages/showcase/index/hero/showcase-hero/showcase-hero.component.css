@@ -1,12 +1,6 @@
-#showcase-hero-wrap {
-  block-size: 118svh;
-}
-
-.showcase-hero-stage > scroll-hint { position: static; transform: none; }
-
 .showcase-hero-stage {
   justify-content: center;
-  padding-block: 7rem;
+  text-align: center;
 }
 
 #showcase-hero-inner {
@@ -25,12 +19,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  #showcase-hero-wrap {
-    block-size: auto;
-  }
-
   .showcase-hero-stage {
-    position: static;
-    min-block-size: 75svh;
+    padding-block: var(--layout-space-8) var(--layout-space-6);
   }
 }
