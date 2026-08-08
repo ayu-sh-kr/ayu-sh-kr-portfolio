@@ -2,23 +2,7 @@ pricing-hero {
   display: block;
 }
 
-#pricing-hero-wrap {
-  position: relative;
-  height: 118vh;
-  height: 118svh;
-}
-
 #pricing-hero-stage {
-  position: sticky;
-  inset-block-start: 0;
-  display: grid;
-  grid-template-rows: auto auto;
-  align-content: center;
-  justify-items: center;
-  gap: var(--layout-space-5);
-  min-block-size: 100svh;
-  padding-block: var(--layout-space-8) var(--layout-space-6);
-  overflow: clip;
   text-align: center;
 }
 
@@ -28,8 +12,6 @@ pricing-hero {
   padding-inline: var(--layout-gutter);
   will-change: opacity, transform;
 }
-
-#pricing-hero-stage > scroll-hint { position: static; transform: none; }
 
 .pricing-eyebrow {
 }
@@ -58,13 +40,8 @@ pricing-hero {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  #pricing-hero-wrap {
-    height: auto;
-  }
-
   #pricing-hero-stage {
-    position: static;
-    min-height: 80svh;
+    padding-block: var(--layout-space-8) var(--layout-space-6);
   }
 
   #pricing-hero-inner {

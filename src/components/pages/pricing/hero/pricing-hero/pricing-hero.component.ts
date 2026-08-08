@@ -60,8 +60,8 @@ export class PricingHeroComponent extends BaseElement {
     const content = pricingContent.hero;
 
     return HTML`
-      <div id="pricing-hero-wrap">
-        <section id="pricing-hero-stage" aria-labelledby="pricing-hero-title">
+      <div id="pricing-hero-wrap" class="layout-hero-pin-wrap">
+        <section id="pricing-hero-stage" class="layout-hero-pin-stage" aria-labelledby="pricing-hero-title">
           <div id="pricing-hero-inner">
             <p class="pricing-eyebrow">${content.eyebrow}</p>
             <h1 id="pricing-hero-title" class="pricing-display mt-5">
