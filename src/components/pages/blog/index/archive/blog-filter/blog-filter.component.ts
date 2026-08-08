@@ -1,12 +1,10 @@
 import {ApplicationEventService, BaseElement, BindEvent, Component, WindowListener} from "@ayu-sh-kr/dota-wrap/core";
 import {type ApplicationEvent, OnEvent} from "@ayu-sh-kr/dota-wrap/event";
-import {type BlogCategory} from "@app/configs/blogs.config.ts";
+import {getBlogPostsForIndex, type BlogCategory, type BlogPost} from "@app/configs/blogs.config.ts";
 import {blogFilters, blogIndexContent} from "@app/data/blog-content.ts";
 import {
   BLOG_FILTER_CHANGE_EVENT,
-  BLOG_INDEX_DATA_EVENT,
   type BlogFilterChange,
-  type BlogIndexData,
 } from "@app/events/blog.events.ts";
 
 /** Reads and validates the current filter hash, falling back to the full catalog. */
@@ -22,7 +20,7 @@ const categoryFromHash = (): BlogCategory | "all" => {
 
 /**
  * Renders category controls and publishes filter changes for the highlighted card
- * and list. It receives the catalog event only to calculate the visible post count.
+ * and list. It reads the static authored catalog directly to calculate the visible post count.
  *
  * Selector: `blog-filter`.
  */
@@ -32,18 +30,11 @@ const categoryFromHash = (): BlogCategory | "all" => {
 })
 export class BlogFilterComponent extends BaseElement {
   private readonly publisher = ApplicationEventService.getInstance().getPublisher();
-  private posts: BlogIndexData["posts"] = [];
+  private readonly posts: readonly BlogPost[] = getBlogPostsForIndex();
   private currentFilter: BlogCategory | "all" = categoryFromHash();
 
   constructor() {
     super();
-  }
-
-  /** Stores the catalog snapshot used to calculate the count beside the pills. */
-  @OnEvent(BLOG_INDEX_DATA_EVENT)
-  receiveBlogData(event: ApplicationEvent<typeof BLOG_INDEX_DATA_EVENT>): void {
-    this.posts = event.data.posts;
-    this.updateHTML();
   }
 
   /** Applies filter events published by this control or the list's empty-state reset. */
