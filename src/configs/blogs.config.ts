@@ -39,6 +39,38 @@ export type BlogPost = {
  */
 export const blogPosts: readonly BlogPost[] = [
   {
+    slug: "telepathy-with-ai",
+    date: "2026-08-08",
+    writer: siteIdentity.name,
+    header: "AI Telepathy: How BCIs Turn Thought into Text",
+    description:
+      "What AI telepathy means, how brain-computer interfaces decode thought to text, and where synthetic telepathy, neural decoding, and brain-to-brain communication remain experimental.",
+    keywords: [
+      "AI telepathy",
+      "what is AI telepathy",
+      "telepathy with AI",
+      "synthetic telepathy",
+      "synthetic telepathy explained",
+      "brain-computer interface",
+      "brain computer interface AI",
+      "BCI thought to text",
+      "thought to text",
+      "thought-to-text AI",
+      "brain to text",
+      "neural decoding",
+      "inner speech decoding",
+      "imagined speech to text",
+      "neural interfaces",
+      "thought-controlled AI",
+      "brain-to-brain communication",
+      "brain-to-brain interface",
+      "AI human-computer interaction",
+    ],
+    category: "news",
+    source: "/blogs/news/Telepathy-With-AI.md",
+    minutes: 20,
+  },
+  {
     slug: "ssr-vs-ssg-rendering-hydration-dom",
     date: "2026-08-07",
     writer: siteIdentity.name,
