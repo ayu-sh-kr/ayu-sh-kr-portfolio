@@ -1,15 +1,11 @@
-import {ApplicationEventService, BaseElement, Component} from "@ayu-sh-kr/dota-wrap/core";
-import {OnEvent} from "@ayu-sh-kr/dota-wrap/event";
-import {getBlogPostsForIndex} from "@app/configs/blogs.config.ts";
-import {BLOG_INDEX_DATA_EVENT, type BlogIndexData} from "@app/events/blog.events.ts";
+import {BaseElement, Component} from "@ayu-sh-kr/dota-wrap/core";
 
 /**
  * Composes the blog index sections in their reading order.
  *
- * This shell publishes the newest-first configured catalog after its children
- * have registered their listeners. The grouped list section then distributes no
- * props: filter, highlighted-card, and row components receive the catalog through
- * application events and remain independently replaceable.
+ * Its children read the shared authored catalog directly. This keeps the static
+ * HTML and the hydrated component state identical, without depending on a
+ * one-time application event that hydration can miss.
  *
  * Selector: `blog-index`.
  */
@@ -18,19 +14,8 @@ import {BLOG_INDEX_DATA_EVENT, type BlogIndexData} from "@app/events/blog.events
   shadow: false,
 })
 export class BlogIndexComponent extends BaseElement {
-  private readonly publisher = ApplicationEventService.getInstance().getPublisher();
-
   constructor() {
     super();
-  }
-
-  /** Publishes the newest-first catalog after the composed index children are ready to receive it. */
-  @OnEvent("connected", true)
-  publishBlogData(): void {
-    void this.publisher.publishAsync({
-      name: BLOG_INDEX_DATA_EVENT,
-      data: {posts: getBlogPostsForIndex()} satisfies BlogIndexData,
-    });
   }
 
   /** Returns the three landing sections in their reading order. */
