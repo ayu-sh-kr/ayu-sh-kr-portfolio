@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 980" role="img" aria-labelledby="diagram-title diagram-description">
+  <title id="diagram-title">BCI signal flow</title>
+  <desc id="diagram-description">A simple vertical flow from neural activity through signal acquisition, filtering, AI decoding, output, and user feedback.</desc>
+
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b"/>
+    </marker>
+  </defs>
+
+  <rect width="800" height="980" rx="24" fill="#f8fafc"/>
+  <text x="400" y="62" text-anchor="middle" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="28" font-weight="700" fill="#172554">How a BCI works</text>
+
+  <g id="flow" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="20" font-weight="600" text-anchor="middle">
+    <path d="M 400 168 V 214" stroke="#64748b" stroke-width="3" marker-end="url(#arrow)"/>
+    <path d="M 400 300 V 346" stroke="#64748b" stroke-width="3" marker-end="url(#arrow)"/>
+    <path d="M 400 432 V 478" stroke="#64748b" stroke-width="3" marker-end="url(#arrow)"/>
+    <path d="M 400 564 V 610" stroke="#64748b" stroke-width="3" marker-end="url(#arrow)"/>
+    <path d="M 400 696 V 742" stroke="#64748b" stroke-width="3" marker-end="url(#arrow)"/>
+
+    <g id="neural-activity">
+      <rect x="150" y="92" width="500" height="76" rx="14" fill="#dbeafe" stroke="#60a5fa" stroke-width="2"/>
+      <text x="400" y="139" fill="#1e3a8a">Neural activity</text>
+    </g>
+
+    <g id="signal-acquisition">
+      <rect x="150" y="224" width="500" height="76" rx="14" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+      <text x="400" y="271" fill="#334155">Signal acquisition</text>
+    </g>
+
+    <g id="signal-processing">
+      <rect x="150" y="356" width="500" height="76" rx="14" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+      <text x="400" y="403" fill="#334155">Filtering and feature extraction</text>
+    </g>
+
+    <g id="ai-decoding">
+      <rect x="150" y="488" width="500" height="76" rx="14" fill="#ede9fe" stroke="#a78bfa" stroke-width="2"/>
+      <text x="400" y="535" fill="#5b21b6">AI decoding</text>
+    </g>
+
+    <g id="output">
+      <rect x="150" y="620" width="500" height="76" rx="14" fill="#dcfce7" stroke="#86efac" stroke-width="2"/>
+      <text x="400" y="667" fill="#166534">Text, movement, sound, or output</text>
+    </g>
+
+    <g id="feedback">
+      <rect x="150" y="752" width="500" height="76" rx="14" fill="#dcfce7" stroke="#86efac" stroke-width="2"/>
+      <text x="400" y="799" fill="#166534">User feedback and adaptation</text>
+    </g>
+  </g>
+</svg>
