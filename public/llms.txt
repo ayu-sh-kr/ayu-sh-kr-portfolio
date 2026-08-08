@@ -23,6 +23,7 @@
 
 ## Recent technical articles
 
+- [AI Telepathy: How BCIs Turn Thought into Text](https://ayu-sh-kr.com/blog/telepathy-with-ai/)
 - [AWS AppConfig Spring Boot Integration](https://ayu-sh-kr.com/blog/aws-app-config-spring-boot-integration)
 - [PostgreSQL access control](https://ayu-sh-kr.com/blog/postgresql-access-control)
 - [Distributed locks in Redis](https://ayu-sh-kr.com/blog/distributed-locks-redis)
