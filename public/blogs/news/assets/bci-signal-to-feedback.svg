@@ -1,51 +1,63 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 980" role="img" aria-labelledby="diagram-title diagram-description">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 650" role="img" aria-labelledby="diagram-title diagram-description">
   <title id="diagram-title">BCI signal flow</title>
-  <desc id="diagram-description">A simple vertical flow from neural activity through signal acquisition, filtering, AI decoding, output, and user feedback.</desc>
+  <desc id="diagram-description">A compact two-column flow from neural activity through signal acquisition, filtering, AI decoding, output, and user feedback.</desc>
 
   <defs>
     <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto">
-      <path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b"/>
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#5d702d"/>
     </marker>
+    <filter id="shadow" x="-10%" y="-20%" width="120%" height="150%">
+      <feDropShadow dx="0" dy="5" stdDeviation="7" flood-color="#242c12" flood-opacity="0.10"/>
+    </filter>
   </defs>
 
-  <rect width="800" height="980" rx="24" fill="#f8fafc"/>
-  <text x="400" y="62" text-anchor="middle" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="28" font-weight="700" fill="#172554">How a BCI works</text>
+  <rect width="1000" height="650" rx="24" fill="#f8faf2"/>
+  <text x="60" y="56" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="28" font-weight="700" fill="#242c12">How a BCI turns signals into feedback</text>
+  <text x="60" y="82" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="15" fill="#4c5c25">Capture → prepare → decode → represent → adapt</text>
 
-  <g id="flow" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="20" font-weight="600" text-anchor="middle">
-    <path d="M 400 168 V 214" stroke="#64748b" stroke-width="3" marker-end="url(#arrow)"/>
-    <path d="M 400 300 V 346" stroke="#64748b" stroke-width="3" marker-end="url(#arrow)"/>
-    <path d="M 400 432 V 478" stroke="#64748b" stroke-width="3" marker-end="url(#arrow)"/>
-    <path d="M 400 564 V 610" stroke="#64748b" stroke-width="3" marker-end="url(#arrow)"/>
-    <path d="M 400 696 V 742" stroke="#64748b" stroke-width="3" marker-end="url(#arrow)"/>
+  <g id="connectors" fill="none" stroke="#5d702d" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)">
+    <path d="M 440 139 H 560"/>
+    <path d="M 750 178 V 270"/>
+    <path d="M 560 309 H 440"/>
+    <path d="M 250 348 V 440"/>
+    <path d="M 440 479 H 560"/>
+  </g>
 
+  <g id="nodes" font-family="Inter, ui-sans-serif, system-ui, sans-serif" filter="url(#shadow)">
     <g id="neural-activity">
-      <rect x="150" y="92" width="500" height="76" rx="14" fill="#dbeafe" stroke="#60a5fa" stroke-width="2"/>
-      <text x="400" y="139" fill="#1e3a8a">Neural activity</text>
+      <rect x="60" y="100" width="380" height="78" rx="14" fill="#ecf0df" stroke="#92a951" stroke-width="2"/>
+      <text x="86" y="132" font-size="12" font-weight="700" letter-spacing="1.4" fill="#5d702d">INPUT</text>
+      <text x="86" y="158" font-size="19" font-weight="700" fill="#242c12">Neural activity</text>
     </g>
 
     <g id="signal-acquisition">
-      <rect x="150" y="224" width="500" height="76" rx="14" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
-      <text x="400" y="271" fill="#334155">Signal acquisition</text>
+      <rect x="560" y="100" width="380" height="78" rx="14" fill="#ffffff" stroke="#d9e2bd" stroke-width="2"/>
+      <text x="586" y="132" font-size="12" font-weight="700" letter-spacing="1.4" fill="#5d702d">CAPTURE</text>
+      <text x="586" y="158" font-size="19" font-weight="700" fill="#242c12">Signal acquisition</text>
     </g>
 
     <g id="signal-processing">
-      <rect x="150" y="356" width="500" height="76" rx="14" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
-      <text x="400" y="403" fill="#334155">Filtering and feature extraction</text>
+      <rect x="560" y="270" width="380" height="78" rx="14" fill="#ffffff" stroke="#d9e2bd" stroke-width="2"/>
+      <text x="586" y="302" font-size="12" font-weight="700" letter-spacing="1.4" fill="#5d702d">PREPARE</text>
+      <text x="586" y="328" font-size="19" font-weight="700" fill="#242c12">Filter and extract features</text>
     </g>
 
     <g id="ai-decoding">
-      <rect x="150" y="488" width="500" height="76" rx="14" fill="#ede9fe" stroke="#a78bfa" stroke-width="2"/>
-      <text x="400" y="535" fill="#5b21b6">AI decoding</text>
+      <rect x="60" y="270" width="380" height="78" rx="14" fill="#d9e2bd" stroke="#92a951" stroke-width="2"/>
+      <text x="86" y="302" font-size="12" font-weight="700" letter-spacing="1.4" fill="#4c5c25">INTERPRET</text>
+      <text x="86" y="328" font-size="19" font-weight="700" fill="#242c12">AI decoding</text>
     </g>
 
     <g id="output">
-      <rect x="150" y="620" width="500" height="76" rx="14" fill="#dcfce7" stroke="#86efac" stroke-width="2"/>
-      <text x="400" y="667" fill="#166534">Text, movement, sound, or output</text>
+      <rect x="60" y="440" width="380" height="78" rx="14" fill="#ecf0df" stroke="#92a951" stroke-width="2"/>
+      <text x="86" y="472" font-size="12" font-weight="700" letter-spacing="1.4" fill="#5d702d">REPRESENT</text>
+      <text x="86" y="498" font-size="19" font-weight="700" fill="#242c12">Text, movement, or sound</text>
     </g>
 
     <g id="feedback">
-      <rect x="150" y="752" width="500" height="76" rx="14" fill="#dcfce7" stroke="#86efac" stroke-width="2"/>
-      <text x="400" y="799" fill="#166534">User feedback and adaptation</text>
+      <rect x="560" y="440" width="380" height="78" rx="14" fill="#d9e2bd" stroke="#92a951" stroke-width="2"/>
+      <text x="586" y="472" font-size="12" font-weight="700" letter-spacing="1.4" fill="#4c5c25">ADAPT</text>
+      <text x="586" y="498" font-size="19" font-weight="700" fill="#242c12">User feedback and adaptation</text>
     </g>
   </g>
 </svg>
