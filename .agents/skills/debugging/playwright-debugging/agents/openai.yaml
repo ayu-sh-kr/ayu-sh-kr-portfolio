@@ -1,0 +1,4 @@
+interface:
+  display_name: "Playwright Debugging"
+  short_description: "Debug Dota UI in Microsoft Edge"
+  default_prompt: "Use $playwright-debugging to debug this Dota UI in Microsoft Edge."
