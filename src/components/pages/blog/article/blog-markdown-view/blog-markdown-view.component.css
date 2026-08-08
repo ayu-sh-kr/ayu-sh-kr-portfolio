@@ -53,6 +53,9 @@ blog-markdown-view {
 
 .blog-prose a {
   color: var(--blog-accent-deep);
+  text-decoration-line: underline;
+  text-decoration-color: var(--blog-accent);
+  text-decoration-thickness: 1px;
   text-underline-offset: 0.18em;
   transition: text-decoration-color 180ms ease;
 }
