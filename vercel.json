@@ -64,6 +64,11 @@
       "permanent": true
     },
     {
+      "source": "/blog/telepathy-with-ai",
+      "destination": "/blog/telepathy-with-ai/",
+      "permanent": true
+    },
+    {
       "source": "/coffee",
       "destination": "/coffee/",
       "permanent": true
