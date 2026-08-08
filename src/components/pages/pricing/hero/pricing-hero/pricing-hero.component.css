@@ -10,22 +10,26 @@ pricing-hero {
 
 #pricing-hero-stage {
   position: sticky;
-  top: 0;
-  display: flex;
-  height: 100vh;
-  height: 100svh;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
+  inset-block-start: 0;
+  display: grid;
+  grid-template-rows: auto auto;
+  align-content: center;
+  justify-items: center;
+  gap: var(--layout-space-5);
+  min-block-size: 100svh;
+  padding-block: var(--layout-space-8) var(--layout-space-6);
+  overflow: clip;
   text-align: center;
 }
 
 #pricing-hero-inner {
-  width: 100%;
-  max-width: 60rem;
-  padding-inline: 1.25rem;
+  inline-size: 100%;
+  max-inline-size: var(--layout-content-max);
+  padding-inline: var(--layout-gutter);
   will-change: opacity, transform;
 }
+
+#pricing-hero-stage > scroll-hint { position: static; transform: none; }
 
 .pricing-eyebrow {
 }

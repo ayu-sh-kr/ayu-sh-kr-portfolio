@@ -7,13 +7,17 @@
 .blog-hero-stage {
   position: sticky;
   inset-block-start: 0;
-  display: flex;
-  block-size: 100vh;
-  block-size: 100svh;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
+  display: grid;
+  grid-template-rows: auto auto;
+  align-content: center;
+  justify-items: center;
+  gap: var(--layout-space-5);
+  min-block-size: 100svh;
+  padding-block: var(--layout-space-8) var(--layout-space-6);
+  overflow: clip;
 }
+
+.blog-hero-stage > scroll-hint { position: static; transform: none; }
 
 .blog-hero-inner {
   inline-size: min(100% - 3rem, 56rem);

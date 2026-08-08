@@ -10,17 +10,21 @@
 .showcase-pin-stage {
   position: sticky;
   inset-block-start: 0;
-  display: flex;
+  display: grid;
+  grid-template-rows: auto auto;
+  align-content: center;
+  justify-items: center;
+  gap: var(--layout-space-5);
   min-block-size: 100svh;
-  align-items: center;
-  overflow: hidden;
+  padding-block: var(--layout-space-8) var(--layout-space-6);
+  overflow: clip;
 }
 
 .showcase-eyebrow {
   color: var(--primary-color-strong);
-  font-size: 0.8125rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
+  font-size: var(--type-eyebrow-size);
+  font-weight: var(--type-eyebrow-weight);
+  letter-spacing: var(--type-eyebrow-tracking);
   line-height: 1.2;
   text-transform: uppercase;
 }
@@ -34,7 +38,9 @@
 }
 
 .showcase-display {
-  font-size: clamp(2.75rem, 8vw, 7rem);
+  font-size: var(--type-display-size);
+  letter-spacing: var(--type-display-tracking);
+  line-height: var(--type-display-leading);
 }
 
 .showcase-title {

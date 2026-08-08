@@ -8,10 +8,17 @@ portfolio-hero {
 }
 
 .hero-stage {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  grid-template-rows: auto auto;
+  align-content: center;
+  justify-items: center;
+  gap: var(--layout-space-5);
+  min-block-size: 100svh;
+  padding-block: var(--layout-space-8) var(--layout-space-6);
+  overflow: clip;
 }
+
+.hero-stage > scroll-hint { position: static; transform: none; }
 
 @media (prefers-reduced-motion: reduce) {
   .hero-pin-wrap {

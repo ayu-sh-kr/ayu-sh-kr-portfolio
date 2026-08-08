@@ -2,6 +2,8 @@
   block-size: 118svh;
 }
 
+.showcase-hero-stage > scroll-hint { position: static; transform: none; }
+
 .showcase-hero-stage {
   justify-content: center;
   padding-block: 7rem;
