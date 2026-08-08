@@ -2,31 +2,10 @@ portfolio-hero {
   display: block;
 }
 
-.hero-pin-wrap {
-  height: 118vh;
-  height: 118svh;
-}
-
-.hero-stage {
-  display: grid;
-  grid-template-rows: auto auto;
-  align-content: center;
-  justify-items: center;
-  gap: var(--layout-space-5);
-  min-block-size: 100svh;
-  padding-block: var(--layout-space-8) var(--layout-space-6);
-  overflow: clip;
-}
-
-.hero-stage > scroll-hint { position: static; transform: none; }
+.hero-stage { text-align: center; }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-pin-wrap {
-    height: auto;
-  }
-
   .hero-stage {
-    min-height: 100svh;
     padding-block: 14vh;
   }
 
