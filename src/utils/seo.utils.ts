@@ -30,6 +30,7 @@ export const toSEO = (content: PageSeoContent): SEO => ({
   title: content.title,
   description: content.description,
   keywords: [...content.keywords],
+  favicon: "/favicon.svg",
   og: {
     title: content.ogTitle,
     description: content.ogDescription,

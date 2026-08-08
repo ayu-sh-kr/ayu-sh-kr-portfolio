@@ -42,7 +42,7 @@ export const blogPosts: readonly BlogPost[] = [
     slug: "telepathy-with-ai",
     date: "2026-08-08",
     writer: siteIdentity.name,
-    header: "AI Telepathy: How BCIs Turn Imagination into AI Output",
+    header: "AI Telepathy Explained: Brain-Computer Interfaces and Human-AI Communication",
     description:
       "Explore AI telepathy, brain-computer interfaces, invasive and non-invasive BCI, thought-to-text, synthetic telepathy, and how neural signals could connect human imagination to AI-generated text, images, and code.",
     keywords: [

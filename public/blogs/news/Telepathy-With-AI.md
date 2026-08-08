@@ -1,4 +1,4 @@
-# AI Telepathy: How BCIs Turn Imagination into AI Output
+# AI Telepathy Explained: Brain-Computer Interfaces and Human-AI Communication
 
 Imagine giving an AI system the shape of an idea before you have found the
 words for it: a scene, a spatial relationship, a mood, or the direction of a
