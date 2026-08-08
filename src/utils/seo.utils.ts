@@ -102,7 +102,10 @@ const getAnalyticsPage = (pathname: string): {page: AnalyticsPage; slug?: string
  * @param context - Completed route context supplied by the Dota router.
  */
 export const applyRouteMetadata = (context: NavigationContext): void => {
-  const canonicalUrl = new URL(context.url.pathname, SITE_ORIGIN).href;
+  const canonicalPath = context.url.pathname === "/" || context.url.pathname.endsWith("/")
+    ? context.url.pathname
+    : `${context.url.pathname}/`;
+  const canonicalUrl = new URL(canonicalPath, SITE_ORIGIN).href;
   const canonicalLink = document.head.querySelector<HTMLLinkElement>('link[rel="canonical"]')
     ?? document.head.appendChild(document.createElement("link"));
   canonicalLink.rel = "canonical";
