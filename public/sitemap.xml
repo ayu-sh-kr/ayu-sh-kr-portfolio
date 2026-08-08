@@ -4,104 +4,112 @@
         <loc>https://ayu-sh-kr.com/</loc>
     </url>
     <url>
-        <loc>https://ayu-sh-kr.com/blog</loc>
+        <loc>https://ayu-sh-kr.com/blog/</loc>
     </url>
     <url>
-        <loc>https://ayu-sh-kr.com/blog/aws-app-config-spring-boot-integration</loc>
+        <loc>https://ayu-sh-kr.com/blog/telepathy-with-ai/</loc>
+        <lastmod>2026-08-08</lastmod>
+    </url>
+    <url>
+        <loc>https://ayu-sh-kr.com/blog/ssr-vs-ssg-rendering-hydration-dom/</loc>
+        <lastmod>2026-08-07</lastmod>
+    </url>
+    <url>
+        <loc>https://ayu-sh-kr.com/blog/aws-app-config-spring-boot-integration/</loc>
         <lastmod>2026-08-04</lastmod>
     </url>
     <url>
-        <loc>https://ayu-sh-kr.com/blog/postgresql-access-control</loc>
+        <loc>https://ayu-sh-kr.com/blog/postgresql-access-control/</loc>
         <lastmod>2026-08-02</lastmod>
     </url>
     <url>
-        <loc>https://ayu-sh-kr.com/blog/distributed-locks-redis</loc>
+        <loc>https://ayu-sh-kr.com/blog/distributed-locks-redis/</loc>
         <lastmod>2026-08-04</lastmod>
     </url>
     <url>
-        <loc>https://ayu-sh-kr.com/blog/rate-limiting-token-bucket-spring-boot</loc>
+        <loc>https://ayu-sh-kr.com/blog/rate-limiting-token-bucket-spring-boot/</loc>
         <lastmod>2026-07-02</lastmod>
     </url>
     <url>
-        <loc>https://ayu-sh-kr.com/blog/distributed-monolith-extra-invoices</loc>
+        <loc>https://ayu-sh-kr.com/blog/distributed-monolith-extra-invoices/</loc>
         <lastmod>2026-08-04</lastmod>
     </url>
     <url>
-        <loc>https://ayu-sh-kr.com/blog/lambda-pricing-infra-alone</loc>
+        <loc>https://ayu-sh-kr.com/blog/lambda-pricing-infra-alone/</loc>
         <lastmod>2026-08-04</lastmod>
     </url>
     <url>
-        <loc>https://ayu-sh-kr.com/blog/business-logic-auth-middleware</loc>
+        <loc>https://ayu-sh-kr.com/blog/business-logic-auth-middleware/</loc>
         <lastmod>2026-08-04</lastmod>
     </url>
     <url>
-        <loc>https://ayu-sh-kr.com/blog/eventbridge-scheduler-quirks</loc>
+        <loc>https://ayu-sh-kr.com/blog/eventbridge-scheduler-quirks/</loc>
         <lastmod>2026-08-04</lastmod>
     </url>
     <url>
-        <loc>https://ayu-sh-kr.com/showcase</loc>
+        <loc>https://ayu-sh-kr.com/showcase/</loc>
     </url>
     <url>
-        <loc>https://ayu-sh-kr.com/showcase/dota-workspace</loc>
+        <loc>https://ayu-sh-kr.com/showcase/dota-workspace/</loc>
     </url>
     <url>
-        <loc>https://ayu-sh-kr.com/showcase/restaurant-oms</loc>
+        <loc>https://ayu-sh-kr.com/showcase/restaurant-oms/</loc>
     </url>
     <url>
-        <loc>https://ayu-sh-kr.com/showcase/sacrena</loc>
+        <loc>https://ayu-sh-kr.com/showcase/sacrena/</loc>
     </url>
     <url>
-        <loc>https://ayu-sh-kr.com/showcase/indiknots</loc>
+        <loc>https://ayu-sh-kr.com/showcase/indiknots/</loc>
     </url>
     <url>
-        <loc>https://ayu-sh-kr.com/showcase/jalans</loc>
+        <loc>https://ayu-sh-kr.com/showcase/jalans/</loc>
     </url>
     <url>
-        <loc>https://ayu-sh-kr.com/showcase/dota-wrap</loc>
+        <loc>https://ayu-sh-kr.com/showcase/dota-wrap/</loc>
     </url>
     <url>
-        <loc>https://ayu-sh-kr.com/showcase/event-pipeline</loc>
+        <loc>https://ayu-sh-kr.com/showcase/event-pipeline/</loc>
     </url>
     <url>
-        <loc>https://ayu-sh-kr.com/showcase/dota-rest</loc>
+        <loc>https://ayu-sh-kr.com/showcase/dota-rest/</loc>
     </url>
     <url>
-        <loc>https://ayu-sh-kr.com/pricing</loc>
+        <loc>https://ayu-sh-kr.com/pricing/</loc>
     </url>
     <url>
-        <loc>https://ayu-sh-kr.com/coffee</loc>
+        <loc>https://ayu-sh-kr.com/coffee/</loc>
     </url>
     <url>
-        <loc>https://ayu-sh-kr.com/support</loc>
+        <loc>https://ayu-sh-kr.com/support/</loc>
     </url>
     <url>
-        <loc>https://ayu-sh-kr.com/design</loc>
+        <loc>https://ayu-sh-kr.com/design/</loc>
     </url>
     <url>
-        <loc>https://ayu-sh-kr.com/design/typography</loc>
+        <loc>https://ayu-sh-kr.com/design/typography/</loc>
     </url>
     <url>
-        <loc>https://ayu-sh-kr.com/design/color</loc>
+        <loc>https://ayu-sh-kr.com/design/color/</loc>
     </url>
     <url>
-        <loc>https://ayu-sh-kr.com/design/element</loc>
+        <loc>https://ayu-sh-kr.com/design/element/</loc>
     </url>
     <url>
-        <loc>https://ayu-sh-kr.com/design/layout</loc>
+        <loc>https://ayu-sh-kr.com/design/layout/</loc>
     </url>
     <url>
-        <loc>https://ayu-sh-kr.com/design/alert</loc>
+        <loc>https://ayu-sh-kr.com/design/alert/</loc>
     </url>
     <url>
-        <loc>https://ayu-sh-kr.com/design/toast</loc>
+        <loc>https://ayu-sh-kr.com/design/toast/</loc>
     </url>
     <url>
-        <loc>https://ayu-sh-kr.com/design/interaction</loc>
+        <loc>https://ayu-sh-kr.com/design/interaction/</loc>
     </url>
     <url>
-        <loc>https://ayu-sh-kr.com/legal/privacy</loc>
+        <loc>https://ayu-sh-kr.com/legal/privacy/</loc>
     </url>
     <url>
-        <loc>https://ayu-sh-kr.com/legal/terms</loc>
+        <loc>https://ayu-sh-kr.com/legal/terms/</loc>
     </url>
 </urlset>
