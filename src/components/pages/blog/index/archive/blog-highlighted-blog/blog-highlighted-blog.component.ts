@@ -1,8 +1,8 @@
 import {BaseElement, BindEvent, Component} from "@ayu-sh-kr/dota-wrap/core";
 import {type ApplicationEvent, OnEvent} from "@ayu-sh-kr/dota-wrap/event";
-import {formatBlogDate, getLatestBlogPost, labelForCategory, type BlogCategory, type BlogPost} from "@app/configs/blogs.config.ts";
+import {formatBlogDate, getBlogPostsForIndex, getLatestBlogPost, labelForCategory, type BlogCategory, type BlogPost} from "@app/configs/blogs.config.ts";
 import {blogIndexContent} from "@app/data/blog-content.ts";
-import {BLOG_FILTER_CHANGE_EVENT, BLOG_INDEX_DATA_EVENT} from "@app/events/blog.events.ts";
+import {BLOG_FILTER_CHANGE_EVENT} from "@app/events/blog.events.ts";
 import {escapeHtml} from "@app/utils/html.utils.ts";
 import {BlogRevealLifecycle} from "@app/utils/blog-reveal-lifecycle.utils.ts";
 import {publishAnalyticsEvent} from "@app/utils/analytics.utils.ts";
@@ -10,8 +10,8 @@ import {publishAnalyticsEvent} from "@app/utils/analytics.utils.ts";
 /**
  * Displays the newest configured post and hides it when its category is filtered out.
  *
- * It listens to catalog and filter events rather than receiving props from the
- * list shell. The shared reveal lifecycle handles the one card's entrance state.
+ * It derives the newest item from the shared authored catalog and listens only
+ * for filter changes. The shared reveal lifecycle handles the card's entrance state.
  *
  * Selector: `blog-highlighted-blog`.
  */
@@ -21,7 +21,7 @@ import {publishAnalyticsEvent} from "@app/utils/analytics.utils.ts";
 })
 export class BlogHighlightedBlogComponent extends BaseElement {
   private readonly revealLifecycle = new BlogRevealLifecycle(this);
-  private highlightedPost: BlogPost | null = null;
+  private readonly highlightedPost: BlogPost | null = getLatestBlogPost(getBlogPostsForIndex()) ?? null;
   private currentFilter: BlogCategory | "all" = "all";
 
   constructor() {
@@ -38,14 +38,6 @@ export class BlogHighlightedBlogComponent extends BaseElement {
   @OnEvent("disconnected", true)
   cleanupReveal(): void {
     this.revealLifecycle.disconnect();
-  }
-
-  /** Stores the newest configured post from the catalog and rebuilds this section. */
-  @OnEvent(BLOG_INDEX_DATA_EVENT)
-  receiveBlogData(event: ApplicationEvent<typeof BLOG_INDEX_DATA_EVENT>): void {
-    this.highlightedPost = getLatestBlogPost(event.data.posts) ?? null;
-    this.updateHTML();
-    this.revealLifecycle.refresh();
   }
 
   /** Stores the selected category and re-renders visibility without reaching into the list. */
