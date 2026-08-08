@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 340" role="img" aria-labelledby="diagram-title diagram-description">
+  <title id="diagram-title">How AI interprets a BCI signal</title>
+  <desc id="diagram-description">A compact three-step flow showing AI decoding a neural signal, predicting intended meaning, and representing it as text, speech, an image, code, or an action.</desc>
+
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#5d702d"/>
+    </marker>
+    <filter id="shadow" x="-10%" y="-20%" width="120%" height="150%">
+      <feDropShadow dx="0" dy="5" stdDeviation="7" flood-color="#242c12" flood-opacity="0.10"/>
+    </filter>
+  </defs>
+
+  <rect width="1000" height="340" rx="24" fill="#f8faf2"/>
+  <text x="60" y="56" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="28" font-weight="700" fill="#242c12">Three jobs AI performs on a BCI signal</text>
+  <text x="60" y="82" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="15" fill="#4c5c25">Decode → predict → represent</text>
+
+  <g id="connectors" fill="none" stroke="#5d702d" stroke-width="3" stroke-linecap="round" marker-end="url(#arrow)">
+    <path d="M 320 202 H 370"/>
+    <path d="M 630 202 H 680"/>
+  </g>
+
+  <g id="nodes" font-family="Inter, ui-sans-serif, system-ui, sans-serif" filter="url(#shadow)">
+    <g id="decoding">
+      <rect x="60" y="126" width="260" height="152" rx="14" fill="#ecf0df" stroke="#92a951" stroke-width="2"/>
+      <text x="84" y="158" font-size="12" font-weight="700" letter-spacing="1.4" fill="#5d702d">DECODE</text>
+      <text x="84" y="190" font-size="20" font-weight="700" fill="#242c12">Find the pattern</text>
+      <text x="84" y="222" font-size="15" fill="#4c5c25">Signal → phoneme,</text>
+      <text x="84" y="246" font-size="15" fill="#4c5c25">word, command, or concept</text>
+    </g>
+
+    <g id="prediction">
+      <rect x="370" y="126" width="260" height="152" rx="14" fill="#ffffff" stroke="#d9e2bd" stroke-width="2"/>
+      <text x="394" y="158" font-size="12" font-weight="700" letter-spacing="1.4" fill="#5d702d">PREDICT</text>
+      <text x="394" y="190" font-size="20" font-weight="700" fill="#242c12">Resolve intent</text>
+      <text x="394" y="222" font-size="15" fill="#4c5c25">Use context to fill gaps</text>
+      <text x="394" y="246" font-size="15" fill="#4c5c25">and correct likely errors</text>
+    </g>
+
+    <g id="representation">
+      <rect x="680" y="126" width="260" height="152" rx="14" fill="#d9e2bd" stroke="#92a951" stroke-width="2"/>
+      <text x="704" y="158" font-size="12" font-weight="700" letter-spacing="1.4" fill="#4c5c25">REPRESENT</text>
+      <text x="704" y="190" font-size="20" font-weight="700" fill="#242c12">Make it usable</text>
+      <text x="704" y="222" font-size="15" fill="#4c5c25">Text, speech, image,</text>
+      <text x="704" y="246" font-size="15" fill="#4c5c25">code, search, or action</text>
+    </g>
+  </g>
+</svg>
