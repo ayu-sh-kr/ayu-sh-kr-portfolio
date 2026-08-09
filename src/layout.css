@@ -109,6 +109,10 @@
   transform: none;
 }
 
+.layout-hero-pin-stage > scroll-hint > .scroll-hint {
+  transform: none;
+}
+
 .layout-stack { --layout-stack-gap: var(--layout-space-4); }
 .layout-stack > * + * { margin-block-start: var(--layout-stack-gap); }
 .layout-stack-xs { --layout-stack-gap: var(--layout-space-2); }
