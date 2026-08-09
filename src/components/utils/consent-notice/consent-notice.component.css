@@ -1,0 +1,134 @@
+/*
+ * Styles the persistent <consent-notice> mounted before the routed app. The
+ * ink surface waits for the client-side storage decision, reflows from a
+ * two-column bar into wrapped content, and publishes its height through
+ * --chrome-consent-h for other bottom-fixed controls.
+ */
+consent-notice {
+  display: contents;
+}
+
+/* The inline bootstrap guard prevents a prerendered notice from flashing. */
+html[data-consent-state="pending"] consent-notice .consent-notice,
+html[data-consent-state="settled"] consent-notice .consent-notice {
+  display: none;
+}
+
+.consent-notice {
+  display: flex;
+  max-inline-size: var(--layout-content-max);
+  margin-inline: auto;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--layout-space-5) var(--layout-space-6);
+  flex-wrap: wrap;
+  padding: var(--layout-pad-card);
+  color: var(--contrast-foreground-color);
+  background: var(--contrast-background-color);
+  border-radius: var(--layout-radius-xl);
+  box-shadow: var(--shadow-pop);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 220ms ease, transform 300ms cubic-bezier(.2, .8, .2, 1);
+}
+
+.consent-notice.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+.consent-notice.is-gone {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 200ms ease, transform 220ms cubic-bezier(.2, .8, .2, 1);
+}
+
+.consent-notice__body {
+  flex: 1 1 20rem;
+  min-inline-size: min(20rem, 100%);
+}
+
+.consent-notice__title {
+  margin: 0;
+  font-size: var(--type-control-size);
+  font-weight: var(--type-control-weight);
+  line-height: var(--type-compact-leading);
+}
+
+.consent-notice__description {
+  max-inline-size: var(--layout-reading-max);
+  margin: var(--layout-space-2) 0 0;
+  color: color-mix(in srgb, var(--contrast-foreground-color) 72%, transparent);
+  font-size: var(--type-compact-size);
+  line-height: var(--type-body-leading);
+  text-wrap: pretty;
+}
+
+.consent-notice__actions {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--layout-space-2);
+  margin-inline-start: auto;
+  flex-wrap: wrap;
+}
+
+.consent-notice__link {
+  flex: 0 0 auto;
+  padding-inline: var(--layout-space-2);
+  color: color-mix(in srgb, var(--contrast-foreground-color) 72%, transparent);
+  font-size: var(--type-compact-size);
+  font-weight: var(--type-control-weight);
+  text-decoration: underline;
+  text-underline-offset: var(--layout-space-1);
+  white-space: nowrap;
+}
+
+.consent-notice__link:hover {
+  color: var(--contrast-foreground-color);
+}
+
+.consent-notice__button {
+  flex: 0 0 auto;
+  padding: var(--layout-space-2) var(--layout-space-4);
+  border: 1px solid transparent;
+  border-radius: var(--layout-radius-pill);
+  font: inherit;
+  font-size: var(--type-compact-size);
+  font-weight: var(--type-control-weight);
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color 200ms ease, color 200ms ease, border-color 200ms ease;
+}
+
+.consent-notice__button--solid {
+  color: var(--contrast-background-color);
+  background: var(--contrast-foreground-color);
+}
+
+.consent-notice__button--solid:hover {
+  background: color-mix(in srgb, var(--contrast-foreground-color) 86%, transparent);
+}
+
+.consent-notice__button--quiet {
+  color: var(--contrast-foreground-color);
+  background: color-mix(in srgb, var(--contrast-foreground-color) 14%, transparent);
+}
+
+.consent-notice__button--quiet:hover {
+  background: color-mix(in srgb, var(--contrast-foreground-color) 24%, transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .consent-notice,
+  .consent-notice.is-gone {
+    transform: none;
+    transition: opacity 150ms linear;
+  }
+
+  .consent-notice__button {
+    transition: none;
+  }
+}
