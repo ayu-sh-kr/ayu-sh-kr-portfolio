@@ -15,7 +15,7 @@ switch:
 
 summary:
   - I don't sell your data or use this site to build advertising profiles.
-  - The site uses Google Analytics 4 for broad page and interaction measurement; it may use first-party analytics identifiers.
+  - The site uses anonymous, cookieless Google Analytics 4 measurement for broad page and interaction patterns.
   - I don't intentionally send form contents, email addresses, messages, or client data to Google Analytics.
   - I retain your email when you write to me; the site does not provide a newsletter subscription endpoint.
   - Client project data stays under your contract, lives in your accounts where possible, and is deleted when you ask.
@@ -42,7 +42,7 @@ Everything from section 10 onward applies either way. Each section carries a lab
 
 The site is deployed on Vercel as a client-rendered static application. The site also loads Google Analytics 4 through Google's `gtag.js` tag. GA4 helps me understand broad page use and selected interactions so I can improve the site.
 
-The application sends stable, non-content event information such as a page category, page path, section, article or project slug, selected contact method, or CTA action. It does not intentionally send email addresses, form fields, message contents, or client project data to GA4. Google may also process standard browser, device, approximate location, and first-party identifier data under its own terms and controls.
+The application sends stable, non-content event information such as a page category, page path, section, article or project slug, selected contact method, or CTA action. It does not intentionally send email addresses, form fields, message contents, or client project data to GA4. Google may also process standard browser, device, and approximate location data under its own terms and controls.
 
 | What's recorded | Why | Kept for |
 | --- | --- | --- |
@@ -54,9 +54,9 @@ Analytics are reported in aggregate for this site. I can tell you that a post wa
 
 ## Cookies and local storage {#cookies scope="Site visitors" group="As a visitor" short="Cookies"}
 
-The GA4 JavaScript tag may set first-party analytics cookies or use similar identifiers to distinguish visits and sessions. The application does not deliberately set advertising or cross-site marketing cookies.
+The GA4 tag is configured without client-side storage. The site does not use advertising, marketing, or cross-site tracking cookies, and analytics remain anonymous and aggregate.
 
-The site may store one preference locally in your browser — such as a reduced-motion or theme choice. It never leaves your device, and clearing site data removes it.
+The site may store a small number of preferences locally in your browser — such as a reduced-motion, theme, or notice acknowledgement choice. They never leave your device, and clearing site data removes them.
 
 ## The newsletter {#newsletter scope="Site visitors" group="As a visitor" short="The newsletter"}
 

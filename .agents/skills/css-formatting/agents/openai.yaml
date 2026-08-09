@@ -1,0 +1,4 @@
+interface:
+  display_name: "CSS Formatting"
+  short_description: "Format CSS for readable maintenance."
+  default_prompt: "Use $css-formatting to format this portfolio stylesheet without changing behavior."

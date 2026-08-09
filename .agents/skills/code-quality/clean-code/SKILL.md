@@ -42,6 +42,14 @@ Extract a method or unit when at least one holds:
 
 Otherwise, leave the code inline where the reader already is.
 
+## Domain boundaries and named contracts
+
+- Group collaborating files by the domain they implement, not only by suffix. Keep a component, its service contract, and its tests together when they share vocabulary and invariants; keep browser adapters, route configuration, and rendering utilities separate when their responsibilities differ.
+- Keep entry modules focused on orchestration. Move a reusable, stateless policy into a narrow domain utility only when it has a clear owner; do not create a generic `Utils` bucket or a folder for one unrelated file.
+- Use named types for multi-field parameters, return values, collections, and shared state when the shape represents a domain contract. Names such as `ConsentState`, `StorageSetOptions`, or `GenerationOptions` should explain the boundary without requiring the reader to parse an anonymous object type.
+- Keep a type local when it is private to one implementation and naming it would add navigation without clarifying intent. Export it when it belongs to an exported API or is shared across the domain.
+- Preserve public exports and observable behavior during cleanup unless the task explicitly includes an API change.
+
 ## Review checklist
 
 - Does `render()` stay pure and free of I/O?
@@ -49,4 +57,7 @@ Otherwise, leave the code inline where the reader already is.
 - Do guards/early returns keep nesting shallow?
 - Do names state intent and follow the repo's casing grammar?
 - Any dead code, unused imports, or stale comments to remove?
+- Does each multi-field public boundary have a meaningful named contract?
+- Does every extracted utility have one coherent domain and a real reuse or policy boundary?
+- Are related source and test files grouped by ownership rather than file kind?
 - Did `npm run build` pass after the cleanup?

@@ -1,0 +1,4 @@
+interface:
+  display_name: "CSS Documentation"
+  short_description: "Document stylesheet ownership and behavior."
+  default_prompt: "Add concise file-level CSS documentation explaining stylesheet ownership, selectors, states, and responsive behavior."
