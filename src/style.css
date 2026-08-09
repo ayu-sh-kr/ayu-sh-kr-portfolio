@@ -16,6 +16,7 @@
 @import "./components/utils/theme/dark-mode-button/dark-mode-button.component.css";
 @import "./components/utils/alert/dota-alert/dota-alert.component.css";
 @import "./components/utils/toast/dota-toast/dota-toast.component.css";
+@import "./components/utils/consent-notice/consent-notice.component.css";
 @import "./components/utils/skeleton/skeleton.component.css";
 @import "./components/pages/design/overview/design-typography-overview/design-typography-overview.component.css";
 @import "./components/pages/design/roles/design-typography-roles/design-typography-roles.component.css";
