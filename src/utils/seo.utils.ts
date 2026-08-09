@@ -6,7 +6,7 @@ import type {PageSeoContent} from "@app/data/seo-content.ts";
 import type {AnalyticsPage} from "@app/events/analytics.events.ts";
 import {publishAnalyticsEvent} from "@app/utils/analytics.utils.ts";
 
-const SITE_ORIGIN = "https://ayu-sh-kr.com";
+const SITE_ORIGIN = "https://www.ayu-sh-kr.com";
 
 type Gtag = (
   command: string,
