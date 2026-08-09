@@ -3,4 +3,4 @@ Allow: /
 Disallow: /error
 Disallow: /offline
 
-Sitemap: https://ayu-sh-kr.com/sitemap.xml
+Sitemap: https://www.ayu-sh-kr.com/sitemap.xml
