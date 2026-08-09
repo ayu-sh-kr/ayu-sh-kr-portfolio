@@ -30,7 +30,12 @@
     <title>Ayush Kumar Jaiswal (Ayush Kumar) — Backend Engineer (Kotlin · Spring Boot · AWS)</title>
     <script>
       (() => {
-        const savedTheme = localStorage.getItem("theme");
+        let savedTheme = null;
+        try {
+          savedTheme = localStorage.getItem("theme");
+        } catch {
+          savedTheme = null;
+        }
         const prefersDark = window.matchMedia?.("(prefers-color-scheme: dark)").matches;
         const isDark = savedTheme ? savedTheme === "dark" : prefersDark;
         document.documentElement.classList.toggle("dark", isDark);
@@ -41,6 +46,23 @@
         if (backgroundColor) {
           document.querySelector('meta[name="theme-color"]')?.setAttribute("content", backgroundColor);
         }
+      })();
+    </script>
+    <script>
+      (() => {
+        const consentKey = "ayu-sh-kr.com:notice";
+        const consentChoices = ["ack", "essential", "all"];
+        let resolved = false;
+        try {
+          const raw = localStorage.getItem(consentKey);
+          if (raw) {
+            const record = JSON.parse(raw);
+            resolved = record?.version === 1 && consentChoices.includes(record?.value?.choice);
+          }
+        } catch {
+          // The consent component will use its guarded in-memory fallback.
+        }
+        document.documentElement.dataset.consentState = resolved ? "settled" : "pending";
       })();
     </script>
     <script type="application/ld+json">
@@ -61,10 +83,16 @@
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       // Route afterEnter hooks send page_view after each rendered SPA navigation.
-      gtag('config', 'G-G8LHZYKN4P', { send_page_view: false });
+      gtag('config', 'G-G8LHZYKN4P', {
+        send_page_view: false,
+        client_storage: 'none',
+        allow_google_signals: false,
+        allow_ad_personalization_signals: false
+      });
     </script>
   </head>
   <body>
+    <consent-notice mode="notice"></consent-notice>
     <div id="app">
       <app-root id="app-root"></app-root>
     </div>
