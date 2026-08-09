@@ -5206,6 +5206,58 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/utils/consent-notice/consent-notice.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "ConsentNoticeComponent",
+          "customElement": true,
+          "tagName": "consent-notice",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [
+            {
+              "kind": "field",
+              "name": "mode",
+              "attribute": "mode",
+              "type": {
+                "text": "string"
+              },
+              "default": "notice"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "mode",
+              "fieldName": "mode",
+              "type": {
+                "text": "string"
+              },
+              "default": "notice"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ConsentNoticeComponent",
+          "declaration": {
+            "name": "ConsentNoticeComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "consent-notice",
+          "declaration": {
+            "name": "ConsentNoticeComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/utils/footer/app-footer/app-footer.component.js",
       "declarations": [
         {

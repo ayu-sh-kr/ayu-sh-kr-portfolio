@@ -679,6 +679,40 @@
           }
         },
         {
+          "name": "consent-notice",
+          "source": {
+            "file": "./src/components/utils/consent-notice/consent-notice.component.ts",
+            "offset": 1833
+          },
+          "attributes": [
+            {
+              "name": "mode",
+              "default": "notice",
+              "required": false,
+              "value": {
+                "type": "string"
+              },
+              "source": {
+                "file": "./src/components/utils/consent-notice/consent-notice.component.ts",
+                "offset": 2049
+              }
+            }
+          ],
+          "js": {
+            "properties": [
+              {
+                "name": "mode",
+                "type": "string",
+                "default": "notice",
+                "source": {
+                  "file": "./src/components/utils/consent-notice/consent-notice.component.ts",
+                  "offset": 2049
+                }
+              }
+            ]
+          }
+        },
+        {
           "name": "dark-mode-button",
           "source": {
             "file": "./src/components/utils/theme/dark-mode-button/dark-mode-button.component.ts",
