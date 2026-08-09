@@ -1,5 +1,15 @@
-dota-toast { display: contents; }
+/*
+ * Styles the shared <dota-toast> notification rail mounted beside the app
+ * shell. The rail owns placement and stacking; each item owns its entrance,
+ * countdown fill, status glyph, message, and optional action. Bottom rails
+ * consume --chrome-consent-h and --toast-lift so persistent chrome never
+ * covers a toast.
+ */
+dota-toast {
+  display: contents;
+}
 
+/* Rail placement is selected by the service through data-position. */
 .dota-toast__rail {
   position: fixed;
   inset-inline: var(--layout-gutter);
@@ -11,24 +21,44 @@ dota-toast { display: contents; }
   pointer-events: none;
 }
 
-.dota-toast__rail[data-position^="bottom"] { inset-block-end: calc(var(--layout-space-4) + var(--toast-lift, 0px) + env(safe-area-inset-bottom, 0px)); }
-.dota-toast__rail[data-position^="top"] { inset-block-start: calc(var(--layout-stick) + var(--layout-space-3)); flex-direction: column-reverse; }
-.dota-toast__rail[data-position$="right"] { align-items: flex-end; }
-.dota-toast__rail[data-position$="left"] { align-items: flex-start; }
-.dota-toast__rail[data-position$="center"] { align-items: center; }
+.dota-toast__rail[data-position^="bottom"] {
+  inset-block-end: calc(
+    var(--layout-space-4) + var(--toast-lift, 0px) +
+    env(safe-area-inset-bottom, 0px) + var(--chrome-consent-h, 0px) +
+    var(--layout-space-3)
+  );
+}
 
+.dota-toast__rail[data-position^="top"] {
+  inset-block-start: calc(var(--layout-stick) + var(--layout-space-3));
+  flex-direction: column-reverse;
+}
+
+.dota-toast__rail[data-position$="right"] {
+  align-items: flex-end;
+}
+
+.dota-toast__rail[data-position$="left"] {
+  align-items: flex-start;
+}
+
+.dota-toast__rail[data-position$="center"] {
+  align-items: center;
+}
+
+/* Items begin as compact notification marks and expand into readable pills. */
 .dota-toast__item {
   --dota-toast-height: 3rem;
   --dota-toast-width-base: 20rem;
   --dota-toast-width: var(--dota-toast-width-base);
   position: relative;
   display: flex;
-  align-items: center;
   inline-size: var(--dota-toast-height);
-  block-size: var(--dota-toast-height);
   max-inline-size: 100%;
-  padding: 0;
+  block-size: var(--dota-toast-height);
+  align-items: center;
   overflow: hidden;
+  padding: 0;
   color: var(--contrast-foreground-color);
   background: var(--contrast-background-color);
   border-radius: var(--layout-radius-pill);
@@ -38,20 +68,56 @@ dota-toast { display: contents; }
   pointer-events: auto;
   touch-action: pan-y;
   transform: translateY(10px) scale(0);
-  transition: opacity 220ms ease, transform 300ms cubic-bezier(.2,.8,.2,1), inline-size 420ms cubic-bezier(.2,.8,.2,1);
+  transition: opacity 220ms ease, transform 300ms cubic-bezier(.2, .8, .2, 1), inline-size 420ms cubic-bezier(.2, .8, .2, 1);
 }
 
-.dota-toast__item:active { cursor: grabbing; }
-.dota-toast__item.is-in { opacity: 1; transform: none; }
-.dota-toast__item.is-open { inline-size: 100%; }
-.dota-toast__item.dota-toast__measure { inline-size: auto; min-inline-size: min(var(--dota-toast-width-base), 100%); max-inline-size: none; opacity: 1; transform: none; transition: none; }
-.dota-toast__item.is-gone { opacity: 0; transition: opacity 200ms ease, transform 220ms cubic-bezier(.2,.8,.2,1); }
-.dota-toast__item.is-closing .dota-toast__body { opacity: 0; transition: opacity 120ms ease; }
-.dota-toast__item:hover { transform: translateY(-2px); }
-.dota-toast__item.is-gone:hover,
-.dota-toast__item.is-closing:hover { transform: none; }
-.dota-toast__item[data-tone="note"] { color: var(--primary-color-on); background: var(--primary-color); }
+.dota-toast__item:active {
+  cursor: grabbing;
+}
 
+.dota-toast__item.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+.dota-toast__item.is-open {
+  inline-size: 100%;
+}
+
+.dota-toast__item.dota-toast__measure {
+  inline-size: auto;
+  min-inline-size: min(var(--dota-toast-width-base), 100%);
+  max-inline-size: none;
+  opacity: 1;
+  transform: none;
+  transition: none;
+}
+
+.dota-toast__item.is-gone {
+  opacity: 0;
+  transition: opacity 200ms ease, transform 220ms cubic-bezier(.2, .8, .2, 1);
+}
+
+.dota-toast__item.is-closing .dota-toast__body {
+  opacity: 0;
+  transition: opacity 120ms ease;
+}
+
+.dota-toast__item:hover {
+  transform: translateY(-2px);
+}
+
+.dota-toast__item.is-gone:hover,
+.dota-toast__item.is-closing:hover {
+  transform: none;
+}
+
+.dota-toast__item[data-tone="note"] {
+  color: var(--primary-color-on);
+  background: var(--primary-color);
+}
+
+/* The fill visualizes remaining time and the pending shimmer state. */
 .dota-toast__fill {
   --dota-toast-progress: 1;
   --dota-toast-volume: color-mix(in srgb, var(--primary-color) 38%, transparent);
@@ -59,7 +125,14 @@ dota-toast { display: contents; }
   --dota-toast-zero: color-mix(in srgb, var(--primary-color) 0%, transparent);
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, var(--dota-toast-volume) 0, var(--dota-toast-volume) calc(var(--dota-toast-progress) * 100%), var(--dota-toast-zero) calc(var(--dota-toast-progress) * 100% + var(--dota-toast-progress) * 2.5rem)), linear-gradient(var(--dota-toast-base), var(--dota-toast-base));
+  background:
+    linear-gradient(
+      90deg,
+      var(--dota-toast-volume) 0,
+      var(--dota-toast-volume) calc(var(--dota-toast-progress) * 100%),
+      var(--dota-toast-zero) calc(var(--dota-toast-progress) * 100% + var(--dota-toast-progress) * 2.5rem)
+    ),
+    linear-gradient(var(--dota-toast-base), var(--dota-toast-base));
 }
 
 .dota-toast__item.has-action .dota-toast__fill {
@@ -80,11 +153,28 @@ dota-toast { display: contents; }
   --dota-toast-zero: color-mix(in srgb, var(--primary-color-on) 0%, transparent);
 }
 
-.dota-toast__item.is-sticky .dota-toast__fill { --dota-toast-volume: color-mix(in srgb, var(--contrast-foreground-color) 10%, transparent); --dota-toast-base: var(--dota-toast-volume); --dota-toast-zero: color-mix(in srgb, var(--contrast-foreground-color) 0%, transparent); }
-.dota-toast__item.is-pending .dota-toast__fill::after { content: ""; position: absolute; inset: 0; background: var(--gradient-shimmer); transform: translateX(-100%); animation: dota-toast-sweep 1.35s cubic-bezier(.35,0,.25,1) infinite; }
+.dota-toast__item.is-sticky .dota-toast__fill {
+  --dota-toast-volume: color-mix(in srgb, var(--contrast-foreground-color) 10%, transparent);
+  --dota-toast-base: var(--dota-toast-volume);
+  --dota-toast-zero: color-mix(in srgb, var(--contrast-foreground-color) 0%, transparent);
+}
 
-@keyframes dota-toast-sweep { to { transform: translateX(100%); } }
+.dota-toast__item.is-pending .dota-toast__fill::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background: var(--gradient-shimmer);
+  transform: translateX(-100%);
+  animation: dota-toast-sweep 1.35s cubic-bezier(.35, 0, .25, 1) infinite;
+}
 
+@keyframes dota-toast-sweep {
+  to {
+    transform: translateX(100%);
+  }
+}
+
+/* Glyphs sit above the fill and identify arrival, success, and failure. */
 .dota-toast__glyph {
   position: absolute;
   inset-block: 0;
@@ -101,40 +191,158 @@ dota-toast { display: contents; }
 }
 
 .dota-toast__glyph-icon > svg,
-.dota-toast__glyph-icon > dota-icon svg { inline-size: 1rem; block-size: 1rem; }
-.dota-toast__glyph-icon > svg { fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2.4; }
-.dota-toast__glyph-icon > dota-icon svg { inline-size: 1.25rem; block-size: 1.25rem; color: currentColor; fill: currentColor; stroke: none; }
-.dota-toast__glyph.is-shown { opacity: 1; }
-.dota-toast__glyph.is-note { background: color-mix(in srgb, var(--contrast-foreground-color) 12%, transparent); }
-.dota-toast__glyph.is-done { color: var(--success-color-on); background: var(--success-color); }
-.dota-toast__glyph.is-fail { color: var(--danger-color); background: var(--contrast-foreground-color); }
+.dota-toast__glyph-icon > dota-icon svg {
+  inline-size: 1rem;
+  block-size: 1rem;
+}
 
-.dota-toast__body { position: relative; z-index: 1; display: flex; flex: 1 1 auto; align-items: center; min-inline-size: 0; gap: var(--layout-space-2); padding-inline: var(--layout-space-3) var(--layout-space-4); opacity: 0; transition: opacity 180ms ease 120ms; }
-.dota-toast__item.is-open .dota-toast__body { opacity: 1; }
-.dota-toast__message { overflow: hidden; font-size: var(--type-control-size); font-weight: var(--type-control-weight); line-height: var(--type-compact-leading); text-overflow: ellipsis; white-space: nowrap; }
-.dota-toast__count { flex: 0 0 auto; color: var(--contrast-muted-color); font-family: var(--font-mono); font-size: var(--type-label-size); font-weight: var(--type-label-weight); }
+.dota-toast__glyph-icon > svg {
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2.4;
+}
 
-.dota-toast__action { position: relative; z-index: 1; flex: 0 0 auto; margin-inline-start: auto; padding: var(--layout-space-2) var(--layout-space-3); color: var(--contrast-foreground-color); background: color-mix(in srgb, var(--contrast-foreground-color) 14%, transparent); border: 0; border-radius: var(--layout-radius-pill); cursor: pointer; font: inherit; font-size: var(--type-compact-size); font-weight: var(--type-control-weight); white-space: nowrap; }
-.dota-toast__action:hover { background: color-mix(in srgb, var(--contrast-foreground-color) 24%, transparent); }
+.dota-toast__glyph-icon > dota-icon svg {
+  inline-size: 1.25rem;
+  block-size: 1.25rem;
+  color: currentColor;
+  fill: currentColor;
+  stroke: none;
+}
+
+.dota-toast__glyph.is-shown {
+  opacity: 1;
+}
+
+.dota-toast__glyph.is-note {
+  background: color-mix(in srgb, var(--contrast-foreground-color) 12%, transparent);
+}
+
+.dota-toast__glyph.is-done {
+  color: var(--success-color-on);
+  background: var(--success-color);
+}
+
+.dota-toast__glyph.is-fail {
+  color: var(--danger-color);
+  background: var(--contrast-foreground-color);
+}
+
+/* Body content fades in after the pill has completed its arrival. */
+.dota-toast__body {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex: 1 1 auto;
+  min-inline-size: 0;
+  align-items: center;
+  gap: var(--layout-space-2);
+  padding-inline: var(--layout-space-3) var(--layout-space-4);
+  opacity: 0;
+  transition: opacity 180ms ease 120ms;
+}
+
+.dota-toast__item.is-open .dota-toast__body {
+  opacity: 1;
+}
+
+.dota-toast__message {
+  overflow: hidden;
+  font-size: var(--type-control-size);
+  font-weight: var(--type-control-weight);
+  line-height: var(--type-compact-leading);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dota-toast__count {
+  flex: 0 0 auto;
+  color: var(--contrast-muted-color);
+  font-family: var(--font-mono);
+  font-size: var(--type-label-size);
+  font-weight: var(--type-label-weight);
+}
+
+.dota-toast__action {
+  position: relative;
+  z-index: 1;
+  flex: 0 0 auto;
+  margin-inline-start: auto;
+  padding: var(--layout-space-2) var(--layout-space-3);
+  color: var(--contrast-foreground-color);
+  background: color-mix(in srgb, var(--contrast-foreground-color) 14%, transparent);
+  border: 0;
+  border-radius: var(--layout-radius-pill);
+  cursor: pointer;
+  font: inherit;
+  font-size: var(--type-compact-size);
+  font-weight: var(--type-control-weight);
+  white-space: nowrap;
+}
+
+.dota-toast__action:hover {
+  background: color-mix(in srgb, var(--contrast-foreground-color) 24%, transparent);
+}
 
 .dota-toast__instructions,
-.dota-toast__alerts { position: absolute; inline-size: 1px; block-size: 1px; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.dota-toast__alerts {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
 
 @media (min-width: 700px) {
-  .dota-toast__rail { inline-size: min(30rem, calc(100vw - var(--layout-gutter) * 2)); }
-  .dota-toast__rail[data-position$="right"] { inset-inline: auto var(--layout-gutter); }
-  .dota-toast__rail[data-position$="left"] { inset-inline: var(--layout-gutter) auto; }
-  .dota-toast__rail[data-position$="center"] { inset-inline: 0; margin-inline: auto; }
-  .dota-toast__item.is-open { inline-size: var(--dota-toast-width); }
+  .dota-toast__rail {
+    inline-size: min(30rem, calc(100vw - var(--layout-gutter) * 2));
+  }
+
+  .dota-toast__rail[data-position$="right"] {
+    inset-inline: auto var(--layout-gutter);
+  }
+
+  .dota-toast__rail[data-position$="left"] {
+    inset-inline: var(--layout-gutter) auto;
+  }
+
+  .dota-toast__rail[data-position$="center"] {
+    inset-inline: 0;
+    margin-inline: auto;
+  }
+
+  .dota-toast__item.is-open {
+    inline-size: var(--dota-toast-width);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .dota-toast__item { inline-size: 100%; transform: none; transition: opacity 150ms linear; }
-  .dota-toast__item:hover { transform: none; }
-  .dota-toast__body { opacity: 1; transition: none; }
-  .dota-toast__item.is-pending .dota-toast__fill::after { animation-duration: 2.7s; }
+  .dota-toast__item {
+    inline-size: 100%;
+    transform: none;
+    transition: opacity 150ms linear;
+  }
+
+  .dota-toast__item:hover {
+    transform: none;
+  }
+
+  .dota-toast__body {
+    opacity: 1;
+    transition: none;
+  }
+
+  .dota-toast__item.is-pending .dota-toast__fill::after {
+    animation-duration: 2.7s;
+  }
 }
 
 @media (min-width: 700px) and (prefers-reduced-motion: reduce) {
-  .dota-toast__item { inline-size: var(--dota-toast-width); }
+  .dota-toast__item {
+    inline-size: var(--dota-toast-width);
+  }
 }

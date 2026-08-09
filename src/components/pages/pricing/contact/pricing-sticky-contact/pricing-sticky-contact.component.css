@@ -1,3 +1,8 @@
+/*
+ * Styles the route-level sticky contact control rendered by
+ * <pricing-sticky-contact> on the Pricing page. It shares the toast stacking
+ * level and moves above the consent notice through --chrome-consent-h.
+ */
 pricing-sticky-contact {
   display: contents;
 }
@@ -5,7 +10,10 @@ pricing-sticky-contact {
 #pricing-stickybar {
   position: fixed;
   z-index: var(--layout-z-toast);
-  inset-block-end: calc(var(--layout-space-4) + env(safe-area-inset-bottom, 0px));
+  inset-block-end: calc(
+    var(--layout-space-4) + env(safe-area-inset-bottom, 0px) +
+    var(--chrome-consent-h, 0px) + var(--layout-space-3)
+  );
   left: 50%;
   display: flex;
   width: 0;
@@ -22,7 +30,8 @@ pricing-sticky-contact {
   transition: opacity 260ms ease, transform 380ms cubic-bezier(0.2, 0.8, 0.2, 1), width 460ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-#pricing-stickybar.is-icon {
+#pricing-stickybar.is-icon,
+#pricing-stickybar.is-open {
   width: 3.5rem;
   transform: translate(-50%, 0) scale(1);
   opacity: 1;
@@ -31,9 +40,6 @@ pricing-sticky-contact {
 
 #pricing-stickybar.is-open {
   width: min(var(--pricing-sticky-width, 26rem), calc(100vw - 1.5rem));
-  transform: translate(-50%, 0) scale(1);
-  opacity: 1;
-  pointer-events: auto;
 }
 
 .pricing-sticky-icon {
@@ -90,7 +96,10 @@ pricing-sticky-contact {
 
 @media (max-width: 32.5rem) {
   #pricing-stickybar {
-    inset-block-end: calc(var(--layout-space-4) + env(safe-area-inset-bottom, 0px));
+    inset-block-end: calc(
+      var(--layout-space-4) + env(safe-area-inset-bottom, 0px) +
+      var(--chrome-consent-h, 0px) + var(--layout-space-3)
+    );
     height: 3.25rem;
   }
 
@@ -111,7 +120,6 @@ pricing-sticky-contact {
     gap: 0.4rem;
     padding: 0 var(--layout-space-3);
   }
-
 }
 
 @media (prefers-reduced-motion: reduce) {
