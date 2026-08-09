@@ -1,4 +1,6 @@
-const THEME_KEY = "theme";
+import {AppStorage} from "../service/storage.service.ts";
+
+const themeScope = AppStorage.scope("ayu-sh-kr.com");
 
 /** Provides browser theme detection, persistence, and document-level theme updates. */
 export class GeneralUtils {
@@ -6,7 +8,7 @@ export class GeneralUtils {
   static toggleDarkMode(): void {
     const isDarkMode = !this.isDarkMode();
     this.setBrowserTheme(isDarkMode ? "dark" : "light");
-    localStorage.setItem(THEME_KEY, isDarkMode ? "dark" : "light");
+    themeScope.set("theme", isDarkMode ? "dark" : "light");
     window.dispatchEvent(
       new CustomEvent("themeChange", {
         detail: { isDarkMode },
@@ -29,7 +31,7 @@ export class GeneralUtils {
    * @returns `dark` or `light`; saved values take precedence over the media-query preference.
    */
   static getBrowserTheme(): string {
-    const savedTheme = localStorage.getItem(THEME_KEY);
+    const savedTheme = themeScope.get<string>("theme");
     if (savedTheme === "dark" || savedTheme === "light") {
       return savedTheme;
     }
