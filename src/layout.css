@@ -83,7 +83,7 @@
 .layout-section-flush { padding-block-start: 0; }
 
 /* Shared grammar for scroll-pinned route heroes. The content owns its height;
- * the wrapper owns scroll travel and the cue remains a real grid row. */
+ * the wrapper owns scroll travel and the cue stays pinned to the stage. */
 .layout-hero-pin-wrap {
   position: relative;
   block-size: 118svh;
@@ -102,15 +102,6 @@
   min-block-size: 100svh;
   padding-block: var(--layout-space-8) var(--layout-space-6);
   overflow: clip;
-}
-
-.layout-hero-pin-stage > scroll-hint {
-  position: static;
-  transform: none;
-}
-
-.layout-hero-pin-stage > scroll-hint > .scroll-hint {
-  transform: none;
 }
 
 .layout-stack { --layout-stack-gap: var(--layout-space-4); }
