@@ -6,6 +6,7 @@ coffee-hero { display: block; }
 .coffee-hero-title span { color: var(--primary-color); }
 .coffee-hero-lede { max-inline-size: var(--layout-reading-max); color: var(--muted-color); }
 .coffee-hero-trust, .coffee-scroll-hint { color: var(--muted-color); font-size: var(--type-compact-size); }
+.coffee-scroll-hint { position: absolute; inset-block-end: var(--layout-space-6); inset-inline-start: 50%; z-index: var(--layout-z-base); transform: translateX(-50%); }
 .coffee-accent-button, .coffee-ghost-button { display: inline-flex; min-block-size: var(--layout-space-6); align-items: center; justify-content: center; border-radius: var(--layout-radius-pill); padding: var(--layout-space-3) var(--layout-space-5); font-size: var(--type-control-size); font-weight: var(--type-control-weight); transition: transform 220ms cubic-bezier(.2,.8,.2,1), background-color 180ms ease, border-color 180ms ease; }
 .coffee-accent-button { background: var(--primary-color); color: var(--primary-color-on); }
 .coffee-accent-button:hover { background: var(--primary-color-hover); transform: translateY(-2px); }
