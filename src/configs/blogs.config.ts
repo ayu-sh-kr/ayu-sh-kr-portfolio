@@ -39,6 +39,37 @@ export type BlogPost = {
  */
 export const blogPosts: readonly BlogPost[] = [
   {
+    slug: "why-use-redis-channels",
+    date: "2026-08-12",
+    writer: siteIdentity.name,
+    header: "Redis Pub/Sub vs. Kafka: Defining Delivery Contracts in Distributed Systems",
+    description:
+      "Choose Redis Pub/Sub, Redis Streams, Kafka, RabbitMQ, or MQTT by delivery contract—from cache invalidation and live coordination to durable queues and replayable event history.",
+    keywords: [
+      "Redis Pub/Sub",
+      "Redis Streams",
+      "Redis Pub/Sub vs Kafka",
+      "Redis Streams vs Kafka",
+      "Kafka vs Redis",
+      "RabbitMQ vs Redis",
+      "MQTT vs Redis",
+      "message broker comparison",
+      "message delivery guarantees",
+      "Redis cache invalidation",
+      "Spring Boot Redis cache invalidation",
+      "ephemeral coordination",
+      "Redis fan-out",
+      "Redis fan-in",
+      "durable workflows",
+      "MQTT messaging",
+      "distributed systems",
+    ],
+    category: "notes",
+    source: "/blogs/others/Why-Use-Redis-Channel.md",
+    minutes: 20,
+  },
+
+  {
     slug: "telepathy-with-ai",
     date: "2026-08-08",
     writer: siteIdentity.name,
