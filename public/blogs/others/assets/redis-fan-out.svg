@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 345" role="img" aria-labelledby="title desc">
+  <title id="title">Redis fan-out</title>
+  <desc id="desc">A database update reaches Redis once, then fans out through separate clear routes to two API nodes that evict local caches.</desc>
+  <defs><marker id="arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 10 5 0 10Z" fill="#5d702d"/></marker><filter id="shadow"><feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#242c12" flood-opacity=".1"/></filter></defs>
+  <rect width="900" height="345" rx="22" fill="#f8faf2"/>
+  <text x="40" y="42" font-family="Inter,system-ui,sans-serif" font-size="24" font-weight="700" fill="#242c12">One live signal, many consumers</text>
+  <g id="cards" font-family="Inter,system-ui,sans-serif" filter="url(#shadow)">
+    <rect x="40" y="100" width="170" height="76" rx="14" fill="#fff" stroke="#d9e2bd" stroke-width="2"/><text x="60" y="131" font-size="11" font-weight="700" letter-spacing="1.2" fill="#5d702d">SOURCE</text><text x="60" y="158" font-size="17" font-weight="700" fill="#242c12">Database update</text>
+    <rect x="340" y="100" width="220" height="76" rx="14" fill="#d9e2bd" stroke="#92a951" stroke-width="2"/><text x="365" y="131" font-size="11" font-weight="700" letter-spacing="1.2" fill="#5d702d">BROADCAST</text><text x="365" y="158" font-size="17" font-weight="700" fill="#242c12">Redis channel</text>
+    <rect x="690" y="100" width="170" height="76" rx="14" fill="#ecf0df" stroke="#92a951" stroke-width="2"/><text x="710" y="131" font-size="11" font-weight="700" letter-spacing="1.2" fill="#5d702d">CONSUMER</text><text x="710" y="158" font-size="17" font-weight="700" fill="#242c12">API node B</text>
+    <rect x="690" y="250" width="170" height="58" rx="14" fill="#ecf0df" stroke="#92a951" stroke-width="2"/><text x="710" y="284" font-size="16" font-weight="700" fill="#242c12">API node C</text>
+  </g>
+  <g id="connectors" fill="none" stroke="#5d702d" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"><path d="M210 138H340"/><path d="M560 138H690"/><path d="M560 138H620V220H775V250"/></g>
+  <g font-family="Inter,system-ui,sans-serif" font-size="13" fill="#4c5c25"><text x="700" y="205">evict local cache</text><text x="700" y="333">evict local cache</text></g>
+</svg>

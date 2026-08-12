@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 300" role="img" aria-labelledby="title desc">
+  <title id="title">Ephemeral coordination</title>
+  <desc id="desc">Nodes attempt a short-lived Redis lock for a cache refresh; one refreshes, others skip, and the lock expires if its owner crashes.</desc>
+  <defs><marker id="arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 10 5 0 10Z" fill="#5d702d"/></marker><filter id="shadow"><feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#242c12" flood-opacity=".1"/></filter></defs>
+  <rect width="900" height="300" rx="22" fill="#f8faf2"/><text x="40" y="42" font-family="Inter,system-ui,sans-serif" font-size="24" font-weight="700" fill="#242c12">Coordinate temporary work with an expiry</text>
+  <g id="cards" font-family="Inter,system-ui,sans-serif" filter="url(#shadow)">
+    <rect x="40" y="100" width="175" height="80" rx="14" fill="#fff" stroke="#d9e2bd" stroke-width="2"/><text x="62" y="132" font-size="11" font-weight="700" letter-spacing="1.2" fill="#5d702d">REQUEST</text><text x="62" y="158" font-size="17" font-weight="700" fill="#242c12">Refresh user:123</text>
+    <rect x="335" y="100" width="230" height="80" rx="14" fill="#d9e2bd" stroke="#92a951" stroke-width="2"/><text x="360" y="132" font-size="11" font-weight="700" letter-spacing="1.2" fill="#5d702d">ATOMIC CHECK</text><text x="360" y="158" font-size="17" font-weight="700" fill="#242c12">Acquire lock · TTL 15s</text>
+    <rect x="665" y="100" width="195" height="80" rx="14" fill="#ecf0df" stroke="#92a951" stroke-width="2"/><text x="690" y="132" font-size="11" font-weight="700" letter-spacing="1.2" fill="#5d702d">ACQUIRED</text><text x="690" y="158" font-size="17" font-weight="700" fill="#242c12">Refresh once</text>
+    <rect x="275" y="225" width="350" height="44" rx="12" fill="#fff" stroke="#d9e2bd" stroke-width="2"/><text x="450" y="252" text-anchor="middle" font-size="15" font-weight="700" fill="#242c12">Already held → skip; crash → expires</text>
+  </g>
+  <g id="connectors" fill="none" stroke="#5d702d" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"><path d="M215 140H335"/><path d="M565 140H665"/><path d="M450 180V225"/></g>
+</svg>

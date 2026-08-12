@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 310" role="img" aria-labelledby="title desc">
+  <title id="title">Delivery contract decision</title>
+  <desc id="desc">A decision flow asks whether a durable record is required. Durable work goes to Kafka, RabbitMQ, or Redis Streams; recoverable live signals use Redis Pub/Sub or a direct connection.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 10 5 0 10Z" fill="#5d702d"/></marker>
+    <filter id="shadow"><feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#242c12" flood-opacity=".1"/></filter>
+  </defs>
+  <rect width="900" height="310" rx="22" fill="#f8faf2"/>
+  <text x="40" y="42" font-family="Inter,system-ui,sans-serif" font-size="24" font-weight="700" fill="#242c12">Start with the failure consequence</text>
+  <g id="cards" font-family="Inter,system-ui,sans-serif" filter="url(#shadow)">
+    <rect x="310" y="85" width="280" height="76" rx="14" fill="#d9e2bd" stroke="#92a951" stroke-width="2"/>
+    <text x="450" y="116" text-anchor="middle" font-size="11" font-weight="700" letter-spacing="1.2" fill="#5d702d">DECISION</text>
+    <text x="450" y="143" text-anchor="middle" font-size="17" font-weight="700" fill="#242c12">Durable record required?</text>
+    <rect x="55" y="220" width="315" height="52" rx="14" fill="#fff" stroke="#d9e2bd" stroke-width="2"/>
+    <text x="212" y="252" text-anchor="middle" font-size="16" font-weight="700" fill="#242c12">Kafka / RabbitMQ / Streams</text>
+    <rect x="530" y="220" width="315" height="52" rx="14" fill="#ecf0df" stroke="#92a951" stroke-width="2"/>
+    <text x="687" y="252" text-anchor="middle" font-size="16" font-weight="700" fill="#242c12">Pub/Sub / direct connection</text>
+  </g>
+  <g id="connectors" fill="none" stroke="#5d702d" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)">
+    <path d="M390 161V190H212V220"/>
+    <path d="M510 161V190H687V220"/>
+  </g>
+  <g font-family="Inter,system-ui,sans-serif" font-size="13" font-weight="700" fill="#5d702d"><text x="270" y="182">YES</text><text x="600" y="182">NO</text></g>
+</svg>

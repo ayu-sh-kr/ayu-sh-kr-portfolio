@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 320" role="img" aria-labelledby="title desc">
+  <title id="title">Cache invalidation flow</title>
+  <desc id="desc">After PostgreSQL commits, Redis broadcasts a small invalidation signal through separate routes so API nodes evict local copies while the database remains authoritative.</desc>
+  <defs><marker id="arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 10 5 0 10Z" fill="#5d702d"/></marker><filter id="shadow"><feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#242c12" flood-opacity=".1"/></filter></defs>
+  <rect width="900" height="320" rx="22" fill="#f8faf2"/>
+  <text x="40" y="42" font-family="Inter,system-ui,sans-serif" font-size="24" font-weight="700" fill="#242c12">Reduce staleness after the durable commit</text>
+  <g id="cards" font-family="Inter,system-ui,sans-serif" filter="url(#shadow)">
+    <rect x="40" y="100" width="180" height="80" rx="14" fill="#fff" stroke="#d9e2bd" stroke-width="2"/><text x="60" y="131" font-size="11" font-weight="700" letter-spacing="1.2" fill="#5d702d">SOURCE OF TRUTH</text><text x="60" y="158" font-size="17" font-weight="700" fill="#242c12">PostgreSQL commit</text>
+    <rect x="345" y="100" width="210" height="80" rx="14" fill="#d9e2bd" stroke="#92a951" stroke-width="2"/><text x="370" y="131" font-size="11" font-weight="700" letter-spacing="1.2" fill="#5d702d">SIGNAL</text><text x="370" y="158" font-size="17" font-weight="700" fill="#242c12">Redis invalidation</text>
+    <rect x="665" y="100" width="195" height="80" rx="14" fill="#ecf0df" stroke="#92a951" stroke-width="2"/><text x="690" y="131" font-size="11" font-weight="700" letter-spacing="1.2" fill="#5d702d">CONSUMER</text><text x="690" y="158" font-size="17" font-weight="700" fill="#242c12">API node B</text>
+    <rect x="665" y="240" width="195" height="50" rx="14" fill="#ecf0df" stroke="#92a951" stroke-width="2"/><text x="690" y="271" font-size="16" font-weight="700" fill="#242c12">API node C</text>
+  </g>
+  <g id="connectors" fill="none" stroke="#5d702d" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"><path d="M220 140H345"/><path d="M555 140H665"/><path d="M555 140H620V215H762V240"/></g>
+  <g font-family="Inter,system-ui,sans-serif" font-size="13" fill="#4c5c25"><text x="675" y="205">evict local copy</text><text x="675" y="315">evict local copy</text></g>
+</svg>

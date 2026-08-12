@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 335" role="img" aria-labelledby="title desc">
+  <title id="title">Redis fan-in</title>
+  <desc id="desc">Profile, billing, and activity responses arrive through three separate routes at a correlation point, which completes when its contract is met or applies a deadline.</desc>
+  <defs><marker id="arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 10 5 0 10Z" fill="#5d702d"/></marker><filter id="shadow"><feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#242c12" flood-opacity=".1"/></filter></defs>
+  <rect width="900" height="335" rx="22" fill="#f8faf2"/><text x="40" y="42" font-family="Inter,system-ui,sans-serif" font-size="24" font-weight="700" fill="#242c12">Collect outcomes, then enforce the deadline</text>
+  <g id="cards" font-family="Inter,system-ui,sans-serif" filter="url(#shadow)">
+    <rect x="40" y="75" width="185" height="52" rx="12" fill="#fff" stroke="#d9e2bd" stroke-width="2"/><text x="60" y="107" font-size="16" font-weight="700" fill="#242c12">Profile response</text>
+    <rect x="40" y="145" width="185" height="52" rx="12" fill="#fff" stroke="#d9e2bd" stroke-width="2"/><text x="60" y="177" font-size="16" font-weight="700" fill="#242c12">Billing response</text>
+    <rect x="40" y="215" width="185" height="52" rx="12" fill="#fff" stroke="#d9e2bd" stroke-width="2"/><text x="60" y="247" font-size="16" font-weight="700" fill="#242c12">Activity response</text>
+    <rect x="420" y="125" width="200" height="92" rx="14" fill="#d9e2bd" stroke="#92a951" stroke-width="2"/><text x="445" y="157" font-size="11" font-weight="700" letter-spacing="1.2" fill="#5d702d">CORRELATE</text><text x="445" y="184" font-size="17" font-weight="700" fill="#242c12">Responses + ID</text>
+    <rect x="730" y="125" width="130" height="92" rx="14" fill="#ecf0df" stroke="#92a951" stroke-width="2"/><text x="795" y="157" text-anchor="middle" font-size="11" font-weight="700" letter-spacing="1.1" fill="#5d702d">RESULT</text><text x="795" y="184" text-anchor="middle" font-size="15" font-weight="700" fill="#242c12">Done or</text><text x="795" y="204" text-anchor="middle" font-size="15" font-weight="700" fill="#242c12">deadline</text>
+  </g>
+  <g id="connectors" fill="none" stroke="#5d702d" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"><path d="M225 101H330V151H420"/><path d="M225 171H420"/><path d="M225 241H330V191H420"/><path d="M620 171H730"/></g>
+</svg>
