@@ -1,5 +1,5 @@
 import { BaseElement, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
-import { portfolioContent } from "@app/data/portfolio-content.ts";
+import { offlineContent } from "@app/data/offline-content.ts";
 
 @Component({
   selector: "offline-hero",
@@ -11,7 +11,7 @@ export class OfflineHeroComponent extends BaseElement {
   }
 
   render(): string {
-    const { actions, states } = portfolioContent.offline;
+    const { navigation, states } = offlineContent;
     const content = states.offline;
 
     return HTML`
@@ -35,7 +35,7 @@ export class OfflineHeroComponent extends BaseElement {
           </p>
           <div class="offline-actions">
             <action-button id="offline-hero-retry" action="offline.retry" variant="ink" label="${content.retryLabel}" busy-label="Checking…" done-label="Connected" fail-label="Try again" data-offline-retry></action-button>
-            <a class="app-link app-link--button app-link--ghost" href="${actions.homeHref}" data-offline-back>${actions.homeLabel}</a>
+            <a class="app-link app-link--button app-link--ghost" href="${navigation.fallbackHref}" data-offline-back>${navigation.returnLabel}</a>
           </div>
         </div>
 
