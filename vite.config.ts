@@ -7,6 +7,7 @@ import {dotaVitePlugins} from "@ayu-sh-kr/dota-wrap/vite";
 
 const projectRoot = fileURLToPath(new URL(".", import.meta.url));
 const blogRoutes = [
+  "/blog/why-use-redis-channels",
   "/blog/telepathy-with-ai",
   "/blog/ssr-vs-ssg-rendering-hydration-dom",
   "/blog/aws-app-config-spring-boot-integration",
