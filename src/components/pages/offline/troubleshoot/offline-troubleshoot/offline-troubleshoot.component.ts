@@ -1,5 +1,5 @@
 import { BaseElement, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
-import { portfolioContent } from "@app/data/portfolio-content.ts";
+import { offlineContent } from "@app/data/offline-content.ts";
 
 @Component({
   selector: "offline-troubleshoot",
@@ -11,7 +11,7 @@ export class OfflineTroubleshootComponent extends BaseElement {
   }
 
   render(): string {
-    const { actions, lastTry, troubleshooting, states } = portfolioContent.offline;
+    const { lastTry, navigation, troubleshooting, states } = offlineContent;
     const content = states.offline;
 
     return HTML`
@@ -37,7 +37,7 @@ export class OfflineTroubleshootComponent extends BaseElement {
 
           <div class="offline-actions offline-actions-secondary">
             <action-button id="offline-troubleshoot-retry" action="offline.retry" variant="accent" label="${content.retryLabel}" busy-label="Checking…" done-label="Connected" fail-label="Try again" data-offline-retry></action-button>
-            <a class="app-link app-link--button app-link--ghost" href="${actions.homeHref}" data-offline-back>${actions.homeLabel}</a>
+            <a class="app-link app-link--button app-link--ghost" href="${navigation.fallbackHref}" data-offline-back>${navigation.returnLabel}</a>
           </div>
           <p class="offline-meta" data-offline-meta>${lastTry.justNow}</p>
         </div>
