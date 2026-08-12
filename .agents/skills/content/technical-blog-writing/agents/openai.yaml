@@ -1,0 +1,4 @@
+interface:
+  display_name: "Technical Blog Writing"
+  short_description: "Write clear, connected engineering blogs."
+  default_prompt: "Use $technical-blog-writing to improve this engineering article."
