@@ -1,0 +1,4 @@
+interface:
+  display_name: "SEO Optimization"
+  short_description: "Optimize titles, headings, metadata, and discoverability."
+  default_prompt: "Use $seo-optimization to optimize this technical blog."
