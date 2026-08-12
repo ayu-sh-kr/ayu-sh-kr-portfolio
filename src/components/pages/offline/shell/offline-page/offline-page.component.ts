@@ -1,4 +1,4 @@
-import { Component, DotaPageElement, HTML, HostListener, SEO, WindowListener } from "@ayu-sh-kr/dota-wrap/core";
+import { BindEvent, Component, DotaPageElement, HTML, HostListener, SEO, WindowListener } from "@ayu-sh-kr/dota-wrap/core";
 import { OnEvent } from "@ayu-sh-kr/dota-wrap/event";
 import { Route } from "@ayu-sh-kr/dota-wrap/router";
 import { portfolioContent } from "@app/data/portfolio-content.ts";
@@ -86,6 +86,18 @@ export class OfflinePage extends DotaPageElement {
   @HostListener({ event: "scroll" })
   onScroll(): void {
     this.scheduleRender();
+  }
+
+  @BindEvent({ event: "click", id: "[data-offline-back]" })
+  onBackClick(event: MouseEvent): void {
+    event.preventDefault();
+
+    if (window.history.length > 1) {
+      window.history.back();
+      return;
+    }
+
+    RouterUtils.navigate(offlineContent.actions.homeHref);
   }
 
   private readonly handleMotionPreference = (event: MediaQueryListEvent): void => {
