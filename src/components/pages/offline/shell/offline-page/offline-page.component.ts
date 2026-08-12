@@ -1,13 +1,11 @@
 import { BindEvent, Component, DotaPageElement, HTML, HostListener, SEO, WindowListener } from "@ayu-sh-kr/dota-wrap/core";
 import { OnEvent } from "@ayu-sh-kr/dota-wrap/event";
 import { Route } from "@ayu-sh-kr/dota-wrap/router";
-import { portfolioContent } from "@app/data/portfolio-content.ts";
+import { offlineContent } from "@app/data/offline-content.ts";
 import { actionButtonRegistry } from "@app/service/action-button-registry.service.ts";
 import { RouterUtils } from "@app/utils/router.utils.ts";
 
 const clamp = (value: number, min: number, max: number): number => Math.min(max, Math.max(min, value));
-const offlineContent = portfolioContent.offline;
-
 @Route({ path: "/offline", ssr: true })
 @Component({
   selector: "offline-page",
@@ -40,7 +38,10 @@ export class OfflinePage extends DotaPageElement {
     return {
       ...offlineContent.seo,
       keywords: [...offlineContent.seo.keywords],
-      og: { ...offlineContent.seo.og },
+      og: {
+        title: offlineContent.seo.ogTitle,
+        description: offlineContent.seo.ogDescription,
+      },
     };
   }
 
@@ -97,7 +98,7 @@ export class OfflinePage extends DotaPageElement {
       return;
     }
 
-    RouterUtils.navigate(offlineContent.actions.homeHref);
+    RouterUtils.navigate(offlineContent.navigation.fallbackHref);
   }
 
   private readonly handleMotionPreference = (event: MediaQueryListEvent): void => {
