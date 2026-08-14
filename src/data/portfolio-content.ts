@@ -11,9 +11,9 @@ export const siteIdentity = {
 
 export const portfolioContent = {
   seo: {
-    title: `${siteIdentity.fullName} (Ayush Kumar) — Backend Engineer (Kotlin · Spring Boot · AWS)`,
+    title: `${siteIdentity.fullName} — Backend Engineer | Kotlin & AWS`,
     description:
-      "Ayush Kumar Jaiswal (Ayush Kumar) is a backend engineer with 4 years of experience building and running production systems with Kotlin, Spring Boot, AWS, PostgreSQL, and Redis.",
+      "Ayush Kumar Jaiswal is a backend engineer building and operating production systems with Kotlin, Spring Boot, AWS, PostgreSQL, and Redis.",
     keywords: [
       "Ayush",
       siteIdentity.name,
