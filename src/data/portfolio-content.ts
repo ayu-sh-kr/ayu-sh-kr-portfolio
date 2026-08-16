@@ -108,7 +108,7 @@ export const portfolioContent = {
       title: "Webingo",
       body: "An end-to-end product engagement covering backend architecture, frontend delivery, and the supporting visual identity.",
       chips: ["Product", "Backend", "Web"],
-      link: { label: "Case details on request", href: "#contact", external: false },
+      link: { label: "Visit Webingo", href: "https://webingo-frontend-six.vercel.app/", external: true },
     },
     {
       eyebrow: "Selected engagements",
@@ -235,7 +235,7 @@ export const portfolioContent = {
           links: [
             { label: "Dota Wrap", href: "https://www.npmjs.com/package/@ayu-sh-kr/dota-wrap", external: true },
             { label: "Sacrena", href: "/#work-wrap" },
-            { label: "Webingo", href: "/#work-wrap" },
+            { label: "Webingo", href: "https://webingo-frontend-six.vercel.app/", external: true },
           ],
         },
         {
