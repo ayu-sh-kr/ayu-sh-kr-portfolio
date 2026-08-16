@@ -1066,6 +1066,138 @@
   --color-soft-matcha-900: #444a37;
   --color-soft-matcha-950: #25281e;
 
+  /* Google device finish palette */
+  /* google-matte-black — #1D1D1F anchor */
+  --color-google-matte-black-50: #f7f7f8;
+  --color-google-matte-black-100: #e8e8e9;
+  --color-google-matte-black-200: #ceced0;
+  --color-google-matte-black-300: #aaaab0;
+  --color-google-matte-black-400: #7b7b83;
+  --color-google-matte-black-500: #1d1d1f;
+  --color-google-matte-black-600: #19191b;
+  --color-google-matte-black-700: #151517;
+  --color-google-matte-black-800: #101012;
+  --color-google-matte-black-900: #0b0b0c;
+  --color-google-matte-black-950: #060606;
+
+  /* google-obsidian — #252428 anchor */
+  --color-google-obsidian-50: #f8f8f9;
+  --color-google-obsidian-100: #e8e8e9;
+  --color-google-obsidian-200: #d0d0d3;
+  --color-google-obsidian-300: #adadb2;
+  --color-google-obsidian-400: #818187;
+  --color-google-obsidian-500: #252428;
+  --color-google-obsidian-600: #202024;
+  --color-google-obsidian-700: #1a1a1e;
+  --color-google-obsidian-800: #141417;
+  --color-google-obsidian-900: #0d0d10;
+  --color-google-obsidian-950: #070708;
+
+  /* google-polished-silver — #C9C9C7 anchor */
+  --color-google-polished-silver-50: #fdfdfc;
+  --color-google-polished-silver-100: #f8f8f7;
+  --color-google-polished-silver-200: #eeeeed;
+  --color-google-polished-silver-300: #e1e1df;
+  --color-google-polished-silver-400: #d5d5d2;
+  --color-google-polished-silver-500: #c9c9c7;
+  --color-google-polished-silver-600: #b0b0ae;
+  --color-google-polished-silver-700: #90908f;
+  --color-google-polished-silver-800: #6b6b6a;
+  --color-google-polished-silver-900: #444443;
+  --color-google-polished-silver-950: #242423;
+
+  /* google-fog — #C8D0CC anchor */
+  --color-google-fog-50: #fcfdfc;
+  --color-google-fog-100: #f5f7f6;
+  --color-google-fog-200: #e7ebe9;
+  --color-google-fog-300: #dce1de;
+  --color-google-fog-400: #d1d8d4;
+  --color-google-fog-500: #c8d0cc;
+  --color-google-fog-600: #afb6b3;
+  --color-google-fog-700: #8f9693;
+  --color-google-fog-800: #6a706e;
+  --color-google-fog-900: #444847;
+  --color-google-fog-950: #242625;
+
+  /* google-satin-pyrite — #8B9075 anchor */
+  --color-google-satin-pyrite-50: #f8f9f5;
+  --color-google-satin-pyrite-100: #ebede3;
+  --color-google-satin-pyrite-200: #d9ddca;
+  --color-google-satin-pyrite-300: #c1c6aa;
+  --color-google-satin-pyrite-400: #a5ab8c;
+  --color-google-satin-pyrite-500: #8b9075;
+  --color-google-satin-pyrite-600: #7a7e66;
+  --color-google-satin-pyrite-700: #646853;
+  --color-google-satin-pyrite-800: #4a4d3d;
+  --color-google-satin-pyrite-900: #303229;
+  --color-google-satin-pyrite-950: #1a1b16;
+
+  /* google-olive — #66704E anchor */
+  --color-google-olive-50: #f7f8f4;
+  --color-google-olive-100: #e9ebdf;
+  --color-google-olive-200: #d5d9c4;
+  --color-google-olive-300: #b8be9e;
+  --color-google-olive-400: #90996f;
+  --color-google-olive-500: #66704e;
+  --color-google-olive-600: #596245;
+  --color-google-olive-700: #495039;
+  --color-google-olive-800: #363b2a;
+  --color-google-olive-900: #23271b;
+  --color-google-olive-950: #13150e;
+
+  /* google-champagne-gold — #D7BFA8 anchor */
+  --color-google-champagne-gold-50: #fdfbf9;
+  --color-google-champagne-gold-100: #f8f1ec;
+  --color-google-champagne-gold-200: #f0e1d5;
+  --color-google-champagne-gold-300: #e7d1bf;
+  --color-google-champagne-gold-400: #dec7b1;
+  --color-google-champagne-gold-500: #d7bfa8;
+  --color-google-champagne-gold-600: #bca791;
+  --color-google-champagne-gold-700: #9a8876;
+  --color-google-champagne-gold-800: #716456;
+  --color-google-champagne-gold-900: #494138;
+  --color-google-champagne-gold-950: #27221e;
+
+  /* google-canyon — #E37D6B anchor */
+  --color-google-canyon-50: #fff8f7;
+  --color-google-canyon-100: #ffebe8;
+  --color-google-canyon-200: #ffd3cc;
+  --color-google-canyon-300: #fbb4a8;
+  --color-google-canyon-400: #ef9586;
+  --color-google-canyon-500: #e37d6b;
+  --color-google-canyon-600: #c96d5d;
+  --color-google-canyon-700: #a7584c;
+  --color-google-canyon-800: #7c4138;
+  --color-google-canyon-900: #4f2a25;
+  --color-google-canyon-950: #2b1613;
+
+  /* Google accessory palette */
+  /* google-lavender — #829EEB anchor */
+  --color-google-lavender-50: #f6f8ff;
+  --color-google-lavender-100: #e9eeff;
+  --color-google-lavender-200: #d2dcff;
+  --color-google-lavender-300: #b3c3fa;
+  --color-google-lavender-400: #98adef;
+  --color-google-lavender-500: #829eeb;
+  --color-google-lavender-600: #718acf;
+  --color-google-lavender-700: #5d71aa;
+  --color-google-lavender-800: #46557f;
+  --color-google-lavender-900: #2e3752;
+  --color-google-lavender-950: #181d2c;
+
+  /* google-berry — #FF5266 anchor */
+  --color-google-berry-50: #fff6f7;
+  --color-google-berry-100: #ffe8eb;
+  --color-google-berry-200: #ffcdd3;
+  --color-google-berry-300: #ffa6b0;
+  --color-google-berry-400: #ff7d8c;
+  --color-google-berry-500: #ff5266;
+  --color-google-berry-600: #df485a;
+  --color-google-berry-700: #b93b4b;
+  --color-google-berry-800: #8b2c38;
+  --color-google-berry-900: #5a1d25;
+  --color-google-berry-950: #301015;
+
   --color-red-400: #f87171;
   --color-purple-400: #c084fc;
   --color-purple-600: #9333ea;
