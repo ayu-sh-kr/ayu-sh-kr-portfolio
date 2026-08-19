@@ -3,13 +3,13 @@ import {OnEvent} from "@ayu-sh-kr/dota-wrap/event";
 import {blogIndexContent} from "@app/data/blog-content.ts";
 import {ACTION_BUTTON_REFRESH_EVENT, ACTION_BUTTON_TRIGGER_EVENT, type ActionButtonPayload, type ActionButtonTrigger} from "@app/events/action-button.events.ts";
 import {actionButtonRegistry} from "@app/service/action-button-registry.service.ts";
+import {SubscriptionService} from "@app/service/subscription.service.ts";
 
 /**
  * Presents the blog's low-volume email subscription prompt.
  *
  * It appears at the end of the blog index and owns only subscription-specific concerns:
- * the browser's email validity and the local unavailable state. The form remains available
- * while the static deployment deliberately skips any subscription API request.
+ * the browser's email validity and the subscription initiation request.
  *
  * Selector: `blog-subscription`.
  */
@@ -18,28 +18,57 @@ import {actionButtonRegistry} from "@app/service/action-button-registry.service.
   shadow: false,
 })
 export class BlogSubscriptionComponent extends BaseElement {
-  /** Publishes keyboard-submit triggers and guard refreshes without coupling the form to the generic renderer. */
+  private readonly subscriptionService = new SubscriptionService();
+
+  /**
+   * Publishes action-button events for keyboard submits and validity refreshes.
+   *
+   * The form owns email semantics, while the shared action button owns its
+   * pending/success/error presentation; this publisher is the bridge between
+   * those two responsibilities.
+   */
   private readonly publisher = ApplicationEventService.getInstance().getPublisher();
 
-  /** Removes this route instance's action handler when navigation destroys the subscription form. */
+  /**
+   * Holds the registry cleanup returned for this form's submit action.
+   *
+   * Disconnect invokes it before a later blog route can register a new element,
+   * preventing an old component instance from handling current submissions.
+   */
   private removeHandler: (() => void) | null = null;
 
-  /** Removes this route instance's email-validity guard when navigation destroys the subscription form. */
+  /**
+   * Holds the registry cleanup returned for this form's validity guard.
+   *
+   * The guard is scoped by name, so leaving it registered would let a detached
+   * form block or enable another blog subscription form.
+   */
   private removeGuard: (() => void) | null = null;
 
   constructor() {
     super();
   }
 
-  /** Registers the local action and native-validity guard before visitors can trigger this form. */
+  /**
+   * Registers the submit handler and browser-validity guard after connection.
+   *
+   * Registration must happen after the element enters the route so the action
+   * registry points at this instance; the final refresh makes the button reflect
+   * the mounted input immediately.
+   */
   @OnEvent("connected", true)
   onConnected(): void {
-    this.removeHandler = actionButtonRegistry.registerHandler("subscription.submit", (payload) => this.skipSubscriptionRequest(payload));
+    this.removeHandler = actionButtonRegistry.registerHandler("subscription.submit", (payload) => this.initiateSubscription(payload));
     this.removeGuard = actionButtonRegistry.registerGuard("blog-subscription", () => this.isEmailValid());
     this.refreshActionButton();
   }
 
-  /** Removes both registrations on disconnect so a later blog route can register fresh form references. */
+  /**
+   * Releases the action and guard registrations when this route instance leaves.
+   *
+   * Both cleanup callbacks are cleared after invocation, making repeated
+   * disconnect notifications harmless and leaving no stale registry ownership.
+   */
   @OnEvent("disconnected", true)
   onDisconnected(): void {
     this.removeHandler?.();
@@ -48,13 +77,24 @@ export class BlogSubscriptionComponent extends BaseElement {
     this.removeGuard = null;
   }
 
-  /** Publishes a scoped refresh after input so the action-button recalculates this form's current browser validity. */
+  /**
+   * Requests a scoped action-button validity refresh after form input.
+   *
+   * It publishes only the blog guard name, so other action buttons do not
+   * recalculate or change state in response to this field.
+   */
   @BindEvent({event: "input", id: ".blog-subscribe-form"})
   refreshActionButton(): void {
     void this.publisher.publishAsync({name: ACTION_BUTTON_REFRESH_EVENT, data: {guard: "blog-subscription"}});
   }
 
-  /** Supports Enter in the email field without duplicating the action button's click behavior. */
+  /**
+   * Converts native form submission into the shared action trigger.
+   *
+   * Native validation runs first; a valid form contributes its `FormData` to the
+   * registry action, leaving click behavior and result presentation centralized
+   * in `action-button`.
+   */
   @BindEvent({event: "submit", id: ".blog-subscribe-form"})
   submitSubscription(event: SubmitEvent): void {
     event.preventDefault();
@@ -75,22 +115,43 @@ export class BlogSubscriptionComponent extends BaseElement {
     });
   }
 
-  /** Validates the local form value, then deliberately skips the removed server API. */
-  private async skipSubscriptionRequest(payload: ActionButtonPayload): Promise<void> {
+  /**
+   * Starts the backend verification flow for the submitted email address.
+   *
+   * The action-button registry calls this handler after the local browser
+   * validity guard passes. A pending response is the successful hand-off to the
+   * email verification route; non-2xx responses and unexpected states fail the
+   * action-button flow.
+   *
+   * @param payload - Form values supplied by the registered action.
+   * @throws Error when the email is absent or the backend does not return `PENDING`.
+   */
+  private async initiateSubscription(payload: ActionButtonPayload): Promise<void> {
     if (typeof payload.email !== "string") {
       throw new Error("Subscription email is missing.");
     }
 
-    throw new Error("Article updates are not available yet.");
+    await this.subscriptionService.initiate(payload.email);
   }
 
-  /** Reads the mounted email input's native required and email constraints for the registered action guard. */
+  /**
+   * Reads the mounted email control's native validity for the registry guard.
+   *
+   * Returning false when the input is absent keeps a partially mounted form
+   * closed to submission until the browser control exists and is valid.
+   */
   private isEmailValid(): boolean {
     const email = this.querySelector<HTMLInputElement>("#blog-email");
     return email?.validity.valid ?? false;
   }
 
-  /** Renders the retained subscription form with a local unavailable-state message. */
+  /**
+   * Renders the authored subscription prompt and its browser-validatable form.
+   *
+   * The template exposes the field and action metadata consumed by the shared
+   * button; loading and request state are updated by the registry handler rather
+   * than by render-time side effects.
+   */
   render(): string {
     return HTML`
       <section class="blog-subscribe" aria-label="${blogIndexContent.subscription.ariaLabel}">

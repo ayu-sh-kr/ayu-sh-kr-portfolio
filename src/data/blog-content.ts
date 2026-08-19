@@ -66,7 +66,7 @@ export const blogIndexContent = {
     copy: "Occasional email updates when a new article is published.",
     emailLabel: "Email address",
     emailPlaceholder: "name@company.com",
-    emailHint: "Email updates are not available yet.",
+    emailHint: "We will send a verification link to this address.",
     submitLabel: "Subscribe",
     submittingLabel: "Checking…",
     successLabel: "Subscribed",
