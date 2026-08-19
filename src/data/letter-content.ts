@@ -1,0 +1,77 @@
+import type { PageSeoContent } from "@app/data/seo-content.ts";
+
+/** Authored copy for the newsletter unsubscribe confirmation and receipt pages. */
+export const letterUnsubscribeContent = {
+  seo: {
+    confirm: {
+      title: "Unsubscribe — The Dispatch",
+      description: "Take an address off The Dispatch. One decision, no follow-up mail.",
+      keywords: ["Unsubscribe", "The Dispatch", "Newsletter"],
+      ogTitle: "Unsubscribe — The Dispatch",
+      ogDescription: "Take an address off The Dispatch. One decision, no follow-up mail.",
+    } satisfies PageSeoContent,
+    done: {
+      title: "Unsubscribed — The Dispatch",
+      description: "You're off The Dispatch. Here's exactly what that did.",
+      keywords: ["Unsubscribed", "The Dispatch", "Newsletter"],
+      ogTitle: "Unsubscribed — The Dispatch",
+      ogDescription: "You're off The Dispatch. Here's exactly what that did.",
+    } satisfies PageSeoContent,
+  },
+  common: {
+    brand: "ayush.dev",
+    eyebrow: "The Dispatch",
+    footer: "The Dispatch · weekly, or thereabouts",
+    privacyLabel: "What I store",
+    privacyHref: "/legal/privacy",
+    defaultEmail: "reader@example.com",
+  },
+  confirm: {
+    title: "Off the list?",
+    intro: "No hard feelings and no hoops. Confirm below and the address comes off straight away — you won't get a goodbye email or a \"we're sorry to see you go\" sequence, because those are just one more email you didn't ask for.",
+    addressLabel: "Coming off",
+    facts: [
+      ["Deleted, not parked", "The row is removed, not moved to a suppression list. Nothing keeps a record that you were ever on it."],
+      ["Effective now", "The next issue goes out without you. If one is already in flight when you confirm, it may still land — that's a queue, not a re-subscribe."],
+      ["Archive stays open", "Every past issue is still readable on the site. You don't need to be subscribed to read."],
+    ],
+    unsubscribeLabel: "Unsubscribe",
+    unsubscribeBusy: "Removing",
+    unsubscribeDone: "Removed",
+    unsubscribeFail: "Didn't go through",
+    keepLabel: "Keep it, take me back",
+    wrongAddress: "Wrong address? This link only ever unsubscribes the one shown above.",
+    manageDifferent: "Manage a different one",
+    invalidTitle: "This link has expired",
+    invalidBody: "Unsubscribe links are good for 30 days from the issue they came in. Put the address in below and I'll send a fresh one — it's the only email that goes out, and it goes nowhere else.",
+    emailLabel: "Email address",
+    emailPlaceholder: "you@company.com",
+    reissueLabel: "Send the link",
+    reissueBusy: "Sending",
+    reissueDone: "Sent",
+    reissueFail: "Didn't send",
+    reissueSuccess: "If that address is on the list, the link is on its way. Check spam if it's quiet for ten minutes.",
+    manualHelp: "Or reply to any issue with the word stop — that reaches a person, and I'll do it by hand the same day.",
+    loading: "Checking that link…",
+    genericError: "Something broke on my end. Try once more.",
+  },
+  done: {
+    title: "Done — you're off.",
+    intro: "That's the whole thing. Nothing else to click, nothing else arriving. Below is what the list actually looks like now, in case you'd rather see it than trust it.",
+    addressLabel: "Removed",
+    facts: [
+      ["The row is gone", "Deleted outright, not moved to a suppression list. I no longer hold a record that this address was ever subscribed."],
+      ["One possible straggler", "An issue already handed to the mail provider can still land in the next few minutes. Nothing after that will."],
+      ["Client work is separate", "If we're working together, project email isn't affected — that's a person writing to you, not a list."],
+    ],
+    subscribeAgainLabel: "Subscribe again",
+    subscribeAgainHint: "Use the blog's email form to choose an address and start again.",
+    exitsTitle: "Still here for the writing?",
+    exits: [
+      ["Read the blog", "Longer pieces, published as they finish", "/blog"],
+      ["RSS", "Same writing, none of it in your inbox", "/feed.xml"],
+      ["Work together", "Backend, infrastructure, or a second pair of eyes", "/start"],
+    ],
+    exitsNote: "If you left because the cadence was wrong rather than the writing, reply to any old issue and tell me — that feedback is worth more to me than the subscriber count.",
+  },
+} as const;
