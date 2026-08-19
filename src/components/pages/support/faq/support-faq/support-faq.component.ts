@@ -1,6 +1,7 @@
 import { BaseElement, BindEvent, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
 import { DOTA_FAQ_ACCORDION_CLASS, DOTA_FAQ_ACCORDION_CONFIG } from "@app/components/utils/faq/dota-faq-accordion.ts";
 import { supportContent } from "@app/data/support-content.ts";
+import { escapeHtml } from "@app/utils/html.utils.ts";
 
 /**
  * Renders the support reference as shared Dota accordions.
@@ -12,21 +13,41 @@ import { supportContent } from "@app/data/support-content.ts";
  */
 @Component({ selector: "support-faq", shadow: false })
 export class SupportFaqComponent extends BaseElement {
-  /** Active filter key; `all` leaves every authored question visible. */
+  /**
+   * Stores the selected FAQ category between input events.
+   *
+   * The initial `all` value matches the first rendered category and is changed
+   * only by `selectCategory()`; filtering then combines it with the search term.
+   */
   private activeCategory = "all";
 
-  /** Creates the stateless FAQ component before its accordions are rendered. */
+  /**
+   * Creates the FAQ host before its accordion children are rendered.
+   *
+   * Filtering state is initialized on the instance because the event handlers
+   * update existing accordion hosts instead of rebuilding the section.
+   */
   constructor() {
     super();
   }
 
-  /** Filters the existing accordions as the visitor refines the search term. */
+  /**
+   * Reapplies both active filters when the search field changes.
+   *
+   * The handler delegates DOM visibility and result-count updates to
+   * `applyFilters()`, preserving the expansion state owned by each accordion.
+   */
   @BindEvent({ event: "input", id: "#support-faq-search" })
   filterFaqs(): void {
     this.applyFilters();
   }
 
-  /** Clears the search term and restores focus to the search control. */
+  /**
+   * Clears the search input, returns focus to it, and reapplies the category.
+   *
+   * If the control is not mounted, the event is ignored so a partial render
+   * cannot cause a null dereference.
+   */
   @BindEvent({ event: "click", id: "#support-faq-clear" })
   clearSearch(): void {
     const search = this.querySelector<HTMLInputElement>("#support-faq-search");
@@ -39,7 +60,13 @@ export class SupportFaqComponent extends BaseElement {
     this.applyFilters();
   }
 
-  /** Activates a category button and filters the existing accordion hosts. */
+  /**
+   * Changes the active category from the clicked filter button.
+   *
+   * The selected class is updated across the button group before the existing
+   * accordion hosts are filtered, keeping the control state and result list in
+   * the same event turn.
+   */
   @BindEvent({ event: "click", id: "[data-support-faq-category]" })
   selectCategory(event: MouseEvent): void {
     const button = (event.target as HTMLElement).closest<HTMLButtonElement>("[data-support-faq-category]");
@@ -55,7 +82,13 @@ export class SupportFaqComponent extends BaseElement {
     this.applyFilters();
   }
 
-  /** Applies the combined text and category criteria without rerendering the accordions. */
+  /**
+   * Applies the current category and normalized search term to every FAQ host.
+   *
+   * It updates hidden state, the live result count, clear-button visibility, and
+   * the empty message in place; accordions are not rerendered, so open answers
+   * stay open while visitors refine their search.
+   */
   private applyFilters(): void {
     const search = this.querySelector<HTMLInputElement>("#support-faq-search");
     const clear = this.querySelector<HTMLButtonElement>("#support-faq-clear");
@@ -80,12 +113,12 @@ export class SupportFaqComponent extends BaseElement {
     if (empty) empty.hidden = visibleCount !== 0;
   }
 
-  /** Escapes dynamic text for use in quoted accordion and data attributes. */
-  private escapeAttribute(value: string): string {
-    return value.replaceAll("&", "&amp;").replaceAll('"', "&quot;");
-  }
-
-  /** Returns Support's authored answers using the same shared accordion contract as Pricing. */
+  /**
+   * Returns Support's authored answers using the same shared accordion contract as Pricing.
+   *
+   * Search metadata is escaped before it is placed in quoted attributes; the
+   * shared `dota-accordion` element remains responsible for disclosure behavior.
+   */
   render(): string {
     const content = supportContent.faq;
 
@@ -114,9 +147,9 @@ export class SupportFaqComponent extends BaseElement {
                     classname="${DOTA_FAQ_ACCORDION_CLASS}"
                     data-support-faq-item
                     data-category="${faq.category}"
-                    data-search-text="${this.escapeAttribute(`${faq.question} ${faq.answer}`.replace(/<[^>]*>/g, "").toLocaleLowerCase())}"
-                    header="${this.escapeAttribute(faq.question)}"
-                    description="${this.escapeAttribute(faq.answer)}"
+                    data-search-text="${escapeHtml(`${faq.question} ${faq.answer}`.replace(/<[^>]*>/g, "").toLocaleLowerCase())}"
+                    header="${escapeHtml(faq.question)}"
+                    description="${escapeHtml(faq.answer)}"
                     config='${DOTA_FAQ_ACCORDION_CONFIG}'
                   ></dota-accordion>
                 `,
