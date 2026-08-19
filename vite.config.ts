@@ -1,4 +1,4 @@
-import { defineConfig, type Plugin } from "vite";
+import { defineConfig, loadEnv, type Plugin } from "vite";
 import { existsSync } from "node:fs";
 import { resolve } from "node:path";
 import {fileURLToPath} from "node:url";
@@ -80,37 +80,85 @@ const previewSsgRedirects: Plugin = {
   },
 };
 
-export default defineConfig({
-  plugins: [
-    tailwindcss(),
-    previewSsgRedirects,
-    ...dotaVitePlugins({
-      root: projectRoot,
-      logType: "info",
-      scanRoots: [
-        projectRoot,
-        resolve(projectRoot, "node_modules/@ayu-sh-kr/dota-md"),
-        resolve(projectRoot, "node_modules/@ayu-sh-kr/dota-ui"),
-      ],
-      webTypes: {
-        outFile: "web-types.json",
-        customElementsManifest: { enabled: true },
-      },
-      eventMap: {
-        outFile: "src/event-map.d.ts",
-      },
-      ssg: {
-        entry: "/src/main.ts",
-        autoDetectRoutes: true,
-        routes: ["/offline", ...blogRoutes, ...showcaseRoutes],
-        vercel: true,
-      },
-    }),
-  ],
-  resolve: {
-    alias: {
-      "@app": resolve("./src"),
+export default defineConfig(({ mode }) => {
+  const env = loadEnv(mode, projectRoot, "");
+
+  return {
+    plugins: [
+      tailwindcss(),
+      previewSsgRedirects,
+      ...dotaVitePlugins({
+        root: projectRoot,
+        logType: "info",
+        scanRoots: [
+          projectRoot,
+          resolve(projectRoot, "node_modules/@ayu-sh-kr/dota-md"),
+          resolve(projectRoot, "node_modules/@ayu-sh-kr/dota-ui"),
+        ],
+        webTypes: {
+          outFile: "web-types.json",
+          customElementsManifest: { enabled: true },
+        },
+        eventMap: {
+          outFile: "src/event-map.d.ts",
+        },
+        ssg: {
+          entry: "/src/main.ts",
+          autoDetectRoutes: true,
+          routes: ["/offline", ...blogRoutes, ...showcaseRoutes],
+          vercel: true,
+        },
+      }),
+    ],
+    server: {
+      proxy: mode === "development"
+        ? {
+            "/status": {
+              target: env.VITE_DEV_API_TARGET || "http://localhost:8080",
+              changeOrigin: true,
+              rewrite: () => "/status",
+            },
+            "/subscriber/initiate": {
+              target: env.VITE_DEV_API_TARGET || "http://localhost:8080",
+              changeOrigin: true,
+              rewrite: () => "/subscriberVerificationInitiate",
+            },
+            "/subscriber/confirm": {
+              target: env.VITE_DEV_API_TARGET || "http://localhost:8080",
+              changeOrigin: true,
+              rewrite: () => "/subscriberVerificationConfirm",
+            },
+            "/subscriber/unsubscribe": {
+              target: env.VITE_DEV_API_TARGET || "http://localhost:8080",
+              changeOrigin: true,
+              rewrite: () => "/subscriberUnsubscribe",
+            },
+            "/subscriber/preferences/toggle-all": {
+              target: env.VITE_DEV_API_TARGET || "http://localhost:8080",
+              changeOrigin: true,
+              rewrite: () => "/subscriberPreferenceToggleAll",
+            },
+            "/subscriber/preferences/toggle": {
+              target: env.VITE_DEV_API_TARGET || "http://localhost:8080",
+              changeOrigin: true,
+              rewrite: () => "/subscriberPreferenceToggleOne",
+            },
+            "/subscriber/preferences": {
+              target: env.VITE_DEV_API_TARGET || "http://localhost:8080",
+              changeOrigin: true,
+              rewrite: () => "/subscriberPreferences",
+            },
+          }
+        : undefined,
     },
-  },
-  publicDir: "public",
+    resolve: {
+      alias: {
+        "@app": resolve("./src"),
+      },
+    },
+    ssr: {
+      external: ["@ayu-sh-kr/dota-rest"],
+    },
+    publicDir: "public",
+  };
 });
