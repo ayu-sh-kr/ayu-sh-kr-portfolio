@@ -1,0 +1,282 @@
+unsubscribe-flow {
+  display: block;
+  min-block-size: 100svh;
+  background: var(--background-color);
+  color: var(--foreground-color);
+}
+
+.unsubscribe-page {
+  min-block-size: 100svh;
+}
+
+.unsubscribe-eyebrow {
+  color: var(--primary-color-strong);
+}
+
+.unsubscribe-hero-title {
+  font-size: var(--type-subsection-size);
+  text-wrap: wrap;
+  overflow-wrap: anywhere;
+}
+
+.unsubscribe-card .type-subsection { text-wrap: wrap; overflow-wrap: anywhere; }
+
+.unsubscribe-lead {
+  color: var(--muted-color);
+}
+
+.unsubscribe-card {
+  padding: var(--layout-pad-card);
+  background: var(--surface-color);
+  border: 1px solid var(--border-color);
+  border-radius: var(--layout-radius-lg);
+}
+
+.unsubscribe-address,
+.unsubscribe-receipt {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: var(--layout-space-2) var(--layout-space-3);
+  margin: var(--layout-space-2) 0 0;
+  color: var(--foreground-color);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: var(--type-control-size);
+  overflow-wrap: anywhere;
+}
+
+.unsubscribe-address span {
+  inline-size: var(--layout-space-2);
+  block-size: var(--layout-space-2);
+  flex: 0 0 auto;
+  border-radius: var(--layout-radius-round);
+  background: var(--muted-color);
+}
+
+.unsubscribe-facts {
+  margin: var(--layout-space-5) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.unsubscribe-facts li {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--layout-space-1);
+  padding-block: var(--layout-space-3);
+  border-block-start: 1px solid var(--border-color);
+}
+
+.unsubscribe-facts b {
+  font-size: var(--type-compact-size);
+  font-weight: var(--type-card-title-weight);
+}
+
+.unsubscribe-facts span,
+.unsubscribe-meta,
+.unsubscribe-aside {
+  color: var(--muted-color);
+  font-size: var(--type-compact-size);
+  line-height: var(--type-compact-leading);
+}
+
+.unsubscribe-facts span {
+  min-inline-size: 0;
+}
+
+.unsubscribe-decision,
+.unsubscribe-subscribe-again {
+  margin-block-start: var(--layout-space-6);
+}
+
+.unsubscribe-quiet {
+  color: var(--muted-color);
+  font-size: var(--type-control-size);
+  text-decoration: none;
+}
+
+.unsubscribe-quiet:hover {
+  color: var(--foreground-color);
+}
+
+.unsubscribe-act {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--layout-space-2);
+  min-block-size: 2.75rem;
+  padding: var(--layout-space-3) var(--layout-space-5);
+  border: 1px solid var(--border-color);
+  border-radius: var(--layout-radius-pill);
+  background: var(--surface-color);
+  color: var(--foreground-color);
+  font-size: var(--type-control-size);
+  font-weight: var(--type-control-weight);
+  line-height: 1;
+  cursor: pointer;
+  transition: transform 180ms ease, border-color 180ms ease, opacity 180ms ease;
+}
+
+.unsubscribe-act:hover:not(:disabled) {
+  transform: translateY(-2px);
+  border-color: var(--border-strong-color);
+}
+
+.unsubscribe-act:disabled {
+  opacity: 0.7;
+  cursor: progress;
+}
+
+.unsubscribe-act[data-state="success"] {
+  border-color: var(--success-color);
+}
+
+.unsubscribe-act[data-state="error"] {
+  border-color: var(--danger-color);
+  color: var(--danger-color);
+}
+
+.unsubscribe-glyph {
+  display: grid;
+  place-items: center;
+  inline-size: var(--layout-space-4);
+  block-size: var(--layout-space-4);
+  font-size: var(--type-control-size);
+}
+
+.unsubscribe-spinner {
+  inline-size: var(--layout-space-4);
+  block-size: var(--layout-space-4);
+  border: 2px solid currentColor;
+  border-block-start-color: transparent;
+  border-radius: var(--layout-radius-round);
+  animation: unsubscribe-spin 700ms linear infinite;
+}
+
+@keyframes unsubscribe-spin {
+  to { transform: rotate(360deg); }
+}
+
+.unsubscribe-error {
+  margin-block-start: var(--layout-space-3);
+  color: var(--danger-color);
+  font-size: var(--type-compact-size);
+  font-weight: var(--type-control-weight);
+}
+
+.unsubscribe-success {
+  margin-block-start: var(--layout-space-3);
+  color: var(--success-color);
+}
+
+.unsubscribe-aside {
+  margin-block-start: var(--layout-space-5);
+  padding-block-start: var(--layout-space-4);
+  border-block-start: 1px dashed var(--border-color);
+}
+
+.unsubscribe-aside a {
+  color: var(--foreground-color);
+  text-underline-offset: 3px;
+}
+
+.unsubscribe-field-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--layout-space-3);
+  margin-block-start: var(--layout-space-4);
+}
+
+.unsubscribe-field {
+  flex: 1 1 var(--layout-col-sm);
+  min-inline-size: 0;
+  padding: var(--layout-space-3) var(--layout-space-4);
+  border: 1px solid var(--border-color);
+  border-radius: var(--layout-radius-pill);
+  background: var(--background-color);
+  color: var(--foreground-color);
+  font-size: var(--type-control-size);
+}
+
+.unsubscribe-field-row .unsubscribe-act,
+.unsubscribe-decision .unsubscribe-act,
+.unsubscribe-subscribe-again .unsubscribe-act { inline-size: 100%; }
+
+.unsubscribe-receipt span {
+  color: var(--muted-color);
+  text-decoration: line-through;
+  text-decoration-color: var(--border-color);
+}
+
+.unsubscribe-receipt time {
+  color: var(--muted-color);
+  font-family: var(--primary-font), sans-serif;
+  font-size: var(--type-label-size);
+  font-weight: var(--type-label-weight);
+  letter-spacing: var(--type-label-tracking);
+  text-transform: uppercase;
+}
+
+.unsubscribe-exits {
+  margin: 0;
+  padding: 0;
+  border-block-start: 1px solid var(--border-color);
+  list-style: none;
+}
+
+.unsubscribe-exits li {
+  border-block-end: 1px solid var(--border-color);
+}
+
+.unsubscribe-exits a {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--layout-space-4);
+  padding-block: var(--layout-space-4);
+  color: var(--foreground-color);
+  font-size: var(--type-compact-size);
+  text-decoration: none;
+}
+
+.unsubscribe-exits a > span:last-child {
+  color: var(--muted-color);
+  text-align: end;
+}
+
+.unsubscribe-arrow {
+  color: var(--primary-color-strong);
+  transition: transform 180ms ease;
+}
+
+.unsubscribe-exits a:hover .unsubscribe-arrow {
+  display: inline-block;
+  transform: translateX(var(--layout-space-1));
+}
+
+.visually-hidden {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@media (min-width: 520px) {
+  .unsubscribe-hero-title { font-size: var(--type-display-size); }
+  .unsubscribe-facts li { grid-template-columns: var(--layout-col-sm) minmax(0, 1fr); gap: var(--layout-space-4); align-items: baseline; }
+  .unsubscribe-field-row .unsubscribe-act,
+  .unsubscribe-decision .unsubscribe-act,
+  .unsubscribe-subscribe-again .unsubscribe-act { inline-size: auto; }
+}
+
+@media (min-width: 700px) {
+  .unsubscribe-card { padding: var(--layout-pad-panel); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .unsubscribe-spinner { animation: none; opacity: 0.5; }
+  .unsubscribe-act,
+  .unsubscribe-arrow { transition: none; }
+}
