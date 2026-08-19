@@ -1,0 +1,44 @@
+.design-interaction-icon-grid {
+  align-items: stretch;
+}
+
+.design-interaction-icon-card {
+  display: grid;
+  gap: var(--layout-space-3);
+  min-inline-size: 0;
+  margin: 0;
+  padding: var(--layout-pad-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--layout-radius-md);
+  background: var(--surface-color);
+}
+
+.design-interaction-icon-stage {
+  display: grid;
+  min-block-size: 7rem;
+  place-items: center;
+  border-radius: var(--layout-radius-sm);
+  background: var(--primary-color-subtle);
+}
+
+.design-interaction-icon-stage img {
+  display: block;
+  max-inline-size: 80%;
+  max-block-size: 5rem;
+}
+
+.design-interaction-icon-card figcaption {
+  display: grid;
+  gap: var(--layout-space-1);
+}
+
+.design-interaction-icon-card strong {
+  color: var(--foreground-color);
+  font-size: var(--type-card-title-size);
+  font-weight: var(--type-card-title-weight);
+}
+
+.design-interaction-icon-card span {
+  color: var(--muted-color);
+  font-size: var(--type-compact-size);
+}
