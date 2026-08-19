@@ -65,6 +65,8 @@
   --primary-color-on: light-dark(var(--primary-on-light), var(--primary-on-dark));
 
   --background-color: light-dark(var(--color-paper-50), var(--color-inkstone-950));
+  /* Browser chrome follows the same adaptive ground as the document. */
+  --browser-theme-color: var(--background-color);
   --foreground-color: light-dark(var(--color-inkstone-900), var(--color-paper-50));
   --muted-color: light-dark(var(--color-inkstone-500), var(--color-inkstone-300));
   --muted-strong-color: light-dark(var(--color-inkstone-400), var(--color-inkstone-200));
