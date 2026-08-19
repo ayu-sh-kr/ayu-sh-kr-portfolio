@@ -67,6 +67,7 @@ pnpm preview
 | `/pricing` | Services, pricing, estimator, and project enquiry flow |
 | `/coffee` | One-time support flow |
 | `/support` | Support and project handoff information |
+| `/subscription/verify`, `/subscription/preference`, `/subscription/unsubscribe` | Token-linked newsletter verification and management flows |
 | `/legal/privacy`, `/legal/terms` | Legal Markdown documents |
 | `/design` | Design-system overview |
 | `/design/typography`, `/design/color`, `/design/element`, `/design/layout`, `/design/alert`, `/design/toast`, `/design/interaction` | Live design-system references |
