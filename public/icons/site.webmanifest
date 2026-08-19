@@ -1,0 +1,16 @@
+{
+  "name": "Ayush Kumar Jaiswal — Backend Engineer",
+  "short_name": "ayu-sh-kr",
+  "id": "/",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#FAFAF8",
+  "theme_color": "#FAFAF8",
+  "icons": [
+    { "src": "/icons/png/brand/icon-192.png",           "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/png/brand/icon-512.png",           "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/png/maskable-brand/icon-192.png",  "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
+    { "src": "/icons/png/maskable-brand/icon-512.png",  "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
