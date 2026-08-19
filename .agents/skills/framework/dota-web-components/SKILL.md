@@ -6,7 +6,7 @@ description: Use when creating, modifying, or reviewing components and pages in 
 # Dota Web Components Skill
 
 Use this skill when creating or modifying components in this app's `src` tree (or the equivalent Dota Web app tree).
-Dota web components are TypeScript classes built on `dota-core`/`dota-wrap`, registered with decorators, and rendered as custom elements using HTML string templates.
+Dota web components are TypeScript classes built on `dota-core`/`dota-wrap`, registered with decorators, and rendered as custom elements using structured `dota-rendering` templates.
 
 Primary local references:
 
@@ -28,8 +28,8 @@ import {
   String,
   BindEvent,
   WindowListener,
-  HTML,
 } from "@ayu-sh-kr/dota-wrap/core";
+import { html, keyed, when, nothing } from "@ayu-sh-kr/dota-wrap/rendering";
 ```
 
 Use these package surfaces by responsibility:
@@ -63,8 +63,8 @@ export class ExampleCardComponent extends BaseElement {
     super();
   }
 
-  render(): string {
-    return HTML`
+  render() {
+    return html`
       <section class="rounded-lg border border-gray-200 dark:border-gray-800">
         Example
       </section>
@@ -79,7 +79,7 @@ Conventions:
 - Use PascalCase class names with a suffix like `Component` or `Page`.
 - Keep `shadow: false` unless style isolation is explicitly required. `dota-web` relies on global Tailwind classes and dark-mode variants.
 - Include an explicit constructor that calls `super()` when matching existing component style.
-- Return a string from `render()`. Use either `HTML\`...\`` from core or a plain template string with `// language=html`.
+- Return a `dota-rendering` `RenderOutput` from `render()`. Use `html\`...\`` from `@ayu-sh-kr/dota-wrap/rendering`; do not use the legacy `HTML` helper from Dota Core.
 
 ## Component file organization and CSS
 
@@ -129,8 +129,8 @@ export class DocPage extends DotaPageElement {
     };
   }
 
-  render(): string {
-    return HTML`<doc-section></doc-section>`;
+  render() {
+    return html`<doc-section></doc-section>`;
   }
 }
 ```
@@ -243,21 +243,29 @@ Use native `CustomEvent`s for browser-level concerns like `themeChange` and `onP
 
 ## Rendering and Styling
 
-Render markup as HTML strings. Most components use Tailwind utilities directly in the returned template.
+Render components with the structured `@ayu-sh-kr/dota-rendering` primitives. Most components use Tailwind utilities directly in the returned template.
 
 ```ts
-render(): string {
-  const icon = GeneralUtils.isDarkMode()
-    ? "material-symbols:dark-mode"
-    : "material-symbols:sunny-rounded";
+import { html, nothing, when } from "@ayu-sh-kr/dota-wrap/rendering";
 
-  return `
+render() {
+  return html`
     <span id="dark-button" class="active:scale-95 cursor-pointer">
-      <dota-icon name="${icon}" color="${this.color}" variant="ghost" size="md"></dota-icon>
+      <dota-icon name="${this.icon}" color="${this.color}" variant="ghost" size="md"></dota-icon>
+      ${when(this.isBusy, html`<span role="status">Loading…</span>`, nothing)}
     </span>
   `;
 }
 ```
+
+The renderer treats ordinary interpolated values as text and understands quoted
+attribute parts, so do not pre-escape normal text or attribute values with
+`escapeHtml()`. Return nested `html` results, `when()` branches, or `keyed()`
+collections from helper methods when they contribute markup. Use `trustedHTML()`
+only for markup that has already crossed an explicit sanitizer/application-owned
+trust boundary; never use `unsafeHTML()` for routine component composition. The
+legacy Dota Core `HTML` tag is not the component rendering API in this app and
+must not be introduced in new or refactored components.
 
 Styling conventions:
 
