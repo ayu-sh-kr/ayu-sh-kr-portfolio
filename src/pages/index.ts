@@ -4,6 +4,10 @@ export { ErrorPage } from "@app/pages/error.page.ts";
 export { PricingPage } from "@app/pages/pricing/pricing.page.ts";
 export { CoffeePage } from "@app/pages/coffee.page.ts";
 export { SupportPage } from "@app/pages/support.page.ts";
+export { SubscriptionPreferencePage } from "@app/pages/subscription/subscription-preference.page.ts";
+export { SubscriptionVerifyPage } from "@app/pages/subscription/subscription-verify.page.ts";
+export { SubscriptionUnsubscribePage } from "@app/pages/subscription/subscription-unsubscribe.page.ts";
+export { SubscriptionUnsubscribedPage } from "@app/pages/subscription/subscription-unsubscribed.page.ts";
 
 export { BlogPage } from "@app/pages/blog/blog.page.ts";
 export { BlogSlugPage } from "@app/pages/blog/blog-slug.page.ts";
