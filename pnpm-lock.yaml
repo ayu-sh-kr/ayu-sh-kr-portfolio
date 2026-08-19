@@ -11,6 +11,9 @@ importers:
       '@ayu-sh-kr/dota-md':
         specifier: 0.0.16
         version: 0.0.16(@types/markdown-it@14.1.2)(vite@8.2.1(@types/node@26.2.0)(esbuild@0.28.1)(jiti@2.7.0))
+      '@ayu-sh-kr/dota-rest':
+        specifier: ^1.1.5
+        version: 1.1.5
       '@ayu-sh-kr/dota-ui':
         specifier: 0.0.28
         version: 0.0.28(vite@8.2.1(@types/node@26.2.0)(esbuild@0.28.1)(jiti@2.7.0))
