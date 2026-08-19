@@ -45,7 +45,7 @@ html[data-consent-state="settled"] consent-notice .consent-notice {
 
 .consent-notice__body {
   flex: 1 1 20rem;
-  min-inline-size: min(20rem, 100%);
+  min-inline-size: 0;
 }
 
 .consent-notice__title {
