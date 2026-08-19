@@ -4,6 +4,7 @@ import { resolve } from "node:path";
 import {fileURLToPath} from "node:url";
 import tailwindcss from "@tailwindcss/vite";
 import {dotaVitePlugins} from "@ayu-sh-kr/dota-wrap/vite";
+import {dotaSsg} from "@ayu-sh-kr/dota-wrap/ssg";
 
 const projectRoot = fileURLToPath(new URL(".", import.meta.url));
 const blogRoutes = [
@@ -80,6 +81,36 @@ const previewSsgRedirects: Plugin = {
   },
 };
 
+/**
+ * Runs Dota prerendering after Vite has written the client bundle to disk.
+ *
+ * Rolldown can invoke `closeBundle` before writing `index.html` in Vercel's Linux
+ * build environment. Dota's stock SSG plugin uses that hook to read the shell, so
+ * defer its existing hook to `writeBundle`, where Vite guarantees the output exists.
+ */
+const dotaSsgAfterClientWrite = (): Plugin => {
+  const ssgPlugin = dotaSsg({
+    root: projectRoot,
+    logType: "info",
+    entry: "/src/main.ts",
+    autoDetectRoutes: true,
+    routes: ["/offline", ...blogRoutes, ...showcaseRoutes],
+    vercel: true,
+  });
+
+  return {
+    name: "dota-ssg-after-client-write",
+    apply: "build",
+    enforce: "post",
+    configResolved(config) {
+      ssgPlugin.configResolved?.(config);
+    },
+    async writeBundle() {
+      await ssgPlugin.closeBundle?.();
+    },
+  };
+};
+
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, projectRoot, "");
 
@@ -102,13 +133,9 @@ export default defineConfig(({ mode }) => {
         eventMap: {
           outFile: "src/event-map.d.ts",
         },
-        ssg: {
-          entry: "/src/main.ts",
-          autoDetectRoutes: true,
-          routes: ["/offline", ...blogRoutes, ...showcaseRoutes],
-          vercel: true,
-        },
+        ssg: false,
       }),
+      dotaSsgAfterClientWrite(),
     ],
     server: {
       proxy: mode === "development"
