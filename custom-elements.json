@@ -1493,6 +1493,39 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/pages/design/interaction/icon-usage/design-interaction-icon-usage.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "DesignInteractionIconUsageComponent",
+          "customElement": true,
+          "tagName": "design-interaction-icon-usage",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "DesignInteractionIconUsageComponent",
+          "declaration": {
+            "name": "DesignInteractionIconUsageComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "design-interaction-icon-usage",
+          "declaration": {
+            "name": "DesignInteractionIconUsageComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/pages/design/interaction/ingest/design-interaction-ingest.component.js",
       "declarations": [
         {
@@ -4537,6 +4570,124 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/pages/subscription/subscription-preferences/subscription-preferences.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "SubscriptionPreferenceComponent",
+          "customElement": true,
+          "tagName": "subscription-preference",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "SubscriptionPreferenceComponent",
+          "declaration": {
+            "name": "SubscriptionPreferenceComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "subscription-preference",
+          "declaration": {
+            "name": "SubscriptionPreferenceComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/subscription/subscription-verify/subscription-verify.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "SubscriptionVerifyComponent",
+          "customElement": true,
+          "tagName": "subscription-verify",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "SubscriptionVerifyComponent",
+          "declaration": {
+            "name": "SubscriptionVerifyComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "subscription-verify",
+          "declaration": {
+            "name": "SubscriptionVerifyComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/subscription/unsubscribe-flow/unsubscribe-flow.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "UnsubscribeFlowComponent",
+          "customElement": true,
+          "tagName": "unsubscribe-flow",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [
+            {
+              "kind": "field",
+              "name": "view",
+              "attribute": "view",
+              "type": {
+                "text": "string"
+              },
+              "default": "confirm"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "view",
+              "fieldName": "view",
+              "type": {
+                "text": "string"
+              },
+              "default": "confirm"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "UnsubscribeFlowComponent",
+          "declaration": {
+            "name": "UnsubscribeFlowComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "unsubscribe-flow",
+          "declaration": {
+            "name": "UnsubscribeFlowComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/pages/support/faq/support-faq/support-faq.component.js",
       "declarations": [
         {
@@ -6336,6 +6487,138 @@
           "name": "showcase-page",
           "declaration": {
             "name": "ShowcasePage"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/pages/subscription/subscription-preference.page.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "SubscriptionPreferencePage",
+          "customElement": true,
+          "tagName": "subscription-preference-page",
+          "superclass": {
+            "name": "DotaPageElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "SubscriptionPreferencePage",
+          "declaration": {
+            "name": "SubscriptionPreferencePage"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "subscription-preference-page",
+          "declaration": {
+            "name": "SubscriptionPreferencePage"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/pages/subscription/subscription-unsubscribe.page.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "SubscriptionUnsubscribePage",
+          "customElement": true,
+          "tagName": "subscription-unsubscribe-page",
+          "superclass": {
+            "name": "DotaPageElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "SubscriptionUnsubscribePage",
+          "declaration": {
+            "name": "SubscriptionUnsubscribePage"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "subscription-unsubscribe-page",
+          "declaration": {
+            "name": "SubscriptionUnsubscribePage"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/pages/subscription/subscription-unsubscribed.page.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "SubscriptionUnsubscribedPage",
+          "customElement": true,
+          "tagName": "subscription-unsubscribed-page",
+          "superclass": {
+            "name": "DotaPageElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "SubscriptionUnsubscribedPage",
+          "declaration": {
+            "name": "SubscriptionUnsubscribedPage"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "subscription-unsubscribed-page",
+          "declaration": {
+            "name": "SubscriptionUnsubscribedPage"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/pages/subscription/subscription-verify.page.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "SubscriptionVerifyPage",
+          "customElement": true,
+          "tagName": "subscription-verify-page",
+          "superclass": {
+            "name": "DotaPageElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "SubscriptionVerifyPage",
+          "declaration": {
+            "name": "SubscriptionVerifyPage"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "subscription-verify-page",
+          "declaration": {
+            "name": "SubscriptionVerifyPage"
           }
         }
       ]

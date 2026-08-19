@@ -235,7 +235,7 @@
           "name": "app-header",
           "source": {
             "file": "./src/components/utils/header/app-header/app-header.component.ts",
-            "offset": 314
+            "offset": 704
           },
           "attributes": [],
           "js": {
@@ -517,7 +517,7 @@
           "name": "blog-subscription",
           "source": {
             "file": "./src/components/pages/blog/index/subscription/blog-subscription/blog-subscription.component.ts",
-            "offset": 917
+            "offset": 892
           },
           "attributes": [],
           "js": {
@@ -959,6 +959,17 @@
           "source": {
             "file": "./src/components/pages/design/interaction/hero/design-interaction-hero.component.ts",
             "offset": 337
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "design-interaction-icon-usage",
+          "source": {
+            "file": "./src/components/pages/design/interaction/icon-usage/design-interaction-icon-usage.component.ts",
+            "offset": 612
           },
           "attributes": [],
           "js": {
@@ -2756,10 +2767,76 @@
           }
         },
         {
+          "name": "subscription-preference",
+          "source": {
+            "file": "./src/components/pages/subscription/subscription-preferences/subscription-preferences.component.ts",
+            "offset": 3120
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "subscription-preference-page",
+          "source": {
+            "file": "./src/pages/subscription/subscription-preference.page.ts",
+            "offset": 682
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "subscription-unsubscribe-page",
+          "source": {
+            "file": "./src/pages/subscription/subscription-unsubscribe.page.ts",
+            "offset": 659
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "subscription-unsubscribed-page",
+          "source": {
+            "file": "./src/pages/subscription/subscription-unsubscribed.page.ts",
+            "offset": 649
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "subscription-verify",
+          "source": {
+            "file": "./src/components/pages/subscription/subscription-verify/subscription-verify.component.ts",
+            "offset": 1005
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "subscription-verify-page",
+          "source": {
+            "file": "./src/pages/subscription/subscription-verify.page.ts",
+            "offset": 662
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
           "name": "support-faq",
           "source": {
             "file": "./src/components/pages/support/faq/support-faq/support-faq.component.ts",
-            "offset": 593
+            "offset": 648
           },
           "attributes": [],
           "js": {
@@ -2983,6 +3060,40 @@
           "attributes": [],
           "js": {
             "properties": []
+          }
+        },
+        {
+          "name": "unsubscribe-flow",
+          "source": {
+            "file": "./src/components/pages/subscription/unsubscribe-flow/unsubscribe-flow.component.ts",
+            "offset": 1783
+          },
+          "attributes": [
+            {
+              "name": "view",
+              "default": "confirm",
+              "required": false,
+              "value": {
+                "type": "string"
+              },
+              "source": {
+                "file": "./src/components/pages/subscription/unsubscribe-flow/unsubscribe-flow.component.ts",
+                "offset": 2106
+              }
+            }
+          ],
+          "js": {
+            "properties": [
+              {
+                "name": "view",
+                "type": "string",
+                "default": "confirm",
+                "source": {
+                  "file": "./src/components/pages/subscription/unsubscribe-flow/unsubscribe-flow.component.ts",
+                  "offset": 2106
+                }
+              }
+            ]
           }
         }
       ]
