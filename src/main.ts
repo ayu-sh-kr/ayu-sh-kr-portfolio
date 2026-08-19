@@ -2,7 +2,7 @@ import './style.css'
 
 import { AppComponent } from "@app/app.component.ts";
 import { ErrorPage, HomePage, OfflinePage } from "@app/pages";
-import dotaRest from "@ayu-sh-kr/dota-rest";
+import { RestClient } from "@ayu-sh-kr/dota-rest";
 import { AccordionComponent, IconsComponent, PopoverComponent } from "@ayu-sh-kr/dota-ui";
 import {DefaultApplicationEventListenerRegistry, initializeApp} from "@ayu-sh-kr/dota-wrap";
 import { Router, RouterService } from "@ayu-sh-kr/dota-wrap/router";
@@ -20,7 +20,7 @@ import { routeConfig } from "virtual:dota-routes";
 const applicationEventService = ApplicationEventService.getInstance();
 const applicationEventPublisher = applicationEventService.getPublisher();
 const applicationEventListener = applicationEventService.getListener();
-export const restClient = dotaRest.RestClient.builder()
+export const restClient = RestClient.builder()
   .baseUrl(import.meta.env.VITE_API_BASE_URL)
   .build();
 
