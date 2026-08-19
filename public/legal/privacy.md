@@ -60,9 +60,9 @@ The site may store a small number of preferences locally in your browser — suc
 
 ## The newsletter {#newsletter scope="Site visitors" group="As a visitor" short="The newsletter"}
 
-The site does not provide a newsletter subscription endpoint. The article-updates link opens your email client, and I receive an address only if you choose to send an email.
+The newsletter stores your email address, confirmation date, and the delivery preferences you choose. Preference links are token-based: there is no account, password, or session that outlives the tab. The address stays on file until you unsubscribe; changing it sends a confirmation to the new inbox first.
 
-If a newsletter provider is connected later, this section and the summary above will be updated before the provider starts receiving subscription addresses.
+The archive remains readable without a subscription, and unsubscribing deletes the address and its delivery preferences.
 
 ## When you get in touch {#reach scope="Site visitors" group="As a visitor" short="When you get in touch"}
 
@@ -118,7 +118,7 @@ I don't add a new service that touches personal data without a reason, and for c
 | --- | --- |
 | Server logs | 30 days |
 | Analytics data | According to the configured GA4 property retention setting |
-| Newsletter address | Until you unsubscribe |
+| Newsletter address and delivery preferences | Until you unsubscribe |
 | Emails and enquiries | 24 months from the last reply |
 | Client project material | Duration of the engagement, plus 90 days |
 | Invoices and tax records | As long as tax law requires |
