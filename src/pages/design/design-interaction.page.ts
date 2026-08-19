@@ -45,6 +45,7 @@ export class DesignInteractionPage extends DotaPageElement {
         <design-interaction-reduced></design-interaction-reduced>
         <design-interaction-guardrails></design-interaction-guardrails>
         <design-interaction-checklist></design-interaction-checklist>
+        <design-interaction-icon-usage></design-interaction-icon-usage>
       </main>
       <app-footer></app-footer>
     `;

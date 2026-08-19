@@ -272,6 +272,17 @@ export const designInteractionContent = {
       "Confirm async work has a pending timeout, cancellation path, and settled outcome.",
     ],
   },
+  iconUsage: {
+    eyebrow: "16 / Assets",
+    title: "Icon set usage",
+    lede: "Use the supplied mark assets for identity surfaces instead of redrawing the logo. Theme-specific marks belong in the header; the favicon stays on the light mark for a consistent browser identity.",
+    examples: [
+      { label: "Header mark", path: "/icons/svg/mark-light.svg", note: "Switch to mark-dark.svg in dark mode." },
+      { label: "Favicon", path: "/icons/svg/mark-light.svg", note: "Use the light mark at every theme." },
+      { label: "PWA icon", path: "/icons/png/brand/icon-192.png", note: "Use the brand tile for installed surfaces." },
+      { label: "Wordmark", path: "/icons/svg/wordmark-brand.svg", note: "Use for wide identity placements." },
+    ],
+  },
 } as const;
 
 /** Inferred content contract consumed by the interaction route and its dictionary element. */
