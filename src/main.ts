@@ -2,8 +2,9 @@ import './style.css'
 
 import { AppComponent } from "@app/app.component.ts";
 import { ErrorPage, HomePage, OfflinePage } from "@app/pages";
+import dotaRest from "@ayu-sh-kr/dota-rest";
 import { AccordionComponent, IconsComponent, PopoverComponent } from "@ayu-sh-kr/dota-ui";
-import { DefaultApplicationEventListenerRegistry, initializeApp } from "@ayu-sh-kr/dota-wrap";
+import {DefaultApplicationEventListenerRegistry, initializeApp} from "@ayu-sh-kr/dota-wrap";
 import { Router, RouterService } from "@ayu-sh-kr/dota-wrap/router";
 import { ApplicationEventService } from "@ayu-sh-kr/dota-wrap/core";
 import { dotaHydration } from "@ayu-sh-kr/dota-wrap/ssr";
@@ -15,9 +16,15 @@ import { RouterUtils } from "@app/utils/router.utils.ts";
 import { applyRouteMetadata } from "@app/utils/seo.utils.ts";
 import components from "virtual:dota-components";
 import { routeConfig } from "virtual:dota-routes";
+
 const applicationEventService = ApplicationEventService.getInstance();
 const applicationEventPublisher = applicationEventService.getPublisher();
 const applicationEventListener = applicationEventService.getListener();
+export const restClient = dotaRest.RestClient.builder()
+  .baseUrl(import.meta.env.VITE_API_BASE_URL)
+  .build();
+
+window.portfolioRestClient = restClient;
 
 let routerService!: RouterService<Router<HTMLElement>>;
 const analyticsSectionTracker = new AnalyticsSectionTracker();
