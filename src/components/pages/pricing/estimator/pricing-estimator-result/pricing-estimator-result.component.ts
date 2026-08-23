@@ -7,17 +7,32 @@ import {
   type PricingEstimatorSelection,
 } from "@app/events/pricing.events.ts";
 
-/** Rounds an estimate to the nearest hundred and formats it as a US dollar value. */
+/**
+ * Rounds an estimate to the nearest hundred and formats it as a US dollar value.
+ *
+ * Used only for display, so the rounding is a presentation choice rather than a
+ * pricing commitment: snapping to the nearest hundred keeps the figure readable
+ * and signals that this is an estimate, not a quote. The regex adds thousands
+ * separators after the rounding pass, so `12500` becomes `$12,500`.
+ */
 const formatCurrency = (value: number): string =>
   `$${Math.round(value / 100) * 100}`.replace(/(\d)(?=(\d{3})+$)/g, "$1,");
 
 /**
  * Calculates and renders the estimator range from the selected type and stage.
  *
- * It consumes {@link PRICING_ESTIMATOR_TYPE_EVENT} and
- * {@link PRICING_ESTIMATOR_STAGE_EVENT}, validates each payload against the
- * authored options, and flashes the result figure after a valid change. Pending
- * animation frames and timers are cancelled on disconnect.
+ * This is the consuming half of the estimator's pub/sub pair. The two selector
+ * components publish {@link PRICING_ESTIMATOR_TYPE_EVENT} and
+ * {@link PRICING_ESTIMATOR_STAGE_EVENT}; this component subscribes to both,
+ * validates each payload against the authored options, and recalculates the
+ * range from the selected type's `base` and the selected stage's `multiplier`.
+ * Selection is the only input that drives a recalculation, so the figure always
+ * reflects the latest authored data plus the visitor's two choices.
+ *
+ * After a valid change the result figure is flashed briefly (see
+ * {@link flashResult}) to draw the eye back to the updated number. Pending
+ * animation frames and timers are cancelled on disconnect so a hot teardown
+ * cannot leave a stale frame or timer mutating the DOM after the element is gone.
  *
  * Selector: `pricing-estimator-result`.
  */
@@ -26,24 +41,67 @@ const formatCurrency = (value: number): string =>
   shadow: false,
 })
 export class PricingEstimatorResultComponent extends BaseElement {
-  /** Selected build type used as the estimate's base value. */
+  /**
+   * Selected build type used as the estimate's base value.
+   *
+   * Defaults to the first authored type so a range renders before the visitor
+   * picks anything. Stored as the authored `id` and resolved to the full type
+   * record by {@link getSelectedType} at render time, so the estimate always
+   * reads current authored data even if the content is updated in place.
+   */
   @State()
   selectedTypeId: string = pricingContent.estimator.types[0].id;
 
-  /** Selected project stage used as the estimate's multiplier. */
+  /**
+   * Selected project stage used as the estimate's multiplier.
+   *
+   * Defaults to the first authored stage for the same reason as
+   * {@link selectedTypeId}; resolved to the full stage record by
+   * {@link getSelectedStage} at render time.
+   */
   @State()
   selectedStageId: string = pricingContent.estimator.stages[0].id;
 
+  /**
+   * Handle of the pending `requestAnimationFrame` driving the current flash.
+   *
+   * Held so it can be cancelled if a new selection arrives before the frame
+   * fires, and on disconnect. `null` whenever no frame is pending.
+   */
   private flashFrame: number | null = null;
+
+  /**
+   * Handle of the pending `setTimeout` that ends the current flash.
+   *
+   * Held so it can be cancelled (and the `is-flashing` class removed promptly)
+   * if a new selection restarts the flash, and on disconnect. `null` whenever
+   * no timer is pending.
+   */
   private flashTimer: number | null = null;
 
+  /**
+   * Creates the result component with the first authored type and stage selected.
+   *
+   * Defaults are seeded from {@link pricingContent} so the first paint already
+   * shows a meaningful range; the visitor's choices then override them via the
+   * event handlers.
+   */
   constructor() {
     super();
   }
 
   /**
    * Applies a valid type selection and flashes the recalculated result.
-   * @param event - Typed estimator event containing the authored type ID.
+   *
+   * Subscribes to {@link PRICING_ESTIMATOR_TYPE_EVENT}, published by
+   * `pricing-estimator-type-options`. The payload is validated against the
+   * authored type IDs via {@link isKnownType} so a malformed or stale event can
+   * never produce a range for a type that no longer exists; unknown events are
+   * dropped silently rather than shown as an error, since the visitor never sees
+   * them. On a known type the state is updated and {@link flashResult} re-flags
+   * the figure so the eye is drawn to the new number.
+   *
+   * @param event - Typed estimator event carrying the authored type ID.
    */
   @OnEvent(PRICING_ESTIMATOR_TYPE_EVENT)
   renderTypeSelection(event: ApplicationEvent<typeof PRICING_ESTIMATOR_TYPE_EVENT>): void {
@@ -57,7 +115,14 @@ export class PricingEstimatorResultComponent extends BaseElement {
 
   /**
    * Applies a valid stage selection and flashes the recalculated result.
-   * @param event - Typed estimator event containing the authored stage ID.
+   *
+   * Subscribes to {@link PRICING_ESTIMATOR_STAGE_EVENT}, published by
+   * `pricing-estimator-stage-options`. Same validation contract as
+   * {@link renderTypeSelection}: the payload is checked against the authored
+   * stage IDs via {@link isKnownStage}, and unknown events are dropped silently.
+   * On a known stage the state is updated and the figure is flashed.
+   *
+   * @param event - Typed estimator event carrying the authored stage ID.
    */
   @OnEvent(PRICING_ESTIMATOR_STAGE_EVENT)
   renderStageSelection(event: ApplicationEvent<typeof PRICING_ESTIMATOR_STAGE_EVENT>): void {
@@ -69,7 +134,16 @@ export class PricingEstimatorResultComponent extends BaseElement {
     this.flashResult();
   }
 
-  /** Cancels result feedback animation and timers when the component disconnects. */
+  /**
+   * Cancels result feedback animation and timers when the component disconnects.
+   *
+   * Runs once on disconnect (the `true` flag makes it a one-shot lifecycle hook).
+   * Without this, a pending animation frame or timer could fire after the element
+   * is gone and try to query or mutate detached DOM, or leave the `is-flashing`
+   * class applied to an element that no longer re-renders. Both handles are
+   * reset to `null` so the component is left in a clean state if it is ever
+   * reconnected.
+   */
   @OnEvent("disconnected", true)
   cleanupResultFeedback(): void {
     if (this.flashFrame !== null) {
@@ -85,6 +159,13 @@ export class PricingEstimatorResultComponent extends BaseElement {
 
   /**
    * Checks that an event payload names an authored estimator type.
+   *
+   * The defense-in-depth check that gates {@link renderTypeSelection}: only IDs
+   * present in {@link pricingContent.estimator.types} are accepted, so a stale
+   * event (or a hand-crafted one) cannot drive the estimate to a type the page
+   * no longer shows. Kept as a separate helper so the same validation pattern is
+   * visible and testable independently of the handler.
+   *
    * @param selection - Event payload to compare with the authored type IDs.
    */
   private isKnownType(selection: PricingEstimatorSelection): boolean {
@@ -93,13 +174,31 @@ export class PricingEstimatorResultComponent extends BaseElement {
 
   /**
    * Checks that an event payload names an authored estimator stage.
+   *
+   * The stage counterpart of {@link isKnownType}: only IDs present in
+   * {@link pricingContent.estimator.stages} are accepted. Same rationale — a
+   * stale or malformed event cannot produce a range for a stage the page no
+   * longer offers.
+   *
    * @param selection - Event payload to compare with the authored stage IDs.
    */
   private isKnownStage(selection: PricingEstimatorSelection): boolean {
     return pricingContent.estimator.stages.some((stage) => stage.id === selection.id);
   }
 
-  /** Adds a short visual flash to the estimate figure after a valid selection. */
+  /**
+   * Adds a short visual flash to the estimate figure after a valid selection.
+   *
+   * The flash is driven through two cooperating timers so a rapid second
+   * selection does not stack effects. The previous frame (if any) is cancelled
+   * before the new one is requested, and inside the frame the previous end-timer
+   * is cancelled before the new one is set — so the `is-flashing` class is
+   * always removed exactly once, even under fast repeated selections. The
+   * figure is queried lazily inside the frame (not captured up front) so a
+   * re-render that replaced the figure between the selection and the frame still
+   * finds the current element. If the figure is absent the class is simply not
+   * applied, and the timer path is skipped.
+   */
   private flashResult(): void {
     if (this.flashFrame !== null) {
       window.cancelAnimationFrame(this.flashFrame);
@@ -123,7 +222,15 @@ export class PricingEstimatorResultComponent extends BaseElement {
     });
   }
 
-  /** Resolves the selected type, falling back to the first authored option. */
+  /**
+   * Resolves the selected type, falling back to the first authored option.
+   *
+   * The fallback is defensive: {@link selectedTypeId} is always seeded from
+   * authored data and only ever set to an ID that passed {@link isKnownType}, so
+   * the `??` branch should never trigger in normal operation. It exists so a
+   * content edit that removed the selected type mid-session degrades gracefully
+   * to the first option instead of crashing the render.
+   */
   private getSelectedType(): (typeof pricingContent.estimator.types)[number] {
     return (
       pricingContent.estimator.types.find((type) => type.id === this.selectedTypeId) ??
@@ -131,7 +238,12 @@ export class PricingEstimatorResultComponent extends BaseElement {
     );
   }
 
-  /** Resolves the selected stage, falling back to the first authored option. */
+  /**
+   * Resolves the selected stage, falling back to the first authored option.
+   *
+   * Stage counterpart of {@link getSelectedType}; same defensive fallback for
+   * the same reason.
+   */
   private getSelectedStage(): (typeof pricingContent.estimator.stages)[number] {
     return (
       pricingContent.estimator.stages.find((stage) => stage.id === this.selectedStageId) ??
@@ -139,7 +251,18 @@ export class PricingEstimatorResultComponent extends BaseElement {
     );
   }
 
-  /** Returns the current estimate range and the breakdown that produced it. */
+  /**
+   * Returns the current estimate range and the breakdown that produced it.
+   *
+   * Reads the resolved type and stage fresh on every render, so the figure
+   * always reflects current authored data. The low end is `type.base * stage.multiplier`
+   * and the high end is 1.5× the low — a fixed band ratio that signals "estimate"
+   * rather than a quoted price. The figure lives in an `aria-live="polite"`
+   * region so screen-reader users hear the new range without moving focus, and
+   * the breakdown below names the two inputs that produced it so the visitor can
+   * trace how their choices map to the number. The CTA links to the
+   * start-project section so the estimate flows directly into the intake.
+   */
   render(): string {
     const type = this.getSelectedType();
     const stage = this.getSelectedStage();
