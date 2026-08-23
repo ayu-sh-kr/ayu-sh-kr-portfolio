@@ -4,6 +4,7 @@ import {blogIndexContent} from "@app/data/blog-content.ts";
 import {ACTION_BUTTON_REFRESH_EVENT, ACTION_BUTTON_TRIGGER_EVENT, type ActionButtonPayload, type ActionButtonTrigger} from "@app/events/action-button.events.ts";
 import {actionButtonRegistry} from "@app/service/action-button-registry.service.ts";
 import {SubscriptionService} from "@app/service/subscription.service.ts";
+import {publishAnalyticsEvent} from "@app/utils/analytics.utils.ts";
 
 /**
  * Presents the blog's low-volume email subscription prompt.
@@ -132,6 +133,10 @@ export class BlogSubscriptionComponent extends BaseElement {
     }
 
     await this.subscriptionService.initiate(payload.email);
+    publishAnalyticsEvent({
+      eventName: "subscribe",
+      params: {form_name: "blog_subscription"},
+    });
   }
 
   /**
