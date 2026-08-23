@@ -5,9 +5,9 @@ import { escapeHtml } from "@app/utils/html.utils.ts";
 /**
  * Explains the four commitment points that follow a completed project brief.
  *
- * It sits below the adaptive intake within the pricing start-project section. The
- * component reads its sequence from `pricingContent.startProject`, so copy and timing
- * remain in the content layer while this element owns only the subsection presentation.
+ * The pricing page places it directly after the adaptive intake. The component reads its
+ * sequence from `pricingContent.startProject`, so copy and timing remain in the content layer
+ * while this element owns only the subsection presentation.
  *
  * Selector: `pricing-project-process`.
  */
@@ -26,7 +26,7 @@ export class PricingProjectProcessComponent extends BaseElement {
     const content = pricingContent.startProject;
 
     return HTML`
-      <section class="pricing-project-process-section" aria-labelledby="pricing-project-process-title">
+      <section class="pricing-project-process-section layout-page" aria-labelledby="pricing-project-process-title">
         <div class="pricing-project-subsection-copy">
           <p class="pricing-eyebrow">${content.processEyebrow}</p>
           <h3 id="pricing-project-process-title">${content.processTitle}</h3>
