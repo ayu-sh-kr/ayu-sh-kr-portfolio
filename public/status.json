@@ -1,0 +1,9 @@
+{
+  "v": 1,
+  "capabilities": {
+    "subscribe": { "state": "up" },
+    "quote": { "state": "up" },
+    "coffee": { "state": "up" },
+    "unsubscribe": { "state": "up" }
+  }
+}
