@@ -37,6 +37,8 @@ export class PricingPage extends DotaPageElement {
         <speaking-offering></speaking-offering>
         <speaking-pricing></speaking-pricing>
         <pricing-start-project data-analytics-section="pricing_start_project"></pricing-start-project>
+        <pricing-project-process></pricing-project-process>
+        <pricing-project-alternatives></pricing-project-alternatives>
         <pricing-faq data-analytics-section="pricing_faq"></pricing-faq>
         <pricing-contact data-analytics-section="pricing_contact"></pricing-contact>
       </main>
