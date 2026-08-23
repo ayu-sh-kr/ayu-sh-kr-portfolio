@@ -72,6 +72,9 @@ export type AnalyticsSection =
 /** Blog or showcase content opened from a listing or related navigation. */
 export type AnalyticsProjectKind = "blog" | "showcase";
 
+/** Stable identifiers for forms whose completed submissions are measured. */
+export type AnalyticsFormName = "blog_subscription";
+
 /** Accepts only contact destinations declared in the analytics contract. */
 export const isAnalyticsContactMethod = (value: string | undefined): value is AnalyticsContactMethod =>
   value != null && ANALYTICS_CONTACT_METHODS.includes(value as AnalyticsContactMethod);
@@ -141,6 +144,15 @@ export type AnalyticsTrackEvent =
         section: AnalyticsSection;
         /** Route pathname without query parameters or hash fragments. */
         page_path: string;
+      };
+    }
+  | {
+      /** Records a successful hand-off from a subscription form to verification. */
+      eventName: "subscribe";
+      /** Stable form identity; no submitted form values are sent to analytics. */
+      params: {
+        /** Form that completed the subscription request. */
+        form_name: AnalyticsFormName;
       };
     };
 
