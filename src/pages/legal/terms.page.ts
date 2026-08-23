@@ -1,4 +1,5 @@
-import {Component, DotaPageElement, HTML, SEO} from "@ayu-sh-kr/dota-wrap/core";
+import {Component, DotaPageElement, SEO} from "@ayu-sh-kr/dota-wrap/core";
+import {html} from "@ayu-sh-kr/dota-wrap/rendering";
 import {Route} from "@ayu-sh-kr/dota-wrap/router";
 import {termsSeo} from "@app/data/legal-content.ts";
 import {toSEO} from "@app/utils/seo.utils.ts";
@@ -25,8 +26,8 @@ export class TermsPage extends DotaPageElement {
   }
 
   /** Renders the shared header, terms view, and footer shell. */
-  render(): string {
-    return HTML`
+  render() {
+    return html`
       <app-header></app-header>
       <terms-view data-analytics-section="terms_document"></terms-view>
       <app-footer></app-footer>
