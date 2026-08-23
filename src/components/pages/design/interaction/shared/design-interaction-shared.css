@@ -161,6 +161,7 @@
   align-content: end;
   gap: var(--layout-space-1);
   min-block-size: 8rem;
+  border-radius: var(--layout-radius-lg);
   padding: var(--layout-pad-card);
   text-align: start;
   transition: transform .25s cubic-bezier(.2, .8, .2, 1), border-color .2s ease, background-color .25s ease, box-shadow .35s cubic-bezier(.2, .8, .2, 1), color .2s ease;
@@ -243,6 +244,7 @@
   display: grid;
   gap: var(--layout-space-1);
   min-block-size: 8rem;
+  border-radius: var(--layout-radius-lg);
   padding: var(--layout-pad-card);
   text-align: start;
   transition: transform .25s cubic-bezier(.2, .8, .2, 1), border-color .25s ease, background-color .25s ease, box-shadow .25s ease;
@@ -253,10 +255,25 @@
 .design-interaction-choice[aria-pressed="true"] { border-color: var(--primary-color); background: var(--primary-color-subtle); box-shadow: var(--shadow-ring); }
 .design-interaction-choice[aria-pressed="true"] > span { color: var(--primary-color-strong); }
 
-.design-interaction-disclosure { padding: var(--layout-space-4); }
-.design-interaction-disclosure summary { cursor: pointer; color: var(--foreground-color); font-size: var(--type-card-title-size); font-weight: var(--type-card-title-weight); }
-.design-interaction-disclosure summary::marker { color: var(--primary-color); }
-.design-interaction-disclosure p { margin: var(--layout-space-3) 0 0; color: var(--muted-color); }
+.design-interaction-disclosure { overflow: hidden; padding: 0; }
+.design-interaction-disclosure-button {
+  display: flex;
+  inline-size: 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--layout-space-3);
+  border: 0;
+  padding: var(--layout-space-4);
+  background: transparent;
+  color: var(--foreground-color);
+  font: inherit;
+  font-size: var(--type-card-title-size);
+  font-weight: var(--type-card-title-weight);
+  text-align: start;
+}
+.design-interaction-disclosure-button:hover { background: transparent; color: var(--foreground-color); }
+.design-interaction-disclosure-button:focus-visible { outline: 2px solid var(--primary-color); outline-offset: -2px; }
+.design-interaction-disclosure-answer { margin: 0; padding: 0 var(--layout-space-4) var(--layout-space-4); color: var(--muted-color); }
 
 .design-interaction-upload { display: grid; justify-items: start; gap: var(--layout-space-3); border-style: dashed; padding: var(--layout-pad-panel); background: var(--primary-color-subtle); }
 .design-interaction-upload strong { color: var(--primary-color-strong); font-size: var(--type-card-title-size); }

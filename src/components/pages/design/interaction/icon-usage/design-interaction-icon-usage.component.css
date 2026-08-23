@@ -9,7 +9,7 @@
   margin: 0;
   padding: var(--layout-pad-card);
   border: 1px solid var(--border-color);
-  border-radius: var(--layout-radius-md);
+  border-radius: var(--layout-radius-lg);
   background: var(--surface-color);
 }
 

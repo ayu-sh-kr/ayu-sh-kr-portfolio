@@ -6,7 +6,17 @@ import {
 } from "@ayu-sh-kr/dota-wrap/core";
 import { designInteractionContent } from "@app/data/design-interaction-content.ts";
 
-/** Demonstrates selection as a native button state alongside a native disclosure. */
+const SELECTION_ACCORDION_CONFIG = JSON.stringify({
+  container: "design-interaction-disclosure-container",
+  button: {
+    base: "design-interaction-disclosure-button",
+    size: { md: "" },
+    color: { gray: { solid: "", ghost: "" } },
+  },
+  paragraph: "design-interaction-disclosure-answer",
+});
+
+/** Demonstrates selection as a native button state alongside a Dota accordion disclosure. */
 @Component({ selector: "design-interaction-selection", shadow: false })
 export class DesignInteractionSelectionComponent extends BaseElement {
   /** Selected choice reflected through `aria-pressed` by the live specimen. */
@@ -28,7 +38,7 @@ export class DesignInteractionSelectionComponent extends BaseElement {
     this.updateHTML();
   }
 
-  /** Renders choice cards and the browser-owned disclosure behaviour. */
+  /** Renders choice cards and the shared Dota accordion disclosure. */
   render(): string {
     const { selection } = designInteractionContent;
 
@@ -49,10 +59,12 @@ export class DesignInteractionSelectionComponent extends BaseElement {
             </button>`,
             )
             .join("")}</div>
-          <details class="design-interaction-disclosure">
-            <summary>${selection.disclosure.summary}</summary>
-            <p>${selection.disclosure.body}</p>
-          </details>
+          <dota-accordion
+            classname="design-interaction-disclosure"
+            header="${selection.disclosure.summary}"
+            description="${selection.disclosure.body}"
+            config='${SELECTION_ACCORDION_CONFIG}'
+          ></dota-accordion>
         </section>`;
   }
 }
