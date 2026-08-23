@@ -26,6 +26,7 @@ export class DesignInteractionPage extends DotaPageElement {
   /** Renders the interaction reference in the same trigger order used by its route navigation. */
   render(): string {
     return HTML`
+      <service-state-strip capabilities="interaction-service-state" label="the project form"></service-state-strip>
       <app-header></app-header>
       <main id="design-interaction-page-main">
         <design-interaction-hero></design-interaction-hero>
@@ -36,6 +37,7 @@ export class DesignInteractionPage extends DotaPageElement {
         <design-interaction-selection></design-interaction-selection>
         <design-interaction-ingest></design-interaction-ingest>
         <design-interaction-action></design-interaction-action>
+        <design-interaction-service-state></design-interaction-service-state>
         <design-interaction-recompute></design-interaction-recompute>
         <design-interaction-transient></design-interaction-transient>
         <design-interaction-interrupt></design-interaction-interrupt>
