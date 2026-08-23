@@ -25,11 +25,9 @@
     />
     <meta name="msvalidate.01" content="6D1CCF6AAC7838CECC85420ED67B5B5D" />
     <link rel="canonical" href="https://www.ayu-sh-kr.com/" />
-    <link id="theme-favicon" rel="icon" href="/icons/svg/mark-light.svg" type="image/svg+xml" />
-    <link rel="icon" href="/icons/favicon.ico" sizes="any" />
-    <link rel="icon" href="/icons/png/favicon-32x32.png" type="image/png" sizes="32x32" />
-    <link rel="icon" href="/icons/png/favicon-16x16.png" type="image/png" sizes="16x16" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/icons/png/apple-touch-icon.png" />
+    <link rel="icon" href="/icons/svg/maskable-brand.svg" type="image/svg+xml" />
+    <link rel="icon" href="/icons/png/brand/icon-16.png" type="image/png" sizes="16x16" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/icons/png/brand/icon-180.png" />
     <link rel="mask-icon" href="/icons/svg/safari-pinned-tab.svg" color="#5D702D" />
     <link rel="manifest" href="/icons/site.webmanifest" />
     <link rel="stylesheet" href="./src/style.css" />
@@ -38,7 +36,12 @@
       (() => {
         let savedTheme = null;
         try {
-          savedTheme = localStorage.getItem("theme");
+          const storedTheme = localStorage.getItem("ayu-sh-kr.com:theme");
+          const parsedTheme = storedTheme ? JSON.parse(storedTheme) : null;
+          savedTheme =
+            parsedTheme?.value === "dark" || parsedTheme?.value === "light"
+              ? parsedTheme.value
+              : null;
         } catch {
           savedTheme = null;
         }
@@ -46,7 +49,6 @@
         const isDark = savedTheme ? savedTheme === "dark" : prefersDark;
         document.documentElement.classList.toggle("dark", isDark);
         document.documentElement.classList.toggle("light", !isDark);
-        document.documentElement.classList.toggle("bg-slate-950", isDark);
         document.querySelector('meta[name="color-scheme"]')?.setAttribute("content", isDark ? "dark" : "light");
         const browserThemeColor = getComputedStyle(document.documentElement).getPropertyValue("--browser-theme-color").trim();
         if (browserThemeColor) {
