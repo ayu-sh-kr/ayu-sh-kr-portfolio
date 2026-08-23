@@ -1,4 +1,5 @@
-import {BaseElement, Component, HostListener, HTML, WindowListener} from "@ayu-sh-kr/dota-wrap/core";
+import {BaseElement, Component, HostListener, WindowListener} from "@ayu-sh-kr/dota-wrap/core";
+import {html, trustedHTML} from "@ayu-sh-kr/dota-wrap/rendering";
 import {type ApplicationEvent, OnEvent} from "@ayu-sh-kr/dota-wrap/event";
 import {PRIVACY_MARKDOWN_RENDER_EVENT, type PrivacySection} from "@app/events/privacy.events.ts";
 import {escapeHtml} from "@app/utils/html.utils.ts";
@@ -76,9 +77,9 @@ export class PrivacyTocComponent extends BaseElement {
   }
 
   /** Renders grouped section links or a placeholder before Markdown is ready. */
-  render(): string {
+  render() {
     if (!this.sections.length) {
-      return `<div class="privacy-toc-placeholder" aria-hidden="true"></div>`;
+      return html`<div class="privacy-toc-placeholder" aria-hidden="true"></div>`;
     }
 
     const groups: {title: string; sections: PrivacySection[]}[] = [];
@@ -103,11 +104,11 @@ export class PrivacyTocComponent extends BaseElement {
       </section>
     `).join("");
 
-    return HTML`
+    return html`
       <aside class="privacy-toc-panel" aria-label="On this page">
         <p class="privacy-toc-label">On this page</p>
         <nav aria-label="Privacy policy sections">
-          <div>${items}</div>
+          <div>${trustedHTML(items)}</div>
         </nav>
       </aside>
     `;
