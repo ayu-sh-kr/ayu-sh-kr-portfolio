@@ -67,11 +67,13 @@
 @import "./components/pages/pricing/speaking/speaking-offering/speaking-offering.component.css";
 @import "./components/pages/pricing/speaking/speaking-pricing/speaking-pricing.component.css";
 @import "./components/pages/pricing/start-project/pricing-start-project/pricing-start-project.component.css";
+@import "./components/pages/pricing/start-project/pricing-project-preview/pricing-project-preview.component.css";
 @import "./components/pages/pricing/start-project/pricing-start-project-intro/pricing-start-project-intro.component.css";
 @import "./components/pages/pricing/start-project/pricing-project-mode-selector/pricing-project-mode-selector.component.css";
 @import "./components/pages/pricing/start-project/pricing-project-spec-form/pricing-project-spec-form.component.css";
 @import "./components/pages/pricing/start-project/pricing-project-idea-form/pricing-project-idea-form.component.css";
 @import "./components/pages/pricing/start-project/pricing-project-quote-form/pricing-project-quote-form.component.css";
+@import "./components/pages/pricing/start-project/pricing-project-file-upload/pricing-project-file-upload.component.css";
 @import "./components/pages/pricing/start-project/pricing-project-process/pricing-project-process.component.css";
 @import "./components/pages/pricing/start-project/pricing-project-alternatives/pricing-project-alternatives.component.css";
 @import "./components/utils/faq/dota-faq-accordion.css";
