@@ -1,0 +1,80 @@
+.design-interaction-service-state__demo,
+.design-interaction-service-state__cases article {
+  display: grid;
+  align-content: start;
+  gap: var(--layout-space-4);
+  min-inline-size: 0;
+  padding: var(--layout-pad-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--layout-radius-lg);
+  background: var(--surface-color);
+}
+
+.design-interaction-service-state__cases {
+  display: grid;
+  gap: var(--layout-space-3);
+  min-inline-size: 0;
+}
+
+.design-interaction-service-state .design-interaction-state-controls button {
+  border-radius: var(--layout-radius-pill);
+}
+
+.design-interaction-service-state .design-interaction-state-controls button[aria-pressed="true"] {
+  border-color: var(--primary-color);
+  background: var(--primary-color-subtle);
+  box-shadow: var(--shadow-ring);
+  color: var(--primary-color-strong);
+}
+
+.design-interaction-service-state__cases article {
+  gap: var(--layout-space-2);
+}
+
+.design-interaction-service-state__cases h3,
+.design-interaction-service-state__cases p,
+.design-interaction-service-state__form label {
+  margin: 0;
+}
+
+.design-interaction-service-state__cases p {
+  color: var(--muted-color);
+  font-size: var(--type-compact-size);
+  line-height: var(--type-compact-leading);
+}
+
+.design-interaction-service-state__form {
+  display: grid;
+  gap: var(--layout-space-3);
+}
+
+.design-interaction-service-state__form label {
+  color: var(--muted-color);
+  font-size: var(--type-label-size);
+  font-weight: var(--type-label-weight);
+  letter-spacing: var(--type-label-tracking);
+  text-transform: uppercase;
+}
+
+.design-interaction-service-state__form textarea {
+  min-block-size: 7rem;
+  resize: vertical;
+  padding: var(--layout-space-3);
+  border: 1px solid var(--border-color);
+  border-radius: var(--layout-radius-sm);
+  background: var(--background-color);
+  color: var(--foreground-color);
+  font: inherit;
+}
+
+.design-interaction-service-state__form button {
+  justify-self: start;
+  padding: var(--layout-space-2) var(--layout-space-3);
+  border: 1px solid var(--contrast-background-color);
+  border-radius: var(--layout-radius-sm);
+  background: var(--contrast-background-color);
+  color: var(--contrast-foreground-color);
+  cursor: pointer;
+  font-size: var(--type-control-size);
+  font-weight: var(--type-control-weight);
+}
