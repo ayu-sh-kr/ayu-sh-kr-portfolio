@@ -83,7 +83,8 @@ export const designInteractionContent = {
   navigation: {
     ariaLabel: "Interaction grammar sections",
     groups: ["Input", "Commitment", "Response"] as const,
-    contract: { href: "#timing", label: "10–15 · Contract" },
+    contract: { href: "#timing", label: "11–16 · Contract" },
+    useCase: { href: "#service-state", label: "Use case · Service state" },
   },
   pointer: {
     eyebrow: "01 / Input",
@@ -179,7 +180,7 @@ export const designInteractionContent = {
     ],
   },
   recompute: {
-    eyebrow: "07 / Response",
+    eyebrow: "08 / Response",
     title: "Live recomputation",
     lede: "Human input stays on a light card. Numbers and breakdown live on the contrast panel. One polite sentence carries the update.",
     inputLabel: "Review days",
@@ -189,7 +190,7 @@ export const designInteractionContent = {
     daySummary: "{days} days at ₹1,800",
   },
   transient: {
-    eyebrow: "08 / Response",
+    eyebrow: "09 / Response",
     title: "Transient feedback",
     lede: "The app's toast is an ink pill that passes. A dialog is a centred surface that blocks. Repeated work coalesces; natural expiry and hand dismissal are different exits.",
     controls: {
@@ -198,8 +199,27 @@ export const designInteractionContent = {
       error: { label: "Fire error", message: "The action could not be completed" },
     },
   },
+  serviceState: {
+    eyebrow: "07 / Response · Use case",
+    title: "Service state without a site outage",
+    lede: "Maintenance belongs above the header and names the capability that needs it. Use the controls to force each state locally; this specimen never reads or changes the status document.",
+    capability: "interaction-service-state",
+    controls: {
+      up: "Working",
+      planned: "Planned pause",
+      down: "Unplanned outage",
+    },
+    formLabel: "A brief already in progress",
+    formPlaceholder: "A short outline stays here when the service changes state",
+    submitLabel: "Send the outline",
+    useCases: [
+      { title: "Planned", body: "A real deploy window can publish an end time and a short explanation." },
+      { title: "Down", body: "An unplanned failure names the unavailable capability and does not invent an ETA." },
+      { title: "Dirty form", body: "Existing input remains available and the alternate route carries it forward." },
+    ],
+  },
   interrupt: {
-    eyebrow: "09 / Response",
+    eyebrow: "10 / Response",
     title: "Interruption",
     lede: "Use the shared native dialog. It owns the top layer, focus trap, inert background, Escape exit, and focus return without a parallel overlay.",
     buttonLabel: "Open risk-tone dialog",
@@ -211,7 +231,7 @@ export const designInteractionContent = {
     },
   },
   timing: {
-    eyebrow: "10 / Contract",
+    eyebrow: "11 / Contract",
     title: "Timing and easing",
     lede: "Six durations prevent timing from becoming a page-by-page aesthetic choice. Movement gets the spatial curve; opacity gets ease; per-frame values get linear.",
     durations: [
@@ -224,12 +244,12 @@ export const designInteractionContent = {
     ],
   },
   verbReference: {
-    eyebrow: "11 / Contract",
+    eyebrow: "12 / Contract",
     title: "The verb list",
     lede: "A verb is playable in a 44px stage. If it needs a wider story, it is a composition—not a new motion primitive.",
   },
   compound: {
-    eyebrow: "12 / Contract",
+    eyebrow: "13 / Contract",
     title: "Compounding",
     lede: "Composition has a sequence, a purpose, and a stop: submit → pending → settled action → transient confirmation. Each stage keeps its own rule.",
     steps: [
@@ -239,14 +259,14 @@ export const designInteractionContent = {
     ],
   },
   reduced: {
-    eyebrow: "13 / Contract",
+    eyebrow: "14 / Contract",
     title: "Reduced motion",
     lede: "Reduced motion removes movement, never information. A spinner becomes a half ring, a check is fully drawn, and a pin becomes ordinary content.",
     previewLabel: "Preview reduced motion",
     activeLabel: "Review still states",
   },
   guardrails: {
-    eyebrow: "14 / Contract",
+    eyebrow: "15 / Contract",
     title: "Never",
     lede: "The grammar is intentionally small. Constraints are part of the interface contract, not an optional aesthetic preference.",
     firstItem: {
@@ -261,7 +281,7 @@ export const designInteractionContent = {
     ],
   },
   checklist: {
-    eyebrow: "15 / Contract",
+    eyebrow: "16 / Contract",
     title: "Ship checklist",
     lede: "Every new behaviour needs a family, a verb, a live specimen, and the same access to its meaning without motion.",
     items: [
@@ -273,7 +293,7 @@ export const designInteractionContent = {
     ],
   },
   iconUsage: {
-    eyebrow: "16 / Assets",
+    eyebrow: "17 / Assets",
     title: "Icon set usage",
     lede: "Use the supplied mark assets for identity surfaces instead of redrawing the logo. Theme-specific marks belong in the header; the favicon stays on the light mark for a consistent browser identity.",
     examples: [

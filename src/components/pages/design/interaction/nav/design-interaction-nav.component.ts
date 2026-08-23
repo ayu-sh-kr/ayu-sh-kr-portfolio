@@ -30,7 +30,7 @@ export class DesignInteractionNavComponent extends BaseElement {
     return HTML`
       <nav class="design-interaction-nav layout-page layout-section-sm" aria-label="${navigation.ariaLabel}">
         <div class="layout-row layout-row-tight">
-          ${navigation.groups.map((group) => HTML`<span class="type-label">${group}</span>${this.renderGroup(group)}`).join("")}<a href="${navigation.contract.href}">${navigation.contract.label}</a>
+          ${navigation.groups.map((group) => HTML`<span class="type-label">${group}</span>${this.renderGroup(group)}`).join("")}<a href="${navigation.useCase.href}">${navigation.useCase.label}</a><a href="${navigation.contract.href}">${navigation.contract.label}</a>
         </div>
       </nav>`;
   }
