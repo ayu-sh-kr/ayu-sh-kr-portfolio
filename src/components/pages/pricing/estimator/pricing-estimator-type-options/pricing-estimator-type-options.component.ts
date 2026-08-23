@@ -5,9 +5,13 @@ import { PRICING_ESTIMATOR_TYPE_EVENT } from "@app/events/pricing.events.ts";
 /**
  * Renders the estimator's build-type choices and publishes valid selections.
  *
- * Selection is local state so the active button updates immediately; the
- * published {@link PRICING_ESTIMATOR_TYPE_EVENT} is consumed by the result
- * component to recalculate the estimate.
+ * This is the publishing half of the estimator's type flow, and the structural
+ * mirror of `pricing-estimator-stage-options`. Selection is held as local
+ * {@link State} so the active button updates immediately on click; the change
+ * is then broadcast as {@link PRICING_ESTIMATOR_TYPE_EVENT} for
+ * `pricing-estimator-result` to recalculate the estimate. The component owns
+ * only the type axis and never reads the stage selection — the two selectors
+ * stay independent and the result component reconciles both.
  *
  * Selector: `pricing-estimator-type-options`.
  */
@@ -16,18 +20,50 @@ import { PRICING_ESTIMATOR_TYPE_EVENT } from "@app/events/pricing.events.ts";
   shadow: false,
 })
 export class PricingEstimatorTypeOptionsComponent extends BaseElement {
-  /** Current estimator type ID; changing it updates the selected button in render. */
+  /**
+   * Current estimator type ID.
+   *
+   * Defaults to the first authored type so one option is active from the first
+   * paint. Stored as the authored `id` and compared directly against each
+   * button's `data-estimator-id` to mark the active one in {@link render};
+   * re-selecting the same id is a no-op (see {@link selectType}) so the event is
+   * not republished needlessly.
+   */
   @State()
   selectedId: string = pricingContent.estimator.types[0].id;
 
+  /**
+   * Publisher used to broadcast type selections to the result component.
+   *
+   * Acquired once from the shared {@link ApplicationEventService} and reused for
+   * every change, keeping this selector decoupled from the result component that
+   * subscribes to its events.
+   */
   private readonly publisher = ApplicationEventService.getInstance().getPublisher();
 
+  /**
+   * Creates the type-options component with the first authored type selected.
+   *
+   * The default is seeded from {@link pricingContent} so the first paint already
+   * shows an active type, matching the result component's default and keeping
+   * the initial estimate internally consistent.
+   */
   constructor() {
     super();
   }
 
   /**
    * Publishes a changed build type after validating the clicked estimator button.
+   *
+   * A single delegated `click` listener covers every type button, so no
+   * per-item handlers are wired or torn down as the grid renders. The handler
+   * climbs to the closest `button[data-estimator-id]` and confirms it still
+   * belongs to this component before acting, which keeps the listener safe even
+   * if the rendered grid is replaced mid-click. Re-selecting the already-active
+   * type is detected and skipped, so the result component is not asked to
+   * recalculate for a no-op. Only a genuine change updates {@link selectedId}
+   * and publishes {@link PRICING_ESTIMATOR_TYPE_EVENT}.
+   *
    * @param event - Host click whose closest estimator button supplies the type ID.
    */
   @HostListener({ event: "click" })
@@ -49,7 +85,16 @@ export class PricingEstimatorTypeOptionsComponent extends BaseElement {
     });
   }
 
-  /** Returns all build-type choices with the current selection marked active. */
+  /**
+   * Returns all build-type choices with the current selection marked active.
+   *
+   * Types are rendered as a `<fieldset>`/`<legend>` pair so the question is
+   * announced as a group by assistive tech, and each button carries
+   * `aria-pressed` so the active type is conveyed without relying on color
+   * alone. Each option surfaces an icon, label, and sublabel from
+   * {@link pricingContent}, so adding a type is a content change, not a code
+   * change.
+   */
   render(): string {
     const content = pricingContent.estimator;
 
