@@ -517,7 +517,7 @@
           "name": "blog-subscription",
           "source": {
             "file": "./src/components/pages/blog/index/subscription/blog-subscription/blog-subscription.component.ts",
-            "offset": 892
+            "offset": 961
           },
           "attributes": [],
           "js": {
