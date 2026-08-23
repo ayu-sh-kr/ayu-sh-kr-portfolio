@@ -1068,7 +1068,7 @@
           "name": "design-interaction-selection",
           "source": {
             "file": "./src/components/pages/design/interaction/selection/design-interaction-selection.component.ts",
-            "offset": 353
+            "offset": 663
           },
           "attributes": [],
           "js": {
