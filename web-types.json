@@ -1903,7 +1903,7 @@
           "name": "privacy-document-header",
           "source": {
             "file": "./src/components/pages/privacy/document/privacy-document-header/privacy-document-header.component.ts",
-            "offset": 738
+            "offset": 800
           },
           "attributes": [
             {
@@ -1915,7 +1915,7 @@
               },
               "source": {
                 "file": "./src/components/pages/privacy/document/privacy-document-header/privacy-document-header.component.ts",
-                "offset": 923
+                "offset": 985
               }
             }
           ],
@@ -1927,7 +1927,7 @@
                 "default": "",
                 "source": {
                   "file": "./src/components/pages/privacy/document/privacy-document-header/privacy-document-header.component.ts",
-                  "offset": 923
+                  "offset": 985
                 }
               }
             ]
@@ -1990,7 +1990,7 @@
           "name": "privacy-page",
           "source": {
             "file": "./src/pages/legal/privacy.page.ts",
-            "offset": 543
+            "offset": 590
           },
           "attributes": [],
           "js": {
@@ -2001,7 +2001,7 @@
           "name": "privacy-toc",
           "source": {
             "file": "./src/components/pages/privacy/document/privacy-toc/privacy-toc.component.ts",
-            "offset": 755
+            "offset": 815
           },
           "attributes": [],
           "js": {
@@ -2991,7 +2991,7 @@
           "name": "terms-document-header",
           "source": {
             "file": "./src/components/pages/terms/document/terms-document-header/terms-document-header.component.ts",
-            "offset": 732
+            "offset": 794
           },
           "attributes": [
             {
@@ -3003,7 +3003,7 @@
               },
               "source": {
                 "file": "./src/components/pages/terms/document/terms-document-header/terms-document-header.component.ts",
-                "offset": 913
+                "offset": 975
               }
             }
           ],
@@ -3015,7 +3015,7 @@
                 "default": "",
                 "source": {
                   "file": "./src/components/pages/terms/document/terms-document-header/terms-document-header.component.ts",
-                  "offset": 913
+                  "offset": 975
                 }
               }
             ]
@@ -3078,7 +3078,7 @@
           "name": "terms-page",
           "source": {
             "file": "./src/pages/legal/terms.page.ts",
-            "offset": 525
+            "offset": 572
           },
           "attributes": [],
           "js": {
@@ -3089,7 +3089,7 @@
           "name": "terms-toc",
           "source": {
             "file": "./src/components/pages/terms/document/terms-toc/terms-toc.component.ts",
-            "offset": 736
+            "offset": 796
           },
           "attributes": [],
           "js": {
