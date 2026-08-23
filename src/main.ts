@@ -2,7 +2,7 @@ import './style.css'
 
 import { AppComponent } from "@app/app.component.ts";
 import { ErrorPage, HomePage, OfflinePage } from "@app/pages";
-import { RestClient } from "@ayu-sh-kr/dota-rest";
+import { RestClient } from "@ayu-sh-kr/dota-wrap/rest";
 import { AccordionComponent, IconsComponent, PopoverComponent } from "@ayu-sh-kr/dota-ui";
 import {DefaultApplicationEventListenerRegistry, initializeApp} from "@ayu-sh-kr/dota-wrap";
 import { Router, RouterService } from "@ayu-sh-kr/dota-wrap/router";
@@ -57,6 +57,14 @@ export const applicationReady = initializeApp({
     routerService = value.routerService;
     RouterUtils.setRouterService(routerService);
     applicationEventPublisher.publishAsync({ name: "app:initialized", data: null });
+    if (!import.meta.env.SSR) {
+      void restClient
+        .get<void>()
+        .uri("/status")
+        .retrieve()
+        .toVoid()
+        .catch(() => undefined);
+    }
   });
 
 applicationReady.catch((error) => console.error(error));
