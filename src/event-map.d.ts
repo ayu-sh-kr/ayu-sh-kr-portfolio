@@ -4,7 +4,7 @@ import type { ActionButtonSettlement, ActionButtonTrigger } from "@app/events/ac
 import type { AnalyticsTrackEvent } from "@app/events/analytics.events.ts";
 import type { BlogFilterChange, BlogMarkdownSource } from "@app/events/blog.events.ts";
 import type { CoffeeOrderQuantitySelection, CoffeeOrderSizeSelection } from "@app/events/coffee.events.ts";
-import type { PricingStartProjectField, PricingStartProjectMode } from "@app/events/pricing.events.ts";
+import type { PricingStartProjectBrief, PricingStartProjectField, PricingStartProjectFilesChange, PricingStartProjectMode } from "@app/events/pricing.events.ts";
 import type { PrivacyMarkdownRender, PrivacyMarkdownSource } from "@app/events/privacy.events.ts";
 import type { ShowcaseMarkdownSource } from "@app/events/showcase.events.ts";
 import type { TermsMarkdownRender, TermsMarkdownSource } from "@app/events/terms.events.ts";
@@ -36,7 +36,9 @@ declare module "@ayu-sh-kr/dota-wrap/event" {
     "pricing:estimator-stage": { id: string };
     "pricing:estimator-type": { id: string };
     "pricing:start-project-field": { field: PricingStartProjectField; value: string };
+    "pricing:start-project-files": PricingStartProjectFilesChange;
     "pricing:start-project-mode": { mode: PricingStartProjectMode };
+    "pricing:start-project-preview": PricingStartProjectBrief;
     "privacy:markdown-render": PrivacyMarkdownRender;
     "privacy:markdown-source": PrivacyMarkdownSource;
     "showcase:markdown-source": ShowcaseMarkdownSource;
