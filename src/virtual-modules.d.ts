@@ -8,3 +8,7 @@ declare module "virtual:dota-routes" {
   import { RouteConfig } from "@ayu-sh-kr/dota-wrap/router";
   export const routeConfig: RouteConfig<HTMLElement>[];
 }
+
+interface Window {
+  portfolioRestClient: import("@ayu-sh-kr/dota-wrap/rest").RestClient;
+}
