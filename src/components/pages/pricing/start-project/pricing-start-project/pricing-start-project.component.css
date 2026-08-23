@@ -16,7 +16,6 @@ pricing-start-project {
 }
 
 .pricing-project-form,
-.pricing-project-preview,
 .pricing-project-complete {
   border: 1px solid var(--border-color);
   border-radius: 1.5rem;
@@ -134,43 +133,6 @@ pricing-start-project {
   color: var(--primary-color-strong);
 }
 
-.pricing-project-file-input {
-  position: relative;
-  min-height: 5.6rem;
-  border: 1px dashed var(--border-color);
-  border-radius: 1rem;
-  padding: 1rem;
-  transition: border-color 180ms ease, background-color 180ms ease;
-}
-
-.pricing-project-file-input:hover {
-  border-color: var(--primary-color);
-  background: var(--primary-color-subtle);
-}
-
-.pricing-project-file-input input {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  opacity: 0;
-  cursor: pointer;
-}
-
-.pricing-project-file-input span {
-  display: block;
-  margin-top: 0.45rem;
-  color: var(--muted-color);
-  font-size: var(--pricing-type-compact-size);
-  font-weight: 400;
-}
-
-.pricing-project-files {
-  margin-top: 0.55rem;
-  color: var(--muted-color);
-  font-size: var(--pricing-type-compact-size);
-  line-height: var(--pricing-type-compact-leading);
-}
-
 .pricing-project-field-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -250,109 +212,6 @@ pricing-start-project {
   transform: translateY(-2px);
 }
 
-.pricing-project-preview {
-  position: sticky;
-  top: 5.5rem;
-  overflow: hidden;
-}
-
-.pricing-project-preview > div:first-child {
-  border-bottom: 1px solid var(--border-color);
-  padding: 1.35rem 1.45rem 1.1rem;
-}
-
-.pricing-project-preview h3 {
-  color: var(--foreground-color);
-  font-size: var(--pricing-type-card-title-size);
-  font-weight: var(--pricing-type-card-title-weight);
-  letter-spacing: var(--pricing-type-card-title-tracking);
-}
-
-.pricing-project-preview h3 + p {
-  margin-top: 0.2rem;
-  color: var(--muted-color);
-  font-size: var(--pricing-type-compact-size);
-}
-
-.pricing-project-meter {
-  height: 0.28rem;
-  margin-top: 1rem;
-  overflow: hidden;
-  border-radius: 999px;
-  background: var(--border-color);
-}
-
-.pricing-project-meter i {
-  display: block;
-  width: var(--project-brief-progress);
-  height: 100%;
-  border-radius: inherit;
-  background: var(--primary-color);
-  transition: width 240ms ease;
-}
-
-.pricing-project-meter-copy {
-  display: flex;
-  justify-content: space-between;
-  gap: 1rem;
-  margin-top: 0.55rem;
-  color: var(--muted-color);
-  font-size: var(--pricing-type-compact-size);
-}
-
-.pricing-project-meter-copy b {
-  color: var(--foreground-color);
-}
-
-.pricing-project-preview dl {
-  padding: 0.15rem 1.45rem 0.8rem;
-}
-
-.pricing-project-preview dl > div {
-  display: grid;
-  grid-template-columns: 6.3rem minmax(0, 1fr);
-  gap: 0.65rem;
-  border-bottom: 1px solid var(--border-color);
-  padding: 0.65rem 0;
-}
-
-.pricing-project-preview dl > div:last-child {
-  border-bottom: 0;
-}
-
-.pricing-project-preview dt {
-  color: var(--muted-color);
-  font-size: var(--pricing-type-label-size);
-  font-weight: var(--pricing-type-label-weight);
-  letter-spacing: var(--pricing-type-label-tracking);
-  text-transform: uppercase;
-}
-
-.pricing-project-preview dd {
-  color: var(--foreground-color);
-  font-size: var(--pricing-type-compact-size);
-  line-height: var(--pricing-type-compact-leading);
-  overflow-wrap: anywhere;
-}
-
-.pricing-project-preview dd.is-empty {
-  color: var(--muted-color);
-}
-
-.pricing-project-preview-foot {
-  border-top: 1px solid var(--border-color);
-  padding: 1rem 1.45rem;
-  background: var(--background-color);
-  color: var(--muted-color);
-  font-size: var(--pricing-type-compact-size);
-  line-height: var(--pricing-type-compact-leading);
-}
-
-.pricing-project-preview-foot a {
-  color: var(--primary-color-strong);
-  font-weight: 600;
-}
-
 .pricing-project-complete {
   max-width: 42rem;
   margin: 3rem auto 0;
@@ -410,9 +269,6 @@ pricing-start-project {
     grid-template-columns: 1fr;
   }
 
-  .pricing-project-preview {
-    position: static;
-  }
 }
 
 @media (max-width: 42rem) {
@@ -433,10 +289,6 @@ pricing-start-project {
     width: 100%;
   }
 
-  .pricing-project-preview dl > div {
-    grid-template-columns: 1fr;
-    gap: 0.2rem;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {

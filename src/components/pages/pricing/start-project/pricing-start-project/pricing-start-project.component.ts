@@ -1,75 +1,45 @@
-import { BaseElement, Component, HostListener, HTML } from "@ayu-sh-kr/dota-wrap/core";
+import { ApplicationEventService, BaseElement, Component, HostListener } from "@ayu-sh-kr/dota-wrap/core";
 import { type ApplicationEvent, OnEvent } from "@ayu-sh-kr/dota-wrap/event";
+import { html, when } from "@ayu-sh-kr/dota-wrap/rendering";
 import { pricingContent } from "@app/data/pricing-content.ts";
 import {
   PRICING_START_PROJECT_FIELD_EVENT,
   PRICING_START_PROJECT_FIELDS,
+  PRICING_START_PROJECT_FILES_EVENT,
   PRICING_START_PROJECT_MODE_EVENT,
-  type PricingStartProjectField,
+  PRICING_START_PROJECT_PREVIEW_EVENT,
+  type PricingStartProjectBrief,
   type PricingStartProjectFieldChange,
-  type PricingStartProjectMode,
   type PricingStartProjectModeSelection,
 } from "@app/events/pricing.events.ts";
-import { escapeHtml } from "@app/utils/html.utils.ts";
+import {
+  createPricingStartProjectBrief,
+  getPricingProjectBriefPreviewRows,
+} from "@app/components/pages/pricing/start-project/pricing-project-preview/pricing-project-preview.utils.ts";
 
-/** Names the text fields shared by every project starting point. */
+/**
+ * Names the contact fields owned by the project-start shell rather than a focused branch form.
+ *
+ * The input listener narrows its `data-start-field` value to this union before changing the
+ * retained brief, so a stray attribute cannot overwrite a different brief property.
+ */
 type SharedProjectField = "name" | "email" | "company";
 
 /**
- * The project information retained by the pricing page while a visitor completes the intake.
+ * Names a shell-owned set of selectable values.
  *
- * Branch form components own their focused questions and publish changes into this model. The
- * shell owns the shared fields, preview, and prepared email so a mode change never destroys a
- * value collected in another branch.
+ * These values are rendered into `data-start-choice` and validated by the click handler before
+ * it applies a selection to the brief.
  */
-interface ProjectBrief {
-  /** Current branch selected by {@link PRICING_START_PROJECT_MODE_EVENT}. */
-  mode: PricingStartProjectMode;
-  /** Project name supplied with an existing specification. */
-  projectName: string;
-  /** Existing specification URL. */
-  specLink: string;
-  /** Context that the specification does not capture. */
-  specNotes: string;
-  /** One-line purpose supplied by an idea-stage visitor. */
-  idea: string;
-  /** People who should benefit from the proposed work. */
-  audience: string;
-  /** Outcome that defines success for an idea. */
-  success: string;
-  /** Work category selected for a quote request. */
-  workType: string;
-  /** Work that must be included in a quote. */
-  scope: string;
-  /** Optional technical or delivery constraints. */
-  constraints: string;
-  /** Existing project assets or capabilities selected by the visitor. */
-  existing: string[];
-  /** Budget range selected from pricing-aligned choices. */
-  budget: string;
-  /** Delivery timing selected by the visitor. */
-  timeline: string;
-  /** Local attachment names shown in the preview and prepared email. */
-  files: string[];
-  /** Required sender name. */
-  name: string;
-  /** Required sender email. */
-  email: string;
-  /** Optional sender organisation. */
-  company: string;
-  /** Preferred reply route. */
-  nextStep: string;
-  /** Whether the visitor needs an NDA before sharing additional material. */
-  needsNda: boolean;
-}
+type SharedProjectChoice = "existing" | "budget" | "timeline" | "next-step";
 
 /**
  * Composes the pricing page's project-start experience from small focused elements.
  *
  * The selector above the form publishes {@link PRICING_START_PROJECT_MODE_EVENT}; this shell
  * renders exactly one matching spec, idea, or quote form. Those forms publish field updates
- * back to the shell, which preserves the complete brief and handles shared questions, preview,
- * validation, and the explicit email handoff.
+ * back to the shell, which preserves the complete brief, publishes snapshots to the independent
+ * preview, validates shared questions, and prepares the explicit email handoff.
  *
  * Selector: `pricing-start-project`.
  */
@@ -78,35 +48,39 @@ interface ProjectBrief {
   shadow: false,
 })
 export class PricingStartProjectComponent extends BaseElement {
-  /** Complete local brief assembled from branch events and shared form controls. */
-  private brief: ProjectBrief = {
-    mode: "spec",
-    projectName: "",
-    specLink: "",
-    specNotes: "",
-    idea: "",
-    audience: "",
-    success: "",
-    workType: "",
-    scope: "",
-    constraints: "",
-    existing: [],
-    budget: "",
-    timeline: "",
-    files: [],
-    name: "",
-    email: "",
-    company: "",
-    nextStep: pricingContent.startProject.nextSteps[0],
-    needsNda: false,
-  };
+  /**
+   * Complete local brief assembled from branch events and shell-owned controls.
+   *
+   * Keeping every branch's values here lets a visitor change form type without losing work and
+   * gives the preview and email handoff one source of truth.
+   */
+  private brief: PricingStartProjectBrief = createPricingStartProjectBrief();
 
-  /** Controls whether the editable intake or the final email handoff is displayed. */
+  /** Whether the validated brief should show its email handoff instead of editable controls. */
   private isPrepared = false;
 
-  /** Initialises the shell; all DOM interaction is expressed with scoped decorators. */
+  /**
+   * Event publisher used only to send brief snapshots to the independent preview component.
+   *
+   * The shell is the sole owner of mutable input state; the preview receives copies through this
+   * facade and therefore cannot update the brief directly.
+   */
+  private readonly publisher = ApplicationEventService.getInstance().getPublisher();
+
+  /** Creates the shell; scoped lifecycle handling starts preview synchronisation after connection. */
   constructor() {
     super();
+  }
+
+  /**
+   * Publishes the initial state once descendant components have connected.
+   *
+   * The preview has a local empty-state fallback for server rendering, then replaces it with this
+   * shell-owned snapshot as soon as the interactive component tree is ready.
+   */
+  @OnEvent("connected", true)
+  publishInitialPreview(): void {
+    this.publishBrief();
   }
 
   /**
@@ -122,6 +96,7 @@ export class PricingStartProjectComponent extends BaseElement {
 
     this.brief.mode = event.data.mode;
     this.updateHTML();
+    this.publishBrief();
   }
 
   /**
@@ -136,7 +111,19 @@ export class PricingStartProjectComponent extends BaseElement {
     }
 
     this.brief[event.data.field] = event.data.value;
-    this.updatePreview();
+    this.publishBrief();
+  }
+
+  /**
+   * Replaces the retained attachments after the attachment component's local list changes.
+   *
+   * @param event - Snapshot published whenever the attachment component adds, removes, or updates
+   * the upload status of one of its locally owned files.
+   */
+  @OnEvent(PRICING_START_PROJECT_FILES_EVENT)
+  updateBriefFiles(event: ApplicationEvent<typeof PRICING_START_PROJECT_FILES_EVENT>): void {
+    this.brief.files = event.data.files;
+    this.publishBrief();
   }
 
   /**
@@ -154,17 +141,22 @@ export class PricingStartProjectComponent extends BaseElement {
     if (button.dataset.startEdit !== undefined) {
       this.isPrepared = false;
       this.updateHTML();
+      this.publishBrief();
       return;
     }
 
     const choice = button.dataset.startChoice;
     const value = button.dataset.startValue;
-    if (!choice || !value) {
+    if (
+      !value
+      || (choice !== "existing" && choice !== "budget" && choice !== "timeline" && choice !== "next-step")
+    ) {
       return;
     }
 
     this.setSharedChoice(choice, value);
     this.updateHTML();
+    this.publishBrief();
   }
 
   /**
@@ -179,42 +171,30 @@ export class PricingStartProjectComponent extends BaseElement {
       return;
     }
 
-    const key = field.dataset.startField as SharedProjectField | undefined;
-    if (!key) {
+    const fieldName = field.dataset.startField;
+    if (fieldName !== "name" && fieldName !== "email" && fieldName !== "company") {
       return;
     }
 
+    const key: SharedProjectField = fieldName;
     this.brief[key] = field.value;
-    this.updatePreview();
+    this.publishBrief();
   }
 
   /**
-   * Captures the NDA selection and attachment names from shell-owned inputs.
+   * Captures the NDA selection from the shell-owned checkbox.
    *
-   * @param event - Change from the checkbox or attachment picker.
+   * @param event - Change from the NDA checkbox.
    */
   @HostListener({ event: "change" })
   captureSharedProjectChange(event: Event): void {
     const field = event.target;
-    if (!(field instanceof HTMLInputElement)) {
+    if (!(field instanceof HTMLInputElement) || field.dataset.startNda === undefined) {
       return;
     }
 
-    if (field.dataset.startNda !== undefined) {
-      this.brief.needsNda = field.checked;
-      this.updatePreview();
-      return;
-    }
-
-    if (field.dataset.startFiles === undefined) {
-      return;
-    }
-
-    this.brief.files = Array.from(field.files ?? [])
-      .filter((file) => file.size <= 20 * 1024 * 1024)
-      .slice(0, 8)
-      .map((file) => file.name);
-    this.updateHTML();
+    this.brief.needsNda = field.checked;
+    this.publishBrief();
   }
 
   /**
@@ -239,25 +219,48 @@ export class PricingStartProjectComponent extends BaseElement {
     this.updateHTML();
   }
 
-  /** Validates a selector event against the three modes authored in pricing content. */
+  /**
+   * Checks that a mode-selection event still points at a mode authored for this intake.
+   *
+   * Events are typed at compile time but cross-component messages are still runtime input, so the
+   * shell rejects stale or malformed mode IDs before it replaces the focused form.
+   *
+   * @param selection - Mode payload received from the selector component.
+   * @returns Whether the payload names an authored project starting point.
+   */
   private isKnownMode(selection: PricingStartProjectModeSelection): boolean {
     return pricingContent.startProject.modes.some((mode) => mode.id === selection.mode);
   }
 
-  /** Validates that a branch event names a field owned by a branch form. */
+  /**
+   * Confirms that a branch event can update one of the branch-owned brief fields.
+   *
+   * The shell deliberately keeps shared contact and delivery inputs out of this event path.
+   *
+   * @param change - Field payload received from the currently rendered branch form.
+   * @returns Whether the field belongs to one of the three branch forms.
+   */
   private isKnownBranchField(change: PricingStartProjectFieldChange): boolean {
     return PRICING_START_PROJECT_FIELDS.includes(change.field);
   }
 
-  /** Applies a shared-pill selection, including the exclusive “Nothing yet” option. */
-  private setSharedChoice(choice: string, value: string): void {
+  /**
+   * Applies one shell-owned choice to the brief.
+   *
+   * Existing capability choices are multi-select except for the exclusive “Nothing yet” option;
+   * budget, timeline, and reply route are each a single-value toggle.
+   *
+   * @param choice - Shared choice group validated by the delegated click handler.
+   * @param value - Authored option selected from that group.
+   */
+  private setSharedChoice(choice: SharedProjectChoice, value: string): void {
     if (choice === "existing") {
-      if (value === "Nothing yet") {
+      if (value === pricingContent.startProject.form.emptyExistingOption) {
         this.brief.existing = this.brief.existing.includes(value) ? [] : [value];
         return;
       }
 
-      const existing = this.brief.existing.filter((item) => item !== "Nothing yet");
+      const existing = this.brief.existing.filter((item) => item !== pricingContent.startProject.form.emptyExistingOption);
       this.brief.existing = existing.includes(value) ? existing.filter((item) => item !== value) : [...existing, value];
       return;
     }
@@ -272,146 +275,206 @@ export class PricingStartProjectComponent extends BaseElement {
       return;
     }
 
-    if (choice === "next-step") {
-      this.brief.nextStep = value;
-    }
+    this.brief.nextStep = value;
   }
 
-  /** Renders the one focused child form selected through the mode-selector event flow. */
-  private renderActiveProjectForm(): string {
+  /**
+   * Renders the child form for the selected starting point with its retained values.
+   *
+   * The child owns focused questions and publishes field changes; this shell only passes values
+   * back in when a re-render replaces the child after a mode change.
+   */
+  private renderActiveProjectForm() {
     if (this.brief.mode === "spec") {
-      return `<pricing-project-spec-form project-name="${escapeHtml(this.brief.projectName)}" spec-link="${escapeHtml(this.brief.specLink)}" spec-notes="${escapeHtml(this.brief.specNotes)}"></pricing-project-spec-form>`;
+      return html`
+        <pricing-project-spec-form
+          project-name="${this.brief.projectName}"
+          spec-link="${this.brief.specLink}"
+          spec-notes="${this.brief.specNotes}"
+        ></pricing-project-spec-form>
+      `;
     }
 
     if (this.brief.mode === "idea") {
-      return `<pricing-project-idea-form idea="${escapeHtml(this.brief.idea)}" audience="${escapeHtml(this.brief.audience)}" success="${escapeHtml(this.brief.success)}"></pricing-project-idea-form>`;
+      return html`
+        <pricing-project-idea-form
+          idea="${this.brief.idea}"
+          audience="${this.brief.audience}"
+          success="${this.brief.success}"
+        ></pricing-project-idea-form>
+      `;
     }
 
-    return `<pricing-project-quote-form work-type="${escapeHtml(this.brief.workType)}" scope="${escapeHtml(this.brief.scope)}" constraints="${escapeHtml(this.brief.constraints)}"></pricing-project-quote-form>`;
+    return html`
+      <pricing-project-quote-form
+        work-type="${this.brief.workType}"
+        scope="${this.brief.scope}"
+        constraints="${this.brief.constraints}"
+      ></pricing-project-quote-form>
+    `;
   }
 
-  /** Renders an authored shared pill group with its current selected values. */
-  private renderSharedChoices(options: readonly string[], choice: string, selected: string | readonly string[]): string {
+  /**
+   * Renders a shell-owned choice group with the current selection state.
+   *
+   * The same template supports the multi-select existing-capability group and the three
+   * single-select groups while the click listener performs the corresponding update policy.
+   *
+   * @param options - Authored labels to offer in display order.
+   * @param choice - Dataset identifier consumed by the delegated click handler.
+   * @param selected - One selected value or the values selected in a multi-select group.
+   */
+  private renderSharedChoices(options: readonly string[], choice: SharedProjectChoice, selected: string | readonly string[]) {
     const selectedValues = typeof selected === "string" ? [selected] : selected;
 
-    return HTML`
+    return html`
       <div class="pricing-project-choices" role="group">
-        ${options.map((option) => `
-          <button class="pricing-project-choice ${selectedValues.includes(option) ? "is-selected" : ""}" type="button" data-start-choice="${choice}" data-start-value="${escapeHtml(option)}" aria-pressed="${selectedValues.includes(option)}">${escapeHtml(option)}</button>
-        `).join("")}
+        ${options.map((option) => html`
+          <button
+            class="pricing-project-choice ${selectedValues.includes(option) ? "is-selected" : ""}"
+            type="button"
+            data-start-choice="${choice}"
+            data-start-value="${option}"
+            aria-pressed="${selectedValues.includes(option)}"
+          >
+            ${option}
+          </button>
+        `)}
       </div>
     `;
   }
 
-  /** Returns the source-of-truth rows shared by the live preview and prepared email body. */
-  private getPreviewRows(): Array<{ label: string; value: string }> {
-    const mode = pricingContent.startProject.modes.find((item) => item.id === this.brief.mode);
-    const project = this.brief.mode === "spec" ? this.brief.projectName : this.brief.mode === "idea" ? this.brief.idea : this.brief.workType;
-    const detail = this.brief.mode === "spec"
-      ? [this.brief.specLink, this.brief.specNotes].filter(Boolean).join(" · ")
-      : this.brief.mode === "idea"
-        ? [this.brief.audience && `For ${this.brief.audience}`, this.brief.success && `Success: ${this.brief.success}`].filter(Boolean).join(" · ")
-        : [this.brief.scope, this.brief.constraints].filter(Boolean).join(" · ");
-
-    return [
-      { label: "Bringing", value: mode?.label ?? "" },
-      { label: "Project", value: project },
-      { label: "The gist", value: detail },
-      { label: "Stands at", value: this.brief.existing.join(", ") },
-      { label: "Budget", value: this.brief.budget },
-      { label: "Timeline", value: this.brief.timeline },
-      { label: "Attached", value: this.brief.files.join(", ") },
-      { label: "From", value: [this.brief.name, this.brief.company].filter(Boolean).join(" · ") },
-      { label: "Reply to", value: this.brief.email },
-      { label: "Next step", value: `${this.brief.nextStep}${this.brief.needsNda ? " · NDA first" : ""}` },
-    ];
-  }
-
-  /** Updates the live preview without interrupting focus in a text input. */
-  private updatePreview(): void {
-    const rows = this.getPreviewRows();
-    rows.forEach((row) => {
-      const value = this.querySelector<HTMLElement>(`[data-preview-value="${row.label}"]`);
-      if (!value) {
-        return;
-      }
-
-      value.textContent = row.value || "—";
-      value.classList.toggle("is-empty", !row.value);
+  /**
+   * Publishes an immutable snapshot after the shell changes its retained brief.
+   *
+   * The preview owns its own render cycle and listens for this event. Array fields are copied so a
+   * later shell mutation cannot change a snapshot that is already in the event queue.
+   */
+  private publishBrief(): void {
+    void this.publisher.publishAsync({
+      name: PRICING_START_PROJECT_PREVIEW_EVENT,
+      data: {
+        ...this.brief,
+        existing: [...this.brief.existing],
+        files: [...this.brief.files],
+      } satisfies PricingStartProjectBrief,
     });
-
-    const percentage = Math.round((rows.filter((row) => row.value).length / rows.length) * 100);
-    this.querySelector<HTMLElement>("[data-project-meter]")?.style.setProperty("--project-brief-progress", `${percentage}%`);
-    const meterValue = this.querySelector<HTMLElement>("[data-project-meter-value]");
-    if (meterValue) {
-      meterValue.textContent = `${percentage}%`;
-    }
-
-    const meterLabel = this.querySelector<HTMLElement>("[data-project-meter-label]");
-    if (meterLabel) {
-      meterLabel.textContent = percentage < 35 ? "A few useful questions" : percentage < 70 ? "A useful starting point" : "Ready for a first read";
-    }
   }
 
-  /** Builds the explicit email action from the same values visible in the project preview. */
+  /**
+   * Builds the explicit mailto action from the same rows used by the visible preview.
+   *
+   * No submission occurs automatically: after validation, the completion state exposes this URL so
+   * the visitor can review and send the prepared message in their mail client.
+   *
+   * @returns Encoded mailto URL containing the selected project subject and current brief rows.
+   */
   private createEmailHref(): string {
-    const body = this.getPreviewRows().map((row) => `${row.label}: ${row.value || "—"}`).join("\n");
+    const body = getPricingProjectBriefPreviewRows(this.brief)
+      .map((row) => `${row.label}: ${row.value || pricingContent.startProject.preview.emptyValue}`)
+      .join("\n");
     const project = this.brief.projectName || this.brief.idea || this.brief.workType;
     const subject = project ? `${pricingContent.startProject.emailSubject}: ${project}` : pricingContent.startProject.emailSubject;
 
     return `mailto:${pricingContent.startProject.emailAddress}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   }
 
-  /** Renders the composed intake shell, its independently focused forms, and final handoff. */
-  render(): string {
+  /**
+   * Renders the project-start shell as either the editable intake or its prepared email handoff.
+   *
+   * The template reads only retained state and authored content. The preview is a separate leaf
+   * component: brief events re-render it independently while choices, attachments, mode changes,
+   * and submit transitions re-render this shell.
+   */
+  render() {
     const content = pricingContent.startProject;
-    const previewRows = this.getPreviewRows();
-    const percentage = Math.round((previewRows.filter((row) => row.value).length / previewRows.length) * 100);
+    const form = content.form;
 
-    return HTML`
+    return html`
       <section id="pricing-start-project" class="pricing-start-project-section" aria-labelledby="pricing-start-project-title">
         <div class="pricing-start-project-content layout-page">
           <pricing-start-project-intro></pricing-start-project-intro>
           <pricing-project-mode-selector selected-mode="${this.brief.mode}"></pricing-project-mode-selector>
 
-          ${this.isPrepared ? HTML`
+          ${when(this.isPrepared, html`
             <div class="pricing-project-complete" role="status">
-              <span aria-hidden="true">✓</span><h3>${content.completionTitle}</h3>
-              <p>${content.completionBody}${this.brief.files.length ? " Add the selected files to that email before sending." : ""}</p>
-              <div><a class="app-link app-link--button app-link--accent" href="${escapeHtml(this.createEmailHref())}">${content.emailLabel} <span aria-hidden="true">→</span></a><button class="pricing-project-secondary-button" type="button" data-start-edit>Edit the brief</button></div>
+              <span aria-hidden="true">✓</span>
+              <h3>${content.completionTitle}</h3>
+              <p>
+                ${content.completionBody}
+                ${this.brief.files.length ? form.attachmentCompletionNote : ""}
+              </p>
+              <div>
+                <a class="app-link app-link--button app-link--accent" href="${this.createEmailHref()}">
+                  ${content.emailLabel} <span aria-hidden="true">→</span>
+                </a>
+                <button class="pricing-project-secondary-button" type="button" data-start-edit>
+                  ${form.editLabel}
+                </button>
+              </div>
             </div>
-          ` : HTML`
+          `, html`
             <div class="pricing-project-workspace">
               <form id="pricing-project-brief" class="pricing-project-form">
                 ${this.renderActiveProjectForm()}
+
                 <fieldset class="pricing-project-fieldset">
-                  <legend>Shape of it</legend>
-                  <div class="pricing-project-input-label">Where things stand <small>Pick any</small></div>
+                  <legend>${form.shapeLegend}</legend>
+                  <div class="pricing-project-input-label">
+                    ${form.existingLabel} <small>${form.existingHint}</small>
+                  </div>
                   ${this.renderSharedChoices(content.existingOptions, "existing", this.brief.existing)}
-                  <div class="pricing-project-input-label">Budget</div>
+
+                  <div class="pricing-project-input-label">${form.budgetLabel}</div>
                   ${this.renderSharedChoices(content.budgetOptions, "budget", this.brief.budget)}
-                  <div class="pricing-project-input-label">Timeline</div>
+
+                  <div class="pricing-project-input-label">${form.timelineLabel}</div>
                   ${this.renderSharedChoices(content.timelineOptions, "timeline", this.brief.timeline)}
-                  <label class="pricing-project-file-input">Attachments <small>Up to 20 MB each · optional</small><input data-start-files type="file" multiple><span>Choose files to include in your brief</span></label>
-                  <p class="pricing-project-files" aria-live="polite">${this.brief.files.length ? this.brief.files.map(escapeHtml).join(" · ") : "No attachments selected"}</p>
+
+                  <pricing-project-file-upload files="${JSON.stringify(this.brief.files)}"></pricing-project-file-upload>
                 </fieldset>
+
                 <fieldset class="pricing-project-fieldset">
-                  <legend>You</legend>
-                  <div class="pricing-project-field-grid"><label>Your name<input data-start-field="name" value="${escapeHtml(this.brief.name)}" autocomplete="name" required placeholder="Priya Raghavan"></label><label>Email<input data-start-field="email" value="${escapeHtml(this.brief.email)}" type="email" autocomplete="email" required placeholder="you@company.com"></label></div>
-                  <div class="pricing-project-field-grid"><label>Company <small>Optional</small><input data-start-field="company" value="${escapeHtml(this.brief.company)}" autocomplete="organization" placeholder="Northwind Foods"></label><div><div class="pricing-project-input-label">Best next step</div>${this.renderSharedChoices(content.nextSteps, "next-step", this.brief.nextStep)}</div></div>
-                  <label class="pricing-project-checkbox"><input data-start-nda type="checkbox" ${this.brief.needsNda ? "checked" : ""}><span>I need an NDA first. Send yours, or I will send mine.</span></label>
+                  <legend>${form.contactLegend}</legend>
+                  <div class="pricing-project-field-grid">
+                    <label>
+                      ${form.nameLabel}
+                      <input data-start-field="name" value="${this.brief.name}" autocomplete="name" required placeholder="${form.namePlaceholder}">
+                    </label>
+                    <label>
+                      ${form.emailLabel}
+                      <input data-start-field="email" value="${this.brief.email}" type="email" autocomplete="email" required placeholder="${form.emailPlaceholder}">
+                    </label>
+                  </div>
+
+                  <div class="pricing-project-field-grid">
+                    <label>
+                      ${form.companyLabel} <small>${form.optionalLabel}</small>
+                      <input data-start-field="company" value="${this.brief.company}" autocomplete="organization" placeholder="${form.companyPlaceholder}">
+                    </label>
+                    <div>
+                      <div class="pricing-project-input-label">${form.nextStepLabel}</div>
+                      ${this.renderSharedChoices(content.nextSteps, "next-step", this.brief.nextStep)}
+                    </div>
+                  </div>
+
+                  <label class="pricing-project-checkbox">
+                    ${when(this.brief.needsNda, html`<input data-start-nda type="checkbox" checked>`, html`<input data-start-nda type="checkbox">`)}
+                    <span>${form.ndaLabel}</span>
+                  </label>
                 </fieldset>
-                <div class="pricing-project-submit"><p>This creates one email. Nothing is sent automatically.</p><button class="pricing-project-primary-button" type="submit">Prepare the brief <span aria-hidden="true">→</span></button></div>
+
+                <div class="pricing-project-submit">
+                  <p>${form.submitNote}</p>
+                  <button class="pricing-project-primary-button" type="submit">
+                    ${form.submitLabel} <span aria-hidden="true">→</span>
+                  </button>
+                </div>
               </form>
-              <aside class="pricing-project-preview" aria-label="Project brief preview">
-                <div><h3>${content.previewTitle}</h3><p>${content.previewBody}</p><div class="pricing-project-meter" data-project-meter style="--project-brief-progress: ${percentage}%"><i></i></div><p class="pricing-project-meter-copy"><span data-project-meter-label>${percentage < 35 ? "A few useful questions" : percentage < 70 ? "A useful starting point" : "Ready for a first read"}</span><b data-project-meter-value>${percentage}%</b></p></div>
-                <dl>${previewRows.map((row) => `<div><dt>${row.label}</dt><dd data-preview-value="${row.label}" class="${row.value ? "" : "is-empty"}">${escapeHtml(row.value || "—")}</dd></div>`).join("")}</dl>
-                <p class="pricing-project-preview-foot">Prefer a regular email? <a href="mailto:${content.emailAddress}">${content.emailAddress}</a></p>
-              </aside>
+
+              <pricing-project-preview></pricing-project-preview>
             </div>
-          `}
-          <pricing-project-process></pricing-project-process>
-          <pricing-project-alternatives></pricing-project-alternatives>
+          `)}
         </div>
       </section>
     `;
