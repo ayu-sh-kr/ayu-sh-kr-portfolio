@@ -1453,7 +1453,7 @@
           "name": "pricing-estimator",
           "source": {
             "file": "./src/components/pages/pricing/estimator/pricing-estimator/pricing-estimator.component.ts",
-            "offset": 550
+            "offset": 1028
           },
           "attributes": [],
           "js": {
@@ -1464,7 +1464,7 @@
           "name": "pricing-estimator-result",
           "source": {
             "file": "./src/components/pages/pricing/estimator/pricing-estimator-result/pricing-estimator-result.component.ts",
-            "offset": 1078
+            "offset": 1953
           },
           "attributes": [],
           "js": {
@@ -1475,7 +1475,7 @@
           "name": "pricing-estimator-stage-options",
           "source": {
             "file": "./src/components/pages/pricing/estimator/pricing-estimator-stage-options/pricing-estimator-stage-options.component.ts",
-            "offset": 658
+            "offset": 990
           },
           "attributes": [],
           "js": {
@@ -1486,7 +1486,7 @@
           "name": "pricing-estimator-type-options",
           "source": {
             "file": "./src/components/pages/pricing/estimator/pricing-estimator-type-options/pricing-estimator-type-options.component.ts",
-            "offset": 685
+            "offset": 1010
           },
           "attributes": [],
           "js": {
@@ -1535,6 +1535,40 @@
           "attributes": [],
           "js": {
             "properties": []
+          }
+        },
+        {
+          "name": "pricing-project-file-upload",
+          "source": {
+            "file": "./src/components/pages/pricing/start-project/pricing-project-file-upload/pricing-project-file-upload.component.ts",
+            "offset": 2424
+          },
+          "attributes": [
+            {
+              "name": "files",
+              "default": "[]",
+              "required": false,
+              "value": {
+                "type": "string"
+              },
+              "source": {
+                "file": "./src/components/pages/pricing/start-project/pricing-project-file-upload/pricing-project-file-upload.component.ts",
+                "offset": 3045
+              }
+            }
+          ],
+          "js": {
+            "properties": [
+              {
+                "name": "files",
+                "type": "string",
+                "default": "[]",
+                "source": {
+                  "file": "./src/components/pages/pricing/start-project/pricing-project-file-upload/pricing-project-file-upload.component.ts",
+                  "offset": 3045
+                }
+              }
+            ]
           }
         },
         {
@@ -1648,10 +1682,21 @@
           }
         },
         {
+          "name": "pricing-project-preview",
+          "source": {
+            "file": "./src/components/pages/pricing/start-project/pricing-project-preview/pricing-project-preview.component.ts",
+            "offset": 1067
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
           "name": "pricing-project-process",
           "source": {
             "file": "./src/components/pages/pricing/start-project/pricing-project-process/pricing-project-process.component.ts",
-            "offset": 669
+            "offset": 656
           },
           "attributes": [],
           "js": {
@@ -1814,7 +1859,7 @@
           "name": "pricing-start-project",
           "source": {
             "file": "./src/components/pages/pricing/start-project/pricing-start-project/pricing-start-project.component.ts",
-            "offset": 3035
+            "offset": 2044
           },
           "attributes": [],
           "js": {

@@ -3011,6 +3011,58 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/pages/pricing/start-project/pricing-project-file-upload/pricing-project-file-upload.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "PricingProjectFileUploadComponent",
+          "customElement": true,
+          "tagName": "pricing-project-file-upload",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [
+            {
+              "kind": "field",
+              "name": "files",
+              "attribute": "files",
+              "type": {
+                "text": "string"
+              },
+              "default": "[]"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "files",
+              "fieldName": "files",
+              "type": {
+                "text": "string"
+              },
+              "default": "[]"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "PricingProjectFileUploadComponent",
+          "declaration": {
+            "name": "PricingProjectFileUploadComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "pricing-project-file-upload",
+          "declaration": {
+            "name": "PricingProjectFileUploadComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/pages/pricing/start-project/pricing-project-idea-form/pricing-project-idea-form.component.js",
       "declarations": [
         {
@@ -3143,6 +3195,39 @@
           "name": "pricing-project-mode-selector",
           "declaration": {
             "name": "PricingProjectModeSelectorComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/pricing/start-project/pricing-project-preview/pricing-project-preview.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "PricingProjectPreviewComponent",
+          "customElement": true,
+          "tagName": "pricing-project-preview",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "PricingProjectPreviewComponent",
+          "declaration": {
+            "name": "PricingProjectPreviewComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "pricing-project-preview",
+          "declaration": {
+            "name": "PricingProjectPreviewComponent"
           }
         }
       ]
