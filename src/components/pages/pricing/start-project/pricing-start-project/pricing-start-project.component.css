@@ -60,9 +60,12 @@ pricing-start-project {
 }
 
 .pricing-project-fieldset legend + label,
-.pricing-project-fieldset legend + .pricing-project-input-label,
-.pricing-project-input-label + .pricing-project-choices {
+.pricing-project-fieldset legend + .pricing-project-input-label {
   margin-top: 0;
+}
+
+.pricing-project-input-label + .pricing-project-choices {
+  margin-top: var(--layout-space-2);
 }
 
 .pricing-project-form small {
@@ -78,7 +81,7 @@ pricing-start-project {
 .pricing-project-form textarea {
   display: block;
   width: 100%;
-  margin-top: 0.45rem;
+  margin-top: var(--layout-space-2);
   border: 1px solid var(--border-color);
   border-radius: 0.85rem;
   background: var(--background-color);

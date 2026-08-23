@@ -10,6 +10,12 @@
   margin: 0;
 }
 
+/* Keep the shared reset from cancelling the layout stack's heading rhythm. */
+.design-interaction-hero__copy .layout-stack > * + *,
+.design-interaction-heading.layout-stack > * + * {
+  margin-block-start: var(--layout-stack-gap);
+}
+
 .design-interaction-hero h1 span {
   color: var(--primary-color);
 }
