@@ -12,6 +12,7 @@ import { registerPortfolioMarkdownTheme } from "@app/configs/markdown-theme.conf
 import { AnalyticsEventListener } from "@app/service/analytics-event.listener.ts";
 import { AnalyticsSectionTracker } from "@app/service/analytics-section-tracker.service.ts";
 import { ActionButtonDispatcher } from "@app/service/action-button-dispatcher.service.ts";
+import { ServiceState } from "@app/service/service-state.service.ts";
 import { RouterUtils } from "@app/utils/router.utils.ts";
 import { applyRouteMetadata } from "@app/utils/seo.utils.ts";
 import components from "virtual:dota-components";
@@ -36,6 +37,7 @@ registerPortfolioMarkdownTheme();
 DefaultApplicationEventListenerRegistry.setListener(applicationEventListener);
 new AnalyticsEventListener();
 new ActionButtonDispatcher();
+ServiceState.start();
 
 export const applicationReady = initializeApp({
   modules: components,

@@ -18,6 +18,7 @@
 @import "./components/utils/toast/dota-toast/dota-toast.component.css";
 @import "./components/utils/consent-notice/consent-notice.component.css";
 @import "./components/utils/skeleton/skeleton.component.css";
+@import "./components/utils/service-state/service-state.component.css";
 @import "./components/pages/design/overview/design-typography-overview/design-typography-overview.component.css";
 @import "./components/pages/design/roles/design-typography-roles/design-typography-roles.component.css";
 @import "./components/pages/design/guidance/design-typography-guidance/design-typography-guidance.component.css";
@@ -36,6 +37,7 @@
 @import "./components/pages/design/toast/showcase/design-toast-showcase/design-toast-showcase.component.css";
 @import "./components/pages/design/toast/guidance/design-toast-guidance/design-toast-guidance.component.css";
 @import "./components/pages/design/interaction/shared/design-interaction-shared.css";
+@import "./components/pages/design/interaction/service-state/design-interaction-service-state.component.css";
 @import "./components/pages/design/interaction/icon-usage/design-interaction-icon-usage.component.css";
 @import "./components/pages/design/index/hero/design-index-hero/design-index-hero.component.css";
 @import "./components/pages/design/index/reference/design-index-reference/design-index-reference.component.css";
