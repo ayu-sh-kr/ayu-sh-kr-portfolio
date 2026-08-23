@@ -1,3 +1,4 @@
+/* Privacy Markdown view on the legal privacy route; owns policy prose, table reflow, and responsive reading states. */
 privacy-markdown-view {
   display: block;
   inline-size: 100%;
@@ -238,27 +239,33 @@ privacy-markdown-view {
   inline-size: 100%;
   margin-block: 1.6rem;
   border-collapse: collapse;
+  font-size: var(--type-body-size);
+  line-height: var(--type-body-leading);
+  table-layout: fixed;
 }
 
 .privacy-markdown-content th,
 .privacy-markdown-content td {
+  min-inline-size: 0;
   border-block-end: 1px solid var(--border-color);
   padding: 0.85rem 1rem 0.85rem 0;
+  font-size: var(--type-body-size);
   text-align: start;
   vertical-align: top;
+  overflow-wrap: anywhere;
 }
 
 .privacy-markdown-content th {
   color: var(--muted-color);
-  font-weight: 600;
+  font-weight: var(--type-label-weight);
   letter-spacing: 0.06em;
+  line-height: var(--type-body-leading);
   text-transform: uppercase;
 }
 
 .privacy-markdown-content td:first-child {
   color: var(--foreground-color);
   font-weight: 600;
-  white-space: nowrap;
 }
 
 .privacy-markdown-content aside[kind="note"] {
@@ -321,6 +328,7 @@ privacy-markdown-view {
 }
 
 @media (max-width: 40rem) {
+  /* Stack each row below the desktop table so labels remain readable on narrow screens. */
   .privacy-markdown-content table,
   .privacy-markdown-content thead,
   .privacy-markdown-content tbody,
