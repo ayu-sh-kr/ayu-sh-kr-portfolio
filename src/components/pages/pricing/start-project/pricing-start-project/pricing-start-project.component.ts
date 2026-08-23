@@ -96,6 +96,7 @@ export class PricingStartProjectComponent extends BaseElement {
 
     this.brief.mode = event.data.mode;
     this.updateHTML();
+    this.syncSharedChoiceButtons();
     this.publishBrief();
   }
 
@@ -156,6 +157,7 @@ export class PricingStartProjectComponent extends BaseElement {
 
     this.setSharedChoice(choice, value);
     this.updateHTML();
+    this.syncSharedChoiceButtons();
     this.publishBrief();
   }
 
@@ -342,6 +344,39 @@ export class PricingStartProjectComponent extends BaseElement {
         `)}
       </div>
     `;
+  }
+
+  /** Restores delegated choice metadata after a dynamic parent update. */
+  private syncSharedChoiceButtons(): void {
+    const groups: readonly [SharedProjectChoice, readonly string[], string | readonly string[]][] = [
+      ["existing", pricingContent.startProject.existingOptions, this.brief.existing],
+      ["budget", pricingContent.startProject.budgetOptions, this.brief.budget],
+      ["timeline", pricingContent.startProject.timelineOptions, this.brief.timeline],
+      ["next-step", pricingContent.startProject.nextSteps, this.brief.nextStep],
+    ];
+
+    this.querySelectorAll<HTMLDivElement>(".pricing-project-choices").forEach((group, index) => {
+      const definition = groups[index];
+      if (!definition) {
+        return;
+      }
+
+      const [choice, options, selected] = definition;
+      const selectedValues = typeof selected === "string" ? [selected] : selected;
+      group.querySelectorAll<HTMLButtonElement>("button").forEach((button, optionIndex) => {
+        const value = options[optionIndex];
+        if (!value) {
+          return;
+        }
+
+        const isSelected = selectedValues.includes(value);
+        button.classList.add("pricing-project-choice");
+        button.classList.toggle("is-selected", isSelected);
+        button.dataset.startChoice = choice;
+        button.dataset.startValue = value;
+        button.setAttribute("aria-pressed", String(isSelected));
+      });
+    });
   }
 
   /**

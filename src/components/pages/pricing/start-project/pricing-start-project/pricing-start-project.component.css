@@ -41,7 +41,8 @@ pricing-start-project {
 }
 
 .pricing-project-fieldset legend {
-  margin-bottom: 1rem;
+  margin-bottom: var(--layout-space-4);
+  padding-inline: 0;
   color: var(--muted-color);
   font-size: var(--pricing-type-label-size);
   font-weight: var(--pricing-type-label-weight);
@@ -52,7 +53,7 @@ pricing-start-project {
 .pricing-project-form label,
 .pricing-project-input-label {
   display: block;
-  margin-top: 1rem;
+  margin-top: var(--layout-space-4);
   color: var(--foreground-color);
   font-size: var(--pricing-type-control-size);
   font-weight: var(--pricing-type-control-weight);
@@ -65,7 +66,7 @@ pricing-start-project {
 }
 
 .pricing-project-form small {
-  margin-left: 0.35rem;
+  margin-left: var(--layout-space-1);
   color: var(--primary-color-strong);
   font-size: var(--pricing-type-label-size);
   font-weight: var(--pricing-type-label-weight);
@@ -106,8 +107,8 @@ pricing-start-project {
 .pricing-project-choices {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.45rem;
-  margin-top: 0.65rem;
+  gap: var(--layout-space-2);
+  margin-top: var(--layout-space-2);
 }
 
 .pricing-project-choice {
@@ -140,7 +141,7 @@ pricing-start-project {
 }
 
 .pricing-project-field-grid > div .pricing-project-input-label {
-  margin-top: 1rem;
+  margin-top: var(--layout-space-4);
 }
 
 .pricing-project-checkbox {
