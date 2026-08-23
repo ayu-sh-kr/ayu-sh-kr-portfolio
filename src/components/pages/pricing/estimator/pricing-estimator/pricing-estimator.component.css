@@ -1,3 +1,5 @@
+/* `pricing-estimator` is the interactive pricing form on `/pricing`; it uses
+ * the route's page-width canvas and shared layout/type tokens for its flow. */
 pricing-estimator {
   display: block;
 }
@@ -5,8 +7,8 @@ pricing-estimator {
 .pricing-estimator-flow {
   display: flex;
   flex-direction: column;
-  gap: 2.4rem;
-  margin-top: 2.25rem;
+  gap: var(--layout-space-6);
+  margin-top: var(--layout-space-6);
 }
 
 .pricing-estimator-question {
@@ -18,8 +20,8 @@ pricing-estimator {
 .pricing-estimator-question legend {
   display: flex;
   align-items: center;
-  gap: 0.8rem;
-  margin-bottom: 1.1rem;
+  gap: var(--layout-space-3);
+  margin-bottom: var(--layout-space-4);
   color: var(--foreground-color);
   font-size: var(--pricing-type-card-title-size);
   font-weight: var(--pricing-type-card-title-weight);
@@ -27,8 +29,8 @@ pricing-estimator {
 
 .pricing-estimator-question legend span {
   display: grid;
-  width: 1.8rem;
-  height: 1.8rem;
+  inline-size: 1.8rem;
+  block-size: 1.8rem;
   place-items: center;
   border-radius: 50%;
   background: var(--primary-color-subtle);
@@ -38,24 +40,24 @@ pricing-estimator {
 
 .pricing-pick-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 0.8rem;
+  grid-template-columns: 1fr;
+  gap: var(--layout-space-3);
 }
 
 .pricing-pick-grid-three {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: 1fr;
 }
 
 .pricing-pick {
   position: relative;
   display: flex;
-  min-height: 8.5rem;
+  min-height: 5.5rem;
   flex-direction: column;
   align-items: flex-start;
-  gap: 0.35rem;
-  padding: 1.15rem;
+  gap: var(--layout-space-2);
+  padding: var(--layout-pad-card);
   border: 1px solid var(--border-color);
-  border-radius: 1rem;
+  border-radius: var(--layout-radius-md);
   background: var(--surface-color);
   color: var(--foreground-color);
   cursor: pointer;
@@ -76,11 +78,11 @@ pricing-estimator {
 
 .pricing-pick.is-selected::after {
   position: absolute;
-  top: 0.7rem;
-  right: 0.7rem;
+  inset-block-start: var(--layout-space-3);
+  inset-inline-end: var(--layout-space-3);
   display: grid;
-  width: 1.2rem;
-  height: 1.2rem;
+  inline-size: 1.2rem;
+  block-size: 1.2rem;
   place-items: center;
   border-radius: 50%;
   background: var(--primary-color);
@@ -92,16 +94,16 @@ pricing-estimator {
 
 .pricing-pick-icon {
   display: grid;
-  width: 1.7rem;
-  height: 1.7rem;
-  margin-bottom: 0.55rem;
+  inline-size: 1.7rem;
+  block-size: 1.7rem;
+  margin-bottom: var(--layout-space-2);
   place-items: center;
   color: var(--primary-color-strong);
 }
 
 .pricing-pick-icon svg {
-  width: 1.35rem;
-  height: 1.35rem;
+  inline-size: 1.35rem;
+  block-size: 1.35rem;
   fill: none;
   stroke: currentColor;
   stroke-linecap: round;
@@ -122,11 +124,11 @@ pricing-estimator {
 
 .pricing-estimator-result {
   display: grid;
-  grid-template-columns: minmax(0, 1.4fr) minmax(12rem, 1fr) minmax(12rem, 0.8fr);
-  gap: 1.5rem;
+  grid-template-columns: 1fr;
+  gap: var(--layout-space-5);
   align-items: end;
-  padding: 2rem;
-  border-radius: 1.625rem;
+  padding: var(--layout-pad-panel);
+  border-radius: var(--layout-radius-xl);
   background: var(--foreground-color);
   color: var(--background-color);
 }
@@ -140,7 +142,7 @@ pricing-estimator {
 }
 
 .pricing-estimator-figure {
-  margin-top: 0.5rem;
+  margin-top: var(--layout-space-2);
   color: var(--background-color);
   font-size: var(--pricing-type-estimate-size);
   font-variant-numeric: tabular-nums;
@@ -169,21 +171,21 @@ pricing-estimator {
 
 .pricing-estimator-subline {
   max-width: 34rem;
-  margin-top: 0.75rem;
+  margin-top: var(--layout-space-3);
 }
 
 .pricing-estimator-breakdown {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: var(--layout-space-2);
   align-content: flex-end;
 }
 
 .pricing-estimator-breakdown span {
   display: inline-flex;
   flex-wrap: wrap;
-  gap: 0.3rem;
-  padding: 0.45rem 0.7rem;
+  gap: var(--layout-space-1);
+  padding: var(--layout-space-2) var(--layout-space-3);
   border: 1px solid color-mix(in srgb, var(--background-color) 18%, transparent);
   border-radius: 999px;
   color: var(--muted-strong-color);
@@ -196,10 +198,15 @@ pricing-estimator {
 }
 
 .pricing-estimator-cta > p {
-  margin-top: 0.75rem;
+  margin-top: var(--layout-space-3);
 }
 
-@media (max-width: 60rem) {
+/* Questions gain columns only when their controls retain a comfortable touch target. */
+@media (min-width: 520px) {
+  .pricing-pick {
+    min-height: 8.5rem;
+  }
+
   .pricing-pick-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -217,19 +224,17 @@ pricing-estimator {
   }
 }
 
-@media (max-width: 40rem) {
-  .pricing-pick-grid,
-  .pricing-pick-grid-three,
+@media (min-width: 700px) {
+  .pricing-pick-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
   .pricing-estimator-result {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1.4fr) minmax(12rem, 1fr) minmax(12rem, 0.8fr);
   }
 
-  .pricing-pick {
-    min-height: 5.5rem;
-  }
-
-  .pricing-pick-icon {
-    margin-bottom: 0.2rem;
+  .pricing-estimator-cta {
+    grid-column: auto;
   }
 }
 
