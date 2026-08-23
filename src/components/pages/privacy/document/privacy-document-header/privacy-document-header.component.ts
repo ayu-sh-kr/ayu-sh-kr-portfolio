@@ -1,4 +1,5 @@
-import { BaseElement, Component, HTML, Property, String } from "@ayu-sh-kr/dota-wrap/core";
+import { BaseElement, Component, Property, String } from "@ayu-sh-kr/dota-wrap/core";
+import { html, trustedHTML } from "@ayu-sh-kr/dota-wrap/rendering";
 import type { PrivacyMetadata } from "@app/service/privacy-loader.service.ts";
 import { escapeHtml } from "@app/utils/html.utils.ts";
 
@@ -35,13 +36,17 @@ export class PrivacyDocumentHeaderComponent extends BaseElement {
   }
 
   /** Renders the policy identity, dates, scope, and plain-language summary. */
-  render(): string {
+  render() {
     const metadata = this.parsedMetadata();
     if (!metadata) {
       return "";
     }
 
-    return HTML`
+    const summary = metadata.summary
+      .map((item) => `<li>${escapeHtml(item)}</li>`)
+      .join("");
+
+    return html`
       <header class="privacy-header">
         <div class="privacy-chip-row">
           <span class="privacy-chip">Privacy</span>
@@ -56,7 +61,7 @@ export class PrivacyDocumentHeaderComponent extends BaseElement {
         </div>
         <section class="privacy-summary" aria-labelledby="privacy-summary-title">
           <p id="privacy-summary-title" class="privacy-eyebrow">The short version</p>
-          <ul>${metadata.summary.map((item) => HTML`<li>${escapeHtml(item)}</li>`).join("")}</ul>
+          <ul>${trustedHTML(summary)}</ul>
           <p class="privacy-summary-note">${escapeHtml(metadata.summaryNote)}</p>
         </section>
       </header>
