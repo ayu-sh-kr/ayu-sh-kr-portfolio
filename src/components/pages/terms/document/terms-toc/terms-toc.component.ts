@@ -1,4 +1,5 @@
-import {BaseElement, Component, HostListener, HTML, WindowListener} from "@ayu-sh-kr/dota-wrap/core";
+import {BaseElement, Component, HostListener, WindowListener} from "@ayu-sh-kr/dota-wrap/core";
+import {html, trustedHTML} from "@ayu-sh-kr/dota-wrap/rendering";
 import {type ApplicationEvent, OnEvent} from "@ayu-sh-kr/dota-wrap/event";
 import {TERMS_MARKDOWN_RENDER_EVENT, type TermsSection} from "@app/events/terms.events.ts";
 import {escapeHtml} from "@app/utils/html.utils.ts";
@@ -76,9 +77,9 @@ export class TermsTocComponent extends BaseElement {
   }
 
   /** Renders grouped section links or a placeholder before Markdown is ready. */
-  render(): string {
+  render() {
     if (!this.sections.length) {
-      return `<div class="terms-toc-placeholder" aria-hidden="true"></div>`;
+      return html`<div class="terms-toc-placeholder" aria-hidden="true"></div>`;
     }
 
     const groups: {title: string; sections: TermsSection[]}[] = [];
@@ -103,11 +104,11 @@ export class TermsTocComponent extends BaseElement {
       </section>
     `).join("");
 
-    return HTML`
+    return html`
       <aside class="terms-toc-panel" aria-label="On this page">
         <p class="terms-toc-label">On this page</p>
         <nav aria-label="Terms and conditions sections">
-          <div>${items}</div>
+          <div>${trustedHTML(items)}</div>
         </nav>
       </aside>
     `;
