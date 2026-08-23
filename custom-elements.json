@@ -1790,6 +1790,39 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/pages/design/interaction/service-state/design-interaction-service-state.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "DesignInteractionServiceStateComponent",
+          "customElement": true,
+          "tagName": "design-interaction-service-state",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "DesignInteractionServiceStateComponent",
+          "declaration": {
+            "name": "DesignInteractionServiceStateComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "design-interaction-service-state",
+          "declaration": {
+            "name": "DesignInteractionServiceStateComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/pages/design/interaction/timing/design-interaction-timing.component.js",
       "declarations": [
         {
@@ -5739,6 +5772,161 @@
           "name": "scroll-hint",
           "declaration": {
             "name": "ScrollHintComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/utils/service-state/service-state-strip.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "ServiceStateStripComponent",
+          "customElement": true,
+          "tagName": "service-state-strip",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [
+            {
+              "kind": "field",
+              "name": "capabilities",
+              "attribute": "capabilities",
+              "type": {
+                "text": "string"
+              },
+              "default": "DEFAULT_CAPABILITIES"
+            },
+            {
+              "kind": "field",
+              "name": "label",
+              "attribute": "label",
+              "type": {
+                "text": "string"
+              },
+              "default": ""
+            }
+          ],
+          "attributes": [
+            {
+              "name": "capabilities",
+              "fieldName": "capabilities",
+              "type": {
+                "text": "string"
+              },
+              "default": "DEFAULT_CAPABILITIES"
+            },
+            {
+              "name": "label",
+              "fieldName": "label",
+              "type": {
+                "text": "string"
+              },
+              "default": ""
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ServiceStateStripComponent",
+          "declaration": {
+            "name": "ServiceStateStripComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "service-state-strip",
+          "declaration": {
+            "name": "ServiceStateStripComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/utils/service-state/service-state.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "ServiceStateComponent",
+          "customElement": true,
+          "tagName": "service-state",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [
+            {
+              "kind": "field",
+              "name": "capability",
+              "attribute": "capability",
+              "type": {
+                "text": "string"
+              },
+              "default": ""
+            },
+            {
+              "kind": "field",
+              "name": "email",
+              "attribute": "email",
+              "type": {
+                "text": "string"
+              },
+              "default": "hello@ayush.dev"
+            },
+            {
+              "kind": "field",
+              "name": "label",
+              "attribute": "label",
+              "type": {
+                "text": "string"
+              },
+              "default": "this capability"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "capability",
+              "fieldName": "capability",
+              "type": {
+                "text": "string"
+              },
+              "default": ""
+            },
+            {
+              "name": "email",
+              "fieldName": "email",
+              "type": {
+                "text": "string"
+              },
+              "default": "hello@ayush.dev"
+            },
+            {
+              "name": "label",
+              "fieldName": "label",
+              "type": {
+                "text": "string"
+              },
+              "default": "this capability"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ServiceStateComponent",
+          "declaration": {
+            "name": "ServiceStateComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "service-state",
+          "declaration": {
+            "name": "ServiceStateComponent"
           }
         }
       ]

@@ -1076,6 +1076,17 @@
           }
         },
         {
+          "name": "design-interaction-service-state",
+          "source": {
+            "file": "./src/components/pages/design/interaction/service-state/design-interaction-service-state.component.ts",
+            "offset": 450
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
           "name": "design-interaction-timing",
           "source": {
             "file": "./src/components/pages/design/interaction/timing/design-interaction-timing.component.ts",
@@ -2090,6 +2101,137 @@
                 "source": {
                   "file": "./src/components/utils/scroll-hint/scroll-hint.component.ts",
                   "offset": 1401
+                }
+              }
+            ]
+          }
+        },
+        {
+          "name": "service-state",
+          "source": {
+            "file": "./src/components/utils/service-state/service-state.component.ts",
+            "offset": 1086
+          },
+          "attributes": [
+            {
+              "name": "capability",
+              "default": "",
+              "required": false,
+              "value": {
+                "type": "string"
+              },
+              "source": {
+                "file": "./src/components/utils/service-state/service-state.component.ts",
+                "offset": 1182
+              }
+            },
+            {
+              "name": "email",
+              "default": "hello@ayush.dev",
+              "required": false,
+              "value": {
+                "type": "string"
+              },
+              "source": {
+                "file": "./src/components/utils/service-state/service-state.component.ts",
+                "offset": 1322
+              }
+            },
+            {
+              "name": "label",
+              "default": "this capability",
+              "required": false,
+              "value": {
+                "type": "string"
+              },
+              "source": {
+                "file": "./src/components/utils/service-state/service-state.component.ts",
+                "offset": 1247
+              }
+            }
+          ],
+          "js": {
+            "properties": [
+              {
+                "name": "capability",
+                "type": "string",
+                "default": "",
+                "source": {
+                  "file": "./src/components/utils/service-state/service-state.component.ts",
+                  "offset": 1182
+                }
+              },
+              {
+                "name": "email",
+                "type": "string",
+                "default": "hello@ayush.dev",
+                "source": {
+                  "file": "./src/components/utils/service-state/service-state.component.ts",
+                  "offset": 1322
+                }
+              },
+              {
+                "name": "label",
+                "type": "string",
+                "default": "this capability",
+                "source": {
+                  "file": "./src/components/utils/service-state/service-state.component.ts",
+                  "offset": 1247
+                }
+              }
+            ]
+          }
+        },
+        {
+          "name": "service-state-strip",
+          "source": {
+            "file": "./src/components/utils/service-state/service-state-strip.component.ts",
+            "offset": 639
+          },
+          "attributes": [
+            {
+              "name": "capabilities",
+              "default": "DEFAULT_CAPABILITIES",
+              "required": false,
+              "value": {
+                "type": "string"
+              },
+              "source": {
+                "file": "./src/components/utils/service-state/service-state-strip.component.ts",
+                "offset": 742
+              }
+            },
+            {
+              "name": "label",
+              "default": "",
+              "required": false,
+              "value": {
+                "type": "string"
+              },
+              "source": {
+                "file": "./src/components/utils/service-state/service-state-strip.component.ts",
+                "offset": 827
+              }
+            }
+          ],
+          "js": {
+            "properties": [
+              {
+                "name": "capabilities",
+                "type": "string",
+                "default": "DEFAULT_CAPABILITIES",
+                "source": {
+                  "file": "./src/components/utils/service-state/service-state-strip.component.ts",
+                  "offset": 742
+                }
+              },
+              {
+                "name": "label",
+                "type": "string",
+                "default": "",
+                "source": {
+                  "file": "./src/components/utils/service-state/service-state-strip.component.ts",
+                  "offset": 827
                 }
               }
             ]
