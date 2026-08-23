@@ -26,7 +26,7 @@ export class PricingProjectAlternativesComponent extends BaseElement {
     const content = pricingContent.startProject;
 
     return HTML`
-      <section class="pricing-project-alternatives-section" aria-labelledby="pricing-project-alternatives-title">
+      <section class="pricing-project-alternatives-section layout-page" aria-labelledby="pricing-project-alternatives-title">
         <div class="pricing-project-subsection-copy">
           <p class="pricing-eyebrow">${content.alternativesEyebrow}</p>
           <h3 id="pricing-project-alternatives-title">${content.alternativesTitle}</h3>
