@@ -1,4 +1,5 @@
-import { BaseElement, Component, HTML, Property, String } from "@ayu-sh-kr/dota-wrap/core";
+import { BaseElement, Component, Property, String } from "@ayu-sh-kr/dota-wrap/core";
+import { html, trustedHTML } from "@ayu-sh-kr/dota-wrap/rendering";
 import type { TermsMetadata } from "@app/service/terms-loader.service.ts";
 import { escapeHtml } from "@app/utils/html.utils.ts";
 
@@ -35,13 +36,17 @@ export class TermsDocumentHeaderComponent extends BaseElement {
   }
 
   /** Renders the terms identity, dates, jurisdiction, and plain-language summary. */
-  render(): string {
+  render() {
     const metadata = this.parsedMetadata();
     if (!metadata) {
       return "";
     }
 
-    return HTML`
+    const summary = metadata.summary
+      .map((item) => `<li>${escapeHtml(item)}</li>`)
+      .join("");
+
+    return html`
       <header class="terms-header">
         <div class="terms-chip-row">
           <span class="terms-chip">Terms</span>
@@ -56,7 +61,7 @@ export class TermsDocumentHeaderComponent extends BaseElement {
         </div>
         <section class="terms-summary" aria-labelledby="terms-summary-title">
           <p id="terms-summary-title" class="terms-eyebrow">The short version</p>
-          <ul>${metadata.summary.map((item) => HTML`<li>${escapeHtml(item)}</li>`).join("")}</ul>
+          <ul>${trustedHTML(summary)}</ul>
           <p class="terms-summary-note">${escapeHtml(metadata.summaryNote)}</p>
         </section>
       </header>
