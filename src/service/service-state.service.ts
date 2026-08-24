@@ -61,7 +61,7 @@ export class ServiceStateService {
   /** Starts automatic detection and its visibility/online rechecks once. */
   start(cadence?: Partial<ServiceStateCadence>): this {
     this.cadence = { ...this.cadence, ...cadence };
-    if (this.started || typeof window === "undefined") {
+    if (this.started || typeof window === "undefined" || import.meta.env.SSR) {
       return this;
     }
 
