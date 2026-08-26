@@ -11,7 +11,7 @@ import {
   getPricingProjectBriefPreviewRows,
   getPricingProjectBriefProgress,
   getPricingProjectBriefProgressLabel,
-} from "./pricing-project-preview.utils.ts";
+} from "./project-preview.utils.ts";
 
 /**
  * Displays the live summary of the pricing project-start brief.

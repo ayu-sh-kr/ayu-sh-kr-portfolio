@@ -15,7 +15,8 @@ import {
 import {
   createPricingStartProjectBrief,
   getPricingProjectBriefPreviewRows,
-} from "@app/components/pages/pricing/start-project/pricing-project-preview/pricing-project-preview.utils.ts";
+} from "@app/components/pages/pricing/start-project/project-preview/project-preview.utils.ts";
+import { pricingFormService } from "@app/service/pricing-form/pricing-form.service.ts";
 
 /**
  * Names the contact fields owned by the project-start shell rather than a focused branch form.
@@ -56,8 +57,17 @@ export class PricingStartProjectComponent extends BaseElement {
    */
   private brief: PricingStartProjectBrief = createPricingStartProjectBrief();
 
-  /** Whether the validated brief should show its email handoff instead of editable controls. */
+  /** Whether the validated brief should show its confirmation instead of editable controls. */
   private isPrepared = false;
+
+  /** Whether a submission is currently in flight, blocking repeat submits. */
+  private isSubmitting = false;
+
+  /** Whether the last submission failed, so the form shows an error state instead of the handoff. */
+  private isSubmitFailed = false;
+
+  /** Backend-assigned id of the recorded brief, surfaced on the confirmation state. */
+  private submissionId: number | null = null;
 
   /**
    * Event publisher used only to send brief snapshots to the independent preview component.
@@ -200,25 +210,42 @@ export class PricingStartProjectComponent extends BaseElement {
   }
 
   /**
-   * Validates contact fields and exposes the explicit static-site email handoff.
+   * Validates contact fields, submits the brief, and flips the shell into its confirmation state.
+   *
+   * The mailto fallback is kept for the failure path only; once the backend accepts a brief the
+   * completion state shows the tracking id and skips the email handoff entirely.
    *
    * @param event - Submit event from the form that wraps the branch and shared fields.
    */
   @HostListener({ event: "submit" })
-  prepareBrief(event: SubmitEvent): void {
+  async prepareBrief(event: SubmitEvent): Promise<void> {
     const form = event.target;
     if (!(form instanceof HTMLFormElement) || form.id !== "pricing-project-brief") {
       return;
     }
 
     event.preventDefault();
-    if (!form.checkValidity()) {
-      form.reportValidity();
+    if (this.isSubmitting || !form.checkValidity()) {
+      if (!form.checkValidity()) {
+        form.reportValidity();
+      }
       return;
     }
 
-    this.isPrepared = true;
+    this.isSubmitting = true;
+    this.isSubmitFailed = false;
     this.updateHTML();
+
+    try {
+      const { id } = await pricingFormService.submitBrief(this.brief);
+      this.submissionId = id;
+      this.isPrepared = true;
+    } catch {
+      this.isSubmitFailed = true;
+    } finally {
+      this.isSubmitting = false;
+      this.updateHTML();
+    }
   }
 
   /**
@@ -437,12 +464,9 @@ export class PricingStartProjectComponent extends BaseElement {
               <h3>${content.completionTitle}</h3>
               <p>
                 ${content.completionBody}
-                ${this.brief.files.length ? form.attachmentCompletionNote : ""}
+                ${this.submissionId !== null ? `${content.completionReferencePrefix} #${this.submissionId}.` : ""}
               </p>
               <div>
-                <a class="app-link app-link--button app-link--accent" href="${this.createEmailHref()}">
-                  ${content.emailLabel} <span aria-hidden="true">→</span>
-                </a>
                 <button class="pricing-project-secondary-button" type="button" data-start-edit>
                   ${form.editLabel}
                 </button>
@@ -500,9 +524,14 @@ export class PricingStartProjectComponent extends BaseElement {
                 </fieldset>
 
                 <div class="pricing-project-submit">
-                  <p>${form.submitNote}</p>
-                  <button class="pricing-project-primary-button" type="submit">
-                    ${form.submitLabel} <span aria-hidden="true">→</span>
+                  ${when(this.isSubmitFailed, html`
+                    <p class="pricing-project-submit-error" role="alert">
+                      ${form.submitErrorNote}
+                      <a href="${this.createEmailHref()}">${form.submitErrorEmailLabel}</a>
+                    </p>
+                  `, html`<p>${form.submitNote}</p>`)}
+                  <button class="pricing-project-primary-button" type="submit" ${this.isSubmitting ? "disabled" : ""}>
+                    ${this.isSubmitting ? form.submittingLabel : form.submitLabel} <span aria-hidden="true">→</span>
                   </button>
                 </div>
               </form>

@@ -8,6 +8,7 @@ import {
   type PricingStartProjectAttachmentStatus,
   type PricingStartProjectFilesChange,
 } from "@app/events/pricing.events.ts";
+import { pricingFormService } from "@app/service/pricing-form/pricing-form.service.ts";
 
 /**
  * Largest attachment accepted from the native file picker, in bytes.
@@ -15,7 +16,7 @@ import {
  * Anything larger is silently dropped during selection rather than rejected
  * after the fact, so the visitor never waits for an upload that would fail
  * server-side validation. Sized at 20 MiB to match the temporary-bucket
- * policy the placeholder upload flow will eventually enforce.
+ * policy the upload flow enforces.
  */
 const MAX_ATTACHMENT_BYTES = 20 * 1024 * 1024;
 
@@ -39,11 +40,12 @@ const MAX_ATTACHMENT_COUNT = 8;
  * keep its retained brief and prepared email current.
  *
  * Flow: the visitor picks files through the native input, each accepted file is
- * shown immediately as a `pending` card while a placeholder upload runs, and the
- * card transitions through `uploading` to `uploaded` (or `error`). Remove buttons
+ * shown immediately as a `pending` card while the upload runs, and the card
+ * transitions through `uploading` to `uploaded` (or `error`). Remove buttons
  * delegate to a single delegated click handler, so the list never wires per-item
- * listeners. Upload itself is a two-step placeholder — scoped credential request
- * then direct-to-bucket PUT — until the backend and storage bucket exist.
+ * listeners. Upload itself is two steps — a pre-signed PUT URL issued by
+ * {@link PricingFormService}, then a direct-to-bucket PUT, so the file body
+ * never transits the backend.
  *
  * Selector: `pricing-project-file-upload`.
  */
@@ -114,7 +116,7 @@ export class PricingProjectFileUploadComponent extends BaseElement {
   }
 
   /**
-   * Accepts newly chosen files and starts their placeholder upload.
+    * Accepts newly chosen files and starts their upload.
    *
    * Triggered by the native file input's `change` event. The handler ignores
    * changes from any input that is not the project-files picker (guarded by the
@@ -164,8 +166,9 @@ export class PricingProjectFileUploadComponent extends BaseElement {
    * handler climbs to the closest element carrying `data-project-file-remove`
    * and confirms it still belongs to this component before acting, which keeps
    * the listener safe even if the rendered list is replaced mid-click. Removing
-   * an in-progress upload simply drops its card; the placeholder upload is left
-   * to settle on its own since there is no real request to cancel yet.
+    * an in-progress upload simply drops its card; the underlying network request
+    * is left to settle on its own since pre-signed uploads cannot be cancelled
+    * once issued.
    *
    * @param event - Click from anywhere inside the component.
    */
@@ -201,13 +204,13 @@ export class PricingProjectFileUploadComponent extends BaseElement {
   }
 
   /**
-   * Creates the pending record shown immediately, before the placeholder upload resolves.
+   * Creates the pending record shown immediately, before the upload resolves.
    *
    * The record carries a fresh `crypto.randomUUID` so remove buttons and status
    * updates can target this exact file even if the visitor selects two files
    * with the same name. `status` starts as `pending` so the card renders before
    * any network work begins; {@link uploadAttachment} flips it to `uploading`
-   * once the placeholder handoff starts.
+   * once the credential handoff starts.
    */
   private createPendingAttachment(file: File): PricingStartProjectAttachment {
     return {
@@ -223,16 +226,16 @@ export class PricingProjectFileUploadComponent extends BaseElement {
    *
    * This is the upload step of the selection flow started by
    * {@link addSelectedFiles}. The card is moved to `uploading` before any await
-   * so the visitor sees progress, then the placeholder credential request and
+   * so the visitor sees progress, then the pre-signed URL request and
    * direct-to-bucket PUT run in sequence. On success the card is marked
    * `uploaded` and the storage `key` is recorded so the prepared email can later
    * reference the persisted object; on any failure the card is marked `error`
    * and left in place so the visitor can retry by removing and re-selecting.
    *
-   * Both steps are placeholders until the backend and storage bucket exist:
-   * {@link requestTemporaryUploadAccess} stands in for the scoped-credential
-   * request and {@link uploadToTemporaryBucket} stands in for the
-   * direct-to-bucket upload it would authorize.
+   * Both network steps are owned by {@link PricingFormService}:
+   * {@link requestTemporaryUploadAccess} asks the backend for a scoped
+   * pre-signed PUT URL and {@link uploadToTemporaryBucket} performs the
+   * direct-to-bucket upload it authorizes.
    *
    * @param file - Native file selected by the visitor.
    * @param id   - Identity of the pending attachment record to update as the upload progresses.
@@ -250,46 +253,36 @@ export class PricingProjectFileUploadComponent extends BaseElement {
   }
 
   /**
-   * Placeholder for the backend request that will grant scoped, temporary S3 write access.
+   * Requests a pre-signed PUT URL for this attachment from the backend.
    *
-   * In the real flow this would ask the backend for a short-lived credential (or
-   * a pre-signed PUT URL) scoped to a single object key, so the browser can upload
-   * directly to the bucket without the backend handling the file body. Here it
-   * returns a synthetic target derived from the file name so
-   * {@link uploadToTemporaryBucket} has a stable `key` to record against the
-   * attachment. The URL deliberately uses the `.invalid` TLD so the placeholder
-   * can never be mistaken for a real endpoint.
+   * Delegates to {@link PricingFormService.createUploadUrl} so the credential
+   * request and response validation live with the rest of the pricing-form
+   * transport; the returned URL and object key are scoped to this file's name
+   * and content type and expire within the backend's credential window.
    *
-   * TODO: replace with a real request once the backend exposes a
-   * temporary-credential endpoint.
-   *
-   * @param file - File awaiting upload; only its name informs the dummy key returned here.
-   * @returns Synthetic upload target consumed by {@link uploadToTemporaryBucket}.
+   * @param file - File awaiting upload; its name and type scope the granted URL.
+   * @returns Signed upload target consumed by {@link uploadToTemporaryBucket}.
    */
-  private async requestTemporaryUploadAccess(file: File): Promise<{ url: string; key: string }> {
-    return { url: `https://temp-uploads.example.invalid/${encodeURIComponent(file.name)}`, key: `temp/${file.name}` };
+  private async requestTemporaryUploadAccess(file: File) {
+    const response = await pricingFormService.createUploadUrl(file);
+    return { url: response.uploadUrl, key: response.key };
   }
 
   /**
-   * Placeholder for the direct-to-bucket upload that the temporary access above would authorize.
+   * PUTs the file body directly to the pre-signed bucket URL.
    *
-   * In the real flow this would PUT `file` to `access.url` using the scoped
-   * credential from {@link requestTemporaryUploadAccess}, so the file body never
-   * transits the backend. Here it resolves immediately without touching the
-   * network; the arguments are voided only to keep the signature honest for the
-   * future implementation. Keeping this as a no-op lets the surrounding flow
-   * (status transitions, `key` recording, error handling) be exercised end-to-end
-   * before storage is wired in.
-   *
-   * TODO: replace with a real upload to the temporary S3 bucket once storage
-   * access is wired in.
+   * The upload goes straight from the browser to the temporary intake bucket
+   * with the scoped credential granted by {@link requestTemporaryUploadAccess},
+   * so the file body never transits the backend. Transport is delegated to
+   * {@link PricingFormService.uploadFile} and any failed request is surfaced to
+   * {@link uploadAttachment}, which marks the card `error` so the visitor can
+   * remove and re-select the file.
    *
    * @param file   - File to send to temporary storage.
-   * @param access - Synthetic upload target returned by {@link requestTemporaryUploadAccess}.
+   * @param access - Signed upload target returned by {@link requestTemporaryUploadAccess}.
    */
   private async uploadToTemporaryBucket(file: File, access: { url: string; key: string }): Promise<void> {
-    void file;
-    void access;
+    await pricingFormService.uploadFile(file, { uploadUrl: access.url, key: access.key });
   }
 
   /**
