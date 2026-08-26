@@ -2,16 +2,42 @@ import { BaseElement, Component, HTML, HostListener } from "@ayu-sh-kr/dota-wrap
 import { designInteractionContent } from "@app/data/design-interaction-content.ts";
 import { ServiceState, type ServiceCapabilityState } from "@app/service/service-state.service.ts";
 
-/** Demonstrates capability-scoped maintenance states through explicit user triggers. */
+/**
+ * Design-specimen section that demonstrates capability-scoped maintenance states
+ * (`up` / `planned` / `down`) through explicit user triggers.
+ *
+ * Rendered inside the design system's interaction page. Three scenario buttons
+ * force the specimen capability's state via `ServiceState.forceTrigger`, which
+ * is the seam {@link ServiceStateService} exposes for demos and tests — no
+ * `/status.json` poll is involved here. Clicks are delegated: one host listener
+ * reads `data-service-state-trigger` from any clicked button, updates the
+ * local `selectedState` (reflected into each button's `aria-pressed`), and
+ * pushes the matching status into the service so subscribed consumers react.
+ * The component holds no service status of its own; the banner/notice
+ * components observing the same capability render the actual state change.
+ *
+ * Selector: `design-interaction-service-state`.
+ */
 @Component({ selector: "design-interaction-service-state", shadow: false })
 export class DesignInteractionServiceStateComponent extends BaseElement {
+  /** Last scenario triggered; drives `aria-pressed` state on the buttons. Defaults to `up`. */
   private selectedState: ServiceCapabilityState = "up";
 
   constructor() {
     super();
   }
 
-  /** Forces only the local specimen capability; no status document request is made. */
+  /**
+   * Delegated click handler for the scenario buttons.
+   *
+   * Reads the clicked `[data-service-state-trigger]` button, ignores clicks on
+   * anything else, mirrors the selection into `aria-pressed`, and then calls
+   * `ServiceState.forceTrigger` for the specimen capability with a matching
+   * status. The `planned` branch synthesizes an `until` timestamp 90 minutes out
+   * with a short note so the maintenance state has realistic payload; `up` and
+   * `down` force bare statuses. No status document request is made — this never
+   * touches the polling driver.
+   */
   @HostListener({ event: "click" })
   triggerScenario(event: MouseEvent): void {
     const state = (event.target as HTMLElement).closest<HTMLButtonElement>("[data-service-state-trigger]")?.dataset.serviceStateTrigger;
@@ -39,6 +65,13 @@ export class DesignInteractionServiceStateComponent extends BaseElement {
     }
   }
 
+  /**
+   * Renders the section: heading from `designInteractionContent.serviceState`,
+   * the three scenario buttons (initial `aria-pressed` from `selectedState`),
+   * a demo form whose submission UX is what the state banner guards, and the
+   * authored list of use cases. Purely declarative — all behavior lives in the
+   * host click listener.
+   */
   render(): string {
     const { serviceState } = designInteractionContent;
     return HTML`
