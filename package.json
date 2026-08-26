@@ -7,6 +7,7 @@
     "dev": "vite",
     "dev:host": "vite --host",
     "build": "tsc && vite build",
+    "test": "vitest run",
     "preview": "vite preview"
   },
   "devDependencies": {
@@ -15,7 +16,8 @@
     "happy-dom": "^20.11.2",
     "tailwindcss": "^4.3.3",
     "typescript": "^7.0.2",
-    "vite": "^8.2.1"
+    "vite": "^8.2.1",
+    "vitest": "^4.1.11"
   },
   "dependencies": {
     "@ayu-sh-kr/dota-md": "0.0.16",

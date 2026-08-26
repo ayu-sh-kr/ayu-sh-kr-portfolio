@@ -116,37 +116,14 @@ export default defineConfig(({ mode }) => {
             "/status": {
               target: env.VITE_DEV_API_TARGET || "http://localhost:8080",
               changeOrigin: true,
-              rewrite: () => "/status",
             },
-            "/subscriber/initiate": {
+            "/subscriber": {
               target: env.VITE_DEV_API_TARGET || "http://localhost:8080",
               changeOrigin: true,
-              rewrite: () => "/subscriberVerificationInitiate",
             },
-            "/subscriber/confirm": {
+            "/pricing-form": {
               target: env.VITE_DEV_API_TARGET || "http://localhost:8080",
               changeOrigin: true,
-              rewrite: () => "/subscriberVerificationConfirm",
-            },
-            "/subscriber/unsubscribe": {
-              target: env.VITE_DEV_API_TARGET || "http://localhost:8080",
-              changeOrigin: true,
-              rewrite: () => "/subscriberUnsubscribe",
-            },
-            "/subscriber/preferences/toggle-all": {
-              target: env.VITE_DEV_API_TARGET || "http://localhost:8080",
-              changeOrigin: true,
-              rewrite: () => "/subscriberPreferenceToggleAll",
-            },
-            "/subscriber/preferences/toggle": {
-              target: env.VITE_DEV_API_TARGET || "http://localhost:8080",
-              changeOrigin: true,
-              rewrite: () => "/subscriberPreferenceToggleOne",
-            },
-            "/subscriber/preferences": {
-              target: env.VITE_DEV_API_TARGET || "http://localhost:8080",
-              changeOrigin: true,
-              rewrite: () => "/subscriberPreferences",
             },
           }
         : undefined,
