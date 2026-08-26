@@ -154,7 +154,7 @@ Items to address before a public deployment:
 
 1. **Privacy-policy alignment:** the policy now describes the deployed Vercel hosting and the standard GA4 tag at an abstract level. Before public deployment, verify the actual GA4 property retention and regional consent requirements against the live configuration.
 2. **Initial JavaScript size:** the production entry bundle is about 1.90 MB (540 kB gzip), above Vite's 500 kB warning threshold. Lazy-loading non-core routes such as design references, articles, or pricing flows would reduce first-load cost.
-3. **Quality automation:** there are no lint or test scripts. Add a test runner and a lint/format command, then run them in CI alongside `pnpm build`.
+3. **Quality automation:** Vitest now runs the repository's `src/**/*.test.ts` and `test/**/*.test.ts` suites. Add a lint/format command, then run both checks in CI alongside `pnpm build`.
 The current `public/sitemap.xml` contains 32 URLs, including all eight configured blog posts, all eight showcase projects, the design references, and the public legal and product routes. Recheck it whenever a public route or catalogue entry changes.
 
 ## Licence
