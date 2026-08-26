@@ -3011,7 +3011,7 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/pages/pricing/start-project/pricing-project-alternatives/pricing-project-alternatives.component.js",
+      "path": "src/components/pages/pricing/start-project/project-alternatives/project-alternatives.component.js",
       "declarations": [
         {
           "kind": "class",
@@ -3044,7 +3044,7 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/pages/pricing/start-project/pricing-project-file-upload/pricing-project-file-upload.component.js",
+      "path": "src/components/pages/pricing/start-project/project-file-upload/project-file-upload.component.js",
       "declarations": [
         {
           "kind": "class",
@@ -3096,7 +3096,7 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/pages/pricing/start-project/pricing-project-idea-form/pricing-project-idea-form.component.js",
+      "path": "src/components/pages/pricing/start-project/project-idea-form/project-idea-form.component.js",
       "declarations": [
         {
           "kind": "class",
@@ -3182,7 +3182,7 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/pages/pricing/start-project/pricing-project-mode-selector/pricing-project-mode-selector.component.js",
+      "path": "src/components/pages/pricing/start-project/project-mode-selector/project-mode-selector.component.js",
       "declarations": [
         {
           "kind": "class",
@@ -3234,7 +3234,7 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/pages/pricing/start-project/pricing-project-preview/pricing-project-preview.component.js",
+      "path": "src/components/pages/pricing/start-project/project-preview/project-preview.component.js",
       "declarations": [
         {
           "kind": "class",
@@ -3267,7 +3267,7 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/pages/pricing/start-project/pricing-project-process/pricing-project-process.component.js",
+      "path": "src/components/pages/pricing/start-project/project-process/project-process.component.js",
       "declarations": [
         {
           "kind": "class",
@@ -3300,7 +3300,7 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/pages/pricing/start-project/pricing-project-quote-form/pricing-project-quote-form.component.js",
+      "path": "src/components/pages/pricing/start-project/project-quote-form/project-quote-form.component.js",
       "declarations": [
         {
           "kind": "class",
@@ -3386,7 +3386,7 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/pages/pricing/start-project/pricing-project-spec-form/pricing-project-spec-form.component.js",
+      "path": "src/components/pages/pricing/start-project/project-spec-form/project-spec-form.component.js",
       "declarations": [
         {
           "kind": "class",
@@ -3472,7 +3472,7 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/pages/pricing/start-project/pricing-start-project-intro/pricing-start-project-intro.component.js",
+      "path": "src/components/pages/pricing/start-project/start-project-intro/start-project-intro.component.js",
       "declarations": [
         {
           "kind": "class",
@@ -3505,7 +3505,7 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/pages/pricing/start-project/pricing-start-project/pricing-start-project.component.js",
+      "path": "src/components/pages/pricing/start-project/start-project-shell/start-project-shell.component.js",
       "declarations": [
         {
           "kind": "class",

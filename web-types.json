@@ -1079,7 +1079,7 @@
           "name": "design-interaction-service-state",
           "source": {
             "file": "./src/components/pages/design/interaction/service-state/design-interaction-service-state.component.ts",
-            "offset": 450
+            "offset": 1262
           },
           "attributes": [],
           "js": {
@@ -1540,7 +1540,7 @@
         {
           "name": "pricing-project-alternatives",
           "source": {
-            "file": "./src/components/pages/pricing/start-project/pricing-project-alternatives/pricing-project-alternatives.component.ts",
+            "file": "./src/components/pages/pricing/start-project/project-alternatives/project-alternatives.component.ts",
             "offset": 675
           },
           "attributes": [],
@@ -1551,8 +1551,8 @@
         {
           "name": "pricing-project-file-upload",
           "source": {
-            "file": "./src/components/pages/pricing/start-project/pricing-project-file-upload/pricing-project-file-upload.component.ts",
-            "offset": 2424
+            "file": "./src/components/pages/pricing/start-project/project-file-upload/project-file-upload.component.ts",
+            "offset": 2500
           },
           "attributes": [
             {
@@ -1563,8 +1563,8 @@
                 "type": "string"
               },
               "source": {
-                "file": "./src/components/pages/pricing/start-project/pricing-project-file-upload/pricing-project-file-upload.component.ts",
-                "offset": 3045
+                "file": "./src/components/pages/pricing/start-project/project-file-upload/project-file-upload.component.ts",
+                "offset": 3121
               }
             }
           ],
@@ -1575,8 +1575,8 @@
                 "type": "string",
                 "default": "[]",
                 "source": {
-                  "file": "./src/components/pages/pricing/start-project/pricing-project-file-upload/pricing-project-file-upload.component.ts",
-                  "offset": 3045
+                  "file": "./src/components/pages/pricing/start-project/project-file-upload/project-file-upload.component.ts",
+                  "offset": 3121
                 }
               }
             ]
@@ -1585,7 +1585,7 @@
         {
           "name": "pricing-project-idea-form",
           "source": {
-            "file": "./src/components/pages/pricing/start-project/pricing-project-idea-form/pricing-project-idea-form.component.ts",
+            "file": "./src/components/pages/pricing/start-project/project-idea-form/project-idea-form.component.ts",
             "offset": 741
           },
           "attributes": [
@@ -1597,7 +1597,7 @@
                 "type": "string"
               },
               "source": {
-                "file": "./src/components/pages/pricing/start-project/pricing-project-idea-form/pricing-project-idea-form.component.ts",
+                "file": "./src/components/pages/pricing/start-project/project-idea-form/project-idea-form.component.ts",
                 "offset": 1059
               }
             },
@@ -1609,7 +1609,7 @@
                 "type": "string"
               },
               "source": {
-                "file": "./src/components/pages/pricing/start-project/pricing-project-idea-form/pricing-project-idea-form.component.ts",
+                "file": "./src/components/pages/pricing/start-project/project-idea-form/project-idea-form.component.ts",
                 "offset": 922
               }
             },
@@ -1621,7 +1621,7 @@
                 "type": "string"
               },
               "source": {
-                "file": "./src/components/pages/pricing/start-project/pricing-project-idea-form/pricing-project-idea-form.component.ts",
+                "file": "./src/components/pages/pricing/start-project/project-idea-form/project-idea-form.component.ts",
                 "offset": 1202
               }
             }
@@ -1633,7 +1633,7 @@
                 "type": "string",
                 "default": "",
                 "source": {
-                  "file": "./src/components/pages/pricing/start-project/pricing-project-idea-form/pricing-project-idea-form.component.ts",
+                  "file": "./src/components/pages/pricing/start-project/project-idea-form/project-idea-form.component.ts",
                   "offset": 1059
                 }
               },
@@ -1642,7 +1642,7 @@
                 "type": "string",
                 "default": "",
                 "source": {
-                  "file": "./src/components/pages/pricing/start-project/pricing-project-idea-form/pricing-project-idea-form.component.ts",
+                  "file": "./src/components/pages/pricing/start-project/project-idea-form/project-idea-form.component.ts",
                   "offset": 922
                 }
               },
@@ -1651,7 +1651,7 @@
                 "type": "string",
                 "default": "",
                 "source": {
-                  "file": "./src/components/pages/pricing/start-project/pricing-project-idea-form/pricing-project-idea-form.component.ts",
+                  "file": "./src/components/pages/pricing/start-project/project-idea-form/project-idea-form.component.ts",
                   "offset": 1202
                 }
               }
@@ -1661,7 +1661,7 @@
         {
           "name": "pricing-project-mode-selector",
           "source": {
-            "file": "./src/components/pages/pricing/start-project/pricing-project-mode-selector/pricing-project-mode-selector.component.ts",
+            "file": "./src/components/pages/pricing/start-project/project-mode-selector/project-mode-selector.component.ts",
             "offset": 857
           },
           "attributes": [
@@ -1673,7 +1673,7 @@
                 "type": "string"
               },
               "source": {
-                "file": "./src/components/pages/pricing/start-project/pricing-project-mode-selector/pricing-project-mode-selector.component.ts",
+                "file": "./src/components/pages/pricing/start-project/project-mode-selector/project-mode-selector.component.ts",
                 "offset": 1077
               }
             }
@@ -1685,7 +1685,7 @@
                 "type": "string",
                 "default": "spec",
                 "source": {
-                  "file": "./src/components/pages/pricing/start-project/pricing-project-mode-selector/pricing-project-mode-selector.component.ts",
+                  "file": "./src/components/pages/pricing/start-project/project-mode-selector/project-mode-selector.component.ts",
                   "offset": 1077
                 }
               }
@@ -1695,8 +1695,8 @@
         {
           "name": "pricing-project-preview",
           "source": {
-            "file": "./src/components/pages/pricing/start-project/pricing-project-preview/pricing-project-preview.component.ts",
-            "offset": 1067
+            "file": "./src/components/pages/pricing/start-project/project-preview/project-preview.component.ts",
+            "offset": 1059
           },
           "attributes": [],
           "js": {
@@ -1706,7 +1706,7 @@
         {
           "name": "pricing-project-process",
           "source": {
-            "file": "./src/components/pages/pricing/start-project/pricing-project-process/pricing-project-process.component.ts",
+            "file": "./src/components/pages/pricing/start-project/project-process/project-process.component.ts",
             "offset": 656
           },
           "attributes": [],
@@ -1717,7 +1717,7 @@
         {
           "name": "pricing-project-quote-form",
           "source": {
-            "file": "./src/components/pages/pricing/start-project/pricing-project-quote-form/pricing-project-quote-form.component.ts",
+            "file": "./src/components/pages/pricing/start-project/project-quote-form/project-quote-form.component.ts",
             "offset": 809
           },
           "attributes": [
@@ -1729,7 +1729,7 @@
                 "type": "string"
               },
               "source": {
-                "file": "./src/components/pages/pricing/start-project/pricing-project-quote-form/pricing-project-quote-form.component.ts",
+                "file": "./src/components/pages/pricing/start-project/project-quote-form/project-quote-form.component.ts",
                 "offset": 1303
               }
             },
@@ -1741,7 +1741,7 @@
                 "type": "string"
               },
               "source": {
-                "file": "./src/components/pages/pricing/start-project/pricing-project-quote-form/pricing-project-quote-form.component.ts",
+                "file": "./src/components/pages/pricing/start-project/project-quote-form/project-quote-form.component.ts",
                 "offset": 1140
               }
             },
@@ -1753,7 +1753,7 @@
                 "type": "string"
               },
               "source": {
-                "file": "./src/components/pages/pricing/start-project/pricing-project-quote-form/pricing-project-quote-form.component.ts",
+                "file": "./src/components/pages/pricing/start-project/project-quote-form/project-quote-form.component.ts",
                 "offset": 999
               }
             }
@@ -1765,7 +1765,7 @@
                 "type": "string",
                 "default": "",
                 "source": {
-                  "file": "./src/components/pages/pricing/start-project/pricing-project-quote-form/pricing-project-quote-form.component.ts",
+                  "file": "./src/components/pages/pricing/start-project/project-quote-form/project-quote-form.component.ts",
                   "offset": 1303
                 }
               },
@@ -1774,7 +1774,7 @@
                 "type": "string",
                 "default": "",
                 "source": {
-                  "file": "./src/components/pages/pricing/start-project/pricing-project-quote-form/pricing-project-quote-form.component.ts",
+                  "file": "./src/components/pages/pricing/start-project/project-quote-form/project-quote-form.component.ts",
                   "offset": 1140
                 }
               },
@@ -1783,7 +1783,7 @@
                 "type": "string",
                 "default": "",
                 "source": {
-                  "file": "./src/components/pages/pricing/start-project/pricing-project-quote-form/pricing-project-quote-form.component.ts",
+                  "file": "./src/components/pages/pricing/start-project/project-quote-form/project-quote-form.component.ts",
                   "offset": 999
                 }
               }
@@ -1793,7 +1793,7 @@
         {
           "name": "pricing-project-spec-form",
           "source": {
-            "file": "./src/components/pages/pricing/start-project/pricing-project-spec-form/pricing-project-spec-form.component.ts",
+            "file": "./src/components/pages/pricing/start-project/project-spec-form/project-spec-form.component.ts",
             "offset": 753
           },
           "attributes": [
@@ -1805,7 +1805,7 @@
                 "type": "string"
               },
               "source": {
-                "file": "./src/components/pages/pricing/start-project/pricing-project-spec-form/pricing-project-spec-form.component.ts",
+                "file": "./src/components/pages/pricing/start-project/project-spec-form/project-spec-form.component.ts",
                 "offset": 938
               }
             },
@@ -1817,7 +1817,7 @@
                 "type": "string"
               },
               "source": {
-                "file": "./src/components/pages/pricing/start-project/pricing-project-spec-form/pricing-project-spec-form.component.ts",
+                "file": "./src/components/pages/pricing/start-project/project-spec-form/project-spec-form.component.ts",
                 "offset": 1087
               }
             },
@@ -1829,7 +1829,7 @@
                 "type": "string"
               },
               "source": {
-                "file": "./src/components/pages/pricing/start-project/pricing-project-spec-form/pricing-project-spec-form.component.ts",
+                "file": "./src/components/pages/pricing/start-project/project-spec-form/project-spec-form.component.ts",
                 "offset": 1256
               }
             }
@@ -1841,7 +1841,7 @@
                 "type": "string",
                 "default": "",
                 "source": {
-                  "file": "./src/components/pages/pricing/start-project/pricing-project-spec-form/pricing-project-spec-form.component.ts",
+                  "file": "./src/components/pages/pricing/start-project/project-spec-form/project-spec-form.component.ts",
                   "offset": 938
                 }
               },
@@ -1850,7 +1850,7 @@
                 "type": "string",
                 "default": "",
                 "source": {
-                  "file": "./src/components/pages/pricing/start-project/pricing-project-spec-form/pricing-project-spec-form.component.ts",
+                  "file": "./src/components/pages/pricing/start-project/project-spec-form/project-spec-form.component.ts",
                   "offset": 1087
                 }
               },
@@ -1859,7 +1859,7 @@
                 "type": "string",
                 "default": "",
                 "source": {
-                  "file": "./src/components/pages/pricing/start-project/pricing-project-spec-form/pricing-project-spec-form.component.ts",
+                  "file": "./src/components/pages/pricing/start-project/project-spec-form/project-spec-form.component.ts",
                   "offset": 1256
                 }
               }
@@ -1869,8 +1869,8 @@
         {
           "name": "pricing-start-project",
           "source": {
-            "file": "./src/components/pages/pricing/start-project/pricing-start-project/pricing-start-project.component.ts",
-            "offset": 2044
+            "file": "./src/components/pages/pricing/start-project/start-project-shell/start-project-shell.component.ts",
+            "offset": 2116
           },
           "attributes": [],
           "js": {
@@ -1880,7 +1880,7 @@
         {
           "name": "pricing-start-project-intro",
           "source": {
-            "file": "./src/components/pages/pricing/start-project/pricing-start-project-intro/pricing-start-project-intro.component.ts",
+            "file": "./src/components/pages/pricing/start-project/start-project-intro/start-project-intro.component.ts",
             "offset": 671
           },
           "attributes": [],
