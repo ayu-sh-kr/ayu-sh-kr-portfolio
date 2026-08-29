@@ -24,9 +24,7 @@ declare module "@ayu-sh-kr/dota-wrap/event" {
     "attribute-changed": any;
     "blog:filter-change": BlogFilterChange;
     "blog:markdown-source": BlogMarkdownSource;
-    "coffee:order-complete": null;
     "coffee:order-quantity": CoffeeOrderQuantitySelection;
-    "coffee:order-reset": null;
     "coffee:order-size": CoffeeOrderSizeSelection;
     "connected": any;
     "constructed": any;
