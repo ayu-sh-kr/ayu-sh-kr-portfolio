@@ -660,7 +660,7 @@
           "name": "coffee-supporters",
           "source": {
             "file": "./src/components/pages/coffee/supporters/coffee-supporters/coffee-supporters.component.ts",
-            "offset": 835
+            "offset": 1056
           },
           "attributes": [],
           "js": {
