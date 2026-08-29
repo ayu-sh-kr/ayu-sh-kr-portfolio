@@ -21,10 +21,10 @@ export const coffeeContent = {
     titleBeforeAccent: "Support the",
     titleAccent: "independent work.",
     titleAfterBreak: "Dota, writing, and practical experiments.",
-    body: "This is a one-time support page for the maintenance of Dota, technical writing, and independent engineering work. The checkout shown here is currently a demonstration and does not collect payment.",
+    body: "This is a one-time support page for the maintenance of Dota, technical writing, and independent engineering work. Choose an amount and you will be taken to a secure Razorpay checkout to complete the payment.",
     primaryCta: "Review support options ↓",
     secondaryCta: "See what support funds",
-    trust: "One-time support · no account required · demonstration checkout",
+    trust: "One-time support · no account required · secure Razorpay checkout",
   },
   /** The price at which the cup illustration is shown as full. */
   cupMaximum: 60,
@@ -40,20 +40,21 @@ export const coffeeContent = {
   order: {
     eyebrow: "Choose support",
     title: "Select a one-time amount.",
-    body: "Choose an amount and, if useful, leave a note. The current flow is a checkout demonstration; no payment information is requested or stored.",
+    body: "Choose an amount and, if useful, leave a note. Checkout completes on Razorpay's secure hosted page; no card details are collected on this site.",
     sizeQuestion: "Choose an amount",
     quantityQuestion: "Quantity",
     customLabel: "Custom",
     customHint: "coffees",
     totalEyebrow: "Your total",
-    checkoutNotice: "Demonstration checkout only. No payment is collected.",
+    checkoutNotice: "You will be redirected to Razorpay's secure page to complete the payment.",
     nameLabel: "Your name (optional)",
     namePlaceholder: "How should the acknowledgement be addressed?",
     noteLabel: "Leave a note (optional)",
     notePlaceholder: "Add a short note if you would like to.",
-    submitLabel: "Preview support →",
-    thanksTitle: "Support preview complete.",
-    anotherLabel: "Review another option",
+    submitLabel: "Support with ${total}",
+    submittingLabel: "Starting checkout…",
+    redirectingLabel: "Redirecting…",
+    failLabel: "Try again",
   },
   /** Three independent outcomes funded by small one-time support. */
   impact: {
@@ -65,9 +66,9 @@ export const coffeeContent = {
       { icon: "☕", title: "Independent engineering time", body: "A modest contribution to the time and tools required to maintain public work alongside client delivery." },
     ],
   },
-  /** Verified support activity replaces the empty state when a payment provider is connected. */
+  /** Verified support activity read live from the buy-coffee backend. */
   supporters: {
-    summary: "Verified contributions will appear here after checkout is connected.",
+    summary: "Recent contributions from supporters.",
     title: "Support activity",
     entries: [] as readonly { name: string; note?: string; amount: string; when: string }[],
   },

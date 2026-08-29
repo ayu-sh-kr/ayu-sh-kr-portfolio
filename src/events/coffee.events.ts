@@ -4,12 +4,6 @@ export const COFFEE_ORDER_SIZE_EVENT = "coffee:order-size" as const;
 /** Published whenever a preset or custom coffee quantity becomes the active selection. */
 export const COFFEE_ORDER_QUANTITY_EVENT = "coffee:order-quantity" as const;
 
-/** Published after the demo checkout button replaces the optional feedback form with confirmation. */
-export const COFFEE_ORDER_COMPLETE_EVENT = "coffee:order-complete" as const;
-
-/** Published by the confirmation action to restore the coffee flow's initial selections. */
-export const COFFEE_ORDER_RESET_EVENT = "coffee:order-reset" as const;
-
 /**
  * The authored coffee size selected by the visitor.
  *
