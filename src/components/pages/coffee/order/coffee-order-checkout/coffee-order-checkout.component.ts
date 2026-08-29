@@ -57,7 +57,7 @@ export class CoffeeOrderCheckoutComponent extends BaseElement {
    * Stores a validated selected size and refreshes the button's total label.
    * @param event - Typed payload from the size picker with an authored size ID.
    */
-  @OnEvent(COFFEE_ORDER_SIZE_EVENT, true)
+  @OnEvent(COFFEE_ORDER_SIZE_EVENT)
   updateSize(event: ApplicationEvent<typeof COFFEE_ORDER_SIZE_EVENT>): void {
     if (!coffeeContent.sizes.some((size) => size.id === event.data.sizeId)) {
       return;
@@ -70,7 +70,7 @@ export class CoffeeOrderCheckoutComponent extends BaseElement {
    * Stores a validated quantity and refreshes the button's total label.
    * @param event - Typed payload from the quantity picker carrying its normalized value.
    */
-  @OnEvent(COFFEE_ORDER_QUANTITY_EVENT, true)
+  @OnEvent(COFFEE_ORDER_QUANTITY_EVENT)
   updateQuantity(event: ApplicationEvent<typeof COFFEE_ORDER_QUANTITY_EVENT>): void {
     if (!Number.isFinite(event.data.quantity) || event.data.quantity < 1) {
       return;

@@ -51,7 +51,7 @@ export const coffeeContent = {
     namePlaceholder: "How should the acknowledgement be addressed?",
     noteLabel: "Leave a note (optional)",
     notePlaceholder: "Add a short note if you would like to.",
-    submitLabel: "Support with ${total}",
+    submitLabel: "Support with {total}",
     submittingLabel: "Starting checkout…",
     redirectingLabel: "Redirecting…",
     failLabel: "Try again",
