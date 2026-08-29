@@ -35,7 +35,6 @@ export class CoffeeOrderComponent extends BaseElement {
           <coffee-size-picker></coffee-size-picker>
           <coffee-quantity-picker></coffee-quantity-picker>
           <coffee-order-total></coffee-order-total>
-          <coffee-feedback-form></coffee-feedback-form>
           <coffee-order-checkout></coffee-order-checkout>
         </div>
       </section>
