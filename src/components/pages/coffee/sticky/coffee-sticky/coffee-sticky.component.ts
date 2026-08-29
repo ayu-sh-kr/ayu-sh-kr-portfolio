@@ -81,14 +81,21 @@ export class CoffeeStickyComponent extends BaseElement {
     this.stickyBar.classList.remove("is-icon");
   };
 
-  /** Observes the order flow so a duplicate invitation is never shown beside it. */
+  /**
+   * Observes the order flow so a duplicate invitation is never shown beside it.
+   *
+   * The observer is the single source of `orderVisible`: it re-checks the
+   * section on every threshold crossing, so the scroll handler only decides
+   * between the open and hidden phases.
+   */
   private observeOrderVisibility(): void {
     const order = document.querySelector<HTMLElement>("#coffee-order");
-    if (!order) {
+    if (!order || this.orderObserver) {
       return;
     }
     this.orderObserver = new IntersectionObserver(([entry]) => {
       this.orderVisible = entry?.isIntersecting ?? false;
+      // The pill's own placement also depends on order visibility, so re-evaluate.
       this.updateVisibility();
     }, { threshold: 0.1 });
     this.orderObserver.observe(order);
@@ -109,11 +116,6 @@ export class CoffeeStickyComponent extends BaseElement {
   private updateVisibility(): void {
     if (!this.stickyBar) {
       return;
-    }
-    const order = document.querySelector<HTMLElement>("#coffee-order");
-    if (order) {
-      const bounds = order.getBoundingClientRect();
-      this.orderVisible = bounds.top < window.innerHeight * 0.7 && bounds.bottom > 40;
     }
     this.setStickyState(window.scrollY > window.innerHeight * 0.55 && !this.orderVisible ? "open" : "hidden");
   }
