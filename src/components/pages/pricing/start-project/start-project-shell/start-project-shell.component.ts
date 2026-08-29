@@ -150,6 +150,9 @@ export class PricingStartProjectComponent extends BaseElement {
     }
 
     if (button.dataset.startEdit !== undefined) {
+      this.brief = createPricingStartProjectBrief();
+      this.submissionId = null;
+      this.isSubmitFailed = false;
       this.isPrepared = false;
       this.updateHTML();
       this.publishBrief();
@@ -468,7 +471,7 @@ export class PricingStartProjectComponent extends BaseElement {
               </p>
               <div>
                 <button class="pricing-project-secondary-button" type="button" data-start-edit>
-                  ${form.editLabel}
+                  ${form.submitAnotherLabel}
                 </button>
               </div>
             </div>
