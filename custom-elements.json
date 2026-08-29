@@ -569,39 +569,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/pages/coffee/order/coffee-feedback-form/coffee-feedback-form.component.js",
-      "declarations": [
-        {
-          "kind": "class",
-          "name": "CoffeeFeedbackFormComponent",
-          "customElement": true,
-          "tagName": "coffee-feedback-form",
-          "superclass": {
-            "name": "BaseElement"
-          },
-          "members": [],
-          "attributes": []
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "CoffeeFeedbackFormComponent",
-          "declaration": {
-            "name": "CoffeeFeedbackFormComponent"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "coffee-feedback-form",
-          "declaration": {
-            "name": "CoffeeFeedbackFormComponent"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/components/pages/coffee/order/coffee-order-checkout/coffee-order-checkout.component.js",
       "declarations": [
         {

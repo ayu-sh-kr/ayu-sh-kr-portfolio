@@ -558,17 +558,6 @@
           }
         },
         {
-          "name": "coffee-feedback-form",
-          "source": {
-            "file": "./src/components/pages/coffee/order/coffee-feedback-form/coffee-feedback-form.component.ts",
-            "offset": 734
-          },
-          "attributes": [],
-          "js": {
-            "properties": []
-          }
-        },
-        {
           "name": "coffee-hero",
           "source": {
             "file": "./src/components/pages/coffee/hero/coffee-hero/coffee-hero.component.ts",
@@ -605,7 +594,7 @@
           "name": "coffee-order-checkout",
           "source": {
             "file": "./src/components/pages/coffee/order/coffee-order-checkout/coffee-order-checkout.component.ts",
-            "offset": 857
+            "offset": 1238
           },
           "attributes": [],
           "js": {
@@ -616,7 +605,7 @@
           "name": "coffee-order-total",
           "source": {
             "file": "./src/components/pages/coffee/order/coffee-order-total/coffee-order-total.component.ts",
-            "offset": 807
+            "offset": 781
           },
           "attributes": [],
           "js": {
@@ -638,7 +627,7 @@
           "name": "coffee-quantity-picker",
           "source": {
             "file": "./src/components/pages/coffee/order/coffee-quantity-picker/coffee-quantity-picker.component.ts",
-            "offset": 815
+            "offset": 735
           },
           "attributes": [],
           "js": {
@@ -649,7 +638,7 @@
           "name": "coffee-size-picker",
           "source": {
             "file": "./src/components/pages/coffee/order/coffee-size-picker/coffee-size-picker.component.ts",
-            "offset": 793
+            "offset": 713
           },
           "attributes": [],
           "js": {
@@ -671,7 +660,7 @@
           "name": "coffee-supporters",
           "source": {
             "file": "./src/components/pages/coffee/supporters/coffee-supporters/coffee-supporters.component.ts",
-            "offset": 706
+            "offset": 835
           },
           "attributes": [],
           "js": {
