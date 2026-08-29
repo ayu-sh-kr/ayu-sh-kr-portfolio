@@ -1,7 +1,6 @@
 import { ApplicationEventService, BaseElement, BindEvent, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
-import { OnEvent } from "@ayu-sh-kr/dota-wrap/event";
 import { coffeeContent } from "@app/data/coffee-content.ts";
-import { COFFEE_ORDER_RESET_EVENT, COFFEE_ORDER_SIZE_EVENT, type CoffeeOrderSizeSelection } from "@app/events/coffee.events.ts";
+import { COFFEE_ORDER_SIZE_EVENT, type CoffeeOrderSizeSelection } from "@app/events/coffee.events.ts";
 
 /**
  * Presents the authored coffee-size cards and publishes the active choice.
@@ -43,17 +42,6 @@ export class CoffeeSizePickerComponent extends BaseElement {
     this.selectedSizeId = sizeId;
     this.updateHTML();
     void this.publisher.publishAsync({ name: COFFEE_ORDER_SIZE_EVENT, data: { sizeId } satisfies CoffeeOrderSizeSelection });
-  }
-
-  /** Restores the default Latte selection after the checkout confirmation is reset. */
-  @OnEvent(COFFEE_ORDER_RESET_EVENT, true)
-  resetSize(): void {
-    if (this.selectedSizeId === "latte") {
-      return;
-    }
-
-    this.selectedSizeId = "latte";
-    this.updateHTML();
   }
 
   /** Returns the size cards with the current picker-local selection marked active. */
