@@ -1,7 +1,6 @@
 import { ApplicationEventService, BaseElement, BindEvent, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
-import { OnEvent } from "@ayu-sh-kr/dota-wrap/event";
 import { coffeeContent } from "@app/data/coffee-content.ts";
-import { COFFEE_ORDER_QUANTITY_EVENT, COFFEE_ORDER_RESET_EVENT, type CoffeeOrderQuantitySelection } from "@app/events/coffee.events.ts";
+import { COFFEE_ORDER_QUANTITY_EVENT, type CoffeeOrderQuantitySelection } from "@app/events/coffee.events.ts";
 
 /**
  * Chooses a preset or custom number of coffees without losing input focus.
@@ -63,14 +62,6 @@ export class CoffeeQuantityPickerComponent extends BaseElement {
     const input = event.target as HTMLInputElement;
     this.quantity = Math.min(999, Math.max(1, Number.parseInt(input.value, 10) || 1));
     this.publishQuantity();
-  }
-
-  /** Restores the default single-coffee selection when the confirmation starts another order. */
-  @OnEvent(COFFEE_ORDER_RESET_EVENT, true)
-  resetQuantity(): void {
-    this.quantity = 1;
-    this.isCustomQuantity = false;
-    this.updateHTML();
   }
 
   /** Publishes the current quantity after either a preset or custom selection change. */
