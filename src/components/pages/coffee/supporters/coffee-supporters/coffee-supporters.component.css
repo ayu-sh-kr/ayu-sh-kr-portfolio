@@ -1,6 +1,9 @@
 coffee-supporters { display: block; }
 .coffee-supporters-summary { margin: 0; color: var(--primary-color-strong); font-size: var(--type-compact-size); font-weight: 600; }
 .coffee-supporter-list { border-top: 1px solid var(--border-color); }
+.coffee-supporters-empty { margin-block-start: var(--layout-space-5); border: 1px solid var(--border-color); border-radius: var(--layout-radius-lg); padding: var(--layout-pad-card); background: var(--surface-color); }
+.coffee-supporters-empty h3 { margin: 0; color: var(--foreground-color); font-size: var(--type-card-title-size); font-weight: var(--type-card-title-weight); letter-spacing: var(--type-card-title-tracking); }
+.coffee-supporters-empty p { margin: 0; color: var(--muted-color); font-size: var(--type-body-size); line-height: var(--type-body-leading); }
 .coffee-supporter-row { display: grid; grid-template-columns: auto 1fr auto auto; align-items: center; gap: 1rem; border-bottom: 1px solid var(--border-color); padding: 1.1rem .25rem; }
 .coffee-supporter-initial { display: grid; width: 2.125rem; height: 2.125rem; place-items: center; border-radius: 50%; background: var(--primary-color-subtle); color: var(--primary-color-strong); font-size: var(--type-compact-size); font-weight: 700; }
 .coffee-supporter-row h3 { margin: 0; font-size: var(--type-card-title-size); font-weight: var(--type-card-title-weight); letter-spacing: var(--type-card-title-tracking); }
