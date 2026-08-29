@@ -18,9 +18,9 @@ export const coffeeContent = {
   /** Compact pinned introduction that links directly into the order flow. */
   hero: {
     eyebrow: "Support the work",
-    titleBeforeAccent: "Support the",
+    titleBeforeAccent: "Support",
     titleAccent: "independent work.",
-    titleAfterBreak: "Dota, writing, and practical experiments.",
+    titleAfterAccent: "Dota, writing, experiments.",
     body: "This is a one-time support page for the maintenance of Dota, technical writing, and independent engineering work. Choose an amount and you will be taken to a secure Razorpay checkout to complete the payment.",
     primaryCta: "Review support options ↓",
     secondaryCta: "See what support funds",
@@ -70,6 +70,12 @@ export const coffeeContent = {
   supporters: {
     summary: "Recent contributions from supporters.",
     title: "Support activity",
+    unavailableSummary: "Support activity is temporarily unavailable.",
+    unavailableTitle: "The supporter list could not be loaded.",
+    unavailableBody: "Please check back soon. Your support options above are still available.",
+    emptySummary: "No public contributions yet.",
+    emptyTitle: "Be the first supporter.",
+    emptyBody: "Choose an amount above to support ongoing Dota maintenance and independent engineering work.",
     entries: [] as readonly { name: string; note?: string; amount: string; when: string }[],
   },
   /** Final, quiet invitation back to the order controls. */

@@ -79,7 +79,7 @@ export class CoffeeHeroComponent extends BaseElement {
           <div id="coffee-hero-inner">
             <p class="coffee-eyebrow">${content.eyebrow}</p>
             <h1 id="coffee-hero-title" class="type-display coffee-hero-title mt-5">
-              ${content.titleBeforeAccent} <span>${content.titleAccent}</span><br />${content.titleAfterBreak}
+              ${content.titleBeforeAccent} <span>${content.titleAccent}</span> ${content.titleAfterAccent}
             </h1>
             <p class="type-lede coffee-hero-lede mx-auto mt-6">${content.body}</p>
             <div class="mt-9 flex flex-wrap justify-center gap-3">
