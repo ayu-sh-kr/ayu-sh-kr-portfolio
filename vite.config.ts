@@ -125,6 +125,10 @@ export default defineConfig(({ mode }) => {
               target: env.VITE_DEV_API_TARGET || "http://localhost:8080",
               changeOrigin: true,
             },
+            "/buy-coffee": {
+              target: env.VITE_DEV_API_TARGET || "http://localhost:8080",
+              changeOrigin: true,
+            },
           }
         : undefined,
     },
