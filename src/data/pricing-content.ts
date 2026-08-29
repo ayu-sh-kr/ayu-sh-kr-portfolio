@@ -204,6 +204,7 @@ export const pricingContent = {
       submitErrorNote: "The brief did not reach the server.",
       submitErrorEmailLabel: "Send it by email instead",
       editLabel: "Edit the brief",
+      submitAnotherLabel: "Submit another brief",
       attachmentCompletionNote: " Add the selected files to that email before sending.",
     },
     existingOptions: [EMPTY_EXISTING_OPTION, "Designs", "A prototype", "Live product", "An in-house team"],
