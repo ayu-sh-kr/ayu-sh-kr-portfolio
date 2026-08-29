@@ -1,14 +1,20 @@
-import { ApplicationEventService, BaseElement, BindEvent, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
+import { BaseElement, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
 import { type ApplicationEvent, OnEvent } from "@ayu-sh-kr/dota-wrap/event";
 import { coffeeContent, type CoffeeSize } from "@app/data/coffee-content.ts";
-import { COFFEE_ORDER_COMPLETE_EVENT, COFFEE_ORDER_QUANTITY_EVENT, COFFEE_ORDER_RESET_EVENT, COFFEE_ORDER_SIZE_EVENT } from "@app/events/coffee.events.ts";
+import { type ActionButtonPayload } from "@app/events/action-button.events.ts";
+import { COFFEE_ORDER_QUANTITY_EVENT, COFFEE_ORDER_SIZE_EVENT } from "@app/events/coffee.events.ts";
+import { actionButtonRegistry } from "@app/service/action-button-registry.service.ts";
+import { coffeeOrderService } from "@app/service/coffee-order/coffee-order.service.ts";
 
 /**
- * Owns the demo checkout action and the resulting thank-you state.
+ * Owns the coffee order form and its real payment checkout.
  *
- * It listens to the same picker events as the total so confirmation always
- * names the actual selection. No payment data or feedback text crosses the
- * event bus; production checkout can later replace the completion action here.
+ * The optional name and note fields live in a native `<form>` so the shared
+ * `action-button` captures them through `FormData`; this component never reads
+ * another element's inputs. It tracks the selected size and quantity from the
+ * picker events, registers the `coffee.order` handler, and on success redirects
+ * the browser to Razorpay's hosted payment link. Pending, success, and failure
+ * presentation are delegated to the shared action button.
  *
  * Selector: `coffee-order-checkout`.
  */
@@ -17,25 +23,38 @@ import { COFFEE_ORDER_COMPLETE_EVENT, COFFEE_ORDER_QUANTITY_EVENT, COFFEE_ORDER_
   shadow: false,
 })
 export class CoffeeOrderCheckoutComponent extends BaseElement {
-  /** Publisher used to coordinate the feedback form after checkout or reset. */
-  private readonly publisher = ApplicationEventService.getInstance().getPublisher();
+  /** Transport boundary shared with the buy-coffee backend. */
+  private readonly orderService = coffeeOrderService;
 
-  /** Current authored size ID used to write the confirmation copy. */
+  /** Current authored size ID used to compute the charged amount. */
   private selectedSizeId = "latte";
 
-  /** Current quantity used to write the confirmation copy and price. */
+  /** Current quantity used to compute the charged amount. */
   private quantity = 1;
 
-  /** Whether the checkout action has been replaced by its thank-you confirmation. */
-  private isComplete = false;
+  /** Registry cleanup returned for this form's submit action. */
+  private removeHandler: (() => void) | null = null;
 
   /** Creates the checkout element before it begins receiving scoped order events. */
   constructor() {
     super();
   }
 
+  /** Registers the payment handler so the shared action button can start checkout. */
+  @OnEvent("connected", true)
+  onConnected(): void {
+    this.removeHandler = actionButtonRegistry.registerHandler("coffee.order", (payload) => this.submitOrder(payload));
+  }
+
+  /** Releases the handler registration when this route instance leaves. */
+  @OnEvent("disconnected", true)
+  onDisconnected(): void {
+    this.removeHandler?.();
+    this.removeHandler = null;
+  }
+
   /**
-   * Stores a validated selected size so the confirmation matches the total panel.
+   * Stores a validated selected size and refreshes the button's total label.
    * @param event - Typed payload from the size picker with an authored size ID.
    */
   @OnEvent(COFFEE_ORDER_SIZE_EVENT, true)
@@ -44,10 +63,11 @@ export class CoffeeOrderCheckoutComponent extends BaseElement {
       return;
     }
     this.selectedSizeId = event.data.sizeId;
+    this.refreshButtonLabel();
   }
 
   /**
-   * Stores a validated quantity so confirmation matches the total panel.
+   * Stores a validated quantity and refreshes the button's total label.
    * @param event - Typed payload from the quantity picker carrying its normalized value.
    */
   @OnEvent(COFFEE_ORDER_QUANTITY_EVENT, true)
@@ -56,28 +76,30 @@ export class CoffeeOrderCheckoutComponent extends BaseElement {
       return;
     }
     this.quantity = event.data.quantity;
+    this.refreshButtonLabel();
   }
 
   /**
-   * Replaces the demo checkout action with confirmation and hides the optional form.
-   * @param event - Click on the one-time checkout button; no external payment is made yet.
+   * Creates the payment link from the captured form values and redirects to Razorpay.
+   *
+   * The action-button registry calls this after the shared button captures the
+   * form's `FormData`. A blank name falls back to an anonymous label because the
+   * backend rejects empty contributor names; a successful response carries the
+   * hosted payment URL the browser is sent to.
+   *
+   * @param payload - Form values supplied by the registered action.
    */
-  @BindEvent({ event: "click", id: "#coffee-checkout-button" })
-  completeDemoCheckout(event: MouseEvent): void {
-    event.preventDefault();
-    this.isComplete = true;
-    this.updateHTML();
-    void this.publisher.publishAsync({ name: COFFEE_ORDER_COMPLETE_EVENT, data: null });
-  }
+  private async submitOrder(payload: ActionButtonPayload): Promise<void> {
+    const name = typeof payload.name === "string" ? payload.name.trim() : "";
+    const note = typeof payload.note === "string" ? payload.note.trim() : "";
+    const size = this.getSelectedSize();
 
-  /** Restores the initial action state and tells all order elements to reset their local selection. */
-  @BindEvent({ event: "click", id: "#coffee-order-reset" })
-  startAnotherOrder(): void {
-    this.selectedSizeId = "latte";
-    this.quantity = 1;
-    this.isComplete = false;
-    this.updateHTML();
-    void this.publisher.publishAsync({ name: COFFEE_ORDER_RESET_EVENT, data: null });
+    const link = await this.orderService.createPaymentLink({
+      amount: size.price * this.quantity * 100,
+      name: name || "Anonymous",
+      shortNote: note || undefined,
+    });
+    window.location.assign(link.short_url);
   }
 
   /** Resolves the current size ID to the authored option used in checkout copy. */
@@ -85,32 +107,38 @@ export class CoffeeOrderCheckoutComponent extends BaseElement {
     return coffeeContent.sizes.find((size) => size.id === this.selectedSizeId) ?? coffeeContent.sizes[1];
   }
 
-  /** Calculates the price echoed in the demo confirmation from the selected order. */
+  /** Calculates the charged amount in rupees from the selected order. */
   private getTotal(): number {
     return this.getSelectedSize().price * this.quantity;
   }
 
-  /** Returns the checkout CTA or its confirmation state for the current selection. */
+  /** Updates the shared button's idle label so it always names the current total. */
+  private refreshButtonLabel(): void {
+    const label = coffeeContent.order.submitLabel.replace("{total}", `$${this.getTotal().toFixed(0)}`);
+    this.querySelector<HTMLElement>("#coffee-checkout-button")?.setAttribute("label", label);
+  }
+
+  /** Returns the optional feedback fields and the shared checkout action. */
   render(): string {
     const content = coffeeContent.order;
-    if (!this.isComplete) {
-      return HTML`
+
+    return HTML`
+      <form class="coffee-details-card">
+        <label><span>${content.nameLabel}</span><input name="name" type="text" autocomplete="name" placeholder="${content.namePlaceholder}" /></label>
+        <label><span>${content.noteLabel}</span><textarea name="note" rows="3" placeholder="${content.notePlaceholder}"></textarea></label>
         <div class="coffee-order-cta">
-          <button id="coffee-checkout-button" class="coffee-accent-button" type="button">${content.submitLabel}</button>
+          <action-button
+            id="coffee-checkout-button"
+            action="coffee.order"
+            variant="accent"
+            label="${content.submitLabel.replace("{total}", `$${this.getTotal().toFixed(0)}`)}"
+            busy-label="${content.submittingLabel}"
+            done-label="${content.redirectingLabel}"
+            fail-label="${content.failLabel}"
+          ></action-button>
           <p>${content.checkoutNotice}</p>
         </div>
-      `;
-    }
-
-    const size = this.getSelectedSize();
-    const total = this.getTotal();
-    return HTML`
-      <div class="coffee-thanks-card">
-        <span class="coffee-thanks-badge" aria-hidden="true">✓</span>
-        <h3>${content.thanksTitle}</h3>
-        <p>Ayush just got your ${this.quantity} ${size.name.toLowerCase()}${this.quantity === 1 ? "" : "s"} ($${total.toFixed(2)}). He reads every note.</p>
-        <button id="coffee-order-reset" class="coffee-ghost-button" type="button">${content.anotherLabel}</button>
-      </div>
+      </form>
     `;
   }
 }
