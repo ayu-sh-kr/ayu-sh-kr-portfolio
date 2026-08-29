@@ -185,9 +185,9 @@ export const designInteractionContent = {
     lede: "Human input stays on a light card. Numbers and breakdown live on the contrast panel. One polite sentence carries the update.",
     inputLabel: "Review days",
     investmentLabel: "Estimated investment",
-    currency: "₹",
-    initialInvestment: "₹5,400",
-    daySummary: "{days} days at ₹1,800",
+    currency: "$",
+    initialInvestment: "$5,400",
+    daySummary: "{days} days at $1,800",
   },
   transient: {
     eyebrow: "09 / Response",

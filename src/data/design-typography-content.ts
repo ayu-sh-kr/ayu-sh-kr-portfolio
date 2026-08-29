@@ -48,7 +48,7 @@ export const designTypographyContent = {
       { label: "Eyebrow", token: ".type-eyebrow", sample: "Project context", note: "Uppercase, tracked, and used to set context before a heading." },
       { label: "Field label", token: ".type-label", sample: "Project budget", note: "Uppercase label text belongs with inputs, metadata, and small descriptors." },
       { label: "Controls", token: "--type-control-*", sample: "Start a project", note: "Buttons and choices share one readable control weight." },
-      { label: "Metrics", token: ".type-price", sample: "₹ 124,800", note: "Numbers that change use tabular figures to prevent visual jitter." },
+      { label: "Metrics", token: ".type-price", sample: "$ 124,800", note: "Numbers that change use tabular figures to prevent visual jitter." },
     ],
   },
   guidance: {
@@ -58,7 +58,7 @@ export const designTypographyContent = {
     pairings: [
       { label: "A section opens", heading: "Give the reader a useful landmark.", body: "A section heading gets one lede, then lets body copy or components do the detailed work.", token: "eyebrow → section → lede" },
       { label: "A card answers", heading: "A concise question", body: "Card titles should stay compact. If the explanation needs more space, the shared body role carries it without inventing a smaller heading.", token: "card title → body → compact" },
-      { label: "A metric changes", heading: "₹ 124,800", body: "Use tabular figures for prices, counts, dates, and live estimates so a changing digit does not shift the surrounding layout.", token: ".type-price / [data-count]" },
+      { label: "A metric changes", heading: "$ 124,800", body: "Use tabular figures for prices, counts, dates, and live estimates so a changing digit does not shift the surrounding layout.", token: ".type-price / [data-count]" },
     ],
     prose: {
       label: "Long-form reading",
