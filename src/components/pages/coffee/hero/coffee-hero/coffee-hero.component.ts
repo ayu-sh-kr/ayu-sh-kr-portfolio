@@ -21,6 +21,7 @@ const clamp = (value: number, minimum: number, maximum: number): number => Math.
 export class CoffeeHeroComponent extends BaseElement {
   private heroWrap: HTMLElement | null = null;
   private heroInner: HTMLElement | null = null;
+  private motionPreference: MediaQueryList | null = null;
 
   /** Creates the component before its rendered nodes are available. */
   constructor() {
@@ -32,6 +33,7 @@ export class CoffeeHeroComponent extends BaseElement {
   initializeHeroMotion(): void {
     this.heroWrap = this.querySelector<HTMLElement>("#coffee-hero-wrap");
     this.heroInner = this.querySelector<HTMLElement>("#coffee-hero-inner");
+    this.motionPreference = window.matchMedia("(prefers-reduced-motion: reduce)");
     this.renderHeroMotion();
   }
 
@@ -40,16 +42,22 @@ export class CoffeeHeroComponent extends BaseElement {
   cleanupHeroMotion(): void {
     this.heroWrap = null;
     this.heroInner = null;
+    this.motionPreference = null;
   }
 
-  /** Recalculates the hero fade and scale after scrolling or resizing. */
+  /**
+   * Recalculates the hero fade and scale after scrolling or resizing.
+   *
+   * Motion-preference users skip straight to the static state; otherwise the
+   * progress is how far the pinned wrapper has scrolled past the viewport.
+   */
   @WindowListener({ event: ["scroll", "resize"] })
   renderHeroMotion(): void {
     if (!this.heroWrap || !this.heroInner) {
       return;
     }
 
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    if (this.motionPreference?.matches) {
       this.heroInner.style.opacity = "1";
       this.heroInner.style.transform = "none";
       return;
