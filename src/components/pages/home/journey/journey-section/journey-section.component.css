@@ -1,9 +1,10 @@
+/* Home-page journey pin; owns chapter dwell time and the reduced-motion static flow. */
 portfolio-journey {
   display: block;
 }
 
 .journey-pin-wrap {
-  height: 450vh;
+  height: 600vh;
 }
 
 .journey-stage {
@@ -95,10 +96,12 @@ portfolio-journey {
     height: auto;
   }
 
-  .journey-stage {
+  .journey-stage.pin-stage {
+    position: static;
     display: block;
     height: auto;
     padding-block: 5rem;
+    overflow: visible;
   }
 
   .journey-ghost,

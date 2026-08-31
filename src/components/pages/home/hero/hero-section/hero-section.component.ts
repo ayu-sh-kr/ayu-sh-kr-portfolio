@@ -14,7 +14,7 @@ export class PortfolioHeroComponent extends BaseElement {
     const { hero } = portfolioContent;
 
     return HTML`
-      <div id="hero-wrap" class="layout-hero-pin-wrap">
+      <div id="hero-wrap" class="layout-hero-pin-wrap layout-hero-pin-wrap--long">
         <section class="layout-hero-pin-stage hero-stage" aria-labelledby="hero-title">
           <div id="hero-inner" class="layout-content layout-stack layout-stack-lg text-center">
             <p class="motion-eyebrow">${hero.eyebrow}</p>

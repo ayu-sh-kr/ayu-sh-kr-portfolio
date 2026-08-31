@@ -1,9 +1,10 @@
+/* Home-page work pin; maps vertical travel to the horizontal project rail. */
 portfolio-work {
   display: block;
 }
 
 .work-pin-wrap {
-  height: 380vh;
+  height: 440vh;
 }
 
 .work-stage {
@@ -69,9 +70,11 @@ portfolio-work {
   }
 
   .work-stage {
+    position: static;
     display: block;
     height: auto;
     padding-block: 7rem;
+    overflow: visible;
   }
 
   .work-rail {

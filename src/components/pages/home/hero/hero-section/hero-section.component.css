@@ -1,3 +1,4 @@
+/* Home-page hero; complements the shared pinned-hero layout and its reduced-motion fallback. */
 portfolio-hero {
   display: block;
 }
@@ -5,8 +6,15 @@ portfolio-hero {
 .hero-stage { text-align: center; }
 
 @media (prefers-reduced-motion: reduce) {
+  #hero-wrap {
+    block-size: auto;
+  }
+
   .hero-stage {
+    position: static;
+    min-block-size: auto;
     padding-block: 14vh;
+    overflow: visible;
   }
 
   #hero-inner {

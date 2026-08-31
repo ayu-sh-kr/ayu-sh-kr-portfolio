@@ -1,3 +1,4 @@
+/* Home-page speaking section; owns the pinned headline reveal and topic-card surface. */
 portfolio-speaking {
   display: block;
 }
@@ -8,7 +9,7 @@ portfolio-speaking {
 
 #sp-head-wrap {
   position: relative;
-  height: 160vh;
+  height: 220vh;
 }
 
 #sp-head-stage {
