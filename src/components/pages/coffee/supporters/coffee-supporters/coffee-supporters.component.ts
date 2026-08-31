@@ -84,8 +84,31 @@ export class CoffeeSupportersComponent extends BaseElement {
       name: contribution.name,
       note: contribution.shortNote ?? undefined,
       amount: new Intl.NumberFormat("en-IN", { style: "currency", currency: contribution.currency, maximumFractionDigits: 0 }).format(contribution.amount / 100),
-      when: "recently",
+      when: this.toWhen(contribution.createdAt),
     };
+  }
+
+  /**
+   * Formats a contribution's ISO timestamp as a short reader-friendly label.
+   * Falls back to "recently" when the timestamp cannot be interpreted.
+   */
+  private toWhen(createdAt: string): string {
+    const time = Date.parse(createdAt);
+    if (Number.isNaN(time)) {
+      return "recently";
+    }
+    const days = Math.floor((Date.now() - time) / 86_400_000);
+    if (days <= 0) {
+      return "today";
+    }
+    if (days === 1) {
+      return "yesterday";
+    }
+    if (days < 30) {
+      return `${days} days ago`;
+    }
+    const months = Math.floor(days / 30);
+    return months === 1 ? "1 month ago" : `${months} months ago`;
   }
 
   /**
