@@ -25,7 +25,6 @@ export class AnalyticsEventListener {
       console.warn("Google Analytics is not available");
       return;
     }
-    console.debug("AnalyticsEventListener.sendToGoogle", event);
     window.gtag("event", event.data.eventName, {
       ...event.data.params,
       page_title: document.title,
