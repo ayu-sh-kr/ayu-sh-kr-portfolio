@@ -16,6 +16,8 @@ export interface CoffeeContribution {
   name: string;
   /** Optional short public note supplied by the contributor. */
   shortNote: string | null;
+  /** ISO-8601 timestamp recorded when the contribution was created. */
+  createdAt: string;
 }
 
 /** Response returned by `GET /buy-coffee`. */
@@ -64,7 +66,7 @@ function toContribution(data: unknown): CoffeeContribution | null {
   if (!data || typeof data !== "object") {
     return null;
   }
-  const payload = data as { amount?: unknown; currency?: unknown; name?: unknown; shortNote?: unknown };
+  const payload = data as { amount?: unknown; currency?: unknown; name?: unknown; shortNote?: unknown; createdAt?: unknown };
   if (typeof payload.amount !== "number" || typeof payload.currency !== "string" || typeof payload.name !== "string") {
     return null;
   }
@@ -73,6 +75,7 @@ function toContribution(data: unknown): CoffeeContribution | null {
     currency: payload.currency,
     name: payload.name,
     shortNote: typeof payload.shortNote === "string" ? payload.shortNote : null,
+    createdAt: typeof payload.createdAt === "string" && payload.createdAt.length > 0 ? payload.createdAt : new Date().toISOString(),
   };
 }
 
