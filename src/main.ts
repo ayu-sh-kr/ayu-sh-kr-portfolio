@@ -23,6 +23,19 @@ const applicationEventPublisher = applicationEventService.getPublisher();
 const applicationEventListener = applicationEventService.getListener();
 export const restClient = RestClient.builder()
   .baseUrl(import.meta.env.VITE_API_BASE_URL)
+  .requestInterceptor((request) => {
+    if (typeof navigator === "undefined") {
+      return;
+    }
+
+    const detectedLocale = navigator.language;
+    const browserLocale = detectedLocale || "en-US";
+
+    request.headers = {
+      ...request.headers,
+      "x-locale": browserLocale,
+    };
+  })
   .build();
 
 window.portfolioRestClient = restClient;
