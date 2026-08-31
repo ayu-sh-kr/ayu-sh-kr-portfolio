@@ -7,22 +7,23 @@
     "dev": "vite",
     "dev:host": "vite --host",
     "build": "tsc && vite build",
+    "build:ssg": "tsc && vite build -- --ssg",
     "test": "vitest run",
     "preview": "vite preview"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.3.3",
-    "@types/node": "^26.2.0",
-    "happy-dom": "^20.11.2",
+    "@types/node": "^26.4.0",
+    "happy-dom": "^20.12.0",
     "tailwindcss": "^4.3.3",
     "typescript": "^7.0.2",
-    "vite": "^8.2.1",
+    "vite": "^8.2.2",
     "vitest": "^4.1.11"
   },
   "dependencies": {
     "@ayu-sh-kr/dota-md": "0.0.16",
     "@ayu-sh-kr/dota-ui": "0.0.28",
-    "@ayu-sh-kr/dota-wrap": "0.0.32",
+    "@ayu-sh-kr/dota-wrap": "0.0.33",
     "reflect-metadata": "^0.2.2"
   },
   "web-types": "./web-types.json",
