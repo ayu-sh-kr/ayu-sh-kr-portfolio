@@ -1387,7 +1387,7 @@
           "name": "portfolio-motion-controller",
           "source": {
             "file": "./src/components/pages/home/motion/motion-controller/motion-controller.component.ts",
-            "offset": 1239
+            "offset": 989
           },
           "attributes": [],
           "js": {

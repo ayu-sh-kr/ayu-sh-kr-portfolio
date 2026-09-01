@@ -9,12 +9,6 @@ import { OnEvent } from "@ayu-sh-kr/dota-wrap/event";
 /** Clamps section progress before it is converted into visual transforms or opacity. */
 const clamp = (value: number, min: number, max: number): number => Math.min(max, Math.max(min, value));
 
-/** Maximum vertical distance one wheel gesture may cross inside the pinned motion sequence. */
-const MAX_PINNED_WHEEL_TRAVEL = 0.85;
-
-/** Idle period that separates one wheel or trackpad gesture from the next. */
-const WHEEL_GESTURE_IDLE_MS = 160;
-
 /**
  * Coordinates scroll-driven motion and viewport reveals across the home page.
  *
@@ -36,9 +30,6 @@ export class PortfolioMotionControllerComponent extends BaseElement {
   private revealObserver: IntersectionObserver | null = null;
   private motionPreference: MediaQueryList | null = null;
   private reducedMotion = false;
-  private wheelGestureAnchor: number | null = null;
-  private wheelGestureTarget: number | null = null;
-  private wheelGestureResetId: number | null = null;
 
   constructor() {
     super();
@@ -53,7 +44,6 @@ export class PortfolioMotionControllerComponent extends BaseElement {
     this.motionPreference = window.matchMedia("(prefers-reduced-motion: reduce)");
     this.reducedMotion = this.motionPreference.matches;
     this.motionPreference.addEventListener("change", this.updateMotionPreference);
-    window.addEventListener("wheel", this.limitPinnedSectionWheel, { passive: false });
     this.setupReveals();
     this.scheduleRender();
   }
@@ -65,19 +55,12 @@ export class PortfolioMotionControllerComponent extends BaseElement {
   @OnEvent("disconnected", true)
   cleanupMotion(): void {
     this.motionPreference?.removeEventListener("change", this.updateMotionPreference);
-    window.removeEventListener("wheel", this.limitPinnedSectionWheel);
     this.motionPreference = null;
     this.revealObserver?.disconnect();
     this.revealObserver = null;
-    if (this.wheelGestureResetId !== null) {
-      window.clearTimeout(this.wheelGestureResetId);
-    }
     if (this.frameId !== null) {
       cancelAnimationFrame(this.frameId);
     }
-    this.wheelGestureAnchor = null;
-    this.wheelGestureTarget = null;
-    this.wheelGestureResetId = null;
     this.frameId = null;
     this.ticking = false;
   }
@@ -102,62 +85,6 @@ export class PortfolioMotionControllerComponent extends BaseElement {
     this.reducedMotion = event.matches;
     this.setupReveals();
     this.scheduleRender();
-  };
-
-  /**
-   * Prevents one high-momentum wheel or trackpad gesture from skipping the work
-   * and speaking pins. Each gesture may travel up to 85% of the viewport while
-   * it crosses that sequence; wheel input elsewhere and reduced-motion mode stay
-   * native. The non-passive listener is registered and removed with the component.
-   */
-  private readonly limitPinnedSectionWheel = (event: WheelEvent): void => {
-    if (
-      this.reducedMotion ||
-      !event.cancelable ||
-      event.ctrlKey ||
-      event.metaKey ||
-      Math.abs(event.deltaY) <= Math.abs(event.deltaX)
-    ) {
-      return;
-    }
-
-    const workWrap = document.querySelector<HTMLElement>("#work-wrap");
-    const speakingHeadWrap = document.querySelector<HTMLElement>("#sp-head-wrap");
-    if (!workWrap || !speakingHeadWrap) {
-      return;
-    }
-
-    const currentScroll = window.scrollY;
-    const workTop = currentScroll + workWrap.getBoundingClientRect().top;
-    const speakingBottom = currentScroll + speakingHeadWrap.getBoundingClientRect().bottom;
-    if (currentScroll + window.innerHeight < workTop || currentScroll >= speakingBottom) {
-      return;
-    }
-
-    event.preventDefault();
-    const deltaUnit = event.deltaMode === WheelEvent.DOM_DELTA_LINE
-      ? 16
-      : event.deltaMode === WheelEvent.DOM_DELTA_PAGE
-        ? window.innerHeight
-        : 1;
-    const maxTravel = window.innerHeight * MAX_PINNED_WHEEL_TRAVEL;
-    this.wheelGestureAnchor ??= currentScroll;
-    this.wheelGestureTarget ??= currentScroll;
-    this.wheelGestureTarget = clamp(
-      this.wheelGestureTarget + event.deltaY * deltaUnit,
-      this.wheelGestureAnchor - maxTravel,
-      this.wheelGestureAnchor + maxTravel,
-    );
-    window.scrollTo({ top: this.wheelGestureTarget, behavior: "instant" });
-
-    if (this.wheelGestureResetId !== null) {
-      window.clearTimeout(this.wheelGestureResetId);
-    }
-    this.wheelGestureResetId = window.setTimeout(() => {
-      this.wheelGestureAnchor = null;
-      this.wheelGestureTarget = null;
-      this.wheelGestureResetId = null;
-    }, WHEEL_GESTURE_IDLE_MS);
   };
 
   /**
