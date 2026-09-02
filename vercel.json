@@ -49,6 +49,11 @@
       "permanent": true
     },
     {
+      "source": "/blog/open-knowledge-format-okf-vs-rag",
+      "destination": "/blog/open-knowledge-format-okf-vs-rag/",
+      "permanent": true
+    },
+    {
       "source": "/blog/postgresql-access-control",
       "destination": "/blog/postgresql-access-control/",
       "permanent": true
