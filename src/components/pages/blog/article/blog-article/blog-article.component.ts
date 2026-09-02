@@ -140,6 +140,7 @@ export class BlogArticleComponent extends BaseElement {
           writer="${escapeHtml(post.writer)}">
         </blog-article-header>
         ${markdown}
+        <blog-subscription data-analytics-section="blog_article_subscription"></blog-subscription>
         <footer class="blog-article-footer">
           <div class="blog-article-footer-meta"><span class="blog-chip">${labelForCategory(post.category)}</span><span>${blogArticleContent.footer.shareCopy}</span></div>
           <div class="blog-post-nav">
