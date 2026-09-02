@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 590" role="img" aria-labelledby="title desc">
+  <title id="title">OKF runtime discovery through pre-linked concepts</title>
+  <desc id="desc">An agent starts at a bundle index, discovers a metric, follows its explicit links to context and a playbook, then gives a grounded answer.</desc>
+  <defs>
+    <filter id="shadow" x="-10%" y="-15%" width="120%" height="140%"><feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#242c12" flood-opacity=".12"/></filter>
+    <marker id="arrow" viewBox="0 0 8 8" refX="7.5" refY="4" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 L8 4 L0 8z" fill="#5d702d"/></marker>
+  </defs>
+  <rect width="820" height="590" rx="24" fill="#f8faf2"/>
+  <g font-family="system-ui, sans-serif"><text x="40" y="45" fill="#242c12" font-size="24" font-weight="700">Runtime discovery over pre-linked context</text><text x="40" y="68" fill="#46552a" font-size="14">The agent chooses a path at runtime; the relationships were authored earlier.</text></g>
+  <g id="nodes" filter="url(#shadow)" stroke="#92a951" stroke-width="2">
+    <g id="bundle-index"><rect x="40" y="110" width="340" height="100" rx="14" fill="#ecf0df"/></g>
+    <g id="metric-concept"><rect x="440" y="110" width="340" height="100" rx="14" fill="#fff"/></g>
+    <g id="linked-context"><rect x="440" y="250" width="340" height="100" rx="14" fill="#fff"/></g>
+    <g id="playbook"><rect x="40" y="240" width="340" height="100" rx="14" fill="#d9e2bd"/></g>
+    <g id="answer"><rect x="40" y="390" width="340" height="100" rx="14" fill="#ecf0df"/></g>
+  </g>
+  <g id="main-flow" fill="none" stroke="#5d702d" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"><path d="M380 160H440"/><path d="M610 210V250"/><path d="M440 300H380"/><path d="M210 350V390"/></g>
+  <g font-family="system-ui, sans-serif"><g fill="#5d702d" font-size="11" font-weight="800"><text x="64" y="140">ENTRY POINT</text><text x="464" y="140">CONCEPT</text><text x="464" y="282">LINKED CONTEXT</text><text x="64" y="282">PLAYBOOK</text><text x="64" y="422">OUTCOME</text></g><g fill="#242c12" font-size="19" font-weight="700"><text x="64" y="169">index.md</text><text x="464" y="169">Weekly active users</text><text x="464" y="310">Event + policy</text><text x="64" y="310">Investigation path</text><text x="64" y="450">Grounded answer</text></g><g fill="#46552a" font-size="14"><text x="64" y="188">Browse available concepts</text><text x="464" y="188">Check freshness and sources</text><text x="464" y="328">Read definition and policy</text><text x="64" y="328">Choose an investigation</text><text x="64" y="468">Cite the live source</text><text x="64" y="555">Known links make the route inspectable; search can still find an unknown start.</text></g></g>
+  <g font-family="system-ui, sans-serif" fill="#5d702d" font-size="12" font-weight="700"><text x="388" y="145">discover</text><text x="624" y="232">follow</text><text x="388" y="285">select</text><text x="221" y="377">apply</text></g>
+</svg>
