@@ -72,6 +72,7 @@ export class OfflinePage extends DotaPageElement {
   @WindowListener({ event: "online" })
   onOnline(): void {
     this.applyConnectivityState(true);
+    RouterUtils.back();
   }
 
   @WindowListener({ event: "offline" })
@@ -94,7 +95,7 @@ export class OfflinePage extends DotaPageElement {
     event.preventDefault();
 
     if (window.history.length > 1) {
-      window.history.back();
+      RouterUtils.back();
       return;
     }
 
