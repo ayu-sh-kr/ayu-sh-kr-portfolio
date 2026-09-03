@@ -44,6 +44,10 @@ export class RouterUtils {
     this.routerService.route(path);
   }
 
+  static back(): void {
+    this.routerService?.back();
+  }
+
   /**
    * Returns whether the browser pathname exactly matches the supplied path.
    *
