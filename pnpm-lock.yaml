@@ -15,8 +15,8 @@ importers:
         specifier: 0.0.28
         version: 0.0.28(vite@8.2.2(@types/node@26.4.0)(esbuild@0.28.1)(jiti@2.7.0))
       '@ayu-sh-kr/dota-wrap':
-        specifier: 0.0.33
-        version: 0.0.33(reflect-metadata@0.2.2)(vite@8.2.2(@types/node@26.4.0)(esbuild@0.28.1)(jiti@2.7.0))
+        specifier: 0.0.34
+        version: 0.0.34(reflect-metadata@0.2.2)(vite@8.2.2(@types/node@26.4.0)(esbuild@0.28.1)(jiti@2.7.0))
       reflect-metadata:
         specifier: ^0.2.2
         version: 0.2.2
@@ -63,14 +63,14 @@ packages:
   '@ayu-sh-kr/dota-rest@1.2.0':
     resolution: {integrity: sha512-i1nQOWmacf+ihGqkcilXIRsokAS9DpiwpLwSGqD0tm0gh9K/4BqvtRwGjkRS59JgBg/FQIb6Ja8Ztpl5fJYZVA==}
 
-  '@ayu-sh-kr/dota-router@0.0.35':
-    resolution: {integrity: sha512-xbLn2CFRZlaS9DQvQW6Ng1oBREzQn8/lJWff7/ECYGnUb1cnaRtM5NsYuouSjSaT8+R4ACTuVwQAsAI4CUHPbw==}
+  '@ayu-sh-kr/dota-router@0.1.0':
+    resolution: {integrity: sha512-H0/cP4wey/c5jdHfxZ1ss8EKggDIg/I7W2InoZoiA+fZ/JUCYfsyZGmX2FRsRtJJvDeisiy75i/VV7B32ODW6A==}
 
-  '@ayu-sh-kr/dota-runtime@0.0.4':
-    resolution: {integrity: sha512-JveeRs2FIoD7MuA6VwULTLjPOf2pSdmW1BLl99ynnZ3Oqhjpv5V4wOAB5+qsspiadMmzWi4zHlcYqlXBif6I3Q==}
+  '@ayu-sh-kr/dota-runtime@0.0.5':
+    resolution: {integrity: sha512-Zx27BN4y/Jbt5w9/jMm+zQmpm6Xq4CXFpnrakXj4fgiMiGvwl27W6BWvOwGItzkZ5/GkB6ehFE9Me/+3smPu4A==}
 
-  '@ayu-sh-kr/dota-ssr@0.0.7':
-    resolution: {integrity: sha512-PnruKvBVgJhGTq/Ye4V9f+5AbD391tv0Jq++M4QNDEoiXSiFEKgNgVYsE3DOAL3V+sGVxdvJ8lFdQxCT1suJZg==}
+  '@ayu-sh-kr/dota-ssr@0.0.8':
+    resolution: {integrity: sha512-KQqqSjIq4Mhsz4bLtjHZKjlSzLS4nwo2DIKbBKuWko67NKP/IeN94ZXdEsq5OzBV5AReydlhxy9KngD4hFtLbw==}
     peerDependencies:
       happy-dom: ^20.8.8
       vite: ^8.1.0
@@ -88,8 +88,8 @@ packages:
     peerDependencies:
       vite: ^8.1.0
 
-  '@ayu-sh-kr/dota-wrap@0.0.33':
-    resolution: {integrity: sha512-2DBSgPsGqb6+feluyTavc+uD6eDiNSRzl/SOS4gWR4VRKbU5iIh8pBKz7gz8Tsb3YXYEAMoMmVtOe5PDsh20PA==}
+  '@ayu-sh-kr/dota-wrap@0.0.34':
+    resolution: {integrity: sha512-gJK2bfd6xkcoXLQqQGshAbzCAfYaosFVl58f05wPFNPbeEUMRww/Tn+xsE/TDjYNtVcgo/J+H8VsS8s3FEFfpw==}
     peerDependencies:
       reflect-metadata: '>=0.2.0'
       vite: ^8.1.0
@@ -1283,22 +1283,22 @@ snapshots:
 
   '@ayu-sh-kr/dota-rest@1.2.0': {}
 
-  '@ayu-sh-kr/dota-router@0.0.35':
+  '@ayu-sh-kr/dota-router@0.1.0':
     dependencies:
       '@ayu-sh-kr/dota-core': 1.9.12
       reflect-metadata: 0.2.2
 
-  '@ayu-sh-kr/dota-runtime@0.0.4':
+  '@ayu-sh-kr/dota-runtime@0.0.5':
     dependencies:
       '@ayu-sh-kr/dota-core': 1.9.12
-      '@ayu-sh-kr/dota-router': 0.0.35
+      '@ayu-sh-kr/dota-router': 0.1.0
 
-  '@ayu-sh-kr/dota-ssr@0.0.7(happy-dom@20.10.6)(vite@8.2.2(@types/node@26.4.0)(esbuild@0.28.1)(jiti@2.7.0))':
+  '@ayu-sh-kr/dota-ssr@0.0.8(happy-dom@20.10.6)(vite@8.2.2(@types/node@26.4.0)(esbuild@0.28.1)(jiti@2.7.0))':
     dependencies:
       '@ayu-sh-kr/dota-core': 1.9.12
       '@ayu-sh-kr/dota-rendering': 0.1.5
-      '@ayu-sh-kr/dota-router': 0.0.35
-      '@ayu-sh-kr/dota-runtime': 0.0.4
+      '@ayu-sh-kr/dota-router': 0.1.0
+      '@ayu-sh-kr/dota-runtime': 0.0.5
       consola: 3.4.2
     optionalDependencies:
       happy-dom: 20.10.6
@@ -1325,15 +1325,15 @@ snapshots:
     transitivePeerDependencies:
       - '@swc/helpers'
 
-  '@ayu-sh-kr/dota-wrap@0.0.33(reflect-metadata@0.2.2)(vite@8.2.2(@types/node@26.4.0)(esbuild@0.28.1)(jiti@2.7.0))':
+  '@ayu-sh-kr/dota-wrap@0.0.34(reflect-metadata@0.2.2)(vite@8.2.2(@types/node@26.4.0)(esbuild@0.28.1)(jiti@2.7.0))':
     dependencies:
       '@ayu-sh-kr/dota-core': 1.9.12
       '@ayu-sh-kr/dota-event': 0.0.5
       '@ayu-sh-kr/dota-rendering': 0.1.5
       '@ayu-sh-kr/dota-rest': 1.2.0
-      '@ayu-sh-kr/dota-router': 0.0.35
-      '@ayu-sh-kr/dota-runtime': 0.0.4
-      '@ayu-sh-kr/dota-ssr': 0.0.7(happy-dom@20.10.6)(vite@8.2.2(@types/node@26.4.0)(esbuild@0.28.1)(jiti@2.7.0))
+      '@ayu-sh-kr/dota-router': 0.1.0
+      '@ayu-sh-kr/dota-runtime': 0.0.5
+      '@ayu-sh-kr/dota-ssr': 0.0.8(happy-dom@20.10.6)(vite@8.2.2(@types/node@26.4.0)(esbuild@0.28.1)(jiti@2.7.0))
       '@swc/core': 1.13.5
       consola: 3.4.2
       fast-glob: 3.3.3
