@@ -53,7 +53,7 @@ export class DesignInteractionSelectionComponent extends BaseElement {
             .map(
               (
                 choice,
-              ) => HTML`<button type="button" class="design-interaction-choice" data-interaction-choice="${choice}" aria-pressed="${String(this.selectedChoice === choice)}">
+              ) => HTML`<button type="button" class="form-choice input-lg input-rounded-md input-bordered design-interaction-choice" data-interaction-choice="${choice}" aria-pressed="${String(this.selectedChoice === choice)}">
               <strong>${choice}</strong>
               <span>${this.selectedChoice === choice ? selection.selectedLabel : selection.chooseLabel}</span>
             </button>`,
