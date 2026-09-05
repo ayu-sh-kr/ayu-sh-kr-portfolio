@@ -5,6 +5,7 @@
 @import "./color.css";
 @import "./typography.css";
 @import "./layout.css";
+@import "./form-element.css";
 @import "./components/utils/action-button/action-button.component.css";
 @import "./anchor-link.css";
 @import "./components/utils/scroll-hint/scroll-hint.component.css";
