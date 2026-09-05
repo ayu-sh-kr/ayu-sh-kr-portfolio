@@ -89,8 +89,8 @@ export class DesignInteractionServiceStateComponent extends BaseElement {
               <button type="button" data-service-state-trigger="down" aria-pressed="${String(this.selectedState === "down")}">${serviceState.controls.down}</button>
             </div>
             <div class="design-interaction-service-state__form">
-              <label for="service-state-brief">${serviceState.formLabel}</label>
-              <textarea id="service-state-brief" placeholder="${serviceState.formPlaceholder}"></textarea>
+              <label class="form-label form-label" for="service-state-brief">${serviceState.formLabel}</label>
+              <textarea class="form-control input-md input-rounded-md input-bordered" id="service-state-brief" placeholder="${serviceState.formPlaceholder}"></textarea>
               <button type="button">${serviceState.submitLabel}</button>
             </div>
           </article>
