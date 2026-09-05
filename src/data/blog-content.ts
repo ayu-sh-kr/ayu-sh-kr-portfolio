@@ -35,9 +35,9 @@ export const blogFilters: readonly BlogFilterOption[] = [
 export const blogIndexContent = {
   hero: {
     eyebrow: "Writing",
-    titleBeforeAccent: "Engineering notes from",
+    titleBeforeAccent: "Technology notes from",
     titleAccent: "production.",
-    summary: "Articles on backend systems, cloud infrastructure, and the technical decisions involved in operating software in production.",
+    summary: "Articles on web products, backend systems, cloud infrastructure, and the technical decisions involved in shipping and operating useful software.",
     scrollHint: "Scroll",
   },
   filter: {
@@ -104,7 +104,7 @@ export const blogArticleContent = {
 } as const;
 
 /** Search terms used by the blog index and unknown-article fallback. */
-const blogIndexKeywords = [siteIdentity.name, siteIdentity.fullName, "Backend Engineering", "Blog"] as const;
+const blogIndexKeywords = [siteIdentity.name, siteIdentity.fullName, "Product Engineering", "Web Development", "Backend Engineering", "Blog"] as const;
 
 /**
  * Builds SEO content for the blog index or one selected blog article.
@@ -115,8 +115,8 @@ const blogIndexKeywords = [siteIdentity.name, siteIdentity.fullName, "Backend En
  * page SEO contract.
  */
 export const getBlogSeo = (post?: Pick<BlogPost, "header" | "description" | "keywords">): PageSeoContent => {
-  const title = post ? `${post.header} — ${siteIdentity.domain}` : `Engineering writing — ${siteIdentity.domain}`;
-  const description = post?.description ?? "Articles on backend engineering, cloud infrastructure, and operating production systems.";
+  const title = post ? `${post.header} — ${siteIdentity.domain}` : `Technology writing — ${siteIdentity.domain}`;
+  const description = post?.description ?? "Articles on web products, backend engineering, cloud infrastructure, and operating production systems.";
 
   return {
     title,
