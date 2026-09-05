@@ -1,0 +1,307 @@
+reach-out-card-deck,
+reach-out-page {
+  display: grid;
+  min-block-size: 0;
+}
+
+.reach-out-card-deck {
+  block-size: 100%;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  gap: var(--layout-space-5);
+  min-block-size: 0;
+  padding-block-end: var(--layout-space-5);
+}
+
+.reach-out__card h1 span,
+.reach-out__card h2 span {
+  color: var(--primary-color);
+}
+
+.reach-out-card-deck__stage {
+  display: grid;
+  align-self: center;
+  justify-items: center;
+  min-block-size: 20rem;
+}
+
+.reach-out__deck {
+  display: grid;
+  inline-size: min(100%, 24rem);
+  min-block-size: 20rem;
+  touch-action: pan-y;
+  --reach-out-stack-y: 0.9rem;
+  --reach-out-stack-scale: 0.038;
+}
+
+.reach-out__deck:focus-visible {
+  outline: 3px solid var(--primary-color-ring);
+  outline-offset: 0.4rem;
+}
+
+.reach-out__card {
+  position: relative;
+  display: grid;
+  grid-area: 1 / 1;
+  gap: var(--layout-space-4);
+  min-block-size: 20rem;
+  padding: var(--layout-pad-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--layout-radius-xl);
+  background: var(--surface-color);
+  box-shadow: 0 1.4rem 3.2rem -2rem color-mix(in oklab, var(--foreground-color) 44%, transparent);
+  transform: translate3d(var(--reach-out-x, 0px), calc(var(--reach-out-y, 0px) + var(--reach-out-depth, 0) * var(--reach-out-stack-y)), 0) rotate(calc(var(--reach-out-depth, 0) * var(--reach-out-tilt, 0deg) + var(--reach-out-drag-rotation, 0deg))) scale(calc(1 - var(--reach-out-depth, 0) * var(--reach-out-stack-scale)));
+  will-change: transform;
+  z-index: calc(var(--layout-z-base) + 4 - var(--reach-out-depth, 0));
+}
+
+.reach-out__card::after {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: 0 1.8rem 3.6rem -2.4rem color-mix(in oklab, var(--foreground-color) 50%, transparent);
+  content: "";
+  opacity: calc(1 - var(--reach-out-depth, 0) * 0.25);
+  pointer-events: none;
+}
+
+.reach-out__card.is-animated {
+  transition: transform var(--reach-out-duration, 420ms) cubic-bezier(0.2, 0.8, 0.2, 1), opacity var(--reach-out-duration, 420ms) ease;
+}
+
+.reach-out__card.is-leaving {
+  opacity: 0;
+}
+
+.reach-out__card.is-top {
+  cursor: grab;
+}
+
+.reach-out__card.is-grabbed {
+  cursor: grabbing;
+}
+
+.reach-out__card.is-grabbed * {
+  user-select: none;
+}
+
+.reach-out__card.is-incoming {
+  z-index: calc(var(--layout-z-base) + 6);
+}
+
+.reach-out__index {
+  margin: 0;
+  color: var(--muted-color);
+  font-family: var(--font-mono);
+  font-size: var(--type-label-size);
+  font-weight: var(--type-label-weight);
+  letter-spacing: var(--type-label-tracking);
+}
+
+.reach-out__card h1,
+.reach-out__card h2 {
+  margin: 0;
+  font-size: var(--type-section-size);
+  font-weight: 700;
+  letter-spacing: var(--type-display-tracking);
+  line-height: var(--type-display-leading);
+  text-wrap: balance;
+}
+
+.reach-out__card > p,
+.reach-out__action > p,
+.reach-out__range p {
+  margin: 0;
+  color: var(--muted-color);
+  text-wrap: pretty;
+}
+
+.reach-out__card--one {
+  grid-template-rows: auto 1fr auto;
+}
+
+.reach-out__card--one h1 {
+  align-self: center;
+}
+
+.reach-out__card--two {
+  grid-template-rows: auto auto 1fr;
+}
+
+.reach-out__range {
+  align-self: end;
+}
+
+.reach-out__range > div {
+  display: flex;
+  align-items: center;
+  gap: var(--layout-space-3);
+}
+
+.reach-out__range span,
+.reach-out__range p {
+  font-size: var(--type-compact-size);
+}
+
+.reach-out__range i {
+  flex: 1;
+  block-size: 1px;
+  background: var(--border-color);
+}
+
+.reach-out__range p {
+  margin-block-start: var(--layout-space-2);
+}
+
+.reach-out__card--three {
+  align-content: start;
+}
+
+.reach-out__footnote {
+  padding-block-start: var(--layout-space-3);
+  border-block-start: 1px solid var(--border-color);
+}
+
+.reach-out__card--four {
+  grid-template-rows: auto 1fr;
+}
+
+.reach-out__action {
+  display: grid;
+  align-self: end;
+  gap: var(--layout-space-3);
+  justify-items: start;
+}
+
+.reach-out__home-link {
+  min-block-size: var(--layout-space-6);
+  font-size: var(--type-compact-size);
+}
+
+.reach-out__live {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.reach-out-card-deck__controls {
+  display: grid;
+  justify-items: center;
+}
+
+.reach-out__helm {
+  display: grid;
+  gap: var(--layout-space-3);
+  justify-items: center;
+}
+
+.reach-out__navigation,
+.reach-out__ticks {
+  display: flex;
+  align-items: center;
+  gap: var(--layout-space-2);
+}
+
+.reach-out__step,
+.reach-out__tick {
+  display: grid;
+  border: 0;
+  background: transparent;
+  color: var(--muted-color);
+  cursor: pointer;
+}
+
+.reach-out__step {
+  inline-size: 2rem;
+  block-size: 2rem;
+  place-items: center;
+  border: 1px solid var(--border-color);
+  border-radius: var(--layout-radius-round);
+  font-size: 1rem;
+  transition: border-color 180ms ease, color 180ms ease;
+}
+
+.reach-out__step:hover {
+  border-color: var(--foreground-color);
+  color: var(--foreground-color);
+}
+
+.reach-out__tick {
+  inline-size: 2.25rem;
+  block-size: 2rem;
+  place-items: center;
+}
+
+.reach-out__tick::before {
+  inline-size: 100%;
+  block-size: 2px;
+  border-radius: var(--layout-radius-xs);
+  background: var(--border-color);
+  content: "";
+  transition: background-color 180ms ease, transform 220ms ease;
+}
+
+.reach-out__tick:hover::before {
+  background: var(--muted-color);
+}
+
+.reach-out__tick[aria-current="true"]::before {
+  background: var(--primary-color);
+  transform: scaleY(2);
+}
+
+.reach-out__step:focus-visible,
+.reach-out__tick:focus-visible {
+  outline: 3px solid var(--primary-color-ring);
+  outline-offset: 3px;
+}
+
+.reach-out__hint {
+  margin: 0;
+  color: var(--muted-color);
+  font-size: var(--type-compact-size);
+  transition: opacity 300ms ease;
+}
+
+.reach-out__hint[data-retired="true"] {
+  opacity: 0;
+}
+
+@media (min-width: 700px) {
+  .reach-out__deck {
+    inline-size: min(100%, 26rem);
+    min-block-size: 22rem;
+    margin-block-end: var(--layout-space-6);
+  }
+
+  .reach-out-card-deck__stage,
+  .reach-out__card {
+    min-block-size: 22rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reach-out__card {
+    --reach-out-tilt: 0deg !important;
+    --reach-out-drag-rotation: 0deg !important;
+  }
+
+  .reach-out__card.is-animated,
+  .reach-out__step,
+  .reach-out__tick::before,
+  .reach-out__hint {
+    transition-duration: 0.01ms;
+  }
+}
+
+@media (forced-colors: active) {
+  .reach-out__card,
+  .reach-out__step {
+    border-color: ButtonText;
+    background: Canvas;
+    color: CanvasText;
+  }
+}
