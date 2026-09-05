@@ -7,6 +7,8 @@ description: Use when writing or reviewing TypeScript in this Dota Web portfolio
 
 Optimize for the reader. Code in this repo is TypeScript building custom elements on Dota Core/Dota Wrap; keep it as direct as the framework allows. Prefer fewer, well-named units over a scatter of tiny indirections. Change structure only when it makes behavior easier to verify — never for its own sake.
 
+When a change touches component CSS, apply the sibling `css-formatting` skill as part of the code-quality review. Stylesheets must remain readable: expand compressed declaration blocks, keep one declaration per line, and preserve selectors, values, cascade order, and responsive behavior.
+
 ## Better structure
 
 - Give each function and component one clear job. If a method both loads data and formats markup, split along that seam (see the reusable-design skill for separation of concern).
@@ -57,6 +59,7 @@ Otherwise, leave the code inline where the reader already is.
 - Do guards/early returns keep nesting shallow?
 - Do names state intent and follow the repo's casing grammar?
 - Any dead code, unused imports, or stale comments to remove?
+- Do touched stylesheets contain any compressed one-line declaration blocks?
 - Does each multi-field public boundary have a meaningful named contract?
 - Does every extracted utility have one coherent domain and a real reuse or policy boundary?
 - Are related source and test files grouped by ownership rather than file kind?

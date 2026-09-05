@@ -12,6 +12,7 @@ Format component CSS in place without changing its runtime contract.
 - Preserve selectors, declaration values, cascade order, media queries, animation names, and custom-property names.
 - Put one declaration per line and one selector block per section.
 - Keep related selectors grouped only when they share the exact declarations; do not merge rules merely to shorten the file.
+- Treat compressed one-line declaration blocks, chained selector blocks, and one-line at-rules as formatting defects. Expand them before reviewing behavior or making further style changes.
 - Use the repository's two-space indentation and blank lines between rule groups.
 - Keep long `calc()`, gradients, transitions, and shadow values readable across continuation lines.
 - Preserve the existing mobile-first breakpoint policy and reduced-motion overrides.
@@ -24,4 +25,4 @@ Add a short file-level comment describing where the stylesheet is used, what sur
 
 ## Validation
 
-After formatting, run `git diff --check`, the project typecheck/build, and a selector/value comparison if the file was heavily compressed. Confirm that formatting did not alter declarations or their order.
+After formatting, scan all source stylesheets for compressed blocks with `rg -n --glob '*.css' '\\{[^\\n]*:[^\\n]*\\}' src`; the scan should return no matches. Then run `git diff --check`, the project typecheck/build, and a selector/value comparison if the file was heavily compressed. Confirm that formatting did not alter declarations or their order.

@@ -27,3 +27,4 @@ Clean, reusable, maintainable code.
 - **component-lifecycle** — lifecycle correctness, event wiring, and cleanup.
 - **clean-code** — readable structure, low verbosity, clear naming.
 - **reusable-design** — component-driven development, separation of concern, KISS, and DRY.
+- **css-formatting** — readable, behavior-preserving stylesheet formatting and compressed-block detection.
