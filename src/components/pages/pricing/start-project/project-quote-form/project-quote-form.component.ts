@@ -98,11 +98,11 @@ export class PricingProjectQuoteFormComponent extends BaseElement {
         <div class="pricing-project-input-label">What kind of work is it?</div>
         <div class="pricing-project-choices" role="group">
           ${pricingContent.startProject.workTypes.map((option) => `
-            <button class="pricing-project-choice ${option === this.workType ? "is-selected" : ""}" type="button" data-project-work-type="${escapeHtml(option)}" aria-pressed="${option === this.workType}">${escapeHtml(option)}</button>
+            <button class="form-choice input-sm input-round input-bordered pricing-project-choice ${option === this.workType ? "is-selected" : ""}" type="button" data-project-work-type="${escapeHtml(option)}" aria-pressed="${option === this.workType}">${escapeHtml(option)}</button>
           `).join("")}
         </div>
-        <label>What is in scope?<textarea data-project-field="scope" placeholder="Everything that has to exist for this to be done. Bullets are fine.">${escapeHtml(this.scope)}</textarea></label>
-        <label>Stack and constraints <small>Optional</small><input data-project-field="constraints" value="${escapeHtml(this.constraints)}" placeholder="Postgres, AWS, must stay in eu-west-1"></label>
+        <label class="form-label form-label">What is in scope?<textarea class="form-control input-md input-rounded-md input-bordered" data-project-field="scope" placeholder="Everything that has to exist for this to be done. Bullets are fine.">${escapeHtml(this.scope)}</textarea></label>
+        <label class="form-label form-label">Stack and constraints <small>Optional</small><input class="form-control input-md input-rounded-md input-bordered" data-project-field="constraints" value="${escapeHtml(this.constraints)}" placeholder="Postgres, AWS, must stay in eu-west-1"></label>
       </fieldset>
     `;
   }
