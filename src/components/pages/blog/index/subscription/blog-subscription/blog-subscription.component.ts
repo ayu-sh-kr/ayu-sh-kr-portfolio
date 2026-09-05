@@ -166,7 +166,7 @@ export class BlogSubscriptionComponent extends BaseElement {
             <form class="blog-subscribe-form">
               <label class="sr-only" for="blog-email">${blogIndexContent.subscription.emailLabel}</label>
               <div class="blog-subscribe-controls">
-                <input id="blog-email" name="email" type="email" placeholder="${blogIndexContent.subscription.emailPlaceholder}" autocomplete="email" aria-describedby="blog-email-hint" required />
+                <input class="form-control input-md input-round input-bordered" id="blog-email" name="email" type="email" placeholder="${blogIndexContent.subscription.emailPlaceholder}" autocomplete="email" aria-describedby="blog-email-hint" required />
                 <action-button id="blog-subscription-submit" action="subscription.submit" guard="blog-subscription" variant="ink" label="${blogIndexContent.subscription.submitLabel}" busy-label="${blogIndexContent.subscription.submittingLabel}" done-label="${blogIndexContent.subscription.successLabel}" fail-label="${blogIndexContent.subscription.errorLabel}"></action-button>
               </div>
               <p id="blog-email-hint" class="blog-subscribe-hint">${blogIndexContent.subscription.emailHint}</p>
