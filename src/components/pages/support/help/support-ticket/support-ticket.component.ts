@@ -1,34 +1,45 @@
 import { BaseElement, BindEvent, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
 import { OnEvent } from "@ayu-sh-kr/dota-wrap/event";
 import { supportContent } from "@app/data/support-content.ts";
+import {
+  type SupportTicketAttachment,
+  supportTicketService,
+} from "@app/service/support-ticket/support-ticket.service.ts";
 
 /**
- * Owns the optional support-message flow, from the quiet handoff through confirmation.
+ * Owns the support request form rendered at the end of the support help section.
  *
- * Used as the final child of {@link SupportSectionComponent}. It keeps form visibility,
- * selected topic, local attachments, validation, and the placeholder success state in
- * one element. A future delivery endpoint belongs in {@link SupportTicketComponent.submitTicket}
- * so the shell and quick-help components remain independent of submission details.
+ * Used as the final child of {@link SupportSectionComponent}. The component owns reveal state,
+ * topic choice, local validation, direct attachment uploads, and submission. It waits for selected
+ * uploads to settle, sends completed attachment metadata to the backend, and shows confirmation
+ * only after the support ticket crosses the durable service boundary.
  *
  * Selector: `support-ticket`.
  */
 @Component({ selector: "support-ticket", shadow: false })
 export class SupportTicketComponent extends BaseElement {
-  /** Aborts native drop-zone listeners when this form leaves the support route. */
+  /** Aborts native drop-zone listeners so route teardown cannot leave browser handlers attached. */
   private dropController: AbortController | null = null;
-  /** Attachments held in the browser until a real submission endpoint is introduced. */
+  /** Native files kept long enough to render names and associate uploads with the form state. */
   private files: File[] = [];
-  /** Whether the handoff has revealed the message form. */
+  /** Maps each native file to the completed attachment metadata included during submission. */
+  private attachments = new Map<File, SupportTicketAttachment>();
+  /** Lets submission wait for every selected file handoff without serializing independent uploads. */
+  private pendingUploads = new Map<File, Promise<void>>();
+  /** Controls whether the handoff has revealed the message form and enabled its controls. */
   private ticketOpen = false;
-  /** Whether focus and scrolling should avoid motion after the form is opened. */
+  /** Captures the visitor preference used by the delayed focus and scroll handoff. */
   private reducedMotion = false;
 
-  /** Creates the ticket element before its optional form is rendered. */
+  /** Lets the base element construct the support form before connection wires native listeners. */
   constructor() {
     super();
   }
 
-  /** Captures motion preference and wires the native file-input and drag-drop interactions. */
+  /**
+   * Capture the motion preference and install file-input and drop-zone listeners after rendering.
+   * The abort controller keeps those native listeners tied to this element's connection lifetime.
+   */
   @OnEvent("connected", true)
   initializeTicket(): void {
     this.reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -36,16 +47,24 @@ export class SupportTicketComponent extends BaseElement {
     this.wireFileDrop();
   }
 
-  /** Removes native listeners and attachment state so a disconnected route retains no browser resources. */
+  /**
+   * Release native listeners and transient upload state when the support route disconnects.
+   * In-flight storage requests may settle independently, but their metadata cannot survive this form.
+   */
   @OnEvent("disconnected", true)
   cleanupTicket(): void {
     this.dropController?.abort();
     this.dropController = null;
     this.files = [];
+    this.attachments.clear();
+    this.pendingUploads.clear();
     this.ticketOpen = false;
   }
 
-  /** Reveals or hides the form, then moves focus to its first field when opening it. */
+  /**
+   * Toggle the quiet handoff and synchronize inert, ARIA, and focus state with the visual panel.
+   * Opening waits for the expand transition before scrolling the form into view and focusing name.
+   */
   @BindEvent({ event: "click", id: "#support-open-ticket" })
   toggleTicket(): void {
     const trigger = this.querySelector<HTMLButtonElement>("#support-open-ticket");
@@ -71,7 +90,10 @@ export class SupportTicketComponent extends BaseElement {
     }, this.reducedMotion ? 0 : 260);
   }
 
-  /** Makes one topic active at a time; selecting the active pill again clears it. */
+  /**
+   * Keep topic selection exclusive without introducing a separate form control.
+   * Clicking the active topic clears it, preserving the form's optional topic contract.
+   */
   @BindEvent({ event: "click", id: ".support-topic" })
   toggleTopic(event: MouseEvent): void {
     const topic = (event.target as HTMLElement).closest<HTMLButtonElement>(".support-topic");
@@ -86,20 +108,31 @@ export class SupportTicketComponent extends BaseElement {
     });
   }
 
-  /** Removes one locally held attachment selected by the button created with its chip. */
+  /**
+   * Remove the file represented by a rendered chip and discard its completed storage key.
+   * The direct upload itself cannot be recalled after signing, so removal only changes local form state.
+   */
   private removeFile(button: HTMLButtonElement): void {
     const index = Number(button.dataset.index);
     if (!Number.isInteger(index) || index < 0 || index >= this.files.length) {
       return;
     }
 
-    this.files.splice(index, 1);
+    const [file] = this.files.splice(index, 1);
+    if (file) {
+      this.attachments.delete(file);
+      this.pendingUploads.delete(file);
+    }
     this.renderFiles();
   }
 
-  /** Validates the local form and swaps in its confirmation without sending data to a server yet. */
+  /**
+   * Validate required fields, await selected uploads, and send the assembled support request.
+   * Submission stops when any selected attachment lacks a completed intake key, preventing the
+   * confirmation view from hiding an incomplete request.
+   */
   @BindEvent({ event: "submit", id: "#support-ticket" })
-  submitTicket(event: Event): void {
+  async submitTicket(event: Event): Promise<void> {
     event.preventDefault();
     const name = this.querySelector<HTMLInputElement>("#support-name");
     const email = this.querySelector<HTMLInputElement>("#support-email");
@@ -121,6 +154,36 @@ export class SupportTicketComponent extends BaseElement {
       return;
     }
 
+    const submitError = this.querySelector<HTMLElement>("#support-submit-error");
+    if (submitError) {
+      submitError.hidden = true;
+    }
+
+    await Promise.all(this.pendingUploads.values());
+    const topic = this.querySelector<HTMLButtonElement>(".support-topic.is-on")?.dataset.topic ?? null;
+    const files = this.files.flatMap((file) => {
+      const attachment = this.attachments.get(file);
+      return attachment ? [attachment] : [];
+    });
+    if (files.length !== this.files.length) {
+      if (submitError) {
+        submitError.hidden = false;
+      }
+      return;
+    }
+
+    try {
+      await supportTicketService.submitTicket({
+        name: name.value.trim(), email: email.value.trim(), topic,
+        message: message.value.trim(), files,
+      });
+    } catch {
+      if (submitError) {
+        submitError.hidden = false;
+      }
+      return;
+    }
+
     const form = this.querySelector<HTMLElement>("#support-ticket-fields");
     const sent = this.querySelector<HTMLElement>("#support-sent");
     const reply = this.querySelector<HTMLElement>("#support-sent-sub");
@@ -133,7 +196,10 @@ export class SupportTicketComponent extends BaseElement {
     sent.hidden = false;
   }
 
-  /** Restores the form after confirmation so the visitor can submit a separate support request. */
+  /**
+   * Clear contact, topic, attachment, and confirmation state for a fresh request.
+   * Resetting the upload-key map prevents a later request from inheriting objects from this one.
+   */
   @BindEvent({ event: "click", id: "#support-again" })
   resetTicket(): void {
     const form = this.querySelector<HTMLFormElement>("#support-ticket");
@@ -145,6 +211,8 @@ export class SupportTicketComponent extends BaseElement {
 
     form.reset();
     this.files = [];
+    this.attachments.clear();
+    this.pendingUploads.clear();
     this.renderFiles();
     this.querySelectorAll<HTMLButtonElement>(".support-topic").forEach((topic) => {
       topic.classList.remove("is-on");
@@ -152,10 +220,17 @@ export class SupportTicketComponent extends BaseElement {
     });
     sent.hidden = true;
     fields.hidden = false;
+    const submitError = this.querySelector<HTMLElement>("#support-submit-error");
+    if (submitError) {
+      submitError.hidden = true;
+    }
     this.querySelector<HTMLInputElement>("#support-name")?.focus();
   }
 
-  /** Connects file selection, keyboard activation, and drag feedback to the native file input. */
+  /**
+   * Connect the hidden file input to picker, keyboard, drag, and drop interactions.
+   * All listeners use the connection-scoped signal so repeated route mounts do not accumulate handlers.
+   */
   private wireFileDrop(): void {
     const drop = this.querySelector<HTMLElement>("#support-drop");
     const input = this.querySelector<HTMLInputElement>("#support-file-input");
@@ -192,7 +267,10 @@ export class SupportTicketComponent extends BaseElement {
     drop.addEventListener("drop", (event) => this.addFiles((event as DragEvent).dataTransfer?.files ?? null), { signal });
   }
 
-  /** Adds chosen files that satisfy the authored size and count limits, then refreshes the chip list. */
+  /**
+   * Accept files within the authored size and count limits, start their upload handoffs, and repaint.
+   * Each accepted file requests a support-scoped URL and then performs a direct PUT through the service.
+   */
   private addFiles(list: FileList | null): void {
     if (!list) {
       return;
@@ -201,12 +279,34 @@ export class SupportTicketComponent extends BaseElement {
     Array.from(list).forEach((file) => {
       if (file.size <= supportContent.maxFileBytes && this.files.length < supportContent.maxFiles) {
         this.files.push(file);
+        const upload = this.uploadFile(file);
+        this.pendingUploads.set(file, upload);
+        void upload.finally(() => this.pendingUploads.delete(file));
       }
     });
     this.renderFiles();
   }
 
-  /** Rebuilds the attachment chips from local state after a file is added, removed, or the form resets. */
+  /**
+   * Run the support attachment handoff from API authorization through storage upload.
+   * A failed request removes the key so an incomplete upload cannot be included in a future payload.
+   */
+  private async uploadFile(file: File): Promise<void> {
+    try {
+      const access = await supportTicketService.createUploadUrl(file);
+      await supportTicketService.uploadFile(file, access);
+      this.attachments.set(file, {
+        id: crypto.randomUUID(), name: file.name, size: file.size, status: "uploaded", key: access.key,
+      });
+    } catch {
+      this.attachments.delete(file);
+    }
+  }
+
+  /**
+   * Rebuild the attachment chips from current local files after selection, removal, or reset.
+   * Rendering reads state only; network work is started by {@link addFiles} before this repaint.
+   */
   private renderFiles(): void {
     const list = this.querySelector<HTMLElement>("#support-file-list");
     if (!list) {
@@ -226,7 +326,10 @@ export class SupportTicketComponent extends BaseElement {
     });
   }
 
-  /** Formats attachment bytes as the compact label displayed beside each selected file. */
+  /**
+   * Format file bytes for the compact chip label.
+   * Small files stay precise while larger values use readable KiB or MiB units for quick scanning.
+   */
   private formatSize(bytes: number): string {
     if (bytes < 1024) {
       return `${bytes} B`;
@@ -237,7 +340,11 @@ export class SupportTicketComponent extends BaseElement {
     return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
   }
 
-  /** Returns the optional form, its quiet handoff, and its local-only confirmation state. */
+  /**
+   * Render the handoff, form controls, attachment surface, and confirmation view.
+   * The template remains pure: it reads current state and authored copy while event handlers own
+   * focus, validation, uploads, and DOM transitions.
+   */
   render(): string {
     const { handoff, form, success } = supportContent;
 
@@ -264,40 +371,43 @@ export class SupportTicketComponent extends BaseElement {
 
             <div class="support-grid">
               <div class="support-field">
-                <label for="support-name" class="type-label">${form.nameLabel}</label>
-                <input id="support-name" name="name" type="text" autocomplete="name" placeholder="${form.namePlaceholder}" required />
+                <label for="support-name" class="form-label type-label">${form.nameLabel}</label>
+                <input class="form-control input-md input-rounded-md input-bordered" id="support-name" name="name" type="text" autocomplete="name" placeholder="${form.namePlaceholder}" required />
               </div>
               <div class="support-field">
-                <label for="support-email" class="type-label">${form.emailLabel} <span class="support-optional">${form.emailLabelSoft}</span></label>
-                <input id="support-email" name="email" type="email" autocomplete="email" placeholder="${form.emailPlaceholder}" required />
+                <label for="support-email" class="form-label type-label">${form.emailLabel} <span class="support-optional">${form.emailLabelSoft}</span></label>
+                <input class="form-control input-md input-rounded-md input-bordered" id="support-email" name="email" type="email" autocomplete="email" placeholder="${form.emailPlaceholder}" required />
               </div>
             </div>
 
             <div class="support-field">
-              <label class="type-label">${form.topicLabel}</label>
+              <label class="form-label type-label">${form.topicLabel}</label>
               <div class="support-topics layout-row layout-row-tight" role="group" aria-label="Topic">
-                ${form.topics.map((topic) => `<button type="button" class="support-topic" data-topic="${topic}" aria-pressed="false">${topic}</button>`).join("")}
+                ${form.topics.map((topic) => `<button type="button" class="form-choice input-sm input-round input-bordered support-topic" data-topic="${topic}" aria-pressed="false">${topic}</button>`).join("")}
               </div>
             </div>
 
             <div class="support-field">
-              <label for="support-message" class="type-label">${form.detailsLabel}</label>
-              <textarea id="support-message" name="message" placeholder="${form.detailsPlaceholder}" required></textarea>
+              <label for="support-message" class="form-label type-label">${form.detailsLabel}</label>
+              <textarea class="form-control input-md input-rounded-md input-bordered" id="support-message" name="message" placeholder="${form.detailsPlaceholder}" required></textarea>
             </div>
 
             <div class="support-field">
-              <label class="type-label">${form.dropLabel} <span class="support-optional">${form.dropLabelSoft}</span></label>
-              <div class="support-drop" id="support-drop" tabindex="0" role="button" aria-label="Add files: drag and drop or press to browse">
+              <label class="form-label type-label">${form.dropLabel} <span class="support-optional">${form.dropLabelSoft}</span></label>
+              <div class="form-upload input-lg input-rounded-md input-dashed support-drop" id="support-drop" tabindex="0" role="button" aria-label="Add files: drag and drop or press to browse">
                 <svg class="support-drop-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 16V4m0 0L8 8m4-4l4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
                 <div class="support-drop-key">${form.dropKey}</div>
                 <div class="support-drop-sub">${form.dropConstraint}</div>
-                <input type="file" id="support-file-input" multiple aria-label="Choose files" />
+                <input class="form-native input-sm input-rounded-md input-bordered" type="file" id="support-file-input" multiple aria-label="Choose files" />
               </div>
               <div class="support-files" id="support-file-list" aria-live="polite"></div>
             </div>
 
             <div class="support-ticket-foot layout-row layout-row-split">
-              <p class="support-assure">${form.assure}</p>
+              <div>
+                <p class="support-assure">${form.assure}</p>
+                <p class="support-assure" id="support-submit-error" role="alert" hidden>${form.submitError}</p>
+              </div>
               <button type="submit" class="support-submit">${form.submit}</button>
             </div>
           </div>
