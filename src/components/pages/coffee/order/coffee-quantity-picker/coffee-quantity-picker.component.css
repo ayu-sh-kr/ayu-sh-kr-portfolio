@@ -1,11 +1,9 @@
 coffee-quantity-picker { display: block; }
 .coffee-quantity-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: .7rem; }
-.coffee-quantity { min-height: 3.25rem; border: 1px solid var(--border-color); border-radius: .9rem; background: var(--surface-color); color: var(--foreground-color); cursor: pointer; font-size: 1rem; font-weight: 650; transition: transform 200ms ease, border-color 200ms ease, background-color 200ms ease, box-shadow 200ms ease; }
-.coffee-quantity:hover { border-color: var(--foreground-color); transform: translateY(-2px); }
-.coffee-quantity.is-selected { border-color: var(--primary-color); background: var(--primary-color-subtle); box-shadow: 0 0 0 1px var(--primary-color); color: var(--primary-color-strong); }
+.coffee-quantity { cursor: pointer; }
+.coffee-quantity:hover { transform: translateY(-2px); }
 .coffee-custom-quantity { display: none; align-items: center; gap: .6rem; margin-top: .9rem; color: var(--muted-color); font-size: var(--type-compact-size); }
 .coffee-custom-quantity.is-visible { display: flex; }
-.coffee-custom-quantity input { width: min(100%, 12rem); border: 1px solid var(--border-color); border-radius: .9rem; padding: .8rem 1rem; background: var(--surface-color); color: var(--foreground-color); font-size: 1rem; font-weight: 600; }
-.coffee-custom-quantity input:focus { outline: none; border-color: var(--primary-color); box-shadow: 0 0 0 2px var(--primary-color-subtle); }
+.coffee-custom-quantity input { width: min(100%, 12rem); }
 @media (max-width: 40rem) { .coffee-quantity-grid { grid-template-columns: 1fr; } }
-@media (prefers-reduced-motion: reduce) { .coffee-quantity { transition: none; } }
+@media (prefers-reduced-motion: reduce) { }

@@ -80,11 +80,11 @@ export class CoffeeQuantityPickerComponent extends BaseElement {
       <fieldset class="coffee-order-question">
         <legend><span>2</span>${content.quantityQuestion}</legend>
         <div class="coffee-quantity-grid">
-          ${coffeeContent.quantities.map((quantity) => `<button class="coffee-quantity ${!this.isCustomQuantity && quantity === this.quantity ? "is-selected" : ""}" type="button" data-coffee-quantity="${quantity}" aria-pressed="${!this.isCustomQuantity && quantity === this.quantity}">×${quantity}</button>`).join("")}
-          <button class="coffee-quantity ${this.isCustomQuantity ? "is-selected" : ""}" type="button" data-coffee-quantity="custom" aria-pressed="${this.isCustomQuantity}">${content.customLabel}</button>
+          ${coffeeContent.quantities.map((quantity) => `<button class="form-choice input-sm input-round input-bordered coffee-quantity ${!this.isCustomQuantity && quantity === this.quantity ? "is-selected" : ""}" type="button" data-coffee-quantity="${quantity}" aria-pressed="${!this.isCustomQuantity && quantity === this.quantity}">×${quantity}</button>`).join("")}
+          <button class="form-choice input-sm input-round input-bordered coffee-quantity ${this.isCustomQuantity ? "is-selected" : ""}" type="button" data-coffee-quantity="custom" aria-pressed="${this.isCustomQuantity}">${content.customLabel}</button>
         </div>
-        <label class="coffee-custom-quantity ${this.isCustomQuantity ? "is-visible" : ""}" for="coffee-custom-quantity">
-          <input id="coffee-custom-quantity" type="number" min="1" max="999" value="${this.quantity}" aria-label="Custom coffee quantity" />
+        <label class="form-label coffee-custom-quantity ${this.isCustomQuantity ? "is-visible" : ""}" for="coffee-custom-quantity">
+          <input class="form-control input-md input-rounded-md input-bordered" id="coffee-custom-quantity" type="number" min="1" max="999" value="${this.quantity}" aria-label="Custom coffee quantity" />
           <span>${content.customHint}</span>
         </label>
       </fieldset>
