@@ -470,6 +470,72 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/pages/cards/reach-out/card-deck/reach-out-card-deck/reach-out-card-deck.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "ReachOutCardDeckComponent",
+          "customElement": true,
+          "tagName": "reach-out-card-deck",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ReachOutCardDeckComponent",
+          "declaration": {
+            "name": "ReachOutCardDeckComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "reach-out-card-deck",
+          "declaration": {
+            "name": "ReachOutCardDeckComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/cards/reach-out/header/reach-out-header/reach-out-header.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "ReachOutHeaderComponent",
+          "customElement": true,
+          "tagName": "reach-out-header",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ReachOutHeaderComponent",
+          "declaration": {
+            "name": "ReachOutHeaderComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "reach-out-header",
+          "declaration": {
+            "name": "ReachOutHeaderComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/pages/coffee/closing/coffee-closing/coffee-closing.component.js",
       "declarations": [
         {
@@ -5626,6 +5692,39 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/utils/header/app-brand/app-brand.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "AppBrandComponent",
+          "customElement": true,
+          "tagName": "app-brand",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "AppBrandComponent",
+          "declaration": {
+            "name": "AppBrandComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "app-brand",
+          "declaration": {
+            "name": "AppBrandComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/utils/header/app-header/app-header.component.js",
       "declarations": [
         {
@@ -6163,6 +6262,39 @@
           "name": "blog-page",
           "declaration": {
             "name": "BlogPage"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/pages/cards/reach-out.page.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "ReachOutPage",
+          "customElement": true,
+          "tagName": "reach-out-page",
+          "superclass": {
+            "name": "DotaPageElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ReachOutPage",
+          "declaration": {
+            "name": "ReachOutPage"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "reach-out-page",
+          "declaration": {
+            "name": "ReachOutPage"
           }
         }
       ]

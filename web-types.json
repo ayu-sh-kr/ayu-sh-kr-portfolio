@@ -166,6 +166,17 @@
           }
         },
         {
+          "name": "app-brand",
+          "source": {
+            "file": "./src/components/utils/header/app-brand/app-brand.component.ts",
+            "offset": 615
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
           "name": "app-error",
           "source": {
             "file": "./src/pages/error.page.ts",
@@ -235,7 +246,7 @@
           "name": "app-header",
           "source": {
             "file": "./src/components/utils/header/app-header/app-header.component.ts",
-            "offset": 704
+            "offset": 652
           },
           "attributes": [],
           "js": {
@@ -2020,6 +2031,39 @@
           }
         },
         {
+          "name": "reach-out-card-deck",
+          "source": {
+            "file": "./src/components/pages/cards/reach-out/card-deck/reach-out-card-deck/reach-out-card-deck.component.ts",
+            "offset": 964
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "reach-out-header",
+          "source": {
+            "file": "./src/components/pages/cards/reach-out/header/reach-out-header/reach-out-header.component.ts",
+            "offset": 556
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "reach-out-page",
+          "source": {
+            "file": "./src/pages/cards/reach-out.page.ts",
+            "offset": 609
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
           "name": "scroll-hint",
           "source": {
             "file": "./src/components/utils/scroll-hint/scroll-hint.component.ts",
@@ -2502,7 +2546,7 @@
           "name": "showcase-hero",
           "source": {
             "file": "./src/components/pages/showcase/index/hero/showcase-hero/showcase-hero.component.ts",
-            "offset": 575
+            "offset": 596
           },
           "attributes": [],
           "js": {
