@@ -29,7 +29,7 @@ export class DesignInteractionFocusComponent extends BaseElement {
           </article>
           <article>
             <p class="type-label">${field.label}</p>
-            <input aria-label="${field.inputAriaLabel}" value="${field.inputValue}" />
+            <input class="form-control input-md input-rounded-md input-bordered" aria-label="${field.inputAriaLabel}" value="${field.inputValue}" />
             <button type="button" class="design-interaction-card">${field.control}</button>
             <p>${field.body}</p>
           </article>
