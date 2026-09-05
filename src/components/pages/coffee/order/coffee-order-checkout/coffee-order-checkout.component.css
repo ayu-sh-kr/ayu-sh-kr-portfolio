@@ -1,11 +1,7 @@
 coffee-order-checkout { display: block; }
 .coffee-details-card { display: grid; gap: 1.15rem; border: 1px solid var(--border-color); border-radius: 1.375rem; padding: clamp(1.4rem, 4vw, 2rem); background: var(--surface-color); }
-.coffee-details-card label { display: grid; gap: .45rem; color: var(--muted-color); font-size: var(--type-label-size); font-weight: var(--type-label-weight); letter-spacing: var(--type-label-tracking); text-transform: uppercase; }
-.coffee-details-card input, .coffee-details-card textarea { box-sizing: border-box; width: 100%; border: 1px solid var(--border-color); background: var(--surface-color); color: var(--foreground-color); font: inherit; font-size: 1rem; text-transform: none; }
-.coffee-details-card input { border-radius: 999px; padding: .75rem 1.1rem; }
-.coffee-details-card textarea { border-radius: 1rem; padding: .8rem 1.1rem; resize: vertical; }
-.coffee-details-card input::placeholder, .coffee-details-card textarea::placeholder { color: var(--muted-color); }
-.coffee-details-card input:focus, .coffee-details-card textarea:focus { outline: none; border-color: var(--primary-color); box-shadow: 0 0 0 2px var(--primary-color-subtle); }
+.coffee-details-card label { display: grid; gap: .45rem; }
+.coffee-details-card input, .coffee-details-card textarea { box-sizing: border-box; width: 100%; }
 .coffee-order-cta { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; }
 .coffee-order-cta p { max-width: 30ch; margin: 0; color: var(--muted-color); font-size: var(--type-compact-size); }
 @media (max-width: 40rem) { .coffee-order-cta { justify-content: center; text-align: center; } .coffee-order-cta p { max-width: 34ch; } }

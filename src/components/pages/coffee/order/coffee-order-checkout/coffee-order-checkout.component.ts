@@ -124,8 +124,8 @@ export class CoffeeOrderCheckoutComponent extends BaseElement {
 
     return HTML`
       <form class="coffee-details-card">
-        <label><span>${content.nameLabel}</span><input name="name" type="text" autocomplete="name" placeholder="${content.namePlaceholder}" /></label>
-        <label><span>${content.noteLabel}</span><textarea name="note" rows="3" placeholder="${content.notePlaceholder}"></textarea></label>
+        <label class="form-label form-label"><span>${content.nameLabel}</span><input class="form-control input-md input-rounded-md input-bordered" name="name" type="text" autocomplete="name" placeholder="${content.namePlaceholder}" /></label>
+        <label class="form-label form-label"><span>${content.noteLabel}</span><textarea class="form-control input-md input-rounded-md input-bordered" name="note" rows="3" placeholder="${content.notePlaceholder}"></textarea></label>
         <div class="coffee-order-cta">
           <action-button
             id="coffee-checkout-button"
