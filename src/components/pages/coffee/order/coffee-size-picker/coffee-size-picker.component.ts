@@ -53,7 +53,7 @@ export class CoffeeSizePickerComponent extends BaseElement {
         <legend><span>1</span>${content.sizeQuestion}</legend>
         <div class="coffee-pick-grid">
           ${coffeeContent.sizes.map((size) => `
-            <button class="coffee-pick ${size.id === this.selectedSizeId ? "is-selected" : ""}" type="button" data-coffee-size="${size.id}" aria-pressed="${size.id === this.selectedSizeId}">
+            <button class="form-choice input-lg input-rounded-md input-bordered coffee-pick ${size.id === this.selectedSizeId ? "is-selected" : ""}" type="button" data-coffee-size="${size.id}" aria-pressed="${size.id === this.selectedSizeId}">
               ${size.featured ? `<span class="coffee-pick-flag">${size.featured}</span>` : ""}
               <span class="coffee-pick-title"><strong>$${size.price}</strong> ${size.name}</span>
               <span class="coffee-pick-description">${size.description}</span>

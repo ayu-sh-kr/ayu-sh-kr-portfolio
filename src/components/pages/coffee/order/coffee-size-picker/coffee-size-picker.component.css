@@ -1,8 +1,7 @@
 coffee-size-picker { display: block; }
 .coffee-pick-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: .8rem; }
-.coffee-pick { position: relative; display: flex; min-height: 8.5rem; flex-direction: column; gap: .35rem; border: 1px solid var(--border-color); border-radius: 1.15rem; padding: 1.25rem; background: var(--surface-color); color: var(--foreground-color); cursor: pointer; text-align: left; transition: transform 200ms ease, border-color 200ms ease, background-color 200ms ease, box-shadow 200ms ease; }
-.coffee-pick:hover { border-color: var(--foreground-color); transform: translateY(-2px); }
-.coffee-pick.is-selected { border-color: var(--primary-color); background: var(--primary-color-subtle); box-shadow: 0 0 0 1px var(--primary-color); }
+.coffee-pick { position: relative; display: flex; min-height: 8.5rem; flex-direction: column; gap: .35rem; cursor: pointer; text-align: left; transition: transform 200ms ease, border-color 200ms ease, background-color 200ms ease, box-shadow 200ms ease; }
+.coffee-pick:hover { transform: translateY(-2px); }
 .coffee-pick::after { position: absolute; top: 1rem; right: 1rem; width: 1.05rem; height: 1.05rem; border: 1.5px solid var(--border-color); border-radius: 50%; content: ""; }
 .coffee-pick.is-selected::after { border-color: var(--primary-color); background: var(--primary-color); box-shadow: inset 0 0 0 4px var(--primary-color-on); }
 .coffee-pick-flag { position: absolute; top: 0; right: 1rem; transform: translateY(-50%); border-radius: 999px; padding: .22rem .55rem; background: var(--primary-color); color: var(--primary-color-on); font-size: .625rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
