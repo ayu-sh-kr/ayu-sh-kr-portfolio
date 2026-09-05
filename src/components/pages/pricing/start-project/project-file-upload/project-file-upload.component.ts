@@ -373,9 +373,9 @@ export class PricingProjectFileUploadComponent extends BaseElement {
     const form = pricingContent.startProject.form;
 
     return html`
-      <label class="pricing-project-file-input">
+      <label class="form-upload input-lg input-rounded-md input-dashed pricing-project-file-input">
         ${form.attachmentsLabel} <small>${form.attachmentsHint}</small>
-        <input data-project-files type="file" multiple>
+        <input class="form-native input-sm input-rounded-md input-bordered" data-project-files type="file" multiple>
         <span>${form.attachmentsPrompt}</span>
       </label>
       ${when(this.attachments.length > 0, html`

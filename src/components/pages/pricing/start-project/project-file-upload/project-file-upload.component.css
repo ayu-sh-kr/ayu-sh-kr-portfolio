@@ -4,16 +4,6 @@ pricing-project-file-upload {
 
 .pricing-project-file-input {
   position: relative;
-  min-height: 5.6rem;
-  border: 1px dashed var(--border-color);
-  border-radius: 1rem;
-  padding: 1rem;
-  transition: border-color 180ms ease, background-color 180ms ease;
-}
-
-.pricing-project-file-input:hover {
-  border-color: var(--primary-color);
-  background: var(--primary-color-subtle);
 }
 
 .pricing-project-file-input input {
