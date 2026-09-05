@@ -154,11 +154,24 @@ export const showcaseProjects: ShowcaseProject[] = [
 /** SEO content for the showcase index, shared by its page shell and cards. */
 export const showcaseSeo: PageSeoContent = {
   title: `Showcase — ${siteIdentity.domain}`,
-  description: `Selected backend systems, open-source tools, and client work by ${siteIdentity.name}.`,
-  keywords: [siteIdentity.name, "Portfolio", "Backend Engineering", "Open Source", "AWS", "TypeScript"],
+  description: `Selected websites, web products, integrations, platforms, open-source tools, and client work by ${siteIdentity.name}.`,
+  keywords: [siteIdentity.name, "Portfolio", "Website Development", "Web Applications", "Meta App Integration", "Open Source", "AWS", "TypeScript"],
   ogTitle: `Showcase — ${siteIdentity.domain}`,
-  ogDescription: `Selected backend systems, open-source tools, and client work by ${siteIdentity.name}.`,
+  ogDescription: `Selected websites, web products, integrations, platforms, open-source tools, and client work by ${siteIdentity.name}.`,
 };
+
+/** Authored copy for the showcase landing-page hero. */
+export const showcaseHeroContent = {
+  eyebrow: "Showcase",
+  titleBeforeAccent: "Things I’ve designed, built, and",
+  titleAccent: "shipped.",
+  summary: "From brand websites and product dashboards to Meta integrations, platform work, open-source tooling, and client projects, these are the things that made it out into the world.",
+  counts: {
+    projects: "projects",
+    openSource: "open source",
+    client: "client",
+  },
+} as const;
 
 /** Builds SEO content for a selected showcase article or an unknown slug. */
 export const getShowcaseSeo = (project?: Pick<ShowcaseProject, "title" | "summary">): PageSeoContent => {
@@ -168,7 +181,7 @@ export const getShowcaseSeo = (project?: Pick<ShowcaseProject, "title" | "summar
   return {
     title,
     description,
-    keywords: [siteIdentity.name, "Showcase", "Backend Engineering", "Web Components", "AWS"],
+    keywords: [siteIdentity.name, "Showcase", "Website Development", "Web Applications", "Web Components", "AWS"],
     ogTitle: title,
     ogDescription: description,
   };
@@ -196,7 +209,7 @@ export const showcaseSupport = {
   faq: [
     {
       question: "Do you take freelance work?",
-      answer: "Yes. I take on selected backend, AWS infrastructure, and applied AI projects, independently or alongside an existing team.",
+      answer: "Yes. I take on selected website, web app, dashboard, event-flow, Meta integration, AI, and platform projects, independently or alongside an existing team.",
     },
     {
       question: "Can you own a whole backend?",
