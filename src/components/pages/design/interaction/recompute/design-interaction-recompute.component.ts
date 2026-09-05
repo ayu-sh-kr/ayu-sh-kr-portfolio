@@ -46,7 +46,7 @@ export class DesignInteractionRecomputeComponent extends BaseElement {
             <p class="type-lede">${recompute.lede}</p>
           </header>
           <div class="design-interaction-estimator">
-            <label for="interaction-units">${recompute.inputLabel} <input id="interaction-units" data-interaction-units type="range" min="1" max="8" value="3" />
+            <label class="form-label form-label" for="interaction-units">${recompute.inputLabel} <input class="form-native" id="interaction-units" data-interaction-units type="range" min="1" max="8" value="3" />
             </label>
             <output id="interaction-estimate" aria-live="polite">
               <span>${recompute.investmentLabel}</span>
