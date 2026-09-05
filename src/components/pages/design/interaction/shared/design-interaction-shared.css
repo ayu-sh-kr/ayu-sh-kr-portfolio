@@ -137,15 +137,7 @@
   line-height: var(--type-compact-leading);
 }
 
-.design-interaction-pointer,
-.design-interaction-choice,
-.design-interaction-card,
-.design-interaction-flush,
-.design-interaction-row,
-.design-interaction-upload button,
-.design-interaction-state-controls button,
-.design-interaction-risk,
-.design-interaction-review {
+.design-interaction-pointer, .design-interaction-card, .design-interaction-flush, .design-interaction-row, .design-interaction-upload button, .design-interaction-state-controls button, .design-interaction-risk, .design-interaction-review {
   border: 1px solid var(--border-strong-color);
   border-radius: var(--layout-radius-sm);
   background: var(--surface-color);
@@ -154,6 +146,10 @@
   font: inherit;
   font-size: var(--type-control-size);
   font-weight: var(--type-control-weight);
+}
+
+.design-interaction-choice {
+  cursor: pointer;
 }
 
 .design-interaction-pointer {
@@ -208,9 +204,7 @@
 .design-interaction-card,
 .design-interaction-flush { padding: var(--layout-space-3) var(--layout-space-4); text-align: start; }
 .design-interaction-flush { border-inline: 0; border-block-start: 0; border-radius: 0; }
-.design-interaction-card:focus-visible,
-.design-interaction-choice:focus-visible,
-.design-interaction-upload button:focus-visible { outline-offset: 2px; }
+.design-interaction-card:focus-visible, .design-interaction-upload button:focus-visible { outline-offset: 2px; }
 .design-interaction-flush:focus-visible { outline-offset: -2px; }
 
 .design-interaction-note {
@@ -243,17 +237,11 @@
 .design-interaction-choice {
   display: grid;
   gap: var(--layout-space-1);
-  min-block-size: 8rem;
-  border-radius: var(--layout-radius-lg);
-  padding: var(--layout-pad-card);
   text-align: start;
-  transition: transform .25s cubic-bezier(.2, .8, .2, 1), border-color .25s ease, background-color .25s ease, box-shadow .25s ease;
 }
 
 .design-interaction-choice:hover,
-.design-interaction-choice:focus-visible { border-color: var(--foreground-color); transform: translateY(-2px); }
-.design-interaction-choice[aria-pressed="true"] { border-color: var(--primary-color); background: var(--primary-color-subtle); box-shadow: var(--shadow-ring); }
-.design-interaction-choice[aria-pressed="true"] > span { color: var(--primary-color-strong); }
+.design-interaction-choice:focus-visible { transform: translateY(-2px); }
 
 .design-interaction-disclosure { overflow: hidden; padding: 0; }
 .design-interaction-disclosure-button {
@@ -286,8 +274,7 @@
 
 .design-interaction-action-grid > article action-button { margin-block-start: auto; }
 .design-interaction-estimator { display: grid; overflow: hidden; }
-.design-interaction-estimator label { display: grid; align-content: center; gap: var(--layout-space-3); padding: var(--layout-pad-card); color: var(--foreground-color); font-size: var(--type-card-title-size); font-weight: var(--type-card-title-weight); }
-.design-interaction-estimator input { accent-color: var(--primary-color); }
+.design-interaction-estimator label { display: grid; align-content: center; gap: var(--layout-space-3); padding: var(--layout-pad-card); }
 .design-interaction-estimator output { display: grid; gap: var(--layout-space-2); padding: var(--layout-pad-card); background: var(--contrast-background-color); color: var(--contrast-foreground-color); }
 .design-interaction-estimator output strong { font-size: var(--type-price-size); font-variant-numeric: tabular-nums; letter-spacing: var(--type-price-tracking); }
 .design-interaction-estimator output span,
@@ -338,10 +325,7 @@
 @media (prefers-reduced-motion: reduce) {
   .design-interaction-reveal,
   .design-interaction-verb.play .design-interaction-verb-stage i { animation: none; opacity: 1; transform: translateY(-50%); }
-  .design-interaction-pointer,
-  .design-interaction-pointer strong,
-  .design-interaction-row,
-  .design-interaction-row span,
+  .design-interaction-pointer, .design-interaction-pointer strong, .design-interaction-row, .design-interaction-row span { transition-duration: .001ms; }
   .design-interaction-choice { transition-duration: .001ms; }
 }
 
