@@ -28,7 +28,7 @@ export const subscriptionVerifyContent = {
       title: "You're on the list.",
       intro: "That's the whole setup — no account, no password, nothing else to click. Here's exactly what you signed up for.",
       addressLabel: "Confirmed address",
-      body: "The Dispatch covers production backend work, delivery decisions, and lessons from recent projects. It arrives weekly, or thereabouts.",
+      body: "The Dispatch covers web products, technology delivery, and lessons from recent projects. It arrives weekly, or thereabouts.",
       facts: [
         ["What I store", "This address and the date you confirmed it. That's the whole record — no name, no company, no open or click tracking."],
         ["What arrives", "Posts and the letter when there's something worth sending. Nothing on a schedule, and nothing from anyone else."],
