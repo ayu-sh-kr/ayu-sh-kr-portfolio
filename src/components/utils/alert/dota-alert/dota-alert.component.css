@@ -136,10 +136,6 @@ dota-alert {
 }
 
 .dota-alert__field-label label {
-  font-size: var(--type-label-size);
-  font-weight: var(--type-label-weight);
-  letter-spacing: var(--type-label-tracking);
-  text-transform: uppercase;
 }
 
 .dota-alert__hint {
@@ -153,18 +149,6 @@ dota-alert {
 .dota-alert__input {
   box-sizing: border-box;
   inline-size: 100%;
-  padding: var(--layout-space-3) var(--layout-space-5);
-  color: var(--foreground-color);
-  background: var(--surface-color);
-  border: 1px solid var(--border-color);
-  border-radius: var(--layout-radius-pill);
-  font: inherit;
-  font-size: var(--type-body-size);
-}
-
-.dota-alert__input:focus-visible {
-  outline: 2px solid var(--primary-color);
-  outline-offset: 2px;
 }
 
 .dota-alert__error {
@@ -317,9 +301,6 @@ html.dota-alert-lock body {
 }
 
 @media (pointer: coarse) {
-  .dota-alert__input {
-    font-size: var(--type-body-size);
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {

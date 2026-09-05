@@ -248,10 +248,10 @@ export class DotaAlertComponent extends BaseElement implements AlertHost {
               </div>
               <div class="dota-alert__field" id="dota-alert-field" hidden>
                 <div class="dota-alert__field-label">
-                  <label for="dota-alert-input" id="dota-alert-label"></label>
+                  <label class="form-label form-label" for="dota-alert-input" id="dota-alert-label"></label>
                   <span class="dota-alert__hint" id="dota-alert-hint"></span>
                 </div>
-                <input class="dota-alert__input" id="dota-alert-input" type="text" autocomplete="off" />
+                <input class="form-control input-md input-rounded-md input-bordered dota-alert__input" id="dota-alert-input" type="text" autocomplete="off" />
               </div>
               <p class="dota-alert__error" id="dota-alert-built-in-error" role="alert" hidden></p>
             </div>
