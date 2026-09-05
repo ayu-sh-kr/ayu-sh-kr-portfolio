@@ -66,9 +66,9 @@ export class PricingProjectIdeaFormComponent extends BaseElement {
     return HTML`
       <fieldset class="pricing-project-fieldset">
         <legend>The idea</legend>
-        <label>In one line, what should it do?<input data-project-field="idea" value="${escapeHtml(this.idea)}" placeholder="Let staff take orders without a POS terminal"></label>
-        <label>Who is it for?<input data-project-field="audience" value="${escapeHtml(this.audience)}" placeholder="Floor staff, currently on pen and paper"></label>
-        <label>What does success look like?<textarea data-project-field="success" placeholder="In three months, what is measurably different?">${escapeHtml(this.success)}</textarea></label>
+        <label class="form-label form-label">In one line, what should it do?<input class="form-control input-md input-rounded-md input-bordered" data-project-field="idea" value="${escapeHtml(this.idea)}" placeholder="Let staff take orders without a POS terminal"></label>
+        <label class="form-label form-label">Who is it for?<input class="form-control input-md input-rounded-md input-bordered" data-project-field="audience" value="${escapeHtml(this.audience)}" placeholder="Floor staff, currently on pen and paper"></label>
+        <label class="form-label form-label">What does success look like?<textarea class="form-control input-md input-rounded-md input-bordered" data-project-field="success" placeholder="In three months, what is measurably different?">${escapeHtml(this.success)}</textarea></label>
       </fieldset>
     `;
   }
