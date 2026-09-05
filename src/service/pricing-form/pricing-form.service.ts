@@ -2,14 +2,16 @@ import type {
   PricingStartProjectAttachment,
   PricingStartProjectBrief,
 } from "../../events/pricing.events.ts";
+import {
+  ClientFileUploadService,
+  ClientFileUploadApiError,
+  type ClientFileUploadResponse,
+  toClientFileUploadResponse,
+} from "@app/service/client-file-upload.service.ts";
+
+export type {ClientFileUploadResponse} from "@app/service/client-file-upload.service.ts";
 
 /** Scoped upload target granted by the pricing-form backend for one attachment. */
-export interface ClientFileUploadResponse {
-  uploadUrl: string;
-  key: string;
-  expiresInSeconds?: number;
-}
-
 /** Response returned once the backend records a pricing brief. */
 export interface PricingFormSubmissionResponse {
   id: number;
@@ -28,18 +30,11 @@ export function rejectServerFailure(response: { status: number }): void {
 
 /** Validates and narrows the upload-URL payload returned by the backend. */
 export function toUploadUrlResponse(data: unknown): ClientFileUploadResponse {
-  if (!data || typeof data !== "object") {
-    throw new PricingFormApiError(0, "The upload URL response was invalid.");
+  try {
+    return toClientFileUploadResponse(data);
+  } catch (error) {
+    throw new PricingFormApiError(0, error instanceof Error ? error.message : "The upload URL response was invalid.");
   }
-  const payload = data as { uploadUrl?: unknown; key?: unknown; expiresInSeconds?: unknown };
-  if (typeof payload.uploadUrl !== "string" || typeof payload.key !== "string") {
-    throw new PricingFormApiError(0, "The upload URL response was invalid.");
-  }
-  return {
-    uploadUrl: payload.uploadUrl,
-    key: payload.key,
-    expiresInSeconds: typeof payload.expiresInSeconds === "number" ? payload.expiresInSeconds : undefined,
-  };
 }
 
 /** Validates and narrows the submission payload returned by the backend. */
@@ -133,8 +128,18 @@ export class PricingFormApiError extends Error {
   }
 }
 
+/** Adapts shared upload failures to the pricing service's established error identity. */
+function createPricingFormUploadError(status: number, message?: string): ClientFileUploadApiError {
+  const error = new ClientFileUploadApiError(status, message);
+  error.name = "PricingFormApiError";
+  return error;
+}
+
 /** Calls the pricing-form attachment endpoints and keeps transport handling in one place. */
 export class PricingFormService {
+  private readonly clientFileUploadService = new ClientFileUploadService(
+    "/pricing-form/files/upload-url", createPricingFormUploadError,
+  );
 
   /**
    * Requests a pre-signed PUT URL for one attachment.
@@ -144,20 +149,7 @@ export class PricingFormService {
    * directly to S3 without it transiting the backend.
    */
   async createUploadUrl(file: File): Promise<ClientFileUploadResponse> {
-    const response = await window.portfolioRestClient
-      .post<ClientFileUploadResponse>()
-      .uri("/pricing-form/files/upload-url")
-      .body({ fileName: file.name, contentType: file.type || "application/octet-stream" })
-      .retrieve()
-      .handler(rejectServerFailure)
-      .converter(toUploadUrlResponse)
-      .toEntity();
-
-    if (response.status < 200 || response.status >= 300) {
-      throw new PricingFormApiError(response.status, "The upload URL could not be created.");
-    }
-
-    return response.data;
+    return this.clientFileUploadService.createUploadUrl(file);
   }
 
   /**
@@ -168,15 +160,7 @@ export class PricingFormService {
    * headers the backend expects are sent so the signed URL stays valid.
    */
   async uploadFile(file: File, access: ClientFileUploadResponse): Promise<void> {
-    const response = await fetch(access.uploadUrl, {
-      method: "PUT",
-      headers: { "Content-Type": file.type || "application/octet-stream" },
-      body: file,
-    });
-
-    if (!response.ok) {
-      throw new PricingFormApiError(response.status, "The file could not be uploaded.");
-    }
+    return this.clientFileUploadService.uploadFile(file, access);
   }
 
   /**

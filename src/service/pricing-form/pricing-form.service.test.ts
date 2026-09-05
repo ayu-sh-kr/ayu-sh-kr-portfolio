@@ -137,7 +137,10 @@ describe("PricingFormService.createUploadUrl", () => {
   it("rejects non-2xx entities", async () => {
     mockRestClient({ status: 500, data: {} });
     const service = new PricingFormService();
-    await assert.rejects(service.createUploadUrl(new File(["a"], "a.txt")), isApiError);
+    await assert.rejects(
+      service.createUploadUrl(new File(["a"], "a.txt")),
+      (error: unknown) => error instanceof Error && error.name === "PricingFormApiError" && "status" in error && error.status === 500,
+    );
   });
 });
 
@@ -154,7 +157,7 @@ describe("PricingFormService.uploadFile", () => {
     const failingFetch = vi.spyOn(globalThis, "fetch").mockResolvedValue(new Response(null, { status: 403 }));
     await assert.rejects(
       service.uploadFile(new File(["body"], "a.txt"), { uploadUrl: "https://s3.example/z", key: "tmp/z" }),
-      isApiError,
+      (error: unknown) => error instanceof Error && error.name === "PricingFormApiError" && "status" in error && error.status === 403,
     );
     failingFetch.mockRestore();
   });
