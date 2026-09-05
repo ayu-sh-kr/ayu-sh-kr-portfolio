@@ -202,6 +202,7 @@ export const supportContent = {
     dropKey: "Drop files here, or <b>browse</b>",
     dropConstraint: "Images, logs, or a short screen recording · up to 10&nbsp;MB each",
     assure: "Do not include credentials, authentication tokens, payment details, or customer records.",
+    submitError: "The support request could not be sent. Please try again.",
     submit: "Send support request",
   },
 
