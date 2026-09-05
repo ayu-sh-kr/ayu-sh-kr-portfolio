@@ -3111,7 +3111,7 @@
           "name": "support-ticket",
           "source": {
             "file": "./src/components/pages/support/help/support-ticket/support-ticket.component.ts",
-            "offset": 765
+            "offset": 894
           },
           "attributes": [],
           "js": {
