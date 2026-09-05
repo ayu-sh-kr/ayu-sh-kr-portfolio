@@ -66,9 +66,9 @@ export class PricingProjectSpecFormComponent extends BaseElement {
     return HTML`
       <fieldset class="pricing-project-fieldset">
         <legend>The build</legend>
-        <label>Project name<input data-project-field="projectName" value="${escapeHtml(this.projectName)}" placeholder="Orders API v2"></label>
-        <label>Link to the spec <small>Optional</small><input data-project-field="specLink" type="url" value="${escapeHtml(this.specLink)}" placeholder="https://notion.so/…"></label>
-        <label>What the doc will not tell me<textarea data-project-field="specNotes" placeholder="The part you are least sure about.">${escapeHtml(this.specNotes)}</textarea></label>
+        <label class="form-label form-label">Project name<input class="form-control input-md input-rounded-md input-bordered" data-project-field="projectName" value="${escapeHtml(this.projectName)}" placeholder="Orders API v2"></label>
+        <label class="form-label form-label">Link to the spec <small>Optional</small><input class="form-control input-md input-rounded-md input-bordered" data-project-field="specLink" type="url" value="${escapeHtml(this.specLink)}" placeholder="https://notion.so/…"></label>
+        <label class="form-label form-label">What the doc will not tell me<textarea class="form-control input-md input-rounded-md input-bordered" data-project-field="specNotes" placeholder="The part you are least sure about.">${escapeHtml(this.specNotes)}</textarea></label>
       </fieldset>
     `;
   }
