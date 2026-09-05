@@ -1,0 +1,10 @@
+reach-out-page {
+  display: block;
+}
+
+#reach-out-main {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  block-size: 100svh;
+  min-block-size: 100svh;
+}
