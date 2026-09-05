@@ -1,14 +1,15 @@
 # ayu-sh-kr.com
 
-> The professional portfolio of Ayush Kumar, a backend engineer working with Kotlin, Spring Boot, AWS, PostgreSQL, Redis, and applied AI. It documents selected work, technical writing, services, and contact paths.
+> The professional portfolio of Ayush Kumar, a tech and product builder creating brand websites, dashboards, event forms, Meta app integrations, AI features, and the platforms behind them. It documents selected work, technical writing, services, and contact paths.
 
 ## Primary pages
 
 - [Home](https://ayu-sh-kr.com/): Professional profile, production responsibilities, selected work, and contact information.
-- [Showcase](https://ayu-sh-kr.com/showcase): Case studies covering backend systems, infrastructure, and product delivery.
-- [Blog](https://ayu-sh-kr.com/blog): Technical articles on backend engineering, cloud infrastructure, databases, and distributed systems.
+- [Showcase](https://ayu-sh-kr.com/showcase): Case studies covering websites, web products, integrations, platforms, open-source tools, and client delivery.
+- [Blog](https://ayu-sh-kr.com/blog): Technical articles on the web platform, product engineering, cloud infrastructure, databases, and distributed systems.
 - [Pricing](https://ayu-sh-kr.com/pricing): Engagement types, indicative pricing, and project-start guidance.
 - [Support](https://ayu-sh-kr.com/support): Support and project-contact routes.
+- [Reach out](https://ayu-sh-kr.com/cards/reach-out): An interactive introduction to starting a website, product, integration, AI, or platform engagement.
 
 ## Case studies
 
