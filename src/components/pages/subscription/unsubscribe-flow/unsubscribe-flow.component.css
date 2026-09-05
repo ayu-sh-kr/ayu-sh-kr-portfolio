@@ -190,12 +190,6 @@ unsubscribe-flow {
 .unsubscribe-field {
   flex: 1 1 var(--layout-col-sm);
   min-inline-size: 0;
-  padding: var(--layout-space-3) var(--layout-space-4);
-  border: 1px solid var(--border-color);
-  border-radius: var(--layout-radius-pill);
-  background: var(--background-color);
-  color: var(--foreground-color);
-  font-size: var(--type-control-size);
 }
 
 .unsubscribe-field-row .unsubscribe-act,
