@@ -1,4 +1,17 @@
-coffee-closing { display: block; }
-.coffee-invite { border-radius: 1.5rem; padding: clamp(2rem, 6vw, 3.5rem); background: var(--primary-color-subtle); text-align: center; }
-.coffee-invite h2, .coffee-invite p { margin-inline: auto; }
-.coffee-invite p { max-width: 34rem; color: var(--muted-color); }
+coffee-closing {
+  display: block;
+}
+.coffee-invite {
+  border-radius: 1.5rem;
+  padding: clamp(2rem, 6vw, 3.5rem);
+  background: var(--primary-color-subtle);
+  text-align: center;
+}
+.coffee-invite h2,
+.coffee-invite p {
+  margin-inline: auto;
+}
+.coffee-invite p {
+  max-width: 34rem;
+  color: var(--muted-color);
+}

@@ -1,11 +1,46 @@
-.design-element-showcase__heading { max-inline-size: var(--layout-reading-max); }
-.design-element-showcase__heading h2, .design-element-showcase__heading p, .design-element-specimen-card h3, .design-element-specimen-card p { margin: 0; }
-.design-element-showcase__heading h2 { margin-block: var(--layout-space-3) var(--layout-space-4); }
-.design-element-showcase__heading .type-eyebrow { color: var(--primary-color-strong); }
-.design-element-showcase__heading .type-lede, .design-element-specimen-card > p { color: var(--muted-color); }
-.design-element-showcase__grid { margin-block-start: var(--layout-space-7); }
-.design-element-specimen-card { display: flex; min-block-size: calc(var(--layout-space-10) * 2); flex-direction: column; align-items: flex-start; gap: var(--layout-space-3); padding: var(--layout-pad-card); border: 1px solid var(--border-color); border-radius: var(--layout-radius-xl); background: var(--surface-color); }
-.design-element-specimen-card .type-label { color: var(--muted-color); }
-.design-element-specimen-card[data-variant="accent"] .type-label { color: var(--primary-color-strong); }
-.design-element-specimen-card[data-variant="danger"] .type-label { color: var(--danger-color); }
-.design-element-specimen-card > p:last-of-type { font-size: var(--type-compact-size); line-height: var(--type-compact-leading); }
+.design-element-showcase__heading {
+  max-inline-size: var(--layout-reading-max);
+}
+.design-element-showcase__heading h2,
+.design-element-showcase__heading p,
+.design-element-specimen-card h3,
+.design-element-specimen-card p {
+  margin: 0;
+}
+.design-element-showcase__heading h2 {
+  margin-block: var(--layout-space-3) var(--layout-space-4);
+}
+.design-element-showcase__heading .type-eyebrow {
+  color: var(--primary-color-strong);
+}
+.design-element-showcase__heading .type-lede,
+.design-element-specimen-card > p {
+  color: var(--muted-color);
+}
+.design-element-showcase__grid {
+  margin-block-start: var(--layout-space-7);
+}
+.design-element-specimen-card {
+  display: flex;
+  min-block-size: calc(var(--layout-space-10) * 2);
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--layout-space-3);
+  padding: var(--layout-pad-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--layout-radius-xl);
+  background: var(--surface-color);
+}
+.design-element-specimen-card .type-label {
+  color: var(--muted-color);
+}
+.design-element-specimen-card[data-variant="accent"] .type-label {
+  color: var(--primary-color-strong);
+}
+.design-element-specimen-card[data-variant="danger"] .type-label {
+  color: var(--danger-color);
+}
+.design-element-specimen-card > p:last-of-type {
+  font-size: var(--type-compact-size);
+  line-height: var(--type-compact-leading);
+}

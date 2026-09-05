@@ -49,8 +49,13 @@ html.dark #site-nav {
   color: var(--primary-color-strong);
 }
 
-.app-header-desktop-links { display: none; }
-.app-header-mobile-popover { position: relative; display: block; }
+.app-header-desktop-links {
+  display: none;
+}
+.app-header-mobile-popover {
+  position: relative;
+  display: block;
+}
 
 .app-header-menu-button {
   display: inline-flex;
@@ -63,7 +68,9 @@ html.dark #site-nav {
   background: transparent;
   color: var(--foreground-color);
   cursor: pointer;
-  transition: background-color 180ms ease, color 180ms ease;
+  transition:
+    background-color 180ms ease,
+    color 180ms ease;
 }
 
 .app-header-menu-button:hover {
@@ -85,7 +92,8 @@ html.dark #site-nav {
   border: 1px solid var(--border-color);
   border-radius: 1rem;
   background: color-mix(in srgb, var(--background-color) 94%, transparent);
-  box-shadow: 0 1rem 2.5rem -1.25rem color-mix(in srgb, var(--foreground-color) 35%, transparent);
+  box-shadow: 0 1rem 2.5rem -1.25rem
+    color-mix(in srgb, var(--foreground-color) 35%, transparent);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
 }

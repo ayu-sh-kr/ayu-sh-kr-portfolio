@@ -2,7 +2,9 @@
   text-align: center;
 }
 
-.blog-hero-stage { text-align: center; }
+.blog-hero-stage {
+  text-align: center;
+}
 
 .blog-hero-inner {
   inline-size: min(100% - 3rem, 56rem);

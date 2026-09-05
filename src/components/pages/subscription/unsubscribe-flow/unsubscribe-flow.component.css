@@ -19,7 +19,10 @@ unsubscribe-flow {
   overflow-wrap: anywhere;
 }
 
-.unsubscribe-card .type-subsection { text-wrap: wrap; overflow-wrap: anywhere; }
+.unsubscribe-card .type-subsection {
+  text-wrap: wrap;
+  overflow-wrap: anywhere;
+}
 
 .unsubscribe-lead {
   color: var(--muted-color);
@@ -114,7 +117,10 @@ unsubscribe-flow {
   font-weight: var(--type-control-weight);
   line-height: 1;
   cursor: pointer;
-  transition: transform 180ms ease, border-color 180ms ease, opacity 180ms ease;
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    opacity 180ms ease;
 }
 
 .unsubscribe-act:hover:not(:disabled) {
@@ -154,7 +160,9 @@ unsubscribe-flow {
 }
 
 @keyframes unsubscribe-spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .unsubscribe-error {
@@ -194,7 +202,9 @@ unsubscribe-flow {
 
 .unsubscribe-field-row .unsubscribe-act,
 .unsubscribe-decision .unsubscribe-act,
-.unsubscribe-subscribe-again .unsubscribe-act { inline-size: 100%; }
+.unsubscribe-subscribe-again .unsubscribe-act {
+  inline-size: 100%;
+}
 
 .unsubscribe-receipt span {
   color: var(--muted-color);
@@ -258,19 +268,34 @@ unsubscribe-flow {
 }
 
 @media (min-width: 520px) {
-  .unsubscribe-hero-title { font-size: var(--type-display-size); }
-  .unsubscribe-facts li { grid-template-columns: var(--layout-col-sm) minmax(0, 1fr); gap: var(--layout-space-4); align-items: baseline; }
+  .unsubscribe-hero-title {
+    font-size: var(--type-display-size);
+  }
+  .unsubscribe-facts li {
+    grid-template-columns: var(--layout-col-sm) minmax(0, 1fr);
+    gap: var(--layout-space-4);
+    align-items: baseline;
+  }
   .unsubscribe-field-row .unsubscribe-act,
   .unsubscribe-decision .unsubscribe-act,
-  .unsubscribe-subscribe-again .unsubscribe-act { inline-size: auto; }
+  .unsubscribe-subscribe-again .unsubscribe-act {
+    inline-size: auto;
+  }
 }
 
 @media (min-width: 700px) {
-  .unsubscribe-card { padding: var(--layout-pad-panel); }
+  .unsubscribe-card {
+    padding: var(--layout-pad-panel);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .unsubscribe-spinner { animation: none; opacity: 0.5; }
+  .unsubscribe-spinner {
+    animation: none;
+    opacity: 0.5;
+  }
   .unsubscribe-act,
-  .unsubscribe-arrow { transition: none; }
+  .unsubscribe-arrow {
+    transition: none;
+  }
 }

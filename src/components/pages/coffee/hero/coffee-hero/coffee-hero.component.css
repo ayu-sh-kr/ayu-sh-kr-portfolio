@@ -1,17 +1,109 @@
-coffee-hero { display: block; }
+coffee-hero {
+  display: block;
+}
 
-#coffee-hero-stage { text-align: center; }
-#coffee-hero-inner { inline-size: 100%; max-inline-size: var(--layout-page-max); padding-inline: var(--layout-gutter); will-change: opacity, transform; }
-.coffee-eyebrow { color: var(--primary-color-strong); font-size: var(--type-eyebrow-size); font-weight: var(--type-eyebrow-weight); letter-spacing: var(--type-eyebrow-tracking); text-transform: uppercase; }
-.coffee-hero-title span { color: var(--primary-color); }
-.coffee-hero-lede { max-inline-size: var(--layout-reading-max); color: var(--muted-color); }
-.coffee-hero-trust, .coffee-scroll-hint { color: var(--muted-color); font-size: var(--type-compact-size); }
-.coffee-scroll-hint { position: absolute; inset-block-end: var(--layout-space-6); inset-inline-start: 50%; z-index: var(--layout-z-base); transform: translateX(-50%); }
-.coffee-accent-button, .coffee-ghost-button { display: inline-flex; min-block-size: var(--layout-space-6); align-items: center; justify-content: center; border-radius: var(--layout-radius-pill); padding: var(--layout-space-3) var(--layout-space-5); font-size: var(--type-control-size); font-weight: var(--type-control-weight); transition: transform 220ms cubic-bezier(.2,.8,.2,1), background-color 180ms ease, border-color 180ms ease; }
-.coffee-accent-button { background: var(--primary-color); color: var(--primary-color-on); }
-.coffee-accent-button:hover { background: var(--primary-color-hover); transform: translateY(-2px); }
-.coffee-ghost-button { border: 1px solid var(--border-color); color: var(--foreground-color); }
-.coffee-ghost-button:hover { border-color: var(--foreground-color); transform: translateY(-2px); }
-.coffee-scroll-hint::after { display: block; inline-size: 1px; block-size: var(--layout-space-6); margin-block-start: var(--layout-space-2); margin-inline: auto; background: linear-gradient(var(--muted-color), transparent); content: ""; animation: coffee-drip 1.8s ease-in-out infinite; }
-@keyframes coffee-drip { 0% { transform: scaleY(0); transform-origin: top; } 50% { transform: scaleY(1); transform-origin: top; } 51% { transform-origin: bottom; } 100% { transform: scaleY(0); transform-origin: bottom; } }
-@media (prefers-reduced-motion: reduce) { #coffee-hero-inner { transform: none !important; } .coffee-scroll-hint { display: none; } .coffee-accent-button, .coffee-ghost-button { transition: none; } }
+#coffee-hero-stage {
+  text-align: center;
+}
+#coffee-hero-inner {
+  inline-size: 100%;
+  max-inline-size: var(--layout-page-max);
+  padding-inline: var(--layout-gutter);
+  will-change: opacity, transform;
+}
+.coffee-eyebrow {
+  color: var(--primary-color-strong);
+  font-size: var(--type-eyebrow-size);
+  font-weight: var(--type-eyebrow-weight);
+  letter-spacing: var(--type-eyebrow-tracking);
+  text-transform: uppercase;
+}
+.coffee-hero-title span {
+  color: var(--primary-color);
+}
+.coffee-hero-lede {
+  max-inline-size: var(--layout-reading-max);
+  color: var(--muted-color);
+}
+.coffee-hero-trust,
+.coffee-scroll-hint {
+  color: var(--muted-color);
+  font-size: var(--type-compact-size);
+}
+.coffee-scroll-hint {
+  position: absolute;
+  inset-block-end: var(--layout-space-6);
+  inset-inline-start: 50%;
+  z-index: var(--layout-z-base);
+  transform: translateX(-50%);
+}
+.coffee-accent-button,
+.coffee-ghost-button {
+  display: inline-flex;
+  min-block-size: var(--layout-space-6);
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--layout-radius-pill);
+  padding: var(--layout-space-3) var(--layout-space-5);
+  font-size: var(--type-control-size);
+  font-weight: var(--type-control-weight);
+  transition:
+    transform 220ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    background-color 180ms ease,
+    border-color 180ms ease;
+}
+.coffee-accent-button {
+  background: var(--primary-color);
+  color: var(--primary-color-on);
+}
+.coffee-accent-button:hover {
+  background: var(--primary-color-hover);
+  transform: translateY(-2px);
+}
+.coffee-ghost-button {
+  border: 1px solid var(--border-color);
+  color: var(--foreground-color);
+}
+.coffee-ghost-button:hover {
+  border-color: var(--foreground-color);
+  transform: translateY(-2px);
+}
+.coffee-scroll-hint::after {
+  display: block;
+  inline-size: 1px;
+  block-size: var(--layout-space-6);
+  margin-block-start: var(--layout-space-2);
+  margin-inline: auto;
+  background: linear-gradient(var(--muted-color), transparent);
+  content: "";
+  animation: coffee-drip 1.8s ease-in-out infinite;
+}
+@keyframes coffee-drip {
+  0% {
+    transform: scaleY(0);
+    transform-origin: top;
+  }
+  50% {
+    transform: scaleY(1);
+    transform-origin: top;
+  }
+  51% {
+    transform-origin: bottom;
+  }
+  100% {
+    transform: scaleY(0);
+    transform-origin: bottom;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  #coffee-hero-inner {
+    transform: none !important;
+  }
+  .coffee-scroll-hint {
+    display: none;
+  }
+  .coffee-accent-button,
+  .coffee-ghost-button {
+    transition: none;
+  }
+}

@@ -1,2 +1,6 @@
-.design-button-showcase { border-block-end: 1px solid var(--border-color); }
-.design-element-specimen-card action-button { margin-block-start: auto; }
+.design-button-showcase {
+  border-block-end: 1px solid var(--border-color);
+}
+.design-element-specimen-card action-button {
+  margin-block-start: auto;
+}

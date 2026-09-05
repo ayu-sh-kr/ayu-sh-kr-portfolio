@@ -15,7 +15,9 @@
   color: var(--muted-color);
 }
 
-.design-layout-role-grid { margin-block-start: var(--layout-space-7); }
+.design-layout-role-grid {
+  margin-block-start: var(--layout-space-7);
+}
 
 .design-layout-role-card {
   display: grid;

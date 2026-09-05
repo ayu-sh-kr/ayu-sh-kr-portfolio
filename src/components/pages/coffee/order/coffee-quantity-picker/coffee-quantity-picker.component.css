@@ -1,9 +1,35 @@
-coffee-quantity-picker { display: block; }
-.coffee-quantity-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: .7rem; }
-.coffee-quantity { cursor: pointer; }
-.coffee-quantity:hover { transform: translateY(-2px); }
-.coffee-custom-quantity { display: none; align-items: center; gap: .6rem; margin-top: .9rem; color: var(--muted-color); font-size: var(--type-compact-size); }
-.coffee-custom-quantity.is-visible { display: flex; }
-.coffee-custom-quantity input { width: min(100%, 12rem); }
-@media (max-width: 40rem) { .coffee-quantity-grid { grid-template-columns: 1fr; } }
-@media (prefers-reduced-motion: reduce) { }
+coffee-quantity-picker {
+  display: block;
+}
+.coffee-quantity-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.7rem;
+}
+.coffee-quantity {
+  cursor: pointer;
+}
+.coffee-quantity:hover {
+  transform: translateY(-2px);
+}
+.coffee-custom-quantity {
+  display: none;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 0.9rem;
+  color: var(--muted-color);
+  font-size: var(--type-compact-size);
+}
+.coffee-custom-quantity.is-visible {
+  display: flex;
+}
+.coffee-custom-quantity input {
+  width: min(100%, 12rem);
+}
+@media (max-width: 40rem) {
+  .coffee-quantity-grid {
+    grid-template-columns: 1fr;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+}

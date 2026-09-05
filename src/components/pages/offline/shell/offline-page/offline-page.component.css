@@ -56,16 +56,16 @@ offline-page [hidden] {
 
 .offline-brand {
   color: var(--offline-ink);
-  font-size: .9rem;
+  font-size: 0.9rem;
   font-weight: 700;
-  letter-spacing: -.02em;
+  letter-spacing: -0.02em;
   text-decoration: none;
 }
 
 .offline-nav-status {
   color: var(--offline-soft);
-  font-size: .75rem;
-  letter-spacing: .04em;
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
 }
 
 #offline-main {
@@ -85,25 +85,27 @@ offline-page [hidden] {
 
 .offline-panel-inner {
   width: min(100%, 35rem);
-  transition: opacity 260ms ease, transform 260ms ease;
+  transition:
+    opacity 260ms ease,
+    transform 260ms ease;
   will-change: opacity, transform;
 }
 
 .offline-eyebrow {
   margin: 0;
   color: var(--offline-accent-strong);
-  font-size: .78rem;
+  font-size: 0.78rem;
   font-weight: 600;
-  letter-spacing: .09em;
+  letter-spacing: 0.09em;
   text-transform: uppercase;
 }
 
 .offline-display {
-  margin: .9rem 0 0;
+  margin: 0.9rem 0 0;
   color: var(--offline-ink);
   font-size: clamp(2.35rem, 6vw, 4rem);
   font-weight: 700;
-  letter-spacing: -.045em;
+  letter-spacing: -0.045em;
   line-height: 1.03;
 }
 
@@ -130,17 +132,17 @@ offline-page [hidden] {
 .offline-status {
   display: inline-flex;
   align-items: center;
-  gap: .65rem;
+  gap: 0.65rem;
   margin: 1.45rem 0 0;
   color: var(--offline-soft);
-  font-size: .9rem;
+  font-size: 0.9rem;
   font-weight: 600;
 }
 
 .offline-status-dot {
   position: relative;
-  width: .55rem;
-  height: .55rem;
+  width: 0.55rem;
+  height: 0.55rem;
   flex: 0 0 auto;
   border-radius: 50%;
   background: var(--offline-accent);
@@ -148,11 +150,11 @@ offline-page [hidden] {
 
 .offline-status-dot::after {
   position: absolute;
-  inset: -.35rem;
+  inset: -0.35rem;
   border: 1px solid var(--offline-accent);
   border-radius: 50%;
   content: "";
-  opacity: .5;
+  opacity: 0.5;
   animation: offline-ping 1.8s ease-in-out infinite;
 }
 
@@ -165,23 +167,31 @@ offline-page [hidden] {
 }
 
 @keyframes offline-ping {
-  0% { transform: scale(.5); opacity: .5; }
-  70% { opacity: 0; }
-  100% { transform: scale(2.6); opacity: 0; }
+  0% {
+    transform: scale(0.5);
+    opacity: 0.5;
+  }
+  70% {
+    opacity: 0;
+  }
+  100% {
+    transform: scale(2.6);
+    opacity: 0;
+  }
 }
 
 .offline-actions {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: .7rem;
+  gap: 0.7rem;
   margin-top: 2rem;
 }
 
 .offline-meta {
   margin: 1rem 0 0;
   color: var(--offline-soft);
-  font-size: .75rem;
+  font-size: 0.75rem;
   font-variant-numeric: tabular-nums;
   text-align: center;
 }
@@ -190,13 +200,13 @@ offline-page [hidden] {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: .4rem .75rem;
+  gap: 0.4rem 0.75rem;
   min-height: 4rem;
   align-items: center;
   padding: 1.2rem 1.5rem 1.5rem;
   border-top: 1px solid var(--offline-hairline);
   color: var(--offline-soft);
-  font-size: .72rem;
+  font-size: 0.72rem;
   text-align: center;
   scroll-snap-align: end;
 }
@@ -218,12 +228,12 @@ offline-page [hidden] {
   }
 
   .offline-lede {
-    margin-top: .85rem;
-    font-size: .9rem;
+    margin-top: 0.85rem;
+    font-size: 0.9rem;
   }
 
   .offline-status {
-    margin-top: .9rem;
+    margin-top: 0.9rem;
   }
 
   .offline-actions {
@@ -268,7 +278,7 @@ offline-page [hidden] {
   }
 
   .offline-lede {
-    font-size: .92rem;
+    font-size: 0.92rem;
   }
 
   .offline-actions > action-button,

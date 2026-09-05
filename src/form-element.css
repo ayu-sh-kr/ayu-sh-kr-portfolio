@@ -45,8 +45,11 @@
   display: block;
   inline-size: 100%;
   min-block-size: var(--input-height, var(--_input-height));
-  padding: var(--input-padding-block, var(--_input-py)) var(--input-padding-inline, var(--_input-px));
-  border: var(--input-border-width, var(--_input-border-width)) var(--input-border-style, var(--_input-border-style)) var(--input-border-color, var(--border-color));
+  padding: var(--input-padding-block, var(--_input-py))
+    var(--input-padding-inline, var(--_input-px));
+  border: var(--input-border-width, var(--_input-border-width))
+    var(--input-border-style, var(--_input-border-style))
+    var(--input-border-color, var(--border-color));
   border-radius: var(--input-radius, var(--_input-radius));
   background: var(--input-background, var(--background-color));
   color: var(--input-color, var(--foreground-color));
@@ -54,12 +57,16 @@
   font-weight: 400;
   line-height: var(--type-compact-leading);
   text-transform: none;
-  transition: border-color 180ms ease, background-color 180ms ease;
+  transition:
+    border-color 180ms ease,
+    background-color 180ms ease;
 }
 
 /* Search adornments share a single field boundary. */
 .form-input-group {
-  border: var(--input-border-width, var(--_input-border-width)) var(--input-border-style, var(--_input-border-style)) var(--input-border-color, var(--border-color));
+  border: var(--input-border-width, var(--_input-border-width))
+    var(--input-border-style, var(--_input-border-style))
+    var(--input-border-color, var(--border-color));
   border-radius: var(--input-radius, var(--_input-radius));
   background: var(--input-background, var(--background-color));
 }
@@ -71,14 +78,14 @@
 
 .form-input-group:focus-within {
   border-color: var(--primary-color);
-  box-shadow: 0 0 0 var(--input-ring-width, 3px) var(--input-ring-color, var(--primary-color-ring));
+  box-shadow: 0 0 0 var(--input-ring-width, 3px)
+    var(--input-ring-color, var(--primary-color-ring));
 }
 
 .form-input-group .form-control:focus {
   outline: none;
   box-shadow: none;
 }
-
 
 .form-control::placeholder {
   color: var(--muted-color);
@@ -108,7 +115,8 @@ select.form-control {
 .form-upload:focus-visible {
   border-color: var(--input-focus-color, var(--primary-color));
   outline: none;
-  box-shadow: 0 0 0 var(--input-ring-width, 3px) var(--input-ring-color, var(--primary-color-ring));
+  box-shadow: 0 0 0 var(--input-ring-width, 3px)
+    var(--input-ring-color, var(--primary-color-ring));
   background: var(--surface-color);
 }
 
@@ -135,8 +143,11 @@ select.form-control {
   justify-content: center;
   gap: var(--layout-space-2);
   min-block-size: var(--input-height, var(--_input-height));
-  padding: var(--input-padding-block, var(--_input-py)) var(--input-padding-inline, var(--_input-px));
-  border: var(--input-border-width, var(--_input-border-width)) var(--input-border-style, var(--_input-border-style)) var(--input-border-color, var(--border-color));
+  padding: var(--input-padding-block, var(--_input-py))
+    var(--input-padding-inline, var(--_input-px));
+  border: var(--input-border-width, var(--_input-border-width))
+    var(--input-border-style, var(--_input-border-style))
+    var(--input-border-color, var(--border-color));
   border-radius: var(--input-radius, var(--_input-radius));
   background: var(--input-background, var(--background-color));
   color: var(--input-color, var(--foreground-color));
@@ -146,7 +157,12 @@ select.form-control {
   cursor: pointer;
 }
 
-.form-choice:is([aria-pressed="true"], [aria-checked="true"], .is-selected, .is-on) {
+.form-choice:is(
+  [aria-pressed="true"],
+  [aria-checked="true"],
+  .is-selected,
+  .is-on
+) {
   border-color: var(--primary-color);
   background: var(--primary-color-subtle);
   color: var(--primary-color-strong);
@@ -165,8 +181,11 @@ select.form-control {
 
 .form-native[type="file"]::file-selector-button {
   margin-inline-end: var(--layout-space-3);
-  padding: var(--input-padding-block, var(--_input-py)) var(--input-padding-inline, var(--_input-px));
-  border: var(--input-border-width, var(--_input-border-width)) var(--input-border-style, var(--_input-border-style)) var(--input-border-color, var(--border-color));
+  padding: var(--input-padding-block, var(--_input-py))
+    var(--input-padding-inline, var(--_input-px));
+  border: var(--input-border-width, var(--_input-border-width))
+    var(--input-border-style, var(--_input-border-style))
+    var(--input-border-color, var(--border-color));
   border-radius: var(--input-radius, var(--_input-radius));
   background: var(--surface-color);
   color: var(--input-color, var(--foreground-color));
@@ -176,8 +195,11 @@ select.form-control {
 
 .form-upload {
   position: relative;
-  padding: var(--input-padding-block, var(--_input-py)) var(--input-padding-inline, var(--_input-px));
-  border: var(--input-border-width, var(--_input-border-width)) var(--input-border-style, var(--_input-border-style)) var(--input-border-color, var(--border-color));
+  padding: var(--input-padding-block, var(--_input-py))
+    var(--input-padding-inline, var(--_input-px));
+  border: var(--input-border-width, var(--_input-border-width))
+    var(--input-border-style, var(--_input-border-style))
+    var(--input-border-color, var(--border-color));
   border-radius: var(--input-radius, var(--_input-radius));
   background: var(--input-background, var(--background-color));
   color: var(--input-color, var(--foreground-color));
@@ -213,19 +235,32 @@ select.form-control {
   color: var(--muted-color);
 }
 
-.form-error { color: var(--danger-color); }
+.form-error {
+  color: var(--danger-color);
+}
 
 @media (prefers-reduced-motion: reduce) {
   .form-control,
   .form-choice,
-  .form-upload { transition: none; }
+  .form-upload {
+    transition: none;
+  }
 }
 
 @media (forced-colors: active) {
-  :is(.form-control:focus, .form-upload:focus-within, .form-input-group:focus-within) {
+  :is(
+    .form-control:focus,
+    .form-upload:focus-within,
+    .form-input-group:focus-within
+  ) {
     outline: 2px solid Highlight;
   }
-  .form-choice:is([aria-pressed="true"], [aria-checked="true"], .is-selected, .is-on) {
+  .form-choice:is(
+    [aria-pressed="true"],
+    [aria-checked="true"],
+    .is-selected,
+    .is-on
+  ) {
     outline: 2px solid Highlight;
     outline-offset: -4px;
   }
@@ -234,18 +269,61 @@ select.form-control {
 /* Independent scales: choose one from each axis; HTML class order is irrelevant.
  * Custom --input-* values take precedence over every preset below.
  */
-.input-xs { --_input-height: var(--layout-space-6); --_input-py: var(--layout-space-1); --_input-px: var(--layout-space-2); }
-.input-sm { --_input-height: calc(var(--layout-space-6) + var(--layout-space-2)); --_input-py: var(--layout-space-2); --_input-px: var(--layout-space-3); }
-.input-md { --_input-height: var(--layout-space-7); --_input-py: var(--layout-space-3); --_input-px: var(--layout-space-4); }
-.input-lg { --_input-height: calc(var(--layout-space-7) + var(--layout-space-2)); --_input-py: var(--layout-space-4); --_input-px: var(--layout-space-5); }
-.input-xl { --_input-height: var(--layout-space-8); --_input-py: var(--layout-space-5); --_input-px: var(--layout-space-6); }
-.input-square { --_input-radius: 0; }
-.input-rounded-xs { --_input-radius: var(--layout-radius-xs); }
-.input-rounded-sm { --_input-radius: var(--layout-radius-sm); }
-.input-rounded-md { --_input-radius: var(--layout-radius-md); }
-.input-rounded-lg { --_input-radius: var(--layout-radius-lg); }
-.input-rounded-xl { --_input-radius: var(--layout-radius-xl); }
-.input-round { --_input-radius: var(--layout-radius-pill); }
-.input-bordered { --_input-border-width: 1px; --_input-border-style: solid; }
-.input-dashed { --_input-border-width: 1px; --_input-border-style: dashed; }
-.input-borderless { --_input-border-width: 0; --_input-border-style: none; }
+.input-xs {
+  --_input-height: var(--layout-space-6);
+  --_input-py: var(--layout-space-1);
+  --_input-px: var(--layout-space-2);
+}
+.input-sm {
+  --_input-height: calc(var(--layout-space-6) + var(--layout-space-2));
+  --_input-py: var(--layout-space-2);
+  --_input-px: var(--layout-space-3);
+}
+.input-md {
+  --_input-height: var(--layout-space-7);
+  --_input-py: var(--layout-space-3);
+  --_input-px: var(--layout-space-4);
+}
+.input-lg {
+  --_input-height: calc(var(--layout-space-7) + var(--layout-space-2));
+  --_input-py: var(--layout-space-4);
+  --_input-px: var(--layout-space-5);
+}
+.input-xl {
+  --_input-height: var(--layout-space-8);
+  --_input-py: var(--layout-space-5);
+  --_input-px: var(--layout-space-6);
+}
+.input-square {
+  --_input-radius: 0;
+}
+.input-rounded-xs {
+  --_input-radius: var(--layout-radius-xs);
+}
+.input-rounded-sm {
+  --_input-radius: var(--layout-radius-sm);
+}
+.input-rounded-md {
+  --_input-radius: var(--layout-radius-md);
+}
+.input-rounded-lg {
+  --_input-radius: var(--layout-radius-lg);
+}
+.input-rounded-xl {
+  --_input-radius: var(--layout-radius-xl);
+}
+.input-round {
+  --_input-radius: var(--layout-radius-pill);
+}
+.input-bordered {
+  --_input-border-width: 1px;
+  --_input-border-style: solid;
+}
+.input-dashed {
+  --_input-border-width: 1px;
+  --_input-border-style: dashed;
+}
+.input-borderless {
+  --_input-border-width: 0;
+  --_input-border-style: none;
+}

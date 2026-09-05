@@ -1,11 +1,15 @@
-support-next-steps { display: block; }
+support-next-steps {
+  display: block;
+}
 
 .support-next-steps {
   border-block: 1px solid var(--border-color);
   background: var(--surface-color);
 }
 
-.support-next-heading { max-inline-size: var(--layout-form-max); }
+.support-next-heading {
+  max-inline-size: var(--layout-form-max);
+}
 .support-next-heading > p:last-child {
   margin-block-start: var(--layout-space-4);
   color: var(--muted-color);
@@ -26,7 +30,10 @@ support-next-steps { display: block; }
   border-block-start: 1px solid var(--border-color);
 }
 
-.support-step:first-child { padding-block-start: 0; border-block-start: 0; }
+.support-step:first-child {
+  padding-block-start: 0;
+  border-block-start: 0;
+}
 .support-step-number,
 .support-step-when {
   color: var(--primary-color-strong);
@@ -50,16 +57,37 @@ support-next-steps { display: block; }
   line-height: var(--type-compact-leading);
 }
 
-.support-step-when { display: block; margin-block-start: var(--layout-space-4); }
+.support-step-when {
+  display: block;
+  margin-block-start: var(--layout-space-4);
+}
 
 @media (min-width: 700px) {
-  .support-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .support-step { min-block-size: 13rem; padding: 0 var(--layout-space-5); border-block-start: 0; border-inline-start: 1px solid var(--border-color); }
-  .support-step:nth-child(odd) { padding-inline-start: 0; border-inline-start: 0; }
+  .support-steps {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .support-step {
+    min-block-size: 13rem;
+    padding: 0 var(--layout-space-5);
+    border-block-start: 0;
+    border-inline-start: 1px solid var(--border-color);
+  }
+  .support-step:nth-child(odd) {
+    padding-inline-start: 0;
+    border-inline-start: 0;
+  }
 }
 
 @media (min-width: 1100px) {
-  .support-steps { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-  .support-step:nth-child(n) { padding-inline-start: var(--layout-space-5); border-inline-start: 1px solid var(--border-color); }
-  .support-step:first-child { padding-inline-start: 0; border-inline-start: 0; }
+  .support-steps {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  .support-step:nth-child(n) {
+    padding-inline-start: var(--layout-space-5);
+    border-inline-start: 1px solid var(--border-color);
+  }
+  .support-step:first-child {
+    padding-inline-start: 0;
+    border-inline-start: 0;
+  }
 }

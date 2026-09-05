@@ -1,4 +1,6 @@
-support-overview { display: block; }
+support-overview {
+  display: block;
+}
 
 .support-eyebrow {
   color: var(--primary-color-strong);
@@ -13,7 +15,9 @@ support-overview { display: block; }
   margin-block-start: var(--layout-space-3);
 }
 
-.support-display span { color: var(--primary-color); }
+.support-display span {
+  color: var(--primary-color);
+}
 
 .support-overview-lede {
   max-inline-size: var(--layout-reading-max);
@@ -38,7 +42,9 @@ support-overview { display: block; }
   border-block-end: 1px solid var(--border-color);
 }
 
-.support-desk-cell:last-child { border-block-end: 0; }
+.support-desk-cell:last-child {
+  border-block-end: 0;
+}
 
 .support-desk-key {
   color: var(--muted-color);
@@ -91,20 +97,42 @@ support-overview { display: block; }
   margin-block-start: var(--layout-space-4);
 }
 
-.support-urgent a { color: var(--primary-color-strong); font-weight: 600; }
-.support-urgent a:hover { text-decoration: underline; }
+.support-urgent a {
+  color: var(--primary-color-strong);
+  font-weight: 600;
+}
+.support-urgent a:hover {
+  text-decoration: underline;
+}
 
 @keyframes support-status-ping {
-  0% { opacity: 0.7; transform: scale(0.7); }
-  80%, 100% { opacity: 0; transform: scale(1.6); }
+  0% {
+    opacity: 0.7;
+    transform: scale(0.7);
+  }
+  80%,
+  100% {
+    opacity: 0;
+    transform: scale(1.6);
+  }
 }
 
 @media (min-width: 700px) {
-  .support-desk { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .support-desk-cell { border-block-end: 0; border-inline-end: 1px solid var(--border-color); }
-  .support-desk-cell:last-child { border-inline-end: 0; }
+  .support-desk {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .support-desk-cell {
+    border-block-end: 0;
+    border-inline-end: 1px solid var(--border-color);
+  }
+  .support-desk-cell:last-child {
+    border-inline-end: 0;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .support-status-dot::after { animation: none; opacity: 0; }
+  .support-status-dot::after {
+    animation: none;
+    opacity: 0;
+  }
 }

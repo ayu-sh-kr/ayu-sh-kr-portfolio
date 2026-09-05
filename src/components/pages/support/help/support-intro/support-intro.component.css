@@ -1,5 +1,14 @@
-support-intro { display: block; }
+support-intro {
+  display: block;
+}
 
-.support-head { max-inline-size: var(--layout-form-max); }
-.support-head .support-accent { color: var(--primary-color); }
-.support-lede { margin-block-start: var(--layout-space-5); color: var(--muted-color); }
+.support-head {
+  max-inline-size: var(--layout-form-max);
+}
+.support-head .support-accent {
+  color: var(--primary-color);
+}
+.support-lede {
+  margin-block-start: var(--layout-space-5);
+  color: var(--muted-color);
+}

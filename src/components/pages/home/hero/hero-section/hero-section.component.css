@@ -3,7 +3,9 @@ portfolio-hero {
   display: block;
 }
 
-.hero-stage { text-align: center; }
+.hero-stage {
+  text-align: center;
+}
 
 @media (prefers-reduced-motion: reduce) {
   #hero-wrap {
@@ -21,5 +23,4 @@ portfolio-hero {
     opacity: 1 !important;
     transform: none !important;
   }
-
 }

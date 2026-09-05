@@ -2,7 +2,9 @@ portfolio-skills {
   display: block;
 }
 
-.skills-grid { margin-block-start: var(--layout-space-8); }
+.skills-grid {
+  margin-block-start: var(--layout-space-8);
+}
 
 .skill-group {
   min-height: 12rem;

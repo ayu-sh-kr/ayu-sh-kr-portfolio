@@ -18,16 +18,15 @@ support-faq {
   align-items: center;
   gap: var(--layout-space-3);
   margin-block-start: var(--layout-space-7);
-  padding: var(--layout-space-1) var(--layout-space-1) var(--layout-space-1) var(--layout-space-4);
+  padding: var(--layout-space-1) var(--layout-space-1) var(--layout-space-1)
+    var(--layout-space-4);
   color: var(--muted-color);
 }
-
 
 .support-faq-search input {
   inline-size: 100%;
   min-inline-size: 0;
 }
-
 
 .support-faq-search button {
   visibility: hidden;
@@ -117,4 +116,6 @@ support-faq {
   line-height: var(--type-body-leading);
 }
 
-.support-faq-empty .app-link--button { margin-block-start: var(--layout-space-5); }
+.support-faq-empty .app-link--button {
+  margin-block-start: var(--layout-space-5);
+}
