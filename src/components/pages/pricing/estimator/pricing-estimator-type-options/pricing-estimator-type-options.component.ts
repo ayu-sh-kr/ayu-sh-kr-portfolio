@@ -105,7 +105,7 @@ export class PricingEstimatorTypeOptionsComponent extends BaseElement {
           ${content.types
             .map(
               (option) => `
-                <button class="pricing-pick ${option.id === this.selectedId ? "is-selected" : ""}" type="button" data-estimator-id="${option.id}" aria-pressed="${option.id === this.selectedId}">
+                <button class="form-choice input-lg input-rounded-md input-bordered pricing-pick ${option.id === this.selectedId ? "is-selected" : ""}" type="button" data-estimator-id="${option.id}" aria-pressed="${option.id === this.selectedId}">
                   <span class="pricing-pick-icon">${option.icon}</span>
                   <span class="pricing-pick-label">${option.label}</span>
                   <span class="pricing-pick-sublabel">${option.sublabel}</span>
