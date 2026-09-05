@@ -363,7 +363,7 @@ export class PricingStartProjectComponent extends BaseElement {
       <div class="pricing-project-choices" role="group">
         ${options.map((option) => html`
           <button
-            class="pricing-project-choice ${selectedValues.includes(option) ? "is-selected" : ""}"
+            class="form-choice input-sm input-round input-bordered pricing-project-choice ${selectedValues.includes(option) ? "is-selected" : ""}"
             type="button"
             data-start-choice="${choice}"
             data-start-value="${option}"
@@ -499,20 +499,20 @@ export class PricingStartProjectComponent extends BaseElement {
                 <fieldset class="pricing-project-fieldset">
                   <legend>${form.contactLegend}</legend>
                   <div class="pricing-project-field-grid">
-                    <label>
+                    <label class="form-label form-label">
                       ${form.nameLabel}
-                      <input data-start-field="name" value="${this.brief.name}" autocomplete="name" required placeholder="${form.namePlaceholder}">
+                      <input class="form-control input-md input-rounded-md input-bordered" data-start-field="name" value="${this.brief.name}" autocomplete="name" required placeholder="${form.namePlaceholder}">
                     </label>
-                    <label>
+                    <label class="form-label form-label">
                       ${form.emailLabel}
-                      <input data-start-field="email" value="${this.brief.email}" type="email" autocomplete="email" required placeholder="${form.emailPlaceholder}">
+                      <input class="form-control input-md input-rounded-md input-bordered" data-start-field="email" value="${this.brief.email}" type="email" autocomplete="email" required placeholder="${form.emailPlaceholder}">
                     </label>
                   </div>
 
                   <div class="pricing-project-field-grid">
-                    <label>
+                    <label class="form-label form-label">
                       ${form.companyLabel} <small>${form.optionalLabel}</small>
-                      <input data-start-field="company" value="${this.brief.company}" autocomplete="organization" placeholder="${form.companyPlaceholder}">
+                      <input class="form-control input-md input-rounded-md input-bordered" data-start-field="company" value="${this.brief.company}" autocomplete="organization" placeholder="${form.companyPlaceholder}">
                     </label>
                     <div>
                       <div class="pricing-project-input-label">${form.nextStepLabel}</div>
@@ -521,7 +521,7 @@ export class PricingStartProjectComponent extends BaseElement {
                   </div>
 
                   <label class="pricing-project-checkbox">
-                    ${when(this.brief.needsNda, html`<input data-start-nda type="checkbox" checked>`, html`<input data-start-nda type="checkbox">`)}
+                    ${when(this.brief.needsNda, html`<input class="form-native" data-start-nda type="checkbox" checked>`, html`<input class="form-native" data-start-nda type="checkbox">`)}
                     <span>${form.ndaLabel}</span>
                   </label>
                 </fieldset>

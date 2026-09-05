@@ -77,64 +77,24 @@ pricing-start-project {
   text-transform: uppercase;
 }
 
-.pricing-project-form input:not([type="checkbox"]):not([type="file"]),
+.pricing-project-form input:not([type="checkbox"]):not([type="file"]) {
+  display: block;
+  width: 100%;
+  margin-top: var(--layout-space-2);
+}
+
 .pricing-project-form textarea {
   display: block;
   width: 100%;
   margin-top: var(--layout-space-2);
-  border: 1px solid var(--border-color);
-  border-radius: 0.85rem;
-  background: var(--background-color);
-  color: var(--foreground-color);
-  padding: 0.8rem 0.95rem;
-  font: inherit;
-  font-size: var(--pricing-type-body-size);
-  font-weight: 400;
-  line-height: var(--pricing-type-compact-leading);
-  transition: border-color 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
 }
 
-.pricing-project-form textarea {
-  min-height: 6.9rem;
-  resize: vertical;
-}
-
-.pricing-project-form input:not([type="checkbox"]):not([type="file"]):focus,
-.pricing-project-form textarea:focus {
-  border-color: var(--primary-color);
-  outline: 0;
-  box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary-color) 22%, transparent);
-  background: var(--surface-color);
-}
 
 .pricing-project-choices {
   display: flex;
   flex-wrap: wrap;
   gap: var(--layout-space-2);
   margin-top: var(--layout-space-2);
-}
-
-.pricing-project-choice {
-  min-height: 2.35rem;
-  border: 1px solid var(--border-color);
-  border-radius: 999px;
-  padding: 0.45rem 0.85rem;
-  color: var(--muted-color);
-  font-size: var(--pricing-type-compact-size);
-  font-weight: var(--pricing-type-control-weight);
-  line-height: var(--pricing-type-section-leading);
-  transition: border-color 180ms ease, background-color 180ms ease, color 180ms ease;
-}
-
-.pricing-project-choice:hover {
-  border-color: var(--foreground-color);
-  color: var(--foreground-color);
-}
-
-.pricing-project-choice.is-selected {
-  border-color: var(--primary-color);
-  background: var(--primary-color-subtle);
-  color: var(--primary-color-strong);
 }
 
 .pricing-project-field-grid {
@@ -162,7 +122,6 @@ pricing-start-project {
   width: 1rem;
   height: 1rem;
   margin-top: 0.15rem;
-  accent-color: var(--primary-color);
 }
 
 .pricing-project-submit {
@@ -260,10 +219,7 @@ pricing-start-project {
   margin-top: 1.5rem;
 }
 
-.pricing-start-project-section button:focus-visible,
-.pricing-start-project-section a:focus-visible,
-.pricing-start-project-section input:focus-visible,
-.pricing-start-project-section textarea:focus-visible {
+.pricing-start-project-section button:focus-visible, .pricing-start-project-section a:focus-visible {
   outline: 2px solid var(--primary-color);
   outline-offset: 3px;
 }
