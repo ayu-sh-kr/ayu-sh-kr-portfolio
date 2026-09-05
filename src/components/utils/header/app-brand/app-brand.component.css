@@ -1,0 +1,21 @@
+app-brand {
+  display: inline-block;
+}
+
+.app-brand {
+  display: inline-flex;
+  min-block-size: var(--layout-space-6);
+  align-items: center;
+  gap: var(--layout-space-2);
+  color: var(--foreground-color);
+  font-size: var(--type-compact-size);
+  font-weight: var(--type-control-weight);
+  letter-spacing: -0.02em;
+}
+
+.app-brand__mark {
+  display: block;
+  inline-size: var(--layout-space-6);
+  block-size: var(--layout-space-6);
+  flex: 0 0 auto;
+}
