@@ -55,11 +55,6 @@ pricing-estimator {
   flex-direction: column;
   align-items: flex-start;
   gap: var(--layout-space-2);
-  padding: var(--layout-pad-card);
-  border: 1px solid var(--border-color);
-  border-radius: var(--layout-radius-md);
-  background: var(--surface-color);
-  color: var(--foreground-color);
   cursor: pointer;
   text-align: left;
   transition: transform 220ms ease, border-color 180ms ease, background-color 180ms ease;
@@ -67,13 +62,6 @@ pricing-estimator {
 
 .pricing-pick:hover {
   transform: translateY(-2px);
-  border-color: var(--primary-color);
-}
-
-.pricing-pick.is-selected {
-  border-color: var(--primary-color);
-  background: var(--primary-color-subtle);
-  box-shadow: 0 0 0 1px var(--primary-color);
 }
 
 .pricing-pick.is-selected::after {
@@ -239,8 +227,11 @@ pricing-estimator {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .pricing-pick,
   .pricing-estimator-figure {
+    transition: none;
+    animation: none;
+  }
+  .pricing-pick {
     transition: none;
     animation: none;
   }
