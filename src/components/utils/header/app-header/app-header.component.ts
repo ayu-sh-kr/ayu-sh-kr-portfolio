@@ -1,7 +1,6 @@
 import { BaseElement, Component, WindowListener } from "@ayu-sh-kr/dota-wrap/core";
 import { OnEvent } from "@ayu-sh-kr/dota-wrap/event";
 import { portfolioContent } from "@app/data/portfolio-content.ts";
-import { GeneralUtils } from "@app/utils/general.utils.ts";
 
 const SCROLLED_NAV_THRESHOLD = 40;
 
@@ -9,8 +8,8 @@ const SCROLLED_NAV_THRESHOLD = 40;
  * Renders the site-wide navigation and keeps its chrome in sync with page state.
  *
  * The header is shared by the portfolio routes. Scroll updates only the nav's
- * scrolled class, while a `themeChange` event re-renders the brand mark so the
- * asset matches the current class-based theme.
+ * scrolled class; `app-brand` owns the theme-aware mark used here and by the
+ * focused page headers that do not need full navigation.
  *
  * Selector: `app-header`.
  */
@@ -50,35 +49,17 @@ export class AppHeaderComponent extends BaseElement {
   }
 
   /**
-   * Re-renders the header after the application theme changes.
-   *
-   * The mark path is derived in `render()` from the document's current dark
-   * mode, which keeps this component correct even when another control toggles
-   * the theme.
-   */
-  @WindowListener({ event: "themeChange" })
-  handleThemeChange(): void {
-    this.updateHTML();
-  }
-
-  /**
    * Builds the desktop and mobile navigation from authored portfolio content.
    *
-   * The result includes the theme-specific brand asset and shared link data;
-   * event handlers then add scroll state or refresh this complete structure only
-   * when those external inputs change.
+   * Navigation links remain authored in portfolio content, while `app-brand`
+   * supplies the shared identity and owns its theme-specific asset selection.
    */
   render(): string {
     const { nav } = portfolioContent;
-    const mark = GeneralUtils.isDarkMode() ? "mark-dark" : "mark-light";
-
     return `
       <nav id="site-nav" aria-label="Primary navigation">
         <div class="app-header-inner layout-page layout-row layout-row-split">
-          <a href="/" class="app-link app-header-brand">
-            <img class="app-header-brand-mark" src="/icons/svg/${mark}.svg" alt="" aria-hidden="true" />
-            <span>${nav.logo}</span>
-          </a>
+          <app-brand></app-brand>
           <div class="app-header-actions layout-row">
             <div class="app-header-desktop-links layout-row layout-row-loose">
               ${nav.links
