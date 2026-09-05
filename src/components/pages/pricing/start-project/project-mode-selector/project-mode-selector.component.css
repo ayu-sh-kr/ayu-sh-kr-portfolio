@@ -34,9 +34,6 @@ pricing-project-mode-selector {
 .pricing-project-mode {
   position: relative;
   min-height: 8.6rem;
-  border: 1px solid var(--border-color);
-  border-radius: 1.15rem;
-  padding: 1.35rem;
   text-align: left;
   transition: border-color 180ms ease, background-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
 }
@@ -73,14 +70,7 @@ pricing-project-mode-selector {
 }
 
 .pricing-project-mode:hover {
-  border-color: var(--foreground-color);
   transform: translateY(-2px);
-}
-
-.pricing-project-mode.is-selected {
-  border-color: var(--primary-color);
-  background: var(--primary-color-subtle);
-  box-shadow: 0 0 0 1px var(--primary-color);
 }
 
 .pricing-project-mode.is-selected::after {
