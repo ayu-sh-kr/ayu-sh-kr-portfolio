@@ -1,0 +1,251 @@
+/**
+ * Form design grammar. Import after layout and typography, before page styles.
+ * Choose size, radius and border explicitly on each control. Presets supply
+ * private values; public --input-* properties override them for custom designs.
+ * Example: form-control input-md input-round input-bordered.
+ * Keep native select arrows, date pickers, autofill and checkbox semantics.
+ * Pair invalid states with associated error text; CSS never supplies messages.
+ */
+.form-control,
+.form-choice,
+.form-upload,
+.form-native {
+  /* Registered defaults make the customization API visible to IDEs. */
+  --_input-height: var(--layout-space-7);
+  --_input-py: var(--layout-space-3);
+  --_input-px: var(--layout-space-4);
+  --_input-border-width: 1px;
+  --_input-border-style: solid;
+  --_input-border-color: var(--border-color);
+  --_input-radius: var(--layout-radius-md);
+  --_input-background: var(--background-color);
+  --_input-color: var(--foreground-color);
+  --input-height: var(--_input-height);
+  --input-padding-block: var(--_input-py);
+  --input-padding-inline: var(--_input-px);
+  --input-border-width: var(--_input-border-width);
+  --input-border-style: var(--_input-border-style);
+  --input-border-color: var(--_input-border-color);
+  --input-radius: var(--_input-radius);
+  --input-background: var(--_input-background);
+  --input-color: var(--_input-color);
+  --input-ring-width: 3px;
+  --input-ring-color: var(--primary-color-ring);
+  --input-hover-border-color: var(--border-strong-color);
+  --input-focus-color: var(--primary-color);
+  --input-placeholder-color: var(--muted-color);
+  --input-error-color: var(--danger-color);
+  box-sizing: border-box;
+  min-inline-size: 0;
+  font-family: var(--primary-font), sans-serif;
+  accent-color: var(--primary-color);
+}
+
+.form-control {
+  display: block;
+  inline-size: 100%;
+  min-block-size: var(--input-height, var(--_input-height));
+  padding: var(--input-padding-block, var(--_input-py)) var(--input-padding-inline, var(--_input-px));
+  border: var(--input-border-width, var(--_input-border-width)) var(--input-border-style, var(--_input-border-style)) var(--input-border-color, var(--border-color));
+  border-radius: var(--input-radius, var(--_input-radius));
+  background: var(--input-background, var(--background-color));
+  color: var(--input-color, var(--foreground-color));
+  font-size: max(1rem, var(--type-body-size));
+  font-weight: 400;
+  line-height: var(--type-compact-leading);
+  text-transform: none;
+  transition: border-color 180ms ease, background-color 180ms ease;
+}
+
+/* Search adornments share a single field boundary. */
+.form-input-group {
+  border: var(--input-border-width, var(--_input-border-width)) var(--input-border-style, var(--_input-border-style)) var(--input-border-color, var(--border-color));
+  border-radius: var(--input-radius, var(--_input-radius));
+  background: var(--input-background, var(--background-color));
+}
+
+.form-input-group .form-control {
+  border: 0;
+  background: transparent;
+}
+
+.form-input-group:focus-within {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 var(--input-ring-width, 3px) var(--input-ring-color, var(--primary-color-ring));
+}
+
+.form-input-group .form-control:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+
+.form-control::placeholder {
+  color: var(--muted-color);
+  opacity: 1;
+}
+
+textarea.form-control {
+  min-block-size: var(--layout-space-10);
+  resize: vertical;
+}
+
+select.form-control {
+  padding-inline-end: var(--layout-space-6);
+}
+
+.form-control:hover:not(:disabled),
+.form-choice:hover:not(:disabled),
+.form-upload:hover {
+  border-color: var(--input-hover-border-color, var(--border-strong-color));
+}
+
+.form-control:focus,
+.form-control:focus-visible,
+.form-choice:focus-visible,
+.form-native:focus-visible,
+.form-upload:focus-within,
+.form-upload:focus-visible {
+  border-color: var(--input-focus-color, var(--primary-color));
+  outline: none;
+  box-shadow: 0 0 0 var(--input-ring-width, 3px) var(--input-ring-color, var(--primary-color-ring));
+  background: var(--surface-color);
+}
+
+.form-control:where(:user-invalid, [aria-invalid="true"]),
+.is-invalid .form-control {
+  border-color: var(--danger-color);
+  border-inline-start-width: var(--layout-space-1);
+}
+
+.form-control:disabled,
+.form-choice:disabled,
+.form-native:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.form-control[readonly] {
+  background: var(--surface-color);
+}
+
+.form-choice {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--layout-space-2);
+  min-block-size: var(--input-height, var(--_input-height));
+  padding: var(--input-padding-block, var(--_input-py)) var(--input-padding-inline, var(--_input-px));
+  border: var(--input-border-width, var(--_input-border-width)) var(--input-border-style, var(--_input-border-style)) var(--input-border-color, var(--border-color));
+  border-radius: var(--input-radius, var(--_input-radius));
+  background: var(--input-background, var(--background-color));
+  color: var(--input-color, var(--foreground-color));
+  font-size: var(--type-control-size);
+  font-weight: var(--type-control-weight);
+  line-height: var(--type-compact-leading);
+  cursor: pointer;
+}
+
+.form-choice:is([aria-pressed="true"], [aria-checked="true"], .is-selected, .is-on) {
+  border-color: var(--primary-color);
+  background: var(--primary-color-subtle);
+  color: var(--primary-color-strong);
+  box-shadow: inset 0 0 0 1px var(--primary-color);
+}
+
+.form-native {
+  font-size: max(1rem, var(--type-control-size));
+}
+
+.form-native:is([type="checkbox"], [type="radio"]) {
+  flex-shrink: 0;
+  inline-size: var(--layout-space-5);
+  block-size: var(--layout-space-5);
+}
+
+.form-native[type="file"]::file-selector-button {
+  margin-inline-end: var(--layout-space-3);
+  padding: var(--input-padding-block, var(--_input-py)) var(--input-padding-inline, var(--_input-px));
+  border: var(--input-border-width, var(--_input-border-width)) var(--input-border-style, var(--_input-border-style)) var(--input-border-color, var(--border-color));
+  border-radius: var(--input-radius, var(--_input-radius));
+  background: var(--surface-color);
+  color: var(--input-color, var(--foreground-color));
+  font: inherit;
+  cursor: pointer;
+}
+
+.form-upload {
+  position: relative;
+  padding: var(--input-padding-block, var(--_input-py)) var(--input-padding-inline, var(--_input-px));
+  border: var(--input-border-width, var(--_input-border-width)) var(--input-border-style, var(--_input-border-style)) var(--input-border-color, var(--border-color));
+  border-radius: var(--input-radius, var(--_input-radius));
+  background: var(--input-background, var(--background-color));
+  color: var(--input-color, var(--foreground-color));
+}
+
+.form-upload.is-dragging {
+  border-style: solid;
+  border-color: var(--primary-color);
+  background: var(--primary-color-subtle);
+}
+
+.form-upload input[type="file"] {
+  position: absolute;
+  inset: 0;
+  inline-size: 100%;
+  block-size: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.form-label {
+  color: var(--input-color, var(--foreground-color));
+  font-size: var(--type-label-size);
+  font-weight: var(--type-label-weight);
+  letter-spacing: var(--type-label-tracking);
+  text-transform: uppercase;
+}
+
+.form-hint,
+.form-error {
+  font-size: var(--type-compact-size);
+  line-height: var(--type-compact-leading);
+  color: var(--muted-color);
+}
+
+.form-error { color: var(--danger-color); }
+
+@media (prefers-reduced-motion: reduce) {
+  .form-control,
+  .form-choice,
+  .form-upload { transition: none; }
+}
+
+@media (forced-colors: active) {
+  :is(.form-control:focus, .form-upload:focus-within, .form-input-group:focus-within) {
+    outline: 2px solid Highlight;
+  }
+  .form-choice:is([aria-pressed="true"], [aria-checked="true"], .is-selected, .is-on) {
+    outline: 2px solid Highlight;
+    outline-offset: -4px;
+  }
+}
+
+/* Independent scales: choose one from each axis; HTML class order is irrelevant.
+ * Custom --input-* values take precedence over every preset below.
+ */
+.input-xs { --_input-height: var(--layout-space-6); --_input-py: var(--layout-space-1); --_input-px: var(--layout-space-2); }
+.input-sm { --_input-height: calc(var(--layout-space-6) + var(--layout-space-2)); --_input-py: var(--layout-space-2); --_input-px: var(--layout-space-3); }
+.input-md { --_input-height: var(--layout-space-7); --_input-py: var(--layout-space-3); --_input-px: var(--layout-space-4); }
+.input-lg { --_input-height: calc(var(--layout-space-7) + var(--layout-space-2)); --_input-py: var(--layout-space-4); --_input-px: var(--layout-space-5); }
+.input-xl { --_input-height: var(--layout-space-8); --_input-py: var(--layout-space-5); --_input-px: var(--layout-space-6); }
+.input-square { --_input-radius: 0; }
+.input-rounded-xs { --_input-radius: var(--layout-radius-xs); }
+.input-rounded-sm { --_input-radius: var(--layout-radius-sm); }
+.input-rounded-md { --_input-radius: var(--layout-radius-md); }
+.input-rounded-lg { --_input-radius: var(--layout-radius-lg); }
+.input-rounded-xl { --_input-radius: var(--layout-radius-xl); }
+.input-round { --_input-radius: var(--layout-radius-pill); }
+.input-bordered { --_input-border-width: 1px; --_input-border-style: solid; }
+.input-dashed { --_input-border-width: 1px; --_input-border-style: dashed; }
+.input-borderless { --_input-border-width: 0; --_input-border-style: none; }
