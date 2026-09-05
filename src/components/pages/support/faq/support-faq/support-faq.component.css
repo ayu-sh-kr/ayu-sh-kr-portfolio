@@ -18,33 +18,16 @@ support-faq {
   align-items: center;
   gap: var(--layout-space-3);
   margin-block-start: var(--layout-space-7);
-  border: 1px solid var(--border-color);
-  border-radius: var(--layout-radius-md);
   padding: var(--layout-space-1) var(--layout-space-1) var(--layout-space-1) var(--layout-space-4);
-  background: var(--surface-color);
   color: var(--muted-color);
 }
 
-.support-faq-search:focus-within {
-  border-color: var(--primary-color);
-  box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary-color) 14%, transparent);
-}
 
 .support-faq-search input {
   inline-size: 100%;
   min-inline-size: 0;
-  border: 0;
-  padding-block: var(--layout-space-3);
-  outline: 0;
-  background: transparent;
-  color: var(--foreground-color);
-  font: inherit;
-  font-size: 1rem;
 }
 
-.support-faq-search input::placeholder {
-  color: var(--muted-strong-color);
-}
 
 .support-faq-search button {
   visibility: hidden;

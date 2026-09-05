@@ -130,9 +130,9 @@ export class SupportFaqComponent extends BaseElement {
             <h2 id="support-faq-title" class="type-section">${content.title}</h2>
             <p>${content.body}</p>
           </div>
-          <div class="support-faq-search">
+          <div class="form-input-group input-md input-rounded-md input-bordered support-faq-search">
             <span aria-hidden="true">⌕</span>
-            <input id="support-faq-search" type="search" placeholder="${content.searchPlaceholder}" aria-label="${content.searchAriaLabel}" autocomplete="off" />
+            <input class="form-control input-md input-rounded-md input-bordered" id="support-faq-search" type="search" placeholder="${content.searchPlaceholder}" aria-label="${content.searchAriaLabel}" autocomplete="off" />
             <button id="support-faq-clear" type="button" aria-label="${content.clearAriaLabel}">×</button>
           </div>
           <div class="support-faq-categories layout-row layout-row-tight" role="group" aria-label="${content.categoryAriaLabel}">
