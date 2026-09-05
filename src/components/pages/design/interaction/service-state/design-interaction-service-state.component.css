@@ -49,22 +49,6 @@
 }
 
 .design-interaction-service-state__form label {
-  color: var(--muted-color);
-  font-size: var(--type-label-size);
-  font-weight: var(--type-label-weight);
-  letter-spacing: var(--type-label-tracking);
-  text-transform: uppercase;
-}
-
-.design-interaction-service-state__form textarea {
-  min-block-size: 7rem;
-  resize: vertical;
-  padding: var(--layout-space-3);
-  border: 1px solid var(--border-color);
-  border-radius: var(--layout-radius-sm);
-  background: var(--background-color);
-  color: var(--foreground-color);
-  font: inherit;
 }
 
 .design-interaction-service-state__form button {
