@@ -24,29 +24,11 @@
 }
 
 .blog-pill {
-  min-block-size: 2.2rem;
-  border: 1px solid var(--blog-hairline);
-  border-radius: 999px;
-  padding-inline: 1rem;
-  background: transparent;
-  color: var(--blog-ink-soft);
   cursor: pointer;
-  font: inherit;
-  font-size: 0.875rem;
-  font-weight: 600;
-  transition: border-color 180ms ease, color 180ms ease, background-color 180ms ease, transform 180ms ease;
 }
 
 .blog-pill:hover {
-  border-color: var(--blog-ink);
-  color: var(--blog-ink);
   transform: translateY(-1px);
-}
-
-.blog-pill.is-active {
-  border-color: var(--blog-ink);
-  background: var(--blog-ink);
-  color: var(--blog-paper);
 }
 
 .blog-count {
@@ -68,7 +50,4 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .blog-pill {
-    transition: none;
-  }
 }

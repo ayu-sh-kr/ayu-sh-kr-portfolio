@@ -88,7 +88,7 @@ export class BlogFilterComponent extends BaseElement {
         <div class="blog-container blog-filter-inner">
           <div class="blog-filter-pills">
             ${blogFilters.map((filter) => `
-              <button class="blog-pill${this.currentFilter === filter.value ? " is-active" : ""}" type="button"
+              <button class="form-choice input-sm input-round input-bordered blog-pill${this.currentFilter === filter.value ? " is-active" : ""}" type="button"
                       data-blog-filter="${filter.value}" aria-pressed="${this.currentFilter === filter.value}">
                 ${filter.label}
               </button>
