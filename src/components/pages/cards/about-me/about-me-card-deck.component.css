@@ -1,0 +1,42 @@
+about-me-card-deck { display: block; }
+
+.about-me-deck { border-block-start: 1px solid var(--border-color); }
+.about-me-deck__stage { display: grid; min-block-size: min(42rem, 78svh); place-items: center; }
+.about-me-deck__stack { display: grid; inline-size: min(100%, 26rem); min-block-size: 24rem; touch-action: pan-y; --about-me-deck-stack-y: .9rem; --about-me-deck-stack-scale: .038; }
+.about-me-deck__stack:focus-visible { outline: 3px solid var(--primary-color-ring); outline-offset: .45rem; }
+.about-me-deck__card { position: relative; display: grid; grid-area: 1 / 1; gap: var(--layout-space-4); min-block-size: 24rem; padding: var(--layout-pad-card); border: 1px solid var(--border-color); border-radius: var(--layout-radius-xl); background: var(--surface-color); box-shadow: 0 1.4rem 3.2rem -2rem color-mix(in oklab, var(--foreground-color) 44%, transparent); transform: translate3d(var(--about-me-deck-x, 0px), calc(var(--about-me-deck-y, 0px) + var(--about-me-deck-depth, 0) * var(--about-me-deck-stack-y)), 0) rotate(calc(var(--about-me-deck-depth, 0) * var(--about-me-deck-tilt, 0deg) + var(--about-me-deck-rotation, 0deg))) scale(calc(1 - var(--about-me-deck-depth, 0) * var(--about-me-deck-stack-scale))); will-change: transform; z-index: calc(var(--layout-z-base) + 5 - var(--about-me-deck-depth, 0)); }
+.about-me-deck__card::after { position: absolute; inset: 0; border-radius: inherit; box-shadow: 0 1.8rem 3.6rem -2.4rem color-mix(in oklab, var(--foreground-color) 50%, transparent); content: ""; opacity: calc(1 - var(--about-me-deck-depth, 0) * .25); pointer-events: none; }
+.about-me-deck__card.is-animated { transition: transform var(--about-me-deck-duration, 420ms) cubic-bezier(.2, .8, .2, 1), opacity var(--about-me-deck-duration, 420ms) ease; }
+.about-me-deck__card.is-leaving { opacity: 0; }
+.about-me-deck__card.is-top { cursor: grab; }
+.about-me-deck__card.is-grabbed { cursor: grabbing; }
+.about-me-deck__card.is-grabbed * { user-select: none; }
+.about-me-deck__card.is-incoming { z-index: calc(var(--layout-z-base) + 7); }
+.about-me-deck__card h2 { margin: 0; font-size: var(--type-section-size); font-weight: 700; letter-spacing: var(--type-display-tracking); line-height: var(--type-display-leading); text-wrap: balance; }
+.about-me-deck__card h1 { margin: 0; font-size: var(--type-section-size); font-weight: 700; letter-spacing: var(--type-display-tracking); line-height: var(--type-display-leading); text-wrap: balance; }
+.about-me-deck__card h2 span { color: var(--primary-color); }
+.about-me-deck__card h1 span { color: var(--primary-color); }
+.about-me-deck__card > p, .about-me-deck__cta > p { margin: 0; color: var(--muted-color); text-wrap: pretty; }
+.about-me-deck__index, .about-me-deck__head p, .about-me-deck__plate { margin: 0; font-family: var(--font-mono); font-size: var(--type-label-size); font-weight: var(--type-label-weight); letter-spacing: var(--type-label-tracking); color: var(--muted-color); }
+.about-me-deck__head { display: flex; justify-content: space-between; gap: var(--layout-space-3); }
+.about-me-deck__head p:last-child { text-transform: uppercase; }
+.about-me-deck__plate { color: var(--foreground-color); font-size: var(--type-compact-size); }
+.about-me-deck__card--one, .about-me-deck__card--five { grid-template-rows: auto 1fr auto; }
+.about-me-deck__card--one h2 { align-self: center; }
+.about-me-deck__cta { display: grid; align-self: end; gap: var(--layout-space-3); justify-items: start; }
+.about-me-deck__card--about-intro { grid-template-rows: auto 1fr; }.about-me-deck__card--about-intro > div { align-self: center; }.about-me-deck__card--about-intro p { margin-block-start: var(--layout-space-3); }.about-me-deck__card--about-build { grid-template-rows: auto auto 1fr auto; }.about-me-deck__mono { align-self: end; color: var(--muted-color); font-family: var(--font-mono); font-size: var(--type-compact-size); }.about-me-deck__card--about-branch { grid-template-rows: auto auto 1fr; }.about-me-deck__branch { align-self: end; border-block-start: 1px solid var(--border-color); padding-block-start: var(--layout-space-3); }.about-me-deck__branch p { margin: 0 0 var(--layout-space-3); color: var(--muted-color); }.about-me-deck__branch p::before { color: var(--primary-color); content: "↳ "; }.about-me-deck__branch small { color: var(--muted-color); }.about-me-deck__card--about-close { grid-template-rows: auto auto 1fr auto; }.about-me-deck__doors { display: grid; align-self: end; gap: var(--layout-space-2); }.about-me-deck__doors a { color: var(--muted-color); font-size: var(--type-compact-size); font-weight: 600; text-decoration: none; }.about-me-deck__doors a:hover { color: var(--foreground-color); }
+.about-me-deck__card--work { grid-template-rows: auto auto auto 1fr auto; }
+.about-me-deck__card--work > a { align-self: end; border-block-start: 1px solid var(--border-color); padding-block-start: var(--layout-space-3); color: var(--muted-color); font-size: var(--type-compact-size); font-weight: 600; text-decoration: none; }
+.about-me-deck__card--work > a:hover { color: var(--foreground-color); }
+.about-me-deck__ticket { display: grid; gap: var(--layout-space-2); margin-inline-end: calc(var(--layout-pad-card) * -1); border: 1px solid var(--border-color); border-inline-end: 0; border-radius: var(--layout-radius-md) 0 0 var(--layout-radius-md); padding: var(--layout-space-3); transform: translateX(calc(var(--about-me-deck-dx, 0px) * -.18)); }
+.about-me-deck__ticket span, .about-me-deck__ticket small { color: var(--muted-color); font: var(--type-compact-size) var(--font-mono); }
+.about-me-deck__ticket b { font-size: var(--type-compact-size); font-weight: 600; }
+.about-me-deck__ticket i { position: relative; display: block; block-size: 2px; background: var(--border-color); }
+.about-me-deck__ticket em { position: absolute; inset-block: -3px; inset-inline-start: calc(var(--about-me-deck-progress, 0) * 9rem); inline-size: 8px; block-size: 8px; border-radius: 50%; background: var(--primary-color); }
+.about-me-deck__trace { block-size: 2rem; opacity: .8; background: repeating-linear-gradient(90deg, var(--border-color) 0 3px, transparent 3px 8px); mask-image: linear-gradient(90deg, #000 75%, transparent); transform: translateX(calc(var(--about-me-deck-dx, 0px) * -.25)); }
+.about-me-deck__brackets { position: absolute; inset: calc(var(--layout-space-3) - var(--about-me-deck-progress, 0) * 4px); pointer-events: none; }
+.about-me-deck__brackets i { position: absolute; inline-size: 14px; block-size: 14px; border: 1px solid var(--border-color); }
+.about-me-deck__brackets i:nth-child(1) { inset: 0 auto auto 0; border-width: 1px 0 0 1px; }.about-me-deck__brackets i:nth-child(2) { inset: 0 0 auto auto; border-width: 1px 1px 0 0; }.about-me-deck__brackets i:nth-child(3) { inset: auto auto 0 0; border-width: 0 0 1px 1px; }.about-me-deck__brackets i:nth-child(4) { inset: auto 0 0 auto; border-width: 0 1px 1px 0; }
+.about-me-deck__controls { display: grid; gap: var(--layout-space-3); justify-items: center; }.about-me-deck__controls > div, .about-me-deck__controls nav { display: flex; align-items: center; gap: var(--layout-space-2); }.about-me-deck__controls button { display: grid; inline-size: 2rem; block-size: 2rem; place-items: center; border: 1px solid var(--border-color); border-radius: 50%; background: transparent; color: var(--muted-color); cursor: pointer; }.about-me-deck__tick { border: 0 !important; border-radius: var(--layout-radius-xs) !important; }.about-me-deck__tick::before { inline-size: 100%; block-size: 2px; background: var(--border-color); content: ""; }.about-me-deck__tick[aria-current="true"]::before { block-size: 4px; background: var(--primary-color); }.about-me-deck__controls p { margin: 0; color: var(--muted-color); font-size: var(--type-compact-size); transition: opacity .3s ease; }.about-me-deck__controls p[data-retired="true"] { opacity: 0; }
+@media (max-width: 40rem) { .about-me-deck__stage { min-block-size: 32rem; }.about-me-deck__stack, .about-me-deck__card { min-block-size: 22rem; } }
+@media (prefers-reduced-motion: reduce) { .about-me-deck__card { --about-me-deck-tilt: 0deg !important; --about-me-deck-rotation: 0deg !important; --about-me-deck-dx: 0px !important; }.about-me-deck__card.is-animated, .about-me-deck__controls p { transition-duration: .01ms; } }
