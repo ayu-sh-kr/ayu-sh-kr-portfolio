@@ -1,6 +1,7 @@
 import { Component, DotaPageElement, HTML, SEO } from "@ayu-sh-kr/dota-wrap/core";
 import { Route } from "@ayu-sh-kr/dota-wrap/router";
 import { reachOutContent } from "@app/data/reach-out-content.ts";
+import { pricingContent } from "@app/data/pricing-content.ts";
 import { toSEO } from "@app/utils/seo.utils.ts";
 
 /**
@@ -25,7 +26,7 @@ export class ReachOutPage extends DotaPageElement {
   render(): string {
     return HTML`
       <main id="reach-out-main">
-        <reach-out-header></reach-out-header>
+        <card-page-header link-label="${pricingContent.startProject.eyebrow}" link-href="/pricing#pricing-start-project"></card-page-header>
         <reach-out-card-deck></reach-out-card-deck>
       </main>
     `;
