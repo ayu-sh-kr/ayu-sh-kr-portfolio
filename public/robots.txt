@@ -1,4 +1,7 @@
 User-agent: *
+# Focused card routes are public, indexable portfolio content.
+Allow: /card/
+Allow: /cards/
 Allow: /
 Disallow: /error
 Disallow: /offline

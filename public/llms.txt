@@ -10,6 +10,7 @@
 - [Pricing](https://ayu-sh-kr.com/pricing): Engagement types, indicative pricing, and project-start guidance.
 - [Support](https://ayu-sh-kr.com/support): Support and project-contact routes.
 - [Reach out](https://ayu-sh-kr.com/cards/reach-out): An interactive introduction to starting a website, product, integration, AI, or platform engagement.
+- [About me](https://ayu-sh-kr.com/card/about-me): A short card-based introduction to Ayush's engineering approach and the work he follows across backend and interface concerns.
 
 ## Case studies
 
