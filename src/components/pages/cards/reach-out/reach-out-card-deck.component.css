@@ -1,3 +1,51 @@
+@property --reach-out-stack-y {
+  syntax: "<length>";
+  inherits: true;
+  initial-value: 0.9rem;
+}
+
+@property --reach-out-stack-scale {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0.038;
+}
+
+@property --reach-out-depth {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 0;
+}
+
+@property --reach-out-x {
+  syntax: "<length-percentage>";
+  inherits: false;
+  initial-value: 0px;
+}
+
+@property --reach-out-y {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 0px;
+}
+
+@property --reach-out-tilt {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@property --reach-out-drag-rotation {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@property --reach-out-duration {
+  syntax: "<time>";
+  inherits: false;
+  initial-value: 420ms;
+}
+
 reach-out-card-deck,
 reach-out-page {
   display: grid;
@@ -40,6 +88,14 @@ reach-out-page {
 }
 
 .reach-out__card {
+  /* State-machine values written by ReachOutCardDeckComponent. */
+  --reach-out-depth: 0;
+  --reach-out-x: 0px;
+  --reach-out-y: 0px;
+  --reach-out-tilt: 0deg;
+  --reach-out-drag-rotation: 0deg;
+  --reach-out-duration: 420ms;
+
   position: relative;
   display: grid;
   grid-area: 1 / 1;
