@@ -1,8 +1,8 @@
-reach-out-header {
+card-page-header {
   display: block;
 }
 
-.reach-out-header {
+.card-page-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -10,6 +10,6 @@ reach-out-header {
   padding-block: var(--layout-space-6) var(--layout-space-4);
 }
 
-.reach-out-header__project-link {
+.card-page-header__link {
   color: var(--primary-color-strong);
 }
