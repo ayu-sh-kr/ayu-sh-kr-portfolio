@@ -1,10 +1,9 @@
 import { BaseElement, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
 import { OnEvent } from "@ayu-sh-kr/dota-wrap/event";
+import { CARD_DECK_INTERACTION, CardDeckMachine } from "@app/components/utils/card-deck/card-deck.machine.ts";
 import { reachOutContent } from "@app/data/reach-out-content.ts";
 
 const CARD_COUNT = reachOutContent.cards.length;
-const SWIPE_THRESHOLD = 88;
-const FLICK_VELOCITY = 0.45;
 const CARD_TILTS = ["-0.5deg", "0.6deg", "-0.45deg", "0.55deg"];
 
 type DragState = {
@@ -33,7 +32,8 @@ export class ReachOutCardDeckComponent extends BaseElement {
   private abortController: AbortController | null = null;
   private cards: HTMLElement[] = [];
   private ticks: HTMLButtonElement[] = [];
-  private topCardIndex = 0;
+  private readonly deckMachine = new CardDeckMachine(CARD_COUNT);
+  private unsubscribe: (() => void) | null = null;
   private drag: DragState | null = null;
   private isBusy = false;
   private hintRetired = false;
@@ -52,7 +52,7 @@ export class ReachOutCardDeckComponent extends BaseElement {
     this.cards = Array.from(this.querySelectorAll<HTMLElement>("[data-reach-out-card]")).reverse();
     this.cards.forEach((card, index) => card.style.setProperty("--reach-out-tilt", CARD_TILTS[index]));
     this.createTicks();
-    this.renderDeck();
+    this.unsubscribe = this.deckMachine.subscribe(() => this.renderDeck());
 
     const deck = this.querySelector<HTMLElement>("[data-reach-out-deck]");
     const previous = this.querySelector<HTMLButtonElement>("[data-reach-out-previous]");
@@ -75,6 +75,8 @@ export class ReachOutCardDeckComponent extends BaseElement {
   @OnEvent("disconnected", true)
   disconnectDeck(): void {
     this.abortController?.abort();
+    this.unsubscribe?.();
+    this.unsubscribe = null;
     this.abortController = null;
     this.timers.forEach((timer) => window.clearTimeout(timer));
     this.timers = [];
@@ -112,12 +114,12 @@ export class ReachOutCardDeckComponent extends BaseElement {
       card.classList.toggle("is-top", depth === 0);
       card.toggleAttribute("inert", depth !== 0);
     });
-    this.ticks.forEach((tick, index) => tick.setAttribute("aria-current", String(index === this.topCardIndex)));
+    this.ticks.forEach((tick, index) => tick.setAttribute("aria-current", String(index === this.deckMachine.top)));
 
     const liveRegion = this.querySelector<HTMLElement>("[data-reach-out-live]");
-    const title = this.cards[this.topCardIndex]?.querySelector("h1, h2")?.textContent?.trim();
+    const title = this.cards[this.deckMachine.top]?.querySelector("h1, h2")?.textContent?.trim();
     if (liveRegion) {
-      liveRegion.textContent = `Card ${this.topCardIndex + 1} of ${CARD_COUNT}. ${title ?? ""}`;
+      liveRegion.textContent = `Card ${this.deckMachine.top + 1} of ${CARD_COUNT}. ${title ?? ""}`;
     }
   }
 
@@ -127,7 +129,7 @@ export class ReachOutCardDeckComponent extends BaseElement {
       return;
     }
     this.isBusy = true;
-    const card = this.cards[this.topCardIndex];
+    const card = this.cards[this.deckMachine.top];
     const duration = Math.round(Math.max(240, Math.min(420, 340 - Math.abs(velocity) * 90)));
     card.classList.add("is-animated", "is-leaving");
     card.style.setProperty("--reach-out-duration", `${duration}ms`);
@@ -135,8 +137,7 @@ export class ReachOutCardDeckComponent extends BaseElement {
     card.style.setProperty("--reach-out-y", "40px");
     card.style.setProperty("--reach-out-drag-rotation", `${direction > 0 ? 9 : -9}deg`);
 
-    this.topCardIndex = (this.topCardIndex + 1) % CARD_COUNT;
-    this.renderDeck();
+    this.deckMachine.next();
     this.defer(() => {
       card.classList.remove("is-leaving");
       this.silently(card, () => this.setCardPosition(card, CARD_COUNT - 1));
@@ -151,7 +152,7 @@ export class ReachOutCardDeckComponent extends BaseElement {
       return;
     }
     this.isBusy = true;
-    const index = (this.topCardIndex - 1 + CARD_COUNT) % CARD_COUNT;
+    const index = (this.deckMachine.top - 1 + CARD_COUNT) % CARD_COUNT;
     const card = this.cards[index];
     card.classList.add("is-incoming");
     this.silently(card, () => {
@@ -160,8 +161,7 @@ export class ReachOutCardDeckComponent extends BaseElement {
       card.style.setProperty("--reach-out-y", "40px");
       card.style.setProperty("--reach-out-drag-rotation", "-9deg");
     });
-    this.topCardIndex = index;
-    this.renderDeck();
+    this.deckMachine.previous();
     this.defer(() => {
       card.classList.remove("is-incoming");
       this.isBusy = false;
@@ -171,19 +171,18 @@ export class ReachOutCardDeckComponent extends BaseElement {
 
   /** Uses an animated adjacent transition, or reseats the deck for a distant tick. */
   private goTo(index: number): void {
-    if (this.isBusy || index === this.topCardIndex) {
+    if (this.isBusy || index === this.deckMachine.top) {
       return;
     }
-    if (index === (this.topCardIndex + 1) % CARD_COUNT) {
+    if (index === (this.deckMachine.top + 1) % CARD_COUNT) {
       this.commitNext(1, 0);
       return;
     }
-    if (index === (this.topCardIndex - 1 + CARD_COUNT) % CARD_COUNT) {
+    if (index === (this.deckMachine.top - 1 + CARD_COUNT) % CARD_COUNT) {
       this.showPrevious();
       return;
     }
-    this.topCardIndex = index;
-    this.renderDeck();
+    this.deckMachine.select(index);
     this.retireHint();
   }
 
@@ -209,7 +208,7 @@ export class ReachOutCardDeckComponent extends BaseElement {
     if (this.isBusy || event.button !== 0) {
       return;
     }
-    const card = this.cards[this.topCardIndex];
+    const card = this.cards[this.deckMachine.top];
     const target = event.target as HTMLElement;
     if (!card.contains(target) || target.closest("a, button")) {
       return;
@@ -255,7 +254,7 @@ export class ReachOutCardDeckComponent extends BaseElement {
     this.drag.element.style.setProperty("--reach-out-y", `${this.resist(vertical) * 0.22 - 4}px`);
     this.drag.element.style.setProperty("--reach-out-drag-rotation", `${Math.max(-6, Math.min(6, x * 0.045 * this.drag.grabSign))}deg`);
 
-    const progress = Math.min(1, Math.abs(horizontal) / SWIPE_THRESHOLD);
+    const progress = Math.min(1, Math.abs(horizontal) / CARD_DECK_INTERACTION.swipeThreshold);
     this.cards.forEach((card, index) => {
       const depth = this.depthOf(index);
       if (depth === 0) {
@@ -279,7 +278,8 @@ export class ReachOutCardDeckComponent extends BaseElement {
       drag.element.classList.add("is-animated");
       return;
     }
-    const shouldCommit = Math.abs(distance) > SWIPE_THRESHOLD || (Math.abs(drag.velocity) > FLICK_VELOCITY && Math.abs(distance) > 24);
+    const shouldCommit = Math.abs(distance) > CARD_DECK_INTERACTION.swipeThreshold
+      || (Math.abs(drag.velocity) > CARD_DECK_INTERACTION.flickVelocity && Math.abs(distance) > CARD_DECK_INTERACTION.flickDistance);
     if (shouldCommit) {
       this.commitNext(distance || drag.velocity, drag.velocity);
       return;
@@ -294,7 +294,7 @@ export class ReachOutCardDeckComponent extends BaseElement {
 
   /** Returns the circular stack depth for a card index. */
   private depthOf(index: number): number {
-    return (index - this.topCardIndex + CARD_COUNT) % CARD_COUNT;
+    return (index - this.deckMachine.top + CARD_COUNT) % CARD_COUNT;
   }
 
   /** Applies a settled card position using the component-owned transform variables. */
@@ -315,7 +315,7 @@ export class ReachOutCardDeckComponent extends BaseElement {
 
   /** Limits travel after the first comfortable pull distance. */
   private resist(value: number): number {
-    const limit = 110;
+    const limit = CARD_DECK_INTERACTION.resistanceLimit;
     const magnitude = Math.abs(value);
     return magnitude <= limit ? value : Math.sign(value) * (limit + (magnitude - limit) * 0.34);
   }
