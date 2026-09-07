@@ -1,6 +1,7 @@
 export { HomePage } from "@app/pages/home.page.ts";
 export { ErrorPage } from "@app/pages/error.page.ts";
 export { ReachOutPage } from "@app/pages/cards/reach-out.page.ts";
+export { AboutMeCardPage } from "@app/pages/cards/about-me-card.page.ts";
 
 export { PricingPage } from "@app/pages/pricing/pricing.page.ts";
 export { CoffeePage } from "@app/pages/coffee.page.ts";
