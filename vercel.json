@@ -14,6 +14,11 @@
   ],
   "redirects": [
     {
+      "source": "/about",
+      "destination": "/about/",
+      "permanent": true
+    },
+    {
       "source": "/blog",
       "destination": "/blog/",
       "permanent": true
@@ -76,6 +81,16 @@
     {
       "source": "/blog/why-use-redis-channels",
       "destination": "/blog/why-use-redis-channels/",
+      "permanent": true
+    },
+    {
+      "source": "/card/about-me",
+      "destination": "/card/about-me/",
+      "permanent": true
+    },
+    {
+      "source": "/cards/reach-out",
+      "destination": "/cards/reach-out/",
       "permanent": true
     },
     {
