@@ -107,8 +107,8 @@
 @import "./components/pages/home/skills/skills-section/skills-section.component.css";
 @import "./components/pages/home/services/services-section/services-section.component.css";
 @import "./components/pages/home/contact/about-contact-section/about-contact-section.component.css";
-@import "./components/pages/cards/reach-out/header/reach-out-header/reach-out-header.component.css";
-@import "./components/pages/cards/reach-out/card-deck/reach-out-card-deck/reach-out-card-deck.component.css";
+@import "./components/pages/cards/utils/card-page-header/card-page-header.component.css";
+@import "./components/pages/cards/reach-out/reach-out-card-deck.component.css";
 @import "./pages/cards/reach-out.page.css";
 @import "./components/pages/blog/blog-shared.css";
 @import "./components/pages/blog/index/blog-index/blog-index.component.css";
@@ -122,6 +122,8 @@
 @import "./components/pages/blog/article/blog-markdown-view/blog-markdown-view.component.css";
 @import "./components/pages/showcase/index/showcase-page/showcase-page.component.css";
 @import "./components/pages/showcase/index/hero/showcase-hero/showcase-hero.component.css";
+@import "./components/pages/cards/showcase/showcase-card-deck.component.css";
+@import "./components/pages/cards/about-me/about-me-card-deck.component.css";
 @import "./components/pages/showcase/index/project-visual/showcase-visual/showcase-visual.component.css";
 @import "./components/pages/showcase/index/spotlight/showcase-spotlight/showcase-spotlight.component.css";
 @import "./components/pages/showcase/index/featured/showcase-featured/showcase-featured.component.css";
