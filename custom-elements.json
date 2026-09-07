@@ -470,7 +470,40 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/pages/cards/reach-out/card-deck/reach-out-card-deck/reach-out-card-deck.component.js",
+      "path": "src/components/pages/cards/about-me/about-me-card-deck.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "AboutMeCardDeckComponent",
+          "customElement": true,
+          "tagName": "about-me-card-deck",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "AboutMeCardDeckComponent",
+          "declaration": {
+            "name": "AboutMeCardDeckComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "about-me-card-deck",
+          "declaration": {
+            "name": "AboutMeCardDeckComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/cards/reach-out/reach-out-card-deck.component.js",
       "declarations": [
         {
           "kind": "class",
@@ -503,13 +536,13 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/pages/cards/reach-out/header/reach-out-header/reach-out-header.component.js",
+      "path": "src/components/pages/cards/showcase/showcase-card-deck.component.js",
       "declarations": [
         {
           "kind": "class",
-          "name": "ReachOutHeaderComponent",
+          "name": "ShowcaseCardDeckComponent",
           "customElement": true,
-          "tagName": "reach-out-header",
+          "tagName": "showcase-card-deck",
           "superclass": {
             "name": "BaseElement"
           },
@@ -520,16 +553,85 @@
       "exports": [
         {
           "kind": "js",
-          "name": "ReachOutHeaderComponent",
+          "name": "ShowcaseCardDeckComponent",
           "declaration": {
-            "name": "ReachOutHeaderComponent"
+            "name": "ShowcaseCardDeckComponent"
           }
         },
         {
           "kind": "custom-element-definition",
-          "name": "reach-out-header",
+          "name": "showcase-card-deck",
           "declaration": {
-            "name": "ReachOutHeaderComponent"
+            "name": "ShowcaseCardDeckComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/cards/utils/card-page-header/card-page-header.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "CardPageHeaderComponent",
+          "customElement": true,
+          "tagName": "card-page-header",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [
+            {
+              "kind": "field",
+              "name": "linkHref",
+              "attribute": "link-href",
+              "type": {
+                "text": "string"
+              },
+              "default": "/"
+            },
+            {
+              "kind": "field",
+              "name": "linkLabel",
+              "attribute": "link-label",
+              "type": {
+                "text": "string"
+              },
+              "default": ""
+            }
+          ],
+          "attributes": [
+            {
+              "name": "link-href",
+              "fieldName": "linkHref",
+              "type": {
+                "text": "string"
+              },
+              "default": "/"
+            },
+            {
+              "name": "link-label",
+              "fieldName": "linkLabel",
+              "type": {
+                "text": "string"
+              },
+              "default": ""
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "CardPageHeaderComponent",
+          "declaration": {
+            "name": "CardPageHeaderComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "card-page-header",
+          "declaration": {
+            "name": "CardPageHeaderComponent"
           }
         }
       ]
@@ -6262,6 +6364,39 @@
           "name": "blog-page",
           "declaration": {
             "name": "BlogPage"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/pages/cards/about-me-card.page.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "AboutMeCardPage",
+          "customElement": true,
+          "tagName": "about-me-card-page",
+          "superclass": {
+            "name": "DotaPageElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "AboutMeCardPage",
+          "declaration": {
+            "name": "AboutMeCardPage"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "about-me-card-page",
+          "declaration": {
+            "name": "AboutMeCardPage"
           }
         }
       ]
