@@ -1,3 +1,63 @@
+@property --about-me-deck-stack-y {
+  syntax: "<length>";
+  inherits: true;
+  initial-value: 0.9rem;
+}
+
+@property --about-me-deck-stack-scale {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0.038;
+}
+
+@property --about-me-deck-depth {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 0;
+}
+
+@property --about-me-deck-x {
+  syntax: "<length-percentage>";
+  inherits: false;
+  initial-value: 0px;
+}
+
+@property --about-me-deck-y {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 0px;
+}
+
+@property --about-me-deck-dx {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 0px;
+}
+
+@property --about-me-deck-tilt {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@property --about-me-deck-rotation {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@property --about-me-deck-progress {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 0;
+}
+
+@property --about-me-deck-duration {
+  syntax: "<time>";
+  inherits: false;
+  initial-value: 420ms;
+}
+
 about-me-card-deck { display: block; }
 
 .about-me-deck { border-block-start: 1px solid var(--border-color); }
