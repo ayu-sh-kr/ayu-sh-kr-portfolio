@@ -6370,7 +6370,7 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/pages/cards/about-me-card.page.js",
+      "path": "src/pages/cards/about-me/about-me-card.page.js",
       "declarations": [
         {
           "kind": "class",
@@ -6403,7 +6403,7 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/pages/cards/reach-out.page.js",
+      "path": "src/pages/cards/reach-out/reach-out.page.js",
       "declarations": [
         {
           "kind": "class",
@@ -6430,6 +6430,39 @@
           "name": "reach-out-page",
           "declaration": {
             "name": "ReachOutPage"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/pages/cards/showcase/showcase-card.page.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "ShowcaseCardPage",
+          "customElement": true,
+          "tagName": "showcase-card-page",
+          "superclass": {
+            "name": "DotaPageElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ShowcaseCardPage",
+          "declaration": {
+            "name": "ShowcaseCardPage"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "showcase-card-page",
+          "declaration": {
+            "name": "ShowcaseCardPage"
           }
         }
       ]
