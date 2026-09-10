@@ -72,6 +72,29 @@ export type AnalyticsSection =
 /** Blog or showcase content opened from a listing or related navigation. */
 export type AnalyticsProjectKind = "blog" | "showcase";
 
+/** Stable identities for the portfolio's pullable card-deck surfaces. */
+export type AnalyticsCardDeck = "showcase" | "about_me" | "reach_out";
+
+/** Input used to change the active card. */
+export type AnalyticsCardDeckInput = "pointer" | "button" | "keyboard" | "card_picker";
+
+/** Stable destination roles for links embedded within a card deck. */
+export type AnalyticsCardDeckLink = "cta" | "profile" | "project" | "content" | "home";
+
+const ANALYTICS_CARD_DECK_LINKS: readonly AnalyticsCardDeckLink[] = ["cta", "profile", "project", "content", "home"];
+
+/**
+ * Narrows a deck-link data attribute to the roles supported by the analytics contract.
+ *
+ * The shared card-deck lifecycle service calls this before publishing a link event, preventing
+ * unmarked or misspelled content attributes from creating an uncontrolled GA4 dimension.
+ *
+ * @param value - Raw `data-card-deck-link` value read from the clicked anchor.
+ * @returns Whether the value is a stable card-deck link role.
+ */
+export const isAnalyticsCardDeckLink = (value: string | undefined): value is AnalyticsCardDeckLink =>
+  value != null && ANALYTICS_CARD_DECK_LINKS.includes(value as AnalyticsCardDeckLink);
+
 /** Stable identifiers for forms whose completed submissions are measured. */
 export type AnalyticsFormName = "blog_subscription";
 
@@ -144,6 +167,61 @@ export type AnalyticsTrackEvent =
         section: AnalyticsSection;
         /** Route pathname without query parameters or hash fragments. */
         page_path: string;
+      };
+    }
+  | {
+      /** Records one completed pointer pull, including pulls that settle back. */
+      eventName: "card_deck_swipe";
+      /** Gesture depth is reported once on release instead of for every pointer move. */
+      params: {
+        /** Deck that received the gesture. */
+        deck: AnalyticsCardDeck;
+        /** One-based card position at which the pull began. */
+        card: number;
+        /** Number of cards available in the deck. */
+        card_count: number;
+        /** Absolute horizontal pull distance, rounded to whole CSS pixels. */
+        distance_pixels: number;
+        /** Pull distance as a percentage of the commit threshold, capped at 200%. */
+        progress_percent: number;
+        /** Whether the pull advanced to the next card. */
+        completed: boolean;
+      };
+    }
+  | {
+      /** Records a card-position change from any supported navigation input. */
+      eventName: "card_deck_navigation";
+      /** Position and input data used to measure deck consumption. */
+      params: {
+        /** Deck whose active card changed. */
+        deck: AnalyticsCardDeck;
+        /** Input that caused the position change. */
+        input: AnalyticsCardDeckInput;
+        /** One-based position before the navigation. */
+        from_card: number;
+        /** One-based position after the navigation. */
+        to_card: number;
+        /** Number of cards available in the deck. */
+        card_count: number;
+        /** Highest one-based card position seen during this visit. */
+        furthest_card_reached: number;
+      };
+    }
+  | {
+      /** Records a call-to-action, profile, project, or content link selected in a deck. */
+      eventName: "card_deck_link_click";
+      /** Stable link role and destination, with the visitor's deck progress for context. */
+      params: {
+        /** Deck that presented the link. */
+        deck: AnalyticsCardDeck;
+        /** Semantic role of the selected link. */
+        link: AnalyticsCardDeckLink;
+        /** Stable route path or external destination category; never visible copy. */
+        destination: string;
+        /** One-based active card when the link was selected. */
+        card: number;
+        /** Highest one-based card position seen during this visit. */
+        furthest_card_reached: number;
       };
     }
   | {
