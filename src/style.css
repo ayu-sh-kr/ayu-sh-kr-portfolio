@@ -109,7 +109,8 @@
 @import "./components/pages/home/contact/about-contact-section/about-contact-section.component.css";
 @import "./components/pages/cards/utils/card-page-header/card-page-header.component.css";
 @import "./components/pages/cards/reach-out/reach-out-card-deck.component.css";
-@import "./pages/cards/reach-out.page.css";
+@import "./pages/cards/reach-out/reach-out.page.css";
+@import "./pages/cards/showcase/showcase-card.page.css";
 @import "./components/pages/blog/blog-shared.css";
 @import "./components/pages/blog/index/blog-index/blog-index.component.css";
 @import "./components/pages/blog/index/hero/blog-hero/blog-hero.component.css";
