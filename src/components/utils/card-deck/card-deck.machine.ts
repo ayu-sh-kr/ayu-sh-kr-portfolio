@@ -15,7 +15,7 @@ export type CardDeckState = {
 export type CardDeckObserver = (state: CardDeckState) => void;
 
 /**
- * Holds the cyclic position of a card deck independently from its rendering.
+ * Holds the bounded position of a card deck independently from its rendering.
  *
  * Reach Out and Showcase subscribe to this same state contract, keeping their
  * pointer, keyboard, tick, and button navigation aligned as either deck evolves.
@@ -30,6 +30,16 @@ export class CardDeckMachine {
     return this.currentTop;
   }
 
+  /** Returns whether a later card exists for forward controls and leftward pulls. */
+  get canNext(): boolean {
+    return this.currentTop < this.count - 1;
+  }
+
+  /** Returns whether an earlier card exists for the restored left-arrow control. */
+  get canPrevious(): boolean {
+    return this.currentTop > 0;
+  }
+
   subscribe(observer: CardDeckObserver): () => void {
     this.observers.add(observer);
     observer(this.state(0));
@@ -37,29 +47,33 @@ export class CardDeckMachine {
   }
 
   next(): void {
-    this.go(this.currentTop + 1, 1);
+    if (this.canNext) this.go(this.currentTop + 1, 1);
   }
 
-  previous(): void {
-    this.go(this.currentTop - 1, -1);
-  }
-
-  select(index: number): void {
-    const normalized = this.normalize(index);
-    if (normalized === this.currentTop) {
+  /**
+   * Advances one card and optionally wraps the final card back to the first position.
+   *
+   * Button navigation uses the bounded {@link next} method. The shared deck lifecycle calls this
+   * method for pointer gestures so a visitor can continue swiping through a card story forever.
+   *
+   * @param wraps - When true, advance from the last card to the first card instead of stopping.
+   */
+  advance(wraps: boolean): void {
+    if (this.canNext) {
+      this.go(this.currentTop + 1, 1);
       return;
     }
+    if (wraps) this.go(0, 1);
+  }
 
-    this.go(normalized, normalized > this.currentTop ? 1 : -1);
+  /** Moves to the preceding card when the left-arrow control is available. */
+  previous(): void {
+    if (this.canPrevious) this.go(this.currentTop - 1, -1);
   }
 
   private go(index: number, direction: -1 | 1): void {
-    this.currentTop = this.normalize(index);
+    this.currentTop = index;
     this.emit(direction);
-  }
-
-  private normalize(index: number): number {
-    return (index % this.count + this.count) % this.count;
   }
 
   private emit(direction: -1 | 0 | 1): void {
