@@ -245,6 +245,7 @@ reach-out-page {
 
 .reach-out-card-deck__controls {
   display: grid;
+  inline-size: 100%;
   justify-items: center;
 }
 
@@ -258,7 +259,12 @@ reach-out-page {
 .reach-out__ticks {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: var(--layout-space-2);
+}
+
+.reach-out__navigation {
+  inline-size: 100%;
 }
 
 .reach-out__step,
@@ -273,16 +279,24 @@ reach-out-page {
 .reach-out__step {
   inline-size: 2rem;
   block-size: 2rem;
+  padding: 0;
   place-items: center;
   border: 1px solid var(--border-color);
   border-radius: var(--layout-radius-round);
+  font: inherit;
   font-size: 1rem;
+  line-height: 1;
   transition: border-color 180ms ease, color 180ms ease;
 }
 
 .reach-out__step:hover {
   border-color: var(--foreground-color);
   color: var(--foreground-color);
+}
+
+.reach-out__step:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
 }
 
 .reach-out__tick {
