@@ -20,8 +20,8 @@ export const reachOutContent = {
     label: "Reach out",
     deckAriaLabel: "Four cards. Use the arrow keys or pull the top card away.",
     hint: "Pull a card, or use the arrows",
-    previousCardAriaLabel: "Previous card",
     nextCardAriaLabel: "Next card",
+    previousCardAriaLabel: "Previous card",
     cardsAriaLabel: "Cards",
   },
 
