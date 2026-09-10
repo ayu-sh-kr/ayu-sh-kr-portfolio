@@ -26,7 +26,6 @@ export class ShowcasePageComponent extends BaseElement {
     return HTML`
       <main class="showcase-page">
         <showcase-hero data-analytics-section="showcase_hero"></showcase-hero>
-        <showcase-card-deck data-analytics-section="showcase_projects"></showcase-card-deck>
         <div class="showcase-spotlight-index" aria-hidden="true">
           ${spotlights.map((project) => `<span data-showcase-spotlight-index title="${project.title}"></span>`).join("")}
         </div>
