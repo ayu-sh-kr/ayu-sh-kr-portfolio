@@ -9,7 +9,7 @@
           "name": "about-me-card-deck",
           "source": {
             "file": "./src/components/pages/cards/about-me/about-me-card-deck.component.ts",
-            "offset": 872
+            "offset": 1161
           },
           "attributes": [],
           "js": {
@@ -19,7 +19,7 @@
         {
           "name": "about-me-card-page",
           "source": {
-            "file": "./src/pages/cards/about-me-card.page.ts",
+            "file": "./src/pages/cards/about-me/about-me-card.page.ts",
             "offset": 615
           },
           "attributes": [],
@@ -2111,7 +2111,7 @@
           "name": "reach-out-card-deck",
           "source": {
             "file": "./src/components/pages/cards/reach-out/reach-out-card-deck.component.ts",
-            "offset": 1018
+            "offset": 1197
           },
           "attributes": [],
           "js": {
@@ -2121,7 +2121,7 @@
         {
           "name": "reach-out-page",
           "source": {
-            "file": "./src/pages/cards/reach-out.page.ts",
+            "file": "./src/pages/cards/reach-out/reach-out.page.ts",
             "offset": 672
           },
           "attributes": [],
@@ -2524,7 +2524,18 @@
           "name": "showcase-card-deck",
           "source": {
             "file": "./src/components/pages/cards/showcase/showcase-card-deck.component.ts",
-            "offset": 1026
+            "offset": 1196
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "showcase-card-page",
+          "source": {
+            "file": "./src/pages/cards/showcase/showcase-card.page.ts",
+            "offset": 805
           },
           "attributes": [],
           "js": {
