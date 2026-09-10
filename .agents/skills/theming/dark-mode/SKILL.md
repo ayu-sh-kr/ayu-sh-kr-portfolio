@@ -1,6 +1,6 @@
 ---
 name: dark-mode
-description: Use when implementing, modifying, or reviewing dark mode in a Dota Wrap/Dota Web project. Covers the local convention for toggling Tailwind class-based dark mode with GeneralUtils, persisted theme preference, AppComponent startup initialization, dark-mode-button, themeChange window events, and dark: Tailwind styling.
+description: "Use when implementing, modifying, or reviewing dark mode in a Dota Wrap/Dota Web project. Covers the local convention for toggling Tailwind class-based dark mode with GeneralUtils, persisted theme preference, AppComponent startup initialization, dark-mode-button, themeChange window events, and dark: Tailwind styling."
 ---
 
 # Skill: Implementing Dark Mode with dota-core
