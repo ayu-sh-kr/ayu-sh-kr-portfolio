@@ -29,7 +29,7 @@ import {
   BindEvent,
   WindowListener,
 } from "@ayu-sh-kr/dota-wrap/core";
-import { html, keyed, when, nothing } from "@ayu-sh-kr/dota-wrap/rendering";
+import { html } from "@ayu-sh-kr/dota-wrap/rendering";
 ```
 
 Use these package surfaces by responsibility:
@@ -79,7 +79,7 @@ Conventions:
 - Use PascalCase class names with a suffix like `Component` or `Page`.
 - Keep `shadow: false` unless style isolation is explicitly required. `dota-web` relies on global Tailwind classes and dark-mode variants.
 - Include an explicit constructor that calls `super()` when matching existing component style.
-- Return a `dota-rendering` `RenderOutput` from `render()`. Use `html\`...\`` from `@ayu-sh-kr/dota-wrap/rendering`; do not use the legacy `HTML` helper from Dota Core.
+- Return `dota-rendering` output from `render()`. Use `html\`...\`` from `@ayu-sh-kr/dota-wrap/rendering` rather than the legacy `HTML` helper from Dota Core.
 
 ## Component file organization and CSS
 
@@ -191,18 +191,13 @@ async onConnected() {
 ```
 
 ```ts
-@OnEvent("connected", true)
-async onConnected() {
+@AfterInit()
+async afterViewInit() {
   // DOM and framework bindings are ready.
-}
-
-@OnEvent("disconnected", true)
-onDisconnected() {
-  // Remove external listeners, observers, timers, and pending frames.
 }
 ```
 
-Prefer scoped `@OnEvent("connected", true)` and `@OnEvent("disconnected", true)` for component lifecycle setup and teardown. Use `@AfterInit()` only for work that specifically requires the post-init hook. Avoid `disconnectedCallback()` overrides unless the framework decorator cannot express the required behavior, and never do DOM work in the constructor.
+Use `@OnEvent("connected", true)` when matching existing app event style. Use `@AfterInit()` for direct component setup after the first render. In either case, avoid doing DOM work in the constructor.
 
 ## Events
 
@@ -243,29 +238,21 @@ Use native `CustomEvent`s for browser-level concerns like `themeChange` and `onP
 
 ## Rendering and Styling
 
-Render components with the structured `@ayu-sh-kr/dota-rendering` primitives. Most components use Tailwind utilities directly in the returned template.
+Render markup with structured `dota-rendering` templates. Most components use Tailwind utilities directly in the returned template.
 
 ```ts
-import { html, nothing, when } from "@ayu-sh-kr/dota-wrap/rendering";
-
 render() {
+  const icon = GeneralUtils.isDarkMode()
+    ? "material-symbols:dark-mode"
+    : "material-symbols:sunny-rounded";
+
   return html`
     <span id="dark-button" class="active:scale-95 cursor-pointer">
-      <dota-icon name="${this.icon}" color="${this.color}" variant="ghost" size="md"></dota-icon>
-      ${when(this.isBusy, html`<span role="status">Loading…</span>`, nothing)}
+      <dota-icon name="${icon}" color="${this.color}" variant="ghost" size="md"></dota-icon>
     </span>
   `;
 }
 ```
-
-The renderer treats ordinary interpolated values as text and understands quoted
-attribute parts, so do not pre-escape normal text or attribute values with
-`escapeHtml()`. Return nested `html` results, `when()` branches, or `keyed()`
-collections from helper methods when they contribute markup. Use `trustedHTML()`
-only for markup that has already crossed an explicit sanitizer/application-owned
-trust boundary; never use `unsafeHTML()` for routine component composition. The
-legacy Dota Core `HTML` tag is not the component rendering API in this app and
-must not be introduced in new or refactored components.
 
 Styling conventions:
 
@@ -323,7 +310,7 @@ After `updateHTML()`, `BaseElement` rebinds `@BindEvent` methods and element ref
 
 ## Registration and the Dota Vite preloader
 
-This standalone app configures `dotaVitePreloader` in `vite.config.ts` with the repository root as its scan root. The preloader discovers decorated custom elements and exposes them through the generated `virtual:dota-components` module. `main.ts` registers those discovered constructors by passing them to `initializeApp({ modules: components })`.
+This standalone app configures `dotaVitePlugins()` in `vite.config.ts` with the repository root as its scan root. The preloader discovers decorated custom elements and exposes them through the generated `virtual:dota-components` module. `main.ts` registers those discovered constructors by passing them to `initializeApp({ modules: components })`.
 
 When adding a component:
 
