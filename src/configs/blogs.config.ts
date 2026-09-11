@@ -39,6 +39,34 @@ export type BlogPost = {
  */
 export const blogPosts: readonly BlogPost[] = [
   {
+    slug: "what-is-a-native-build",
+    date: "2026-09-11",
+    writer: siteIdentity.name,
+    header: "What Is a Native Build? Compilation, Linking, and Managed Runtimes",
+    description:
+      "A practical guide to native builds, compilation, static and dynamic linking, AOT versus JIT compilation, and the trade-offs between native binaries and managed runtimes.",
+    keywords: [
+      "what is a native build",
+      "native build",
+      "native binary",
+      "compilation",
+      "static linking",
+      "dynamic linking",
+      "ahead-of-time compilation",
+      "AOT compilation",
+      "JIT compilation",
+      "managed runtime",
+      "native image",
+      "closed world assumption",
+      "Java native image",
+      "GraalVM native image",
+      "Go static binary",
+    ],
+    category: "tutorial",
+    source: "/blogs/tutorial/What-Is-a-Native-Build.md",
+    minutes: 20,
+  },
+  {
     slug: "open-knowledge-format-okf-vs-rag",
     date: "2026-09-02",
     writer: siteIdentity.name,
