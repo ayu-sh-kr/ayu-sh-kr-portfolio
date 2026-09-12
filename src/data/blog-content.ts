@@ -97,6 +97,11 @@ export const blogArticleContent = {
     backLabel: "Back to",
     nextLabel: "Next article",
   },
+  coffeeSupport: {
+    title: "Found this useful?",
+    copy: "Buying me a coffee helps make more independent writing like this possible.",
+    linkLabel: "Support the writing",
+  },
   markdown: {
     copyLabel: "Copy",
     copiedLabel: "Copied",

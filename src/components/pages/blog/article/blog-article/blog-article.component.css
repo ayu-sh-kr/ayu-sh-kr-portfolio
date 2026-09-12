@@ -24,6 +24,52 @@
   color: var(--blog-ink-soft);
 }
 
+.blog-coffee-support {
+  max-inline-size: 42.5rem;
+  margin: 0 auto;
+  padding-block: 0.25rem 1.5rem;
+  color: var(--blog-ink-soft);
+  font-size: 0.875rem;
+}
+
+.blog-coffee-support-title,
+.blog-coffee-support-copy {
+  margin: 0;
+}
+
+.blog-coffee-support-title {
+  color: var(--blog-ink);
+  font-size: 0.9375rem;
+  font-weight: 650;
+}
+
+.blog-coffee-support-copy {
+  margin-block-start: 0.3rem;
+  line-height: 1.55;
+  text-wrap: pretty;
+}
+
+.blog-coffee-support-link {
+  display: inline-flex;
+  min-block-size: 1.5rem;
+  align-items: center;
+  gap: 0.35rem;
+  margin-block-start: 0.6rem;
+  color: var(--blog-accent-deep);
+  font-weight: 650;
+  text-decoration-color: color-mix(in srgb, currentColor 45%, transparent);
+  text-underline-offset: 0.18em;
+}
+
+.blog-coffee-support-link:hover {
+  text-decoration-color: currentColor;
+}
+
+.blog-coffee-support-link:focus-visible {
+  outline: 2px solid var(--blog-accent);
+  outline-offset: 0.2rem;
+}
+
 .blog-article-footer {
   max-inline-size: 42.5rem;
   margin: 4rem auto 0;
