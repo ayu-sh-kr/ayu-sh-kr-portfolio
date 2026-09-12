@@ -22,7 +22,6 @@ export class AnalyticsEventListener {
   @OnEvent(ANALYTICS_TRACK_EVENT)
   sendToGoogle(event: ApplicationEvent<typeof ANALYTICS_TRACK_EVENT>): void {
     if (!window.gtag) {
-      console.warn("Google Analytics is not available");
       return;
     }
     window.gtag("event", event.data.eventName, {

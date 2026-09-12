@@ -98,6 +98,9 @@ export const isAnalyticsCardDeckLink = (value: string | undefined): value is Ana
 /** Stable identifiers for forms whose completed submissions are measured. */
 export type AnalyticsFormName = "blog_subscription";
 
+/** Non-identifying categories for failures in the aggregate blog-view metric. */
+export type AnalyticsBlogViewTrackingFailureReason = "network" | "client" | "server" | "invalid_response";
+
 /** Accepts only contact destinations declared in the analytics contract. */
 export const isAnalyticsContactMethod = (value: string | undefined): value is AnalyticsContactMethod =>
   value != null && ANALYTICS_CONTACT_METHODS.includes(value as AnalyticsContactMethod);
@@ -121,6 +124,15 @@ export type AnalyticsTrackEvent =
         page_path: string;
         /** Blog or showcase slug when the route is a content detail page. */
         slug?: string;
+      };
+    }
+  | {
+      /** Records a non-blocking blog-view tracking failure without exposing transport details. */
+      eventName: "blog_view_tracking_failed";
+      /** Stable failure category used to monitor the metric endpoint in GA4. */
+      params: {
+        /** Broad transport outcome; no error message, URL, or reader identifier is sent. */
+        reason: AnalyticsBlogViewTrackingFailureReason;
       };
     }
   | {
