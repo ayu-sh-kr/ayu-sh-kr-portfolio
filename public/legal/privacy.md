@@ -3,9 +3,9 @@ slug: privacy
 title: Privacy Policy
 tagline: What I collect, why I collect it, and how to get rid of it.
 kind: privacy
-version: "1.2"
-updated: 2026-08-06
-effective: 2026-08-06
+version: "1.3"
+updated: 2026-09-12
+effective: 2026-09-12
 applies: ayu-sh-kr.com and client work
 contact: akjaiswal2003@gmail.com
 
@@ -16,6 +16,7 @@ switch:
 summary:
   - I don't sell your data or use this site to build advertising profiles.
   - The site uses anonymous, cookieless Google Analytics 4 measurement for broad page and interaction patterns.
+  - Blog view counts are aggregate: the backend receives an article slug and stores no reader identifier in the counter.
   - I don't intentionally send form contents, email addresses, messages, or client data to Google Analytics.
   - I retain your email when you write to me; the site does not provide a newsletter subscription endpoint.
   - Client project data stays under your contract, lives in your accounts where possible, and is deleted when you ask.
@@ -51,6 +52,12 @@ The application sends stable, non-content event information such as a page categ
 | Vercel request and deployment logs | Abuse protection and error diagnosis | Vercel's configured retention period |
 
 Analytics are reported in aggregate for this site. I can tell you that a post was read by visitors from several countries; I do not use GA4 to identify you by name or connect your analytics activity to the messages or project data I hold.
+
+## Blog view counts {#blog-views scope="Site visitors" group="As a visitor" short="Blog view counts"}
+
+When you open a blog article, the site sends its public article slug to the portfolio backend to maintain an aggregate view count. The counter stores the slug and its total only; it does not store a cookie, device identifier, or reader identity. The browser keeps a local-storage marker for that article for five minutes after a successful request, solely to prevent duplicate count requests.
+
+Routine hosting and server logs may still record request information for security and diagnosis, as described in this policy. The view-count record itself is not used to identify you or build a reader profile.
 
 ## Cookies and local storage {#cookies scope="Site visitors" group="As a visitor" short="Cookies"}
 
