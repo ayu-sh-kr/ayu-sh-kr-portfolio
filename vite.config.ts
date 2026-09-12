@@ -131,6 +131,10 @@ export default defineConfig(({ mode }) => {
               target: env.VITE_DEV_API_TARGET || "http://localhost:8080",
               changeOrigin: true,
             },
+            "/blog/view": {
+              target: env.VITE_DEV_API_TARGET || "http://localhost:8080",
+              changeOrigin: true,
+            },
             "/support-ticket": {
               target: env.VITE_DEV_API_TARGET || "http://localhost:8080",
               changeOrigin: true,
