@@ -39,6 +39,18 @@ export type BlogPost = {
  */
 export const blogPosts: readonly BlogPost[] = [
   {
+    slug: "java-native-builds-graalvm-vs-leyden",
+    date: "2026-09-12",
+    writer: siteIdentity.name,
+    header: "GraalVM vs Project Leyden: Java Native Builds and AOT Caching",
+    description:
+      "Compare GraalVM Native Image and Project Leyden AOT caching for Java startup, JVM warm-up, memory use, and build trade-offs. Choose by workload.",
+    keywords: ["GraalVM vs Project Leyden", "GraalVM Native Image", "Project Leyden AOT cache", "Java native builds", "JVM startup time", "JIT warm-up", "Spring Boot native image", "Java cold start"],
+    category: "tutorial",
+    source: "/blogs/tutorial/java-native-builds-graalvm-vs-leyden.md",
+    minutes: 20,
+  },
+  {
     slug: "what-is-a-native-build",
     date: "2026-09-11",
     writer: siteIdentity.name,

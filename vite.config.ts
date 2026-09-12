@@ -7,6 +7,7 @@ import {dotaVitePlugins} from "@ayu-sh-kr/dota-wrap/vite";
 
 const projectRoot = fileURLToPath(new URL(".", import.meta.url));
 const blogRoutes = [
+  "/blog/java-native-builds-graalvm-vs-leyden",
   "/blog/what-is-a-native-build",
   "/blog/open-knowledge-format-okf-vs-rag",
   "/blog/why-use-redis-channels",
