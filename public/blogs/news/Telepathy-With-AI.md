@@ -79,7 +79,7 @@ signals and tries to infer the user’s intention.
 
 Most BCI systems follow a loop rather than a single conversion:
 
-![Flow diagram showing how a BCI turns neural activity into an output and adapts through user feedback](/blogs/news/assets/bci-signal-to-feedback.svg)
+![Flow diagram showing how a BCI turns neural activity into an output and adapts through user feedback](/blogs/news/assets/telepathy-with-ai/bci-signal-to-feedback.svg)
 
 The feedback step is easy to overlook. A decoder is not interpreting a fixed
 codebook that works equally well for everyone: the user learns to produce more
@@ -208,7 +208,7 @@ a written explanation, or a software command.
 
 For example, the desired workflow could look like this:
 
-![Diagram showing AI decoding a BCI signal, predicting intent, and representing it as an output](/blogs/news/assets/ai-signal-to-representation.svg)
+![Diagram showing AI decoding a BCI signal, predicting intent, and representing it as an output](/blogs/news/assets/telepathy-with-ai/ai-signal-to-representation.svg)
 
 This is not necessarily a future in which AI knows every thought. It is a
 future in which we provide intent without translating every detail through a
@@ -378,7 +378,7 @@ your actual intention.
 
 You might think of it as a new layer above the keyboard:
 
-![Diagram showing the thought interface loop from intention to action through signal, interpretation, representation, and review](/blogs/news/assets/thought-interface-loop.svg)
+![Diagram showing the thought interface loop from intention to action through signal, interpretation, representation, and review](/blogs/news/assets/telepathy-with-ai/thought-interface-loop.svg)
 
 The representation could be a sentence, image, design, command, or search. AI
 would fill in structure, but you would still review what it produces. The real
