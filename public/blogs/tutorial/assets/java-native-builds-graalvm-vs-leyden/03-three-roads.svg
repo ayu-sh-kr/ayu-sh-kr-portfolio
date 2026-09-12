@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 650" width="1000" height="650" role="img" aria-labelledby="title desc">
+  <title id="title">Three ways to prepare and run a Java application</title>
+  <desc id="desc">Three independent paths read left to right. The plain JVM runs a JAR and optimises with JIT. Native Image builds an executable ahead of time. Leyden prepares an AOT cache for subsequent JVM launches. Each row separates preparation, deployment artifact, and runtime work.</desc>
+  <style>
+    text { fill: #242c12; font-family: 'Segoe Print', 'Bradley Hand', sans-serif; font-size: 19px; }
+    .title { font-size: 32px; font-weight: bold; }
+    .label { font-size: 22px; font-weight: bold; }
+    .small { font-size: 17px; }
+    .stage { font-size: 17px; font-weight: bold; fill: #4c5c25; }
+    .line { fill: none; stroke: #5d702d; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  </style>
+  <defs><marker id="arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M1 1 L10 5 L1 9" class="line"/></marker></defs>
+  <rect width="1000" height="650" rx="18" fill="#f8faf2"/>
+  <text x="32" y="49" class="title">Three ways to run your Java app</text>
+  <text x="32" y="82">Compare when work happens, what you ship, and what runs.</text>
+  <text x="230" y="125" class="stage">PREPARE</text>
+  <text x="491" y="125" class="stage">SHIP</text>
+  <text x="723" y="125" class="stage">RUN</text>
+  <g>
+    <text x="32" y="181" class="label">Plain JVM</text>
+    <text x="32" y="253" class="small">Baseline</text>
+    <path d="M216 146 Q322.5 143 431 147 L433 272 Q322.5 275 213 273 Z" fill="#ecf0df" stroke="#5d702d" stroke-width="1.8" stroke-linejoin="round"/>
+    <text x="227" y="183">Compile Java</text>
+    <text x="227" y="211">to bytecode</text>
+    <path d="M433 210 Q453 208 473 210" class="line" marker-end="url(#arrow)"/>
+    <path d="M477 146 Q569 143 663 147 L665 272 Q569 275 474 273 Z" fill="#d9e2bd" stroke="#5d702d" stroke-width="1.8" stroke-linejoin="round"/>
+    <text x="488" y="183">JAR + JVM</text>
+    <path d="M665 210 Q685 208 705 210" class="line" marker-end="url(#arrow)"/>
+    <path d="M709 146 Q836.5 143 966 147 L968 272 Q836.5 275 706 273 Z" fill="#ecf0df" stroke="#5d702d" stroke-width="1.8" stroke-linejoin="round"/>
+    <text x="720" y="183">Load and initialise</text>
+    <text x="720" y="211">JIT optimises</text>
+    <text x="720" y="239">during execution</text>
+  </g>
+  <g>
+    <text x="32" y="336" class="label">GraalVM</text>
+    <text x="32" y="363" class="label">Native Image</text>
+    <text x="32" y="408" class="small">AOT executable</text>
+    <path d="M216 301 Q322.5 298 431 302 L433 427 Q322.5 430 213 428 Z" fill="#ecf0df" stroke="#5d702d" stroke-width="1.8" stroke-linejoin="round"/>
+    <text x="227" y="338">Analyse reachable</text>
+    <text x="227" y="366">code + metadata</text>
+    <text x="227" y="394">Compile ahead of time</text>
+    <path d="M433 365 Q453 363 473 365" class="line" marker-end="url(#arrow)"/>
+    <path d="M477 301 Q569 298 663 302 L665 427 Q569 430 474 428 Z" fill="#d9e2bd" stroke="#5d702d" stroke-width="1.8" stroke-linejoin="round"/>
+    <text x="488" y="338">Native executable</text>
+    <text x="488" y="366">with its runtime</text>
+    <path d="M665 365 Q685 363 705 365" class="line" marker-end="url(#arrow)"/>
+    <path d="M709 301 Q836.5 298 966 302 L968 427 Q836.5 430 706 428 Z" fill="#ecf0df" stroke="#5d702d" stroke-width="1.8" stroke-linejoin="round"/>
+    <text x="720" y="338">Initialise the app</text>
+    <text x="720" y="366">Run compiled code</text>
+    <text x="720" y="394">No HotSpot JIT</text>
+  </g>
+  <g>
+    <text x="32" y="491" class="label">Project Leyden</text>
+    <text x="32" y="563" class="small">JVM + AOT cache</text>
+    <path d="M216 456 Q322.5 453 431 457 L433 582 Q322.5 585 213 583 Z" fill="#ecf0df" stroke="#5d702d" stroke-width="1.8" stroke-linejoin="round"/>
+    <text x="227" y="493">Train the app</text>
+    <text x="227" y="521">Build an AOT cache</text>
+    <path d="M433 520 Q453 518 473 520" class="line" marker-end="url(#arrow)"/>
+    <path d="M477 456 Q569 453 663 457 L665 582 Q569 585 474 583 Z" fill="#d9e2bd" stroke="#5d702d" stroke-width="1.8" stroke-linejoin="round"/>
+    <text x="488" y="493">JAR + JVM</text>
+    <text x="488" y="521">+ AOT cache</text>
+    <path d="M665 520 Q685 518 705 520" class="line" marker-end="url(#arrow)"/>
+    <path d="M709 456 Q836.5 453 966 457 L968 582 Q836.5 585 706 583 Z" fill="#ecf0df" stroke="#5d702d" stroke-width="1.8" stroke-linejoin="round"/>
+    <text x="720" y="493">Reuse cached work</text>
+    <text x="720" y="521">Initialise the app</text>
+    <text x="720" y="549">Keep the JIT</text>
+  </g>
+  <text x="32" y="620" class="small">All three still initialise your app. Cache capabilities depend on the JDK; measure your workload.</text>
+</svg>
