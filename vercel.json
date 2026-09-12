@@ -79,6 +79,11 @@
       "permanent": true
     },
     {
+      "source": "/blog/what-is-a-native-build",
+      "destination": "/blog/what-is-a-native-build/",
+      "permanent": true
+    },
+    {
       "source": "/blog/why-use-redis-channels",
       "destination": "/blog/why-use-redis-channels/",
       "permanent": true
@@ -91,6 +96,11 @@
     {
       "source": "/cards/reach-out",
       "destination": "/cards/reach-out/",
+      "permanent": true
+    },
+    {
+      "source": "/cards/showcase",
+      "destination": "/cards/showcase/",
       "permanent": true
     },
     {
