@@ -101,7 +101,7 @@ The central design difference is timing. In a typical RAG system, documents are 
 
 With OKF, a producer records important paths through the knowledge before the question. An agent may begin at an `index.md`, read the metric concept, then follow its explicit link to the event definition and investigation playbook. The traversal occurs at runtime, but the connections were linked earlier by someone—or something—with domain context.
 
-![An OKF agent discovers a metric from an index, follows explicit links to linked context, then applies a playbook to produce an evidence-backed answer.](/blogs/news/assets/okf-runtime-discovery.svg)
+![An OKF agent discovers a metric from an index, follows explicit links to linked context, then applies a playbook to produce an evidence-backed answer.](/blogs/news/assets/open-knowledge-format-okf-vs-rag/okf-runtime-discovery.svg)
 
 *Discovery starts at an index, traversal follows pre-authored links, and execution stays in the approved executor.*
 
