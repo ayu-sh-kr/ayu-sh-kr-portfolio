@@ -112,7 +112,7 @@ Now we have all the pieces in place. You have code, you have borrowed code, and 
 
 Here is the whole thing in one picture. Everything above is the top half. Everything below is where we are going.
 
-![Native and managed execution paths: native builds compile and link before distribution, while managed applications use a runtime and JIT compilation after launch.](/blogs/tutorial/assets/native-vs-managed.svg)
+![Native and managed execution paths: native builds compile and link before distribution, while managed applications use a runtime and JIT compilation after launch.](/blogs/tutorial/assets/what-is-a-native-build/native-vs-managed.svg)
 
 Look at where the dashed line falls on each side. That line is the moment you press Enter. **On the left, almost everything is above the line. On the right, almost everything is below it.**
 
