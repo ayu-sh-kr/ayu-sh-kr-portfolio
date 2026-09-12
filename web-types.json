@@ -301,7 +301,7 @@
           "name": "blog-article",
           "source": {
             "file": "./src/components/pages/blog/article/blog-article/blog-article.component.ts",
-            "offset": 1468
+            "offset": 1648
           },
           "attributes": [],
           "js": {
