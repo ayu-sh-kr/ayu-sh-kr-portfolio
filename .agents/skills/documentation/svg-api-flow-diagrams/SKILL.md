@@ -136,7 +136,11 @@ Use these defaults for a single-spine diagram, then enlarge rather than compress
 | Vertical gap | 68–96px between card bounds |
 | Type hierarchy | 34px page title; 19px card title; 15px body; 13px note; 11px chip |
 
-Use a restrained system: a dark header band, a light neutral canvas, white processing cards, blue route/input and rendered-state cards, purple decisions, green events or persisted state, and coral error/stops. Keep the palette compatible with the portfolio tokens (`--primary-color`, `--background-color`, `--foreground-color`) while providing explicit fallback colors so the file renders standalone. “Premium” comes from hierarchy, alignment, and whitespace—not decoration density.
+Default to the current project theme and an Excalidraw-style hand-drawn appearance unless the user requests another style. Read `src/theme.css` and the semantic mappings in `src/style.css` before choosing colors. Derive canvas, ink, borders, and accents from those values; use project status colors only where they convey a real status. Distinguish node roles with labels and shapes as well as color.
+
+Use slightly irregular outlines, rounded stroke caps, simple arrows, and sparse hatching or flat fills. Keep text crisp, alignment deliberate, and connector endpoints exact. Sketch styling must not change flow direction or obscure geometry. Use a bundled handwriting font only when it renders reliably in standalone SVGs, with a readable fallback.
+
+Embed resolved theme colors or explicit fallbacks inside the SVG: files loaded through `<img>` do not inherit the host page's CSS variables. Check contrast against the diagram's own canvas. Preserve the geometry and accessibility rules below when applying this style.
 
 ## Preflight the Geometry Before Drawing
 

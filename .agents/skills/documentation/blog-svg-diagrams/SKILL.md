@@ -19,19 +19,22 @@ AI pipelines, BCI signal paths, architecture summaries, and concept flows.
 3. Store the SVG beside the article at:
 
    ```text
-   public/blogs/<category>/assets/<descriptive-name>.svg
+   public/blogs/<category-folder>/assets/<blog-slug>/<descriptive-name>.svg
    ```
 
 4. Reference it with a root-relative public URL, not a path relative to the
    article route:
 
    ```md
-   ![Short, descriptive explanation of the diagram](/blogs/news/assets/example.svg)
+   ![Short, descriptive explanation of the diagram](/blogs/news/assets/<blog-slug>/example.svg)
    ```
 
 ## Visual grammar
 
-- Use the portfolio’s matcha palette as standalone fallbacks:
+- Default to the current project theme and an Excalidraw-style hand-drawn appearance unless the user requests another style. Read `src/theme.css` and the semantic mappings in `src/style.css` before choosing colors; current theme values take precedence over the examples below.
+- Use slightly irregular outlines, rounded stroke caps, simple arrows, and sparse hatching or flat fills. Keep text crisp and geometry deliberate; sketch styling must not distort connectors, charts, or labels. Use a bundled handwriting font only when it renders reliably in standalone SVGs, with a readable fallback.
+- SVGs loaded through Markdown images do not inherit the page's CSS variables. Embed resolved theme colors or explicit fallbacks inside each SVG and verify contrast against its own canvas.
+- The portfolio’s matcha palette provides example standalone fallbacks:
   - background `#f8faf2`;
   - ink `#242c12`;
   - primary `#5d702d`;
@@ -76,7 +79,7 @@ consistent stroke such as `#5d702d` with `stroke-linecap="round"`.
 Run:
 
 ```sh
-xmllint --noout public/blogs/news/assets/<file>.svg
+xmllint --noout public/blogs/news/assets/<blog-slug>/<file>.svg
 git diff --check
 ```
 

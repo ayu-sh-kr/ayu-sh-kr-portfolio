@@ -1,80 +1,67 @@
 ---
 name: blog-wiring
-description: Use when adding or updating blog markdown in this workspace and wiring it into dota-web. Covers where blog files belong, how to register them in blogs.config.ts, and the path and category conventions the app expects.
+description: Register portfolio blog posts and public URLs, and group article assets by blog slug with root-relative links.
 ---
 
 # Blog Wiring
 
-Use this skill when a markdown blog post already exists, or is being created, and needs to appear in the Dota Web blog listing and content pages.
+Work in this portfolio repository. The catalog is `src/configs/blogs.config.ts`.
+Do not follow paths into the sibling `dota-workspace` application.
 
-## What To Wire
+## Files and asset ownership
 
-This workspace does not auto-discover blog markdown. Every post must be registered manually in [blogs.config.ts](/Volumes/project-workspace/dota/dota-workspace/packages/apps/dota-web/src/configs/blogs.config.ts).
-
-The markdown file lives under:
-
-```text
-packages/apps/dota-web/public/blogs/<category-lowercase>/<File-Name>.md
-```
-
-The config entry provides the metadata used by the listing page and suggestions.
-
-## Category Convention
-
-The `category` field in `blogs.config.ts` must match one of the configured `BlogCategory` values:
-
-- `Tutorial`
-- `Tools`
-- `News`
-- `Rant`
-- `Others`
-
-The folder on disk should be the lowercase form of that category. This matters because blog loading uses:
+Use this layout across every blog category:
 
 ```text
-/blogs/${category.toLowerCase()}/${blog}
+public/blogs/<folder>/<File-Name>.md
+public/blogs/<folder>/assets/<blog-slug>/<asset-name>.svg
 ```
 
-Example:
+Use the catalog's exact slug for each asset folder, even when it differs from
+the Markdown filename. Group all article-owned images and other assets there,
+including posts with one image. Do not create empty asset folders.
+
+Use root-relative public URLs in Markdown:
+
+```md
+![Native and managed execution paths](/blogs/tutorial/assets/what-is-a-native-build/native-vs-managed.svg)
+```
+
+Relative `./assets/` links can resolve against the article route and break.
+Never include `public/` in browser URLs. For migrations, establish ownership
+from references, check destination collisions, move assets, and update every
+consumer. For shared assets, retain one intentional owner and update all
+consumers to that path.
+
+## Catalog and public routes
+
+Register each post in `blogPosts` with `slug`, `date`, `writer`, `header`,
+`description`, `keywords`, `category`, `source`, and `minutes`. Use
+`siteIdentity.name` for the author and align the header with the Markdown H1.
+Keep YAML frontmatter out of Markdown; metadata belongs in the catalog.
+
+Current categories are `tutorial`, `rant`, `news`, and `notes`.
+The explicit source controls loading; do not derive it from the category.
+Existing notes posts use the others folder:
 
 ```text
-category: "Tutorial"
-path: "Chat-Memory.md"
-
--> loads from public/blogs/tutorial/Chat-Memory.md
+slug: why-use-redis-channels
+category: notes
+source: /blogs/others/Why-Use-Redis-Channel.md
+assets: /blogs/others/assets/why-use-redis-channels/<asset-name>.svg
+route: /blog/why-use-redis-channels/
 ```
 
-## Required Config Fields
+For new routes, update `blogRoutes` in `vite.config.ts`, `public/sitemap.xml`,
+and `public/llms.txt`. Preserve existing slugs during asset reorganizations.
+Do not register API proxy paths as public articles.
 
-Add a new object to `blogPosts` with these fields:
+## Verification
 
-- `date`
-- `writer`
-- `header`
-- `description`
-- `category`
-- `path`
-
-Use only the filename in `path`, not the full folder path.
-
-## Wiring Steps
-
-1. Confirm the markdown file exists in the matching category folder under `public/blogs/`.
-2. Open [blogs.config.ts](/Volumes/project-workspace/dota/dota-workspace/packages/apps/dota-web/src/configs/blogs.config.ts).
-3. Add a `blogPosts` entry with the display metadata.
-4. Set `category` to the logical blog category and `path` to the markdown filename only.
-5. Verify the route shape stays valid:
-
-```text
-/blogs/content?category=<Category>&blog=<File-Name>.md
-```
-
-## Common Mistakes
-
-The most common failure here is mixing folder paths with filenames. Keep `path` as `My-Post.md`, not `tutorial/My-Post.md`.
-
-Another common mistake is a category-folder mismatch. If the config says `Tutorial` but the file is stored under `public/blogs/tools/`, the content route will request the wrong file.
-
-## Summary
-
-To wire a blog in this repo, place the markdown file in the right `public/blogs/<category>/` folder, then add a matching metadata entry in `blogPosts`. The category controls the folder, and the `path` field should contain only the filename.
+- Check catalog sources exist and local image URLs resolve from the article
+  route to files in public.
+- Search all consumers for stale paths after moving assets.
+- Confirm grouped assets appear in production output when building.
+- Run `git diff --check` and `npm run build` for catalog or build changes.
+- For SVG creation or visual repair, use `blog-svg-diagrams` for the project
+  theme, Excalidraw-style defaults, accessibility, and rendered validation.
