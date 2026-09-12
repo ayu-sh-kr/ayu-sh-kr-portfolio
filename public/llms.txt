@@ -25,7 +25,11 @@
 
 ## Recent technical articles
 
+- [Java Native Builds Explained: GraalVM vs Project Leyden](https://ayu-sh-kr.com/blog/java-native-builds-graalvm-vs-leyden): A comparison of GraalVM Native Image and Project Leyden's AOT cache, including startup, warm-up, and deployment trade-offs.
+- [What Is a Native Build?](https://ayu-sh-kr.com/blog/what-is-a-native-build): Compilation, linking, AOT versus JIT compilation, and the trade-offs between native binaries and managed runtimes.
+- [Open Knowledge Format (OKF): linked context for AI agents](https://ayu-sh-kr.com/blog/open-knowledge-format-okf-vs-rag)
 - [AI Telepathy: How BCIs Turn Thought into Text](https://ayu-sh-kr.com/blog/telepathy-with-ai/)
+- [SSR vs SSG for SEO and AI-built websites](https://ayu-sh-kr.com/blog/ssr-vs-ssg-rendering-hydration-dom)
 - [AWS AppConfig Spring Boot Integration](https://ayu-sh-kr.com/blog/aws-app-config-spring-boot-integration)
 - [PostgreSQL access control](https://ayu-sh-kr.com/blog/postgresql-access-control)
 - [Distributed locks in Redis](https://ayu-sh-kr.com/blog/distributed-locks-redis)
@@ -34,6 +38,7 @@
 - [Lambda pricing for independent infrastructure](https://ayu-sh-kr.com/blog/lambda-pricing-infra-alone)
 - [Operating EventBridge Scheduler](https://ayu-sh-kr.com/blog/eventbridge-scheduler-quirks)
 - [Business logic and authentication middleware](https://ayu-sh-kr.com/blog/business-logic-auth-middleware)
+- [Why use Redis channels?](https://ayu-sh-kr.com/blog/why-use-redis-channels)
 
 ## Design-system reference
 

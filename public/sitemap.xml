@@ -7,6 +7,18 @@
         <loc>https://www.ayu-sh-kr.com/blog/</loc>
     </url>
     <url>
+        <loc>https://www.ayu-sh-kr.com/blog/java-native-builds-graalvm-vs-leyden/</loc>
+        <lastmod>2026-09-12</lastmod>
+    </url>
+    <url>
+        <loc>https://www.ayu-sh-kr.com/blog/what-is-a-native-build/</loc>
+        <lastmod>2026-09-11</lastmod>
+    </url>
+    <url>
+        <loc>https://www.ayu-sh-kr.com/blog/open-knowledge-format-okf-vs-rag/</loc>
+        <lastmod>2026-09-02</lastmod>
+    </url>
+    <url>
         <loc>https://www.ayu-sh-kr.com/blog/why-use-redis-channels/</loc>
         <lastmod>2026-08-12</lastmod>
     </url>
