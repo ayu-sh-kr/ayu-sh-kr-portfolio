@@ -49,6 +49,11 @@
       "permanent": true
     },
     {
+      "source": "/blog/java-native-builds-graalvm-vs-leyden",
+      "destination": "/blog/java-native-builds-graalvm-vs-leyden/",
+      "permanent": true
+    },
+    {
       "source": "/blog/lambda-pricing-infra-alone",
       "destination": "/blog/lambda-pricing-infra-alone/",
       "permanent": true
