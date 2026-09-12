@@ -39,7 +39,7 @@ state and notify the processes interested in that state.
 This compact comparison summarises the responsibility each technology is
 designed to carry:
 
-![Comparison of Kafka, RabbitMQ, MQTT, and Redis by the delivery responsibility each one is designed to carry](/blogs/others/assets/redis-broker-responsibilities.svg)
+![Comparison of Kafka, RabbitMQ, MQTT, and Redis by the delivery responsibility each one is designed to carry](/blogs/others/assets/why-use-redis-channels/redis-broker-responsibilities.svg)
 
 This does not make Redis universally faster or better. It means Redis can solve
 a different class of problem without forcing a temporary signal through a
@@ -71,7 +71,7 @@ queues, exchanges, routing, and acknowledgements. MQTT is designed around
 connected clients and device delivery semantics. None of these contracts is
 automatically correct for every event.
 
-![Delivery contract decision: durable records choose Kafka, RabbitMQ, or Redis Streams, while recoverable live signals choose Redis Pub/Sub](/blogs/others/assets/redis-delivery-contract.svg)
+![Delivery contract decision: durable records choose Kafka, RabbitMQ, or Redis Streams, while recoverable live signals choose Redis Pub/Sub](/blogs/others/assets/why-use-redis-channels/redis-delivery-contract.svg)
 
 If a missing message can be recovered by reading current state or waiting for
 the next update, a live Redis signal may be enough. If missing it can leave an
@@ -96,7 +96,7 @@ three API nodes with local caches. Node A updates a profile in PostgreSQL and
 publishes `user:123` on `cache:invalidate`. Nodes B and C remove their local
 copies. A WebSocket gateway may also tell connected clients to refresh.
 
-![Fan-out flow from a database update through Redis to two API nodes that evict their local caches](/blogs/others/assets/redis-fan-out.svg)
+![Fan-out flow from a database update through Redis to two API nodes that evict their local caches](/blogs/others/assets/why-use-redis-channels/redis-fan-out.svg)
 
 The event is a signal, not the new profile. Each node reads the authoritative
 value when it needs it. That separation matters because a missed invalidation
@@ -135,7 +135,7 @@ state again.
 A cache refresh is a simple example. Only one node should perform an expensive
 refresh while the others continue serving the existing value:
 
-![Ephemeral cache-refresh coordination: one node acquires a short-lived Redis lock while other nodes skip duplicate work](/blogs/others/assets/redis-ephemeral-coordination.svg)
+![Ephemeral cache-refresh coordination: one node acquires a short-lived Redis lock while other nodes skip duplicate work](/blogs/others/assets/why-use-redis-channels/redis-ephemeral-coordination.svg)
 
 The lock coordinates access; it does not prove that a payment or reservation
 succeeded. Coordination is not correctness. Put the durable invariant in the
@@ -159,7 +159,7 @@ coordinator sends the three requests together, gives them the same
 the first request is sent: do we need all three responses, is a partial result
 acceptable, and how long should we wait for the slowest service?
 
-![Fan-in flow where profile, billing, and activity responses converge by correlation ID before completion or a deadline](/blogs/others/assets/redis-fan-in.svg)
+![Fan-in flow where profile, billing, and activity responses converge by correlation ID before completion or a deadline](/blogs/others/assets/why-use-redis-channels/redis-fan-in.svg)
 
 Redis is useful when this meeting point is short-lived. Its in-memory speed
 keeps the coordinator responsive, a `TTL` removes abandoned state after a
@@ -192,7 +192,7 @@ before acknowledging the entry, Redis may deliver the entry again. Duplicates
 are normal, so the worker needs an idempotency key or another deduplication
 strategy.
 
-![Redis messaging comparison: Pub/Sub broadcasts and discards live messages, while Streams retains entries for acknowledgement and recovery](/blogs/others/assets/redis-pubsub-vs-streams.svg)
+![Redis messaging comparison: Pub/Sub broadcasts and discards live messages, while Streams retains entries for acknowledgement and recovery](/blogs/others/assets/why-use-redis-channels/redis-pubsub-vs-streams.svg)
 
 Streams belongs on the “durable record required” branch when you need retry and
 recovery but not a full Kafka cluster. Its durability still depends on the
@@ -217,7 +217,7 @@ each API process may keep a smaller local cache for speed.
 When a profile changes, the durable write and the invalidation signal have
 different jobs:
 
-![Cache invalidation flow from a committed PostgreSQL update through Redis Pub/Sub to local cache eviction on API nodes](/blogs/others/assets/redis-cache-invalidation.svg)
+![Cache invalidation flow from a committed PostgreSQL update through Redis Pub/Sub to local cache eviction on API nodes](/blogs/others/assets/why-use-redis-channels/redis-cache-invalidation.svg)
 
 The invalidation payload should be small: a key, version, and reason. It should
 lead receivers back to current state rather than pretending to be the record
