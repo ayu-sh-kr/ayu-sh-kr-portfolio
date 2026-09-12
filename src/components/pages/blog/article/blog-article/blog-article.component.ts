@@ -8,6 +8,8 @@ import {portfolioMarkdownColor, portfolioMarkdownTheme} from "@app/configs/markd
 import {escapeHtml} from "@app/utils/html.utils.ts";
 import {MarkdownProgressLifecycle} from "@app/utils/markdown-lifecycle.utils.ts";
 import {BlogLoaderService} from "@app/service/blog-loader.service.ts";
+import {blogViewCountService, toBlogViewTrackingFailureReason} from "@app/service/blog-view-count.service.ts";
+import {publishAnalyticsEvent} from "@app/utils/analytics.utils.ts";
 
 /**
  * Owns the `/blog/:slug` article surface from slug resolution through Markdown reading.
@@ -33,6 +35,7 @@ export class BlogArticleComponent extends BaseElement {
   private nextPost: BlogPost | null = null;
   private loadError = "";
   private articleRequest: AbortController | null = null;
+  private trackedSlug: string | null = null;
 
   constructor() {
     super();
@@ -54,11 +57,31 @@ export class BlogArticleComponent extends BaseElement {
       ? blogPosts[(blogPosts.indexOf(post) + 1) % blogPosts.length] ?? null
       : null;
     this.scheduleProgressRender();
-    if (!post || this.hasHydratedArticle) {
+    if (!post) {
+      return;
+    }
+
+    this.trackView(post.slug);
+    if (this.hasHydratedArticle) {
       return;
     }
 
     void this.loadArticle(post);
+  }
+
+  /** Sends one non-blocking aggregate metric for this mounted article without affecting rendering. */
+  private trackView(slug: string): void {
+    if (this.trackedSlug === slug) {
+      return;
+    }
+
+    this.trackedSlug = slug;
+    void blogViewCountService.recordView(slug).catch((error: unknown) => {
+      publishAnalyticsEvent({
+        eventName: "blog_view_tracking_failed",
+        params: {reason: toBlogViewTrackingFailureReason(error)},
+      });
+    });
   }
 
   /** Schedules document progress updates as the article scrolls. */
