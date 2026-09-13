@@ -7,6 +7,8 @@ import {ShowcaseLoaderService} from "@app/service/showcase-loader.service.ts";
 import {portfolioMarkdownColor, portfolioMarkdownTheme} from "@app/configs/markdown-theme.config.ts";
 import {escapeHtml} from "@app/utils/html.utils.ts";
 import {MarkdownProgressLifecycle} from "@app/utils/markdown-lifecycle.utils.ts";
+import {blogViewCountService, toBlogViewTrackingFailureReason} from "@app/service/blog-view-count.service.ts";
+import {publishAnalyticsEvent} from "@app/utils/analytics.utils.ts";
 
 /** Formats the catalog status for the case-study metadata row. */
 const formatStatus = (status: ShowcaseProject["status"]): string =>
@@ -17,8 +19,10 @@ const formatStatus = (status: ShowcaseProject["status"]): string =>
  *
  * The view resolves the project slug once, loads Markdown through
  * `ShowcaseLoaderService`, and publishes {@link SHOWCASE_MARKDOWN_SOURCE_EVENT}
- * for the connected Markdown child. It also owns article progress and aborts
- * pending work on disconnect so stale responses cannot replace newer state.
+ * for the connected Markdown child. After connection, a valid case study also
+ * records a non-blocking typed view; its outcome never delays the reader.
+ * The element owns article progress and aborts pending work on disconnect so
+ * stale responses cannot replace newer state.
  *
  * Selector: `showcase-view`.
  */
@@ -27,36 +31,52 @@ const formatStatus = (status: ShowcaseProject["status"]): string =>
   shadow: false,
 })
 export class ShowcaseViewComponent extends BaseElement {
-  /** Publisher used to hand loaded Markdown to the child Markdown view. */
+  /** Delivers loaded Markdown to the connected `showcase-markdown-view` child. */
   private readonly publisher = ApplicationEventService.getInstance().getPublisher();
-  /** Static-content loader that strips frontmatter before publishing Markdown. */
+  /** Fetches a project's authored Markdown and strips its frontmatter before publication. */
   private readonly loader = new ShowcaseLoaderService();
-  /** Shared lifecycle helper for the article reading-progress indicator. */
+  /** Owns the throttled document-progress work while this article is connected. */
   private readonly progressLifecycle = new MarkdownProgressLifecycle(this);
-  /** Project resolved from the current `/showcase/:slug` pathname. */
+  /** Catalog record selected once from the current `/showcase/:slug` route, or `null` for a 404. */
   private readonly project = getShowcaseProject(getShowcaseSlug(window.location.pathname)) ?? null;
-  /** Abort controller for the currently active Markdown request. */
+  /** Cancels the in-flight Markdown request when this view is replaced or disconnected. */
   private articleRequest: AbortController | null = null;
-  /** Whether the article child should expose its loading state. */
+  /** Keeps the Markdown region marked busy until the load succeeds or reports an error. */
   private loading = true;
-  /** User-facing load failure message; empty while loading or after success. */
+  /** Reader-safe load failure shown in place of the Markdown body; empty for normal states. */
   private loadError = "";
 
-  constructor() {
-    super();
-  }
-
   @OnEvent("connected", true)
-  /** Starts progress tracking and loads the resolved case study after connect. */
+  /**
+   * Starts the detail-page work after the custom element connects.
+   *
+   * Unknown routes retain the 404 render and do not request content or tracking.
+   * Valid projects schedule reading progress, submit their typed aggregate metric in
+   * the background, and begin the abortable Markdown load for the child renderer.
+   */
   initializeShowcaseView(): void {
     this.scheduleProgressRender();
-    if (this.project) {
-      void this.loadShowcaseArticle(this.project);
+    const project = this.project;
+    if (!project) {
+      return;
     }
+
+    void blogViewCountService.recordView(project.slug, "SHOWCASE").catch((error: unknown) => {
+      publishAnalyticsEvent({
+        eventName: "blog_view_tracking_failed",
+        params: {reason: toBlogViewTrackingFailureReason(error)},
+      });
+    });
+    void this.loadShowcaseArticle(project);
   }
 
   @OnEvent("disconnected", true)
-  /** Aborts the request and releases progress listeners owned by this view. */
+  /**
+   * Releases work owned by this connected instance before the route changes.
+   *
+   * Aborting prevents a late Markdown response from publishing into a detached
+   * reader, while the lifecycle helper clears its queued progress work.
+   */
   cleanupShowcaseView(): void {
     this.articleRequest?.abort();
     this.articleRequest = null;
@@ -64,16 +84,19 @@ export class ShowcaseViewComponent extends BaseElement {
   }
 
   @WindowListener({event: "scroll"})
-  /** Schedules document progress updates without doing layout work per scroll event. */
+  /** Queues, rather than performs, the scroll-driven reading-progress measurement. */
   scheduleProgressRender(): void {
     this.progressLifecycle.scheduleDocumentProgress("[data-showcase-progress]");
   }
 
   /**
-   * Loads one project's Markdown and publishes it to the connected child view.
+   * Fetches one case study's Markdown and hands it to the connected child view.
    *
-   * A new request aborts the previous one, and both the abort signal and request
-   * identity are checked before success or failure updates the component.
+   * This is the only Markdown request boundary in the component. A replacement
+   * request aborts its predecessor; both the signal and identity checks prevent
+   * a late response from changing current state. Successful content is published
+   * through {@link SHOWCASE_MARKDOWN_SOURCE_EVENT}; a current non-abort failure
+   * instead replaces the loading state with reader-safe feedback.
    */
   private async loadShowcaseArticle(project: ShowcaseProject): Promise<void> {
     this.articleRequest?.abort();
@@ -107,19 +130,16 @@ export class ShowcaseViewComponent extends BaseElement {
     }
   }
 
-  /** Returns the next catalog entry for the article footer, if one exists. */
-  private getNextProject(): ShowcaseProject | null {
-    if (!this.project) {
-      return null;
-    }
-
-    const currentIndex = showcaseProjects.indexOf(this.project);
-    return showcaseProjects[currentIndex + 1] ?? null;
-  }
-
-  /** Renders the not-found state, loading/error article, and next-project footer. */
+  /**
+   * Derives the complete article surface from route state and Markdown load state.
+   *
+   * Rendering does not fetch or publish anything: lifecycle handlers own those
+   * effects. A missing catalog record produces the standalone 404 surface; a
+   * resolved record keeps the Markdown child connected for its published source.
+   */
   render() {
-    if (!this.project) {
+    const project = this.project;
+    if (!project) {
       return html`
         <main class="showcase-article-shell layout-page layout-section-hero">
           <a class="showcase-back-link" href="/showcase">← All showcases</a>
@@ -132,7 +152,7 @@ export class ShowcaseViewComponent extends BaseElement {
       `;
     }
 
-    const next = this.getNextProject();
+    const nextProject = showcaseProjects[showcaseProjects.indexOf(project) + 1];
     const markdown = this.loadError
       ? `<article class="showcase-prose"><p class="showcase-load-error" role="alert">${escapeHtml(this.loadError)} <a href="/showcase">Return to all showcases</a>.</p></article>`
       : `<article class="showcase-prose" data-showcase-markdown aria-busy="${this.loading}">
@@ -146,12 +166,12 @@ export class ShowcaseViewComponent extends BaseElement {
       <main class="showcase-article-shell layout-page layout-section-hero">
         <a class="showcase-back-link" href="/showcase">← All showcases</a>
         <showcase-article-header
-          kind="${this.project.kind}"
-          year="${this.project.year}"
-          status="${formatStatus(this.project.status)}"
-          title="${this.project.title}"
-          tagline="${this.project.tagline}"
-          stack="${this.project.stack.join("|")}">
+          kind="${project.kind}"
+          year="${project.year}"
+          status="${formatStatus(project.status)}"
+          title="${project.title}"
+          tagline="${project.tagline}"
+          stack="${project.stack.join("|")}">
         </showcase-article-header>
         <div class="showcase-reader-layout">
           <showcase-toc></showcase-toc>
@@ -159,7 +179,7 @@ export class ShowcaseViewComponent extends BaseElement {
         </div>
         <footer class="showcase-article-footer">
           <a class="showcase-quiet-card" href="/showcase"><span>←</span><span><small>Back to</small>All showcases</span></a>
-          ${trustedHTML(next ? `<a class="showcase-quiet-card showcase-quiet-card-next" href="/showcase/${next.slug}"><span><small>Next case study</small>${escapeHtml(next.title)}</span><span>→</span></a>` : "")}
+          ${trustedHTML(nextProject ? `<a class="showcase-quiet-card showcase-quiet-card-next" href="/showcase/${nextProject.slug}"><span><small>Next case study</small>${escapeHtml(nextProject.title)}</span><span>→</span></a>` : "")}
         </footer>
       </main>
     `;
