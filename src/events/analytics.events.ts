@@ -31,6 +31,8 @@ export type AnalyticsPage =
   | "support"
   | "blog"
   | "blog_article"
+  | "news"
+  | "news_article"
   | "showcase"
   | "showcase_article"
   | "terms"

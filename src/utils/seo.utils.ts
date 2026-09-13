@@ -1,6 +1,7 @@
 import type {SEO} from "@ayu-sh-kr/dota-wrap/core";
 import type {NavigationContext} from "@ayu-sh-kr/dota-wrap/router";
 import {getBlogSlug} from "@app/configs/blogs.config.ts";
+import {getNewsSlug} from "@app/configs/news.config.ts";
 import {getShowcaseSlug} from "@app/data/showcase-content.ts";
 import type {PageSeoContent} from "@app/data/seo-content.ts";
 import type {AnalyticsPage} from "@app/events/analytics.events.ts";
@@ -65,6 +66,12 @@ const getAnalyticsPage = (pathname: string): {page: AnalyticsPage; slug?: string
   }
   if (pathname.startsWith("/blog/")) {
     return {page: "blog_article", slug: getBlogSlug(pathname)};
+  }
+  if (pathname === "/news") {
+    return {page: "news"};
+  }
+  if (pathname.startsWith("/news/")) {
+    return {page: "news_article", slug: getNewsSlug(pathname)};
   }
   if (pathname === "/showcase") {
     return {page: "showcase"};
