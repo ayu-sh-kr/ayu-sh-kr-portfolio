@@ -1,0 +1,17 @@
+/* The Dispatch introduction uses the shared page container and hero rhythm. */
+news-hero {
+  display: block;
+}
+
+.news-hero-content {
+  display: grid;
+  gap: var(--layout-space-5);
+}
+
+.news-hero-title {
+  margin: 0;
+}
+
+.news-hero-title span {
+  color: var(--primary-color-strong);
+}
