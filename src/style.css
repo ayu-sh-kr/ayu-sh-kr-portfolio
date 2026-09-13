@@ -121,6 +121,12 @@
 @import "./components/pages/blog/index/subscription/blog-subscription/blog-subscription.component.css";
 @import "./components/pages/blog/article/blog-article/blog-article.component.css";
 @import "./components/pages/blog/article/blog-markdown-view/blog-markdown-view.component.css";
+@import "./components/pages/news/news-shared.css";
+@import "./components/pages/news/test-notice/news-test-notice.component.css";
+@import "./components/pages/news/index/hero/news-hero/news-hero.component.css";
+@import "./components/pages/news/index/news-index/news-index.component.css";
+@import "./components/pages/news/article/news-article/news-article.component.css";
+@import "./components/pages/news/article/news-markdown-view/news-markdown-view.component.css";
 @import "./components/pages/showcase/index/showcase-page/showcase-page.component.css";
 @import "./components/pages/showcase/index/hero/showcase-hero/showcase-hero.component.css";
 @import "./components/pages/cards/showcase/showcase-card-deck.component.css";
