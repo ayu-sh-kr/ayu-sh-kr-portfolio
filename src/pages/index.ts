@@ -14,6 +14,8 @@ export { SubscriptionUnsubscribedPage } from "@app/pages/subscription/subscripti
 
 export { BlogPage } from "@app/pages/blog/blog.page.ts";
 export { BlogSlugPage } from "@app/pages/blog/blog-slug.page.ts";
+export { NewsPage } from "@app/pages/news/news.page.ts";
+export { NewsSlugPage } from "@app/pages/news/news-slug.page.ts";
 export { ShowcasePage } from "@app/pages/showcase/showcase.page.ts";
 export { ShowcaseSlugPage } from "@app/pages/showcase/showcase-slug.page.ts";
 
