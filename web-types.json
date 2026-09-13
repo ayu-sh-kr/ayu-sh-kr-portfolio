@@ -550,11 +550,97 @@
           "name": "blog-subscription",
           "source": {
             "file": "./src/components/pages/blog/index/subscription/blog-subscription/blog-subscription.component.ts",
-            "offset": 961
+            "offset": 979
           },
-          "attributes": [],
+          "attributes": [
+            {
+              "name": "aria-label-text",
+              "default": "",
+              "required": false,
+              "value": {
+                "type": "string"
+              },
+              "source": {
+                "file": "./src/components/pages/blog/index/subscription/blog-subscription/blog-subscription.component.ts",
+                "offset": 1488
+              }
+            },
+            {
+              "name": "button-variant",
+              "default": "ink",
+              "required": false,
+              "value": {
+                "type": "string"
+              },
+              "source": {
+                "file": "./src/components/pages/blog/index/subscription/blog-subscription/blog-subscription.component.ts",
+                "offset": 1646
+              }
+            },
+            {
+              "name": "description",
+              "default": "",
+              "required": false,
+              "value": {
+                "type": "string"
+              },
+              "source": {
+                "file": "./src/components/pages/blog/index/subscription/blog-subscription/blog-subscription.component.ts",
+                "offset": 1327
+              }
+            },
+            {
+              "name": "heading",
+              "default": "",
+              "required": false,
+              "value": {
+                "type": "string"
+              },
+              "source": {
+                "file": "./src/components/pages/blog/index/subscription/blog-subscription/blog-subscription.component.ts",
+                "offset": 1167
+              }
+            }
+          ],
           "js": {
-            "properties": []
+            "properties": [
+              {
+                "name": "ariaLabelText",
+                "type": "string",
+                "default": "",
+                "source": {
+                  "file": "./src/components/pages/blog/index/subscription/blog-subscription/blog-subscription.component.ts",
+                  "offset": 1488
+                }
+              },
+              {
+                "name": "buttonVariant",
+                "type": "string",
+                "default": "ink",
+                "source": {
+                  "file": "./src/components/pages/blog/index/subscription/blog-subscription/blog-subscription.component.ts",
+                  "offset": 1646
+                }
+              },
+              {
+                "name": "description",
+                "type": "string",
+                "default": "",
+                "source": {
+                  "file": "./src/components/pages/blog/index/subscription/blog-subscription/blog-subscription.component.ts",
+                  "offset": 1327
+                }
+              },
+              {
+                "name": "heading",
+                "type": "string",
+                "default": "",
+                "source": {
+                  "file": "./src/components/pages/blog/index/subscription/blog-subscription/blog-subscription.component.ts",
+                  "offset": 1167
+                }
+              }
+            ]
           }
         },
         {
@@ -1399,6 +1485,125 @@
           "source": {
             "file": "./src/components/utils/footer/footer-support/footer-support.component.ts",
             "offset": 349
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "news-article",
+          "source": {
+            "file": "./src/components/pages/news/article/news-article/news-article.component.ts",
+            "offset": 2548
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "news-hero",
+          "source": {
+            "file": "./src/components/pages/news/index/hero/news-hero/news-hero.component.ts",
+            "offset": 457
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "news-index",
+          "source": {
+            "file": "./src/components/pages/news/index/news-index/news-index.component.ts",
+            "offset": 3029
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "news-markdown-view",
+          "source": {
+            "file": "./src/components/pages/news/article/news-markdown-view/news-markdown-view.component.ts",
+            "offset": 914
+          },
+          "attributes": [
+            {
+              "name": "color",
+              "default": "portfolioMarkdownColor",
+              "required": false,
+              "value": {
+                "type": "string"
+              },
+              "source": {
+                "file": "./src/components/pages/news/article/news-markdown-view/news-markdown-view.component.ts",
+                "offset": 1310
+              }
+            },
+            {
+              "name": "theme",
+              "required": false,
+              "value": {
+                "type": "string"
+              },
+              "source": {
+                "file": "./src/components/pages/news/article/news-markdown-view/news-markdown-view.component.ts",
+                "offset": 1112
+              }
+            }
+          ],
+          "js": {
+            "properties": [
+              {
+                "name": "color",
+                "type": "string",
+                "default": "portfolioMarkdownColor",
+                "source": {
+                  "file": "./src/components/pages/news/article/news-markdown-view/news-markdown-view.component.ts",
+                  "offset": 1310
+                }
+              },
+              {
+                "name": "theme",
+                "type": "string",
+                "source": {
+                  "file": "./src/components/pages/news/article/news-markdown-view/news-markdown-view.component.ts",
+                  "offset": 1112
+                }
+              }
+            ]
+          }
+        },
+        {
+          "name": "news-page",
+          "source": {
+            "file": "./src/pages/news/news.page.ts",
+            "offset": 512
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "news-slug-page",
+          "source": {
+            "file": "./src/pages/news/news-slug.page.ts",
+            "offset": 577
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "news-test-notice",
+          "source": {
+            "file": "./src/components/pages/news/test-notice/news-test-notice.component.ts",
+            "offset": 318
           },
           "attributes": [],
           "js": {
@@ -2900,7 +3105,7 @@
           "name": "showcase-view",
           "source": {
             "file": "./src/components/pages/showcase/article/showcase-view/showcase-view.component.ts",
-            "offset": 1463
+            "offset": 1767
           },
           "attributes": [],
           "js": {

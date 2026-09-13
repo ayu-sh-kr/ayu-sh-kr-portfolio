@@ -447,8 +447,78 @@
           "superclass": {
             "name": "BaseElement"
           },
-          "members": [],
-          "attributes": []
+          "members": [
+            {
+              "kind": "field",
+              "name": "ariaLabelText",
+              "attribute": "aria-label-text",
+              "type": {
+                "text": "string"
+              },
+              "default": ""
+            },
+            {
+              "kind": "field",
+              "name": "buttonVariant",
+              "attribute": "button-variant",
+              "type": {
+                "text": "string"
+              },
+              "default": "ink"
+            },
+            {
+              "kind": "field",
+              "name": "description",
+              "attribute": "description",
+              "type": {
+                "text": "string"
+              },
+              "default": ""
+            },
+            {
+              "kind": "field",
+              "name": "heading",
+              "attribute": "heading",
+              "type": {
+                "text": "string"
+              },
+              "default": ""
+            }
+          ],
+          "attributes": [
+            {
+              "name": "aria-label-text",
+              "fieldName": "ariaLabelText",
+              "type": {
+                "text": "string"
+              },
+              "default": ""
+            },
+            {
+              "name": "button-variant",
+              "fieldName": "buttonVariant",
+              "type": {
+                "text": "string"
+              },
+              "default": "ink"
+            },
+            {
+              "name": "description",
+              "fieldName": "description",
+              "type": {
+                "text": "string"
+              },
+              "default": ""
+            },
+            {
+              "name": "heading",
+              "fieldName": "heading",
+              "type": {
+                "text": "string"
+              },
+              "default": ""
+            }
+          ]
         }
       ],
       "exports": [
@@ -2612,6 +2682,205 @@
           "name": "portfolio-speaking",
           "declaration": {
             "name": "PortfolioSpeakingComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/news/article/news-article/news-article.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "NewsArticleComponent",
+          "customElement": true,
+          "tagName": "news-article",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "NewsArticleComponent",
+          "declaration": {
+            "name": "NewsArticleComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "news-article",
+          "declaration": {
+            "name": "NewsArticleComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/news/article/news-markdown-view/news-markdown-view.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "NewsMarkdownViewComponent",
+          "customElement": true,
+          "tagName": "news-markdown-view",
+          "superclass": {
+            "name": "MdViewComponent"
+          },
+          "members": [
+            {
+              "kind": "field",
+              "name": "color",
+              "attribute": "color",
+              "type": {
+                "text": "string"
+              },
+              "default": "portfolioMarkdownColor"
+            },
+            {
+              "kind": "field",
+              "name": "theme",
+              "attribute": "theme",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "color",
+              "fieldName": "color",
+              "type": {
+                "text": "string"
+              },
+              "default": "portfolioMarkdownColor"
+            },
+            {
+              "name": "theme",
+              "fieldName": "theme",
+              "type": {
+                "text": "string"
+              }
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "NewsMarkdownViewComponent",
+          "declaration": {
+            "name": "NewsMarkdownViewComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "news-markdown-view",
+          "declaration": {
+            "name": "NewsMarkdownViewComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/news/index/hero/news-hero/news-hero.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "NewsHeroComponent",
+          "customElement": true,
+          "tagName": "news-hero",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "NewsHeroComponent",
+          "declaration": {
+            "name": "NewsHeroComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "news-hero",
+          "declaration": {
+            "name": "NewsHeroComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/news/index/news-index/news-index.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "NewsIndexComponent",
+          "customElement": true,
+          "tagName": "news-index",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "NewsIndexComponent",
+          "declaration": {
+            "name": "NewsIndexComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "news-index",
+          "declaration": {
+            "name": "NewsIndexComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/news/test-notice/news-test-notice.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "NewsTestNoticeComponent",
+          "customElement": true,
+          "tagName": "news-test-notice",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "NewsTestNoticeComponent",
+          "declaration": {
+            "name": "NewsTestNoticeComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "news-test-notice",
+          "declaration": {
+            "name": "NewsTestNoticeComponent"
           }
         }
       ]
@@ -6928,6 +7197,72 @@
           "name": "terms-page",
           "declaration": {
             "name": "TermsPage"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/pages/news/news-slug.page.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "NewsSlugPage",
+          "customElement": true,
+          "tagName": "news-slug-page",
+          "superclass": {
+            "name": "DotaPageElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "NewsSlugPage",
+          "declaration": {
+            "name": "NewsSlugPage"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "news-slug-page",
+          "declaration": {
+            "name": "NewsSlugPage"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/pages/news/news.page.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "NewsPage",
+          "customElement": true,
+          "tagName": "news-page",
+          "superclass": {
+            "name": "DotaPageElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "NewsPage",
+          "declaration": {
+            "name": "NewsPage"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "news-page",
+          "declaration": {
+            "name": "NewsPage"
           }
         }
       ]
