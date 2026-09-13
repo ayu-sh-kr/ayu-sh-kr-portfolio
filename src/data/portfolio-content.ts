@@ -40,6 +40,7 @@ export const portfolioContent = {
     links: [
       { label: "Showcase", href: "/showcase" },
       { label: "Blog", href: "/blog" },
+      { label: "News", href: "/news" },
       { label: "Pricing", href: "/pricing" },
     ],
   },
@@ -268,8 +269,9 @@ export const portfolioContent = {
           number: "04",
           title: "Writing",
           links: [
-            { label: "Blog", href: "/blog" },
-            { label: "Showcase", href: "/showcase" },
+                { label: "Blog", href: "/blog" },
+                { label: "News", href: "/news" },
+                { label: "Showcase", href: "/showcase" },
           ],
         },
         {
