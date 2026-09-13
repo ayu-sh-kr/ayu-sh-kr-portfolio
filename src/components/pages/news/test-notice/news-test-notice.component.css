@@ -1,0 +1,10 @@
+news-test-notice {
+  display: block;
+  border-block: 1px solid var(--border-color);
+  padding-block: var(--layout-space-3);
+  background: var(--subtle-color);
+}
+
+.news-test-notice .news-meta {
+  margin: 0;
+}
