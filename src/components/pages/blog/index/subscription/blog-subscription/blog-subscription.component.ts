@@ -1,4 +1,4 @@
-import {ApplicationEventService, BaseElement, BindEvent, Component, HTML} from "@ayu-sh-kr/dota-wrap/core";
+import {ApplicationEventService, BaseElement, BindEvent, Component, HTML, Property, String} from "@ayu-sh-kr/dota-wrap/core";
 import {OnEvent} from "@ayu-sh-kr/dota-wrap/event";
 import {blogIndexContent} from "@app/data/blog-content.ts";
 import {ACTION_BUTTON_REFRESH_EVENT, ACTION_BUTTON_TRIGGER_EVENT, type ActionButtonPayload, type ActionButtonTrigger} from "@app/events/action-button.events.ts";
@@ -19,6 +19,22 @@ import {publishAnalyticsEvent} from "@app/utils/analytics.utils.ts";
   shadow: false,
 })
 export class BlogSubscriptionComponent extends BaseElement {
+  /** Optional heading lets another editorial route reuse the verified subscription flow. */
+  @Property({name: "heading", type: String})
+  heading = "";
+
+  /** Optional supporting copy keeps route-specific promises outside shared request logic. */
+  @Property({name: "description", type: String})
+  description = "";
+
+  /** Optional region label identifies the form in its consuming editorial context. */
+  @Property({name: "aria-label-text", type: String})
+  ariaLabelText = "";
+
+  /** Optional supported button tone; blog retains its established ink default. */
+  @Property({name: "button-variant", type: String})
+  buttonVariant = "ink";
+
   private readonly subscriptionService = new SubscriptionService();
 
   /**
@@ -158,16 +174,20 @@ export class BlogSubscriptionComponent extends BaseElement {
    * than by render-time side effects.
    */
   render(): string {
+    const heading = this.heading || blogIndexContent.subscription.title;
+    const description = this.description || blogIndexContent.subscription.copy;
+    const ariaLabel = this.ariaLabelText || blogIndexContent.subscription.ariaLabel;
+    const buttonVariant = this.buttonVariant === "accent" ? "accent" : "ink";
     return HTML`
-      <section class="blog-subscribe" aria-label="${blogIndexContent.subscription.ariaLabel}">
+      <section class="blog-subscribe" aria-label="${ariaLabel}">
         <div class="blog-container blog-subscribe-inner">
-          <div><p class="blog-subscribe-title">${blogIndexContent.subscription.title}</p><p class="blog-subscribe-copy">${blogIndexContent.subscription.copy}</p></div>
+          <div><p class="blog-subscribe-title">${heading}</p><p class="blog-subscribe-copy">${description}</p></div>
           <div>
             <form class="blog-subscribe-form">
               <label class="sr-only" for="blog-email">${blogIndexContent.subscription.emailLabel}</label>
               <div class="blog-subscribe-controls">
                 <input class="form-control input-md input-round input-bordered" id="blog-email" name="email" type="email" placeholder="${blogIndexContent.subscription.emailPlaceholder}" autocomplete="email" aria-describedby="blog-email-hint" required />
-                <action-button id="blog-subscription-submit" action="subscription.submit" guard="blog-subscription" variant="ink" label="${blogIndexContent.subscription.submitLabel}" busy-label="${blogIndexContent.subscription.submittingLabel}" done-label="${blogIndexContent.subscription.successLabel}" fail-label="${blogIndexContent.subscription.errorLabel}"></action-button>
+                <action-button id="blog-subscription-submit" action="subscription.submit" guard="blog-subscription" variant="${buttonVariant}" label="${blogIndexContent.subscription.submitLabel}" busy-label="${blogIndexContent.subscription.submittingLabel}" done-label="${blogIndexContent.subscription.successLabel}" fail-label="${blogIndexContent.subscription.errorLabel}"></action-button>
               </div>
               <p id="blog-email-hint" class="blog-subscribe-hint">${blogIndexContent.subscription.emailHint}</p>
             </form>
