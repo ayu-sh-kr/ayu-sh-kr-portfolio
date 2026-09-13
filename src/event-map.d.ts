@@ -4,6 +4,7 @@ import type { ActionButtonSettlement, ActionButtonTrigger } from "@app/events/ac
 import type { AnalyticsTrackEvent } from "@app/events/analytics.events.ts";
 import type { BlogFilterChange, BlogMarkdownSource } from "@app/events/blog.events.ts";
 import type { CoffeeOrderQuantitySelection, CoffeeOrderSizeSelection } from "@app/events/coffee.events.ts";
+import type { NewsMarkdownSource } from "@app/events/news.events.ts";
 import type { PricingStartProjectBrief, PricingStartProjectField, PricingStartProjectFilesChange, PricingStartProjectMode } from "@app/events/pricing.events.ts";
 import type { PrivacyMarkdownRender, PrivacyMarkdownSource } from "@app/events/privacy.events.ts";
 import type { ShowcaseMarkdownSource } from "@app/events/showcase.events.ts";
@@ -31,6 +32,7 @@ declare module "@ayu-sh-kr/dota-wrap/event" {
     "disconnected": any;
     "dom-updated": any;
     "md:render": any;
+    "news:markdown-source": NewsMarkdownSource;
     "pricing:estimator-stage": { id: string };
     "pricing:estimator-type": { id: string };
     "pricing:start-project-field": { field: PricingStartProjectField; value: string };
