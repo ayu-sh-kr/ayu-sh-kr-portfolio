@@ -1,0 +1,66 @@
+/* Dispatch permalink layout follows the short-note hierarchy from iteration 34. */
+.news-reading-progress {
+  position: fixed;
+  z-index: var(--layout-z-toast);
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  inline-size: 100%;
+  block-size: 2px;
+  background: var(--primary-color);
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+}
+
+.news-article-title {
+  margin: 0;
+}
+
+.news-article-source {
+  border-block: 1px solid var(--border-color);
+  padding-block: var(--layout-space-4);
+}
+
+.news-step {
+  display: block;
+  border-block-start: 1px solid var(--border-color);
+  padding-block: var(--layout-space-5);
+  color: var(--foreground-color);
+  text-decoration: none;
+}
+
+.news-step-title {
+  margin: var(--layout-space-2) 0 0;
+  text-wrap: balance;
+}
+
+.news-more-list {
+  margin-block-start: var(--layout-space-4);
+}
+
+.news-more-row {
+  border-block-end: 1px solid var(--border-color);
+  padding-block: var(--layout-space-4);
+  color: var(--foreground-color);
+  text-decoration: none;
+}
+
+.news-more-row:hover span:first-child {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.news-article-missing h1 {
+  margin-block: var(--layout-space-4) var(--layout-space-6);
+}
+
+.news-load-error {
+  color: var(--muted-color);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .news-back-link,
+  .news-step,
+  .news-more-row {
+    transition: none;
+  }
+}
