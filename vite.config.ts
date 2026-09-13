@@ -32,6 +32,17 @@ const showcaseRoutes = [
   "/showcase/event-pipeline",
   "/showcase/dota-rest",
 ];
+const newsRoutes = [
+  "/news/sacrena-match-feed-redis-cache",
+  "/news/graalvm-lambda-cold-start",
+  "/news/postgres-18-skip-scan",
+  "/news/postgres-queue-before-kafka",
+  "/news/quote-intake-dynamodb-on-demand",
+  "/news/self-hosted-github-runners",
+  "/news/rate-limiting-counter-ownership",
+  "/news/kotlin-context-parameters",
+  "/news/dota-wrap-ssr-hydration",
+];
 
 /**
  * Makes Vite preview serve SSG routes through the same canonical URL shape as production.
@@ -108,7 +119,7 @@ export default defineConfig(({ mode }) => {
         ssg: {
           entry: "/src/main.ts",
           autoDetectRoutes: true,
-          routes: ["/offline", ...blogRoutes, ...showcaseRoutes],
+          routes: ["/offline", ...blogRoutes, ...newsRoutes, ...showcaseRoutes],
           vercel: true,
         },
       }),

@@ -169,6 +169,56 @@
       "permanent": true
     },
     {
+      "source": "/news",
+      "destination": "/news/",
+      "permanent": true
+    },
+    {
+      "source": "/news/dota-wrap-ssr-hydration",
+      "destination": "/news/dota-wrap-ssr-hydration/",
+      "permanent": true
+    },
+    {
+      "source": "/news/graalvm-lambda-cold-start",
+      "destination": "/news/graalvm-lambda-cold-start/",
+      "permanent": true
+    },
+    {
+      "source": "/news/kotlin-context-parameters",
+      "destination": "/news/kotlin-context-parameters/",
+      "permanent": true
+    },
+    {
+      "source": "/news/postgres-18-skip-scan",
+      "destination": "/news/postgres-18-skip-scan/",
+      "permanent": true
+    },
+    {
+      "source": "/news/postgres-queue-before-kafka",
+      "destination": "/news/postgres-queue-before-kafka/",
+      "permanent": true
+    },
+    {
+      "source": "/news/quote-intake-dynamodb-on-demand",
+      "destination": "/news/quote-intake-dynamodb-on-demand/",
+      "permanent": true
+    },
+    {
+      "source": "/news/rate-limiting-counter-ownership",
+      "destination": "/news/rate-limiting-counter-ownership/",
+      "permanent": true
+    },
+    {
+      "source": "/news/sacrena-match-feed-redis-cache",
+      "destination": "/news/sacrena-match-feed-redis-cache/",
+      "permanent": true
+    },
+    {
+      "source": "/news/self-hosted-github-runners",
+      "destination": "/news/self-hosted-github-runners/",
+      "permanent": true
+    },
+    {
       "source": "/offline",
       "destination": "/offline/",
       "permanent": true
