@@ -1,0 +1,95 @@
+/* Short-note prose stays narrower and quieter than the long-form blog surface. */
+.news-markdown-content {
+  inline-size: 100%;
+  padding: 0;
+  color: var(--foreground-color);
+  font-size: var(--type-lede-size);
+  line-height: var(--type-lede-leading);
+}
+
+.news-note-prose {
+  max-inline-size: var(--layout-reading-max);
+  margin-inline: auto;
+  padding-inline: var(--layout-gutter);
+  color: var(--foreground-color);
+}
+
+.news-note-prose :is(h2, h3):first-child {
+  margin-block-start: 0;
+}
+
+.news-note-prose h2,
+.news-note-prose h3 {
+  font-weight: var(--type-section-weight);
+  text-wrap: balance;
+}
+
+.news-note-prose h2 {
+  margin-block: var(--layout-space-7) var(--layout-space-3);
+  font-size: var(--type-subsection-size);
+  letter-spacing: var(--type-section-tracking);
+  line-height: var(--type-section-leading);
+}
+
+.news-note-prose h3 {
+  margin-block: var(--layout-space-6) var(--layout-space-3);
+  font-size: var(--type-card-title-size);
+  letter-spacing: var(--type-card-title-tracking);
+  line-height: var(--type-compact-leading);
+}
+
+.news-note-prose p,
+.news-note-prose li,
+.news-note-prose blockquote {
+  text-wrap: pretty;
+}
+
+.news-note-prose p {
+  margin-block: 0 var(--layout-space-5);
+}
+
+.news-note-prose a {
+  color: var(--primary-color-strong);
+  text-decoration-color: var(--primary-color);
+  text-underline-offset: 0.2em;
+}
+
+.news-note-prose code {
+  border-radius: var(--layout-radius-xs);
+  padding-inline: var(--layout-space-1);
+  background: var(--primary-color-subtle);
+  color: var(--primary-color-strong);
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+}
+
+.news-note-prose pre {
+  overflow-x: auto;
+  margin-block: var(--layout-space-6);
+  border-radius: var(--layout-radius-lg);
+  padding: var(--layout-pad-card);
+  background: var(--code-background-color);
+  color: var(--code-foreground-color);
+  font-size: var(--type-compact-size);
+  line-height: var(--type-compact-leading);
+}
+
+.news-note-prose pre code {
+  padding: 0;
+  background: transparent;
+  color: inherit;
+  font-size: inherit;
+}
+
+.news-note-prose blockquote {
+  margin: var(--layout-space-6) 0;
+  border-inline-start: 2px solid var(--border-strong-color);
+  padding-inline-start: var(--layout-space-5);
+  color: var(--muted-color);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .news-note-prose a {
+    transition: none;
+  }
+}
