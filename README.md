@@ -9,6 +9,7 @@ The app is built with native web components through [Dota Wrap](https://www.npmj
 - Portfolio, career journey, skills, services, contact, and speaking sections
 - Project showcase with filterable project cards and Markdown case studies
 - Blog index, category filtering, article pages, and Markdown rendering
+- Dispatch news feed, kind filtering, and slug-based Markdown note pages
 - Pricing, estimate, project-start, coffee-support, and support flows
 - Light/dark theme preference, offline route, toast and alert primitives, and responsive navigation
 - Route-specific SEO metadata, canonical URLs, Open Graph metadata, sitemap, and robots directives
@@ -64,6 +65,7 @@ pnpm preview
 | `/` | Portfolio landing page |
 | `/showcase` and `/showcase/:slug` | Project catalogue and Markdown case studies |
 | `/blog` and `/blog/:slug` | Writing index and Markdown articles |
+| `/news` and `/news/:slug` | Dispatch feed and permalinked short notes |
 | `/pricing` | Services, pricing, estimator, and project enquiry flow |
 | `/coffee` | One-time support flow |
 | `/support` | Support and project handoff information |
@@ -80,6 +82,7 @@ Direct navigation to these client-side routes is rewritten to `index.html` by Ve
 Keep authored copy in the corresponding data module under `src/data/`; routes and components should compose that data rather than own content literals.
 
 - Add or edit blog post metadata in [src/configs/blogs.config.ts](src/configs/blogs.config.ts), then add its Markdown source in `public/blogs/<category>/`.
+- Add or edit Dispatch metadata and SEO in [src/configs/news.config.ts](src/configs/news.config.ts), then add its Markdown source in `public/news/`.
 - Add or edit showcase metadata in [src/data/showcase-content.ts](src/data/showcase-content.ts), then add its Markdown source in `public/showcases/`.
 - Edit terms and privacy policy in `public/legal/`.
 - Update [public/sitemap.xml](public/sitemap.xml) whenever a public, indexable route or article changes.
@@ -155,7 +158,7 @@ Items to address before a public deployment:
 1. **Privacy-policy alignment:** the policy now describes the deployed Vercel hosting and the standard GA4 tag at an abstract level. Before public deployment, verify the actual GA4 property retention and regional consent requirements against the live configuration.
 2. **Initial JavaScript size:** the production entry bundle is about 1.90 MB (540 kB gzip), above Vite's 500 kB warning threshold. Lazy-loading non-core routes such as design references, articles, or pricing flows would reduce first-load cost.
 3. **Quality automation:** Vitest now runs the repository's `src/**/*.test.ts` and `test/**/*.test.ts` suites. Add a lint/format command, then run both checks in CI alongside `pnpm build`.
-The current `public/sitemap.xml` contains 32 URLs, including all eight configured blog posts, all eight showcase projects, the design references, and the public legal and product routes. Recheck it whenever a public route or catalogue entry changes.
+The current `public/sitemap.xml` contains 50 URLs, including all configured blog posts, Dispatch notes, showcase projects, design references, and public legal and product routes. Recheck it whenever a public route or catalogue entry changes.
 
 ## Licence
 
