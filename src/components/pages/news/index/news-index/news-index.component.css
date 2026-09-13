@@ -1,0 +1,276 @@
+/* Dispatch index presentation. Containers and section rhythm stay in layout.css. */
+.news-index-main {
+  padding-block-end: var(--layout-space-8);
+}
+
+.news-month + .news-month {
+  padding-block-start: var(--layout-space-7);
+}
+
+.news-month-heading {
+  display: flex;
+  align-items: center;
+  gap: var(--layout-space-4);
+  padding-block-end: var(--layout-space-3);
+}
+
+.news-month-heading::after {
+  content: "";
+  flex: 1 1 auto;
+  block-size: 1px;
+  background: var(--border-color);
+}
+
+.news-note {
+  padding-block: var(--layout-space-6);
+  padding-inline: var(--layout-space-4);
+  border-block-end: 1px solid var(--border-color);
+  opacity: 0;
+  transform: translateY(var(--layout-space-4));
+  transition:
+    background-color 180ms ease,
+    opacity 600ms ease,
+    transform 600ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.news-note:hover,
+.news-note:focus-within {
+  background: color-mix(in srgb, var(--primary-color) 5%, transparent);
+}
+
+.news-note.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+.news-note-head {
+  margin-block-end: var(--layout-space-3);
+}
+
+.news-note-title {
+  max-inline-size: var(--layout-reading-max);
+  margin: 0;
+  text-wrap: balance;
+  transition: color 180ms ease;
+}
+
+.news-note-title a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.news-note:hover .news-note-title,
+.news-note:focus-within .news-note-title {
+  color: var(--primary-color-strong);
+}
+
+.news-note-body {
+  max-inline-size: var(--layout-reading-max);
+  margin: var(--layout-space-3) 0 0;
+  color: var(--muted-color);
+  text-wrap: pretty;
+}
+
+.news-note-body code {
+  border-radius: var(--layout-radius-xs);
+  padding-inline: var(--layout-space-1);
+  background: var(--subtle-color);
+  color: var(--foreground-color);
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+}
+
+.news-note-foot {
+  margin-block-start: var(--layout-space-4);
+}
+
+.news-source-link {
+  text-underline-offset: 0.2em;
+}
+
+.news-live {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--layout-space-2);
+  color: var(--primary-color-strong);
+  font-size: var(--type-label-size);
+  font-weight: var(--type-label-weight);
+  letter-spacing: var(--type-label-tracking);
+  text-transform: uppercase;
+}
+
+.news-live-dot,
+.news-dock-dot {
+  inline-size: 0.4375rem;
+  block-size: 0.4375rem;
+  flex: 0 0 auto;
+  border-radius: var(--layout-radius-round);
+}
+
+.news-live-dot {
+  background: var(--primary-color);
+  animation: news-pulse 2400ms ease-in-out infinite;
+}
+
+.news-empty {
+  padding-block: var(--layout-space-7);
+}
+
+.news-filter {
+  border: 1px solid var(--border-color);
+  border-radius: var(--layout-radius-pill);
+  padding: var(--layout-space-2) var(--layout-space-4);
+  background: transparent;
+  color: var(--muted-color);
+  cursor: pointer;
+  font-size: var(--type-compact-size);
+  font-weight: var(--type-control-weight);
+  line-height: 1;
+}
+
+.news-filter:hover {
+  border-color: var(--foreground-color);
+  color: var(--foreground-color);
+}
+
+.news-filter[aria-pressed="true"] {
+  border-color: var(--foreground-color);
+  background: var(--foreground-color);
+  color: var(--background-color);
+}
+
+.news-blog-handoff {
+  border-block-start: 1px solid var(--border-color);
+}
+
+.news-dock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: none;
+}
+
+.news-dock > * {
+  pointer-events: auto;
+}
+
+.news-dock-panel {
+  inline-size: 100%;
+  max-inline-size: var(--layout-form-max);
+  margin-block-end: var(--layout-space-3);
+  border: 1px solid var(--border-color);
+  border-radius: var(--layout-radius-xl);
+  padding: var(--layout-pad-card);
+  background: var(--surface-color);
+  box-shadow: var(--shadow-pop);
+  transform-origin: 50% 100%;
+  transition:
+    opacity 220ms ease,
+    transform 220ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.news-dock-panel[hidden] {
+  display: block;
+  visibility: hidden;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(var(--layout-space-3)) scale(0.98);
+}
+
+.news-dock-panel .news-label {
+  margin-block-end: var(--layout-space-3);
+}
+
+.news-dock-months {
+  margin-block-start: var(--layout-space-5);
+}
+
+.news-month-link {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--layout-space-3);
+  padding-block: var(--layout-space-2);
+  color: var(--muted-color);
+  font-size: var(--type-compact-size);
+  font-weight: var(--type-control-weight);
+  text-decoration: none;
+}
+
+.news-month-link:hover,
+.news-month-link[aria-current="true"] {
+  color: var(--foreground-color);
+}
+
+.news-dock-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--layout-space-3);
+  border: 1px solid var(--contrast-background-color);
+  border-radius: var(--layout-radius-pill);
+  padding: var(--layout-space-3) var(--layout-space-5);
+  background: var(--contrast-background-color);
+  color: var(--contrast-foreground-color);
+  box-shadow: var(--shadow-pop);
+  cursor: pointer;
+  font-size: var(--type-compact-size);
+  font-weight: var(--type-control-weight);
+  line-height: 1;
+  transition: transform 200ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.news-dock-toggle:hover {
+  transform: translateY(calc(var(--layout-space-1) * -1));
+}
+
+.news-dock-dot {
+  background: var(--contrast-muted-color);
+}
+
+.news-dock-toggle[data-filtered="true"] .news-dock-dot {
+  background: var(--primary-color);
+}
+
+.news-dock-count {
+  color: var(--contrast-muted-color);
+}
+
+.news-dock-chevron {
+  inline-size: 0.5625rem;
+  block-size: 0.5625rem;
+  flex: 0 0 auto;
+  border-inline-end: 2px solid currentColor;
+  border-block-end: 2px solid currentColor;
+  transform: rotate(-135deg);
+  transition: transform 220ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.news-dock-toggle[aria-expanded="true"] .news-dock-chevron {
+  transform: rotate(45deg);
+}
+
+@keyframes news-pulse {
+  50% {
+    opacity: 0.45;
+    transform: scale(0.8);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .news-note,
+  .news-dock-panel,
+  .news-dock-toggle,
+  .news-dock-chevron,
+  .news-note-title {
+    transition: none;
+  }
+
+  .news-note {
+    opacity: 1;
+    transform: none;
+  }
+
+  .news-live-dot {
+    animation: none;
+  }
+}
