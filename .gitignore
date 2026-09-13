@@ -12,3 +12,4 @@ setup
 /output/
 /blog-content.md
 /portfolio-frontend.iml
+.playwright-cli/
