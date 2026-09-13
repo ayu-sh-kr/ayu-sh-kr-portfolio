@@ -51,8 +51,8 @@ describe("BlogViewCountService.recordView", () => {
     };
     const service = new BlogViewCountService();
 
-    await service.recordView(slug);
-    const duplicate = await service.recordView(slug);
+    await service.recordViewV1(slug);
+    const duplicate = await service.recordViewV1(slug);
 
     assert.equal(requests, 1);
     assert.equal(duplicate, null);
@@ -73,9 +73,59 @@ describe("BlogViewCountService.recordView", () => {
     };
     (window as unknown as Record<string, unknown>).portfolioRestClient = {post: () => chain};
 
-    await assert.rejects(new BlogViewCountService().recordView(slug));
+    await assert.rejects(new BlogViewCountService().recordViewV1(slug));
 
     assert.equal(scope.has(slug), false);
+  });
+});
+
+describe("BlogViewCountService.recordViewV2", () => {
+  it("posts the URL-encoded slug and explicit content type to the v2 endpoint", async () => {
+    const calls: { uri?: string } = {};
+    let convert: ((data: unknown) => unknown) | undefined;
+    const entity = {status: 200, data: {slug: "showcase / one", viewCount: 4}};
+    const chain = {
+      uri(uri: string) { calls.uri = uri; return chain; },
+      retrieve() { return chain; },
+      handler() { return chain; },
+      converter(converter: (data: unknown) => unknown) { convert = converter; return chain; },
+      toEntity() { return Promise.resolve({...entity, data: convert?.(entity.data) ?? entity.data}); },
+    };
+    (window as unknown as Record<string, unknown>).portfolioRestClient = {post: () => chain};
+
+    const service = new BlogViewCountService();
+    const trackingKey = "v2:SHOWCASE:showcase / one";
+    AppStorage.scope("blog-view-tracking").remove(trackingKey);
+
+    const result = await service.recordViewV2("showcase / one", "SHOWCASE");
+
+    assert.equal(calls.uri, "/blog/view/v2?slug=showcase%20%2F%20one&type=SHOWCASE");
+    assert.deepEqual(result, entity.data);
+    AppStorage.scope("blog-view-tracking").remove(trackingKey);
+  });
+
+  it("writes a five-minute local marker after a successful request and suppresses duplicates", async () => {
+    const scope = AppStorage.scope("blog-view-tracking");
+    const trackingKey = "v2:BLOG:deduplicated-v2-view";
+    scope.remove(trackingKey);
+
+    let requests = 0;
+    const chain = {
+      uri() { return chain; },
+      retrieve() { return chain; },
+      handler() { return chain; },
+      converter() { return chain; },
+      toEntity() { return Promise.resolve({status: 200, data: {slug: "deduplicated-v2-view", viewCount: 1}}); },
+    };
+    (window as unknown as Record<string, unknown>).portfolioRestClient = {post: () => { requests += 1; return chain; }};
+
+    const service = new BlogViewCountService();
+    await service.recordViewV2("deduplicated-v2-view", "BLOG");
+    const duplicate = await service.recordViewV2("deduplicated-v2-view", "BLOG");
+
+    assert.equal(requests, 1);
+    assert.equal(duplicate, null);
+    scope.remove(trackingKey);
   });
 });
 

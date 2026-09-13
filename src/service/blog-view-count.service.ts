@@ -11,6 +11,9 @@ export interface BlogViewCountResponse {
   viewCount: number;
 }
 
+/** Content collections accepted by the v2 backend view-tracking endpoint. */
+export type BlogViewCountType = "BLOG" | "SHOWCASE";
+
 /** Error raised when the view-tracking endpoint cannot provide a valid response. */
 export class BlogViewCountApiError extends Error {
   constructor(public readonly status: number, message = "Blog view tracking is unavailable.") {
@@ -63,13 +66,46 @@ function toBlogViewCountResponse(data: unknown): BlogViewCountResponse {
  * response validation rules.
  */
 export class BlogViewCountService {
+  /** Selects the deployed view-tracking contract while keeping v1 as the rollout-safe default. */
+  recordView(slug: string, type: BlogViewCountType = "BLOG"): Promise<BlogViewCountResponse | null> {
+    return import.meta.env.VITE_BLOG_VIEW_API_VERSION?.trim().toLowerCase() === "v2"
+      ? this.recordViewV2(slug, type)
+      : this.recordViewV1(slug);
+  }
+
+  /**
+   * Calls the typed v2 tracking endpoint without deciding when a page should invoke it.
+   * A local marker avoids repeated browser requests while the backend Redis guard protects the API.
+   */
+  async recordViewV2(slug: string, type: BlogViewCountType): Promise<BlogViewCountResponse | null> {
+    const trackingKey = `v2:${type}:${slug}`;
+    if (blogViewTrackingStorage.has(trackingKey)) {
+      return null;
+    }
+
+    const response = await window.portfolioRestClient
+      .post<BlogViewCountResponse>()
+      .uri(`/blog/view/v2?slug=${encodeURIComponent(slug)}&type=${encodeURIComponent(type)}`)
+      .retrieve()
+      .handler(rejectServerFailure)
+      .converter(toBlogViewCountResponse)
+      .toEntity();
+
+    if (response.status < 200 || response.status >= 300) {
+      throw new BlogViewCountApiError(response.status);
+    }
+
+    blogViewTrackingStorage.set(trackingKey, true, {ttl: BLOG_VIEW_TRACKING_TTL_MS});
+    return response.data;
+  }
+
   /**
    * Records one view per blog slug every five minutes and returns the backend's aggregate count.
    *
    * The local marker is persisted only after a successful API response, allowing a failed request
    * to be retried while suppressing later successful duplicates.
    */
-  async recordView(slug: string): Promise<BlogViewCountResponse | null> {
+  async recordViewV1(slug: string): Promise<BlogViewCountResponse | null> {
     if (blogViewTrackingStorage.has(slug)) {
       return null;
     }
