@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "showcases": [
+    {
+      "slug": "dota-workspace",
+      "title": "dota-workspace",
+      "year": 2026,
+      "kind": "open source",
+      "status": "active"
+    },
+    {
+      "slug": "restaurant-oms",
+      "title": "Restaurant OMS",
+      "year": 2025,
+      "kind": "product",
+      "status": "shipped"
+    },
+    {
+      "slug": "sacrena",
+      "title": "Sacrena",
+      "year": 2025,
+      "kind": "backend",
+      "status": "active"
+    },
+    {
+      "slug": "indiknots",
+      "title": "Indiknots",
+      "year": 2026,
+      "kind": "client work",
+      "status": "active"
+    },
+    {
+      "slug": "jalans",
+      "title": "Jalans",
+      "year": 2025,
+      "kind": "client work",
+      "status": "shipped"
+    },
+    {
+      "slug": "dota-wrap",
+      "title": "dota-wrap",
+      "year": 2026,
+      "kind": "open source",
+      "status": "active"
+    },
+    {
+      "slug": "event-pipeline",
+      "title": "Event pipeline",
+      "year": 2025,
+      "kind": "backend",
+      "status": "shipped"
+    },
+    {
+      "slug": "dota-rest",
+      "title": "dota-rest",
+      "year": 2026,
+      "kind": "open source",
+      "status": "active"
+    }
+  ]
+}

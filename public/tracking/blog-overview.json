@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "blogs": [
+    { "slug": "java-native-builds-graalvm-vs-leyden", "title": "GraalVM vs Project Leyden: Java Native Builds and AOT Caching", "publishedOn": "2026-09-12", "category": "tutorial" },
+    { "slug": "what-is-a-native-build", "title": "What Is a Native Build? Compilation, Linking, and Managed Runtimes", "publishedOn": "2026-09-11", "category": "tutorial" },
+    { "slug": "open-knowledge-format-okf-vs-rag", "title": "Open Knowledge Format (OKF): linked context for AI agents", "publishedOn": "2026-09-02", "category": "news" },
+    { "slug": "why-use-redis-channels", "title": "Redis Pub/Sub vs. Kafka: Defining Delivery Contracts in Distributed Systems", "publishedOn": "2026-08-12", "category": "notes" },
+    { "slug": "telepathy-with-ai", "title": "AI Telepathy Explained: Brain-Computer Interfaces and Human-AI Communication", "publishedOn": "2026-08-08", "category": "news" },
+    { "slug": "ssr-vs-ssg-rendering-hydration-dom", "title": "SSR vs SSG for SEO and AI-built websites", "publishedOn": "2026-08-07", "category": "tutorial" },
+    { "slug": "aws-app-config-spring-boot-integration", "title": "AWS AppConfig Spring Boot Integration", "publishedOn": "2026-08-04", "category": "tutorial" },
+    { "slug": "postgresql-access-control", "title": "PostgreSQL permissions and database access control: roles, GRANTs", "publishedOn": "2026-08-02", "category": "tutorial" },
+    { "slug": "distributed-locks-redis", "title": "Distributed locks in Redis, without the folklore", "publishedOn": "2026-07-12", "category": "tutorial" },
+    { "slug": "rate-limiting-token-bucket-spring-boot", "title": "Rate limiting a real API: token bucket in Spring Boot", "publishedOn": "2026-07-02", "category": "tutorial" },
+    { "slug": "distributed-monolith-extra-invoices", "title": "When microservices become a distributed monolith", "publishedOn": "2026-06-21", "category": "rant" },
+    { "slug": "lambda-pricing-infra-alone", "title": "What Lambda pricing means when you operate infrastructure alone", "publishedOn": "2026-06-10", "category": "news" },
+    { "slug": "business-logic-auth-middleware", "title": "Keep business rules out of authentication middleware", "publishedOn": "2026-05-30", "category": "rant" },
+    { "slug": "eventbridge-scheduler-quirks", "title": "Operating EventBridge Scheduler with explicit delivery rules", "publishedOn": "2026-05-18", "category": "notes" }
+  ]
+}
