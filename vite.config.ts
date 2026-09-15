@@ -4,6 +4,7 @@ import { resolve } from "node:path";
 import {fileURLToPath} from "node:url";
 import tailwindcss from "@tailwindcss/vite";
 import {dotaVitePlugins} from "@ayu-sh-kr/dota-wrap/vite";
+import { createLocalApiProxy } from "./src/configs/local-api-proxy.config.ts";
 
 const projectRoot = fileURLToPath(new URL(".", import.meta.url));
 const blogRoutes = [
@@ -126,36 +127,7 @@ export default defineConfig(({ mode }) => {
     ],
     server: {
       proxy: mode === "development"
-        ? {
-            "/status": {
-              target: env.VITE_DEV_API_TARGET || "http://localhost:8080",
-              changeOrigin: true,
-            },
-            "/subscriber": {
-              target: env.VITE_DEV_API_TARGET || "http://localhost:8080",
-              changeOrigin: true,
-            },
-            "/pricing-form": {
-              target: env.VITE_DEV_API_TARGET || "http://localhost:8080",
-              changeOrigin: true,
-            },
-            "/buy-coffee": {
-              target: env.VITE_DEV_API_TARGET || "http://localhost:8080",
-              changeOrigin: true,
-            },
-            "/blog/view": {
-              target: env.VITE_DEV_API_TARGET || "http://localhost:8080",
-              changeOrigin: true,
-            },
-            "/support-ticket": {
-              target: env.VITE_DEV_API_TARGET || "http://localhost:8080",
-              changeOrigin: true,
-            },
-            "/support-ticket/files/upload-url": {
-              target: env.VITE_DEV_API_TARGET || "http://localhost:8080",
-              changeOrigin: true,
-            },
-          }
+        ? createLocalApiProxy(env.VITE_DEV_API_TARGET || "http://localhost:8080")
         : undefined,
     },
     resolve: {
