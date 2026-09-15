@@ -2854,39 +2854,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/pages/news/test-notice/news-test-notice.component.js",
-      "declarations": [
-        {
-          "kind": "class",
-          "name": "NewsTestNoticeComponent",
-          "customElement": true,
-          "tagName": "news-test-notice",
-          "superclass": {
-            "name": "BaseElement"
-          },
-          "members": [],
-          "attributes": []
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "NewsTestNoticeComponent",
-          "declaration": {
-            "name": "NewsTestNoticeComponent"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "news-test-notice",
-          "declaration": {
-            "name": "NewsTestNoticeComponent"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/components/pages/offline/hero/offline-hero/offline-hero.component.js",
       "declarations": [
         {
@@ -6123,6 +6090,177 @@
           "name": "app-header",
           "declaration": {
             "name": "AppHeaderComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/utils/notice/app-notice.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "AppNoticeComponent",
+          "customElement": true,
+          "tagName": "app-notice",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [
+            {
+              "kind": "field",
+              "name": "announce",
+              "attribute": "announce",
+              "type": {
+                "text": "string"
+              },
+              "default": ""
+            },
+            {
+              "kind": "field",
+              "name": "container",
+              "attribute": "container",
+              "type": {
+                "text": "string"
+              },
+              "default": ""
+            },
+            {
+              "kind": "field",
+              "name": "label",
+              "attribute": "label",
+              "type": {
+                "text": "string"
+              },
+              "default": ""
+            },
+            {
+              "kind": "field",
+              "name": "live",
+              "attribute": "live",
+              "type": {
+                "text": "string"
+              },
+              "default": "off"
+            },
+            {
+              "kind": "field",
+              "name": "message",
+              "attribute": "message",
+              "type": {
+                "text": "string"
+              },
+              "default": ""
+            },
+            {
+              "kind": "field",
+              "name": "offset",
+              "attribute": "offset",
+              "type": {
+                "text": "string"
+              },
+              "default": ""
+            },
+            {
+              "kind": "field",
+              "name": "supporting",
+              "attribute": "supporting",
+              "type": {
+                "text": "string"
+              },
+              "default": ""
+            },
+            {
+              "kind": "field",
+              "name": "variant",
+              "attribute": "variant",
+              "type": {
+                "text": "string"
+              },
+              "default": "subtle"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "announce",
+              "fieldName": "announce",
+              "type": {
+                "text": "string"
+              },
+              "default": ""
+            },
+            {
+              "name": "container",
+              "fieldName": "container",
+              "type": {
+                "text": "string"
+              },
+              "default": ""
+            },
+            {
+              "name": "label",
+              "fieldName": "label",
+              "type": {
+                "text": "string"
+              },
+              "default": ""
+            },
+            {
+              "name": "live",
+              "fieldName": "live",
+              "type": {
+                "text": "string"
+              },
+              "default": "off"
+            },
+            {
+              "name": "message",
+              "fieldName": "message",
+              "type": {
+                "text": "string"
+              },
+              "default": ""
+            },
+            {
+              "name": "offset",
+              "fieldName": "offset",
+              "type": {
+                "text": "string"
+              },
+              "default": ""
+            },
+            {
+              "name": "supporting",
+              "fieldName": "supporting",
+              "type": {
+                "text": "string"
+              },
+              "default": ""
+            },
+            {
+              "name": "variant",
+              "fieldName": "variant",
+              "type": {
+                "text": "string"
+              },
+              "default": "subtle"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "AppNoticeComponent",
+          "declaration": {
+            "name": "AppNoticeComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "app-notice",
+          "declaration": {
+            "name": "AppNoticeComponent"
           }
         }
       ]

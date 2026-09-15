@@ -287,6 +287,187 @@
           }
         },
         {
+          "name": "app-notice",
+          "source": {
+            "file": "./src/components/utils/notice/app-notice.component.ts",
+            "offset": 735
+          },
+          "attributes": [
+            {
+              "name": "announce",
+              "default": "",
+              "required": false,
+              "value": {
+                "type": "string"
+              },
+              "source": {
+                "file": "./src/components/utils/notice/app-notice.component.ts",
+                "offset": 1265
+              }
+            },
+            {
+              "name": "container",
+              "default": "",
+              "required": false,
+              "value": {
+                "type": "string"
+              },
+              "source": {
+                "file": "./src/components/utils/notice/app-notice.component.ts",
+                "offset": 1013
+              }
+            },
+            {
+              "name": "label",
+              "default": "",
+              "required": false,
+              "value": {
+                "type": "string"
+              },
+              "source": {
+                "file": "./src/components/utils/notice/app-notice.component.ts",
+                "offset": 821
+              }
+            },
+            {
+              "name": "live",
+              "default": "off",
+              "required": false,
+              "value": {
+                "type": "string"
+              },
+              "source": {
+                "file": "./src/components/utils/notice/app-notice.component.ts",
+                "offset": 1202
+              }
+            },
+            {
+              "name": "message",
+              "default": "",
+              "required": false,
+              "value": {
+                "type": "string"
+              },
+              "source": {
+                "file": "./src/components/utils/notice/app-notice.component.ts",
+                "offset": 881
+              }
+            },
+            {
+              "name": "offset",
+              "default": "",
+              "required": false,
+              "value": {
+                "type": "string"
+              },
+              "source": {
+                "file": "./src/components/utils/notice/app-notice.component.ts",
+                "offset": 1076
+              }
+            },
+            {
+              "name": "supporting",
+              "default": "",
+              "required": false,
+              "value": {
+                "type": "string"
+              },
+              "source": {
+                "file": "./src/components/utils/notice/app-notice.component.ts",
+                "offset": 946
+              }
+            },
+            {
+              "name": "variant",
+              "default": "subtle",
+              "required": false,
+              "value": {
+                "type": "string"
+              },
+              "source": {
+                "file": "./src/components/utils/notice/app-notice.component.ts",
+                "offset": 1137
+              }
+            }
+          ],
+          "js": {
+            "properties": [
+              {
+                "name": "announce",
+                "type": "string",
+                "default": "",
+                "source": {
+                  "file": "./src/components/utils/notice/app-notice.component.ts",
+                  "offset": 1265
+                }
+              },
+              {
+                "name": "container",
+                "type": "string",
+                "default": "",
+                "source": {
+                  "file": "./src/components/utils/notice/app-notice.component.ts",
+                  "offset": 1013
+                }
+              },
+              {
+                "name": "label",
+                "type": "string",
+                "default": "",
+                "source": {
+                  "file": "./src/components/utils/notice/app-notice.component.ts",
+                  "offset": 821
+                }
+              },
+              {
+                "name": "live",
+                "type": "string",
+                "default": "off",
+                "source": {
+                  "file": "./src/components/utils/notice/app-notice.component.ts",
+                  "offset": 1202
+                }
+              },
+              {
+                "name": "message",
+                "type": "string",
+                "default": "",
+                "source": {
+                  "file": "./src/components/utils/notice/app-notice.component.ts",
+                  "offset": 881
+                }
+              },
+              {
+                "name": "offset",
+                "type": "string",
+                "default": "",
+                "source": {
+                  "file": "./src/components/utils/notice/app-notice.component.ts",
+                  "offset": 1076
+                }
+              },
+              {
+                "name": "supporting",
+                "type": "string",
+                "default": "",
+                "source": {
+                  "file": "./src/components/utils/notice/app-notice.component.ts",
+                  "offset": 946
+                }
+              },
+              {
+                "name": "variant",
+                "type": "string",
+                "default": "subtle",
+                "source": {
+                  "file": "./src/components/utils/notice/app-notice.component.ts",
+                  "offset": 1137
+                }
+              }
+            ]
+          }
+        },
+        {
           "name": "app-root",
           "source": {
             "file": "./src/app.component.ts",
@@ -1593,17 +1774,6 @@
           "source": {
             "file": "./src/pages/news/news-slug.page.ts",
             "offset": 577
-          },
-          "attributes": [],
-          "js": {
-            "properties": []
-          }
-        },
-        {
-          "name": "news-test-notice",
-          "source": {
-            "file": "./src/components/pages/news/test-notice/news-test-notice.component.ts",
-            "offset": 318
           },
           "attributes": [],
           "js": {
