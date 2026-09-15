@@ -22,7 +22,12 @@ export class NewsPage extends DotaPageElement {
   render(): string {
     return `
       <app-header></app-header>
-      <news-test-notice></news-test-notice>
+      <app-notice
+        container="content"
+        offset="header"
+        label="Test content"
+        message="The Dispatch is a temporary preview. Its entries are illustrative and should not be treated as published project or operational records."
+      ></app-notice>
       <news-index></news-index>
       <app-footer></app-footer>
     `;
