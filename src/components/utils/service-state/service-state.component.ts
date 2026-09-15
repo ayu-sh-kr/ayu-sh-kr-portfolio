@@ -65,18 +65,12 @@ export class ServiceStateComponent extends BaseElement {
 
   render(): string {
     return HTML`
-      <div class="service-state__notice" data-service-notice role="status" aria-live="off">
-        <div class="service-state__heading">
-          <span class="service-state__mark" aria-hidden="true"></span>
-          <span class="service-state__kind" data-service-kind>Paused</span>
-        </div>
-        <p class="service-state__message" data-service-message></p>
-        <p class="service-state__supporting" data-service-supporting></p>
+      <app-notice class="service-state__notice" data-service-notice variant="plain" label="Paused" live="off" announce="true">
         <div class="service-state__out">
           <a data-service-route href="mailto:${this.email}">Send it by email instead</a>
           <span data-service-until></span>
         </div>
-      </div>
+      </app-notice>
       <div class="service-state__live" data-service-live>${this.content}</div>
     `;
   }
@@ -96,18 +90,19 @@ export class ServiceStateComponent extends BaseElement {
 
     if (isDegraded) {
       const copy = COPY[status.state as Exclude<ServiceCapabilityState, "up">];
-      this.querySelector<HTMLElement>("[data-service-kind]")!.textContent = copy.kind;
+      this.querySelector<HTMLElement>("[data-notice-label]")!.textContent = copy.kind;
       const message = status.state === "planned" && status.note ? `${status.note}.` : copy.message;
-      this.querySelector<HTMLElement>("[data-service-message]")!.textContent = `${this.label} ${message}`;
-      this.querySelector<HTMLElement>("[data-service-supporting]")!.textContent = copy.supporting;
+      this.querySelector<HTMLElement>("[data-notice-message]")!.textContent = `${this.label} ${message}`;
+      this.querySelector<HTMLElement>("[data-notice-supporting]")!.textContent = copy.supporting;
       this.updateUntil(status);
       const route = this.querySelector<HTMLAnchorElement>("[data-service-route]")!;
       route.href = this.mailto();
       route.textContent = this.dirty ? "Take what you have written to email" : "Send it by email instead";
       const changedState = this.firstState || status.state !== this.previousState;
-      notice.setAttribute("aria-live", changedState && !this.firstState ? "polite" : "off");
+      const noticeSurface = notice.querySelector<HTMLElement>("[data-notice-surface]");
+      noticeSurface?.setAttribute("aria-live", changedState && !this.firstState ? "polite" : "off");
       if (changedState && !this.firstState) {
-        queueMicrotask(() => notice.setAttribute("aria-live", "off"));
+        queueMicrotask(() => noticeSurface?.setAttribute("aria-live", "off"));
       }
       if (!this.firstState && hadFocus && render === "notice") {
         notice.tabIndex = -1;

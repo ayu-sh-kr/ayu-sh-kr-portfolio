@@ -4,8 +4,6 @@ service-state {
 
 service-state .service-state__notice {
   display: none;
-  padding-block: var(--layout-space-5);
-  border-block: 1px solid var(--border-color);
   max-inline-size: var(--layout-content-max);
 }
 
@@ -27,7 +25,6 @@ service-state[data-render="notice"] .service-state__live {
   display: none;
 }
 
-service-state .service-state__heading,
 service-state .service-state__out,
 service-state-strip .service-state-strip__inner {
   display: flex;
@@ -36,13 +33,7 @@ service-state-strip .service-state-strip__inner {
   flex-wrap: wrap;
 }
 
-service-state .service-state__message,
-service-state .service-state__supporting {
-  max-inline-size: var(--layout-reading-max);
-  margin-block: var(--layout-space-3) 0;
-}
-
-service-state .service-state__kind,
+service-state .app-notice__label,
 service-state-strip p {
   font-size: var(--type-label-size);
   font-weight: var(--type-label-weight);
@@ -51,11 +42,10 @@ service-state-strip p {
   color: var(--muted-color);
 }
 
-service-state .service-state__message {
+service-state .app-notice__message {
   color: var(--foreground-color);
 }
 
-service-state .service-state__supporting,
 service-state .service-state__out,
 service-state-strip p {
   font-size: var(--type-compact-size);
@@ -79,7 +69,15 @@ service-state .service-state__time {
   font-variant-numeric: tabular-nums;
 }
 
+service-state .app-notice__label {
+  display: flex;
+  align-items: center;
+  gap: var(--layout-space-3);
+}
+
+service-state .app-notice__label::before,
 .service-state__mark {
+  content: "";
   display: inline-block;
   inline-size: var(--layout-space-4);
   block-size: var(--layout-space-4);
@@ -88,7 +86,7 @@ service-state .service-state__time {
   border-radius: var(--layout-radius-round);
 }
 
-service-state[data-state="down"] .service-state__mark,
+service-state[data-state="down"] .app-notice__label::before,
 service-state-strip[data-worst="down"] .service-state__mark {
   border-style: solid;
   border-color: var(--danger-color);
