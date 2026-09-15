@@ -89,7 +89,7 @@ export class SubscriptionService {
   async initiate(email: string): Promise<void> {
     const response = await window.portfolioRestClient
       .post<SubscriptionStatusResponse>()
-      .uri("/subscriber/initiate")
+      .uri("/subscriber/v2/initiate")
       .body({ email })
       .retrieve()
       .handler(rejectServerFailure)
