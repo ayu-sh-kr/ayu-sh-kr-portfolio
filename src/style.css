@@ -21,6 +21,7 @@
 @import "./components/utils/consent-notice/consent-notice.component.css";
 @import "./components/utils/skeleton/skeleton.component.css";
 @import "./components/utils/service-state/service-state.component.css";
+@import "./components/utils/notice/app-notice.component.css";
 @import "./components/pages/design/overview/design-typography-overview/design-typography-overview.component.css";
 @import "./components/pages/design/roles/design-typography-roles/design-typography-roles.component.css";
 @import "./components/pages/design/guidance/design-typography-guidance/design-typography-guidance.component.css";
@@ -122,7 +123,6 @@
 @import "./components/pages/blog/article/blog-article/blog-article.component.css";
 @import "./components/pages/blog/article/blog-markdown-view/blog-markdown-view.component.css";
 @import "./components/pages/news/news-shared.css";
-@import "./components/pages/news/test-notice/news-test-notice.component.css";
 @import "./components/pages/news/index/hero/news-hero/news-hero.component.css";
 @import "./components/pages/news/index/news-index/news-index.component.css";
 @import "./components/pages/news/article/news-article/news-article.component.css";
