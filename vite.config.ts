@@ -123,7 +123,10 @@ export default defineConfig(({ mode }) => {
           entry: "/src/main.ts",
           autoDetectRoutes: true,
           routes: ["/offline", ...blogRoutes, ...newsRoutes, ...showcaseRoutes],
-          vercel: true,
+          // Route documents are independent, so prerender them across isolated workers.
+          concurrency: 4,
+          // Vercel updates the existing vercel.json; kept explicitly in the new deployment form.
+          deployment: "vercel",
         },
       }),
     ],
