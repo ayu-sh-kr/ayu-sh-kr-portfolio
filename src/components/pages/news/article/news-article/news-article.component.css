@@ -1,4 +1,14 @@
 /* Dispatch permalink layout follows the short-note hierarchy from iteration 34. */
+/* Article-level blocks centre on the same 42.5rem reading column the blog uses,
+ * so prose, figures, and navigation share one measure instead of the narrower
+ * layout-reading token. Gutters come from the shared layout padding. */
+.news-article-block {
+  box-sizing: border-box;
+  max-inline-size: calc(42.5rem + (2 * var(--layout-gutter)));
+  margin-inline: auto;
+  padding-inline: var(--layout-gutter);
+}
+
 .news-reading-progress {
   position: fixed;
   z-index: var(--layout-z-toast);

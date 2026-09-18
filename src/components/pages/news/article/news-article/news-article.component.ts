@@ -16,7 +16,7 @@ import {NewsLoaderService} from "@app/service/news-loader.service.ts";
 import {escapeHtml} from "@app/utils/html.utils.ts";
 
 const renderFigures = (note: NewsNote): string => note.figures?.length ? `
-  <section class="layout-reading layout-section-sm layout-section-flush" aria-label="Measured outcomes">
+  <section class="news-article-block layout-section-sm layout-section-flush" aria-label="Measured outcomes">
     <dl class="news-figures layout-grid-3">
       ${note.figures.map((figure) => `<div><dt>${escapeHtml(figure.label)}</dt><dd class="news-number">${escapeHtml(figure.value)}</dd></div>`).join("")}
     </dl>
@@ -24,7 +24,7 @@ const renderFigures = (note: NewsNote): string => note.figures?.length ? `
 ` : "";
 
 const renderReference = (note: NewsNote): string => note.reference ? `
-  <div class="layout-reading">
+  <div class="news-article-block">
     <div class="news-article-source layout-row layout-row-split">
       <span class="news-meta">Source of record</span>
       <a href="${escapeHtml(note.reference.href)}" target="_blank" rel="noopener noreferrer">${escapeHtml(note.reference.label)} <span aria-hidden="true">↗</span></a>
@@ -169,7 +169,7 @@ export class NewsArticleComponent extends BaseElement {
             <div class="layout-page">
               <a class="news-back-link" href="/news"><span aria-hidden="true">←</span> ${newsContent.article.back}</a>
             </div>
-            <div class="layout-reading layout-grid layout-section-sm text-center">
+            <div class="news-article-block layout-grid layout-section-sm text-center">
               <div class="news-article-byline layout-row layout-row-tight justify-center">
                 <span class="news-tag">${labelForNewsKind(note.kind)}</span>
                 <time class="news-meta news-number" datetime="${note.date}">${formatNewsDate(note.date)}</time>
@@ -185,12 +185,12 @@ export class NewsArticleComponent extends BaseElement {
           ${renderReference(note)}
         </article>
 
-        <nav class="layout-reading layout-section" aria-label="Adjacent Dispatch notes">
+        <nav class="news-article-block layout-section" aria-label="Adjacent Dispatch notes">
           ${renderAdjacentNote(previousNote, "previous")}
           ${renderAdjacentNote(nextNote, "next")}
         </nav>
 
-        ${moreNotes.length ? `<section class="layout-reading layout-section layout-section-flush" aria-labelledby="news-more-heading"><h2 class="news-label" id="news-more-heading">${newsContent.article.more}</h2><div class="news-more-list">${moreNotes.map((item) => `<a class="news-more-row layout-row layout-row-split" href="/news/${item.slug}"><span>${escapeHtml(item.title)}</span><time class="news-meta news-number" datetime="${item.date}">${formatNewsDate(item.date, true)}</time></a>`).join("")}</div></section>` : ""}
+        ${moreNotes.length ? `<section class="news-article-block layout-section layout-section-flush" aria-labelledby="news-more-heading"><h2 class="news-label" id="news-more-heading">${newsContent.article.more}</h2><div class="news-more-list">${moreNotes.map((item) => `<a class="news-more-row layout-row layout-row-split" href="/news/${item.slug}"><span>${escapeHtml(item.title)}</span><time class="news-meta news-number" datetime="${item.date}">${formatNewsDate(item.date, true)}</time></a>`).join("")}</div></section>` : ""}
 
         <div class="news-article-subscription layout-content layout-section-end">
           <blog-subscription heading="${newsContent.article.subscription.title}" description="${newsContent.article.subscription.copy}" aria-label-text="${newsContent.article.subscription.ariaLabel}" button-variant="accent"></blog-subscription>
