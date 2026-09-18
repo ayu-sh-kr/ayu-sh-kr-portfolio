@@ -199,6 +199,16 @@
       "permanent": true
     },
     {
+      "source": "/news/prismml-bonsai-2-27b",
+      "destination": "/news/prismml-bonsai-2-27b/",
+      "permanent": true
+    },
+    {
+      "source": "/news/qorl-postgres-query-optimizer-rl",
+      "destination": "/news/qorl-postgres-query-optimizer-rl/",
+      "permanent": true
+    },
+    {
       "source": "/news/quote-intake-dynamodb-on-demand",
       "destination": "/news/quote-intake-dynamodb-on-demand/",
       "permanent": true
