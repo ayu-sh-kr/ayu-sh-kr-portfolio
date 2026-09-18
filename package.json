@@ -21,9 +21,9 @@
     "vitest": "^4.1.11"
   },
   "dependencies": {
-    "@ayu-sh-kr/dota-md": "0.0.16",
-    "@ayu-sh-kr/dota-ui": "0.0.28",
-    "@ayu-sh-kr/dota-wrap": "0.0.34",
+    "@ayu-sh-kr/dota-md": "^0.0.17",
+    "@ayu-sh-kr/dota-ui": "^0.1.0",
+    "@ayu-sh-kr/dota-wrap": "^0.1.0",
     "reflect-metadata": "^0.2.2"
   },
   "web-types": "./web-types.json",
