@@ -64,6 +64,38 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "qorl-postgres-query-optimizer-rl",
+    date: "2026-09-19",
+    title: "A 4B open-weights model, retrained on one task, beats the Postgres query planner",
+    summary: "One person, one sabbatical, $1,200: a small open-weights model retrained on a single dedicated task — planning Postgres queries — beat the planner by 1.81x. The interesting units of AI progress are getting small, specialized, and cheap.",
+    kind: "reading",
+    document: "/news/qorl-postgres-query-optimizer-rl.md",
+    keywords: ["small specialized models", "open-weights AI", "reinforcement learning", "PostgreSQL", "AI accessibility"],
+    minutes: 2,
+    figures: [
+      {label: "Geo mean speedup", value: "1.81x"},
+      {label: "Latency reduction", value: "44.7%"},
+      {label: "Training cost", value: "~$1,200"},
+    ],
+    reference: {label: "Rohan Bansal — QoRL write-up", href: "https://rohanbansal.com/qorl"},
+  },
+  {
+    slug: "prismml-bonsai-2-27b",
+    date: "2026-09-18",
+    title: "PrismML's Bonsai 2 27B: near-lossless ternary compression at a 5.9GB footprint",
+    summary: "1.76 bits per weight, 98.2% of full-precision benchmark performance at 9x smaller, 143 tokens/second on a 5090. Local inference just got interesting again.",
+    kind: "reading",
+    document: "/news/prismml-bonsai-2-27b.md",
+    keywords: ["PrismML Bonsai 2 27B", "ternary quantization", "local AI inference"],
+    minutes: 2,
+    figures: [
+      {label: "Retention", value: "98.2%"},
+      {label: "Footprint", value: "5.9GB"},
+      {label: "Throughput", value: "143 tok/s"},
+    ],
+    reference: {label: "PrismML announcement", href: "https://prismml.com/news/bonsai-2-27b"},
+  },
+  {
     slug: "sacrena-match-feed-redis-cache",
     date: "2026-09-12",
     title: "Sacrena's match feed now serves from a Redis read-through cache",
