@@ -7,6 +7,7 @@
 - [Home](https://ayu-sh-kr.com/): Professional profile, production responsibilities, selected work, and contact information.
 - [Showcase](https://ayu-sh-kr.com/showcase): Case studies covering websites, web products, integrations, platforms, open-source tools, and client delivery.
 - [Blog](https://ayu-sh-kr.com/blog): Technical articles on the web platform, product engineering, cloud infrastructure, databases, and distributed systems.
+- [The Dispatch](https://ayu-sh-kr.com/news): Short notes on backend systems, infrastructure, useful reading, and shipped work.
 - [Pricing](https://ayu-sh-kr.com/pricing): Engagement types, indicative pricing, and project-start guidance.
 - [Support](https://ayu-sh-kr.com/support): Support and project-contact routes.
 - [Reach out](https://ayu-sh-kr.com/cards/reach-out): An interactive introduction to starting a website, product, integration, AI, or platform engagement.
@@ -39,6 +40,11 @@
 - [Operating EventBridge Scheduler](https://ayu-sh-kr.com/blog/eventbridge-scheduler-quirks)
 - [Business logic and authentication middleware](https://ayu-sh-kr.com/blog/business-logic-auth-middleware)
 - [Why use Redis channels?](https://ayu-sh-kr.com/blog/why-use-redis-channels)
+
+## Recent Dispatch notes
+
+- [A 4B open-weights model, retrained on one task, beats the Postgres query planner](https://ayu-sh-kr.com/news/qorl-postgres-query-optimizer-rl): A small Qwen model retrained on a single dedicated task — query planning — beat Postgres's planner by 1.81x; a case for small, specialized, affordable AI.
+- [PrismML's Bonsai 2 27B: near-lossless ternary compression at a 5.9GB footprint](https://ayu-sh-kr.com/news/prismml-bonsai-2-27b): 1.76 bits per weight, 98.2% of full-precision benchmark performance at 9x smaller, 143 tokens/second on a 5090.
 
 ## Design-system reference
 
