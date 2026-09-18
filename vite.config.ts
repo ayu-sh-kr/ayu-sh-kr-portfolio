@@ -34,6 +34,8 @@ const showcaseRoutes = [
   "/showcase/dota-rest",
 ];
 const newsRoutes = [
+  "/news/qorl-postgres-query-optimizer-rl",
+  "/news/prismml-bonsai-2-27b",
   "/news/sacrena-match-feed-redis-cache",
   "/news/graalvm-lambda-cold-start",
   "/news/postgres-18-skip-scan",
