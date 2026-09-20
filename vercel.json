@@ -174,6 +174,11 @@
       "permanent": true
     },
     {
+      "source": "/news/cloudflare-trycloudflare-quick-tunnel",
+      "destination": "/news/cloudflare-trycloudflare-quick-tunnel/",
+      "permanent": true
+    },
+    {
       "source": "/news/dota-wrap-ssr-hydration",
       "destination": "/news/dota-wrap-ssr-hydration/",
       "permanent": true
@@ -186,11 +191,6 @@
     {
       "source": "/news/kotlin-context-parameters",
       "destination": "/news/kotlin-context-parameters/",
-      "permanent": true
-    },
-    {
-      "source": "/news/zcode-user-code-upload-key",
-      "destination": "/news/zcode-user-code-upload-key/",
       "permanent": true
     },
     {
@@ -241,6 +241,11 @@
     {
       "source": "/news/self-hosted-github-runners",
       "destination": "/news/self-hosted-github-runners/",
+      "permanent": true
+    },
+    {
+      "source": "/news/zcode-user-code-upload-key",
+      "destination": "/news/zcode-user-code-upload-key/",
       "permanent": true
     },
     {
