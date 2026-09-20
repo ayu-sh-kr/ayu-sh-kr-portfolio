@@ -64,6 +64,17 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "cloudflare-trycloudflare-quick-tunnel",
+    date: "2026-09-20",
+    title: "Cloudflare Quick Tunnels make a local app shareable with a temporary trycloudflare.com URL",
+    summary: "Cloudflare's TryCloudflare Quick Tunnels can expose a local HTTP app through a temporary public URL, which is useful for reviews and device testing without asking someone to reach localhost:3000. The URL is temporary and is not a production deployment.",
+    kind: "reading",
+    document: "/news/cloudflare-trycloudflare-quick-tunnel.md",
+    keywords: ["Cloudflare Quick Tunnels", "trycloudflare.com", "cloudflared tunnel", "share localhost", "local development tunnel", "temporary public URL", "webhook testing", "mobile device testing"],
+    minutes: 2,
+    reference: {label: "Cloudflare documentation — TryCloudflare", href: "https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/do-more-with-tunnels/trycloudflare/"},
+  },
+  {
     slug: "zcode-user-code-upload-key",
     date: "2026-09-20",
     title: "Z.ai's ZCode was caught stealing user code — silently uploading a 313MB project snapshot with a server-only key",
