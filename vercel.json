@@ -189,6 +189,11 @@
       "permanent": true
     },
     {
+      "source": "/news/zcode-user-code-upload-key",
+      "destination": "/news/zcode-user-code-upload-key/",
+      "permanent": true
+    },
+    {
       "source": "/news/openbot-self-hosted-ai-coworkers",
       "destination": "/news/openbot-self-hosted-ai-coworkers/",
       "permanent": true
