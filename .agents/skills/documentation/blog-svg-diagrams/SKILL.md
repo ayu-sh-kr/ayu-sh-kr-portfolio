@@ -40,8 +40,11 @@ AI pipelines, BCI signal paths, architecture summaries, and concept flows.
   - primary `#5d702d`;
   - border `#d9e2bd` or `#92a951`;
   - subtle surfaces `#ecf0df` and `#d9e2bd`.
-- Use a light rounded canvas, compact cards, restrained shadows, and one
-  typography hierarchy. Avoid unrelated blue/purple product palettes.
+- Use a rounded canvas resolved from the requested or documented color mode,
+  compact cards, restrained shadows, and one typography hierarchy. When the
+  user requests a dark default, resolve the app's dark semantic tokens into
+  explicit SVG colors; do not retain a light canvas merely because the example
+  fallbacks above are light. Avoid unrelated blue/purple product palettes.
 - Include `<title>` and `<desc>` with `role="img"` and
   `aria-labelledby` on the root SVG.
 - Keep cards scannable: a short stage label, title, and at most two body lines.
