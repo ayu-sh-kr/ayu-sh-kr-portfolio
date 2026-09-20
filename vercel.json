@@ -189,6 +189,16 @@
       "permanent": true
     },
     {
+      "source": "/news/openbot-self-hosted-ai-coworkers",
+      "destination": "/news/openbot-self-hosted-ai-coworkers/",
+      "permanent": true
+    },
+    {
+      "source": "/news/perplexity-cobbledb",
+      "destination": "/news/perplexity-cobbledb/",
+      "permanent": true
+    },
+    {
       "source": "/news/postgres-18-skip-scan",
       "destination": "/news/postgres-18-skip-scan/",
       "permanent": true
