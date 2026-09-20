@@ -43,6 +43,8 @@
 
 ## Recent Dispatch notes
 
+- [CopilotKit OpenBot: self-hosted AI coworkers and agent controls](https://ayu-sh-kr.com/news/openbot-self-hosted-ai-coworkers/): Explains CopilotKit's open-source alpha template, AG-UI agents, isolated browsers, policy enforcement, audit trails, and human takeover. [Article Markdown](https://ayu-sh-kr.com/news/openbot-self-hosted-ai-coworkers.md).
+- [Perplexity CobbleDB: why AI search moved beyond DynamoDB](https://ayu-sh-kr.com/news/perplexity-cobbledb/): Explains the DynamoDB replacement, Pillar and Lorry update pipeline, RocksDB MultiGet reads, replica selection, and storage trade-offs for AI search. [Article Markdown](https://ayu-sh-kr.com/news/perplexity-cobbledb.md).
 - [A 4B open-weights model, retrained on one task, beats the Postgres query planner](https://ayu-sh-kr.com/news/qorl-postgres-query-optimizer-rl): A small Qwen model retrained on a single dedicated task — query planning — beat Postgres's planner by 1.81x; a case for small, specialized, affordable AI.
 - [PrismML's Bonsai 2 27B: near-lossless ternary compression at a 5.9GB footprint](https://ayu-sh-kr.com/news/prismml-bonsai-2-27b): 1.76 bits per weight, 98.2% of full-precision benchmark performance at 9x smaller, 143 tokens/second on a 5090.
 
