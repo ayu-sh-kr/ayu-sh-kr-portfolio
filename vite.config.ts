@@ -34,6 +34,7 @@ const showcaseRoutes = [
   "/showcase/dota-rest",
 ];
 const newsRoutes = [
+  "/news/cloudflare-trycloudflare-quick-tunnel",
   "/news/zcode-user-code-upload-key",
   "/news/openbot-self-hosted-ai-coworkers",
   "/news/perplexity-cobbledb",
