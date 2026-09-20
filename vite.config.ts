@@ -34,6 +34,7 @@ const showcaseRoutes = [
   "/showcase/dota-rest",
 ];
 const newsRoutes = [
+  "/news/zcode-user-code-upload-key",
   "/news/openbot-self-hosted-ai-coworkers",
   "/news/perplexity-cobbledb",
   "/news/qorl-postgres-query-optimizer-rl",
