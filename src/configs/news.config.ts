@@ -64,6 +64,17 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "openbot-self-hosted-ai-coworkers",
+    date: "2026-09-19",
+    title: "CopilotKit OpenBot: self-hosted AI coworkers and agent controls",
+    summary: "CopilotKit OpenBot is an open-source, self-hosted AI coworker template with isolated browsers, AG-UI agents, policy checks, and audit trails. It is currently alpha.",
+    kind: "reading",
+    document: "/news/openbot-self-hosted-ai-coworkers.md",
+    keywords: ["CopilotKit OpenBot", "open-source AI coworkers", "self-hosted AI agents", "AG-UI protocol", "AI browser agents", "agent policy enforcement", "AI agent audit trails", "human-in-the-loop control"],
+    minutes: 2,
+    reference: {label: "CopilotKit/OpenBot on GitHub", href: "https://github.com/CopilotKit/openbot"},
+  },
+  {
     slug: "qorl-postgres-query-optimizer-rl",
     date: "2026-09-19",
     title: "A 4B open-weights model, retrained on one task, beats the Postgres query planner",
