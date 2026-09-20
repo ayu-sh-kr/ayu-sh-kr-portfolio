@@ -64,6 +64,17 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "zcode-user-code-upload-key",
+    date: "2026-09-20",
+    title: "Z.ai's ZCode was caught stealing user code — silently uploading a 313MB project snapshot with a server-only key",
+    summary: "Z.ai's ZCode was caught staging an encrypted 313MB workspace archive — Git history included — for upload to Alibaba cloud storage, decryptable only by a private key on Z.ai's server. Z.ai apologised and called it a bug.",
+    kind: "reading",
+    document: "/news/zcode-user-code-upload-key.md",
+    keywords: ["Z.ai ZCode", "Zhipu ZCode upload", "AI coding tool privacy", "ZCode Git history upload", "Ferstar ZCode investigation", "Alibaba cloud upload", "AI coding assistant data collection", "developer tool telemetry"],
+    minutes: 2,
+    reference: {label: "Ferstar — Inside ZCode", href: "https://blog.ferstar.org/en/posts/zcode-silent-workspace-snapshot-upload/"},
+  },
+  {
     slug: "openbot-self-hosted-ai-coworkers",
     date: "2026-09-19",
     title: "CopilotKit OpenBot: self-hosted AI coworkers and agent controls",

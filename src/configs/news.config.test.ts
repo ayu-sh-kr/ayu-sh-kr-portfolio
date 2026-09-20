@@ -7,7 +7,7 @@ describe("news configuration", () => {
     const notes = getNewsNotes();
 
     assert.ok(notes.length >= 9);
-    assert.equal(notes[0]?.slug, "perplexity-cobbledb");
+    assert.equal(notes[0]?.slug, "zcode-user-code-upload-key");
     assert.ok(notes.every((note, index) => index === 0 || notes[index - 1]!.date >= note.date));
     assert.ok(notes.every((note) => getNewsSeo(note).description === note.summary));
   });
