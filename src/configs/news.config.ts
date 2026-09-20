@@ -75,6 +75,17 @@ export const newsNotes: readonly NewsNote[] = [
     reference: {label: "CopilotKit/OpenBot on GitHub", href: "https://github.com/CopilotKit/openbot"},
   },
   {
+    slug: "perplexity-cobbledb",
+    date: "2026-09-20",
+    title: "Perplexity CobbleDB: why AI search moved beyond DynamoDB",
+    summary: "Why Perplexity replaced DynamoDB with CobbleDB: a RocksDB-backed hot store with Pillar and Lorry for batched updates and low-latency reads for AI search.",
+    kind: "reading",
+    document: "/news/perplexity-cobbledb.md",
+    keywords: ["Perplexity CobbleDB", "CobbleDB architecture", "Perplexity DynamoDB replacement", "RocksDB MultiGet", "AI search storage", "distributed key-value store", "Pillar Lorry pipeline", "batched ingestion", "replica read latency"],
+    minutes: 3,
+    reference: {label: "Perplexity engineering — CobbleDB", href: "https://www.perplexity.ai/hub/blog/cobbledb-storage-infrastructure-for-ai-native-search-at-scale"},
+  },
+  {
     slug: "qorl-postgres-query-optimizer-rl",
     date: "2026-09-19",
     title: "A 4B open-weights model, retrained on one task, beats the Postgres query planner",

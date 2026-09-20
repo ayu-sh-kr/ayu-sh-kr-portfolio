@@ -1,58 +1,68 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 340" role="img" aria-labelledby="cobbledb-title cobbledb-desc">
-  <title id="cobbledb-title">CobbleDB read path: how a page lookup flows from query to content</title>
-  <desc id="cobbledb-desc">A four-step flow: retrieval and ranking produce candidate page keys, a stateless router hashes the keys to partition replicas, data nodes batch-read passages and embeddings from RocksDB on memory or NVMe, and the content returns to the model.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="930" viewBox="0 0 800 930" role="img" aria-labelledby="title desc">
+  <title id="title">CobbleDB: independent updates, tunable reads</title>
+  <desc id="desc">Pillar publishes durable page updates. Lorry batches them by partition in S3 and registers batches with CobbleDB. Replicas ingest independently. Retrieval and ranking send candidate keys to a stateless router. It maps keys to partitions, prefers same-zone replicas and queries another replica if slow. Each partition has three copies on different RocksDB nodes; MultiGet reads use memory or NVMe. PostgreSQL backs metadata. Records contain passages and embeddings.</desc>
   <defs>
-    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
-      <path d="M0 0 L10 5 L0 10 z" fill="#5d702d"/>
-    </marker>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto"><path d="M2 2 L10 6 L2 10" fill="none" stroke="#bdce8a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker>
+    <style>
+      text { font-family: 'Segoe Print', 'Bradley Hand', 'Comic Sans MS', cursive; fill: #fafaf8; font-size: 20px; }
+      .heading { font-size: 28px; font-weight: 700; }
+      .label { fill: #bdce8a; font-size: 18px; }
+      .body { font-family: Arial, sans-serif; font-size: 19px; fill: #d0d0cd; }
+      .box { fill: #1d1d1f; stroke: #92a951; stroke-width: 1.8; stroke-linejoin: round; }
+      .echo { fill: none; stroke: #92a951; stroke-width: .8; opacity: .4; }
+      .flow { fill: none; stroke: #bdce8a; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; marker-end: url(#arrow); }
+    </style>
   </defs>
-
-  <rect x="4" y="4" width="752" height="332" rx="18" fill="#f8faf2" stroke="#d9e2bd" stroke-width="2"/>
-
-  <!-- Row 1: three main stages -->
-  <g font-family="'Segoe Print','Comic Sans MS','Bradley Hand',cursive" fill="#242c12">
-    <!-- Stage 1 -->
-    <rect x="30" y="70" width="205" height="96" rx="12" fill="#ecf0df" stroke="#5d702d" stroke-width="2" stroke-linecap="round" stroke-dasharray="0"/>
-    <text x="46" y="94" font-size="12" letter-spacing="2" fill="#5d702d" font-family="ui-monospace,monospace">STEP 01</text>
-    <text x="46" y="116" font-size="17" font-weight="bold">Retrieval + ranking</text>
-    <text x="46" y="138" font-size="12.5">Candidate pages picked</text>
-    <text x="46" y="154" font-size="12.5">for the query</text>
-
-    <!-- Stage 2 -->
-    <rect x="278" y="70" width="205" height="96" rx="12" fill="#ecf0df" stroke="#5d702d" stroke-width="2" stroke-linecap="round"/>
-    <text x="294" y="94" font-size="12" letter-spacing="2" fill="#5d702d" font-family="ui-monospace,monospace">STEP 02</text>
-    <text x="294" y="116" font-size="17" font-weight="bold">Stateless router</text>
-    <text x="294" y="138" font-size="12.5">Hashes keys to partitions,</text>
-    <text x="294" y="154" font-size="12.5">prefers same-zone replica</text>
-
-    <!-- Stage 3 -->
-    <rect x="526" y="70" width="205" height="96" rx="12" fill="#ecf0df" stroke="#5d702d" stroke-width="2" stroke-linecap="round"/>
-    <text x="542" y="94" font-size="12" letter-spacing="2" fill="#5d702d" font-family="ui-monospace,monospace">STEP 03</text>
-    <text x="542" y="116" font-size="16" font-weight="bold">Data nodes · 3 replicas</text>
-    <text x="542" y="138" font-size="12.5">RocksDB MultiGet; memory</text>
-    <text x="542" y="154" font-size="12.5">cache, NVMe for the rest</text>
-
-    <!-- Stage 4 -->
-    <rect x="278" y="240" width="205" height="74" rx="12" fill="#ecf0df" stroke="#5d702d" stroke-width="2" stroke-linecap="round"/>
-    <text x="294" y="264" font-size="12" letter-spacing="2" fill="#5d702d" font-family="ui-monospace,monospace">STEP 04</text>
-    <text x="294" y="286" font-size="17" font-weight="bold">Passages + embeddings</text>
-    <text x="294" y="304" font-size="12.5">handed to the model</text>
-  </g>
-
-  <!-- Connectors -->
-  <g fill="none" stroke="#5d702d" stroke-width="2.5" stroke-linecap="round">
-    <path d="M240 118 h32" marker-end="url(#arrow)"/>
-    <path d="M488 118 h32" marker-end="url(#arrow)"/>
-    <path d="M628 172 v52 q0 14 -14 14 h-126" marker-end="url(#arrow)"/>
-  </g>
-
-  <!-- Side note: what was omitted -->
-  <g font-family="'Segoe Print','Comic Sans MS','Bradley Hand',cursive">
-    <rect x="30" y="240" width="205" height="74" rx="12" fill="#f8faf2" stroke="#92a951" stroke-width="2" stroke-dasharray="6 5"/>
-    <text x="46" y="264" font-size="12" letter-spacing="2" fill="#5d702d" font-family="ui-monospace,monospace">SKIPPED</text>
-    <text x="46" y="286" font-size="13" fill="#242c12">No transactions, no synced</text>
-    <text x="46" y="304" font-size="13" fill="#242c12">replicas — reads tolerate lag</text>
-  </g>
-
-  <text x="30" y="38" font-size="18" font-weight="bold" fill="#242c12" font-family="'Segoe Print','Comic Sans MS','Bradley Hand',cursive">CobbleDB: the tunable read path</text>
+  <rect x="1" y="1" width="798" height="928" rx="20" fill="#101011" stroke="#3e3e41"/>
+  <text x="30" y="44" class="heading">CobbleDB: updates and reads, decoupled</text>
+  <path d="M30 61 Q390 58 770 63" class="echo"/>
+  <text x="30" y="94" class="label">01 / UPDATE PATH</text>
+  <path d="M32 112 Q133 109 234 113 L232 229 Q128 232 30 228 Z" class="box"/>
+  <path d="M35 115 L230 111 L235 225" class="echo"/>
+  <text x="48" y="145">Pillar</text>
+  <text x="48" y="176" class="body">Durable page state</text>
+  <text x="48" y="205" class="body">Publishes exports</text>
+  <path d="M234 169 Q263 167 290 169" class="flow"/>
+  <path d="M290 113 Q390 110 489 112 L491 229 Q390 231 291 228 Z" class="box"/>
+  <path d="M294 116 Q390 113 486 115" class="echo"/>
+  <text x="308" y="145">Lorry</text>
+  <text x="308" y="176" class="body">Batches by partition</text>
+  <text x="308" y="205" class="body">Registers batches</text>
+  <path d="M490 169 Q519 171 548 169" class="flow"/>
+  <path d="M548 112 Q656 109 769 113 L768 228 Q657 231 549 229 Z" class="box"/>
+  <path d="M552 116 L765 111 L772 225" class="echo"/>
+  <text x="566" y="145">S3 batch files</text>
+  <text x="566" y="176" class="body">Replicas ingest</text>
+  <text x="566" y="205" class="body">at their own pace</text>
+  <path d="M659 230 Q657 350 659 497" class="flow"/>
+  <text x="682" y="310" class="label" transform="rotate(90 682 310)">async batch ingestion</text>
+  <text x="30" y="275" class="label">02 / QUERY PATH</text>
+  <text x="30" y="310">Retrieval + ranking → candidate page keys</text>
+  <path d="M298 320 Q296 337 298 354" class="flow"/>
+  <path d="M31 355 Q297 352 566 356 L565 459 Q298 462 30 458 Z" class="box"/>
+  <path d="M35 359 Q296 354 561 359" class="echo"/>
+  <text x="49" y="386">Stateless query router</text>
+  <text x="49" y="416" class="body">Hash keys → partitions · fan out reads in parallel</text>
+  <text x="49" y="444" class="body">Prefer same-zone replica · query another if slow</text>
+  <path d="M298 460 Q296 477 298 496" class="flow"/>
+  <path d="M31 498 Q399 495 769 499 L768 741 Q400 744 30 740 Z" fill="#131807" stroke="#92a951" stroke-width="1.8" stroke-linejoin="round"/>
+  <path d="M35 502 Q400 498 764 503" class="echo"/>
+  <text x="49" y="530">CobbleDB / distributed key-value hot store</text>
+  <text x="49" y="560" class="body">One partition shown: three copies on different nodes</text>
+  <path d="M50 582 L268 580 L270 643 L49 645 Z" class="box"/>
+  <path d="M291 581 L510 583 L509 645 L290 642 Z" class="box"/>
+  <path d="M532 582 L749 580 L751 643 L531 645 Z" class="box"/>
+  <text x="69" y="608">Node A</text><text x="69" y="632" class="label">RocksDB · replica 1</text>
+  <text x="309" y="608">Node B</text><text x="309" y="632" class="label">RocksDB · replica 2</text>
+  <text x="550" y="608">Node C</text><text x="550" y="632" class="label">RocksDB · replica 3</text>
+  <text x="49" y="678" class="body">On each node: MultiGet batch reads</text>
+  <text x="49" y="708" class="body">Memory cache for hot data · local NVMe for cache misses</text>
+  <path d="M50 723 Q395 720 746 724" class="echo"/>
+  <text x="31" y="781" class="label">RECORD</text>
+  <text x="154" y="781" class="body">Hashed URL → passages + per-chunk embeddings</text>
+  <text x="31" y="817" class="label">METADATA</text>
+  <text x="154" y="817" class="body">PostgreSQL-backed service supports CobbleDB</text>
+  <path d="M30 840 Q397 837 769 841" class="echo"/>
+  <text x="31" y="871">Tune the memory / disk balance to the workload.</text>
+  <text x="31" y="903" class="body">Hot store: no transactions; replicas may briefly lag behind writes.</text>
 </svg>
