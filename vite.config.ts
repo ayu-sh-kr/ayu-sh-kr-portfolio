@@ -8,6 +8,7 @@ import { createLocalApiProxy } from "./src/configs/local-api-proxy.config.ts";
 
 const projectRoot = fileURLToPath(new URL(".", import.meta.url));
 const blogRoutes = [
+  "/blog/reinforcement-learning-from-rlhf-to-rlsc",
   "/blog/java-native-builds-graalvm-vs-leyden",
   "/blog/what-is-a-native-build",
   "/blog/open-knowledge-format-okf-vs-rag",
