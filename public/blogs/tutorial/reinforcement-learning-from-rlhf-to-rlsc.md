@@ -1,439 +1,181 @@
-# Reinforcement Learning: How Rewards Taught Models to Behave
+# Reinforcement Learning for LLMs: From RLHF and RLVR to RLSC
 
-A model can know a surprising amount and still make the wrong move.
+You ask an AI to fix a bug. It explains the cause, writes a tidy patch, and confidently tells you the problem is solved. Then you run the tests. The bug is still there.
 
-That is the part people often miss when they talk about AI as if more data automatically means better behaviour. Pre-training can teach a model language, patterns, facts, code and even a fair amount of reasoning. But it does not, by itself, teach the model which answer is more useful, which action should be avoided, or which line of reasoning deserves to be repeated next time.
+That gap between a convincing answer and a working result is a useful way into reinforcement learning. A model may have learned enough about programming to describe the right approach, yet still choose an implementation that fails. More knowledge helps, but we also need a training signal that rewards the behaviour we actually want.
 
-Reinforcement learning enters exactly there. It gives the model something ordinary training does not: a consequence.
+Reinforcement learning, or RL, trains an agent to improve its decisions using rewards. In large language models, those rewards can come from human preferences, executable checks, or even the model's own probability estimates. These sources carry very different kinds of evidence: someone liked the answer, a test passed, or the model assigned the response a high probability.
 
-Once you see that, RLHF, RLVR, RLAIF, DPO and confidence-based methods stop looking like unrelated acronyms. They become different answers to one question:
+We'll start with the machine-learning foundations, then follow the ideas behind RLHF, RLAIF, DPO, RLVR, process supervision, and RLSC. The question running through them is simple: **what tells the model that one attempt deserves to be repeated?**
 
-**Where should the reward come from?**
+## Reinforcement learning starts with decisions and consequences
 
----
+Imagine training a robot to reach a charging station. You could give it demonstrations of successful routes, but the room may contain obstacles it has never encountered. Reinforcement learning gives it a way to improve through attempts: observe the room, choose a movement, see what happens, and use the result to adjust its behaviour.
 
-## Reinforcement learning before LLMs
+The robot is the **agent**. The room is its **environment**. Its available information describes the **state**, and a movement is an **action**. The **policy** is the strategy that chooses actions from that information. A **reward** is a number supplied by the training setup to score an outcome. These terms also apply to games, resource scheduling, and other decision problems; a robot is just an easy example to picture.
 
-In machine learning, reinforcement learning is easiest to understand as learning through interaction.
+The diagram separates interaction from learning. The agent acts in the environment; a training algorithm uses the resulting experience to update the policy.
 
-An agent sees some state, chooses an action, receives a reward, and moves into another state. Over many attempts, it learns which actions tend to produce better long-term outcomes.
+![The policy selects an action; the environment returns a new state and reward; a learning update changes the policy for future attempts.](/blogs/tutorial/assets/reinforcement-learning-from-rlhf-to-rlsc/01-rl-loop.svg)
 
-![A hand-drawn reinforcement learning loop showing state, action, environment, reward and policy update](/blogs/tutorial/assets/reinforcement-learning-from-rlhf-to-rlsc/01-rl-loop.svg)
+A reward does not necessarily tell us whether the latest action was good in isolation. Reaching the charger may require moving away from it first to go around a wall. RL therefore aims to improve expected accumulated reward, often called the **return**, across a sequence of decisions. A discount factor can reduce the weight of rewards farther into the future.
 
-A useful mental model is:
+This creates the credit-assignment problem: which earlier choices contributed to success? It also creates the exploration problem. Repeating the best route found so far is useful, but occasionally trying another route may reveal a shorter one. Too little exploration can trap the agent in a mediocre strategy; too much wastes attempts on poor choices.
 
-[
-state ightarrow action ightarrow reward ightarrow update
-]
+Rewards are designed signals, not an automatic understanding of our intent. If we reward the robot only for getting closer to the charger, it might keep pushing against the wall. If we reward reaching the charger but ignore collisions, it might learn a route we would never allow in a real room. The objective must describe enough of the task for improved scores to mean improved behaviour.
 
-The thing being learned is the policy: the strategy that decides which action to take in a given situation.
+## How the RL loop maps to a language model
 
-In a game, the state could be the board and the action could be a move. In robotics, the state could be sensor readings and the action could be a motor command. In recommendation systems, the action could be which item to show.
+For an LLM, the policy is the model's distribution over possible next tokens. The state can be represented by the prompt and the tokens generated so far. Each token is an action, and a completed answer is a sequence of those actions. In an agent workflow, tool calls and their returned observations extend that sequence.
 
-The reward is the crucial part. It tells the agent whether an action moved it in a useful direction.
+Pre-training usually teaches next-token prediction over large amounts of text. Supervised fine-tuning, or SFT, then shows the model examples of desired responses. RL adds a different learning signal: sample an attempt, score its outcome, and update the model so higher-reward behaviour becomes more likely. These stages can complement one another; RL is not a requirement for every useful language model.
 
-That reward does not have to arrive immediately. A chess engine can sacrifice a piece now because that move improves its chance of winning later. RL therefore cares about accumulated future reward, not only what feels good in the next step.
+Here is how the same decision loop looks when the task is producing an answer. The final score can influence many token choices that preceded it.
 
-This creates the classic exploration problem. If the agent always repeats the action it currently believes is best, it may never discover something better. If it explores forever, it never settles on what works. RL lives in that tension between trying new things and exploiting what has already been learned.
+![A prompt and generated tokens form the state, the LLM samples a response, and an evaluator scores that response for training.](/blogs/tutorial/assets/reinforcement-learning-from-rlhf-to-rlsc/02-rl-to-llm.svg)
 
-The details get mathematical quickly, but the basic idea stays simple: **behaviour that leads to better outcomes becomes more likely.**
+For our bug-fixing assistant, a training attempt might include inspecting a file, editing a function, and running a test. A successful result can reward that sequence, while a failing result provides evidence against it. The training algorithm still has to work out how to distribute that signal across the choices; the test does not directly supply the correct patch.
 
----
+It also helps to distinguish training from ordinary use. Generating several answers and selecting the best one at inference time does not, by itself, update the model's weights. An assistant can use test feedback to revise a patch within a conversation without undergoing reinforcement learning. RL happens when experience feeds a parameter-update process.
 
-## Why LLMs needed reinforcement learning at all
+That leaves the central design decision: who supplies the score, and what does that score actually measure?
 
-A language model is trained first by predicting the next token.
+## RLHF: learning which answers people prefer
 
-Give it:
+Some qualities are difficult to express as a test. You may want an explanation to be clear, relevant, appropriately cautious, and responsive to the question. **Reinforcement Learning from Human Feedback (RLHF)** uses human judgments to help define that target.
 
-> The sky appears blue because...
+In the classic pipeline, reviewers compare candidate answers to the same prompt. Those comparisons train a separate reward model to predict human preferences. The language model then generates responses and receives scores from that reward model during RL training. The [InstructGPT paper](https://arxiv.org/abs/2203.02155) describes this progression from supervised demonstrations to preference comparisons and policy optimization.
 
-and the model estimates which token is likely to come next, then repeats that process token by token.
+The distinction between the two stages matters: people label comparisons, while the learned reward model supplies scores for many subsequent training attempts.
 
-That objective is powerful because it forces the model to absorb structure from enormous amounts of text. But next-token prediction is not the same thing as being helpful.
+![Human comparisons train a reward model; the reward model then scores newly sampled responses to guide LLM policy updates.](/blogs/tutorial/assets/reinforcement-learning-from-rlhf-to-rlsc/03-rlhf.svg)
 
-A model can produce a continuation that is statistically plausible and still be rambling, evasive, unsafe, overconfident or simply not what the user asked for.
+Think about asking for an explanation of [Redis messaging](/blog/why-use-redis-channels/). One answer is accurate but assumes you already understand delivery semantics. Another introduces the terms and explains when losing a message matters. A reviewer can prefer the second without reducing good teaching to a single mechanical rule.
 
-This is where the RL framing becomes useful.
+The breakthrough was making such judgments usable at training scale. However, the model optimizes the reward model's prediction, which is an imperfect stand-in for what reviewers intended. A score can favour persuasive wording or excessive agreement, even when an answer deserves more scrutiny.
 
-For an LLM, the state is roughly the conversation so far. The action is the response, or more precisely the sequence of token choices that forms it. The reward is a score that says how desirable that output was.
+Return to the broken patch. A reviewer who reads the explanation without executing the code might prefer it. That does not make preference feedback useless; it tells us which part of the task still needs another kind of evidence.
 
-![A hand-drawn bridge from classical RL to LLM post-training: prompt becomes state, response becomes action, evaluator supplies reward](/blogs/tutorial/assets/reinforcement-learning-from-rlhf-to-rlsc/02-rl-to-llm.svg)
+## RLAIF: scaling feedback with an AI evaluator
 
-That gives us a new training loop:
+Human comparison data takes time to produce. **Reinforcement Learning from AI Feedback (RLAIF)** uses model-generated judgments for some of that supervision. A judge model can compare responses against stated criteria, producing preference data that can support reward-model training.
 
-[
-prompt ightarrow response ightarrow reward ightarrow policy update
-]
+[Constitutional AI](https://arxiv.org/abs/2212.08073) is an influential example. It combines a supervised stage involving critique and revision with a reinforcement-learning stage using AI-generated preferences. Written principles guide the process. Humans still determine those principles and evaluate the resulting system; the method changes how some individual judgments are produced.
 
-The hard part is no longer understanding RL. The hard part is deciding who or what gets to produce the reward.
+For a bug-fixing task, a judge might assess whether a patch addresses the requested scope and whether its explanation matches the changes. This could provide useful feedback across many examples. But the judge can also miss the same subtle bug as the model it evaluates.
 
-That is where nearly every major post-training idea starts.
+AI feedback therefore moves part of the quality problem into the evaluator and its criteria. More judgments are useful only when they retain a meaningful relationship to the behaviour we want.
 
----
+## DPO: using preferences without a separate RL stage
 
-## RLHF: let people tell the model what they prefer
+Once you have preferred and rejected answers, do you always need to train a reward model and run an RL loop? **Direct Preference Optimization (DPO)** offers another route. It trains directly on preference pairs, using a reference policy to define the optimization objective. The [DPO paper](https://arxiv.org/abs/2305.18290) derives this objective from a regularized reward-maximization formulation.
 
-Reinforcement Learning from Human Feedback, or RLHF, became the best-known answer.
+Standard DPO avoids the separate reward-model training and online response-sampling loop of classic RLHF. That can make preference training simpler to implement. It belongs in this discussion as an alternative way to learn from preferences, rather than another source of rewards.
 
-The idea is straightforward. Give human reviewers several responses to the same prompt and ask which one is better.
+Both routes start with comparisons. The diagram shows where their training machinery differs.
 
-Imagine the prompt is:
+![Classic RLHF fits a reward model and runs policy optimization; DPO trains directly on preferred and rejected responses with a reference policy.](/blogs/tutorial/assets/reinforcement-learning-from-rlhf-to-rlsc/04-rlhf-vs-dpo.svg)
 
-> Explain Redis Streams to someone who already understands Pub/Sub.
+The distinction is practical. If your comparison dataset rewards tidy but broken patches, changing the optimizer will not fix its definition of “better.” You still need preferences that reflect the actual task, and an evaluation set that can expose failures the training data missed.
 
-The model produces two answers. One is technically correct but bloated. The other is concise, keeps the comparison grounded in delivery semantics and does not wander.
+## RLVR: rewarding results we can check
 
-A reviewer prefers the second one.
+Our opening example has an unusually useful property: we can execute the patch. **Reinforcement Learning with Verifiable Rewards (RLVR)** uses checkable outcomes to construct the reward. A numeric answer can be compared with a known solution, code can be run against tests, and a formal proof can be checked by a proof assistant.
 
-Repeat that process across many prompts and you get preference data:
+For a small arithmetic task, suppose the prompt asks for 137 × 46. The correct result is 6,302. A simple verifier assigns a reward of 1 to that answer and 0 to an incorrect answer. It does not need to decide which response sounds more thoughtful. In more complex tasks, rewards may include several checks rather than one binary result.
 
-[
-B > A
-]
+Each task needs an appropriate verifier. These are alternative examples, rather than four checks every response must pass.
 
-Those comparisons are then used to train a reward model. The reward model learns to imitate those human preferences so it can score many more model responses than humans could review manually.
+![Arithmetic uses an answer checker, code uses executable tests, and formal proofs use a proof checker; each produces a task-specific reward.](/blogs/tutorial/assets/reinforcement-learning-from-rlhf-to-rlsc/05-rlvr.svg)
 
-The LLM is then optimized against that reward model.
+[DeepSeek-R1](https://arxiv.org/abs/2501.12948) is a prominent example of reinforcement learning applied to reasoning. Its R1-Zero experiments used rule-based rewards, including accuracy and format rewards, without an initial supervised fine-tuning stage. The full R1 pipeline included additional stages, including cold-start data. Those are different training setups and should not be collapsed into the claim that all reasoning models learn through RL alone.
 
-![A hand-drawn RLHF pipeline showing model outputs, human ranking, reward model and policy update](/blogs/tutorial/assets/reinforcement-learning-from-rlhf-to-rlsc/03-rlhf.svg)
+The useful shift is that training can reward successful attempts even when nobody has supplied a demonstration of every intermediate step. For coding, this gives us a way to score candidate solutions by what they do. It still leaves a substantial engineering task: building a verifier whose successes correspond to the user's requirements.
 
-This was the core pattern behind InstructGPT: supervised demonstrations first, human rankings next, then reinforcement learning using a learned reward model.
+### A passing check has a boundary
 
-RLHF solved a practical problem. Pre-trained models knew plenty, but they did not reliably follow user intent. Human preference data gave the training process a signal for qualities that are hard to express with a simple formula: helpfulness, clarity, relevance and conversational behaviour.
+A unit test establishes that the code passed that test under its conditions. It does not establish that the patch handles every input, preserves security, or behaves correctly under concurrency. A model might find an implementation that passes visible examples while failing nearby cases. Worse, if the environment lets it modify the evaluator, it may obtain the reward without solving the intended problem.
 
-But RLHF also introduced a subtle weakness.
+Imagine a function that should return a discount for eligible customers. A training set containing only eligible customers could reward a patch that returns the discount unconditionally. Every available test passes; the business rule is still wrong. Adding ineligible customers changes the evidence the reward can represent.
 
-The model is not optimizing for "what humans truly want" in some abstract sense. It is optimizing for what the reward model predicts humans would prefer.
+A stronger setup protects the evaluator, varies inputs, includes negative cases, and measures performance on held-out tasks. For a repository agent, build success, regression tests, task-specific checks, and change-scope constraints answer different questions. Combining them requires care because a large score for one dimension can otherwise hide failure on another.
 
-That is a proxy.
+> A verifiable reward is only as useful as the property the verifier actually checks.
 
-If the reward model learns that polished confidence often wins human preference, the policy may learn to sound more certain even when uncertainty would be healthier. If annotators favour shorter answers in one dataset and more thorough answers in another, those biases can become part of the reward surface.
+That is why “evidence-based reward” needs a precise definition. A citation, a judge's opinion, and an executable test may all count as evidence in ordinary language, but they have different failure modes. RLVR refers specifically to rewards grounded in verifiable task outcomes.
 
-This is the general RL problem in another costume: when you optimize a proxy hard enough, the proxy starts mattering more than the thing it was meant to represent.
+## PPO and GRPO: how rewards change the policy
 
----
+Reward sources and optimization algorithms are separate choices. RLHF and RLVR describe where feedback comes from. **Proximal Policy Optimization (PPO)** and **Group Relative Policy Optimization (GRPO)** describe ways to use feedback when updating a policy. Seeing these acronyms together does not mean they are competing definitions of reinforcement learning.
 
-## RLAIF: use AI to help generate the feedback
+[PPO](https://arxiv.org/abs/1707.06347) aims to make policy updates more controlled, commonly using a clipped objective to discourage overly large changes. In typical LLM RLHF setups, a value model helps estimate expected rewards, and a reference-policy penalty can discourage excessive drift. The implementation has several interacting parts; the reward score alone is not the complete training objective.
 
-Human feedback is valuable, but it is expensive and slow.
+[DeepSeekMath](https://arxiv.org/abs/2402.03300) introduced GRPO, which compares rewards across a group of sampled responses to the same prompt and avoids the separate critic model used in typical PPO setups. Responses can be judged relative to the group's performance, providing a baseline for the update.
 
-RLAIF, Reinforcement Learning from AI Feedback, asks whether another model can provide part of that supervision.
+For intuition, imagine four sampled patches, with two passing the checks and two failing. Relative scores give the optimizer a way to favour stronger attempts. If every attempt fails identically, that group provides little distinction to learn from. Better task selection, useful exploration, and informative rewards still matter, whichever algorithm performs the update.
 
-One influential version appears in Constitutional AI. Instead of relying only on people to rank every output, the system uses a set of written principles and asks a model to critique or compare responses against them. Those AI-generated preferences can then train a reward model, which is used for reinforcement learning.
+## Process supervision: inspecting intermediate steps
 
-The important distinction is not that humans disappear. Humans still define the principles, datasets and evaluation criteria. What changes is the scaling layer.
+A final answer can be right for the wrong reason. In arithmetic, two mistakes might cancel out. In a repository, a patch might bypass the failing code rather than repair it. **Process supervision** supplies feedback on intermediate steps, whereas outcome supervision evaluates the end result.
 
-You can think of it as moving from:
+[Let's Verify Step by Step](https://arxiv.org/abs/2305.20050) studied process and outcome supervision for mathematical reasoning. Step-level judgments can train a process reward model. Such a model may help rank candidate solutions or provide training feedback; using a process reward model does not automatically mean an RL update occurred.
 
-[
-human ightarrow every preference
-]
+For our coding example, an intermediate check might establish whether the proposed reproduction actually triggers the bug. Another could check whether the patch preserves a required invariant. These signals can make failure easier to locate than a single score at the end of a long attempt.
 
-to:
+The difficulty is deciding what counts as a valid step. Several approaches may be correct, and a judge can penalize an unfamiliar but sound solution. A written reasoning trace also need not fully reveal how the model produced its answer. Process feedback is useful evidence about observable steps, with its own evaluator limits.
 
-[
-human ightarrow principles ightarrow AI-generated preferences
-]
+## Self-rewarding models: generating part of their own feedback
 
-This makes the feedback pipeline much easier to scale, especially when the thing being judged is not mathematically verifiable but still follows recognizable rules.
+Could a model help produce the judgments used to improve itself? **Self-rewarding approaches** investigate that possibility. The [Self-Rewarding Language Models paper](https://arxiv.org/abs/2401.10020) used LLM-as-a-judge prompting to generate rewards and iterative DPO for training. This is an important detail: self-generated feedback does not require a conventional RL optimizer.
 
-The trade-off is obvious: if the model acting as evaluator has blind spots, those blind spots can become training signal.
+The motivation is that evaluating a candidate and generating one are different tasks. A model may be able to compare two solutions more reliably than it can consistently produce its best solution on the first attempt. Its judgments can then contribute new preference examples.
 
-So RLAIF reduces dependence on per-example human labels, but it does not magically remove the problem of reward quality. It changes where that quality has to come from.
+Consider two candidate explanations of a patch, one mentioning an input assumption and one hiding it. A judge might usefully favour the explicit version. But if both the generator and judge misunderstand the assumption, repeated self-evaluation can preserve that mistake. An independent evaluation set is still needed to establish whether the loop is improving the outcome you care about.
 
----
+## RLSC: what self-confidence actually means
 
-## DPO: skip the reinforcement-learning loop for preferences
+Human comparisons and external checks both require a source of supervision. **Reinforcement Learning via Self-Confidence (RLSC)** explores an internal signal instead. The June 2025 preprint [Confidence Is All You Need](https://arxiv.org/html/2506.06395v3) describes an objective that sharpens the model's response distribution, increasing concentration on responses it already assigns higher probability.
 
-Direct Preference Optimization, or DPO, is interesting because it attacks the machinery around RLHF rather than the preference idea itself.
+Here, confidence comes from model probabilities, not a sentence saying “I am 94% sure.” The paper weights sampled responses using a frozen sampling model's probabilities and updates the trainable model. It reports mathematical-reasoning improvements in experiments with Qwen2.5-Math-7B. That is a specific research result, not evidence that confidence rewards work universally.
 
-Traditional RLHF usually has three distinct pieces: gather preferences, train a reward model, then use reinforcement learning to optimize the language model against that reward.
+The diagram shows the source of the signal. There is no external correctness check inside this simplified training loop.
 
-DPO showed that, under the usual preference-model setup, you can directly train the language model on preferred and rejected responses without separately fitting a reward model and then running the RL stage.
+![A frozen sampling policy supplies response probabilities; these weight the training loss used to update the trainable model, without checking answer correctness.](/blogs/tutorial/assets/reinforcement-learning-from-rlhf-to-rlsc/06-rlsc.svg)
 
-![A hand-drawn comparison between RLHF and DPO showing the reward-model-and-RL detour removed in DPO](/blogs/tutorial/assets/reinforcement-learning-from-rlhf-to-rlsc/04-rlhf-vs-dpo.svg)
+A useful way to think about the limitation is to imagine a model with a persistent misconception. If its most probable response contains that misconception, increasing concentration can make the error more consistent. The score measures the model's distribution, not the world's agreement with it.
 
-The practical appeal is large. Fewer moving parts means training can be simpler and more stable.
+Similarly, calibration is a separate question: among predictions assigned a particular confidence level, how often are they correct? A high response probability is not automatically a calibrated probability of factual correctness. We should evaluate confidence-based training against independent answers and held-out tasks before treating higher confidence as improvement.
 
-But conceptually, DPO belongs in this story because it keeps the same source of supervision: preferences.
+## Choosing feedback for the task you actually have
 
-It is not "RL with a new reward." It is closer to saying: if I already have ranked answers, can I optimize the policy directly instead of explicitly constructing the reward model in the middle?
+These methods form a set of design choices, rather than a ladder where each new acronym makes the previous one obsolete. Preference data can describe qualities that are hard to test. Verifiers can establish specific outcomes. Process feedback can inspect intermediate work. Confidence supplies an internal signal whose relationship to correctness has to be measured.
 
-That is an important distinction because people often group every post-training technique under RL. DPO is better thought of as a direct preference-optimization alternative to the classic RLHF pipeline.
+The following diagram is an illustrative design for a coding task, not a claim about a particular deployed model. It keeps required checks separate from softer preferences so that polished explanations cannot compensate for broken behaviour.
 
-The bigger shift came when researchers asked whether we could leave preference judgments behind for tasks where correctness can actually be checked.
+![A candidate patch first faces required correctness and scope checks; failed candidates receive failure feedback, while passing candidates can be compared on useful explanations.](/blogs/tutorial/assets/reinforcement-learning-from-rlhf-to-rlsc/07-reward-stack.svg)
 
----
+For our bug-fixing assistant, I would start by defining what success means: reproduce the bug, fix the behaviour, preserve existing contracts, and explain the relevant changes. Executable checks can cover parts of the first three requirements. Human or AI preferences can help with the explanation. Any weighted combination needs inspection because changing the weights can change which trade-offs the model learns to accept.
 
-## RLVR: stop asking what looks better when we can verify what is correct
+Evaluation should then look beyond the training reward. Does the model solve unseen bugs? Does it still succeed when inputs change? Does it report a failed check honestly? A rising reward curve is useful diagnostic information, but it cannot answer questions the evaluator never asked.
 
-Reinforcement Learning with Verifiable Rewards, or RLVR, changes the reward source more dramatically.
+## Back to the patch that looked finished
 
-Suppose we ask a model:
+The assistant in the opening had enough knowledge to sound useful. What it lacked in that attempt was a working result. Reinforcement learning gives us a way to make successful behaviour more likely, provided the reward captures the part of success we care about.
 
-> What is 137 × 46?
+RLHF brings human preference into training; RLAIF scales some judgments through models; DPO offers a direct route from comparisons to policy changes. RLVR rewards checkable outcomes, while process supervision adds evidence about the steps. Self-rewarding methods and RLSC explore how much supervision a model can supply for itself, with independent evaluation still needed to establish improvement.
 
-If the model answers 6302, we do not need a panel of humans to tell us whether the answer "feels preferable." We can calculate it.
+So when you assess a new training method, ask what earned the reward and what could earn the same reward while still failing the task. For the patch we started with, a convincing explanation deserved attention. A passing, well-designed test deserved a different kind of trust. Better models depend on teaching that distinction—and checking that they learned it.
 
-The reward can be generated by a verifier:
+## Sources and further reading
 
-[
-reward =
-egin{cases}
-1 & 	ext{if correct} \\
-0 & 	ext{if incorrect}
-end{cases}
-]
+The links below are primary research. The robot and coding examples are illustrations, not reported experiments. RLSC is presented as a research proposal; this guide does not claim it is the latest or established replacement for other post-training methods.
 
-That simple idea becomes extremely powerful in domains where outputs can be checked mechanically.
-
-For math, use an answer checker.
-
-For code, compile it and run tests.
-
-For SQL, execute the query and validate the result.
-
-For a formal proof, use a proof assistant.
-
-For an agent changing a repository, run the build, tests and task-specific checks.
-
-![A hand-drawn RLVR diagram showing one model response being checked by calculator, tests, SQL execution and proof verification](/blogs/tutorial/assets/reinforcement-learning-from-rlhf-to-rlsc/05-rlvr.svg)
-
-This removes a lot of subjectivity from the reward.
-
-RLHF says, roughly:
-
-**A person preferred this answer.**
-
-RLVR says:
-
-**This answer passed the check.**
-
-That sounds like a small difference. It is not.
-
-Once the reward is tied to an external fact about the task, the model has less room to win by merely sounding convincing.
-
-That matters especially for reasoning models. A beautifully written wrong derivation should not beat an ugly correct one just because the evaluator likes the prose.
-
-Research on RLVR has focused heavily on whether verifiable final outcomes also improve the reasoning process itself. Recent work argues that RLVR can encourage logically correct reasoning, not only reweight already-known answers, although measuring reasoning quality remains tricky.
-
-RLVR also explains why coding agents are such a natural fit for reinforcement learning. Software gives us unusually rich evidence.
-
-A patch can be rewarded for compiling, passing existing tests, satisfying new tests and avoiding regressions. The environment gives us signals humans do not have to invent manually.
-
-The limitation is equally important: plenty of useful tasks are not cleanly verifiable.
-
-There is no unit test for "write a tactful apology" or "make this explanation feel less patronizing."
-
-That means verifiable rewards do not replace preference-based methods. They occupy the places where reality can answer the question for us.
-
----
-
-## Process rewards: reward the path, not only the final answer
-
-Outcome rewards judge where the model ended up.
-
-Process rewards try to judge how it got there.
-
-That distinction matters because a model can arrive at the correct answer through flawed reasoning, guessing or accidental cancellation of errors.
-
-If a system only rewards final correctness, all of those paths can receive the same score.
-
-Process supervision tries to evaluate intermediate steps.
-
-For a math problem, each reasoning step might be checked or scored. For an agent, the sequence of tool calls can be evaluated. For code, an intermediate plan could be judged against constraints before the final patch is produced.
-
-This gives training a denser signal. Instead of waiting until the end to discover that the whole attempt failed, the model can learn which parts of the trajectory were useful.
-
-The downside is cost and ambiguity. Verifying a final numeric answer is easy. Verifying every reasoning step is much harder, and sometimes there is more than one valid path.
-
-So process rewards are powerful when the intermediate structure is inspectable, but they can also reintroduce the same evaluator-quality problem we saw with RLHF.
-
----
-
-## Self-rewarding models: let the model judge other answers
-
-Another direction asks whether the model itself can participate in building the reward.
-
-This sounds circular, but it is not automatically useless.
-
-A capable model can often distinguish a stronger answer from a weaker one even when generating the stronger answer consistently is still difficult. That gap between recognition and production is common in machine learning.
-
-Self-rewarding approaches exploit it. The model generates candidate answers, evaluates them, and uses those evaluations as additional training signal.
-
-The attraction is obvious: feedback can scale with generation.
-
-The risk is just as obvious: a model can reinforce its own mistakes.
-
-If the evaluator and policy share the same blind spot, self-reward can amplify it. External checks, stronger judge models or mixed reward sources are therefore often used to keep the loop grounded.
-
-This line of work matters because it points toward systems that generate not only their own practice problems, but part of their own supervision.
-
----
-
-## RLSC: use the model's own confidence as reward
-
-Reinforcement Learning via Self-Confidence, or RLSC, pushes the self-generated reward idea in a different direction.
-
-Instead of asking another model to rank answers, RLSC looks at the model's own confidence.
-
-Language models already produce probability distributions over tokens. Those probabilities contain information about how strongly the model supports one continuation over another.
-
-Suppose a model solves the same problem several ways:
-
-[
-A ightarrow 42 quad confidence = 0.94
-]
-
-[
-B ightarrow 38 quad confidence = 0.31
-]
-
-[
-C ightarrow 42 quad confidence = 0.88
-]
-
-If confidence correlates with correctness often enough, it can become a reward signal.
-
-![A hand-drawn RLSC diagram showing several sampled solutions, their confidence scores and a policy update toward high-confidence trajectories](/blogs/tutorial/assets/reinforcement-learning-from-rlhf-to-rlsc/06-rlsc.svg)
-
-The appeal is strong. Human labels are expensive. External verifiers only exist for some tasks. Confidence is available directly from the model.
-
-Research on RLSC reported improvements on mathematical reasoning tasks using self-confidence as reinforcement signal, which makes it one of the more interesting attempts to reduce dependence on external reward models.
-
-But there is a hard boundary we should not blur:
-
-**confidence is not truth.**
-
-A model can be confidently wrong.
-
-In fact, one of the defining problems of language models is that fluent probability can look like certainty even when the underlying answer is false.
-
-So confidence-based RL becomes much more convincing when confidence is calibrated or combined with independent signals.
-
-A useful reward might therefore look more like:
-
-[
-R = alpha R_{verified} + eta R_{confidence}
-]
-
-rather than:
-
-[
-R = R_{confidence}
-]
-
-The verifier anchors the model to reality. Confidence helps distinguish which successful reasoning paths the model itself represents most coherently.
-
-That combination is more interesting than confidence alone.
-
----
-
-## The reward stack is becoming more mixed
-
-The history of post-training looks less like one technique replacing another and more like reward sources accumulating.
-
-Human feedback is useful for subjective qualities.
-
-AI feedback scales judgments defined by principles.
-
-Direct preference optimization simplifies preference training.
-
-Verifiable rewards anchor reasoning to externally checkable outcomes.
-
-Process rewards add signal along the trajectory.
-
-Self-rewarding systems reduce dependence on external labelers.
-
-Confidence-based rewards try to mine supervision from the model's own probability structure.
-
-![A hand-drawn reward stack showing human preference, AI feedback, verifiers, process checks and confidence converging into one policy update](/blogs/tutorial/assets/reinforcement-learning-from-rlhf-to-rlsc/07-reward-stack.svg)
-
-The interesting systems are increasingly hybrids.
-
-A coding model might get a large reward for passing tests, a smaller reward for following repository conventions, a penalty for breaking unrelated files, and a preference score for whether the final explanation is useful.
-
-An assistant might use human-derived preference training for tone and safety, verifier-based training for math and coding, and process supervision for tool use.
-
-There is no reason one reward source has to own the whole problem.
-
-The real design question becomes: **which parts of this task can be measured directly, which require preference, and which signals can be trusted only as supporting evidence?**
-
-That is a much healthier way to think about post-training than asking which acronym is "the best."
-
----
-
-## Why reward design is now one of the central AI problems
-
-Once a model becomes capable enough, the bottleneck shifts.
-
-Pre-training asks:
-
-**Can the model represent the behaviour?**
-
-Post-training asks:
-
-**Can we reliably push it toward the behaviour we actually want?**
-
-That second question is harder than it looks because rewards are instructions written in numbers.
-
-Whatever we reward, the model will search for ways to obtain.
-
-If we reward final-answer correctness only, it may learn shortcuts.
-
-If we reward human preference only, it may learn presentation tricks.
-
-If we reward a judge model, it may learn the judge's biases.
-
-If we reward confidence, it may learn to become more certain rather than more correct.
-
-If we reward tests, it may overfit to the tests.
-
-This is not unique to LLMs. It is the old RL problem of reward hacking, now operating inside systems that can write code, use tools and reason over long contexts.
-
-The stronger the model becomes, the more carefully the reward has to describe the thing we truly care about.
-
----
-
-## Where this leaves us
-
-Go back to the opening problem: a model can know a surprising amount and still make the wrong move.
-
-That is exactly why reinforcement learning became so important for modern AI.
-
-Pre-training gives the model capability. Reinforcement and preference training shape what it does with that capability.
-
-RLHF taught models to listen to human preference.
-
-RLAIF showed that some of that supervision can be scaled through other models.
-
-DPO simplified how preference data can directly shape a policy.
-
-RLVR moved the reward closer to reality wherever correctness can be checked.
-
-Process rewards tried to improve not only the destination but the path.
-
-Self-rewarding approaches asked models to help generate their own supervision.
-
-RLSC went one step further and asked whether confidence itself could become part of the signal.
-
-None of these removes the core difficulty.
-
-The model still follows the reward.
-
-So the real breakthrough is not that we found one perfect training method. It is that we are getting better at building rewards from different kinds of evidence, and at knowing when each kind deserves trust.
-
-The next generation of capable models will not be defined only by how much they know.
-
-They will be defined by **what taught them which move was worth making.**
-
----
-
-## References
-
-- Ouyang et al., *Training language models to follow instructions with human feedback*, 2022.
-- Bai et al., *Constitutional AI: Harmlessness from AI Feedback*, 2022.
-- Rafailov et al., *Direct Preference Optimization: Your Language Model is Secretly a Reward Model*, 2023.
-- Wen et al., *Reinforcement Learning with Verifiable Rewards Implicitly Incentivizes Correct Reasoning in Base LLMs*, 2025.
-- *Reinforcement Learning via Self-Confidence (RLSC)*, 2025.
+- Schulman et al. (2017), [Proximal Policy Optimization Algorithms](https://arxiv.org/abs/1707.06347).
+- Ouyang et al. (2022), [Training language models to follow instructions with human feedback](https://arxiv.org/abs/2203.02155).
+- Bai et al. (2022), [Constitutional AI: Harmlessness from AI Feedback](https://arxiv.org/abs/2212.08073).
+- Rafailov et al. (2023), [Direct Preference Optimization](https://arxiv.org/abs/2305.18290).
+- Lightman et al. (2023), [Let's Verify Step by Step](https://arxiv.org/abs/2305.20050).
+- Yuan et al. (2024), [Self-Rewarding Language Models](https://arxiv.org/abs/2401.10020).
+- Shao et al. (2024), [DeepSeekMath](https://arxiv.org/abs/2402.03300).
+- DeepSeek-AI et al. (2025), [DeepSeek-R1](https://arxiv.org/abs/2501.12948).
+- Li et al. (2025), [Confidence Is All You Need, version 3](https://arxiv.org/html/2506.06395v3).
