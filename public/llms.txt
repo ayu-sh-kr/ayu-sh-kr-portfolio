@@ -26,6 +26,7 @@
 
 ## Recent technical articles
 
+- [Reinforcement Learning for LLMs: From RLHF and RLVR to RLSC](https://ayu-sh-kr.com/blog/reinforcement-learning-from-rlhf-to-rlsc): Reinforcement learning from its ML roots through human feedback, AI feedback, direct preferences, verifiable rewards, process rewards and self-confidence.
 - [Java Native Builds Explained: GraalVM vs Project Leyden](https://ayu-sh-kr.com/blog/java-native-builds-graalvm-vs-leyden): A comparison of GraalVM Native Image and Project Leyden's AOT cache, including startup, warm-up, and deployment trade-offs.
 - [What Is a Native Build?](https://ayu-sh-kr.com/blog/what-is-a-native-build): Compilation, linking, AOT versus JIT compilation, and the trade-offs between native binaries and managed runtimes.
 - [Open Knowledge Format (OKF): linked context for AI agents](https://ayu-sh-kr.com/blog/open-knowledge-format-okf-vs-rag)
