@@ -39,6 +39,18 @@ export type BlogPost = {
  */
 export const blogPosts: readonly BlogPost[] = [
   {
+    slug: "reinforcement-learning-from-rlhf-to-rlsc",
+    date: "2026-09-21",
+    writer: siteIdentity.name,
+    header: "Reinforcement Learning for LLMs: From RLHF and RLVR to RLSC",
+    description:
+      "Learn how reinforcement learning trains LLMs: human feedback, verifiable rewards, DPO, and RLSC explained through a coding example, with diagrams and sources.",
+    keywords: ["reinforcement learning", "LLM post-training", "RLHF", "RLVR", "RLSC", "RLAIF", "DPO", "verifiable rewards", "reward model", "GRPO"],
+    category: "tutorial",
+    source: "/blogs/tutorial/reinforcement-learning-from-rlhf-to-rlsc.md",
+    minutes: 15,
+  },
+  {
     slug: "java-native-builds-graalvm-vs-leyden",
     date: "2026-09-12",
     writer: siteIdentity.name,

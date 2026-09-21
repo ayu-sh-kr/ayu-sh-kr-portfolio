@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="460" viewBox="0 0 760 460" role="img" aria-labelledby="title desc">
+<title id="title">RLVR: use the check that fits the task</title><desc id="desc">Three alternative task-to-verifier mappings: arithmetic to known answers, code to executable tests, and formal proofs to proof checking. Passing a check produces task-specific reward.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#5d702d" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<rect width="760" height="460" rx="20" fill="#f8faf2"/>
+<text x="28" y="32" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="600" fill="#5d702d">05 / REINFORCEMENT LEARNING</text>
+<text x="28" y="65" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" fill="#242c12">RLVR: use the check that fits the task</text>
+<path d="M28 81 Q240 79 430 82" fill="none" stroke="#bdce8a" stroke-width="2"/>
+<path d="M40 111 Q163.0 109.5 286 111 Q298 111 298 123 L298 185 Q299 197 286 197 Q163.0 198.5 40 197 Q27 197 28 185 L28 123 Q28 111 40 111 Z" fill="#ecf0df" stroke="#5d702d" stroke-width="1.7" stroke-linejoin="round"/>
+<text x="44" y="145" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" fill="#242c12">Arithmetic</text>
+<text x="44" y="171" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="400" fill="#5d702d">137 × 46</text>
+<path d="M474 111 Q597.0 109.5 720 111 Q732 111 732 123 L732 185 Q733 197 720 197 Q597.0 198.5 474 197 Q461 197 462 185 L462 123 Q462 111 474 111 Z" fill="#ecf0df" stroke="#5d702d" stroke-width="1.7" stroke-linejoin="round"/>
+<text x="478" y="145" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" fill="#242c12">Answer check</text>
+<text x="478" y="171" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="400" fill="#5d702d">Compare with 6,302</text>
+<path d="M298 154 L462 154" fill="none" stroke="#5d702d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<text x="329" y="143" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="400" fill="#5d702d">verify</text>
+<path d="M40 216 Q163.0 214.5 286 216 Q298 216 298 228 L298 290 Q299 302 286 302 Q163.0 303.5 40 302 Q27 302 28 290 L28 228 Q28 216 40 216 Z" fill="#ecf0df" stroke="#5d702d" stroke-width="1.7" stroke-linejoin="round"/>
+<text x="44" y="250" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" fill="#242c12">Code</text>
+<text x="44" y="276" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="400" fill="#5d702d">Candidate patch</text>
+<path d="M474 216 Q597.0 214.5 720 216 Q732 216 732 228 L732 290 Q733 302 720 302 Q597.0 303.5 474 302 Q461 302 462 290 L462 228 Q462 216 474 216 Z" fill="#ecf0df" stroke="#5d702d" stroke-width="1.7" stroke-linejoin="round"/>
+<text x="478" y="250" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" fill="#242c12">Executable tests</text>
+<text x="478" y="276" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="400" fill="#5d702d">Check required behaviour</text>
+<path d="M298 259 L462 259" fill="none" stroke="#5d702d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<text x="329" y="248" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="400" fill="#5d702d">verify</text>
+<path d="M40 321 Q163.0 319.5 286 321 Q298 321 298 333 L298 395 Q299 407 286 407 Q163.0 408.5 40 407 Q27 407 28 395 L28 333 Q28 321 40 321 Z" fill="#ecf0df" stroke="#5d702d" stroke-width="1.7" stroke-linejoin="round"/>
+<text x="44" y="355" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" fill="#242c12">Formal proof</text>
+<text x="44" y="381" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="400" fill="#5d702d">Candidate derivation</text>
+<path d="M474 321 Q597.0 319.5 720 321 Q732 321 732 333 L732 395 Q733 407 720 407 Q597.0 408.5 474 407 Q461 407 462 395 L462 333 Q462 321 474 321 Z" fill="#ecf0df" stroke="#5d702d" stroke-width="1.7" stroke-linejoin="round"/>
+<text x="478" y="355" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" fill="#242c12">Proof checker</text>
+<text x="478" y="381" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="400" fill="#5d702d">Check formal validity</text>
+<path d="M298 364 L462 364" fill="none" stroke="#5d702d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<text x="329" y="353" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="400" fill="#5d702d">verify</text>
+<text x="28" y="437" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="400" fill="#5d702d">Passing earns task-specific reward. Untested properties remain unverified.</text>
+</svg>
