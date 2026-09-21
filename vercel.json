@@ -24,6 +24,11 @@
       "permanent": true
     },
     {
+      "source": "/blog/reinforcement-learning-from-rlhf-to-rlsc",
+      "destination": "/blog/reinforcement-learning-from-rlhf-to-rlsc/",
+      "permanent": true
+    },
+    {
       "source": "/blog/aws-app-config-spring-boot-integration",
       "destination": "/blog/aws-app-config-spring-boot-integration/",
       "permanent": true
