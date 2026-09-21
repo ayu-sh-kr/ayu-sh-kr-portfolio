@@ -44,8 +44,8 @@ export const blogPosts: readonly BlogPost[] = [
     writer: siteIdentity.name,
     header: "Reinforcement Learning for LLMs: From RLHF and RLVR to RLSC",
     description:
-      "Understand reinforcement learning from its ML roots, then follow how RLHF, RLAIF, DPO, RLVR, process rewards, self-reward and RLSC changed LLM post-training.",
-    keywords: ["reinforcement learning", "reinforcement learning LLM", "RLHF", "RLVR", "RLSC", "RLAIF", "DPO", "verifiable rewards", "human feedback", "LLM post-training", "reward model", "self confidence reinforcement learning"],
+      "Learn how reinforcement learning trains LLMs: human feedback, verifiable rewards, DPO, and RLSC explained through a coding example, with diagrams and sources.",
+    keywords: ["reinforcement learning", "LLM post-training", "RLHF", "RLVR", "RLSC", "RLAIF", "DPO", "verifiable rewards", "reward model", "GRPO"],
     category: "tutorial",
     source: "/blogs/tutorial/reinforcement-learning-from-rlhf-to-rlsc.md",
     minutes: 15,
