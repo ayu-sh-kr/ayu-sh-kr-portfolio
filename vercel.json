@@ -179,6 +179,11 @@
       "permanent": true
     },
     {
+      "source": "/news/jev-typesafe-system-one-model",
+      "destination": "/news/jev-typesafe-system-one-model/",
+      "permanent": true
+    },
+    {
       "source": "/news/cloudflare-trycloudflare-quick-tunnel",
       "destination": "/news/cloudflare-trycloudflare-quick-tunnel/",
       "permanent": true

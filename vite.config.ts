@@ -35,6 +35,7 @@ const showcaseRoutes = [
   "/showcase/dota-rest",
 ];
 const newsRoutes = [
+  "/news/jev-typesafe-system-one-model",
   "/news/jhipster-online-infostealer-malware",
   "/news/cloudflare-trycloudflare-quick-tunnel",
   "/news/zcode-user-code-upload-key",
