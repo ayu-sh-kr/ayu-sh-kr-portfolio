@@ -4,6 +4,9 @@ export const COFFEE_ORDER_SIZE_EVENT = "coffee:order-size" as const;
 /** Published whenever a preset or custom coffee quantity becomes the active selection. */
 export const COFFEE_ORDER_QUANTITY_EVENT = "coffee:order-quantity" as const;
 
+/** Browser event published after the backend confirms a Standard Checkout payment. */
+export const COFFEE_PAYMENT_SUCCESS_EVENT = "coffee:payment-success" as const;
+
 /**
  * The authored coffee size selected by the visitor.
  *
