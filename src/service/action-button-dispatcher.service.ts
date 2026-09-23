@@ -14,7 +14,8 @@ import { actionButtonRegistry } from "@app/service/action-button-registry.servic
  * Created once during application bootstrap after the Dota listener registry is available.
  * It is the only layer that knows the pending timeout and duplicate-request rule. Buttons only
  * render events, while route components only register work in `actionButtonRegistry`; that
- * separation prevents a visual component from becoming a second API client.
+ * separation prevents a visual component from becoming a second API client. Each registered
+ * action supplies its own pending window, with the registry's short default for ordinary work.
  */
 @AutoBind()
 export class ActionButtonDispatcher {
@@ -23,9 +24,6 @@ export class ActionButtonDispatcher {
 
   /** Unique button IDs currently awaiting handler completion; this makes repeat triggers harmless. */
   private readonly activeButtonIds = new Set<string>();
-
-  /** Maximum time an action may remain pending before the button receives a failure state. */
-  private readonly timeoutMs = 12_000;
 
   /**
    * Dispatches a button trigger to the registered feature handler exactly once per button ID.
@@ -54,7 +52,7 @@ export class ActionButtonDispatcher {
       if (this.activeButtonIds.delete(id)) {
         this.reject(id);
       }
-    }, this.timeoutMs);
+    }, actionButtonRegistry.getTimeoutMs(action));
 
     try {
       await handler(payload);
