@@ -11,6 +11,9 @@ import type { ActionButtonPayload } from "@app/events/action-button.events.ts";
  */
 export type ActionButtonHandler = (payload: ActionButtonPayload) => Promise<void>;
 
+/** Default request window for actions that do not declare a longer user-driven flow. */
+export const DEFAULT_ACTION_TIMEOUT_MS = 12_000;
+
 /**
  * Feature-owned availability check for an idle action button.
  *
@@ -27,7 +30,7 @@ export type ActionButtonGuard = () => boolean;
  * importing a page-specific component or endpoint.
  */
 class ActionButtonRegistry {
-  private readonly handlers = new Map<string, ActionButtonHandler>();
+  private readonly handlers = new Map<string, { handler: ActionButtonHandler; timeoutMs: number }>();
   private readonly guards = new Map<string, ActionButtonGuard>();
 
   /**
@@ -37,15 +40,16 @@ class ActionButtonRegistry {
    *
    * @param action - Stable action identifier placed on one or more action-button elements.
    * @param handler - Async work that resolves for success and rejects for the shared error state.
+   * @param timeoutMs - Optional maximum pending duration; longer values suit user-driven modals.
    * @returns A cleanup callback that removes this exact action registration.
    * @throws Error when another connected feature already owns the action name.
    */
-  registerHandler(action: string, handler: ActionButtonHandler): () => void {
+  registerHandler(action: string, handler: ActionButtonHandler, timeoutMs = DEFAULT_ACTION_TIMEOUT_MS): () => void {
     if (this.handlers.has(action)) {
       throw new Error(`An action handler is already registered for ${action}.`);
     }
 
-    this.handlers.set(action, handler);
+    this.handlers.set(action, { handler, timeoutMs });
     return () => this.handlers.delete(action);
   }
 
@@ -56,7 +60,12 @@ class ActionButtonRegistry {
    * @returns The connected feature handler, or `undefined` so the dispatcher can reject the trigger.
    */
   getHandler(action: string): ActionButtonHandler | undefined {
-    return this.handlers.get(action);
+    return this.handlers.get(action)?.handler;
+  }
+
+  /** Returns the timeout registered for an action, using the shared default when absent. */
+  getTimeoutMs(action: string): number {
+    return this.handlers.get(action)?.timeoutMs ?? DEFAULT_ACTION_TIMEOUT_MS;
   }
 
   /**
