@@ -1,6 +1,8 @@
 import { ApplicationEventService, BaseElement, BindEvent, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
+import { OnEvent } from "@ayu-sh-kr/dota-wrap/event";
 import { coffeeContent } from "@app/data/coffee-content.ts";
 import { COFFEE_ORDER_SIZE_EVENT, type CoffeeOrderSizeSelection } from "@app/events/coffee.events.ts";
+import { coffeePricingService, formatCoffeeAmount, type CoffeeCurrency } from "@app/service/coffee-order/coffee-pricing.service.ts";
 
 /**
  * Presents the authored coffee-size cards and publishes the active choice.
@@ -22,9 +24,21 @@ export class CoffeeSizePickerComponent extends BaseElement {
   /** Stable default size selected when the coffee order first renders or resets. */
   private selectedSizeId = "latte";
 
+  /** Currency resolved from the backend locale endpoint for this browser session. */
+  private currency: CoffeeCurrency = "USD";
+
   /** Creates the picker before the framework binds its delegated card click handler. */
   constructor() {
     super();
+  }
+
+  /** Loads the edge-resolved region before formatting the fixed option prices. */
+  @OnEvent("connected", true)
+  onConnected(): void {
+    void coffeePricingService.getCurrency().then((currency) => {
+      this.currency = currency;
+      this.updateHTML();
+    }).catch(() => undefined);
   }
 
   /**
@@ -55,7 +69,7 @@ export class CoffeeSizePickerComponent extends BaseElement {
           ${coffeeContent.sizes.map((size) => `
             <button class="form-choice input-lg input-rounded-md input-bordered coffee-pick ${size.id === this.selectedSizeId ? "is-selected" : ""}" type="button" data-coffee-size="${size.id}" aria-pressed="${size.id === this.selectedSizeId}">
               ${size.featured ? `<span class="coffee-pick-flag">${size.featured}</span>` : ""}
-              <span class="coffee-pick-title"><strong>$${size.price}</strong> ${size.name}</span>
+              <span class="coffee-pick-title"><strong>${formatCoffeeAmount(size.price[this.currency], this.currency)}</strong> ${size.name}</span>
               <span class="coffee-pick-description">${size.description}</span>
             </button>
           `).join("")}
