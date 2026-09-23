@@ -1,16 +1,21 @@
 /**
  * Locale headers that stand in for Cloudflare's edge-derived client context during local work.
  *
- * The backend only trusts these headers at its edge boundary. Vite adds this fixed India profile
- * to every proxied development request so locale-aware endpoints can be exercised without the
- * Cloudflare worker; production requests continue to receive their values from the worker.
+ * The backend only trusts these headers at its edge boundary. Vite adds a configurable local
+ * profile to proxied development requests so locale-aware endpoints can be exercised without
+ * the Cloudflare worker; production requests continue to receive their values from the worker.
  */
-const localClientLocaleHeaders = {
-  "X-Client-Region": "IN",
-  "X-Client-Country": "IN",
-  "X-Client-Locale": "en-IN",
-  "X-Client-Timezone": "Asia/Kolkata",
-};
+function localClientLocaleHeaders(region: string) {
+  const normalizedRegion = region.trim().toUpperCase() || "IN";
+  const isIndia = normalizedRegion === "IN";
+
+  return {
+    "X-Client-Region": normalizedRegion,
+    "X-Client-Country": normalizedRegion,
+    "X-Client-Locale": isIndia ? "en-IN" : "en-US",
+    "X-Client-Timezone": isIndia ? "Asia/Kolkata" : "America/New_York",
+  };
+}
 
 /**
  * Backend paths served through Vite during local development.
@@ -20,9 +25,11 @@ const localClientLocaleHeaders = {
  */
 const localApiRoutes = [
   "/status",
+  "/locale",
   "/subscriber",
   "/pricing-form",
   "/buy-coffee",
+  "/razorpay",
   "/blog/view",
   "/support-ticket",
   "/support-ticket/files/upload-url",
@@ -38,11 +45,11 @@ const localApiRoutes = [
  * @param target - Base URL of the backend to receive locally proxied requests.
  * @returns Vite proxy entries keyed by the backend path prefixes used by the frontend.
  */
-export function createLocalApiProxy(target: string) {
+export function createLocalApiProxy(target: string, region = "IN") {
   const options = {
     target,
     changeOrigin: true,
-    headers: localClientLocaleHeaders,
+    headers: localClientLocaleHeaders(region),
   };
 
   return Object.fromEntries(localApiRoutes.map((route) => [route, options]));
