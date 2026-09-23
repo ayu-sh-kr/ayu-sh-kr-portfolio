@@ -7,6 +7,10 @@
         <loc>https://www.ayu-sh-kr.com/blog/</loc>
     </url>
     <url>
+        <loc>https://www.ayu-sh-kr.com/blog/reinforcement-learning-from-rlhf-to-rlsc/</loc>
+        <lastmod>2026-09-21</lastmod>
+    </url>
+    <url>
         <loc>https://www.ayu-sh-kr.com/blog/java-native-builds-graalvm-vs-leyden/</loc>
         <lastmod>2026-09-12</lastmod>
     </url>
@@ -64,6 +68,14 @@
     </url>
     <url>
         <loc>https://www.ayu-sh-kr.com/news/</loc>
+    </url>
+    <url>
+        <loc>https://www.ayu-sh-kr.com/news/jev-typesafe-system-one-model/</loc>
+        <lastmod>2026-09-21</lastmod>
+    </url>
+    <url>
+        <loc>https://www.ayu-sh-kr.com/news/jhipster-online-infostealer-malware/</loc>
+        <lastmod>2026-09-21</lastmod>
     </url>
     <url>
         <loc>https://www.ayu-sh-kr.com/news/cloudflare-trycloudflare-quick-tunnel/</loc>

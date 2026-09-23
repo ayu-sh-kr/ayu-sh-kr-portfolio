@@ -24,6 +24,11 @@
       "permanent": true
     },
     {
+      "source": "/blog/reinforcement-learning-from-rlhf-to-rlsc",
+      "destination": "/blog/reinforcement-learning-from-rlhf-to-rlsc/",
+      "permanent": true
+    },
+    {
       "source": "/blog/aws-app-config-spring-boot-integration",
       "destination": "/blog/aws-app-config-spring-boot-integration/",
       "permanent": true
@@ -171,6 +176,11 @@
     {
       "source": "/news",
       "destination": "/news/",
+      "permanent": true
+    },
+    {
+      "source": "/news/jev-typesafe-system-one-model",
+      "destination": "/news/jev-typesafe-system-one-model/",
       "permanent": true
     },
     {

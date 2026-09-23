@@ -64,6 +64,28 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "jev-typesafe-system-one-model",
+    date: "2026-09-21",
+    title: "Jev gives AI agents a fast gut check before the expensive thinking begins",
+    summary: "LangChain has added Jev, TypeSafe AI’s non-generative System One model, for fast structured decisions such as model routing and tool-call risk checks inside an agent harness.",
+    kind: "reading",
+    document: "/news/jev-typesafe-system-one-model.md",
+    keywords: ["Jev model", "TypeSafe AI", "LangChain Jev", "System One model", "AI agent harness", "agent model routing", "AI tool-call safety", "structured AI decisions"],
+    minutes: 2,
+    reference: {label: "LangChain — Building a Harness with Jev", href: "https://www.langchain.com/blog/building-a-harness-with-jev"},
+  },
+  {
+    slug: "jhipster-online-infostealer-malware",
+    date: "2026-09-21",
+    title: "JHipster Online warns users after infostealer malware exposes credentials",
+    summary: "JHipster Online says exposed credentials point to infostealer malware on affected devices, not a breach of its own database. The response shows why device cleanup matters before password rotation.",
+    kind: "reading",
+    document: "/news/jhipster-online-infostealer-malware.md",
+    keywords: ["JHipster Online malware", "infostealer malware", "JHipster credential exposure", "browser password theft", "credential security", "device compromise", "password reset", "session invalidation"],
+    minutes: 2,
+    reference: {label: "JHipster Online warning shared by Julien Dubois", href: "https://gist.github.com/jdubois/19ffaf2c8a994fd8e4b5f638342269d9"},
+  },
+  {
     slug: "cloudflare-trycloudflare-quick-tunnel",
     date: "2026-09-20",
     title: "Cloudflare Quick Tunnels take localhost to the internet",
