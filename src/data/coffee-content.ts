@@ -3,8 +3,7 @@
  *
  * The routed page and its section components read this module so the available
  * coffee sizes, supporter wall, and conversion copy have one source of truth.
- * Replacing the demo checkout later changes the `checkoutNotice` only; the UI
- * state and order calculation remain independent from a payment provider.
+ * The order calculation stays independent from Razorpay's checkout presentation.
  */
 export const coffeeContent = {
   /** Metadata used by the routed page to describe this support surface. */
@@ -30,9 +29,9 @@ export const coffeeContent = {
   cupMaximum: 60,
   /** Fixed coffee choices that determine the current order price. */
   sizes: [
-    { id: "espresso", name: "Espresso", price: 3, description: "A small one-time contribution", featured: undefined },
-    { id: "latte", name: "Latte", price: 5, description: "A standard support option", featured: "Common choice" },
-    { id: "cold-brew", name: "Cold Brew", price: 10, description: "A larger one-time contribution", featured: undefined },
+    { id: "espresso", name: "Espresso", price: { USD: 3, INR: 299 }, description: "A small one-time contribution", featured: undefined },
+    { id: "latte", name: "Latte", price: { USD: 5, INR: 499 }, description: "A standard support option", featured: "Common choice" },
+    { id: "cold-brew", name: "Cold Brew", price: { USD: 10, INR: 999 }, description: "A larger one-time contribution", featured: undefined },
   ],
   /** Preset quantity buttons offered before an optional custom quantity. */
   quantities: [1, 3, 5],
@@ -40,20 +39,20 @@ export const coffeeContent = {
   order: {
     eyebrow: "Choose support",
     title: "Select a one-time amount.",
-    body: "Choose an amount and, if useful, leave a note. Checkout completes on Razorpay's secure hosted page; no card details are collected on this site.",
+    body: "Choose an amount and, if useful, leave a note. Razorpay's secure checkout opens over this page; no card details are collected here.",
     sizeQuestion: "Choose an amount",
     quantityQuestion: "Quantity",
     customLabel: "Custom",
     customHint: "coffees",
     totalEyebrow: "Your total",
-    checkoutNotice: "You will be redirected to Razorpay's secure page to complete the payment.",
+    checkoutNotice: "Razorpay's secure checkout opens here; card details stay with Razorpay.",
     nameLabel: "Your name (optional)",
     namePlaceholder: "How should the acknowledgement be addressed?",
     noteLabel: "Leave a note (optional)",
     notePlaceholder: "Add a short note if you would like to.",
     submitLabel: "Support with {total}",
     submittingLabel: "Starting checkout…",
-    redirectingLabel: "Redirecting…",
+    successLabel: "Thank you for your support",
     failLabel: "Try again",
   },
   /** Three independent outcomes funded by small one-time support. */
