@@ -1,6 +1,7 @@
 import { BaseElement, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
 import { OnEvent } from "@ayu-sh-kr/dota-wrap/event";
 import { coffeeContent } from "@app/data/coffee-content.ts";
+import { COFFEE_PAYMENT_SUCCESS_EVENT } from "@app/events/coffee.events.ts";
 import { type CoffeeSummary, coffeeOrderService } from "@app/service/coffee-order/coffee-order.service.ts";
 import { CoffeeRevealLifecycle } from "@app/utils/coffee-reveal-lifecycle.utils.ts";
 
@@ -34,6 +35,9 @@ export class CoffeeSupportersComponent extends BaseElement {
   /** Current request state used to choose the reader-facing fallback. */
   private state: SupportersState = "loading";
 
+  /** Reloads the supporter wall after this page records a verified contribution. */
+  private readonly refreshAfterPayment = () => void this.loadSummary();
+
   /** Creates the supporter-wall element. */
   constructor() {
     super();
@@ -47,6 +51,7 @@ export class CoffeeSupportersComponent extends BaseElement {
   @OnEvent("connected", true)
   initialize(): void {
     this.revealLifecycle.connect();
+    window.addEventListener(COFFEE_PAYMENT_SUCCESS_EVENT, this.refreshAfterPayment);
     if (!import.meta.env.SSR && !this.summary) {
       void this.loadSummary();
     }
@@ -56,6 +61,7 @@ export class CoffeeSupportersComponent extends BaseElement {
   @OnEvent("disconnected", true)
   cleanupReveals(): void {
     this.revealLifecycle.disconnect();
+    window.removeEventListener(COFFEE_PAYMENT_SUCCESS_EVENT, this.refreshAfterPayment);
   }
 
   /**
