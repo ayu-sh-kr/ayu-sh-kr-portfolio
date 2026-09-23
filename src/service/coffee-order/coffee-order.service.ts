@@ -1,14 +1,14 @@
 /**
  * Transport boundary for the buy-coffee backend feature.
  *
- * The service wraps the two public endpoints — the contribution summary read and
- * payment-link creation — so page components never build requests themselves and
+ * The service wraps the contribution summary, Standard Checkout order, and payment
+ * verification endpoints so page components never build requests themselves and
  * so Razorpay's wire shape stays contained in this module.
  */
 
 /** One contributor-facing entry inside the public support history. */
 export interface CoffeeContribution {
-  /** Contribution value expressed in the smallest currency unit (paise). */
+  /** Contribution value expressed in the smallest unit of its recorded currency. */
   amount: number;
   /** ISO currency code the contribution was collected in, e.g. `INR`. */
   currency: string;
@@ -28,11 +28,34 @@ export interface CoffeeSummary {
   latest: readonly CoffeeContribution[];
 }
 
-/** Response returned by `POST /buy-coffee/order` on success. */
+/** Response returned by `POST /razorpay/checkout` for Standard Checkout. */
+export interface CoffeeCheckoutOrder {
+  /** Public Razorpay key ID used by Checkout. */
+  key: string;
+  /** Backend-created Razorpay order ID. */
+  orderId: string;
+  /** Amount in the smallest currency unit. */
+  amount: number;
+  /** ISO currency code. */
+  currency: string;
+  /** Business name shown in Checkout. */
+  name: string;
+  /** Purchase description shown in Checkout. */
+  description: string;
+}
+
+/** Signed success values returned by Standard Checkout. */
+export interface CoffeeCheckoutVerification {
+  razorpay_payment_id: string;
+  razorpay_order_id: string;
+  razorpay_signature: string;
+}
+
+/** Legacy hosted Payment Link response retained for rollback and existing callers. */
 export interface CoffeePaymentLinkResponse {
-  /** Razorpay payment-link identifier. */
+  /** Razorpay Payment Link identifier. */
   id: string;
-  /** Hosted Razorpay checkout URL the payer must visit to complete the payment. */
+  /** Hosted payment URL used by the legacy redirect flow. */
   short_url: string;
 }
 
@@ -97,7 +120,29 @@ function toSummaryResponse(data: unknown): CoffeeSummary {
   };
 }
 
-/** Validates and narrows the payment-link payload returned by the backend. */
+/** Validates and narrows the checkout order returned by the backend. */
+function toCheckoutOrder(data: unknown): CoffeeCheckoutOrder {
+  if (!data || typeof data !== "object") {
+    throw new CoffeeOrderApiError(0, "INVALID_RESPONSE", "The checkout order response was invalid.");
+  }
+  const payload = data as { key?: unknown; orderId?: unknown; amount?: unknown; currency?: unknown; name?: unknown; description?: unknown };
+  if (
+    typeof payload.key !== "string" || typeof payload.orderId !== "string" || typeof payload.amount !== "number" ||
+    typeof payload.currency !== "string" || typeof payload.name !== "string" || typeof payload.description !== "string"
+  ) {
+    throw new CoffeeOrderApiError(0, "INVALID_RESPONSE", "The checkout order response was invalid.");
+  }
+  return {
+    key: payload.key,
+    orderId: payload.orderId,
+    amount: payload.amount,
+    currency: payload.currency,
+    name: payload.name,
+    description: payload.description,
+  };
+}
+
+/** Validates the hosted URL returned by the backward-compatible Payment Link endpoint. */
 function toPaymentLinkResponse(data: unknown): CoffeePaymentLinkResponse {
   if (!data || typeof data !== "object") {
     throw new CoffeeOrderApiError(0, "INVALID_RESPONSE", "The payment link response was invalid.");
@@ -111,7 +156,7 @@ function toPaymentLinkResponse(data: unknown): CoffeePaymentLinkResponse {
 
 /** Details a supporter confirms on the coffee order form. */
 export interface CoffeeOrderDraft {
-  /** Contribution value in the smallest currency unit (paise). */
+  /** Contribution value in the smallest unit of its selected currency. */
   amount: number;
   /** Trimmed contributor display label; the backend rejects blank names. */
   name: string;
@@ -138,15 +183,37 @@ export class CoffeeOrderService {
   }
 
   /**
-   * Creates a Razorpay payment link for the confirmed order.
+   * Creates a stored Razorpay order for the confirmed Standard Checkout payment.
    *
    * Throws {@link CoffeeOrderApiError} for 5xx, non-2xx, or an invalid payload so
    * the checkout can distinguish "service unavailable" from a rejected order.
    */
+  async createCheckoutOrder(draft: CoffeeOrderDraft): Promise<CoffeeCheckoutOrder> {
+    const response = await window.portfolioRestClient
+      .post<CoffeeCheckoutOrder>()
+      .uri("/razorpay/checkout")
+      .body({ amount: draft.amount, name: draft.name, shortNote: draft.shortNote || null })
+      .retrieve()
+      .handler(rejectServerFailure)
+      .converter(toCheckoutOrder)
+      .toEntity();
+
+    if (response.status < 200 || response.status >= 300) {
+      const body = response.data as unknown as CoffeeApiErrorBody | undefined;
+      throw new CoffeeOrderApiError(
+        response.status,
+        body?.code,
+        body?.code === "INVALID_ARGUMENT" ? "Please check your details and try again." : "The payment could not be started.",
+      );
+    }
+    return response.data;
+  }
+
+  /** Creates a hosted Payment Link for existing callers and quick frontend rollback. */
   async createPaymentLink(draft: CoffeeOrderDraft): Promise<CoffeePaymentLinkResponse> {
     const response = await window.portfolioRestClient
       .post<CoffeePaymentLinkResponse>()
-      .uri("/buy-coffee/order")
+      .uri("/buy-coffee/v1/order")
       .body({ amount: draft.amount, name: draft.name, shortNote: draft.shortNote || null })
       .retrieve()
       .handler(rejectServerFailure)
@@ -162,6 +229,22 @@ export class CoffeeOrderService {
       );
     }
     return response.data;
+  }
+
+  /** Posts Checkout's signed success values for server-side signature verification and payment tracking. */
+  async verifyCheckout(verification: CoffeeCheckoutVerification): Promise<void> {
+    const response = await window.portfolioRestClient
+      .post<void>()
+      .uri("/razorpay/checkout/verify")
+      .body(verification)
+      .retrieve()
+      .handler(rejectServerFailure)
+      .toEntity();
+
+    if (response.status < 200 || response.status >= 300) {
+      const body = response.data as unknown as CoffeeApiErrorBody | undefined;
+      throw new CoffeeOrderApiError(response.status, body?.code, "The payment could not be verified. Please contact support if you were charged.");
+    }
   }
 }
 
