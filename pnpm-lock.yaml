@@ -17,6 +17,9 @@ importers:
       '@ayu-sh-kr/dota-wrap':
         specifier: ^0.1.0
         version: 0.1.0(reflect-metadata@0.2.2)(vite@8.2.2(@types/node@26.4.0)(esbuild@0.28.1)(jiti@2.7.0))
+      '@razorpay/razorpay-js':
+        specifier: ^1.0.0
+        version: 1.0.0
       reflect-metadata:
         specifier: ^0.2.2
         version: 0.2.2
@@ -289,6 +292,9 @@ packages:
 
   '@oxc-project/types@0.147.0':
     resolution: {integrity: sha512-IJ3s6ltHLp45S0bh7phkX+gJO7A1Wuz2EaqpAhb8WjqDwbzMiWKHhyyT42tskaWjEYXtHtVCPpnBJVT9+dcRLg==}
+
+  '@razorpay/razorpay-js@1.0.0':
+    resolution: {integrity: sha512-qANsXOy7cHyUjZ0nFTeRwv6wSqHvGzbjvlTG4XHn0RHjXZDDRQtOV1/WyxK4rh7X9gRJPH4H9e0g3xrz2mKsnA==}
 
   '@rolldown/binding-android-arm-eabi@1.2.6':
     resolution: {integrity: sha512-b+jTcARdTiFLI6jB4a5XjTm0RWd6KcRfQj/I2356fxUZemiho9zQLxo0RtCuMDAyKcLo6cEltkgbQp6d1+sjjQ==}
@@ -1466,6 +1472,8 @@ snapshots:
       fastq: 1.20.3
 
   '@oxc-project/types@0.147.0': {}
+
+  '@razorpay/razorpay-js@1.0.0': {}
 
   '@rolldown/binding-android-arm-eabi@1.2.6':
     optional: true

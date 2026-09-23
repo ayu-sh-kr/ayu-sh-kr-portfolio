@@ -24,6 +24,7 @@
     "@ayu-sh-kr/dota-md": "^0.0.17",
     "@ayu-sh-kr/dota-ui": "^0.1.0",
     "@ayu-sh-kr/dota-wrap": "^0.1.0",
+    "@razorpay/razorpay-js": "^1.0.0",
     "reflect-metadata": "^0.2.2"
   },
   "web-types": "./web-types.json",
