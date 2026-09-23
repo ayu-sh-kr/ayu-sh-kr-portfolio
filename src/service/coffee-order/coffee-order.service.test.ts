@@ -44,7 +44,7 @@ describe("CoffeeOrderService.createPaymentLink", () => {
 
     const result = await service.createPaymentLink({ amount: 1500, name: "Priya", shortNote: "Keep going" });
 
-    assert.equal(chain.calls.uri, "/buy-coffee/order");
+    assert.equal(chain.calls.uri, "/buy-coffee/v1/order");
     assert.deepEqual(chain.calls.body, { amount: 1500, name: "Priya", shortNote: "Keep going" });
     assert.deepEqual(result, { id: "plink_123", short_url: "https://rzp.io/i/coffee" });
   });
@@ -60,5 +60,52 @@ describe("CoffeeOrderService.createPaymentLink", () => {
     await assert.rejects(service.createPaymentLink({ amount: 500, name: "Anonymous" }), (error: unknown) =>
       error instanceof Error && error.name === "CoffeeOrderApiError",
     );
+  });
+});
+
+describe("CoffeeOrderService.createCheckoutOrder", () => {
+  it("posts the contribution and validates the server-created checkout order", async () => {
+    const expected = {
+      key: "rzp_test_key",
+      orderId: "order_123",
+      amount: 1500,
+      currency: "INR",
+      name: "Ayush Kumar",
+      description: "Buy me a coffee",
+    };
+    const chain = mockPost({ status: 200, data: expected });
+    const service = new CoffeeOrderService();
+
+    const result = await service.createCheckoutOrder({ amount: 1500, name: "Priya", shortNote: "Keep going" });
+
+    assert.equal(chain.calls.uri, "/razorpay/checkout");
+    assert.deepEqual(chain.calls.body, { amount: 1500, name: "Priya", shortNote: "Keep going" });
+    assert.deepEqual(result, expected);
+  });
+
+  it("rejects an incomplete checkout order response", async () => {
+    mockPost({ status: 200, data: { key: "rzp_test_key", orderId: "order_123" } });
+    const service = new CoffeeOrderService();
+
+    await assert.rejects(service.createCheckoutOrder({ amount: 500, name: "Anonymous" }), (error: unknown) =>
+      error instanceof Error && error.name === "CoffeeOrderApiError",
+    );
+  });
+});
+
+describe("CoffeeOrderService.verifyCheckout", () => {
+  it("posts Razorpay's signed success values to the backend tracking endpoint", async () => {
+    const verification = {
+      razorpay_payment_id: "pay_123",
+      razorpay_order_id: "order_123",
+      razorpay_signature: "signed-value",
+    };
+    const chain = mockPost({ status: 204, data: undefined });
+    const service = new CoffeeOrderService();
+
+    await service.verifyCheckout(verification);
+
+    assert.equal(chain.calls.uri, "/razorpay/checkout/verify");
+    assert.deepEqual(chain.calls.body, verification);
   });
 });
