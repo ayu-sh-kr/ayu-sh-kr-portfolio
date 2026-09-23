@@ -10,7 +10,7 @@ export const ACTION_BUTTON_TRIGGER_EVENT = "action:trigger" as const;
 /** Published by the dispatcher after the registered handler completes before its timeout; only the matching renderer settles. */
 export const ACTION_BUTTON_RESOLVE_EVENT = "action:resolve" as const;
 
-/** Published by the dispatcher when a handler throws, no handler is registered, or the 12-second request window expires. */
+/** Published when a handler throws, no handler is registered, or its registered request window expires. */
 export const ACTION_BUTTON_REJECT_EVENT = "action:reject" as const;
 
 /** Published by a feature after an availability prerequisite changes so its idle action buttons can recalculate disabled state. */
