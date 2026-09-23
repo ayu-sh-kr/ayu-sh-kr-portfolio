@@ -2,6 +2,7 @@ import { BaseElement, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
 import { type ApplicationEvent, OnEvent } from "@ayu-sh-kr/dota-wrap/event";
 import { coffeeContent, type CoffeeSize } from "@app/data/coffee-content.ts";
 import { COFFEE_ORDER_QUANTITY_EVENT, COFFEE_ORDER_SIZE_EVENT } from "@app/events/coffee.events.ts";
+import { coffeePricingService, formatCoffeeAmount, type CoffeeCurrency } from "@app/service/coffee-order/coffee-pricing.service.ts";
 
 /**
  * Calculates and renders the order's live price, breakdown, cup fill, and steam.
@@ -23,9 +24,21 @@ export class CoffeeOrderTotalComponent extends BaseElement {
   /** Current positive coffee count supplied by the quantity picker. */
   private quantity = 1;
 
+  /** Currency resolved from the backend locale endpoint for this browser session. */
+  private currency: CoffeeCurrency = "USD";
+
   /** Creates the display component before scoped event subscriptions are attached. */
   constructor() {
     super();
+  }
+
+  /** Loads the edge-resolved region before showing the contribution total. */
+  @OnEvent("connected", true)
+  onConnected(): void {
+    void coffeePricingService.getCurrency().then((currency) => {
+      this.currency = currency;
+      this.updateHTML();
+    }).catch(() => undefined);
   }
 
   /**
@@ -80,8 +93,8 @@ export class CoffeeOrderTotalComponent extends BaseElement {
   /** Returns the visual cup and informational-only total panel for the current event state. */
   render(): string {
     const size = this.getSelectedSize();
-    const total = size.price * this.quantity;
-    const fraction = this.getCupFillFraction(total);
+    const total = size.price[this.currency] * this.quantity;
+    const fraction = this.getCupFillFraction(size.price.USD * this.quantity);
     const liquidHeight = fraction * 88;
 
     return HTML`
@@ -97,7 +110,7 @@ export class CoffeeOrderTotalComponent extends BaseElement {
       </div>
       <div class="coffee-total-panel">
         <p class="coffee-total-eyebrow">${coffeeContent.order.totalEyebrow}</p>
-        <p class="type-price coffee-total-amount is-flashing" aria-live="polite">$${total.toFixed(0)}</p>
+        <p class="type-price coffee-total-amount is-flashing" aria-live="polite">${formatCoffeeAmount(total, this.currency)}</p>
         <p class="coffee-total-description">${this.describeOrder(size)}</p>
         <div class="coffee-total-breakdown" aria-hidden="true"><span>Size: <b>${size.name}</b></span><span>Qty: <b>×${this.quantity}</b></span></div>
       </div>
