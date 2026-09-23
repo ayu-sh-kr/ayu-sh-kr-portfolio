@@ -6,7 +6,10 @@ interface ImportMetaEnv {
 
   /** Set to `v2` only after the Cloudflare proxy is verified in production; defaults to v1. */
   readonly VITE_BLOG_VIEW_API_VERSION?: "v1" | "v2";
+  readonly VITE_RAZORPAY_CHECKOUT_MODE?: "checkout" | "payment-link";
 
   /** Optional development proxy target; defaults to the local backend. */
   readonly VITE_DEV_API_TARGET?: string;
+  /** Region simulated by the development API proxy; defaults to India. */
+  readonly VITE_DEV_CLIENT_REGION?: string;
 }

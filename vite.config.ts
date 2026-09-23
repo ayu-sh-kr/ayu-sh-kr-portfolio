@@ -136,7 +136,7 @@ export default defineConfig(({ mode }) => {
     ],
     server: {
       proxy: mode === "development"
-        ? createLocalApiProxy(env.VITE_DEV_API_TARGET || "http://localhost:8080")
+        ? createLocalApiProxy(env.VITE_DEV_API_TARGET || "http://localhost:8080", env.VITE_DEV_CLIENT_REGION || "IN")
         : undefined,
     },
     resolve: {
