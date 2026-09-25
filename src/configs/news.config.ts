@@ -64,6 +64,22 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "claude-opus-5-5-cost-coding",
+    date: "2026-09-25",
+    title: "Claude Opus 5.5 makes the AI race feel a little more useful",
+    summary: "Claude Opus 5.5 is cheaper and faster, while a code-made animation clip hints at how coding agents can build video-like work. The useful competition is moving from demos to customer cost.",
+    kind: "reading",
+    document: "/news/claude-opus-5-5-cost-coding.md",
+    keywords: ["Claude Opus 5.5", "Claude Code", "AI coding agents", "AI model pricing", "agentic coding cost", "Claude Code cloud sessions", "code animation", "AI competition"],
+    minutes: 4,
+    figures: [
+      {label: "Typical workload cost", value: "40% less"},
+      {label: "Input / output", value: "$4 / $20 per M"},
+      {label: "Cache-read cost", value: "60% less"},
+    ],
+    reference: {label: "Anthropic — Introducing Claude Opus 5.5", href: "https://www.anthropic.com/claude-opus-5-5"},
+  },
+  {
     slug: "jev-typesafe-system-one-model",
     date: "2026-09-21",
     title: "Jev gives AI agents a fast gut check before the expensive thinking begins",
