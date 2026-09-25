@@ -66,11 +66,11 @@ export const newsNotes: readonly NewsNote[] = [
   {
     slug: "claude-opus-5-5-cost-coding",
     date: "2026-09-25",
-    title: "Claude Opus 5.5 makes the AI race feel a little more useful",
-    summary: "Claude Opus 5.5 is cheaper and faster, while a code-made animation clip hints at how coding agents can build video-like work. The useful competition is moving from demos to customer cost.",
+    title: "Claude Opus 5.5 gets cheaper as Claude Code adds cloud-session credits",
+    summary: "Anthropic says Claude Opus 5.5 costs about 40% less on typical work, while existing Pro and Max subscribers can claim $100 or $250 for Claude Code cloud sessions by October 7.",
     kind: "reading",
     document: "/news/claude-opus-5-5-cost-coding.md",
-    keywords: ["Claude Opus 5.5", "Claude Code", "AI coding agents", "AI model pricing", "agentic coding cost", "Claude Code cloud sessions", "code animation", "AI competition"],
+    keywords: ["Claude Opus 5.5", "Claude Opus 5.5 pricing", "Claude Code cloud sessions", "Claude Code free credit", "Claude Code claim-credit", "Claude Pro credit", "Claude Max credit", "AI coding agents", "code-generated animation"],
     minutes: 4,
     figures: [
       {label: "Typical workload cost", value: "40% less"},
