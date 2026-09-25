@@ -24,11 +24,6 @@
       "permanent": true
     },
     {
-      "source": "/blog/reinforcement-learning-from-rlhf-to-rlsc",
-      "destination": "/blog/reinforcement-learning-from-rlhf-to-rlsc/",
-      "permanent": true
-    },
-    {
       "source": "/blog/aws-app-config-spring-boot-integration",
       "destination": "/blog/aws-app-config-spring-boot-integration/",
       "permanent": true
@@ -76,6 +71,11 @@
     {
       "source": "/blog/rate-limiting-token-bucket-spring-boot",
       "destination": "/blog/rate-limiting-token-bucket-spring-boot/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/reinforcement-learning-from-rlhf-to-rlsc",
+      "destination": "/blog/reinforcement-learning-from-rlhf-to-rlsc/",
       "permanent": true
     },
     {
@@ -184,13 +184,13 @@
       "permanent": true
     },
     {
-      "source": "/news/jev-typesafe-system-one-model",
-      "destination": "/news/jev-typesafe-system-one-model/",
+      "source": "/news/cloudflare-trycloudflare-quick-tunnel",
+      "destination": "/news/cloudflare-trycloudflare-quick-tunnel/",
       "permanent": true
     },
     {
-      "source": "/news/cloudflare-trycloudflare-quick-tunnel",
-      "destination": "/news/cloudflare-trycloudflare-quick-tunnel/",
+      "source": "/news/docker-sandbox-kit-aws-lambda-microvms-agent-coding",
+      "destination": "/news/docker-sandbox-kit-aws-lambda-microvms-agent-coding/",
       "permanent": true
     },
     {
@@ -201,6 +201,16 @@
     {
       "source": "/news/graalvm-lambda-cold-start",
       "destination": "/news/graalvm-lambda-cold-start/",
+      "permanent": true
+    },
+    {
+      "source": "/news/jev-typesafe-system-one-model",
+      "destination": "/news/jev-typesafe-system-one-model/",
+      "permanent": true
+    },
+    {
+      "source": "/news/jhipster-online-infostealer-malware",
+      "destination": "/news/jhipster-online-infostealer-malware/",
       "permanent": true
     },
     {
