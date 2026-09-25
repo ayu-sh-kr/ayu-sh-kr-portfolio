@@ -64,6 +64,17 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "microsoft-copilot-home-code-autopilot",
+    date: "2026-09-25",
+    title: "Microsoft Copilot adds Code and Autopilot to turn work requests into finished tasks",
+    summary: "Microsoft is bringing Chat, Cowork, app building, and a persistent agent into one Copilot experience. Home and Code are headed to Frontier, while Autopilot enters private preview.",
+    kind: "reading",
+    document: "/news/microsoft-copilot-home-code-autopilot.md",
+    keywords: ["Microsoft Copilot Home", "Microsoft Copilot Code", "Microsoft Copilot Autopilot", "Copilot Managed Runtime", "Microsoft 365 Copilot agents", "Copilot Frontier program"],
+    minutes: 2,
+    reference: {label: "Microsoft — Introducing the new Copilot with Home, Code and Autopilot", href: "https://blogs.microsoft.com/blog/2026/09/25/introducing-the-new-copilot-with-home-code-and-autopilot/"},
+  },
+  {
     slug: "docker-sandbox-kit-aws-lambda-microvms-agent-coding",
     date: "2026-09-25",
     title: "Docker Sandbox Kit and AWS Lambda MicroVMs make private AI coding agents more practical",
