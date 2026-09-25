@@ -64,6 +64,22 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "claude-opus-5-5-cost-coding",
+    date: "2026-09-25",
+    title: "Claude Opus 5.5 gets cheaper as Claude Code adds cloud-session credits",
+    summary: "Anthropic says Claude Opus 5.5 costs about 40% less on typical work, while existing Pro and Max subscribers can claim $100 or $250 for Claude Code cloud sessions by October 7.",
+    kind: "reading",
+    document: "/news/claude-opus-5-5-cost-coding.md",
+    keywords: ["Claude Opus 5.5", "Claude Opus 5.5 pricing", "Claude Code cloud sessions", "Claude Code free credit", "Claude Code claim-credit", "Claude Pro credit", "Claude Max credit", "AI coding agents", "code-generated animation"],
+    minutes: 4,
+    figures: [
+      {label: "Typical workload cost", value: "40% less"},
+      {label: "Input / output", value: "$4 / $20 per M"},
+      {label: "Cache-read cost", value: "60% less"},
+    ],
+    reference: {label: "Anthropic — Introducing Claude Opus 5.5", href: "https://www.anthropic.com/claude-opus-5-5"},
+  },
+  {
     slug: "jev-typesafe-system-one-model",
     date: "2026-09-21",
     title: "Jev gives AI agents a fast gut check before the expensive thinking begins",

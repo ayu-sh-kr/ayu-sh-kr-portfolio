@@ -44,6 +44,8 @@
 
 ## Recent Dispatch notes
 
+- [Claude Opus 5.5 gets cheaper as Claude Code adds cloud-session credits](https://ayu-sh-kr.com/news/claude-opus-5-5-cost-coding/): A 4-minute news brief on Opus 5.5 pricing, code-made animation, and the limited-time $100 Pro / $250 Max Claude Code cloud-session credit. [Article Markdown](https://ayu-sh-kr.com/news/claude-opus-5-5-cost-coding.md).
+
 - [Jev gives AI agents a fast gut check before the expensive thinking begins](https://ayu-sh-kr.com/news/jev-typesafe-system-one-model/): A short note on LangChain’s Jev integration and TypeSafe AI’s non-generative System One model for structured decisions, model routing, and pre-execution tool-call checks. [Article Markdown](https://ayu-sh-kr.com/news/jev-typesafe-system-one-model.md).
 - [JHipster Online warns users after infostealer malware exposes credentials](https://ayu-sh-kr.com/news/jhipster-online-infostealer-malware/): JHipster Online says exposed credentials point to infostealer malware on affected devices, not a breach of its own database; a short security note on device cleanup, password reuse, session invalidation, and phishing follow-ups.
 - [Cloudflare Quick Tunnels take localhost to the internet](https://ayu-sh-kr.com/news/cloudflare-trycloudflare-quick-tunnel/): News brief on sharing localhost apps with Cloudflare's free TryCloudflare HTTPS links, including the command and what it means for demos and developer feedback. [Article Markdown](https://ayu-sh-kr.com/news/cloudflare-trycloudflare-quick-tunnel.md).
