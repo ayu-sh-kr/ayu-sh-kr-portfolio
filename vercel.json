@@ -179,6 +179,11 @@
       "permanent": true
     },
     {
+      "source": "/news/claude-opus-5-5-cost-coding",
+      "destination": "/news/claude-opus-5-5-cost-coding/",
+      "permanent": true
+    },
+    {
       "source": "/news/jev-typesafe-system-one-model",
       "destination": "/news/jev-typesafe-system-one-model/",
       "permanent": true
