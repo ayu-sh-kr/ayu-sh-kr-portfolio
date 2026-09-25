@@ -64,6 +64,17 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "docker-sandbox-kit-aws-lambda-microvms-agent-coding",
+    date: "2026-09-25",
+    title: "Docker Sandbox Kit and AWS Lambda MicroVMs make private AI coding agents more practical",
+    summary: "Docker's open agent kit format and AWS's isolated MicroVMs point toward a future where organizations package, run, and govern coding agents on their own terms. Here is what they solve—and what they don't.",
+    kind: "infra",
+    document: "/news/docker-sandbox-kit-aws-lambda-microvms-agent-coding.md",
+    keywords: ["Docker Sandbox Kit Spec", "AWS Lambda MicroVMs", "AI coding agent sandbox", "private coding agents", "agentic development", "agent permissions", "Firecracker microVM"],
+    minutes: 5,
+    reference: {label: "Docker — Sandbox Kit Spec announcement", href: "https://www.docker.com/blog/docker-sandbox-kit-spec-cncf/"},
+  },
+  {
     slug: "claude-opus-5-5-cost-coding",
     date: "2026-09-25",
     title: "Claude Opus 5.5 gets cheaper as Claude Code adds cloud-session credits",

@@ -10,8 +10,12 @@
 }
 
 .news-note-prose {
-  max-inline-size: 42.5rem;
+  box-sizing: border-box;
+  /* The blog's layout-page shell supplies this inset. News prose sits outside
+   * that shell, so its reading column needs the same gutter itself. */
+  max-inline-size: calc(42.5rem + (2 * var(--layout-gutter)));
   margin-inline: auto;
+  padding-inline: var(--layout-gutter);
   color: var(--blog-ink);
   font-size: 1.125rem;
   line-height: 1.75;
