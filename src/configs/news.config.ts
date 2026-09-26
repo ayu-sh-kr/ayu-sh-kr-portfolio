@@ -75,6 +75,17 @@ export const newsNotes: readonly NewsNote[] = [
     reference: {label: "GitHub Engineering — Migrating the GitHub Copilot runtime to Rust, using Copilot", href: "https://github.blog/ai-and-ml/generative-ai/migrating-the-github-copilot-runtime-to-rust-using-copilot/"},
   },
   {
+    slug: "homa-protocol-tcp-datacenter-ai-latency",
+    date: "2026-09-26",
+    title: "Homa revisits TCP’s place in the datacenter as AI waits on tiny messages",
+    summary: "Stanford’s Homa protocol gives short datacenter messages a faster path than TCP in measured tests. Here is how its receiver-led design works, why AI services might care, and what the benchmarks do not promise.",
+    kind: "infra",
+    document: "/news/homa-protocol-tcp-datacenter-ai-latency.md",
+    keywords: ["Homa protocol", "Homa vs TCP", "datacenter network latency", "Stanford Homa", "AI inference networking", "receiver-driven transport", "RPC tail latency"],
+    minutes: 3,
+    reference: {label: "USENIX — A Linux Kernel Implementation of the Homa Transport Protocol", href: "https://www.usenix.org/conference/atc21/presentation/ousterhout"},
+  },
+  {
     slug: "microsoft-copilot-home-code-autopilot",
     date: "2026-09-25",
     title: "Microsoft Copilot adds Code and Autopilot to turn work requests into finished tasks",
