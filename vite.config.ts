@@ -34,6 +34,7 @@ const showcaseRoutes = [
   "/showcase/event-pipeline",
   "/showcase/dota-rest",
 ];
+  "/news/github-copilot-runtime-rust-migration",
 const newsRoutes = [
   "/news/microsoft-copilot-home-code-autopilot",
   "/news/claude-opus-5-5-cost-coding",
