@@ -204,6 +204,11 @@
       "permanent": true
     },
     {
+      "source": "/news/github-copilot-runtime-rust-migration",
+      "destination": "/news/github-copilot-runtime-rust-migration/",
+      "permanent": true
+    },
+    {
       "source": "/news/jev-typesafe-system-one-model",
       "destination": "/news/jev-typesafe-system-one-model/",
       "permanent": true
