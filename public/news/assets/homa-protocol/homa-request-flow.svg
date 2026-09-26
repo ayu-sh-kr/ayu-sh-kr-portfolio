@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="980" viewBox="0 0 720 980" role="img" aria-labelledby="title desc">
+<title id="title">How Homa moves a request</title>
+<desc id="desc">The sender transmits an initial portion without waiting for a grant. A request that fits can complete immediately. For a longer request, the receiver grants more bytes and assigns priority; the sender continues as grants allow. Once the full request arrives, the server processes it and sends a response using the same message transfer rules with roles reversed.</desc>
+<defs>
+<marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="7" markerHeight="7" orient="auto"><path d="M2 2 L10 6 L2 10" fill="none" stroke="#bdce8a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></marker>
+<style>
+text {font-family:'Segoe Print','Bradley Hand','Comic Sans MS',cursive;fill:#fafaf8;font-size:26px;text-anchor:middle}
+.title {font-size:34px;font-weight:700;text-anchor:start}
+.note {font-family:Arial,sans-serif;font-size:23px;fill:#d0d0cd}
+.label {fill:#bdce8a;font-size:24px}
+.box {fill:#1d1d1f;stroke:#92a951;stroke-width:2.2;stroke-linejoin:round}
+.echo {fill:none;stroke:#92a951;stroke-width:1;opacity:.35}
+.flow {fill:none;stroke:#bdce8a;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;marker-end:url(#arrow)}
+</style>
+</defs>
+<rect x="1" y="1" width="718" height="978" rx="22" fill="#101011" stroke="#3e3e41"/>
+<text x="32" y="54" class="title">Homa: let short messages finish</text>
+<text x="32" y="91" class="note" style="text-anchor:start">One request, from sender to receiver</text>
+<path d="M34 109 Q350 105 682 110" class="echo"/>
+<path d="M132 140 Q358 137 590 141 L588 252 Q360 256 130 251 Z" class="box"/>
+<path d="M136 144 Q360 140 585 145 L591 249" class="echo"/>
+<text x="360" y="179">Sender sends initial bytes</text>
+<text x="360" y="220" class="note">No receiver grant needed yet</text>
+<path d="M360 256 Q358 276 360 298" class="flow"/>
+<path d="M360 305 L532 384 L359 465 L186 385 Z" class="box"/>
+<path d="M364 310 L526 386 L361 459 L192 382" class="echo"/>
+<text x="360" y="379">Whole request</text>
+<text x="360" y="413">received?</text>
+<path d="M188 385 Q104 381 90 420 L90 779 Q90 805 153 808" class="flow"/>
+<text x="91" y="364" class="label">Yes</text>
+<text x="111" y="552" class="label" style="text-anchor:start">Short request</text>
+<text x="111" y="586" class="note" style="text-anchor:start">can finish here</text>
+<path d="M532 385 Q608 383 608 467 L608 487" class="flow"/>
+<text x="606" y="365" class="label">No</text>
+<path d="M329 498 Q500 495 677 500 L675 612 Q500 616 327 611 Z" class="box"/>
+<path d="M333 503 L671 499 L678 608" class="echo"/>
+<text x="502" y="538">Receiver grants more</text>
+<text x="502" y="578" class="note">Byte limit + packet priority</text>
+<path d="M503 617 Q501 634 503 654" class="flow"/>
+<path d="M329 664 Q504 661 677 665 L675 742 Q500 746 327 741 Z" class="box"/>
+<path d="M333 669 Q504 664 672 669" class="echo"/>
+<text x="502" y="696">Sender continues</text>
+<text x="502" y="728" class="note">as grants allow</text>
+<path d="M502 748 Q505 777 505 789" class="flow"/>
+<path d="M161 798 Q420 795 677 800 L675 916 Q416 920 159 915 Z" class="box"/>
+<path d="M165 803 Q420 799 671 804" class="echo"/>
+<text x="418" y="836">Full request → server processes it</text>
+<text x="418" y="876" class="note">Response follows the same rules;</text>
+<text x="418" y="905" class="note">sender and receiver swap roles.</text>
+<text x="360" y="954" class="note">Receivers use priorities to favor short messages.</text>
+</svg>
