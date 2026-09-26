@@ -204,13 +204,13 @@
       "permanent": true
     },
     {
-      "source": "/news/jev-typesafe-system-one-model",
-      "destination": "/news/jev-typesafe-system-one-model/",
+      "source": "/news/homa-protocol-tcp-datacenter-ai-latency",
+      "destination": "/news/homa-protocol-tcp-datacenter-ai-latency/",
       "permanent": true
     },
     {
-      "source": "/news/microsoft-copilot-home-code-autopilot",
-      "destination": "/news/microsoft-copilot-home-code-autopilot/",
+      "source": "/news/jev-typesafe-system-one-model",
+      "destination": "/news/jev-typesafe-system-one-model/",
       "permanent": true
     },
     {
@@ -221,6 +221,11 @@
     {
       "source": "/news/kotlin-context-parameters",
       "destination": "/news/kotlin-context-parameters/",
+      "permanent": true
+    },
+    {
+      "source": "/news/microsoft-copilot-home-code-autopilot",
+      "destination": "/news/microsoft-copilot-home-code-autopilot/",
       "permanent": true
     },
     {
