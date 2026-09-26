@@ -44,6 +44,7 @@
 
 ## Recent Dispatch notes
 
+- [GitHub moves Copilot’s agent runtime from TypeScript to Rust](https://ayu-sh-kr.com/news/github-copilot-runtime-rust-migration/): A 2-minute engineering news brief on the SDK architecture, incremental migration, and measured startup and memory gains. [Article Markdown](https://ayu-sh-kr.com/news/github-copilot-runtime-rust-migration.md).
 - [Microsoft Copilot adds Code and Autopilot to turn work requests into finished tasks](https://ayu-sh-kr.com/news/microsoft-copilot-home-code-autopilot/): A 2-minute news brief on Copilot Home, Code, Autopilot, staged previews, and usage-based billing. [Article Markdown](https://ayu-sh-kr.com/news/microsoft-copilot-home-code-autopilot.md).
 - [Docker Sandbox Kit and AWS Lambda MicroVMs make private AI coding agents more practical](https://ayu-sh-kr.com/news/docker-sandbox-kit-aws-lambda-microvms-agent-coding/): A 5-minute news analysis of portable agent permissions, isolated code execution, and what organizations must control to keep source private. [Article Markdown](https://ayu-sh-kr.com/news/docker-sandbox-kit-aws-lambda-microvms-agent-coding.md).
 - [Claude Opus 5.5 gets cheaper as Claude Code adds cloud-session credits](https://ayu-sh-kr.com/news/claude-opus-5-5-cost-coding/): A 4-minute news brief on Opus 5.5 pricing, code-made animation, and the limited-time $100 Pro / $250 Max Claude Code cloud-session credit. [Article Markdown](https://ayu-sh-kr.com/news/claude-opus-5-5-cost-coding.md).
