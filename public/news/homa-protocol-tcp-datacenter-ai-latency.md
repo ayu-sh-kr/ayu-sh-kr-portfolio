@@ -10,6 +10,10 @@ TCP gives applications a **reliable stream of bytes**. That is useful across the
 
 Homa takes a different approach: it is a **reliable, message-based transport for datacenter RPCs**. A sender can transmit an initial part immediately; for longer messages, the receiver grants permission to send more and assigns network priorities. This lets receivers coordinate incoming traffic and gives short messages a chance to finish quickly amid larger transfers. It is an alternative transport design, not a drop-in TCP setting for an existing app.
 
+![Hand-drawn Homa flowchart: send initial bytes, complete short requests immediately, or use receiver grants and priorities to finish longer requests.](/news/assets/homa-protocol/homa-request-flow.svg)
+
+*Homa’s request flow: short messages can fit in the initial transmission; longer ones continue as the receiver grants more bytes. Responses use the same rules with roles reversed.*
+
 The comparison has numbers, but they need context. In a **40-node cluster benchmark**, Stanford researchers reported that Homa’s 99th-percentile latency for short messages was **7–83× lower than TCP and DCTCP**, depending on the workload. That is a measured result in a particular test environment, not a promise that every AI request or public internet connection will see the same gain. The circulating “13× faster” claim should be read with the same caution.
 
 ## Why AI makes the wait visible
