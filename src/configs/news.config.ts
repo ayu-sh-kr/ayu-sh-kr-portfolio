@@ -62,6 +62,7 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  * Newest-first ordering is derived by {@link getNewsNotes}; authored order is
  * deliberately not treated as a publishing control.
  */
+export const newsNotes: readonly NewsNote[] = [
   {
     slug: "github-copilot-runtime-rust-migration",
     date: "2026-09-26",
@@ -73,7 +74,6 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
     minutes: 2,
     reference: {label: "GitHub Engineering — Migrating the GitHub Copilot runtime to Rust, using Copilot", href: "https://github.blog/ai-and-ml/generative-ai/migrating-the-github-copilot-runtime-to-rust-using-copilot/"},
   },
-export const newsNotes: readonly NewsNote[] = [
   {
     slug: "microsoft-copilot-home-code-autopilot",
     date: "2026-09-25",
