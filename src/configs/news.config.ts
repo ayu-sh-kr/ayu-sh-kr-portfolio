@@ -62,6 +62,17 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  * Newest-first ordering is derived by {@link getNewsNotes}; authored order is
  * deliberately not treated as a publishing control.
  */
+  {
+    slug: "github-copilot-runtime-rust-migration",
+    date: "2026-09-26",
+    title: "GitHub moves Copilot’s agent runtime from TypeScript to Rust",
+    summary: "GitHub ported Copilot’s shared agent runtime to Rust so SDK clients can embed it directly. An incremental migration removed Node startup and process overhead, with large gains in GitHub’s local benchmark.",
+    kind: "infra",
+    document: "/news/github-copilot-runtime-rust-migration.md",
+    keywords: ["GitHub Copilot Rust runtime", "Copilot agent runtime migration", "TypeScript to Rust", "GitHub Copilot SDK", "in-process FFI", "agent runtime performance"],
+    minutes: 2,
+    reference: {label: "GitHub Engineering — Migrating the GitHub Copilot runtime to Rust, using Copilot", href: "https://github.blog/ai-and-ml/generative-ai/migrating-the-github-copilot-runtime-to-rust-using-copilot/"},
+  },
 export const newsNotes: readonly NewsNote[] = [
   {
     slug: "microsoft-copilot-home-code-autopilot",
