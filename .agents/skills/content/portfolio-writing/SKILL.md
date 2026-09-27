@@ -25,14 +25,7 @@ Prefer connected prose over stacked bullets. Highlight a few meaningful terms or
 
 ## SEO and publishing
 
-Follow [content-seo-publishing](../content-seo-publishing/SKILL.md) for metadata, catalog ownership, route registration, and validation. Keep these story-specific checks in mind:
-
-- Use one searchable H1 that names the subject and actual outcome; match it exactly to the catalog title. Keep the slug stable when revising an existing post. Write a distinct, accurate summary/description and a small set of terms the body genuinely covers.
-- Use source links within the story where they help verification and a short source line at the end. Do not link to a vague “linked post” when the original source is known.
-- For `/blog/<slug>/`: put Markdown under `public/blogs/<category>/`, register it in `src/configs/blogs.config.ts`, and follow the asset placement in blog-wiring.
-- For `/news/<slug>/`: put Markdown under `public/news/` and register it in `src/configs/news.config.ts` with `slug`, `date`, `title`, `summary`, `kind`, `document`, `keywords`, `minutes`, and a source reference when available. Do not put news only in the older blog catalog.
-- Wire new public routes in `vite.config.ts` (SSG), `public/sitemap.xml`, `public/llms.txt`, and `vercel.json` (canonical trailing-slash redirect). Align the route, Markdown source, and catalog slug. Do not add YAML frontmatter when the catalog owns metadata.
-- If an SVG is requested, follow [blog-svg-diagrams](../../documentation/blog-svg-diagrams/SKILL.md) and verify its root-relative URL, contrast, typography, accessible title/description, and rendered layout.
+Follow [content-seo-publishing](../content-seo-publishing/SKILL.md) for titles, metadata, catalog ownership, and all route surfaces. Choose the title and description only after the story's angle and evidence are clear. For a revision, keep the established URL unless the user requests a migration. If an SVG is requested, follow [blog-svg-diagrams](../../documentation/blog-svg-diagrams/SKILL.md) and verify its root-relative URL and rendered layout.
 
 ## Final review
 
