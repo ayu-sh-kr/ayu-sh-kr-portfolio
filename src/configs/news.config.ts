@@ -1,3 +1,4 @@
+import {newsContent} from "@app/data/news-content.ts";
 import {siteIdentity} from "@app/data/portfolio-content.ts";
 import type {PageSeoContent} from "@app/data/seo-content.ts";
 
@@ -257,7 +258,7 @@ export const newsNotes: readonly NewsNote[] = [
 
 ];
 
-const NEWS_INDEX_KEYWORDS = [siteIdentity.name, "The Dispatch", "backend notes", "infrastructure notes", "engineering updates"] as const;
+const NEWS_INDEX_KEYWORDS = [siteIdentity.name, ...newsContent.seo.keywords] as const;
 
 /** Orders the authored catalogue newest-first for every consumer. */
 export const getNewsNotes = (): readonly NewsNote[] =>
@@ -295,8 +296,8 @@ export const labelForNewsKind = (kind: NewsKind): string =>
 
 /** Derives index and note metadata from the same catalogue that renders the UI. */
 export const getNewsSeo = (note?: NewsNote): PageSeoContent => {
-  const title = note ? `${note.title} — ${siteIdentity.domain}` : `The Dispatch — ${siteIdentity.domain}`;
-  const description = note?.summary ?? "Short notes on backend systems, infrastructure, useful reading, and what Ayush Kumar shipped.";
+  const title = note ? `${note.title} — ${siteIdentity.domain}` : newsContent.seo.title;
+  const description = note?.summary ?? newsContent.seo.description;
 
   return {
     title,

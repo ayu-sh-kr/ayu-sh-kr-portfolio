@@ -1,11 +1,16 @@
 /** Authored interface copy shared by the Dispatch feed and note permalink. */
 export const newsContent = {
+  seo: {
+    title: "AI & Developer News — The Dispatch",
+    description: "AI releases, open-source tools, security reports, and infrastructure updates explained with source links and context for developers.",
+    keywords: ["The Dispatch", "AI news", "developer news", "open-source tools", "security news", "infrastructure updates"],
+  },
   index: {
     eyebrow: "The Dispatch",
-    titleBeforeAccent: "Tech news, useful tools, and the ideas",
-    titleAccent: "worth",
-    titleAfterAccent: "reading.",
-    summary: "A running feed of technology news and practical ideas. I follow the source, explain what changed, and add the context that makes it useful.",
+    titleBeforeAccent: "AI and developer news:",
+    titleAccent: "what changed",
+    titleAfterAccent: "and why it matters.",
+    summary: "AI releases, open-source tools, security reports, and infrastructure updates. Short reads that explain the news, link to the source, and explore what it means for developers.",
     filterLabel: "Filter by kind",
     monthLabel: "Jump to month",
     empty: "Nothing filed under that yet.",
