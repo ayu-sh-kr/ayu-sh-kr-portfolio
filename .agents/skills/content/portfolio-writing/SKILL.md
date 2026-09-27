@@ -5,7 +5,7 @@ description: Write, revise, and publish this portfolio's technical blog articles
 
 # Portfolio Writing
 
-Write for developers who want to understand what happened, how it works, and why it matters. Read at least two recent items from the **same surface** first: `public/blogs/**` for an article or `public/news/**` for a Dispatch brief. Read the corresponding entry in `src/configs/blogs.config.ts` or `src/configs/news.config.ts`. Follow [application-voice](../application-voice/SKILL.md), [technical-blog-writing](../technical-blog-writing/SKILL.md), [seo-optimization](../seo-optimization/SKILL.md), and [blog-wiring](../blog-wiring/SKILL.md) for their domain-specific rules.
+Write for developers who want to understand what happened, how it works, and why it matters. Read at least two recent items from the **same surface** first: `public/blogs/**` for an article or `public/news/**` for a Dispatch brief. Read the corresponding entry in `src/configs/blogs.config.ts` or `src/configs/news.config.ts`. Follow [application-voice](../application-voice/SKILL.md), [technical-blog-writing](../technical-blog-writing/SKILL.md), [seo-optimization](../seo-optimization/SKILL.md), and [content-seo-publishing](../content-seo-publishing/SKILL.md) for their domain-specific rules.
 
 ## Research and angle
 
@@ -24,6 +24,8 @@ Write for developers who want to understand what happened, how it works, and why
 Prefer connected prose over stacked bullets. Highlight a few meaningful terms or outcomes in bold for scanning; avoid bolding whole sentences. Keep code fences tagged and preceded by a sentence explaining the example. Follow the requested read time by checking the actual word count and the article's complexity, rather than padding to a number.
 
 ## SEO and publishing
+
+Follow [content-seo-publishing](../content-seo-publishing/SKILL.md) for metadata, catalog ownership, route registration, and validation. Keep these story-specific checks in mind:
 
 - Use one searchable H1 that names the subject and actual outcome; match it exactly to the catalog title. Keep the slug stable when revising an existing post. Write a distinct, accurate summary/description and a small set of terms the body genuinely covers.
 - Use source links within the story where they help verification and a short source line at the end. Do not link to a vague “linked post” when the original source is known.
