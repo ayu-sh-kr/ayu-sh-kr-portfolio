@@ -199,6 +199,11 @@
       "permanent": true
     },
     {
+      "source": "/news/github-copilot-runtime-rust-migration",
+      "destination": "/news/github-copilot-runtime-rust-migration/",
+      "permanent": true
+    },
+    {
       "source": "/news/graalvm-lambda-cold-start",
       "destination": "/news/graalvm-lambda-cold-start/",
       "permanent": true
