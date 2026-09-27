@@ -16,6 +16,8 @@ Color, typography, and mode.
 Long-form content.
 - **markdown-rendering** — the loader → renderer → viewer pipeline.
 - **blog-wiring** — placing blog markdown and registering it in `blogs.config.ts`.
+- **portfolio-writing** — researched, readable blog and Dispatch news stories with a connected hook, explanation, and closure.
+- **content-seo-publishing** — SEO metadata and complete blog/news wiring across SSG, sitemap, llms.txt, and Vercel.
 
 ## documentation/
 Documenting the system.
