@@ -44,6 +44,8 @@
 
 ## Recent Dispatch notes
 
+- [prek brings a faster pre-commit workflow to open source projects](https://ayu-sh-kr.com/news/prek-rust-pre-commit-hooks/): A 2-minute open-source news brief on prek's compatible Git hooks, single-binary runner, shared environments, and monorepo workspaces. [Article Markdown](https://ayu-sh-kr.com/news/prek-rust-pre-commit-hooks.md).
+
 - [GitHub moves Copilot’s agent runtime from TypeScript to Rust](https://ayu-sh-kr.com/news/github-copilot-runtime-rust-migration/): A 2-minute engineering news brief on the SDK architecture, incremental migration, and measured startup and memory gains. [Article Markdown](https://ayu-sh-kr.com/news/github-copilot-runtime-rust-migration.md).
 - [Homa revisits TCP’s place in the datacenter as AI waits on tiny messages](https://ayu-sh-kr.com/news/homa-protocol-tcp-datacenter-ai-latency/): A 3-minute news explanation of Stanford’s Homa transport, its measured tail-latency comparison with TCP, and the relevance to short AI service requests. [Article Markdown](https://ayu-sh-kr.com/news/homa-protocol-tcp-datacenter-ai-latency.md).
 - [Microsoft Copilot adds Code and Autopilot to turn work requests into finished tasks](https://ayu-sh-kr.com/news/microsoft-copilot-home-code-autopilot/): A 2-minute news brief on Copilot Home, Code, Autopilot, staged previews, and usage-based billing. [Article Markdown](https://ayu-sh-kr.com/news/microsoft-copilot-home-code-autopilot.md).
