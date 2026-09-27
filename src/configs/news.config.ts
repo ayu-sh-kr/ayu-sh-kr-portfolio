@@ -66,8 +66,8 @@ export const newsNotes: readonly NewsNote[] = [
   {
     slug: "jevgrep-jev-agent-code-search",
     date: "2026-09-27",
-    title: "Jevgrep uses Jev to find code before a coding agent reads it",
-    summary: "David Zhang's Jevgrep uses TypeSafe AI's Jev to find relevant files and source for coding agents. Its small SWE-bench repeat showed a lower agent bill alongside a lower solve rate.",
+    title: "Jevgrep targets coding agent costs with smarter code search",
+    summary: "Jevgrep uses TypeSafe AI's Jev to find relevant code before an agent reads it. See how it works, three quick uses, and what its cost benchmark shows.",
     kind: "reading",
     document: "/news/jevgrep-jev-agent-code-search.md",
     keywords: ["Jevgrep", "TypeSafe AI Jev", "coding agent code search", "agent token usage", "semantic code retrieval", "SWE-bench cost"],
