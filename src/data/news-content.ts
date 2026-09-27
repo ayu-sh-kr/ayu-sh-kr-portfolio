@@ -1,16 +1,16 @@
 /** Authored interface copy shared by the Dispatch feed and note permalink. */
 export const newsContent = {
+  seo: {
+    title: "Tech News — The Dispatch",
+    description: "Tech news across the industry, from product launches to company moves and emerging ideas. Short reads explaining what changed and why it matters.",
+    keywords: ["The Dispatch", "tech news", "technology news", "technology industry", "product launches"],
+  },
   index: {
     eyebrow: "The Dispatch",
-    titleBeforeAccent: "Short notes on backend, infra, and the things I",
-    titleAccent: "actually",
-    titleAfterAccent: "shipped.",
-    summary: "Thirty seconds each. Release notes worth reading, an AWS bill that changed shape, one paragraph of opinion. Anything that needs more than that becomes a blog post. Filed weekly since January 2025.",
-    figures: [
-      {label: "Notes filed", value: "148"},
-      {label: "This week", value: "4"},
-      {label: "Median read", value: "38s"},
-    ],
+    titleBeforeAccent: "Tech news:",
+    titleAccent: "what changed",
+    titleAfterAccent: "and why it matters.",
+    summary: "From product launches to company moves and emerging ideas, I cover stories across the tech industry. Short reads with source links and context to make sense of the news.",
     filterLabel: "Filter by kind",
     monthLabel: "Jump to month",
     empty: "Nothing filed under that yet.",

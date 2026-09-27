@@ -24,12 +24,6 @@ export class NewsSlugPage extends DotaPageElement {
   render(): string {
     return `
       <app-header></app-header>
-      <app-notice
-        container="content"
-        offset="header"
-        label="Test content"
-        message="The Dispatch is a temporary preview. Its entries are illustrative and should not be treated as published project or operational records."
-      ></app-notice>
       <news-article></news-article>
       <app-footer></app-footer>
     `;

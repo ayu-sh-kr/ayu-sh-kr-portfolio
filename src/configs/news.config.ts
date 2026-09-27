@@ -1,3 +1,4 @@
+import {newsContent} from "@app/data/news-content.ts";
 import {siteIdentity} from "@app/data/portfolio-content.ts";
 import type {PageSeoContent} from "@app/data/seo-content.ts";
 
@@ -58,7 +59,7 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
 ];
 
 /**
- * Dummy Dispatch catalogue adapted from the approved iteration-34 demos.
+ * Published Dispatch catalogue.
  * Newest-first ordering is derived by {@link getNewsNotes}; authored order is
  * deliberately not treated as a publishing control.
  */
@@ -254,118 +255,10 @@ export const newsNotes: readonly NewsNote[] = [
     ],
     reference: {label: "PrismML announcement", href: "https://prismml.com/news/bonsai-2-27b"},
   },
-  {
-    slug: "sacrena-match-feed-redis-cache",
-    date: "2026-09-12",
-    title: "Sacrena's match feed now serves from a Redis read-through cache",
-    summary: "p95 dropped from 310ms to 41ms. The interesting part wasn't the cache — it was deleting the three “optimised” queries it made redundant.",
-    kind: "shipped",
-    document: "/news/sacrena-match-feed-redis-cache.md",
-    keywords: ["Redis read-through cache", "query performance", "Sacrena"],
-    minutes: 1,
-    figures: [
-      {label: "p95 before", value: "310ms"},
-      {label: "p95 after", value: "41ms"},
-      {label: "Queries removed", value: "3"},
-    ],
-  },
-  {
-    slug: "graalvm-lambda-cold-start",
-    date: "2026-09-09",
-    title: "GraalVM native image cut my Lambda cold start to 190ms",
-    summary: "Spring Cloud Function on a custom runtime, container image, 512MB. Build time went the other way — 40s to 6 minutes — which is a fine trade for a function that runs on someone else's page load.",
-    kind: "infra",
-    document: "/news/graalvm-lambda-cold-start.md",
-    keywords: ["GraalVM native image", "AWS Lambda cold start", "Spring Cloud Function"],
-    minutes: 2,
-    figures: [
-      {label: "Cold start before", value: "2.4s"},
-      {label: "Cold start after", value: "190ms"},
-      {label: "Build time", value: "40s → 6m"},
-    ],
-    reference: {label: "GraalVM Native Image reference", href: "https://www.graalvm.org/latest/reference-manual/native-image/"},
-  },
-  {
-    slug: "postgres-18-skip-scan",
-    date: "2026-09-05",
-    title: "Postgres 18's skip scan is quietly a big deal for composite indexes",
-    summary: "Half the “we need a second index” tickets I've written over four years were this problem. Worth reading the release notes end to end rather than the summary posts.",
-    kind: "reading",
-    document: "/news/postgres-18-skip-scan.md",
-    keywords: ["PostgreSQL 18", "skip scan", "composite indexes"],
-    minutes: 1,
-    reference: {label: "PostgreSQL documentation", href: "https://www.postgresql.org/docs/current/indexes-multicolumn.html"},
-  },
-  {
-    slug: "postgres-queue-before-kafka",
-    date: "2026-09-02",
-    title: "Most “we need Kafka” conversations end at a Postgres table",
-    summary: "If the queue never exceeds a few thousand rows and one consumer drains it, a table with `FOR UPDATE SKIP LOCKED` is the whole system. Add the broker when the second consumer shows up, not before.",
-    kind: "take",
-    document: "/news/postgres-queue-before-kafka.md",
-    keywords: ["PostgreSQL queue", "Kafka alternative", "SKIP LOCKED"],
-    minutes: 1,
-  },
-  {
-    slug: "quote-intake-dynamodb-on-demand",
-    date: "2026-08-26",
-    title: "Quote intake now writes straight to DynamoDB on-demand",
-    summary: "No RDS instance idling for eleven forms a month. Costs about the price of a coffee per year, which felt worth saying out loud.",
-    kind: "shipped",
-    document: "/news/quote-intake-dynamodb-on-demand.md",
-    keywords: ["DynamoDB on-demand", "AWS cost", "form backend"],
-    minutes: 1,
-  },
-  {
-    slug: "self-hosted-github-runners",
-    date: "2026-08-18",
-    title: "Self-hosted GitHub runners on a t4g.medium paid for themselves in nine days",
-    summary: "Provisioned via CloudFormation, configured with no SSH access at all. The sizing note: builds are memory-bound long before they're CPU-bound.",
-    kind: "infra",
-    document: "/news/self-hosted-github-runners.md",
-    keywords: ["GitHub Actions runner", "AWS Graviton", "CI infrastructure"],
-    minutes: 1,
-    figures: [
-      {label: "Break-even", value: "9 days"},
-      {label: "Runner", value: "t4g.medium"},
-      {label: "SSH access", value: "None"},
-    ],
-  },
-  {
-    slug: "rate-limiting-counter-ownership",
-    date: "2026-08-07",
-    title: "Rate limiting belongs at the edge, but the counter belongs to you",
-    summary: "CloudFront can drop the obvious floods. Anything that needs to know what a user is allowed to do is application logic wearing a gateway costume.",
-    kind: "take",
-    document: "/news/rate-limiting-counter-ownership.md",
-    keywords: ["rate limiting", "CloudFront", "application authorization"],
-    minutes: 1,
-  },
-  {
-    slug: "kotlin-context-parameters",
-    date: "2026-07-21",
-    title: "The Kotlin context parameters proposal, read twice",
-    summary: "First read: clever. Second read: this removes an entire category of constructor plumbing from my service layer.",
-    kind: "reading",
-    document: "/news/kotlin-context-parameters.md",
-    keywords: ["Kotlin context parameters", "Kotlin language design", "dependency injection"],
-    minutes: 1,
-    reference: {label: "Kotlin context parameters proposal", href: "https://github.com/Kotlin/KEEP/blob/master/proposals/context-parameters.md"},
-  },
-  {
-    slug: "dota-wrap-ssr-hydration",
-    date: "2026-07-03",
-    title: "Dota Wrap now ships server-rendered markup with hydration",
-    summary: "Web components, no framework runtime, first paint without JavaScript. This site is the first thing running on it.",
-    kind: "shipped",
-    document: "/news/dota-wrap-ssr-hydration.md",
-    keywords: ["web components SSR", "hydration", "Dota Wrap"],
-    minutes: 1,
-    reference: {label: "Dota Wrap package", href: "https://www.npmjs.com/package/@ayu-sh-kr/dota-wrap"},
-  },
+
 ];
 
-const NEWS_INDEX_KEYWORDS = [siteIdentity.name, "The Dispatch", "backend notes", "infrastructure notes", "engineering updates"] as const;
+const NEWS_INDEX_KEYWORDS = [siteIdentity.name, ...newsContent.seo.keywords] as const;
 
 /** Orders the authored catalogue newest-first for every consumer. */
 export const getNewsNotes = (): readonly NewsNote[] =>
@@ -403,8 +296,8 @@ export const labelForNewsKind = (kind: NewsKind): string =>
 
 /** Derives index and note metadata from the same catalogue that renders the UI. */
 export const getNewsSeo = (note?: NewsNote): PageSeoContent => {
-  const title = note ? `${note.title} — ${siteIdentity.domain}` : `The Dispatch — ${siteIdentity.domain}`;
-  const description = note?.summary ?? "Short notes on backend systems, infrastructure, useful reading, and what Ayush Kumar shipped.";
+  const title = note ? `${note.title} — ${siteIdentity.domain}` : newsContent.seo.title;
+  const description = note?.summary ?? newsContent.seo.description;
 
   return {
     title,

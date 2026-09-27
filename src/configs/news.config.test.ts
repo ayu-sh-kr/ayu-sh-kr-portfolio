@@ -7,14 +7,15 @@ describe("news configuration", () => {
     const notes = getNewsNotes();
 
     assert.ok(notes.length >= 9);
-    assert.equal(notes[0]?.slug, "zcode-user-code-upload-key");
+    assert.equal(notes[0]?.slug, "jevgrep-jev-agent-code-search");
+    assert.ok(notes.every((note) => note.date > "2026-09-12"));
     assert.ok(notes.every((note, index) => index === 0 || notes[index - 1]!.date >= note.date));
     assert.ok(notes.every((note) => getNewsSeo(note).description === note.summary));
   });
 
   it("resolves canonical slugs and rejects malformed or nested news paths", () => {
-    assert.equal(getNewsSlug("/news/graalvm-lambda-cold-start/"), "graalvm-lambda-cold-start");
-    assert.equal(getNewsNote(getNewsSlug("/news/graalvm-lambda-cold-start"))?.kind, "infra");
+    assert.equal(getNewsSlug("/news/homa-protocol-tcp-datacenter-ai-latency/"), "homa-protocol-tcp-datacenter-ai-latency");
+    assert.equal(getNewsNote(getNewsSlug("/news/homa-protocol-tcp-datacenter-ai-latency"))?.kind, "infra");
     assert.equal(getNewsSlug("/news/one/two"), "");
     assert.equal(getNewsSlug("/news/%E0%A4%A"), "");
   });
