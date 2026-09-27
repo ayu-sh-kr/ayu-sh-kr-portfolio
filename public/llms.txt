@@ -44,7 +44,7 @@
 
 ## Recent Dispatch notes
 
-- [Microsoft Titan API accepted unsigned JWTs, researcher finds](https://ayu-sh-kr.com/news/microsoft-titan-unsigned-jwt-analytics/): A 2-minute news brief on Faav's reported JWT signature bypass, administrator SQL access, estimated reach of 17.3 trillion rows, and Microsoft's response. [Article Markdown](https://ayu-sh-kr.com/news/microsoft-titan-unsigned-jwt-analytics.md).
+- [Microsoft Titan flaw let a researcher pose as an admin](https://ayu-sh-kr.com/news/microsoft-titan-unsigned-jwt-analytics/): A 2-minute news brief explaining the missing JWT signature check, actual employee-data and Bing analytics access, the 17.3 trillion row estimate, and Microsoft's response. [Article Markdown](https://ayu-sh-kr.com/news/microsoft-titan-unsigned-jwt-analytics.md).
 
 - [prek: an open-source pre-commit alternative built in Rust](https://ayu-sh-kr.com/news/prek-rust-pre-commit-hooks/): A 2-minute news brief explaining prek's Git hooks, pre-commit compatibility, shared toolchains, uv integration, and monorepo support. [Article Markdown](https://ayu-sh-kr.com/news/prek-rust-pre-commit-hooks.md).
 
