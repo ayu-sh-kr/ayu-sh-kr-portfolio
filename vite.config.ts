@@ -35,6 +35,7 @@ const showcaseRoutes = [
   "/showcase/dota-rest",
 ];
 const newsRoutes = [
+  "/news/prek-rust-pre-commit-hooks",
   "/news/github-copilot-runtime-rust-migration",
   "/news/homa-protocol-tcp-datacenter-ai-latency",
   "/news/microsoft-copilot-home-code-autopilot",
