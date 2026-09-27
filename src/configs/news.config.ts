@@ -64,6 +64,17 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "prek-rust-pre-commit-hooks",
+    date: "2026-09-27",
+    title: "prek: an open-source pre-commit alternative built in Rust",
+    summary: "prek runs existing pre-commit hooks with a Rust runner, shared toolchains, and monorepo support, reducing setup without rewriting hook configurations.",
+    kind: "reading",
+    document: "/news/prek-rust-pre-commit-hooks.md",
+    keywords: ["prek", "pre-commit alternative", "Rust Git hook manager", "pre-commit hooks", "monorepo workspace", "uv Python environments"],
+    minutes: 2,
+    reference: {label: "prek — open-source project and documentation", href: "https://github.com/j178/prek"},
+  },
+  {
     slug: "github-copilot-runtime-rust-migration",
     date: "2026-09-26",
     title: "GitHub moves Copilot’s agent runtime from TypeScript to Rust",

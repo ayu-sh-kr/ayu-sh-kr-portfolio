@@ -254,6 +254,11 @@
       "permanent": true
     },
     {
+      "source": "/news/prek-rust-pre-commit-hooks",
+      "destination": "/news/prek-rust-pre-commit-hooks/",
+      "permanent": true
+    },
+    {
       "source": "/news/prismml-bonsai-2-27b",
       "destination": "/news/prismml-bonsai-2-27b/",
       "permanent": true
