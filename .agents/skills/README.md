@@ -16,6 +16,7 @@ Color, typography, and mode.
 Long-form content.
 - **markdown-rendering** — the loader → renderer → viewer pipeline.
 - **blog-wiring** — placing blog markdown and registering it in `blogs.config.ts`.
+- **portfolio-writing** — researched, readable blog and Dispatch news stories, SEO metadata, and complete publishing routes.
 
 ## documentation/
 Documenting the system.
