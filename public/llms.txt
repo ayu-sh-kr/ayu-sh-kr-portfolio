@@ -44,6 +44,8 @@
 
 ## Recent Dispatch notes
 
+- [Jevgrep targets coding agent costs with smarter code search](https://ayu-sh-kr.com/news/jevgrep-jev-agent-code-search/): A 5-minute news story explaining Jevgrep's code search, TypeSafe AI's relevance decisions, three CLI examples, and the scope of its coding-agent cost benchmark. [Article Markdown](https://ayu-sh-kr.com/news/jevgrep-jev-agent-code-search.md).
+
 - [Microsoft Titan flaw let a researcher pose as an admin](https://ayu-sh-kr.com/news/microsoft-titan-unsigned-jwt-analytics/): A 2-minute news brief explaining the missing JWT signature check, actual employee-data and Bing analytics access, the 17.3 trillion row estimate, and Microsoft's response. [Article Markdown](https://ayu-sh-kr.com/news/microsoft-titan-unsigned-jwt-analytics.md).
 
 - [prek: an open-source pre-commit alternative built in Rust](https://ayu-sh-kr.com/news/prek-rust-pre-commit-hooks/): A 2-minute news brief explaining prek's Git hooks, pre-commit compatibility, shared toolchains, uv integration, and monorepo support. [Article Markdown](https://ayu-sh-kr.com/news/prek-rust-pre-commit-hooks.md).
