@@ -64,6 +64,17 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "microsoft-titan-unsigned-jwt-analytics",
+    date: "2026-09-27",
+    title: "Microsoft Titan API accepted unsigned JWTs, researcher finds",
+    summary: "Researcher Faav found that Microsoft’s Titan analytics API accepted unsigned tokens, enabling administrator SQL queries. The 17.3 trillion row figure estimates potentially reachable data, not a data theft.",
+    kind: "reading",
+    document: "/news/microsoft-titan-unsigned-jwt-analytics.md",
+    keywords: ["Microsoft Titan API", "unsigned JWT", "JWT signature validation", "Faav Microsoft vulnerability", "17 trillion Microsoft records", "Bing analytics security"],
+    minutes: 2,
+    reference: {label: "Faav — How I Could've Accessed 17 Trillion Microsoft Records", href: "https://blog.faav.net/how-i-couldve-accessed-17-trillion-microsoft-records"},
+  },
+  {
     slug: "prek-rust-pre-commit-hooks",
     date: "2026-09-27",
     title: "prek: an open-source pre-commit alternative built in Rust",
