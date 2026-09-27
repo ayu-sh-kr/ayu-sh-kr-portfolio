@@ -214,6 +214,11 @@
       "permanent": true
     },
     {
+      "source": "/news/jevgrep-jev-agent-code-search",
+      "destination": "/news/jevgrep-jev-agent-code-search/",
+      "permanent": true
+    },
+    {
       "source": "/news/jev-typesafe-system-one-model",
       "destination": "/news/jev-typesafe-system-one-model/",
       "permanent": true
