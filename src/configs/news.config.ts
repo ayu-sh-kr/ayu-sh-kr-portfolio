@@ -64,6 +64,17 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "jevgrep-jev-agent-code-search",
+    date: "2026-09-27",
+    title: "Jevgrep uses Jev to find code before a coding agent reads it",
+    summary: "David Zhang's Jevgrep uses TypeSafe AI's Jev to find relevant files and source for coding agents. Its small SWE-bench repeat showed a lower agent bill alongside a lower solve rate.",
+    kind: "reading",
+    document: "/news/jevgrep-jev-agent-code-search.md",
+    keywords: ["Jevgrep", "TypeSafe AI Jev", "coding agent code search", "agent token usage", "semantic code retrieval", "SWE-bench cost"],
+    minutes: 5,
+    reference: {label: "dzhng/jevgrep — documentation and source", href: "https://github.com/dzhng/jevgrep"},
+  },
+  {
     slug: "microsoft-titan-unsigned-jwt-analytics",
     date: "2026-09-27",
     title: "Microsoft Titan flaw let a researcher pose as an admin",
