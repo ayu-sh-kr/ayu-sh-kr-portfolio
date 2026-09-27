@@ -66,8 +66,8 @@ export const newsNotes: readonly NewsNote[] = [
   {
     slug: "microsoft-titan-unsigned-jwt-analytics",
     date: "2026-09-27",
-    title: "Microsoft Titan API accepted unsigned JWTs, researcher finds",
-    summary: "Researcher Faav found that Microsoft’s Titan analytics API accepted unsigned tokens, enabling administrator SQL queries. The 17.3 trillion row figure estimates potentially reachable data, not a data theft.",
+    title: "Microsoft Titan flaw let a researcher pose as an admin",
+    summary: "A missing token signature check let researcher Faav query Microsoft’s Titan databases. Here is what he accessed and what the 17.3 trillion row estimate means.",
     kind: "reading",
     document: "/news/microsoft-titan-unsigned-jwt-analytics.md",
     keywords: ["Microsoft Titan API", "unsigned JWT", "JWT signature validation", "Faav Microsoft vulnerability", "17 trillion Microsoft records", "Bing analytics security"],
