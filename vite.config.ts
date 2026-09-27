@@ -51,15 +51,6 @@ const newsRoutes = [
   "/news/perplexity-cobbledb",
   "/news/qorl-postgres-query-optimizer-rl",
   "/news/prismml-bonsai-2-27b",
-  "/news/sacrena-match-feed-redis-cache",
-  "/news/graalvm-lambda-cold-start",
-  "/news/postgres-18-skip-scan",
-  "/news/postgres-queue-before-kafka",
-  "/news/quote-intake-dynamodb-on-demand",
-  "/news/self-hosted-github-runners",
-  "/news/rate-limiting-counter-ownership",
-  "/news/kotlin-context-parameters",
-  "/news/dota-wrap-ssr-hydration",
 ];
 
 /**
