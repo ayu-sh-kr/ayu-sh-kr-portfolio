@@ -1,15 +1,23 @@
-# prek brings a faster pre-commit workflow to open source projects
+# prek: an open-source pre-commit alternative built in Rust
 
-A commit can pause while a formatter, linter, or file check runs. Those checks help keep a shared codebase clean, but setting up their runtimes across contributors and CI can take longer than the checks themselves. The open-source project **prek** is trying to make that familiar workflow lighter.
+A formatting check might take a moment to run, yet preparing its tools can mean downloading repositories and creating separate environments. **prek**, an open-source alternative to pre-commit written in Rust, takes aim at that setup work around a familiar developer habit.
 
-prek is a **Git hook manager written in Rust**. It runs checks before commits, on demand, and in CI, and it understands the existing `.pre-commit-config.yaml` format and hooks. That gives projects already using pre-commit a way to try it without rewriting their hook definitions.
+It runs **Git hooks**: commands that check code before a commit. Those checks might format a file, catch a lint error, or detect a secret. They can also run on demand or in continuous integration (CI), keeping the same rules available on a contributor’s machine and in automated builds.
 
-## What changes for a contributor?
+## Existing pre-commit hooks, a different runner
 
-The runner ships as a **single binary**, so it does not need Python merely to start. Hooks can still use Python or other languages when their tools require them. prek manages those environments, shares toolchains and caches across hooks, and can prepare independent work in parallel. It also includes Rust implementations of some common checks.
+prek reads the familiar `.pre-commit-config.yaml` file and supports existing pre-commit hooks. Projects can try the runner while keeping their configured checks. The project lists **CPython, Apache Airflow, and FastAPI** among its users, giving this community tool a place in established open-source workflows.
 
-For a monorepo, **workspace support** lets subprojects keep separate hook configs while one command runs the relevant checks. That matters when a repository contains services or packages with different tooling. The project lists CPython, Apache Airflow, and FastAPI among its users, though actual speed gains will depend on a repository's hooks and cache state.
+The runner ships as a **single binary**, with no Python installation needed to start it. A Python hook still needs a Python environment; prek manages that separately. This distinction matters because switching runners does not change the requirements of the tools being run.
 
-The useful part of this open-source release is its low-friction trial: keep the checks the team already trusts, run them with prek, and compare the experience in the repository that matters. A faster runner does not fix a slow formatter, but it can remove setup and repeated environment work around it.
+## Less repeated setup, support for monorepos
 
-Source: [prek project and documentation](https://github.com/j178/prek).
+prek shares toolchains and hook environments instead of recreating them unnecessarily. It uses **uv** to manage Python environments and dependencies, and implements some common checks directly in Rust. Those changes target installation time, storage use, and the overhead around running checks.
+
+Its **workspace support** also lets subprojects keep their own configurations. A monorepo containing several packages or services can run their hooks through one command while preserving each project’s rules.
+
+Once prek is installed, an existing pre-commit project can try `prek run --all-files` to check its tracked files. The [official documentation](https://prek.j178.dev/) covers installation and migration. Actual time saved will depend on the hooks and whether their environments are already cached.
+
+That is prek’s practical appeal: contributors can keep a familiar set of checks while spending less effort preparing the machinery behind them. For open-source maintainers, compatibility makes that improvement easier to evaluate one repository at a time.
+
+Sources: [prek project](https://github.com/j178/prek), [differences from pre-commit](https://prek.j178.dev/diff/), and [running prek in CI](https://prek.j178.dev/dev/ci/).
