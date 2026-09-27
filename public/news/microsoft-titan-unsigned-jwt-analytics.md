@@ -1,19 +1,25 @@
-# Microsoft Titan API accepted unsigned JWTs, researcher finds
+# Microsoft Titan flaw let a researcher pose as an admin
 
-The login page for Microsoft’s internal Titan analytics service told outsiders they needed a VPN. Its API, however, was reachable separately. Security researcher **Faav** followed that opening to a more serious problem: Titan read the claims in a login token but **never checked its signature**.
+Microsoft’s Titan analytics website asked visitors to connect through a company VPN. But a separate API—the service behind the website—was reachable from the internet. Researcher **Faav** found that it would accept a made-up login token and let him run database queries as an **administrator**.
 
-A signed JWT is supposed to let an API verify who issued a token and whether its contents were changed. Without that check, fields such as the tenant, application, and user are merely text supplied by the caller. Faav found that Titan checked those fields individually while accepting an unsigned token.
+The problem was a missing signature check. Titan inspected the identity details inside the token without verifying that a trusted login service had actually issued it.
 
-## From a public API to an administrator query
+## How a made-up token became an admin login
 
-Faav’s automated research tool found the API and its publicly exposed Swagger documentation. Archived configuration helped identify a valid routing value. Requests without a token returned an authorization error, but changing token claims moved the request through different checks. That behavior led Faav to try an unsigned token whose user field was `admin`.
+A login token, called a **JWT**, carries details about a user and the application they can access. Its digital signature lets a server check that those details are genuine and have not been altered. Reading the details alone proves nothing: someone can write a convincing name on a pass without being entitled to enter.
 
-Titan treated `admin` as a local administrator and executed a simple SQL query. Faav then inspected platform metadata and used **bounded one-row samples** to confirm that Bing analytics were reachable. The researcher reported the issue to Microsoft on **September 5**.
+According to Faav’s report, Titan checked several token fields but skipped that proof. When he put `admin` in its user field, Titan matched the value to its own administrator account. It then allowed a SQL query to run.
 
-## What the 17 trillion figure means
+This was a failure in **Titan’s token validation**. The application trusted an identity the caller supplied without establishing that the identity was authentic.
 
-Faav counted active routes and database metadata to estimate **17.3 trillion stored rows** across connected analytics databases. That is a measure of potentially reachable data, including historical, duplicate, or derived rows. It is **not a count of records downloaded**. Faav says the research used metadata and limited samples, with no customer data or personally identifiable information taken.
+## What Faav actually accessed
 
-According to the disclosure timeline, Microsoft locked down the API endpoint on **September 9** and said the report helped it harden its services. The episode is a reminder that a VPN gate on a web page cannot protect a separate API. An API must verify the token’s **signature** before trusting any claim inside it.
+Faav reports reading **employee account and directory information**, including email addresses and organizational details, and retrieving **two individual Bing analytics records**. Those queries demonstrated access to real information beyond the initial test database.
 
-Source: [Faav’s original disclosure](https://blog.faav.net/how-i-couldve-accessed-17-trillion-microsoft-records). See also [Microsoft’s token-validation guidance](https://learn.microsoft.com/en-us/entra/identity-platform/access-tokens).
+The much larger **17.3 trillion rows** figure came from database statistics across 17 connected analytics databases. It estimates the stored data potentially within reach, including historical and repeated records. Faav did **not download 17 trillion records**.
+
+He reported the issue on **September 5**. His disclosure says Microsoft locked down the API on **September 9**; Microsoft said the research helped it strengthen its services.
+
+The website’s VPN requirement made Titan look closed to outsiders. The separate API needed its own working authentication checks. Once it accepted an unverified identity, the administrator permissions attached to that identity opened the databases.
+
+Sources: [Faav’s original disclosure](https://blog.faav.net/how-i-couldve-accessed-17-trillion-microsoft-records) and [Microsoft’s token-validation guidance](https://learn.microsoft.com/en-us/entra/identity-platform/access-tokens).
