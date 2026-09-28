@@ -67,8 +67,8 @@ export const newsNotes: readonly NewsNote[] = [
   {
     slug: "antiburn-coding-agent-token-usage",
     date: "2026-09-28",
-    title: "AntiBurn tracks coding-agent tokens and signals when to pause",
-    summary: "AntiBurn reviews local coding-agent sessions for context growth and token use. Its findings can help developers decide when to reset a session or stop a stalled loop.",
+    title: "AntiBurn shows where AI coding agents spend their tokens",
+    summary: "AntiBurn tracks token use in Claude Code, Codex, and other coding agents. See how its session findings can guide costs, context, and when to stop retrying.",
     kind: "reading",
     document: "/news/antiburn-coding-agent-token-usage.md",
     keywords: ["AntiBurn", "coding agent token usage", "agent context window", "Claude Code token cost", "Codex session analysis"],

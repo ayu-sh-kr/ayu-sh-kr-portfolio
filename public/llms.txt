@@ -44,7 +44,7 @@
 
 ## Recent Dispatch notes
 
-- [AntiBurn tracks coding-agent tokens and signals when to pause](https://ayu-sh-kr.com/news/antiburn-coding-agent-token-usage/): A three-minute look at local session analysis, context growth, cost estimates, and a practical stopping rule for stalled coding-agent work. [Article Markdown](https://ayu-sh-kr.com/news/antiburn-coding-agent-token-usage.md).
+- [AntiBurn shows where AI coding agents spend their tokens](https://ayu-sh-kr.com/news/antiburn-coding-agent-token-usage/): A three-minute look at local session analysis, context growth, cost estimates, and a practical stopping rule for stalled coding-agent work. [Article Markdown](https://ayu-sh-kr.com/news/antiburn-coding-agent-token-usage.md).
 
 - [OpenScience exits beta: an AI workbench for scientific research](https://ayu-sh-kr.com/news/openscience-ai-research-workbench-stable/): A 2-minute brief on OpenScience's research agent, who it serves, its literature and experiment workflow, model choices, and reproducible outputs. [Article Markdown](https://ayu-sh-kr.com/news/openscience-ai-research-workbench-stable.md).
 
