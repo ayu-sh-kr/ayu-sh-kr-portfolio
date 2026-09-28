@@ -229,6 +229,11 @@
       "permanent": true
     },
     {
+      "source": "/news/openscience-ai-research-workbench-stable",
+      "destination": "/news/openscience-ai-research-workbench-stable/",
+      "permanent": true
+    },
+    {
       "source": "/news/openbot-self-hosted-ai-coworkers",
       "destination": "/news/openbot-self-hosted-ai-coworkers/",
       "permanent": true
