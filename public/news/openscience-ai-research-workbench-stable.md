@@ -1,17 +1,17 @@
-# OpenScience leaves beta with an AI workbench for scientific research
+# OpenScience exits beta: an AI workbench for scientific research
 
-A research task rarely ends with finding a paper. Someone still has to inspect the data, run the code, check the result, and write down what happened. **OpenScience**, an open-source AI research workbench from Synthetic Sciences, now presents a stable release built to keep those steps in one workspace.
+**OpenScience has left beta.** The open-source AI workbench from Synthetic Sciences puts literature search, data analysis, experiments, and write-up in one research workspace. The idea is simple: a result should come with the steps needed to check it.
 
-## What OpenScience does
+## What can the research agent do?
 
-Give its agent a research goal and it can **search literature, plan an analysis, write and run Python or R code, carry out experiments, and prepare a report**. The workbench keeps a visible record of its steps and the files it produced, so a researcher can examine the evidence and rerun the work. It is available as a desktop app, browser workspace, and command-line tool.
+A researcher gives OpenScience a goal, and its agent can find relevant papers, plan an approach, write and run **Python or R**, analyze results, and draft a report. It records the sources, actions, code, and files along the way. Researchers can use it through a desktop app, browser workspace, or command line.
 
-This is aimed at **scientists, research engineers, and students** who work with papers, datasets, code, and compute. A lab could, for example, ask it to inspect a dataset for missing values, save a plot and a quality report, and keep the analysis code alongside them. The researcher still decides whether the method and conclusion hold up.
+Consider a lab dataset with inconsistent labels. The agent could inspect the file, produce a quality report and plot, and save the code used to make them. That makes it useful for **scientists, research engineers, and students** doing work that crosses papers, data, and computation. The researcher still checks the method and decides what the results mean.
 
-## Models, tools, and control
+## What does OpenScience offer?
 
-OpenScience connects to scientific sources such as **PubMed, arXiv, UniProt, and ChEMBL** and bundles research procedures across biology, chemistry, physics, and machine learning. It can use a provider API key, a local model, or its managed **Ace** option; model access and compute costs depend on the route chosen. Remote compute and files outside the project require their own setup or permission.
+The workbench connects to sources including **PubMed, arXiv, UniProt, and ChEMBL** and includes reusable procedures for biology, chemistry, physics, and machine learning. It can use a researcher's provider API key, a local model, or OpenScience's managed **Ace** model access. Provider use and remote compute may carry costs; some integrations need separate setup and permissions.
 
-Leaving beta makes the release easier to consider for an actual workflow, but **a visible trace is not scientific validation**. The useful test is the same one from the opening: can the next person inspect the sources, code, and results well enough to check the claim?
+The move out of beta makes OpenScience available as a stable release, but it does not make an AI-generated finding reliable by itself. Its practical promise is that the literature, code, and experiment record stay close enough to the answer for another researcher to **inspect and reproduce the work**.
 
 Sources: [OpenScience project and quickstart](https://github.com/synthetic-sciences/openscience), [release history](https://github.com/synthetic-sciences/openscience/releases), and [OpenScience site](https://openscience.sh/).
