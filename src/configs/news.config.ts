@@ -76,6 +76,17 @@ export const newsNotes: readonly NewsNote[] = [
     reference: {label: "Synthetic Sciences — OpenScience project", href: "https://github.com/synthetic-sciences/openscience"},
   },
   {
+    slug: "hacktron-meta-heic-image-bounty",
+    date: "2026-09-28",
+    title: "Hacktron researcher reports $115,000 Meta bounty for HEIC image flaw",
+    summary: "Harsh Jaiswal reportedly earned $115,000 from Meta for a HEIC image flaw. Hacktron’s earlier OpenAI case shows how image decoding and a login flaw widened the risk.",
+    kind: "reading",
+    document: "/news/hacktron-meta-heic-image-bounty.md",
+    keywords: ["Hacktron Meta bounty", "HEIC image vulnerability", "libheif security", "image upload security", "Harsh Jaiswal", "HEIF Heist"],
+    minutes: 4,
+    reference: {label: "OfficeChai — report on Harsh Jaiswal’s Meta bounty", href: "https://officechai.com/stories/harsh-jaiswal-gets-100000-bug-bounty-from-meta-for-finding-similar-exploits-as-the-openai-hack/"},
+  },
+  {
     slug: "jevgrep-jev-agent-code-search",
     date: "2026-09-27",
     title: "Jevgrep targets coding agent costs with smarter code search",
