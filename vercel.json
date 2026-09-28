@@ -179,6 +179,11 @@
       "permanent": true
     },
     {
+      "source": "/news/anthropic-contextual-retrieval-rag",
+      "destination": "/news/anthropic-contextual-retrieval-rag/",
+      "permanent": true
+    },
+    {
       "source": "/news/claude-opus-5-5-cost-coding",
       "destination": "/news/claude-opus-5-5-cost-coding/",
       "permanent": true
@@ -204,13 +209,13 @@
       "permanent": true
     },
     {
-      "source": "/news/jevgrep-jev-agent-code-search",
-      "destination": "/news/jevgrep-jev-agent-code-search/",
+      "source": "/news/jev-typesafe-system-one-model",
+      "destination": "/news/jev-typesafe-system-one-model/",
       "permanent": true
     },
     {
-      "source": "/news/jev-typesafe-system-one-model",
-      "destination": "/news/jev-typesafe-system-one-model/",
+      "source": "/news/jevgrep-jev-agent-code-search",
+      "destination": "/news/jevgrep-jev-agent-code-search/",
       "permanent": true
     },
     {
@@ -219,13 +224,13 @@
       "permanent": true
     },
     {
-      "source": "/news/microsoft-titan-unsigned-jwt-analytics",
-      "destination": "/news/microsoft-titan-unsigned-jwt-analytics/",
+      "source": "/news/microsoft-copilot-home-code-autopilot",
+      "destination": "/news/microsoft-copilot-home-code-autopilot/",
       "permanent": true
     },
     {
-      "source": "/news/microsoft-copilot-home-code-autopilot",
-      "destination": "/news/microsoft-copilot-home-code-autopilot/",
+      "source": "/news/microsoft-titan-unsigned-jwt-analytics",
+      "destination": "/news/microsoft-titan-unsigned-jwt-analytics/",
       "permanent": true
     },
     {

@@ -65,6 +65,17 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "anthropic-contextual-retrieval-rag",
+    date: "2026-09-28",
+    title: "Anthropic’s Contextual Retrieval: why RAG needs more than a text match",
+    summary: "Anthropic’s 2024 Contextual Retrieval work adds document context to passages before search. Here is how embeddings, BM25, and reranking reduced missed passages in its tests.",
+    kind: "reading",
+    document: "/news/anthropic-contextual-retrieval-rag.md",
+    keywords: ["Anthropic Contextual Retrieval", "RAG retrieval", "contextual embeddings", "contextual BM25", "reranking", "retrieval failure rate"],
+    minutes: 3,
+    reference: {label: "Anthropic Engineering — Introducing Contextual Retrieval", href: "https://www.anthropic.com/engineering/contextual-retrieval"},
+  },
+  {
     slug: "jevgrep-jev-agent-code-search",
     date: "2026-09-27",
     title: "Jevgrep targets coding agent costs with smarter code search",
