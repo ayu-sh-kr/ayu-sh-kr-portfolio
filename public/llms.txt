@@ -44,7 +44,7 @@
 
 ## Recent Dispatch notes
 
-- [OpenScience leaves beta with an AI workbench for scientific research](https://ayu-sh-kr.com/news/openscience-ai-research-workbench-stable/): A 2-minute brief on the stable OpenScience research agent, its literature, code and experiment workflow, model options, and researcher review. [Article Markdown](https://ayu-sh-kr.com/news/openscience-ai-research-workbench-stable.md).
+- [OpenScience exits beta: an AI workbench for scientific research](https://ayu-sh-kr.com/news/openscience-ai-research-workbench-stable/): A 2-minute brief on OpenScience's research agent, who it serves, its literature and experiment workflow, model choices, and reproducible outputs. [Article Markdown](https://ayu-sh-kr.com/news/openscience-ai-research-workbench-stable.md).
 
 - [Jevgrep targets coding agent costs with smarter code search](https://ayu-sh-kr.com/news/jevgrep-jev-agent-code-search/): A 5-minute news story explaining Jevgrep's code search, TypeSafe AI's relevance decisions, three CLI examples, and the scope of its coding-agent cost benchmark. [Article Markdown](https://ayu-sh-kr.com/news/jevgrep-jev-agent-code-search.md).
 
