@@ -3,7 +3,7 @@ import {siteIdentity} from "@app/data/portfolio-content.ts";
 import type {PageSeoContent} from "@app/data/seo-content.ts";
 
 /** Editorial role used to filter Dispatch notes and label their permalink pages. */
-export type NewsKind = "shipped" | "infra" | "reading" | "take";
+export type NewsKind = "shipped" | "infra" | "reading" | "explainer" | "take";
 
 /** A measured outcome shown only in the article's number-focused figure panel. */
 export type NewsFigure = {
@@ -55,6 +55,7 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
   {value: "shipped", label: "Shipped"},
   {value: "infra", label: "Infra"},
   {value: "reading", label: "Reading"},
+  {value: "explainer", label: "Explainer"},
   {value: "take", label: "Takes"},
 ];
 
@@ -69,7 +70,7 @@ export const newsNotes: readonly NewsNote[] = [
     date: "2026-09-28",
     title: "Anthropic’s Contextual Retrieval: why RAG needs more than a text match",
     summary: "Anthropic’s 2024 Contextual Retrieval work adds document context to passages before search. Here is how embeddings, BM25, and reranking reduced missed passages in its tests.",
-    kind: "reading",
+    kind: "explainer",
     document: "/news/anthropic-contextual-retrieval-rag.md",
     keywords: ["Anthropic Contextual Retrieval", "RAG retrieval", "contextual embeddings", "contextual BM25", "reranking", "retrieval failure rate"],
     minutes: 3,
