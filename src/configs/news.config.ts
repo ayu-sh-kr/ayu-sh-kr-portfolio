@@ -65,6 +65,17 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "openscience-ai-research-workbench-stable",
+    date: "2026-09-28",
+    title: "OpenScience exits beta: an AI workbench for scientific research",
+    summary: "OpenScience exits beta with an open-source AI research workbench for literature, data analysis, experiments, and reports. See who it serves and how researchers can check its work.",
+    kind: "reading",
+    document: "/news/openscience-ai-research-workbench-stable.md",
+    keywords: ["OpenScience AI workbench", "scientific research agent", "open-source research tools", "reproducible research", "Synthetic Sciences"],
+    minutes: 2,
+    reference: {label: "Synthetic Sciences — OpenScience project", href: "https://github.com/synthetic-sciences/openscience"},
+  },
+  {
     slug: "jevgrep-jev-agent-code-search",
     date: "2026-09-27",
     title: "Jevgrep targets coding agent costs with smarter code search",
