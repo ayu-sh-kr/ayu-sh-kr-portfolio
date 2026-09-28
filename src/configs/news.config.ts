@@ -67,8 +67,8 @@ export const newsNotes: readonly NewsNote[] = [
   {
     slug: "openscience-ai-research-workbench-stable",
     date: "2026-09-28",
-    title: "OpenScience leaves beta with an AI workbench for scientific research",
-    summary: "OpenScience has a stable release for literature, code, experiments, and reports in one AI research workspace. Here is who it serves, what it offers, and what still needs review.",
+    title: "OpenScience exits beta: an AI workbench for scientific research",
+    summary: "OpenScience exits beta with an open-source AI research workbench for literature, data analysis, experiments, and reports. See who it serves and how researchers can check its work.",
     kind: "reading",
     document: "/news/openscience-ai-research-workbench-stable.md",
     keywords: ["OpenScience AI workbench", "scientific research agent", "open-source research tools", "reproducible research", "Synthetic Sciences"],
