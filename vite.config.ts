@@ -36,6 +36,7 @@ const showcaseRoutes = [
 ];
 const newsRoutes = [
   "/news/openscience-ai-research-workbench-stable",
+  "/news/hacktron-meta-heic-image-bounty",
   "/news/jevgrep-jev-agent-code-search",
   "/news/microsoft-titan-unsigned-jwt-analytics",
   "/news/prek-rust-pre-commit-hooks",
