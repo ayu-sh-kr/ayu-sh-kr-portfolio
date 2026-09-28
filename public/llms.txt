@@ -44,6 +44,8 @@
 
 ## Recent Dispatch notes
 
+- [AntiBurn tracks coding-agent tokens and signals when to pause](https://ayu-sh-kr.com/news/antiburn-coding-agent-token-usage/): A three-minute look at local session analysis, context growth, cost estimates, and a practical stopping rule for stalled coding-agent work. [Article Markdown](https://ayu-sh-kr.com/news/antiburn-coding-agent-token-usage.md).
+
 - [OpenScience exits beta: an AI workbench for scientific research](https://ayu-sh-kr.com/news/openscience-ai-research-workbench-stable/): A 2-minute brief on OpenScience's research agent, who it serves, its literature and experiment workflow, model choices, and reproducible outputs. [Article Markdown](https://ayu-sh-kr.com/news/openscience-ai-research-workbench-stable.md).
 
 - [Hacktron researcher reports $115,000 Meta bounty for HEIC image flaw](https://ayu-sh-kr.com/news/hacktron-meta-heic-image-bounty/): A four-minute report on Harsh Jaiswal’s reported Meta bounty, the earlier OpenAI forum exploit, and image-processing risks across services. [Article Markdown](https://ayu-sh-kr.com/news/hacktron-meta-heic-image-bounty.md).

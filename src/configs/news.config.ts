@@ -65,6 +65,17 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "antiburn-coding-agent-token-usage",
+    date: "2026-09-28",
+    title: "AntiBurn tracks coding-agent tokens and signals when to pause",
+    summary: "AntiBurn reviews local coding-agent sessions for context growth and token use. Its findings can help developers decide when to reset a session or stop a stalled loop.",
+    kind: "reading",
+    document: "/news/antiburn-coding-agent-token-usage.md",
+    keywords: ["AntiBurn", "coding agent token usage", "agent context window", "Claude Code token cost", "Codex session analysis"],
+    minutes: 3,
+    reference: {label: "AntiBurn — product and documentation", href: "https://antiburn.com/docs/"},
+  },
+  {
     slug: "openscience-ai-research-workbench-stable",
     date: "2026-09-28",
     title: "OpenScience exits beta: an AI workbench for scientific research",

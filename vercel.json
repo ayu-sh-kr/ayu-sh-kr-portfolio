@@ -179,6 +179,11 @@
       "permanent": true
     },
     {
+      "source": "/news/antiburn-coding-agent-token-usage",
+      "destination": "/news/antiburn-coding-agent-token-usage/",
+      "permanent": true
+    },
+    {
       "source": "/news/claude-opus-5-5-cost-coding",
       "destination": "/news/claude-opus-5-5-cost-coding/",
       "permanent": true
@@ -234,13 +239,13 @@
       "permanent": true
     },
     {
-      "source": "/news/openscience-ai-research-workbench-stable",
-      "destination": "/news/openscience-ai-research-workbench-stable/",
+      "source": "/news/openbot-self-hosted-ai-coworkers",
+      "destination": "/news/openbot-self-hosted-ai-coworkers/",
       "permanent": true
     },
     {
-      "source": "/news/openbot-self-hosted-ai-coworkers",
-      "destination": "/news/openbot-self-hosted-ai-coworkers/",
+      "source": "/news/openscience-ai-research-workbench-stable",
+      "destination": "/news/openscience-ai-research-workbench-stable/",
       "permanent": true
     },
     {
