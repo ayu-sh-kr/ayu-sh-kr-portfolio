@@ -3,7 +3,7 @@ import {siteIdentity} from "@app/data/portfolio-content.ts";
 import type {PageSeoContent} from "@app/data/seo-content.ts";
 
 /** Editorial role used to filter Dispatch notes and label their permalink pages. */
-export type NewsKind = "shipped" | "infra" | "reading" | "take";
+export type NewsKind = "shipped" | "infra" | "reading" | "explainer" | "take";
 
 /** A measured outcome shown only in the article's number-focused figure panel. */
 export type NewsFigure = {
@@ -55,6 +55,7 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
   {value: "shipped", label: "Shipped"},
   {value: "infra", label: "Infra"},
   {value: "reading", label: "Reading"},
+  {value: "explainer", label: "Explainers"},
   {value: "take", label: "Takes"},
 ];
 
@@ -69,7 +70,7 @@ export const newsNotes: readonly NewsNote[] = [
     date: "2026-09-29",
     title: "PageIndex vs Vector RAG: How Tree Search Finds Relevant Pages",
     summary: "How does PageIndex find the right page? A developer handbook example explains tree-based indexing, vector RAG, and the difference between similarity and relevance.",
-    kind: "reading",
+    kind: "explainer",
     document: "/news/pageindex-tree-based-rag-relevance.md",
     keywords: ["PageIndex vs vector RAG", "tree-based indexing", "document retrieval", "hierarchical search", "semantic search", "vector database", "retrieval-augmented generation"],
     minutes: 4,
