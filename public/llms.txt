@@ -44,7 +44,7 @@
 
 ## Recent Dispatch notes
 
-- [PageIndex replaces vector search with tree-based document retrieval](https://ayu-sh-kr.com/news/pageindex-tree-based-rag-relevance/): A two-minute explainer on PageIndex's tree index, model-guided retrieval, and how its relevance-first approach differs from vector search. [Article Markdown](https://ayu-sh-kr.com/news/pageindex-tree-based-rag-relevance.md).
+- [PageIndex replaces vector search with tree-based document retrieval](https://ayu-sh-kr.com/news/pageindex-tree-based-rag-relevance/): A four-minute explainer using an annual report question to show how PageIndex builds a section tree, navigates it with a model, and returns to the source evidence. [Article Markdown](https://ayu-sh-kr.com/news/pageindex-tree-based-rag-relevance.md).
 
 - [AntiBurn shows where AI coding agents spend their tokens](https://ayu-sh-kr.com/news/antiburn-coding-agent-token-usage/): A three-minute look at local session analysis, context growth, cost estimates, and a practical stopping rule for stalled coding-agent work. [Article Markdown](https://ayu-sh-kr.com/news/antiburn-coding-agent-token-usage.md).
 
