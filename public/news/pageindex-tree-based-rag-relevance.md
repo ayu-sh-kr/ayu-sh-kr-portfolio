@@ -1,35 +1,51 @@
 # PageIndex vs Vector RAG: How Tree Search Finds Relevant Pages
 
-Imagine asking an AI assistant why a company’s profit fell even though its sales grew. It opens the annual report and returns the table showing both numbers. The table is accurate, but the answer may be several pages away, where the company explains a large one-time expense.
+A deployment goes wrong. The question is simple: **“How do we get the previous version back?”** A search through the team handbook brings up release notes, deployment instructions, and a page about version numbers. Useful territory, but the rollback procedure is still somewhere else.
 
-That gap between **finding related words** and **finding the answer** is the problem VectifyAI’s open-source **PageIndex** tries to solve. It gives an AI model a map of a long document, then lets the model decide which sections to read, much as someone would use a table of contents before turning to a page.
+A teammate who knows the handbook might open “Delivery,” turn to “Rollback,” and follow the instructions. **PageIndex gives an AI a similar way to navigate a document**: inspect its structure, choose a section, then read the pages behind it.
 
-**PageIndex is VectifyAI’s project, and it is not a new launch.** It was shared publicly in August 2025, when Mingtian Zhang discussed the approach. A September 2025 introduction credits Zhang, Yu Tang, and the PageIndex team. By May 2026, the team said the repository had passed 26,000 GitHub stars. The more recent release is **PageIndex Flash**, introduced in August 2026 to index text-based PDFs locally. That is a new chapter for a project already attracting attention.
+That is the idea worth understanding. Finding text about a subject and finding the information needed to complete a task are related problems, but they do not always lead to the same page.
 
-## PageIndex vs vector RAG: why similarity can miss the answer
+## What changes in PageIndex vs vector RAG?
 
-A common way to let an AI answer questions from documents is **retrieval-augmented generation**, or **RAG**. Before the model writes an answer, a search step finds passages to give it. Without that step, the model might have no access to the report at all.
+**Retrieval-augmented generation**, or **RAG**, means giving an AI relevant source material before it writes an answer. The retrieval step finds that material. PageIndex changes how that search happens; it is still a form of RAG.
 
-Many RAG systems cut a document into smaller pieces and turn each piece into an **embedding**: a list of numbers representing its meaning. This conversion is often called **vectorization**, and the embeddings can be stored in a **vector database**. The question gets its own embedding; **semantic search** then ranks the pieces closest to it. This can work well for finding passages about the same subject.
+A common approach splits documents into passages and converts each passage into numbers representing its meaning. These are **embeddings**, and the conversion is often called **vectorization**. A vector database can store them so the system can compare a question with many passages quickly.
 
-But closeness is not the same as answering the question. In our imagined report, the profit table and several repeated mentions of “profit” may rank highly. The explanation might be filed under “restructuring charges” in a note with little wording in common with “Why did profit fall?” Splitting the report into fixed-size pieces can also separate a figure from the note that explains it. Better chunking, keyword search, and reranking can help conventional RAG; PageIndex explores another route.
+This is **semantic search**: matching meaning, beyond exact words. It can connect “get the previous version back” with “rollback,” even though the wording differs. Vector search is more capable than counting keywords.
 
-## How tree-based indexing and hierarchical search work
+The difficulty is deciding which related passage actually answers the question. A release announcement and a recovery procedure can both discuss deployments. The announcement might be a close match while leaving out the steps the developer needs.
 
-The first stage is **tree-based indexing**. PageIndex creates a tree of sections and subsections, with titles, page locations, and descriptions linked to the original text. Picture a table of contents that an AI can follow: “Management discussion” leads to “Results of operations,” while “Financial statements” leads to detailed notes. The tree is a guide, not a replacement for the pages themselves.
+PageIndex approaches that decision through the document’s structure. A model looks at a tree of sections and asks where the answer is likely to live. Our handbook example illustrates the difference:
 
-In the current SDK’s local PDF workflow, the document layout supplies the structure. An indexing model can summarize and refine the section descriptions. The project recommends that a relatively basic model handle this part, because it does not need to answer every future question while the map is being made.
+![Vector RAG ranks passages by meaning; PageIndex follows the handbook’s Delivery and Rollback sections. Both read source evidence before answering.](/news/assets/pageindex-tree-based-rag-relevance/retrieval-map.svg)
 
-The second stage begins when a question arrives. A **chat model** searches the hierarchy: it considers the question and the tree, chooses a promising section, and reads the source material behind it. If that section only reports that profit fell, the model can look at related notes to find the cause. The SDK lets developers choose separate models for indexing and chat; the chat model does the harder work of deciding where to look and forming an answer from what it finds.
+## First, build the map
 
-That is the human comparison behind PageIndex. Someone reading the report would not count how often “profit” appears on each page. They might start with the results section, see a reference to an unusual charge, and follow it to the note. PageIndex gives the model a similar path through the document, with references back to the source pages.
+**Tree-based indexing** turns a document into sections, subsections, and links to their pages. Imagine an expanded table of contents: “Delivery” contains “Deployments,” “Rollback,” and “Troubleshooting.” Each section can have a short summary explaining what it covers.
 
-## When tree-based document retrieval helps
+Those summaries help when headings are vague. A section called “Recovery” might describe undoing a release, restoring a database, or resetting a password. Its description gives the model a better clue before it opens the pages.
 
-This is most compelling for **long, structured material**: financial reports, legal documents, manuals, and research papers where headings, sections, tables, and cross-references carry meaning. PageIndex also offers a local SDK workflow for text-based PDFs and a managed cloud option for scanned or image-rich documents. Those capabilities depend on the chosen mode; “vectorless” does not mean every document can be handled locally in the same way.
+An indexing model can create or refine these summaries. PageIndex’s newer Flash indexer gets the structure from a text-based PDF’s layout, so a smaller model can handle the summarizing work. The map is prepared ahead of questions and can be reused.
 
-There is a cost to letting a model make several reading decisions. It may take more model calls and time than a simple similarity lookup, and a poor index or a mistaken branch choice can still miss the answer. The project reports strong results on financial-document questions, but that is not a promise for every set of files. The useful comparison is whether it finds the right evidence, with acceptable speed and cost, on the questions people actually ask.
+## Then, follow the map and read
 
-Return to the company report. The assistant already had the correct profit table; it needed the paragraph explaining **why** those numbers changed. PageIndex’s bet is that a map of the report gives the model a better way to reach that paragraph—and a clear route back to the page a reader can check.
+When a question arrives, a model examines the index and chooses a promising section. Moving from a broad topic to a specific subsection is **hierarchical search**.
 
-Sources: [PageIndex repository and SDK guidance](https://github.com/VectifyAI/PageIndex), [the August 2025 public discussion](https://news.ycombinator.com/item?id=45036944), [the September 2025 introduction](https://pageindex.ai/blog/pageindex-intro), [the May 2026 project update](https://pageindex.ai/blog/pageindex-filesystem), and [the PageIndex Flash announcement](https://pageindex.ai/blog/pageindex-flash).
+For the rollback question, the path might be “Delivery,” then “Rollback,” then the actual procedure. If the procedure says to check compatibility first, the model can look for that section too. Retrieval becomes a sequence of reading decisions, with another search when the evidence is incomplete.
+
+The model must still read the source. A summary saying “this section covers rollback” cannot supply the correct command, conditions, or exceptions. **The index helps locate the evidence; the original pages support the answer.**
+
+Indexing and answering therefore have different jobs. A relatively small model can help prepare the map, while a stronger model can handle navigation and answering. They can be configured separately, without making the conceptual workflow more complicated.
+
+## When does a document tree help?
+
+PageIndex is most interesting when information has useful structure: technical manuals, detailed guides, policies, and other long documents with sections and cross-references. It gives an AI a way to use that organization during document retrieval.
+
+It also asks the model to make more decisions. That can add time and cost, and choosing the wrong branch can still miss the answer. Vector RAG can also improve its results with keyword search, filters, and a second model that reranks passages. The comparison should be about finding usable evidence on real questions.
+
+VectifyAI’s PageIndex was public in 2025, with its introduction credited to **Mingtian Zhang, Yu Tang, and the PageIndex team**. The August 2026 release of **PageIndex Flash** added a newer way to build these indexes locally. The underlying idea has been developing for some time.
+
+Back at the failed deployment, the useful answer is a recovery procedure with its conditions and a page to check. PageIndex’s appeal is easy to see there: a handbook already has an order to it. Letting the AI follow that order may help it reach the instructions the developer came for.
+
+Sources: [PageIndex project](https://github.com/VectifyAI/PageIndex), [the 2025 introduction](https://pageindex.ai/blog/pageindex-intro), [the August 2025 public discussion](https://news.ycombinator.com/item?id=45036944), and [PageIndex Flash](https://pageindex.ai/blog/pageindex-flash).

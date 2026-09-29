@@ -68,7 +68,7 @@ export const newsNotes: readonly NewsNote[] = [
     slug: "pageindex-tree-based-rag-relevance",
     date: "2026-09-29",
     title: "PageIndex vs Vector RAG: How Tree Search Finds Relevant Pages",
-    summary: "PageIndex uses a document tree to find relevant pages. See how its indexing and model-guided search differ from vector RAG’s semantic search.",
+    summary: "How does PageIndex find the right page? A developer handbook example explains tree-based indexing, vector RAG, and the difference between similarity and relevance.",
     kind: "reading",
     document: "/news/pageindex-tree-based-rag-relevance.md",
     keywords: ["PageIndex vs vector RAG", "tree-based indexing", "document retrieval", "hierarchical search", "semantic search", "vector database", "retrieval-augmented generation"],
