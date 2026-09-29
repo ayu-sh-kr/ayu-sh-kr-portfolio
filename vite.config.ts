@@ -35,6 +35,7 @@ const showcaseRoutes = [
   "/showcase/dota-rest",
 ];
 const newsRoutes = [
+  "/news/pageindex-tree-based-rag-relevance",
   "/news/antiburn-coding-agent-token-usage",
   "/news/openscience-ai-research-workbench-stable",
   "/news/hacktron-meta-heic-image-bounty",

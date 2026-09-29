@@ -65,6 +65,17 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "pageindex-tree-based-rag-relevance",
+    date: "2026-09-29",
+    title: "PageIndex replaces vector search with tree-based document retrieval",
+    summary: "PageIndex builds a hierarchical index of long documents, then lets an AI model navigate it to find relevant sections. Here is how its two-stage workflow compares with vector-based RAG.",
+    kind: "reading",
+    document: "/news/pageindex-tree-based-rag-relevance.md",
+    keywords: ["PageIndex", "tree-based RAG", "vectorless retrieval", "reasoning-based retrieval", "document indexing", "RAG relevance"],
+    minutes: 2,
+    reference: {label: "VectifyAI — PageIndex on GitHub", href: "https://github.com/VectifyAI/PageIndex"},
+  },
+  {
     slug: "antiburn-coding-agent-token-usage",
     date: "2026-09-28",
     title: "AntiBurn shows where AI coding agents spend their tokens",
