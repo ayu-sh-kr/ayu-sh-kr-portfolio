@@ -1,33 +1,39 @@
 # Why RAG Misses the Right Passage: Anthropic’s Contextual Retrieval
 
-**“Can I return the shoes I bought online after 20 days?”** A store’s help centre contains the answer: “Returns are accepted within 30 days of delivery.” But that sentence came from the *online footwear* section. Once it is pulled away from its heading, it looks much like a 14-day rule for a different product. Search may bring back the wrong policy—or miss the right one.
+**“Can I return the shoes I bought online after 20 days?”** Imagine asking a store’s AI assistant this question. In our example, the store allows footwear returns within 30 days of delivery, while electronics have a 14-day window. Both rules are in its help centre. The assistant needs to find the one that applies to the shoes before it can answer.
 
-This is a problem for **retrieval-augmented generation (RAG)**. Before an AI answers, RAG searches a collection of documents and gives the model a few relevant passages. To make a large collection searchable, it splits documents into smaller pieces called **chunks**. The split can leave a useful sentence behind while taking away the words that say what it applies to.
+To do that, it searches the help centre and reads the passages it finds. This is **retrieval-augmented generation, or RAG**: an AI uses information retrieved from documents to help answer a question. Here, the quality of the answer starts with a simple requirement: the search must bring back the footwear policy.
 
-In September 2024, Anthropic introduced **Contextual Retrieval** to keep those clues attached when it builds a search index.
+## How the right rule loses its meaning
 
-## Why a similar passage may be the wrong one
+Searching an entire help centre usually starts with breaking its documents into smaller passages called **chunks**. That lets the system retrieve a few useful pieces instead of sending every policy to the answering model. But a chunk boundary can separate a rule from the heading that explains it.
 
-A common search method turns both the question and each chunk into lists of numbers called **embeddings**. Chunks with similar meanings tend to sit near each other on this numerical map. That is how a search for “return shoes” can find a passage that says “send back footwear,” even when the words differ.
+Suppose the heading “Online footwear returns” lands in one chunk and “Returns are accepted within 30 days of delivery” lands in another. A person reading the page sees them together. Search may receive only the second piece. The time limit survives, but the clue connecting it to shoes has disappeared.
 
-But “returns are accepted within 30 days” and “returns are accepted within 14 days” also look similar. If their headings were left out during splitting, the search has little to tell it which rule covers online shoes. **Similarity finds related text; relevance depends on the question the passage can actually answer.**
+A common search method turns each chunk and the question into lists of numbers called **embeddings**. These represent meaning, allowing “return shoes” to match “send back footwear” without using identical words. This is **semantic search**, and it helps when customers phrase questions differently from the store’s documentation.
 
-## Attach the missing label before searching
+The difficulty is that both the 30-day and 14-day passages talk about returns. Without their product labels, either can look like a useful match. The search has found the subject, but it still needs enough context to distinguish the policy that answers this particular question.
 
-Anthropic’s approach gives a model the whole document and one chunk, then asks for a short explanation of where that chunk belongs. For the store example, the searchable text could become:
+## Keep the product label attached to the rule
+
+That missing connection is what **Anthropic’s Contextual Retrieval**, introduced in September 2024, aims to restore. Before preparing chunks for search, Anthropic gives a model the full document and an individual chunk. The model writes a short preface explaining where that passage belongs.
+
+For our footwear passage, the combined text could read:
 
 > From the store’s online footwear return policy: Returns are accepted within 30 days of delivery.
 
-The policy sentence stays intact. The new preface carries its missing label. This happens **once when documents are indexed**, so later searches can use the added words.
+The original sentence remains intact, with its missing context placed in front. The electronics passage would receive its own explanation. Each piece now carries enough information to distinguish it from another rule about the same subject. These additions are prepared when the documents are indexed, ready for later questions.
 
-Anthropic indexes that combined text in two ways. **Embeddings** help match related meanings, such as “shoes” and “footwear.” **BM25** helps match exact words, such as a product name, category, or order code. The system combines the candidates from both searches and removes duplicates. If it uses **reranking**, another model then compares those candidates with the actual question and puts the most useful passages first. Reranking runs when someone asks a question, rather than when the document is first indexed.
+When the customer asks about shoes, meaning-based search can now connect “shoes” with “footwear” in the expanded passage. Anthropic also makes that text searchable with **BM25**, which ranks passages using matching words. This second search is useful when a question contains wording directly from the policy, such as a product name or category.
 
-## What Anthropic’s results actually show
+The system combines the results from both searches and removes duplicates. There may still be several plausible passages, so an optional **reranking** step compares them with the customer’s question and reorders them by relevance. The answering model then receives the selected material. Each step works toward the same result: finding the rule for this purchase.
 
-Anthropic measured how often a relevant passage was **absent from the first 20 retrieved chunks**. In its evaluation across several kinds of documents, that failure rate was **5.7%** for its baseline. Adding contextual embeddings and contextual BM25 brought it to **2.9%**, a **49% relative reduction**. Adding reranking brought it to **1.9%**, a **67% relative reduction** from the same baseline.
+## Does the right passage reach the answer?
 
-Those figures measure retrieval in Anthropic’s tests. They do not mean every final answer is 67% better. Generating the prefaces takes work at indexing time; reranking adds a step and some latency to each search. The way documents are split and the number of passages the model receives still matter.
+Anthropic tested that retrieval step across several kinds of documents. It measured how often relevant material was missing from the **first 20 retrieved chunks**. Its baseline failure rate was **5.7%**. Adding context to both embeddings and BM25 reduced it to **2.9%**, a **49% relative reduction**. With reranking, it fell to **1.9%**, a **67% relative reduction** from the same baseline.
 
-Back at the store, the useful result is the **30-day rule together with “online footwear.”** The answer can then say what the rule covers and cite the right policy. When a chunk only makes sense under its heading, keeping that heading’s meaning attached gives search a better chance to find it.
+These results show fewer retrieval misses in those tests; they do not establish a 67% improvement in every final answer. The extra context takes work to prepare, and reranking adds time to a search. Document splitting and the accuracy of the generated prefaces still need checking.
+
+For the customer with the shoes, the useful evidence is the **30-day limit connected to the footwear policy**. Once that connection survives the search, the assistant can explain the applicable rule and cite its source. Contextual Retrieval helps preserve the information that makes a sentence useful when it leaves its original page.
 
 Source: [Anthropic Engineering — Introducing Contextual Retrieval](https://www.anthropic.com/engineering/contextual-retrieval) (September 19, 2024).
