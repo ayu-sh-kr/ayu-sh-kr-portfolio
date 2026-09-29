@@ -1,51 +1,59 @@
 # PageIndex vs Vector RAG: How Tree Search Finds Relevant Pages
 
-A deployment goes wrong. The question is simple: **“How do we get the previous version back?”** A search through the team handbook brings up release notes, deployment instructions, and a page about version numbers. Useful territory, but the rollback procedure is still somewhere else.
+**“How do I undo a bad deployment?”** An AI searches the team handbook and finds a paragraph explaining that rollbacks restore an earlier version. It has found the right topic. The developer still needs to know what to do.
 
-A teammate who knows the handbook might open “Delivery,” turn to “Rollback,” and follow the instructions. **PageIndex gives an AI a similar way to navigate a document**: inspect its structure, choose a section, then read the pages behind it.
+The answer might be a few pages away: where to select the previous release, which checks to run, and when a database change makes a rollback unsafe. Both passages discuss rollback. Only one provides the information needed for this question.
 
-That is the idea worth understanding. Finding text about a subject and finding the information needed to complete a task are related problems, but they do not always lead to the same page.
+That gap between **similar content and relevant content** is the idea behind VectifyAI’s **PageIndex**. It uses a document’s structure to help an AI find the pages that can answer the question.
 
-## What changes in PageIndex vs vector RAG?
+## How vectorization makes semantic search possible
 
-**Retrieval-augmented generation**, or **RAG**, means giving an AI relevant source material before it writes an answer. The retrieval step finds that material. PageIndex changes how that search happens; it is still a form of RAG.
+To understand the difference, start with how a typical document search for AI works. A document is divided into passages. An embedding model turns each passage into a list of numbers called a **vector**, or **embedding**. This step is often called **vectorization**.
 
-A common approach splits documents into passages and converts each passage into numbers representing its meaning. These are **embeddings**, and the conversion is often called **vectorization**. A vector database can store them so the system can compare a question with many passages quickly.
+Think of those numbers as placing each passage on a map of meaning. Passages about related ideas tend to sit near one another. A paragraph about restoring an earlier app version can sit close to one about rolling back a release, even though they use different words.
 
-This is **semantic search**: matching meaning, beyond exact words. It can connect “get the previous version back” with “rollback,” even though the wording differs. Vector search is more capable than counting keywords.
+The question is put on the same map using the embedding model. **Vector search** then finds passages nearby. A vector database stores these representations and makes the comparison efficient across many passages.
 
-The difficulty is deciding which related passage actually answers the question. A release announcement and a recovery procedure can both discuss deployments. The announcement might be a close match while leaving out the steps the developer needs.
+This is a common way to perform **semantic search**: searching by meaning. It is why “undo a deployment” can lead to “rollback instructions” without an exact word match. That ability is useful; the remaining question is whether the selected passage contains enough information to answer.
 
-PageIndex approaches that decision through the document’s structure. A model looks at a tree of sections and asks where the answer is likely to live. Our handbook example illustrates the difference:
+## Similar content shares a topic. Relevant content meets the need.
+
+Consider two imaginary passages from the handbook. The first says, **“Rollback restores an earlier release when a deployment causes problems.”** The second says, **“Open release history, select the last working version, and check database compatibility before restoring it.”**
+
+For “What is a rollback?”, the first passage is relevant. For “How do I undo this deployment?”, the second is more useful. **Relevance depends on what the person needs to learn or do**, even when the subject stays the same.
+
+A similarity score can help find that second passage. It can also rank a definition, a release announcement, or an account of an old incident highly because they discuss closely related ideas. A high score alone does not establish that the passage contains the procedure, conditions, or evidence the question requires.
+
+This matters in **retrieval-augmented generation**, or **RAG**: the system retrieves source material and gives it to an AI to write an answer. If the retrieved material only explains what rollback means, the answer may stop there too. The search has to supply the missing instructions.
+
+## How PageIndex searches for relevant pages
+
+PageIndex gives the model another way to decide where to look. It builds a **tree of the document’s sections**, like an expanded table of contents. Instead of relying on distance between vectors, the model reasons about which section could contain the answer.
+
+In our handbook, “Delivery” might contain “Deployments,” “Rollback,” and “Troubleshooting.” A question about undoing a release points toward “Rollback.” A question about why releases fail might lead somewhere else in the same tree.
+
+The diagram shows the two retrieval approaches. Either can find useful evidence; PageIndex makes the document’s organization part of the search.
 
 ![Vector RAG ranks passages by meaning; PageIndex follows the handbook’s Delivery and Rollback sections. Both read source evidence before answering.](/news/assets/pageindex-tree-based-rag-relevance/retrieval-map.svg)
 
-## First, build the map
+### First, prepare the index
 
-**Tree-based indexing** turns a document into sections, subsections, and links to their pages. Imagine an expanded table of contents: “Delivery” contains “Deployments,” “Rollback,” and “Troubleshooting.” Each section can have a short summary explaining what it covers.
+During **tree-based indexing**, sections receive titles, page references, and short summaries. A summary can explain that “Recovery” contains rollback steps, helping the model choose it even when the heading is vague.
 
-Those summaries help when headings are vague. A section called “Recovery” might describe undoing a release, restoring a database, or resetting a password. Its description gives the model a better clue before it opens the pages.
+An indexing model can prepare those summaries. In PageIndex’s newer Flash approach, a text-based PDF’s layout supplies the structure, leaving the model to summarize and refine it. This map can be reused for later questions.
 
-An indexing model can create or refine these summaries. PageIndex’s newer Flash indexer gets the structure from a text-based PDF’s layout, so a smaller model can handle the summarizing work. The map is prepared ahead of questions and can be reused.
+### Then, read and follow the evidence
 
-## Then, follow the map and read
+At question time, a model examines the index, chooses a section, and reads its source pages. This movement through sections and subsections is **hierarchical search**. If the rollback procedure refers to a separate compatibility check, the model can continue looking for that information.
 
-When a question arrives, a model examines the index and chooses a promising section. Moving from a broad topic to a specific subsection is **hierarchical search**.
+The summary only tells it where to look. **The source pages must provide the answer.** This is how PageIndex aims to improve relevance: choose a likely location, inspect the evidence, and keep searching when something needed is missing. A smaller model can help build the index, while a stronger model handles these reading decisions.
 
-For the rollback question, the path might be “Delivery,” then “Rollback,” then the actual procedure. If the procedure says to check compatibility first, the model can look for that section too. Retrieval becomes a sequence of reading decisions, with another search when the evidence is incomplete.
+## What the tree can—and cannot—solve
 
-The model must still read the source. A summary saying “this section covers rollback” cannot supply the correct command, conditions, or exceptions. **The index helps locate the evidence; the original pages support the answer.**
+PageIndex is especially suited to long manuals, guides, and policies where sections and cross-references carry useful context. It still depends on the model choosing well; extra reading decisions can add time and cost. Vector RAG can also improve relevance through filters, keyword search, and reranking the retrieved passages.
 
-Indexing and answering therefore have different jobs. A relatively small model can help prepare the map, while a stronger model can handle navigation and answering. They can be configured separately, without making the conceptual workflow more complicated.
+The project comes from **VectifyAI**, with its 2025 introduction credited to **Mingtian Zhang, Yu Tang, and the PageIndex team**. PageIndex Flash followed in August 2026. It is an evolving approach to retrieval, with results to judge against real questions.
 
-## When does a document tree help?
-
-PageIndex is most interesting when information has useful structure: technical manuals, detailed guides, policies, and other long documents with sections and cross-references. It gives an AI a way to use that organization during document retrieval.
-
-It also asks the model to make more decisions. That can add time and cost, and choosing the wrong branch can still miss the answer. Vector RAG can also improve its results with keyword search, filters, and a second model that reranks passages. The comparison should be about finding usable evidence on real questions.
-
-VectifyAI’s PageIndex was public in 2025, with its introduction credited to **Mingtian Zhang, Yu Tang, and the PageIndex team**. The August 2026 release of **PageIndex Flash** added a newer way to build these indexes locally. The underlying idea has been developing for some time.
-
-Back at the failed deployment, the useful answer is a recovery procedure with its conditions and a page to check. PageIndex’s appeal is easy to see there: a handbook already has an order to it. Letting the AI follow that order may help it reach the instructions the developer came for.
+For the developer facing a failed deployment, success is an answer backed by the correct recovery procedure. A paragraph about rollback gets the subject right. Finding the instructions and their conditions gets the developer closer to solving the problem. **That is the difference PageIndex is trying to close.**
 
 Sources: [PageIndex project](https://github.com/VectifyAI/PageIndex), [the 2025 introduction](https://pageindex.ai/blog/pageindex-intro), [the August 2025 public discussion](https://news.ycombinator.com/item?id=45036944), and [PageIndex Flash](https://pageindex.ai/blog/pageindex-flash).
