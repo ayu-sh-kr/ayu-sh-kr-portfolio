@@ -36,6 +36,7 @@ const showcaseRoutes = [
 ];
 const newsRoutes = [
   "/news/pageindex-tree-based-rag-relevance",
+  "/news/anthropic-contextual-retrieval-rag",
   "/news/antiburn-coding-agent-token-usage",
   "/news/openscience-ai-research-workbench-stable",
   "/news/hacktron-meta-heic-image-bounty",

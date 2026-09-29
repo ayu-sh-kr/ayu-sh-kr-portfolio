@@ -46,6 +46,8 @@
 
 - [PageIndex vs Vector RAG: How Tree Search Finds Relevant Pages](https://ayu-sh-kr.com/news/pageindex-tree-based-rag-relevance/): A four-minute conceptual guide using a deployment rollback question to explain semantic search, document trees, and source evidence, with a diagram in the app’s dark theme. [Article Markdown](https://ayu-sh-kr.com/news/pageindex-tree-based-rag-relevance.md).
 
+- [Anthropic’s Contextual Retrieval: why RAG needs more than a text match](https://ayu-sh-kr.com/news/anthropic-contextual-retrieval-rag/): A three-minute explanation of Anthropic’s 2024 research, contextual embeddings and BM25, reranking, and the scope of its retrieval benchmark. [Article Markdown](https://ayu-sh-kr.com/news/anthropic-contextual-retrieval-rag.md).
+
 - [AntiBurn shows where AI coding agents spend their tokens](https://ayu-sh-kr.com/news/antiburn-coding-agent-token-usage/): A three-minute look at local session analysis, context growth, cost estimates, and a practical stopping rule for stalled coding-agent work. [Article Markdown](https://ayu-sh-kr.com/news/antiburn-coding-agent-token-usage.md).
 
 - [OpenScience exits beta: an AI workbench for scientific research](https://ayu-sh-kr.com/news/openscience-ai-research-workbench-stable/): A 2-minute brief on OpenScience's research agent, who it serves, its literature and experiment workflow, model choices, and reproducible outputs. [Article Markdown](https://ayu-sh-kr.com/news/openscience-ai-research-workbench-stable.md).
