@@ -179,6 +179,11 @@
       "permanent": true
     },
     {
+      "source": "/news/pageindex-tree-based-rag-relevance",
+      "destination": "/news/pageindex-tree-based-rag-relevance/",
+      "permanent": true
+    },
+    {
       "source": "/news/antiburn-coding-agent-token-usage",
       "destination": "/news/antiburn-coding-agent-token-usage/",
       "permanent": true
