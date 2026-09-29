@@ -4,6 +4,8 @@ Imagine asking an AI assistant why a company’s profit fell even though its sal
 
 That gap between **finding related words** and **finding the answer** is the problem VectifyAI’s open-source **PageIndex** tries to solve. It gives an AI model a map of a long document, then lets the model decide which sections to read, much as someone would use a table of contents before turning to a page.
 
+**PageIndex is VectifyAI’s project, and it is not a new launch.** It was shared publicly in August 2025, when Mingtian Zhang discussed the approach. A September 2025 introduction credits Zhang, Yu Tang, and the PageIndex team. By May 2026, the team said the repository had passed 26,000 GitHub stars. The more recent release is **PageIndex Flash**, introduced in August 2026 to index text-based PDFs locally. That is a new chapter for a project already attracting attention.
+
 ## Why a similar passage can miss the point
 
 A common way to let an AI answer questions from documents is **retrieval-augmented generation**, or **RAG**. Before the model writes an answer, a search step finds passages to give it. Without that step, the model might have no access to the report at all.
@@ -30,4 +32,4 @@ There is a cost to letting a model make several reading decisions. It may take m
 
 Return to the company report. The assistant already had the correct profit table; it needed the paragraph explaining **why** those numbers changed. PageIndex’s bet is that a map of the report gives the model a better way to reach that paragraph—and a clear route back to the page a reader can check.
 
-Sources: [PageIndex repository and SDK guidance](https://github.com/VectifyAI/PageIndex) and [VectifyAI’s explanation of its tree search](https://pageindex.ai/blog/pageindex-intro).
+Sources: [PageIndex repository and SDK guidance](https://github.com/VectifyAI/PageIndex), [the August 2025 public discussion](https://news.ycombinator.com/item?id=45036944), [the September 2025 introduction](https://pageindex.ai/blog/pageindex-intro), [the May 2026 project update](https://pageindex.ai/blog/pageindex-filesystem), and [the PageIndex Flash announcement](https://pageindex.ai/blog/pageindex-flash).
