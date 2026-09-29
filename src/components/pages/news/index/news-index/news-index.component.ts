@@ -18,7 +18,7 @@ type NewsMonth = {
 };
 
 const filterFromHash = (): NewsKind | "all" => {
-  const match = /^#\/(shipped|infra|reading|take)$/.exec(window.location.hash);
+  const match = /^#\/(shipped|infra|reading|explainer|take)$/.exec(window.location.hash);
   return match?.[1] as NewsKind | undefined ?? "all";
 };
 
@@ -203,7 +203,7 @@ export class NewsIndexComponent extends BaseElement {
     toggle?.setAttribute("data-filtered", String(filter !== "all"));
     toggle?.setAttribute("aria-label", `${shown} ${shown === 1 ? "note" : "notes"} shown. ${label} filter. Open filters.`);
 
-    const hasFilterHash = /^#\/(shipped|infra|reading|take)$/.test(window.location.hash);
+    const hasFilterHash = /^#\/(shipped|infra|reading|explainer|take)$/.test(window.location.hash);
     if (closeDock || filter !== "all" || hasFilterHash) {
       const hash = filter === "all" ? "" : `#/${filter}`;
       window.history.replaceState(null, "", `${window.location.pathname}${window.location.search}${hash}`);

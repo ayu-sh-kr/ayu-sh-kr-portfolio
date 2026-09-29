@@ -179,8 +179,8 @@
       "permanent": true
     },
     {
-      "source": "/news/pageindex-tree-based-rag-relevance",
-      "destination": "/news/pageindex-tree-based-rag-relevance/",
+      "source": "/news/anthropic-contextual-retrieval-rag",
+      "destination": "/news/anthropic-contextual-retrieval-rag/",
       "permanent": true
     },
     {
@@ -251,6 +251,11 @@
     {
       "source": "/news/openscience-ai-research-workbench-stable",
       "destination": "/news/openscience-ai-research-workbench-stable/",
+      "permanent": true
+    },
+    {
+      "source": "/news/pageindex-tree-based-rag-relevance",
+      "destination": "/news/pageindex-tree-based-rag-relevance/",
       "permanent": true
     },
     {

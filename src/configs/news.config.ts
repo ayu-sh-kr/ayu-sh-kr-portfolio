@@ -77,6 +77,17 @@ export const newsNotes: readonly NewsNote[] = [
     reference: {label: "VectifyAI — PageIndex on GitHub", href: "https://github.com/VectifyAI/PageIndex"},
   },
   {
+    slug: "anthropic-contextual-retrieval-rag",
+    date: "2026-09-28",
+    title: "Why RAG Misses the Right Passage: Anthropic’s Contextual Retrieval",
+    summary: "A store’s return policy shows how document chunks lose context, why semantic search can miss the right answer, and how Anthropic’s Contextual Retrieval helps.",
+    kind: "explainer",
+    document: "/news/anthropic-contextual-retrieval-rag.md",
+    keywords: ["Anthropic Contextual Retrieval", "RAG chunking", "contextual embeddings", "semantic search", "contextual BM25", "reranking", "retrieval failure rate"],
+    minutes: 4,
+    reference: {label: "Anthropic Engineering — Introducing Contextual Retrieval", href: "https://www.anthropic.com/engineering/contextual-retrieval"},
+  },
+  {
     slug: "antiburn-coding-agent-token-usage",
     date: "2026-09-28",
     title: "AntiBurn shows where AI coding agents spend their tokens",
