@@ -44,7 +44,7 @@
 
 ## Recent Dispatch notes
 
-- [InstaCloud raises $8M for an agent-native serverless cloud](https://ayu-sh-kr.com/news/instacloud-agent-native-serverless-cloud/): InstaCloud says it raised $8 million to let coding agents deploy and operate serverless services. How its CLI, human approvals and environment branching work. [Article Markdown](https://ayu-sh-kr.com/news/instacloud-agent-native-serverless-cloud.md).
+- [InstaCloud brings deployment into the AI coding agent workflow](https://ayu-sh-kr.com/news/instacloud-agent-native-serverless-cloud/): InstaCloud connects AI coding agents to serverless deployment, databases, logs, and environment branching. How the workflow takes an API from code to a running service. [Article Markdown](https://ayu-sh-kr.com/news/instacloud-agent-native-serverless-cloud.md).
 
 - [Kafgres puts a Kafka-compatible broker inside Postgres](https://ayu-sh-kr.com/news/kafgres-kafka-broker-postgres-700mbs/): Kafgres embeds a Kafka-compatible broker in PostgreSQL. See how clients connect, what its 700 MB/s single-machine test measured, and the durability limits. [Article Markdown](https://ayu-sh-kr.com/news/kafgres-kafka-broker-postgres-700mbs.md).
 
