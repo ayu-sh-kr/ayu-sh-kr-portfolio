@@ -179,6 +179,21 @@
       "permanent": true
     },
     {
+      "source": "/news/instacloud-agent-native-serverless-cloud",
+      "destination": "/news/instacloud-agent-native-serverless-cloud/",
+      "permanent": true
+    },
+    {
+      "source": "/news/kafgres-kafka-broker-postgres-700mbs",
+      "destination": "/news/kafgres-kafka-broker-postgres-700mbs/",
+      "permanent": true
+    },
+    {
+      "source": "/news/phonon-2-small-local-speech-recognition",
+      "destination": "/news/phonon-2-small-local-speech-recognition/",
+      "permanent": true
+    },
+    {
       "source": "/news/anthropic-contextual-retrieval-rag",
       "destination": "/news/anthropic-contextual-retrieval-rag/",
       "permanent": true
