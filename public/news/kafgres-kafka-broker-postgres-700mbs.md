@@ -1,10 +1,10 @@
 # Kafgres runs a Kafka-compatible broker inside PostgreSQL
 
-An application saves an order in Postgres, then sends an event so another service can email the customer. That second step often introduces a separate messaging system. **Kafgres** puts a Kafka-compatible broker inside PostgreSQL, letting applications use familiar Kafka clients while keeping the event infrastructure alongside the database.
+**Kafgres 0.2.0 brings a Kafka-compatible broker into PostgreSQL**, allowing Kafka clients to send and receive events through a Postgres extension. The release follows a performance report in which the project’s author measured about **700 MB/s of writes on one machine**.
 
-A broker receives events and makes them available to consumers. With Kafgres, that broker is a **Rust-based Postgres extension**, built using pgrx, a toolkit for writing extensions in Rust. SQL connections still use port 5432; Kafka clients connect to the embedded broker on port 9092.
+The project is written in Rust using **pgrx**, a toolkit for building Postgres extensions. Applications can keep using SQL on port 5432, while Kafka clients connect on port 9092. Its appeal is straightforward: teams already using Postgres can retain Kafka client libraries without running a separate broker service.
 
-## One order, two connected pieces of work
+## SQL writes and Kafka events in one system
 
 In the author’s example, a SQL transaction both inserts an order and publishes an `OrderPlaced` event. A Kafka consumer can read the event from its topic—the named stream where related events are stored. An ordinary Kafka producer can write to that same topic too, so existing client libraries remain useful.
 
@@ -20,6 +20,6 @@ Some gains also came from relaxing when metadata commits wait for disk. The auth
 
 The same distinction applies to availability. Kafgres is a **single broker**, and its recovery follows Postgres failover. The author notes that it does not offer the same resilience to a zone outage as a Kafka cluster spread across three zones.
 
-Kafgres offers a concrete option for the order example: retain Kafka clients while operating the broker within Postgres. The benchmark makes it worth investigating, but the decision rests on whether the application can accept its storage, durability, and recovery behavior—not throughput alone.
+The release makes Kafgres a project to watch for teams that want **Kafka-compatible messaging alongside Postgres**. Its reported throughput is notable, while its single-broker design and durability settings remain central to deciding where it fits.
 
 Sources: [Kafgres introduction](https://rynr.dev/blog/kafgres/), [700 MB/s profiling report](https://rynr.dev/blog/700mbskafgres/), and [project repository](https://github.com/RayElg/kafgres).
