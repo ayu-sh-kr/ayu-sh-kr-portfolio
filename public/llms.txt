@@ -48,7 +48,7 @@
 
 - [Kafgres runs a Kafka-compatible broker inside PostgreSQL](https://ayu-sh-kr.com/news/kafgres-kafka-broker-postgres-700mbs/): Kafgres embeds a Kafka-compatible broker in PostgreSQL. An order-event example explains the design, its 700 MB/s benchmark, and durability and failover trade-offs. [Article Markdown](https://ayu-sh-kr.com/news/kafgres-kafka-broker-postgres-700mbs.md).
 
-- [Phonon-2 fits English speech recognition into a 164 MB download](https://ayu-sh-kr.com/news/phonon-2-small-local-speech-recognition/): Fermion Research’s Phonon-2 is a 164 MB English speech model. Explore its seven-set word error benchmark, on-device speed claim and license. [Article Markdown](https://ayu-sh-kr.com/news/phonon-2-small-local-speech-recognition.md).
+- [Phonon-2 brings local English speech recognition to a 164 MB model](https://ayu-sh-kr.com/news/phonon-2-small-local-speech-recognition/): Fermion Research’s Phonon-2 compresses English speech recognition into 164 MB. Compare its word error rate with Whisper turbo and understand local transcription speed. [Article Markdown](https://ayu-sh-kr.com/news/phonon-2-small-local-speech-recognition.md).
 
 - [PageIndex vs Vector RAG: How Tree Search Finds Relevant Pages](https://ayu-sh-kr.com/news/pageindex-tree-based-rag-relevance/): A four-minute conceptual guide using a deployment rollback question to explain semantic search, document trees, and source evidence, with a diagram in the app’s dark theme. [Article Markdown](https://ayu-sh-kr.com/news/pageindex-tree-based-rag-relevance.md).
 

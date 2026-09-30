@@ -1,19 +1,25 @@
-# Phonon-2 fits English speech recognition into a 164 MB download
+# Phonon-2 brings local English speech recognition to a 164 MB model
 
-Local speech transcription often means choosing between a small model that misses words and a large one that takes more storage and compute. **Phonon-2**, released by Fermion Research, makes that trade-off more interesting: its English speech recognition model is a **164 MB download**, with weights compressed to a small set of learned values.
+A transcription model that runs on a laptop can keep recordings on the device, but its download size and speed still matter. **Fermion Research’s Phonon-2** arrives as a **164 MB English speech recognition model**, with a reported benchmark average better than the much larger Whisper large-v3-turbo.
 
-## How does the small model compare?
+That comparison makes the release interesting for local dictation and transcription. It also raises the obvious question: how much accuracy survives when a speech model gets this small?
 
-Fermion built Phonon-2 from NVIDIA's Parakeet TDT 0.6B v3. Its encoder stores each weight at one of **five learned levels**, around 2.1 bits per weight. This is more than shrinking a file after training: the model card describes a low-bit model designed to preserve transcription accuracy.
+## A smaller version of NVIDIA’s Parakeet
 
-Across seven English test sets used by the Open ASR Leaderboard, Fermion reports **5.21% average word error rate**. Lower is better. The full-precision Parakeet teacher scores 4.96% at 2,508 MB; Whisper large-v3-turbo scores 6.58% at 1,618 MB in the comparison. The rows combine leaderboard-published results with Fermion's runs using its code, so the figures describe those English datasets, not every accent, language, microphone, or setting.
+Phonon-2 is based on **NVIDIA’s Parakeet TDT 0.6B v3**. Its encoder, the part that processes audio, stores each weight at one of five learned values—about **2.1 bits per weight**. Weights are the numbers that shape a model’s behavior; storing them more compactly reduces the download.
 
-## Where might it be useful?
+The model card puts the original Parakeet model at 2,508 MB, compared with Phonon-2’s 164 MB. Size alone would be an incomplete result, so Fermion also reports transcription quality across seven English test sets used by the Open ASR Leaderboard.
 
-Fermion reports transcribing an hour of audio in about **20 seconds on an M5 MacBook Air**. That is a hardware-specific speed claim, but it points to the model's intended use: local dictation, meeting transcripts, and applications that benefit from keeping audio on the device. The model is available for Apple silicon through MLX, with CPU and CUDA engines described by the project. It is also used in Fermion's Detta dictation app.
+On that comparison, Phonon-2 averages **5.21% word error rate**, versus **4.96% for its full-precision Parakeet teacher** and **6.58% for Whisper large-v3-turbo**. Word error rate counts missed, substituted, and extra words; lower is better. Phonon-2 gets close to its teacher’s average while beating Whisper turbo’s average in a substantially smaller download.
 
-The published model is **English-focused**, with weights under **CC BY 4.0**; the command-line code carries an Apache 2.0 license. Developers should still test their own noisy recordings, speakers, and formatting expectations before choosing a transcriber.
+Those figures describe the selected English tests. The comparison combines published leaderboard rows with Fermion’s own runs using leaderboard code, and an average can hide differences between recordings. It is evidence for the size-and-accuracy trade-off, rather than a promise that every speaker or noisy meeting will produce the same result.
 
-The notable change is the size of the accuracy trade-off. Phonon-2 puts a competitive English benchmark result in a download small enough for more local applications, while leaving real-world transcription quality to be checked on the audio that matters to each product.
+## What that means for local transcription
 
-Sources: [Phonon-2 model card and benchmark](https://huggingface.co/FermionResearch/Phonon-2) and [Fermion's Phonon engines](https://github.com/fermionresearch/phonon).
+For a model intended to run locally, the next question is speed. Fermion reports transcribing an hour of audio in about **20 seconds on an M5 MacBook Air**. The result depends on that hardware and setup, but suggests long recordings need not take nearly as long to process as they do to play.
+
+The project offers an Apple silicon path through MLX, plus CPU and CUDA engines, and uses Phonon-2 in its Detta Mac dictation app. The weights are **English-focused and licensed under CC BY 4.0**; the command-line code uses Apache 2.0.
+
+Phonon-2’s practical contribution is bringing a strong English benchmark result into a small local download. For a dictation app or meeting-transcription feature, test it on the recordings, speakers, and devices the product needs to support. That connects the promising benchmark to the transcript people will actually read.
+
+Sources: [Phonon-2 model card and benchmark](https://huggingface.co/FermionResearch/Phonon-2) and [Fermion’s Phonon engines](https://github.com/fermionresearch/phonon).
