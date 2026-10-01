@@ -179,21 +179,6 @@
       "permanent": true
     },
     {
-      "source": "/news/instacloud-agent-native-serverless-cloud",
-      "destination": "/news/instacloud-agent-native-serverless-cloud/",
-      "permanent": true
-    },
-    {
-      "source": "/news/kafgres-kafka-broker-postgres-700mbs",
-      "destination": "/news/kafgres-kafka-broker-postgres-700mbs/",
-      "permanent": true
-    },
-    {
-      "source": "/news/phonon-2-small-local-speech-recognition",
-      "destination": "/news/phonon-2-small-local-speech-recognition/",
-      "permanent": true
-    },
-    {
       "source": "/news/anthropic-contextual-retrieval-rag",
       "destination": "/news/anthropic-contextual-retrieval-rag/",
       "permanent": true
@@ -224,6 +209,11 @@
       "permanent": true
     },
     {
+      "source": "/news/google-gemini-4-argon-pricing-capabilities",
+      "destination": "/news/google-gemini-4-argon-pricing-capabilities/",
+      "permanent": true
+    },
+    {
       "source": "/news/hacktron-meta-heic-image-bounty",
       "destination": "/news/hacktron-meta-heic-image-bounty/",
       "permanent": true
@@ -231,6 +221,11 @@
     {
       "source": "/news/homa-protocol-tcp-datacenter-ai-latency",
       "destination": "/news/homa-protocol-tcp-datacenter-ai-latency/",
+      "permanent": true
+    },
+    {
+      "source": "/news/instacloud-agent-native-serverless-cloud",
+      "destination": "/news/instacloud-agent-native-serverless-cloud/",
       "permanent": true
     },
     {
@@ -246,6 +241,11 @@
     {
       "source": "/news/jhipster-online-infostealer-malware",
       "destination": "/news/jhipster-online-infostealer-malware/",
+      "permanent": true
+    },
+    {
+      "source": "/news/kafgres-kafka-broker-postgres-700mbs",
+      "destination": "/news/kafgres-kafka-broker-postgres-700mbs/",
       "permanent": true
     },
     {
@@ -276,6 +276,11 @@
     {
       "source": "/news/perplexity-cobbledb",
       "destination": "/news/perplexity-cobbledb/",
+      "permanent": true
+    },
+    {
+      "source": "/news/phonon-2-small-local-speech-recognition",
+      "destination": "/news/phonon-2-small-local-speech-recognition/",
       "permanent": true
     },
     {

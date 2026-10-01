@@ -66,6 +66,17 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "google-gemini-4-argon-pricing-capabilities",
+    date: "2026-10-01",
+    title: "Google announces Gemini 4 Argon: capabilities, pricing and access",
+    summary: "Google announces Gemini 4 Argon with limited early access. A three-minute look at its coding benchmarks, one-million-token output limit, API prices and later rate increases.",
+    kind: "reading",
+    document: "/news/google-gemini-4-argon-pricing-capabilities.md",
+    keywords: ["Gemini 4 Argon", "Gemini 4 Argon pricing", "Google Gemini 4", "Gemini 4 benchmarks", "Fairwind Program"],
+    minutes: 3,
+    reference: {label: "Google — Gemini 4 Argon announcement", href: "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/"},
+  },
+  {
     slug: "instacloud-agent-native-serverless-cloud",
     date: "2026-09-30",
     title: "InstaCloud brings deployment into the AI coding agent workflow",
