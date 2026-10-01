@@ -44,6 +44,8 @@
 
 ## Recent Dispatch notes
 
+- [Google announces Gemini 4 Argon: capabilities, pricing and access](https://ayu-sh-kr.com/news/google-gemini-4-argon-pricing-capabilities/): Google announces Gemini 4 Argon with limited early access. A three-minute look at its coding benchmarks, one-million-token output limit, API prices and later rate increases. [Article Markdown](https://ayu-sh-kr.com/news/google-gemini-4-argon-pricing-capabilities.md).
+
 - [InstaCloud brings deployment into the AI coding agent workflow](https://ayu-sh-kr.com/news/instacloud-agent-native-serverless-cloud/): InstaCloud connects AI coding agents to serverless deployment, databases, logs, and environment branching. How the workflow takes an API from code to a running service. [Article Markdown](https://ayu-sh-kr.com/news/instacloud-agent-native-serverless-cloud.md).
 
 - [Kafgres runs a Kafka-compatible broker inside PostgreSQL](https://ayu-sh-kr.com/news/kafgres-kafka-broker-postgres-700mbs/): Kafgres embeds a Kafka-compatible broker in PostgreSQL. An order-event example explains the design, its 700 MB/s benchmark, and durability and failover trade-offs. [Article Markdown](https://ayu-sh-kr.com/news/kafgres-kafka-broker-postgres-700mbs.md).
