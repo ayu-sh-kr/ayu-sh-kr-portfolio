@@ -8,6 +8,8 @@ The release centers on work that takes many steps to finish. Fixing a bug, for e
 
 [Google DeepMind's model page](https://deepmind.google/models/gemini/) describes capabilities spanning software engineering, document-based work and visual understanding. That includes working through legal and financial material, interpreting charts and understanding long videos. These are different tasks, so a strong result in one does not establish reliability in all of them.
 
+Google also reports a concrete result from its own data centers: a team of Argon agents analyzed memory-use measurements across its servers, identified optimizations and applied them. Once rolled out, those changes **freed more than 300 TiB of memory**, with Google estimating total savings of **500 TiB to 1 PiB**. This means freeing server RAM for other work, rather than clearing disk storage. The larger figure is an estimate; the 300 TiB figure is Google's reported result.
+
 One notable change is a **one-million-token output limit**, up from 64,000, according to [Google's announcement](https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/). This is the generation limit, not a claim about how many documents fit into the input. It gives the model more room for extended reasoning and responses; it does not mean every request needs that much output.
 
 ## Strong benchmark results, with some gaps
