@@ -66,6 +66,17 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "github-copilot-computer-use",
+    date: "2026-10-03",
+    title: "GitHub Copilot adds computer use for desktop apps",
+    summary: "GitHub Copilot’s computer use preview automates desktop apps on macOS and Windows. Learn how it works, where it helps, and what users can control.",
+    kind: "reading",
+    document: "/news/github-copilot-computer-use.md",
+    keywords: ["GitHub Copilot computer use", "Copilot CLI", "Copilot desktop app", "desktop app automation", "computer use public preview"],
+    minutes: 2,
+    reference: {label: "GitHub — Copilot computer use announcement", href: "https://github.blog/changelog/2026-10-01-github-copilot-can-now-interact-with-desktop-apps/"},
+  },
+  {
     slug: "pyronaut-python-micronaut-graalvm",
     date: "2026-10-03",
     title: "Pyronaut launches Python services on Micronaut and GraalVM",
