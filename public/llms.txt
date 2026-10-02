@@ -44,6 +44,9 @@
 
 ## Recent Dispatch notes
 
+- [Why OpenAI, TypeSafe and Cloudflare are racing to make AI decide](https://ayu-sh-kr.com/news/decision-models-openai-typesafe-cloudflare/): Jev arrived first, OpenAI followed with Decisions API, and Cloudflare answered with open Clef models. Their launches show why AI companies are chasing fast, structured judgments inside agents. [Article Markdown](https://ayu-sh-kr.com/news/decision-models-openai-typesafe-cloudflare.md).
+
+
 - [Google announces Gemini 4 Argon: capabilities, pricing and access](https://ayu-sh-kr.com/news/google-gemini-4-argon-pricing-capabilities/): Google announces Gemini 4 Argon with limited early access. A three-minute look at its coding benchmarks, one-million-token output limit, API prices and later rate increases. [Article Markdown](https://ayu-sh-kr.com/news/google-gemini-4-argon-pricing-capabilities.md).
 
 - [InstaCloud brings deployment into the AI coding agent workflow](https://ayu-sh-kr.com/news/instacloud-agent-native-serverless-cloud/): InstaCloud connects AI coding agents to serverless deployment, databases, logs, and environment branching. How the workflow takes an API from code to a running service. [Article Markdown](https://ayu-sh-kr.com/news/instacloud-agent-native-serverless-cloud.md).
