@@ -44,6 +44,8 @@
 
 ## Recent Dispatch notes
 
+- [Pyronaut launches Python services on Micronaut and GraalVM](https://www.ayu-sh-kr.com/news/pyronaut-python-micronaut-graalvm/): Pyronaut launches Python services on Micronaut and GraalVM. How GraalPy runs the code, Crema reuses a native base, and what the launch benchmarks show. [Article Markdown](https://www.ayu-sh-kr.com/news/pyronaut-python-micronaut-graalvm.md).
+
 - [Why OpenAI, TypeSafe and Cloudflare are racing to make AI decide](https://ayu-sh-kr.com/news/decision-models-openai-typesafe-cloudflare/): Jev arrived first, OpenAI followed with Decisions API, and Cloudflare answered with open Clef models. Their launches show why AI companies are chasing fast, structured judgments inside agents. [Article Markdown](https://ayu-sh-kr.com/news/decision-models-openai-typesafe-cloudflare.md).
 
 

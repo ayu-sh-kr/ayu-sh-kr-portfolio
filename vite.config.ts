@@ -35,6 +35,7 @@ const showcaseRoutes = [
   "/showcase/dota-rest",
 ];
 const newsRoutes = [
+  "/news/pyronaut-python-micronaut-graalvm",
   "/news/decision-models-openai-typesafe-cloudflare",
   "/news/google-gemini-4-argon-pricing-capabilities",
   "/news/instacloud-agent-native-serverless-cloud",
