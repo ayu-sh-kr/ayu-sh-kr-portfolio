@@ -14,6 +14,11 @@
   ],
   "redirects": [
     {
+      "source": "/news/decision-models-openai-typesafe-cloudflare",
+      "destination": "/news/decision-models-openai-typesafe-cloudflare/",
+      "permanent": true
+    },
+    {
       "source": "/about",
       "destination": "/about/",
       "permanent": true

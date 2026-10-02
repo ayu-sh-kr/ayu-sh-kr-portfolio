@@ -66,6 +66,18 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "decision-models-openai-typesafe-cloudflare",
+    date: "2026-10-02",
+    title: "OpenAI, TypeSafe and Cloudflare bring decision models to AI agents",
+    summary: "OpenAI Decisions API, TypeSafe Jev, and Cloudflare Clef bring typed choices to AI workflows. A four-minute look at how decision models work, where each fits, and what their benchmarks show.",
+    kind: "reading",
+    document: "/news/decision-models-openai-typesafe-cloudflare.md",
+    keywords: ["AI decision models", "OpenAI Decisions API", "TypeSafe Jev", "Cloudflare Clef", "structured AI decisions", "AI agent routing"],
+    minutes: 4,
+    reference: {label: "Cloudflare — Introducing Clef decision models", href: "https://blog.cloudflare.com/clef-decision-models/"},
+  },
+
+  {
     slug: "google-gemini-4-argon-pricing-capabilities",
     date: "2026-10-01",
     title: "Google announces Gemini 4 Argon: capabilities, pricing and access",
