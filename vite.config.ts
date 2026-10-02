@@ -36,6 +36,7 @@ const showcaseRoutes = [
 ];
 const newsRoutes = [
   "/news/github-copilot-computer-use",
+  "/news/pyronaut-python-micronaut-graalvm",
   "/news/decision-models-openai-typesafe-cloudflare",
   "/news/google-gemini-4-argon-pricing-capabilities",
   "/news/instacloud-agent-native-serverless-cloud",

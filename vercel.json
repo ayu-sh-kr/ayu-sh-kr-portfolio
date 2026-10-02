@@ -19,11 +19,6 @@
       "permanent": true
     },
     {
-      "source": "/news/decision-models-openai-typesafe-cloudflare",
-      "destination": "/news/decision-models-openai-typesafe-cloudflare/",
-      "permanent": true
-    },
-    {
       "source": "/about",
       "destination": "/about/",
       "permanent": true
@@ -209,6 +204,11 @@
       "permanent": true
     },
     {
+      "source": "/news/decision-models-openai-typesafe-cloudflare",
+      "destination": "/news/decision-models-openai-typesafe-cloudflare/",
+      "permanent": true
+    },
+    {
       "source": "/news/docker-sandbox-kit-aws-lambda-microvms-agent-coding",
       "destination": "/news/docker-sandbox-kit-aws-lambda-microvms-agent-coding/",
       "permanent": true
@@ -301,6 +301,11 @@
     {
       "source": "/news/prismml-bonsai-2-27b",
       "destination": "/news/prismml-bonsai-2-27b/",
+      "permanent": true
+    },
+    {
+      "source": "/news/pyronaut-python-micronaut-graalvm",
+      "destination": "/news/pyronaut-python-micronaut-graalvm/",
       "permanent": true
     },
     {
