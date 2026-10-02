@@ -66,6 +66,17 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "pyronaut-python-micronaut-graalvm",
+    date: "2026-10-03",
+    title: "Pyronaut brings Python to Micronaut with GraalVM",
+    summary: "Pyronaut combines Python and Micronaut through GraalPy, build-time processing and GraalVM Crema. A three-minute look at the architecture, deployment paths and benchmark limits.",
+    kind: "reading",
+    document: "/news/pyronaut-python-micronaut-graalvm.md",
+    keywords: ["Pyronaut", "GraalVM Python", "GraalPy", "Micronaut Python", "GraalVM Crema", "Python framework performance"],
+    minutes: 3,
+    reference: {label: "Pyronaut — Introducing Pyronaut", href: "https://pyronaut.io/2026/10/02/introducing-pyronaut/"},
+  },
+  {
     slug: "decision-models-openai-typesafe-cloudflare",
     date: "2026-10-02",
     title: "Why OpenAI, TypeSafe and Cloudflare are racing to make AI decide",
