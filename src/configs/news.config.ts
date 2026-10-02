@@ -66,6 +66,17 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "github-copilot-computer-use",
+    date: "2026-10-03",
+    title: "GitHub Copilot can now use desktop apps through computer use",
+    summary: "GitHub’s Copilot computer-use preview can read and operate desktop apps on macOS and Windows. Here is how it works, where it helps, and why permissions and review still matter.",
+    kind: "reading",
+    document: "/news/github-copilot-computer-use.md",
+    keywords: ["GitHub Copilot computer use", "Copilot desktop app automation", "Copilot CLI computer use", "AI computer use preview"],
+    minutes: 2,
+    reference: {label: "GitHub — Copilot computer use announcement", href: "https://github.blog/changelog/2026-10-01-github-copilot-can-now-interact-with-desktop-apps/"},
+  },
+  {
     slug: "decision-models-openai-typesafe-cloudflare",
     date: "2026-10-02",
     title: "Why OpenAI, TypeSafe and Cloudflare are racing to make AI decide",
