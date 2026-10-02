@@ -1,39 +1,35 @@
-# OpenAI, TypeSafe and Cloudflare bring decision models to AI agents
+# Why OpenAI, TypeSafe and Cloudflare are racing to make AI decide
 
-A support ticket arrives. Before an agent writes a reply, software may need to decide whether it is urgent, which team should handle it, or whether the next action needs approval. That small choice can trigger a full language-model response, even when the application only needs one of a few defined answers.
+In just over two weeks, three AI companies announced products built around a surprisingly small output: a decision. TypeSafe AI introduced **Jev** on September 15. OpenAI followed with its **Decisions API** at DevDay on September 29. On October 1, Cloudflare released **Clef** and **Clef-flash**, open-weight models designed for the same kind of work.
 
-Several companies are now offering models built for that step. OpenAI announced its **Decisions API** at DevDay, TypeSafe AI introduced **Jev**, and Cloudflare has released **Clef** and **Clef-flash** as open-weight models. They share a narrower goal: read a piece of context and return a decision in a format software can use.
+The timing alone does not prove a coordinated race. The product choices are more revealing. Cloudflare explicitly compares Clef with Jev and supports the same API shape. OpenAI is offering a bounded decision interface backed by Luna. Each is making a different bet on a question that sits inside many AI agents: when the possible actions are already known, why ask a model to write an answer?
 
-## From generated text to a defined choice
+## Jev put the idea on the table
 
-A general language model might answer, “This looks urgent because checkout is failing for every customer.” Useful to a person, but an application still has to extract the label and decide what to do if the response is malformed or uncertain.
+TypeSafe’s pitch was direct: pass in a situation and a set of questions, then receive **typed answers and probabilities** that software can use. A typed answer might be one choice from a list or a score against a defined scale. Jev does not generate a paragraph explaining itself. TypeSafe calls this a “System One” model, positioning it as a fast decision layer within automated workflows.
 
-A decision model instead receives the situation and a question with allowed answers. For example: “Is this urgent?” or “Which team should handle it: billing, technical, or sales?” It returns a yes/no probability or a choice with scores. The surrounding program can then route the ticket, ask a human, or take no action.
+The company also made speed, cost and calibrated confidence central to its launch. Its reported gains come from TypeSafe’s own evaluations, whose workflow and reference answers affect the comparison. The bigger signal was the interface: the model’s job was no longer to compose a response for a reader, but to supply a constrained judgment to another piece of software.
 
-That makes decision models a potential fit for **classification, routing, scoring, and guardrails** inside larger AI workflows. They do not replace the model that writes an answer, investigates a problem, or handles an open-ended request. They handle the bounded decision around that work.
+## OpenAI brought decisions into its API
 
-## Three launches, one emerging category
+Two weeks later, OpenAI announced the **Decisions API** in limited preview. Developers provide text or image context and define questions with a finite set of allowed answers. OpenAI describes uses such as classification, request routing and choosing an agent’s next action, with the service drawing on Luna’s intelligence.
 
-**TypeSafe AI introduced Jev on September 15** as its first “System One” model. Jev returns typed decisions and probabilities rather than generated text. TypeSafe says its training approach is designed for calibrated decisions and reports speed and cost advantages on its own evaluations. Those comparisons are company claims, and results depend on the task and evaluation setup.
+That announcement matters because OpenAI framed decisions as a distinct API surface at DevDay. It has not published directly comparable latency or benchmark results for the Decisions API in its launch recap, so this is evidence of product direction, not evidence that OpenAI has overtaken Jev on speed or quality. OpenAI said a wider release was planned for the following days.
 
-**OpenAI announced the Decisions API at DevDay on September 29.** It lets developers provide text or image context and ask specific questions whose answers come from a finite set. OpenAI says the API can classify content, route requests, or select an agent’s next action. It entered limited preview; OpenAI’s announcement did not publish comparable latency or benchmark figures.
+## Cloudflare made a direct counteroffer
 
-**Cloudflare released Clef and Clef-flash on October 1** through Workers AI, with model weights under the Apache 2.0 license. Clef is a 27-billion-parameter model aimed at higher-precision decisions; the 9-billion-parameter Clef-flash targets latency-sensitive work. Cloudflare says both follow the System One API, making them compatible with Jev integrations after changing the endpoint and model.
+Cloudflare’s October 1 launch is the clearest sign of competition. **Clef** and the smaller **Clef-flash** are available on Workers AI, while their weights are published under Apache 2.0. Cloudflare says Clef follows the System One API, allowing an existing Jev integration to switch endpoint and model. It is also recruiting design partners for a reinforcement-learning fine-tuning service for these decisions.
 
-Cloudflare’s launch post reports median latency of 209 milliseconds for Clef and 38.8 milliseconds for Clef-flash, compared with 524.1 milliseconds for Jev across its 43 benchmark runs. It also says Clef led seven of ten decision benchmarks. These are **Cloudflare’s reported results**, not an independent, universal ranking; the benchmark mix and serving setup matter.
+Cloudflare put numbers next to that pitch. In its 43 benchmark runs, it reports median latency of **209.3 ms for Clef**, **38.8 ms for Clef-flash** and **524.1 ms for Jev**. It says a Clef model led on seven of ten decision benchmarks. These are Cloudflare’s measurements under its selected workloads and serving conditions; they do not settle how the models compare in every application. Clef’s 27B model and Clef-flash’s 9B model also make different trade-offs between accuracy and speed.
 
-## What developers can use them for
+The open weights are another competitive lever. Developers can inspect or run Cloudflare’s models locally, while Workers AI offers a hosted path. Jev was introduced in early access as a hosted TypeSafe product; OpenAI’s Decisions API began in limited preview. Those access choices may matter as much as a leaderboard score to teams deciding where a model sits in their system.
 
-Consider an agent that receives a request to refund an order. A decision model could score whether the request matches a refund policy, classify its risk, and choose whether to proceed, ask for more information, or send it to a person. A larger language model can still explain the policy or draft the response after the system has made that routing decision.
+## What the launches reveal
 
-The benefit is a smaller, more predictable interface between model output and code. The application can define allowed answers in advance and decide what confidence level is enough for an automatic action. Clef also supports image input, which Cloudflare says can be used for visual classification.
+The common target is the repeated **decision between steps** of a larger workflow: classify this input, choose a route, score a risk, or decide whether an agent should continue. Returning only predefined answer types can reduce output generation and make the result easier for software to handle. That explains the interest in speed and predictable structure, especially when an agent might make many such calls.
 
-But a fixed output shape does not make a decision correct. A valid “approve” answer can still be wrong. Production code should keep permissions, confidence thresholds, human review, and irreversible side effects under application control. OpenAI’s API is still in limited preview, while Jev and Clef have different access and deployment options.
+The three announcements do not establish that every agent needs a dedicated decision model, or that the products share an architecture. They establish that three companies now want to own this narrow step through different routes: TypeSafe with Jev’s purpose-built model, OpenAI with a limited-preview API, and Cloudflare with hosted and open-weight alternatives compatible with Jev’s interface.
 
-## A new component for the agent stack
+A decision still needs scrutiny. A model can return a perfectly valid answer and make the wrong call; confidence and a fixed schema do not grant it authority to approve a payment or execute a risky tool. The meaningful contest ahead is whether these models can make **reliable decisions in real workflows**, under clear human and software controls, as well as produce impressive launch benchmarks.
 
-The launches suggest a growing place for models that make **one constrained choice** inside software, alongside the general models that generate and reason. If the task is repetitive and the possible answers are known, developers can now evaluate this dedicated approach against a classifier, rules, or a general LLM.
-
-The useful question is not which model wins every benchmark. It is whether a decision model makes a particular workflow faster or simpler without shifting too much authority away from the code that governs it.
-
-Sources: [OpenAI — DevDay 2026 recap](https://openai.com/index/devday-2026-recap/); [TypeSafe AI — Introducing System One Models & Jev](https://typesafe.ai/blog/introducing-system-one-models-and-jev); [Cloudflare — Introducing Clef](https://blog.cloudflare.com/clef-decision-models/); [Cloudflare — Workers AI changelog](https://developers.cloudflare.com/changelog/post/2026-10-01-clef-workers-ai/).
+Sources: [TypeSafe AI — Introducing System One Models & Jev](https://typesafe.ai/blog/introducing-system-one-models-and-jev); [OpenAI — DevDay 2026 recap](https://openai.com/index/devday-2026-recap/); [Cloudflare — Introducing Clef](https://blog.cloudflare.com/clef-decision-models/); [Cloudflare — Workers AI changelog](https://developers.cloudflare.com/changelog/post/2026-10-01-clef-workers-ai/).

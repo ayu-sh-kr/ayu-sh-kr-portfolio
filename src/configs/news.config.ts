@@ -68,8 +68,8 @@ export const newsNotes: readonly NewsNote[] = [
   {
     slug: "decision-models-openai-typesafe-cloudflare",
     date: "2026-10-02",
-    title: "OpenAI, TypeSafe and Cloudflare bring decision models to AI agents",
-    summary: "OpenAI Decisions API, TypeSafe Jev, and Cloudflare Clef bring typed choices to AI workflows. A four-minute look at how decision models work, where each fits, and what their benchmarks show.",
+    title: "Why OpenAI, TypeSafe and Cloudflare are racing to make AI decide",
+    summary: "Jev arrived first, OpenAI followed with Decisions API, and Cloudflare answered with open Clef models. Their launches show why AI companies are chasing fast, structured judgments inside agents.",
     kind: "reading",
     document: "/news/decision-models-openai-typesafe-cloudflare.md",
     keywords: ["AI decision models", "OpenAI Decisions API", "TypeSafe Jev", "Cloudflare Clef", "structured AI decisions", "AI agent routing"],
