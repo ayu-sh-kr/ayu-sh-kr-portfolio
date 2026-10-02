@@ -44,6 +44,8 @@
 
 ## Recent Dispatch notes
 
+- [GitHub Copilot can now use desktop apps through computer use](https://ayu-sh-kr.com/news/github-copilot-computer-use/): GitHub’s Copilot computer-use preview can read and operate desktop apps on macOS and Windows. Here is how it works, where it helps, and why permissions and review still matter. [Article Markdown](https://ayu-sh-kr.com/news/github-copilot-computer-use.md).
+
 - [Why OpenAI, TypeSafe and Cloudflare are racing to make AI decide](https://ayu-sh-kr.com/news/decision-models-openai-typesafe-cloudflare/): Jev arrived first, OpenAI followed with Decisions API, and Cloudflare answered with open Clef models. Their launches show why AI companies are chasing fast, structured judgments inside agents. [Article Markdown](https://ayu-sh-kr.com/news/decision-models-openai-typesafe-cloudflare.md).
 
 
