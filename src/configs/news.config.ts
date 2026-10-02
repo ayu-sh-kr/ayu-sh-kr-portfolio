@@ -68,8 +68,8 @@ export const newsNotes: readonly NewsNote[] = [
   {
     slug: "pyronaut-python-micronaut-graalvm",
     date: "2026-10-03",
-    title: "Pyronaut brings Python to Micronaut with GraalVM",
-    summary: "Pyronaut combines Python and Micronaut through GraalPy, build-time processing and GraalVM Crema. A three-minute look at the architecture, deployment paths and benchmark limits.",
+    title: "Pyronaut launches Python services on Micronaut and GraalVM",
+    summary: "Pyronaut launches Python services on Micronaut and GraalVM. How GraalPy runs the code, Crema reuses a native base, and what the launch benchmarks show.",
     kind: "reading",
     document: "/news/pyronaut-python-micronaut-graalvm.md",
     keywords: ["Pyronaut", "GraalVM Python", "GraalPy", "Micronaut Python", "GraalVM Crema", "Python framework performance"],
