@@ -36,6 +36,7 @@ const showcaseRoutes = [
 ];
 const newsRoutes = [
   "/news/cloudflare-artifacts-next-git-platform",
+  "/news/cloudflare-cf-cli-wrangler-migration",
   "/news/github-copilot-computer-use",
   "/news/pyronaut-python-micronaut-graalvm",
   "/news/decision-models-openai-typesafe-cloudflare",

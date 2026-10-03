@@ -77,6 +77,17 @@ export const newsNotes: readonly NewsNote[] = [
     reference: {label: "Cloudflare — Next Git platform announcement", href: "https://blog.cloudflare.com/next-git-platform-on-cloudflare/"},
   },
   {
+    slug: "cloudflare-cf-cli-wrangler-migration",
+    date: "2026-10-03",
+    title: "Cloudflare launches cf CLI: what changes for Wrangler?",
+    summary: "Cloudflare's cf CLI enters open beta. Explore its API coverage, TypeScript config, Vite defaults and Wrangler migration with 18 months of maintenance after beta.",
+    kind: "infra",
+    document: "/news/cloudflare-cf-cli-wrangler-migration.md",
+    keywords: ["Cloudflare cf CLI", "cf vs Wrangler", "Wrangler migration", "Wrangler maintenance support", "cloudflare.config.ts", "Cloudflare Vite plugin", "cf cli search"],
+    minutes: 4,
+    reference: {label: "Cloudflare — Introducing cf", href: "https://blog.cloudflare.com/cloudflare-cf-cli-launch/"},
+  },
+  {
     slug: "github-copilot-computer-use",
     date: "2026-10-03",
     title: "GitHub Copilot adds computer use for desktop apps",

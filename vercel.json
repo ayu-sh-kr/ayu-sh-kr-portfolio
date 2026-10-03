@@ -19,6 +19,11 @@
       "permanent": true
     },
     {
+      "source": "/news/cloudflare-cf-cli-wrangler-migration",
+      "destination": "/news/cloudflare-cf-cli-wrangler-migration/",
+      "permanent": true
+    },
+    {
       "source": "/news/github-copilot-computer-use",
       "destination": "/news/github-copilot-computer-use/",
       "permanent": true
