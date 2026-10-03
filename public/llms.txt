@@ -44,7 +44,7 @@
 
 ## Recent Dispatch notes
 
-- [Cloudflare invites developers to build the next Git platform with Artifacts](https://ayu-sh-kr.com/news/cloudflare-artifacts-next-git-platform/): A two-minute brief on Artifacts open beta, Git-compatible repositories for agents, Workers automation and Cloudflare's competition. [Article Markdown](https://ayu-sh-kr.com/news/cloudflare-artifacts-next-git-platform.md).
+- [Cloudflare opens Artifacts beta for GitHub alternatives built around AI agents](https://www.ayu-sh-kr.com/news/cloudflare-artifacts-next-git-platform/): Cloudflare Artifacts enters open beta with Git repository automation and Workers deployment. How it supports AI agents and the contest to build a GitHub alternative. [Article Markdown](https://www.ayu-sh-kr.com/news/cloudflare-artifacts-next-git-platform.md).
 - [GitHub Copilot adds computer use for desktop apps](https://www.ayu-sh-kr.com/news/github-copilot-computer-use/): GitHub Copilot’s computer use preview automates desktop apps on macOS and Windows. Learn how it works, where it helps, and what users can control. [Article Markdown](https://www.ayu-sh-kr.com/news/github-copilot-computer-use.md).
 
 - [Pyronaut launches Python services on Micronaut and GraalVM](https://www.ayu-sh-kr.com/news/pyronaut-python-micronaut-graalvm/): Pyronaut launches Python services on Micronaut and GraalVM. How GraalPy runs the code, Crema reuses a native base, and what the launch benchmarks show. [Article Markdown](https://www.ayu-sh-kr.com/news/pyronaut-python-micronaut-graalvm.md).
