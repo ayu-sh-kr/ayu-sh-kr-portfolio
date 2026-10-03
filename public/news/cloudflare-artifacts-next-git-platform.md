@@ -1,19 +1,27 @@
-# Cloudflare invites developers to build the next Git platform with Artifacts
+# Cloudflare opens Artifacts beta for GitHub alternatives built around AI agents
 
-Cloudflare wants developers to build a GitHub alternative for AI agents. On October 1, it put **Artifacts**, its Git-compatible repository service, into open beta and announced a competition to build the collaboration platform above it. Cloudflare is supplying the repository infrastructure; the finished GitHub-like product is still a challenge for entrants.
+Cloudflare is inviting developers to build the next GitHub on its infrastructure. On **October 1, 2026**, the company opened **Artifacts** to public beta and launched a competition for Git platforms designed around AI coding agents. Artifacts supplies the repository service; entrants will build the experience for coordinating, reviewing and merging work.
 
-The pitch starts with a question: if an agent gets its own repository for each task, how do people and other agents track, review and combine all those changes? A normal Git workflow can store the code, but the coordination around many simultaneous tasks needs a useful interface and rules.
+That distinction explains the announcement. Cloudflare expects many agents to work on the same project at once, each fixing bugs or trying a different implementation. Its challenge is to make those parallel efforts understandable: what changed, why it changed, and which result should reach the main project.
 
-## What Artifacts provides
+## Artifacts gives each agent a place to work
 
-Artifacts is a **versioned file system that speaks Git**. An application can create or fork repositories programmatically, read files and commits, and give an agent a repository-specific token. A developer could fork a project for a bug-fixing agent, let it push a change, then inspect the result before merging it.
+**Artifacts stores files and their history through a Git-compatible interface.** Developers can import existing repositories and connect through standard Git clients, the REST API or Cloudflare Workers, its platform for running application code.
 
-Cloudflare has added event subscriptions for pushes and other repository activity, so a Worker can start a review or CI workflow when that agent pushes. Repositories can also connect to **Workers Builds**: a production-branch push deploys the Worker, while another branch gets a preview. These are building blocks for a platform, not a ready-made replacement for GitHub's issues, pull requests and review experience.
+For example, a platform could give two agents separate copies of the same project to fix a login bug. Each agent would push its changes to its own repository. The platform could then compare the results and preserve the instructions and context behind each attempt. Artifacts supports that repository workflow; the platform's developers decide how to review and combine the changes.
 
-## The invitation and its limits
+## From an agent's push to review and deployment
 
-Cloudflare is asking teams to use **Workers and Artifacts** to design that missing layer: how agents coordinate tasks, how conflicting changes are handled, and how people review the output. Competition submissions are open until **October 14, 2026**; the first-place team is offered $25,000 in Cloudflare credits. Artifacts itself is available on the Workers Paid plan, with usage billing scheduled to begin October 14.
+The open beta adds tools for connecting those repositories to the rest of the workflow. A Worker can create or fork a repository, inspect files and commits, and issue a token limited to that repository. Event subscriptions let a push trigger tests or a review workflow.
 
-The practical news is a new place to store and automate Git repositories at agent scale. Whether it becomes a compelling GitHub alternative depends on what developers build around those repositories—and whether their approach makes many agents' changes easier to understand and trust.
+For projects deployed to Workers, **Workers Builds** can turn a production-branch push into a deployment. Other branches get shareable previews, allowing changes to be tried before release. Teams can also select US or EU storage and processing for a group of repositories, and monitor operations and errors.
 
-Sources: [Cloudflare — Next Git platform announcement](https://blog.cloudflare.com/next-git-platform-on-cloudflare/) · [Cloudflare — Artifacts open beta](https://developers.cloudflare.com/changelog/post/2026-10-01-artifacts-open-beta/)
+## What the Git platform competition asks teams to build
+
+Cloudflare wants entrants to show **multiple agents working concurrently** and design how their work is coordinated and reviewed. Submissions close on **October 14, 2026** and require a five-to-ten-minute demo video, source code under a permissive open source license, and instructions for trying the project. The first-place team receives **$25,000 in Cloudflare credits**.
+
+Artifacts requires the Workers Paid plan. Its published pricing includes 10,000 repository operations and 1 GB of storage per month, with additional usage charged at $0.15 per 1,000 operations and $0.50 per GB-month.
+
+For developers building coding platforms, Artifacts offers a way to automate repository management while retaining Git tools. The competition asks them to turn that infrastructure into a useful collaboration product—one where people can follow and judge the work produced by many agents.
+
+Sources: [Cloudflare announcement](https://blog.cloudflare.com/next-git-platform-on-cloudflare/) · [Artifacts documentation](https://developers.cloudflare.com/artifacts/) · [Open beta capabilities](https://developers.cloudflare.com/changelog/post/2026-10-01-artifacts-open-beta/) · [Artifacts pricing](https://developers.cloudflare.com/artifacts/platform/pricing/)
