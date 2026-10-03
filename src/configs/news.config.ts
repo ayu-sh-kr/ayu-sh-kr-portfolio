@@ -66,6 +66,17 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "cloudflare-artifacts-next-git-platform",
+    date: "2026-10-03",
+    title: "Cloudflare invites developers to build the next Git platform with Artifacts",
+    summary: "Cloudflare opens Artifacts to developers and challenges them to build a GitHub alternative for AI agents. What its Git-compatible repositories offer and what teams must build.",
+    kind: "infra",
+    document: "/news/cloudflare-artifacts-next-git-platform.md",
+    keywords: ["Cloudflare Artifacts", "GitHub alternative", "Git platform for AI agents", "Cloudflare Workers Git repositories", "Artifacts open beta"],
+    minutes: 2,
+    reference: {label: "Cloudflare — Next Git platform announcement", href: "https://blog.cloudflare.com/next-git-platform-on-cloudflare/"},
+  },
+  {
     slug: "github-copilot-computer-use",
     date: "2026-10-03",
     title: "GitHub Copilot adds computer use for desktop apps",
