@@ -14,6 +14,11 @@
   ],
   "redirects": [
     {
+      "source": "/news/cloudflare-artifacts-next-git-platform",
+      "destination": "/news/cloudflare-artifacts-next-git-platform/",
+      "permanent": true
+    },
+    {
       "source": "/news/cloudflare-cf-cli-wrangler-migration",
       "destination": "/news/cloudflare-cf-cli-wrangler-migration/",
       "permanent": true
