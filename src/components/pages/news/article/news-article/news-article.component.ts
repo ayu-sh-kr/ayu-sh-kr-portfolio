@@ -13,6 +13,8 @@ import {portfolioMarkdownColor, portfolioMarkdownTheme} from "@app/configs/markd
 import {newsContent} from "@app/data/news-content.ts";
 import {NEWS_MARKDOWN_SOURCE_EVENT, type NewsMarkdownSource} from "@app/events/news.events.ts";
 import {NewsLoaderService} from "@app/service/news-loader.service.ts";
+import {blogViewCountService, toBlogViewTrackingFailureReason} from "@app/service/blog-view-count.service.ts";
+import {publishAnalyticsEvent} from "@app/utils/analytics.utils.ts";
 import {escapeHtml} from "@app/utils/html.utils.ts";
 
 const renderFigures = (note: NewsNote): string => note.figures?.length ? `
@@ -43,6 +45,7 @@ const renderAdjacentNote = (note: NewsNote | undefined, direction: "previous" | 
  * Coordinates the `/news/:slug` reading surface from catalogue lookup to document load.
  * Metadata renders immediately from configuration, while Markdown crosses a feature-scoped
  * event boundary and request cancellation prevents stale routes from replacing current copy.
+ * Valid browser routes also record a non-blocking NEWS view, including hydrated articles.
  *
  * Selector: `news-article`.
  */
@@ -63,13 +66,23 @@ export class NewsArticleComponent extends BaseElement {
       || this.querySelector("[data-news-document] .news-markdown-content") !== null;
   }
 
-  /** Resolves the active note and starts its cancellable Markdown request. */
+  /** Resolves the note, records a browser view, and loads Markdown unless SSG already supplied it. */
   @OnEvent("connected", true)
   initializeArticle(): void {
     const slug = getNewsSlug(window.location.pathname);
     this.note = getNewsNote(slug) ?? null;
     this.scheduleProgress();
-    if (!this.note || this.hasHydratedArticle) {
+    if (!this.note || import.meta.env.SSR) {
+      return;
+    }
+
+    void blogViewCountService.recordView(this.note.slug, "NEWS").catch((error: unknown) => {
+      publishAnalyticsEvent({
+        eventName: "blog_view_tracking_failed",
+        params: {reason: toBlogViewTrackingFailureReason(error)},
+      });
+    });
+    if (this.hasHydratedArticle) {
       return;
     }
 
