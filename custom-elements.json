@@ -69,39 +69,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/design-showcases/ui-glass-showcase/ui-glass-showcase.component.js",
-      "declarations": [
-        {
-          "kind": "class",
-          "name": "UiGlassShowcaseComponent",
-          "customElement": true,
-          "tagName": "ui-glass-showcase",
-          "superclass": {
-            "name": "BaseElement"
-          },
-          "members": [],
-          "attributes": []
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "UiGlassShowcaseComponent",
-          "declaration": {
-            "name": "UiGlassShowcaseComponent"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "ui-glass-showcase",
-          "declaration": {
-            "name": "UiGlassShowcaseComponent"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/components/design-showcases/ui-isometric-showcase/ui-isometric-showcase.component.js",
       "declarations": [
         {
