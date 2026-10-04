@@ -3746,6 +3746,39 @@
           }
         },
         {
+          "name": "ui-gauge-showcase",
+          "source": {
+            "file": "./src/components/design-showcases/ui-gauge-showcase/ui-gauge-showcase.component.ts",
+            "offset": 315
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "ui-glass-showcase",
+          "source": {
+            "file": "./src/components/design-showcases/ui-glass-showcase/ui-glass-showcase.component.ts",
+            "offset": 309
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "ui-isometric-showcase",
+          "source": {
+            "file": "./src/components/design-showcases/ui-isometric-showcase/ui-isometric-showcase.component.ts",
+            "offset": 304
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
           "name": "unsubscribe-flow",
           "source": {
             "file": "./src/components/pages/subscription/unsubscribe-flow/unsubscribe-flow.component.ts",
