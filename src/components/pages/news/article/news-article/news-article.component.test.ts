@@ -1,7 +1,7 @@
 import {afterEach, beforeEach, describe, expect, it, vi} from "vitest";
-import {getNewsNotes} from "@app/configs/news.config.ts";
-import {blogViewCountService} from "@app/service/blog-view-count.service.ts";
-import {publishAnalyticsEvent} from "@app/utils/analytics.utils.ts";
+import {getNewsNotes} from "../../../../../configs/news.config.ts";
+import {blogViewCountService} from "../../../../../service/blog-view-count.service.ts";
+import {publishAnalyticsEvent} from "../../../../../utils/analytics.utils.ts";
 import {NewsArticleComponent} from "./news-article.component.ts";
 
 vi.mock("@ayu-sh-kr/dota-wrap/core", () => ({
@@ -12,13 +12,19 @@ vi.mock("@ayu-sh-kr/dota-wrap/core", () => ({
   ApplicationEventService: {getInstance: () => ({getPublisher: () => ({publishAsync: vi.fn()})})},
 }));
 vi.mock("@ayu-sh-kr/dota-wrap/event", () => ({OnEvent: () => () => {}}));
-vi.mock("@app/service/blog-view-count.service.ts", () => ({
+vi.mock("../../../../../service/blog-view-count.service.ts", () => ({
   blogViewCountService: {recordView: vi.fn()},
   toBlogViewTrackingFailureReason: () => "network",
 }));
-vi.mock("@app/utils/analytics.utils.ts", () => ({publishAnalyticsEvent: vi.fn()}));
+vi.mock("../../../../../utils/analytics.utils.ts", () => ({publishAnalyticsEvent: vi.fn()}));
 
-customElements.define("test-news-article", NewsArticleComponent);
+class TestNewsArticleComponent extends NewsArticleComponent {
+  constructor() {
+    super();
+  }
+}
+
+customElements.define("test-news-article", TestNewsArticleComponent);
 
 describe("news article view tracking", () => {
   beforeEach(() => {
@@ -36,7 +42,7 @@ describe("news article view tracking", () => {
 
   it("records NEWS without waiting for tracking before loading Markdown", () => {
     vi.mocked(blogViewCountService.recordView).mockReturnValue(new Promise(() => {}));
-    const article = new NewsArticleComponent();
+    const article = new TestNewsArticleComponent();
     vi.spyOn(article, "scheduleProgress").mockImplementation(() => {});
     const load = vi.spyOn(article, "loadDocument").mockResolvedValue();
 
@@ -47,7 +53,7 @@ describe("news article view tracking", () => {
   });
 
   it("records hydrated articles without fetching Markdown again", () => {
-    const article = new NewsArticleComponent();
+    const article = new TestNewsArticleComponent();
     article.hasHydratedArticle = true;
     vi.spyOn(article, "scheduleProgress").mockImplementation(() => {});
     const load = vi.spyOn(article, "loadDocument").mockResolvedValue();
@@ -60,7 +66,7 @@ describe("news article view tracking", () => {
 
   it("does not track missing articles", () => {
     window.history.replaceState(null, "", "/news/missing-test-article");
-    const article = new NewsArticleComponent();
+    const article = new TestNewsArticleComponent();
     vi.spyOn(article, "scheduleProgress").mockImplementation(() => {});
     const load = vi.spyOn(article, "loadDocument").mockResolvedValue();
 
@@ -72,7 +78,7 @@ describe("news article view tracking", () => {
 
   it("does not submit tracking during server rendering", () => {
     vi.stubEnv("SSR", true);
-    const article = new NewsArticleComponent();
+    const article = new TestNewsArticleComponent();
     vi.spyOn(article, "scheduleProgress").mockImplementation(() => {});
 
     article.initializeArticle();
@@ -82,7 +88,7 @@ describe("news article view tracking", () => {
 
   it("reports a privacy-safe failure while keeping Markdown loading independent", async () => {
     vi.mocked(blogViewCountService.recordView).mockRejectedValue(new Error("offline"));
-    const article = new NewsArticleComponent();
+    const article = new TestNewsArticleComponent();
     vi.spyOn(article, "scheduleProgress").mockImplementation(() => {});
     const load = vi.spyOn(article, "loadDocument").mockResolvedValue();
 
