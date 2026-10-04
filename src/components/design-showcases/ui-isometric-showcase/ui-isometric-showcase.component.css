@@ -5,105 +5,84 @@ ui-isometric-showcase {
 
 .ui-isometric-specimen {
   margin: 0;
-  padding: clamp(1rem, 4vw, 2rem);
-  border: 1px solid var(--border-strong-color);
-  border-radius: 1.5rem;
+  padding: clamp(0.75rem, 2vw, 1.5rem);
+  border-radius: 1rem;
   background: var(--surface-color);
-  color: var(--foreground-color);
-  text-align: center;
 }
 
 .ui-isometric-specimen svg {
   display: block;
   width: 100%;
-  overflow: visible;
-  margin-bottom: 1rem;
+  stroke: var(--muted-strong-color);
+  stroke-width: 1.25;
   stroke-linejoin: round;
 }
 
-.ui-isometric-path {
+.ui-iso-ground {
   fill: none;
   stroke: var(--border-strong-color);
-  stroke-width: 2;
-  stroke-dasharray: 5 5;
+  stroke-dasharray: 3 5;
 }
 
-.ui-isometric-top {
+.ui-iso-belt,
+.ui-iso-top,
+.ui-iso-spares {
   fill: var(--background-color);
-  stroke: var(--foreground-color);
 }
 
-.ui-isometric-left {
-  fill: var(--subtle-color);
-  stroke: var(--foreground-color);
-}
-
-.ui-isometric-right {
-  fill: var(--primary-color-subtle);
-  stroke: var(--foreground-color);
-}
-
-.ui-isometric-detail {
+.ui-iso-belt-lines,
+.ui-iso-detail {
   fill: none;
-  stroke: var(--foreground-color);
-  stroke-width: 3;
+  stroke: var(--border-strong-color);
 }
 
-.ui-isometric-chip,
-.ui-isometric-packet {
-  fill: var(--primary-color);
-  stroke: var(--foreground-color);
+.ui-iso-left {
+  fill: var(--surface-color);
 }
 
-.ui-isometric-labels {
+.ui-iso-right {
+  fill: var(--subtle-color);
+}
+
+.ui-iso-port,
+.ui-iso-mark {
   fill: var(--foreground-color);
-  font: 15px var(--font-sans);
-  text-anchor: middle;
+  stroke: none;
 }
 
-.ui-isometric-specimen button {
-  min-height: 44px;
-  padding: 0.6rem 1rem;
-  border: 1px solid var(--border-strong-color);
-  border-radius: 0.7rem;
-  background: var(--background-color);
-  color: var(--foreground-color);
-  font: 600 0.95rem var(--font-sans);
-  cursor: pointer;
-}
-
-.ui-isometric-specimen button:hover {
-  background: var(--subtle-color);
-}
-
-.ui-isometric-specimen button:focus-visible {
-  outline: 2px solid var(--primary-color);
-  outline-offset: 4px;
-}
-
-.ui-isometric-specimen figcaption {
-  margin-top: 1rem;
-  color: var(--muted-strong-color);
-  font: 0.875rem/1.6 var(--font-sans);
+.ui-iso-item,
+.ui-iso-light {
+  fill: var(--primary-color);
+  stroke: var(--primary-color-strong);
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .ui-isometric-specimen .is-playing .ui-isometric-packet {
-    animation: ui-isometric-transfer 2.4s ease-in-out both;
+  .ui-iso-item-in {
+    animation: ui-iso-feed 4s linear infinite;
   }
 
-  .ui-isometric-specimen .is-playing .ui-isometric-result {
-    animation: ui-isometric-arrive 2.4s ease-out both;
+  .ui-iso-item-out {
+    animation: ui-iso-dispatch 4s linear infinite;
+  }
+
+  .ui-iso-light {
+    animation: ui-iso-pulse 4s ease-in-out infinite;
   }
 }
 
-@keyframes ui-isometric-transfer {
-  0%, 15% { transform: translate(0, 0); opacity: 1; }
-  65% { transform: translate(130px, -75px); opacity: 1; }
-  80%, 100% { transform: translate(130px, -75px); opacity: 0; }
+@keyframes ui-iso-feed {
+  0% { transform: translate(0, 0); opacity: 0; }
+  10%, 70% { opacity: 1; }
+  85%, 100% { transform: translate(130px, -75px); opacity: 0; }
 }
 
-@keyframes ui-isometric-arrive {
-  0%, 65% { opacity: 0; transform: translateY(-12px); }
-  100% { opacity: 1; transform: translateY(0); }
+@keyframes ui-iso-dispatch {
+  0%, 30% { transform: translate(0, 0); opacity: 0; }
+  40%, 85% { opacity: 1; }
+  100% { transform: translate(130px, 75px); opacity: 0; }
+}
+
+@keyframes ui-iso-pulse {
+  0%, 100% { opacity: 0.35; }
+  45%, 65% { opacity: 1; }
 }
