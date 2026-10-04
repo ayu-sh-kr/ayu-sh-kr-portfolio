@@ -108,7 +108,7 @@ For long articles, dense tables, forms or error messages, start with an opaque s
 
 Avoid stacking translucent cards inside translucent cards. The visual boundary becomes harder to follow, and the appearance depends on several layers at once. Choose one surface where the effect has a clear role, then keep the surrounding content quiet.
 
-For a production web treatment, test the busiest possible background, both theme modes and the opaque fallback. Also check performance on the devices your audience uses. A attractive still image cannot tell you how a large filtered surface behaves while the page scrolls.
+For a production web treatment, test the busiest possible background, both theme modes and the opaque fallback. Also check performance on the devices your audience uses. An attractive still image cannot tell you how a large filtered surface behaves while the page scrolls.
 
 ## Choosing a style by the reader's task
 
