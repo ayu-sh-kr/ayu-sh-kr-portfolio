@@ -1,0 +1,89 @@
+ui-gauge-showcase {
+  display: block;
+  margin-block: 2rem;
+}
+
+.ui-gauge-specimen {
+  margin: 0;
+  padding: clamp(1rem, 4vw, 2rem);
+  border: 1px solid var(--border-strong-color);
+  border-radius: 1.5rem;
+  background: var(--surface-color);
+  color: var(--foreground-color);
+  text-align: center;
+}
+
+.ui-gauge-face {
+  max-width: 19rem;
+  margin-inline: auto;
+  filter: drop-shadow(0 12px 12px var(--shadow-color));
+}
+
+.ui-gauge-face svg {
+  display: block;
+  width: 100%;
+}
+
+.ui-gauge-rim {
+  fill: var(--subtle-color);
+  stroke: var(--border-strong-color);
+  stroke-width: 3;
+}
+
+.ui-gauge-plate {
+  fill: var(--background-color);
+  stroke: var(--border-strong-color);
+  stroke-width: 2;
+}
+
+.ui-gauge-ticks {
+  stroke: var(--foreground-color);
+  stroke-width: 2;
+}
+
+.ui-gauge-face text {
+  fill: var(--foreground-color);
+  font: 12px var(--font-mono);
+  text-anchor: middle;
+}
+
+.ui-gauge-face .ui-gauge-reading {
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.ui-gauge-needle {
+  fill: var(--primary-color);
+}
+
+.ui-gauge-hub {
+  fill: var(--foreground-color);
+}
+
+.ui-gauge-control {
+  display: grid;
+  gap: 0.75rem;
+  max-width: 23rem;
+  margin: 1rem auto;
+  font: 1rem var(--font-sans);
+}
+
+.ui-gauge-control input {
+  width: 100%;
+  accent-color: var(--primary-color);
+}
+
+.ui-gauge-control input:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 5px;
+}
+
+.ui-gauge-specimen output {
+  font: 600 1rem var(--font-mono);
+}
+
+.ui-gauge-specimen figcaption {
+  margin-top: 1rem;
+  color: var(--muted-strong-color);
+  font: 0.875rem/1.6 var(--font-sans);
+}
