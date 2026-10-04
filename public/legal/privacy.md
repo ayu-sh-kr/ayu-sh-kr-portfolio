@@ -3,9 +3,9 @@ slug: privacy
 title: Privacy Policy
 tagline: What I collect, why I collect it, and how to get rid of it.
 kind: privacy
-version: "1.3"
-updated: 2026-09-12
-effective: 2026-09-12
+version: "1.4"
+updated: 2026-10-03
+effective: 2026-10-03
 applies: ayu-sh-kr.com and client work
 contact: akjaiswal2003@gmail.com
 
@@ -14,12 +14,12 @@ switch:
   - { label: Working with me, target: client-data }
 
 summary:
-  - I don't sell your data or use this site to build advertising profiles.
-  - The site uses anonymous, cookieless Google Analytics 4 measurement for broad page and interaction patterns.
-  - Blog view counts are aggregate: the backend receives an article slug and stores no reader identifier in the counter.
-  - I don't intentionally send form contents, email addresses, messages, or client data to Google Analytics.
-  - I retain your email when you write to me; the site does not provide a newsletter subscription endpoint.
-  - Client project data stays under your contract, lives in your accounts where possible, and is deleted when you ask.
+  - I don't sell your data or use it to build advertising profiles.
+  - Anonymous, cookieless Google Analytics 4 helps me understand broad page use and interactions.
+  - Blog views are counted by article slug; the counter stores no reader identifier.
+  - Form contents, email addresses, messages, and client data aren't intentionally sent to Google Analytics.
+  - If you subscribe, your email and preferences are used to send the updates you choose. You can change your preferences or unsubscribe at any time.
+  - For client work, project data stays in your accounts where possible and is deleted when you ask.
 summary_note: This box is a summary, not the policy. The sections below are what actually applies.
 
 related:
@@ -67,9 +67,11 @@ The site may store a small number of preferences locally in your browser — suc
 
 ## The newsletter {#newsletter scope="Site visitors" group="As a visitor" short="The newsletter"}
 
-The newsletter stores your email address, confirmation date, and the delivery preferences you choose. Preference links are token-based: there is no account, password, or session that outlives the tab. The address stays on file until you unsubscribe; changing it sends a confirmation to the new inbox first.
+If you subscribe, I collect your email address and use it to send the updates you request and to manage your subscription. The signup flow asks you to confirm your address before the subscription becomes active. I also keep the confirmation date and the delivery preferences you choose, so I can send only the categories you selected. These currently cover new blog posts, Dispatch news, and showcase updates.
 
-The archive remains readable without a subscription, and unsubscribing deletes the address and its delivery preferences.
+Preference and unsubscribe links use a token. You do not need an account or password, and the token is used to authorize that specific subscription action. You can change your delivery preferences or unsubscribe at any time. The address and its preferences stay on file while the subscription is active; unsubscribing deletes them. If you change the email address on the subscription, the new address must be confirmed before it replaces the current one.
+
+The archive remains readable without subscribing. I do not sell or lend the subscriber list. The service that stores subscriber details or delivers email depends on the newsletter system in use; any provider that processes this information is described under [Who else touches your data](#processors).
 
 ## When you get in touch {#reach scope="Site visitors" group="As a visitor" short="When you get in touch"}
 
@@ -113,7 +115,7 @@ A one-person operation still runs on other people's services. These are the only
 | Vercel | Portfolio hosting, deployment, server routes, and operational delivery | Per Vercel's service and deployment configuration |
 | Google Analytics 4 | Pseudonymous page and interaction measurement | Per Google's processing and retention configuration |
 | AWS | Client project infrastructure where relevant; not this portfolio's hosting | Account and region chosen for the engagement |
-| Email provider | My inbox; a newsletter service only if one is enabled | EU / US |
+| Newsletter system and email delivery provider | Subscriber email addresses, confirmation status, delivery preferences, and messages needed to confirm or manage a subscription and send selected updates | Depends on the service and its configuration |
 | Scheduling tool | Call bookings | EU / US |
 | Payment processor | Invoices and transfers | Per provider |
 
