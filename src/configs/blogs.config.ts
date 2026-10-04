@@ -39,6 +39,17 @@ export type BlogPost = {
  */
 export const blogPosts: readonly BlogPost[] = [
   {
+    slug: "ui-design-trends-skeuomorphism-isometric-glass",
+    date: "2026-10-04",
+    writer: siteIdentity.name,
+    header: "UI Design Trends: Skeuomorphic Gauges, Isometric Motion and Glass",
+    description: "Explore skeuomorphic gauges, animated isometric illustrations and glassmorphism: their origins, visual grammar and use cases, with live UI showcases.",
+    keywords: ["UI design trends", "skeuomorphic UI", "gauge UI", "isometric illustration", "animated isometric illustration", "glassmorphism", "Liquid Glass", "visual grammar"],
+    category: "tutorial",
+    source: "/blogs/tutorial/ui-design-trends-skeuomorphism-isometric-glass.md",
+    minutes: 10,
+  },
+  {
     slug: "reinforcement-learning-from-rlhf-to-rlsc",
     date: "2026-09-21",
     writer: siteIdentity.name,
