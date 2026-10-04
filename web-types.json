@@ -1676,7 +1676,7 @@
           "name": "news-article",
           "source": {
             "file": "./src/components/pages/news/article/news-article/news-article.component.ts",
-            "offset": 2556
+            "offset": 2827
           },
           "attributes": [],
           "js": {
