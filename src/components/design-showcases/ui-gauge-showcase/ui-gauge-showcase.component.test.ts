@@ -2,18 +2,15 @@ import "reflect-metadata";
 import { expect, it } from "vitest";
 import { UiGaugeShowcaseComponent } from "./ui-gauge-showcase.component.ts";
 
-it("keeps the showcase interactive without replacing focused controls", () => {
+it("renders three complete SVG dials without duplicate controls or missing scale marks", () => {
   if (!customElements.get("ui-gauge-showcase")) customElements.define("ui-gauge-showcase", UiGaugeShowcaseComponent);
   const host = document.createElement("ui-gauge-showcase");
   document.body.append(host);
   try {
-    const input = host.querySelector<HTMLInputElement>("input")!;
-    input.focus();
-    input.value = "100";
-    input.dispatchEvent(new Event("input", { bubbles: true }));
-    expect(host.querySelector("output")?.textContent).toBe("100% capacity");
-    expect(host.querySelector("[data-gauge-needle]")?.getAttribute("transform")).toBe("rotate(120 150 150)");
-    expect(document.activeElement).toBe(input);
+    expect(host.querySelectorAll("svg")).toHaveLength(3);
+    expect(host.querySelectorAll(".ui-gauge-ticks line")).toHaveLength(147);
+    expect(host.querySelector("line")?.namespaceURI).toBe("http://www.w3.org/2000/svg");
+    expect(host.querySelectorAll("button, input, figcaption")).toHaveLength(0);
   } finally {
     host.remove();
   }

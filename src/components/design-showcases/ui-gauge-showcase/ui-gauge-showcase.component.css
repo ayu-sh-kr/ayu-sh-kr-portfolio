@@ -4,86 +4,95 @@ ui-gauge-showcase {
 }
 
 .ui-gauge-specimen {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(0.5rem, 2vw, 1.25rem);
   margin: 0;
-  padding: clamp(1rem, 4vw, 2rem);
-  border: 1px solid var(--border-strong-color);
-  border-radius: 1.5rem;
-  background: var(--surface-color);
-  color: var(--foreground-color);
-  text-align: center;
+  padding: clamp(1rem, 3vw, 1.75rem);
+  border-radius: 1rem;
+  background: var(--code-background-color);
+  color: var(--code-foreground-color);
+}
+
+.ui-gauge-specimen .ui-gauge-dial {
+  display: block;
+  width: 100%;
+  min-width: 0;
+}
+
+.ui-gauge-bezel {
+  fill: color-mix(in srgb, var(--code-foreground-color) 8%, var(--code-background-color));
+  stroke: color-mix(in srgb, var(--code-foreground-color) 20%, var(--code-background-color));
+  stroke-width: 2;
 }
 
 .ui-gauge-face {
-  max-width: 19rem;
-  margin-inline: auto;
-  filter: drop-shadow(0 12px 12px var(--shadow-color));
-}
-
-.ui-gauge-face svg {
-  display: block;
-  width: 100%;
-}
-
-.ui-gauge-rim {
-  fill: var(--subtle-color);
-  stroke: var(--border-strong-color);
-  stroke-width: 3;
-}
-
-.ui-gauge-plate {
-  fill: var(--background-color);
-  stroke: var(--border-strong-color);
-  stroke-width: 2;
+  fill: var(--code-background-color);
+  stroke: color-mix(in srgb, var(--code-foreground-color) 14%, var(--code-background-color));
 }
 
 .ui-gauge-ticks {
-  stroke: var(--foreground-color);
-  stroke-width: 2;
+  stroke: var(--code-foreground-color);
+  stroke-width: 1;
 }
 
-.ui-gauge-face text {
-  fill: var(--foreground-color);
-  font: 12px var(--font-mono);
+.ui-gauge-numbers text,
+.ui-gauge-unit {
+  fill: var(--code-foreground-color);
+  font: 8px var(--font-mono);
   text-anchor: middle;
 }
 
-.ui-gauge-face .ui-gauge-reading {
-  font-size: 25px;
-  font-weight: 700;
+.ui-gauge-unit {
+  font-size: 6px;
+  letter-spacing: 1px;
 }
 
-.ui-gauge-needle {
-  fill: var(--primary-color);
+.ui-gauge-pointer {
+  fill: var(--code-foreground-color);
+  transform-origin: 100px 100px;
+  transform: rotate(28deg);
 }
 
-.ui-gauge-hub {
-  fill: var(--foreground-color);
+.ui-gauge-pin {
+  fill: var(--code-background-color);
 }
 
-.ui-gauge-control {
-  display: grid;
-  gap: 0.75rem;
-  max-width: 23rem;
-  margin: 1rem auto;
-  font: 1rem var(--font-sans);
+.ui-gauge-dial-1 .ui-gauge-pointer {
+  transform: rotate(-42deg);
 }
 
-.ui-gauge-control input {
-  width: 100%;
-  accent-color: var(--primary-color);
+.ui-gauge-dial-2 .ui-gauge-pointer {
+  transform: rotate(65deg);
 }
 
-.ui-gauge-control input:focus-visible {
-  outline: 2px solid var(--primary-color);
-  outline-offset: 5px;
+@media (prefers-reduced-motion: no-preference) {
+  .ui-gauge-pointer {
+    animation: ui-gauge-drift 8s ease-in-out infinite alternate;
+  }
+
+  .ui-gauge-dial-1 .ui-gauge-pointer {
+    animation-name: ui-gauge-heading;
+    animation-duration: 11s;
+  }
+
+  .ui-gauge-dial-2 .ui-gauge-pointer {
+    animation-name: ui-gauge-altitude;
+    animation-duration: 9s;
+  }
 }
 
-.ui-gauge-specimen output {
-  font: 600 1rem var(--font-mono);
+@keyframes ui-gauge-drift {
+  0%, 15% { transform: rotate(-65deg); }
+  65%, 100% { transform: rotate(38deg); }
 }
 
-.ui-gauge-specimen figcaption {
-  margin-top: 1rem;
-  color: var(--muted-strong-color);
-  font: 0.875rem/1.6 var(--font-sans);
+@keyframes ui-gauge-heading {
+  0%, 20% { transform: rotate(-42deg); }
+  70%, 100% { transform: rotate(22deg); }
+}
+
+@keyframes ui-gauge-altitude {
+  0%, 10% { transform: rotate(65deg); }
+  80%, 100% { transform: rotate(5deg); }
 }

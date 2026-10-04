@@ -1,41 +1,31 @@
-import { BaseElement, BindEvent, Component } from "@ayu-sh-kr/dota-wrap/core";
+import { BaseElement, Component } from "@ayu-sh-kr/dota-wrap/core";
 import { html, trustedHTML } from "@ayu-sh-kr/dota-wrap/rendering";
 
-/** A keyboard-adjustable instrument specimen embedded directly in trusted blog Markdown. */
+/** A compact cockpit illustration with three automatically moving analog instruments. */
 @Component({ selector: "ui-gauge-showcase", shadow: false })
 export class UiGaugeShowcaseComponent extends BaseElement {
-  /** Updates only the needle and readout, preserving slider focus during dragging. */
-  @BindEvent({ event: "input", id: "[data-gauge-input]" })
-  adjustGauge(event: Event): void {
-    const value = Number((event.target as HTMLInputElement).value);
-    this.querySelector<SVGElement>("[data-gauge-needle]")?.setAttribute("transform", `rotate(${value * 2.4 - 120} 150 150)`);
-    const output = this.querySelector("output");
-    if (output) output.textContent = `${value}% capacity`;
-    const reading = this.querySelector("[data-gauge-reading]");
-    if (reading) reading.textContent = `${value}%`;
-  }
-
-  /** Creates a fixed 0–100 scale whose position remains comparable across updates. */
+  /** Builds complete SVG instruments so every tick retains its SVG namespace. */
   render() {
-    const ticks = Array.from({ length: 21 }, (_, index) => `<line x1="150" y1="43" x2="150" y2="${index % 5 === 0 ? 59 : 51}" transform="rotate(${index * 12 - 120} 150 150)" />`).join("");
-    return html`
-      <figure class="ui-gauge-specimen">
-        <div class="ui-gauge-face">
-          <svg viewBox="0 0 300 300" role="img" aria-label="Analog capacity dial, from zero to one hundred percent">
-            <circle class="ui-gauge-rim" cx="150" cy="150" r="139" />
-            <circle class="ui-gauge-plate" cx="150" cy="150" r="122" />
-            <g class="ui-gauge-ticks">${trustedHTML(ticks)}</g>
-            <text x="58" y="220">0</text><text x="150" y="78">50</text><text x="242" y="220">100</text>
-            <g data-gauge-needle transform="rotate(24 150 150)"><path class="ui-gauge-needle" d="M146 160 L150 62 L154 160 Z" /></g>
-            <circle class="ui-gauge-hub" cx="150" cy="150" r="10" />
-            <text class="ui-gauge-reading" data-gauge-reading x="150" y="207">60%</text>
-            <text x="150" y="232">CAPACITY</text>
-          </svg>
-        </div>
-        <label class="ui-gauge-control"><span>Adjust capacity</span><input data-gauge-input type="range" min="0" max="100" value="60" aria-label="Capacity percentage" /></label>
-        <output>60% capacity</output>
-        <figcaption>One value, one stable scale. The number stays readable without interpreting the needle.</figcaption>
-      </figure>
-    `;
+    const dials = ["SPEED", "HEADING", "ALTITUDE"].map((label, dial) => {
+      const ticks = Array.from({ length: 49 }, (_, index) => {
+        const angle = (index * 5 - 120) * Math.PI / 180;
+        const inner = index % 4 === 0 ? 75 : 81;
+        return `<line x1="${100 + Math.sin(angle) * inner}" y1="${100 - Math.cos(angle) * inner}" x2="${100 + Math.sin(angle) * 87}" y2="${100 - Math.cos(angle) * 87}" />`;
+      }).join("");
+      const numbers = Array.from({ length: 7 }, (_, index) => {
+        const angle = (index * 40 - 120) * Math.PI / 180;
+        return `<text x="${100 + Math.sin(angle) * 63}" y="${104 - Math.cos(angle) * 63}">${index * (dial === 2 ? 2 : 20)}</text>`;
+      }).join("");
+      return `<svg viewBox="0 0 200 200" aria-hidden="true" class="ui-gauge-dial ui-gauge-dial-${dial}">
+        <circle class="ui-gauge-bezel" cx="100" cy="100" r="97" />
+        <circle class="ui-gauge-face" cx="100" cy="100" r="90" />
+        <g class="ui-gauge-ticks">${ticks}</g>
+        <g class="ui-gauge-numbers">${numbers}</g>
+        <text class="ui-gauge-unit" x="100" y="132">${label}</text>
+        <g class="ui-gauge-pointer"><path d="M98 120 L100 35 L102 120 Z" /><circle cx="100" cy="100" r="5" /></g>
+        <circle class="ui-gauge-pin" cx="100" cy="100" r="2" />
+      </svg>`;
+    }).join("");
+    return html`<figure class="ui-gauge-specimen" role="img" aria-label="Three analog cockpit instruments with gently moving needles. Illustrative readings.">${trustedHTML(dials)}</figure>`;
   }
 }
