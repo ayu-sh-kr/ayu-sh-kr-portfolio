@@ -1676,7 +1676,7 @@
           "name": "news-article",
           "source": {
             "file": "./src/components/pages/news/article/news-article/news-article.component.ts",
-            "offset": 2556
+            "offset": 2827
           },
           "attributes": [],
           "js": {
@@ -1698,7 +1698,7 @@
           "name": "news-index",
           "source": {
             "file": "./src/components/pages/news/index/news-index/news-index.component.ts",
-            "offset": 3029
+            "offset": 3039
           },
           "attributes": [],
           "js": {
@@ -1762,7 +1762,7 @@
           "name": "news-page",
           "source": {
             "file": "./src/pages/news/news.page.ts",
-            "offset": 512
+            "offset": 499
           },
           "attributes": [],
           "js": {

@@ -12,7 +12,7 @@ export interface BlogViewCountResponse {
 }
 
 /** Content collections accepted by the v2 backend view-tracking endpoint. */
-export type BlogViewCountType = "BLOG" | "SHOWCASE";
+export type BlogViewCountType = "BLOG" | "SHOWCASE" | "NEWS";
 
 /** Error raised when the view-tracking endpoint cannot provide a valid response. */
 export class BlogViewCountApiError extends Error {
@@ -66,11 +66,9 @@ function toBlogViewCountResponse(data: unknown): BlogViewCountResponse {
  * response validation rules.
  */
 export class BlogViewCountService {
-  /** Selects the deployed view-tracking contract while keeping v1 as the rollout-safe default. */
+  /** Sends every collection through v2 so the backend receives its explicit content type. */
   recordView(slug: string, type: BlogViewCountType = "BLOG"): Promise<BlogViewCountResponse | null> {
-    return import.meta.env.VITE_BLOG_VIEW_API_VERSION?.trim().toLowerCase() === "v2"
-      ? this.recordViewV2(slug, type)
-      : this.recordViewV1(slug);
+    return this.recordViewV2(slug, type);
   }
 
   /**
@@ -99,32 +97,6 @@ export class BlogViewCountService {
     return response.data;
   }
 
-  /**
-   * Records one view per blog slug every five minutes and returns the backend's aggregate count.
-   *
-   * The local marker is persisted only after a successful API response, allowing a failed request
-   * to be retried while suppressing later successful duplicates.
-   */
-  async recordViewV1(slug: string): Promise<BlogViewCountResponse | null> {
-    if (blogViewTrackingStorage.has(slug)) {
-      return null;
-    }
-
-    const response = await window.portfolioRestClient
-      .post<BlogViewCountResponse>()
-      .uri(`/blog/view?slug=${encodeURIComponent(slug)}`)
-      .retrieve()
-      .handler(rejectServerFailure)
-      .converter(toBlogViewCountResponse)
-      .toEntity();
-
-    if (response.status < 200 || response.status >= 300) {
-      throw new BlogViewCountApiError(response.status);
-    }
-
-    blogViewTrackingStorage.set(slug, true, {ttl: BLOG_VIEW_TRACKING_TTL_MS});
-    return response.data;
-  }
 }
 
 export const blogViewCountService = new BlogViewCountService();

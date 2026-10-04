@@ -4,7 +4,6 @@ import {
   MDService,
   MdViewComponent,
   THEMES,
-  type ColorName,
 } from "@ayu-sh-kr/dota-md";
 import {portfolioMarkdownColor, portfolioMarkdownTheme} from "@app/configs/markdown-theme.config.ts";
 
