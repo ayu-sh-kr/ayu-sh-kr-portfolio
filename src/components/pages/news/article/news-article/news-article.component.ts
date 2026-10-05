@@ -72,16 +72,18 @@ export class NewsArticleComponent extends BaseElement {
     const slug = getNewsSlug(window.location.pathname);
     this.note = getNewsNote(slug) ?? null;
     this.scheduleProgress();
-    if (!this.note || import.meta.env.SSR) {
+    if (!this.note) {
       return;
     }
 
-    void blogViewCountService.recordView(this.note.slug, "NEWS").catch((error: unknown) => {
-      publishAnalyticsEvent({
-        eventName: "blog_view_tracking_failed",
-        params: {reason: toBlogViewTrackingFailureReason(error)},
+    if (!import.meta.env.SSR) {
+      void blogViewCountService.recordView(this.note.slug, "NEWS").catch((error: unknown) => {
+        publishAnalyticsEvent({
+          eventName: "blog_view_tracking_failed",
+          params: {reason: toBlogViewTrackingFailureReason(error)},
+        });
       });
-    });
+    }
     if (this.hasHydratedArticle) {
       return;
     }
