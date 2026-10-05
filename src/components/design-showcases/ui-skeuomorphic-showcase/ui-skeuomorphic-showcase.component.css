@@ -5,6 +5,9 @@ ui-skeuomorphic-showcase {
 
 .ui-physical-showcase {
   margin: 0;
+  min-inline-size: 0;
+  max-inline-size: 100%;
+  overflow: clip;
   background: var(--surface-color);
   border-radius: var(--layout-radius-lg);
   padding: var(--layout-space-2);
@@ -66,7 +69,7 @@ ui-skeuomorphic-showcase {
   stroke-width: 2;
 }
 
-.ui-physical-record {
+.ui-physical-vinyl-disc {
   transform-origin: 182px 170px;
 }
 
@@ -182,7 +185,7 @@ ui-skeuomorphic-showcase {
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .ui-physical-record {
+  .ui-physical-vinyl-disc {
     animation: ui-physical-record-turn 12s linear infinite;
   }
 

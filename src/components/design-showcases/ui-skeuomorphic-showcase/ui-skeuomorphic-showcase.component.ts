@@ -20,7 +20,7 @@ export class UiSkeuomorphicShowcaseComponent extends ArticleShowcaseElement {
         <rect class="ui-physical-deck" x="22" y="29" width="496" height="281" rx="18" />
         <rect class="ui-physical-deck-inset" x="37" y="44" width="466" height="251" rx="12" />
         <circle class="ui-physical-platter" cx="182" cy="170" r="112" />
-        <g class="ui-physical-record"><circle class="ui-physical-vinyl" cx="182" cy="170" r="104" />
+        <g class="ui-physical-vinyl-disc"><circle class="ui-physical-vinyl" cx="182" cy="170" r="104" />
           ${[94, 86, 78, 70, 62, 54].map(r => `<circle class="ui-physical-groove" cx="182" cy="170" r="${r}" />`).join("")}
           <path class="ui-physical-reflection" d="M111 99 A100 100 0 0 1 181 68 L181 129 A41 41 0 0 0 153 141 Z" />
           <circle class="ui-physical-label" cx="182" cy="170" r="37" /><path class="ui-physical-label-mark" d="M165 152 H199 M165 188 H199" /><circle class="ui-physical-spindle" cx="182" cy="170" r="4" />
