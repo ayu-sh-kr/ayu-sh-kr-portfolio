@@ -41,7 +41,8 @@ ui-isometric-showcase {
 }
 
 .ui-iso-right {
-  fill: var(--subtle-color);
+  /* The machine must hide the belt and moving items behind its side. */
+  fill: color-mix(in srgb, var(--foreground-color) 8%, var(--background-color));
 }
 
 .ui-iso-port,
