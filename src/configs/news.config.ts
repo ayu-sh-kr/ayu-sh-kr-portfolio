@@ -69,7 +69,7 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
 export const newsNotes: readonly NewsNote[] = [
   {
     slug: "yarrtube-self-hosted-youtube-no-recommendations",
-    date: "2026-10-05",
+    date: "2026-10-06",
     title: "Yarrtube replaces YouTube recommendations with a feed you choose",
     summary: "Yarrtube tracks selected YouTube channels and playlists, then downloads new videos to a home server. How this subscription-driven feed changes the algorithmic default—and what self-hosting requires.",
     kind: "reading",
@@ -77,6 +77,28 @@ export const newsNotes: readonly NewsNote[] = [
     keywords: ["Yarrtube", "self-hosted YouTube", "YouTube recommendation algorithm", "YouTube playlist downloader", "Rust media server", "YouTube NAS"],
     minutes: 2,
     reference: {label: "Yarrtube — project and source", href: "https://github.com/sergigp/yarrtube"},
+  },
+  {
+    slug: "angular-native-mobile-apps",
+    date: "2026-10-06",
+    title: "Angular Native brings native iOS and Android apps to Angular",
+    summary: "Angular Native builds iOS and Android apps with Angular, React Native Fabric and Expo. How it differs from Capacitor, its enterprise appeal and alpha limits.",
+    kind: "reading",
+    document: "/news/angular-native-mobile-apps.md",
+    keywords: ["Angular Native", "Angular mobile app development", "Angular iOS Android apps", "React Native Fabric", "Angular Expo", "Angular Native vs Capacitor", "Angular NativeScript"],
+    minutes: 5,
+    reference: {label: "Angular Native — source and documentation", href: "https://github.com/ng-native/ng-native"},
+  },
+  {
+    slug: "aleph-alpha-kolibri-open-weight-model",
+    date: "2026-10-06",
+    title: "Aleph Alpha releases Kolibri 1: 78B open weights and 1M context",
+    summary: "Kolibri 1 brings Apache 2.0 weights, German-English reasoning and up to 1M tokens of context. Here’s what its MoE design means for GPU memory and deployment.",
+    kind: "reading",
+    document: "/news/aleph-alpha-kolibri-open-weight-model.md",
+    keywords: ["Aleph Alpha Kolibri 1", "Kolibri open weights", "Kolibri MoE architecture", "Kolibri context window", "Kolibri GPU requirements", "German English language model", "Apache 2.0"],
+    minutes: 3,
+    reference: {label: "Aleph Alpha — Kolibri announcement", href: "https://aleph-alpha.com/en/blog/kolibri-has-landed-a-sovereign-open-weight-model/"},
   },
   {
     slug: "gitlab-unauthenticated-rate-limits",

@@ -184,6 +184,16 @@
       "permanent": true
     },
     {
+      "source": "/news/aleph-alpha-kolibri-open-weight-model",
+      "destination": "/news/aleph-alpha-kolibri-open-weight-model/",
+      "permanent": true
+    },
+    {
+      "source": "/news/angular-native-mobile-apps",
+      "destination": "/news/angular-native-mobile-apps/",
+      "permanent": true
+    },
+    {
       "source": "/news/anthropic-contextual-retrieval-rag",
       "destination": "/news/anthropic-contextual-retrieval-rag/",
       "permanent": true

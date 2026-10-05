@@ -36,6 +36,9 @@ const showcaseRoutes = [
   "/showcase/dota-rest",
 ];
 const newsRoutes = [
+  "/news/yarrtube-self-hosted-youtube-no-recommendations",
+  "/news/angular-native-mobile-apps",
+  "/news/aleph-alpha-kolibri-open-weight-model",
   "/news/gitlab-unauthenticated-rate-limits",
   "/news/claude-code-mods-typescript",
   "/news/cloudflare-artifacts-next-git-platform",
@@ -68,7 +71,6 @@ const newsRoutes = [
   "/news/perplexity-cobbledb",
   "/news/qorl-postgres-query-optimizer-rl",
   "/news/prismml-bonsai-2-27b",
-  "/news/yarrtube-self-hosted-youtube-no-recommendations",
 ];
 
 /**
