@@ -1,4 +1,4 @@
-/* Automatic studies share a quiet frame with the other article examples. */
+/* Each scene includes a readable settled state before optional animation. */
 ui-motion-showcase {
   display: block;
   margin-block: 1.5rem 2rem;
@@ -6,184 +6,331 @@ ui-motion-showcase {
 
 .ui-motion-showcase {
   margin: 0;
-  padding: clamp(0.5rem, 2vw, 1.25rem);
-  border-radius: 1rem;
+  padding: var(--layout-space-2);
+  border-radius: var(--layout-radius-lg);
   background: var(--surface-color);
 }
 
 .ui-motion-showcase svg {
   display: block;
   width: 100%;
+  overflow: hidden;
 }
 
 .ui-motion-showcase text {
   fill: var(--foreground-color);
-  font: 16px var(--font-sans);
+  font: 19px var(--font-sans);
 }
 
 .ui-motion-showcase .ui-motion-heading {
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 600;
 }
 
-.ui-motion-panel {
+.ui-motion-showcase .ui-motion-small {
+  font-size: 16px;
+  fill: var(--muted-strong-color);
+}
+
+.ui-motion-panel,
+.ui-motion-paper {
   fill: var(--background-color);
   stroke: var(--border-color);
 }
 
-.ui-motion-rule {
+.ui-motion-tile,
+.ui-motion-road-centre {
+  fill: var(--subtle-color);
+}
+
+.ui-motion-frame {
   fill: none;
+  stroke: var(--border-color);
+}
+
+.ui-motion-rule {
   stroke: var(--border-strong-color);
   stroke-width: 3;
   stroke-linecap: round;
 }
 
-.ui-motion-progress-track {
+.ui-motion-accent,
+.ui-motion-art,
+.ui-motion-pin {
+  fill: var(--primary-color);
+}
+
+.ui-motion-soft-land,
+.ui-motion-park {
+  fill: var(--border-color);
+}
+
+.ui-motion-sun {
+  fill: var(--primary-color);
+}
+
+.ui-motion-water {
+  fill: none;
+  stroke: var(--background-color);
+  stroke-width: 2;
+}
+
+.ui-motion-track {
   stroke: var(--border-color);
-  stroke-width: 4;
+  stroke-width: 5;
+  stroke-linecap: round;
 }
 
 .ui-motion-progress {
-  stroke: var(--primary-color);
-  stroke-width: 4;
-  stroke-dasharray: 364;
+  stroke: var(--primary-color-strong);
+  stroke-width: 5;
+  stroke-linecap: round;
+  stroke-dasharray: 384;
 }
 
 .ui-motion-check,
-.ui-motion-spinner {
+.ui-motion-icon {
   fill: none;
   stroke: var(--primary-color-strong);
   stroke-width: 2;
   stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
-.ui-motion-saving {
+.ui-motion-icon {
+  stroke: var(--foreground-color);
+}
+
+.ui-motion-pending,
+.ui-motion-album-grid,
+.ui-motion-album-label,
+.ui-motion-touch,
+.ui-motion-cart-travel {
   opacity: 0;
 }
 
-.ui-motion-spinner {
-  stroke-dasharray: 34 17;
-  transform-origin: 96px 224px;
+.ui-motion-album-image {
+  transform-origin: 42px 78px;
+  transform: translate(-12px, -46px) scale(3.6);
 }
 
-.ui-motion-quiet-tile {
-  fill: var(--subtle-color);
+.ui-motion-touch {
+  fill: none;
+  stroke: var(--primary-color-strong);
+  stroke-width: 2;
 }
 
-.ui-motion-expanding-card {
-  fill: var(--subtle-color);
-  stroke: var(--border-color);
-  transform-origin: 69px 85px;
-  transform: scale(2.18, 1.04);
+.ui-motion-queue-selected {
+  fill: var(--background-color);
+  stroke: var(--primary-color-strong);
 }
 
-.ui-motion-landscape {
+.ui-motion-art-detail {
+  fill: none;
+  stroke: var(--background-color);
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.ui-motion-queue-down {
+  transform: translateY(70px);
+}
+
+.ui-motion-queue-up {
+  transform: translateY(-70px);
+}
+
+.ui-motion-mug-body {
   fill: var(--primary-color);
-  transform-origin: 69px 85px;
-  transform: translate(75px, 0);
+  stroke: var(--primary-color-strong);
 }
 
-.ui-motion-card-title {
-  opacity: 0;
+.ui-motion-mug-handle {
+  fill: none;
+  stroke: var(--primary-color-strong);
+  stroke-width: 9;
 }
 
-.ui-motion-showcase .ui-motion-small {
-  font-size: 13px;
-  fill: var(--muted-strong-color);
+.ui-motion-mug-rim {
+  fill: var(--subtle-color);
+  stroke: var(--primary-color-strong);
 }
 
-.ui-motion-dot {
+.ui-motion-mug-glaze {
+  fill: none;
+  stroke: var(--surface-color);
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+.ui-motion-action {
   fill: var(--primary-color-strong);
 }
 
-.ui-motion-row-first {
-  transform: translateY(68px);
+.ui-motion-showcase .ui-motion-action-label {
+  fill: var(--background-color);
+  text-anchor: middle;
 }
 
-.ui-motion-row-second {
-  transform: translateY(-68px);
+.ui-motion-showcase .ui-motion-count {
+  fill: var(--foreground-color);
+  font-size: 15px;
+  text-anchor: middle;
+}
+
+.ui-motion-road {
+  fill: none;
+  stroke: var(--background-color);
+  stroke-width: 23;
+}
+
+.ui-motion-road-centre {
+  fill: none;
+  stroke: var(--border-color);
+  stroke-width: 1;
+}
+
+.ui-motion-route {
+  fill: none;
+  stroke: var(--primary-color-strong);
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.ui-motion-location {
+  fill: var(--background-color);
+  stroke: var(--primary-color-strong);
+  stroke-width: 2;
+}
+
+.ui-motion-location-core {
+  fill: var(--primary-color-strong);
+}
+
+.ui-motion-pin-core {
+  fill: var(--background-color);
+}
+
+.ui-motion-sheet-handle {
+  stroke: var(--border-strong-color);
+  stroke-width: 4;
+  stroke-linecap: round;
 }
 
 @media (prefers-reduced-motion: no-preference) {
   .ui-motion-progress {
-    animation: ui-motion-progress 6s ease-in-out infinite;
+    animation: ui-motion-upload 7s ease-in-out infinite;
   }
 
-  .ui-motion-saving {
-    animation: ui-motion-saving 6s ease-in-out infinite;
+  .ui-motion-pending {
+    animation: ui-motion-before 7s ease-in-out infinite;
   }
 
-  .ui-motion-saved {
-    animation: ui-motion-saved 6s ease-in-out infinite;
+  .ui-motion-complete {
+    animation: ui-motion-after 7s ease-in-out infinite;
   }
 
-  .ui-motion-spinner {
-    animation: ui-motion-spin 1s linear infinite;
+  .ui-motion-album-image {
+    animation: ui-motion-album-open 8s ease-in-out infinite;
   }
 
-  .ui-motion-expanding-card {
-    animation: ui-motion-expand 7s ease-in-out infinite;
+  .ui-motion-album-grid,
+  .ui-motion-album-label {
+    animation: ui-motion-album-before 8s ease-in-out infinite;
   }
 
-  .ui-motion-landscape {
-    animation: ui-motion-landscape 7s ease-in-out infinite;
+  .ui-motion-touch {
+    animation: ui-motion-album-touch 8s ease-in-out infinite;
   }
 
-  .ui-motion-card-title {
-    animation: ui-motion-saving 7s ease-in-out infinite;
+  .ui-motion-album-detail {
+    animation: ui-motion-album-after 8s ease-in-out infinite;
   }
 
-  .ui-motion-detail {
-    animation: ui-motion-saved 7s ease-in-out infinite;
+  .ui-motion-queue-down {
+    animation: ui-motion-queue-down 8s ease-in-out infinite;
   }
 
-  .ui-motion-row-first {
-    animation: ui-motion-first 7s ease-in-out infinite;
+  .ui-motion-queue-up {
+    animation: ui-motion-queue-up 8s ease-in-out infinite;
   }
 
-  .ui-motion-row-second {
-    animation: ui-motion-second 7s ease-in-out infinite;
+  .ui-motion-cart-travel {
+    animation: ui-motion-cart-travel 8s ease-in-out infinite;
+  }
+
+  .ui-motion-cart-count,
+  .ui-motion-cart-receipt {
+    animation: ui-motion-cart-result 8s ease-in-out infinite;
+  }
+
+  .ui-motion-place-sheet {
+    animation: ui-motion-place-reveal 8s ease-in-out infinite;
   }
 }
 
-@keyframes ui-motion-progress {
-  0%, 12% { stroke-dashoffset: 364; }
-  55%, 94% { stroke-dashoffset: 0; }
-  100% { stroke-dashoffset: 364; }
+@keyframes ui-motion-upload {
+  0%, 12% { stroke-dashoffset: 384; }
+  54%, 94% { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: 384; }
 }
 
-@keyframes ui-motion-saving {
-  0%, 40% { opacity: 1; }
-  50%, 94% { opacity: 0; }
+@keyframes ui-motion-before {
+  0%, 48% { opacity: 1; }
+  54%, 94% { opacity: 0; }
   100% { opacity: 1; }
 }
 
-@keyframes ui-motion-saved {
+@keyframes ui-motion-after {
   0%, 54% { opacity: 0; }
-  62%, 94% { opacity: 1; }
+  60%, 94% { opacity: 1; }
   100% { opacity: 0; }
 }
 
-@keyframes ui-motion-spin {
-  to { transform: rotate(360deg); }
+@keyframes ui-motion-album-open {
+  0%, 26%, 100% { transform: translate(0, 0) scale(1); }
+  48%, 82% { transform: translate(-12px, -46px) scale(3.6); }
 }
 
-@keyframes ui-motion-expand {
-  0%, 24%, 100% { transform: scale(1); }
-  48%, 82% { transform: scale(2.18, 1.04); }
+@keyframes ui-motion-album-before {
+  0%, 26%, 100% { opacity: 1; }
+  35%, 90% { opacity: 0; }
 }
 
-@keyframes ui-motion-landscape {
-  0%, 24%, 100% { transform: translate(0, 0); }
-  48%, 82% { transform: translate(75px, 0); }
+@keyframes ui-motion-album-after {
+  0%, 46%, 86%, 100% { opacity: 0; }
+  54%, 80% { opacity: 1; }
 }
 
-@keyframes ui-motion-first {
-  0%, 22%, 100% { transform: translateY(0); }
-  48%, 80% { transform: translateY(68px); }
+@keyframes ui-motion-album-touch {
+  0%, 16%, 32%, 100% { opacity: 0; }
+  22%, 27% { opacity: 1; }
 }
 
-@keyframes ui-motion-second {
-  0%, 22%, 100% { transform: translateY(0); }
-  48%, 80% { transform: translateY(-68px); }
+@keyframes ui-motion-queue-down {
+  0%, 24%, 100% { transform: translateY(0); }
+  48%, 82% { transform: translateY(70px); }
+}
+
+@keyframes ui-motion-queue-up {
+  0%, 24%, 100% { transform: translateY(0); }
+  48%, 82% { transform: translateY(-70px); }
+}
+
+@keyframes ui-motion-cart-travel {
+  0%, 20% { transform: translate(0, 0); opacity: 0; }
+  25% { transform: translate(0, 0); opacity: 1; }
+  46% { transform: translate(92px, -179px); opacity: 1; }
+  50%, 100% { transform: translate(92px, -179px); opacity: 0; }
+}
+
+@keyframes ui-motion-cart-result {
+  0%, 45%, 100% { opacity: 0; }
+  52%, 94% { opacity: 1; }
+}
+
+@keyframes ui-motion-place-reveal {
+  0%, 20%, 100% { transform: translateY(130px); }
+  44%, 82% { transform: translateY(0); }
 }
