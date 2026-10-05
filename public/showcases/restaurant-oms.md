@@ -18,7 +18,9 @@ The system was shaped around how orders actually move: capture at the table, con
 
 An order management system is mostly state transitions. Pending, accepted, preparing, ready, and served need to be clear to both people and code. The backend treated transitions as explicit operations, validated the allowed moves, and returned enough context for the client to render the next decision.
 
+<div>
 <showcase-aside kind="quote">When the person using the system can explain why an order is in a state, the domain model is probably doing its job.</showcase-aside>
+</div>
 
 ## Ship the boring parts well
 

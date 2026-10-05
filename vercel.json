@@ -89,6 +89,11 @@
       "permanent": true
     },
     {
+      "source": "/blog/ui-design-trends-skeuomorphism-isometric-glass",
+      "destination": "/blog/ui-design-trends-skeuomorphism-isometric-glass/",
+      "permanent": true
+    },
+    {
       "source": "/blog/what-is-a-native-build",
       "destination": "/blog/what-is-a-native-build/",
       "permanent": true

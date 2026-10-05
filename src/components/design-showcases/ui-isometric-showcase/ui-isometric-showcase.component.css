@@ -1,0 +1,89 @@
+ui-isometric-showcase {
+  display: block;
+  margin-block: 2rem;
+}
+
+.ui-isometric-specimen {
+  margin: 0;
+  padding: clamp(0.75rem, 2vw, 1.5rem);
+  border-radius: 1rem;
+  background: var(--surface-color);
+}
+
+.ui-isometric-specimen svg {
+  display: block;
+  width: 100%;
+  stroke: var(--muted-strong-color);
+  stroke-width: 1.25;
+  stroke-linejoin: round;
+}
+
+.ui-iso-ground {
+  fill: none;
+  stroke: var(--border-strong-color);
+  stroke-dasharray: 3 5;
+}
+
+.ui-iso-belt,
+.ui-iso-top,
+.ui-iso-spares {
+  fill: var(--background-color);
+}
+
+.ui-iso-belt-lines,
+.ui-iso-detail {
+  fill: none;
+  stroke: var(--border-strong-color);
+}
+
+.ui-iso-left {
+  fill: var(--surface-color);
+}
+
+.ui-iso-right {
+  /* The machine must hide the belt and moving items behind its side. */
+  fill: color-mix(in srgb, var(--foreground-color) 8%, var(--background-color));
+}
+
+.ui-iso-port,
+.ui-iso-mark {
+  fill: var(--foreground-color);
+  stroke: none;
+}
+
+.ui-iso-item,
+.ui-iso-light {
+  fill: var(--primary-color);
+  stroke: var(--primary-color-strong);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .ui-iso-item-in {
+    animation: ui-iso-feed 4s linear infinite;
+  }
+
+  .ui-iso-item-out {
+    animation: ui-iso-dispatch 4s linear infinite;
+  }
+
+  .ui-iso-light {
+    animation: ui-iso-pulse 4s ease-in-out infinite;
+  }
+}
+
+@keyframes ui-iso-feed {
+  0% { transform: translate(0, 0); opacity: 0; }
+  10%, 70% { opacity: 1; }
+  85%, 100% { transform: translate(130px, -75px); opacity: 0; }
+}
+
+@keyframes ui-iso-dispatch {
+  0%, 30% { transform: translate(0, 0); opacity: 0; }
+  40%, 85% { opacity: 1; }
+  100% { transform: translate(130px, 75px); opacity: 0; }
+}
+
+@keyframes ui-iso-pulse {
+  0%, 100% { opacity: 0.35; }
+  45%, 65% { opacity: 1; }
+}

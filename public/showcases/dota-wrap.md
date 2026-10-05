@@ -18,7 +18,9 @@ The wrapper does not replace custom elements with a second component model. A cl
 
 Connected and disconnected handlers are scoped to the component that owns them. Event bindings survive re-rendering through delegation. Properties are declared next to the fields they update. These are small details, but they make a long-lived UI easier to reason about.
 
+<div>
 <showcase-metrics items="native|DOM foundation,typed|component contracts"></showcase-metrics>
+</div>
 
 ## The wrapper should stay boring
 

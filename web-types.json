@@ -3746,6 +3746,153 @@
           }
         },
         {
+          "name": "ui-gauge-usecase",
+          "source": {
+            "file": "./src/components/design-showcases/ui-gauge-usecase/ui-gauge-usecase.component.ts",
+            "offset": 449
+          },
+          "attributes": [
+            {
+              "name": "example",
+              "default": "energy",
+              "required": false,
+              "value": {
+                "type": "string"
+              },
+              "source": {
+                "file": "./src/components/design-showcases/ui-gauge-usecase/ui-gauge-usecase.component.ts",
+                "offset": 652
+              }
+            }
+          ],
+          "js": {
+            "properties": [
+              {
+                "name": "example",
+                "type": "string",
+                "default": "energy",
+                "source": {
+                  "file": "./src/components/design-showcases/ui-gauge-usecase/ui-gauge-usecase.component.ts",
+                  "offset": 652
+                }
+              }
+            ]
+          }
+        },
+        {
+          "name": "ui-isometric-showcase",
+          "source": {
+            "file": "./src/components/design-showcases/ui-isometric-showcase/ui-isometric-showcase.component.ts",
+            "offset": 371
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "ui-isometric-usecase",
+          "source": {
+            "file": "./src/components/design-showcases/ui-isometric-usecase/ui-isometric-usecase.component.ts",
+            "offset": 466
+          },
+          "attributes": [
+            {
+              "name": "example",
+              "default": "images",
+              "required": false,
+              "value": {
+                "type": "string"
+              },
+              "source": {
+                "file": "./src/components/design-showcases/ui-isometric-usecase/ui-isometric-usecase.component.ts",
+                "offset": 672
+              }
+            }
+          ],
+          "js": {
+            "properties": [
+              {
+                "name": "example",
+                "type": "string",
+                "default": "images",
+                "source": {
+                  "file": "./src/components/design-showcases/ui-isometric-usecase/ui-isometric-usecase.component.ts",
+                  "offset": 672
+                }
+              }
+            ]
+          }
+        },
+        {
+          "name": "ui-motion-showcase",
+          "source": {
+            "file": "./src/components/design-showcases/ui-motion-showcase/ui-motion-showcase.component.ts",
+            "offset": 606
+          },
+          "attributes": [
+            {
+              "name": "example",
+              "default": "save",
+              "required": false,
+              "value": {
+                "type": "string"
+              },
+              "source": {
+                "file": "./src/components/design-showcases/ui-motion-showcase/ui-motion-showcase.component.ts",
+                "offset": 799
+              }
+            }
+          ],
+          "js": {
+            "properties": [
+              {
+                "name": "example",
+                "type": "string",
+                "default": "save",
+                "source": {
+                  "file": "./src/components/design-showcases/ui-motion-showcase/ui-motion-showcase.component.ts",
+                  "offset": 799
+                }
+              }
+            ]
+          }
+        },
+        {
+          "name": "ui-skeuomorphic-showcase",
+          "source": {
+            "file": "./src/components/design-showcases/ui-skeuomorphic-showcase/ui-skeuomorphic-showcase.component.ts",
+            "offset": 559
+          },
+          "attributes": [
+            {
+              "name": "example",
+              "default": "record",
+              "required": false,
+              "value": {
+                "type": "string"
+              },
+              "source": {
+                "file": "./src/components/design-showcases/ui-skeuomorphic-showcase/ui-skeuomorphic-showcase.component.ts",
+                "offset": 766
+              }
+            }
+          ],
+          "js": {
+            "properties": [
+              {
+                "name": "example",
+                "type": "string",
+                "default": "record",
+                "source": {
+                  "file": "./src/components/design-showcases/ui-skeuomorphic-showcase/ui-skeuomorphic-showcase.component.ts",
+                  "offset": 766
+                }
+              }
+            ]
+          }
+        },
+        {
           "name": "unsubscribe-flow",
           "source": {
             "file": "./src/components/pages/subscription/unsubscribe-flow/unsubscribe-flow.component.ts",

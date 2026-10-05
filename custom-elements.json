@@ -36,6 +36,247 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/design-showcases/ui-gauge-usecase/ui-gauge-usecase.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "UiGaugeUsecaseComponent",
+          "customElement": true,
+          "tagName": "ui-gauge-usecase",
+          "superclass": {
+            "name": "ArticleShowcaseElement"
+          },
+          "members": [
+            {
+              "kind": "field",
+              "name": "example",
+              "attribute": "example",
+              "type": {
+                "text": "string"
+              },
+              "default": "energy"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "example",
+              "fieldName": "example",
+              "type": {
+                "text": "string"
+              },
+              "default": "energy"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "UiGaugeUsecaseComponent",
+          "declaration": {
+            "name": "UiGaugeUsecaseComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ui-gauge-usecase",
+          "declaration": {
+            "name": "UiGaugeUsecaseComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/design-showcases/ui-isometric-showcase/ui-isometric-showcase.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "UiIsometricShowcaseComponent",
+          "customElement": true,
+          "tagName": "ui-isometric-showcase",
+          "superclass": {
+            "name": "ArticleShowcaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "UiIsometricShowcaseComponent",
+          "declaration": {
+            "name": "UiIsometricShowcaseComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ui-isometric-showcase",
+          "declaration": {
+            "name": "UiIsometricShowcaseComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/design-showcases/ui-isometric-usecase/ui-isometric-usecase.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "UiIsometricUsecaseComponent",
+          "customElement": true,
+          "tagName": "ui-isometric-usecase",
+          "superclass": {
+            "name": "ArticleShowcaseElement"
+          },
+          "members": [
+            {
+              "kind": "field",
+              "name": "example",
+              "attribute": "example",
+              "type": {
+                "text": "string"
+              },
+              "default": "images"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "example",
+              "fieldName": "example",
+              "type": {
+                "text": "string"
+              },
+              "default": "images"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "UiIsometricUsecaseComponent",
+          "declaration": {
+            "name": "UiIsometricUsecaseComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ui-isometric-usecase",
+          "declaration": {
+            "name": "UiIsometricUsecaseComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/design-showcases/ui-motion-showcase/ui-motion-showcase.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "UiMotionShowcaseComponent",
+          "customElement": true,
+          "tagName": "ui-motion-showcase",
+          "superclass": {
+            "name": "ArticleShowcaseElement"
+          },
+          "members": [
+            {
+              "kind": "field",
+              "name": "example",
+              "attribute": "example",
+              "type": {
+                "text": "string"
+              },
+              "default": "save"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "example",
+              "fieldName": "example",
+              "type": {
+                "text": "string"
+              },
+              "default": "save"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "UiMotionShowcaseComponent",
+          "declaration": {
+            "name": "UiMotionShowcaseComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ui-motion-showcase",
+          "declaration": {
+            "name": "UiMotionShowcaseComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/design-showcases/ui-skeuomorphic-showcase/ui-skeuomorphic-showcase.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "UiSkeuomorphicShowcaseComponent",
+          "customElement": true,
+          "tagName": "ui-skeuomorphic-showcase",
+          "superclass": {
+            "name": "ArticleShowcaseElement"
+          },
+          "members": [
+            {
+              "kind": "field",
+              "name": "example",
+              "attribute": "example",
+              "type": {
+                "text": "string"
+              },
+              "default": "record"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "example",
+              "fieldName": "example",
+              "type": {
+                "text": "string"
+              },
+              "default": "record"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "UiSkeuomorphicShowcaseComponent",
+          "declaration": {
+            "name": "UiSkeuomorphicShowcaseComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ui-skeuomorphic-showcase",
+          "declaration": {
+            "name": "UiSkeuomorphicShowcaseComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/pages/blog/article/blog-article-header/blog-article-header.component.js",
       "declarations": [
         {
