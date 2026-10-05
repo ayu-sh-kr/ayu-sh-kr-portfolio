@@ -5,6 +5,9 @@ ui-isometric-usecase {
 
 .ui-isometric-usecase {
   margin: 0;
+  min-inline-size: 0;
+  max-inline-size: 100%;
+  overflow: clip;
   padding: clamp(0.5rem, 2vw, 1.25rem);
   border-radius: 1rem;
   background: var(--surface-color);
@@ -33,7 +36,8 @@ ui-isometric-usecase {
 }
 
 .ui-practical-side {
-  fill: var(--subtle-color);
+  /* Solid faces occlude roads and objects behind them in both themes. */
+  fill: color-mix(in srgb, var(--foreground-color) 8%, var(--background-color));
 }
 
 .ui-practical-detail,
