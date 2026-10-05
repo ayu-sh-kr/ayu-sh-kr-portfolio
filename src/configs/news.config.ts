@@ -66,6 +66,22 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "gitlab-unauthenticated-rate-limits",
+    date: "2026-10-05",
+    title: "GitLab.com limits unauthenticated requests to 60 per hour from October 19",
+    summary: "GitLab.com cuts unauthenticated requests to 60 per hour per IP on October 19, 2026. See the new tier limits, the October brownouts, and how to prepare scripts and CI jobs.",
+    kind: "infra",
+    document: "/news/gitlab-unauthenticated-rate-limits.md",
+    keywords: ["GitLab.com rate limits", "GitLab unauthenticated rate limit", "GitLab 429 Retry-After", "GitLab rate limit brownout", "GitLab CI job token", "GitLab API rate limits 2026"],
+    minutes: 2,
+    figures: [
+      {label: "Unauthenticated", value: "60 / hour per IP"},
+      {label: "Free, authenticated", value: "5,000 / hour"},
+      {label: "Enforced from", value: "Oct 19, 2026"},
+    ],
+    reference: {label: "GitLab — Rate limits on GitLab.com are changing", href: "https://about.gitlab.com/blog/rate-limit-change-2026/"},
+  },
+  {
     slug: "claude-code-mods-typescript",
     date: "2026-10-05",
     title: "Claude Code mods: TypeScript plugins for prompts, tool calls and UI",
