@@ -68,6 +68,17 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "angular-native-mobile-apps",
+    date: "2026-10-05",
+    title: "Angular Native brings Angular to native mobile apps through React Native Fabric",
+    summary: "Angular Native renders Angular components as native iOS and Android views through React Native Fabric. How it works, what Expo and Angular bring, and why its alpha status matters.",
+    kind: "reading",
+    document: "/news/angular-native-mobile-apps.md",
+    keywords: ["Angular Native mobile development", "Angular native apps", "Angular React Native Fabric", "Angular Expo", "native mobile framework", "Angular Capacitor alternative"],
+    minutes: 5,
+    reference: {label: "Angular Native — source and documentation", href: "https://github.com/ng-native/ng-native"},
+  },
+  {
     slug: "gitlab-unauthenticated-rate-limits",
     date: "2026-10-05",
     title: "GitLab.com limits unauthenticated requests to 60 per hour from October 19",
