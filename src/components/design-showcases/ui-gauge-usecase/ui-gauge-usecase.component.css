@@ -115,3 +115,76 @@ ui-gauge-usecase {
   60% { transform: rotate(-8deg); }
   80% { transform: rotate(25deg); }
 }
+
+.ui-gauge-usecase-thermostat {
+  background: var(--code-background-color);
+}
+
+.ui-gauge-usecase-thermostat text {
+  fill: var(--code-foreground-color);
+}
+
+.ui-thermostat-rim-inner {
+  stop-color: var(--border-strong-color);
+}
+
+.ui-thermostat-rim-outer {
+  stop-color: var(--muted-strong-color);
+}
+
+.ui-thermostat-rim {
+  fill: url(#ui-thermostat-rim);
+  stroke: var(--border-strong-color);
+}
+
+.ui-thermostat-face {
+  fill: var(--code-background-color);
+}
+
+.ui-thermostat-ticks {
+  stroke: var(--code-foreground-color);
+  stroke-width: 1;
+  opacity: 0.7;
+}
+
+.ui-thermostat-setting {
+  stroke: var(--primary-color);
+  stroke-width: 4;
+  stroke-linecap: round;
+}
+
+.ui-gauge-usecase .ui-thermostat-room,
+.ui-gauge-usecase .ui-thermostat-status {
+  font-size: 19px;
+}
+
+.ui-gauge-usecase .ui-thermostat-value {
+  font-size: 55px;
+  font-weight: 600;
+}
+
+.ui-gauge-usecase .ui-thermostat-target {
+  font-size: 15px;
+}
+
+.ui-thermostat-heat {
+  fill: none;
+  stroke: var(--primary-color);
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.ui-thermostat-divider {
+  stroke: var(--border-strong-color);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .ui-thermostat-heat {
+    animation: ui-thermostat-warmth 3s ease-in-out infinite alternate;
+  }
+}
+
+@keyframes ui-thermostat-warmth {
+  from { opacity: 0.45; }
+  to { opacity: 1; }
+}

@@ -1,15 +1,39 @@
 import { BaseElement, Component, Property, String } from "@ayu-sh-kr/dota-wrap/core";
 import { html, trustedHTML } from "@ayu-sh-kr/dota-wrap/rendering";
 
-/** Practical gauge treatments for an energy dashboard and a stereo recording interface. */
+/** Instrument studies for home energy, stereo audio and a room thermostat.
+ * Used in the design article; automatic CSS motion is illustrative and optional. */
 @Component({ selector: "ui-gauge-usecase", shadow: false })
 export class UiGaugeUsecaseComponent extends BaseElement {
-  /** Selects the authored example; unknown values use the home energy treatment. */
+  /** Attribute `example`: energy (default), audio or thermostat. Unknown values show energy. */
   @Property({ name: "example", type: String })
   example = "energy";
 
   /** Renders illustrative values with no controls or additional navigation. */
   render() {
+    if (this.example === "thermostat") {
+      const ticks = Array.from({ length: 41 }, (_, index) => {
+        const angle = (index * 6 - 120) * Math.PI / 180;
+        const outer = 102;
+        const inner = index % 5 === 0 ? 91 : 96;
+        return `<line x1="${270 + Math.sin(angle) * inner}" y1="${157 - Math.cos(angle) * inner}" x2="${270 + Math.sin(angle) * outer}" y2="${157 - Math.cos(angle) * outer}" />`;
+      }).join("");
+      const svg = `<svg viewBox="0 0 540 350" aria-hidden="true">
+        <defs><radialGradient id="ui-thermostat-rim"><stop class="ui-thermostat-rim-inner" offset="0.78" /><stop class="ui-thermostat-rim-outer" offset="1" /></radialGradient></defs>
+        <text class="ui-thermostat-room" x="270" y="29">Living room</text>
+        <circle class="ui-thermostat-rim" cx="270" cy="157" r="119" />
+        <circle class="ui-thermostat-face" cx="270" cy="157" r="108" />
+        <g class="ui-thermostat-ticks">${ticks}</g>
+        <path class="ui-thermostat-setting" d="M270 54 V68" />
+        <text class="ui-thermostat-value" x="270" y="165">21°</text>
+        <text class="ui-thermostat-target" x="270" y="190">Target temperature</text>
+        <text class="ui-thermostat-scale" x="189" y="219">16</text><text class="ui-thermostat-scale" x="350" y="219">26</text>
+        <g class="ui-thermostat-heat"><path d="M250 251 c-8 -8 8 -10 0 -18 M270 251 c-8 -8 8 -10 0 -18 M290 251 c-8 -8 8 -10 0 -18" /></g>
+        <text class="ui-thermostat-status" x="270" y="307">Heating · Room is 19°</text>
+        <path class="ui-thermostat-divider" d="M199 323 H341" />
+      </svg>`;
+      return html`<figure class="ui-gauge-usecase ui-gauge-usecase-thermostat" role="img" aria-label="Illustrative living-room thermostat: target 21 degrees Celsius, room 19 degrees, heating. The fixed target and room readings have separate labels.">${trustedHTML(svg)}</figure>`;
+    }
     const audio = this.example === "audio";
     const meters = ["L", "R"].map((channel, index) => {
       const ticks = Array.from({ length: 17 }, (_, tick) => {
