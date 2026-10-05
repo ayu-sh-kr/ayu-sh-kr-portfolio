@@ -2,10 +2,11 @@ import "reflect-metadata";
 import { expect, it } from "vitest";
 import { UiIsometricShowcaseComponent } from "./ui-isometric-showcase.component.ts";
 
-it("renders the conveyor scene with moving pieces and no replay controls", () => {
+it("renders the conveyor scene with moving pieces and no replay controls", async () => {
   if (!customElements.get("ui-isometric-showcase")) customElements.define("ui-isometric-showcase", UiIsometricShowcaseComponent);
   const host = document.createElement("ui-isometric-showcase");
   document.body.append(host);
+  await Promise.resolve();
   try {
     expect(host.querySelectorAll("svg")).toHaveLength(1);
     expect(host.querySelectorAll(".ui-iso-item")).toHaveLength(2);

@@ -1,10 +1,11 @@
-import { BaseElement, Component, Property, String } from "@ayu-sh-kr/dota-wrap/core";
+import { ArticleShowcaseElement } from "../article-showcase.element.ts";
+import { Component, Property, String } from "@ayu-sh-kr/dota-wrap/core";
 import { html, trustedHTML } from "@ayu-sh-kr/dota-wrap/rendering";
 
 /** Isometric process studies for image resizing, parcel sorting and backup copies.
  * The article selects a scene; optional CSS animation follows its fixed drawing grid. */
 @Component({ selector: "ui-isometric-usecase", shadow: false })
-export class UiIsometricUsecaseComponent extends BaseElement {
+export class UiIsometricUsecaseComponent extends ArticleShowcaseElement {
   /** Attribute `example`: images (default), delivery or backup. Unknown values show images. */
   @Property({ name: "example", type: String })
   example = "images";

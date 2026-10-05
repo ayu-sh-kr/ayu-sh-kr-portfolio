@@ -1,9 +1,10 @@
-import { BaseElement, Component } from "@ayu-sh-kr/dota-wrap/core";
+import { ArticleShowcaseElement } from "../article-showcase.element.ts";
+import { Component } from "@ayu-sh-kr/dota-wrap/core";
 import { html, trustedHTML } from "@ayu-sh-kr/dota-wrap/rendering";
 
 /** A line-drawn isometric conveyor machine, animated automatically without reader controls. */
 @Component({ selector: "ui-isometric-showcase", shadow: false })
-export class UiIsometricShowcaseComponent extends BaseElement {
+export class UiIsometricShowcaseComponent extends ArticleShowcaseElement {
   /** Keeps the machine and conveyors on the same 30-degree drawing grid. */
   render() {
     const beltLines = Array.from({ length: 8 }, (_, index) => {

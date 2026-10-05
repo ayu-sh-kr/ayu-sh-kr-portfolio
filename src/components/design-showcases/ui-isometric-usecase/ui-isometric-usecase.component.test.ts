@@ -2,11 +2,12 @@ import "reflect-metadata";
 import { expect, it } from "vitest";
 import { UiIsometricUsecaseComponent } from "./ui-isometric-usecase.component.ts";
 
-it.each(["images", "delivery", "backup", "unknown"])("renders the %s scene with matching process labels", (example) => {
+it.each(["images", "delivery", "backup", "unknown"])("renders the %s scene with matching process labels", async (example) => {
   if (!customElements.get("ui-isometric-usecase")) customElements.define("ui-isometric-usecase", UiIsometricUsecaseComponent);
   const host = document.createElement("ui-isometric-usecase");
   host.setAttribute("example", example);
   document.body.append(host);
+  await Promise.resolve();
   try {
     expect(host.querySelectorAll("svg")).toHaveLength(1);
     expect(host.querySelector("path")?.namespaceURI).toBe("http://www.w3.org/2000/svg");

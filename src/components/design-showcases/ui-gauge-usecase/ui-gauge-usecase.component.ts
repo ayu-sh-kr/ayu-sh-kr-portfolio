@@ -1,10 +1,11 @@
-import { BaseElement, Component, Property, String } from "@ayu-sh-kr/dota-wrap/core";
+import { ArticleShowcaseElement } from "../article-showcase.element.ts";
+import { Component, Property, String } from "@ayu-sh-kr/dota-wrap/core";
 import { html, trustedHTML } from "@ayu-sh-kr/dota-wrap/rendering";
 
 /** Instrument studies for home energy, stereo audio and a room thermostat.
  * Used in the design article; automatic CSS motion is illustrative and optional. */
 @Component({ selector: "ui-gauge-usecase", shadow: false })
-export class UiGaugeUsecaseComponent extends BaseElement {
+export class UiGaugeUsecaseComponent extends ArticleShowcaseElement {
   /** Attribute `example`: energy (default), audio or thermostat. Unknown values show energy. */
   @Property({ name: "example", type: String })
   example = "energy";

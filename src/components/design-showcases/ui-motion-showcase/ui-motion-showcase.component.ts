@@ -1,4 +1,5 @@
-import { BaseElement, Component, Property, String } from "@ayu-sh-kr/dota-wrap/core";
+import { ArticleShowcaseElement } from "../article-showcase.element.ts";
+import { Component, Property, String } from "@ayu-sh-kr/dota-wrap/core";
 import { html, trustedHTML } from "@ayu-sh-kr/dota-wrap/rendering";
 
 /**
@@ -8,7 +9,7 @@ import { html, trustedHTML } from "@ayu-sh-kr/dota-wrap/rendering";
  * automatically; reduced motion retains the final state. No real actions occur.
  */
 @Component({ selector: "ui-motion-showcase", shadow: false })
-export class UiMotionShowcaseComponent extends BaseElement {
+export class UiMotionShowcaseComponent extends ArticleShowcaseElement {
   /** Attribute `example` selects a study; defaults to save and falls back to it. */
   @Property({ name: "example", type: String })
   example = "save";

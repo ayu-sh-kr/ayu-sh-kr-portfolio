@@ -2,11 +2,12 @@ import "reflect-metadata";
 import { expect, it } from "vitest";
 import { UiGaugeUsecaseComponent } from "./ui-gauge-usecase.component.ts";
 
-it.each(["energy", "audio", "thermostat", "unknown"])("renders the %s use case with native SVG and no controls", (example) => {
+it.each(["energy", "audio", "thermostat", "unknown"])("renders the %s use case with native SVG and no controls", async (example) => {
   if (!customElements.get("ui-gauge-usecase")) customElements.define("ui-gauge-usecase", UiGaugeUsecaseComponent);
   const host = document.createElement("ui-gauge-usecase");
   host.setAttribute("example", example);
   document.body.append(host);
+  await Promise.resolve();
   try {
     expect(host.querySelectorAll("svg")).toHaveLength(1);
     expect(host.querySelectorAll("button, input")).toHaveLength(0);
