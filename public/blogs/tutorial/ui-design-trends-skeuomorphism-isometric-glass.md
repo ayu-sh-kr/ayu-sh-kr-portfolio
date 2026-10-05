@@ -1,236 +1,172 @@
 # UI Design Examples: Skeuomorphism, Isometric Art and Motion
 
-Some interfaces make you stop scrolling. A row of cockpit dials, with needles slowly turning. A little machine carrying pieces along a conveyor belt. You recognise the objects before you know what the product does.
+A record turns under a needle. Paper peeks out of a folder. A song moves to the next spot in your queue. These details can make a screen feel familiar and make its behaviour easier to follow.
 
-Skeuomorphic gauges borrow from physical instruments. Isometric illustrations borrow from technical drawings. Motion UI adds a third approach: it helps you follow a change on the screen. Each gives you a different way to make an interface easier to understand.
+This visual guide explores **skeuomorphism, isometric illustration and motion UI** through fifteen original studies. Each starts with a person and a task. The scenes run automatically; their values and actions are illustrative.
 
-This visual guide covers their origins, ideas, visual grammar and practical uses through thirteen automatic examples. We move from home energy, temperature and audio to backup copies, image processing and delivery, then to shopping, uploading, photos, music and maps. The scenes are original design studies, rather than screenshots of the linked products; their values and actions are illustrative.
+## Skeuomorphism: borrow a familiar object
 
-## Analog gauges: a familiar face for a digital value
+### A record player for listening, not measuring
 
-The cockpit reference uses round faces, fine markings and moving needles. It feels familiar because we have seen the same arrangement in cars, clocks and measuring instruments. The screen borrows the appearance of a physical object.
+For a music listener, a record deck gives playback a familiar shape. The turning disc suggests that the track is running, while the title and time say exactly what is playing.
 
-That approach is called **skeuomorphism**. The name is less useful than the idea: use something people already recognise to help them understand something new. A folder icon borrows from a paper folder. A digital volume knob borrows from an audio device.
+<ui-skeuomorphic-showcase example="record"></ui-skeuomorphic-showcase>
 
-<ui-gauge-showcase></ui-gauge-showcase>
+The grooves, spindle and tonearm belong to the same object. Their relationship does more work than a heavy shadow or shiny border. This treatment could suit an album page or a listening room where the music deserves attention.
 
-This has been part of interface design for decades. Early graphical interfaces used office objects to explain files and actions. Later apps went further, with wooden bookshelves, leather notebooks and realistic buttons. [Nielsen Norman Group's overview](https://www.nngroup.com/articles/skeuomorphism/) explains both the useful familiarity and the excess that followed.
+**Skeuomorphism** means borrowing features of physical objects for digital interfaces. It has roots in early graphical interfaces, where folders and paper documents helped explain digital files. [Nielsen Norman Group's overview](https://www.nngroup.com/articles/skeuomorphism/) distinguishes useful familiarity from excessive imitation.
 
-A dark face, a fine rim and carefully spaced markings can carry the instrument character without covering a whole screen in textures.
+### A flip clock for one glanceable reading
 
-### What makes the style work?
+A desk clock has a different job. Someone looking across a screen needs to read the time quickly. Large split faces and a clear hour–minute grouping suit that glance.
 
-The **visual grammar** is the set of rules that makes the dials feel related. Their rims have a similar thickness. The numbers sit at the same distance from the centre. Major markings are longer than minor ones. The needles are thin enough to point clearly without hiding the scale.
+<ui-skeuomorphic-showcase example="clock"></ui-skeuomorphic-showcase>
 
-Small details matter here. A bright edge suggests a raised rim. A darker face suggests depth. If the highlights come from the same direction across all the instruments, the panel feels like one object.
+The hinges and centre seams give the clock its physical character. Only the minute face changes; the hour stays still. It could fit a desk companion or a personal dashboard. A scheduling app comparing several time zones would need more context than one large clock can provide.
 
-### A thermostat: distinguish the target from the room
+### A project folder for recognising a collection
 
-A person checking the living room wants to know two things: what temperature they asked for, and what the room is doing now. A thermostat dial is a familiar shape, but those two readings still need separate labels.
+A designer opening project files wants to recognise the right collection. A folder with typography and colour sheets peeking out gives “Brand assets” a more specific identity than an anonymous box.
+
+<ui-skeuomorphic-showcase example="folder"></ui-skeuomorphic-showcase>
+
+The tab says “container”; the overlapping sheets say “several things inside”. The count remains readable. This could work in a small project library where a preview helps people choose a folder. Hundreds of folders would be easier to search and scan in a simpler list.
+
+These three examples share **visual grammar**: consistent edges, believable layers and details that belong to the object. They serve three different purposes—playback, a time reading and a collection—rather than repeating one dial with a new label.
+
+### A thermostat for separating target and actual temperature
+
+A homeowner checking the living room needs to know what temperature they asked for and what the room is doing now. A dial feels familiar, but it must keep those readings distinct.
 
 <ui-gauge-usecase example="thermostat"></ui-gauge-usecase>
 
-The large 21° is the target. The smaller line says the room is at 19° and heating. The fixed marker belongs to the target; the quiet heat lines show activity without pretending that the room instantly reaches the selected temperature.
+The large 21° is the target. The room is at 19° and heating. The fixed marker belongs to the target; the heat lines suggest activity rather than an instant temperature change.
 
-[Google's Nest guidance](https://support.google.com/googlehome/answer/10178773) describes using a dial to adjust temperature in its app. This original study borrows that familiar control language. It could suit a home climate screen where one room is the focus; a building manager comparing dozens of rooms would need a broader view.
+[Google's Nest guidance](https://support.google.com/googlehome/answer/10178773) describes adjusting temperature with a dial in its app. Our study borrows that control language. It suits one room in focus; comparing a whole building calls for a broader view.
 
-For the cockpit dials, a gently turning needle suggests a changing reading. Their movement is illustrative; the thermostat keeps its readings fixed.
+### Home energy: keep only the useful shape
 
-[Gauge UI Studio](https://www.gauge-ui.dev/studio) lets creators compose a dial from arcs, markings and needles. Their arrangement gives the dial its character.
-
-### When should you use it?
-
-Gauges suit a single reading with a clear range: speed, pressure, temperature or an audio level. They can also fit a simulator or a product whose audience already understands instrument panels.
-
-### Home energy: a quieter kind of gauge
-
-A home energy app does not need to look like a cockpit. A simple ring can answer one useful question: how much of today's solar energy did the house use? [Home Assistant's energy cards](https://www.home-assistant.io/dashboards/energy/) include this kind of solar-consumption gauge.
+A household checking its solar use needs a proportion, not a realistic instrument. A simple ring answers one question: how much of today's generation was used at home? [Home Assistant's energy cards](https://www.home-assistant.io/dashboards/energy/) include this kind of gauge.
 
 <ui-gauge-usecase example="energy"></ui-gauge-usecase>
 
-Here, the ring shows a sample 72%, while the sun and house make the relationship clear. This keeps the gauge idea but removes the rim, ticks and needle. It fits a daily summary where one proportion matters.
+The sample reading is 72%. The sun and house establish what that proportion connects. This is a **flat gauge**, rather than a detailed physical imitation: a useful comparison with the thermostat above.
 
-### Keep comparisons simple
+A familiar form does not require every physical detail. For twenty readings, bars or rows may be easier to compare. For changes over a week, a chart can answer more than a ring.
 
-For a dashboard comparing twenty readings, rows or bars will usually be easier to scan. For yesterday's changes, a chart is more useful than a dial. Choose the instrument when its shape helps with the question the reader is asking.
+### Audio meters for a recording session
 
-You can also borrow the feeling without copying every detail. One well-made dial may be enough to give a page character. Turning every button and card into a physical object can make the page feel crowded.
-
-> A familiar object is useful when it makes the meaning easier to recognise.
-
-### Audio: when the instrument is part of the product
-
-For a recording interface, paired meters feel more at home. Left and right channels have their own scales, and the needles give a quick impression of a changing input. The small movement belongs to the sound rather than serving as decoration.
+A person recording stereo sound needs to see whether both channels are receiving a signal. Paired meters give left and right their own space, and their movement belongs to the changing input.
 
 <ui-gauge-usecase example="audio"></ui-gauge-usecase>
 
-Real audio tools need carefully defined readings. [Ableton's mixer documentation](https://www.ableton.com/en/manual/mixing/) describes peak and RMS levels, which tell you different things about the signal. Our example borrows the analog appearance; its needles are illustrative. A production meter would follow the actual audio.
+The faces, markings and thin needles borrow from studio equipment. Unlike the energy ring, they preserve an instrument's appearance. [Ableton's mixer documentation](https://www.ableton.com/en/manual/mixing/) explains peak and RMS readings; a real meter must define what it measures. These needles are illustrative.
 
-## Isometric illustration: a small world on the page
+Study [Gauge UI Studio](https://www.gauge-ui.dev/studio) for how arcs, scales and needles are composed. Borrow the instrument when it helps your audience recognise the reading, and keep the value understandable in plain text.
 
-The other references show little machines, platforms and moving parts. They have depth, but the view stays steady. You can see the top and two sides at once.
+## Isometric illustration: give a process a small world
 
-This is **isometric illustration**. Objects follow the same angled grid, so their edges line up even when they sit in different parts of the scene. A small box and a large machine feel as though they belong to the same world.
+### A machine for showing work moving through a system
 
-The style comes from technical drawing. William Farish's *On Isometrical Perspective*, published in 1822, described a way to show machinery clearly. The [original paper](https://www.aproged.pt/biblioteca/farishisometrical.pdf) contains the same basic concern we still have: how do you show the shape and arrangement of several parts on a flat page?
+Someone meeting an unfamiliar service may understand a small machine before its technical description. Pieces entering and leaving suggest work passing through a process. The camera stays fixed so the action is easy to follow.
 
 <ui-isometric-showcase></ui-isometric-showcase>
 
-A conveyor can stand for work moving through a system. A stack of cards can stand for stored information. One recognisable action can introduce the idea.
+**Isometric illustration** uses a consistent angled view to show the top and sides together. It comes from technical drawing: William Farish's 1822 paper, [*On Isometrical Perspective*](https://www.aproged.pt/biblioteca/farishisometrical.pdf), described a way to show machinery clearly.
 
-### What makes the style work?
+Its grammar is consistency. Edges follow the same directions, faces have related tones, and moving pieces follow the scene's paths. [IBM's isometric guide](https://www.ibm.com/design/language/illustration/isometric-style/design/) develops those principles into a coherent illustration style.
 
-Start with the angles. The conveyor, the machine and the loose pieces should all follow the same directions. If one object appears to face a different camera, it breaks the scene's sense of order.
+### Backup: keep the original and show the copy
 
-Then give the faces slightly different tones. A light top and quieter sides make a plain box feel solid. Fine outlines help small details stay visible. A little colour can draw attention to the moving pieces without making the whole scene noisy.
-
-[IBM's isometric illustration guide](https://www.ibm.com/design/language/illustration/isometric-style/design/) uses a grid, simple shapes and consistent light to keep illustrations coherent. You can apply those ideas to a pale line drawing like the references, or to a darker scene that fits your website.
-
-### A backup service: show a copy, not a disappearing file
-
-For someone choosing a backup service, the important relationship is simple: the original remains available, and another copy is kept elsewhere. A little archive can explain that relationship without asking the reader to understand storage infrastructure.
+Someone choosing a backup service needs to understand a basic relationship: their files remain available, and another copy is kept elsewhere. A separate archive makes that relationship visible.
 
 <ui-isometric-usecase example="backup"></ui-isometric-usecase>
 
-The documents stay on their platform while a small copy travels through the centre to an archive. The destination looks different from the starting point, so it reads as another place rather than the same files being shuffled around.
+The original documents stay on the left. A copy travels through the centre to the archive. The scene represents copying rather than removing or relocating the original.
 
-[Apple's explanation of iCloud Backup](https://support.apple.com/en-in/108770) describes making a copy of information that is not already synced to iCloud. This scene illustrates the copy idea; it does not describe every rule of that particular service. It belongs beside a backup feature introduction, while actual backup status belongs in the product's own clear messages.
+[Apple's iCloud Backup explanation](https://support.apple.com/en-in/108770) describes copying information that is not already synced to iCloud. This study introduces the copy idea; actual backup rules and status still belong in the service's own clear explanation.
 
-### Why add motion?
+### Image resizing: show the benefit at the other end
 
-A still picture shows the parts. Motion shows what they do: pieces travel, a platform turns, or a mechanism lifts something.
-
-The movement should fit the object: a belt carries pieces, a wheel rotates, and a lift travels vertically. Unrelated floating and bouncing can weaken the mechanical feeling.
-
-[IBM's animation guidance](https://www.ibm.com/design/language/illustration/isometric-style/usage/) also emphasises keeping the perspective consistent during movement. The scene can stay simple while one part does the work. In the example above, the machine stays still while pieces enter and leave.
-
-### Where does it belong?
-
-This style works well beside a feature introduction, on a product landing page, or in an explanation of how something moves through a system. It gives an abstract idea a shape the reader can remember.
-
-### An image tool: one upload, several useful sizes
-
-An image service can feel abstract until you show what comes out of it. A large picture enters, then smaller versions appear for different screens. [Cloudflare's image transformation docs](https://developers.cloudflare.com/images/optimization/transformations/overview/) describe resizing and converting images; the scene below is our own way of illustrating that idea.
+A person publishing a large picture wants it to work across different screens. Showing several smaller versions makes the output easier to picture than an anonymous block labelled “processing”.
 
 <ui-isometric-usecase example="images"></ui-isometric-usecase>
 
-This belongs beside a feature such as automatic image resizing. The different picture sizes show the benefit before the reader gets to the details. The same approach could illustrate a document converted into several formats, with objects that suit that task.
+The source is a photo; the outputs sit in a desktop display and a phone. The devices make the intended use visible. [Cloudflare's image transformation documentation](https://developers.cloudflare.com/images/optimization/transformations/overview/) describes resizing and conversion; this is our own illustration of that idea.
 
-### Leave the details to the page
+Use this beside a feature introduction. Keep the main input and result recognisable on a phone; tiny moving parts can disappear when the scene shrinks.
 
-Keep that role clear. The illustration can introduce the idea; the nearby words explain what the product actually does. If the picture has to carry every detail, it becomes a diagram with too many parts to follow.
+### Delivery: use objects the customer already knows
 
-On a small screen, simpler scenes also hold up better. The main object and movement should remain recognisable after the illustration shrinks. Tiny labels and dozens of moving pieces often disappear into visual noise.
-
-### Delivery: making the journey easy to picture
-
-For a delivery service, familiar parcels make more sense than anonymous data blocks. A sorting hub gives the scene a centre, with incoming packages on one side and onward routes on the other.
+For a delivery customer, parcels make more sense than generic data cubes. An incoming package, a sorting hub and onward routes introduce the journey without turning the scene into a live tracking screen.
 
 <ui-isometric-usecase example="delivery"></ui-isometric-usecase>
 
-This could sit in onboarding or a short explanation of the delivery journey. For tracking a real parcel, the status and arrival information still need to be clear in text. [UPS's tracking guidance](https://www.ups.com/in/en/support/tracking-support/where-is-my-package) is about finding that information; an animated hub alone cannot tell you where your package is.
+A warehouse, an arriving parcel and a delivery truck give each stage a different shape. The incoming parcel follows the road toward the depot. Motion explains the relationship between the parts. [IBM's usage guidance](https://www.ibm.com/design/language/illustration/isometric-style/usage/) emphasises keeping the perspective coherent during animation.
 
-## Motion UI: make a change easy to follow
+This belongs in an introduction or onboarding. To find a real parcel, someone still needs status and arrival information, as [UPS's tracking guidance](https://www.ups.com/in/en/support/tracking-support/where-is-my-package) makes clear. The illustration introduces the journey; it does not report it.
 
-A photo opens into a larger view. A file finishes uploading. A song moves up a listening queue. These are examples of **motion UI**: movement that helps you understand a change in the interface.
+## Motion UI: explain a change on the screen
 
-The isometric conveyor explains an idea outside the screen. Motion UI explains what is happening *on* the screen. Both use animation, but they have different jobs. A product can use either one without adopting the other.
+### Shopping: confirm the selected item
 
-### Shopping: confirm the item, not just the click
-
-A shopper adds a sage mug to their bag. They need to know that the right item went in, with the right quantity and price. A tiny badge changing somewhere in the corner may be easy to miss.
+A shopper adds a sage mug to their bag. They need to know that the right item went in, with the right quantity and price. A tiny badge changing in the corner can be easy to miss.
 
 <ui-motion-showcase example="cart"></ui-motion-showcase>
 
-The small item travels toward the bag, then the count and a receipt appear. The product stays visible, so the shopper can continue browsing. The receipt names the mug, its quantity and the sample price; the animation points toward information that can be read afterward.
+The item travels toward the bag, then a count and receipt appear. The product stays visible. [Nielsen Norman Group's cart-feedback research](https://www.nngroup.com/articles/cart-feedback/) recommends clear confirmation with product details people have time to review. In a real shop, that receipt would remain available.
 
-[Nielsen Norman Group's cart-feedback research](https://www.nngroup.com/articles/cart-feedback/) recommends clear confirmation with product details that people have time to review. In a real shop, the receipt would remain until dismissed or replaced. This showcase repeats only so you can study the transition.
+**Motion UI** connects interface states. It draws on animation principles such as staging and easing, adapted for graphics in [IBM's guide](https://www.ibm.com/design/language/animation/classic-principles/). Here, movement draws attention to a result the shopper can read afterward.
 
-### Where does the idea come from?
+### Uploading: identify the file and the result
 
-Motion UI draws on animation and the needs of interactive screens. Movement can connect a before and an after; a change in appearance can mark a new state.
-
-[IBM's classic animation principles](https://www.ibm.com/design/language/animation/classic-principles/) adapt ideas from character animation to graphic design. One useful idea is staging: arrange the scene so that the important action is easy to see. Another is easing, where movement starts or ends gradually rather than changing speed abruptly.
-
-**Microinteraction** describes a small interaction around one task, such as saving or selecting. Its movement helps you understand that task.
-
-[Nielsen Norman Group's animation research](https://www.nngroup.com/articles/animation-purpose-ux/) describes feedback, state changes and navigation as useful roles. Ask which role your movement serves.
-
-### Uploading a file: make the result specific
-
-A designer sends a moodboard to a client. While the file is being transferred, its name and preview remain visible. That helps the designer check what is being sent instead of watching a detached loading symbol.
+A designer uploads a moodboard for a client review. Its name and preview stay visible during the transfer, so the designer can check what is being sent instead of watching a detached loading symbol.
 
 <ui-motion-showcase example="save"></ui-motion-showcase>
 
-The progress line completes, then “Ready to share” appears beside the same file. The screen distinguishes work in progress from a usable result. The person now knows which file arrived and what they can do next.
+The progress line completes and “Ready to share” appears beside that file. Receiving, sharing and publishing are different outcomes; the message should name the one that actually happened.
 
-The same pattern can suit an attachment, a portfolio submission or a document upload. Its words must match the result: receiving a file is different from publishing it. In a real product, completion would follow the actual transfer, not an animation reaching its end.
+[Figma's motion fundamentals](https://help.figma.com/hc/en-us/articles/41237382040983-Motion-design-fundamentals-Why-motion-matters) describes feedback as a role of motion. This is a **microinteraction** around one task: the change draws attention, while the settled message carries the meaning.
 
-[Figma's motion-design guide](https://help.figma.com/hc/en-us/articles/41237382040983-Motion-design-fundamentals-Why-motion-matters) treats feedback as one role of motion. Here, the final message carries the meaning, while the change helps draw attention to it. Someone who misses the movement can still read the outcome.
+### Opening an album: preserve the selected image
 
-### Keep a consistent motion grammar
-
-**Direction, timing and continuity** make these changes feel related. Direction shows where an object goes. Timing lets one important action lead. Continuity keeps the object recognisable between its starting and ending states.
-
-[Carbon's motion guidance](https://www.carbondesignsystem.com/building-blocks/foundations/motion/overview) separates quiet productive motion from more noticeable expressive motion. An everyday upload or list change usually needs the quieter approach. Reserve a larger gesture for a moment where the relationship between views benefits from it.
-
-### Opening an album: keep the same object in view
-
-Someone browsing their weekend photos opens Lakeside walks. Keeping the selected landscape in view while it grows helps them recognise which album they entered. A small touch marker makes the starting action visible in the study.
+Someone browsing weekend photos opens Lakeside walks. The selected landscape grows into the album image, giving them a recognisable point to follow instead of replacing the collection with an unrelated screen.
 
 <ui-motion-showcase example="expand"></ui-motion-showcase>
 
-Here, the same landscape grows from a thumbnail into the album image, and the album details appear beneath it. This is often called a **shared element transition**: a recognisable element carries through from one view to another. Its identity matters more than the size of the movement.
+This is a **shared element transition**: the same recognisable object connects two views. It can suit a gallery, product collection or story card. Closing the detail should return attention to the original item.
 
-The idea suits photo galleries, product collections, maps and cards that open into longer stories. A thumbnail can become the main image. A location marker can lead into a place card. You are showing which item the new information belongs to.
+Its grammar is continuity. Keep the image recognisable, let the details arrive after it, and avoid making everything travel at once. [Carbon's motion guidance](https://www.carbondesignsystem.com/building-blocks/foundations/motion/overview) distinguishes quiet everyday motion from more expressive moments.
 
-Closing the detail should return attention to the original item. Changing colour, shape and location all at once can make that connection harder to follow.
+### A music queue: show which song will play next
 
-Use this where the relationship between views matters. A routine settings page may only need a simple reveal. A large travelling card on every screen can turn a helpful clue into something people must wait through.
-
-### A listening queue: move a song without losing your place
-
-A listener wants After the rain to play next, while City lights is already playing. Moving the selected song upward should leave the current track alone. The next position matters more than a general feeling that the list changed.
+A listener wants After the rain to play next while City lights keeps playing. Moving the selected song upward should leave the current track alone. The new position has a clear purpose.
 
 <ui-motion-showcase example="reorder"></ui-motion-showcase>
 
-The selected song moves into the next slot and Coastal road moves down to make room. Names and artwork travel together. The current song stays still, giving the listener a reference throughout the change.
+Names and artwork move together. Coastal road makes room, and the current track stays still as a reference. This can also suit a reading queue or a small priority list.
 
-This idea also suits a reading queue or a small priority list. The movement is helpful because each item stays recognisable and the new order answers the person's request. It becomes less useful when many rows keep changing while someone is trying to read them.
+Direction explains where the item goes; timing makes that change easy to follow. In a real app, it happens once after “Play next”. A constantly rearranging list would make the reader's task harder.
 
-A stable list is still the goal after the change. In a real music app, this movement would happen once after “Play next”. The repeated study lets you compare the original order with the result.
+### A map sheet: reveal details and keep your place
 
-### A place sheet: open details without losing the route
-
-On a map, someone checks a nearby café. A full new page would hide the route they were following. A panel rising from the bottom can show the place's details while leaving the destination and nearby streets visible.
+Someone checking a café wants its details without losing the walking route. A panel rising from the bottom gives the place another layer while leaving the destination and nearby streets visible.
 
 <ui-motion-showcase example="sheet"></ui-motion-showcase>
 
-The café's name and walking time arrive in one sheet. The map stays in place, and the route remains above the panel. Its direction suggests that the details belong to a layer over the map, rather than replacing the map itself.
+The name and walking time arrive together. [Material's bottom-sheet reference](https://github.com/material-components/material-components-android/blob/master/docs/components/BottomSheet.md) describes secondary content anchored to the screen's bottom. This suits a place preview or short choice; a whole new task may need its own page.
 
-[Material's bottom-sheet reference](https://github.com/material-components/material-components-android/blob/master/docs/components/BottomSheet.md) describes secondary content anchored to the bottom of the screen. This suits a place preview or a short choice related to the screen beneath it. A long form or a whole new task may deserve its own page.
+[Apple's motion guidance](https://developer.apple.com/design/human-interface-guidelines/motion) recommends purposeful feedback and reduced-motion alternatives. All the studies have readable resting states. Their loops are for studying the examples; real interfaces should respond to an action or a genuine state change.
 
-[Apple's motion guidance](https://developer.apple.com/design/human-interface-guidelines/motion) recommends purposeful feedback and alternatives for reduced motion. Each study here has a readable resting state. The sheet can be open, the file can be ready, and the song can sit in its new position without the journey needing to play.
+## Choose around the reader's task
 
-> Give movement a job: confirm a result, connect two views, or explain a change of position.
+| What someone needs | A useful direction |
+| --- | --- |
+| Recognise playback, time or a collection | Record player, flip clock or folder |
+| Read one level or target | Meter, ring or thermostat |
+| Picture a process | Isometric machine, archive or sorting hub |
+| Understand an interface change | Feedback, shared element or position transition |
 
-## Choosing the right UI design approach
+For further study, use the linked [Nielsen Norman Group overview](https://www.nngroup.com/articles/skeuomorphism/), [IBM illustration guide](https://www.ibm.com/design/language/illustration/isometric-style/design/) and [Figma motion guide](https://help.figma.com/hc/en-us/articles/41237382040983-Motion-design-fundamentals-Why-motion-matters). Each helps you judge the idea behind the appearance.
 
-Choose the treatment after identifying the reader’s task. The same visual approach will not suit every moment.
-
-| Reader's question | Useful approach | Example |
-| --- | --- | --- |
-| What value am I looking at? | Gauge or instrument | Energy, thermostat or stereo meter |
-| What happens to my stuff? | Isometric illustration | Backup copy, image resizing or parcel sorting |
-| Did my action work? | Feedback motion | File received or mug added |
-| Which item did I open? | Shared element transition | Lakeside photo album |
-| Where did that item go? | Position transition | Song moved to play next |
-| Can I see details and keep my place? | Layer transition | Café sheet over a map |
-
-Use a dial for a reading, a small world for a process, and a transition for a change. Give each enough space to be understood.
-
-## Professional references to study next
-
-For instruments, explore [Gauge UI Studio](https://www.gauge-ui.dev/studio) and [Nielsen Norman Group's skeuomorphism overview](https://www.nngroup.com/articles/skeuomorphism/). For spatial scenes, study [IBM's isometric illustration guide](https://www.ibm.com/design/language/illustration/isometric-style/design/). For interface behaviour, start with [Figma's motion fundamentals](https://help.figma.com/hc/en-us/articles/41237382040983-Motion-design-fundamentals-Why-motion-matters), then compare the linked Apple and Carbon guidance.
-
-Study one decision at a time: the scale that makes a dial readable, the route that explains a process, or the detail that preserves an item's identity. Then bring it back to the task your reader needs to complete.
+Start with the person, the object and the task. Then choose the details that make those three easier to understand.
