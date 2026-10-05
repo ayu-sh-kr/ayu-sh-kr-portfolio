@@ -10,13 +10,17 @@ stack: [TypeScript, Web Components, Vite]
 
 The hard part of a web-component project is rarely the component. It is the glue around it: routing, lifecycle, events, styles, and a build that knows what exists.
 
+<div>
 <showcase-metrics items="8|packages,1|workspace"></showcase-metrics>
+</div>
 
 ## The problem was repetition
 
 Every app started with the same hand-written setup. Components were easy enough to create, but the surrounding conventions were scattered across examples and copied boilerplate. That made small apps feel heavier than the platform they were using.
 
+<div>
 <showcase-aside kind="note">The goal was not to hide the platform. It was to make the good path obvious while keeping the DOM and browser APIs visible.</showcase-aside>
+</div>
 
 ## A core, then satellites
 

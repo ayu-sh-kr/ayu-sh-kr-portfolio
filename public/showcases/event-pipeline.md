@@ -22,7 +22,9 @@ SQS provides a durable queue for work that needs a consumer. SNS and EventBridge
 product action → durable event → subscribers → observable work
 ```
 
+<div>
 <showcase-aside kind="warn">Asynchronous does not mean invisible. Every consumer needs a failure path, a retry policy, and enough context to explain what happened.</showcase-aside>
+</div>
 
 ## Make operations part of the contract
 

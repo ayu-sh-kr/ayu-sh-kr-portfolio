@@ -18,7 +18,9 @@ A dating app needs a low-friction onboarding path without making OTP delivery an
 
 Postgres holds the durable model. Redis handles carefully chosen caching and coordination, while AWS provides the deployment and messaging primitives. The implementation keeps failure boundaries visible: writes are durable, repeatable operations are idempotent, and coordination is introduced only where duplicate work could affect state or repeat an external side effect.
 
+<div>
 <showcase-aside kind="warn">A queue, cache, or extra service is not reliability by itself. Each one adds a failure mode that needs an owner and a recovery story.</showcase-aside>
+</div>
 
 ## Protect onboarding and control abuse
 

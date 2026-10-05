@@ -26,7 +26,9 @@ The experience communicates visually before it explains itself in prose. Large p
 
 Text on imagery was treated as part of the composition, not a label placed on top of a photograph. Its contrast, position, and measure shift to preserve the image while giving each collection a clear entry point.
 
+<div>
 <showcase-aside kind="note">A retail site for crafted objects should feel tactile without making the path to purchase feel precious or slow.</showcase-aside>
+</div>
 
 ## Commerce is the next layer
 

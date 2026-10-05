@@ -18,7 +18,9 @@ Data fetching is where a small frontend system starts to accumulate invisible ru
 
 Route changes and fast interactions can leave an older request running after the user has moved on. Abort signals let a component stop work it no longer owns, so a slow response cannot overwrite the current view.
 
+<div>
 <showcase-aside kind="note">A stale response is not just a performance issue. It is incorrect state arriving at the wrong time.</showcase-aside>
+</div>
 
 ## Events connect without coupling
 

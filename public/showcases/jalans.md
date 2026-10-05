@@ -18,7 +18,9 @@ The page had one job before every other job: help a visitor understand what the 
 
 The design kept the surface calm so the brand could do the talking. Spacing, type, and small editorial details created a sense of care without turning a local storefront into a generic template.
 
+<div>
 <showcase-aside kind="note">Small businesses do not need less design. They need design that knows what not to put in front of the customer.</showcase-aside>
+</div>
 
 ## Keep the machinery proportional
 
