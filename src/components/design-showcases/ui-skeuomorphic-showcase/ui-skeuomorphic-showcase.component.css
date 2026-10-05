@@ -1,0 +1,219 @@
+ui-skeuomorphic-showcase {
+  display: block;
+  margin-block: 1.25rem 1.5rem;
+}
+
+.ui-physical-showcase {
+  margin: 0;
+  background: var(--surface-color);
+  border-radius: var(--layout-radius-lg);
+  padding: var(--layout-space-2);
+}
+
+.ui-physical-showcase svg {
+  display: block;
+  width: 100%;
+  stroke-linejoin: round;
+}
+
+.ui-physical-showcase text {
+  font: 18px var(--primary-font), sans-serif;
+  fill: var(--foreground-color);
+}
+
+.ui-physical-deck,
+.ui-physical-platter,
+.ui-physical-arm-mount {
+  fill: var(--border-strong-color);
+  stroke: var(--muted-strong-color);
+}
+
+.ui-physical-deck-inset {
+  fill: var(--subtle-color);
+  stroke: var(--border-color);
+}
+
+.ui-physical-vinyl,
+.ui-physical-arm-inner,
+.ui-physical-cartridge,
+.ui-physical-clock-face {
+  fill: var(--code-background-color);
+}
+
+.ui-physical-groove {
+  fill: none;
+  stroke: var(--code-foreground-color);
+  stroke-width: 0.7;
+  opacity: 0.2;
+}
+
+.ui-physical-reflection {
+  fill: var(--code-foreground-color);
+  opacity: 0.08;
+}
+
+.ui-physical-label,
+.ui-physical-power {
+  fill: var(--primary-color);
+}
+
+.ui-physical-spindle {
+  fill: var(--code-background-color);
+}
+
+.ui-physical-label-mark {
+  stroke: var(--primary-color-strong);
+  stroke-width: 2;
+}
+
+.ui-physical-record {
+  transform-origin: 182px 170px;
+}
+
+.ui-physical-arm-shadow {
+  fill: none;
+  stroke: var(--muted-strong-color);
+  stroke-width: 9;
+}
+
+.ui-physical-arm {
+  fill: none;
+  stroke: var(--border-strong-color);
+  stroke-width: 6;
+  stroke-linecap: round;
+}
+
+.ui-physical-showcase .ui-physical-track {
+  font-size: 23px;
+  font-weight: 600;
+}
+
+.ui-physical-showcase .ui-physical-byline,
+.ui-physical-showcase .ui-physical-record-time {
+  font-size: 16px;
+  fill: var(--muted-strong-color);
+}
+
+.ui-physical-clock-title,
+.ui-physical-clock-subtitle,
+.ui-physical-folder-title,
+.ui-physical-folder-name,
+.ui-physical-folder-count {
+  text-anchor: middle;
+}
+
+.ui-physical-clock-body {
+  fill: var(--muted-strong-color);
+  stroke: var(--border-strong-color);
+}
+
+.ui-physical-showcase .ui-physical-clock-digit {
+  fill: var(--code-foreground-color);
+  font: 90px var(--font-mono), monospace;
+  font-weight: 600;
+  text-anchor: middle;
+}
+
+.ui-physical-clock-old {
+  opacity: 0;
+}
+
+.ui-physical-clock-new {
+  transform-origin: 375px 145px;
+}
+
+.ui-physical-clock-seam {
+  stroke: var(--muted-strong-color);
+  stroke-width: 3;
+}
+
+.ui-physical-clock-hinges {
+  fill: var(--border-strong-color);
+}
+
+.ui-physical-clock-feet {
+  stroke: var(--muted-strong-color);
+  stroke-width: 9;
+  stroke-linecap: round;
+}
+
+.ui-physical-folder-back {
+  fill: var(--primary-color-strong);
+}
+
+.ui-physical-paper {
+  fill: var(--background-color);
+  stroke: var(--border-strong-color);
+}
+
+.ui-physical-showcase .ui-physical-paper-title {
+  font-size: 31px;
+}
+
+.ui-physical-paper-lines {
+  stroke: var(--border-strong-color);
+  stroke-width: 2;
+}
+
+.ui-physical-swatch,
+.ui-physical-folder-front {
+  fill: var(--primary-color);
+  stroke: var(--primary-color-strong);
+}
+
+.ui-physical-swatch-light {
+  fill: var(--subtle-color);
+  stroke: var(--border-strong-color);
+}
+
+.ui-physical-showcase .ui-physical-folder-name {
+  font-size: 23px;
+  font-weight: 600;
+  fill: var(--primary-color-on);
+}
+
+.ui-physical-showcase .ui-physical-folder-count {
+  fill: var(--primary-color-on);
+}
+
+.ui-physical-folder-stitch {
+  stroke: var(--primary-color-strong);
+  stroke-dasharray: 2 5;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .ui-physical-record {
+    animation: ui-physical-record-turn 12s linear infinite;
+  }
+
+  .ui-physical-clock-old {
+    animation: ui-physical-clock-old 6s ease-in-out infinite;
+  }
+
+  .ui-physical-clock-new {
+    animation: ui-physical-clock-new 6s ease-in-out infinite;
+  }
+
+  .ui-physical-folder-pages {
+    animation: ui-physical-folder-peek 6s ease-in-out infinite;
+  }
+}
+
+@keyframes ui-physical-record-turn {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes ui-physical-clock-old {
+  0%, 30%, 100% { opacity: 1; }
+  40%, 92% { opacity: 0; }
+}
+
+@keyframes ui-physical-clock-new {
+  0%, 30%, 100% { opacity: 0; transform: scaleY(0.05); }
+  45%, 90% { opacity: 1; transform: scaleY(1); }
+}
+
+@keyframes ui-physical-folder-peek {
+  0%, 20%, 100% { transform: translateY(0); }
+  45%, 80% { transform: translateY(-20px); }
+}
