@@ -76,14 +76,16 @@ describe("news article view tracking", () => {
     expect(load).not.toHaveBeenCalled();
   });
 
-  it("does not submit tracking during server rendering", () => {
+  it("loads Markdown for prerendering without submitting tracking during server rendering", () => {
     vi.stubEnv("SSR", true);
     const article = new TestNewsArticleComponent();
     vi.spyOn(article, "scheduleProgress").mockImplementation(() => {});
+    const load = vi.spyOn(article, "loadDocument").mockResolvedValue();
 
     article.initializeArticle();
 
     expect(blogViewCountService.recordView).not.toHaveBeenCalled();
+    expect(load).toHaveBeenCalled();
   });
 
   it("reports a privacy-safe failure while keeping Markdown loading independent", async () => {
