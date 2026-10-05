@@ -129,7 +129,7 @@ ui-isometric-usecase {
 .ui-practical-road {
   fill: none;
   stroke: var(--border-strong-color);
-  stroke-width: 16;
+  stroke-width: 42;
   stroke-linejoin: round;
 }
 
@@ -155,4 +155,12 @@ ui-isometric-usecase {
 /* Reduced motion retains both parcels, including the one at the loading hatch. */
 .ui-delivery-parcel-load {
   transform: translate(95px, -4px);
+}
+
+.ui-delivery-road-markings {
+  fill: none;
+  stroke: var(--background-color);
+  stroke-width: 1.5;
+  stroke-dasharray: 7 9;
+  stroke-linejoin: round;
 }

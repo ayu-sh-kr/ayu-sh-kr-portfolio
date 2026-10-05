@@ -53,7 +53,8 @@ export class UiIsometricUsecaseComponent extends ArticleShowcaseElement {
       <g class="ui-practical-labels"><text x="127" y="274">Original photo</text><text x="272" y="133">Resize</text><text x="425" y="274">Desktop + phone</text></g>
     </svg>`;
     const parcel = `<svg viewBox="0 0 560 330" aria-hidden="true">
-      <path class="ui-practical-road" d="M28 238 L158 163 M158 163 L334 61 M349 199 L500 286" />
+      <path class="ui-practical-road" d="M42 258 L176 181 L332 271 L416 223 L516 281" />
+      <path class="ui-delivery-road-markings" d="M42 258 L176 181 L332 271 L416 223 L516 281" />
       <g class="ui-practical-object"><path class="ui-practical-top" d="M170 121 L254 72 L344 124 L260 173 Z" /><path class="ui-practical-side" d="M170 121 L260 173 V239 L170 187 Z M260 173 L344 124 V190 L260 239 Z" /><path class="ui-practical-detail" d="M177 119 L255 91 L335 122 M254 72 V91 M185 156 L207 169 V197 L185 184 Z M273 184 L310 163 V210 L273 231 Z M273 194 L310 173 M273 203 L310 182 M273 212 L310 191" /><path class="ui-practical-accent" d="M216 141 L244 157 V170 L216 154 Z" /></g>
       <path class="ui-delivery-opening" d="M185 156 L207 169 V197 L185 184 Z M273 184 L310 163 V210 L273 231 Z" />
       <g class="ui-practical-object ui-practical-parcel-in"><path class="ui-practical-top" d="M71 224 L84 216 L97 224 L84 232 Z" /><path class="ui-practical-side" d="M71 224 L84 232 V247 L71 239 Z M84 232 L97 224 V239 L84 247 Z" /><path class="ui-practical-detail" d="M78 220 l13 8" /></g>
