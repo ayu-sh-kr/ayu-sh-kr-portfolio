@@ -234,6 +234,11 @@
       "permanent": true
     },
     {
+      "source": "/news/gitlab-unauthenticated-rate-limits",
+      "destination": "/news/gitlab-unauthenticated-rate-limits/",
+      "permanent": true
+    },
+    {
       "source": "/news/google-gemini-4-argon-pricing-capabilities",
       "destination": "/news/google-gemini-4-argon-pricing-capabilities/",
       "permanent": true
