@@ -46,7 +46,7 @@
 
 ## Recent Dispatch notes
 
-- [Angular Native brings Angular to native mobile apps through React Native Fabric](https://www.ayu-sh-kr.com/news/angular-native-mobile-apps/): Angular Native renders Angular components as native iOS and Android views through React Native Fabric. The five-minute overview covers its Angular and Expo stack, framework choice, and alpha-stage limits. [Article Markdown](https://www.ayu-sh-kr.com/news/angular-native-mobile-apps.md).
+- [Angular Native brings native iOS and Android apps to Angular](https://www.ayu-sh-kr.com/news/angular-native-mobile-apps/): Angular Native builds iOS and Android apps with Angular, React Native Fabric and Expo. How it differs from Capacitor, its enterprise appeal and alpha limits. [Article Markdown](https://www.ayu-sh-kr.com/news/angular-native-mobile-apps.md).
 
 - [GitLab.com limits unauthenticated requests to 60 per hour from October 19](https://www.ayu-sh-kr.com/news/gitlab-unauthenticated-rate-limits/): GitLab.com cuts unauthenticated requests to 60 per hour per IP on October 19, 2026. See the new tier limits, the October brownouts, and how to prepare scripts and CI jobs. [Article Markdown](https://www.ayu-sh-kr.com/news/gitlab-unauthenticated-rate-limits.md).
 - [Claude Code mods: TypeScript plugins for prompts, tool calls and UI](https://www.ayu-sh-kr.com/news/claude-code-mods-typescript/): Claude Code mods are TypeScript plugins that rewrite prompts, guard tool calls and draw panes. Learn how they work, how they differ from hooks, and their risks. [Article Markdown](https://www.ayu-sh-kr.com/news/claude-code-mods-typescript.md).
