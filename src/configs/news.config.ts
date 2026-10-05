@@ -68,6 +68,17 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "angular-native-mobile-apps",
+    date: "2026-10-06",
+    title: "Angular Native brings native iOS and Android apps to Angular",
+    summary: "Angular Native builds iOS and Android apps with Angular, React Native Fabric and Expo. How it differs from Capacitor, its enterprise appeal and alpha limits.",
+    kind: "reading",
+    document: "/news/angular-native-mobile-apps.md",
+    keywords: ["Angular Native", "Angular mobile app development", "Angular iOS Android apps", "React Native Fabric", "Angular Expo", "Angular Native vs Capacitor", "Angular NativeScript"],
+    minutes: 5,
+    reference: {label: "Angular Native — source and documentation", href: "https://github.com/ng-native/ng-native"},
+  },
+  {
     slug: "aleph-alpha-kolibri-open-weight-model",
     date: "2026-10-05",
     title: "Aleph Alpha releases Kolibri 1: 78B open weights and 1M context",
