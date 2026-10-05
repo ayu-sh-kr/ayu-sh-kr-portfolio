@@ -43,7 +43,7 @@ export const blogPosts: readonly BlogPost[] = [
     date: "2026-10-04",
     writer: siteIdentity.name,
     header: "UI Design Examples: Skeuomorphism, Isometric Art and Motion",
-    description: "Explore thirteen UI design examples covering analog gauges, isometric illustrations and motion UI, with practical uses and professional design references.",
+    description: "Explore fifteen UI design examples covering analog gauges, isometric illustrations and motion UI, with practical uses and professional design references.",
     keywords: ["UI design examples", "skeuomorphism", "gauge UI", "isometric illustration", "motion UI", "microinteractions", "shared element transition", "visual grammar"],
     category: "tutorial",
     source: "/blogs/tutorial/ui-design-trends-skeuomorphism-isometric-glass.md",
