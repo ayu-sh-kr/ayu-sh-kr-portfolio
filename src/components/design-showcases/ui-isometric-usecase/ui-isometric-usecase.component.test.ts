@@ -18,8 +18,8 @@ it.each(["images", "delivery", "backup", "unknown"])("renders the %s scene with 
       expect(host.querySelector(".ui-backup-transfer")).not.toBeNull();
       return;
     }
-    expect(host.textContent).toContain(example === "delivery" ? "Send onward" : "Original image");
-    expect(host.querySelector(example === "delivery" ? ".ui-practical-parcel-out" : ".ui-practical-output")).not.toBeNull();
+    expect(host.textContent).toContain(example === "delivery" ? "Out for delivery" : "Original photo");
+    expect(host.querySelector(example === "delivery" ? ".ui-practical-wheel" : ".ui-practical-output")).not.toBeNull();
   } finally {
     host.remove();
   }

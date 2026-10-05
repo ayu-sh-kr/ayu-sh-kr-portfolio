@@ -67,9 +67,6 @@ ui-isometric-usecase {
     animation: ui-practical-parcel-arrive 5s linear infinite;
   }
 
-  .ui-practical-parcel-out {
-    animation: ui-practical-parcel-leave 5s linear infinite;
-  }
 }
 
 @keyframes ui-practical-image-transfer {
@@ -89,11 +86,7 @@ ui-isometric-usecase {
   45%, 100% { transform: translate(98px, -57px); opacity: 0; }
 }
 
-@keyframes ui-practical-parcel-leave {
-  0%, 45% { transform: translate(0, 0); opacity: 0; }
-  55%, 85% { opacity: 1; }
-  100% { transform: translate(56px, 32px); opacity: 0; }
-}
+
 
 .ui-backup-copy {
   fill: none;
@@ -115,4 +108,16 @@ ui-isometric-usecase {
   48% { transform: translate(112px, -65px); opacity: 1; }
   76% { transform: translate(242px, 10px); opacity: 1; }
   84%, 100% { transform: translate(242px, 10px); opacity: 0; }
+}
+
+.ui-practical-road {
+  fill: none;
+  stroke: var(--border-strong-color);
+  stroke-width: 16;
+  stroke-linejoin: round;
+}
+
+.ui-practical-wheel {
+  fill: var(--code-background-color);
+  stroke: var(--muted-strong-color);
 }

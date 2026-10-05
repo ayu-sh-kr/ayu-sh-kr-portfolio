@@ -41,21 +41,23 @@ export class UiIsometricUsecaseComponent extends ArticleShowcaseElement {
       return html`<figure class="ui-isometric-usecase" role="img" aria-label="Illustrative backup service: original documents stay on their platform while a copy travels to a separate archive.">${trustedHTML(svg)}</figure>`;
     }
     const delivery = this.example === "delivery";
-    const images = `<svg viewBox="0 0 560 280" aria-hidden="true">
-      <path class="ui-practical-path" d="M112 132 L254 50 L432 153" />
-      <g class="ui-practical-object ui-practical-image-source"><path class="ui-practical-top" d="M42 145 L116 102 L180 139 L106 182 Z" /><path class="ui-practical-side" d="M42 145 L106 182 L106 192 L42 155 Z M106 182 L180 139 L180 149 L106 192 Z" /><path class="ui-practical-picture" d="M69 146 L104 126 L151 153 L116 173 Z M76 148 L103 149 L103 139 L139 154" /><ellipse class="ui-practical-accent" cx="112" cy="142" rx="5" ry="3" /></g>
-      <g class="ui-practical-object"><path class="ui-practical-top" d="M209 98 L265 66 L321 98 L265 130 Z" /><path class="ui-practical-side" d="M209 98 L265 130 L265 188 L209 156 Z M265 130 L321 98 L321 156 L265 188 Z" /><path class="ui-practical-detail" d="M223 135 L251 151 M279 151 L307 135" /><path class="ui-practical-accent" d="M247 98 L265 88 L283 98 L265 108 Z" /></g>
-      <g class="ui-practical-object ui-practical-output"><path class="ui-practical-top" d="M372 166 L407 146 L441 166 L406 186 Z M404 192 L437 173 L469 192 L436 211 Z M445 151 L469 137 L493 151 L469 165 Z" /><path class="ui-practical-side" d="M372 166 L406 186 L441 166 V172 L406 192 L372 172 Z M404 192 L436 211 L469 192 V198 L436 217 L404 198 Z M445 151 L469 165 L493 151 V157 L469 171 L445 157 Z" /><path class="ui-practical-picture" d="M386 165 l12 -7 l24 14 M418 192 l12 -7 l23 13 M454 151 l9 -5 l18 10" /></g>
-      <circle class="ui-practical-signal" cx="152" cy="109" r="4" />
-      <g class="ui-practical-labels"><text x="108" y="232">Original image</text><text x="265" y="232">Resize</text><text x="433" y="250">Ready for each screen</text></g>
+    const images = `<svg viewBox="0 0 560 310" aria-hidden="true">
+      <path class="ui-practical-path" d="M139 137 L267 63 L414 148" />
+      <g class="ui-practical-object"><path class="ui-practical-top" d="M37 150 L128 97 L218 149 L127 202 Z" /><path class="ui-practical-side" d="M37 150 L127 202 V213 L37 161 Z M127 202 L218 149 V160 L127 213 Z" /><path class="ui-practical-picture" d="M60 151 L128 112 L194 150 L126 189 Z M73 153 L106 142 L120 153 L134 140 L182 155" /><ellipse class="ui-practical-accent" cx="151" cy="143" rx="7" ry="4" /></g>
+      <g class="ui-practical-object ui-practical-crop"><path class="ui-practical-side" d="M228 74 L272 48 L316 74 L272 100 Z" /><path class="ui-practical-detail" d="M238 74 l17 -10 M262 59 l10 -6 13 8 M306 74 l-16 10 M281 94 l-9 5 -15 -9" /><path class="ui-practical-accent" d="M251 74 L272 62 L293 74 L272 86 Z" /></g>
+      <g class="ui-practical-object ui-practical-output">
+        <path class="ui-practical-top" d="M355 126 L438 78 L438 173 L355 221 Z" /><path class="ui-practical-side" d="M438 78 l7 4 v95 l-7 -4 M355 221 l7 4 83 -48 -7 -4" /><path class="ui-practical-picture" d="M364 129 L429 91 V166 L364 204 Z M364 177 l19 -34 18 6 28 -42 M390 203 v13 l-22 13 46 -26 -17 -10" />
+        <path class="ui-practical-top" d="M446 154 L489 129 V212 L446 237 Z" /><path class="ui-practical-side" d="M489 129 l6 4 v83 l-6 -4 M446 237 l6 4 43 -25 -6 -4" /><path class="ui-practical-picture" d="M453 159 L482 142 V205 L453 222 Z M453 201 l12 -24 17 5" />
+      </g>
+      <circle class="ui-practical-signal" cx="174" cy="117" r="4" />
+      <g class="ui-practical-labels"><text x="127" y="274">Original photo</text><text x="272" y="133">Resize</text><text x="425" y="274">Desktop + phone</text></g>
     </svg>`;
-    const parcel = `<svg viewBox="0 0 560 300" aria-hidden="true">
-      <path class="ui-practical-path" d="M82 195 L266 89 L472 208 M266 89 L399 12" />
-      <g class="ui-practical-object"><path class="ui-practical-top" d="M196 128 L268 86 L340 128 L268 170 Z" /><path class="ui-practical-side" d="M196 128 L268 170 L268 214 L196 172 Z M268 170 L340 128 L340 172 L268 214 Z" /><path class="ui-practical-detail" d="M214 153 l31 18 M287 175 l33 -19" /><path class="ui-practical-accent" d="M250 128 L268 118 L286 128 L268 138 Z" /></g>
-      <g class="ui-practical-object ui-practical-parcel-in"><path class="ui-practical-top" d="M62 182 L84 169 L106 182 L84 195 Z" /><path class="ui-practical-side" d="M62 182 L84 195 L84 218 L62 205 Z M84 195 L106 182 L106 205 L84 218 Z" /><path class="ui-practical-detail" d="M73 175 l22 13" /></g>
-      <g class="ui-practical-object ui-practical-parcel-out"><path class="ui-practical-top" d="M391 180 L413 167 L435 180 L413 193 Z" /><path class="ui-practical-side" d="M391 180 L413 193 L413 216 L391 203 Z M413 193 L435 180 L435 203 L413 216 Z" /><path class="ui-practical-detail" d="M402 173 l22 13" /></g>
-      <g class="ui-practical-object"><path class="ui-practical-top" d="M364 51 L391 35 L418 51 L391 67 Z" /><path class="ui-practical-side" d="M364 51 L391 67 L391 89 L364 73 Z M391 67 L418 51 L418 73 L391 89 Z" /></g>
-      <g class="ui-practical-labels"><text x="82" y="260">Arrive</text><text x="268" y="260">Sort</text><text x="435" y="260">Send onward</text></g>
+    const parcel = `<svg viewBox="0 0 560 330" aria-hidden="true">
+      <path class="ui-practical-road" d="M28 238 L158 163 L498 260 M158 163 L334 61" />
+      <g class="ui-practical-object"><path class="ui-practical-top" d="M170 121 L254 72 L344 124 L260 173 Z" /><path class="ui-practical-side" d="M170 121 L260 173 V239 L170 187 Z M260 173 L344 124 V190 L260 239 Z" /><path class="ui-practical-detail" d="M177 119 L255 91 L335 122 M254 72 V91 M185 156 L207 169 V197 L185 184 Z M273 184 L310 163 V210 L273 231 Z M273 194 L310 173 M273 203 L310 182 M273 212 L310 191" /><path class="ui-practical-accent" d="M216 141 L244 157 V170 L216 154 Z" /></g>
+      <g class="ui-practical-object ui-practical-parcel-in"><path class="ui-practical-top" d="M62 209 L84 196 L106 209 L84 222 Z" /><path class="ui-practical-side" d="M62 209 L84 222 V245 L62 232 Z M84 222 L106 209 V232 L84 245 Z" /><path class="ui-practical-detail" d="M73 202 l22 13" /></g>
+      <g class="ui-practical-object"><path class="ui-practical-top" d="M370 192 L407 171 L465 205 L428 226 Z" /><path class="ui-practical-side" d="M370 192 L428 226 V267 L370 233 Z M428 226 L465 205 V246 L428 267 Z" /><path class="ui-practical-top" d="M465 216 L484 205 L506 218 L487 229 Z" /><path class="ui-practical-side" d="M465 216 L487 229 V269 L465 256 Z M487 229 L506 218 V258 L487 269 Z" /><path class="ui-practical-picture" d="M473 225 l12 7 v13 l-12 -7 Z M493 231 l8 -5 v15 l-8 5 Z" /><ellipse class="ui-practical-wheel" cx="387" cy="249" rx="7" ry="11" /><ellipse class="ui-practical-wheel" cx="473" cy="266" rx="7" ry="11" /><path class="ui-practical-accent" d="M383 215 l31 18 v12 l-31 -18 Z" /></g>
+      <g class="ui-practical-labels"><text x="83" y="298">Parcel arrives</text><text x="258" y="298">Sorting depot</text><text x="443" y="310">Out for delivery</text></g>
     </svg>`;
     return html`<figure class="ui-isometric-usecase" role="img" aria-label="${delivery ? "Illustrative parcel sorting hub: packages arrive, are sorted, and travel onward." : "Illustrative image service: an original is resized into several screen sizes."}">${trustedHTML(delivery ? parcel : images)}</figure>`;
   }
