@@ -339,6 +339,11 @@
       "permanent": true
     },
     {
+      "source": "/news/yarrtube-self-hosted-youtube-no-recommendations",
+      "destination": "/news/yarrtube-self-hosted-youtube-no-recommendations/",
+      "permanent": true
+    },
+    {
       "source": "/news/zcode-user-code-upload-key",
       "destination": "/news/zcode-user-code-upload-key/",
       "permanent": true
