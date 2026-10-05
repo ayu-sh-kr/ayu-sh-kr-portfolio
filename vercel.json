@@ -184,6 +184,11 @@
       "permanent": true
     },
     {
+      "source": "/news/aleph-alpha-kolibri-open-weight-model",
+      "destination": "/news/aleph-alpha-kolibri-open-weight-model/",
+      "permanent": true
+    },
+    {
       "source": "/news/angular-native-mobile-apps",
       "destination": "/news/angular-native-mobile-apps/",
       "permanent": true
@@ -191,11 +196,6 @@
     {
       "source": "/news/anthropic-contextual-retrieval-rag",
       "destination": "/news/anthropic-contextual-retrieval-rag/",
-      "permanent": true
-    },
-    {
-      "source": "/news/aleph-alpha-kolibri-open-weight-model",
-      "destination": "/news/aleph-alpha-kolibri-open-weight-model/",
       "permanent": true
     },
     {
@@ -346,6 +346,11 @@
     {
       "source": "/news/qorl-postgres-query-optimizer-rl",
       "destination": "/news/qorl-postgres-query-optimizer-rl/",
+      "permanent": true
+    },
+    {
+      "source": "/news/yarrtube-self-hosted-youtube-no-recommendations",
+      "destination": "/news/yarrtube-self-hosted-youtube-no-recommendations/",
       "permanent": true
     },
     {

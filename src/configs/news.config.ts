@@ -68,6 +68,17 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "yarrtube-self-hosted-youtube-no-recommendations",
+    date: "2026-10-06",
+    title: "Yarrtube replaces YouTube recommendations with a feed you choose",
+    summary: "Yarrtube tracks selected YouTube channels and playlists, then downloads new videos to a home server. How this subscription-driven feed changes the algorithmic default—and what self-hosting requires.",
+    kind: "reading",
+    document: "/news/yarrtube-self-hosted-youtube-no-recommendations.md",
+    keywords: ["Yarrtube", "self-hosted YouTube", "YouTube recommendation algorithm", "YouTube playlist downloader", "Rust media server", "YouTube NAS"],
+    minutes: 2,
+    reference: {label: "Yarrtube — project and source", href: "https://github.com/sergigp/yarrtube"},
+  },
+  {
     slug: "angular-native-mobile-apps",
     date: "2026-10-06",
     title: "Angular Native brings native iOS and Android apps to Angular",
@@ -80,7 +91,7 @@ export const newsNotes: readonly NewsNote[] = [
   },
   {
     slug: "aleph-alpha-kolibri-open-weight-model",
-    date: "2026-10-05",
+    date: "2026-10-06",
     title: "Aleph Alpha releases Kolibri 1: 78B open weights and 1M context",
     summary: "Kolibri 1 brings Apache 2.0 weights, German-English reasoning and up to 1M tokens of context. Here’s what its MoE design means for GPU memory and deployment.",
     kind: "reading",
