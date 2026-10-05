@@ -68,6 +68,17 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "yarrtube-self-hosted-youtube-no-recommendations",
+    date: "2026-10-05",
+    title: "Yarrtube replaces YouTube recommendations with a feed you choose",
+    summary: "Yarrtube tracks selected YouTube channels and playlists, then downloads new videos to a home server. How this subscription-driven feed changes the algorithmic default—and what self-hosting requires.",
+    kind: "reading",
+    document: "/news/yarrtube-self-hosted-youtube-no-recommendations.md",
+    keywords: ["Yarrtube", "self-hosted YouTube", "YouTube recommendation algorithm", "YouTube playlist downloader", "Rust media server", "YouTube NAS"],
+    minutes: 2,
+    reference: {label: "Yarrtube — project and source", href: "https://github.com/sergigp/yarrtube"},
+  },
+  {
     slug: "gitlab-unauthenticated-rate-limits",
     date: "2026-10-05",
     title: "GitLab.com limits unauthenticated requests to 60 per hour from October 19",
