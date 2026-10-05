@@ -125,3 +125,12 @@ ui-isometric-usecase {
   fill: var(--code-background-color);
   stroke: var(--muted-strong-color);
 }
+
+.ui-delivery-window {
+  fill: color-mix(in srgb, var(--foreground-color) 22%, var(--background-color));
+}
+
+.ui-delivery-hub,
+.ui-delivery-light {
+  fill: var(--background-color);
+}

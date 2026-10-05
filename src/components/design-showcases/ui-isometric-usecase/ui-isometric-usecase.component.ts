@@ -56,7 +56,25 @@ export class UiIsometricUsecaseComponent extends ArticleShowcaseElement {
       <path class="ui-practical-road" d="M28 238 L158 163 M158 163 L334 61 M349 199 L500 286" />
       <g class="ui-practical-object"><path class="ui-practical-top" d="M170 121 L254 72 L344 124 L260 173 Z" /><path class="ui-practical-side" d="M170 121 L260 173 V239 L170 187 Z M260 173 L344 124 V190 L260 239 Z" /><path class="ui-practical-detail" d="M177 119 L255 91 L335 122 M254 72 V91 M185 156 L207 169 V197 L185 184 Z M273 184 L310 163 V210 L273 231 Z M273 194 L310 173 M273 203 L310 182 M273 212 L310 191" /><path class="ui-practical-accent" d="M216 141 L244 157 V170 L216 154 Z" /></g>
       <g class="ui-practical-object ui-practical-parcel-in"><path class="ui-practical-top" d="M62 209 L84 196 L106 209 L84 222 Z" /><path class="ui-practical-side" d="M62 209 L84 222 V245 L62 232 Z M84 222 L106 209 V232 L84 245 Z" /><path class="ui-practical-detail" d="M73 202 l22 13" /></g>
-      <g class="ui-practical-object"><path class="ui-practical-top" d="M370 192 L407 171 L465 205 L428 226 Z" /><path class="ui-practical-side" d="M370 192 L428 226 V267 L370 233 Z M428 226 L465 205 V246 L428 267 Z" /><path class="ui-practical-top" d="M465 216 L484 205 L506 218 L487 229 Z" /><path class="ui-practical-side" d="M465 216 L487 229 V269 L465 256 Z M487 229 L506 218 V258 L487 269 Z" /><path class="ui-practical-picture" d="M473 225 l12 7 v13 l-12 -7 Z M493 231 l8 -5 v15 l-8 5 Z" /><ellipse class="ui-practical-wheel" cx="387" cy="249" rx="7" ry="11" /><ellipse class="ui-practical-wheel" cx="473" cy="266" rx="7" ry="11" /><path class="ui-practical-accent" d="M383 215 l31 18 v12 l-31 -18 Z" /></g>
+      <g class="ui-practical-object ui-delivery-truck">
+        <path class="ui-practical-side" d="M368 218 L428 253 L465 274 L500 254 V263 L465 283 L368 227 Z" />
+        <path class="ui-practical-top" d="M368 169 L403 149 L463 184 L428 204 Z" />
+        <path class="ui-practical-side" d="M368 169 L428 204 V253 L368 218 Z M428 204 L463 184 V233 L428 253 Z" />
+        <path class="ui-practical-detail" d="M374 180 L420 207 M374 210 L420 237" />
+        <path class="ui-practical-accent" d="M379 192 L416 213 V225 L379 204 Z" />
+        <path class="ui-practical-top" d="M428 216 L463 196 L485 209 L450 229 Z" />
+        <path class="ui-practical-side" d="M428 216 L450 229 L465 248 V274 L428 253 Z" />
+        <path class="ui-practical-top" d="M450 229 L485 209 L500 228 L465 248 Z" />
+        <path class="ui-practical-side" d="M465 248 L500 228 V261 L465 281 Z" />
+        <path class="ui-delivery-window" d="M435 226 L447 233 L456 245 L435 233 Z M458 230 L483 215 L494 228 L469 243 Z" />
+        <path class="ui-practical-detail" d="M432 237 V252 M435 240 l7 4 M473 251 L493 239 M473 256 L493 244" />
+        <path class="ui-delivery-light" d="M469 260 l6 -3 v5 l-6 3 Z M490 248 l6 -3 v5 l-6 3 Z" />
+        <path class="ui-practical-detail" d="M465 274 L500 254 M459 241 l-5 -3 v8" />
+        <ellipse class="ui-practical-wheel" cx="386" cy="233" rx="8" ry="12" transform="rotate(-12 386 233)" />
+        <ellipse class="ui-practical-wheel" cx="452" cy="271" rx="8" ry="12" transform="rotate(-12 452 271)" />
+        <ellipse class="ui-delivery-hub" cx="386" cy="233" rx="3" ry="5" transform="rotate(-12 386 233)" />
+        <ellipse class="ui-delivery-hub" cx="452" cy="271" rx="3" ry="5" transform="rotate(-12 452 271)" />
+      </g>
       <g class="ui-practical-labels"><text x="83" y="298">Parcel arrives</text><text x="258" y="298">Sorting depot</text><text x="443" y="310">Out for delivery</text></g>
     </svg>`;
     return html`<figure class="ui-isometric-usecase" role="img" aria-label="${delivery ? "Illustrative parcel sorting hub: packages arrive, are sorted, and travel onward." : "Illustrative image service: an original is resized into several screen sizes."}">${trustedHTML(delivery ? parcel : images)}</figure>`;
