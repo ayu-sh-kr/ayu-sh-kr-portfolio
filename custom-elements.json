@@ -69,6 +69,58 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/design-showcases/ui-gauge-usecase/ui-gauge-usecase.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "UiGaugeUsecaseComponent",
+          "customElement": true,
+          "tagName": "ui-gauge-usecase",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [
+            {
+              "kind": "field",
+              "name": "example",
+              "attribute": "example",
+              "type": {
+                "text": "string"
+              },
+              "default": "energy"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "example",
+              "fieldName": "example",
+              "type": {
+                "text": "string"
+              },
+              "default": "energy"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "UiGaugeUsecaseComponent",
+          "declaration": {
+            "name": "UiGaugeUsecaseComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ui-gauge-usecase",
+          "declaration": {
+            "name": "UiGaugeUsecaseComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/design-showcases/ui-isometric-showcase/ui-isometric-showcase.component.js",
       "declarations": [
         {
@@ -96,6 +148,58 @@
           "name": "ui-isometric-showcase",
           "declaration": {
             "name": "UiIsometricShowcaseComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/design-showcases/ui-isometric-usecase/ui-isometric-usecase.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "UiIsometricUsecaseComponent",
+          "customElement": true,
+          "tagName": "ui-isometric-usecase",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [
+            {
+              "kind": "field",
+              "name": "example",
+              "attribute": "example",
+              "type": {
+                "text": "string"
+              },
+              "default": "images"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "example",
+              "fieldName": "example",
+              "type": {
+                "text": "string"
+              },
+              "default": "images"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "UiIsometricUsecaseComponent",
+          "declaration": {
+            "name": "UiIsometricUsecaseComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ui-isometric-usecase",
+          "declaration": {
+            "name": "UiIsometricUsecaseComponent"
           }
         }
       ]

@@ -3757,6 +3757,40 @@
           }
         },
         {
+          "name": "ui-gauge-usecase",
+          "source": {
+            "file": "./src/components/design-showcases/ui-gauge-usecase/ui-gauge-usecase.component.ts",
+            "offset": 320
+          },
+          "attributes": [
+            {
+              "name": "example",
+              "default": "energy",
+              "required": false,
+              "value": {
+                "type": "string"
+              },
+              "source": {
+                "file": "./src/components/design-showcases/ui-gauge-usecase/ui-gauge-usecase.component.ts",
+                "offset": 500
+              }
+            }
+          ],
+          "js": {
+            "properties": [
+              {
+                "name": "example",
+                "type": "string",
+                "default": "energy",
+                "source": {
+                  "file": "./src/components/design-showcases/ui-gauge-usecase/ui-gauge-usecase.component.ts",
+                  "offset": 500
+                }
+              }
+            ]
+          }
+        },
+        {
           "name": "ui-isometric-showcase",
           "source": {
             "file": "./src/components/design-showcases/ui-isometric-showcase/ui-isometric-showcase.component.ts",
@@ -3765,6 +3799,40 @@
           "attributes": [],
           "js": {
             "properties": []
+          }
+        },
+        {
+          "name": "ui-isometric-usecase",
+          "source": {
+            "file": "./src/components/design-showcases/ui-isometric-usecase/ui-isometric-usecase.component.ts",
+            "offset": 326
+          },
+          "attributes": [
+            {
+              "name": "example",
+              "default": "images",
+              "required": false,
+              "value": {
+                "type": "string"
+              },
+              "source": {
+                "file": "./src/components/design-showcases/ui-isometric-usecase/ui-isometric-usecase.component.ts",
+                "offset": 511
+              }
+            }
+          ],
+          "js": {
+            "properties": [
+              {
+                "name": "example",
+                "type": "string",
+                "default": "images",
+                "source": {
+                  "file": "./src/components/design-showcases/ui-isometric-usecase/ui-isometric-usecase.component.ts",
+                  "offset": 511
+                }
+              }
+            ]
           }
         },
         {

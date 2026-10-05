@@ -8,6 +8,8 @@
 @import "./form-element.css";
 @import "./components/design-showcases/ui-gauge-showcase/ui-gauge-showcase.component.css";
 @import "./components/design-showcases/ui-isometric-showcase/ui-isometric-showcase.component.css";
+@import "./components/design-showcases/ui-gauge-usecase/ui-gauge-usecase.component.css";
+@import "./components/design-showcases/ui-isometric-usecase/ui-isometric-usecase.component.css";
 @import "./components/utils/action-button/action-button.component.css";
 @import "./anchor-link.css";
 @import "./components/utils/scroll-hint/scroll-hint.component.css";
