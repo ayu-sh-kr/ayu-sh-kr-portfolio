@@ -68,12 +68,17 @@ export const newsNotes: readonly NewsNote[] = [
   {
     slug: "claude-code-mods-typescript",
     date: "2026-10-05",
-    title: "Claude Code adds mods: TypeScript hooks that change how it behaves",
-    summary: "Anthropic adds mods to Claude Code: TypeScript functions in plugins that rewrite prompts, guard tool calls and draw panes. How they work, built-in mods, and what they can reach.",
+    title: "Claude Code mods: TypeScript plugins for prompts, tool calls and UI",
+    summary: "Claude Code mods are TypeScript plugins that rewrite prompts, guard tool calls and draw panes. Learn how they work, how they differ from hooks, and their risks.",
     kind: "reading",
     document: "/news/claude-code-mods-typescript.md",
-    keywords: ["Claude Code mods", "Claude Code plugins", "Claude Code TypeScript hooks", "Claude Code function hooks", "customize Claude Code", "Claude Code /diff mod", "AI coding agent extensions"],
-    minutes: 3,
+    keywords: ["Claude Code mods", "Claude Code plugins", "Claude Code mods vs hooks", "Claude Code TypeScript hooks", "customize Claude Code", "Claude Code /diff mod", "Claude Code mod security"],
+    minutes: 4,
+    figures: [
+      {label: "Released", value: "Oct 1, 2026"},
+      {label: "Minimum version", value: "v2.1.287"},
+      {label: "Runs in", value: "CLI + Desktop"},
+    ],
     reference: {label: "Claude — Customize Claude Code with mods in TypeScript", href: "https://claude.com/blog/claude-code-mods"},
   },
   {
