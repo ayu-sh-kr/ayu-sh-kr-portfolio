@@ -1,10 +1,10 @@
-# UI Design Trends: Analog Gauges and Animated Isometric Illustrations
+# UI Design Examples: Skeuomorphism, Isometric Art and Motion
 
 Some interfaces make you stop scrolling. A row of cockpit dials, with needles slowly turning. A little machine carrying pieces along a conveyor belt. You recognise the objects before you know what the product does.
 
-These two styles borrow from familiar things: physical instruments and technical drawings. The first makes a screen feel like a control panel. The second makes an idea feel like something you can watch working.
+Skeuomorphic gauges borrow from physical instruments. Isometric illustrations borrow from technical drawings. Motion UI adds a third approach: it helps you follow a change on the screen. Each gives you a different way to make an interface easier to understand.
 
-They are the focus of this guide. We will move from cockpit dials to home energy and audio, then from a little machine to image processing and parcel sorting. These are original design examples, not screenshots of the products linked below. They move on their own while you read.
+This visual guide covers their origins, ideas, visual grammar and practical uses through nine automatic examples. We move from home energy and audio to image processing and delivery, then to saving notes, opening albums and reordering tasks. The scenes are original design studies, rather than screenshots of the linked products; their values and actions are illustrative.
 
 ## Analog gauges: a familiar face for a digital value
 
@@ -112,12 +112,106 @@ Keep that role clear. The illustration can introduce the idea; the nearby words 
 
 On a small screen, simpler scenes also hold up better. The main object and movement should remain recognisable after the illustration shrinks. Tiny labels and dozens of moving pieces often disappear into visual noise.
 
-## Choosing between them
+## Motion UI: make a change easy to follow
 
-The gauges draw you toward a **reading**. The isometric machine draws you toward an **action**. That difference is a useful starting point.
+A photo opens into a larger view. A note finishes saving. Two tasks trade places in a list. These are examples of **motion UI**: movement that helps you understand a change in the interface.
 
-If you want someone to notice a current level, try an instrument. If you want them to picture work moving between parts, try an isometric scene. Neither needs to become the visual style of the entire application.
+The isometric conveyor explains an idea outside the screen. Motion UI explains what is happening *on* the screen. Both use animation, but they have different jobs. A product can use either one without adopting the other.
 
-Let the rest of the page give the illustration room. Plain text, comfortable spacing and a quiet background help the details stand out. A strong example loses its effect when every section competes with it.
+### Where does the idea come from?
 
-The references work because the objects are carefully drawn and the movement feels natural. Start there: make one dial readable, or make one small machine convincing. Add the details that support it, and stop when the idea is clear.
+There is no single inventor of motion UI. It draws on animation and the needs of interactive screens. Objects moving between positions can connect a before and an after; a change in appearance can mark a new state.
+
+[IBM's classic animation principles](https://www.ibm.com/design/language/animation/classic-principles/) adapt ideas from character animation to graphic design. One useful idea is staging: arrange the scene so that the important action is easy to see. Another is easing, where movement starts or ends gradually rather than changing speed abruptly.
+
+In an interface, those ideas serve ordinary tasks. A moving panel can show where more information lives. A small confirmation can tell you that an action finished. The familiar term **microinteraction** describes a small interaction around a focused task, such as saving, selecting or changing a setting.
+
+[Nielsen Norman Group's research on animation in UX](https://www.nngroup.com/articles/animation-purpose-ux/) describes uses including feedback, changes of state and navigation. That is a useful way to judge a motion example: can you say what it helps the person understand?
+
+### Saving a note: close the loop
+
+Imagine writing a few lines in a notes app. You need to know whether the changes reached their destination. A quiet progress line followed by a check and a clear message can answer that question without taking you away from the note.
+
+<ui-motion-showcase example="save"></ui-motion-showcase>
+
+The example repeats a saving sequence so you can watch it. In a real app, the confirmation would appear when saving actually succeeds. The movement has a useful ending: you can return your attention to the writing.
+
+This pattern suits uploads, document changes and form submissions. The specific message matters. “Uploaded” tells you that the file arrived; “Published” says something more. A pleasant animation should support the promise that the product can actually make.
+
+A check alone can be too vague. Pairing it with “All changes saved” gives the final state a name. That message stays useful for someone who misses the movement, or prefers a quieter screen.
+
+### Opening an album: keep the same object in view
+
+When an album becomes a detail page, a sudden replacement can make the two screens feel unrelated. Keeping the selected album visible while it grows gives the reader a point to follow.
+
+<ui-motion-showcase example="expand"></ui-motion-showcase>
+
+Here, the same card widens and its details appear. This is often called a **shared element transition**: a recognisable element carries through from one view to another. Its identity matters more than the size of the movement.
+
+The idea suits photo galleries, product collections, maps and cards that open into longer stories. A thumbnail can become the main image. A location marker can lead into a place card. You are showing which item the new information belongs to.
+
+The reverse journey should also feel understandable. Closing the detail can return attention to the original item. If the object changes colour, shape and location all at once, that connection becomes harder to follow.
+
+Use this where the relationship between views matters. A routine settings page may only need a simple reveal. A large travelling card on every screen can turn a helpful clue into something people must wait through.
+
+### Reordering tasks: show where things went
+
+Lists can change after sorting, moving an item or changing its priority. If the rows instantly switch positions, you may need to read them again to find the task you were following.
+
+<ui-motion-showcase example="reorder"></ui-motion-showcase>
+
+The two named rows move to their new places while the third stays still. The names travel with the rows, so each item keeps its identity. A short movement connects the old arrangement to the new one.
+
+This can make sense in a task list, a playlist or a small ranked table. Keep the change tied to something understandable, such as moving a task upward. A constantly rearranging dashboard would make a very different demand on the reader.
+
+When many values update together, movement may no longer help. Stable positions, a clear sort label and a small update indicator can be easier to follow. Choose the treatment that lets someone resume their task with the least effort.
+
+### The grammar of useful interface motion
+
+For motion UI, the grammar includes **direction, timing and continuity**. Direction tells you where an object came from or went. Timing separates the important action from supporting changes. Continuity lets you recognise the same object after it moves.
+
+[Carbon's motion guidance](https://www.carbondesignsystem.com/building-blocks/foundations/motion/overview) separates productive motion from expressive motion. Productive motion is quiet and supports everyday work. Expressive motion is more noticeable and is reserved for important moments. Most saves, small reveals and list changes belong in the quieter group.
+
+Think about what stays still as well as what moves. In the task example, one unmoving row provides a reference. In the album example, the collection provides a familiar starting place. A calm surrounding screen makes a small transition easier to notice.
+
+[Apple's motion guidance](https://developer.apple.com/design/human-interface-guidelines/motion) recommends purposeful feedback, brief movement and alternatives for people who reduce motion. The meaning should still be available in a settled state. These showcases keep a saved message, an expanded album or a readable list when reduced motion is requested.
+
+The showcase loops are for watching a design idea. A real interface would respond to the person's action or an actual state change. It should not keep replaying a successful save while someone is trying to write.
+
+> Give movement a job: confirm a result, connect two views, or explain a change of position.
+
+## Choosing the right UI design approach
+
+A gauge helps you read a value. An isometric illustration helps you picture a process. Motion UI helps you follow a change in the interface. Start with that purpose, then choose the appearance.
+
+| What you want to explain | A useful approach | Example |
+| --- | --- | --- |
+| One current level or proportion | Gauge | Solar energy used at home |
+| Changing input from an instrument | Analog meter | Left and right audio channels |
+| Work moving between parts | Isometric illustration | Images being resized |
+| A journey through a service | Isometric illustration | Parcels passing through a hub |
+| An action reaching a result | Feedback motion | A note finishing saving |
+| One item opening into more detail | Shared element transition | An album becoming a detail view |
+| Items changing order | Position transition | Tasks moving within a list |
+
+You can combine these ideas on one product without making every section look the same. A home energy summary could use a ring for today's proportion, an illustration to introduce the service, and a quiet transition when a card opens. Each belongs to a different moment.
+
+For a portfolio or landing page, choose the example that says something about the work. An audio meter makes sense beside a sound tool. A parcel hub makes sense beside a delivery service. An unrelated machine may attract attention, but it gives the visitor less help understanding the product.
+
+## Professional references to study next
+
+These sources offer more than visual inspiration. Use them to understand the choices behind a design, then apply those ideas to your own product. Start with the question you need to answer rather than reading every guide in order.
+
+| Source | What to study |
+| --- | --- |
+| [Nielsen Norman Group: Skeuomorphism](https://www.nngroup.com/articles/skeuomorphism/) | How familiar physical objects influence interface design. |
+| [Gauge UI Studio](https://www.gauge-ui.dev/studio) | How a dial is composed from a face, scale and needle. |
+| [IBM: Isometric illustration](https://www.ibm.com/design/language/illustration/isometric-style/design/) | How consistent angles and light make a scene feel coherent. |
+| [IBM: Animation principles](https://www.ibm.com/design/language/animation/classic-principles/) | How staging and changes of speed direct attention. |
+| [Nielsen Norman Group: Animation in UX](https://www.nngroup.com/articles/animation-purpose-ux/) | Where motion helps with feedback, state and navigation. |
+| [Apple: Motion](https://developer.apple.com/design/human-interface-guidelines/motion) | How movement can support an action and respect reduced motion. |
+| [Carbon: Motion](https://www.carbondesignsystem.com/building-blocks/foundations/motion/overview) | How to choose between everyday movement and more expressive moments. |
+
+When studying a reference, look at one decision at a time. For a gauge, notice which marks make the scale readable. For an isometric scene, follow the moving object and see whether its route stays clear. For interface motion, compare the starting and ending states and ask what the movement explains between them.
+
+Then return to the task your page serves. Choose a familiar dial when the reading matters, a small world when the process matters, or a transition when the change matters. Keep the surrounding page quiet enough for that example to do its job.
