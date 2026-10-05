@@ -1,27 +1,27 @@
-# Aleph Alpha releases Kolibri, a 78B open-weight model for German and English
+# Aleph Alpha releases Kolibri 1: 78B open weights and 1M context
 
-A model can have tens of billions of parameters without using all of them for every word it generates. Aleph Alpha’s new **Kolibri 1** is built around that idea: the German AI company released an open-weight model with 78 billion total parameters, but 3.46 billion active for each token.
+**Aleph Alpha has released Kolibri 1**, a German-English language model with downloadable weights under Apache 2.0. Available since October 3, it combines **78 billion total parameters with 3.46 billion active per token** and supports context lengths of up to one million tokens.
 
-The model is aimed at German and English work, including reasoning, coding and tool use. Its weights are available on Hugging Face under the Apache 2.0 licence, so teams can download and run them on infrastructure they control.
+The German company is targeting public administration and industry, where organizations may want to run AI on infrastructure they control. Alongside the weights, it has published a [model card](https://huggingface.co/Aleph-Alpha/Kolibri-1) and [technical report](https://aleph-alpha.com/downloads/tech-report.pdf) describing the architecture, training and evaluations.
 
-## What “3.46B active” means
+## How Kolibri’s MoE design reduces computation
 
-Kolibri uses a **mixture-of-experts (MoE)** architecture. You can think of it as a team of specialist parts: the model routes each token through selected experts instead of activating every parameter. That reduces the computation needed for each token compared with a dense model of the same total size.
+Kolibri uses **mixture-of-experts (MoE)**: each token passes through selected parts of the model, reducing the computation needed compared with activating all 78 billion parameters. The 3.46B figure describes that active portion.
 
-But “active” does not mean the rest can be left out of memory. The complete model still has to be available to the serving system. Aleph Alpha lists about **78 GB for FP8 weights** and recommends multiple server-class GPUs, with a minimum configuration starting at two A100 80 GB cards or equivalent. The architecture may reduce per-token computation; it does not make Kolibri a lightweight laptop download.
+Memory is a separate requirement. The full model still needs to be available, and Aleph Alpha lists approximately **78 GB for FP8 weights**, before memory for the running workload. Its supported minimum configurations include two A100 80 GB GPUs or one H200. The smaller active count therefore helps explain inference efficiency, while the total size determines much of the memory demand.
 
-## A long context with a practical limit
+## Up to 1M tokens, with 262K recommended
 
-Aleph Alpha says Kolibri can process up to **1,048,576 tokens**. The model card gives useful context for that headline: the model’s native context is 262,144 tokens, and the team says it validated extension to one million. For efficient serving and complex tasks, it recommends staying at or below 262,144.
+The context window determines how much text a model can process in one request. Kolibri’s native window is **262,144 tokens**; Aleph Alpha says it validated an extension to 1,048,576 tokens.
 
-That distinction matters when a team considers feeding a large document collection or long conversation into one request. A maximum context describes what has been tested, while the recommendation describes the range the developer considers more practical.
+For efficient serving and complex tasks, the company recommends staying at or below 262,144. Teams considering long documents or conversations should treat one million as the tested upper range, with the recommendation guiding everyday deployment. The [model card’s context section](https://huggingface.co/Aleph-Alpha/Kolibri-1#intended-use) explains the distinction.
 
-Kolibri also supports an explicit reasoning mode and tool calling, which lets an application ask it to use tools such as search or code execution. Those capabilities make it suitable for experiments with assistants and retrieval systems, though the model’s output still needs evaluation for the intended task.
+Kolibri also supports a reasoning mode and **tool calling**, allowing applications to connect it to services such as search. Aleph Alpha identifies coding, document processing and retrieval-augmented generation among its intended uses.
 
-## What the release changes
+## What open weights make possible
 
-Open weights and Apache 2.0 terms give organizations room to inspect, host and adapt Kolibri within the licence. Aleph Alpha presents the model as a European-built option for organizations that want more control over deployment and data handling. Those are useful properties to assess, but they do not by themselves establish accuracy, compliance or lower operating costs for a particular deployment.
+The Apache 2.0 release lets teams download, host and adapt Kolibri under the licence terms. That gives German-English applications another option for running inference within their own infrastructure.
 
-For teams working in German and English, Kolibri is now something they can test on their own hardware and workloads. The key question is not only how many parameters it activates, but whether the model’s quality, GPU requirements and recommended context fit the job.
+The release makes that option available to evaluate. Whether it fits a particular service will depend on answer quality, GPU capacity and workload measurements. For organizations seeking deployment control, those are now decisions they can test directly with the released weights.
 
-Sources: [Aleph Alpha’s announcement](https://aleph-alpha.com/en/blog/kolibri-has-landed-a-sovereign-open-weight-model/) · [Kolibri model card](https://huggingface.co/Aleph-Alpha/Kolibri-1) · [Technical report](https://aleph-alpha.com/downloads/tech-report.pdf).
+Sources: [Aleph Alpha’s October 3 announcement](https://aleph-alpha.com/en/blog/kolibri-has-landed-a-sovereign-open-weight-model/) · [Kolibri model card](https://huggingface.co/Aleph-Alpha/Kolibri-1).
