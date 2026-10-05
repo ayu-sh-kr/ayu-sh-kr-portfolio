@@ -212,3 +212,15 @@ For a legal page:
 - Review changed legal text and dates as a legal/content decision, not only a formatting change.
 
 Finally, run `npm run build` after structural or renderer-related changes. A prose-only edit still merits a route-level visual check because Markdown is fetched and enhanced in the browser rather than compiled into the route.
+
+## Block custom elements and SSG
+
+Wrap custom elements that render block content in a raw HTML `div` block, with blank lines before and after the wrapper. A same-line opening/closing custom tag alone can be wrapped in a Markdown paragraph. When SSG adds a figure or other block element, that becomes invalid HTML and the browser can move it outside its owner, causing a duplicate on initialization.
+
+```md
+<div>
+<showcase-metrics items="8|packages,1|workspace"></showcase-metrics>
+</div>
+```
+
+See [Duplicate block components in Markdown and SSG](markdown-custom-element-duplication.md) for the reproduction, coverage, and framework follow-up.
