@@ -189,6 +189,11 @@
       "permanent": true
     },
     {
+      "source": "/news/claude-code-mods-typescript",
+      "destination": "/news/claude-code-mods-typescript/",
+      "permanent": true
+    },
+    {
       "source": "/news/claude-opus-5-5-cost-coding",
       "destination": "/news/claude-opus-5-5-cost-coding/",
       "permanent": true

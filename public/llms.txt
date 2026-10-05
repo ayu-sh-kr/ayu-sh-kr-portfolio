@@ -44,6 +44,7 @@
 
 ## Recent Dispatch notes
 
+- [Claude Code adds mods: TypeScript hooks that change how it behaves](https://www.ayu-sh-kr.com/news/claude-code-mods-typescript/): Anthropic adds mods to Claude Code: TypeScript functions in plugins that rewrite prompts, guard tool calls and draw panes. How they work, built-in mods, and what they can reach. [Article Markdown](https://www.ayu-sh-kr.com/news/claude-code-mods-typescript.md).
 - [Cloudflare opens Artifacts beta for GitHub alternatives built around AI agents](https://www.ayu-sh-kr.com/news/cloudflare-artifacts-next-git-platform/): Cloudflare Artifacts enters open beta with Git repository automation and Workers deployment. How it supports AI agents and the contest to build a GitHub alternative. [Article Markdown](https://www.ayu-sh-kr.com/news/cloudflare-artifacts-next-git-platform.md).
 - [Cloudflare launches cf CLI: what changes for Wrangler?](https://www.ayu-sh-kr.com/news/cloudflare-cf-cli-wrangler-migration/): Cloudflare's cf CLI enters open beta. Explore its API coverage, TypeScript config, Vite defaults and Wrangler migration with 18 months of maintenance after beta. [Article Markdown](https://www.ayu-sh-kr.com/news/cloudflare-cf-cli-wrangler-migration.md).
 - [GitHub Copilot adds computer use for desktop apps](https://www.ayu-sh-kr.com/news/github-copilot-computer-use/): GitHub Copilot’s computer use preview automates desktop apps on macOS and Windows. Learn how it works, where it helps, and what users can control. [Article Markdown](https://www.ayu-sh-kr.com/news/github-copilot-computer-use.md).
