@@ -1,0 +1,117 @@
+ui-gauge-usecase {
+  display: block;
+  margin-block: 1.5rem 2rem;
+}
+
+.ui-gauge-usecase {
+  margin: 0;
+  padding: clamp(0.5rem, 2vw, 1.25rem);
+  border-radius: 1rem;
+  background: var(--surface-color);
+}
+
+.ui-gauge-usecase svg {
+  display: block;
+  width: 100%;
+}
+
+.ui-gauge-usecase text {
+  fill: var(--foreground-color);
+  font: 13px var(--font-sans);
+  text-anchor: middle;
+}
+
+.ui-usecase-energy-icons {
+  fill: none;
+  stroke: var(--foreground-color);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.ui-usecase-energy-flow {
+  stroke: var(--primary-color);
+  stroke-width: 2;
+  stroke-dasharray: 3 6;
+}
+
+.ui-usecase-energy-track {
+  fill: none;
+  stroke: var(--border-color);
+  stroke-width: 7;
+}
+
+.ui-usecase-energy-arc {
+  fill: none;
+  stroke: var(--primary-color);
+  stroke-width: 7;
+  stroke-linecap: round;
+}
+
+.ui-gauge-usecase .ui-usecase-energy-value {
+  font-size: 37px;
+  font-weight: 600;
+}
+
+.ui-gauge-usecase .ui-usecase-energy-label {
+  font-size: 16px;
+}
+
+.ui-gauge-usecase-audio {
+  background: var(--code-background-color);
+}
+
+.ui-usecase-meter-face {
+  fill: var(--surface-color);
+}
+
+.ui-usecase-meter-ticks {
+  stroke: var(--foreground-color);
+  stroke-width: 1.2;
+}
+
+.ui-usecase-audio-pointer {
+  fill: var(--primary-color-strong);
+  transform-origin: 110px 126px;
+  transform: rotate(-15deg);
+}
+
+.ui-usecase-audio-pointer-1 {
+  transform: rotate(10deg);
+}
+
+.ui-gauge-usecase .ui-usecase-channel {
+  font: 11px var(--font-mono);
+}
+
+.ui-gauge-usecase .ui-usecase-audio-label {
+  fill: var(--code-foreground-color);
+  font: 11px var(--font-mono);
+  letter-spacing: 1px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .ui-usecase-energy-flow {
+    animation: ui-usecase-energy-flow 2s linear infinite;
+  }
+
+  .ui-usecase-audio-pointer {
+    animation: ui-usecase-audio-level 2.5s ease-in-out infinite alternate;
+  }
+
+  .ui-usecase-audio-pointer-1 {
+    animation-delay: -1.2s;
+    animation-duration: 3s;
+  }
+}
+
+@keyframes ui-usecase-energy-flow {
+  to { stroke-dashoffset: -36; }
+}
+
+@keyframes ui-usecase-audio-level {
+  0%, 100% { transform: rotate(-28deg); }
+  30% { transform: rotate(12deg); }
+  60% { transform: rotate(-8deg); }
+  80% { transform: rotate(25deg); }
+}
