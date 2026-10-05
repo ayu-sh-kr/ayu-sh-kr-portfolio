@@ -1,15 +1,44 @@
 import { BaseElement, Component, Property, String } from "@ayu-sh-kr/dota-wrap/core";
 import { html, trustedHTML } from "@ayu-sh-kr/dota-wrap/rendering";
 
-/** Isometric scenes that explain image processing and parcel sorting in familiar objects. */
+/** Isometric process studies for image resizing, parcel sorting and backup copies.
+ * The article selects a scene; optional CSS animation follows its fixed drawing grid. */
 @Component({ selector: "ui-isometric-usecase", shadow: false })
 export class UiIsometricUsecaseComponent extends BaseElement {
-  /** Selects the authored scene; unknown values use the image processing example. */
+  /** Attribute `example`: images (default), delivery or backup. Unknown values show images. */
   @Property({ name: "example", type: String })
   example = "images";
 
   /** Composes a complete SVG so the moving objects retain the shared drawing grid. */
   render() {
+    if (this.example === "backup") {
+      const svg = `<svg viewBox="0 0 560 330" aria-hidden="true">
+        <path class="ui-practical-path" d="M137 192 L270 115 L415 199" />
+        <g class="ui-practical-object">
+          <path class="ui-practical-top" d="M50 189 L139 138 L215 182 L126 233 Z" />
+          <path class="ui-practical-side" d="M50 189 L126 233 V245 L50 201 Z M126 233 L215 182 V194 L126 245 Z" />
+          <path class="ui-practical-top" d="M87 130 L143 98 L190 125 L134 157 Z M87 145 L143 113 L190 140 L134 172 Z M87 160 L143 128 L190 155 L134 187 Z" />
+          <path class="ui-practical-detail" d="M104 159 L137 140 M115 166 L149 147 M124 173 L158 154" />
+          <path class="ui-practical-accent" d="M121 129 L146 115 L168 128 L143 142 Z" />
+        </g>
+        <g class="ui-practical-object">
+          <path class="ui-practical-top" d="M241 101 L279 79 L317 101 L279 123 Z" />
+          <path class="ui-practical-side" d="M241 101 L279 123 V167 L241 145 Z M279 123 L317 101 V145 L279 167 Z" />
+          <path class="ui-practical-detail" d="M252 119 L268 128 M290 128 L306 119" />
+          <path class="ui-backup-copy" d="M267 101 l8 5 14 -8" />
+        </g>
+        <g class="ui-practical-object">
+          <path class="ui-practical-top" d="M366 149 L423 116 L480 149 L423 182 Z" />
+          <path class="ui-practical-side" d="M366 149 L423 182 V254 L366 221 Z M423 182 L480 149 V221 L423 254 Z" />
+          <path class="ui-practical-detail" d="M375 176 L413 198 M375 192 L413 214 M375 208 L413 230 M435 201 L470 181 M435 217 L470 197 M435 233 L470 213" />
+          <path class="ui-practical-accent" d="M403 150 L423 138 L443 150 L423 162 Z" />
+          <path class="ui-backup-copy" d="M398 149 l15 9 25 -15" />
+        </g>
+        <g class="ui-backup-transfer"><path class="ui-practical-accent" d="M154 184 l12 -7 12 7 -12 7 Z" /></g>
+        <g class="ui-practical-labels"><text x="129" y="284">Original files</text><text x="279" y="206">Make a copy</text><text x="423" y="284">Backup archive</text></g>
+      </svg>`;
+      return html`<figure class="ui-isometric-usecase" role="img" aria-label="Illustrative backup service: original documents stay on their platform while a copy travels to a separate archive.">${trustedHTML(svg)}</figure>`;
+    }
     const delivery = this.example === "delivery";
     const images = `<svg viewBox="0 0 560 280" aria-hidden="true">
       <path class="ui-practical-path" d="M112 132 L254 50 L432 153" />

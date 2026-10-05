@@ -94,3 +94,25 @@ ui-isometric-usecase {
   55%, 85% { opacity: 1; }
   100% { transform: translate(56px, 32px); opacity: 0; }
 }
+
+.ui-backup-copy {
+  fill: none;
+  stroke: var(--primary-color-strong);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .ui-backup-transfer {
+    animation: ui-backup-copy-travel 5s ease-in-out infinite;
+  }
+}
+
+@keyframes ui-backup-copy-travel {
+  0%, 12% { transform: translate(0, 0); opacity: 0; }
+  20% { transform: translate(0, 0); opacity: 1; }
+  48% { transform: translate(112px, -65px); opacity: 1; }
+  76% { transform: translate(242px, 10px); opacity: 1; }
+  84%, 100% { transform: translate(242px, 10px); opacity: 0; }
+}
