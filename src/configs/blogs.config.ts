@@ -47,7 +47,7 @@ export const blogPosts: readonly BlogPost[] = [
     keywords: ["UI design trends", "UI design examples", "skeuomorphism", "gauge UI", "isometric illustration", "motion UI", "microinteractions", "shared element transition", "visual grammar"],
     category: "tutorial",
     source: "/blogs/tutorial/ui-design-trends-skeuomorphism-isometric-glass.md",
-    minutes: 11,
+    minutes: 15,
   },
   {
     slug: "reinforcement-learning-from-rlhf-to-rlsc",
