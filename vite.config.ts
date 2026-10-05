@@ -68,6 +68,7 @@ const newsRoutes = [
   "/news/perplexity-cobbledb",
   "/news/qorl-postgres-query-optimizer-rl",
   "/news/prismml-bonsai-2-27b",
+  "/news/yarrtube-self-hosted-youtube-no-recommendations",
 ];
 
 /**
