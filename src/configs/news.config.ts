@@ -66,6 +66,17 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "claude-code-mods-typescript",
+    date: "2026-10-05",
+    title: "Claude Code adds mods: TypeScript hooks that change how it behaves",
+    summary: "Anthropic adds mods to Claude Code: TypeScript functions in plugins that rewrite prompts, guard tool calls and draw panes. How they work, built-in mods, and what they can reach.",
+    kind: "reading",
+    document: "/news/claude-code-mods-typescript.md",
+    keywords: ["Claude Code mods", "Claude Code plugins", "Claude Code TypeScript hooks", "Claude Code function hooks", "customize Claude Code", "Claude Code /diff mod", "AI coding agent extensions"],
+    minutes: 3,
+    reference: {label: "Claude — Customize Claude Code with mods in TypeScript", href: "https://claude.com/blog/claude-code-mods"},
+  },
+  {
     slug: "cloudflare-artifacts-next-git-platform",
     date: "2026-10-03",
     title: "Cloudflare opens Artifacts beta for GitHub alternatives built around AI agents",
