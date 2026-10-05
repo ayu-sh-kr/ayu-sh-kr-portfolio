@@ -1,0 +1,96 @@
+ui-isometric-usecase {
+  display: block;
+  margin-block: 1.5rem 2rem;
+}
+
+.ui-isometric-usecase {
+  margin: 0;
+  padding: clamp(0.5rem, 2vw, 1.25rem);
+  border-radius: 1rem;
+  background: var(--surface-color);
+}
+
+.ui-isometric-usecase svg {
+  display: block;
+  width: 100%;
+  stroke-linejoin: round;
+}
+
+.ui-practical-path {
+  fill: none;
+  stroke: var(--border-strong-color);
+  stroke-width: 2;
+  stroke-dasharray: 4 6;
+}
+
+.ui-practical-object {
+  stroke: var(--muted-strong-color);
+  stroke-width: 1.2;
+}
+
+.ui-practical-top {
+  fill: var(--background-color);
+}
+
+.ui-practical-side {
+  fill: var(--subtle-color);
+}
+
+.ui-practical-detail,
+.ui-practical-picture {
+  fill: none;
+  stroke: var(--muted-strong-color);
+}
+
+.ui-practical-accent,
+.ui-practical-signal {
+  fill: var(--primary-color);
+  stroke: none;
+}
+
+.ui-practical-labels text {
+  fill: var(--foreground-color);
+  font: 13px var(--font-sans);
+  text-anchor: middle;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .ui-practical-signal {
+    animation: ui-practical-image-transfer 5s linear infinite;
+  }
+
+  .ui-practical-output {
+    animation: ui-practical-image-ready 5s ease-in-out infinite;
+  }
+
+  .ui-practical-parcel-in {
+    animation: ui-practical-parcel-arrive 5s linear infinite;
+  }
+
+  .ui-practical-parcel-out {
+    animation: ui-practical-parcel-leave 5s linear infinite;
+  }
+}
+
+@keyframes ui-practical-image-transfer {
+  0%, 5% { transform: translate(0, 0); opacity: 0; }
+  10%, 30% { opacity: 1; }
+  40%, 100% { transform: translate(84px, -49px); opacity: 0; }
+}
+
+@keyframes ui-practical-image-ready {
+  0%, 35%, 100% { opacity: 0.35; }
+  50%, 90% { opacity: 1; }
+}
+
+@keyframes ui-practical-parcel-arrive {
+  0% { transform: translate(0, 0); opacity: 0; }
+  10%, 30% { opacity: 1; }
+  45%, 100% { transform: translate(98px, -57px); opacity: 0; }
+}
+
+@keyframes ui-practical-parcel-leave {
+  0%, 45% { transform: translate(0, 0); opacity: 0; }
+  55%, 85% { opacity: 1; }
+  100% { transform: translate(56px, 32px); opacity: 0; }
+}
