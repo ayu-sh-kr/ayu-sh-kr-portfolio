@@ -1,0 +1,189 @@
+/* Automatic studies share a quiet frame with the other article examples. */
+ui-motion-showcase {
+  display: block;
+  margin-block: 1.5rem 2rem;
+}
+
+.ui-motion-showcase {
+  margin: 0;
+  padding: clamp(0.5rem, 2vw, 1.25rem);
+  border-radius: 1rem;
+  background: var(--surface-color);
+}
+
+.ui-motion-showcase svg {
+  display: block;
+  width: 100%;
+}
+
+.ui-motion-showcase text {
+  fill: var(--foreground-color);
+  font: 16px var(--font-sans);
+}
+
+.ui-motion-showcase .ui-motion-heading {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.ui-motion-panel {
+  fill: var(--background-color);
+  stroke: var(--border-color);
+}
+
+.ui-motion-rule {
+  fill: none;
+  stroke: var(--border-strong-color);
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+.ui-motion-progress-track {
+  stroke: var(--border-color);
+  stroke-width: 4;
+}
+
+.ui-motion-progress {
+  stroke: var(--primary-color);
+  stroke-width: 4;
+  stroke-dasharray: 364;
+}
+
+.ui-motion-check,
+.ui-motion-spinner {
+  fill: none;
+  stroke: var(--primary-color-strong);
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.ui-motion-saving {
+  opacity: 0;
+}
+
+.ui-motion-spinner {
+  stroke-dasharray: 34 17;
+  transform-origin: 96px 224px;
+}
+
+.ui-motion-quiet-tile {
+  fill: var(--subtle-color);
+}
+
+.ui-motion-expanding-card {
+  fill: var(--subtle-color);
+  stroke: var(--border-color);
+  transform-origin: 69px 85px;
+  transform: scale(2.18, 1.04);
+}
+
+.ui-motion-landscape {
+  fill: var(--primary-color);
+  transform-origin: 69px 85px;
+  transform: translate(75px, 0);
+}
+
+.ui-motion-card-title {
+  opacity: 0;
+}
+
+.ui-motion-showcase .ui-motion-small {
+  font-size: 13px;
+  fill: var(--muted-strong-color);
+}
+
+.ui-motion-dot {
+  fill: var(--primary-color-strong);
+}
+
+.ui-motion-row-first {
+  transform: translateY(68px);
+}
+
+.ui-motion-row-second {
+  transform: translateY(-68px);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .ui-motion-progress {
+    animation: ui-motion-progress 6s ease-in-out infinite;
+  }
+
+  .ui-motion-saving {
+    animation: ui-motion-saving 6s ease-in-out infinite;
+  }
+
+  .ui-motion-saved {
+    animation: ui-motion-saved 6s ease-in-out infinite;
+  }
+
+  .ui-motion-spinner {
+    animation: ui-motion-spin 1s linear infinite;
+  }
+
+  .ui-motion-expanding-card {
+    animation: ui-motion-expand 7s ease-in-out infinite;
+  }
+
+  .ui-motion-landscape {
+    animation: ui-motion-landscape 7s ease-in-out infinite;
+  }
+
+  .ui-motion-card-title {
+    animation: ui-motion-saving 7s ease-in-out infinite;
+  }
+
+  .ui-motion-detail {
+    animation: ui-motion-saved 7s ease-in-out infinite;
+  }
+
+  .ui-motion-row-first {
+    animation: ui-motion-first 7s ease-in-out infinite;
+  }
+
+  .ui-motion-row-second {
+    animation: ui-motion-second 7s ease-in-out infinite;
+  }
+}
+
+@keyframes ui-motion-progress {
+  0%, 12% { stroke-dashoffset: 364; }
+  55%, 94% { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: 364; }
+}
+
+@keyframes ui-motion-saving {
+  0%, 40% { opacity: 1; }
+  50%, 94% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes ui-motion-saved {
+  0%, 54% { opacity: 0; }
+  62%, 94% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@keyframes ui-motion-spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes ui-motion-expand {
+  0%, 24%, 100% { transform: scale(1); }
+  48%, 82% { transform: scale(2.18, 1.04); }
+}
+
+@keyframes ui-motion-landscape {
+  0%, 24%, 100% { transform: translate(0, 0); }
+  48%, 82% { transform: translate(75px, 0); }
+}
+
+@keyframes ui-motion-first {
+  0%, 22%, 100% { transform: translateY(0); }
+  48%, 80% { transform: translateY(68px); }
+}
+
+@keyframes ui-motion-second {
+  0%, 22%, 100% { transform: translateY(0); }
+  48%, 80% { transform: translateY(-68px); }
+}
