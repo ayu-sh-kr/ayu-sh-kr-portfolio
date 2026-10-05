@@ -67,8 +67,12 @@ ui-isometric-usecase {
     animation: ui-practical-image-ready 5s ease-in-out infinite;
   }
 
+  .ui-delivery-parcel-load {
+    animation: ui-delivery-load 8s ease-in-out infinite;
+  }
+
   .ui-practical-parcel-in {
-    animation: ui-practical-parcel-arrive 5s linear infinite;
+    animation: ui-practical-parcel-arrive 8s ease-in-out infinite;
   }
 
 }
@@ -85,12 +89,20 @@ ui-isometric-usecase {
 }
 
 @keyframes ui-practical-parcel-arrive {
-  0% { transform: translate(0, 0); opacity: 0; }
-  10%, 30% { opacity: 1; }
-  45%, 100% { transform: translate(98px, -57px); opacity: 0; }
+  0%, 8% { transform: translate(0, 0); opacity: 1; }
+  30% { transform: translate(112px, -65px); opacity: 1; }
+  36%, 94% { transform: translate(112px, -65px); opacity: 0; }
+  95% { transform: translate(0, 0); opacity: 0; }
+  100% { transform: translate(0, 0); opacity: 1; }
 }
 
-
+@keyframes ui-delivery-load {
+  0%, 36% { transform: translate(0, 0); opacity: 0; }
+  42% { transform: translate(0, 0); opacity: 1; }
+  60% { transform: translate(44px, 26px); opacity: 1; }
+  78% { transform: translate(95px, -4px); opacity: 1; }
+  84%, 100% { transform: translate(95px, -4px); opacity: 0; }
+}
 
 .ui-backup-copy {
   fill: none;
@@ -133,4 +145,14 @@ ui-isometric-usecase {
 .ui-delivery-hub,
 .ui-delivery-light {
   fill: var(--background-color);
+}
+
+.ui-delivery-opening {
+  fill: var(--code-background-color);
+  stroke: var(--muted-strong-color);
+}
+
+/* Reduced motion retains both parcels, including the one at the loading hatch. */
+.ui-delivery-parcel-load {
+  transform: translate(95px, -4px);
 }

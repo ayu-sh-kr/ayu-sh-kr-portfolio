@@ -18,6 +18,11 @@ it.each(["images", "delivery", "backup", "unknown"])("renders the %s scene with 
       expect(host.querySelector(".ui-backup-transfer")).not.toBeNull();
       return;
     }
+    if (example === "delivery") {
+      expect(host.querySelectorAll(".ui-delivery-opening")).toHaveLength(2);
+      expect(host.querySelector(".ui-practical-parcel-in")).not.toBeNull();
+      expect(host.querySelector(".ui-delivery-parcel-load")).not.toBeNull();
+    }
     expect(host.textContent).toContain(example === "delivery" ? "Out for delivery" : "Original photo");
     expect(host.querySelector(example === "delivery" ? ".ui-practical-wheel" : ".ui-practical-output")).not.toBeNull();
   } finally {
