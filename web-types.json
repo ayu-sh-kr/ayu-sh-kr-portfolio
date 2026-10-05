@@ -3836,6 +3836,40 @@
           }
         },
         {
+          "name": "ui-motion-showcase",
+          "source": {
+            "file": "./src/components/design-showcases/ui-motion-showcase/ui-motion-showcase.component.ts",
+            "offset": 532
+          },
+          "attributes": [
+            {
+              "name": "example",
+              "default": "save",
+              "required": false,
+              "value": {
+                "type": "string"
+              },
+              "source": {
+                "file": "./src/components/design-showcases/ui-motion-showcase/ui-motion-showcase.component.ts",
+                "offset": 718
+              }
+            }
+          ],
+          "js": {
+            "properties": [
+              {
+                "name": "example",
+                "type": "string",
+                "default": "save",
+                "source": {
+                  "file": "./src/components/design-showcases/ui-motion-showcase/ui-motion-showcase.component.ts",
+                  "offset": 718
+                }
+              }
+            ]
+          }
+        },
+        {
           "name": "unsubscribe-flow",
           "source": {
             "file": "./src/components/pages/subscription/unsubscribe-flow/unsubscribe-flow.component.ts",

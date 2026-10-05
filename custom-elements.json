@@ -206,6 +206,58 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/design-showcases/ui-motion-showcase/ui-motion-showcase.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "UiMotionShowcaseComponent",
+          "customElement": true,
+          "tagName": "ui-motion-showcase",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [
+            {
+              "kind": "field",
+              "name": "example",
+              "attribute": "example",
+              "type": {
+                "text": "string"
+              },
+              "default": "save"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "example",
+              "fieldName": "example",
+              "type": {
+                "text": "string"
+              },
+              "default": "save"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "UiMotionShowcaseComponent",
+          "declaration": {
+            "name": "UiMotionShowcaseComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ui-motion-showcase",
+          "declaration": {
+            "name": "UiMotionShowcaseComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/pages/blog/article/blog-article-header/blog-article-header.component.js",
       "declarations": [
         {
