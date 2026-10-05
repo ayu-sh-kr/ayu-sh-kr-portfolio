@@ -3760,7 +3760,7 @@
           "name": "ui-gauge-usecase",
           "source": {
             "file": "./src/components/design-showcases/ui-gauge-usecase/ui-gauge-usecase.component.ts",
-            "offset": 320
+            "offset": 389
           },
           "attributes": [
             {
@@ -3772,7 +3772,7 @@
               },
               "source": {
                 "file": "./src/components/design-showcases/ui-gauge-usecase/ui-gauge-usecase.component.ts",
-                "offset": 500
+                "offset": 581
               }
             }
           ],
@@ -3784,7 +3784,7 @@
                 "default": "energy",
                 "source": {
                   "file": "./src/components/design-showcases/ui-gauge-usecase/ui-gauge-usecase.component.ts",
-                  "offset": 500
+                  "offset": 581
                 }
               }
             ]
@@ -3805,7 +3805,7 @@
           "name": "ui-isometric-usecase",
           "source": {
             "file": "./src/components/design-showcases/ui-isometric-usecase/ui-isometric-usecase.component.ts",
-            "offset": 326
+            "offset": 406
           },
           "attributes": [
             {
@@ -3817,7 +3817,7 @@
               },
               "source": {
                 "file": "./src/components/design-showcases/ui-isometric-usecase/ui-isometric-usecase.component.ts",
-                "offset": 511
+                "offset": 601
               }
             }
           ],
@@ -3829,7 +3829,7 @@
                 "default": "images",
                 "source": {
                   "file": "./src/components/design-showcases/ui-isometric-usecase/ui-isometric-usecase.component.ts",
-                  "offset": 511
+                  "offset": 601
                 }
               }
             ]
@@ -3839,7 +3839,7 @@
           "name": "ui-motion-showcase",
           "source": {
             "file": "./src/components/design-showcases/ui-motion-showcase/ui-motion-showcase.component.ts",
-            "offset": 532
+            "offset": 546
           },
           "attributes": [
             {
@@ -3851,7 +3851,7 @@
               },
               "source": {
                 "file": "./src/components/design-showcases/ui-motion-showcase/ui-motion-showcase.component.ts",
-                "offset": 718
+                "offset": 728
               }
             }
           ],
@@ -3863,7 +3863,7 @@
                 "default": "save",
                 "source": {
                   "file": "./src/components/design-showcases/ui-motion-showcase/ui-motion-showcase.component.ts",
-                  "offset": 718
+                  "offset": 728
                 }
               }
             ]
