@@ -20,7 +20,12 @@ import {escapeHtml} from "@app/utils/html.utils.ts";
 const renderFigures = (note: NewsNote): string => note.figures?.length ? `
   <section class="news-article-block layout-section-sm layout-section-flush" aria-label="Measured outcomes">
     <dl class="news-figures layout-grid-3">
-      ${note.figures.map((figure) => `<div><dt>${escapeHtml(figure.label)}</dt><dd class="news-number">${escapeHtml(figure.value)}</dd></div>`).join("")}
+      ${note.figures.map((figure) => `
+        <div>
+          <dt>${escapeHtml(figure.label)}</dt>
+          <dd><span class="news-figure-value news-number">${escapeHtml(figure.value)}</span>${figure.unit ? `<span class="news-figure-unit">${escapeHtml(figure.unit)}</span>` : ""}</dd>
+        </div>
+      `).join("")}
     </dl>
   </section>
 ` : "";
