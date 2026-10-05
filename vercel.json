@@ -189,6 +189,11 @@
       "permanent": true
     },
     {
+      "source": "/news/aleph-alpha-kolibri-open-weight-model",
+      "destination": "/news/aleph-alpha-kolibri-open-weight-model/",
+      "permanent": true
+    },
+    {
       "source": "/news/antiburn-coding-agent-token-usage",
       "destination": "/news/antiburn-coding-agent-token-usage/",
       "permanent": true

@@ -36,6 +36,7 @@ const showcaseRoutes = [
   "/showcase/dota-rest",
 ];
 const newsRoutes = [
+  "/news/aleph-alpha-kolibri-open-weight-model",
   "/news/gitlab-unauthenticated-rate-limits",
   "/news/claude-code-mods-typescript",
   "/news/cloudflare-artifacts-next-git-platform",

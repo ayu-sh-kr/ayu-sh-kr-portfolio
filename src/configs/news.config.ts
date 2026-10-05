@@ -68,6 +68,17 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "aleph-alpha-kolibri-open-weight-model",
+    date: "2026-10-05",
+    title: "Aleph Alpha releases Kolibri 1: 78B open weights and 1M context",
+    summary: "Kolibri 1 brings Apache 2.0 weights, German-English reasoning and up to 1M tokens of context. Here’s what its MoE design means for GPU memory and deployment.",
+    kind: "reading",
+    document: "/news/aleph-alpha-kolibri-open-weight-model.md",
+    keywords: ["Aleph Alpha Kolibri 1", "Kolibri open weights", "Kolibri MoE architecture", "Kolibri context window", "Kolibri GPU requirements", "German English language model", "Apache 2.0"],
+    minutes: 3,
+    reference: {label: "Aleph Alpha — Kolibri announcement", href: "https://aleph-alpha.com/en/blog/kolibri-has-landed-a-sovereign-open-weight-model/"},
+  },
+  {
     slug: "gitlab-unauthenticated-rate-limits",
     date: "2026-10-05",
     title: "GitLab.com limits unauthenticated requests to 60 per hour from October 19",
