@@ -36,39 +36,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/design-showcases/ui-gauge-showcase/ui-gauge-showcase.component.js",
-      "declarations": [
-        {
-          "kind": "class",
-          "name": "UiGaugeShowcaseComponent",
-          "customElement": true,
-          "tagName": "ui-gauge-showcase",
-          "superclass": {
-            "name": "BaseElement"
-          },
-          "members": [],
-          "attributes": []
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "UiGaugeShowcaseComponent",
-          "declaration": {
-            "name": "UiGaugeShowcaseComponent"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "ui-gauge-showcase",
-          "declaration": {
-            "name": "UiGaugeShowcaseComponent"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/components/design-showcases/ui-gauge-usecase/ui-gauge-usecase.component.js",
       "declarations": [
         {
@@ -77,7 +44,7 @@
           "customElement": true,
           "tagName": "ui-gauge-usecase",
           "superclass": {
-            "name": "BaseElement"
+            "name": "ArticleShowcaseElement"
           },
           "members": [
             {
@@ -129,7 +96,7 @@
           "customElement": true,
           "tagName": "ui-isometric-showcase",
           "superclass": {
-            "name": "BaseElement"
+            "name": "ArticleShowcaseElement"
           },
           "members": [],
           "attributes": []
@@ -162,7 +129,7 @@
           "customElement": true,
           "tagName": "ui-isometric-usecase",
           "superclass": {
-            "name": "BaseElement"
+            "name": "ArticleShowcaseElement"
           },
           "members": [
             {
@@ -214,7 +181,7 @@
           "customElement": true,
           "tagName": "ui-motion-showcase",
           "superclass": {
-            "name": "BaseElement"
+            "name": "ArticleShowcaseElement"
           },
           "members": [
             {
@@ -252,6 +219,58 @@
           "name": "ui-motion-showcase",
           "declaration": {
             "name": "UiMotionShowcaseComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/design-showcases/ui-skeuomorphic-showcase/ui-skeuomorphic-showcase.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "UiSkeuomorphicShowcaseComponent",
+          "customElement": true,
+          "tagName": "ui-skeuomorphic-showcase",
+          "superclass": {
+            "name": "ArticleShowcaseElement"
+          },
+          "members": [
+            {
+              "kind": "field",
+              "name": "example",
+              "attribute": "example",
+              "type": {
+                "text": "string"
+              },
+              "default": "record"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "example",
+              "fieldName": "example",
+              "type": {
+                "text": "string"
+              },
+              "default": "record"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "UiSkeuomorphicShowcaseComponent",
+          "declaration": {
+            "name": "UiSkeuomorphicShowcaseComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ui-skeuomorphic-showcase",
+          "declaration": {
+            "name": "UiSkeuomorphicShowcaseComponent"
           }
         }
       ]

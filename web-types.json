@@ -3746,21 +3746,10 @@
           }
         },
         {
-          "name": "ui-gauge-showcase",
-          "source": {
-            "file": "./src/components/design-showcases/ui-gauge-showcase/ui-gauge-showcase.component.ts",
-            "offset": 301
-          },
-          "attributes": [],
-          "js": {
-            "properties": []
-          }
-        },
-        {
           "name": "ui-gauge-usecase",
           "source": {
             "file": "./src/components/design-showcases/ui-gauge-usecase/ui-gauge-usecase.component.ts",
-            "offset": 389
+            "offset": 449
           },
           "attributes": [
             {
@@ -3772,7 +3761,7 @@
               },
               "source": {
                 "file": "./src/components/design-showcases/ui-gauge-usecase/ui-gauge-usecase.component.ts",
-                "offset": 581
+                "offset": 652
               }
             }
           ],
@@ -3784,7 +3773,7 @@
                 "default": "energy",
                 "source": {
                   "file": "./src/components/design-showcases/ui-gauge-usecase/ui-gauge-usecase.component.ts",
-                  "offset": 581
+                  "offset": 652
                 }
               }
             ]
@@ -3794,7 +3783,7 @@
           "name": "ui-isometric-showcase",
           "source": {
             "file": "./src/components/design-showcases/ui-isometric-showcase/ui-isometric-showcase.component.ts",
-            "offset": 311
+            "offset": 371
           },
           "attributes": [],
           "js": {
@@ -3805,7 +3794,7 @@
           "name": "ui-isometric-usecase",
           "source": {
             "file": "./src/components/design-showcases/ui-isometric-usecase/ui-isometric-usecase.component.ts",
-            "offset": 406
+            "offset": 466
           },
           "attributes": [
             {
@@ -3817,7 +3806,7 @@
               },
               "source": {
                 "file": "./src/components/design-showcases/ui-isometric-usecase/ui-isometric-usecase.component.ts",
-                "offset": 601
+                "offset": 672
               }
             }
           ],
@@ -3829,7 +3818,7 @@
                 "default": "images",
                 "source": {
                   "file": "./src/components/design-showcases/ui-isometric-usecase/ui-isometric-usecase.component.ts",
-                  "offset": 601
+                  "offset": 672
                 }
               }
             ]
@@ -3839,7 +3828,7 @@
           "name": "ui-motion-showcase",
           "source": {
             "file": "./src/components/design-showcases/ui-motion-showcase/ui-motion-showcase.component.ts",
-            "offset": 546
+            "offset": 606
           },
           "attributes": [
             {
@@ -3851,7 +3840,7 @@
               },
               "source": {
                 "file": "./src/components/design-showcases/ui-motion-showcase/ui-motion-showcase.component.ts",
-                "offset": 728
+                "offset": 799
               }
             }
           ],
@@ -3863,7 +3852,41 @@
                 "default": "save",
                 "source": {
                   "file": "./src/components/design-showcases/ui-motion-showcase/ui-motion-showcase.component.ts",
-                  "offset": 728
+                  "offset": 799
+                }
+              }
+            ]
+          }
+        },
+        {
+          "name": "ui-skeuomorphic-showcase",
+          "source": {
+            "file": "./src/components/design-showcases/ui-skeuomorphic-showcase/ui-skeuomorphic-showcase.component.ts",
+            "offset": 559
+          },
+          "attributes": [
+            {
+              "name": "example",
+              "default": "record",
+              "required": false,
+              "value": {
+                "type": "string"
+              },
+              "source": {
+                "file": "./src/components/design-showcases/ui-skeuomorphic-showcase/ui-skeuomorphic-showcase.component.ts",
+                "offset": 766
+              }
+            }
+          ],
+          "js": {
+            "properties": [
+              {
+                "name": "example",
+                "type": "string",
+                "default": "record",
+                "source": {
+                  "file": "./src/components/design-showcases/ui-skeuomorphic-showcase/ui-skeuomorphic-showcase.component.ts",
+                  "offset": 766
                 }
               }
             ]
