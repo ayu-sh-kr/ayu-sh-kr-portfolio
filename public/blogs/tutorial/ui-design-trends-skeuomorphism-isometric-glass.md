@@ -4,7 +4,7 @@ Some interfaces make you stop scrolling. A row of cockpit dials, with needles sl
 
 These two styles borrow from familiar things: physical instruments and technical drawings. The first makes a screen feel like a control panel. The second makes an idea feel like something you can watch working.
 
-They are the focus of this guide. Let's look at where they come from, what makes them look right, and where they belong on a website. The examples move on their own, so you can see the style while you read.
+They are the focus of this guide. We will move from cockpit dials to home energy and audio, then from a little machine to image processing and parcel sorting. These are original design examples, not screenshots of the products linked below. They move on their own while you read.
 
 ## Analog gauges: a familiar face for a digital value
 
@@ -32,7 +32,23 @@ The [Gauge UI studio](https://www.gauge-ui.dev/studio) is an example of this app
 
 Gauges suit a single reading with a clear range: speed, pressure, temperature or an audio level. They can also fit a simulator or a product whose audience already understands instrument panels.
 
-Imagine a home energy app showing how much power you are using right now. A dial can give that reading a familiar shape. Beside it, you would still want the actual number and unit. The needle helps you get a quick impression; the number gives you an exact answer.
+### Home energy: a quieter kind of gauge
+
+A home energy app does not need to look like a cockpit. A simple ring can answer one useful question: how much of today's solar energy did the house use? [Home Assistant's energy cards](https://www.home-assistant.io/dashboards/energy/) include this kind of solar-consumption gauge.
+
+<ui-gauge-usecase example="energy"></ui-gauge-usecase>
+
+Here, the ring shows a sample 72%, while the sun and house make the relationship clear. This keeps the gauge idea but removes the rim, ticks and needle. It fits a daily summary where one proportion matters.
+
+### Audio: when the instrument is part of the product
+
+For a recording interface, paired meters feel more at home. Left and right channels have their own scales, and the needles give a quick impression of a changing input. The small movement belongs to the sound rather than serving as decoration.
+
+<ui-gauge-usecase example="audio"></ui-gauge-usecase>
+
+Real audio tools need carefully defined readings. [Ableton's mixer documentation](https://www.ableton.com/en/manual/mixing/) describes peak and RMS levels, which tell you different things about the signal. Our example borrows the analog appearance; its needles are illustrative. A production meter would follow the actual audio.
+
+### Keep comparisons simple
 
 For a dashboard comparing twenty readings, rows or bars will usually be easier to scan. For yesterday's changes, a chart is more useful than a dial. Choose the instrument when its shape helps with the question the reader is asking.
 
@@ -74,7 +90,23 @@ The movement should fit the object. A conveyor carries pieces along its path. A 
 
 This style works well beside a feature introduction, on a product landing page, or in an explanation of how something moves through a system. It gives an abstract idea a shape the reader can remember.
 
-A delivery service might show parcels passing through a sorting machine. A developer tool might show files entering a processor. A storage product might show blocks being organised into a stack. Each gives you an impression of the product without asking you to inspect a full dashboard.
+### An image tool: one upload, several useful sizes
+
+An image service can feel abstract until you show what comes out of it. A large picture enters, then smaller versions appear for different screens. [Cloudflare's image transformation docs](https://developers.cloudflare.com/images/optimization/transformations/overview/) describe resizing and converting images; the scene below is our own way of illustrating that idea.
+
+<ui-isometric-usecase example="images"></ui-isometric-usecase>
+
+This belongs beside a feature such as automatic image resizing. The different picture sizes show the benefit before the reader gets to the details. The same approach could illustrate a document converted into several formats, with objects that suit that task.
+
+### Delivery: making the journey easy to picture
+
+For a delivery service, familiar parcels make more sense than anonymous data blocks. A sorting hub gives the scene a centre, with incoming packages on one side and onward routes on the other.
+
+<ui-isometric-usecase example="delivery"></ui-isometric-usecase>
+
+This could sit in onboarding or a short explanation of the delivery journey. For tracking a real parcel, the status and arrival information still need to be clear in text. [UPS's tracking guidance](https://www.ups.com/in/en/support/tracking-support/where-is-my-package) is about finding that information; an animated hub alone cannot tell you where your package is.
+
+### Leave the details to the page
 
 Keep that role clear. The illustration can introduce the idea; the nearby words explain what the product actually does. If the picture has to carry every detail, it becomes a diagram with too many parts to follow.
 
