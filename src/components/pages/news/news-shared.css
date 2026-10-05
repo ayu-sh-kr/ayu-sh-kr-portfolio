@@ -92,21 +92,23 @@ news-markdown-view {
 .news-figures {
   margin: 0;
   border-radius: var(--layout-radius-xl);
-  padding: var(--layout-pad-panel);
+  padding: var(--layout-space-5);
   background: var(--contrast-background-color);
   color: var(--contrast-foreground-color);
+  row-gap: var(--layout-space-3);
 }
 
-/* Stacked label-over-value rows on phones; dividers separate figures in both layouts. */
+/* Phones get a compact spec sheet: label left, value and unit right-aligned on one row. */
 .news-figures > div {
-  display: flex;
-  flex-direction: column;
-  gap: var(--layout-space-2);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: var(--layout-space-4);
 }
 
 .news-figures > div + div {
   border-block-start: 1px solid var(--contrast-border-color);
-  padding-block-start: var(--layout-space-5);
+  padding-block-start: var(--layout-space-3);
 }
 
 .news-figures dt {
@@ -120,21 +122,23 @@ news-markdown-view {
 .news-figures dd {
   display: flex;
   flex-direction: column;
-  gap: var(--layout-space-1);
+  align-items: flex-end;
   margin: 0;
+  min-inline-size: 0;
+  text-align: end;
 }
 
 .news-figure-value {
-  font-size: var(--type-subsection-size);
+  font-size: var(--type-lede-size);
   font-weight: var(--type-section-weight);
-  letter-spacing: var(--type-section-tracking);
-  line-height: var(--type-section-leading);
+  letter-spacing: var(--type-card-title-tracking);
+  line-height: var(--type-compact-leading);
   overflow-wrap: anywhere;
 }
 
 .news-figure-unit {
   color: var(--contrast-muted-color);
-  font-size: var(--type-compact-size);
+  font-size: var(--type-label-size);
   font-weight: var(--type-control-weight);
   line-height: var(--type-compact-leading);
 }
@@ -155,11 +159,38 @@ news-markdown-view {
   padding-inline: var(--layout-pad-panel);
 }
 
+/* Wider screens switch to three headline columns, where the larger value tier has room. */
 @media (min-width: 700px) {
+  .news-figures {
+    padding: var(--layout-pad-panel);
+  }
+
+  .news-figures > div {
+    display: flex;
+    flex-direction: column;
+    gap: var(--layout-space-2);
+  }
+
   .news-figures > div + div {
     border-block-start: 0;
     border-inline-start: 1px solid var(--contrast-border-color);
     padding-block-start: 0;
     padding-inline-start: var(--layout-space-5);
+  }
+
+  .news-figures dd {
+    align-items: flex-start;
+    gap: var(--layout-space-1);
+    text-align: start;
+  }
+
+  .news-figure-value {
+    font-size: var(--type-subsection-size);
+    letter-spacing: var(--type-section-tracking);
+    line-height: var(--type-section-leading);
+  }
+
+  .news-figure-unit {
+    font-size: var(--type-compact-size);
   }
 }
