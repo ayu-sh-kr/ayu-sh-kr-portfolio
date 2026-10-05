@@ -1,8 +1,10 @@
-# UI Design Examples: Skeuomorphism, Isometric Art and Motion
+# UI Design Trends: Skeuomorphism, Isometric Art and Motion
 
-A record turns under a needle. Paper peeks out of a folder. A song moves to the next spot in your queue. These details can make a screen feel familiar and make its behaviour easier to follow.
+UI design is giving surfaces and movement more attention. Apple's [Liquid Glass redesign, announced in June 2025](https://www.apple.com/newsroom/2025/06/apple-introduces-a-delightful-and-elegant-new-software-design/), brought glass-like depth and moving controls across its platforms.
 
-This visual guide explores **skeuomorphism, isometric illustration and motion UI** through fifteen original studies. Each starts with a person and a task. The scenes run automatically; their values and actions are illustrative.
+This guide explores three design directions: **skeuomorphism, isometric illustration and motion UI**. They are established ideas, with different jobs. A physical-looking control makes something familiar; an isometric scene explains a process; a transition helps you follow a change.
+
+Here are fifteen original, animated examples showing where each can make sense—from music and home energy to delivery and shopping. The focus is the idea and its use. The values and actions are illustrative.
 
 ## Skeuomorphism: borrow a familiar object
 
@@ -16,7 +18,7 @@ For a music listener, a record deck gives playback a familiar shape. The turning
 
 The grooves, spindle and tonearm belong to the same object. Their relationship does more work than a heavy shadow or shiny border. This treatment could suit an album page or a listening room where the music deserves attention.
 
-**Skeuomorphism** means borrowing features of physical objects for digital interfaces. It has roots in early graphical interfaces, where folders and paper documents helped explain digital files. [Nielsen Norman Group's overview](https://www.nngroup.com/articles/skeuomorphism/) distinguishes useful familiarity from excessive imitation.
+**Skeuomorphism** means borrowing features of physical objects for digital interfaces. [Nielsen Norman Group's overview](https://www.nngroup.com/articles/skeuomorphism/) distinguishes useful familiarity from excessive imitation.
 
 ### A flip clock for one glanceable reading
 
@@ -38,7 +40,7 @@ A designer opening project files wants to recognise the right collection. A fold
 
 The tab says “container”; the overlapping sheets say “several things inside”. The count remains readable. This could work in a small project library where a preview helps people choose a folder. Hundreds of folders would be easier to search and scan in a simpler list.
 
-These three examples share **visual grammar**: consistent edges, believable layers and details that belong to the object. They serve three different purposes—playback, a time reading and a collection—rather than repeating one dial with a new label.
+Their **visual grammar** is consistent edges, believable layers and details that belong to the object.
 
 ### A thermostat for separating target and actual temperature
 
@@ -86,7 +88,7 @@ Someone meeting an unfamiliar service may understand a small machine before its 
 <ui-isometric-showcase></ui-isometric-showcase>
 </div>
 
-**Isometric illustration** uses a consistent angled view to show the top and sides together. It comes from technical drawing: William Farish's 1822 paper, [*On Isometrical Perspective*](https://www.aproged.pt/biblioteca/farishisometrical.pdf), described a way to show machinery clearly.
+**Isometric illustration** borrows the angled view of technical drawing to show the top and sides together. In a product introduction, that depth helps you picture how parts connect.
 
 Its grammar is consistency. Edges follow the same directions, faces have related tones, and moving pieces follow the scene's paths. [IBM's isometric guide](https://www.ibm.com/design/language/illustration/isometric-style/design/) develops those principles into a coherent illustration style.
 
@@ -100,7 +102,7 @@ Someone choosing a backup service needs to understand a basic relationship: thei
 
 The original documents stay on the left. A copy travels through the centre to the archive. The scene represents copying rather than removing or relocating the original.
 
-[Apple's iCloud Backup explanation](https://support.apple.com/en-in/108770) describes copying information that is not already synced to iCloud. This study introduces the copy idea; actual backup rules and status still belong in the service's own clear explanation.
+[Apple's iCloud Backup explanation](https://support.apple.com/en-in/108770) describes what gets copied. Real backup rules and status still need clear text.
 
 ### Image resizing: show the benefit at the other end
 
@@ -138,7 +140,7 @@ A shopper adds a sage mug to their bag. They need to know that the right item we
 
 The item travels toward the bag, then a count and receipt appear. The product stays visible. [Nielsen Norman Group's cart-feedback research](https://www.nngroup.com/articles/cart-feedback/) recommends clear confirmation with product details people have time to review. In a real shop, that receipt would remain available.
 
-**Motion UI** connects interface states. It draws on animation principles such as staging and easing, adapted for graphics in [IBM's guide](https://www.ibm.com/design/language/animation/classic-principles/). Here, movement draws attention to a result the shopper can read afterward.
+**Motion UI** connects interface states. [Figma's current motion guide](https://help.figma.com/hc/en-us/articles/41237382040983-Motion-design-fundamentals-Why-motion-matters) describes its roles as orientation, feedback, transition and narrative. Here, movement confirms the shopper's action, then leaves a readable result.
 
 ### Uploading: identify the file and the result
 
@@ -188,7 +190,7 @@ The name and walking time arrive together. [Material's bottom-sheet reference](h
 
 [Apple's motion guidance](https://developer.apple.com/design/human-interface-guidelines/motion) recommends purposeful feedback and reduced-motion alternatives. All the studies have readable resting states. Their loops are for studying the examples; real interfaces should respond to an action or a genuine state change.
 
-## Choose around the reader's task
+## Which UI trend fits your product?
 
 | What someone needs | A useful direction |
 | --- | --- |
@@ -197,6 +199,8 @@ The name and walking time arrive together. [Material's bottom-sheet reference](h
 | Picture a process | Isometric machine, archive or sorting hub |
 | Understand an interface change | Feedback, shared element or position transition |
 
-For further study, use the linked [Nielsen Norman Group overview](https://www.nngroup.com/articles/skeuomorphism/), [IBM illustration guide](https://www.ibm.com/design/language/illustration/isometric-style/design/) and [Figma motion guide](https://help.figma.com/hc/en-us/articles/41237382040983-Motion-design-fundamentals-Why-motion-matters). Each helps you judge the idea behind the appearance.
+Explore the linked Nielsen Norman Group, IBM and Figma guides to take these ideas further.
 
-Start with the person, the object and the task. Then choose the details that make those three easier to understand.
+The appeal of these UI directions is easy to see: familiar objects add character, small illustrated worlds explain a service, and motion makes changes feel connected.
+
+Choose the treatment that helps someone recognise, understand or follow what is happening. Keep the music player expressive, the delivery journey clear, and the shopping confirmation easy to follow.
