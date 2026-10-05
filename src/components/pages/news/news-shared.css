@@ -97,11 +97,16 @@ news-markdown-view {
   color: var(--contrast-foreground-color);
 }
 
+/* Stacked label-over-value rows on phones; dividers separate figures in both layouts. */
 .news-figures > div {
   display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: var(--layout-space-4);
+  flex-direction: column;
+  gap: var(--layout-space-2);
+}
+
+.news-figures > div + div {
+  border-block-start: 1px solid var(--contrast-border-color);
+  padding-block-start: var(--layout-space-5);
 }
 
 .news-figures dt {
@@ -113,11 +118,25 @@ news-markdown-view {
 }
 
 .news-figures dd {
+  display: flex;
+  flex-direction: column;
+  gap: var(--layout-space-1);
   margin: 0;
+}
+
+.news-figure-value {
   font-size: var(--type-subsection-size);
   font-weight: var(--type-section-weight);
   letter-spacing: var(--type-section-tracking);
   line-height: var(--type-section-leading);
+  overflow-wrap: anywhere;
+}
+
+.news-figure-unit {
+  color: var(--contrast-muted-color);
+  font-size: var(--type-compact-size);
+  font-weight: var(--type-control-weight);
+  line-height: var(--type-compact-leading);
 }
 
 :is(.news-subscription-wrap, .news-article-subscription) blog-subscription {
@@ -137,7 +156,10 @@ news-markdown-view {
 }
 
 @media (min-width: 700px) {
-  .news-figures > div {
-    display: block;
+  .news-figures > div + div {
+    border-block-start: 0;
+    border-inline-start: 1px solid var(--contrast-border-color);
+    padding-block-start: 0;
+    padding-inline-start: var(--layout-space-5);
   }
 }

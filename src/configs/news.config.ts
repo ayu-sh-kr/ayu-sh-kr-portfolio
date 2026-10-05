@@ -11,6 +11,8 @@ export type NewsFigure = {
   label: string;
   /** Compact authored value kept separate from explanatory prose. */
   value: string;
+  /** Optional qualifier rendered below the value, keeping long rates off the headline number. */
+  unit?: string;
 };
 
 /** Optional source-of-record link attached to a Dispatch note. */
