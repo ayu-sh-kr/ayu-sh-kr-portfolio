@@ -8,6 +8,12 @@ The French company is targeting coding, cybersecurity and industrial application
 
 Mistral’s announcement rounds the model’s size to one trillion parameters. Its documentation gives the more precise total as **1.05 trillion, with 49 billion active parameters**. Large 4 uses mixture-of-experts, routing work through selected parts of the model rather than activating everything for each token.
 
+In a sparse MoE layer, a router selects experts for each token representation and combines their outputs using routing weights. The simplified illustration follows one token through that process; the selection can change for the next token.
+
+![Isometric mixture-of-experts layer: a token enters a router, two selected experts process it while two remain idle, and a weighted combine step produces the output.](/news/assets/mistral-large-4-le-chonk-preview/mixture-of-experts.svg)
+
+*Illustrative routing only: this shows two of four experts, not Large 4’s exact expert count or routing configuration.*
+
 That helps reduce computation per token. It does not make the complete model small: storing and serving all the weights remains a separate infrastructure requirement. The active count is not the memory footprint of the whole system.
 
 Large 4 accepts multimodal input, including images. Its documented features include tool calling, structured output and document questions, allowing applications to connect it to services and work with more than a plain chat exchange.
