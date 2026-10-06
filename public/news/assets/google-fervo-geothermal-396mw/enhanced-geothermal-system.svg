@@ -1,83 +1,116 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-labelledby="title desc">
-  <title id="title">Enhanced geothermal power, from hot rock to the grid</title>
-  <desc id="desc">A compact isometric cutaway. Water descends through an injection well, travels through fractured hot rock, rises through a production well, and transfers heat at a surface power plant. Electricity flows from the plant to the grid. Animated marks show the water and power directions.</desc>
-  <defs>
-    <linearGradient id="top" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#363636"/><stop offset="1" stop-color="#202020"/></linearGradient>
-    <linearGradient id="left" x1="0" y1="0" x2="0.7" y2="1"><stop stop-color="#343434"/><stop offset="1" stop-color="#171717"/></linearGradient>
-    <linearGradient id="right" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#1d1d1d"/><stop offset="1" stop-color="#0d0d0d"/></linearGradient>
-    <radialGradient id="warm"><stop stop-color="#fff" stop-opacity=".22"/><stop offset=".58" stop-color="#fff" stop-opacity=".08"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
-    <pattern id="hatch" width="12" height="12" patternUnits="userSpaceOnUse" patternTransform="rotate(37)"><path d="M0 0v12" stroke="#8b8b8b" stroke-opacity=".24" stroke-width="2"/></pattern>
-    <marker id="tip" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M1 1 9 5 1 9Z" fill="#f7f7f7"/></marker>
-    <style>
-      .caption{font:700 24px system-ui,-apple-system,"Segoe UI",sans-serif;letter-spacing:.025em;fill:#f5f5f5}
-      .sub{font:600 19px system-ui,-apple-system,"Segoe UI",sans-serif;fill:#cfcfcf}
-      .edge{stroke:#e5e5e5;stroke-width:2.5;stroke-linejoin:round}
-      .strata{fill:none;stroke:#999;stroke-opacity:.52;stroke-width:2}
-      .water{fill:none;stroke:#fafafa;stroke-width:10;stroke-linecap:round;stroke-linejoin:round}
-      .moving-water{fill:none;stroke:#242424;stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:3 22;animation:flow 1.4s linear infinite}
-      .power{fill:none;stroke:#f8f8f8;stroke-width:3;stroke-linecap:round;stroke-dasharray:7 8;animation:flow 1.7s linear infinite}
-      @keyframes flow{to{stroke-dashoffset:-50}}
-      @media(prefers-reduced-motion:reduce){.moving-water,.power{animation:none}}
-    </style>
-  </defs>
-  <rect width="960" height="540" rx="24" fill="#090909"/>
-
-  <!-- The top plane and two visible faces make a single dimensional block. -->
-  <path class="edge" d="M68 169 474 49 892 169 484 295Z" fill="url(#top)"/>
-  <path class="edge" d="M68 169 484 295V463L68 336Z" fill="url(#left)"/>
-  <path class="edge" d="M484 295 892 169V336L484 463Z" fill="url(#right)"/>
-  <path d="M68 283 484 408V463L68 336ZM484 408 892 283V336L484 463Z" fill="url(#hatch)"/>
-  <path class="strata" d="M68 216 484 342 892 216M68 259 484 385 892 259M68 302 484 428 892 302"/>
-  <path d="M108 166 473 58 850 167M105 180 483 291 858 177" fill="none" stroke="#c4c4c4" stroke-opacity=".24" stroke-width="1.5"/>
-
-  <!-- Heat and fractures sit behind the circulation pipe. -->
-  <ellipse cx="482" cy="388" rx="168" ry="93" fill="url(#warm)"/>
-  <g fill="none" stroke="#d3d3d3" stroke-width="2.8" stroke-linecap="round" opacity=".8">
-    <path d="m359 346 26-23 15 25 24-29 18 34 26-20 16 27 21-24 20 32 22-25 20 29"/>
-    <path d="m382 389 17-21 18 10 18-23 20 20 23-24 15 28 26-17 24 19 27-25"/>
-    <path d="m415 330-6-20m48 58-15 18m74-29 17-16m31 42 20 15m-155 1-18 16"/>
-    <path d="M454 329c-15-13 14-22 0-34m28 35c-13-13 14-22 0-35m28 39c-14-13 14-21 0-33" opacity=".7"/>
-  </g>
-
-  <!-- A dark rim and bright inner tube keep the two well paths readable at small sizes. -->
-  <path d="M250 187V313Q250 330 270 337L446 390Q482 401 511 392L596 366Q616 360 616 340V205" fill="none" stroke="#070707" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M250 187V313Q250 330 270 337L446 390Q482 401 511 392L596 366Q616 360 616 340V205" class="water"/>
-  <path d="M250 187V313Q250 330 270 337L446 390Q482 401 511 392L596 366Q616 360 616 340V205" class="moving-water"/>
-  <path d="M250 266v32M366 365l31 9M548 381l31-10M616 322v-33" fill="none" stroke="#f8f8f8" stroke-width="2.8" marker-end="url(#tip)"/>
-
-  <!-- Small pump heads are anchored to the top plane. -->
-  <g stroke="#f5f5f5" stroke-width="2.3" stroke-linejoin="round">
-    <path d="m226 168 24-8 25 8-25 9z" fill="#bcbcbc"/>
-    <path d="m226 168 24 9v18l-24-9z" fill="#303030"/>
-    <path d="m250 177 25-9v18l-25 9z" fill="#151515"/>
-    <path d="m592 180 24-8 25 8-25 9z" fill="#bcbcbc"/>
-    <path d="m592 180 24 9v18l-24-9z" fill="#303030"/>
-    <path d="m616 189 25-9v18l-25 9z" fill="#151515"/>
-  </g>
-
-  <!-- Production well brings heat to an isometric power plant. -->
-  <path d="M641 181 676 169" fill="none" stroke="#fafafa" stroke-width="5" stroke-linecap="round" marker-end="url(#tip)"/>
-  <g class="edge">
-    <path d="m676 143 59-18 61 19-60 19z" fill="#d3d3d3"/>
-    <path d="m676 143 60 20v52l-60-19z" fill="#3d3d3d"/>
-    <path d="m736 163 60-19v52l-60 19z" fill="#1d1d1d"/>
-    <path d="m690 137 15-5v-25l-15 5zm34-10 15-5V98l-15 5z" fill="#dedede"/>
-  </g>
-  <path d="m698 176 24 7m-24 8 24 7m29-26 29-9m-29 24 29-9" fill="none" stroke="#eaeaea" stroke-width="2" stroke-linecap="round"/>
-
-  <!-- Electricity leaves for a grid tower, not a direct data-center wire. -->
-  <path class="power" d="M795 151 824 137 855 132" marker-end="url(#tip)"/>
-  <g fill="none" stroke="#eee" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-    <path d="m849 124 17 70m10-70-17 70m-15-50h37m-33 14h29m-24-40h17m-27 77h43m-21-90v14m-23 13h45"/>
-    <path d="m832 141-28 14m75-14 26 13" stroke-width="2"/>
-  </g>
-
-  <!-- A surface return completes the water loop with the injection well. -->
-  <path d="M678 194C567 142 396 125 275 168" fill="none" stroke="#bcbcbc" stroke-width="3" stroke-dasharray="6 7" marker-end="url(#tip)"/>
-
-  <text x="92" y="247" class="caption">1 · INJECT</text>
-  <text x="403" y="501" class="caption">2 · HEAT</text>
-  <text x="648" y="323" class="caption">3 · RETURN</text>
-  <text x="695" y="265" class="sub">PLANT</text>
-  <text x="827" y="264" class="caption">GRID</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 640" role="img" aria-labelledby="title desc"><title id="title">Geothermal circulation and electricity generation</title><desc id="desc">An isometric cutaway shows water descending into a fractured hot rock reservoir, returning through a second well, and passing through a surface power plant. A turbine generates electricity for transmission lines. Moving arrows show circulation and electricity. This is a conceptual illustration, not a construction drawing.</desc><defs><linearGradient id="rock" x2="0" y2="1"><stop stop-color="#353535"/><stop offset="1" stop-color="#111"/></linearGradient><radialGradient id="heat"><stop stop-color="#fff" stop-opacity=".25"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0 10 5 0 10Z" fill="#fff"/></marker><style>.edge{stroke:#aaa;stroke-width:1.8;stroke-linejoin:round}.flow{fill:none;stroke:#111;stroke-width:3;stroke-dasharray:2 22;stroke-linecap:round;animation:flow 2s linear infinite}.power{fill:none;stroke:#fff;stroke-width:2;stroke-dasharray:5 12;animation:flow 2s linear infinite}.heat{fill:none;stroke:#ddd;stroke-width:2;opacity:.6;animation:heat 3s ease-in-out infinite}@keyframes flow{to{stroke-dashoffset:-48}}@keyframes heat{50%{opacity:.2}}@media(prefers-reduced-motion:reduce){.flow,.power,.heat{animation:none}}</style></defs><rect width="960" height="640" rx="24" fill="#090909"/>
+<polygon points="440.0,52.0 821.0,272.0 543.9,432.0 162.9,212.0" fill="#292929" stroke="#aaa" stroke-width="1.8" stroke-linejoin="round"/>
+<polygon points="162.9,212.0 543.9,432.0 543.9,602.0 162.9,382.0" fill="url(#rock)" stroke="#aaa" stroke-width="1.8" stroke-linejoin="round"/>
+<polygon points="821.0,272.0 543.9,432.0 543.9,602.0 821.0,442.0" fill="#161616" stroke="#aaa" stroke-width="1.8" stroke-linejoin="round"/>
+<polyline points="162.9,250.0 543.9,470.0 821.0,310.0" fill="none" stroke="#686868" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+<polyline points="162.9,289.0 543.9,509.0 821.0,349.0" fill="none" stroke="#686868" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+<polyline points="162.9,332.0 543.9,552.0 821.0,392.0" fill="none" stroke="#686868" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+<polyline points="162.9,363.0 543.9,583.0 821.0,423.0" fill="none" stroke="#686868" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+<polyline points="409.7,84.5 760.4,287.0" fill="none" stroke="#3b3b3b" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+<polyline points="366.4,109.5 717.1,312.0" fill="none" stroke="#3b3b3b" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+<polyline points="323.1,134.5 673.8,337.0" fill="none" stroke="#3b3b3b" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+<polyline points="279.8,159.5 630.5,362.0" fill="none" stroke="#3b3b3b" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+<polyline points="236.5,184.5 587.2,387.0" fill="none" stroke="#3b3b3b" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+<ellipse cx="349.07" cy="434.5" rx="148" ry="73" fill="url(#heat)" transform="rotate(30 349.07 434.5)"/>
+<polyline points="236.5,399.5 258.1,390.0 247.7,365.0 273.7,364.0 266.8,334.0" fill="none" stroke="#8c8c8c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+<polyline points="258.1,390.0 288.4,413.5 299.7,402.0" fill="none" stroke="#666" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+<polyline points="271.1,419.5 292.8,410.0 282.4,385.0 308.4,384.0 301.4,354.0" fill="none" stroke="#8c8c8c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+<polyline points="292.8,410.0 323.1,433.5 334.3,422.0" fill="none" stroke="#666" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+<polyline points="310.1,442.0 331.8,432.5 321.4,407.5 347.3,406.5 340.4,376.5" fill="none" stroke="#8c8c8c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+<polyline points="331.8,432.5 362.1,456.0 373.3,444.5" fill="none" stroke="#666" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+<polyline points="349.1,464.5 370.7,455.0 360.3,430.0 386.3,429.0 379.4,399.0" fill="none" stroke="#8c8c8c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+<polyline points="370.7,455.0 401.0,478.5 412.3,467.0" fill="none" stroke="#666" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+<polyline points="388.0,487.0 409.7,477.5 399.3,452.5 425.3,451.5 418.4,421.5" fill="none" stroke="#8c8c8c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+<polyline points="409.7,477.5 440.0,501.0 451.3,489.5" fill="none" stroke="#666" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+<polyline points="422.7,507.0 444.3,497.5 433.9,472.5 459.9,471.5 453.0,441.5" fill="none" stroke="#8c8c8c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+<polyline points="444.3,497.5 474.6,521.0 485.9,509.5" fill="none" stroke="#666" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+<polyline points="232.2,244.0 232.2,352.0 245.2,378.5" fill="none" stroke="#080808" stroke-width="22" stroke-linecap="round" stroke-linejoin="round" />
+<polyline points="232.2,244.0 232.2,352.0 245.2,378.5" fill="none" stroke="#d0d0d0" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" />
+<polyline points="232.2,244.0 232.2,352.0 245.2,378.5" fill="none" stroke="#111" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="flow"/>
+<polyline points="414.0,476.0 431.3,466.0 431.3,359.0" fill="none" stroke="#080808" stroke-width="22" stroke-linecap="round" stroke-linejoin="round" />
+<polyline points="414.0,476.0 431.3,466.0 431.3,359.0" fill="none" stroke="#d0d0d0" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" />
+<polyline points="414.0,476.0 431.3,466.0 431.3,359.0" fill="none" stroke="#111" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="flow"/>
+<polyline points="245.2,378.5 279.8,385.5 318.8,414.0 357.7,425.5 388.0,448.0 414.0,476.0" fill="none" stroke="#bdbdbd" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+<polyline points="245.2,378.5 279.8,398.5 318.8,427.0 357.7,438.5 388.0,461.0 414.0,476.0" fill="none" stroke="#bdbdbd" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+<polyline points="245.2,378.5 279.8,413.5 318.8,442.0 357.7,453.5 388.0,476.0 414.0,476.0" fill="none" stroke="#bdbdbd" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+<polyline points="245.2,378.5 414.0,476.0" fill="none" stroke="#ddd" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="2 14"/>
+<polyline points="232.2,287.0 232.2,318.0" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<polyline points="314.4,418.5 342.1,434.5" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<polyline points="431.3,439.0 431.3,405.0" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M310.1,391.0 C303.2,372.0 317.0,366.0 310.1,348.0" class="heat"/>
+<path d="M340.4,408.5 C333.5,389.5 347.3,383.5 340.4,365.5" class="heat"/>
+<path d="M370.7,426.0 C363.8,407.0 377.6,401.0 370.7,383.0" class="heat"/>
+<polygon points="232.2,228.0 263.3,246.0 232.2,264.0 201.0,246.0" fill="#666" stroke="#aaa" stroke-width="1.8" stroke-linejoin="round"/>
+<polygon points="201.0,251.0 232.2,269.0 232.2,264.0 201.0,246.0" fill="#393939" stroke="#aaa" stroke-width="1.8" stroke-linejoin="round"/>
+<polygon points="263.3,251.0 232.2,269.0 232.2,264.0 263.3,246.0" fill="#202020" stroke="#aaa" stroke-width="1.8" stroke-linejoin="round"/>
+<polygon points="233.0,218.5 246.9,226.5 231.3,235.5 217.4,227.5" fill="#666" stroke="#aaa" stroke-width="1.8" stroke-linejoin="round"/>
+<polygon points="217.4,246.5 231.3,254.5 231.3,235.5 217.4,227.5" fill="#393939" stroke="#aaa" stroke-width="1.8" stroke-linejoin="round"/>
+<polygon points="246.9,245.5 231.3,254.5 231.3,235.5 246.9,226.5" fill="#202020" stroke="#aaa" stroke-width="1.8" stroke-linejoin="round"/>
+<polyline points="218.3,223.0 246.0,239.0" fill="none" stroke="#eee" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+<polygon points="431.3,343.0 462.5,361.0 431.3,379.0 400.2,361.0" fill="#666" stroke="#aaa" stroke-width="1.8" stroke-linejoin="round"/>
+<polygon points="400.2,366.0 431.3,384.0 431.3,379.0 400.2,361.0" fill="#393939" stroke="#aaa" stroke-width="1.8" stroke-linejoin="round"/>
+<polygon points="462.5,366.0 431.3,384.0 431.3,379.0 462.5,361.0" fill="#202020" stroke="#aaa" stroke-width="1.8" stroke-linejoin="round"/>
+<polygon points="432.2,333.5 446.1,341.5 430.5,350.5 416.6,342.5" fill="#666" stroke="#aaa" stroke-width="1.8" stroke-linejoin="round"/>
+<polygon points="416.6,361.5 430.5,369.5 430.5,350.5 416.6,342.5" fill="#393939" stroke="#aaa" stroke-width="1.8" stroke-linejoin="round"/>
+<polygon points="446.1,360.5 430.5,369.5 430.5,350.5 446.1,341.5" fill="#202020" stroke="#aaa" stroke-width="1.8" stroke-linejoin="round"/>
+<polyline points="417.5,338.0 445.2,354.0" fill="none" stroke="#eee" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+<polygon points="608.9,233.5 726.6,301.5 603.7,372.5 485.9,304.5" fill="#666" stroke="#aaa" stroke-width="1.8" stroke-linejoin="round"/>
+<polygon points="485.9,309.5 603.7,377.5 603.7,372.5 485.9,304.5" fill="#393939" stroke="#aaa" stroke-width="1.8" stroke-linejoin="round"/>
+<polygon points="726.6,306.5 603.7,377.5 603.7,372.5 726.6,301.5" fill="#202020" stroke="#aaa" stroke-width="1.8" stroke-linejoin="round"/>
+<polyline points="431.3,353.0 492.0,318.0 509.3,318.0 543.9,298.0" fill="none" stroke="#070707" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" />
+<polyline points="431.3,353.0 492.0,318.0 509.3,318.0 543.9,298.0" fill="none" stroke="#ddd" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
+<polyline points="431.3,353.0 492.0,318.0 509.3,318.0 543.9,298.0" fill="none" stroke="#111" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="flow"/>
+<polyline points="535.3,283.0 504.9,265.5 344.7,173.0 232.2,238.0" fill="none" stroke="#070707" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" />
+<polyline points="535.3,283.0 504.9,265.5 344.7,173.0 232.2,238.0" fill="none" stroke="#ddd" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
+<polyline points="535.3,283.0 504.9,265.5 344.7,173.0 232.2,238.0" fill="none" stroke="#111" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="flow"/>
+<polygon points="633.1,203.5 693.7,238.5 614.1,284.5 553.4,249.5" fill="#666" stroke="#aaa" stroke-width="1.8" stroke-linejoin="round"/>
+<polygon points="553.4,314.5 614.1,349.5 614.1,284.5 553.4,249.5" fill="#393939" stroke="#aaa" stroke-width="1.8" stroke-linejoin="round"/>
+<polygon points="693.7,303.5 614.1,349.5 614.1,284.5 693.7,238.5" fill="#202020" stroke="#aaa" stroke-width="1.8" stroke-linejoin="round"/>
+<polyline points="619.3,211.5 676.4,244.5" fill="none" stroke="#929292" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+<polyline points="602.8,221.0 660.0,254.0" fill="none" stroke="#929292" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+<polyline points="586.4,230.5 643.5,263.5" fill="none" stroke="#929292" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+<polyline points="569.9,240.0 627.1,273.0" fill="none" stroke="#929292" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+<polygon points="564.7,300.0 573.4,305.0 573.4,282.0 564.7,277.0" fill="#ddd" stroke="#ddd" stroke-width="0.5" stroke-linejoin="round"/>
+<polygon points="580.3,309.0 589.0,314.0 589.0,291.0 580.3,286.0" fill="#ddd" stroke="#ddd" stroke-width="0.5" stroke-linejoin="round"/>
+<polygon points="595.9,318.0 604.5,323.0 604.5,300.0 595.9,295.0" fill="#ddd" stroke="#ddd" stroke-width="0.5" stroke-linejoin="round"/>
+<polygon points="545.7,235.0 574.2,251.5 532.7,275.5 504.1,259.0" fill="#666" stroke="#aaa" stroke-width="1.8" stroke-linejoin="round"/>
+<polygon points="504.1,300.0 532.7,316.5 532.7,275.5 504.1,259.0" fill="#393939" stroke="#aaa" stroke-width="1.8" stroke-linejoin="round"/>
+<polygon points="574.2,292.5 532.7,316.5 532.7,275.5 574.2,251.5" fill="#202020" stroke="#aaa" stroke-width="1.8" stroke-linejoin="round"/>
+<polyline points="509.3,296.0 509.3,269.0" fill="none" stroke="#ccc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+<polyline points="516.2,300.0 516.2,273.0" fill="none" stroke="#ccc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+<polyline points="523.1,304.0 523.1,277.0" fill="none" stroke="#ccc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M535.982,303.5 L570.622,323.5 L598.622,323.5 L563.982,303.5Z" fill="#777" stroke="#ddd" stroke-width="2"/>
+<ellipse cx="549.982" cy="303.5" rx="14" ry="21" fill="#303030" stroke="#ddd" stroke-width="2"/>
+<ellipse cx="584.622" cy="323.5" rx="14" ry="21" fill="#303030" stroke="#ddd" stroke-width="2"/>
+<ellipse cx="584.622" cy="323.5" rx="5" ry="8" fill="#eee"/>
+<ellipse cx="640.912" cy="228.0" rx="18" ry="10" fill="#222" stroke="#aaa"/><ellipse cx="640.912" cy="228.0" rx="9" ry="5" fill="#888"/>
+<ellipse cx="606.2719999999999" cy="248.0" rx="18" ry="10" fill="#222" stroke="#aaa"/><ellipse cx="606.2719999999999" cy="248.0" rx="9" ry="5" fill="#888"/>
+<polygon points="730.1,256.5 754.4,270.5 724.0,288.0 699.8,274.0" fill="#666" stroke="#aaa" stroke-width="1.8" stroke-linejoin="round"/>
+<polygon points="699.8,302.0 724.0,316.0 724.0,288.0 699.8,274.0" fill="#393939" stroke="#aaa" stroke-width="1.8" stroke-linejoin="round"/>
+<polygon points="754.4,298.5 724.0,316.0 724.0,288.0 754.4,270.5" fill="#202020" stroke="#aaa" stroke-width="1.8" stroke-linejoin="round"/>
+<polyline points="727.5,262.0 727.5,252.0" fill="none" stroke="#ddd" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+<polyline points="734.4,266.0 734.4,256.0" fill="none" stroke="#ddd" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+<polyline points="741.4,270.0 741.4,260.0" fill="none" stroke="#ddd" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+<polyline points="873.9,264.5 882.5,160.5 894.6,167.5 903.3,281.5" fill="none" stroke="#ccc" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+<polyline points="875.4,245.4 901.8,240.6 875.4,225.4 901.8,260.6" fill="none" stroke="#999" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" />
+<polyline points="877.2,223.4 900.0,216.6 877.2,203.4 900.0,236.6" fill="none" stroke="#999" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" />
+<polyline points="879.0,201.5 898.2,192.5 879.0,181.5 898.2,212.5" fill="none" stroke="#999" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" />
+<polyline points="880.6,181.4 896.5,170.6 880.6,161.4 896.5,190.6" fill="none" stroke="#999" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" />
+<polyline points="863.5,163.5 913.7,192.5" fill="none" stroke="#eee" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+<polyline points="865.2,164.5 865.2,173.5" fill="none" stroke="#ddd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+<polyline points="888.6,178.0 888.6,187.0" fill="none" stroke="#ddd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+<polyline points="912.0,191.5 912.0,200.5" fill="none" stroke="#ddd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+<polyline points="821.9,294.5 830.6,190.5 842.7,197.5 851.4,311.5" fill="none" stroke="#ccc" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+<polyline points="823.5,275.4 849.8,270.6 823.5,255.4 849.8,290.6" fill="none" stroke="#999" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" />
+<polyline points="825.3,253.4 848.0,246.6 825.3,233.4 848.0,266.6" fill="none" stroke="#999" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" />
+<polyline points="827.1,231.5 846.2,222.5 827.1,211.5 846.2,242.5" fill="none" stroke="#999" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" />
+<polyline points="828.7,211.4 844.6,200.6 828.7,191.4 844.6,220.6" fill="none" stroke="#999" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" />
+<polyline points="811.5,193.5 861.7,222.5" fill="none" stroke="#eee" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+<polyline points="813.2,194.5 813.2,203.5" fill="none" stroke="#ddd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+<polyline points="836.6,208.0 836.6,217.0" fill="none" stroke="#ddd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+<polyline points="860.0,221.5 860.0,230.5" fill="none" stroke="#ddd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+<polyline points="865.2,172.5 813.2,202.5" fill="none" stroke="#aaa" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" />
+<polyline points="888.6,186.0 836.6,216.0" fill="none" stroke="#aaa" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" />
+<polyline points="912.0,199.5 860.0,229.5" fill="none" stroke="#aaa" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" />
+<polyline points="741.4,262.0 813.2,202.5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="power"/>
 </svg>
