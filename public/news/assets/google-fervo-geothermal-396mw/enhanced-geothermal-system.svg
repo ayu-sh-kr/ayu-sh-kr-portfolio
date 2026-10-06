@@ -54,7 +54,8 @@
     <path d="m950 213 113-37v78l-113 38z" fill="#111"/>
     <path d="m859 188 26-8v51l-26-9zm43 14 26-8v51l-26-9zm63 2 25-8v51l-25 8zm43-15 25-8v51l-25 8z" fill="#aaa" stroke="#aaa"/>
   </g>
-  <path d="M304 174 793 112 825 154" fill="none" stroke="#e7e7e7" stroke-width="3" stroke-dasharray="9 8"/>
+  <path d="M304 174C405 143 500 102 594 88S744 120 825 154" fill="none" stroke="#e7e7e7" stroke-width="3" stroke-dasharray="9 8"/>
+  <path d="M300 232C344 246 380 254 421 238" fill="none" stroke="#f4f4f4" stroke-width="3" stroke-dasharray="6 6" marker-end="url(#arrow)"/>
   <text x="866" y="320" class="label">DATA CENTER</text>
   <text x="866" y="344" class="small">Power joins the grid</text>
 
