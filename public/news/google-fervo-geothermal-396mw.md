@@ -1,29 +1,41 @@
-# Google’s 396 MW geothermal deal with Fervo Energy in Utah
+# Google signs 396 MW Fervo geothermal deal for Utah data center power
 
-Fervo Energy’s Cape Station in Utah has begun selling electricity to the grid. Its first 33-megawatt unit reached commercial operation on September 30, 2026. A month earlier, **Google agreed to buy 396 MW** from a later part of the same geothermal project. The first unit is working; the capacity covered by Google’s new deal is still planned for 2028.
+Google has signed a **396 MW geothermal power agreement with Fervo Energy** for a potential data center in Utah. The electricity is expected from Cape Station’s expansion in 2028. The project has now passed an important earlier milestone: its first unit began commercial operation on September 30, producing **33 MW of net power**.
 
-The agreement also gives Google an option to buy about **600 MW more**, potentially bringing its purchase to nearly 1 gigawatt by June 2030. Google says the electricity would help serve a potential Utah data center. The data center plans themselves remain subject to engineering work, local approvals and commercial conditions.
+That puts an operating plant behind the larger promise. Google’s contracted capacity is **12 times the output of that first unit**, so the next task is repeating the result at a much bigger scale.
 
-## How enhanced geothermal gets heat from deep rock
+## How much electricity is 33 MW?
 
-Most conventional geothermal plants rely on naturally occurring underground hot water or steam. Fervo’s **enhanced geothermal system (EGS)** takes a different route: it drills into hot rock and creates connected pathways for water to move between two wells. That could make geothermal power practical in more locations, though each site still needs suitable heat and geology.
+At constant output, 33 MW would produce about **289 million kilowatt-hours in a year**. That is comparable to the annual electricity purchases of roughly **27,000 U.S. homes**, using the U.S. Energy Information Administration’s 2022 average of 10,791 kWh per residential customer.
 
-One well pumps water down. Deep underground, the water moves through small engineered fractures in the rock and picks up heat. A second well brings it back to the surface, where the plant uses that heat to generate electricity. The cooled water is sent underground again. Fervo uses horizontal drilling and fiber-optic sensing, techniques adapted from oil and gas work, to build and monitor the system.
+The same calculation puts 396 MW at roughly **321,000 homes’ annual electricity purchases**. These are scale comparisons, not forecasts: they assume full output throughout the year and do not account for downtime or transmission losses. The agreement is intended to support computing infrastructure, rather than those households.
 
-The cutaway follows the water down, across the hot rock and back up. The plant then sends electricity to the grid.
+The distinction matters because megawatts describe power available at a moment; kilowatt-hours describe energy delivered over time. For a data center, steady delivery across the day is as important as the headline capacity.
 
-![Isometric cutaway of enhanced geothermal power: water enters an injection well, heats as it crosses fractured rock, rises through a production well and supplies a power plant connected to the grid.](/news/assets/google-fervo-geothermal-396mw/enhanced-geothermal-system.svg)
+## Why Google wants geothermal power for data centers
 
-*The moving marks show water circulation. Electricity leaves the plant through the grid connection.*
+Servers need electricity overnight as well as during the day. Geothermal can provide **around-the-clock carbon-free power**, complementing solar and wind when their output falls. It gives Google another way to match its electricity demand with cleaner generation at the hours it actually needs it.
 
-This is why geothermal interests a company with data centers running day and night. The heat source is available when the sun sets or the wind slows, so it can complement solar and wind power. The challenge is building enough wells and plant capacity to turn that steady resource into a dependable supply at a useful cost.
+Fervo’s enhanced geothermal system circulates water through engineered fractures in hot rock. The heated water returns to a surface plant to generate electricity, then goes underground again. The cutaway shows that circulation and the separate electricity connection to the grid.
 
-## What is running now, and what Google has contracted
+![Isometric cutaway of enhanced geothermal power: water circulates between wells through fractured hot rock, transfers heat at a power plant and returns underground while electricity flows to the grid.](/news/assets/google-fervo-geothermal-396mw/enhanced-geothermal-system.svg)
 
-Cape Station’s first operating unit produces **33 MW of net power**. Fervo is commissioning two more units in its initial phase, which is designed to reach about 100 MW. A further 400 MW phase is under construction, with commercial operation targeted for 2028. Google’s new purchase depends on that later buildout.
+*Moving marks trace the water loop and electricity flow. The diagram is conceptual.*
 
-The companies have a history behind this larger contract. Fervo’s Project Red pilot in Nevada began supplying the grid in 2023. Google and utility NV Energy then signed a separate 115 MW agreement with Fervo in 2024. Cape Station is where the approach is being built at a much larger scale.
+## Cleaner electricity and energy efficiency both matter
 
-A power purchase agreement commits to future generation; it does not mean a completed Utah data center is already drawing electricity from this project. Cape Station now has a working first unit. Delivering Google’s contract depends on repeating that result across the later phase and keeping the output steady over time.
+A cleaner supply does not reduce the electricity a server needs. Google also has to limit energy used for cooling and power distribution. Its **2026 Environmental Report** reports a data center power usage effectiveness, or PUE, of **1.09**, compared with 1.54 among respondents to the Uptime Institute’s 2025 survey.
 
-Sources: [Fervo’s Google agreement](https://fervoenergy.com/fervo-energy-and-google-sign-396-mw-ppa/), [Cape Station’s commercial-operation update](https://fervoenergy.com/fervo-energy-declares-commercial-operation-at-cape-station-ahead-of-schedule-leading-the-race-for-next-generation-geothermal-energy/), [Fervo’s explanation of enhanced geothermal](https://fervoenergy.com/enhanced-geothermal-has-been-proven-at-scale-heres-what-two-years-of-production-data-show/), and [Reuters’ deal report](https://www.reuters.com/legal/litigation/fervo-signs-396-mw-geothermal-power-supply-deal-google-shares-jump-2026-09-01/).
+A PUE of 1.09 means about 9 extra units of facility energy for every 100 units used by computing equipment. It measures overhead, rather than how efficiently a model or application runs. Efficient facilities can still consume more electricity overall as computing demand grows.
+
+Geothermal addresses the supply side of that challenge. Google’s longer-term ambition is **24/7 carbon-free energy on every grid where it operates by 2030**. Its latest report acknowledges that AI infrastructure is expanding faster than grids are becoming cleaner; a signed energy deal is a step toward that goal, not its completion.
+
+## From the first 33 MW to nearly 1 GW
+
+Cape Station’s initial phase comprises three 33 MW units, totaling about 100 MW. Fervo expects the remaining two to reach commercial operation by January 1, 2027. A further **400 MW phase is under construction for 2028**, supporting the larger Google agreement.
+
+Google also has an option to buy approximately **600 MW more by June 2030**, potentially taking its purchase to nearly 1 GW. That option is separate from the 396 MW agreement, and the proposed Utah data center still depends on engineering feasibility, approvals and commercial conditions.
+
+For Fervo, repeating the same plant design is intended to bring construction time and costs down. For Google, the value is dependable clean electricity at a scale that can support growing computing demand. The first unit shows the approach can deliver commercial power; the next test is whether the expansion can deliver that result consistently and on schedule.
+
+Sources: [Fervo’s Google agreement](https://ir.fervoenergy.com/news-releases/news-release-details/fervo-energy-and-google-sign-396-mw-ppa), [Cape Station’s commercial-operation update](https://fervoenergy.gcs-web.com/news-releases/news-release-details/fervo-energy-declares-commercial-operation-cape-station-ahead), [EIA’s household electricity benchmark](https://www.eia.gov/tools/faqs/faq.php?id=97&t=10), [Google’s 2026 Environmental Report](https://blog.google/company-news/outreach-and-initiatives/sustainability/2026-environmental-report/), and [Google’s energy ambitions](https://publicpolicy.google/intl/en_us/sustainability/).
