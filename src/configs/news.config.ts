@@ -68,6 +68,17 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "mistral-large-4-le-chonk-preview",
+    date: "2026-10-06",
+    title: "Mistral Large 4 ‘Le Chonk’ enters preview ahead of open weights",
+    summary: "Mistral Large 4 previews coding, cybersecurity and image understanding, with open weights planned later in October and a focus on sovereign AI.",
+    kind: "reading",
+    document: "/news/mistral-large-4-le-chonk-preview.md",
+    keywords: ["Mistral Large 4", "Le Chonk", "Mistral Large 4 preview", "open-weight AI", "sovereign AI", "mixture-of-experts model"],
+    minutes: 3,
+    reference: {label: "Mistral — Introducing Mistral Large 4", href: "https://mistral.ai/news/mistral-large-4/"},
+  },
+  {
     slug: "yarrtube-self-hosted-youtube-no-recommendations",
     date: "2026-10-06",
     title: "Yarrtube replaces YouTube recommendations with a feed you choose",

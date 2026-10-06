@@ -36,6 +36,7 @@ const showcaseRoutes = [
   "/showcase/dota-rest",
 ];
 const newsRoutes = [
+  "/news/mistral-large-4-le-chonk-preview",
   "/news/yarrtube-self-hosted-youtube-no-recommendations",
   "/news/angular-native-mobile-apps",
   "/news/aleph-alpha-kolibri-open-weight-model",

@@ -14,6 +14,11 @@
   ],
   "redirects": [
     {
+      "source": "/news/mistral-large-4-le-chonk-preview",
+      "destination": "/news/mistral-large-4-le-chonk-preview/",
+      "permanent": true
+    },
+    {
       "source": "/about",
       "destination": "/about/",
       "permanent": true
