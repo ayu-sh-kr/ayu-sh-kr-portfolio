@@ -1,29 +1,29 @@
-# Google signs 396 MW geothermal deal with Fervo Energy
+# Google’s 396 MW geothermal deal with Fervo Energy in Utah
 
-A data center needs power after sunset and when the wind drops. Google’s new agreement with Fervo Energy is designed to add another source of electricity that can run around the clock: geothermal power from deep underground.
+Fervo Energy’s Cape Station in Utah has begun selling electricity to the grid. Its first 33-megawatt unit reached commercial operation on September 30, 2026. A month earlier, **Google agreed to buy 396 MW** from a later part of the same geothermal project. The first unit is working; the capacity covered by Google’s new deal is still planned for 2028.
 
-The agreement covers **396 megawatts (MW)** from Fervo’s Cape Station project in Beaver County, Utah. Google can also choose to buy about **600 MW more**, which would bring its potential purchases to nearly 1 gigawatt by June 2030. The energy is intended to support a potential Google data center in Utah, though the company says its final plans still depend on engineering, local approvals and commercial conditions.
+The agreement also gives Google an option to buy about **600 MW more**, potentially bringing its purchase to nearly 1 gigawatt by June 2030. Google says the electricity would help serve a potential Utah data center. The data center plans themselves remain subject to engineering work, local approvals and commercial conditions.
 
-## How Fervo draws power from hot rock
+## How enhanced geothermal gets heat from deep rock
 
-Conventional geothermal plants need naturally occurring underground reservoirs of hot water or steam. That limits them to particular locations. Fervo is developing an **enhanced geothermal system (EGS)** that uses deep, hot rock even when a ready-made reservoir is absent.
+Most conventional geothermal plants rely on naturally occurring underground hot water or steam. Fervo’s **enhanced geothermal system (EGS)** takes a different route: it drills into hot rock and creates connected pathways for water to move between two wells. That could make geothermal power practical in more locations, though each site still needs suitable heat and geology.
 
-Fervo drills two wells down to the hot rock and turns them horizontally. It pumps water into one well, through a network of engineered fractures, and brings the heated water back to the surface through the other. A power plant converts that heat into electricity, and the cooled water returns underground to repeat the cycle.
+One well pumps water down. Deep underground, the water moves through small engineered fractures in the rock and picks up heat. A second well brings it back to the surface, where the plant uses that heat to generate electricity. The cooled water is sent underground again. Fervo uses horizontal drilling and fiber-optic sensing, techniques adapted from oil and gas work, to build and monitor the system.
 
-![Isometric cutaway of an enhanced geothermal system: water descends through an injection well, passes through hot fractured rock, and returns to a surface power plant through a production well.](/news/assets/google-fervo-geothermal-396mw/enhanced-geothermal-system.svg)
+The cutaway follows the water down, across the hot rock and back up. The plant then sends electricity to the grid.
 
-*The water circulates through hot rock between two wells; the surface plant turns the heat into electricity.*
+![Isometric cutaway of enhanced geothermal power: water enters an injection well, heats as it crosses fractured rock, rises through a production well and supplies a power plant connected to the grid.](/news/assets/google-fervo-geothermal-396mw/enhanced-geothermal-system.svg)
 
-Fervo adapts methods from oil and gas drilling, including horizontal wells and fiber-optic sensing, to build and monitor the system. The goal is to make geothermal power possible in more places than conventional projects can reach. It still takes deep drilling, careful site selection and major construction to prove a location can produce power at useful scale.
+*The moving marks show water circulation. Electricity leaves the plant through the grid connection.*
 
-## A large contract, delivered in stages
+This is why geothermal interests a company with data centers running day and night. The heat source is available when the sun sets or the wind slows, so it can complement solar and wind power. The challenge is building enough wells and plant capacity to turn that steady resource into a dependable supply at a useful cost.
 
-The 396 MW is a purchase agreement for future capacity, not electricity already flowing to Google. Fervo says Cape Station’s new phase for the agreement is expected to come online in 2028. Its first phase is smaller: the company announced that its first 33 MW unit reached commercial operation on September 30, 2026, with two more units still being commissioned.
+## What is running now, and what Google has contracted
 
-That first unit is a milestone for enhanced geothermal, but it does not yet demonstrate the full scale or schedule of the Google deal. Fervo must build and operate the additional capacity, and the planned data center itself remains subject to approvals and other conditions.
+Cape Station’s first operating unit produces **33 MW of net power**. Fervo is commissioning two more units in its initial phase, which is designed to reach about 100 MW. A further 400 MW phase is under construction, with commercial operation targeted for 2028. Google’s new purchase depends on that later buildout.
 
-Google and Fervo’s work began with a pilot in Nevada that started operating in 2023. In 2024, they signed a separate 115 MW agreement with utility NV Energy. The Utah contract extends that relationship as large data centers look for power they can use around the clock.
+The companies have a history behind this larger contract. Fervo’s Project Red pilot in Nevada began supplying the grid in 2023. Google and utility NV Energy then signed a separate 115 MW agreement with Fervo in 2024. Cape Station is where the approach is being built at a much larger scale.
 
-Geothermal could complement solar and wind because its output does not depend on daylight or weather. Whether it becomes a substantial part of the power mix will depend on projects like Cape Station delivering as promised—and on whether the approach can be repeated at a reasonable cost.
+A power purchase agreement commits to future generation; it does not mean a completed Utah data center is already drawing electricity from this project. Cape Station now has a working first unit. Delivering Google’s contract depends on repeating that result across the later phase and keeping the output steady over time.
 
-Sources: [Fervo’s 396 MW agreement with Google](https://fervoenergy.com/fervo-energy-and-google-sign-396-mw-ppa/), [Reuters’ deal report](https://www.reuters.com/legal/litigation/fervo-signs-396-mw-geothermal-power-supply-deal-google-shares-jump-2026-09-01/), [Cape Station commercial-operation update](https://fervoenergy.com/fervo-energy-declares-commercial-operation-at-cape-station-ahead-of-schedule-leading-the-race-for-next-generation-geothermal-energy/), and [Fervo’s enhanced geothermal explainer](https://fervoenergy.com/enhanced-geothermal-has-been-proven-at-scale-heres-what-two-years-of-production-data-show/).
+Sources: [Fervo’s Google agreement](https://fervoenergy.com/fervo-energy-and-google-sign-396-mw-ppa/), [Cape Station’s commercial-operation update](https://fervoenergy.com/fervo-energy-declares-commercial-operation-at-cape-station-ahead-of-schedule-leading-the-race-for-next-generation-geothermal-energy/), [Fervo’s explanation of enhanced geothermal](https://fervoenergy.com/enhanced-geothermal-has-been-proven-at-scale-heres-what-two-years-of-production-data-show/), and [Reuters’ deal report](https://www.reuters.com/legal/litigation/fervo-signs-396-mw-geothermal-power-supply-deal-google-shares-jump-2026-09-01/).
