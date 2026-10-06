@@ -70,8 +70,8 @@ export const newsNotes: readonly NewsNote[] = [
   {
     slug: "mistral-large-4-le-chonk-preview",
     date: "2026-10-06",
-    title: "Mistral Large 4 ‘Le Chonk’ enters preview ahead of open weights",
-    summary: "Mistral Large 4 previews coding, cybersecurity and image understanding, with open weights planned later in October and a focus on sovereign AI.",
+    title: "Mistral Large 4 ‘Le Chonk’ opens for testing before weight release",
+    summary: "Mistral Large 4 is available through a preview API. How its experts share the work, what it can do, and what the planned open weights would offer.",
     kind: "reading",
     document: "/news/mistral-large-4-le-chonk-preview.md",
     keywords: ["Mistral Large 4", "Le Chonk", "Mistral Large 4 preview", "open-weight AI", "sovereign AI", "mixture-of-experts model"],

@@ -1,41 +1,43 @@
-# Mistral Large 4 ‘Le Chonk’ enters preview ahead of open weights
+# Mistral Large 4 ‘Le Chonk’ opens for testing before weight release
 
-**Mistral has opened a public preview of Mistral Large 4**, nicknamed “Le Chonk.” Developers can try its API through Mistral Studio from October 6, with downloadable weights planned later this month.
+**Mistral Large 4 is available to try through a public preview**, starting October 6. Nicknamed “Le Chonk,” the model can be accessed through Mistral Studio’s API. Mistral plans to release downloadable model weights later this month, so organizations can also run it themselves.
 
-The French company is targeting coding, cybersecurity and industrial applications. Its broader pitch is **sovereign AI**: organizations should have more control over where their models run, how they are customized and who controls access to them.
+The French company is aiming the model at coding, cybersecurity and work with documents and images. It also emphasizes **sovereign AI**, meaning organizations have more say over where their AI runs and who can access it.
 
-## A trillion parameters, with only part active
+## How mixture-of-experts divides the work
 
-Mistral’s announcement rounds the model’s size to one trillion parameters. Its documentation gives the more precise total as **1.05 trillion, with 49 billion active parameters**. Large 4 uses mixture-of-experts, routing work through selected parts of the model rather than activating everything for each token.
+Large 4 has **1.05 trillion parameters**, the values learned during training. Only 49 billion are active for each token, a small piece of text the model processes. This is possible because it uses **mixture-of-experts (MoE)**: different parts of the model do different portions of the work.
 
-In a sparse MoE layer, a router selects experts for each token representation and combines their outputs using routing weights. The simplified illustration follows one token through that process; the selection can change for the next token.
+A part called the router chooses which experts process each token. Their results are then combined, with some given more weight than others. The next token may go to a different set of experts.
 
-![Isometric mixture-of-experts layer: a token enters a router, two selected experts process it while two remain idle, and a weighted combine step produces the output.](/news/assets/mistral-large-4-le-chonk-preview/mixture-of-experts.svg)
+The illustration shows that choice: the black modules do the work, while the outlined ones stay idle for this token.
 
-*Illustrative routing only: this shows two of four experts, not Large 4’s exact expert count or routing configuration.*
+![Isometric MoE illustration: a router sends one token to two selected experts, then combines their results; two other experts stay idle.](/news/assets/mistral-large-4-le-chonk-preview/mixture-of-experts.svg)
 
-That helps reduce computation per token. It does not make the complete model small: storing and serving all the weights remains a separate infrastructure requirement. The active count is not the memory footprint of the whole system.
+*This uses two of four experts to explain the idea. It does not show Large 4’s exact number of experts or selection rules.*
 
-Large 4 accepts multimodal input, including images. Its documented features include tool calling, structured output and document questions, allowing applications to connect it to services and work with more than a plain chat exchange.
+Using fewer experts reduces the calculation needed at each step. But the whole model still needs to be stored and available. The smaller active count does not mean the model is small enough to run on an ordinary laptop.
 
-## Coding, cyber defense and image understanding
+## What Mistral says the model can do
 
-Mistral reports strong performance across software engineering, cybersecurity and professional tasks. It also highlights **visual grounding**, where a model identifies the relevant object or region in an image. That can connect an answer to evidence in a drawing, document or scene.
+Mistral reports improvements in coding, cybersecurity and other professional tasks. Large 4 can also work with images and documents. One capability is **visual grounding**: identifying the object or area in an image that an answer refers to.
 
-These are task-specific claims, rather than proof of a universal lead. Mistral notes that some coding evaluations were conducted privately ahead of the public launch of their test harness. The preview gives developers a way to examine how those results translate to their own workloads.
+The documentation lists tool calling, which lets an application connect the model to external services, and structured output, which returns answers in a format software can use.
 
-## Open weights give organizations deployment control
+Mistral’s test results describe particular tasks, rather than a lead in every use case. Some coding tests were evaluated privately before the testing tools became public. The preview lets teams compare those claims with the work they actually need done.
 
-The company says Large 4 was trained from scratch on **3,800 NVIDIA Grace Blackwell GPUs** in its European data centers. The public preview runs on that same infrastructure.
+## What downloadable weights would change
 
-The planned weight release would let organizations operate the model under their own deployment and access policies. That fits Mistral’s wider offering of on-premises, private-cloud and hosted options. For a security team or an organization handling proprietary information, the appeal is control over the system alongside its answer quality.
+Mistral says it trained Large 4 on 3,800 NVIDIA Grace Blackwell GPUs in its European data centers. The preview is served from the same infrastructure.
 
-That control brings responsibility for hosting, security and maintenance. Open weights also do not automatically make the training data or every part of the development process public.
+Releasing the weights would give organizations another way to use the model: host it on infrastructure they control, with their own rules for data access. That may matter to teams handling private code or company documents.
 
-## What comes after the preview
+They would also take on the work of hosting, securing and maintaining it. Open weights give access to the trained model; they do not necessarily include the training data or every detail of how it was built.
 
-Mistral plans to publish more architecture details and evaluations alongside the weights, then use Large 4 as the foundation for specialized and optimized models.
+## What comes next
 
-The API preview is available to evaluate now. The downloadable release is the next milestone, when teams can assess both the model’s capabilities and the practical demands of operating it themselves.
+Mistral plans to share more details about the model and its tests when the weights are released. It also intends to build versions for more specific tasks.
+
+For now, teams can test the API preview. The weight release will make it possible to assess whether running Large 4 themselves is practical, alongside checking the quality of its answers.
 
 Sources: [Mistral’s announcement](https://mistral.ai/news/mistral-large-4/), [Large 4 documentation](https://docs.mistral.ai/models/mistral-large-4-0), and [Mistral’s deployment approach](https://mistral.ai/).
