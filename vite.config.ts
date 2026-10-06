@@ -37,6 +37,7 @@ const showcaseRoutes = [
 ];
 const newsRoutes = [
   "/news/mistral-large-4-le-chonk-preview",
+  "/news/google-fervo-geothermal-396mw",
   "/news/yarrtube-self-hosted-youtube-no-recommendations",
   "/news/angular-native-mobile-apps",
   "/news/aleph-alpha-kolibri-open-weight-model",

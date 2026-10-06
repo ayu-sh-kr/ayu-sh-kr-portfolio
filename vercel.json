@@ -259,6 +259,11 @@
       "permanent": true
     },
     {
+      "source": "/news/google-fervo-geothermal-396mw",
+      "destination": "/news/google-fervo-geothermal-396mw/",
+      "permanent": true
+    },
+    {
       "source": "/news/google-gemini-4-argon-pricing-capabilities",
       "destination": "/news/google-gemini-4-argon-pricing-capabilities/",
       "permanent": true
