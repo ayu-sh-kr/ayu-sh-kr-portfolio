@@ -70,11 +70,11 @@ export const newsNotes: readonly NewsNote[] = [
   {
     slug: "google-fervo-geothermal-396mw",
     date: "2026-10-06",
-    title: "Google signs 396 MW Fervo geothermal deal for Utah data center power",
-    summary: "Google’s 396 MW Fervo geothermal deal targets Utah data center power in 2028. Compare the first 33 MW unit’s scale, efficiency and plans for nearly 1 GW.",
+    title: "Google’s Fervo geothermal deal tackles AI’s data center power problem",
+    summary: "Google’s Fervo geothermal deal targets reliable power for AI data centers. Oracle’s power-delay concerns show why contracts alone cannot deliver capacity.",
     kind: "infra",
     document: "/news/google-fervo-geothermal-396mw.md",
-    keywords: ["Google Fervo geothermal deal", "396 MW geothermal power agreement", "Cape Station Utah 33 MW", "geothermal data center power", "enhanced geothermal systems", "Google 24/7 carbon-free energy"],
+    keywords: ["Google Fervo geothermal deal", "AI data center power demand", "Cape Station Utah", "geothermal data center electricity", "Oracle Project Jupiter power delays", "Google carbon-free energy"],
     minutes: 4,
     figures: [
       {label: "Google agreement", value: "396", unit: "MW contracted"},

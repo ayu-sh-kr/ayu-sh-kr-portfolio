@@ -1,41 +1,43 @@
-# Google signs 396 MW Fervo geothermal deal for Utah data center power
+# Google’s Fervo geothermal deal tackles AI’s data center power problem
 
-Google has signed a **396 MW geothermal power agreement with Fervo Energy** for a potential data center in Utah. The electricity is expected from Cape Station’s expansion in 2028. The project has now passed an important earlier milestone: its first unit began commercial operation on September 30, producing **33 MW of net power**.
+Google is securing geothermal electricity for a potential Utah data center as AI growth puts more pressure on power supplies. Its **396 MW agreement with Fervo Energy** targets delivery from Cape Station’s expansion in 2028. The project’s first unit is already operating, giving the larger plan a working starting point.
 
-That puts an operating plant behind the larger promise. Google’s contracted capacity is **12 times the output of that first unit**, so the next task is repeating the result at a much bigger scale.
+The reason for this deal goes beyond buying cleaner electricity. AI companies need to turn expensive chips and large cloud contracts into computing capacity that customers can actually use. That takes a dependable power supply, cooling systems and a grid connection, alongside the servers.
 
-## How much electricity is 33 MW?
+## AI demand is growing faster than infrastructure can be built
 
-At constant output, 33 MW would produce about **289 million kilowatt-hours in a year**. That is comparable to the annual electricity purchases of roughly **27,000 U.S. homes**, using the U.S. Energy Information Administration’s 2022 average of 10,791 kWh per residential customer.
+Training a model keeps large groups of processors busy for long periods. Running the finished model also needs computing power whenever people send requests. As AI reaches more applications, data centers have to support both workloads while keeping equipment cool.
 
-The same calculation puts 396 MW at roughly **321,000 homes’ annual electricity purchases**. These are scale comparisons, not forecasts: they assume full output throughout the year and do not account for downtime or transmission losses. The agreement is intended to support computing infrastructure, rather than those households.
+Buying more processors addresses only part of that demand. A building can be ready before the electricity needed to run it is available. New generation, transmission lines and approvals can take years, making the power supply a constraint on when a data center can open or expand.
 
-The distinction matters because megawatts describe power available at a moment; kilowatt-hours describe energy delivered over time. For a data center, steady delivery across the day is as important as the headline capacity.
+That is why energy agreements are becoming part of AI infrastructure planning. Companies need confidence that power will arrive alongside the computing equipment, rather than discover a shortage after committing to a site.
 
-## Why Google wants geothermal power for data centers
+## Oracle shows why delivery matters as much as demand
 
-Servers need electricity overnight as well as during the day. Geothermal can provide **around-the-clock carbon-free power**, complementing solar and wind when their output falls. It gives Google another way to match its electricity demand with cleaner generation at the hours it actually needs it.
+Oracle’s Project Jupiter in New Mexico illustrates that risk. Reuters reported on September 24 that Oracle issued a **force majeure notice over potential power delays**, seeking contractual protection if the campus misses its planned opening. Oracle said the project remained on schedule.
 
-Fervo’s enhanced geothermal system circulates water through engineered fractures in hot rock. The heated water returns to a surface plant to generate electricity, then goes underground again. The cutaway shows that circulation and the separate electricity connection to the grid.
+The uncertainty still unsettled investors. MarketWatch reported that Oracle shares fell more than 3% that day after the concerns emerged. The reaction shows why a large pipeline of AI contracts is not enough on its own: investors also need confidence that the facilities can begin serving customers and generating revenue.
 
-![Isometric cutaway of enhanced geothermal power: water circulates between wells through fractured hot rock, transfers heat at a power plant and returns underground while electricity flows to the grid.](/news/assets/google-fervo-geothermal-396mw/enhanced-geothermal-system.svg)
+This does not establish that Oracle has already failed to deliver the campus, or that electricity explains every movement in its stock. It does show the practical problem facing cloud companies. Demand can be secured much faster than the infrastructure required to serve it.
 
-*Moving marks trace the water loop and electricity flow. The diagram is conceptual.*
+## Why geothermal fits Google’s data center plans
 
-## Cleaner electricity and energy efficiency both matter
+Google’s Fervo agreement addresses the supply side of that problem. Geothermal can provide **electricity through the day and night**, complementing solar and wind when their output falls. For a data center, the value is having a dependable source available across the hours it needs to operate.
 
-A cleaner supply does not reduce the electricity a server needs. Google also has to limit energy used for cooling and power distribution. Its **2026 Environmental Report** reports a data center power usage effectiveness, or PUE, of **1.09**, compared with 1.54 among respondents to the Uptime Institute’s 2025 survey.
+Fervo circulates water through engineered fractures in hot rock, then uses the returning heat to generate electricity at the surface. The cooled water goes underground again; the visual follows that loop and the electricity connection to the grid.
 
-A PUE of 1.09 means about 9 extra units of facility energy for every 100 units used by computing equipment. It measures overhead, rather than how efficiently a model or application runs. Efficient facilities can still consume more electricity overall as computing demand grows.
+![Isometric cutaway showing geothermal water circulation through hot rock, a surface power plant and electricity flowing to the grid.](/news/assets/google-fervo-geothermal-396mw/enhanced-geothermal-system.svg)
 
-Geothermal addresses the supply side of that challenge. Google’s longer-term ambition is **24/7 carbon-free energy on every grid where it operates by 2030**. Its latest report acknowledges that AI infrastructure is expanding faster than grids are becoming cleaner; a signed energy deal is a step toward that goal, not its completion.
+*Moving marks trace water circulation and electricity flow.*
 
-## From the first 33 MW to nearly 1 GW
+Cape Station’s first operating unit delivers **33 MW of net power**. Google’s agreement covers substantially more capacity from the later expansion. The first unit is evidence that the system can produce commercial electricity; it is not the full supply Google has contracted.
 
-Cape Station’s initial phase comprises three 33 MW units, totaling about 100 MW. Fervo expects the remaining two to reach commercial operation by January 1, 2027. A further **400 MW phase is under construction for 2028**, supporting the larger Google agreement.
+## A future power supply still needs to be delivered
 
-Google also has an option to buy approximately **600 MW more by June 2030**, potentially taking its purchase to nearly 1 GW. That option is separate from the 396 MW agreement, and the proposed Utah data center still depends on engineering feasibility, approvals and commercial conditions.
+The next step is building out Cape Station for the 2028 agreement. Google also has an option to expand its purchase toward **nearly 1 GW by 2030**. Its proposed Utah data center remains subject to engineering work, approvals and commercial conditions.
 
-For Fervo, repeating the same plant design is intended to bring construction time and costs down. For Google, the value is dependable clean electricity at a scale that can support growing computing demand. The first unit shows the approach can deliver commercial power; the next test is whether the expansion can deliver that result consistently and on schedule.
+Efficiency remains part of the same effort. Better cooling, power distribution and computing can reduce the electricity needed for a given workload. But those improvements do not guarantee lower total consumption when AI usage keeps growing. Google’s latest environmental report acknowledges that its AI infrastructure is expanding faster than grids are becoming cleaner.
 
-Sources: [Fervo’s Google agreement](https://ir.fervoenergy.com/news-releases/news-release-details/fervo-energy-and-google-sign-396-mw-ppa), [Cape Station’s commercial-operation update](https://fervoenergy.gcs-web.com/news-releases/news-release-details/fervo-energy-declares-commercial-operation-cape-station-ahead), [EIA’s household electricity benchmark](https://www.eia.gov/tools/faqs/faq.php?id=97&t=10), [Google’s 2026 Environmental Report](https://blog.google/company-news/outreach-and-initiatives/sustainability/2026-environmental-report/), and [Google’s energy ambitions](https://publicpolicy.google/intl/en_us/sustainability/).
+The Fervo partnership gives Google another route toward its ambition for around-the-clock carbon-free energy. It also brings the AI expansion story back to a physical requirement: the power has to be built, connected and delivered. Cape Station has a working first unit. Delivering the larger agreement is the next test.
+
+Sources: [Fervo’s Google agreement](https://ir.fervoenergy.com/news-releases/news-release-details/fervo-energy-and-google-sign-396-mw-ppa), [Cape Station’s commercial-operation update](https://fervoenergy.gcs-web.com/news-releases/news-release-details/fervo-energy-declares-commercial-operation-cape-station-ahead), [Reuters on Oracle’s power-delay notice](https://www.reuters.com/business/oracle-cites-force-majeure-shield-itself-controversial-data-center-bloomberg-2026-09-24/), [MarketWatch on Oracle’s share-price reaction](https://www.marketwatch.com/story/oracles-stock-is-falling-as-investors-fear-a-data-center-setback-d8105ef9), and [Google’s 2026 Environmental Report](https://blog.google/company-news/outreach-and-initiatives/sustainability/2026-environmental-report/).
