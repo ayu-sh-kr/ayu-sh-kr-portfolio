@@ -68,6 +68,21 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "google-fervo-geothermal-396mw",
+    date: "2026-10-06",
+    title: "Google’s Fervo geothermal deal tackles AI’s data center power problem",
+    summary: "Google’s Fervo geothermal deal targets reliable power for AI data centers. Oracle’s power-delay concerns show why contracts alone cannot deliver capacity.",
+    kind: "infra",
+    document: "/news/google-fervo-geothermal-396mw.md",
+    keywords: ["Google Fervo geothermal deal", "AI data center power demand", "Cape Station Utah", "geothermal data center electricity", "Oracle Project Jupiter power delays", "Google carbon-free energy"],
+    minutes: 4,
+    figures: [
+      {label: "Google agreement", value: "396", unit: "MW contracted"},
+      {label: "First unit online", value: "33", unit: "MW net power"},
+    ],
+    reference: {label: "Fervo Energy — Google power purchase agreement", href: "https://fervoenergy.com/fervo-energy-and-google-sign-396-mw-ppa/"},
+  },
+  {
     slug: "yarrtube-self-hosted-youtube-no-recommendations",
     date: "2026-10-06",
     title: "Yarrtube replaces YouTube recommendations with a feed you choose",

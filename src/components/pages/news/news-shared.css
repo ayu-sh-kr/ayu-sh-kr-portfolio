@@ -165,6 +165,11 @@ news-markdown-view {
     padding: var(--layout-pad-panel);
   }
 
+  /* Two figures fill the available width instead of leaving a third empty column. */
+  .news-figures:has(> div:nth-child(2):last-child) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .news-figures > div {
     display: flex;
     flex-direction: column;

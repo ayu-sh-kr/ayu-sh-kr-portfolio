@@ -36,6 +36,7 @@ const showcaseRoutes = [
   "/showcase/dota-rest",
 ];
 const newsRoutes = [
+  "/news/google-fervo-geothermal-396mw",
   "/news/yarrtube-self-hosted-youtube-no-recommendations",
   "/news/angular-native-mobile-apps",
   "/news/aleph-alpha-kolibri-open-weight-model",
