@@ -68,6 +68,21 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "google-fervo-geothermal-396mw",
+    date: "2026-10-06",
+    title: "Google signs 396 MW geothermal deal with Fervo Energy",
+    summary: "Google signed a 396 MW power purchase agreement with Fervo Energy. How enhanced geothermal taps deep rock, and when its Utah project could supply power.",
+    kind: "infra",
+    document: "/news/google-fervo-geothermal-396mw.md",
+    keywords: ["Google Fervo Energy geothermal deal", "396 MW geothermal power", "enhanced geothermal systems", "Cape Station Utah", "geothermal data center power"],
+    minutes: 4,
+    figures: [
+      {label: "Google agreement", value: "396", unit: "MW"},
+      {label: "Possible total", value: "Nearly 1", unit: "GW by June 2030"},
+    ],
+    reference: {label: "Fervo Energy — Google power purchase agreement", href: "https://fervoenergy.com/fervo-energy-and-google-sign-396-mw-ppa/"},
+  },
+  {
     slug: "yarrtube-self-hosted-youtube-no-recommendations",
     date: "2026-10-06",
     title: "Yarrtube replaces YouTube recommendations with a feed you choose",
