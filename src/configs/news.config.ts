@@ -68,6 +68,17 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "mistral-large-4-le-chonk-preview",
+    date: "2026-10-06",
+    title: "Mistral Large 4 ‘Le Chonk’: API preview and open-weight plans",
+    summary: "Mistral Large 4 ‘Le Chonk’ enters API preview with open weights planned for October. Explore its MoE design, multimodal capabilities and sovereign AI focus.",
+    kind: "reading",
+    document: "/news/mistral-large-4-le-chonk-preview.md",
+    keywords: ["Mistral Large 4", "Le Chonk", "Mistral Large 4 preview", "open-weight AI", "sovereign AI", "mixture-of-experts model"],
+    minutes: 3,
+    reference: {label: "Mistral — Introducing Mistral Large 4", href: "https://mistral.ai/news/mistral-large-4/"},
+  },
+  {
     slug: "google-fervo-geothermal-396mw",
     date: "2026-10-06",
     title: "Google’s Fervo geothermal deal tackles AI’s data center power problem",
