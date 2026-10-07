@@ -79,6 +79,17 @@ export const newsNotes: readonly NewsNote[] = [
     reference: {label: "GitHub Engineering — Git infrastructure for agent-scale development", href: "https://github.blog/engineering/architecture-optimization/building-git-infrastructure-for-agent-scale-development/"},
   },
   {
+    slug: "beam-embeddinggemma-2-flow-1",
+    date: "2026-10-07",
+    title: "Reflection Beam, EmbeddingGemma 2 and flow-1: Features and Release Status",
+    summary: "Beam’s open-weight preview, EmbeddingGemma 2’s local multimodal search and flow-1’s agent debugging: release status, capabilities, memory requirements and reported costs.",
+    kind: "reading",
+    document: "/news/beam-embeddinggemma-2-flow-1.md",
+    keywords: ["Reflection Beam", "Beam open-weight model", "EmbeddingGemma 2", "multimodal embeddings", "on-device semantic search", "Laminar flow-1", "AI agent trace analysis"],
+    minutes: 6,
+    reference: {label: "Reflection — Introducing Beam", href: "https://reflection.company/blog/introducing-beam"},
+  },
+  {
     slug: "mistral-large-4-le-chonk-preview",
     date: "2026-10-06",
     title: "Mistral Large 4 ‘Le Chonk’: API preview and open-weight plans",

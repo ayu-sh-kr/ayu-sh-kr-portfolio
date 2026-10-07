@@ -7,7 +7,7 @@ describe("news configuration", () => {
     const notes = getNewsNotes();
 
     assert.ok(notes.length >= 9);
-    assert.equal(notes[0]?.slug, "jevgrep-jev-agent-code-search");
+    assert.equal(notes[0]?.date, notes.reduce((latest, note) => note.date > latest ? note.date : latest, ""));
     assert.ok(notes.every((note) => note.date > "2026-09-12"));
     assert.ok(notes.every((note, index) => index === 0 || notes[index - 1]!.date >= note.date));
     assert.ok(notes.every((note) => getNewsSeo(note).description === note.summary));

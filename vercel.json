@@ -204,6 +204,11 @@
       "permanent": true
     },
     {
+      "source": "/news/beam-embeddinggemma-2-flow-1",
+      "destination": "/news/beam-embeddinggemma-2-flow-1/",
+      "permanent": true
+    },
+    {
       "source": "/news/claude-code-mods-typescript",
       "destination": "/news/claude-code-mods-typescript/",
       "permanent": true

@@ -48,6 +48,8 @@
 
 - [GitHub redesigns Git storage as AI agents push write demand higher](https://www.ayu-sh-kr.com/news/github-git-infrastructure-agent-scale/): GitHub explains its read-replica bottleneck and planned storage redesign for agent-scale development. [Article Markdown](https://www.ayu-sh-kr.com/news/github-git-infrastructure-agent-scale.md).
 
+- [Reflection Beam, EmbeddingGemma 2 and flow-1: Features and Release Status](https://www.ayu-sh-kr.com/news/beam-embeddinggemma-2-flow-1/): Beam’s open-weight preview, EmbeddingGemma 2’s local multimodal search and flow-1’s agent debugging: release status, capabilities, memory requirements and reported costs. [Article Markdown](https://www.ayu-sh-kr.com/news/beam-embeddinggemma-2-flow-1.md).
+
 - [Mistral Large 4 ‘Le Chonk’: API preview and open-weight plans](https://www.ayu-sh-kr.com/news/mistral-large-4-le-chonk-preview/): Mistral Large 4 ‘Le Chonk’ enters API preview with open weights planned for October. Explore its MoE design, multimodal capabilities and sovereign AI focus. [Article Markdown](https://www.ayu-sh-kr.com/news/mistral-large-4-le-chonk-preview.md).
 
 - [Google’s Fervo geothermal deal tackles AI’s data center power problem](https://www.ayu-sh-kr.com/news/google-fervo-geothermal-396mw/): Google’s Fervo geothermal deal targets reliable power for AI data centers. Oracle’s power-delay concerns show why contracts alone cannot deliver capacity. [Article Markdown](https://www.ayu-sh-kr.com/news/google-fervo-geothermal-396mw.md).
