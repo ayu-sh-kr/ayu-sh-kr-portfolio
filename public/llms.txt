@@ -46,6 +46,8 @@
 
 ## Recent Dispatch notes
 
+- [GitHub redesigns Git storage as AI agents push write demand higher](https://www.ayu-sh-kr.com/news/github-git-infrastructure-agent-scale/): GitHub explains its read-replica bottleneck and planned storage redesign for agent-scale development. [Article Markdown](https://www.ayu-sh-kr.com/news/github-git-infrastructure-agent-scale.md).
+
 - [Mistral Large 4 ‘Le Chonk’: API preview and open-weight plans](https://www.ayu-sh-kr.com/news/mistral-large-4-le-chonk-preview/): Mistral Large 4 ‘Le Chonk’ enters API preview with open weights planned for October. Explore its MoE design, multimodal capabilities and sovereign AI focus. [Article Markdown](https://www.ayu-sh-kr.com/news/mistral-large-4-le-chonk-preview.md).
 
 - [Google’s Fervo geothermal deal tackles AI’s data center power problem](https://www.ayu-sh-kr.com/news/google-fervo-geothermal-396mw/): Google’s Fervo geothermal deal targets reliable power for AI data centers. Oracle’s power-delay concerns show why contracts alone cannot deliver capacity. [Article Markdown](https://www.ayu-sh-kr.com/news/google-fervo-geothermal-396mw.md).

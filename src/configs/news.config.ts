@@ -68,6 +68,17 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "github-git-infrastructure-agent-scale",
+    date: "2026-10-07",
+    title: "GitHub redesigns Git storage as AI agents push write demand higher",
+    summary: "GitHub explains its read-replica bottleneck and planned storage redesign for agent-scale development.",
+    kind: "infra",
+    document: "/news/github-git-infrastructure-agent-scale.md",
+    keywords: ["GitHub Git infrastructure", "agent-scale development", "Spokes read replicas", "Git write throughput", "Azure Blob Storage"],
+    minutes: 2,
+    reference: {label: "GitHub Engineering — Git infrastructure for agent-scale development", href: "https://github.blog/engineering/architecture-optimization/building-git-infrastructure-for-agent-scale-development/"},
+  },
+  {
     slug: "mistral-large-4-le-chonk-preview",
     date: "2026-10-06",
     title: "Mistral Large 4 ‘Le Chonk’: API preview and open-weight plans",

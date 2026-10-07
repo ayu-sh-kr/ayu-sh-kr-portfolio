@@ -14,11 +14,6 @@
   ],
   "redirects": [
     {
-      "source": "/news/mistral-large-4-le-chonk-preview",
-      "destination": "/news/mistral-large-4-le-chonk-preview/",
-      "permanent": true
-    },
-    {
       "source": "/about",
       "destination": "/about/",
       "permanent": true
@@ -254,6 +249,11 @@
       "permanent": true
     },
     {
+      "source": "/news/github-git-infrastructure-agent-scale",
+      "destination": "/news/github-git-infrastructure-agent-scale/",
+      "permanent": true
+    },
+    {
       "source": "/news/gitlab-unauthenticated-rate-limits",
       "destination": "/news/gitlab-unauthenticated-rate-limits/",
       "permanent": true
@@ -311,6 +311,11 @@
     {
       "source": "/news/microsoft-titan-unsigned-jwt-analytics",
       "destination": "/news/microsoft-titan-unsigned-jwt-analytics/",
+      "permanent": true
+    },
+    {
+      "source": "/news/mistral-large-4-le-chonk-preview",
+      "destination": "/news/mistral-large-4-le-chonk-preview/",
       "permanent": true
     },
     {
