@@ -254,6 +254,11 @@
       "permanent": true
     },
     {
+      "source": "/news/github-git-infrastructure-agent-scale",
+      "destination": "/news/github-git-infrastructure-agent-scale/",
+      "permanent": true
+    },
+    {
       "source": "/news/gitlab-unauthenticated-rate-limits",
       "destination": "/news/gitlab-unauthenticated-rate-limits/",
       "permanent": true
