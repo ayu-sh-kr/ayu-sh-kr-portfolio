@@ -20,31 +20,19 @@ The company positions inference efficiency as a central capability. Its compute 
 
 The preview therefore establishes the model’s intended role and reported capabilities; the weight release is the next availability milestone.
 
-## Google EmbeddingGemma 2: multimodal search on consumer devices
+## Google EmbeddingGemma 2: local search across media
 
-Google [released EmbeddingGemma 2 on October 6](https://blog.google/innovation-and-ai/technology/developers-tools/embeddinggemma-2/) under Apache 2.0. It extends the earlier text embedding model to **code, images, video and audio**, mapping those inputs into a shared space for search and retrieval.
+Google [released EmbeddingGemma 2 on October 6](https://blog.google/innovation-and-ai/technology/developers-tools/embeddinggemma-2/) under Apache 2.0. **It is an embedding model: it turns content into lists of numbers that capture its meaning, so an application can find related information.** It produces searchable representations rather than chat answers.
 
-That enables searches across formats: a written query can locate audio recordings, while an audio query can help find a video moment. The model produces embeddings for an application to search; answer generation can be handled by a separate model.
+The new model supports **text, code, images, video and audio in one shared space**. A text query can find a relevant video clip or audio recording, even when the file name does not describe it. These searches can run locally on consumer devices.
 
-![Text, images, video and audio are encoded locally into a shared index, where a search returns matching media.](/news/assets/beam-embeddinggemma-2-flow-1/shared-search.svg)
+![Animated media inputs enter an embedding model, emerge as a numerical vector, and reach local search results.](/news/assets/beam-embeddinggemma-2-flow-1/shared-search.svg)
 
-### Modular encoders and a smaller local footprint
+The [740M-parameter model](https://ai.google.dev/gemma/docs/embeddinggemma/model_card_2) combines a 270M text component with optional vision and audio encoders. It supports more than 100 languages, an **8K context window**, and shorter output vectors to reduce index storage.
 
-The [model card](https://ai.google.dev/gemma/docs/embeddinggemma/model_card_2) lists **740 million total parameters**: 270M for text, 170M for vision and 300M for audio. Applications can load the text component alone or add the encoders required for their inputs.
+Google reports about **191MB active RAM for quantized text-only weights and 567MB for the full model on a Pixel 11 Pro**. Those measurements cover the stated configurations; application and search-index memory are additional.
 
-It supports more than 100 languages, an **8K token context window**, and output vectors of 768, 512, 256 or 128 dimensions. Those smaller representations give applications options for reducing vector storage. The model also supports task-specific prefixes for search, classification, clustering and semantic similarity.
-
-Google reports approximately **191MB active RAM for quantized text-only weights and 567MB for the full multimodal model on a Pixel 11 Pro**. These are device-specific measurements for the stated configurations; application memory and index storage add to the overall footprint.
-
-Its on-device capabilities include local code search, media retrieval and offline retrieval-augmented generation when paired with a generative model. Google reports an improvement in MTEB Code performance from 68.76 for its predecessor to 78.68 for the new model.
-
-### Downloads, supported tools and fine-tuning
-
-Google provides weights through Hugging Face and Kaggle, with deployment paths through MediaPipe and LiteRT. Its launch also lists support across tools including sentence-transformers, MLX, llama.cpp, Ollama and browser runtimes.
-
-[Unsloth provides GGUF downloads and local inference guidance](https://unsloth.ai/docs/models/embeddinggemma-2), alongside fine-tuning workflows for text, image-text and audio data. Its guide distinguishes text-and-code serving from multimodal inference, which requires support for the relevant encoders and processor files.
-
-Unsloth recommends starting with 768-dimensional embeddings, testing shorter vectors against retrieval quality, and using BF16 or FP32 rather than FP16. These details matter when moving from a model download to a working local search index.
+Weights are available through Hugging Face and Kaggle. [Unsloth provides GGUF downloads and fine-tuning guidance](https://unsloth.ai/docs/models/embeddinggemma-2), while Google lists local deployment support through tools including LiteRT, MediaPipe, llama.cpp and Ollama.
 
 ## Laminar flow-1: a model for investigating agent failures
 
