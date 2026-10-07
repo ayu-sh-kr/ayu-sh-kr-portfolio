@@ -20,3 +20,5 @@ For implementation changes, consult [clean-code](.agents/skills/code-quality/cle
 For blog articles and Dispatch news, use [portfolio-writing](.agents/skills/content/portfolio-writing/SKILL.md) with [application-voice](.agents/skills/content/application-voice/SKILL.md) and [content-seo-publishing](.agents/skills/content/content-seo-publishing/SKILL.md). The publishing skill coordinates [seo-optimization](.agents/skills/content/seo-optimization/SKILL.md) and [blog-wiring](.agents/skills/content/blog-wiring/SKILL.md), distinguishes `/blog/` from `/news/`, and checks every required publishing surface.
 
 When the user requests an SVG diagram for a blog or news article, use [blog-svg-diagrams](.agents/skills/documentation/blog-svg-diagrams/SKILL.md). Read the current theme, keep the diagram explanatory and accessible, use a root-relative asset URL, and render it to inspect legibility and geometry before delivery.
+
+For isometric article illustrations, also use [isometric-illustrations](.agents/skills/documentation/isometric-illustrations/SKILL.md) for shared projection, compact assemblies, meaningful animation, and phase-by-phase visual validation.
