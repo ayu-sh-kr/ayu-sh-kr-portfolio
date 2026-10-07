@@ -1,25 +1,29 @@
 # GitHub redesigns Git storage as AI agents push write demand higher
 
-GitHub outlined a **Git infrastructure rebuild** on October 6. Monthly pushes reached 3.35 billion, up 4.9× year over year. Agents checkpoint frequently; CI multiplies reads, while merges compete to update the same branch.
+Adding servers usually helps a busy service handle more traffic. For GitHub, adding machines to serve repository reads also makes pushes slower. That trade-off sits behind the **Git infrastructure rebuild** outlined on October 6.
 
-## Today: repository copies serve reads and protect writes
+## More agents, more writes, more work after each push
 
-**Spokes** keeps complete repositories on fileserver disks—five copies by default. Reference updates use a three-phase commit with quorum agreement.
+GitHub reports monthly pushes reached 3.35 billion, up 4.9× year over year. Agents checkpoint frequently, CI multiplies reads, and merges converge on the same branch.
 
-A reference is a pointer, such as a branch name, to a commit. Imagine two agents fixing different bugs on separate branches. Their files can differ freely. When both changes reach `main`, however, the system must establish which commit the branch points to. A reader fetching that branch needs a coherent answer before it can build or test the code.
+Consider two agents fixing separate bugs. Each can work on its own branch, but landing both changes on `main` requires an agreed order. A branch name points to a commit; the next build needs to know which version it is testing. The work is parallel until it reaches that shared pointer.
 
-## Why more read replicas slow pushes
+## The current setup ties read capacity to write coordination
 
-GitHub says every replica participates in writes, making pushes dependent on the slowest copy. Adding read capacity increases write overhead; losing quorum stops writes.
+Today, **Spokes** stores complete repositories on fileserver disks, with five copies by default. Reference updates use a three-phase commit with quorum agreement.
 
-> More copies for readers can mean more coordination for writers.
+Those replicas also serve reads. GitHub says every copy participates in writes, so pushes depend on the slowest replica. More read replicas add write overhead; losing quorum stops writes.
 
-## Planned: durable storage apart from Git workers
+> The same copies that help serve readers also increase coordination for writers.
 
-Authoritative data will live in **Azure Blob Storage**. Caching workers will serve reads independently, with separate maintenance workers. Coordination will focus on reference updates; object storage, connectivity validation and secret scanning can proceed alongside other writes.
+That creates a difficult scaling decision: a repository needs more capacity to answer requests, yet adding it increases the work involved in accepting changes.
 
-GitHub reports **up to 35× higher write throughput in internal benchmarks**. This is work underway, without a published general rollout date. Branch protections and reviews remain design requirements.
+## The redesign separates storage from serving capacity
 
-The useful distinction is between preserving accepted code and providing enough machines to serve it. A temporary surge of readers should be handled by serving capacity, without forcing every new change through a larger group of machines.
+GitHub plans authoritative storage in **Azure Blob Storage**, with caching workers serving reads and separate workers handling maintenance. Coordination will focus on reference updates; object storage, connectivity checks and secret scanning can proceed alongside other writes.
+
+GitHub reports **up to 35× higher write throughput in internal benchmarks**. The rebuild is underway, without a published general rollout date; branch protections and reviews remain design requirements.
+
+The redesign returns to the problem at the start: a busy repository needs more machines to serve it without making each push coordinate with a larger group. Separating those responsibilities gives GitHub a way to absorb more activity while keeping an agreed version of the code at the centre of the workflow.
 
 Source: [GitHub Engineering — Building Git infrastructure for agent-scale development](https://github.blog/engineering/architecture-optimization/building-git-infrastructure-for-agent-scale-development/).
