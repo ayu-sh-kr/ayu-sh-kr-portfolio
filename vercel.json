@@ -14,11 +14,6 @@
   ],
   "redirects": [
     {
-      "source": "/news/mistral-large-4-le-chonk-preview",
-      "destination": "/news/mistral-large-4-le-chonk-preview/",
-      "permanent": true
-    },
-    {
       "source": "/about",
       "destination": "/about/",
       "permanent": true
@@ -209,6 +204,11 @@
       "permanent": true
     },
     {
+      "source": "/news/beam-embeddinggemma-2-flow-1",
+      "destination": "/news/beam-embeddinggemma-2-flow-1/",
+      "permanent": true
+    },
+    {
       "source": "/news/claude-code-mods-typescript",
       "destination": "/news/claude-code-mods-typescript/",
       "permanent": true
@@ -311,6 +311,11 @@
     {
       "source": "/news/microsoft-titan-unsigned-jwt-analytics",
       "destination": "/news/microsoft-titan-unsigned-jwt-analytics/",
+      "permanent": true
+    },
+    {
+      "source": "/news/mistral-large-4-le-chonk-preview",
+      "destination": "/news/mistral-large-4-le-chonk-preview/",
       "permanent": true
     },
     {

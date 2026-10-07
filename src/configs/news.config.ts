@@ -68,6 +68,17 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "beam-embeddinggemma-2-flow-1",
+    date: "2026-10-07",
+    title: "Beam, EmbeddingGemma 2 and flow-1: AI models for coding, search and debugging",
+    summary: "Reflection previews Beam, Google releases EmbeddingGemma 2 for local multimodal search, and Laminar introduces flow-1 for agent trace analysis. Capabilities, availability and benchmark limits.",
+    kind: "reading",
+    document: "/news/beam-embeddinggemma-2-flow-1.md",
+    keywords: ["Reflection Beam", "Beam open-weight model", "EmbeddingGemma 2", "multimodal embeddings", "on-device semantic search", "Laminar flow-1", "AI agent trace analysis"],
+    minutes: 6,
+    reference: {label: "Reflection — Introducing Beam", href: "https://reflection.company/blog/introducing-beam"},
+  },
+  {
     slug: "mistral-large-4-le-chonk-preview",
     date: "2026-10-06",
     title: "Mistral Large 4 ‘Le Chonk’: API preview and open-weight plans",
