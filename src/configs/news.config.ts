@@ -70,8 +70,8 @@ export const newsNotes: readonly NewsNote[] = [
   {
     slug: "beam-embeddinggemma-2-flow-1",
     date: "2026-10-07",
-    title: "Beam, EmbeddingGemma 2 and flow-1: AI models for coding, search and debugging",
-    summary: "Reflection previews Beam, Google releases EmbeddingGemma 2 for local multimodal search, and Laminar introduces flow-1 for agent trace analysis. Capabilities, availability and benchmark limits.",
+    title: "Reflection Beam, EmbeddingGemma 2 and flow-1: Features and Release Status",
+    summary: "Beam’s open-weight preview, EmbeddingGemma 2’s local multimodal search and flow-1’s agent debugging: release status, capabilities, memory requirements and reported costs.",
     kind: "reading",
     document: "/news/beam-embeddinggemma-2-flow-1.md",
     keywords: ["Reflection Beam", "Beam open-weight model", "EmbeddingGemma 2", "multimodal embeddings", "on-device semantic search", "Laminar flow-1", "AI agent trace analysis"],

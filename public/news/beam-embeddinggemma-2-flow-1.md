@@ -1,75 +1,81 @@
-# Beam, EmbeddingGemma 2 and flow-1: AI models for coding, search and debugging
+# Reflection Beam, EmbeddingGemma 2 and flow-1: Features and Release Status
 
-**Reflection, Google and Laminar have announced models for three different parts of AI development.** Beam targets coding and reasoning, EmbeddingGemma 2 brings multimodal search to consumer devices, and flow-1 looks for mistakes inside agent runs.
+**Reflection has previewed Beam for coding and reasoning, Google has released EmbeddingGemma 2 for multimodal search, and Laminar has introduced flow-1 for agent debugging.** The releases span model execution, local retrieval and trace analysis, with different approaches to reducing the cost of those tasks.
 
-The announcements arrived within days of each other: Laminar’s flow-1 post is dated October 2, Reflection introduced Beam on October 5, and Google launched EmbeddingGemma 2 on October 6. Read together, they show why a model’s job matters as much as its size. Writing code, finding the right evidence and checking what an agent actually did each place different demands on a system.
+Beam’s downloadable weights are planned for later this month. EmbeddingGemma 2 is available now, while flow-1 is offered through Laminar’s Signals. Here is what each announcement brings.
 
-## Reflection Beam: a large model with selective computation
+## Reflection Beam: open-weight coding and reasoning preview
 
-[Reflection’s first model, Beam](https://reflection.company/blog/introducing-beam), has **501 billion total parameters, with 23 billion active per token**. It uses a sparse mixture-of-experts architecture: a router sends each token through selected experts, rather than running every expert for every token.
+Reflection [introduced Beam on October 5](https://reflection.company/blog/introducing-beam) as its first model for coding, reasoning and agentic workloads. The preview is undergoing final evaluations, with early access through a waitlist. **Weights, a technical report, a model card and developer tools are planned for October**, with the weights to use Apache 2.0.
 
-The isometric illustration shows that selection. Solid paths pass through active experts; the pale blocks remain unused for this token. It is a conceptual view, not Beam’s exact expert layout.
+Beam has **501 billion total parameters and 23 billion active per token**. Its sparse mixture-of-experts design selects parts of the network for each token, reducing generation work while retaining a much larger total model.
 
-![Isometric routing diagram showing one token passing through two selected experts while other experts stay idle, before their outputs are combined.](/news/assets/beam-embeddinggemma-2-flow-1/beam-routing.svg)
+![Beam routes an input token through selected experts, leaves other experts idle, and combines the selected outputs.](/news/assets/beam-embeddinggemma-2-flow-1/beam-routing.svg)
 
-That distinction explains the efficiency pitch. **Active parameters describe computation; total parameters still matter for storage.** Selecting fewer experts can reduce work during generation, but it does not turn a 501B model into a small download or establish that it will fit on an ordinary laptop. Memory, quantization and the serving setup are separate questions.
+### Coding, tools and adjustable reasoning
 
-Reflection says Beam is text-only and designed for coding, reasoning and agentic tasks. Its training included more than 100 million reinforcement-learning rollouts on 10,500 NVIDIA GB300 GPUs over four weeks. A rollout is an attempted sequence of actions from which training can learn, including whether the attempt succeeds.
+Reflection’s demonstrations cover application development, research and model fine-tuning. Beam is **text-only**, but can use tools to access information from other media. Its reasoning-effort setting lets developers trade shorter responses for more extensive reasoning.
 
-The company’s efficiency comparisons use estimated generation compute and exclude prompt processing and serving overhead. They should therefore be read as compute estimates, rather than measured hosting bills.
+The company positions inference efficiency as a central capability. Its compute comparisons estimate generation work and exclude prompt processing and serving overhead, so they are not measured API-cost comparisons. Deployment requirements will become clearer with the downloadable release.
 
-**Beam is still a preview.** Reflection plans to publish its weights under Apache 2.0, alongside a technical report and developer materials, later in October. The upcoming release will be the point to assess deployment requirements and reproduce its results.
+The preview therefore establishes the model’s intended role and reported capabilities; the weight release is the next availability milestone.
 
-For organizations considering a coding model, this leaves two questions to answer separately. Can it solve the work reliably, and can it be operated economically within the intended environment? Sparse routing helps with the second question, but a practical evaluation needs both. A successful demonstration also needs to survive unfamiliar repositories, incomplete instructions and failing tools.
+## Google EmbeddingGemma 2: multimodal search on consumer devices
 
-## EmbeddingGemma 2: search across text, pictures and sound
+Google [released EmbeddingGemma 2 on October 6](https://blog.google/innovation-and-ai/technology/developers-tools/embeddinggemma-2/) under Apache 2.0. It extends the earlier text embedding model to **code, images, video and audio**, mapping those inputs into a shared space for search and retrieval.
 
-Google’s [EmbeddingGemma 2 launch](https://blog.google/innovation-and-ai/technology/developers-tools/embeddinggemma-2/) addresses the information an application needs before it answers. An embedding model turns content into numerical representations that a search system can compare. It supplies a way to locate related material; a separate generative model can then use that material to produce an answer.
+That enables searches across formats: a written query can locate audio recordings, while an audio query can help find a video moment. The model produces embeddings for an application to search; answer generation can be handled by a separate model.
 
-The new model maps **text, code, images, video and audio into a shared embedding space**. Its [model card](https://ai.google.dev/gemma/docs/embeddinggemma/model_card_2) lists 740 million total parameters: a 270M text model, a 170M vision encoder and a 300M audio encoder. The encoders are modular, so text-only workloads can load the smaller text component.
+![Text, images, video and audio are encoded locally into a shared index, where a search returns matching media.](/news/assets/beam-embeddinggemma-2-flow-1/shared-search.svg)
 
-The illustration brings different media onto one search plane. Nearby markers represent related content, not files being merged into a single document. Their positions are illustrative, rather than an actual projection of model outputs.
+### Modular encoders and a smaller local footprint
 
-![Isometric media cards for text, images and audio feeding a shared search plane, with related items grouped nearby.](/news/assets/beam-embeddinggemma-2-flow-1/shared-search.svg)
+The [model card](https://ai.google.dev/gemma/docs/embeddinggemma/model_card_2) lists **740 million total parameters**: 270M for text, 170M for vision and 300M for audio. Applications can load the text component alone or add the encoders required for their inputs.
 
-Consider a recorded demonstration with a screenshot and a written explanation. Searching for a concept might need the spoken description, the visible screen or both. Representing those media in a compatible space makes that kind of cross-modal retrieval possible without building an entirely separate search experience for each format.
+It supports more than 100 languages, an **8K token context window**, and output vectors of 768, 512, 256 or 128 dimensions. Those smaller representations give applications options for reducing vector storage. The model also supports task-specific prefixes for search, classification, clustering and semantic similarity.
 
-Google reports an 8K context window and support for vectors of 768, 512, 256 or 128 dimensions. Shorter vectors can reduce the size of an index. Its Apache 2.0 release is available through model distribution platforms and supported development tools.
+Google reports approximately **191MB active RAM for quantized text-only weights and 567MB for the full multimodal model on a Pixel 11 Pro**. These are device-specific measurements for the stated configurations; application memory and index storage add to the overall footprint.
 
-### What the small-memory claim actually covers
+Its on-device capabilities include local code search, media retrieval and offline retrieval-augmented generation when paired with a generative model. Google reports an improvement in MTEB Code performance from 68.76 for its predecessor to 78.68 for the new model.
 
-The screenshot’s “0.5GB RAM” headline needs a workload attached to it. Google reports approximately **191MB active RAM for quantized text-only weights and 567MB for the full multimodal model on a Pixel 11 Pro**. Those figures describe a particular configuration, rather than a universal memory requirement for an application and its search index.
+### Downloads, supported tools and fine-tuning
 
-[Unsloth’s guide](https://unsloth.ai/docs/models/embeddinggemma-2) provides local inference and fine-tuning paths, including GGUF files. It also distinguishes text-and-code serving from multimodal use: images and audio need a runtime that supports the corresponding encoders and processor files.
+Google provides weights through Hugging Face and Kaggle, with deployment paths through MediaPipe and LiteRT. Its launch also lists support across tools including sentence-transformers, MLX, llama.cpp, Ollama and browser runtimes.
 
-The practical appeal is local retrieval, especially when files should remain on the device or search must work offline. That benefit depends on the whole application’s data flow. Generating embeddings locally does not establish where a later answer-generation request sends the retrieved content.
+[Unsloth provides GGUF downloads and local inference guidance](https://unsloth.ai/docs/models/embeddinggemma-2), alongside fine-tuning workflows for text, image-text and audio data. Its guide distinguishes text-and-code serving from multimodal inference, which requires support for the relevant encoders and processor files.
 
-And retrieval still needs evaluation. A nearby vector is a candidate match, not proof that a passage answers the question. A system searching a return policy, for example, must distinguish the policy for electronics from one for clothing even when both passages discuss refunds. Better representations help find candidates; the application must still check which evidence applies.
+Unsloth recommends starting with 768-dimensional embeddings, testing shorter vectors against retrieval quality, and using BF16 or FP32 rather than FP16. These details matter when moving from a model download to a working local search index.
 
-## Laminar flow-1: finding errors after an agent acts
+## Laminar flow-1: a model for investigating agent failures
 
-Once an agent has retrieved information and acted on it, its completion message is only one part of the evidence. The useful record is its **trace**: the sequence of model responses, tool calls and results that led to the outcome.
+Laminar’s [flow-1 announcement, dated October 2](https://laminar.sh/blog/flow-1), introduces a model trained with reinforcement learning to find errors in agent traces. A trace records the model calls, tool calls and results behind an agent’s output.
 
-[Laminar’s flow-1](https://laminar.sh/blog/flow-1) is trained with reinforcement learning to investigate those traces. The company reports results on 523 difficult traces, with detection F1 of 0.835 for flow-1 and 0.816 for GPT-6-sol using the same Signals agent. F1 balances precision and recall; it is not a percentage of all runs handled correctly.
+flow-1 runs inside **Signals**, Laminar’s trace-investigation agent. It can search the recorded steps, inspect evidence and return findings in a requested JSON schema. Its role is to identify failures and explain their causes.
 
-Its **23× cost claim** comes from Signals runs on traces with fewer than 100,000 total LLM tokens, including retrieval steps. Laminar reports 888 traces per dollar for flow-1 versus 38 for GPT-6-sol. This is a vendor benchmark for trace analysis, rather than evidence that flow-1 matches that model across general tasks.
+![flow-1 finds a contradiction between an agent’s all-tests-passed message and recorded test output showing two failures.](/news/assets/beam-embeddinggemma-2-flow-1/trace-investigation.svg)
 
-The illustration follows an investigation from recorded steps to a finding, with the supporting evidence kept visible.
+### Reported detection quality and analysis cost
 
-![Isometric agent trace with recorded tool steps, a magnifying glass over a failed step, and an evidence-linked finding card.](/news/assets/beam-embeddinggemma-2-flow-1/trace-investigation.svg)
+Laminar evaluated 523 difficult traces using the same Signals agent across models. It reports detection F1 of **0.835 for flow-1 and 0.816 for GPT-6-sol**. F1 balances precision and recall; these are task-specific results from Laminar’s benchmark.
 
-Laminar’s [Signals documentation](https://laminar.sh/docs/signals/introduction) describes configurable investigations that return structured findings. Instead of only asking whether the final answer looks plausible, a team can ask whether the recorded actions support it. An example question would be whether an agent’s claim that tests passed agrees with the test output.
+The company’s **23× lower-cost claim** covers complete Signals runs on traces with fewer than 100,000 total LLM tokens, including retrieval steps. It reports 888 traces per dollar for flow-1 versus 38 for GPT-6-sol, and analysis costs approximately 25% below GPT-6-luna.
 
-That is useful because mistakes can happen between otherwise reasonable steps. An agent may read the correct requirement, edit the wrong file and still produce a confident summary. Inspecting the trail offers a chance to identify the point where its actions stopped matching the request.
+Laminar prices flow-1 at $0.05 per million input tokens, $0.01 for cached input and $0.30 for output. The announcement also includes a missed-failure example, making clear that wider trace coverage does not eliminate diagnostic errors.
 
-Detection remains fallible. Laminar’s announcement includes a case where flow-1 missed required contract protections that the comparison models caught. Wider coverage can help surface issues, but critical findings still need verification against the evidence.
+### Structured findings beyond debugging
 
-## Three announcements, three different responsibilities
+[Signals supports configurable investigations](https://laminar.sh/docs/signals/introduction), using a natural-language question and a schema for the result. Teams can investigate contradictions, extract structured information and track recurring patterns across agent runs.
 
-These products are not an announced integration. A pipeline combining them would be a design choice, with compatibility, latency and data handling to evaluate.
+That can turn a recorded session into something easier to act on: a specific finding with supporting steps, rather than another long transcript to read. The scope comes from the investigation definition, and the output can feed subsequent review and evaluation workflows.
 
-Their releases nevertheless describe complementary responsibilities. **Beam** aims to perform coding and reasoning work. **EmbeddingGemma 2** helps locate information across media. **flow-1** investigates the record of what an agent did. Each needs a test suited to that responsibility: task completion, retrieval quality or failure detection.
+## What is available now
 
-The next milestones are concrete: Reflection’s downloadable release, testing Google’s retrieval model on real collections, and checking Laminar’s diagnostic quality on unfamiliar traces. The useful comparison is whether each model makes its assigned job cheaper or more reliable—and whether the evidence supports that result.
+| Model | Release status | Main capabilities |
+| --- | --- | --- |
+| Reflection Beam | Early-access preview; Apache 2.0 weights planned for October | Coding, reasoning and tool use with sparse expert routing |
+| EmbeddingGemma 2 | Apache 2.0 weights available | Local text, code, image, video and audio embeddings |
+| Laminar flow-1 | Available through Signals | Agent trace investigation and structured findings |
 
-Sources: [Reflection Beam announcement](https://reflection.company/blog/introducing-beam) · [Google launch](https://blog.google/innovation-and-ai/technology/developers-tools/embeddinggemma-2/) · [Google model card](https://ai.google.dev/gemma/docs/embeddinggemma/model_card_2) · [Unsloth guide](https://unsloth.ai/docs/models/embeddinggemma-2) · [Laminar flow-1 benchmark](https://laminar.sh/blog/flow-1) · [Signals documentation](https://laminar.sh/docs/signals/introduction).
+The immediate releases are Google’s embedding model and Laminar’s trace analysis offering. Reflection’s upcoming weight release will add the downloadable part of Beam’s announcement, alongside the materials needed to run and evaluate it.
+
+Sources: [Reflection Beam](https://reflection.company/blog/introducing-beam) · [Google launch](https://blog.google/innovation-and-ai/technology/developers-tools/embeddinggemma-2/) · [Google model card](https://ai.google.dev/gemma/docs/embeddinggemma/model_card_2) · [Unsloth guide](https://unsloth.ai/docs/models/embeddinggemma-2) · [Laminar flow-1](https://laminar.sh/blog/flow-1) · [Signals documentation](https://laminar.sh/docs/signals/introduction).

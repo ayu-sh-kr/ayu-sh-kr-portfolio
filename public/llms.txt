@@ -46,7 +46,7 @@
 
 ## Recent Dispatch notes
 
-- [Beam, EmbeddingGemma 2 and flow-1: AI models for coding, search and debugging](https://www.ayu-sh-kr.com/news/beam-embeddinggemma-2-flow-1/): Reflection previews Beam, Google releases EmbeddingGemma 2 for local multimodal search, and Laminar introduces flow-1 for agent trace analysis. Capabilities, availability and benchmark limits. [Article Markdown](https://www.ayu-sh-kr.com/news/beam-embeddinggemma-2-flow-1.md).
+- [Reflection Beam, EmbeddingGemma 2 and flow-1: Features and Release Status](https://www.ayu-sh-kr.com/news/beam-embeddinggemma-2-flow-1/): Beam’s open-weight preview, EmbeddingGemma 2’s local multimodal search and flow-1’s agent debugging: release status, capabilities, memory requirements and reported costs. [Article Markdown](https://www.ayu-sh-kr.com/news/beam-embeddinggemma-2-flow-1.md).
 
 - [Mistral Large 4 ‘Le Chonk’: API preview and open-weight plans](https://www.ayu-sh-kr.com/news/mistral-large-4-le-chonk-preview/): Mistral Large 4 ‘Le Chonk’ enters API preview with open weights planned for October. Explore its MoE design, multimodal capabilities and sovereign AI focus. [Article Markdown](https://www.ayu-sh-kr.com/news/mistral-large-4-le-chonk-preview.md).
 
