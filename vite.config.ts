@@ -36,6 +36,7 @@ const showcaseRoutes = [
   "/showcase/dota-rest",
 ];
 const newsRoutes = [
+  "/news/microsoft-surface-laptop-ultra-windows-hybrid-ai",
   "/news/github-copilot-local-model-routing-hydrafusion",
   "/news/aws-strands-box-ai-agent-sandbox",
   "/news/github-git-infrastructure-agent-scale",

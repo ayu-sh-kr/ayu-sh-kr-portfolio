@@ -46,6 +46,8 @@
 
 ## Recent Dispatch notes
 
+- [Microsoft’s Windows AI launch: Surface Laptop Ultra, local models and smarter Search](https://www.ayu-sh-kr.com/news/microsoft-surface-laptop-ultra-windows-hybrid-ai/): Microsoft’s October launch connects Surface Laptop Ultra, RTX Spark, local AI models, Copilot, agent containment and Windows Search. Explore capabilities, prices and rollout dates. [Article Markdown](https://www.ayu-sh-kr.com/news/microsoft-surface-laptop-ultra-windows-hybrid-ai.md).
+
 - [GitHub Copilot local AI models: BYOK now, automatic cloud routing next](https://www.ayu-sh-kr.com/news/github-copilot-local-model-routing-hydrafusion/): Copilot already supports local models and BYOK. Explore provider setup, offline mode and telemetry, then the planned local/cloud routing and HydraFusion’s role in saving AI credits. [Article Markdown](https://www.ayu-sh-kr.com/news/github-copilot-local-model-routing-hydrafusion.md).
 
 - [AWS Strands Box adds policy controls to AI agent sandboxing](https://www.ayu-sh-kr.com/news/aws-strands-box-ai-agent-sandbox/): AWS Strands Box combines macOS isolation with Dogwood rules for files, tools and network requests. See how it controls action sequences and keeps API secrets outside agents. [Article Markdown](https://www.ayu-sh-kr.com/news/aws-strands-box-ai-agent-sandbox.md).
