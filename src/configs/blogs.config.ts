@@ -244,9 +244,9 @@ export const blogPosts: readonly BlogPost[] = [
     slug: "postgresql-access-control",
     date: "2026-08-02",
     writer: siteIdentity.name,
-    header: "PostgreSQL Permissions: Roles, GRANT and REVOKE Explained",
+    header: "PostgreSQL Permissions: Build a Role with GRANT and REVOKE",
     description:
-      "Set up PostgreSQL roles and permissions with tested SQL examples: read-only access, GRANT and REVOKE, default privileges, RLS and permission-denied fixes.",
+      "Build PostgreSQL permissions one grant at a time: connect, read orders, insert rows, update status and record events, then add default privileges and RLS.",
     keywords: [
       "PostgreSQL permissions",
       "PostgreSQL roles and privileges",
@@ -259,7 +259,7 @@ export const blogPosts: readonly BlogPost[] = [
     ],
     category: "tutorial",
     source: "/blogs/tutorial/Postgres-Access-Control.md",
-    minutes: 16,
+    minutes: 18,
   },
   {
     slug: "distributed-locks-redis",
