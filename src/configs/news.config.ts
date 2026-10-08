@@ -70,8 +70,8 @@ export const newsNotes: readonly NewsNote[] = [
   {
     slug: "github-copilot-local-model-routing-hydrafusion",
     date: "2026-10-08",
-    title: "GitHub Copilot plans local AI model routing to reduce cloud usage",
-    summary: "Copilot plans automatic local/cloud model routing by late October. How HydraFusion fits, what Ollama discovery already supports, and why local inference is not offline mode.",
+    title: "GitHub Copilot plans automatic routing between local and cloud AI models",
+    summary: "Copilot plans to combine local and cloud AI models in one session. How HydraFusion coordinates models, what is available now, and what the change means for AI credits.",
     kind: "reading",
     document: "/news/github-copilot-local-model-routing-hydrafusion.md",
     keywords: ["GitHub Copilot local model routing", "HydraFusion", "Copilot Ollama", "local vs cloud AI models", "MAI Code 1.1 Flash", "Copilot AI credits"],

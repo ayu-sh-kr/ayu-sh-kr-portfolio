@@ -1,33 +1,37 @@
-# GitHub Copilot plans local AI model routing to reduce cloud usage
+# GitHub Copilot plans automatic routing between local and cloud AI models
 
-A small code change and a difficult debugging task do not always need the same model. **GitHub Copilot plans to choose between local and cloud models automatically**, giving suitable work to an on-device model while keeping cloud models available when needed. GitHub says the change should help developers save AI credits.
+A small code edit and a difficult bug do not always need the same model. Choosing a cloud model for every task can spend credits on work a local model could handle. **GitHub Copilot plans to route work between local and cloud AI models automatically**, keeping both available within the same coding session.
 
-Microsoft’s October 7 announcement targets availability **by the end of October**. It extends the Project HydraFusion direction: choosing how to solve a task while balancing quality, cost and latency.
+Microsoft announced the direction on October 7, targeting availability **by the end of October**. GitHub says routing suitable tasks locally should help save AI credits. The idea is to let Copilot choose where the model runs as the work changes.
 
-## From choosing a model to choosing a workflow
+## One session, with local and cloud models available
 
-Copilot’s existing Auto selection picks a model for a request. HydraFusion goes further: it selects an execution pattern, which may involve several models.
+Local inference runs a model on the developer’s machine; cloud inference sends the request to a hosted model. The planned Auto orchestration can consider the task and cached work across a conversation when choosing between them.
 
-One model can solve a task directly. Alternatively, an efficient model can draft a solution, with a quality check deciding whether to accept it or escalate to a stronger model. A third pattern brings in an independent critic to review a draft before revision.
+That allows a session to use both environments over time. It does not mean every request must run on both models, or that every simple edit will stay local. The illustration shows the relationship, rather than a fixed execution order.
 
-That research preview arrived in Copilot CLI in September and later expanded to VS Code and the Copilot app. It provides the background for the next step: deciding where inference runs as well as which models participate.
+![Isometric laptop and cloud model rack connected to a Copilot router, with animated requests and responses within one session](/news/assets/github-copilot-local-model-routing-hydrafusion/local-cloud-routing.svg)
 
-## The next choice is local or cloud
+## HydraFusion adds a workflow behind that choice
 
-The planned routing can consider task context and cached work across a conversation when moving between local and cloud inference. Inference means running the model to generate its response; local inference uses the developer’s machine.
+> **What is HydraFusion?** GitHub’s research-preview orchestrator chooses one or more models and coordinates their work to balance coding quality, cost and latency. It is a system for using models, rather than a new model itself.
 
-Microsoft is also bringing an on-device version of **MAI Code 1.1 Flash** through the Windows ML provider. Its mixture-of-experts design activates part of the model per token, while quantization lowers the precision of stored values to reduce memory needs. Microsoft reports a 53 GB model footprint, so this example targets hardware with substantial memory rather than every laptop.
+Copilot’s existing Auto selection chooses a model for a request. HydraFusion also chooses how to complete it: one model can answer directly, an efficient model can draft before a quality check decides whether to escalate, or an independent critic can review a draft before revision.
 
-GitHub’s credit-saving goal is a product promise at this stage. Its announcement does not establish a universal saving for the coming local router.
+The preview launched in Copilot CLI in September, then expanded to VS Code and the Copilot app. Local/cloud routing extends that direction to the place where inference happens. It brings model choice and compute placement into the same conversation.
 
-## Local selection is already available while routing is coming
+## Local models still need suitable hardware
 
-Copilot CLI version **1.0.94-0** can discover supported models from a running Ollama instance through `/model`. Developers review the provider and endpoint, then add a model and optionally switch to it without restarting.
+Microsoft’s on-device **MAI Code 1.1 Flash** is one example, offered through the Windows ML provider. Its mixture-of-experts design activates part of the model per token. Quantization reduces the precision of stored values to lower memory requirements.
 
-Ollama and the model must already be installed; discovery does not download either. Models need tool calling and streaming support. This is manual selection, distinct from the automatic routing announced for later this month.
+Microsoft reports a 53 GB model footprint. That targets machines with substantial memory; local inference is not automatically practical on every laptop. Neither the announcement nor that footprint establishes a universal credit saving for the coming router.
 
-Choosing a local model also does not enable offline mode or disable GitHub telemetry. CLI offline mode requires `COPILOT_OFFLINE=true`, and even then a configured remote provider can receive prompts and code context.
+## Manual local selection is available before automatic routing
 
-The planned change makes model placement part of Copilot’s decision. Its practical test will be whether suitable tasks stay local without extra retries or a loss of coding quality—the balance that determines whether fewer cloud calls actually save credits.
+Copilot CLI **1.0.94-0** already discovers supported models from a running Ollama instance through `/model`. Developers review the provider and endpoint, then add and optionally switch to a model without restarting. Ollama and the model must already be installed, with tool calling and streaming support.
+
+Local selection does not enable offline mode or disable telemetry. CLI offline mode requires `COPILOT_OFFLINE=true`; a configured remote provider can still receive prompts and code context.
+
+The practical promise returns to the opening problem: use local capacity where it helps, and cloud capability where it is needed. Whether that saves credits will depend on routing quality and how much work needs another attempt.
 
 Sources: [Microsoft — Local models and sandboxed tools](https://commandline.microsoft.com/local-models-sandboxed-tools-github-windows/), [GitHub — Project HydraFusion](https://github.blog/ai-and-ml/github-copilot/project-hydrafusion-frontier-quality-via-multi-model-orchestration/), [HydraFusion in VS Code and the Copilot app](https://github.blog/changelog/2026-09-30-hydrafusion-in-vs-code-and-the-github-copilot-app/) and [Ollama model discovery in Copilot CLI](https://github.blog/changelog/2026-10-07-discover-local-models-in-github-copilot-cli/).
