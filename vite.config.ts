@@ -36,6 +36,7 @@ const showcaseRoutes = [
   "/showcase/dota-rest",
 ];
 const newsRoutes = [
+  "/news/aws-strands-box-ai-agent-sandbox",
   "/news/github-git-infrastructure-agent-scale",
   "/news/beam-embeddinggemma-2-flow-1",
   "/news/mistral-large-4-le-chonk-preview",

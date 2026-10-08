@@ -14,6 +14,11 @@
   ],
   "redirects": [
     {
+      "source": "/news/aws-strands-box-ai-agent-sandbox",
+      "destination": "/news/aws-strands-box-ai-agent-sandbox/",
+      "permanent": true
+    },
+    {
       "source": "/about",
       "destination": "/about/",
       "permanent": true

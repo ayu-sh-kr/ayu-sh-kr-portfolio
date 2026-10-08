@@ -68,6 +68,17 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "aws-strands-box-ai-agent-sandbox",
+    date: "2026-10-08",
+    title: "AWS Strands Box adds policy controls to AI agent sandboxing",
+    summary: "AWS Strands Box combines macOS isolation with Dogwood rules for files, tools and network requests. See how it controls action sequences and keeps API secrets outside agents.",
+    kind: "infra",
+    document: "/news/aws-strands-box-ai-agent-sandbox.md",
+    keywords: ["AWS Strands Box", "AI agent sandboxing", "Dogwood policy language", "macOS Seatbelt sandbox", "AI agent security", "AI agent credential injection"],
+    minutes: 2,
+    reference: {label: "AWS — Introducing Strands Box", href: "https://aws.amazon.com/blogs/opensource/introducing-strands-box-ai-agent-sandboxes-powered-by-dogwood/"},
+  },
+  {
     slug: "github-git-infrastructure-agent-scale",
     date: "2026-10-07",
     title: "GitHub redesigns Git storage as AI agents push write demand higher",
