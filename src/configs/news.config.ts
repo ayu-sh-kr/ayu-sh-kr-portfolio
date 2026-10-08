@@ -70,12 +70,12 @@ export const newsNotes: readonly NewsNote[] = [
   {
     slug: "microsoft-surface-laptop-ultra-windows-hybrid-ai",
     date: "2026-10-08",
-    title: "Microsoft’s Windows AI launch: Surface Laptop Ultra, local models and smarter Search",
-    summary: "Microsoft’s October launch connects Surface Laptop Ultra, RTX Spark, local AI models, Copilot, agent containment and Windows Search. Explore capabilities, prices and rollout dates.",
+    title: "Surface Laptop Ultra and Windows AI: Microsoft’s October 2026 launch",
+    summary: "Microsoft’s October 2026 launch explained: Surface Laptop Ultra pricing, local AI models, Copilot integration, Windows Search updates and release dates.",
     kind: "infra",
     document: "/news/microsoft-surface-laptop-ultra-windows-hybrid-ai.md",
-    keywords: ["Microsoft Windows AI launch October 2026", "Surface Laptop Ultra", "NVIDIA RTX Spark", "Windows hybrid intelligence", "MAI Code 1.1 Flash", "Microsoft Execution Containers", "Windows Search actions", "Windows ML llama.cpp"],
-    minutes: 8,
+    keywords: ["Microsoft October 2026 launch", "Surface Laptop Ultra price and release date", "Windows 11 AI features", "NVIDIA RTX Spark", "Microsoft Copilot local AI", "MAI Code 1.1 Flash", "Windows Search update", "Microsoft Execution Containers"],
+    minutes: 9,
     reference: {label: "Microsoft — Windows and Surface October 2026 launch", href: "https://news.microsoft.com/windows-surface-october-2026-news/"},
   },
   {
