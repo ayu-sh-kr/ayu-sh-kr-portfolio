@@ -46,6 +46,8 @@
 
 ## Recent Dispatch notes
 
+- [GitHub Copilot plans local AI model routing to reduce cloud usage](https://www.ayu-sh-kr.com/news/github-copilot-local-model-routing-hydrafusion/): Copilot plans automatic local/cloud model routing by late October. How HydraFusion fits, what Ollama discovery already supports, and why local inference is not offline mode. [Article Markdown](https://www.ayu-sh-kr.com/news/github-copilot-local-model-routing-hydrafusion.md).
+
 - [AWS Strands Box adds policy controls to AI agent sandboxing](https://www.ayu-sh-kr.com/news/aws-strands-box-ai-agent-sandbox/): AWS Strands Box combines macOS isolation with Dogwood rules for files, tools and network requests. See how it controls action sequences and keeps API secrets outside agents. [Article Markdown](https://www.ayu-sh-kr.com/news/aws-strands-box-ai-agent-sandbox.md).
 
 - [GitHub redesigns Git storage as AI agents push write demand higher](https://www.ayu-sh-kr.com/news/github-git-infrastructure-agent-scale/): GitHub explains its read-replica bottleneck and planned storage redesign for agent-scale development. [Article Markdown](https://www.ayu-sh-kr.com/news/github-git-infrastructure-agent-scale.md).
