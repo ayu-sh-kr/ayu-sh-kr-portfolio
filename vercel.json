@@ -14,6 +14,11 @@
   ],
   "redirects": [
     {
+      "source": "/news/microsoft-surface-laptop-ultra-windows-hybrid-ai",
+      "destination": "/news/microsoft-surface-laptop-ultra-windows-hybrid-ai/",
+      "permanent": true
+    },
+    {
       "source": "/news/aws-strands-box-ai-agent-sandbox",
       "destination": "/news/aws-strands-box-ai-agent-sandbox/",
       "permanent": true

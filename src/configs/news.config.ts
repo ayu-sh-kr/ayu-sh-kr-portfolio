@@ -68,6 +68,17 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "microsoft-surface-laptop-ultra-windows-hybrid-ai",
+    date: "2026-10-08",
+    title: "Surface Laptop Ultra and Windows AI: Microsoft’s October 2026 launch",
+    summary: "Microsoft’s October 2026 launch explained: Surface Laptop Ultra pricing, local AI models, Copilot integration, Windows Search updates and release dates.",
+    kind: "infra",
+    document: "/news/microsoft-surface-laptop-ultra-windows-hybrid-ai.md",
+    keywords: ["Microsoft October 2026 launch", "Surface Laptop Ultra price and release date", "Windows 11 AI features", "NVIDIA RTX Spark", "Microsoft Copilot local AI", "MAI Code 1.1 Flash", "Windows Search update", "Microsoft Execution Containers"],
+    minutes: 9,
+    reference: {label: "Microsoft — Windows and Surface October 2026 launch", href: "https://news.microsoft.com/windows-surface-october-2026-news/"},
+  },
+  {
     slug: "github-copilot-local-model-routing-hydrafusion",
     date: "2026-10-08",
     title: "GitHub Copilot local AI models: BYOK now, automatic cloud routing next",
