@@ -68,6 +68,17 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "github-copilot-local-model-routing-hydrafusion",
+    date: "2026-10-08",
+    title: "GitHub Copilot local AI models: BYOK now, automatic cloud routing next",
+    summary: "Copilot already supports local models and BYOK. Explore provider setup, offline mode and telemetry, then the planned local/cloud routing and HydraFusion’s role in saving AI credits.",
+    kind: "reading",
+    document: "/news/github-copilot-local-model-routing-hydrafusion.md",
+    keywords: ["GitHub Copilot local models", "Copilot BYOK", "Copilot local cloud routing", "HydraFusion", "Copilot CLI offline mode", "Copilot AI credits"],
+    minutes: 3,
+    reference: {label: "Microsoft — Local models and sandboxed tools in Copilot", href: "https://commandline.microsoft.com/local-models-sandboxed-tools-github-windows/"},
+  },
+  {
     slug: "aws-strands-box-ai-agent-sandbox",
     date: "2026-10-08",
     title: "AWS Strands Box adds policy controls to AI agent sandboxing",

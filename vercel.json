@@ -249,6 +249,11 @@
       "permanent": true
     },
     {
+      "source": "/news/github-copilot-local-model-routing-hydrafusion",
+      "destination": "/news/github-copilot-local-model-routing-hydrafusion/",
+      "permanent": true
+    },
+    {
       "source": "/news/github-copilot-computer-use",
       "destination": "/news/github-copilot-computer-use/",
       "permanent": true
