@@ -68,6 +68,17 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "weft-ai-coding-agent-coordination",
+    date: "2026-10-08",
+    title: "Weft brings live coordination to AI coding agents working with Git",
+    summary: "Built for Cloudflare’s Git platform competition, Weft coordinates parallel coding agents during edits. Follow its workspaces, adapters, WCP feedback loop and path to tested Git changes.",
+    kind: "infra",
+    document: "/news/weft-ai-coding-agent-coordination.md",
+    keywords: ["Weft AI coding agents", "Weft Coordination Protocol", "WCP", "parallel coding agents", "Git merge conflicts", "Cloudflare Artifacts", "Cloudflare Durable Objects", "AI agent workspaces", "coding agent adapters"],
+    minutes: 5,
+    reference: {label: "Weft — live agent coordination", href: "https://github.com/celador/weft"},
+  },
+  {
     slug: "microsoft-surface-laptop-ultra-windows-hybrid-ai",
     date: "2026-10-08",
     title: "Surface Laptop Ultra and Windows AI: Microsoft’s October 2026 launch",

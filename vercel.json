@@ -14,6 +14,11 @@
   ],
   "redirects": [
     {
+      "source": "/news/weft-ai-coding-agent-coordination",
+      "destination": "/news/weft-ai-coding-agent-coordination/",
+      "permanent": true
+    },
+    {
       "source": "/news/microsoft-surface-laptop-ultra-windows-hybrid-ai",
       "destination": "/news/microsoft-surface-laptop-ultra-windows-hybrid-ai/",
       "permanent": true
