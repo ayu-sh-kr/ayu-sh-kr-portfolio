@@ -70,12 +70,12 @@ export const newsNotes: readonly NewsNote[] = [
   {
     slug: "github-copilot-local-model-routing-hydrafusion",
     date: "2026-10-08",
-    title: "GitHub Copilot plans automatic routing between local and cloud AI models",
-    summary: "Copilot plans to combine local and cloud AI models in one session. How HydraFusion coordinates models, what is available now, and what the change means for AI credits.",
+    title: "GitHub Copilot local AI models: BYOK now, automatic cloud routing next",
+    summary: "Copilot already supports local models and BYOK. Explore provider setup, offline mode and telemetry, then the planned local/cloud routing and HydraFusion’s role in saving AI credits.",
     kind: "reading",
     document: "/news/github-copilot-local-model-routing-hydrafusion.md",
-    keywords: ["GitHub Copilot local model routing", "HydraFusion", "Copilot Ollama", "local vs cloud AI models", "MAI Code 1.1 Flash", "Copilot AI credits"],
-    minutes: 2,
+    keywords: ["GitHub Copilot local models", "Copilot BYOK", "Copilot local cloud routing", "HydraFusion", "Copilot CLI offline mode", "Copilot AI credits"],
+    minutes: 3,
     reference: {label: "Microsoft — Local models and sandboxed tools in Copilot", href: "https://commandline.microsoft.com/local-models-sandboxed-tools-github-windows/"},
   },
   {

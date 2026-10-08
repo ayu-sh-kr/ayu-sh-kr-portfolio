@@ -46,7 +46,7 @@
 
 ## Recent Dispatch notes
 
-- [GitHub Copilot plans automatic routing between local and cloud AI models](https://www.ayu-sh-kr.com/news/github-copilot-local-model-routing-hydrafusion/): Copilot plans to combine local and cloud AI models in one session. How HydraFusion coordinates models, what is available now, and what the change means for AI credits. [Article Markdown](https://www.ayu-sh-kr.com/news/github-copilot-local-model-routing-hydrafusion.md).
+- [GitHub Copilot local AI models: BYOK now, automatic cloud routing next](https://www.ayu-sh-kr.com/news/github-copilot-local-model-routing-hydrafusion/): Copilot already supports local models and BYOK. Explore provider setup, offline mode and telemetry, then the planned local/cloud routing and HydraFusion’s role in saving AI credits. [Article Markdown](https://www.ayu-sh-kr.com/news/github-copilot-local-model-routing-hydrafusion.md).
 
 - [AWS Strands Box adds policy controls to AI agent sandboxing](https://www.ayu-sh-kr.com/news/aws-strands-box-ai-agent-sandbox/): AWS Strands Box combines macOS isolation with Dogwood rules for files, tools and network requests. See how it controls action sequences and keeps API secrets outside agents. [Article Markdown](https://www.ayu-sh-kr.com/news/aws-strands-box-ai-agent-sandbox.md).
 
