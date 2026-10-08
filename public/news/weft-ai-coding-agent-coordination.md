@@ -1,51 +1,61 @@
-# Weft coordinates AI coding agents before Git merge conflicts
+# Weft brings live coordination to AI coding agents working with Git
 
-Two coding agents can finish their tasks and still produce a broken application. One changes a function; the other keeps calling its old version. Their edits may sit in different files, so the problem is not always an obvious fight over the same lines.
+Two agents work on the same application: one changes a function, while the other builds a feature that calls it. Both can keep making progress without knowing that their changes no longer fit together. Finding the mismatch later means going back through work that already looked finished.
 
-Weft is an open-source project exploring how to catch that kind of disagreement while agents are working. Its public repository describes the **Weft Coordination Protocol**, or WCP, and a Cloudflare-backed implementation. The project is real, but its README explicitly labels it a **research/demo implementation**. WCP v0.1 is a draft, not an established industry standard. [Repository and status](https://github.com/celador/weft)
+**[Weft](https://github.com/celador/weft) brings that feedback into the coding session.** Built by John Nelson for Cloudflare’s [next Git platform competition](https://blog.cloudflare.com/next-git-platform-on-cloudflare/), it coordinates parallel coding agents while they edit. When one agent’s work affects another, Weft can return a warning or error explaining the conflict before it reaches a pull request.
 
-## A Git alternative, with an important distinction
+The platform uses Git-compatible storage and supports adapters for Claude Code, Codex, OpenCode and Hermes. Its focus is the work happening between commits: which agent changed a function, which other agent depends on it, and what needs to be revisited.
 
-The launch post presents Weft as something coding agents need beyond Git. That is a useful starting point, but “Git replacement” would overstate what the project delivers. Weft’s design still includes Git commits, forks, rebases, tests, and landing changes on a shared main line. Its focus is an additional coordination layer that sees work before the pull request stage. [Design and limitations](https://github.com/celador/weft/blob/main/docs/design.md)
+## Why agent collaboration needs more than separate branches
 
-The Cloudflare connection also checks out. Cloudflare has announced a competition to build the next Git platform using Workers and Artifacts. Artifacts provides programmable repositories and forks while retaining Git operations. Weft’s design identifies that competition as its target. That establishes the context; it does not establish a Cloudflare endorsement or competition win. [Design and limitations](https://github.com/celador/weft/blob/main/docs/design.md)[Cloudflare competition](https://blog.cloudflare.com/next-git-platform-on-cloudflare/)
+Giving each agent a branch or fork keeps their files apart, but their tasks can still depend on the same code. Consider an order service written in TypeScript. One agent updates `calculateTotal(items)` to require a currency argument. Another adds a checkout flow using the earlier call.
 
-## The conflict can start before the merge
+The agents have changed different files. Git may combine those files without a text conflict, even though the checkout code now calls the function incorrectly. A compiler or test can catch that later; the opportunity Weft pursues is to tell the second agent while it is still working on checkout.
 
-Imagine an order service. Agent A changes `calculateTotal(items)` to `calculateTotal(items, currency)`. Meanwhile, Agent B adds a checkout flow using the earlier call. This is an illustrative example, not a reported Weft incident.
+This sits alongside the problem covered in our [report on GitHub’s Git infrastructure rebuild](/news/github-git-infrastructure-agent-scale/). GitHub is redesigning storage and coordination because adding read replicas also increases write overhead. Weft addresses a different part of growing agent activity: helping concurrent changes remain compatible before they are submitted.
 
-A merge that accepts both files does not prove the two changes work together. A compiler or test may catch the mismatch later, but the second agent has already built on an outdated assumption. Weft tries to shorten that feedback loop.
+Cloudflare’s competition asks developers to build that collaboration layer using **Workers and Artifacts**. Workers runs application services; Artifacts supplies programmable Git repositories and forks. Weft builds its coordination around those foundations, retaining commits, rebases and a shared main branch.
 
-Its protocol tracks the code symbols an edit references and changes: functions, types, and other declarations. An event also carries the agent’s base sequence—the point in the shared history it was working from. The coordinator compares that event with newer accepted work and can return a diagnostic identifying the conflicting symbol and the event responsible. [WCP draft specification](https://github.com/celador/weft/blob/main/docs/protocol/wcp-v0.md)
+## A workspace is where the agent actually changes code
 
-## How Weft’s architecture connects the pieces
+Start with the task, such as adding checkout support. The agent needs project files to read, a place to edit them, and tools for running commands. Together, that working copy and execution environment form its **workspace**.
 
-The flow begins inside an agent’s workspace. An adapter translates tool hooks into WCP requests, while an analyzer extracts symbol information from edits. The README lists Claude Code, Codex, OpenCode, and Hermes in its architecture. [Repository and status](https://github.com/celador/weft)
+In Weft’s [platform design](https://github.com/celador/weft/blob/main/docs/design.md), an agent’s attempt gets an isolated fork in Artifacts. The workspace runs the coding agent with the task context, project instructions and Weft integration. Another agent can work on a separate attempt without overwriting those local files.
 
-Requests enter through a gateway and reach a repository coordinator: a Cloudflare Durable Object backed by SQLite. Each repository gets one authoritative event order, giving concurrent edits a common reference point. Verdicts and diagnostics travel back toward the agent. [Repository and status](https://github.com/celador/weft)
+Isolation gives each agent room to work. Coordination tells it what is happening outside that room.
 
-The platform also has a path from proposed changes to tested code. Queues and Workflows coordinate processing, selection, landing, and revert operations. Sandboxes perform Git and test work; Artifacts holds repositories and candidate forks. D1 indexes tasks and evidence, while R2 retains run artifacts. Human clients observe events and expose controls such as approval and pause. [Repository and status](https://github.com/celador/weft)
+## The adapter turns an edit into a shared update
 
-The distinction matters: an accepted coordination event is not the same thing as a tested change landing on main. The diagram separates the immediate feedback loop from that later execution path.
+Agents change files through tools: applying a patch, replacing text or running a command. Their coding applications expose hooks—places where an integration can run before or after those tool actions.
 
-![Agent edits reach a shared repository coordinator; diagnostics return to agents, while workflows test and land changes separately.](/news/assets/weft-ai-coding-agent-coordination/coordination-architecture.svg)
+Weft’s **adapter** connects to those hooks. It is the bridge between the coding application and Weft, rather than another agent writing the feature. An analyzer examines the edit to identify code symbols, such as functions and types, that it changes or references.
 
-## Warnings depend on what changed
+For the order-service example, the useful information is more specific than “checkout.ts changed.” It includes that checkout calls `calculateTotal`, while the other agent changed that function’s signature: the arguments callers must provide.
 
-WCP distinguishes a changed function contract from a changed implementation body. A reference to a signature that changed after an agent’s base can produce a stale-assumption error; a body-only change can produce a warning. That gives the agent more specific feedback than “something changed in this file.” [WCP draft specification](https://github.com/celador/weft/blob/main/docs/protocol/wcp-v0.md)
+The adapter packages this information into an event using the [Weft Coordination Protocol (WCP)](https://github.com/celador/weft/blob/main/docs/protocol/wcp-v0.md). The event includes the version of the shared event history the agent was working from. That lets Weft distinguish a current edit from one built on an older assumption.
 
-The design also describes different adapter capabilities, ranging from observing changes to injecting feedback, blocking edits, and enforcing completion or commit gates. A named integration therefore should not be read as a promise that every tool has identical enforcement. The initial symbol analysis is scoped to TypeScript, another reason to avoid claims that Weft understands every language or catches every conflict. [Design and limitations](https://github.com/celador/weft/blob/main/docs/design.md)
+The illustration follows that feedback loop. Each workspace reports edits through its adapter; both reach the same coordinator, which can send a diagnostic back to the affected agent.
 
-> An accepted coordination event is not a tested change landing on main.
+![Two isolated agent workspaces send symbol changes through adapters and a gateway to one ordered coordinator; a diagnostic returns to the agent that needs to revise its code.](/news/assets/weft-ai-coding-agent-coordination/coordination-architecture.svg)
 
-## What the launch claims actually establish
+## One coordinator compares work from both agents
 
-In a launch post, John Nelson says Weft caught 59 collisions during its first 11 hours and was used to coordinate its own development. That is an author-reported result. This review did not independently reproduce the count or establish how many were distinct bugs prevented.
+The events enter through a gateway, the service receiving WCP requests. It forwards them to the coordinator for that project. Weft uses a **Cloudflare Durable Object with SQLite** to keep a shared, ordered record of events for each repository.
 
-The repository does provide a documented local route: Git, Node.js 22 or newer, and pnpm 9, followed by dependency installation and protocol tests. Those tests exercise schema validation and reference-coordinator conformance scenarios without Cloudflare credentials. They are a way to inspect protocol behavior, not proof of production performance under a large agent fleet. [Local testing guide](https://github.com/celador/weft/blob/main/docs/try-it.md)
+Ordering gives the coordinator a way to answer a concrete question: what changed after this agent’s starting point? It compares the incoming event’s referenced and modified symbols with newer accepted changes.
 
-## Moving feedback closer to the edit
+If a referenced function’s signature changed after that starting point, WCP can return a `stale_assumption` error. If only its internal implementation changed, the feedback can be a warning. The diagnostic identifies the affected symbol and the event responsible, giving the agent context for its next edit.
 
-Weft’s interesting idea is the timing of coordination. If an agent learns that a dependency changed while it is still writing the caller, it has an opportunity to adjust before the mistake spreads through more work.
+The adapter brings that feedback into the coding session. Depending on the integration’s capabilities, it can observe changes, inject context, block an action or enforce a completion gate. Agents therefore share one coordination protocol while retaining different tool interfaces.
 
-For now, the accurate description is an experimental coordination platform for parallel coding agents, built around Git-compatible infrastructure. Its next test is whether that earlier feedback stays useful as projects, languages, and agent workloads become more varied.
+## Accepted edits still need tests and a path to main
+
+The live feedback loop is only part of the architecture. Once an agent pushes a revision, Queues and Workflows organize the longer processing steps. A queue holds pending jobs; a workflow tracks their progress through operations such as updating the candidate against main, running tests and selecting a change to land.
+
+Sandbox containers provide isolated environments for Git operations and tests. Artifacts holds the candidate forks and main repository. Supporting stores keep the work inspectable: D1 indexes tasks and evidence, while R2 retains artifacts such as logs and screenshots. Human clients expose the event feed and controls including approval, pause and undo.
+
+> Early conflict feedback helps an agent revise its work; tests and review still decide whether the result is ready to land.
+
+Weft remains a research/demo implementation, with initial symbol analysis focused on TypeScript. Nelson reports that it caught 59 collisions in its first 11 hours while helping coordinate its own development. That is an early result reported by its creator, rather than a general performance benchmark.
+
+For the two agents working on checkout, the useful change is straightforward: the second agent can learn that `calculateTotal` changed while it is still writing the caller. Git preserves the resulting history; Weft aims to keep the work leading up to that history in step.
