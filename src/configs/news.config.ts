@@ -68,6 +68,17 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "github-copilot-local-model-routing-hydrafusion",
+    date: "2026-10-08",
+    title: "GitHub Copilot plans local AI model routing to reduce cloud usage",
+    summary: "Copilot plans automatic local/cloud model routing by late October. How HydraFusion fits, what Ollama discovery already supports, and why local inference is not offline mode.",
+    kind: "reading",
+    document: "/news/github-copilot-local-model-routing-hydrafusion.md",
+    keywords: ["GitHub Copilot local model routing", "HydraFusion", "Copilot Ollama", "local vs cloud AI models", "MAI Code 1.1 Flash", "Copilot AI credits"],
+    minutes: 2,
+    reference: {label: "Microsoft — Local models and sandboxed tools in Copilot", href: "https://commandline.microsoft.com/local-models-sandboxed-tools-github-windows/"},
+  },
+  {
     slug: "aws-strands-box-ai-agent-sandbox",
     date: "2026-10-08",
     title: "AWS Strands Box adds policy controls to AI agent sandboxing",
