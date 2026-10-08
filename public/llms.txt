@@ -46,6 +46,8 @@
 
 ## Recent Dispatch notes
 
+- [Weft coordinates AI coding agents before Git merge conflicts](https://www.ayu-sh-kr.com/news/weft-ai-coding-agent-coordination/): Weft is an open-source experiment in edit-time coordination for AI coding agents. Explore its WCP protocol, Cloudflare architecture, Git workflow and current limits. [Article Markdown](https://www.ayu-sh-kr.com/news/weft-ai-coding-agent-coordination.md).
+
 - [Surface Laptop Ultra and Windows AI: Microsoft’s October 2026 launch](https://www.ayu-sh-kr.com/news/microsoft-surface-laptop-ultra-windows-hybrid-ai/): Microsoft’s October 2026 launch explained: Surface Laptop Ultra pricing, local AI models, Copilot integration, Windows Search updates and release dates. [Article Markdown](https://www.ayu-sh-kr.com/news/microsoft-surface-laptop-ultra-windows-hybrid-ai.md).
 
 - [GitHub Copilot local AI models: BYOK now, automatic cloud routing next](https://www.ayu-sh-kr.com/news/github-copilot-local-model-routing-hydrafusion/): Copilot already supports local models and BYOK. Explore provider setup, offline mode and telemetry, then the planned local/cloud routing and HydraFusion’s role in saving AI credits. [Article Markdown](https://www.ayu-sh-kr.com/news/github-copilot-local-model-routing-hydrafusion.md).
