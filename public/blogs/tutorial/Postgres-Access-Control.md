@@ -1,224 +1,443 @@
-# PostgreSQL permissions and database access control: roles, GRANTs
+# PostgreSQL Permissions: Build a Role with GRANT and REVOKE
 
-Database permissions are the rules that answer a simple question: *who is allowed to do what?* PostgreSQL provides the concrete model for this guide, but the underlying access-control problem is shared by relational databases: a database can hold customer details, payroll records, application data, and internal reports side by side. The goal is to let each person or service do its job without giving it a master key to everything else.
+A checkout service needs to read orders, create new ones, mark them as paid and record what happened. It does not need permission to delete the order history or change the database structure. How do we give it enough access to finish its work without making it the database owner?
 
-PostgreSQL gives us the building blocks to do that well. This guide explains database roles and permissions, `GRANT` and `REVOKE`, database, schema, and table privileges, ownership, default privileges, and row-level security. The SQL syntax is PostgreSQL-specific, while the principles—authorization, least privilege, separation of ownership, and explicit access paths—apply more broadly to database security. Once those ideas click, permission errors become much easier to understand and permission designs become far less fragile.
+We will build that role from an empty starting point. At first, it cannot even connect to the shop database. Each section adds one capability, repeats the operation that needed it, and explains the result. The same checkout login, tables and orders continue through the whole guide.
 
-## Start with the route to a table
+By the end, the service will complete a payment update and write its event in one transaction. Along the way, we will see why `CONNECT`, schema `USAGE`, table privileges and sequence privileges are separate, how new tables get permissions, and where row-level security fits.
 
-Suppose an application needs to read `sales.orders`. Reading a table is not one permission check. PostgreSQL follows the path to the table:
+*Updated October 8, 2026. Use a disposable PostgreSQL 16+ instance and `psql`. The setup requires a database administrator able to create roles and databases and assume the owner role. Managed services may require different provisioning steps.*
 
-1. The role must be able to connect to the database.
-2. The role must be allowed to use the `sales` schema.
-3. The role must be allowed to select from the `orders` table.
-4. If row-level security is enabled, the requested rows must also match its policy.
+## Start with the shop and the job the role must do
 
-This layered approach is deliberate. A schema is a namespace, similar to a folder, and a table belongs inside one. Access at one layer does not automatically bypass another. When PostgreSQL says “permission denied,” it is usually pointing to one missing link in this chain.
+Our database is called `shop`. Inside it, a schema named `sales` groups the tables for the order workflow. A schema works like a named folder: `sales.orders` means the `orders` table inside `sales`.
 
-## Troubleshoot `permission denied` errors
+The checkout service will eventually need four operations: read an order, create an order, update its status, and add an entry to `sales.order_events`. We will create the event table only when the workflow reaches that requirement. That keeps the first setup small and lets us see what happens when a new table arrives.
 
-When PostgreSQL reports `permission denied for table`, `permission denied for schema`, or `permission denied for database`, check the connection, schema, and object privileges separately. Testing each layer with PostgreSQL's privilege functions is faster than guessing which `GRANT` is missing:
+PostgreSQL calls both users and permission groups **roles**. A role with `LOGIN` can authenticate. A `NOLOGIN` role can collect permissions or own objects. We need just three roles for this walkthrough:
 
-```sql
-SELECT current_user, session_user;
+| Role | Purpose |
+| --- | --- |
+| `shop_owner` | Owns the database objects and creates or changes them |
+| `shop_checkout` | Collects the permissions required by checkout |
+| `checkout_app` | The service login that inherits those permissions |
 
-SELECT has_database_privilege(current_user, current_database(), 'CONNECT') AS can_connect;
-SELECT has_schema_privilege(current_user, 'sales', 'USAGE') AS can_use_schema;
-SELECT has_table_privilege(current_user, 'sales.orders', 'SELECT') AS can_select;
-```
+The login keeps the same membership throughout the guide. As we add permissions to `shop_checkout`, they become available to `checkout_app` too.
 
-For a `false` result, grant only the missing capability to the appropriate role. A `true` result for all three checks means the next places to inspect are role membership and inheritance, row-level security policies, and whether the query touches a sequence or function in addition to the table. In `psql`, `\du`, `\dn+`, and `\dp sales.orders` are useful summaries of roles, schema grants, and table privileges.
+![The checkout login inherits permissions from shop_checkout. The separate shop_owner creates and changes objects; the application is not a member of it.](/blogs/tutorial/assets/postgresql-access-control/role-membership.svg)
 
-## Roles are PostgreSQL's idea of identity
-
-Everything begins with a **role**. A role is an identity that can own database objects and receive permissions. PostgreSQL does not have separate underlying objects for users and groups; both are roles with different attributes and purposes.
-
-A role with `LOGIN` is what people usually call a **user**. It can authenticate and start a session:
-
-```sql
-CREATE ROLE reporting_app LOGIN PASSWORD 'use-a-secret-manager-in-production';
-```
-
-Creating this role does not grant access to any application data. It only gives PostgreSQL someone to recognize when a connection arrives.
-
-A role without `LOGIN` is often used as a **group role**. It cannot sign in, but it can hold a useful bundle of permissions:
-
-```sql
-CREATE ROLE reporting_reader NOLOGIN;
-GRANT reporting_reader TO reporting_app;
-```
-
-In this example, `reporting_reader` expresses a job: “may read reporting data.” `reporting_app` is the actual login used by the application. The login can use the privileges it inherits from the group role.
-
-That separation is the foundation of a maintainable setup. Permissions belong to job-shaped roles; individual people and services become members of those roles. When a new analyst joins, add them to the appropriate role. When their responsibility changes, move their membership instead of hunting through dozens of individual grants.
-
-## Role attributes and object privileges are different things
-
-It helps to keep two kinds of permission apart.
-
-**Role attributes** describe what a role can do at the PostgreSQL server level. `LOGIN` permits authentication. `CREATEDB` permits creating databases. `CREATEROLE` permits managing other roles. `REPLICATION` is for replication connections. `SUPERUSER` bypasses normal permission checks and should be reserved for tightly controlled administration.
-
-**Object privileges** describe what a role can do to a particular database object. `SELECT` on `sales.orders`, for example, means the role can read that table. A role can be a perfectly ordinary login and still have exactly the data access needed for its work.
-
-This distinction is useful because everyday application access should almost always be expressed with object privileges, not powerful server-wide attributes.
-
-## Privileges are verbs attached to objects
-
-Privileges are best read as verbs: they name the action a role may take. PostgreSQL supports different verbs for different kinds of objects.
-
-### Database privileges
-
-At the database level, `CONNECT` allows a role to open a session to that database. `CREATE` allows it to create schemas there, and `TEMP` (or `TEMPORARY`) allows temporary tables during a session.
-
-```sql
-GRANT CONNECT ON DATABASE shop TO reporting_app;
-GRANT TEMP ON DATABASE shop TO reporting_app;
-```
-
-In many installations, `PUBLIC`—the implicit group containing every role—has `CONNECT` and `TEMP` by default. That is convenient, but it is worth checking rather than assuming. A private database may deliberately revoke those defaults and grant them only to approved roles.
-
-### Schema privileges
-
-A schema groups objects such as tables, views, sequences, and functions. `USAGE` lets a role refer to objects in the schema when it already has the needed privilege on those objects. It does **not** grant access to every table inside the schema. `CREATE` lets the role create new objects there.
-
-```sql
-GRANT USAGE ON SCHEMA sales TO reporting_reader;
-GRANT SELECT ON TABLE sales.orders TO reporting_reader;
-```
-
-Both grants matter. `SELECT` says the reader may read `orders`; `USAGE` says it may reach that table through the `sales` schema. `CREATE` should be handed out more carefully, especially on shared schemas, because object creation can affect how other queries resolve names.
-
-### Table privileges
-
-Table privileges control access to stored rows:
-
-- `SELECT` reads rows.
-- `INSERT` adds rows.
-- `UPDATE` changes existing rows.
-- `DELETE` removes rows.
-- `TRUNCATE` quickly removes all rows from a table.
-- `REFERENCES` allows foreign keys to reference the table.
-- `TRIGGER` allows creation of triggers on the table.
-
-You can grant only the verbs a role needs. A reporting role may receive `SELECT` only. A data-entry service may need `SELECT` and `INSERT`, but no `DELETE`. PostgreSQL also supports column-level grants when only a few columns should be writable, although a view is often a clearer interface when the access rule is more involved.
-
-```sql
-GRANT SELECT, INSERT ON TABLE sales.orders TO order_writer;
-GRANT UPDATE (shipping_address) ON TABLE sales.orders TO order_writer;
-```
-
-### Sequences, functions, and other objects
-
-Tables are not the only objects behind an application workflow. A sequence that supplies generated IDs commonly needs `USAGE` for a role that inserts rows. Functions need `EXECUTE` before a role can call them. Custom types, foreign servers, and large objects have their own supported privileges too.
-
-```sql
-GRANT USAGE ON SEQUENCE sales.orders_id_seq TO order_writer;
-GRANT EXECUTE ON FUNCTION sales.create_order(text, numeric) TO order_writer;
-```
-
-This explains a common surprise: an `INSERT` grant can still fail because the insert also calls a sequence, a function, or accesses another object that has not been granted.
-
-## Ownership is control, not a role to share
-
-Every database object has an owner, usually the role that created it. Owners can alter or drop their own objects and can grant access to them. Ownership is powerful; it is not merely another read or write privilege.
-
-For applications, a useful pattern is to keep an **owner role** separate from runtime roles. A deployment or migration role owns schemas and tables. The application uses a more limited login role that has only the required grants. If an application credential is compromised, it cannot quietly change table definitions or grant itself more access.
+Open an administrator `psql` session and create the roles:
 
 ```sql
 CREATE ROLE shop_owner NOLOGIN;
-CREATE ROLE shop_api LOGIN;
+CREATE ROLE shop_checkout NOLOGIN;
+CREATE ROLE checkout_app LOGIN
+  NOSUPERUSER NOCREATEDB NOCREATEROLE NOBYPASSRLS;
 
-ALTER SCHEMA sales OWNER TO shop_owner;
-GRANT USAGE ON SCHEMA sales TO shop_api;
-GRANT SELECT, INSERT, UPDATE ON ALL TABLES IN SCHEMA sales TO shop_api;
+GRANT shop_checkout TO checkout_app WITH INHERIT TRUE;
 ```
 
-In real projects, the migration process should create new tables as the owner role. Otherwise, a developer or deployment identity may unexpectedly become the owner, and future grants become harder to reason about.
+This `GRANT` assigns membership, not data access. The group has no shop permissions yet, so the login receives none from it. PostgreSQL's [role membership documentation](https://www.postgresql.org/docs/18/role-membership.html) explains inheritance and the explicit membership options available in PostgreSQL 16+.
 
-## `PUBLIC` is everyone
+Set the login's password interactively, avoiding a password literal in the SQL:
 
-`PUBLIC` looks like a role, but it is a special built-in group that includes every role. A grant to `PUBLIC` therefore applies broadly, including to roles created later.
+```text
+\password checkout_app
+```
 
-That makes `PUBLIC` useful for deliberately open capabilities, but risky for confidential data. When reviewing a database, look for grants to `PUBLIC` on databases, schemas, functions, and tables. A carefully limited role can still have broad access through this implicit membership.
+Now create the database, outside a transaction:
+
+```sql
+CREATE DATABASE shop OWNER shop_owner;
+REVOKE CONNECT, TEMPORARY ON DATABASE shop FROM PUBLIC;
+```
+
+`PUBLIC` means every role. PostgreSQL normally gives it database connection and temporary-table privileges. We remove those defaults in this new demo database so that each permission we add has a visible effect. On an existing database, review application, monitoring and maintenance access before doing this.
+
+Connect the administrator session to `shop`:
+
+```text
+\connect shop
+```
+
+Create the first table as `shop_owner`, with two sample orders:
 
 ```sql
 REVOKE CREATE ON SCHEMA public FROM PUBLIC;
-REVOKE ALL ON TABLE sales.customer_notes FROM PUBLIC;
+
+SET ROLE shop_owner;
+CREATE SCHEMA sales AUTHORIZATION shop_owner;
+CREATE TABLE sales.orders (
+  id bigserial PRIMARY KEY,
+  tenant_id uuid NOT NULL,
+  customer_name text NOT NULL,
+  total numeric(12, 2) NOT NULL CHECK (total >= 0),
+  status text NOT NULL DEFAULT 'pending'
+    CHECK (status IN ('pending', 'paid', 'shipped'))
+);
+INSERT INTO sales.orders (tenant_id, customer_name, total)
+VALUES
+  ('11111111-1111-1111-1111-111111111111', 'Asha', 1200.00),
+  ('22222222-2222-2222-2222-222222222222', 'Ravi', 850.00);
+RESET ROLE;
 ```
 
-The `public` schema and the `PUBLIC` group have similar names but are different things: one is a namespace, the other is an all-roles group.
+`SET ROLE` makes `shop_owner` the active identity, so it owns the objects created here. `RESET ROLE` returns to the administrator. The application is not a member of the owner role: it will receive permission to use the tables, not authority to alter or drop them.
 
-## A small, realistic role design
+The lowercase `public` schema is different from the `PUBLIC` group. We explicitly disallow everyone from creating objects in that shared schema; new PostgreSQL 15+ databases normally already have that restriction. Our application uses `sales` instead.
 
-Imagine an online store with staff, a reporting tool, and a web application. Instead of granting permissions directly to each login, define the responsibilities first:
+## Give the checkout role permission to connect
+
+The shop exists, but the checkout login cannot enter it yet. Confirm that from the administrator session:
 
 ```sql
-CREATE ROLE store_readonly NOLOGIN;
-CREATE ROLE store_orders_writer NOLOGIN;
-CREATE ROLE store_admin NOLOGIN;
-
-GRANT USAGE ON SCHEMA sales TO store_readonly, store_orders_writer;
-GRANT SELECT ON ALL TABLES IN SCHEMA sales TO store_readonly;
-GRANT SELECT, INSERT, UPDATE ON TABLE sales.orders TO store_orders_writer;
-GRANT USAGE, SELECT ON SEQUENCE sales.orders_id_seq TO store_orders_writer;
-
-GRANT store_readonly TO reporting_app;
-GRANT store_orders_writer TO checkout_api;
-GRANT store_admin TO database_administrator;
+SELECT has_database_privilege('checkout_app', 'shop', 'CONNECT')
+  AS can_connect;
+-- false
 ```
 
-The exact names are unimportant. The important part is that each role describes a responsibility, and the login identities receive one or more appropriate responsibilities. The administrator role should still be designed cautiously; being an administrator inside an application domain is very different from being a PostgreSQL superuser.
+Grant the first capability and repeat the check:
 
-## New tables need a plan too
+```sql
+GRANT CONNECT ON DATABASE shop TO shop_checkout;
+SELECT has_database_privilege('checkout_app', 'shop', 'CONNECT')
+  AS can_connect;
+-- true
+```
 
-`GRANT ... ON ALL TABLES IN SCHEMA ...` affects tables that exist at the time the command runs. It does not automatically grant access to tables created next month. That gap is a frequent cause of post-deployment outages.
+The service can now open a connection, provided its password, host rules and network settings are valid. Test that in a second terminal:
 
-Use default privileges so that objects created by a particular owner carry the expected grants from the start:
+```bash
+psql --host localhost --username checkout_app --dbname shop --password \
+  --command 'SELECT current_user, current_database();'
+```
+
+Use the actual server host if it is remote. Expect `checkout_app` and `shop`. Authentication checks the login's identity; `CONNECT` authorizes entry to this database. Neither gives it permission to read the order table.
+
+Keep the administrator session open. **Run the following blocks there, in order.** Each test switches to `checkout_app` and then resets to the administrator before the next grant. Run statements individually in `psql` autocommit mode, except where an explicit transaction is shown. Expected errors then do not prevent the next test.
+
+## Let the connected role find the sales schema
+
+Try the first real task: reading orders.
+
+```sql
+SET ROLE checkout_app;
+-- Expect error: permission denied for schema sales
+SELECT id, customer_name, total FROM sales.orders;
+RESET ROLE;
+```
+
+PostgreSQL knows which table the query names, but the login lacks `USAGE` on its schema. Add that permission, then repeat the same query:
+
+```sql
+GRANT USAGE ON SCHEMA sales TO shop_checkout;
+
+SET ROLE checkout_app;
+-- Expect error: permission denied for table orders
+SELECT id, customer_name, total FROM sales.orders;
+RESET ROLE;
+```
+
+The changed error is progress. The role can now look up objects in `sales`, but it still cannot read their data. Schema `USAGE` and table `SELECT` answer different questions, as shown below.
+
+![A checkout query needs database CONNECT, schema USAGE and table SELECT. If row-level security is enabled later, its policy filters the returned rows.](/blogs/tutorial/assets/postgresql-access-control/query-access.svg)
+
+We did not grant schema `CREATE`. Checkout needs to use the existing tables, while creating tables remains the owner's job. PostgreSQL's [schema documentation](https://www.postgresql.org/docs/18/ddl-schemas.html) covers this distinction and how schema search paths resolve names.
+
+## Let the role read orders
+
+Now grant the permission named by the latest error:
+
+```sql
+GRANT SELECT ON TABLE sales.orders TO shop_checkout;
+
+SET ROLE checkout_app;
+SELECT id, customer_name, total FROM sales.orders ORDER BY id;
+RESET ROLE;
+```
+
+The query returns Asha's order and Ravi's order. The role has accumulated a complete read path: it may connect to `shop`, look up objects in `sales`, and select from `sales.orders`.
+
+At this point, its granted data access is **read-only**. We have not created a second reader account or switched examples; this is the same checkout role before we give it write responsibilities. A service whose whole job was reporting could stop at this stage.
+
+This also explains why `GRANT ALL PRIVILEGES ON DATABASE shop` would not have fixed the table error. `ALL` applies to the named object type, not every object contained inside it. The [GRANT reference](https://www.postgresql.org/docs/18/sql-grant.html) lists the separate database, schema and table privileges.
+
+## Allow order creation, then supply the generated ID
+
+Reading works. The next checkout task is placing an order for Meera:
+
+```sql
+SET ROLE checkout_app;
+-- Expect error: permission denied for table orders
+INSERT INTO sales.orders (tenant_id, customer_name, total)
+VALUES ('11111111-1111-1111-1111-111111111111', 'Meera', 500.00)
+RETURNING id, status;
+RESET ROLE;
+```
+
+Add `INSERT` for the three fields the service should supply. PostgreSQL will supply the ID and initial status through their defaults:
+
+```sql
+GRANT INSERT (tenant_id, customer_name, total)
+  ON TABLE sales.orders TO shop_checkout;
+
+SET ROLE checkout_app;
+-- Expect error: permission denied for sequence orders_id_seq
+INSERT INTO sales.orders (tenant_id, customer_name, total)
+VALUES ('11111111-1111-1111-1111-111111111111', 'Meera', 500.00)
+RETURNING id, status;
+RESET ROLE;
+```
+
+The insert now reaches the ID generator. Our `bigserial` column uses a sequence, `sales.orders_id_seq`, whose next value becomes the new ID. Table `INSERT` does not automatically grant access to that sequence.
+
+Grant sequence `USAGE` and try the same insert once more:
+
+```sql
+GRANT USAGE ON SEQUENCE sales.orders_id_seq TO shop_checkout;
+
+SET ROLE checkout_app;
+INSERT INTO sales.orders (tenant_id, customer_name, total)
+VALUES ('11111111-1111-1111-1111-111111111111', 'Meera', 500.00)
+RETURNING id, status;
+RESET ROLE;
+```
+
+This attempt succeeds and returns the generated ID with `pending` status. The earlier failures did not create an order. Sequence values can nevertheless have gaps, so applications should use the returned ID instead of predicting it.
+
+The sequence permission here is specific to a `bigserial`/`nextval()` design; identity columns handle implicit sequence access differently. The earlier `SELECT` grant also matters because `RETURNING` reads the inserted row's ID and status.
+
+**The role can now read and create orders.** It still cannot change an existing order.
+
+## Allow status updates without allowing price changes
+
+Once a payment is confirmed, checkout needs to mark the order as paid. Try that on Asha's seeded order, whose ID is `1` in this fresh database:
+
+```sql
+SET ROLE checkout_app;
+-- Expect error: permission denied for table orders
+UPDATE sales.orders SET status = 'paid' WHERE id = 1;
+RESET ROLE;
+```
+
+The service needs `UPDATE`, but only for `status`. Grant that column and repeat the operation:
+
+```sql
+GRANT UPDATE (status) ON TABLE sales.orders TO shop_checkout;
+
+SET ROLE checkout_app;
+UPDATE sales.orders SET status = 'paid' WHERE id = 1
+RETURNING id, status;
+RESET ROLE;
+```
+
+The returned status is now `paid`. The existing `SELECT` permission allows the query to read `id` in its filter and return the result. A table-wide `UPDATE` grant would allow changing other columns too, so we intentionally keep this grant narrow.
+
+Check the limits while the intended behavior is fresh:
+
+```sql
+SET ROLE checkout_app;
+-- Expect error: permission denied for table orders
+UPDATE sales.orders SET total = 1 WHERE id = 1;
+-- Expect error: permission denied for table orders
+DELETE FROM sales.orders WHERE id = 1;
+-- Expect error: must be owner of table orders
+ALTER TABLE sales.orders ADD COLUMN internal_note text;
+RESET ROLE;
+```
+
+The role can advance an order's status, but these attempts fail. Permission to update a column does not restrict the business meaning of each transition: this simple example allows any value accepted by the status constraint. A production workflow still needs rules for valid payment and shipping transitions.
+
+## Extend the same role when the workflow gains an event table
+
+The service can update an order, but now we want a record of that change. A migration adds `sales.order_events`; checkout must read those events and append new ones.
+
+Create the table under the same owner:
+
+```sql
+SET ROLE shop_owner;
+CREATE TABLE sales.order_events (
+  order_id bigint NOT NULL REFERENCES sales.orders(id),
+  event text NOT NULL
+);
+RESET ROLE;
+
+SET ROLE checkout_app;
+-- Expect error: permission denied for table order_events
+SELECT * FROM sales.order_events;
+RESET ROLE;
+```
+
+Access to `orders` did not spread to `order_events`. Grant this new task explicitly:
+
+```sql
+GRANT SELECT, INSERT ON TABLE sales.order_events TO shop_checkout;
+
+SET ROLE checkout_app;
+SELECT * FROM sales.order_events;
+RESET ROLE;
+```
+
+The query succeeds with zero rows. The role now has what it needs for the complete order-and-event workflow. Event rows do not generate their own IDs, so this table adds no sequence permission. We also leave `UPDATE` and `DELETE` on the event table ungranted.
+
+If every future table in `sales` is approved for checkout to read, we can make that one permission automatic:
 
 ```sql
 ALTER DEFAULT PRIVILEGES FOR ROLE shop_owner IN SCHEMA sales
-  GRANT SELECT ON TABLES TO store_readonly;
-
-ALTER DEFAULT PRIVILEGES FOR ROLE shop_owner IN SCHEMA sales
-  GRANT USAGE, SELECT ON SEQUENCES TO store_orders_writer;
+  GRANT SELECT ON TABLES TO shop_checkout;
 ```
 
-Default privileges are tied to the role that creates the object. If migrations run as a different role, configure that role as well—or standardize the migration owner. A one-time grant is still needed for existing objects.
+This is a deliberate schema-wide read policy. Skip it if future tables may contain data checkout should not see, and continue granting tables individually. New write permissions remain explicit either way.
 
-## Row-level security adds rules within a table
+![An explicit grant gives checkout access to existing tables. A default SELECT grant applies to future sales tables created by shop_owner.](/blogs/tutorial/assets/postgresql-access-control/default-privileges.svg)
 
-Normal table privileges answer “may this role read this table?” **Row-level security** (RLS) adds a narrower question: “which rows in this table may this role read or change?”
+Defaults affect future objects only; they would not have repaired the existing event table. They also belong to the **creating role**. Migrations must create objects as `shop_owner` for these defaults to apply, using `SET ROLE shop_owner` from an appropriately authorized migration identity. Simply belonging to the owner role is insufficient if the migration creates objects under its own name. See [ALTER DEFAULT PRIVILEGES](https://www.postgresql.org/docs/18/sql-alterdefaultprivileges.html).
 
-For a multi-tenant table, an API role may have `SELECT` on `sales.orders`, while an RLS policy permits it to see only rows for the current tenant. This is valuable defense in depth: a query missing its tenant filter does not automatically expose every tenant’s data.
+## Limit the completed workflow to the current tenant
+
+Our permissions now describe what checkout may do. They still allow it to read orders belonging to both shops in the sample data. If one service handles multiple tenants, we need to describe which rows it may use as well.
+
+**Row-level security (RLS)** filters operations that table privileges already allow. In the example, Asha and Meera belong to tenant A, while Ravi belongs to tenant B. With tenant A selected, checkout should see only Asha and Meera.
+
+![Checkout with tenant A context sees Asha and Meera, while Ravi's tenant B row is excluded. New rows must also match tenant A.](/blogs/tutorial/assets/postgresql-access-control/tenant-row-policy.svg)
+
+As the owner, add a policy for the order table:
 
 ```sql
+SET ROLE shop_owner;
 ALTER TABLE sales.orders ENABLE ROW LEVEL SECURITY;
-
-CREATE POLICY orders_are_tenant_scoped ON sales.orders
-  FOR SELECT
-  TO shop_api
-  USING (tenant_id = current_setting('app.tenant_id')::uuid);
+CREATE POLICY checkout_orders ON sales.orders
+  FOR ALL TO shop_checkout
+  USING (
+    tenant_id = NULLIF(current_setting('app.tenant_id', true), '')::uuid
+  )
+  WITH CHECK (
+    tenant_id = NULLIF(current_setting('app.tenant_id', true), '')::uuid
+  );
+RESET ROLE;
 ```
 
-RLS deserves careful application design. The application must set tenant context safely for each request, policies need tests, and table owners can normally bypass RLS unless it is forced. It is a precise tool for row-based isolation, not a substitute for basic role and table grants.
+`USING` decides which existing rows the operation can see or target. `WITH CHECK` validates the new row produced by an insert or update. A missing or empty tenant setting does not match a row; an invalid UUID raises an error.
 
-## Functions and views can offer a safer interface
+The event table needs a policy too. Otherwise, a service denied another tenant's orders could still read their events. Here an event is accessible only if its parent order is visible through the order policy:
 
-Sometimes users need to complete a task without being able to browse or modify the underlying tables freely. A view can expose only approved columns and rows. A function can package a controlled operation, such as submitting an order, and callers can receive only `EXECUTE` on that function.
+```sql
+SET ROLE shop_owner;
+ALTER TABLE sales.order_events ENABLE ROW LEVEL SECURITY;
+CREATE POLICY checkout_order_events ON sales.order_events
+  FOR ALL TO shop_checkout
+  USING (EXISTS (
+    SELECT 1 FROM sales.orders o
+    WHERE o.id = order_events.order_id
+  ))
+  WITH CHECK (EXISTS (
+    SELECT 1 FROM sales.orders o
+    WHERE o.id = order_events.order_id
+  ));
+RESET ROLE;
+```
 
-This can make permissions easier to understand because the database exposes an intentional interface rather than its full internal structure. However, functions that run with an owner's privileges (`SECURITY DEFINER`) need special care: set a safe `search_path`, tightly control who can execute them, and keep the function small and reviewed. Used casually, they can accidentally become a privilege-escalation path.
+These policies do not add privileges. `FOR ALL` does not give checkout `DELETE`, for example; that operation still lacks its table grant. PostgreSQL's [policy reference](https://www.postgresql.org/docs/18/sql-createpolicy.html) explains how policies work alongside ordinary permissions.
 
-## A practical checklist
+The application must derive tenant context from authenticated server-side identity. A shared login that can execute arbitrary SQL can change `app.tenant_id` itself, so the setting is **trusted application context, not proof of identity**. This pattern protects against accidentally omitted tenant filters; it does not make a compromised shared database credential tenant-safe.
 
-Good PostgreSQL access control is less about collecting every available keyword and more about establishing a few durable habits:
+Table owners normally bypass RLS, as do superusers and roles with `BYPASSRLS`. That is why we have kept checkout separate from the owner and test as the actual runtime role. [The RLS guide](https://www.postgresql.org/docs/18/ddl-rowsecurity.html) describes these exceptions, owner enforcement with `FORCE ROW LEVEL SECURITY`, and operations such as `TRUNCATE` that policies do not filter.
 
-- Give each human and application its own login role; do not share credentials.
-- Grant access to non-login group roles, then make login roles members of them.
-- Grant the narrowest useful actions on the narrowest useful objects.
-- Separate object ownership and migrations from day-to-day application logins.
-- Review grants to `PUBLIC`, especially on shared schemas and sensitive objects.
-- Configure default privileges for newly created tables and sequences.
-- Use RLS when data isolation depends on which rows a caller may see.
-- Periodically review memberships, owners, and grants as the system changes.
+## Run the complete checkout task with the accumulated permissions
 
-The result is not a maze of permissions. It is a clear statement of responsibility: who may connect, what part of the database they may reach, what actions they may take, and what data they may see. That clarity is the real value of PostgreSQL's access-control model.
+We can now use all the permissions together: find Asha's order, update its status and append an event. No extra grant should be needed for this transaction:
+
+```sql
+SET ROLE checkout_app;
+BEGIN;
+SET LOCAL app.tenant_id = '11111111-1111-1111-1111-111111111111';
+
+SELECT id, customer_name, status FROM sales.orders ORDER BY id;
+-- Asha and Meera; Ravi's order is hidden.
+
+UPDATE sales.orders SET status = 'paid' WHERE id = 1
+RETURNING id, status;
+
+INSERT INTO sales.order_events (order_id, event)
+VALUES (1, 'payment_received');
+
+SELECT o.customer_name, o.status, e.event
+FROM sales.orders o
+JOIN sales.order_events e ON e.order_id = o.id
+WHERE o.id = 1;
+-- Asha | paid | payment_received
+
+COMMIT;
+RESET ROLE;
+```
+
+The update and event insert commit together. If either fails, the application should roll back the transaction so that the status change is not saved without its event. This demonstration is not a complete payment implementation: retry handling, duplicate-event prevention and payment verification need their own application rules.
+
+`SET LOCAL` keeps tenant context within this transaction. With connection pooling, set it for each request and execute that request's queries on the same connection. Application code can bind the tenant value with `SELECT set_config('app.tenant_id', $1, true)` instead of building SQL strings.
+
+Test the other tenant too:
+
+```sql
+SET ROLE checkout_app;
+BEGIN;
+SET LOCAL app.tenant_id = '22222222-2222-2222-2222-222222222222';
+SELECT customer_name FROM sales.orders;
+-- Ravi only.
+SELECT * FROM sales.order_events;
+-- No rows: Asha's event belongs to another tenant.
+ROLLBACK;
+RESET ROLE;
+```
+
+The role is now sufficient for the task, while its limits are visible in actual queries.
+
+## Review what the role gained, and remove what it no longer needs
+
+Here is the final permission set we built, in the same order as the workflow:
+
+| Permission added | Capability it unlocked |
+| --- | --- |
+| Database `CONNECT` | Open a shop connection |
+| Schema `USAGE` | Find objects inside `sales` |
+| `SELECT` on orders | Read orders and use values in filters and returned results |
+| Column `INSERT` on orders | Supply the permitted fields for a new order |
+| Sequence `USAGE` | Generate the new order's ID |
+| Column `UPDATE` on status | Mark an existing order as paid |
+| `SELECT, INSERT` on events | Read and append order events |
+| Optional default `SELECT` | Read future approved tables created by the owner |
+| RLS policies | Restrict permitted operations to the selected tenant's orders and events |
+
+When something fails later, check the permission for that operation rather than adding `ALL`. PostgreSQL's [privilege inspection functions](https://www.postgresql.org/docs/18/functions-info.html) let us ask about the effective login permissions:
+
+```sql
+SELECT has_database_privilege('checkout_app', 'shop', 'CONNECT') AS can_connect;
+SELECT has_schema_privilege('checkout_app', 'sales', 'USAGE') AS can_use_schema;
+SELECT has_table_privilege('checkout_app', 'sales.orders', 'SELECT') AS can_read;
+SELECT has_column_privilege('checkout_app', 'sales.orders', 'status', 'UPDATE')
+  AS can_update_status;
+SELECT has_sequence_privilege('checkout_app', 'sales.orders_id_seq', 'USAGE')
+  AS can_generate_id;
+```
+
+Each returns `true`. Notice the column-specific check for status: a table-wide `UPDATE` check would return `false`. If all the grants are correct but rows are missing, inspect tenant context and policies next.
+
+Suppose a dedicated payment service takes over status updates. We can remove that capability without dismantling the rest of checkout's permissions:
+
+```sql
+REVOKE UPDATE (status) ON TABLE sales.orders FROM shop_checkout;
+SELECT has_column_privilege('checkout_app', 'sales.orders', 'status', 'UPDATE')
+  AS can_update_status;
+-- false
+SELECT has_table_privilege('checkout_app', 'sales.orders', 'SELECT') AS can_read;
+-- true
+```
+
+Privileges are additive, so revoking one grant does not cancel access supplied by another membership, a direct grant, ownership or `PUBLIC`. Verify the result rather than treating `REVOKE` as an explicit deny. The [REVOKE documentation](https://www.postgresql.org/docs/18/sql-revoke.html) covers those other access paths.
+
+## Stop granting when the domain task works
+
+The checkout role began with no access to the shop database. We added a connection, schema access, reads, narrowly scoped writes and the permissions needed by the event table. Each addition answered a specific failure in the same order workflow.
+
+That gives us a practical way to maintain access control: write down the task, grant the operation it requires, test it as the service login, and keep a test for something it must not do. Store these grants and policies alongside the migrations that introduce the objects.
+
+A useful application role is not the role with the most privileges. It is the one that can complete its domain's work with an understandable reason for every permission it holds.
