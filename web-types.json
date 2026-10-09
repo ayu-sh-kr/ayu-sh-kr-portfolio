@@ -949,7 +949,7 @@
           "name": "coffee-order-checkout",
           "source": {
             "file": "./src/components/pages/coffee/order/coffee-order-checkout/coffee-order-checkout.component.ts",
-            "offset": 1476
+            "offset": 1558
           },
           "attributes": [],
           "js": {
@@ -982,7 +982,7 @@
           "name": "coffee-quantity-picker",
           "source": {
             "file": "./src/components/pages/coffee/order/coffee-quantity-picker/coffee-quantity-picker.component.ts",
-            "offset": 735
+            "offset": 806
           },
           "attributes": [],
           "js": {
@@ -993,7 +993,7 @@
           "name": "coffee-size-picker",
           "source": {
             "file": "./src/components/pages/coffee/order/coffee-size-picker/coffee-size-picker.component.ts",
-            "offset": 900
+            "offset": 971
           },
           "attributes": [],
           "js": {
@@ -1026,7 +1026,7 @@
           "name": "consent-notice",
           "source": {
             "file": "./src/components/utils/consent-notice/consent-notice.component.ts",
-            "offset": 1833
+            "offset": 1877
           },
           "attributes": [
             {
@@ -1038,7 +1038,7 @@
               },
               "source": {
                 "file": "./src/components/utils/consent-notice/consent-notice.component.ts",
-                "offset": 2049
+                "offset": 2093
               }
             }
           ],
@@ -1050,7 +1050,7 @@
                 "default": "notice",
                 "source": {
                   "file": "./src/components/utils/consent-notice/consent-notice.component.ts",
-                  "offset": 2049
+                  "offset": 2093
                 }
               }
             ]
@@ -2322,7 +2322,7 @@
           "name": "pricing-start-project",
           "source": {
             "file": "./src/components/pages/pricing/start-project/start-project-shell/start-project-shell.component.ts",
-            "offset": 2116
+            "offset": 2187
           },
           "attributes": [],
           "js": {
@@ -3618,7 +3618,7 @@
           "name": "support-ticket",
           "source": {
             "file": "./src/components/pages/support/help/support-ticket/support-ticket.component.ts",
-            "offset": 894
+            "offset": 965
           },
           "attributes": [],
           "js": {
