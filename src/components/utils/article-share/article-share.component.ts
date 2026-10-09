@@ -83,11 +83,11 @@ export class ArticleShareComponent extends BaseElement {
       return "";
     }
     const icon = (name: string) => `<dota-icon name="${icons[name]}" size="sm" aria-hidden="true"></dota-icon>`;
-    const button = (action: string, name: string, label: string) => `<button class="article-share-button ${action === "native" ? "article-share-button--primary" : ""}" type="button" data-share-action="${action}" aria-label="${label}" title="${label}">${icon(name)}<span class="article-share-tooltip" aria-hidden="true">${label}</span></button>`;
+    const button = (action: string, name: string, label: string) => `<button class="article-share-button" type="button" data-share-action="${action}" aria-label="${label}" title="${label}">${icon(name)}<span class="article-share-tooltip" aria-hidden="true">${label}</span></button>`;
     const platform = (name: SharePlatform, label: string) => `<a class="article-share-button" href="${escapeHtml(getArticleShareUrl(name, data))}" target="_blank" rel="noopener noreferrer" aria-label="Share on ${label} (opens in a new tab)" title="Share on ${label}">${icon(name)}<span class="article-share-tooltip" aria-hidden="true">${label}</span></a>`;
     return `
       <section class="article-share-block" aria-label="Share this article">
-        <div class="article-share-heading"><span class="article-share-eyebrow">PASS IT ON</span><h2>Share this article</h2></div>
+        <p class="article-share-label">Share this article</p>
         <div class="article-share-actions">
           ${button("native", "share", "Share article")}
           ${platform("linkedin", "LinkedIn")}${platform("whatsapp", "WhatsApp")}${platform("x", "X")}
