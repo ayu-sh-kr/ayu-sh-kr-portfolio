@@ -11,6 +11,7 @@ import { dotaHydration } from "@ayu-sh-kr/dota-wrap/ssr";
 import { registerPortfolioMarkdownTheme } from "@app/configs/markdown-theme.config.ts";
 import { AnalyticsEventListener } from "@app/service/analytics-event.listener.ts";
 import { AnalyticsSectionTracker } from "@app/service/analytics-section-tracker.service.ts";
+import { AnalyticsJourneyTracker } from "@app/service/analytics-journey-tracker.service.ts";
 import { ActionButtonDispatcher } from "@app/service/action-button-dispatcher.service.ts";
 import { ServiceState } from "@app/service/service-state.service.ts";
 import { RouterUtils } from "@app/utils/router.utils.ts";
@@ -42,6 +43,7 @@ window.portfolioRestClient = restClient;
 
 let routerService!: RouterService<Router<HTMLElement>>;
 const analyticsSectionTracker = new AnalyticsSectionTracker();
+const analyticsJourneyTracker = new AnalyticsJourneyTracker();
 
 registerPortfolioMarkdownTheme();
 
@@ -49,6 +51,7 @@ registerPortfolioMarkdownTheme();
 // analytics listener first so its page and section events are not lost.
 DefaultApplicationEventListenerRegistry.setListener(applicationEventListener);
 new AnalyticsEventListener();
+if (!import.meta.env.SSR) analyticsJourneyTracker.start();
 new ActionButtonDispatcher();
 ServiceState.start();
 
@@ -64,11 +67,13 @@ export const applicationReady = initializeApp({
     afterEach: [
       applyRouteMetadata,
       (context) => analyticsSectionTracker.trackPage(context.url.pathname),
+      (context) => { if (!import.meta.env.SSR) analyticsJourneyTracker.trackPage(context.url.pathname); },
     ],
   },
 })
   .then((value) => {
     analyticsSectionTracker.trackPage(window.location.pathname);
+    if (!import.meta.env.SSR) analyticsJourneyTracker.trackPage(window.location.pathname);
     routerService = value.routerService;
     RouterUtils.setRouterService(routerService);
     applicationEventPublisher.publishAsync({ name: "app:initialized", data: null });
