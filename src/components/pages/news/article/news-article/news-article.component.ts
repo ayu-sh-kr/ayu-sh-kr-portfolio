@@ -10,6 +10,7 @@ import {
   type NewsNote,
 } from "@app/configs/news.config.ts";
 import {portfolioMarkdownColor, portfolioMarkdownTheme} from "@app/configs/markdown-theme.config.ts";
+import {siteIdentity} from "@app/data/portfolio-content.ts";
 import {newsContent} from "@app/data/news-content.ts";
 import {NEWS_MARKDOWN_SOURCE_EVENT, type NewsMarkdownSource} from "@app/events/news.events.ts";
 import {NewsLoaderService} from "@app/service/news-loader.service.ts";
@@ -203,6 +204,7 @@ export class NewsArticleComponent extends BaseElement {
           ${renderFigures(note)}
           ${documentMarkup}
           ${renderReference(note)}
+          <div class="news-article-block"><article-share article-title="${escapeHtml(note.title)}" canonical-url="https://www.ayu-sh-kr.com/news/${encodeURIComponent(note.slug)}/" author="${escapeHtml(siteIdentity.name)}" publication-date="${note.date}"></article-share></div>
         </article>
 
         <nav class="news-article-block layout-section" aria-label="Adjacent Dispatch notes">
