@@ -43,7 +43,6 @@ export class ArticleShareComponent extends BaseElement {
     if (!status || !fallback) {
       return;
     }
-    status.textContent = "";
     fallback.hidden = true;
     button.disabled = true;
     try {

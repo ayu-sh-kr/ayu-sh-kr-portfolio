@@ -7,6 +7,7 @@ article-share {
 }
 
 .article-share-block {
+  position: relative;
   display: grid;
   grid-template-columns: 1fr auto;
   align-items: center;
@@ -73,7 +74,6 @@ article-share {
 }
 
 .article-share-button:disabled {
-  opacity: 0.6;
   cursor: wait;
 }
 
@@ -110,8 +110,11 @@ article-share {
   color: var(--muted-color);
 }
 
-.article-share-status:empty {
-  display: none;
+.article-share-status {
+  position: absolute;
+  inset-block-start: calc(100% + 0.25rem);
+  inset-inline-start: 0;
+  line-height: 1.25rem;
 }
 
 .article-share-fallback {
@@ -128,6 +131,7 @@ article-share {
 
 @media (max-width: 36rem) {
   .article-share-block {
+  position: relative;
     grid-template-columns: 1fr;
     gap: var(--layout-space-2);
   }
