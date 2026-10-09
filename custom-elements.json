@@ -6087,6 +6087,109 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/utils/article-share/article-share.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "ArticleShareComponent",
+          "customElement": true,
+          "tagName": "article-share",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [
+            {
+              "kind": "field",
+              "name": "articleTitle",
+              "attribute": "article-title",
+              "type": {
+                "text": "string"
+              },
+              "default": ""
+            },
+            {
+              "kind": "field",
+              "name": "author",
+              "attribute": "author",
+              "type": {
+                "text": "string"
+              },
+              "default": ""
+            },
+            {
+              "kind": "field",
+              "name": "canonicalUrl",
+              "attribute": "canonical-url",
+              "type": {
+                "text": "string"
+              },
+              "default": ""
+            },
+            {
+              "kind": "field",
+              "name": "publicationDate",
+              "attribute": "publication-date",
+              "type": {
+                "text": "string"
+              },
+              "default": ""
+            }
+          ],
+          "attributes": [
+            {
+              "name": "article-title",
+              "fieldName": "articleTitle",
+              "type": {
+                "text": "string"
+              },
+              "default": ""
+            },
+            {
+              "name": "author",
+              "fieldName": "author",
+              "type": {
+                "text": "string"
+              },
+              "default": ""
+            },
+            {
+              "name": "canonical-url",
+              "fieldName": "canonicalUrl",
+              "type": {
+                "text": "string"
+              },
+              "default": ""
+            },
+            {
+              "name": "publication-date",
+              "fieldName": "publicationDate",
+              "type": {
+                "text": "string"
+              },
+              "default": ""
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ArticleShareComponent",
+          "declaration": {
+            "name": "ArticleShareComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "article-share",
+          "declaration": {
+            "name": "ArticleShareComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/utils/consent-notice/consent-notice.component.js",
       "declarations": [
         {

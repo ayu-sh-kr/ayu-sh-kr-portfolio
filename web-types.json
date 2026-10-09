@@ -479,6 +479,103 @@
           }
         },
         {
+          "name": "article-share",
+          "source": {
+            "file": "./src/components/utils/article-share/article-share.component.ts",
+            "offset": 693
+          },
+          "attributes": [
+            {
+              "name": "article-title",
+              "default": "",
+              "required": false,
+              "value": {
+                "type": "string"
+              },
+              "source": {
+                "file": "./src/components/utils/article-share/article-share.component.ts",
+                "offset": 884
+              }
+            },
+            {
+              "name": "author",
+              "default": "",
+              "required": false,
+              "value": {
+                "type": "string"
+              },
+              "source": {
+                "file": "./src/components/utils/article-share/article-share.component.ts",
+                "offset": 1186
+              }
+            },
+            {
+              "name": "canonical-url",
+              "default": "",
+              "required": false,
+              "value": {
+                "type": "string"
+              },
+              "source": {
+                "file": "./src/components/utils/article-share/article-share.component.ts",
+                "offset": 1046
+              }
+            },
+            {
+              "name": "publication-date",
+              "default": "",
+              "required": false,
+              "value": {
+                "type": "string"
+              },
+              "source": {
+                "file": "./src/components/utils/article-share/article-share.component.ts",
+                "offset": 1352
+              }
+            }
+          ],
+          "js": {
+            "properties": [
+              {
+                "name": "articleTitle",
+                "type": "string",
+                "default": "",
+                "source": {
+                  "file": "./src/components/utils/article-share/article-share.component.ts",
+                  "offset": 884
+                }
+              },
+              {
+                "name": "author",
+                "type": "string",
+                "default": "",
+                "source": {
+                  "file": "./src/components/utils/article-share/article-share.component.ts",
+                  "offset": 1186
+                }
+              },
+              {
+                "name": "canonicalUrl",
+                "type": "string",
+                "default": "",
+                "source": {
+                  "file": "./src/components/utils/article-share/article-share.component.ts",
+                  "offset": 1046
+                }
+              },
+              {
+                "name": "publicationDate",
+                "type": "string",
+                "default": "",
+                "source": {
+                  "file": "./src/components/utils/article-share/article-share.component.ts",
+                  "offset": 1352
+                }
+              }
+            ]
+          }
+        },
+        {
           "name": "blog-article",
           "source": {
             "file": "./src/components/pages/blog/article/blog-article/blog-article.component.ts",
@@ -1676,7 +1773,7 @@
           "name": "news-article",
           "source": {
             "file": "./src/components/pages/news/article/news-article/news-article.component.ts",
-            "offset": 2993
+            "offset": 3054
           },
           "attributes": [],
           "js": {

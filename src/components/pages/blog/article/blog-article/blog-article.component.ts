@@ -163,6 +163,7 @@ export class BlogArticleComponent extends BaseElement {
           writer="${escapeHtml(post.writer)}">
         </blog-article-header>
         ${markdown}
+        <article-share article-title="${escapeHtml(post.header)}" canonical-url="https://www.ayu-sh-kr.com/blog/${encodeURIComponent(post.slug)}/" author="${escapeHtml(post.writer)}" publication-date="${post.date}"></article-share>
         <blog-subscription data-analytics-section="blog_article_subscription"></blog-subscription>
         <aside class="blog-coffee-support" aria-labelledby="blog-coffee-support-title" data-analytics-section="blog_article_coffee">
           <h2 id="blog-coffee-support-title" class="blog-coffee-support-title">${blogArticleContent.coffeeSupport.title}</h2>
@@ -170,7 +171,7 @@ export class BlogArticleComponent extends BaseElement {
           <a class="blog-coffee-support-link" href="/coffee">${blogArticleContent.coffeeSupport.linkLabel} <span aria-hidden="true">→</span></a>
         </aside>
         <footer class="blog-article-footer">
-          <div class="blog-article-footer-meta"><span class="blog-chip">${labelForCategory(post.category)}</span><span>${blogArticleContent.footer.shareCopy}</span></div>
+          <div class="blog-article-footer-meta"><span class="blog-chip">${labelForCategory(post.category)}</span></div>
           <div class="blog-post-nav">
             <a href="/blog" class="blog-quiet-card"><span>←</span><span><small>${blogArticleContent.footer.backLabel}</small>${blogArticleContent.allPostsLabel}</span></a>
             ${nextLink}

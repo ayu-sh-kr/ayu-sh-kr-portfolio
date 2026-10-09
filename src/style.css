@@ -21,6 +21,7 @@
 @import "./components/utils/footer/footer-index/footer-index.component.css";
 @import "./components/utils/footer/footer-baseline/footer-baseline.component.css";
 @import "./components/utils/theme/dark-mode-button/dark-mode-button.component.css";
+@import "./components/utils/article-share/article-share.component.css";
 @import "./components/utils/alert/dota-alert/dota-alert.component.css";
 @import "./components/utils/toast/dota-toast/dota-toast.component.css";
 @import "./components/utils/consent-notice/consent-notice.component.css";
