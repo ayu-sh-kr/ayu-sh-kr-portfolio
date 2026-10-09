@@ -1,4 +1,4 @@
-import {ApplicationEventService, BaseElement, BeforeInit, Component, WindowListener} from "@ayu-sh-kr/dota-wrap/core";
+import {ApplicationEventService, BaseElement, BeforeInit, BindEvent, Component, WindowListener} from "@ayu-sh-kr/dota-wrap/core";
 import {html, trustedHTML} from "@ayu-sh-kr/dota-wrap/rendering";
 import {OnEvent} from "@ayu-sh-kr/dota-wrap/event";
 import {blogPosts, formatBlogDate, getBlogPost, getBlogSlug, labelForCategory, type BlogPost} from "@app/configs/blogs.config.ts";
@@ -9,6 +9,7 @@ import {escapeHtml} from "@app/utils/html.utils.ts";
 import {MarkdownProgressLifecycle} from "@app/utils/markdown-lifecycle.utils.ts";
 import {BlogLoaderService} from "@app/service/blog-loader.service.ts";
 import {blogViewCountService, toBlogViewTrackingFailureReason} from "@app/service/blog-view-count.service.ts";
+import {getBlogShareData} from "./blog-share.utils.ts";
 import {publishAnalyticsEvent} from "@app/utils/analytics.utils.ts";
 
 /**
@@ -123,6 +124,59 @@ export class BlogArticleComponent extends BaseElement {
   }
 
   /**
+   * Shares the catalog's clean permalink or copies a title/author reference.
+   * Native sharing falls back to copying when unavailable or unsuccessful;
+   * cancellation is silent. Clipboard failures reveal selectable text instead.
+   * Feedback changes only the share region, preserving the loaded Markdown.
+   */
+  @BindEvent({event: "click", id: "[data-blog-share-action]"})
+  async shareArticle(event: Event): Promise<void> {
+    const button = (event.target as HTMLElement | null)?.closest<HTMLButtonElement>("[data-blog-share-action]");
+    const post = getBlogPost(getBlogSlug(window.location.pathname));
+    if (!button || !post || button.disabled) {
+      return;
+    }
+    const data = getBlogShareData(post);
+    const action = button.dataset.blogShareAction;
+    const status = this.querySelector<HTMLElement>("[data-blog-share-status]");
+    const fallback = this.querySelector<HTMLTextAreaElement>("[data-blog-share-fallback]");
+    if (!status || !fallback) {
+      return;
+    }
+    status.textContent = "";
+    fallback.hidden = true;
+    button.disabled = true;
+    try {
+      if (action === "native" && typeof navigator.share === "function") {
+        try {
+          await navigator.share({title: data.title, url: data.url});
+          return;
+        } catch (error) {
+          if (error instanceof Error && error.name === "AbortError") {
+            return;
+          }
+        }
+      }
+      const text = action === "reference" ? data.reference : data.url;
+      try {
+        if (!navigator.clipboard?.writeText) {
+          throw new Error("Clipboard unavailable");
+        }
+        await navigator.clipboard.writeText(text);
+        status.textContent = action === "reference" ? "Reference copied." : "Link copied.";
+      } catch {
+        fallback.value = text;
+        fallback.hidden = false;
+        fallback.focus();
+        fallback.select();
+        status.textContent = "Select and copy the text below.";
+      }
+    } finally {
+      button.disabled = false;
+    }
+  }
+
+  /**
    * Returns the not-found, error, or article markup for the current route.
    * The route slug is available before the connected lifecycle event, allowing
    * the client to hydrate the same article shell that SSG produced.
@@ -148,6 +202,7 @@ export class BlogArticleComponent extends BaseElement {
     const nextPost = this.nextPost ?? (blogPosts.length > 1
       ? blogPosts[(blogPosts.indexOf(post) + 1) % blogPosts.length] ?? null
       : null);
+    const share = getBlogShareData(post);
     const nextLink = nextPost
       ? `<a href="/blog/${nextPost.slug}" class="blog-quiet-card blog-quiet-card-next"><span><small>${blogArticleContent.footer.nextLabel}</small>${escapeHtml(nextPost.header)}</span><span>→</span></a>`
       : "";
@@ -162,6 +217,17 @@ export class BlogArticleComponent extends BaseElement {
           title="${escapeHtml(post.header)}"
           writer="${escapeHtml(post.writer)}">
         </blog-article-header>
+        <section class="blog-share" aria-label="Share this article">
+          <div class="blog-share-actions">
+            <button type="button" data-blog-share-action="native">Share</button>
+            <a href="${escapeHtml(share.linkedin)}" target="_blank" rel="noopener noreferrer" aria-label="Share this article on LinkedIn (opens in a new tab)">LinkedIn</a>
+            <a href="${escapeHtml(share.whatsapp)}" target="_blank" rel="noopener noreferrer" aria-label="Share this article on WhatsApp (opens in a new tab)">WhatsApp</a>
+            <button type="button" data-blog-share-action="link">Copy link</button>
+            <button type="button" data-blog-share-action="reference">Copy reference</button>
+          </div>
+          <p class="blog-share-status" data-blog-share-status role="status" aria-live="polite"></p>
+          <textarea class="blog-share-fallback" data-blog-share-fallback aria-label="Article sharing text" readonly hidden></textarea>
+        </section>
         ${markdown}
         <blog-subscription data-analytics-section="blog_article_subscription"></blog-subscription>
         <aside class="blog-coffee-support" aria-labelledby="blog-coffee-support-title" data-analytics-section="blog_article_coffee">
