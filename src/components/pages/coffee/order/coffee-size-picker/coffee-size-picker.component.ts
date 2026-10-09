@@ -3,6 +3,7 @@ import { OnEvent } from "@ayu-sh-kr/dota-wrap/event";
 import { coffeeContent } from "@app/data/coffee-content.ts";
 import { COFFEE_ORDER_SIZE_EVENT, type CoffeeOrderSizeSelection } from "@app/events/coffee.events.ts";
 import { coffeePricingService, formatCoffeeAmount, type CoffeeCurrency } from "@app/service/coffee-order/coffee-pricing.service.ts";
+import { publishAnalyticsEvent } from "@app/utils/analytics.utils.ts";
 
 /**
  * Presents the authored coffee-size cards and publishes the active choice.
@@ -49,13 +50,19 @@ export class CoffeeSizePickerComponent extends BaseElement {
   selectSize(event: MouseEvent): void {
     const button = (event.target as HTMLElement).closest<HTMLButtonElement>("[data-coffee-size]");
     const sizeId = button?.dataset.coffeeSize;
-    if (!sizeId || sizeId === this.selectedSizeId || !coffeeContent.sizes.some((size) => size.id === sizeId)) {
+    const size = coffeeContent.sizes.find((size) => size.id === sizeId);
+    if (!size) {
       return;
     }
 
-    this.selectedSizeId = sizeId;
+    publishAnalyticsEvent({ eventName: "coffee_amount_selected", params: { size_id: size.id, value: size.price[this.currency], currency: this.currency } });
+    if (size.id === this.selectedSizeId) {
+      return;
+    }
+
+    this.selectedSizeId = size.id;
     this.updateHTML();
-    void this.publisher.publishAsync({ name: COFFEE_ORDER_SIZE_EVENT, data: { sizeId } satisfies CoffeeOrderSizeSelection });
+    void this.publisher.publishAsync({ name: COFFEE_ORDER_SIZE_EVENT, data: { sizeId: size.id } satisfies CoffeeOrderSizeSelection });
   }
 
   /** Returns the size cards with the current picker-local selection marked active. */

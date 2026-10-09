@@ -3,9 +3,9 @@ slug: privacy
 title: Privacy Policy
 tagline: What I collect, why I collect it, and how to get rid of it.
 kind: privacy
-version: "1.4"
-updated: 2026-10-03
-effective: 2026-10-03
+version: "1.5"
+updated: 2026-10-07
+effective: 2026-10-07
 applies: ayu-sh-kr.com and client work
 contact: akjaiswal2003@gmail.com
 
@@ -43,7 +43,7 @@ Everything from section 10 onward applies either way. Each section carries a lab
 
 The site is deployed on Vercel as a client-rendered static application. The site also loads Google Analytics 4 through Google's `gtag.js` tag. GA4 helps me understand broad page use and selected interactions so I can improve the site.
 
-The application sends stable, non-content event information such as a page category, page path, section, article or project slug, selected contact method, or CTA action. It does not intentionally send email addresses, form fields, message contents, or client project data to GA4. Google may also process standard browser, device, and approximate location data under its own terms and controls.
+The application sends stable, non-content event information such as a page category, page path, section, article or project slug, selected contact method, or CTA action. It also measures article viewport-depth milestones, navigation destinations, form starts and submission outcomes, and coffee contribution selections and payment milestones. Viewport depth shows how far content appeared on screen; it does not prove it was read. Form outcomes carry only the form category and a broad failure reason. Application events omit URL query strings and fragments, including subscription-link tokens. It does not intentionally send email addresses, form fields, message contents, or client project data to GA4. Google may also process standard browser, device, and approximate location data under its own terms and controls.
 
 | What's recorded | Why | Kept for |
 | --- | --- | --- |

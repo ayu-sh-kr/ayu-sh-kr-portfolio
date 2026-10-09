@@ -16,8 +16,8 @@ export class AnalyticsEventListener {
    *
    * Route hooks and UI components publish the same privacy-safe contract, so
    * this is the only application boundary that knows about Google. The current
-   * title and URL are added here because both are reliable after a route's
-   * `afterEach` hook and are useful for diagnosing the delivered event.
+   * title and URL are added here after a route's `afterEach` hook. Query strings
+   * and fragments are removed because email-link tokens must not reach GA4.
    */
   @OnEvent(ANALYTICS_TRACK_EVENT)
   sendToGoogle(event: ApplicationEvent<typeof ANALYTICS_TRACK_EVENT>): void {
@@ -27,7 +27,7 @@ export class AnalyticsEventListener {
     window.gtag("event", event.data.eventName, {
       ...event.data.params,
       page_title: document.title,
-      page_location: window.location.href,
+      page_location: `${window.location.origin}${window.location.pathname}`,
     });
   }
 }

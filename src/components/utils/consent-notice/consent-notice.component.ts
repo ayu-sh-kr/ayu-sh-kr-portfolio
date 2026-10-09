@@ -6,7 +6,7 @@ import {Consent, type ConsentChoice, type ConsentMode, type ConsentState} from "
 const COPY: Record<ConsentMode, {title: string; description: string; actions: readonly {choice: ConsentChoice; label: string; className: string}[]}> = {
   notice: {
     title: "No advertising or cross-site tracking.",
-    description: "Analytics are anonymous and cookieless. A small number of preferences stays on your device.",
+    description: "Anonymous, cookieless analytics measure page use, reading depth, and form outcomes. A small number of preferences stays on your device.",
     actions: [{choice: "ack", label: "Got it", className: "consent-notice__button--solid"}],
   },
   consent: {

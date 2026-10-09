@@ -48,6 +48,11 @@ export type AnalyticsPage =
  * viewport, keeping scroll noise out of the analytics stream.
  */
 export type AnalyticsSection =
+  | "news_feed"
+  | "news_subscription"
+  | "coffee_order"
+  | "support_help"
+  | "project_brief"
   | "home_hero"
   | "home_journey"
   | "home_work"
@@ -98,7 +103,7 @@ export const isAnalyticsCardDeckLink = (value: string | undefined): value is Ana
   value != null && ANALYTICS_CARD_DECK_LINKS.includes(value as AnalyticsCardDeckLink);
 
 /** Stable identifiers for forms whose completed submissions are measured. */
-export type AnalyticsFormName = "blog_subscription";
+export type AnalyticsFormName = "blog_subscription" | "project_brief" | "support_ticket";
 
 /** Non-identifying categories for failures in the aggregate blog-view metric. */
 export type AnalyticsBlogViewTrackingFailureReason = "network" | "client" | "server" | "invalid_response";
@@ -115,6 +120,67 @@ export const isAnalyticsContactMethod = (value: string | undefined): value is An
  * values describe user intent and content identity, never form contents or PII.
  */
 export type AnalyticsTrackEvent =
+  | {
+      /** Sparse funnel facts emitted without reading or retaining field contents. */
+      eventName: "form_start" | "form_submit" | "form_success" | "form_error";
+      /** Form identity and a bounded outcome category for funnel reports. */
+      params: {
+        /** Form whose visitor journey advanced. */
+        form_name: AnalyticsFormName;
+        /** Broad failure category, never a server message or submitted value. */
+        reason?: "validation" | "attachment" | "request";
+      };
+    }
+  | {
+      /** Measures which shared navigation surface sends visitors to a destination. */
+      eventName: "navigation_click";
+      /** Authored internal path and navigation placement. */
+      params: {
+        /** Same-origin destination, excluding query strings and fragments. */
+        destination: string;
+        /** Chrome surface containing the selected link. */
+        surface: "header" | "footer";
+      };
+    }
+  | {
+      /** Records content discovery from Dispatch listing and adjacent-note links. */
+      eventName: "news_open";
+      /** Public content identity, without link queries or visible copy. */
+      params: {
+        /** Public note slug extracted from the destination path. */
+        slug: string;
+      };
+    }
+  | {
+      /** Records article-body depth once per milestone during a route visit. */
+      eventName: "content_progress";
+      /** Public content identity and maximum viewport depth, not proof of reading. */
+      params: {
+        /** Editorial domain of the rendered Markdown body. */
+        kind: "blog" | "news" | "showcase";
+        /** Public content slug taken from the route. */
+        slug: string;
+        /** Percentage milestone reached by the bottom of the viewport. */
+        percent: 25 | 50 | 75 | 100;
+      };
+    }
+  | {
+      /** Coffee funnel milestones, emitted by the component that owns the visitor action. */
+      eventName: "coffee_form_filled" | "coffee_amount_selected" | "coffee_quantity_selected" | "coffee_payment_button_clicked" | "coffee_payment_started" | "coffee_payment_success";
+      /** Non-identifying selection and payment context; never includes supporter details. */
+      params: {
+        /** Authored coffee size selected by the visitor. */
+        size_id?: string;
+        /** Selected number of coffees. */
+        quantity?: number;
+        /** Contribution in major currency units, rather than backend minor units. */
+        value?: number;
+        /** ISO currency code used for the reported value. */
+        currency?: string;
+        /** Whether the visitor selected the custom quantity control. */
+        is_custom?: boolean;
+      };
+    }
   | {
       /** Records a completed route view after the destination metadata is rendered. */
       eventName: "page_view";
@@ -249,6 +315,11 @@ export type AnalyticsTrackEvent =
     };
 
 const ANALYTICS_SECTIONS: readonly AnalyticsSection[] = [
+  "news_feed",
+  "news_subscription",
+  "coffee_order",
+  "support_help",
+  "project_brief",
   "home_hero",
   "home_journey",
   "home_work",

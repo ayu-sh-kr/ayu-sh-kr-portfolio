@@ -17,6 +17,7 @@ import {
   getPricingProjectBriefPreviewRows,
 } from "@app/components/pages/pricing/start-project/project-preview/project-preview.utils.ts";
 import { pricingFormService } from "@app/service/pricing-form/pricing-form.service.ts";
+import { publishAnalyticsEvent } from "@app/utils/analytics.utils.ts";
 
 /**
  * Names the contact fields owned by the project-start shell rather than a focused branch form.
@@ -236,6 +237,7 @@ export class PricingStartProjectComponent extends BaseElement {
     }
 
     this.isSubmitting = true;
+    publishAnalyticsEvent({eventName: "form_submit", params: {form_name: "project_brief"}});
     this.isSubmitFailed = false;
     this.updateHTML();
 
@@ -243,8 +245,10 @@ export class PricingStartProjectComponent extends BaseElement {
       const { id } = await pricingFormService.submitBrief(this.brief);
       this.submissionId = id;
       this.isPrepared = true;
+      publishAnalyticsEvent({eventName: "form_success", params: {form_name: "project_brief"}});
     } catch {
       this.isSubmitFailed = true;
+      publishAnalyticsEvent({eventName: "form_error", params: {form_name: "project_brief", reason: "request"}});
     } finally {
       this.isSubmitting = false;
       this.updateHTML();
@@ -456,7 +460,7 @@ export class PricingStartProjectComponent extends BaseElement {
     const form = content.form;
 
     return html`
-      <section id="pricing-start-project" class="pricing-start-project-section" aria-labelledby="pricing-start-project-title">
+      <section id="pricing-start-project" class="pricing-start-project-section" aria-labelledby="pricing-start-project-title" data-analytics-section="project_brief">
         <div class="pricing-start-project-content layout-page">
           <pricing-start-project-intro></pricing-start-project-intro>
           <pricing-project-mode-selector selected-mode="${this.brief.mode}"></pricing-project-mode-selector>

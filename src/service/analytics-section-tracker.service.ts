@@ -51,8 +51,9 @@ export class AnalyticsSectionTracker {
           eventName: "section_view",
           params: {section, page_path: pagePath},
         });
+        this.observer?.unobserve(entry.target);
       });
-    }, {threshold: 0.35});
+    }, {threshold: 0, rootMargin: "-48px 0px -48px 0px"});
 
     sections.forEach((section) => this.observer?.observe(section));
   }

@@ -1,6 +1,7 @@
 import { BaseElement, BindEvent, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
 import { OnEvent } from "@ayu-sh-kr/dota-wrap/event";
 import { supportContent } from "@app/data/support-content.ts";
+import { publishAnalyticsEvent } from "@app/utils/analytics.utils.ts";
 import {
   type SupportTicketAttachment,
   supportTicketService,
@@ -150,6 +151,7 @@ export class SupportTicketComponent extends BaseElement {
       window.setTimeout(() => field?.classList.remove("is-invalid"), 1600);
     });
     if (invalid.length > 0) {
+      publishAnalyticsEvent({eventName: "form_error", params: {form_name: "support_ticket", reason: "validation"}});
       invalid[0].focus();
       return;
     }
@@ -159,6 +161,7 @@ export class SupportTicketComponent extends BaseElement {
       submitError.hidden = true;
     }
 
+    publishAnalyticsEvent({eventName: "form_submit", params: {form_name: "support_ticket"}});
     await Promise.all(this.pendingUploads.values());
     const topic = this.querySelector<HTMLButtonElement>(".support-topic.is-on")?.dataset.topic ?? null;
     const files = this.files.flatMap((file) => {
@@ -166,6 +169,7 @@ export class SupportTicketComponent extends BaseElement {
       return attachment ? [attachment] : [];
     });
     if (files.length !== this.files.length) {
+      publishAnalyticsEvent({eventName: "form_error", params: {form_name: "support_ticket", reason: "attachment"}});
       if (submitError) {
         submitError.hidden = false;
       }
@@ -177,7 +181,9 @@ export class SupportTicketComponent extends BaseElement {
         name: name.value.trim(), email: email.value.trim(), topic,
         message: message.value.trim(), files,
       });
+      publishAnalyticsEvent({eventName: "form_success", params: {form_name: "support_ticket"}});
     } catch {
+      publishAnalyticsEvent({eventName: "form_error", params: {form_name: "support_ticket", reason: "request"}});
       if (submitError) {
         submitError.hidden = false;
       }
