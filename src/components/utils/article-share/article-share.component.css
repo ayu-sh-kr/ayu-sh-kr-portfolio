@@ -1,0 +1,156 @@
+article-share {
+  display: block;
+  max-inline-size: 42.5rem;
+  margin: var(--layout-space-7, 2rem) auto;
+  color: var(--foreground-color);
+  font-family: var(--primary-font), sans-serif;
+}
+
+.article-share-block {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: var(--layout-space-4, 1rem);
+  padding: var(--layout-space-5, 1.5rem);
+  border: 1px solid var(--border-color);
+  border-radius: 1rem;
+  background: var(--surface-color);
+}
+
+.article-share-eyebrow {
+  color: var(--muted-color);
+  font-size: 0.625rem;
+  font-weight: 650;
+  letter-spacing: 0.12em;
+}
+
+.article-share-heading h2 {
+  margin: 0.35rem 0 0;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+
+.article-share-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.article-share-button {
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  inline-size: 2.75rem;
+  block-size: 2.75rem;
+  padding: 0;
+  border: 1px solid var(--border-color);
+  border-radius: 0.75rem;
+  background: var(--background-color);
+  color: var(--foreground-color);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 180ms ease, border-color 180ms ease, transform 180ms ease;
+}
+
+.article-share-button svg {
+  inline-size: 1.2rem;
+  block-size: 1.2rem;
+}
+
+.article-share-button--primary {
+  background: var(--primary-color);
+  color: var(--primary-color-on);
+  border-color: var(--primary-color);
+}
+
+.article-share-button:hover {
+  border-color: var(--foreground-color);
+  transform: translateY(-2px);
+}
+
+.article-share-button:active {
+  transform: translateY(0) scale(0.96);
+}
+
+.article-share-button:focus-visible,
+.article-share-fallback:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 3px;
+}
+
+.article-share-button:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.article-share-tooltip {
+  position: absolute;
+  inset-block-end: calc(100% + 0.5rem);
+  inset-inline-end: 0;
+  padding: 0.35rem 0.55rem;
+  border: 1px solid var(--border-color);
+  border-radius: 0.4rem;
+  background: var(--surface-color);
+  color: var(--foreground-color);
+  font-size: 0.7rem;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 180ms ease;
+}
+
+.article-share-button--primary .article-share-tooltip {
+  inset-inline-start: 0;
+  inset-inline-end: auto;
+}
+
+.article-share-button:is(:hover, :focus-visible) .article-share-tooltip {
+  opacity: 1;
+}
+
+.article-share-status,
+.article-share-fallback {
+  grid-column: 1 / -1;
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--muted-color);
+}
+
+.article-share-status:empty {
+  display: none;
+}
+
+.article-share-fallback {
+  box-sizing: border-box;
+  inline-size: 100%;
+  min-block-size: 6rem;
+  border: 1px solid var(--border-color);
+  border-radius: 0.6rem;
+  padding: 0.75rem;
+  background: var(--background-color);
+  color: var(--foreground-color);
+  font: inherit;
+}
+
+@media (max-width: 48rem) {
+  .article-share-block {
+    grid-template-columns: 1fr;
+    padding: var(--layout-space-4, 1rem);
+  }
+}
+
+@media (max-width: 24rem) {
+  .article-share-actions {
+    display: grid;
+    grid-template-columns: repeat(3, 2.75rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .article-share-button,
+  .article-share-tooltip {
+    transition: none;
+  }
+}
