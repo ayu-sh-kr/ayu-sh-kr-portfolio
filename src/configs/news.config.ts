@@ -68,6 +68,17 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "jetbrains-mellum-2-1-coding-agents",
+    date: "2026-10-09",
+    title: "JetBrains Mellum2.1: an open 12B model for local coding agents",
+    summary: "JetBrains Mellum2.1 targets local coding agents with open 12B MoE weights. Explore repository training, benchmark limits, GGUF downloads and runtime memory requirements.",
+    kind: "shipped",
+    document: "/news/jetbrains-mellum-2-1-coding-agents.md",
+    keywords: ["JetBrains Mellum2.1", "Mellum2.1 coding agents", "local coding model", "12B MoE model", "Mellum2.1 GGUF", "SWE-bench Verified", "self-hosted AI agents"],
+    minutes: 4,
+    reference: {label: "JetBrains — Mellum2.1 release", href: "https://blog.jetbrains.com/ai/2026/10/mellum2-1-gets-to-work-a-fast-open-model-for-coding-agents/"},
+  },
+  {
     slug: "weft-ai-coding-agent-coordination",
     date: "2026-10-08",
     title: "Weft brings live coordination to AI coding agents working with Git",

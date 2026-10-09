@@ -14,6 +14,11 @@
   ],
   "redirects": [
     {
+      "source": "/news/jetbrains-mellum-2-1-coding-agents",
+      "destination": "/news/jetbrains-mellum-2-1-coding-agents/",
+      "permanent": true
+    },
+    {
       "source": "/news/weft-ai-coding-agent-coordination",
       "destination": "/news/weft-ai-coding-agent-coordination/",
       "permanent": true
