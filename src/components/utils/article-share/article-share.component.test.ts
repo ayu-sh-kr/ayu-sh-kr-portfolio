@@ -114,10 +114,10 @@ describe("reusable article sharing", () => {
     expect(clipboard.mock.calls[0]![0]).not.toContain(`/blog/${post.slug}/`);
   });
 
-  it("renders labelled inline icons and hides unsafe or invalid destinations", () => {
+  it("renders labelled dota icons and hides unsafe or invalid destinations", () => {
     article.innerHTML = article.render();
     expect(article.querySelectorAll(".article-share-button")).toHaveLength(6);
-    expect(article.querySelectorAll(".article-share-button svg[aria-hidden='true']")).toHaveLength(6);
+    expect(article.querySelectorAll(".article-share-button dota-icon[aria-hidden='true']")).toHaveLength(6);
     expect(article.querySelectorAll(".article-share-button[aria-label]")).toHaveLength(6);
     article.canonicalUrl = "javascript:alert(1)";
     expect(article.render()).toBe("");

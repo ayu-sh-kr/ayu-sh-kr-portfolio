@@ -54,7 +54,12 @@ article-share {
   transition: background-color 180ms ease, border-color 180ms ease, transform 180ms ease;
 }
 
-.article-share-button svg {
+.article-share-button dota-icon {
+  display: inline-flex;
+  color: inherit;
+}
+
+.article-share-button dota-icon svg {
   inline-size: 1.2rem;
   block-size: 1.2rem;
 }
