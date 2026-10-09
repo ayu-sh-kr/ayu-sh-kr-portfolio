@@ -1,4 +1,4 @@
 interface:
   display_name: "Technical Blog Writing"
-  short_description: "Write clear, connected engineering blogs."
-  default_prompt: "Use $technical-blog-writing to improve this engineering article."
+  short_description: "Write connected engineering guides with original evidence."
+  default_prompt: "Use $technical-blog-writing to build this engineering article around one runnable example, original evidence, and clear failure boundaries."

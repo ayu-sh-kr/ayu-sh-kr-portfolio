@@ -11,6 +11,14 @@ Use this skill for engineering articles that need a connected narrative rather t
 
 Define the responsibility first, then explain the mechanism that upholds it. Write for a developer who needs to make a decision and understand the consequence of getting it wrong.
 
+## Original evidence and reproducibility
+
+Choose a concrete reader task within backend reliability, AI developer infrastructure, or deployment unless another topic is requested. Include an original contribution such as a runnable example, failure demonstration, inspected implementation, or measured comparison. Distinguish tested behavior from documented behavior and author judgement; do not claim production experience without evidence.
+
+For runnable examples, state versions and prerequisites, show setup and execution in order, explain expected output, and include cleanup when resources or privileges are created. Test the important success and failure paths when an environment is available; otherwise state what remains unverified. For benchmarks, record hardware/runtime, workload, method, and limits rather than publishing an isolated number.
+
+Build concepts in dependency order. Use diagrams to expose ownership, sequence, or a failure that prose alone makes hard to follow; apply the repository's SVG skills when needed. Link related guides and project evidence only where they answer the reader's next question. Finish when the task is complete, and estimate reading time from actual content without padding.
+
 ## Section sequence
 
 Shape each major section in this order when the topic supports it:
@@ -20,7 +28,7 @@ Shape each major section in this order when the topic supports it:
 3. Contrast it with the nearest confusing alternative.
 4. State the delivery contract or responsibility: what it guarantees, what it does not, and what failure looks like.
 5. Use a small, familiar example from caching, messaging, API fleets, workflows, or user-facing behaviour.
-6. Add a simple ASCII or Mermaid diagram only when flow, ownership, timing, or branching is easier to see.
+6. Add a compact Mermaid or project-styled SVG diagram only when flow, ownership, timing, or branching is easier to see.
 7. State the boundary: “This is correct only when…”, “Move to a durable store when…”, or “Do not rely on this for correctness.”
 8. End with one sentence that readers can remember, then transition to the next idea.
 
@@ -40,7 +48,7 @@ Explain unfamiliar terms at first use. For example:
 
 ## Examples and diagrams
 
-Choose examples that are small and domain-agnostic. A typing indicator, cache invalidation, profile refresh, dashboard aggregation, order creation, and notification worker are useful because the failure consequences are easy to understand.
+Choose one familiar domain and carry it through the article. Establish its actors, initial state, and intended task before introducing code. Extend the same example step by step instead of switching between unrelated snippets. For PostgreSQL permissions, build one order-service role from connection through schema usage, table grants, sequences, default privileges, and RLS where needed. Explain each newly observed failure before adding its remedy.
 
 Keep diagrams directional and compact. Show the actors, the message or state transition, and the failure or recovery branch. Do not use diagrams as decoration.
 
@@ -54,7 +62,7 @@ Avoid academic framing, marketing claims, unsupported certainty, inflated scale,
 
 ## Ending
 
-Close with a practical rule or TL;DR that maps each major problem to its responsible mechanism. Leave the reader with a boundary they can apply to a new system, not a sales pitch.
+Close by resolving the opening task with a practical rule that maps each major problem to its responsible mechanism. Leave the reader with a boundary they can apply to a new system, not a sales pitch.
 
 ## Review checklist
 
