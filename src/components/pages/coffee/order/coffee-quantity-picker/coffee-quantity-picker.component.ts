@@ -1,6 +1,7 @@
 import { ApplicationEventService, BaseElement, BindEvent, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
 import { coffeeContent } from "@app/data/coffee-content.ts";
 import { COFFEE_ORDER_QUANTITY_EVENT, type CoffeeOrderQuantitySelection } from "@app/events/coffee.events.ts";
+import { publishAnalyticsEvent } from "@app/utils/analytics.utils.ts";
 
 /**
  * Chooses a preset or custom number of coffees without losing input focus.
@@ -51,6 +52,7 @@ export class CoffeeQuantityPickerComponent extends BaseElement {
       window.requestAnimationFrame(() => this.querySelector<HTMLInputElement>("#coffee-custom-quantity")?.focus());
     }
     this.publishQuantity();
+    publishAnalyticsEvent({ eventName: "coffee_quantity_selected", params: { quantity: this.quantity, is_custom: this.isCustomQuantity } });
   }
 
   /**
@@ -62,6 +64,15 @@ export class CoffeeQuantityPickerComponent extends BaseElement {
     const input = event.target as HTMLInputElement;
     this.quantity = Math.min(999, Math.max(1, Number.parseInt(input.value, 10) || 1));
     this.publishQuantity();
+  }
+
+  /** Records a committed, valid custom value rather than emitting analytics for every typed digit. */
+  @BindEvent({ event: "change", id: "#coffee-custom-quantity" })
+  trackCustomQuantity(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    if (input.value && input.checkValidity()) {
+      publishAnalyticsEvent({ eventName: "coffee_quantity_selected", params: { quantity: this.quantity, is_custom: true } });
+    }
   }
 
   /** Publishes the current quantity after either a preset or custom selection change. */
