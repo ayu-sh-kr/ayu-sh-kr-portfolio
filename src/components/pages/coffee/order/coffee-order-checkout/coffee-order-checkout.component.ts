@@ -1,4 +1,4 @@
-import { BaseElement, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
+import { BaseElement, BindEvent, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
 import { type ApplicationEvent, OnEvent } from "@ayu-sh-kr/dota-wrap/event";
 import { coffeeContent, type CoffeeSize } from "@app/data/coffee-content.ts";
 import { type ActionButtonPayload } from "@app/events/action-button.events.ts";
@@ -7,6 +7,7 @@ import { actionButtonRegistry } from "@app/service/action-button-registry.servic
 import { coffeeOrderService } from "@app/service/coffee-order/coffee-order.service.ts";
 import type { CoffeeCheckoutVerification } from "@app/service/coffee-order/coffee-order.service.ts";
 import { coffeePricingService, formatCoffeeAmount, type CoffeeCurrency } from "@app/service/coffee-order/coffee-pricing.service.ts";
+import { publishAnalyticsEvent } from "@app/utils/analytics.utils.ts";
 
 /**
  * Owns the coffee order form and its real payment checkout.
@@ -42,6 +43,9 @@ export class CoffeeOrderCheckoutComponent extends BaseElement {
 
   /** Registry cleanup returned for this form's submit action. */
   private removeHandler: (() => void) | null = null;
+
+  /** Keeps optional-detail completion to one event per rendered checkout instance. */
+  private formFilledTracked = false;
 
   /** Creates the checkout element before it begins receiving scoped order events. */
   constructor() {
@@ -95,6 +99,17 @@ export class CoffeeOrderCheckoutComponent extends BaseElement {
     this.refreshButtonLabel();
   }
 
+  /** Records the first committed nonblank optional detail without publishing its contents. */
+  @BindEvent({ event: "change", id: "[name=name], [name=note]" })
+  trackFormFilled(event: Event): void {
+    const input = event.target as HTMLInputElement | HTMLTextAreaElement;
+    if (this.formFilledTracked || !input.value.trim()) {
+      return;
+    }
+    this.formFilledTracked = true;
+    publishAnalyticsEvent({ eventName: "coffee_form_filled", params: {} });
+  }
+
   /**
    * Creates the server order and opens the Razorpay Standard Checkout modal.
    *
@@ -106,10 +121,12 @@ export class CoffeeOrderCheckoutComponent extends BaseElement {
    * @param payload - Form values supplied by the registered action.
    */
   private async submitOrder(payload: ActionButtonPayload): Promise<void> {
+    publishAnalyticsEvent({ eventName: "coffee_payment_button_clicked", params: {} });
     this.currency = await coffeePricingService.getCurrency();
     const name = typeof payload.name === "string" ? payload.name.trim() : "";
     const note = typeof payload.note === "string" ? payload.note.trim() : "";
     const size = this.getSelectedSize();
+    const analyticsParams = { size_id: size.id, quantity: this.quantity, value: size.price[this.currency] * this.quantity, currency: this.currency };
 
     const draft = {
       amount: size.price[this.currency] * this.quantity * 100,
@@ -118,6 +135,7 @@ export class CoffeeOrderCheckoutComponent extends BaseElement {
     };
     if (import.meta.env.VITE_RAZORPAY_CHECKOUT_MODE === "payment-link") {
       const link = await this.orderService.createPaymentLink(draft);
+      publishAnalyticsEvent({ eventName: "coffee_payment_started", params: analyticsParams });
       window.location.assign(link.short_url);
       return;
     }
@@ -145,6 +163,7 @@ export class CoffeeOrderCheckoutComponent extends BaseElement {
       handler: async (result: CoffeeCheckoutVerification) => {
         try {
           await this.orderService.verifyCheckout(result);
+          publishAnalyticsEvent({ eventName: "coffee_payment_success", params: { ...analyticsParams, value: order.amount / 100, currency: order.currency } });
           window.dispatchEvent(new Event(COFFEE_PAYMENT_SUCCESS_EVENT));
           paymentSettled = true;
           completePayment();
@@ -164,6 +183,7 @@ export class CoffeeOrderCheckoutComponent extends BaseElement {
     });
     try {
       checkout.open();
+      publishAnalyticsEvent({ eventName: "coffee_payment_started", params: { ...analyticsParams, value: order.amount / 100, currency: order.currency } });
     } catch (error) {
       paymentSettled = true;
       failPayment(error);
