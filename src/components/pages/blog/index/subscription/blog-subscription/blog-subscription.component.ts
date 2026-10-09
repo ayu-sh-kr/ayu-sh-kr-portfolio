@@ -148,7 +148,14 @@ export class BlogSubscriptionComponent extends BaseElement {
       throw new Error("Subscription email is missing.");
     }
 
-    await this.subscriptionService.initiate(payload.email);
+    publishAnalyticsEvent({eventName: "form_submit", params: {form_name: "blog_subscription"}});
+    try {
+      await this.subscriptionService.initiate(payload.email);
+    } catch (error) {
+      publishAnalyticsEvent({eventName: "form_error", params: {form_name: "blog_subscription", reason: "request"}});
+      throw error;
+    }
+    publishAnalyticsEvent({eventName: "form_success", params: {form_name: "blog_subscription"}});
     publishAnalyticsEvent({
       eventName: "subscribe",
       params: {form_name: "blog_subscription"},
