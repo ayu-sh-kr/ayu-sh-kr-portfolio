@@ -21,7 +21,7 @@ export class SupportSectionComponent extends BaseElement {
   /** Returns the support journey in the order visitors encounter it. */
   render(): string {
     return HTML`
-      <section id="support" class="support-section layout-page layout-section layout-stack layout-stack-xl" aria-labelledby="support-title">
+      <section id="support" class="support-section layout-page layout-section layout-stack layout-stack-xl" aria-labelledby="support-title" data-analytics-section="support_help">
         <support-intro></support-intro>
         <support-quick-help></support-quick-help>
         <support-ticket></support-ticket>
