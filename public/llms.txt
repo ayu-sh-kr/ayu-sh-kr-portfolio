@@ -35,7 +35,7 @@
 - [AI Telepathy: How BCIs Turn Thought into Text](https://ayu-sh-kr.com/blog/telepathy-with-ai/)
 - [SSR vs SSG for SEO and AI-built websites](https://ayu-sh-kr.com/blog/ssr-vs-ssg-rendering-hydration-dom)
 - [AWS AppConfig Spring Boot Integration](https://ayu-sh-kr.com/blog/aws-app-config-spring-boot-integration)
-- [PostgreSQL access control](https://ayu-sh-kr.com/blog/postgresql-access-control)
+- [PostgreSQL Permissions: Build a Role with GRANT and REVOKE](https://www.ayu-sh-kr.com/blog/postgresql-access-control/): Build PostgreSQL permissions one grant at a time: connect, read orders, insert rows, update status and record events, then add default privileges and RLS. [Article Markdown](https://www.ayu-sh-kr.com/blogs/tutorial/Postgres-Access-Control.md).
 - [Distributed locks in Redis](https://ayu-sh-kr.com/blog/distributed-locks-redis)
 - [Token-bucket rate limiting in Spring Boot](https://ayu-sh-kr.com/blog/rate-limiting-token-bucket-spring-boot)
 - [When microservices become a distributed monolith](https://ayu-sh-kr.com/blog/distributed-monolith-extra-invoices)
@@ -45,6 +45,14 @@
 - [Why use Redis channels?](https://ayu-sh-kr.com/blog/why-use-redis-channels)
 
 ## Recent Dispatch notes
+
+- [Weft brings live coordination to AI coding agents working with Git](https://www.ayu-sh-kr.com/news/weft-ai-coding-agent-coordination/): Built for Cloudflare’s Git platform competition, Weft coordinates parallel coding agents during edits. Follow its workspaces, adapters, WCP feedback loop and path to tested Git changes. [Article Markdown](https://www.ayu-sh-kr.com/news/weft-ai-coding-agent-coordination.md).
+
+- [Surface Laptop Ultra and Windows AI: Microsoft’s October 2026 launch](https://www.ayu-sh-kr.com/news/microsoft-surface-laptop-ultra-windows-hybrid-ai/): Microsoft’s October 2026 launch explained: Surface Laptop Ultra pricing, local AI models, Copilot integration, Windows Search updates and release dates. [Article Markdown](https://www.ayu-sh-kr.com/news/microsoft-surface-laptop-ultra-windows-hybrid-ai.md).
+
+- [GitHub Copilot local AI models: BYOK now, automatic cloud routing next](https://www.ayu-sh-kr.com/news/github-copilot-local-model-routing-hydrafusion/): Copilot already supports local models and BYOK. Explore provider setup, offline mode and telemetry, then the planned local/cloud routing and HydraFusion’s role in saving AI credits. [Article Markdown](https://www.ayu-sh-kr.com/news/github-copilot-local-model-routing-hydrafusion.md).
+
+- [AWS Strands Box adds policy controls to AI agent sandboxing](https://www.ayu-sh-kr.com/news/aws-strands-box-ai-agent-sandbox/): AWS Strands Box combines macOS isolation with Dogwood rules for files, tools and network requests. See how it controls action sequences and keeps API secrets outside agents. [Article Markdown](https://www.ayu-sh-kr.com/news/aws-strands-box-ai-agent-sandbox.md).
 
 - [GitHub redesigns Git storage as AI agents push write demand higher](https://www.ayu-sh-kr.com/news/github-git-infrastructure-agent-scale/): GitHub explains its read-replica bottleneck and planned storage redesign for agent-scale development. [Article Markdown](https://www.ayu-sh-kr.com/news/github-git-infrastructure-agent-scale.md).
 

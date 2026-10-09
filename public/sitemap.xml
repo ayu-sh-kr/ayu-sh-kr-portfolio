@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
+        <loc>https://www.ayu-sh-kr.com/news/weft-ai-coding-agent-coordination/</loc>
+        <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+        <loc>https://www.ayu-sh-kr.com/news/microsoft-surface-laptop-ultra-windows-hybrid-ai/</loc>
+        <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+        <loc>https://www.ayu-sh-kr.com/news/github-copilot-local-model-routing-hydrafusion/</loc>
+        <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+        <loc>https://www.ayu-sh-kr.com/news/aws-strands-box-ai-agent-sandbox/</loc>
+        <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
         <loc>https://www.ayu-sh-kr.com/news/github-git-infrastructure-agent-scale/</loc>
         <lastmod>2026-10-07</lastmod>
     </url>
@@ -56,7 +72,7 @@
     </url>
     <url>
         <loc>https://www.ayu-sh-kr.com/blog/postgresql-access-control/</loc>
-        <lastmod>2026-08-02</lastmod>
+        <lastmod>2026-10-08</lastmod>
     </url>
     <url>
         <loc>https://www.ayu-sh-kr.com/blog/distributed-locks-redis/</loc>

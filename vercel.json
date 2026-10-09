@@ -14,6 +14,21 @@
   ],
   "redirects": [
     {
+      "source": "/news/weft-ai-coding-agent-coordination",
+      "destination": "/news/weft-ai-coding-agent-coordination/",
+      "permanent": true
+    },
+    {
+      "source": "/news/microsoft-surface-laptop-ultra-windows-hybrid-ai",
+      "destination": "/news/microsoft-surface-laptop-ultra-windows-hybrid-ai/",
+      "permanent": true
+    },
+    {
+      "source": "/news/aws-strands-box-ai-agent-sandbox",
+      "destination": "/news/aws-strands-box-ai-agent-sandbox/",
+      "permanent": true
+    },
+    {
       "source": "/about",
       "destination": "/about/",
       "permanent": true
@@ -241,6 +256,11 @@
     {
       "source": "/news/docker-sandbox-kit-aws-lambda-microvms-agent-coding",
       "destination": "/news/docker-sandbox-kit-aws-lambda-microvms-agent-coding/",
+      "permanent": true
+    },
+    {
+      "source": "/news/github-copilot-local-model-routing-hydrafusion",
+      "destination": "/news/github-copilot-local-model-routing-hydrafusion/",
       "permanent": true
     },
     {
