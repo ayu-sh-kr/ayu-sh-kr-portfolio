@@ -482,7 +482,7 @@
           "name": "article-share",
           "source": {
             "file": "./src/components/utils/article-share/article-share.component.ts",
-            "offset": 681
+            "offset": 693
           },
           "attributes": [
             {
@@ -494,7 +494,7 @@
               },
               "source": {
                 "file": "./src/components/utils/article-share/article-share.component.ts",
-                "offset": 872
+                "offset": 884
               }
             },
             {
@@ -506,7 +506,7 @@
               },
               "source": {
                 "file": "./src/components/utils/article-share/article-share.component.ts",
-                "offset": 1174
+                "offset": 1186
               }
             },
             {
@@ -518,7 +518,7 @@
               },
               "source": {
                 "file": "./src/components/utils/article-share/article-share.component.ts",
-                "offset": 1034
+                "offset": 1046
               }
             },
             {
@@ -530,7 +530,7 @@
               },
               "source": {
                 "file": "./src/components/utils/article-share/article-share.component.ts",
-                "offset": 1340
+                "offset": 1352
               }
             }
           ],
@@ -542,7 +542,7 @@
                 "default": "",
                 "source": {
                   "file": "./src/components/utils/article-share/article-share.component.ts",
-                  "offset": 872
+                  "offset": 884
                 }
               },
               {
@@ -551,7 +551,7 @@
                 "default": "",
                 "source": {
                   "file": "./src/components/utils/article-share/article-share.component.ts",
-                  "offset": 1174
+                  "offset": 1186
                 }
               },
               {
@@ -560,7 +560,7 @@
                 "default": "",
                 "source": {
                   "file": "./src/components/utils/article-share/article-share.component.ts",
-                  "offset": 1034
+                  "offset": 1046
                 }
               },
               {
@@ -569,7 +569,7 @@
                 "default": "",
                 "source": {
                   "file": "./src/components/utils/article-share/article-share.component.ts",
-                  "offset": 1340
+                  "offset": 1352
                 }
               }
             ]
