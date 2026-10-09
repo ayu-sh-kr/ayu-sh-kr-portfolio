@@ -171,7 +171,7 @@ export class BlogArticleComponent extends BaseElement {
           <a class="blog-coffee-support-link" href="/coffee">${blogArticleContent.coffeeSupport.linkLabel} <span aria-hidden="true">→</span></a>
         </aside>
         <footer class="blog-article-footer">
-          <div class="blog-article-footer-meta"><span class="blog-chip">${labelForCategory(post.category)}</span><span>${blogArticleContent.footer.shareCopy}</span></div>
+          <div class="blog-article-footer-meta"><span class="blog-chip">${labelForCategory(post.category)}</span></div>
           <div class="blog-post-nav">
             <a href="/blog" class="blog-quiet-card"><span>←</span><span><small>${blogArticleContent.footer.backLabel}</small>${blogArticleContent.allPostsLabel}</span></a>
             ${nextLink}
