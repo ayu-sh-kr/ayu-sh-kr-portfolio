@@ -260,12 +260,12 @@ export class NewsIndexComponent extends BaseElement {
       <main class="news-index-main">
         <news-hero></news-hero>
 
-        <section class="layout-content layout-section" aria-label="Dispatch notes">
+        <section class="layout-content layout-section" aria-label="Dispatch notes" data-analytics-section="news_feed">
           ${this.months.map((month) => renderMonth(month, latestSlug)).join("")}
           <p class="news-empty news-lede type-lede" data-news-empty hidden>${newsContent.index.empty} <button type="button" class="news-filter" data-news-filter="all" aria-pressed="false">Show all notes</button></p>
         </section>
 
-        <div class="news-subscription-wrap layout-content layout-section">
+        <div class="news-subscription-wrap layout-content layout-section" data-analytics-section="news_subscription">
           <blog-subscription heading="${newsContent.index.subscription.title}" description="${newsContent.index.subscription.copy}" aria-label-text="${newsContent.index.subscription.ariaLabel}" button-variant="accent"></blog-subscription>
         </div>
 
