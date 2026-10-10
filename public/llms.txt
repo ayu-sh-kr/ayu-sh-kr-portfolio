@@ -46,7 +46,7 @@
 
 ## Recent Dispatch notes
 
-- [JetBrains Mellum2.1: an open 12B model for local coding agents](https://www.ayu-sh-kr.com/news/jetbrains-mellum-2-1-coding-agents/): JetBrains Mellum2.1 targets local coding agents with open 12B MoE weights. Explore repository training, benchmark limits, GGUF downloads and runtime memory requirements. [Article Markdown](https://www.ayu-sh-kr.com/news/jetbrains-mellum-2-1-coding-agents.md).
+- [JetBrains Mellum2.1: open coding model, benchmarks and local use](https://www.ayu-sh-kr.com/news/jetbrains-mellum-2-1-coding-agents/): JetBrains Mellum2.1 explained: repository training, 12B MoE architecture, SWE-bench results and local GGUF deployment with Ollama, including memory trade-offs. [Article Markdown](https://www.ayu-sh-kr.com/news/jetbrains-mellum-2-1-coding-agents.md).
 - [Weft brings live coordination to AI coding agents working with Git](https://www.ayu-sh-kr.com/news/weft-ai-coding-agent-coordination/): Built for Cloudflare’s Git platform competition, Weft coordinates parallel coding agents during edits. Follow its workspaces, adapters, WCP feedback loop and path to tested Git changes. [Article Markdown](https://www.ayu-sh-kr.com/news/weft-ai-coding-agent-coordination.md).
 
 - [Surface Laptop Ultra and Windows AI: Microsoft’s October 2026 launch](https://www.ayu-sh-kr.com/news/microsoft-surface-laptop-ultra-windows-hybrid-ai/): Microsoft’s October 2026 launch explained: Surface Laptop Ultra pricing, local AI models, Copilot integration, Windows Search updates and release dates. [Article Markdown](https://www.ayu-sh-kr.com/news/microsoft-surface-laptop-ultra-windows-hybrid-ai.md).
