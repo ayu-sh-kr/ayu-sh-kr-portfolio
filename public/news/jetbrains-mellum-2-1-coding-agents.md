@@ -1,20 +1,30 @@
-# JetBrains Mellum2.1: an open 12B model for local coding agents
+# JetBrains Mellum2.1: open coding model, benchmarks and local use
 
-**JetBrains released Mellum2.1 on October 8**, an open-weight model trained to work inside code repositories. It can be deployed locally or on private infrastructure, giving teams another option for coding agents that inspect files, make edits and check their work.
+A coding agent fixing a failing test has to do more than suggest new code. It must find the cause, make an edit and check whether the change worked. **JetBrains released Mellum2.1 on October 8** to improve that kind of repository work, with open weights that teams can run on their own infrastructure.
 
-Consider a failing checkout test. Writing a replacement function is only part of the job: an agent has to locate the cause, understand the surrounding code and run the test after its edit. Mellum2.1’s update focuses on that sequence, while keeping the compact architecture introduced with Mellum2.
+The update keeps Mellum2’s model architecture and concentrates on what happens after its initial training. The question behind the release is practical: how much of a coding agent’s work can a smaller, locally deployed model handle?
 
-## Same model size, more practice inside repositories
+## Learning to work through a bug
 
-Mellum2.1 has **12 billion total parameters, with 2.5 billion active per token**. Its mixture-of-experts design selects part of the model for each step of generation. That reduces active computation; it does not make the stored weights a 2.5B model.
+JetBrains says most of the work went into **reinforcement learning**, where a model learns from the outcomes of tasks it attempts. Training included millions of sandboxed runs across thousands of environments, with data filtered to remove problems such as broken tests and unverifiable answers.
 
-JetBrains concentrated this update on reinforcement learning: training through tasks whose outcomes can be checked. It says training involved millions of sandbox runs across thousands of environments. For software engineering, the model worked with repositories, a shell and file-editing tools, receiving rewards when tests passed.
+For software engineering, the model used repositories, a shell and file-editing tools, earning rewards when tests passed. That gives it practice with the sequence an agent needs: read, act, observe the result and decide what to do next.
 
-For the checkout failure, the training task can continue after an edit: the agent runs a test, sees whether the change worked and tries again if needed. That connects tool use to a verifiable result.
+Imagine a checkout test failing because a discount is applied twice. The agent inspects the calculation, edits the relevant code and runs the test. If the failure remains, that result informs another attempt. The illustration follows this workflow; it is an example, not a measured Mellum2.1 run.
 
-## What the benchmark jump actually measures
+![Three isometric workstations show an agent inspecting repository files, editing code and running tests, with test feedback returning to the edit step.](/news/assets/jetbrains-mellum-2-1-coding-agents/repository-work-loop.svg)
 
-SWE-bench Verified measures fixes to real repository issues. Terminal-Bench tests tasks performed through a terminal, while LiveCodeBench evaluates coding problems. We checked the official model card’s scores and evaluation settings; the results below are **self-reported by JetBrains**.
+Passing a test provides feedback. Reviewing the patch still matters: an edit can satisfy one test while changing behaviour elsewhere. Our [reinforcement learning explainer](/blog/reinforcement-learning-from-rlhf-to-rlsc/) explains how checkable outcomes become training signals.
+
+## A 12B MoE model with 2.5B active parameters
+
+Mellum2.1 uses a **mixture-of-experts (MoE)** architecture: only part of the model participates in generating each token, or piece of text. It has 12 billion parameters in total, with about 2.5 billion active per token.
+
+The distinction matters for local deployment. Activating fewer parameters reduces computation, but the full set of weights still needs storage. A smaller active count does not turn it into a 2.5B model to download.
+
+## Mellum2.1 benchmarks show progress and limits
+
+The official model card reports the following results. SWE-bench Verified tests repository issue fixes, Terminal-Bench covers terminal tasks, and LiveCodeBench evaluates coding problems. **These are JetBrains’ own measurements**, checked here against its published evaluation settings.
 
 | Benchmark | Mellum2 Thinking | Mellum2.1 Thinking | Qwen3.5-9B |
 | --- | --- | --- | --- |
@@ -22,34 +32,32 @@ SWE-bench Verified measures fixes to real repository issues. Terminal-Bench test
 | Terminal-Bench 2.1 | 0.6% | 17.4% | 21.7% |
 | LiveCodeBench v6 | 69.4% | 82.0% | 75.4% |
 
-The repository evaluations used the same Pi v0.73.1 agent harness, shell and file tools, a 114K-token context and up to 16K tokens per turn. Each model used its default sampling settings. The non-agentic evaluations used greedy decoding.
+The agentic tests used Pi v0.73.1 with shell and file tools, a 114K-token context and up to 16K tokens per turn. Models used their respective default sampling settings; non-agentic tests used greedy decoding.
 
-Mellum2.1 improves substantially over Mellum2, but Qwen remains ahead on the two agentic tests shown here. The stronger LiveCodeBench result does not establish the same advantage when navigating a repository. These measurements support trying Mellum2.1 as a worker; they do not predict success on every project.
+The improvement over Mellum2 is substantial. Qwen nevertheless leads on both agentic tests shown above, while Mellum2.1 leads on LiveCodeBench. Solving coding problems and completing repository tasks are related abilities, but strength in one does not establish the same advantage in the other.
 
-## Open weights, with a practical local option
+## Running Mellum2.1 locally with GGUF and Ollama
 
-The release uses the **Apache 2.0 license**. JetBrains’ official GGUF repository now provides files for local runtimes, although the launch announcement still describes those builds as forthcoming.
+The weights are released under **Apache 2.0**. JetBrains now lists GGUF builds for local runtimes, despite the launch post describing them as forthcoming. GGUF packages model weights for tools such as llama.cpp, Ollama and LM Studio.
 
-The smallest listed file is 7.0 GB; the recommended Q4_K_M version is 8.1 GB, compared with 24.3 GB for BF16. Quantization stores weights at lower precision to reduce their size, with a quality trade-off.
+The smallest listed file is 7.0 GB. JetBrains recommends the 8.1 GB Q4_K_M variant as a balanced choice; its BF16 version is 24.3 GB. The smaller files use quantization, which lowers weight precision to save space, with a quality trade-off.
 
-> A model’s download size is only one part of its runtime memory requirement.
+> Download size is only part of the memory needed to run a model.
 
-Context storage and runtime overhead need additional memory. Its 131,072-token context window—the amount of text it can consider at once—also consumes memory. A 7 GB download does not imply that 7 GB of memory is enough to use that full window.
+The runtime also needs working memory and storage for context. Mellum2.1 supports 131,072 tokens of context, but using that full window requires additional capacity; a 7 GB file is not a 7 GB total memory requirement.
 
-With Ollama installed and enough available memory, the official GGUF instructions give this command to download and start the recommended variant:
+With Ollama installed and sufficient memory, the official instructions provide this command to download and start the recommended variant:
 
 ```bash
 ollama run hf.co/JetBrains/Mellum2.1-12B-A2.5B-Thinking-GGUF:Q4_K_M
 ```
 
-This starts a model conversation. Repository access and test execution still require an agent application with those tools. We checked the documented command, but did not run inference or measure local performance.
+This opens a conversation with the model. An agent application must supply repository access and tools to edit files or run tests. The command is documented by JetBrains; local inference was not tested for this article.
 
-## Where Mellum2.1 fits
+## A local worker for a defined task
 
-JetBrains positions the model as a worker within larger agent systems. This connects with the [local and cloud model routing planned for GitHub Copilot](/news/github-copilot-local-model-routing-hydrafusion/): choosing where a task runs is becoming part of agent design. A bounded task, such as investigating one failing test, gives a team a concrete way to assess whether it is useful before delegating broader changes.
+JetBrains positions Mellum2.1 as a worker inside an agent system, including smaller agents assigned parts of a larger plan. That fits the direction explored in [Copilot’s planned local and cloud model routing](/news/github-copilot-local-model-routing-hydrafusion/): different tasks can use different models.
 
-The release also advertises faster decoding with multi-token prediction, which proposes several tokens at once. Its MTP head remains marked as forthcoming in the launch documentation, so that speed claim should be separated from the available weights.
-
-For the checkout failure at the start, the promise is a local worker that can follow a bug from investigation through a tested patch. The reported results show progress toward that role. Whether it earns a place in a team’s workflow depends on the fixes it produces on that team’s code, and the resources those fixes require.
+For the checkout bug, the useful outcome is a correct patch that passes relevant tests and survives review. Mellum2.1’s reported gains make it a candidate for that work on private infrastructure. Its value will depend on how reliably it completes those tasks, and the time and memory each attempt takes.
 
 Sources: [JetBrains release announcement](https://blog.jetbrains.com/ai/2026/10/mellum2-1-gets-to-work-a-fast-open-model-for-coding-agents/), [official model card and evaluation settings](https://huggingface.co/JetBrains/Mellum2.1-12B-A2.5B-Thinking), and [official GGUF files and local instructions](https://huggingface.co/JetBrains/Mellum2.1-12B-A2.5B-Thinking-GGUF).
