@@ -37,6 +37,7 @@ const showcaseRoutes = [
 ];
 const newsRoutes = [
   "/news/anatomy-claude-code-isometric-svg-webgl",
+  "/news/tamagui-3-tailwind-native-runtime",
   "/news/jetbrains-mellum-2-1-coding-agents",
   "/news/weft-ai-coding-agent-coordination",
   "/news/microsoft-surface-laptop-ultra-windows-hybrid-ai",

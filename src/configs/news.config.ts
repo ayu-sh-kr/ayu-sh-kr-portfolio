@@ -78,6 +78,18 @@ export const newsNotes: readonly NewsNote[] = [
     minutes: 2.5,
     reference: {label: "Anatomy — source and documentation", href: "https://github.com/wheresryan22/anatomy"},
   },
+
+  {
+    slug: "tamagui-3-tailwind-native-runtime",
+    date: "2026-10-11",
+    title: "Tamagui 3: Tailwind styling for React Native and web",
+    summary: "Tamagui 3 brings Tailwind styling to React Native and web. Understand its Rust compiler, optional C++ runtime, release timeline and free Bento and Takeout kits.",
+    kind: "shipped",
+    document: "/news/tamagui-3-tailwind-native-runtime.md",
+    keywords: ["Tamagui 3", "Tamagui Tailwind", "React Native styling", "C++ native runtime", "Rust compiler", "React Strict DOM", "Tamagui Bento", "Tamagui Takeout"],
+    minutes: 2,
+    reference: {label: "Tamagui — version 3 announcement", href: "https://tamagui.dev/blog/version-three"},
+  },
   {
     slug: "jetbrains-mellum-2-1-coding-agents",
     date: "2026-10-09",
