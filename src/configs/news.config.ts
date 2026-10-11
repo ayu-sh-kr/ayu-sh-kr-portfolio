@@ -70,8 +70,8 @@ export const newsNotes: readonly NewsNote[] = [
   {
     slug: "tamagui-3-tailwind-native-runtime",
     date: "2026-10-11",
-    title: "Tamagui 3 launches with Tailwind styling and a C++ native runtime",
-    summary: "Tamagui 3 adds Tailwind syntax, a Rust compiler and an opt-in C++ native runtime for shared web and mobile UI. Release dates, open-source kits and upgrade limits.",
+    title: "Tamagui 3: Tailwind styling for React Native and web",
+    summary: "Tamagui 3 brings Tailwind styling to React Native and web. Understand its Rust compiler, optional C++ runtime, release timeline and free Bento and Takeout kits.",
     kind: "shipped",
     document: "/news/tamagui-3-tailwind-native-runtime.md",
     keywords: ["Tamagui 3", "Tamagui Tailwind", "React Native styling", "C++ native runtime", "Rust compiler", "React Strict DOM", "Tamagui Bento", "Tamagui Takeout"],
