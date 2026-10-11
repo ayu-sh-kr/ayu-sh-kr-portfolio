@@ -1,53 +1,41 @@
 # Anatomy brings interactive SVG and 3D machine illustrations to Claude Code
 
-A drawing of an engine can show where its parts sit. Making those parts move, exposing the inside and showing exhaust adds another layer of explanation. **Anatomy**, an open-source skill by Ryan (@wheresryan22), gives Claude Code a drawing kit and workflow for building those interactive figures from a written idea.
+## Overview: engineering drawings that explain through motion
 
-The project targets documentation, articles and landing pages. Its output is editable source: an SVG, a standalone HTML page, or React/Next.js components. A short prompt starts the work, but the detailed geometry and checks can take a long session.
+**Anatomy** is an open-source Claude Code skill for creating interactive isometric illustrations. Describe a machine or technical concept, and Claude builds its parts, movement and controls as editable code for documentation, articles or landing pages.
 
-## From a description to a working figure
+Created by Ryan (@wheresryan22), it combines **SVG geometry, optional WebGL effects and beta 3D motion**. The engineering angle is how these pieces work together: a housing shows structure, moving assemblies reveal the mechanism, and effects show what passes through it.
 
-Anatomy packages instructions in a `SKILL.md` file alongside code, examples and reference guides. Claude uses them to plan the object, list its parts, build the geometry and review the result.
+The illustration below uses a cutaway turbine to make that relationship visible. It is an editorial SVG with animated blades and airflow, rather than an Anatomy-generated model or a WebGL simulation.
 
-The drawings use **isometric projection**, which shows width, height and depth together without distant parts shrinking. Shading makes each solid readable, while pointer and keyboard interactions can move assemblies and update a readout. Both light and dark themes are supported.
+![Isometric cutaway turbine on a test stand, with a shaft connecting three blade stages and airflow passing through the housing. Callouts identify SVG structure, moving parts and the WebGL effects layer used by Anatomy.](/news/assets/anatomy-claude-code-isometric-svg-webgl/engineering-cutaway.svg)
 
-The repository’s Raptor engine example separates into 11 assemblies, exposing its internal arrangement. A dial indicator offers a smaller demonstration: moving a carriage changes what the gauge reads. The goal is motion that explains the object’s behaviour.
+## Details: geometry, effects and moving parts
 
-Software concepts can also become physical mechanisms. The project describes a cache key as a lock whose pins must match before it turns. That connection matters: the object should help explain the idea, rather than simply decorate it.
+Anatomy’s JavaScript and TypeScript drawing kit supplies an isometric camera, solid shapes, round parts, pipes and cables. **Isometric projection** shows width, height and depth on consistent axes. SVG outlines and shading make the assembly readable, with nearer surfaces drawn over those behind them.
 
-## How SVG, WebGL and 3D fit together
+The shipped examples show what interaction adds. A Raptor engine separates into 11 assemblies to expose its construction. In a dial indicator, sliding a carriage changes the gauge reading. Pointer and keyboard controls connect an action to a visible result, with light and dark themes available.
 
-The base drawing uses **SVG**, a vector format that keeps outlines sharp when resized. Anatomy’s JavaScript and TypeScript kit supplies the camera, solid parts, round surfaces, pipes and cables. Shapes are painted from back to front so nearer parts cover those behind them.
+For exhaust, water, glow and steam, Anatomy adds **WebGL shaders**—programs that draw effects using the browser’s graphics hardware. A transparent canvas sits between rear and front SVG layers. Sharing the drawing’s camera makes the effect appear inside the machine.
 
-Fire and water need more than outlines. Anatomy adds **WebGL shaders**: small programs that use the browser’s graphics hardware to draw effects such as exhaust, reflections, glow and steam. In the engine example, the plume sits between rear and front SVG layers, sharing their camera so it belongs inside the drawing.
+Inspection of [`kit/gl.mjs`](https://github.com/wheresryan22/anatomy/blob/main/kit/gl.mjs) confirms that `glCamera()` passes viewing angles, scale and origin into this layer. The renderer returns `null` when WebGL is unavailable; the underlying SVG remains readable. This was a source inspection, not a browser benchmark.
 
-Inspecting [`kit/gl.mjs`](https://github.com/wheresryan22/anatomy/blob/main/kit/gl.mjs) shows how that alignment works. Its `glCamera()` function converts the drawing’s viewing angles, origin and scale into shader inputs. `glLayer()` passes those values to a transparent WebGL canvas and returns `null` when a WebGL context is unavailable. That code supports the documented fallback: the SVG remains readable without the effects. It was inspected for this report; browser performance was not independently tested.
+The **beta 3D runtime** recalculates moving parts’ projection and shading each frame. A dial can turn or a finger can bend in three dimensions while the surrounding artwork stays static. That adds true orientation changes beyond sliding assemblies in a fixed view.
 
-The separate **beta 3D mode** recalculates the projection and shading of moving parts each frame. A turning dial or bending finger can therefore change its actual orientation, while the surrounding illustration remains static. This is a distinct capability from sliding parts within a fixed isometric view.
-
-## Installation and source ownership
-
-The documented command installs Anatomy for Claude Code at user level:
+Install the skill for Claude Code with the documented command:
 
 ```bash
 npx skills add wheresryan22/anatomy -g -a claude-code
 ```
 
-Then a prompt in Claude Code names what the figure should explain:
+Then describe the mechanism, what should move and the required output. Anatomy produces standalone HTML, SVG or React/Next.js components under an **MIT license**. Its kit uses Node.js; React is needed only for React output.
 
-```text
-/anatomy explain how a token bucket rate limiter works, interactive
-```
+## Closure: the mechanism still needs engineering review
 
-The drawing kit requires Node.js 20.10 or later; the installer has its own newer Node requirement. Chrome or Chromium runs the visual checks, and React is needed only for React output. The kit otherwise avoids external dependencies. Its MIT license permits reuse and modification.
+Anatomy includes geometry audits and screenshot checks to catch misplaced parts and disconnected lines. Detailed figures take time to build and inspect, and the 3D mode remains beta.
 
-## What still needs review
+> Visual checks establish how the parts fit; engineering review establishes what their movement explains.
 
-Anatomy includes geometry audits, screenshot capture and checks for disconnected line ends. These help catch misplaced parts, but cannot establish that an explanation is scientifically correct.
+For a turbine, the useful outcome is seeing how the shaft, blades and flow relate. Anatomy offers a way to build that explanation as maintainable web source, provided the geometry and behaviour are reviewed together.
 
-> A figure’s mechanism needs review alongside its appearance.
-
-The author also marks 3D as beta, with limited validation beyond example figures. Complex scenes may run slowly, and generation includes substantial planning and visual inspection.
-
-For the engine drawing, Anatomy’s contribution is the connection between structure, movement and a readable result. It provides a starting point for explainers whose source can be maintained with the page. The useful test is whether moving or inspecting the parts makes the mechanism easier to understand.
-
-Sources: [Anatomy repository and documentation](https://github.com/wheresryan22/anatomy), [interactive gallery](https://skills.wheresryan.sh/anatomy), and [inspected WebGL implementation](https://github.com/wheresryan22/anatomy/blob/main/kit/gl.mjs).
+Sources: [Anatomy documentation and examples](https://github.com/wheresryan22/anatomy), [interactive gallery](https://skills.wheresryan.sh/anatomy), and [WebGL implementation](https://github.com/wheresryan22/anatomy/blob/main/kit/gl.mjs).
