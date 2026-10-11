@@ -71,7 +71,7 @@ export const newsNotes: readonly NewsNote[] = [
     slug: "anatomy-claude-code-isometric-svg-webgl",
     date: "2026-10-11",
     title: "Anatomy brings interactive SVG and 3D machine illustrations to Claude Code",
-    summary: "Anatomy’s engineering illustrations explained through a cutaway turbine: SVG geometry, WebGL effects, beta 3D motion and the checks behind editable Claude Code output.",
+    summary: "Explore Anatomy’s actual designs in order: interactive SVG gauges, WebGL engine effects and beta 3D motion, with editable Claude Code output and engineering checks.",
     kind: "shipped",
     document: "/news/anatomy-claude-code-isometric-svg-webgl.md",
     keywords: ["Anatomy Claude Code skill", "interactive isometric illustrations", "SVG WebGL", "3D machine illustrations", "Anatomy rendering kit"],
