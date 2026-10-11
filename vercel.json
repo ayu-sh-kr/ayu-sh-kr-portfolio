@@ -14,6 +14,11 @@
   ],
   "redirects": [
     {
+      "source": "/news/anatomy-claude-code-isometric-svg-webgl",
+      "destination": "/news/anatomy-claude-code-isometric-svg-webgl/",
+      "permanent": true
+    },
+    {
       "source": "/news/tamagui-3-tailwind-native-runtime",
       "destination": "/news/tamagui-3-tailwind-native-runtime/",
       "permanent": true

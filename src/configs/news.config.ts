@@ -68,6 +68,18 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "anatomy-claude-code-isometric-svg-webgl",
+    date: "2026-10-11",
+    title: "Anatomy brings interactive SVG and 3D machine illustrations to Claude Code",
+    summary: "Explore Anatomy’s actual designs in order: interactive SVG gauges, WebGL engine effects and beta 3D motion, with editable Claude Code output and engineering checks.",
+    kind: "shipped",
+    document: "/news/anatomy-claude-code-isometric-svg-webgl.md",
+    keywords: ["Anatomy Claude Code skill", "interactive isometric illustrations", "SVG WebGL", "3D machine illustrations", "Anatomy rendering kit"],
+    minutes: 2.5,
+    reference: {label: "Anatomy — source and documentation", href: "https://github.com/wheresryan22/anatomy"},
+  },
+
+  {
     slug: "tamagui-3-tailwind-native-runtime",
     date: "2026-10-11",
     title: "Tamagui 3: Tailwind styling for React Native and web",
