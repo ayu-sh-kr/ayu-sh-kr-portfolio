@@ -68,6 +68,17 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "anatomy-claude-code-isometric-svg-webgl",
+    date: "2026-10-11",
+    title: "Anatomy brings interactive SVG and 3D machine illustrations to Claude Code",
+    summary: "Anatomy turns ideas into interactive isometric figures for Claude Code. Explore its SVG kit, WebGL effects, beta 3D motion, source output and visual checks.",
+    kind: "shipped",
+    document: "/news/anatomy-claude-code-isometric-svg-webgl.md",
+    keywords: ["Anatomy Claude Code skill", "interactive isometric illustrations", "SVG WebGL", "3D machine illustrations", "Anatomy rendering kit"],
+    minutes: 3,
+    reference: {label: "Anatomy — source and documentation", href: "https://github.com/wheresryan22/anatomy"},
+  },
+  {
     slug: "jetbrains-mellum-2-1-coding-agents",
     date: "2026-10-09",
     title: "JetBrains Mellum2.1: open coding model, benchmarks and local use",
