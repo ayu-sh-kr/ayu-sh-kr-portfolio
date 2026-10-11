@@ -36,6 +36,7 @@ const showcaseRoutes = [
   "/showcase/dota-rest",
 ];
 const newsRoutes = [
+  "/news/tamagui-3-tailwind-native-runtime",
   "/news/jetbrains-mellum-2-1-coding-agents",
   "/news/weft-ai-coding-agent-coordination",
   "/news/microsoft-surface-laptop-ultra-windows-hybrid-ai",

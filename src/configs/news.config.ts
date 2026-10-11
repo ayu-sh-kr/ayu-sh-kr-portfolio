@@ -68,6 +68,17 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "tamagui-3-tailwind-native-runtime",
+    date: "2026-10-11",
+    title: "Tamagui 3 launches with Tailwind styling and a C++ native runtime",
+    summary: "Tamagui 3 adds Tailwind syntax, a Rust compiler and an opt-in C++ native runtime for shared web and mobile UI. Release dates, open-source kits and upgrade limits.",
+    kind: "shipped",
+    document: "/news/tamagui-3-tailwind-native-runtime.md",
+    keywords: ["Tamagui 3", "Tamagui Tailwind", "React Native styling", "C++ native runtime", "Rust compiler", "React Strict DOM", "Tamagui Bento", "Tamagui Takeout"],
+    minutes: 2,
+    reference: {label: "Tamagui — version 3 announcement", href: "https://tamagui.dev/blog/version-three"},
+  },
+  {
     slug: "jetbrains-mellum-2-1-coding-agents",
     date: "2026-10-09",
     title: "JetBrains Mellum2.1: open coding model, benchmarks and local use",
