@@ -4,9 +4,9 @@
 
 Created by Ryan (@wheresryan22), the project combines **SVG drawings, optional WebGL effects and beta 3D motion**. Its output can be a standalone HTML page, an SVG file or React/Next.js components, with light and dark themes.
 
-Our cutaway turbine below introduces those three rendering roles. It was drawn for this article and uses SVG animation. Anatomy’s own designs are linked separately in the sections that follow.
+Our cutaway turbine below illustrates the assembly, moving parts and airflow. It was drawn for this article and uses SVG animation. Anatomy’s own designs are linked separately in the sections that follow.
 
-![Editorial isometric turbine cutaway showing a housing, shaft, blade stages and airflow, with callouts for the three rendering roles. This is an independently drawn SVG, not an Anatomy example.](/news/assets/anatomy-claude-code-isometric-svg-webgl/engineering-cutaway.svg)
+![Editorial isometric turbine cutaway with three rotor rows, two fixed guide-vane rows, external shaft bearings, curved housing saddles, bolted rails and service piping. Callouts identify the housing, rotor and bearing assembly. This is an independently drawn SVG, not an Anatomy example.](/news/assets/anatomy-claude-code-isometric-svg-webgl/engineering-cutaway.svg)
 
 ## SVG: structure and interaction
 
