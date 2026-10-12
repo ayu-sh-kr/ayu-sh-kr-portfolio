@@ -10,7 +10,7 @@ That is a better fit for most APIs than a fixed window, whose boundary can accid
 
 ## Keep the decision close to the edge
 
-The request path should be easy to observe and cheap to reject. Put identity extraction and the rate-limit decision near the controller boundary, but keep the bucket implementation independent from Spring MVC.
+The request path should be easy to observe and cheap to reject. Put identity extraction and the rate-limit decision [near the controller boundary](/blog/business-logic-auth-middleware/), but keep the bucket implementation independent from Spring MVC.
 
 ```kotlin
 data class BucketDecision(
@@ -20,7 +20,7 @@ data class BucketDecision(
 )
 ```
 
-The Redis key should contain the dimension being limited, for example `rate:user:{id}:search`. Do not silently mix user, IP, and API-key limits into one counter.
+The Redis key should contain the dimension being limited, for example `rate:user:{id}:search`. Do not silently mix user, IP, and API-key limits into one counter. A limiter is also not a [Redis distributed lock](/blog/distributed-locks-redis/): it admits requests over time rather than granting exclusive ownership.
 
 ## Return useful headers
 

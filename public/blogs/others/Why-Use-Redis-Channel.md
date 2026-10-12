@@ -263,7 +263,7 @@ source of truth.
 
 When a live process needs to refresh itself, sending a durable business event
 is unnecessary. Redis Pub/Sub is often most useful inside the backend rather than as a public
-event API. A deployment can tell instances to reload configuration. A worker
+event API. A deployment can tell instances to [reload configuration](/blog/aws-app-config-spring-boot-integration/). A worker
 can notify live nodes that a precomputation is ready. A WebSocket gateway can
 tell connected clients that a room changed.
 
@@ -283,7 +283,7 @@ state, not carry irreversible state changes.
 ## Rate limits, presence, and other shared decisions
 
 When the decision is “may this request proceed?” a message history is not the
-main data structure. Rate limiting is primarily a shared-state problem, not a message-log problem.
+main data structure. [Rate limiting](/blog/rate-limiting-token-bucket-spring-boot/) is primarily a shared-state problem, not a message-log problem.
 The decision is an atomic update: can this user, API key, or IP address make
 another request in this window? Redis provides counters, expiry, and scripts
 close to that decision. A Pub/Sub event may notify observability or a dashboard,
@@ -294,7 +294,7 @@ client disappears. A channel can announce the change to connected consumers.
 If that announcement is missed, the expiry and the next state read recover the
 answer.
 
-A distributed lock can prevent duplicate cache refreshes or coordinate one
+A [distributed lock](/blog/distributed-locks-redis/) can prevent duplicate cache refreshes or coordinate one
 tenant-specific job. Keep the key narrow, set an expiry, and release only the
 lock you own. If the operation itself must happen exactly once, use an
 idempotency key and a durable constraint; the lock is supporting coordination,

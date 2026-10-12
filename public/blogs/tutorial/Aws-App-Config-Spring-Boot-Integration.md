@@ -567,7 +567,8 @@ provider instead of injecting the data class once and retaining it forever.
 
 ## Choosing the refresh boundary
 
-Not every property should be refreshed. Feature flags, limits, cohort assignments,
+Not every property should be refreshed. Feature flags,
+[rate limits](/blog/rate-limiting-token-bucket-spring-boot/), cohort assignments,
 and presentation settings are usually good candidates. Database URLs, thread-pool
 construction parameters, and clients with complex internal state may require a
 carefully designed refresh-scoped factory or a process restart.
@@ -579,6 +580,6 @@ metrics, and retain the last known-good snapshot. That turns runtime refresh fro
 implicit side effect into an observable state transition.
 
 For applications dominated by immutable Kotlin configuration, an atomic snapshot
-provider or a controlled instance restart is often simpler than attempting to make
+provider or a [controlled instance restart](/blog/java-native-builds-graalvm-vs-leyden/) is often simpler than attempting to make
 every object rebindable. Spring Cloud refresh is most effective when the refresh
 boundary is explicit and the beans inside that boundary were designed to be recreated.

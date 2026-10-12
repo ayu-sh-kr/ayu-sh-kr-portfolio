@@ -35,7 +35,8 @@ attempt reached the target but its response was lost. The target therefore
 needs an idempotency rule independent of the schedule.
 
 Pass a stable operation identifier in the target input, record the durable
-state transition under a unique constraint or idempotency key, and treat a
+state transition under a
+[unique constraint or idempotency key](/blog/distributed-locks-redis/), and treat a
 repeat invocation as a safe no-op or a resume. Do not rely on a Boolean such
 as `alreadyRan` in application memory; another instance may receive the retry.
 

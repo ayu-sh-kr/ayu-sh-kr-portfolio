@@ -124,7 +124,7 @@ When you render repeated lists, keys or stable identifiers matter. They help a r
 
 With a streamlined server-first approach, you may render a page on the server and use small browser enhancements only for specific controls. Your search form can submit to the server, and a date picker can add a modest amount of JavaScript. Most DOM changes are complete page navigations or narrowly scoped updates. This model keeps your client runtime small and works well when the server remains the source of truth.
 
-With a modern component-based approach, you may render the first view on the server, then hydrate a component tree in the browser. Your app can respond immediately to local interaction and patch only the changed nodes, while the server still provides initial HTML and data. This is useful when you need rich filtering, collaborative controls, or an interface where a sequence of client-side actions should feel continuous.
+With a modern component-based approach, you may render the first view on the server, then hydrate a component tree in the browser. Your app can respond immediately to local interaction and patch only the changed nodes, while the server still provides initial HTML and data. This is useful when you need rich filtering, collaborative controls, or an interface where a sequence of [client-side actions should feel continuous](/blog/ui-design-trends-skeuomorphism-isometric-glass/).
 
 You can engineer either approach well. The first makes the browser responsible for less. The second gives the browser more responsibility and must justify its JavaScript, hydration, and state-management cost. The terminology is less important than the boundary we set: where is each piece of truth calculated, and when is it allowed to change?
 

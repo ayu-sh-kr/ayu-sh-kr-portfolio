@@ -26,7 +26,8 @@ also make the same business action happen twice.
 
 Begin with the outcome that must remain true. A payment should be captured at
 most once. One inventory reservation should not consume the last item twice.
-A scheduled reconciliation should have one active run for a tenant and date.
+A [scheduled reconciliation](/blog/eventbridge-scheduler-quirks/) should have one
+active run for a tenant and date.
 The invariant is more useful than a generic decision to “add a lock”, because
 it tells us which state needs protection and how long the critical section can
 be.
@@ -54,8 +55,8 @@ operation for the external work.
 
 ## When a Redis lock is useful
 
-Redis is useful when several application instances need short-lived,
-cross-process coordination before or around work that is not naturally a
+Redis is useful when several application instances need
+[short-lived, cross-process coordination](/blog/why-use-redis-channels/) before or around work that is not naturally a
 single database transaction. Typical examples include preventing duplicate
 cache refreshes, allowing one worker to start a tenant-specific job, or
 avoiding parallel calls to an expensive upstream API.
@@ -121,7 +122,8 @@ should stay distinct:
 - **Cache coordination:** use a short lock to reduce cache stampedes while one
   worker refreshes a missing value. The cache remains an optimisation; the
   source of truth must still handle a miss or a failed refresh.
-- **Rate limiting:** use an atomic counter, token bucket, or Lua script to
+- **Rate limiting:** use an atomic counter,
+  [token bucket](/blog/rate-limiting-token-bucket-spring-boot/), or Lua script to
   decide whether an identity may make another request. A rate limiter controls
   admission over time; it is not a mutual-exclusion lock.
 - **Temporary user blocking:** store an explicit expiry-backed block or

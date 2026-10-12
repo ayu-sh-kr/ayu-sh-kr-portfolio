@@ -24,7 +24,9 @@ The [OWASP Authorization Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsh
 recommends validating permissions on every request and applying least
 privilege. That does not require the HTTP filter to hold every rule. It means
 every entry point must reach the same authorization decision before the state
-changes.
+changes. The database can hold the same line one layer lower:
+[least-privilege Postgres roles](/blog/postgresql-access-control/) limit what the
+service's own credentials can read or change, whichever entry point runs.
 
 ## Put the decision beside the use case
 
@@ -47,7 +49,8 @@ class CancelSubscription(
 `cancelledBy` is where the service can check tenant, ownership, current status,
 and any cancellation window. A failed decision becomes a typed business error;
 the HTTP adapter maps it to an appropriate response, while a job or consumer
-handles the same error according to its own delivery contract.
+handles the same error according to its own
+[delivery contract](/blog/why-use-redis-channels/).
 
 ## Avoid two common shortcuts
 
@@ -57,8 +60,8 @@ entered. It is not sufficient for resource-level rules. â€œHas the support roleâ
 does not answer whether this support action is allowed for this tenant, record,
 or state transition.
 
-The opposite shortcut is putting every policy in one large authorization
-service. Centralisation helps when several use cases share the same policy,
+The opposite shortcut is putting every policy in
+[one large authorization service](/blog/distributed-monolith-extra-invoices/). Centralisation helps when several use cases share the same policy,
 such as tenant membership. It becomes a liability when it turns into a generic
 `can(actor, action, resource)` switch statement that must know every domain
 state. Keep shared identity and membership checks reusable; keep decisions
