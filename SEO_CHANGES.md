@@ -219,9 +219,9 @@ I read each post before linking and only added links where the target explains t
 | 31 | `/news/gitlab-unauthenticated-rate-limits/` | `/blog/rate-limiting-token-bucket-spring-boot/` | HTTP 429 with Retry-After | A request over the limit receives **HTTP 429 with `Retry-After`** and `RateLimit-*` headers, so a client should wait for the interval GitLab specifies instead of retrying immediately. |
 | 32 | `/news/docker-sandbox-kit-aws-lambda-microvms-agent-coding/` | `/blog/lambda-pricing-infra-alone/` | short-lived function invocation | Unlike a **short-lived function invocation**, this gives an agent room to work through a task while separating that work from a developer's laptop and other sessions. |
 | 33 | `/news/microsoft-titan-unsigned-jwt-analytics/` | `/blog/business-logic-auth-middleware/` | its own working authentication checks | The separate API needed **its own working authentication checks**. |
-| 34 | `/blog/postgresql-access-control/` | `/blog/business-logic-auth-middleware/` | rules for valid payment and shipping transitions | A production workflow still needs **rules for valid payment and shipping transitions**. |
-| 35 | `/blog/postgresql-access-control/` | `/news/kafgres-kafka-broker-postgres-700mbs/` | Kafgres, a Kafka-compatible broker inside PostgreSQL | **Kafgres, a Kafka-compatible broker inside PostgreSQL**, applies the same pairing of a row and its event to Kafka clients. |
-| 36 | `/blog/postgresql-access-control/` | `/blog/distributed-locks-redis/` | duplicate-event prevention | This demonstration is not a complete payment implementation: retry handling, **duplicate-event prevention** and payment verification need their own application rules. |
+| 34 | `/blog/postgresql-access-control/` | `/blog/business-logic-auth-middleware/` | rules for valid payment and shipping transitions | The **rules for valid payment and shipping transitions** belong in application code. |
+| 35 | `/blog/postgresql-access-control/` | `/news/kafgres-kafka-broker-postgres-700mbs/` | Kafgres, a Kafka-compatible broker inside PostgreSQL | **Kafgres, a Kafka-compatible broker inside PostgreSQL**, pairs a row with its event the same way. |
+| 36 | `/blog/postgresql-access-control/` | `/blog/distributed-locks-redis/` | duplicate-event prevention | Real payment code still needs retries, **duplicate-event prevention** and payment verification. |
 
 The PostgreSQL post also gained in-page jump links from its Quick fixes table to its own new sections. Those are not counted above.
 
@@ -269,43 +269,39 @@ Notes:
 | H1 | PostgreSQL Permissions: Build a Role with GRANT and REVOKE | PostgreSQL Permissions: GRANT, REVOKE and Permission Denied Fixes |
 | Meta description | Build PostgreSQL permissions one grant at a time: connect, read orders, insert rows, update status and record events, then add default privileges and RLS. | Fix PostgreSQL permission denied errors for tables, sequences, schemas and databases, check existing grants, then build a least-privilege role step by step. (156 characters) |
 | Updated date | October 8, 2026 (in-body note only) | `updated: "2026-10-12"`, shown in the article metadata as "Updated October 12, 2026" and in the in-body note; `dateModified` 2026-10-12; sitemap `lastmod` 2026-10-12 |
-| Reading time | 18 min | 28 min (about 6,000 words) |
+| Reading time | 18 min | 15 min (about 3,500 words including SQL) |
 
 The slug and URL are unchanged. I set the updated date to today, 2026-10-12. If the deploy happens on a later day, change `updated` in `src/configs/blogs.config.ts`, the in-body "Updated" note and the sitemap `lastmod` together.
 
 ### New section outline
 
-H2 sections, with H3s indented. **New** marks added sections; the rest are the existing tutorial, unchanged and with the same IDs.
+After review, the whole post was rewritten for length and flow: about 3,500 words including SQL (2,500 of prose), down from 6,000. The tutorial headings and SQL are unchanged; the prose around them was cut, and the troubleshooting sections were shortened to what the tutorial does not already show. H3s are indented below.
 
 1. **New:** Quick fixes for permission denied errors. An error → fix table with a jump link per row.
-2. **New:** Build the checkout role one grant at a time. Wraps the original intro paragraphs and the updated note.
-3. Start with the shop and the job the role must do
-4. Give the checkout role permission to connect
-5. Let the connected role find the sales schema
-6. Let the role read orders
-7. Allow order creation, then supply the generated ID. One sentence now states the identity-column finding and links to the sequence section.
-8. Allow status updates without allowing price changes
-9. Extend the same role when the workflow gains an event table
-10. Limit the completed workflow to the current tenant
-11. Run the complete checkout task with the accumulated permissions
-12. Review what the role gained, and remove what it no longer needs
-13. **New:** `ERROR:  permission denied for table orders`
+2. Start with the shop and the job the role must do
+3. Give the checkout role permission to connect
+4. Let the connected role find the sales schema
+5. Let the role read orders
+6. Allow order creation, then supply the generated ID
+7. Allow status updates without allowing price changes
+8. Extend the same role when the workflow gains an event table
+9. Limit the completed workflow to the current tenant
+10. Run the complete checkout task with the accumulated permissions
+11. Review what the role gained, and remove what it no longer needs
+12. **New:** `ERROR:  permission denied for table orders`
     - Zero rows without an error is row-level security
-14. **New:** `ERROR:  permission denied for sequence orders_id_seq`
-15. **New:** `ERROR:  permission denied for schema sales`
-16. **New:** `FATAL:  permission denied for database "shop"`
+13. **New:** `ERROR:  permission denied for sequence orders_id_seq`
+14. **New:** `ERROR:  permission denied for schema sales`
+15. **New:** `FATAL:  permission denied for database "shop"`
     - `no pg_hba.conf entry` is an authentication problem
     - `ERROR:  permission denied to create database`
-17. **New:** `ERROR:  must be owner of table orders`
-18. **New:** New tables are not accessible to the role
-19. **New:** How to check existing privileges in PostgreSQL
-    - psql meta-commands
-    - Query role_table_grants in the information schema
-    - Privilege functions
-20. **New:** Least-privilege PostgreSQL role checklist
-21. Stop granting when the domain task works (original conclusion, moved to the end)
+16. **New:** `ERROR:  must be owner of table orders`
+17. **New:** New tables are not accessible to the role
+18. **New:** How to check existing privileges in PostgreSQL
+19. **New:** Least-privilege PostgreSQL role checklist
+20. Stop granting when the domain task works (original conclusion, shortened and moved to the end)
 
-Each error section covers the exact error, why it happens, the minimal fix, how to confirm it, and the common trap.
+Each error section gives the error, the cause and the fix in a few sentences, plus the one trap or version difference worth knowing. Details that did not help a reader fix the error were dropped from the post, though they stay in the test transcript below: the `MAINTAIN` ACL letter, `has_any_column_privilege`, the full `\dp` output, and `pg_write_all_data` with `RETURNING`.
 
 **Heading IDs.** All 12 original heading IDs are unchanged, for example `allow-order-creation%2C-then-supply-the-generated-id`. New headings get IDs from the same Markdown anchor plugin. Error headings keep percent-encoded punctuation, for example `error%3A-permission-denied-for-table-orders`. The site's hash-scroll helper only looked up the decoded hash, so a deep link to such an ID did not scroll on load; that was already true for the two existing `%2C` IDs. The helper now tries the raw hash first. A unit test covers this, and it fails without the fix.
 
