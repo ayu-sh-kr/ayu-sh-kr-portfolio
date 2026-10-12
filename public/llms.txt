@@ -48,7 +48,7 @@
 
 ## Recent Dispatch notes
 
-- [Cheap AI routers and leaked conversations: where the data goes](https://www.ayu-sh-kr.com/news/malicious-ai-routers-agent-supply-chain/): How cheap AI routers can expose prompts, replies and credentials through retained traffic or upstream relays, with context on reseller pricing and Shou’s 6 TB dataset claim. [Article Markdown](https://www.ayu-sh-kr.com/news/malicious-ai-routers-agent-supply-chain.md).
+- [Unverified AI routers: credential leaks and pip install tampering](https://www.ayu-sh-kr.com/news/malicious-ai-routers-agent-supply-chain/): How unverified AI routers receive credentials through agent tool results, leak exchanges and alter pip install package names, with the risks explained step by step. [Article Markdown](https://www.ayu-sh-kr.com/news/malicious-ai-routers-agent-supply-chain.md).
 
 - [Anatomy brings interactive SVG and 3D machine illustrations to Claude Code](https://www.ayu-sh-kr.com/news/anatomy-claude-code-isometric-svg-webgl/): Anatomy’s isometric SVG kit, WebGL effects, beta 3D motion, editable source and visual checks. [Article Markdown](https://www.ayu-sh-kr.com/news/anatomy-claude-code-isometric-svg-webgl.md).
 
