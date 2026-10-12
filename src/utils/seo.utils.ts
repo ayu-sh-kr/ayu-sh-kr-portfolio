@@ -1,13 +1,18 @@
 import type {SEO} from "@ayu-sh-kr/dota-wrap/core";
 import type {NavigationContext} from "@ayu-sh-kr/dota-wrap/router";
-import {getBlogSlug} from "@app/configs/blogs.config.ts";
+import {getBlogPath, getBlogPost, getBlogSlug, type BlogPost} from "@app/configs/blogs.config.ts";
 import {getNewsSlug} from "@app/configs/news.config.ts";
 import {getShowcaseSlug} from "@app/data/showcase-content.ts";
+import {siteIdentity} from "@app/data/portfolio-content.ts";
 import type {PageSeoContent} from "@app/data/seo-content.ts";
 import type {AnalyticsPage} from "@app/events/analytics.events.ts";
 import {publishAnalyticsEvent} from "@app/utils/analytics.utils.ts";
 
 const SITE_ORIGIN = "https://www.ayu-sh-kr.com";
+/** Canonical about page used as the `author.url` of every article. */
+const AUTHOR_URL = `${SITE_ORIGIN}/card/about-me/`;
+/** ID of the route-owned JSON-LD script, replaced or removed on every navigation. */
+const ROUTE_STRUCTURED_DATA_ID = "route-structured-data";
 
 type Gtag = (
   command: string,
@@ -37,6 +42,66 @@ export const toSEO = (content: PageSeoContent): SEO => ({
     description: content.ogDescription,
   },
 });
+
+/**
+ * Builds schema.org `BlogPosting` structured data for one catalog post.
+ *
+ * Every field comes from the authored catalog entry, so the markup always matches
+ * the visible headline, summary, author and dates. `dateModified` falls back to the
+ * publication date for posts that have never been revised. The catalog has no cover
+ * images, so `image` is omitted rather than pointing at an unrelated asset.
+ *
+ * @param post - Catalog record of the article being rendered.
+ * @returns A JSON-serializable `BlogPosting` object with the canonical URL as `mainEntityOfPage`.
+ */
+export const toBlogPostingStructuredData = (post: BlogPost): Record<string, unknown> => {
+  const canonicalUrl = new URL(getBlogPath(post.slug), SITE_ORIGIN).href;
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.header,
+    description: post.description,
+    author: {
+      "@type": "Person",
+      name: siteIdentity.fullName,
+      url: AUTHOR_URL,
+    },
+    datePublished: post.date,
+    dateModified: post.updated ?? post.date,
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": canonicalUrl,
+    },
+    url: canonicalUrl,
+    keywords: post.keywords.join(", "),
+  };
+};
+
+/**
+ * Writes or removes the route-owned JSON-LD script for the committed pathname.
+ *
+ * Blog article routes receive a `BlogPosting` from {@link toBlogPostingStructuredData};
+ * every other route removes the script so a client-side navigation away from an
+ * article does not leave stale article markup behind. The site-wide `Person` JSON-LD
+ * in `index.html` is a separate script and is never touched. `<` is escaped so authored
+ * text cannot close the script element.
+ *
+ * @param pathname - Browser pathname after the router has committed navigation.
+ */
+const applyStructuredData = (pathname: string): void => {
+  const existing = document.getElementById(ROUTE_STRUCTURED_DATA_ID);
+  const post = pathname.startsWith("/blog/") ? getBlogPost(getBlogSlug(pathname)) : undefined;
+  if (!post) {
+    existing?.remove();
+    return;
+  }
+
+  const script = existing ?? document.head.appendChild(document.createElement("script"));
+  script.id = ROUTE_STRUCTURED_DATA_ID;
+  script.setAttribute("type", "application/ld+json");
+  script.textContent = JSON.stringify(toBlogPostingStructuredData(post)).replace(/</g, "\\u003c");
+};
 
 /**
  * Classifies a completed pathname for the page-view event.
@@ -97,8 +162,8 @@ const getAnalyticsPage = (pathname: string): {page: AnalyticsPage; slug?: string
  *
  * `DotaPageElement` updates the title, description, keywords, and Open Graph
  * copy during page initialization. The framework SEO contract does not own the
- * canonical link or `og:url`, so this route hook fills that gap using the
- * committed URL. It also publishes the single GA4 `page_view` for the completed
+ * canonical link, `og:url` or article structured data, so this route hook
+ * fills that gap using the committed URL. It also publishes the single GA4 `page_view` for the completed
  * route; `index.html` disables the automatic config page view to avoid sending
  * an early hit with the previous page title.
  *
@@ -123,6 +188,7 @@ export const applyRouteMetadata = (context: NavigationContext): void => {
     ?? document.head.appendChild(document.createElement("meta"));
   ogUrl.setAttribute("property", "og:url");
   ogUrl.content = canonicalUrl;
+  applyStructuredData(context.url.pathname);
 
   const analyticsPage = getAnalyticsPage(context.url.pathname);
   publishAnalyticsEvent({
