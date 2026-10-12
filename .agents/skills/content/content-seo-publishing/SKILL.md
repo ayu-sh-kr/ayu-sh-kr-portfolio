@@ -36,6 +36,7 @@ The same slug must appear in the catalog, public route, Vite route, sitemap, `ll
 ## Verify before delivery
 
 - Check the H1 equals the catalog title, the article source exists, dates/read time make sense, and links and image paths resolve.
+- Keep every internal link canonical (`/path/` or `https://www.ayu-sh-kr.com/path/`). `pnpm build:ssg` runs `scripts/check-internal-links.mjs`, which fails on a missing trailing slash, the bare domain, `http://`, or a link with no generated page; `pnpm check:links` reruns it against an existing `dist`.
 - Check each route once in all publishing surfaces and parse `vercel.json` and `sitemap.xml`.
 - Run `git diff --check` and `npm run build` or the repository's SSG build when a checkout and dependencies are available; inspect generated route output when SSG changes.
 - State which checks actually ran. Do not claim a build or deployed page was verified from file inspection alone.
