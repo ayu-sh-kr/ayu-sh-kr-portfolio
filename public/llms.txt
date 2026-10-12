@@ -37,7 +37,7 @@
 - [AI Telepathy: How BCIs Turn Thought into Text](https://www.ayu-sh-kr.com/blog/telepathy-with-ai/)
 - [SSR vs SSG for SEO and AI-built websites](https://www.ayu-sh-kr.com/blog/ssr-vs-ssg-rendering-hydration-dom/)
 - [AWS AppConfig Spring Boot Integration](https://www.ayu-sh-kr.com/blog/aws-app-config-spring-boot-integration/)
-- [PostgreSQL Permissions: Build a Role with GRANT and REVOKE](https://www.ayu-sh-kr.com/blog/postgresql-access-control/): Build PostgreSQL permissions one grant at a time: connect, read orders, insert rows, update status and record events, then add default privileges and RLS. [Article Markdown](https://www.ayu-sh-kr.com/blogs/tutorial/Postgres-Access-Control.md).
+- [PostgreSQL Permissions: GRANT, REVOKE and Permission Denied Fixes](https://www.ayu-sh-kr.com/blog/postgresql-access-control/): Fix PostgreSQL permission denied errors for tables, sequences, schemas and databases, check existing grants, then build a least-privilege role step by step. [Article Markdown](https://www.ayu-sh-kr.com/blogs/tutorial/Postgres-Access-Control.md).
 - [Distributed locks in Redis](https://www.ayu-sh-kr.com/blog/distributed-locks-redis/)
 - [Token-bucket rate limiting in Spring Boot](https://www.ayu-sh-kr.com/blog/rate-limiting-token-bucket-spring-boot/)
 - [When microservices become a distributed monolith](https://www.ayu-sh-kr.com/blog/distributed-monolith-extra-invoices/)
