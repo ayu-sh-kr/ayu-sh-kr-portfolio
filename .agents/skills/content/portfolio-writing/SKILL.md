@@ -13,6 +13,23 @@ Default to practical backend engineering and the infrastructure behind AI develo
 
 ## Dispatch news workflow
 
+When the request specifies a read time, treat it as a real length target. For a 5–6 minute dispatch, plan roughly 1,000–1,300 words at the site's expected pace, then confirm the actual word count. Do not inflate the article with repeated facts or generic context to reach the target. Build the length from a clear learning sequence: establish the event and stakes, define unfamiliar concepts, explain the mechanism, compare evidence and alternatives, discuss limits, and close by returning to the opening question.
+
+Before drafting, prepare a short content brief with:
+- the reader's central question and the article's answer;
+- primary sources and dated reporting, separating direct project documentation from third-party tests or interpretation;
+- the proposed H1, concise catalog summary, slug, and a small set of search keywords;
+- a heading sequence that introduces terms before relying on them and shows how each section advances the reader's understanding;
+- planned visual assets and the specific concept each one will make legible.
+
+For stories about replicas, reverse engineering, interoperability, or competing products, explicitly separate:
+- analysis of observed behavior from recovery or copying of source code;
+- a project's own clean-room or independent-development claim from independently verified fact;
+- user benefits such as price, access, format choice, and local control from product maturity, compatibility, support, and workflow gaps;
+- technical possibility from legal conclusions. Explain the relevant uncertainties without declaring a project lawful or unlawful from a repository label or visual similarity alone.
+
+Use a paired evaluation where appropriate: explain both why a lower-cost or open alternative could help users and how copying protected implementation, branding, or expression could harm creators. Keep the main subject requested by the user in the lead; use adjacent trends as context and closure rather than allowing them to displace the central story.
+
 - Answer four questions: what changed, what problem prompted it, how it works, and what remains unproven. Establish the news immediately; explain the architecture in cause-and-effect order.
 - Add an original contribution: an explanatory diagram, inspected source path, comparison with documented alternatives, or a reproducible experiment. State what was inspected or tested; never invent hands-on experience. A summary of the announcement alone is insufficient.
 - Carry one familiar scenario through the mechanism and return to it in the closure. Use the Weft coordination article as a structural example, without copying its opening.
