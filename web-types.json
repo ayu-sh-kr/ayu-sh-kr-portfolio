@@ -579,7 +579,7 @@
           "name": "blog-article",
           "source": {
             "file": "./src/components/pages/blog/article/blog-article/blog-article.component.ts",
-            "offset": 1648
+            "offset": 1661
           },
           "attributes": [],
           "js": {
@@ -709,7 +709,7 @@
           "name": "blog-highlighted-blog",
           "source": {
             "file": "./src/components/pages/blog/index/archive/blog-highlighted-blog/blog-highlighted-blog.component.ts",
-            "offset": 1025
+            "offset": 1038
           },
           "attributes": [],
           "js": {
@@ -731,7 +731,7 @@
           "name": "blog-list",
           "source": {
             "file": "./src/components/pages/blog/index/archive/blog-list/blog-list.component.ts",
-            "offset": 1801
+            "offset": 1821
           },
           "attributes": [],
           "js": {
@@ -811,6 +811,40 @@
           "attributes": [],
           "js": {
             "properties": []
+          }
+        },
+        {
+          "name": "blog-related-posts",
+          "source": {
+            "file": "./src/components/pages/blog/article/blog-related-posts/blog-related-posts.component.ts",
+            "offset": 959
+          },
+          "attributes": [
+            {
+              "name": "slug",
+              "default": "",
+              "required": false,
+              "value": {
+                "type": "string"
+              },
+              "source": {
+                "file": "./src/components/pages/blog/article/blog-related-posts/blog-related-posts.component.ts",
+                "offset": 1148
+              }
+            }
+          ],
+          "js": {
+            "properties": [
+              {
+                "name": "slug",
+                "type": "string",
+                "default": "",
+                "source": {
+                  "file": "./src/components/pages/blog/article/blog-related-posts/blog-related-posts.component.ts",
+                  "offset": 1148
+                }
+              }
+            ]
           }
         },
         {
@@ -1773,7 +1807,7 @@
           "name": "news-article",
           "source": {
             "file": "./src/components/pages/news/article/news-article/news-article.component.ts",
-            "offset": 3054
+            "offset": 3055
           },
           "attributes": [],
           "js": {
@@ -1795,7 +1829,7 @@
           "name": "news-index",
           "source": {
             "file": "./src/components/pages/news/index/news-index/news-index.component.ts",
-            "offset": 3039
+            "offset": 3040
           },
           "attributes": [],
           "js": {

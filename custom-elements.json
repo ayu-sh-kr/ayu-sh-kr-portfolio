@@ -480,6 +480,58 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/pages/blog/article/blog-related-posts/blog-related-posts.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "BlogRelatedPostsComponent",
+          "customElement": true,
+          "tagName": "blog-related-posts",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [
+            {
+              "kind": "field",
+              "name": "slug",
+              "attribute": "slug",
+              "type": {
+                "text": "string"
+              },
+              "default": ""
+            }
+          ],
+          "attributes": [
+            {
+              "name": "slug",
+              "fieldName": "slug",
+              "type": {
+                "text": "string"
+              },
+              "default": ""
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "BlogRelatedPostsComponent",
+          "declaration": {
+            "name": "BlogRelatedPostsComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "blog-related-posts",
+          "declaration": {
+            "name": "BlogRelatedPostsComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/pages/blog/index/archive/blog-filter/blog-filter.component.js",
       "declarations": [
         {
