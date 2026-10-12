@@ -36,6 +36,11 @@
       "permanent": true
     },
     {
+      "source": "/news/malicious-ai-routers-agent-supply-chain",
+      "destination": "/news/malicious-ai-routers-agent-supply-chain/",
+      "permanent": true
+    },
+    {
       "source": "/news/rea-rust-app-clones-ai-reverse-engineering",
       "destination": "/news/rea-rust-app-clones-ai-reverse-engineering/",
       "permanent": true

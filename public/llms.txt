@@ -48,6 +48,8 @@
 
 ## Recent Dispatch notes
 
+- [Unverified AI routers: credential leaks and pip install tampering](https://www.ayu-sh-kr.com/news/malicious-ai-routers-agent-supply-chain/): How AI routers see requests, retain conversations and leak credentials—and where a changed pip install command can turn a reply into an unsafe action. [Article Markdown](https://www.ayu-sh-kr.com/news/malicious-ai-routers-agent-supply-chain.md).
+
 - [Anatomy brings interactive SVG and 3D machine illustrations to Claude Code](https://www.ayu-sh-kr.com/news/anatomy-claude-code-isometric-svg-webgl/): Anatomy’s isometric SVG kit, WebGL effects, beta 3D motion, editable source and visual checks. [Article Markdown](https://www.ayu-sh-kr.com/news/anatomy-claude-code-isometric-svg-webgl.md).
 
 - [Tamagui 3: Tailwind styling for React Native and web](https://www.ayu-sh-kr.com/news/tamagui-3-tailwind-native-runtime/): Tamagui 3 brings Tailwind styling to React Native and web. Understand its Rust compiler, optional C++ runtime, release timeline and free Bento and Takeout kits. [Article Markdown](https://www.ayu-sh-kr.com/news/tamagui-3-tailwind-native-runtime.md).
