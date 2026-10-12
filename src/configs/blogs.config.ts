@@ -283,7 +283,7 @@ export const blogPosts: readonly BlogPost[] = [
     category: "tutorial",
     tags: ["postgresql", "databases", "security", "authorization"],
     source: "/blogs/tutorial/Postgres-Access-Control.md",
-    minutes: 15,
+    minutes: 20,
   },
   {
     slug: "distributed-locks-redis",

@@ -269,39 +269,43 @@ Notes:
 | H1 | PostgreSQL Permissions: Build a Role with GRANT and REVOKE | PostgreSQL Permissions: GRANT, REVOKE and Permission Denied Fixes |
 | Meta description | Build PostgreSQL permissions one grant at a time: connect, read orders, insert rows, update status and record events, then add default privileges and RLS. | Fix PostgreSQL permission denied errors for tables, sequences, schemas and databases, check existing grants, then build a least-privilege role step by step. (156 characters) |
 | Updated date | October 8, 2026 (in-body note only) | `updated: "2026-10-12"`, shown in the article metadata as "Updated October 12, 2026" and in the in-body note; `dateModified` 2026-10-12; sitemap `lastmod` 2026-10-12 |
-| Reading time | 18 min | 15 min (about 3,500 words including SQL) |
+| Reading time | 18 min | 20 min (about 4,700 words including SQL) |
 
 The slug and URL are unchanged. I set the updated date to today, 2026-10-12. If the deploy happens on a later day, change `updated` in `src/configs/blogs.config.ts`, the in-body "Updated" note and the sitemap `lastmod` together.
 
 ### New section outline
 
-After review, the whole post was rewritten for length and flow: about 3,500 words including SQL (2,500 of prose), down from 6,000. The tutorial headings and SQL are unchanged; the prose around them was cut, and the troubleshooting sections were shortened to what the tutorial does not already show. H3s are indented below.
+After two review rounds, the post was restructured as hook → explanation → walkthrough → error reference → closure, with each section framed as a problem and its solution. It is about 4,700 words including SQL (3,700 of prose), a 20-minute read. The tutorial headings and SQL are unchanged.
 
-1. **New:** Quick fixes for permission denied errors. An error → fix table with a jump link per row.
-2. Start with the shop and the job the role must do
-3. Give the checkout role permission to connect
-4. Let the connected role find the sales schema
-5. Let the role read orders
-6. Allow order creation, then supply the generated ID
-7. Allow status updates without allowing price changes
-8. Extend the same role when the workflow gains an event table
-9. Limit the completed workflow to the current tenant
-10. Run the complete checkout task with the accumulated permissions
-11. Review what the role gained, and remove what it no longer needs
-12. **New:** `ERROR:  permission denied for table orders`
+The Quick fixes table moved. The brief asked for it near the top, but on review it read as starting with errors before the reader knew the example. It now opens the error reference after the walkthrough, and the hook links to it in one line, so someone arriving with an error still reaches it in one click.
+
+1. Hook (no heading): two paragraphs introducing the shop, the checkout service and why it shouldn't run as the owner, then a one-line link to the Quick fixes table.
+2. **New:** How PostgreSQL decides whether a query is allowed. Roles, then the four checks (database, schema, table, rows) and ownership.
+3. Start with the shop and the job the role must do
+4. Give the checkout role permission to connect
+5. Let the connected role find the sales schema
+6. Let the role read orders
+7. Allow order creation, then supply the generated ID
+8. Allow status updates without allowing price changes
+9. Extend the same role when the workflow gains an event table
+10. Limit the completed workflow to the current tenant
+11. Run the complete checkout task with the accumulated permissions
+12. Review what the role gained, and remove what it no longer needs
+13. **New:** Quick fixes for permission denied errors. An error → fix table with a jump link per row.
+14. **New:** `ERROR:  permission denied for table orders`
     - Zero rows without an error is row-level security
-13. **New:** `ERROR:  permission denied for sequence orders_id_seq`
-14. **New:** `ERROR:  permission denied for schema sales`
-15. **New:** `FATAL:  permission denied for database "shop"`
+15. **New:** `ERROR:  permission denied for sequence orders_id_seq`
+16. **New:** `ERROR:  permission denied for schema sales`
+17. **New:** `FATAL:  permission denied for database "shop"`
     - `no pg_hba.conf entry` is an authentication problem
     - `ERROR:  permission denied to create database`
-16. **New:** `ERROR:  must be owner of table orders`
-17. **New:** New tables are not accessible to the role
-18. **New:** How to check existing privileges in PostgreSQL
-19. **New:** Least-privilege PostgreSQL role checklist
-20. Stop granting when the domain task works (original conclusion, shortened and moved to the end)
+18. **New:** `ERROR:  must be owner of table orders`
+19. **New:** New tables are not accessible to the role
+20. **New:** How to check existing privileges in PostgreSQL
+21. **New:** Least-privilege PostgreSQL role checklist
+22. Stop granting when the domain task works. The closure, which returns to the opening problem.
 
-Each error section gives the error, the cause and the fix in a few sentences, plus the one trap or version difference worth knowing. Details that did not help a reader fix the error were dropped from the post, though they stay in the test transcript below: the `MAINTAIN` ACL letter, `has_any_column_privilege`, the full `\dp` output, and `pg_write_all_data` with `RETURNING`.
+Each error section gives the cause and the fix, plus the one trap or version difference worth knowing. Details that did not help a reader fix the error were dropped from the post, though they stay in the test transcript below: the `MAINTAIN` ACL letter, `has_any_column_privilege`, the full `\dp` output, and `pg_write_all_data` with `RETURNING`.
 
 **Heading IDs.** All 12 original heading IDs are unchanged, for example `allow-order-creation%2C-then-supply-the-generated-id`. New headings get IDs from the same Markdown anchor plugin. Error headings keep percent-encoded punctuation, for example `error%3A-permission-denied-for-table-orders`. The site's hash-scroll helper only looked up the decoded hash, so a deep link to such an ID did not scroll on load; that was already true for the two existing `%2C` IDs. The helper now tries the raw hash first. A unit test covers this, and it fails without the fix.
 
