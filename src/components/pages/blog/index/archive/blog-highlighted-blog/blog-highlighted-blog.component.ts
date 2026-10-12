@@ -1,6 +1,6 @@
 import {BaseElement, BindEvent, Component} from "@ayu-sh-kr/dota-wrap/core";
 import {type ApplicationEvent, OnEvent} from "@ayu-sh-kr/dota-wrap/event";
-import {formatBlogDate, getBlogPostsForIndex, getLatestBlogPost, labelForCategory, type BlogCategory, type BlogPost} from "@app/configs/blogs.config.ts";
+import {formatBlogDate, getBlogPath, getBlogPostsForIndex, getLatestBlogPost, labelForCategory, type BlogCategory, type BlogPost} from "@app/configs/blogs.config.ts";
 import {blogIndexContent} from "@app/data/blog-content.ts";
 import {BLOG_FILTER_CHANGE_EVENT} from "@app/events/blog.events.ts";
 import {escapeHtml} from "@app/utils/html.utils.ts";
@@ -73,7 +73,7 @@ export class BlogHighlightedBlogComponent extends BaseElement {
     return `
       <section class="blog-container blog-featured-section" aria-label="${blogIndexContent.highlighted.ariaLabel}"${isVisible ? "" : " hidden"}>
         <a class="blog-featured blog-reveal" data-blog-reveal data-analytics-project="blog" data-analytics-slug="${this.highlightedPost.slug}" data-blog-category="${this.highlightedPost.category}"
-           href="/blog/${this.highlightedPost.slug}/">
+           href="${getBlogPath(this.highlightedPost.slug)}">
           <div class="blog-meta-row"><span class="blog-chip">${labelForCategory(this.highlightedPost.category)}</span><span>${this.highlightedPost.minutes} ${blogIndexContent.readTimeSuffix}</span></div>
           <h2>${escapeHtml(this.highlightedPost.header)}</h2>
           <p>${escapeHtml(this.highlightedPost.description)}</p>

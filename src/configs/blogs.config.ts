@@ -24,6 +24,12 @@ export type BlogPost = {
   keywords: readonly string[];
   /** Filter category shown beside the post metadata. */
   category: BlogCategory;
+  /**
+   * Lowercase topic slugs, such as `postgresql` or `spring-boot`, that drive the
+   * related-posts block. Posts that share more tags are considered closer; reuse
+   * an existing tag before inventing a synonym so related posts can find each other.
+   */
+  tags: readonly string[];
   /** Root-relative URL for the Markdown source in `public/blogs`. */
   source: string;
   /** Estimated reading time in minutes. */
@@ -46,6 +52,7 @@ export const blogPosts: readonly BlogPost[] = [
     description: "Explore current UI design directions through 15 animated examples of skeuomorphism, isometric illustration and motion UI, with practical uses and design references.",
     keywords: ["UI design trends", "UI design examples", "skeuomorphism", "gauge UI", "isometric illustration", "motion UI", "microinteractions", "shared element transition", "visual grammar"],
     category: "tutorial",
+    tags: ["frontend", "ui-design"],
     source: "/blogs/tutorial/ui-design-trends-skeuomorphism-isometric-glass.md",
     minutes: 15,
   },
@@ -58,6 +65,7 @@ export const blogPosts: readonly BlogPost[] = [
       "Learn how reinforcement learning trains LLMs: human feedback, verifiable rewards, DPO, and RLSC explained through a coding example, with diagrams and sources.",
     keywords: ["reinforcement learning", "LLM post-training", "RLHF", "RLVR", "RLSC", "RLAIF", "DPO", "verifiable rewards", "reward model", "GRPO"],
     category: "tutorial",
+    tags: ["ai", "llm"],
     source: "/blogs/tutorial/reinforcement-learning-from-rlhf-to-rlsc.md",
     minutes: 15,
   },
@@ -70,6 +78,7 @@ export const blogPosts: readonly BlogPost[] = [
       "Compare GraalVM Native Image and Project Leyden AOT caching for Java startup, JVM warm-up, memory use, and build trade-offs. Choose by workload.",
     keywords: ["GraalVM vs Project Leyden", "GraalVM Native Image", "Project Leyden AOT cache", "Java native builds", "JVM startup time", "JIT warm-up", "Spring Boot native image", "Java cold start"],
     category: "tutorial",
+    tags: ["java", "native-builds", "performance", "spring-boot"],
     source: "/blogs/tutorial/java-native-builds-graalvm-vs-leyden.md",
     minutes: 20,
   },
@@ -98,6 +107,7 @@ export const blogPosts: readonly BlogPost[] = [
       "Go static binary",
     ],
     category: "tutorial",
+    tags: ["native-builds", "java", "performance", "build-vs-runtime"],
     source: "/blogs/tutorial/What-Is-a-Native-Build.md",
     minutes: 20,
   },
@@ -134,6 +144,7 @@ export const blogPosts: readonly BlogPost[] = [
       "knowledge provenance",
     ],
     category: "news",
+    tags: ["ai", "rag", "agents"],
     source: "/blogs/news/okf.md",
     minutes: 20,
   },
@@ -164,6 +175,7 @@ export const blogPosts: readonly BlogPost[] = [
       "distributed systems",
     ],
     category: "notes",
+    tags: ["redis", "messaging", "distributed-systems", "spring-boot"],
     source: "/blogs/others/Why-Use-Redis-Channel.md",
     minutes: 20,
   },
@@ -204,6 +216,7 @@ export const blogPosts: readonly BlogPost[] = [
       "AI human-computer interaction",
     ],
     category: "news",
+    tags: ["ai", "llm"],
     source: "/blogs/news/Telepathy-With-AI.md",
     minutes: 20,
   },
@@ -225,6 +238,7 @@ export const blogPosts: readonly BlogPost[] = [
       "JavaScript SEO",
     ],
     category: "tutorial",
+    tags: ["frontend", "seo", "rendering", "build-vs-runtime"],
     source: "/blogs/tutorial/SSR-vs-SSG-Rendering-Hydration-DOM.md",
     minutes: 21,
   },
@@ -237,6 +251,7 @@ export const blogPosts: readonly BlogPost[] = [
       "Loading and refreshing AWS AppConfig in Spring Boot, including Config Data, AppConfig Agent, Spring Cloud, and immutable Kotlin properties.",
     keywords: ["AWS AppConfig", "Spring Boot", "Kotlin", "Spring Cloud", "AWS configuration"],
     category: "tutorial",
+    tags: ["aws", "spring-boot", "kotlin", "configuration"],
     source: "/blogs/tutorial/Aws-App-Config-Spring-Boot-Integration.md",
     minutes: 14,
   },
@@ -258,6 +273,7 @@ export const blogPosts: readonly BlogPost[] = [
       "PostgreSQL permission denied for table",
     ],
     category: "tutorial",
+    tags: ["postgresql", "databases", "security", "authorization"],
     source: "/blogs/tutorial/Postgres-Access-Control.md",
     minutes: 18,
   },
@@ -270,6 +286,7 @@ export const blogPosts: readonly BlogPost[] = [
       "Everyone copies the same SETNX snippet. Here is what actually matters when a lock is guarding real money — and when you do not need one at all.",
     keywords: ["Redis", "distributed locks", "SETNX", "distributed systems", "concurrency"],
     category: "tutorial",
+    tags: ["redis", "concurrency", "distributed-systems", "databases"],
     source: "/blogs/tutorial/Distributed-Locks-Redis.md",
     minutes: 9,
   },
@@ -281,6 +298,7 @@ export const blogPosts: readonly BlogPost[] = [
     description: "From annotation to Redis-backed bucket, with the edge cases that show up after launch.",
     keywords: ["rate limiting", "token bucket", "Spring Boot", "Redis", "API rate limiting"],
     category: "tutorial",
+    tags: ["redis", "spring-boot", "api-design", "concurrency"],
     source: "/blogs/tutorial/Rate-Limiting-Token-Bucket.md",
     minutes: 11,
   },
@@ -293,6 +311,7 @@ export const blogPosts: readonly BlogPost[] = [
       "How to use delivery, ownership, and incident evidence to decide whether a service boundary is earning its operational cost.",
     keywords: ["microservices", "distributed monolith", "service architecture", "software architecture", "system design"],
     category: "rant",
+    tags: ["architecture", "distributed-systems"],
     source: "/blogs/rant/Distributed-Monolith-Extra-Invoices.md",
     minutes: 5,
   },
@@ -305,6 +324,7 @@ export const blogPosts: readonly BlogPost[] = [
       "A practical cost review that separates Lambda Functions from MicroVMs and accounts for the infrastructure around either choice.",
     keywords: ["AWS Lambda pricing", "AWS cost", "serverless", "cloud infrastructure", "AWS architecture"],
     category: "news",
+    tags: ["aws", "serverless", "cost"],
     source: "/blogs/news/Lambda-Pricing-Infra-Alone.md",
     minutes: 5,
   },
@@ -317,6 +337,7 @@ export const blogPosts: readonly BlogPost[] = [
       "A practical guide to time zones, idempotent targets, retries, dead-letter queues, and schedule ownership.",
     keywords: ["EventBridge Scheduler", "AWS EventBridge", "idempotency", "dead-letter queues", "AWS scheduling"],
     category: "notes",
+    tags: ["aws", "serverless", "idempotency"],
     source: "/blogs/others/EventBridge-Scheduler-Quirks.md",
     minutes: 5,
   },
@@ -329,6 +350,7 @@ export const blogPosts: readonly BlogPost[] = [
       "Why authentication belongs at the boundary while resource-level authorization and policy remain with the use case.",
     keywords: ["authentication middleware", "authorization", "business logic", "application architecture", "security design"],
     category: "rant",
+    tags: ["authorization", "security", "architecture", "api-design"],
     source: "/blogs/rant/Business-Logic-Auth-Middleware.md",
     minutes: 5,
   },
@@ -370,6 +392,60 @@ export const getLatestBlogPost = (posts: readonly BlogPost[]): BlogPost | undefi
  */
 export const getBlogPost = (slug: string): BlogPost | undefined =>
   blogPosts.find((post) => post.slug === slug);
+
+/**
+ * Builds the canonical root-relative URL for an article.
+ *
+ * Every internal blog link should use this so the trailing slash matches the
+ * canonical tag and the SSG output directory; an extensionless URL would cost
+ * readers and crawlers a redirect hop.
+ *
+ * @param slug - Catalog slug of the target post.
+ * @returns The article path in `/blog/<slug>/` form.
+ */
+export const getBlogPath = (slug: string): string => `/blog/${encodeURIComponent(slug)}/`;
+
+/** Most related posts shown below an article. */
+const RELATED_POSTS_LIMIT = 4;
+/** Fewest related posts shown; same-category posts fill the gap when tags alone find fewer. */
+const RELATED_POSTS_MINIMUM = 2;
+
+/**
+ * Selects the posts shown in an article's related-posts block from shared catalog tags.
+ *
+ * Candidates are ranked by the number of tags they share with `post`, then by
+ * sharing its category, then newest first. Up to {@link RELATED_POSTS_LIMIT}
+ * tag-sharing posts are returned. When fewer than {@link RELATED_POSTS_MINIMUM}
+ * share a tag, the newest posts from the same category fill the remaining slots
+ * so every article still offers a next read. The post itself is never included.
+ *
+ * Adding or retagging a post in {@link blogPosts} updates every block; there is
+ * no hand-maintained list.
+ *
+ * @param post - Article currently being read.
+ * @param posts - Catalog to choose from; defaults to the full authored catalog.
+ * @returns Related posts in display order.
+ */
+export const getRelatedBlogPosts = (post: BlogPost, posts: readonly BlogPost[] = blogPosts): readonly BlogPost[] => {
+  const ranked = posts
+    .filter((candidate) => candidate.slug !== post.slug)
+    .map((candidate) => ({
+      candidate,
+      sharedTags: candidate.tags.filter((tag) => post.tags.includes(tag)).length,
+      sameCategory: candidate.category === post.category ? 1 : 0,
+    }))
+    .sort((first, second) =>
+      second.sharedTags - first.sharedTags
+      || second.sameCategory - first.sameCategory
+      || second.candidate.date.localeCompare(first.candidate.date));
+
+  const related = ranked.filter((entry) => entry.sharedTags > 0).slice(0, RELATED_POSTS_LIMIT);
+  const fillers = ranked.filter((entry) => entry.sharedTags === 0 && entry.sameCategory === 1);
+
+  return [...related, ...fillers]
+    .slice(0, Math.max(related.length, RELATED_POSTS_MINIMUM))
+    .map((entry) => entry.candidate);
+};
 
 /**
  * Extracts and decodes the article slug used by the route data coordinator.

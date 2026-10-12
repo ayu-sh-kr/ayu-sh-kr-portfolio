@@ -1,6 +1,6 @@
 import {ApplicationEventService, BaseElement, BindEvent, Component} from "@ayu-sh-kr/dota-wrap/core";
 import {type ApplicationEvent, OnEvent} from "@ayu-sh-kr/dota-wrap/event";
-import {formatBlogDate, getBlogPostsForIndex, getLatestBlogPost, labelForCategory, type BlogCategory, type BlogPost} from "@app/configs/blogs.config.ts";
+import {formatBlogDate, getBlogPath, getBlogPostsForIndex, getLatestBlogPost, labelForCategory, type BlogCategory, type BlogPost} from "@app/configs/blogs.config.ts";
 import {blogIndexContent} from "@app/data/blog-content.ts";
 import {BLOG_FILTER_CHANGE_EVENT, type BlogFilterChange} from "@app/events/blog.events.ts";
 import {escapeHtml} from "@app/utils/html.utils.ts";
@@ -9,7 +9,7 @@ import {publishAnalyticsEvent} from "@app/utils/analytics.utils.ts";
 
 /** Renders one archive post row with authored text escaped for HTML safety. */
 const renderPostRow = (post: BlogPost): string => `
-  <a class="blog-row blog-reveal" data-blog-reveal data-analytics-project="blog" data-analytics-slug="${post.slug}" href="/blog/${post.slug}/">
+  <a class="blog-row blog-reveal" data-blog-reveal data-analytics-project="blog" data-analytics-slug="${post.slug}" href="${getBlogPath(post.slug)}">
     <time class="blog-row-date" datetime="${post.date}">${formatBlogDate(post.date, true)}</time>
     <span class="blog-row-copy">
       <span class="blog-row-title">${escapeHtml(post.header)}</span>
