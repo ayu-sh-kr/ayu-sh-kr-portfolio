@@ -68,6 +68,18 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "rea-rust-app-clones-ai-reverse-engineering",
+    date: "2026-10-12",
+    title: "REA, Rust App Clones and AI Reverse Engineering: Where the Line Sits",
+    summary: "REA connects coding agents to reverse-engineering tools, while ArtCraft builds Rust alternatives to Adobe and Microsoft Office apps. See how evidence, clean-room claims and user benefits fit together.",
+    kind: "reading",
+    document: "/news/rea-rust-app-clones-ai-reverse-engineering.md",
+    keywords: ["REA reverse engineering", "AI reverse engineering tools", "Rust Adobe alternatives", "PhotoCraft Photoshop alternative", "ArtCraft WordCraft GridCraft DeckCraft", "clean-room software reimplementation", "Ghidra Hopper IDA"],
+    minutes: 6,
+    reference: {label: "REA — Reverse Engineer Anything", href: "https://github.com/morluto/rea"},
+  },
+
+  {
     slug: "anatomy-claude-code-isometric-svg-webgl",
     date: "2026-10-11",
     title: "Anatomy brings interactive SVG and 3D machine illustrations to Claude Code",

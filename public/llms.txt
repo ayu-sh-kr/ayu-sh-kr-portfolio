@@ -26,6 +26,8 @@
 
 ## Recent technical articles
 
+- [REA, Rust App Clones and AI Reverse Engineering: Where the Line Sits](https://www.ayu-sh-kr.com/news/rea-rust-app-clones-ai-reverse-engineering/): REA connects coding agents to reverse-engineering tools, while ArtCraft builds Rust alternatives to Adobe and Microsoft Office apps. See how evidence, clean-room claims and user benefits fit together.
+
 - [UI Design Trends: Skeuomorphism, Isometric Art and Motion](https://www.ayu-sh-kr.com/blog/ui-design-trends-skeuomorphism-isometric-glass/): A visual guide to skeuomorphism, isometric illustration and motion UI. Fifteen automatic examples connect real reader tasks to practical uses, with professional references for further study.
 
 - [Reinforcement Learning for LLMs: From RLHF and RLVR to RLSC](https://www.ayu-sh-kr.com/blog/reinforcement-learning-from-rlhf-to-rlsc/): A practical guide to reinforcement learning and LLM post-training, comparing RLHF, RLAIF, DPO, RLVR, PPO/GRPO, process supervision and RLSC, with diagrams, primary sources and reward limitations.
