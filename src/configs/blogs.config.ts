@@ -14,6 +14,12 @@ export type BlogPost = {
   slug: string;
   /** ISO calendar date shown in the index and article metadata. */
   date: string;
+  /**
+   * ISO date of the last substantive revision, when one happened after `date`.
+   * Shown as "Updated" in the article metadata and emitted as `dateModified`
+   * in structured data; omit it for posts that have not been revised.
+   */
+  updated?: string;
   /** Author name shown below the article title. */
   writer: string;
   /** Published headline used across the index, article, and next-post link. */

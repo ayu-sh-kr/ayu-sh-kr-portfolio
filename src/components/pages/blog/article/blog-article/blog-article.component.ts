@@ -158,7 +158,7 @@ export class BlogArticleComponent extends BaseElement {
         <a class="blog-back-link" href="/blog/">← ${blogArticleContent.allPostsLabel}</a>
           <blog-article-header
           category="${escapeHtml(labelForCategory(post.category))}"
-          metadata="${escapeHtml(`${post.minutes} ${blogIndexContent.readTimeSuffix} · ${formatBlogDate(post.date)}`)}"
+          metadata="${escapeHtml(`${post.minutes} ${blogIndexContent.readTimeSuffix} · ${formatBlogDate(post.date)}${post.updated ? ` · ${blogArticleContent.updatedPrefix} ${formatBlogDate(post.updated)}` : ""}`)}"
           title="${escapeHtml(post.header)}"
           writer="${escapeHtml(post.writer)}">
         </blog-article-header>

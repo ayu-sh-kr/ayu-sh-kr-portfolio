@@ -92,6 +92,7 @@ export const blogArticleContent = {
   loadError: "This article could not be loaded.",
   returnToPostsLabel: "Return to all posts",
   authorPrefix: "Written by",
+  updatedPrefix: "Updated",
   footer: {
     shareCopy: "Share this article",
     backLabel: "Back to",
