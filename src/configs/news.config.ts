@@ -68,6 +68,18 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "malicious-ai-routers-agent-supply-chain",
+    date: "2026-10-12",
+    title: "Unverified AI routers: credential leaks and pip install tampering",
+    summary: "How AI routers see requests, retain conversations and leak credentials—and where a changed pip install command can turn a reply into an unsafe action.",
+    kind: "infra",
+    document: "/news/malicious-ai-routers-agent-supply-chain.md",
+    keywords: ["unverified AI routers", "AI router credential leaks", "pip install package substitution", "LLM supply chain attacks", "Your Agent Is Mine", "AI agent tool call tampering"],
+    minutes: 5,
+    reference: {label: "Your Agent Is Mine — research paper", href: "https://arxiv.org/abs/2604.08407"},
+  },
+
+  {
     slug: "rea-rust-app-clones-ai-reverse-engineering",
     date: "2026-10-12",
     title: "REA, Rust App Clones and AI Reverse Engineering: Where the Line Sits",

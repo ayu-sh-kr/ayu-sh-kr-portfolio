@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="510" viewBox="0 0 840 510" role="img" aria-labelledby="title desc">
+<title id="title">Where an AI router can expose an exchange</title>
+<desc id="desc">An agent sends a request through a router to a model provider. Replies return through the same router, which can alter commands. The router can copy readable exchanges into storage; misuse or a breach can expose those copies.</desc>
+<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#615649"/></marker><marker id="risk" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#c23a00"/></marker></defs>
+<rect width="840" height="510" rx="18" fill="#fafaf8"/>
+<g font-family="Arial, sans-serif" fill="#2c2722">
+<text x="30" y="38" font-size="23" font-weight="700">Where the exchange can escape</text>
+<text x="30" y="64" font-size="16">Normal forwarding can continue while a copy is retained.</text>
+<g fill="#f5f3ee" stroke="#9f9281" stroke-width="1.8" stroke-linejoin="round">
+<path d="M30 128 Q29 120 38 120 L222 121 Q230 120 230 128 L229 238 Q230 246 222 246 L38 245 Q30 246 30 238Z"/>
+<path d="M320 128 Q319 120 328 120 L512 121 Q520 120 520 128 L519 238 Q520 246 512 246 L328 245 Q320 246 320 238Z" fill="#ffe0d1" stroke="#c23a00"/>
+<path d="M610 128 Q609 120 618 120 L802 121 Q810 120 810 128 L809 238 Q810 246 802 246 L618 245 Q610 246 610 238Z"/>
+<rect x="320" y="341" width="200" height="102" rx="9"/>
+<rect x="610" y="341" width="200" height="102" rx="9" fill="#ffe0d1" stroke="#c23a00"/>
+</g>
+<g font-size="19" font-weight="700"><text x="48" y="154">Coding agent</text><text x="338" y="154">AI router</text><text x="628" y="154">Model provider</text><text x="338" y="373">Stored copies</text><text x="628" y="373">Outside access</text></g>
+<g font-size="16"><text x="48" y="185">Sends tool results</text><text x="48" y="208">May include secrets</text><text x="338" y="185">Reads the exchange</text><text x="338" y="208">Can change replies</text><text x="628" y="185">Processes request</text><text x="628" y="208">Produces response</text><text x="338" y="401">Logs, traces, backups</text><text x="338" y="424">Retention is a choice</text><text x="628" y="401">Export, sale or breach</text><text x="628" y="424">May expose secrets</text></g>
+<g fill="none" stroke="#615649" stroke-width="2" stroke-linecap="round" marker-end="url(#arrow)"><path d="M230 163H320"/><path d="M520 163H610"/><path d="M610 224H520"/></g>
+<g fill="none" stroke="#c23a00" stroke-width="2.2" stroke-linecap="round" marker-end="url(#risk)"><path d="M320 224H230"/><path d="M420 246V341"/><path d="M520 393H610"/></g>
+<g font-size="14" text-anchor="middle"><text x="275" y="150">Request</text><text x="565" y="150">Forward</text><text x="565" y="213">Reply</text><text x="275" y="267" fill="#9c3100">Command may</text><text x="275" y="285" fill="#9c3100">be altered here</text><text x="465" y="293" fill="#9c3100">Copy</text><text x="565" y="380" fill="#9c3100">Leak</text></g>
+<text x="30" y="482" font-size="15" fill="#615649">Possible leak paths • This does not reconstruct the alleged dataset sale.</text>
+</g></svg>
