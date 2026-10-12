@@ -13,10 +13,10 @@ export const subscriptionPreferencesContent = {
     brand: "ayush.dev",
     eyebrow: "The Dispatch",
     navLabel: "Blog",
-    navHref: "/blog",
+    navHref: "/blog/",
     footer: "The Dispatch · weekly, or thereabouts",
     privacyLabel: "What I store",
-    privacyHref: "/legal/privacy#newsletter",
+    privacyHref: "/legal/privacy/#newsletter",
     defaultEmail: "reader@example.com",
   },
   hero: {
@@ -51,8 +51,8 @@ export const subscriptionPreferencesContent = {
     leaveLabel: "Leaving entirely",
     exits: [
       ["Read the archive", "Every past issue, nothing required", "/letter/archive"],
-      ["Leave entirely", "One click, address deleted, no follow-up", "/subscription/unsubscribe"],
-      ["What I store", "The whole record is two fields", "/legal/privacy#newsletter"],
+      ["Leave entirely", "One click, address deleted, no follow-up", "/subscription/unsubscribe/"],
+      ["What I store", "The whole record is two fields", "/legal/privacy/#newsletter"],
     ],
   },
   invalid: {

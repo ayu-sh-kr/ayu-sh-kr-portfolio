@@ -45,7 +45,7 @@ export class ShowcaseProjectCardComponent extends BaseElement {
     }
 
     return HTML`
-      <a class="showcase-card showcase-reveal" data-showcase-reveal data-analytics-project="showcase" href="/showcase/${project.slug}">
+      <a class="showcase-card showcase-reveal" data-showcase-reveal data-analytics-project="showcase" href="/showcase/${project.slug}/">
         <div class="showcase-card-cover">
           <showcase-visual project-slug="${project.slug}" variant="card"></showcase-visual>
           <span class="showcase-card-arrow" aria-hidden="true">↗</span>

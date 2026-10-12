@@ -180,8 +180,10 @@ blog-markdown-view {
   opacity: 1;
 }
 
+/* Authored width and height attributes reserve space for lazy images; auto keeps their aspect ratio when narrowed. */
 .blog-prose img {
   max-inline-size: 100%;
+  block-size: auto;
   border-radius: 1rem;
 }
 

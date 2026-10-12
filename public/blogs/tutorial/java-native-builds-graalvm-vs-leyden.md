@@ -97,7 +97,7 @@ The result is a different kind of artifact:
 - It needs **no Java installed** on the target machine — drop it in an empty container and it runs.
 - Its **attack surface is smaller**, because you cannot exploit code that does not exist.
 
-For a command-line tool that is not an improvement, it is the difference between usable and not. Nobody tolerates a pause before every invocation. For a serverless function, cold start *is* your latency story. For scale-to-zero, it decides whether scale-to-zero is a real option or a nice idea.
+For a command-line tool that is not an improvement, it is the difference between usable and not. Nobody tolerates a pause before every invocation. For a [serverless function](/blog/lambda-pricing-infra-alone/), cold start *is* your latency story. For scale-to-zero, it decides whether scale-to-zero is a real option or a nice idea.
 
 ### The catch, and it is a big one
 

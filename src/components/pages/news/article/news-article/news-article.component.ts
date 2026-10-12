@@ -41,7 +41,7 @@ const renderReference = (note: NewsNote): string => note.reference ? `
 ` : "";
 
 const renderAdjacentNote = (note: NewsNote | undefined, direction: "previous" | "next"): string => note ? `
-  <a class="news-step ${direction === "previous" ? "is-previous" : ""}" href="/news/${note.slug}">
+  <a class="news-step ${direction === "previous" ? "is-previous" : ""}" href="/news/${note.slug}/">
     <p class="news-label">${direction === "previous" ? newsContent.article.previous : newsContent.article.next} · ${formatNewsDate(note.date, true)}</p>
     <p class="news-step-title">${direction === "previous" ? `<span aria-hidden="true">←</span> ` : ""}${escapeHtml(note.title)}${direction === "next" ? ` <span aria-hidden="true">→</span>` : ""}</p>
   </a>
@@ -166,7 +166,7 @@ export class NewsArticleComponent extends BaseElement {
         <main class="layout-reading layout-section-hero news-article-missing">
           <p class="news-eyebrow">${newsContent.article.notFoundEyebrow}</p>
           <h1 class="type-section">${newsContent.article.notFoundTitle}</h1>
-          <a class="app-link app-link--button app-link--ink" href="/news">${newsContent.article.notFoundAction}</a>
+          <a class="app-link app-link--button app-link--ink" href="/news/">${newsContent.article.notFoundAction}</a>
         </main>
       `)}`;
     }
@@ -179,7 +179,7 @@ export class NewsArticleComponent extends BaseElement {
     const otherNotes = notes.filter((item) => item.slug !== note.slug && item.kind !== note.kind);
     const moreNotes = [...sameKindNotes, ...otherNotes].slice(0, 3);
     const documentMarkup = this.loadError
-      ? `<div class="news-note-prose"><p class="news-load-error">${escapeHtml(this.loadError)} <a href="/news">${newsContent.article.back}</a>.</p></div>`
+      ? `<div class="news-note-prose"><p class="news-load-error">${escapeHtml(this.loadError)} <a href="/news/">${newsContent.article.back}</a>.</p></div>`
       : `<div class="news-note-prose layout-section layout-section-flush" data-news-document aria-busy="true"><news-markdown-view theme="${portfolioMarkdownTheme.name}" color="${portfolioMarkdownColor}"><p class="news-meta">${newsContent.article.loading}</p></news-markdown-view></div>`;
 
     return html`${trustedHTML(`
@@ -188,7 +188,7 @@ export class NewsArticleComponent extends BaseElement {
         <article data-news-article-body>
           <header class="layout-section-hero">
             <div class="layout-page">
-              <a class="news-back-link" href="/news"><span aria-hidden="true">←</span> ${newsContent.article.back}</a>
+              <a class="news-back-link" href="/news/"><span aria-hidden="true">←</span> ${newsContent.article.back}</a>
             </div>
             <div class="news-article-block layout-grid layout-section-sm text-center">
               <div class="news-article-byline layout-row layout-row-tight justify-center">
@@ -212,7 +212,7 @@ export class NewsArticleComponent extends BaseElement {
           ${renderAdjacentNote(nextNote, "next")}
         </nav>
 
-        ${moreNotes.length ? `<section class="news-article-block layout-section layout-section-flush" aria-labelledby="news-more-heading"><h2 class="news-label" id="news-more-heading">${newsContent.article.more}</h2><div class="news-more-list">${moreNotes.map((item) => `<a class="news-more-row layout-row layout-row-split" href="/news/${item.slug}"><span>${escapeHtml(item.title)}</span><time class="news-meta news-number" datetime="${item.date}">${formatNewsDate(item.date, true)}</time></a>`).join("")}</div></section>` : ""}
+        ${moreNotes.length ? `<section class="news-article-block layout-section layout-section-flush" aria-labelledby="news-more-heading"><h2 class="news-label" id="news-more-heading">${newsContent.article.more}</h2><div class="news-more-list">${moreNotes.map((item) => `<a class="news-more-row layout-row layout-row-split" href="/news/${item.slug}/"><span>${escapeHtml(item.title)}</span><time class="news-meta news-number" datetime="${item.date}">${formatNewsDate(item.date, true)}</time></a>`).join("")}</div></section>` : ""}
 
         <div class="news-article-subscription layout-content layout-section-end">
           <blog-subscription heading="${newsContent.article.subscription.title}" description="${newsContent.article.subscription.copy}" aria-label-text="${newsContent.article.subscription.ariaLabel}" button-variant="accent"></blog-subscription>

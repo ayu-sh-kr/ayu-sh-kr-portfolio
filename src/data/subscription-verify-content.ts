@@ -13,10 +13,10 @@ export const subscriptionVerifyContent = {
     brand: "ayush.dev",
     eyebrow: "The Dispatch",
     navLabel: "Blog",
-    navHref: "/blog",
+    navHref: "/blog/",
     footer: "The Dispatch · weekly, or thereabouts",
     privacyLabel: "What I store",
-    privacyHref: "/legal/privacy#newsletter",
+    privacyHref: "/legal/privacy/#newsletter",
   },
   states: {
     working: {

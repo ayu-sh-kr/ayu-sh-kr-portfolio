@@ -16,7 +16,7 @@ export const designElementContent = {
     links: [
       { href: "#design-element-button-showcase", label: "Try the live button specimens", indicator: "↓" },
       { href: "#design-element-anchor-showcase", label: "Explore anchor-link variants", indicator: "↓" },
-      { href: "/design/color", label: "Explore the color grammar", indicator: "→" },
+      { href: "/design/color/", label: "Explore the color grammar", indicator: "→" },
     ],
     summaryAriaLabel: "Action control system summary",
     summaryLabel: "Shared system",
@@ -45,9 +45,9 @@ export const designElementContent = {
     title: "One destination. One dependable treatment.",
     lede: "These are real anchors, so their href keeps routing and hash navigation intact. The shared classes cover button-shaped calls to action, underlined prose links, card-footer links, and navigation density without changing the underlying semantics.",
     actions: [
-      { id: "accent", variant: "accent", title: "Accent destination", body: "The primary route or hash destination in a group of actions.", label: "Start a project", href: "/pricing#pricing-start-project", classes: "app-link--button app-link--accent" },
-      { id: "ink", variant: "ink", title: "Ink destination", body: "A strong route that should not take the selected primary colour role.", label: "Browse case studies", href: "/showcase", classes: "app-link--button app-link--ink" },
-      { id: "ghost", variant: "ghost", title: "Ghost destination", body: "A quiet secondary route beside a stronger navigation choice.", label: "Explore color roles", href: "/design/color", classes: "app-link--button app-link--ghost" },
+      { id: "accent", variant: "accent", title: "Accent destination", body: "The primary route or hash destination in a group of actions.", label: "Start a project", href: "/pricing/#pricing-start-project", classes: "app-link--button app-link--accent" },
+      { id: "ink", variant: "ink", title: "Ink destination", body: "A strong route that should not take the selected primary colour role.", label: "Browse case studies", href: "/showcase/", classes: "app-link--button app-link--ink" },
+      { id: "ghost", variant: "ghost", title: "Ghost destination", body: "A quiet secondary route beside a stronger navigation choice.", label: "Explore color roles", href: "/design/color/", classes: "app-link--button app-link--ghost" },
       { id: "compact", variant: "compact", title: "Compact destination", body: "Reserved for floating sticky controls where the surrounding chrome owns the compact space.", label: "Jump to guidance", href: "#design-element-guidance", classes: "app-link--button app-link--accent app-link--compact" },
       { id: "full", variant: "full", title: "Full-width destination", body: "For a constrained panel where one anchor should fill its available inline space.", label: "Read the guidance", href: "#design-element-guidance", classes: "app-link--button app-link--ink app-link--full" },
     ],
@@ -56,8 +56,8 @@ export const designElementContent = {
       title: "The same anchor foundation, without CTA semantics.",
       lede: "Navigation links keep a lower-emphasis, context-appropriate target while retaining the shared focus and reduced-motion behavior.",
       items: [
-        { id: "nav", title: "Standard navigation", body: "For a dense header or footer destination.", label: "Go to pricing", href: "/pricing", classes: "app-link--nav" },
-        { id: "nav-mobile", title: "Mobile navigation", body: "For the full-width row inside a compact navigation menu.", label: "Visit the blog", href: "/blog", classes: "app-link--nav app-link--nav-mobile" },
+        { id: "nav", title: "Standard navigation", body: "For a dense header or footer destination.", label: "Go to pricing", href: "/pricing/", classes: "app-link--nav" },
+        { id: "nav-mobile", title: "Mobile navigation", body: "For the full-width row inside a compact navigation menu.", label: "Visit the blog", href: "/blog/", classes: "app-link--nav app-link--nav-mobile" },
       ],
     },
     text: {
@@ -65,8 +65,8 @@ export const designElementContent = {
       title: "Inline reading needs a visible, underlined destination.",
       lede: "Text links stay in the sentence flow and use an accent underline. The muted variant is for supporting copy that should remain discoverable without competing with the primary content.",
       items: [
-        { id: "text", title: "Default text link", before: "Read the", label: "project brief", after: " before choosing a collaboration path.", href: "/pricing", classes: "app-link--text" },
-        { id: "text-muted", title: "Muted text link", before: "Need a lower-emphasis route?", label: "Visit the support desk", after: " for help and common answers.", href: "/support", classes: "app-link--text app-link--text-muted" },
+        { id: "text", title: "Default text link", before: "Read the", label: "project brief", after: " before choosing a collaboration path.", href: "/pricing/", classes: "app-link--text" },
+        { id: "text-muted", title: "Muted text link", before: "Need a lower-emphasis route?", label: "Visit the support desk", after: " for help and common answers.", href: "/support/", classes: "app-link--text app-link--text-muted" },
       ],
     },
     cards: {
@@ -74,8 +74,8 @@ export const designElementContent = {
       title: "A card can end with linked text, not a second button.",
       lede: "Use this treatment when the card itself provides context and its final destination should stay lightweight. The shared card modifier preserves a comfortable target without inventing button semantics.",
       items: [
-        { id: "card", title: "Standard card destination", body: "A project, article, or resource card can reserve its final line for one clear route.", label: "Browse case studies", href: "/showcase", classes: "app-link--text app-link--card" },
-        { id: "card-muted", title: "Muted card destination", body: "Use the quieter tone when the card’s title and summary should carry the first level of emphasis.", label: "Read the latest notes", href: "/blog", classes: "app-link--text app-link--text-muted app-link--card" },
+        { id: "card", title: "Standard card destination", body: "A project, article, or resource card can reserve its final line for one clear route.", label: "Browse case studies", href: "/showcase/", classes: "app-link--text app-link--card" },
+        { id: "card-muted", title: "Muted card destination", body: "Use the quieter tone when the card’s title and summary should carry the first level of emphasis.", label: "Read the latest notes", href: "/blog/", classes: "app-link--text app-link--text-muted app-link--card" },
       ],
     },
   },

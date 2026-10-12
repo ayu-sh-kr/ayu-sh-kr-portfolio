@@ -23,7 +23,7 @@ export const letterUnsubscribeContent = {
     eyebrow: "The Dispatch",
     footer: "The Dispatch · weekly, or thereabouts",
     privacyLabel: "What I store",
-    privacyHref: "/legal/privacy",
+    privacyHref: "/legal/privacy/",
     defaultEmail: "reader@example.com",
   },
   confirm: {

@@ -143,7 +143,7 @@ export class ConsentNoticeComponent extends BaseElement {
 
     const link = document.createElement("a");
     link.className = "consent-notice__link";
-    link.href = "/legal/privacy#cookies";
+    link.href = "/legal/privacy/#cookies";
     link.textContent = "What’s stored";
     actions.append(link);
 

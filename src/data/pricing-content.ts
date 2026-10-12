@@ -261,8 +261,8 @@ export const pricingContent = {
     alternativesTitle: "Review more information before enquiring",
     alternatives: [
       { title: "View an indicative estimate", body: "The estimator provides a preliminary range from two inputs without requesting contact details.", href: "#pricing-estimate" },
-      { title: "Review selected work", body: "Case studies describe the technical decisions, implementation, and trade-offs behind selected projects.", href: "/showcase" },
-      { title: "Existing client support", body: "Use the support page for incidents, invoices, access requests, and project handover matters.", href: "/support" },
+      { title: "Review selected work", body: "Case studies describe the technical decisions, implementation, and trade-offs behind selected projects.", href: "/showcase/" },
+      { title: "Existing client support", body: "Use the support page for incidents, invoices, access requests, and project handover matters.", href: "/support/" },
     ],
   },
   contact: {

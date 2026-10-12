@@ -43,7 +43,8 @@ budget. Retries can multiply load, partial failures require compensation, and
 an interface change needs coordination across owners.
 
 Some synchronous dependencies are justified. A service may need an immediate
-fraud decision or an authoritative permission check. The point is to make the
+fraud decision or an
+[authoritative permission check](/blog/business-logic-auth-middleware/). The point is to make the
 dependency explicit: set timeouts, define the fallback, publish an owner,
 measure the error path, and decide which result the caller can safely cache or
 defer. A network call is not a neutral replacement for a method call.
@@ -58,8 +59,11 @@ integration boundary that benefits from a stable contract.
 The boundary must include data ownership. If every service writes the same
 tables or relies on unversioned schema changes, independent deployment remains
 an aspiration. Prefer an API, an event contract, or an owned data model over a
-shared database write path. When the transition spans services, design for
-eventual consistency with an outbox, idempotent consumers, and a visible
+shared database write path. Separate database roles, built with
+[PostgreSQL permissions and GRANT](/blog/postgresql-access-control/), can make
+that write ownership enforceable rather than a convention. When the transition spans services, design for
+eventual consistency with an outbox,
+[idempotent consumers](/blog/eventbridge-scheduler-quirks/), and a visible
 recovery process rather than pretending a distributed call chain is one local
 transaction.
 

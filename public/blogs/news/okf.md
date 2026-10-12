@@ -111,7 +111,7 @@ This does not mean an agent should open every linked file. A consumer can use fr
 
 “Will OKF replace RAG?” is the wrong architecture question. The two mechanisms solve adjacent, not identical, problems.
 
-RAG is a retrieval pattern. Its responsibility is to select useful evidence from a corpus at the moment a user asks a question. It is effective when terminology varies, when a relevant page is not already on a known path, or when the corpus is too big or fluid for fixed navigation. Its failure mode is plausible incompleteness: the right fragment may be missed, or retrieved fragments may lack the relationship that tells the model how to combine them.
+RAG is a retrieval pattern. Its responsibility is to select useful evidence from a corpus at the moment a user asks a question. It is effective when terminology varies, when a relevant page is not already on a known path, or when the corpus is too big or fluid for fixed navigation. Its failure mode is plausible incompleteness: [the right fragment may be missed](/news/anthropic-contextual-retrieval-rag/), or retrieved fragments may lack the relationship that tells the model how to combine them.
 
 OKF is a knowledge interchange and navigation format. Its responsibility is to preserve curated context, provenance, lifecycle signals, and cross-links in files that a human, agent, indexer, or visualiser can consume. Its failure mode is stale or missing documentation. A valid link can point to a concept that has not been updated—or to a concept that was never written.
 
@@ -126,7 +126,7 @@ OKF is a knowledge interchange and navigation format. Its responsibility is to p
 
 A metadata catalog and an OpenAPI or Protobuf definition remain authoritative for their contracts. OKF does not try to absorb them. It can point to them, explain business meaning, and connect them to the metric, decision, or runbook where that meaning matters. Treating them as competitors creates duplicated facts instead of a system composed from clear responsibilities.
 
-In practice, most systems will want both. Use OKF as the curated graph-shaped layer; index its concepts for lexical or vector search; retrieve when the starting point is unknown; follow links when a concept establishes a deliberate path; and query the source of truth when correctness depends on live state.
+In practice, most systems will want both. Use OKF as the curated graph-shaped layer; index its concepts for [lexical or vector search](/news/pageindex-tree-based-rag-relevance/); retrieve when the starting point is unknown; follow links when a concept establishes a deliberate path; and query the source of truth when correctness depends on live state.
 
 ## What v0.2 adds: trust needs more than a confident paragraph
 

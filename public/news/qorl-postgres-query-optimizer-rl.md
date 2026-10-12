@@ -16,7 +16,7 @@ The result: a **1.81x speedup and a 44.7% summed latency reduction across all 11
 
 This isn't really a database story. It's a story about where AI is heading.
 
-The model isn't special. It isn't frontier, isn't huge, isn't expensive. What made it good was **retraining on one dedicated task with a reward that could be checked in the real world**. Combine that with open weights — free to download, cheap to run, fine-tunable on a desk machine — and a pattern emerges: the interesting units of AI progress are becoming small, specialized, and affordable. Not one giant model that knows everything, but many little experts you can spin up for the price of a cloud bill.
+The model isn't special. It isn't frontier, isn't huge, isn't expensive. What made it good was **retraining on one dedicated task with a [reward that could be checked in the real world](/blog/reinforcement-learning-from-rlhf-to-rlsc/)**. Combine that with open weights — free to download, cheap to run, fine-tunable on a desk machine — and a pattern emerges: the interesting units of AI progress are becoming small, specialized, and affordable. Not one giant model that knows everything, but many little experts you can spin up for the price of a cloud bill.
 
 A year ago, "beat Postgres at query planning" would have sounded like a research lab's roadmap. This week it was one person, one sabbatical, and $1,200.
 

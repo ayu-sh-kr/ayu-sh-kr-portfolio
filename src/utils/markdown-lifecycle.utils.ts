@@ -175,20 +175,28 @@ export class MarkdownLifecycleUtils {
    * Schedules in-page navigation after rendered headings exist in the DOM.
    *
    * Markdown rendering can replace the heading nodes after the browser has
-   * already parsed the URL hash. This method decodes the current hash and waits
-   * one animation frame before calling `scrollIntoView`; a newer request cancels
-   * the older frame so route changes do not scroll to stale content.
+   * already parsed the URL hash. This method waits one animation frame before
+   * calling `scrollIntoView`; a newer request cancels the older frame so route
+   * changes do not scroll to stale content.
+   *
+   * The Markdown anchor plugin percent-encodes punctuation into heading IDs, so
+   * a heading such as "ERROR: permission denied" gets the literal ID
+   * `error%3A-permission-denied`. The raw hash is therefore tried first, then
+   * its decoded form for IDs written with plain characters.
    */
   scheduleHashScroll(): void {
     this.cancelHashScroll();
+    const rawHash = window.location.hash.slice(HASH_PREFIX_LENGTH);
     const headingId = this.currentHash();
-    if (!headingId) {
+    if (!rawHash && !headingId) {
       return;
     }
 
     this.hashFrameId = requestAnimationFrame(() => {
       this.hashFrameId = null;
-      document.getElementById(headingId)?.scrollIntoView();
+      const target = (rawHash ? document.getElementById(rawHash) : null)
+        ?? (headingId ? document.getElementById(headingId) : null);
+      target?.scrollIntoView();
     });
   }
 

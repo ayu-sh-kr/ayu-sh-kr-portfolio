@@ -29,7 +29,7 @@ export class ShowcaseCardPage extends DotaPageElement {
   render(): string {
     return HTML`
       <main id="showcase-card-main">
-        <card-page-header link-label="Showcase" link-href="/showcase"></card-page-header>
+        <card-page-header link-label="Showcase" link-href="/showcase/"></card-page-header>
         <showcase-card-deck data-analytics-section="showcase_projects"></showcase-card-deck>
       </main>
     `;
