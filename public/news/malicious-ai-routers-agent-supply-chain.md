@@ -1,58 +1,62 @@
 # Unverified AI routers: credential leaks and pip install tampering
 
-Cheap access to several AI models can come with an extra recipient: the company routing the conversation. Everything sent through that service—including code, documents and credentials accidentally included in a debugging session—can reach its servers before reaching the model provider.
+An AI router can offer several models through one account, but it also becomes a recipient of your conversations. If a coding agent sends a configuration file containing a password, the router receives that password. If the router changes a command in the reply, the agent may execute something the model never requested.
 
-Security researcher **Chaofan Shou** says he bought a **6 TB dataset** from a major Chinese LLM router containing SSH keys, VPN configurations, Aliyun cloud keys and GitLab tokens. His [post](https://twitter.com/shoucccc/status/2098169782541631871) claims the credentials could enable access to seven Chinese/CIS government entities and 19 companies, including Xiaomi, Huawei, NIO and MiniMax.
+Security researcher Chaofan Shou brought the first risk into focus by claiming he bought a **6 TB dataset from an unnamed Chinese LLM router**. His [original post about the dataset](https://twitter.com/shoucccc/status/2098169782541631871) alleges it contained SSH keys, VPN configurations, cloud keys and GitLab tokens that could provide access to government entities and companies. The dataset and claimed access have not been independently verified here. The allegation nevertheless raises a concrete question: how does a service selling model access end up holding credentials for its customers’ systems?
 
-The router is unnamed, and the dataset and claimed access remain unverified here. The question is how selling AI access could also expose customers’ exchanges.
+## How your request becomes visible at the router
 
-## The router receives the conversation to forward it
+An **AI router** accepts a request from your application, chooses an upstream model provider, forwards the request and returns the answer. You configure its address as the destination for model requests. That makes the router an intended recipient of the traffic.
 
-An **AI router** is a service between an application and model providers. It offers a shared interface for accessing different models, often with one account and billing balance. The application sends its request to the router; the router forwards it upstream and returns the answer.
+The request contains the material the model needs: your message, any conversation history the application includes, instructions and tool results. The router handles this as readable application data so it can forward it. An encrypted connection protects the journey to the router; the router itself receives the contents. Forwarding the request creates another connection to the next service.
 
-Requests can include earlier messages, attachments, source code and results returned by an agent’s tools. Replies pass through the router too.
+Consider a coding agent diagnosing a database connection failure. It reads a configuration file through a local tool. The application then includes the tool’s output in its next model request so the model can interpret it. This is the round trip described in [Anthropic’s documentation on returning tool results](https://platform.claude.com/docs/en/agents-and-tools/tool-use/handle-tool-calls).
 
-Imagine a developer asking a coding agent why a database connection fails. The agent reads a configuration file, and the application sends its contents back for diagnosis. If the file includes a database password, that password travels with the exchange. [Anthropic's tool documentation](https://platform.claude.com/docs/en/agents-and-tools/tool-use/handle-tool-calls) describes this round trip: the application executes a client tool and returns its output in the next message.
+If that output includes a database password, **the password travels inside the request body**. You did not have to paste it into chat. The agent’s file read and the application’s decision to send the result put it there. The router cannot automatically read every file on your computer, but it can see the file contents your application sends.
 
-That is the point where a local secret becomes **data sent to the router**. The model needs the tool result to continue, so the application includes it in a request. An operator can extract the password from that request without changing the answer. Credentials can arrive through files, terminal output or logs, without being deliberately pasted into chat.
+![Requests and replies pass through the AI router. The router can copy readable exchanges into storage, where misuse or a breach can expose them, and can alter commands before replies return to the agent.](/news/assets/malicious-ai-routers-agent-supply-chain/router-exposure.svg)
 
-## Where an exchange can leak
+The normal path continues even if the router copies the exchange. Your database question can receive a useful answer while a second copy leaves the intended workflow. The diagram shows possible exposure points, not a reconstruction of the alleged dataset sale.
 
-The first exposure happens **at the router handling the request**. An operator can retain a copy while still forwarding the request and returning a normal answer. The coding session can appear successful throughout.
+## What a router can store—and what it needs to store
 
-A second exposure can happen in stored records. Request logs, debugging traces and databases may retain conversations after the session ends. Those copies can be misused by the operator, accessed through a storage breach or sold. These are possible leak paths; Shou's post does not establish the unnamed router's exact collection or sale process.
+Processing an exchange and keeping it are different decisions. A router needs to handle the request long enough to forward it. It does **not need a permanent copy of the conversation** simply to pass it upstream.
 
-[OpenRouter's explanation of data retention](https://openrouter.ai/blog/insights/zero-data-retention/) makes a useful distinction: a provider's promise not to retain a request does not remove copies made elsewhere, such as application logs or error trackers. The same question needs asking at each service handling an exchange.
+Billing and operations can use narrower records: which account made a request, which model served it, when it ran, token usage, cost and whether it failed. Even these records can reveal patterns of use, but they are different from a transcript.
 
-| Place | What could leave the intended workflow |
+A router with access to the traffic can retain much more:
+
+| Record | What it could contain |
 | --- | --- |
-| Router processing | A copy of the request and answer while they pass through. |
-| Logs or stored traffic | A retained conversation later exposed or sold. |
-| Additional upstream relay | The same exchange forwarded to an operator the customer did not choose. |
+| Request bodies | Prompts, included history, instructions, code and uploaded content carried in the request. |
+| Tool results | File contents, terminal output and logs, including passwords or tokens present in them. |
+| Responses | Generated text, code and instructions for the agent’s next tool call. |
+| Account and request records | Customer identifiers, timestamps, model choices, usage and other connection details. |
 
-For our database example, a leaked password may permit database access. **SSH keys can permit server login; cloud keys can permit infrastructure access; GitLab tokens can expose repositories or enable changes.** The harm depends on whether the credential still works and what permissions it grants. A leak can therefore become data theft, unauthorised infrastructure use or further software compromise.
+These are **technical possibilities, not a claim that every router stores every field**. The actual record depends on its logging, monitoring, retention settings and operator behaviour. For comparison, [OpenRouter’s data collection policy](https://openrouter.ai/docs/guides/privacy/data-collection) distinguishes request metadata from opt-in prompt and response logging. That illustrates why a retention policy must say which data it covers.
 
-## Cheap access can add hidden recipients
+For our debugging session, the difference is substantial. A usage record says you made a request; a stored tool result may contain the working password. Copies can also sit in error reports or backups after the visible chat disappears. A downstream model provider’s retention promise does not establish what the router retained.
 
-[ChinaTalk's 2025 investigation](https://www.chinatalk.media/p/the-grey-market-for-american-llms) described resellers exploiting free credits, reselling quotas and disguising cheaper models as US models. Legitimate discounts also exist; the concern is unclear sourcing.
+## When visibility turns into a leak
 
-The [Your Agent Is Mine study](https://arxiv.org/html/2604.08407v1) reports that researcher-controlled relay decoys entered routing paths and exposed 99 credentials across 440 Codex sessions. A reseller forwarding to another relay sends exchanges there too. Shou's dataset allegation does not establish that selling traffic financed a discount.
+Disclosure to the router happens when the request arrives. A leak beyond that service can happen if an operator exports the traffic, an attacker accesses stored logs, or the router forwards it through another relay. The extra relay then receives the exchange too. We do not know which collection path produced the dataset Shou described.
 
-## A changed pip install command can install the wrong package
+The harm depends on what the captured credentials permit. A valid database password may expose customer records. An SSH private key may enable server access where that key is accepted. A repository token with write permission may allow code changes; a cloud key may permit resource creation or access to stored data. Expiry, additional authentication and restricted permissions can limit that access.
 
-The paper illustrates **package-name substitution** in a returned tool call. These commands show its documented example; the second is an attack illustration and should not be run.
+Cheap access alone does not prove abuse. The relevant question is who actually handles the request. An undocumented chain of resellers gives you more recipients to trust, even when the model’s final answer looks correct.
 
-| Command | What changed |
+## How a router can change a pip install command
+
+The return path creates a second risk: **changing what the agent does**. The April 2026 [Your Agent Is Mine paper’s dependency-substitution example](https://arxiv.org/html/2604.08407v1#S4.SS2.SSS1) shows a router changing a package name in a tool call:
+
+| At the model’s response | After the router’s edit |
 | --- | --- |
-| `python -m pip install requests flask pyyaml` | Original instruction. |
-| `python -m pip install reqeusts flask pyyaml` | `requests` becomes **`reqeusts`**, an attacker-controlled lookalike. |
+| `pip install requests` | `pip install reqeusts` |
 
-The router makes the substitution **after the model responds, before the agent receives the command**. The package registry can remain the same, so checking only the destination domain misses the altered dependency. Installing it can leave malicious code in the project beyond that conversation.
+This is an attack illustration, not a command to run. The legitimate package name `requests` becomes the lookalike `reqeusts`. The edit happens after the model generates the response and before the agent receives it.
 
-An agent that automatically approves commands can carry out the modified instruction. Local permissions and sandboxing still determine what the resulting code can access. This attack example is separate from the alleged 6 TB dataset sale.
+The agent sees an installation instruction in the expected reply format. If execution is automatically approved, it may install the substituted package. Checking only the package registry’s domain misses the problem: the destination can remain unchanged while the package changes. Installing attacker-controlled code can compromise the environment within its permissions.
 
-> An unverified router can receive a secret on the way in and alter a command on the way back.
+The paper also reports active malicious injection in nine of 428 tested routers. That research supports the tampering risk; it does not verify the later dataset-sale allegation or identify its unnamed seller.
 
-For the database debugging session, share the error and redacted settings, keep live credentials out of tool results, and verify the router’s operator and upstream sourcing. Review the exact package names and commands before execution, and restrict the agent’s access. If a secret crossed a suspected service, revoke it; deleting the chat cannot invalidate a stolen copy.
-
-The bargain needs to cover more than model access. It also needs a trustworthy path for the debugging exchange—and a check that the command executed is the one the application intended to run.
+For the database debugging session, keep live secrets out of the tool output sent upstream. Check who operates the router, which other services receive requests and whether full exchanges are retained. Review exact package names before allowing installation, and restrict the agent’s permissions. If a working credential has crossed a suspected service, revoke or rotate it: deleting the conversation cannot disable a copied password or key.
