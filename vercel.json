@@ -14,41 +14,6 @@
   ],
   "redirects": [
     {
-      "source": "/news/rea-rust-app-clones-ai-reverse-engineering",
-      "destination": "/news/rea-rust-app-clones-ai-reverse-engineering/",
-      "permanent": true
-    },
-    {
-      "source": "/news/anatomy-claude-code-isometric-svg-webgl",
-      "destination": "/news/anatomy-claude-code-isometric-svg-webgl/",
-      "permanent": true
-    },
-    {
-      "source": "/news/tamagui-3-tailwind-native-runtime",
-      "destination": "/news/tamagui-3-tailwind-native-runtime/",
-      "permanent": true
-    },
-    {
-      "source": "/news/jetbrains-mellum-2-1-coding-agents",
-      "destination": "/news/jetbrains-mellum-2-1-coding-agents/",
-      "permanent": true
-    },
-    {
-      "source": "/news/weft-ai-coding-agent-coordination",
-      "destination": "/news/weft-ai-coding-agent-coordination/",
-      "permanent": true
-    },
-    {
-      "source": "/news/microsoft-surface-laptop-ultra-windows-hybrid-ai",
-      "destination": "/news/microsoft-surface-laptop-ultra-windows-hybrid-ai/",
-      "permanent": true
-    },
-    {
-      "source": "/news/aws-strands-box-ai-agent-sandbox",
-      "destination": "/news/aws-strands-box-ai-agent-sandbox/",
-      "permanent": true
-    },
-    {
       "source": "/about",
       "destination": "/about/",
       "permanent": true
@@ -224,6 +189,11 @@
       "permanent": true
     },
     {
+      "source": "/news/anatomy-claude-code-isometric-svg-webgl",
+      "destination": "/news/anatomy-claude-code-isometric-svg-webgl/",
+      "permanent": true
+    },
+    {
       "source": "/news/angular-native-mobile-apps",
       "destination": "/news/angular-native-mobile-apps/",
       "permanent": true
@@ -236,6 +206,11 @@
     {
       "source": "/news/antiburn-coding-agent-token-usage",
       "destination": "/news/antiburn-coding-agent-token-usage/",
+      "permanent": true
+    },
+    {
+      "source": "/news/aws-strands-box-ai-agent-sandbox",
+      "destination": "/news/aws-strands-box-ai-agent-sandbox/",
       "permanent": true
     },
     {
@@ -279,13 +254,13 @@
       "permanent": true
     },
     {
-      "source": "/news/github-copilot-local-model-routing-hydrafusion",
-      "destination": "/news/github-copilot-local-model-routing-hydrafusion/",
+      "source": "/news/github-copilot-computer-use",
+      "destination": "/news/github-copilot-computer-use/",
       "permanent": true
     },
     {
-      "source": "/news/github-copilot-computer-use",
-      "destination": "/news/github-copilot-computer-use/",
+      "source": "/news/github-copilot-local-model-routing-hydrafusion",
+      "destination": "/news/github-copilot-local-model-routing-hydrafusion/",
       "permanent": true
     },
     {
@@ -329,6 +304,11 @@
       "permanent": true
     },
     {
+      "source": "/news/jetbrains-mellum-2-1-coding-agents",
+      "destination": "/news/jetbrains-mellum-2-1-coding-agents/",
+      "permanent": true
+    },
+    {
       "source": "/news/jev-typesafe-system-one-model",
       "destination": "/news/jev-typesafe-system-one-model/",
       "permanent": true
@@ -349,8 +329,18 @@
       "permanent": true
     },
     {
+      "source": "/news/litellm-supply-chain-attack-ai-router",
+      "destination": "/news/litellm-supply-chain-attack-ai-router/",
+      "permanent": true
+    },
+    {
       "source": "/news/microsoft-copilot-home-code-autopilot",
       "destination": "/news/microsoft-copilot-home-code-autopilot/",
+      "permanent": true
+    },
+    {
+      "source": "/news/microsoft-surface-laptop-ultra-windows-hybrid-ai",
+      "destination": "/news/microsoft-surface-laptop-ultra-windows-hybrid-ai/",
       "permanent": true
     },
     {
@@ -406,6 +396,21 @@
     {
       "source": "/news/qorl-postgres-query-optimizer-rl",
       "destination": "/news/qorl-postgres-query-optimizer-rl/",
+      "permanent": true
+    },
+    {
+      "source": "/news/rea-rust-app-clones-ai-reverse-engineering",
+      "destination": "/news/rea-rust-app-clones-ai-reverse-engineering/",
+      "permanent": true
+    },
+    {
+      "source": "/news/tamagui-3-tailwind-native-runtime",
+      "destination": "/news/tamagui-3-tailwind-native-runtime/",
+      "permanent": true
+    },
+    {
+      "source": "/news/weft-ai-coding-agent-coordination",
+      "destination": "/news/weft-ai-coding-agent-coordination/",
       "permanent": true
     },
     {

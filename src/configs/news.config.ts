@@ -68,6 +68,17 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "litellm-supply-chain-attack-ai-router",
+    date: "2026-10-12",
+    title: "LiteLLM supply chain attack: how an AI router exposed credentials",
+    summary: "How two malicious LiteLLM releases reached PyPI through stolen publishing access, why Python startup mattered, and what affected AI gateway deployments needed to check.",
+    kind: "infra",
+    document: "/news/litellm-supply-chain-attack-ai-router.md",
+    keywords: ["LiteLLM supply chain attack", "AI router security", "LLM gateway", "PyPI compromise", "Trivy compromise", "Python credential theft"],
+    minutes: 4,
+    reference: {label: "LiteLLM — incident advisory and recovery updates", href: "https://docs.litellm.ai/blog/security-update-march-2026"},
+  },
+  {
     slug: "rea-rust-app-clones-ai-reverse-engineering",
     date: "2026-10-12",
     title: "REA, Rust App Clones and AI Reverse Engineering: Where the Line Sits",
