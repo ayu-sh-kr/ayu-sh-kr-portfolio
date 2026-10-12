@@ -71,11 +71,11 @@ export const newsNotes: readonly NewsNote[] = [
     slug: "malicious-ai-routers-agent-supply-chain",
     date: "2026-10-12",
     title: "Unverified AI routers: credential leaks and pip install tampering",
-    summary: "How unverified AI routers receive credentials through agent tool results, leak exchanges and alter pip install package names, with the risks explained step by step.",
+    summary: "How AI routers see requests, retain conversations and leak credentials—and where a changed pip install command can turn a reply into an unsafe action.",
     kind: "infra",
     document: "/news/malicious-ai-routers-agent-supply-chain.md",
     keywords: ["unverified AI routers", "AI router credential leaks", "pip install package substitution", "LLM supply chain attacks", "Your Agent Is Mine", "AI agent tool call tampering"],
-    minutes: 4,
+    minutes: 5,
     reference: {label: "Your Agent Is Mine — research paper", href: "https://arxiv.org/abs/2604.08407"},
   },
   {
