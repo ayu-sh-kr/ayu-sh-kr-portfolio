@@ -14,8 +14,8 @@
   ],
   "redirects": [
     {
-      "source": "/news/litellm-supply-chain-attack-ai-router",
-      "destination": "/news/litellm-supply-chain-attack-ai-router/",
+      "source": "/news/malicious-ai-routers-agent-supply-chain",
+      "destination": "/news/malicious-ai-routers-agent-supply-chain/",
       "permanent": true
     },
     {

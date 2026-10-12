@@ -68,15 +68,15 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
-    slug: "litellm-supply-chain-attack-ai-router",
+    slug: "malicious-ai-routers-agent-supply-chain",
     date: "2026-10-12",
-    title: "LiteLLM supply chain attack: how an AI router exposed credentials",
-    summary: "How two malicious LiteLLM releases reached PyPI through stolen publishing access, why Python startup mattered, and what affected AI gateway deployments needed to check.",
+    title: "Malicious AI routers: how model access can expose secrets and hijack agents",
+    summary: "Chaofan Shou's 6 TB router-data claim and the Your Agent Is Mine study explained: model routing, exposed credentials, altered tool calls and limits on agent authority.",
     kind: "infra",
-    document: "/news/litellm-supply-chain-attack-ai-router.md",
-    keywords: ["LiteLLM supply chain attack", "AI router security", "LLM gateway", "PyPI compromise", "Trivy compromise", "Python credential theft"],
+    document: "/news/malicious-ai-routers-agent-supply-chain.md",
+    keywords: ["malicious AI routers", "LLM supply chain security", "Your Agent Is Mine", "Chaofan Shou", "AI agent credential exposure", "tool call injection"],
     minutes: 4,
-    reference: {label: "LiteLLM — incident advisory and recovery updates", href: "https://docs.litellm.ai/blog/security-update-march-2026"},
+    reference: {label: "Your Agent Is Mine — research paper", href: "https://arxiv.org/abs/2604.08407"},
   },
   {
     slug: "rea-rust-app-clones-ai-reverse-engineering",
