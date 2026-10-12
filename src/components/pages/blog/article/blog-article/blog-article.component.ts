@@ -1,7 +1,7 @@
 import {ApplicationEventService, BaseElement, BeforeInit, Component, WindowListener} from "@ayu-sh-kr/dota-wrap/core";
 import {html, trustedHTML} from "@ayu-sh-kr/dota-wrap/rendering";
 import {OnEvent} from "@ayu-sh-kr/dota-wrap/event";
-import {blogPosts, formatBlogDate, getBlogPost, getBlogSlug, labelForCategory, type BlogPost} from "@app/configs/blogs.config.ts";
+import {blogPosts, formatBlogDate, getBlogPath, getBlogPost, getBlogSlug, labelForCategory, type BlogPost} from "@app/configs/blogs.config.ts";
 import {blogArticleContent, blogIndexContent} from "@app/data/blog-content.ts";
 import {BLOG_MARKDOWN_SOURCE_EVENT, type BlogMarkdownSource} from "@app/events/blog.events.ts";
 import {portfolioMarkdownColor, portfolioMarkdownTheme} from "@app/configs/markdown-theme.config.ts";
@@ -149,7 +149,7 @@ export class BlogArticleComponent extends BaseElement {
       ? blogPosts[(blogPosts.indexOf(post) + 1) % blogPosts.length] ?? null
       : null);
     const nextLink = nextPost
-      ? `<a href="/blog/${nextPost.slug}/" class="blog-quiet-card blog-quiet-card-next"><span><small>${blogArticleContent.footer.nextLabel}</small>${escapeHtml(nextPost.header)}</span><span>→</span></a>`
+      ? `<a href="${getBlogPath(nextPost.slug)}" class="blog-quiet-card blog-quiet-card-next"><span><small>${blogArticleContent.footer.nextLabel}</small>${escapeHtml(nextPost.header)}</span><span>→</span></a>`
       : "";
 
     return html`${trustedHTML(`
@@ -164,6 +164,7 @@ export class BlogArticleComponent extends BaseElement {
         </blog-article-header>
         ${markdown}
         <article-share article-title="${escapeHtml(post.header)}" canonical-url="https://www.ayu-sh-kr.com/blog/${encodeURIComponent(post.slug)}/" author="${escapeHtml(post.writer)}" publication-date="${post.date}"></article-share>
+        <blog-related-posts slug="${escapeHtml(post.slug)}"></blog-related-posts>
         <blog-subscription data-analytics-section="blog_article_subscription"></blog-subscription>
         <aside class="blog-coffee-support" aria-labelledby="blog-coffee-support-title" data-analytics-section="blog_article_coffee">
           <h2 id="blog-coffee-support-title" class="blog-coffee-support-title">${blogArticleContent.coffeeSupport.title}</h2>

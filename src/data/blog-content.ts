@@ -97,6 +97,9 @@ export const blogArticleContent = {
     backLabel: "Back to",
     nextLabel: "Next article",
   },
+  related: {
+    title: "Related posts",
+  },
   coffeeSupport: {
     title: "Found this useful?",
     copy: "Buying me a coffee helps make more independent writing like this possible.",

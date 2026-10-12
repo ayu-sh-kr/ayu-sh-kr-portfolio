@@ -1,0 +1,77 @@
+blog-related-posts {
+  display: block;
+}
+
+/* Sits in the article's reading column between the share controls and the subscription form. */
+.blog-related {
+  max-inline-size: 42.5rem;
+  margin: 0 auto;
+  padding-block: var(--layout-space-5);
+}
+
+.blog-related-title {
+  margin: 0;
+  color: var(--blog-ink-soft);
+  font-size: var(--type-label-size);
+  font-weight: var(--type-label-weight);
+  letter-spacing: var(--type-label-tracking);
+  text-transform: uppercase;
+}
+
+.blog-related-list {
+  display: grid;
+  gap: var(--layout-space-3);
+  margin: var(--layout-space-4) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (min-width: 700px) {
+  .blog-related-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.blog-related-link {
+  display: flex;
+  block-size: 100%;
+  min-inline-size: 0;
+  flex-direction: column;
+  gap: 0.35rem;
+  border: 1px solid var(--blog-hairline);
+  border-radius: 0.9rem;
+  padding: 0.9rem 1rem;
+  color: var(--blog-ink);
+  text-decoration: none;
+  transition: border-color 180ms ease, background-color 180ms ease;
+}
+
+.blog-related-link:hover {
+  border-color: var(--blog-accent);
+  background: var(--blog-tint);
+}
+
+.blog-related-link:focus-visible {
+  outline: 2px solid var(--blog-accent);
+  outline-offset: 0.2rem;
+}
+
+.blog-related-meta {
+  color: var(--blog-ink-soft);
+  font-size: var(--type-label-size);
+  font-variant-numeric: tabular-nums;
+}
+
+.blog-related-heading {
+  font-size: var(--type-card-title-size);
+  font-weight: var(--type-card-title-weight);
+  letter-spacing: var(--type-card-title-tracking);
+  line-height: 1.35;
+  text-wrap: balance;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blog-related-link {
+    transition: none;
+  }
+}
