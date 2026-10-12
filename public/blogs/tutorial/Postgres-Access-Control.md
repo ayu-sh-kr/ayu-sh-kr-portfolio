@@ -1,8 +1,8 @@
 # PostgreSQL Permissions: GRANT, REVOKE and Permission Denied Fixes
 
-Picture a small online shop. Its orders live in a PostgreSQL database called `shop`, and a checkout service sits between the website and that database. When a customer pays, checkout reads the order, marks it as paid and writes a line to an event log saying what happened. New orders go through the same service. That is the whole job: read orders, create orders, change an order's status and record events. It never needs to delete order history, drop a table or add a column.
+Picture a small online shop with a checkout service in front of its PostgreSQL database. Checkout reads orders, creates them, marks them as paid and logs each payment. It never needs to delete orders or change tables.
 
-The quickest way to get checkout working is to let it log in as the database owner, or as a superuser. Every query succeeds, and nobody sees a permission error. The cost shows up later: a bug in checkout, or a leaked password, can now drop tables or read every customer's data. The safer setup gives checkout its own login with only the permissions its job needs. The catch is that the first restricted login usually meets a wall of `permission denied` errors, and they are confusing because PostgreSQL checks access in several layers. In this guide we build that login from zero, one error at a time, so each error is explained the moment it appears. After the walkthrough comes a reference for the errors you are likely to meet in other setups, and a checklist for the next service.
+The easy setup is to let checkout log in as the database owner. Then a bug or a leaked password can drop tables too. Giving it a login that can do only its job is safer, but that login runs into `permission denied` errors. We'll build it one error at a time.
 
 Already stuck on a specific error? The [quick fixes table](#quick-fixes-for-permission-denied-errors) maps each message to its fix.
 
@@ -587,7 +587,7 @@ For broad reporting or data-loading jobs, PostgreSQL 14 added two ready-made rol
 
 ## Stop granting when the domain task works
 
-We started with a checkout service that could have run as the database owner, where any bug or leaked password could drop tables or read every tenant's orders. It now runs as a login that can do exactly its job: connect to `shop`, read and create orders, mark them paid, and append events, all inside one tenant. If its password leaks tomorrow, the damage stops at those operations.
+We started with a checkout service that could have run as the database owner, where a bug or a leaked password could drop tables. It now runs as a login that can do exactly its job: connect to `shop`, read and create orders, mark them paid, and append events, all inside one tenant. If its password leaks tomorrow, the damage stops at those operations.
 
 Each `permission denied` along the way pointed at one layer, and each fix was the smallest grant for that layer. That is the method for the next service too: write down the task, grant what it needs, test as the service login, and keep a test for something it must not do. Store the grants beside the migrations that create the tables, so access changes with the schema.
 
