@@ -18,7 +18,7 @@ GitLab will run two preview windows, which engineers often call brownouts, on **
 
 The first step is to find every script, bot and pipeline that calls GitLab.com without credentials and give it one. GitLab supports personal access tokens, OAuth tokens and CI/CD job tokens; inside GitLab CI, the job token avoids storing a long-lived secret.
 
-Clients should also handle limits deliberately. A request over the limit receives **HTTP 429** with `Retry-After` and `RateLimit-*` headers, so a client should wait for the interval GitLab specifies instead of retrying immediately. Caching responses, batching calls and replacing frequent polling with webhooks reduce the number of requests in the first place.
+Clients should also handle limits deliberately. A request over the limit receives [**HTTP 429** with `Retry-After`](/blog/rate-limiting-token-bucket-spring-boot/) and `RateLimit-*` headers, so a client should wait for the interval GitLab specifies instead of retrying immediately. Caching responses, batching calls and replacing frequent polling with webhooks reduce the number of requests in the first place.
 
 > A job that worked for years without a token has been relying on a limit that will no longer exist.
 

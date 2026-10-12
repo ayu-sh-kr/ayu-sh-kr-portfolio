@@ -6,7 +6,7 @@ To do that, it searches the help centre and reads the passages it finds. This is
 
 ## How the right rule loses its meaning
 
-Searching an entire help centre usually starts with breaking its documents into smaller passages called **chunks**. That lets the system retrieve a few useful pieces instead of sending every policy to the answering model. But a chunk boundary can separate a rule from the heading that explains it.
+Searching an entire help centre usually starts with breaking its documents into smaller passages called **chunks**. That lets the system retrieve a few useful pieces instead of sending every policy to the answering model. But [a chunk boundary can separate a rule from the heading that explains it](/blog/open-knowledge-format-okf-vs-rag/).
 
 Suppose the heading “Online footwear returns” lands in one chunk and “Returns are accepted within 30 days of delivery” lands in another. A person reading the page sees them together. Search may receive only the second piece. The time limit survives, but the clue connecting it to shoes has disappeared.
 

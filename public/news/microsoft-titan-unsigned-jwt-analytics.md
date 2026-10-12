@@ -20,6 +20,6 @@ The much larger **17.3 trillion rows** figure came from database statistics acro
 
 He reported the issue on **September 5**. His disclosure says Microsoft locked down the API on **September 9**; Microsoft said the research helped it strengthen its services.
 
-The website’s VPN requirement made Titan look closed to outsiders. The separate API needed its own working authentication checks. Once it accepted an unverified identity, the administrator permissions attached to that identity opened the databases.
+The website’s VPN requirement made Titan look closed to outsiders. The separate API needed [its own working authentication checks](/blog/business-logic-auth-middleware/). Once it accepted an unverified identity, the administrator permissions attached to that identity opened the databases.
 
 Sources: [Faav’s original disclosure](https://blog.faav.net/how-i-couldve-accessed-17-trillion-microsoft-records) and [Microsoft’s token-validation guidance](https://learn.microsoft.com/en-us/entra/identity-platform/access-tokens).

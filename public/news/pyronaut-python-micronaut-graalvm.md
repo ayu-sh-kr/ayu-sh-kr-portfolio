@@ -1,6 +1,6 @@
 # Pyronaut launches Python services on Micronaut and GraalVM
 
-The Micronaut team has announced **Pyronaut**, a framework for building Python services on its existing Java platform. Released on October 2, it brings Micronaut’s web server, database access, validation and cloud integrations to Python. GraalVM supplies the runtime technology, including a deployment option that reuses a native base instead of requiring a lengthy native build after every code change.
+The Micronaut team has announced **Pyronaut**, a framework for building Python services on its existing Java platform. Released on October 2, it brings Micronaut’s web server, database access, validation and cloud integrations to Python. GraalVM supplies the runtime technology, including a deployment option that reuses a native base instead of requiring a [lengthy native build](/blog/what-is-a-native-build/) after every code change.
 
 ## How Python connects to Micronaut
 
@@ -12,7 +12,7 @@ Once running, the service uses **Netty**, the HTTP server technology behind Micr
 
 ## GraalVM Crema changes the native build step
 
-That runtime design leads to two main deployment choices. Pyronaut offers a JVM option for teams prioritizing peak throughput after the application has warmed up. For quicker startup and lower memory use, the team offers a path based on **GraalVM Crema**, a precompiled native base image.
+That runtime design leads to two main deployment choices. Pyronaut offers a JVM option for teams prioritizing peak throughput after the application has [warmed up](/blog/java-native-builds-graalvm-vs-leyden/). For quicker startup and lower memory use, the team offers a path based on **GraalVM Crema**, a precompiled native base image.
 
 With Crema, the reusable base is built using GraalVM Native Image. Later application builds add their processed classes and dependencies as a thin layer on top. The expensive native compilation step therefore belongs to the shared base, reducing the need to repeat it whenever application code changes. Developers can also choose a full native image build for their application.
 

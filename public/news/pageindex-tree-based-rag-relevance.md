@@ -50,7 +50,7 @@ The summary only tells it where to look. **The source pages must provide the ans
 
 ## What the tree can—and cannot—solve
 
-PageIndex is especially suited to long manuals, guides, and policies where sections and cross-references carry useful context. It still depends on the model choosing well; extra reading decisions can add time and cost. Vector RAG can also improve relevance through filters, keyword search, and reranking the retrieved passages.
+PageIndex is especially suited to long manuals, guides, and policies where [sections and cross-references carry useful context](/blog/open-knowledge-format-okf-vs-rag/). It still depends on the model choosing well; extra reading decisions can add time and cost. Vector RAG can also improve relevance through filters, keyword search, and reranking the retrieved passages.
 
 The project comes from **VectifyAI**, with its 2025 introduction credited to **Mingtian Zhang, Yu Tang, and the PageIndex team**. PageIndex Flash followed in August 2026. It is an evolving approach to retrieval, with results to judge against real questions.
 
