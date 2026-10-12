@@ -14,7 +14,7 @@ A coding agent usually starts with readable source files. A commercial desktop a
 
 Consider a developer who wants to understand how a desktop app handles a search shortcut. The agent can ask REA to inspect the application, trace relevant code or events, and return findings with evidence and limitations. The agent then uses that information to explain the behavior or implement a similar feature in a separate project.
 
-![Isometric workflow showing a coding agent sending an investigation through REA to local analysis tools, which return evidence and unknowns for a separate implementation.](/news/assets/rea-rust-app-clones-ai-reverse-engineering/rea-investigation.svg)
+![Exploded application cutaway reveals the editor interface, packaged resources and compiled routines, with a probe magnifying instructions and call references.](/news/assets/rea-rust-app-clones-ai-reverse-engineering/rea-investigation.svg)
 
 The result is evidence for the next question: which function handles the shortcut, what it calls, and what remains uncertain. REA’s documentation says it does not recover the original source code or automatically clone an application. The coding agent still has to interpret the findings, write an implementation and test its behavior.
 
@@ -48,7 +48,7 @@ The wider ArtCraft collection targets several Adobe workflows, including vector 
 
 “Clean-room” usually describes an effort to build an independent implementation from permitted observations or public specifications, rather than copying the original source. The authors’ description explains their intended approach. Verifying it requires evidence about how the implementation was produced.
 
-![Isometric comparison of a protected commercial application, observed behavior and public formats feeding an independently written open-source alternative, with the origin boundary marked for review.](/news/assets/rea-rust-app-clones-ai-reverse-engineering/clean-room-boundary.svg)
+![Two exploded editing applications show similar visible results above different internal implementations, alongside public file specifications and compatibility samples.](/news/assets/rea-rust-app-clones-ai-reverse-engineering/clean-room-boundary.svg)
 
 Compatibility work reproduces visible behavior, such as a file format or keyboard shortcut. Assessing the implementation also means examining its source materials, branding, interface elements and distribution. Writing new code addresses only part of that question.
 
