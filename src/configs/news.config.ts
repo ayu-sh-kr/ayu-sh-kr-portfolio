@@ -68,6 +68,18 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "urban-vpn-ai-chat-harvesting",
+    date: "2026-10-12",
+    title: "Urban VPN AI chat harvesting: where conversation privacy breaks",
+    summary: "Urban VPN’s reported AI chat collection and a separate router study show where prompts, replies and credentials become visible between the browser and the model.",
+    kind: "infra",
+    document: "/news/urban-vpn-ai-chat-harvesting.md",
+    keywords: ["Urban VPN AI chat harvesting", "ChatGPT conversation privacy", "browser extension data collection", "BiScience", "LLM router credential leaks"],
+    minutes: 2,
+    reference: {label: "Koi investigation — preserved by the AI Incident Database", href: "https://incidentdatabase.ai/reports/6825/"},
+  },
+
+  {
     slug: "malicious-ai-routers-agent-supply-chain",
     date: "2026-10-12",
     title: "Unverified AI routers: credential leaks and pip install tampering",
