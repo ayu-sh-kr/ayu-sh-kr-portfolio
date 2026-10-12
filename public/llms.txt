@@ -48,7 +48,7 @@
 
 ## Recent Dispatch notes
 
-- [Malicious AI routers: how model access can expose secrets and hijack agents](https://www.ayu-sh-kr.com/news/malicious-ai-routers-agent-supply-chain/): Chaofan Shou's 6 TB router-data claim and the Your Agent Is Mine study explained: model routing, exposed credentials, altered tool calls and limits on agent authority. [Article Markdown](https://www.ayu-sh-kr.com/news/malicious-ai-routers-agent-supply-chain.md).
+- [Cheap AI routers and leaked conversations: where the data goes](https://www.ayu-sh-kr.com/news/malicious-ai-routers-agent-supply-chain/): How cheap AI routers can expose prompts, replies and credentials through retained traffic or upstream relays, with context on reseller pricing and Shou’s 6 TB dataset claim. [Article Markdown](https://www.ayu-sh-kr.com/news/malicious-ai-routers-agent-supply-chain.md).
 
 - [Anatomy brings interactive SVG and 3D machine illustrations to Claude Code](https://www.ayu-sh-kr.com/news/anatomy-claude-code-isometric-svg-webgl/): Anatomy’s isometric SVG kit, WebGL effects, beta 3D motion, editable source and visual checks. [Article Markdown](https://www.ayu-sh-kr.com/news/anatomy-claude-code-isometric-svg-webgl.md).
 
