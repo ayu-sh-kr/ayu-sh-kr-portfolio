@@ -10,7 +10,8 @@
     "lint:imports": "eslint .",
     "lint:fix": "eslint . --fix",
     "build": "tsc && vite build",
-    "build:ssg": "tsc && vite build -- --ssg",
+    "build:ssg": "tsc && vite build -- --ssg && node scripts/check-internal-links.mjs dist",
+    "check:links": "node scripts/check-internal-links.mjs dist",
     "test": "vitest run",
     "preview": "vite preview"
   },

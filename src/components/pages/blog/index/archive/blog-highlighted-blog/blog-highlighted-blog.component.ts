@@ -73,7 +73,7 @@ export class BlogHighlightedBlogComponent extends BaseElement {
     return `
       <section class="blog-container blog-featured-section" aria-label="${blogIndexContent.highlighted.ariaLabel}"${isVisible ? "" : " hidden"}>
         <a class="blog-featured blog-reveal" data-blog-reveal data-analytics-project="blog" data-analytics-slug="${this.highlightedPost.slug}" data-blog-category="${this.highlightedPost.category}"
-           href="/blog/${this.highlightedPost.slug}">
+           href="/blog/${this.highlightedPost.slug}/">
           <div class="blog-meta-row"><span class="blog-chip">${labelForCategory(this.highlightedPost.category)}</span><span>${this.highlightedPost.minutes} ${blogIndexContent.readTimeSuffix}</span></div>
           <h2>${escapeHtml(this.highlightedPost.header)}</h2>
           <p>${escapeHtml(this.highlightedPost.description)}</p>

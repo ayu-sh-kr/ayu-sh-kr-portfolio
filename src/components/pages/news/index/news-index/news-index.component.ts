@@ -47,7 +47,7 @@ const renderNote = (note: NewsNote, latestSlug: string): string => `
       <time class="news-meta news-number" datetime="${note.date}">${formatNewsDate(note.date, true)}</time>
       ${note.slug === latestSlug ? `<span class="news-live"><span class="news-live-dot" aria-hidden="true"></span>Latest</span>` : ""}
     </div>
-    <h3 class="news-note-title"><a href="/news/${note.slug}">${escapeHtml(note.title)}</a></h3>
+    <h3 class="news-note-title"><a href="/news/${note.slug}/">${escapeHtml(note.title)}</a></h3>
     <p class="news-note-body">${renderSummary(note.summary)}</p>
     <div class="news-note-foot layout-row">
       <span class="news-tag">${labelForNewsKind(note.kind)}</span>
@@ -272,7 +272,7 @@ export class NewsIndexComponent extends BaseElement {
         <section class="news-blog-handoff">
           <div class="layout-content layout-row layout-row-split layout-section-end">
             <p class="news-lede type-lede">${newsContent.index.blogPrompt}</p>
-            <a class="app-link app-link--button app-link--ink" href="/blog">${newsContent.index.blogAction} <span aria-hidden="true">→</span></a>
+            <a class="app-link app-link--button app-link--ink" href="/blog/">${newsContent.index.blogAction} <span aria-hidden="true">→</span></a>
           </div>
         </section>
 

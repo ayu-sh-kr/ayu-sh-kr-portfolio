@@ -20,7 +20,7 @@ export const designTypographyContent = {
     lede: "A live reference for choosing type roles. These specimens render from typography.css, so a token change here is the same change visitors see across the portfolio.",
     links: [
       { href: "#design-roles", label: "Browse the role specimens", indicator: "↓" },
-      { href: "/design/color", label: "Explore the color grammar", indicator: "→" },
+      { href: "/design/color/", label: "Explore the color grammar", indicator: "→" },
     ],
     summaryAriaLabel: "Typography system summary",
     summaryLabel: "Shared system",
@@ -67,7 +67,7 @@ export const designTypographyContent = {
         "Long-form pages earn their rhythm through a readable measure and generous leading, not through a new family or improvised scale. The global body defaults establish the baseline; headings and ledes only create the hierarchy around it.",
         "Keep text in the existing role system, use semantic color tokens, and let the reader move through the page without encountering a new visual language in every component.",
       ],
-      linkHref: "/blog",
+      linkHref: "/blog/",
       linkLabel: "Read the editorial implementation",
       linkIndicator: "→",
     },

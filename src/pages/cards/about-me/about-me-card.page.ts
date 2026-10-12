@@ -23,7 +23,7 @@ export class AboutMeCardPage extends DotaPageElement {
   render(): string {
     return HTML`
       <main id="about-me-main">
-        <card-page-header link-label="See the work" link-href="/showcase"></card-page-header>
+        <card-page-header link-label="See the work" link-href="/showcase/"></card-page-header>
         <about-me-card-deck></about-me-card-deck>
       </main>
     `;

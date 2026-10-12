@@ -23,8 +23,8 @@ summary:
 summary_note: This box is a summary, not the policy. The sections below are what actually applies.
 
 related:
-  - { title: Terms & Conditions, href: /legal/terms, blurb: "Using the site, and the ground rules for working together." }
-  - { title: Work with me, href: /pricing, blurb: "What an engagement looks like, and what it costs." }
+  - { title: Terms & Conditions, href: /legal/terms/, blurb: "Using the site, and the ground rules for working together." }
+  - { title: Work with me, href: /pricing/, blurb: "What an engagement looks like, and what it costs." }
 ---
 
 ## Who I am {#who scope="Everyone" group="The basics" short="Who I am"}
@@ -104,7 +104,7 @@ If I become aware of a breach affecting your data, I'll tell you without delay a
 
 Everything you share while we scope or build is confidential by default, whether or not there's a signed NDA. That includes the fact that we're talking at all, if you'd rather it stayed quiet.
 
-I do write publicly about engineering, and I like to reference real work. What I publish is patterns and lessons, never your data, your credentials, or anything that identifies you without permission. The rules for naming a client are in the [Terms & Conditions](/legal/terms#showing).
+I do write publicly about engineering, and I like to reference real work. What I publish is patterns and lessons, never your data, your credentials, or anything that identifies you without permission. The rules for naming a client are in the [Terms & Conditions](/legal/terms/#showing).
 
 ## Who else touches your data {#processors scope="Everyone" group="For everyone" short="Who else touches it"}
 

@@ -120,7 +120,7 @@ export const designContent = {
       accentWarning: "Accent is scarce.",
       accentResolution: "If the primary colour is decorating rather than identifying one meaningful thing, take it out.",
       actions: [
-        { href: "/design/element", label: "Open 01 components & colour", className: "app-link app-link--button app-link--ink" },
+        { href: "/design/element/", label: "Open 01 components & colour", className: "app-link app-link--button app-link--ink" },
         { href: "#components", label: "Back to the top", className: "app-link app-link--button app-link--ghost" },
       ],
     },
@@ -133,7 +133,7 @@ export const designContent = {
       lede: "The parts bin and its paint. Reuse the production controls before inventing a local treatment, and let semantic roles resolve colours in both themes instead of naming a hue inside a component.",
       doors: [
         {
-          href: "/design/element",
+          href: "/design/element/",
           description: "The controls and destinations a page can contain, with the colour roles that keep them coherent.",
           source: "src/components/pages/design/element · src/color.css",
           facts: [
@@ -144,10 +144,10 @@ export const designContent = {
         },
       ],
       jumps: [
-        { href: "/design/color#design-color-roles", label: "Colour roles" },
-        { href: "/design/element#design-element-button-showcase", label: "Action buttons" },
-        { href: "/design/element#design-element-anchor-showcase", label: "Anchor links" },
-        { href: "/design/element#design-element-guidance", label: "Control guidance" },
+        { href: "/design/color/#design-color-roles", label: "Colour roles" },
+        { href: "/design/element/#design-element-button-showcase", label: "Action buttons" },
+        { href: "/design/element/#design-element-anchor-showcase", label: "Anchor links" },
+        { href: "/design/element/#design-element-guidance", label: "Control guidance" },
       ],
     },
     {
@@ -157,7 +157,7 @@ export const designContent = {
       lede: "The system stack and the roles that make scanning predictable. The scale carries display, section, supporting, and control work without downloading a typeface or inventing a local size.",
       doors: [
         {
-          href: "/design/typography",
+          href: "/design/typography/",
           description: "How every piece of text is sized, weighted, tracked, and led so pages keep their hierarchy.",
           source: "src/typography.css · /design/typography",
           facts: [
@@ -169,8 +169,8 @@ export const designContent = {
         },
       ],
       jumps: [
-        { href: "/design/typography#design-roles", label: "Role specimens" },
-        { href: "/design/typography", label: "Typography overview" },
+        { href: "/design/typography/#design-roles", label: "Role specimens" },
+        { href: "/design/typography/", label: "Typography overview" },
       ],
     },
     {
@@ -180,7 +180,7 @@ export const designContent = {
       lede: "Nine families of behaviour and sixteen approved verbs. Every specimen is live: hover it, focus it, scroll it, or reduce motion. If an interaction does not belong to a family, it is drift.",
       doors: [
         {
-          href: "/design/interaction",
+          href: "/design/interaction/",
           description: "How anything here may move, what may trigger it, and how long it is allowed to take.",
           source: "src/components/pages/design/interaction",
           facts: [
@@ -192,11 +192,11 @@ export const designContent = {
         },
       ],
       jumps: [
-        { href: "/design/interaction#pointer", label: "Pointer" },
-        { href: "/design/interaction#focus", label: "Focus" },
-        { href: "/design/interaction#action", label: "Action" },
-        { href: "/design/interaction#timing", label: "Timing" },
-        { href: "/design/interaction#reduced", label: "Reduced motion" },
+        { href: "/design/interaction/#pointer", label: "Pointer" },
+        { href: "/design/interaction/#focus", label: "Focus" },
+        { href: "/design/interaction/#action", label: "Action" },
+        { href: "/design/interaction/#timing", label: "Timing" },
+        { href: "/design/interaction/#reduced", label: "Reduced motion" },
       ],
     },
     {
@@ -206,7 +206,7 @@ export const designContent = {
       lede: "Geometry only: measure, spacing, rhythm, grids, radius, and stacking order. It owns where things sit, never the colour, border, or type scale of the surfaces that sit there.",
       doors: [
         {
-          href: "/design/layout",
+          href: "/design/layout/",
           description: "Where things sit, how far apart they sit, and what happens to that geometry as the window changes.",
           source: "src/layout.css · /design/layout",
           facts: [
@@ -218,10 +218,10 @@ export const designContent = {
         },
       ],
       jumps: [
-        { href: "/design/layout#design-layout-overview", label: "Page frame" },
-        { href: "/design/layout#design-layout-roles", label: "Measures" },
-        { href: "/design/layout#design-layout-primitives", label: "Primitives" },
-        { href: "/design/layout#design-layout-guidance", label: "Guidance" },
+        { href: "/design/layout/#design-layout-overview", label: "Page frame" },
+        { href: "/design/layout/#design-layout-roles", label: "Measures" },
+        { href: "/design/layout/#design-layout-primitives", label: "Primitives" },
+        { href: "/design/layout/#design-layout-guidance", label: "Guidance" },
       ],
     },
     {
@@ -231,7 +231,7 @@ export const designContent = {
       lede: "Two surfaces for two jobs. A toast reports an outcome and leaves in its own time; an alert stops the page for an answer. Neither should interrupt work that is already underway without cause.",
       doors: [
         {
-          href: "/design/toast",
+          href: "/design/toast/",
           description: "What the site says back after it has already done the thing.",
           source: "src/service/toast.service.ts · /design/toast",
           facts: [
@@ -241,7 +241,7 @@ export const designContent = {
           ],
         },
         {
-          href: "/design/alert",
+          href: "/design/alert/",
           description: "What the site asks before it does something that cannot be taken back.",
           source: "src/service/alert.service.ts · /design/alert",
           facts: [
@@ -252,10 +252,10 @@ export const designContent = {
         },
       ],
       jumps: [
-        { href: "/design/toast#design-toast-showcase", label: "Toast specimens" },
-        { href: "/design/toast#design-toast-guidance", label: "Toast guidance" },
-        { href: "/design/alert#design-alert-showcase", label: "Alert specimens" },
-        { href: "/design/alert#design-alert-guidance", label: "Alert guidance" },
+        { href: "/design/toast/#design-toast-showcase", label: "Toast specimens" },
+        { href: "/design/toast/#design-toast-guidance", label: "Toast guidance" },
+        { href: "/design/alert/#design-alert-showcase", label: "Alert specimens" },
+        { href: "/design/alert/#design-alert-guidance", label: "Alert guidance" },
       ],
     },
   ] satisfies readonly DesignGrammarSection[],

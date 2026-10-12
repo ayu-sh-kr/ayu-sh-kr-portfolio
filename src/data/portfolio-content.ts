@@ -38,10 +38,10 @@ export const portfolioContent = {
   nav: {
     logo: siteIdentity.brand,
     links: [
-      { label: "Showcase", href: "/showcase" },
-      { label: "Blog", href: "/blog" },
-      { label: "News", href: "/news" },
-      { label: "Pricing", href: "/pricing" },
+      { label: "Showcase", href: "/showcase/" },
+      { label: "Blog", href: "/blog/" },
+      { label: "News", href: "/news/" },
+      { label: "Pricing", href: "/pricing/" },
     ],
   },
   hero: {
@@ -173,7 +173,7 @@ export const portfolioContent = {
         label: "Invite me to speak",
         href: MAILTO.helloSubject("Speaking invitation"),
       },
-      secondaryCta: { label: "See topics & rates", href: "/pricing" },
+      secondaryCta: { label: "See topics & rates", href: "/pricing/" },
     },
   },
   skills: [
@@ -257,31 +257,31 @@ export const portfolioContent = {
           number: "03",
           title: "Engage",
           links: [
-            { label: "Pricing", href: "/pricing" },
-            { label: "Buy me a coffee", href: "/coffee" },
-            { label: "Support", href: "/support" },
+            { label: "Pricing", href: "/pricing/" },
+            { label: "Buy me a coffee", href: "/coffee/" },
+            { label: "Support", href: "/support/" },
             { label: "Contact", href: "/#contact" },
             { label: "Speaking", href: "/#speaking" },
-            { label: "Hire me", href: "/pricing" },
+            { label: "Hire me", href: "/pricing/" },
           ],
         },
         {
           number: "04",
           title: "Writing",
           links: [
-                { label: "Blog", href: "/blog" },
-                { label: "News", href: "/news" },
-                { label: "Showcase", href: "/showcase" },
+                { label: "Blog", href: "/blog/" },
+                { label: "News", href: "/news/" },
+                { label: "Showcase", href: "/showcase/" },
           ],
         },
         {
           number: "05",
           title: "Design",
           links: [
-            { label: "Layout", href: "/design/layout" },
-            { label: "Color", href: "/design/color" },
-            { label: "Typography", href: "/design/typography" },
-            { label: "Elements", href: "/design/element" },
+            { label: "Layout", href: "/design/layout/" },
+            { label: "Color", href: "/design/color/" },
+            { label: "Typography", href: "/design/typography/" },
+            { label: "Elements", href: "/design/element/" },
           ],
         },
         {
@@ -297,8 +297,8 @@ export const portfolioContent = {
           number: "07",
           title: "Legal",
           links: [
-            { label: "Privacy Policy", href: "/legal/privacy" },
-            { label: "Terms & Conditions", href: "/legal/terms" },
+            { label: "Privacy Policy", href: "/legal/privacy/" },
+            { label: "Terms & Conditions", href: "/legal/terms/" },
           ],
         },
       ],

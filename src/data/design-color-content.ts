@@ -20,7 +20,7 @@ export const designColorContent = {
     lede: "Literal palette values live in theme.css. color.css maps the active family to semantic roles, so public components never need to name a hue or a scale step.",
     links: [
       { href: "#design-color-roles", label: "Browse the color roles", indicator: "↓" },
-      { href: "/design/typography", label: "Explore typography grammar", indicator: "→" },
+      { href: "/design/typography/", label: "Explore typography grammar", indicator: "→" },
     ],
     summaryAriaLabel: "Color system summary",
     summaryLabel: "Shared system",

@@ -4,25 +4,25 @@
 
 ## Primary pages
 
-- [Home](https://ayu-sh-kr.com/): Professional profile, production responsibilities, selected work, and contact information.
-- [Showcase](https://ayu-sh-kr.com/showcase): Case studies covering websites, web products, integrations, platforms, open-source tools, and client delivery.
-- [Blog](https://ayu-sh-kr.com/blog): Technical articles on the web platform, product engineering, cloud infrastructure, databases, and distributed systems.
-- [The Dispatch](https://ayu-sh-kr.com/news): Short notes on backend systems, infrastructure, useful reading, and shipped work.
-- [Pricing](https://ayu-sh-kr.com/pricing): Engagement types, indicative pricing, and project-start guidance.
-- [Support](https://ayu-sh-kr.com/support): Support and project-contact routes.
-- [Reach out](https://ayu-sh-kr.com/cards/reach-out): An interactive introduction to starting a website, product, integration, AI, or platform engagement.
-- [About me](https://ayu-sh-kr.com/card/about-me): A short card-based introduction to Ayush's engineering approach and the work he follows across backend and interface concerns.
+- [Home](https://www.ayu-sh-kr.com/): Professional profile, production responsibilities, selected work, and contact information.
+- [Showcase](https://www.ayu-sh-kr.com/showcase/): Case studies covering websites, web products, integrations, platforms, open-source tools, and client delivery.
+- [Blog](https://www.ayu-sh-kr.com/blog/): Technical articles on the web platform, product engineering, cloud infrastructure, databases, and distributed systems.
+- [The Dispatch](https://www.ayu-sh-kr.com/news/): Short notes on backend systems, infrastructure, useful reading, and shipped work.
+- [Pricing](https://www.ayu-sh-kr.com/pricing/): Engagement types, indicative pricing, and project-start guidance.
+- [Support](https://www.ayu-sh-kr.com/support/): Support and project-contact routes.
+- [Reach out](https://www.ayu-sh-kr.com/cards/reach-out/): An interactive introduction to starting a website, product, integration, AI, or platform engagement.
+- [About me](https://www.ayu-sh-kr.com/card/about-me/): A short card-based introduction to Ayush's engineering approach and the work he follows across backend and interface concerns.
 
 ## Case studies
 
-- [Dota Workspace](https://ayu-sh-kr.com/showcase/dota-workspace)
-- [Restaurant OMS](https://ayu-sh-kr.com/showcase/restaurant-oms)
-- [Sacrena](https://ayu-sh-kr.com/showcase/sacrena)
-- [Indiknots](https://ayu-sh-kr.com/showcase/indiknots)
-- [Jalans](https://ayu-sh-kr.com/showcase/jalans)
-- [Dota Wrap](https://ayu-sh-kr.com/showcase/dota-wrap)
-- [Event Pipeline](https://ayu-sh-kr.com/showcase/event-pipeline)
-- [Dota REST](https://ayu-sh-kr.com/showcase/dota-rest)
+- [Dota Workspace](https://www.ayu-sh-kr.com/showcase/dota-workspace/)
+- [Restaurant OMS](https://www.ayu-sh-kr.com/showcase/restaurant-oms/)
+- [Sacrena](https://www.ayu-sh-kr.com/showcase/sacrena/)
+- [Indiknots](https://www.ayu-sh-kr.com/showcase/indiknots/)
+- [Jalans](https://www.ayu-sh-kr.com/showcase/jalans/)
+- [Dota Wrap](https://www.ayu-sh-kr.com/showcase/dota-wrap/)
+- [Event Pipeline](https://www.ayu-sh-kr.com/showcase/event-pipeline/)
+- [Dota REST](https://www.ayu-sh-kr.com/showcase/dota-rest/)
 
 ## Recent technical articles
 
@@ -31,20 +31,20 @@
 - [UI Design Trends: Skeuomorphism, Isometric Art and Motion](https://www.ayu-sh-kr.com/blog/ui-design-trends-skeuomorphism-isometric-glass/): A visual guide to skeuomorphism, isometric illustration and motion UI. Fifteen automatic examples connect real reader tasks to practical uses, with professional references for further study.
 
 - [Reinforcement Learning for LLMs: From RLHF and RLVR to RLSC](https://www.ayu-sh-kr.com/blog/reinforcement-learning-from-rlhf-to-rlsc/): A practical guide to reinforcement learning and LLM post-training, comparing RLHF, RLAIF, DPO, RLVR, PPO/GRPO, process supervision and RLSC, with diagrams, primary sources and reward limitations.
-- [Java Native Builds Explained: GraalVM vs Project Leyden](https://ayu-sh-kr.com/blog/java-native-builds-graalvm-vs-leyden): A comparison of GraalVM Native Image and Project Leyden's AOT cache, including startup, warm-up, and deployment trade-offs.
-- [What Is a Native Build?](https://ayu-sh-kr.com/blog/what-is-a-native-build): Compilation, linking, AOT versus JIT compilation, and the trade-offs between native binaries and managed runtimes.
-- [Open Knowledge Format (OKF): linked context for AI agents](https://ayu-sh-kr.com/blog/open-knowledge-format-okf-vs-rag)
-- [AI Telepathy: How BCIs Turn Thought into Text](https://ayu-sh-kr.com/blog/telepathy-with-ai/)
-- [SSR vs SSG for SEO and AI-built websites](https://ayu-sh-kr.com/blog/ssr-vs-ssg-rendering-hydration-dom)
-- [AWS AppConfig Spring Boot Integration](https://ayu-sh-kr.com/blog/aws-app-config-spring-boot-integration)
+- [Java Native Builds Explained: GraalVM vs Project Leyden](https://www.ayu-sh-kr.com/blog/java-native-builds-graalvm-vs-leyden/): A comparison of GraalVM Native Image and Project Leyden's AOT cache, including startup, warm-up, and deployment trade-offs.
+- [What Is a Native Build?](https://www.ayu-sh-kr.com/blog/what-is-a-native-build/): Compilation, linking, AOT versus JIT compilation, and the trade-offs between native binaries and managed runtimes.
+- [Open Knowledge Format (OKF): linked context for AI agents](https://www.ayu-sh-kr.com/blog/open-knowledge-format-okf-vs-rag/)
+- [AI Telepathy: How BCIs Turn Thought into Text](https://www.ayu-sh-kr.com/blog/telepathy-with-ai/)
+- [SSR vs SSG for SEO and AI-built websites](https://www.ayu-sh-kr.com/blog/ssr-vs-ssg-rendering-hydration-dom/)
+- [AWS AppConfig Spring Boot Integration](https://www.ayu-sh-kr.com/blog/aws-app-config-spring-boot-integration/)
 - [PostgreSQL Permissions: Build a Role with GRANT and REVOKE](https://www.ayu-sh-kr.com/blog/postgresql-access-control/): Build PostgreSQL permissions one grant at a time: connect, read orders, insert rows, update status and record events, then add default privileges and RLS. [Article Markdown](https://www.ayu-sh-kr.com/blogs/tutorial/Postgres-Access-Control.md).
-- [Distributed locks in Redis](https://ayu-sh-kr.com/blog/distributed-locks-redis)
-- [Token-bucket rate limiting in Spring Boot](https://ayu-sh-kr.com/blog/rate-limiting-token-bucket-spring-boot)
-- [When microservices become a distributed monolith](https://ayu-sh-kr.com/blog/distributed-monolith-extra-invoices)
-- [Lambda pricing for independent infrastructure](https://ayu-sh-kr.com/blog/lambda-pricing-infra-alone)
-- [Operating EventBridge Scheduler](https://ayu-sh-kr.com/blog/eventbridge-scheduler-quirks)
-- [Business logic and authentication middleware](https://ayu-sh-kr.com/blog/business-logic-auth-middleware)
-- [Why use Redis channels?](https://ayu-sh-kr.com/blog/why-use-redis-channels)
+- [Distributed locks in Redis](https://www.ayu-sh-kr.com/blog/distributed-locks-redis/)
+- [Token-bucket rate limiting in Spring Boot](https://www.ayu-sh-kr.com/blog/rate-limiting-token-bucket-spring-boot/)
+- [When microservices become a distributed monolith](https://www.ayu-sh-kr.com/blog/distributed-monolith-extra-invoices/)
+- [Lambda pricing for independent infrastructure](https://www.ayu-sh-kr.com/blog/lambda-pricing-infra-alone/)
+- [Operating EventBridge Scheduler](https://www.ayu-sh-kr.com/blog/eventbridge-scheduler-quirks/)
+- [Business logic and authentication middleware](https://www.ayu-sh-kr.com/blog/business-logic-auth-middleware/)
+- [Why use Redis channels?](https://www.ayu-sh-kr.com/blog/why-use-redis-channels/)
 
 ## Recent Dispatch notes
 
@@ -79,64 +79,64 @@
 
 - [Pyronaut launches Python services on Micronaut and GraalVM](https://www.ayu-sh-kr.com/news/pyronaut-python-micronaut-graalvm/): Pyronaut launches Python services on Micronaut and GraalVM. How GraalPy runs the code, Crema reuses a native base, and what the launch benchmarks show. [Article Markdown](https://www.ayu-sh-kr.com/news/pyronaut-python-micronaut-graalvm.md).
 
-- [Why OpenAI, TypeSafe and Cloudflare are racing to make AI decide](https://ayu-sh-kr.com/news/decision-models-openai-typesafe-cloudflare/): Jev arrived first, OpenAI followed with Decisions API, and Cloudflare answered with open Clef models. Their launches show why AI companies are chasing fast, structured judgments inside agents. [Article Markdown](https://ayu-sh-kr.com/news/decision-models-openai-typesafe-cloudflare.md).
+- [Why OpenAI, TypeSafe and Cloudflare are racing to make AI decide](https://www.ayu-sh-kr.com/news/decision-models-openai-typesafe-cloudflare/): Jev arrived first, OpenAI followed with Decisions API, and Cloudflare answered with open Clef models. Their launches show why AI companies are chasing fast, structured judgments inside agents. [Article Markdown](https://www.ayu-sh-kr.com/news/decision-models-openai-typesafe-cloudflare.md).
 
 
-- [Google announces Gemini 4 Argon: capabilities, pricing and access](https://ayu-sh-kr.com/news/google-gemini-4-argon-pricing-capabilities/): Google announces Gemini 4 Argon with limited early access. A three-minute look at its coding benchmarks, one-million-token output limit, API prices and later rate increases. [Article Markdown](https://ayu-sh-kr.com/news/google-gemini-4-argon-pricing-capabilities.md).
+- [Google announces Gemini 4 Argon: capabilities, pricing and access](https://www.ayu-sh-kr.com/news/google-gemini-4-argon-pricing-capabilities/): Google announces Gemini 4 Argon with limited early access. A three-minute look at its coding benchmarks, one-million-token output limit, API prices and later rate increases. [Article Markdown](https://www.ayu-sh-kr.com/news/google-gemini-4-argon-pricing-capabilities.md).
 
-- [InstaCloud brings deployment into the AI coding agent workflow](https://ayu-sh-kr.com/news/instacloud-agent-native-serverless-cloud/): InstaCloud connects AI coding agents to serverless deployment, databases, logs, and environment branching. How the workflow takes an API from code to a running service. [Article Markdown](https://ayu-sh-kr.com/news/instacloud-agent-native-serverless-cloud.md).
+- [InstaCloud brings deployment into the AI coding agent workflow](https://www.ayu-sh-kr.com/news/instacloud-agent-native-serverless-cloud/): InstaCloud connects AI coding agents to serverless deployment, databases, logs, and environment branching. How the workflow takes an API from code to a running service. [Article Markdown](https://www.ayu-sh-kr.com/news/instacloud-agent-native-serverless-cloud.md).
 
-- [Kafgres runs a Kafka-compatible broker inside PostgreSQL](https://ayu-sh-kr.com/news/kafgres-kafka-broker-postgres-700mbs/): Kafgres embeds a Kafka-compatible broker in PostgreSQL. An order-event example explains the design, its 700 MB/s benchmark, and durability and failover trade-offs. [Article Markdown](https://ayu-sh-kr.com/news/kafgres-kafka-broker-postgres-700mbs.md).
+- [Kafgres runs a Kafka-compatible broker inside PostgreSQL](https://www.ayu-sh-kr.com/news/kafgres-kafka-broker-postgres-700mbs/): Kafgres embeds a Kafka-compatible broker in PostgreSQL. An order-event example explains the design, its 700 MB/s benchmark, and durability and failover trade-offs. [Article Markdown](https://www.ayu-sh-kr.com/news/kafgres-kafka-broker-postgres-700mbs.md).
 
-- [Phonon-2 brings local English speech recognition to a 164 MB model](https://ayu-sh-kr.com/news/phonon-2-small-local-speech-recognition/): Fermion Research’s Phonon-2 compresses English speech recognition into 164 MB. Compare its word error rate with Whisper turbo and understand local transcription speed. [Article Markdown](https://ayu-sh-kr.com/news/phonon-2-small-local-speech-recognition.md).
+- [Phonon-2 brings local English speech recognition to a 164 MB model](https://www.ayu-sh-kr.com/news/phonon-2-small-local-speech-recognition/): Fermion Research’s Phonon-2 compresses English speech recognition into 164 MB. Compare its word error rate with Whisper turbo and understand local transcription speed. [Article Markdown](https://www.ayu-sh-kr.com/news/phonon-2-small-local-speech-recognition.md).
 
-- [PageIndex vs Vector RAG: How Tree Search Finds Relevant Pages](https://ayu-sh-kr.com/news/pageindex-tree-based-rag-relevance/): A four-minute conceptual guide using a deployment rollback question to explain semantic search, document trees, and source evidence, with a diagram in the app’s dark theme. [Article Markdown](https://ayu-sh-kr.com/news/pageindex-tree-based-rag-relevance.md).
+- [PageIndex vs Vector RAG: How Tree Search Finds Relevant Pages](https://www.ayu-sh-kr.com/news/pageindex-tree-based-rag-relevance/): A four-minute conceptual guide using a deployment rollback question to explain semantic search, document trees, and source evidence, with a diagram in the app’s dark theme. [Article Markdown](https://www.ayu-sh-kr.com/news/pageindex-tree-based-rag-relevance.md).
 
-- [Why RAG Misses the Right Passage: Anthropic’s Contextual Retrieval](https://ayu-sh-kr.com/news/anthropic-contextual-retrieval-rag/): A four-minute explanation of how missing context in document chunks affects RAG search, using an everyday return-policy example, plus Anthropic’s retrieval results. [Article Markdown](https://ayu-sh-kr.com/news/anthropic-contextual-retrieval-rag.md).
+- [Why RAG Misses the Right Passage: Anthropic’s Contextual Retrieval](https://www.ayu-sh-kr.com/news/anthropic-contextual-retrieval-rag/): A four-minute explanation of how missing context in document chunks affects RAG search, using an everyday return-policy example, plus Anthropic’s retrieval results. [Article Markdown](https://www.ayu-sh-kr.com/news/anthropic-contextual-retrieval-rag.md).
 
-- [AntiBurn shows where AI coding agents spend their tokens](https://ayu-sh-kr.com/news/antiburn-coding-agent-token-usage/): A three-minute look at local session analysis, context growth, cost estimates, and a practical stopping rule for stalled coding-agent work. [Article Markdown](https://ayu-sh-kr.com/news/antiburn-coding-agent-token-usage.md).
+- [AntiBurn shows where AI coding agents spend their tokens](https://www.ayu-sh-kr.com/news/antiburn-coding-agent-token-usage/): A three-minute look at local session analysis, context growth, cost estimates, and a practical stopping rule for stalled coding-agent work. [Article Markdown](https://www.ayu-sh-kr.com/news/antiburn-coding-agent-token-usage.md).
 
-- [OpenScience exits beta: an AI workbench for scientific research](https://ayu-sh-kr.com/news/openscience-ai-research-workbench-stable/): A 2-minute brief on OpenScience's research agent, who it serves, its literature and experiment workflow, model choices, and reproducible outputs. [Article Markdown](https://ayu-sh-kr.com/news/openscience-ai-research-workbench-stable.md).
+- [OpenScience exits beta: an AI workbench for scientific research](https://www.ayu-sh-kr.com/news/openscience-ai-research-workbench-stable/): A 2-minute brief on OpenScience's research agent, who it serves, its literature and experiment workflow, model choices, and reproducible outputs. [Article Markdown](https://www.ayu-sh-kr.com/news/openscience-ai-research-workbench-stable.md).
 
-- [Hacktron researcher reports $115,000 Meta bounty for HEIC image flaw](https://ayu-sh-kr.com/news/hacktron-meta-heic-image-bounty/): A four-minute report on Harsh Jaiswal’s reported Meta bounty, the earlier OpenAI forum exploit, and image-processing risks across services. [Article Markdown](https://ayu-sh-kr.com/news/hacktron-meta-heic-image-bounty.md).
+- [Hacktron researcher reports $115,000 Meta bounty for HEIC image flaw](https://www.ayu-sh-kr.com/news/hacktron-meta-heic-image-bounty/): A four-minute report on Harsh Jaiswal’s reported Meta bounty, the earlier OpenAI forum exploit, and image-processing risks across services. [Article Markdown](https://www.ayu-sh-kr.com/news/hacktron-meta-heic-image-bounty.md).
 
-- [Jevgrep targets coding agent costs with smarter code search](https://ayu-sh-kr.com/news/jevgrep-jev-agent-code-search/): A 5-minute news story explaining Jevgrep's code search, TypeSafe AI's relevance decisions, three CLI examples, and the scope of its coding-agent cost benchmark. [Article Markdown](https://ayu-sh-kr.com/news/jevgrep-jev-agent-code-search.md).
+- [Jevgrep targets coding agent costs with smarter code search](https://www.ayu-sh-kr.com/news/jevgrep-jev-agent-code-search/): A 5-minute news story explaining Jevgrep's code search, TypeSafe AI's relevance decisions, three CLI examples, and the scope of its coding-agent cost benchmark. [Article Markdown](https://www.ayu-sh-kr.com/news/jevgrep-jev-agent-code-search.md).
 
-- [Microsoft Titan flaw let a researcher pose as an admin](https://ayu-sh-kr.com/news/microsoft-titan-unsigned-jwt-analytics/): A 2-minute news brief explaining the missing JWT signature check, actual employee-data and Bing analytics access, the 17.3 trillion row estimate, and Microsoft's response. [Article Markdown](https://ayu-sh-kr.com/news/microsoft-titan-unsigned-jwt-analytics.md).
+- [Microsoft Titan flaw let a researcher pose as an admin](https://www.ayu-sh-kr.com/news/microsoft-titan-unsigned-jwt-analytics/): A 2-minute news brief explaining the missing JWT signature check, actual employee-data and Bing analytics access, the 17.3 trillion row estimate, and Microsoft's response. [Article Markdown](https://www.ayu-sh-kr.com/news/microsoft-titan-unsigned-jwt-analytics.md).
 
-- [prek: an open-source pre-commit alternative built in Rust](https://ayu-sh-kr.com/news/prek-rust-pre-commit-hooks/): A 2-minute news brief explaining prek's Git hooks, pre-commit compatibility, shared toolchains, uv integration, and monorepo support. [Article Markdown](https://ayu-sh-kr.com/news/prek-rust-pre-commit-hooks.md).
+- [prek: an open-source pre-commit alternative built in Rust](https://www.ayu-sh-kr.com/news/prek-rust-pre-commit-hooks/): A 2-minute news brief explaining prek's Git hooks, pre-commit compatibility, shared toolchains, uv integration, and monorepo support. [Article Markdown](https://www.ayu-sh-kr.com/news/prek-rust-pre-commit-hooks.md).
 
-- [GitHub moves Copilot’s agent runtime from TypeScript to Rust](https://ayu-sh-kr.com/news/github-copilot-runtime-rust-migration/): A 2-minute engineering news brief on the SDK architecture, incremental migration, and measured startup and memory gains. [Article Markdown](https://ayu-sh-kr.com/news/github-copilot-runtime-rust-migration.md).
-- [Homa revisits TCP’s place in the datacenter as AI waits on tiny messages](https://ayu-sh-kr.com/news/homa-protocol-tcp-datacenter-ai-latency/): A 3-minute news explanation of Stanford’s Homa transport, its measured tail-latency comparison with TCP, and the relevance to short AI service requests. [Article Markdown](https://ayu-sh-kr.com/news/homa-protocol-tcp-datacenter-ai-latency.md).
-- [Microsoft Copilot adds Code and Autopilot to turn work requests into finished tasks](https://ayu-sh-kr.com/news/microsoft-copilot-home-code-autopilot/): A 2-minute news brief on Copilot Home, Code, Autopilot, staged previews, and usage-based billing. [Article Markdown](https://ayu-sh-kr.com/news/microsoft-copilot-home-code-autopilot.md).
-- [Docker Sandbox Kit and AWS Lambda MicroVMs make private AI coding agents more practical](https://ayu-sh-kr.com/news/docker-sandbox-kit-aws-lambda-microvms-agent-coding/): A 5-minute news analysis of portable agent permissions, isolated code execution, and what organizations must control to keep source private. [Article Markdown](https://ayu-sh-kr.com/news/docker-sandbox-kit-aws-lambda-microvms-agent-coding.md).
-- [Claude Opus 5.5 gets cheaper as Claude Code adds cloud-session credits](https://ayu-sh-kr.com/news/claude-opus-5-5-cost-coding/): A 4-minute news brief on Opus 5.5 pricing, code-made animation, and the limited-time $100 Pro / $250 Max Claude Code cloud-session credit. [Article Markdown](https://ayu-sh-kr.com/news/claude-opus-5-5-cost-coding.md).
+- [GitHub moves Copilot’s agent runtime from TypeScript to Rust](https://www.ayu-sh-kr.com/news/github-copilot-runtime-rust-migration/): A 2-minute engineering news brief on the SDK architecture, incremental migration, and measured startup and memory gains. [Article Markdown](https://www.ayu-sh-kr.com/news/github-copilot-runtime-rust-migration.md).
+- [Homa revisits TCP’s place in the datacenter as AI waits on tiny messages](https://www.ayu-sh-kr.com/news/homa-protocol-tcp-datacenter-ai-latency/): A 3-minute news explanation of Stanford’s Homa transport, its measured tail-latency comparison with TCP, and the relevance to short AI service requests. [Article Markdown](https://www.ayu-sh-kr.com/news/homa-protocol-tcp-datacenter-ai-latency.md).
+- [Microsoft Copilot adds Code and Autopilot to turn work requests into finished tasks](https://www.ayu-sh-kr.com/news/microsoft-copilot-home-code-autopilot/): A 2-minute news brief on Copilot Home, Code, Autopilot, staged previews, and usage-based billing. [Article Markdown](https://www.ayu-sh-kr.com/news/microsoft-copilot-home-code-autopilot.md).
+- [Docker Sandbox Kit and AWS Lambda MicroVMs make private AI coding agents more practical](https://www.ayu-sh-kr.com/news/docker-sandbox-kit-aws-lambda-microvms-agent-coding/): A 5-minute news analysis of portable agent permissions, isolated code execution, and what organizations must control to keep source private. [Article Markdown](https://www.ayu-sh-kr.com/news/docker-sandbox-kit-aws-lambda-microvms-agent-coding.md).
+- [Claude Opus 5.5 gets cheaper as Claude Code adds cloud-session credits](https://www.ayu-sh-kr.com/news/claude-opus-5-5-cost-coding/): A 4-minute news brief on Opus 5.5 pricing, code-made animation, and the limited-time $100 Pro / $250 Max Claude Code cloud-session credit. [Article Markdown](https://www.ayu-sh-kr.com/news/claude-opus-5-5-cost-coding.md).
 
-- [Jev gives AI agents a fast gut check before the expensive thinking begins](https://ayu-sh-kr.com/news/jev-typesafe-system-one-model/): A short note on LangChain’s Jev integration and TypeSafe AI’s non-generative System One model for structured decisions, model routing, and pre-execution tool-call checks. [Article Markdown](https://ayu-sh-kr.com/news/jev-typesafe-system-one-model.md).
-- [JHipster Online warns users after infostealer malware exposes credentials](https://ayu-sh-kr.com/news/jhipster-online-infostealer-malware/): JHipster Online says exposed credentials point to infostealer malware on affected devices, not a breach of its own database; a short security note on device cleanup, password reuse, session invalidation, and phishing follow-ups.
-- [Cloudflare Quick Tunnels take localhost to the internet](https://ayu-sh-kr.com/news/cloudflare-trycloudflare-quick-tunnel/): News brief on sharing localhost apps with Cloudflare's free TryCloudflare HTTPS links, including the command and what it means for demos and developer feedback. [Article Markdown](https://ayu-sh-kr.com/news/cloudflare-trycloudflare-quick-tunnel.md).
-- [Z.ai's ZCode was caught stealing user code — silently uploading a 313MB project snapshot with a server-only key](https://ayu-sh-kr.com/news/zcode-user-code-upload-key/): Covers the Ferstar report of ZCode staging an encrypted workspace archive for upload to Alibaba cloud storage, the server-held private key, and what developers should check in AI coding tools. [Article Markdown](https://ayu-sh-kr.com/news/zcode-user-code-upload-key.md).
-- [CopilotKit OpenBot: self-hosted AI coworkers and agent controls](https://ayu-sh-kr.com/news/openbot-self-hosted-ai-coworkers/): Explains CopilotKit's open-source alpha template, AG-UI agents, isolated browsers, policy enforcement, audit trails, and human takeover. [Article Markdown](https://ayu-sh-kr.com/news/openbot-self-hosted-ai-coworkers.md).
-- [Perplexity CobbleDB: why AI search moved beyond DynamoDB](https://ayu-sh-kr.com/news/perplexity-cobbledb/): Explains the DynamoDB replacement, Pillar and Lorry update pipeline, RocksDB MultiGet reads, replica selection, and storage trade-offs for AI search. [Article Markdown](https://ayu-sh-kr.com/news/perplexity-cobbledb.md).
-- [A 4B open-weights model, retrained on one task, beats the Postgres query planner](https://ayu-sh-kr.com/news/qorl-postgres-query-optimizer-rl): A small Qwen model retrained on a single dedicated task — query planning — beat Postgres's planner by 1.81x; a case for small, specialized, affordable AI.
-- [PrismML's Bonsai 2 27B: near-lossless ternary compression at a 5.9GB footprint](https://ayu-sh-kr.com/news/prismml-bonsai-2-27b): 1.76 bits per weight, 98.2% of full-precision benchmark performance at 9x smaller, 143 tokens/second on a 5090.
+- [Jev gives AI agents a fast gut check before the expensive thinking begins](https://www.ayu-sh-kr.com/news/jev-typesafe-system-one-model/): A short note on LangChain’s Jev integration and TypeSafe AI’s non-generative System One model for structured decisions, model routing, and pre-execution tool-call checks. [Article Markdown](https://www.ayu-sh-kr.com/news/jev-typesafe-system-one-model.md).
+- [JHipster Online warns users after infostealer malware exposes credentials](https://www.ayu-sh-kr.com/news/jhipster-online-infostealer-malware/): JHipster Online says exposed credentials point to infostealer malware on affected devices, not a breach of its own database; a short security note on device cleanup, password reuse, session invalidation, and phishing follow-ups.
+- [Cloudflare Quick Tunnels take localhost to the internet](https://www.ayu-sh-kr.com/news/cloudflare-trycloudflare-quick-tunnel/): News brief on sharing localhost apps with Cloudflare's free TryCloudflare HTTPS links, including the command and what it means for demos and developer feedback. [Article Markdown](https://www.ayu-sh-kr.com/news/cloudflare-trycloudflare-quick-tunnel.md).
+- [Z.ai's ZCode was caught stealing user code — silently uploading a 313MB project snapshot with a server-only key](https://www.ayu-sh-kr.com/news/zcode-user-code-upload-key/): Covers the Ferstar report of ZCode staging an encrypted workspace archive for upload to Alibaba cloud storage, the server-held private key, and what developers should check in AI coding tools. [Article Markdown](https://www.ayu-sh-kr.com/news/zcode-user-code-upload-key.md).
+- [CopilotKit OpenBot: self-hosted AI coworkers and agent controls](https://www.ayu-sh-kr.com/news/openbot-self-hosted-ai-coworkers/): Explains CopilotKit's open-source alpha template, AG-UI agents, isolated browsers, policy enforcement, audit trails, and human takeover. [Article Markdown](https://www.ayu-sh-kr.com/news/openbot-self-hosted-ai-coworkers.md).
+- [Perplexity CobbleDB: why AI search moved beyond DynamoDB](https://www.ayu-sh-kr.com/news/perplexity-cobbledb/): Explains the DynamoDB replacement, Pillar and Lorry update pipeline, RocksDB MultiGet reads, replica selection, and storage trade-offs for AI search. [Article Markdown](https://www.ayu-sh-kr.com/news/perplexity-cobbledb.md).
+- [A 4B open-weights model, retrained on one task, beats the Postgres query planner](https://www.ayu-sh-kr.com/news/qorl-postgres-query-optimizer-rl/): A small Qwen model retrained on a single dedicated task — query planning — beat Postgres's planner by 1.81x; a case for small, specialized, affordable AI.
+- [PrismML's Bonsai 2 27B: near-lossless ternary compression at a 5.9GB footprint](https://www.ayu-sh-kr.com/news/prismml-bonsai-2-27b/): 1.76 bits per weight, 98.2% of full-precision benchmark performance at 9x smaller, 143 tokens/second on a 5090.
 
 ## Design-system reference
 
-- [Design index](https://ayu-sh-kr.com/design)
-- [Typography](https://ayu-sh-kr.com/design/typography)
-- [Colour](https://ayu-sh-kr.com/design/color)
-- [Elements](https://ayu-sh-kr.com/design/element)
-- [Layout](https://ayu-sh-kr.com/design/layout)
-- [Alerts](https://ayu-sh-kr.com/design/alert)
-- [Toasts](https://ayu-sh-kr.com/design/toast)
-- [Interaction](https://ayu-sh-kr.com/design/interaction)
+- [Design index](https://www.ayu-sh-kr.com/design/)
+- [Typography](https://www.ayu-sh-kr.com/design/typography/)
+- [Colour](https://www.ayu-sh-kr.com/design/color/)
+- [Elements](https://www.ayu-sh-kr.com/design/element/)
+- [Layout](https://www.ayu-sh-kr.com/design/layout/)
+- [Alerts](https://www.ayu-sh-kr.com/design/alert/)
+- [Toasts](https://www.ayu-sh-kr.com/design/toast/)
+- [Interaction](https://www.ayu-sh-kr.com/design/interaction/)
 
 ## Policies and complete route list
 
-- [Privacy policy](https://ayu-sh-kr.com/legal/privacy)
-- [Terms and conditions](https://ayu-sh-kr.com/legal/terms)
-- [XML sitemap](https://ayu-sh-kr.com/sitemap.xml): Complete list of public URLs.
+- [Privacy policy](https://www.ayu-sh-kr.com/legal/privacy/)
+- [Terms and conditions](https://www.ayu-sh-kr.com/legal/terms/)
+- [XML sitemap](https://www.ayu-sh-kr.com/sitemap.xml): Complete list of public URLs.
 
 ## Notes for AI use
 

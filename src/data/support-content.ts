@@ -114,10 +114,10 @@ export const supportContent = {
 
   /** Self-serve destinations that resolve common requests before a message is needed. */
   resources: [
-    { title: "Project handover material", body: "Review the repository, deployment notes, and operating guidance supplied for the engagement before requesting support.", href: "/support#support" },
+    { title: "Project handover material", body: "Review the repository, deployment notes, and operating guidance supplied for the engagement before requesting support.", href: "/support/#support" },
     { title: "Dota library repositories", body: "Read package documentation, examples, and release notes in the relevant public repository.", href: "https://github.com/ayu-sh-kr" },
     { title: "AWS service health", body: "Check the AWS Health Dashboard for the affected Region and service before reporting a possible platform incident.", href: "https://health.aws.amazon.com/health/status" },
-    { title: "Engineering writing", body: "Review technical articles and release-related notes that may explain a recent behaviour change.", href: "/blog" },
+    { title: "Engineering writing", body: "Review technical articles and release-related notes that may explain a recent behaviour change.", href: "/blog/" },
   ],
 
   /** Redirects new work to the pricing flow without interrupting support triage. */
@@ -128,7 +128,7 @@ export const supportContent = {
     titleAfterAccent: "",
     body: "For a new product, backend, AWS environment, or applied AI workflow, use the project enquiry path. A concise outline of the outcome, current constraints, and intended users is enough to begin a practical assessment.",
     primaryLabel: "Discuss a project",
-    primaryHref: "/pricing#pricing-start-project",
+    primaryHref: "/pricing/#pricing-start-project",
     secondaryLabel: "Email the brief",
     secondaryHref: `mailto:${supportEmail}?subject=Project%20inquiry`,
     note: "The first discussion can clarify scope, delivery constraints, and the appropriate next step.",

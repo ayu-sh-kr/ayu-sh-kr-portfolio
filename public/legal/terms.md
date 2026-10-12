@@ -25,8 +25,8 @@ summary:
 summary_note: This box is a summary, not the terms. The sections below are what actually applies.
 
 related:
-  - { title: Privacy Policy, href: /legal/privacy, blurb: "What I collect, why, and how to get rid of it." }
-  - { title: Work with me, href: /pricing, blurb: "What an engagement looks like, and what it costs." }
+  - { title: Privacy Policy, href: /legal/privacy/, blurb: "What I collect, why, and how to get rid of it." }
+  - { title: Work with me, href: /pricing/, blurb: "What an engagement looks like, and what it costs." }
 ---
 
 <!--
@@ -89,7 +89,7 @@ I link to documentation, repositories, and other people's writing because it's u
 
 ## The newsletter {#newsletter scope="Site visitors" group="Using the site" short="The newsletter"}
 
-Subscribing is free and cancelling takes one click. I send posts occasionally, never sell or lend the list, and may stop sending altogether if I run out of things worth saying. How the address is stored is covered in the [Privacy Policy](/legal/privacy#newsletter).
+Subscribing is free and cancelling takes one click. I send posts occasionally, never sell or lend the list, and may stop sending altogether if I run out of things worth saying. How the address is stored is covered in the [Privacy Policy](/legal/privacy/#newsletter).
 
 ## Availability {#availability scope="Site visitors" group="Using the site" short="Availability"}
 
@@ -146,7 +146,7 @@ Until an invoice is settled, I keep ownership of the work in progress. This has 
 
 ## Confidentiality {#confidentiality scope="Clients" group="Working with me" short="Confidentiality"}
 
-Anything you share is confidential by default, NDA or not, and stays that way after the engagement ends. I'll sign your NDA; I don't need you to sign mine. How data is actually handled is set out in the [Privacy Policy](/legal/privacy#nda).
+Anything you share is confidential by default, NDA or not, and stays that way after the engagement ends. I'll sign your NDA; I don't need you to sign mine. How data is actually handled is set out in the [Privacy Policy](/legal/privacy/#nda).
 
 ## Speaking engagements {#speaking scope="Clients" group="Working with me" short="Speaking engagements"}
 

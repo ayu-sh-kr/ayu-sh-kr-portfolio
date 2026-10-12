@@ -9,7 +9,7 @@ import {publishAnalyticsEvent} from "@app/utils/analytics.utils.ts";
 
 /** Renders one archive post row with authored text escaped for HTML safety. */
 const renderPostRow = (post: BlogPost): string => `
-  <a class="blog-row blog-reveal" data-blog-reveal data-analytics-project="blog" data-analytics-slug="${post.slug}" href="/blog/${post.slug}">
+  <a class="blog-row blog-reveal" data-blog-reveal data-analytics-project="blog" data-analytics-slug="${post.slug}" href="/blog/${post.slug}/">
     <time class="blog-row-date" datetime="${post.date}">${formatBlogDate(post.date, true)}</time>
     <span class="blog-row-copy">
       <span class="blog-row-title">${escapeHtml(post.header)}</span>
