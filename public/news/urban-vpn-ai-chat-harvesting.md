@@ -1,30 +1,25 @@
-# Urban VPN AI chat harvesting: where conversation privacy breaks
+# Urban VPN AI chat collection: what happens and how it works
 
-A browser extension installed for privacy can become another reader of an AI conversation. In December 2025, **Koi Security reported that Urban VPN Proxy captured prompts and replies** from ChatGPT, Claude, Gemini and other services, sending copies to its own servers.
+**Urban VPN Proxy was reported to copy users' AI conversations from their browser.** Koi Security's December 2025 investigation linked the collection to marketing analytics and the affiliated data broker BiScience. The concern is the browser extension's access to chat pages, rather than the VPN connection itself.
 
-Koi linked the collection to data broker BiScience and marketing analytics. Its [investigation, preserved by the AI Incident Database](https://incidentdatabase.ai/reports/6825/), counted more than eight million installations across eight Chrome and Edge listings, including related VPN, browser guard and ad blocker extensions. That is an installation count, not proof that eight million distinct people had conversations sold.
+## What happens with the affected extension installed?
 
-## The extension read the exchange inside the browser
+According to Koi, when someone opened ChatGPT, Claude, Gemini or another targeted service, the affected extension copied their prompts and the chatbot's replies. It also collected conversation identifiers, timestamps and information about the AI service, then uploaded the data to Urban VPN's servers.
 
-Koi traced the change to **version 5.5.0, released on July 9, 2025**. Injected scripts wrapped the browser functions used to send requests and receive replies. They extracted messages, conversation identifiers and timestamps, then compressed and uploaded the data.
+The chat could continue normally while a separate copy left the browser. Anything included in those messages could therefore be included in that copy.
 
-The capture happened where the browser already handled readable messages. A VPN connection could not hide the chat from code running there. Koi found collection continued with the VPN disconnected and the “AI protection” warnings switched off.
+Koi reported that disconnecting the VPN or switching off its AI warnings did not stop collection. These findings describe the versions investigated in 2025, not a test of today's extension.
 
-The investigation concerns those historical extension versions. It does not establish what the currently distributed version collects.
+## What enabled the collection?
 
-## A reseller can become another reader too
+Koi traced the functionality to **version 5.5.0, released on July 9, 2025**. The extension inserted scripts into supported chat pages. Those scripts intercepted the browser functions carrying messages to and from the AI service, extracted the conversation and passed it to the extension for upload.
 
-A separate [April 9, 2026 study, Your Agent Is Mine](https://arxiv.org/html/2604.08407v1), examined AI routers: services that accept model requests and forward them to another provider. Researchers tested 28 paid and 400 free routers. **Seventeen touched researcher-owned AWS credentials** placed in the traffic; nine injected malicious code into returned tool calls.
+This access happens inside the browser, where messages are already readable. Encrypting the connection does not prevent installed code with access to that page from copying its contents.
 
-The two cases expose different access points:
+Koi's [investigation, preserved by the AI Incident Database](https://incidentdatabase.ai/reports/6825/), describes the code and the data-sharing policy behind its marketing-use findings.
 
-| Access point | How the exchange becomes visible |
-| --- | --- |
-| Browser extension | Code running on the chat page copies messages handled by the browser. |
-| AI router | The application sends its request to the router, which receives the contents before forwarding them. |
+## What Urban VPN says
 
-The study also deployed deliberately weak relay services. Other operators discovered and used them, bringing downstream traffic onto researchers’ infrastructure: 440 Codex sessions exposed 99 credentials. This demonstrated how another intermediary can enter the chain without the end user choosing it directly. These findings describe the tested services, not every router.
+In its [December 18 response](https://www.urban-vpn.com/blog/setting-the-record-straight-how-urban-vpns-ai-protection-feature-actually-works/), Urban VPN disputed default collection. It said AI processing required explicit opt-in, could be disabled independently of the VPN, and filtered personal or sensitive information.
 
-For a coding task, that visibility can include configuration files and logs sent as tool results. A copied password can remain useful after the conversation is deleted.
-
-Our [report on router leaks and command tampering](/news/malicious-ai-routers-agent-supply-chain/) explains that path in detail. The practical question extends beyond which model receives a message: which extensions and services can read it along the way? Review that access before sharing sensitive material, and revoke exposed credentials when a service is suspected of misuse.
+That leaves a disagreement over consent and controls. The practical distinction is still important: disconnecting a VPN changes the network connection; disabling or removing its browser extension removes the extension's access to the page.
