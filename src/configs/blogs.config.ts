@@ -50,6 +50,7 @@ export type BlogPost = {
  * both from each post's ISO `date`.
  */
 export const blogPosts: readonly BlogPost[] = [
+
   {
     slug: "ui-design-trends-skeuomorphism-isometric-glass",
     date: "2026-10-04",

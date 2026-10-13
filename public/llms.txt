@@ -26,6 +26,7 @@
 
 ## Recent technical articles
 
+
 - [REA, Rust App Clones and AI Reverse Engineering: Where the Line Sits](https://www.ayu-sh-kr.com/news/rea-rust-app-clones-ai-reverse-engineering/): REA connects coding agents to reverse-engineering tools, while ArtCraft builds Rust alternatives to Adobe and Microsoft Office apps. See how evidence, clean-room claims and user benefits fit together.
 
 - [UI Design Trends: Skeuomorphism, Isometric Art and Motion](https://www.ayu-sh-kr.com/blog/ui-design-trends-skeuomorphism-isometric-glass/): A visual guide to skeuomorphism, isometric illustration and motion UI. Fifteen automatic examples connect real reader tasks to practical uses, with professional references for further study.
@@ -47,6 +48,8 @@
 - [Why use Redis channels?](https://www.ayu-sh-kr.com/blog/why-use-redis-channels/)
 
 ## Recent Dispatch notes
+
+- [AWS Lambda Web Functions: Simpler Deployment, SSR and Active CPU Pricing](https://www.ayu-sh-kr.com/news/aws-lambda-web-functions/): AWS framework support, deployment, SSR, CloudFront, pricing and regional performance, followed by the competitive implications for Cloudflare Workers. [Article Markdown](https://www.ayu-sh-kr.com/news/aws-lambda-web-functions.md).
 
 - [Unverified AI routers: credential leaks and pip install tampering](https://www.ayu-sh-kr.com/news/malicious-ai-routers-agent-supply-chain/): How AI routers see requests, retain conversations and leak credentials—and where a changed pip install command can turn a reply into an unsafe action. [Article Markdown](https://www.ayu-sh-kr.com/news/malicious-ai-routers-agent-supply-chain.md).
 
