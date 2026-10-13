@@ -2,7 +2,7 @@
 
 Deploying a web app to Lambda has often meant converting it into event handlers or adding an adapter around its HTTP server. **AWS Lambda Web Functions**, announced on October 12, 2026, removes that adaptation step for Node.js applications. Deploy the server, and Lambda provides an HTTPS endpoint, scaling and multi-region routing.
 
-The launch brings server-rendered pages, APIs and streaming responses into a web-specific Lambda model. It also changes the bill: multiple requests can share one environment, with CPU charged for active processing and memory charged separately.
+The launch brings server-rendered pages, APIs and streaming responses into a web-specific Lambda model. It also changes the bill: multiple requests can share one running server instance, with CPU charged for active processing and memory charged separately.
 
 ## Deploy the server instead of rewriting its routes
 
@@ -22,7 +22,7 @@ Revisions preserve deployed versions, and endpoint traffic can be split between 
 
 At launch, Web Functions supports **Node.js 24 on Arm64**. Express, Fastify, Koa and Next.js can run their HTTP servers; AWS also names Hono and React Router. Next.js standalone deployments need their listen address mapped to Lambda's supplied value.
 
-Each execution environment has 2 GB of memory, shared by the runtime and concurrent requests. Java and Spring Boot, Python and .NET are outside this launch's supported runtimes. This is a simpler deployment path for Node.js web applications, rather than a replacement for every Lambda runtime. AWS's [runtime documentation](https://docs.aws.amazon.com/lambda/latest/dg/web-functions-runtimes.html) details the requirements.
+Each AWS-managed server instance has 2 GB of memory, shared by Node.js and the requests it handles. Java and Spring Boot, Python and .NET are outside this launch's supported runtimes. This is a simpler deployment path for Node.js web applications, rather than a replacement for every Lambda runtime. AWS's [runtime documentation](https://docs.aws.amazon.com/lambda/latest/dg/web-functions-runtimes.html) details the requirements.
 
 ## SSR, static content and CloudFront
 
@@ -34,9 +34,9 @@ The practical split is simple: cache reusable files near visitors and run applic
 
 ## Speed comes from shared capacity and regional routing
 
-One environment can handle up to **128 concurrent requests**, with a documented default upper bound of 64. While a request waits on a database or external API, the server can handle others. Existing warm capacity can absorb smaller traffic increases without immediately starting another environment.
+AWS runs the application’s Node.js server inside an isolated instance, called a **Lambda execution environment**. Each instance can handle up to **128 requests at the same time**, with a default concurrency limit of 64. While one request waits for a database or external API, the same server can handle other requests. If a running instance has spare capacity, Lambda can send more requests to it instead of starting another instance.
 
-Cold starts remain: Lambda scales to zero when idle, and incoming requests can wait for new environments to initialize. Heavy synchronous CPU work can also delay neighbouring requests. AWS has not published a comparative benchmark proving a universal speed advantage. The [scaling guide](https://docs.aws.amazon.com/lambda/latest/dg/web-functions-scaling.html) explains the limits.
+Cold starts remain: when traffic stops, Lambda can shut down all running instances. The next request then waits while AWS starts the application again. Requests can also face this startup delay when a traffic increase needs more instances. CPU-heavy code that blocks Node.js can delay other requests sharing the same server. AWS has not published a comparative benchmark proving a universal speed advantage. The [scaling guide](https://docs.aws.amazon.com/lambda/latest/dg/web-functions-scaling.html) explains the limits.
 
 The launch regions are Northern Virginia, Ohio, Oregon, Tokyo and Ireland. Multi-region deployments use one global URL with best-effort latency-based routing. Mumbai is absent from that list. Moving application code nearer a visitor can reduce network delay, but a distant database may still dominate response time.
 
@@ -50,9 +50,9 @@ AWS charges for requests, active CPU, consumed memory and data transfer. Its Nor
 | Active CPU | $0.0000276944 per vCPU-second |
 | Memory | $0.0000036667 per GB-second |
 
-Waiting on an external service consumes little CPU. **Memory remains billable while the environment exists**, including gaps between requests; concurrent requests share that memory charge.
+Waiting on an external service consumes little CPU. **Memory remains billable while the server instance exists**, including gaps between requests; requests handled by that instance share its memory charge.
 
-AWS's SSR example totals **$25.78 monthly** for 15 million requests, 40 ms active CPU per request and one environment consuming 0.49 GB throughout a 30-day month. It excludes free tier and data transfer. Bursty traffic, additional environments, regional pools and CloudFront can change the total, so this is an illustration rather than a budget for every app. See [AWS pricing](https://aws.amazon.com/lambda/pricing/) for the assumptions.
+AWS's SSR example totals **$25.78 monthly** for 15 million requests, 40 ms active CPU per request and one server instance consuming 0.49 GB throughout a 30-day month. It excludes free tier and data transfer. Bursty traffic, additional server instances, deployments in more regions and CloudFront can change the total, so this is an illustration rather than a budget for every app. See [AWS pricing](https://aws.amazon.com/lambda/pricing/) for the assumptions.
 
 ## Is AWS moving toward a rapid deployment ecosystem?
 
