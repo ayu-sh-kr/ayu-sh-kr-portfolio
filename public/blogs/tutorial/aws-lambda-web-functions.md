@@ -1,93 +1,93 @@
-# AWS Lambda Web Functions: Frameworks, Pricing and Performance
+# AWS Lambda Web Functions Bring a New Challenge to Cloudflare Workers
 
-Deploying a web app to AWS Lambda has often meant adapting it to Lambda's event-handler model or adding an adapter to run an existing HTTP server. For developers who want to deploy their app and let AWS handle the hosting, that is extra setup before the app can serve its first page.
+Want to deploy a web app to Lambda without converting its routes into event handlers or assembling the HTTP infrastructure first? AWS is making that path simpler with **Lambda Web Functions**, announced on October 12, 2026. Developers can deploy a standard Node.js server while Lambda supplies an HTTPS endpoint, scaling and multi-region routing.
 
-**AWS Lambda Web Functions**, announced on October 12, 2026, remove that adaptation step for Node.js applications. An Express, Fastify or Next.js server can run as a standard HTTP server, while Lambda provides an HTTPS endpoint, scales capacity with traffic and supports deployment across multiple regions.
+The announcement puts **server-side rendering, static content through CloudFront and global delivery** at the centre of the pitch. Those are also central to Cloudflare's developer platform. AWS is bringing a more direct web-hosting experience to Lambda at a time when Cloudflare is expanding the tools around building and deploying applications.
 
-The launch also changes how web requests use and pay for compute. Several requests can share one running environment, and CPU is billed for active processing rather than the entire time a request stays open. Memory has a separate charge.
+That makes this a competitive move worth watching. AWS has not said the feature was built in response to Cloudflare; the competitive reading comes from the overlap in what both platforms now offer developers.
 
-The appeal is straightforward: **keep the web framework, deploy the server, and let Lambda manage the execution environments**. There are still runtime limits and application responsibilities, but developers no longer need to reshape HTTP routes into Lambda handlers.
+## AWS makes the web server the deployment unit
 
-## A web server instead of an event handler
+The familiar Lambda model now has the name **Event Functions**. These receive an event in a handler and return a result. Web Functions instead run an HTTP server that listens on a port, keeping the framework's routing and middleware in place without an event-to-HTTP adapter.
 
-AWS now calls the familiar Lambda model **Event Functions**. These receive an event in a handler, process it and return a result. Web Functions introduce an HTTP-native model: the application listens on a port and receives ordinary web requests directly.
-
-Routing and middleware stay inside the framework. No event-to-HTTP adapter is required, and the deployment flow creates the Web Function and its endpoint without prior resource setup. AWS also provides immutable revisions, with traffic splitting between releases for gradual rollouts.
-
-Event Functions remain the fit for queue consumers and other AWS service events. This launch gives web applications their own deployment model alongside that existing capability. [AWS's announcement](https://aws.amazon.com/blogs/aws/announcing-aws-lambda-web-functions-for-fast-consistent-web-app-performance-anywhere/) sets out the distinction.
-
-## Which frameworks and languages are supported?
-
-At launch, Web Functions use **Node.js 24 on Arm64**. AWS documents support for Node.js frameworks that start an HTTP server, rather than a closed list of framework integrations.
-
-| Framework or stack | How it fits |
-| --- | --- |
-| Express, Fastify and Koa | Run their standard Node.js HTTP servers. |
-| Hono and React Router | AWS names them among supported web framework choices; use a Node.js server setup. |
-| Next.js | Supported; standalone servers need their listen settings mapped to Lambda's supplied address. |
-| Java / Spring Boot, Python and .NET | Not supported by this Web Functions launch. Use an appropriate Event Functions deployment instead. |
-
-The important compatibility check is the **server runtime**, not the UI library. A React or Angular frontend does not become a server merely by being deployed here. Static builds can stay on object storage and a CDN; applications rendering HTML per request need a compatible Node.js server. Our [SSR and SSG guide](/blog/ssr-vs-ssg-rendering-hydration-dom/) explains that choice.
-
-Each environment has 2 GB of memory, shared by the runtime and concurrent requests. Native dependencies must match Arm64. See AWS's [runtime and framework documentation](https://docs.aws.amazon.com/lambda/latest/dg/web-functions-runtimes.html) before moving an existing application.
-
-## What deployment looks like
-
-The server must listen on the address in `AWS_LAMBDA_HTTP_ENDPOINT`. For an existing Express application, the main connection to Lambda is its listen address:
-
-```js
-const endpoint = process.env.AWS_LAMBDA_HTTP_ENDPOINT ?? '127.0.0.1:3000';
-const [host, port] = endpoint.split(':');
-
-app.listen(Number(port), host);
-```
-
-With AWS credentials, permissions and tooling that includes the announced command, AWS shows this deployment flow:
+AWS shows a deployment command that packages the application, creates the Web Function and returns an HTTPS endpoint:
 
 ```bash
 aws lambda-web deploy --name my-web-app --code ./my-app
 ```
 
-The command packages the app and returns an HTTPS endpoint. AWS reports under a minute for its demonstration; that is deployment turnaround, not request latency. We have not run this deployment.
+The application must listen on the address supplied through `AWS_LAMBDA_HTTP_ENDPOINT`. There is still a small application change, plus AWS credentials and permissions, but no need to rewrite each route around Lambda's handler model. AWS reports under a minute for its demonstration; that measures deployment turnaround, not response speed.
 
-Your server must begin listening within ten seconds. Application startup and persistent data remain the developer's responsibility. Environments can disappear, taking local state with them, so important data needs an external store. Request-specific data must also stay out of shared globals. AWS's [environment lifecycle guide](https://docs.aws.amazon.com/lambda/latest/dg/web-functions-env-lifecycle.html) explains startup and shutdown behaviour.
+The [launch announcement](https://aws.amazon.com/blogs/aws/announcing-aws-lambda-web-functions-for-fast-consistent-web-app-performance-anywhere/) describes the distinction.
 
-## Where the performance improvement comes from
+## Why this reaches into Cloudflare's territory
 
-The performance change starts with how Lambda uses running capacity. While one request waits on a database or external service, the server can handle another. Web Functions allow up to **128 concurrent requests per environment**; the documented default upper bound is 64. Lambda adjusts concurrency dynamically, so these are limits rather than guaranteed throughput.
+Cloudflare has been expanding the workflow around Workers, rather than offering compute alone. Its recent [cf CLI launch](/news/cloudflare-cf-cli-wrangler-migration/) brings broader API access, TypeScript configuration and a Vite-based development path. Its [Artifacts open beta](/news/cloudflare-artifacts-next-git-platform/) connects Git repositories with Workers Builds and preview deployments.
 
-Sharing warm capacity means a small traffic increase may fit into existing environments. Requests beyond available warm capacity can still wait for new environments to start. When traffic stops, Lambda scales to zero; the next request cold-starts.
+Neither is a direct equivalent of Web Functions. Together, they show Cloudflare trying to keep more of the development-to-deployment journey on its platform. AWS's launch addresses an important part of that same journey: getting an existing web application online with fewer infrastructure steps.
 
-Concurrency helps waiting-heavy work. Synchronous CPU work blocks Node's event loop and delays neighbouring requests. Raising concurrency can therefore make latency worse for expensive rendering or large payload processing. The benefit therefore depends on how much time an application spends waiting versus doing CPU work. AWS's [scaling guide](https://docs.aws.amazon.com/lambda/latest/dg/web-functions-scaling.html) describes these trade-offs.
+Workers already combines application code and static assets in one deployment, with caching across Cloudflare's network. Its [full-stack framework support](https://developers.cloudflare.com/workers/static-assets/routing/full-stack-application/) includes Astro, React Router, Nuxt and Next.js through OpenNext. Rendering pages on request is established territory here.
 
-Regional deployment addresses a separate delay: network distance. At launch, the regions are Northern Virginia, Ohio, Oregon, Tokyo and Ireland. A multi-region deployment uses one global URL with best-effort latency-based routing. Mumbai is absent from that launch list, which matters for Indian audiences.
+**AWS's challenge to Cloudflare is the simpler path for existing Node.js servers.** For a team already using AWS services, fewer deployment steps could reduce the reason to move its web layer to another provider. That is a practical competitive advantage, even without a claim that AWS has matched every Workers capability.
 
-A nearby server can still wait on a distant database. Code replication does not establish a replicated data architecture. The announcement provides no universal millisecond response-time guarantee or comparative speed benchmark.
+## Supported frameworks: familiar Node.js, with launch limits
 
-> Concurrency can reduce waiting for capacity; it cannot remove waiting for data.
+Web Functions launch with **Node.js 24 on Arm64**. AWS supports frameworks that start a Node.js HTTP server, including Express, Fastify, Koa and Next.js. Its examples also name Hono and React Router.
 
-## Pricing: CPU waiting and memory waiting are different
+| Deployment detail | Lambda Web Functions |
+| --- | --- |
+| Server model | Standard Node.js HTTP server |
+| Runtime at launch | Node.js 24, Arm64 |
+| Next.js | Supported; standalone listen settings must use Lambda's supplied address |
+| Environment memory | 2 GB, shared by runtime and concurrent requests |
+| Java / Spring Boot, Python, .NET | Outside this launch's supported runtimes |
 
-AWS prices Web Functions using requests, active CPU, consumed memory and data transfer. Its US East (Northern Virginia), Arm examples use these rates:
+This is where the runtime distinction matters. Workers offers [Node.js API compatibility](https://developers.cloudflare.com/workers/runtime-apis/nodejs/), including partial implementations and shims, within its own runtime. Web Functions runs the Node.js server itself.
 
-| Meter | Example rate |
+## SSR, static assets and CloudFront have different jobs
+
+**Server-side rendering (SSR)** produces a page when a request arrives, which suits personalized or frequently changing content. Static files such as CSS, images and browser JavaScript can be reused across many visitors. Our [SSR and SSG guide](/blog/ssr-vs-ssg-rendering-hydration-dom/) explains the distinction.
+
+AWS positions CloudFront alongside Web Functions: cache static content at the delivery layer and send dynamic requests to the application. CloudFront origin access control can restrict the Web Function endpoint to requests signed by the distribution.
+
+Cloudflare's [Workers Static Assets](https://developers.cloudflare.com/workers/static-assets/) integrates files, application routing and caching within one deployment.
+
+| Concern | AWS approach | Cloudflare Workers approach |
+| --- | --- | --- |
+| Dynamic pages and APIs | Node.js server in Lambda regions | Worker code on Cloudflare's network |
+| Static delivery | CloudFront cache in front of the origin | Integrated Static Assets and caching |
+| Global application placement | Deploy into selected regions with latency-based routing | Globally deployed code, with placement options |
+
+## Faster capacity reuse, with cold starts still present
+
+Web Functions can share one environment across up to **128 concurrent requests**; the documented default upper bound is 64. While one request waits for a database or external API, another can use the server. Small traffic increases can therefore fit into warm capacity instead of immediately requiring another environment.
+
+Cold starts remain. Lambda scales to zero when idle, and requests can wait while new environments initialize. CPU-heavy synchronous code can also delay neighbouring requests, so greater concurrency is not automatically greater speed. The [scaling documentation](https://docs.aws.amazon.com/lambda/latest/dg/web-functions-scaling.html) explains these limits.
+
+At launch, AWS supports Northern Virginia, Ohio, Oregon, Tokyo and Ireland. Multi-region deployments receive one global URL with best-effort latency-based routing. Mumbai is absent from the launch list.
+
+That regional model should not be confused with CloudFront's cache footprint or Cloudflare's globally distributed Workers runtime. Cloudflare also offers [placement controls](https://developers.cloudflare.com/workers/configuration/placement/) for moving compute nearer backend services. On either platform, a distant database can dominate response time. AWS has published no comparative benchmark establishing a universal speed advantage over Workers.
+
+## Pricing puts another familiar idea in focus
+
+AWS bills requests, active CPU, consumed memory and data transfer. Its Northern Virginia Arm examples use:
+
+| Meter | AWS example rate |
 | --- | --- |
 | Requests | $0.30 per million |
 | Active CPU | $0.0000276944 per vCPU-second |
 | Memory | $0.0000036667 per GB-second |
 
-Compute is metered at one-millisecond granularity. Waiting on a database uses little CPU, but **memory remains billable while the environment exists**, including gaps between requests. Concurrent requests share that environment's memory charge.
+Waiting on an external service consumes little CPU, but memory remains billable throughout an environment's lifetime, including gaps between requests. AWS's SSR example totals **$25.78** for 15 million requests, 40 ms CPU per request and one environment consuming 0.49 GB throughout a 30-day month. The example excludes free tier and transfer; see [AWS pricing](https://aws.amazon.com/lambda/pricing/).
 
-AWS's SSR example assumes 15 million monthly requests, 40 ms active CPU per request and one environment consuming 0.49 GB throughout a 30-day month. CPU costs $16.62, memory $4.66 and requests $4.50: **$25.78**, excluding free tier and transfer.
+Workers already bills CPU separately from request duration. Its [Standard pricing](https://developers.cloudflare.com/workers/platform/pricing/) starts at $5 monthly, including 10 million requests and 30 million CPU milliseconds, then charges $0.30 per additional million requests and $0.02 per additional million CPU milliseconds. Ordinary Static Assets delivery is free; invoking Worker logic changes the billing path.
 
-That is an illustrative workload, not a quote for every application. Bursts, multiple regional pools and larger memory footprints change the calculation. Database, logging and CDN costs also belong in the application's budget. Check the [Web Functions pricing section](https://aws.amazon.com/lambda/pricing/) for current regional rates.
+These figures do not establish a cost winner: runtime behaviour, memory, caching, transfer and included allowances differ. The competitive point is that AWS now makes waiting-heavy HTTP applications a central part of its billing pitch too.
 
-## When Web Functions make sense
+## A stronger reason to keep the web layer on AWS
 
-The strongest fit is an HTTP application with variable traffic and substantial asynchronous waiting: API backends, personalized SSR pages, GraphQL services and endpoints streaming output from an external AI model. Streaming a model's response is distinct from hosting the model itself.
+Web Functions fits API backends, personalized SSR and streaming responses from external services, including AI models. Its appeal is strongest when the application is already a Node.js server and the surrounding data and services live on AWS.
 
-For public sites, CloudFront can cache static assets while forwarding dynamic requests. Custom domains and AWS WAF protection go through CloudFront; endpoint authentication and application authorization still need deliberate configuration. AWS's [Web Functions overview](https://docs.aws.amazon.com/lambda/latest/dg/web-functions.html) covers these capabilities.
+Cloudflare retains a tightly integrated static-and-dynamic deployment experience and a distributed runtime. AWS now offers an easier route from an existing server to Lambda, CloudFront and selected regions. Developers have a more credible choice between those approaches.
 
-For developers who wanted Lambda's scaling without converting a web server into handlers, this is the main change: the server itself becomes the deployment unit. Framework routing stays familiar, while AWS takes care of starting, distributing and removing execution environments.
-
-At launch, that simpler path is available to Node.js applications. Java and Spring Boot projects still need another deployment approach. And while Web Functions reduce the hosting setup, database placement, application authentication and efficient server code still determine the experience users receive.
+For Cloudflare, the challenge is that simpler web deployment is becoming less distinctive. For AWS, the test is whether this simpler entry point delivers predictable performance and a manageable total bill. The launch moves that competition closer to the decision developers actually make: **where can this web app run well with the least deployment work?**
