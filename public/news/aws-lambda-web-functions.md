@@ -30,7 +30,7 @@ Each execution environment has 2 GB of memory, shared by the runtime and concurr
 
 Static files—images, CSS and browser JavaScript—can be cached through **CloudFront**, while dynamic requests reach the Web Function. AWS also supports CloudFront origin access control, allowing the endpoint to accept requests signed by the distribution. Custom domains and AWS WAF protection go through CloudFront.
 
-The practical split is simple: cache reusable files near visitors and run application code for requests that need it. A purely static site does not need a Web Function to serve every page. Our [SSR and SSG guide](/blog/ssr-vs-ssg-rendering-hydration-dom/) explains that choice, and AWS's [Web Functions overview](https://docs.aws.amazon.com/lambda/latest/dg/web-functions.html) covers the hosting capabilities.
+The practical split is simple: cache reusable files near visitors and run application code for requests that need it. A purely static site does not need a Web Function to serve every page. My [SSR and SSG guide](/blog/ssr-vs-ssg-rendering-hydration-dom/) explains that choice, and AWS's [Web Functions overview](https://docs.aws.amazon.com/lambda/latest/dg/web-functions.html) covers the hosting capabilities.
 
 ## Speed comes from shared capacity and regional routing
 
