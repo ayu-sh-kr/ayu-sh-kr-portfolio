@@ -54,14 +54,12 @@ Waiting on an external service consumes little CPU. **Memory remains billable wh
 
 AWS's SSR example totals **$25.78 monthly** for 15 million requests, 40 ms active CPU per request and one environment consuming 0.49 GB throughout a 30-day month. It excludes free tier and data transfer. Bursty traffic, additional environments, regional pools and CloudFront can change the total, so this is an illustration rather than a budget for every app. See [AWS pricing](https://aws.amazon.com/lambda/pricing/) for the assumptions.
 
-## The competitive pressure on Cloudflare
+## Is AWS moving toward a rapid deployment ecosystem?
 
-The combination of simpler deployment, SSR, static delivery and global routing overlaps directly with **Cloudflare Workers**. Cloudflare already integrates Worker code and [static assets](https://developers.cloudflare.com/workers/static-assets/) in one deployment. Its recent [cf CLI](/news/cloudflare-cf-cli-wrangler-migration/) and [Artifacts beta](/news/cloudflare-artifacts-next-git-platform/) extend the surrounding development and deployment workflow.
+Simpler deployment, SSR, static delivery and global routing are also familiar parts of **Cloudflare Workers**. Cloudflare combines Worker code and [static assets](https://developers.cloudflare.com/workers/static-assets/) in one deployment. Its recent [cf CLI](/news/cloudflare-cf-cli-wrangler-migration/) and [Artifacts beta](/news/cloudflare-artifacts-next-git-platform/) add tools around configuration, repositories, builds and previews.
 
-AWS's challenge is a more direct route for existing Node.js servers, particularly when a team's data and services already live on AWS. Its architecture uses selected Lambda regions plus CloudFront; Workers uses Cloudflare's distributed runtime and integrated asset delivery. These approaches overlap without being identical.
+AWS approaches the same web-hosting needs through a standard Node.js server in selected Lambda regions, with CloudFront handling cached delivery. Workers uses Cloudflare's distributed runtime and integrated asset hosting. Both reduce deployment work, but the runtime, placement and surrounding services differ.
 
-Active CPU billing also brings AWS's pitch closer to Workers, which already separates CPU from request duration. Cloudflare's [Standard plan](https://developers.cloudflare.com/workers/platform/pricing/) starts at $5 monthly with included requests and CPU usage. Different allowances, memory and transfer charges prevent a simple price comparison.
+Billing has common ground too: Workers already separates CPU usage from request duration. Its [Standard plan](https://developers.cloudflare.com/workers/platform/pricing/) starts at $5 monthly with included requests and CPU usage. AWS meters requests, active CPU and memory separately, so the total depends on the workload and delivery setup.
 
-AWS has not identified Cloudflare as the reason for this launch. The competitive implication is clearer than the motivation: easier web deployment is becoming less distinctive, and teams already on AWS have another reason to keep their web layer there.
-
-For developers, the immediate change is concrete: a supported Node.js server can now reach Lambda without being reshaped into event handlers. Whether it belongs there depends on its data location, cold-start tolerance and total hosting bill.
+Web Functions brings deployment, HTTPS, scaling and regional routing into a shorter path on AWS. CloudFront remains a separate part of the setup, and the launch supports only Node.js. Does this feel like Lambda gaining a more convenient web interface, or a step toward a **rapid deployment ecosystem** where getting an application online matters as much as configuring the infrastructure beneath it?
