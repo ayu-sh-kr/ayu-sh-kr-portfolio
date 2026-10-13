@@ -14,6 +14,11 @@
   ],
   "redirects": [
     {
+      "source": "/blog/aws-lambda-web-functions",
+      "destination": "/blog/aws-lambda-web-functions/",
+      "permanent": true
+    },
+    {
       "source": "/:path((?:[^/.]+/)*[^/.]+)",
       "has": [
         {

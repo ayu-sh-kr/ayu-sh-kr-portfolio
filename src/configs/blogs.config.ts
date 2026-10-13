@@ -51,6 +51,20 @@ export type BlogPost = {
  */
 export const blogPosts: readonly BlogPost[] = [
   {
+    slug: "aws-lambda-web-functions",
+    date: "2026-10-13",
+    writer: siteIdentity.name,
+    header: "AWS Lambda Web Functions: Frameworks, Pricing and Performance",
+    description:
+      "Explore AWS Lambda Web Functions: supported Node.js frameworks, active CPU pricing, concurrency, cold starts, regional routing and practical API and SSR use cases.",
+    keywords: ["AWS Lambda Web Functions", "Lambda Web Functions pricing", "Node.js 24", "Next.js on Lambda", "Lambda concurrency", "active CPU billing", "server-side rendering"],
+    category: "tutorial",
+    tags: ["aws", "performance", "frontend"],
+    source: "/blogs/tutorial/aws-lambda-web-functions.md",
+    minutes: 5,
+  },
+
+  {
     slug: "ui-design-trends-skeuomorphism-isometric-glass",
     date: "2026-10-04",
     writer: siteIdentity.name,

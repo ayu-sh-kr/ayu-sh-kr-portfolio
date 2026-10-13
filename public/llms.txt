@@ -26,6 +26,8 @@
 
 ## Recent technical articles
 
+- [AWS Lambda Web Functions: Frameworks, Pricing and Performance](https://www.ayu-sh-kr.com/blog/aws-lambda-web-functions/): Supported frameworks, CPU and memory pricing, concurrency, cold starts and API and SSR use cases. [Article Markdown](https://www.ayu-sh-kr.com/blogs/tutorial/aws-lambda-web-functions.md).
+
 - [REA, Rust App Clones and AI Reverse Engineering: Where the Line Sits](https://www.ayu-sh-kr.com/news/rea-rust-app-clones-ai-reverse-engineering/): REA connects coding agents to reverse-engineering tools, while ArtCraft builds Rust alternatives to Adobe and Microsoft Office apps. See how evidence, clean-room claims and user benefits fit together.
 
 - [UI Design Trends: Skeuomorphism, Isometric Art and Motion](https://www.ayu-sh-kr.com/blog/ui-design-trends-skeuomorphism-isometric-glass/): A visual guide to skeuomorphism, isometric illustration and motion UI. Fifteen automatic examples connect real reader tasks to practical uses, with professional references for further study.
