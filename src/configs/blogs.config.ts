@@ -50,19 +50,6 @@ export type BlogPost = {
  * both from each post's ISO `date`.
  */
 export const blogPosts: readonly BlogPost[] = [
-  {
-    slug: "aws-lambda-web-functions",
-    date: "2026-10-13",
-    writer: siteIdentity.name,
-    header: "AWS Lambda Web Functions: Simpler Deployment, SSR and Active CPU Pricing",
-    description:
-      "AWS Lambda Web Functions explained: Node.js framework support, SSR, CloudFront, active CPU pricing, regional performance and the competition with Cloudflare Workers.",
-    keywords: ["AWS Lambda Web Functions", "Lambda Web Functions pricing", "Node.js 24", "Next.js on Lambda", "Cloudflare Workers vs Lambda", "CloudFront SSR", "Lambda concurrency", "active CPU billing", "server-side rendering"],
-    category: "tutorial",
-    tags: ["aws", "performance", "frontend"],
-    source: "/blogs/tutorial/aws-lambda-web-functions.md",
-    minutes: 4,
-  },
 
   {
     slug: "ui-design-trends-skeuomorphism-isometric-glass",

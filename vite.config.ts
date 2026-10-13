@@ -8,7 +8,6 @@ import { createLocalApiProxy } from "./src/configs/local-api-proxy.config.ts";
 
 const projectRoot = fileURLToPath(new URL(".", import.meta.url));
 const blogRoutes = [
-  "/blog/aws-lambda-web-functions",
   "/blog/ui-design-trends-skeuomorphism-isometric-glass",
   "/blog/reinforcement-learning-from-rlhf-to-rlsc",
   "/blog/java-native-builds-graalvm-vs-leyden",
@@ -37,6 +36,7 @@ const showcaseRoutes = [
   "/showcase/dota-rest",
 ];
 const newsRoutes = [
+  "/news/aws-lambda-web-functions",
   "/news/malicious-ai-routers-agent-supply-chain",
   "/news/rea-rust-app-clones-ai-reverse-engineering",
   "/news/anatomy-claude-code-isometric-svg-webgl",
