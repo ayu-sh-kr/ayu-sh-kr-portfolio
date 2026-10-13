@@ -1,18 +1,20 @@
 # AWS Lambda Web Functions: Frameworks, Pricing and Performance
 
-An order-status API might spend more time waiting for PostgreSQL than building its response. The customer waits for both, but the server's CPU is busy for only part of that request. Hosting choices decide how that waiting affects capacity and cost.
+Deploying a web app to AWS Lambda has often meant adapting it to Lambda's event-handler model or adding an adapter to run an existing HTTP server. For developers who want to deploy their app and let AWS handle the hosting, that is extra setup before the app can serve its first page.
 
-**AWS Lambda Web Functions**, announced on October 12, 2026, bring a different model to Lambda: deploy a normal Node.js HTTP server, share an execution environment across concurrent requests, and pay for active CPU separately from memory. The change matters for APIs, server-rendered pages and streaming applications.
+**AWS Lambda Web Functions**, announced on October 12, 2026, remove that adaptation step for Node.js applications. An Express, Fastify or Next.js server can run as a standard HTTP server, while Lambda provides an HTTPS endpoint, scales capacity with traffic and supports deployment across multiple regions.
 
-This guide explains which frameworks fit, where the speed improvements can come from, and how to read the bill. It is based on AWS's announcement and documentation; the examples below are explanatory, not a deployment benchmark.
+The launch also changes how web requests use and pay for compute. Several requests can share one running environment, and CPU is billed for active processing rather than the entire time a request stays open. Memory has a separate charge.
 
-## What changes from ordinary Lambda?
+The appeal is straightforward: **keep the web framework, deploy the server, and let Lambda manage the execution environments**. There are still runtime limits and application responsibilities, but developers no longer need to reshape HTTP routes into Lambda handlers.
 
-The familiar Lambda model now has the name **Event Functions**. Code receives an event in a handler, performs work and returns a result. Web Functions instead run a server listening on a network port, with an HTTPS endpoint managed by Lambda.
+## A web server instead of an event handler
 
-For our order API, routing and middleware stay inside the web framework. There is no event-to-HTTP adapter to translate an invocation into a request. AWS also provides immutable revisions and endpoints that can divide traffic between releases, making gradual rollouts possible.
+AWS now calls the familiar Lambda model **Event Functions**. These receive an event in a handler, process it and return a result. Web Functions introduce an HTTP-native model: the application listens on a port and receives ordinary web requests directly.
 
-The distinction is about workload. A browser asking for an order belongs on the HTTP path. A queue message requesting invoice generation still belongs in an Event Function. Both can remain part of the same application. [AWS's launch announcement](https://aws.amazon.com/blogs/aws/announcing-aws-lambda-web-functions-for-fast-consistent-web-app-performance-anywhere/) explains the new form factors.
+Routing and middleware stay inside the framework. No event-to-HTTP adapter is required, and the deployment flow creates the Web Function and its endpoint without prior resource setup. AWS also provides immutable revisions, with traffic splitting between releases for gradual rollouts.
+
+Event Functions remain the fit for queue consumers and other AWS service events. This launch gives web applications their own deployment model alongside that existing capability. [AWS's announcement](https://aws.amazon.com/blogs/aws/announcing-aws-lambda-web-functions-for-fast-consistent-web-app-performance-anywhere/) sets out the distinction.
 
 ## Which frameworks and languages are supported?
 
@@ -29,13 +31,34 @@ The important compatibility check is the **server runtime**, not the UI library.
 
 Each environment has 2 GB of memory, shared by the runtime and concurrent requests. Native dependencies must match Arm64. See AWS's [runtime and framework documentation](https://docs.aws.amazon.com/lambda/latest/dg/web-functions-runtimes.html) before moving an existing application.
 
+## What deployment looks like
+
+The server must listen on the address in `AWS_LAMBDA_HTTP_ENDPOINT`. For an existing Express application, the main connection to Lambda is its listen address:
+
+```js
+const endpoint = process.env.AWS_LAMBDA_HTTP_ENDPOINT ?? '127.0.0.1:3000';
+const [host, port] = endpoint.split(':');
+
+app.listen(Number(port), host);
+```
+
+With AWS credentials, permissions and tooling that includes the announced command, AWS shows this deployment flow:
+
+```bash
+aws lambda-web deploy --name my-web-app --code ./my-app
+```
+
+The command packages the app and returns an HTTPS endpoint. AWS reports under a minute for its demonstration; that is deployment turnaround, not request latency. We have not run this deployment.
+
+Your server must begin listening within ten seconds. Application startup and persistent data remain the developer's responsibility. Environments can disappear, taking local state with them, so important data needs an external store. Request-specific data must also stay out of shared globals. AWS's [environment lifecycle guide](https://docs.aws.amazon.com/lambda/latest/dg/web-functions-env-lifecycle.html) explains startup and shutdown behaviour.
+
 ## Where the performance improvement comes from
 
-Return to the order lookup. While one request awaits PostgreSQL, Node.js can handle another. Web Functions allow up to **128 concurrent requests per environment**; the documented default upper bound is 64. Lambda adjusts concurrency dynamically, so these are limits rather than guaranteed throughput.
+The performance change starts with how Lambda uses running capacity. While one request waits on a database or external service, the server can handle another. Web Functions allow up to **128 concurrent requests per environment**; the documented default upper bound is 64. Lambda adjusts concurrency dynamically, so these are limits rather than guaranteed throughput.
 
 Sharing warm capacity means a small traffic increase may fit into existing environments. Requests beyond available warm capacity can still wait for new environments to start. When traffic stops, Lambda scales to zero; the next request cold-starts.
 
-Concurrency helps waiting-heavy work. Synchronous CPU work blocks Node's event loop and delays neighbouring requests. Raising concurrency can therefore make latency worse for expensive rendering or large payload processing. Measure response-time percentiles under realistic traffic, including the first request after idle, before selecting settings. AWS's [scaling guide](https://docs.aws.amazon.com/lambda/latest/dg/web-functions-scaling.html) describes these trade-offs.
+Concurrency helps waiting-heavy work. Synchronous CPU work blocks Node's event loop and delays neighbouring requests. Raising concurrency can therefore make latency worse for expensive rendering or large payload processing. The benefit therefore depends on how much time an application spends waiting versus doing CPU work. AWS's [scaling guide](https://docs.aws.amazon.com/lambda/latest/dg/web-functions-scaling.html) describes these trade-offs.
 
 Regional deployment addresses a separate delay: network distance. At launch, the regions are Northern Virginia, Ohio, Oregon, Tokyo and Ireland. A multi-region deployment uses one global URL with best-effort latency-based routing. Mumbai is absent from that launch list, which matters for Indian audiences.
 
@@ -59,33 +82,12 @@ AWS's SSR example assumes 15 million monthly requests, 40 ms active CPU per requ
 
 That is an illustrative workload, not a quote for every application. Bursts, multiple regional pools and larger memory footprints change the calculation. Database, logging and CDN costs also belong in the application's budget. Check the [Web Functions pricing section](https://aws.amazon.com/lambda/pricing/) for current regional rates.
 
-## What deployment looks like
-
-The server must listen on the address in `AWS_LAMBDA_HTTP_ENDPOINT`. For an existing Express application, the listen step looks like this:
-
-```js
-const endpoint = process.env.AWS_LAMBDA_HTTP_ENDPOINT ?? '127.0.0.1:3000';
-const [host, port] = endpoint.split(':');
-
-app.listen(Number(port), host);
-```
-
-With AWS credentials, permissions and tooling that includes the announced command, AWS shows this deployment flow:
-
-```bash
-aws lambda-web deploy --name order-api --code ./my-app
-```
-
-The command packages the app and returns an HTTPS endpoint. AWS reports under a minute for its demonstration; that is deployment turnaround, not request latency. We have not run this deployment.
-
-Your server must begin listening within ten seconds. Keep startup small, and put durable order data in an external store: environments can disappear, taking local state with them. Request-specific data must also stay out of shared globals. AWS's [environment lifecycle guide](https://docs.aws.amazon.com/lambda/latest/dg/web-functions-env-lifecycle.html) explains startup and shutdown behaviour.
-
 ## When Web Functions make sense
 
-The strongest fit is an HTTP application with variable traffic and substantial asynchronous waiting: order APIs, personalized SSR pages, GraphQL services and endpoints streaming output from an external AI model. Streaming a model's response is distinct from hosting the model itself.
+The strongest fit is an HTTP application with variable traffic and substantial asynchronous waiting: API backends, personalized SSR pages, GraphQL services and endpoints streaming output from an external AI model. Streaming a model's response is distinct from hosting the model itself.
 
 For public sites, CloudFront can cache static assets while forwarding dynamic requests. Custom domains and AWS WAF protection go through CloudFront; endpoint authentication and application authorization still need deliberate configuration. AWS's [Web Functions overview](https://docs.aws.amazon.com/lambda/latest/dg/web-functions.html) covers these capabilities.
 
-For the order service, I would evaluate the HTTP API here, keep invoice jobs event-driven, and measure database round trips before adding regions. A Java backend has a different decision because the launch does not support its runtime.
+For developers who wanted Lambda's scaling without converting a web server into handlers, this is the main change: the server itself becomes the deployment unit. Framework routing stays familiar, while AWS takes care of starting, distributing and removing execution environments.
 
-Web Functions make a normal Node.js server easier to operate on Lambda. Their practical value comes from sharing capacity during I/O waits and billing CPU activity separately. Choose them when those properties match the workload, then verify latency and total cost with the application that will actually run.
+At launch, that simpler path is available to Node.js applications. Java and Spring Boot projects still need another deployment approach. And while Web Functions reduce the hosting setup, database placement, application authentication and efficient server code still determine the experience users receive.
