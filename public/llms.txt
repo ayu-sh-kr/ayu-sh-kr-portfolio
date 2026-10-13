@@ -26,7 +26,7 @@
 
 ## Recent technical articles
 
-- [AWS Lambda Web Functions Bring a New Challenge to Cloudflare Workers](https://www.ayu-sh-kr.com/blog/aws-lambda-web-functions/): How AWS challenges Cloudflare Workers through simpler deployment, SSR, CloudFront and regional routing, with framework support, pricing and performance limits. [Article Markdown](https://www.ayu-sh-kr.com/blogs/tutorial/aws-lambda-web-functions.md).
+- [AWS Lambda Web Functions: Simpler Deployment, SSR and Active CPU Pricing](https://www.ayu-sh-kr.com/blog/aws-lambda-web-functions/): AWS framework support, deployment, SSR, CloudFront, pricing and regional performance, followed by the competitive implications for Cloudflare Workers. [Article Markdown](https://www.ayu-sh-kr.com/blogs/tutorial/aws-lambda-web-functions.md).
 
 - [REA, Rust App Clones and AI Reverse Engineering: Where the Line Sits](https://www.ayu-sh-kr.com/news/rea-rust-app-clones-ai-reverse-engineering/): REA connects coding agents to reverse-engineering tools, while ArtCraft builds Rust alternatives to Adobe and Microsoft Office apps. See how evidence, clean-room claims and user benefits fit together.
 
