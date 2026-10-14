@@ -58,6 +58,17 @@ pnpm preview
 
 `pnpm build` type-checks the application, generates Dota component/route and event metadata, and writes the static site to `dist/`.
 
+### Build benchmark
+
+Wall-clock time of `pnpm build` and `pnpm build:ssg` (includes the internal link check), three runs each from a clean `dist/`, before and after bumping `dota-md` 0.0.17 → 0.0.18, `dota-ui` 0.1.0 → 0.1.1 and `dota-wrap` 0.1.0 → 0.2.0 (Apple Silicon Mac, pnpm 11):
+
+| Build | Before | After |
+| --- | --- | --- |
+| `pnpm build` | 2.98 / 2.51 / 2.46 s | 5.78 / 1.13 / 1.12 s (first run was cold) |
+| `pnpm build:ssg` | 33.40 / 30.83 / 30.43 s | 9.91 / 9.90 / 11.46 s |
+
+Output is unchanged: `build` emits 238 files (~8.0 MB) and `build:ssg` 331 files (~12.3 MB), both with about 2.11 MB of JavaScript.
+
 ## Routes
 
 | Route | Purpose |
