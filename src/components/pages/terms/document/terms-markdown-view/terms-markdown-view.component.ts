@@ -1,8 +1,7 @@
-import {ApplicationEventService, BeforeInit, BindEvent, Component, Property, String} from "@ayu-sh-kr/dota-wrap/core";
-import {html, trustedHTML} from "@ayu-sh-kr/dota-wrap/rendering";
+import {ApplicationEventService, BaseElement, BeforeInit, BindEvent, Component} from "@ayu-sh-kr/dota-wrap/core";
+import {html, TemplateResult, trustedHTML} from "@ayu-sh-kr/dota-wrap/rendering";
 import {type ApplicationEvent, OnEvent} from "@ayu-sh-kr/dota-wrap/event";
-import {MdViewComponent, type ColorName, type ThemeName} from "@ayu-sh-kr/dota-md";
-import {portfolioMarkdownColor, portfolioMarkdownTheme} from "@app/configs/markdown-theme.config.ts";
+import {MD_RENDERED_EVENT, type MdRenderedDetail} from "@ayu-sh-kr/dota-md";
 import {
   TERMS_MARKDOWN_RENDER_EVENT,
   TERMS_MARKDOWN_SOURCE_EVENT,
@@ -10,7 +9,6 @@ import {
   type TermsSection,
 } from "@app/events/terms.events.ts";
 import {MarkdownLifecycleUtils} from "@app/utils/markdown-lifecycle.utils.ts";
-import {TemplateResult} from "@ayu-sh-kr/dota-wrap/rendering";
 
 /**
  * Renders the loaded terms Markdown and publishes its section model.
@@ -25,15 +23,7 @@ import {TemplateResult} from "@ayu-sh-kr/dota-wrap/rendering";
   selector: "terms-markdown-view",
   shadow: false,
 })
-export class TermsMarkdownViewComponent extends MdViewComponent {
-  /** Portfolio theme binding declared on this concrete Dota component. */
-  @Property({name: "theme", type: String})
-  override theme: ThemeName = portfolioMarkdownTheme.name as ThemeName;
-
-  /** Portfolio color binding declared on this concrete Dota component. */
-  @Property({name: "color", type: String})
-  override color: ColorName = portfolioMarkdownColor;
-
+export class TermsMarkdownViewComponent extends BaseElement {
   /** Shared capture, rendering, hash-scroll, and feedback lifecycle for Markdown. */
   private readonly markdownLifecycle = new MarkdownLifecycleUtils(this);
   /** Publisher used to notify `terms-toc` after headings have been decorated. */
@@ -45,30 +35,28 @@ export class TermsMarkdownViewComponent extends MdViewComponent {
     super();
   }
 
+  /** Captures the loading placeholder before the host renders its skeleton. */
   @BeforeInit()
-  /** Captures the loading placeholder before Markdown replaces the initial content. */
   beforeViewInit(): void {
     this.markdownLifecycle.captureInitialContent();
     this.markdownLifecycle.startSkeletonTimeout();
   }
 
-  @OnEvent(TERMS_MARKDOWN_SOURCE_EVENT)
   /** Receives the loaded terms source and begins the shared Markdown render flow. */
+  @OnEvent(TERMS_MARKDOWN_SOURCE_EVENT)
   renderMarkdownSource(event: ApplicationEvent<typeof TERMS_MARKDOWN_SOURCE_EVENT>): void {
     this.sections = event.data.sections;
     this.markdownLifecycle.renderSource(event.data.markdown);
   }
 
-  @OnEvent("md:render")
-  /** Enhances rendered Markdown and publishes the final section model for the TOC. */
-  override onContentChange(event: ApplicationEvent<"md:render">): void {
-    super.onContentChange(event);
+  /**
+   * Adds legal-section structure to the Markdown rendered by `<md-view>`, then
+   * publishes the final section model for the TOC.
+   */
+  @BindEvent({event: MD_RENDERED_EVENT, id: "md-view"})
+  decorateMarkdown(event: CustomEvent<MdRenderedDetail>): void {
+    const content = event.detail.container;
     this.markdownLifecycle.revealSkeleton();
-    const content = this.querySelector<HTMLElement>(".terms-markdown-content");
-    if (!content) {
-      return;
-    }
-
     this.decorateSections(content);
     this.markdownLifecycle.decorateResponsiveTables(content);
     this.markdownLifecycle.setupReveals(".terms-reveal");
@@ -81,8 +69,8 @@ export class TermsMarkdownViewComponent extends MdViewComponent {
     this.markdownLifecycle.scheduleHashScroll();
   }
 
-  @BindEvent({event: "click", id: "[data-terms-anchor]"})
   /** Copies a section's canonical URL while preserving the selected hash. */
+  @BindEvent({event: "click", id: "[data-terms-anchor]"})
   async copyAnchorLink(event: Event): Promise<void> {
     const anchor = (event.target as HTMLElement | null)?.closest<HTMLAnchorElement>("[data-terms-anchor]");
     if (!anchor) {
@@ -100,8 +88,8 @@ export class TermsMarkdownViewComponent extends MdViewComponent {
     this.markdownLifecycle.markCopied(anchor, "Copied", "#", "copied");
   }
 
-  @OnEvent("disconnected", true)
   /** Releases timers and listeners owned by the Markdown lifecycle helper. */
+  @OnEvent("disconnected", true)
   cleanupMarkdownLifecycle(): void {
     this.markdownLifecycle.disconnect();
   }
@@ -161,7 +149,7 @@ export class TermsMarkdownViewComponent extends MdViewComponent {
   }
 
   /** Renders the terms body using the shared themed Markdown content container. */
-  override render(): TemplateResult {
+  render(): TemplateResult {
     return html`${trustedHTML(this.markdownLifecycle.renderArticleSkeleton("terms-markdown-content"))}`;
   }
 }
