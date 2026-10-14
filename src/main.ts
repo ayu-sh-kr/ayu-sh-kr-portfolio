@@ -4,6 +4,7 @@ import { AppComponent } from "@app/app.component.ts";
 import { ErrorPage, HomePage, OfflinePage } from "@app/pages";
 import { RestClient } from "@ayu-sh-kr/dota-wrap/rest";
 import { AccordionComponent, IconsComponent, PopoverComponent } from "@ayu-sh-kr/dota-ui";
+import { MdViewComponent } from "@ayu-sh-kr/dota-md";
 import {DefaultApplicationEventListenerRegistry, initializeApp} from "@ayu-sh-kr/dota-wrap";
 import { Router, RouterService } from "@ayu-sh-kr/dota-wrap/router";
 import { ApplicationEventService } from "@ayu-sh-kr/dota-wrap/core";
@@ -58,7 +59,7 @@ ServiceState.start();
 export const applicationReady = initializeApp({
   modules: components,
   routes: [...routeConfig, { path: "/offline", component: OfflinePage }],
-  externalComponents: [AccordionComponent, IconsComponent, PopoverComponent],
+  externalComponents: [AccordionComponent, IconsComponent, PopoverComponent, MdViewComponent],
   errorRoute: { path: "/error", component: ErrorPage },
   defaultRoute: { path: "/", component: HomePage },
   root: AppComponent,

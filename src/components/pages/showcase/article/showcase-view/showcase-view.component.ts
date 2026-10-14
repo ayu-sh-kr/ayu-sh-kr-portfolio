@@ -1,10 +1,9 @@
-import {ApplicationEventService, BaseElement, Component, WindowListener} from "@ayu-sh-kr/dota-wrap/core";
+import {ApplicationEventService, BaseElement, BeforeInit, Component, WindowListener} from "@ayu-sh-kr/dota-wrap/core";
 import {html, trustedHTML} from "@ayu-sh-kr/dota-wrap/rendering";
 import {OnEvent} from "@ayu-sh-kr/dota-wrap/event";
 import {getShowcaseProject, getShowcaseSlug, showcaseProjects, type ShowcaseProject} from "@app/data/showcase-content.ts";
 import {SHOWCASE_MARKDOWN_SOURCE_EVENT, type ShowcaseMarkdownSource} from "@app/events/showcase.events.ts";
 import {ShowcaseLoaderService} from "@app/service/showcase-loader.service.ts";
-import {portfolioMarkdownColor, portfolioMarkdownTheme} from "@app/configs/markdown-theme.config.ts";
 import {escapeHtml} from "@app/utils/html.utils.ts";
 import {MarkdownProgressLifecycle} from "@app/utils/markdown-lifecycle.utils.ts";
 import {blogViewCountService, toBlogViewTrackingFailureReason} from "@app/service/blog-view-count.service.ts";
@@ -19,7 +18,8 @@ const formatStatus = (status: ShowcaseProject["status"]): string =>
  *
  * The view resolves the project slug once, loads Markdown through
  * `ShowcaseLoaderService`, and publishes {@link SHOWCASE_MARKDOWN_SOURCE_EVENT}
- * for the connected Markdown child. After connection, a valid case study also
+ * for the connected Markdown child. A prerendered article already contains its
+ * rendered Markdown, so hydration keeps those nodes and skips the load. After connection, a valid case study also
  * records a non-blocking typed view; its outcome never delays the reader.
  * The element owns article progress and aborts pending work on disconnect so
  * stale responses cannot replace newer state.
@@ -45,6 +45,25 @@ export class ShowcaseViewComponent extends BaseElement {
   private loading = true;
   /** Reader-safe load failure shown in place of the Markdown body; empty for normal states. */
   private loadError = "";
+  /** True when SSG already rendered this article's Markdown, so no source needs loading. */
+  private hasHydratedArticle = false;
+
+  /**
+   * Detects prerendered Markdown before the first client render.
+   *
+   * SSG output carries the `data-dh-c` hydration marker and the rendered
+   * `.showcase-markdown-content`. Republishing the source would make `<md-view>`
+   * replace every prerendered node, so the article is marked ready instead.
+   * Client-side navigation creates a fresh element without either, and loads normally.
+   */
+  @BeforeInit()
+  beforeViewInit(): void {
+    this.hasHydratedArticle = this.hasAttribute("data-dh-c")
+      && this.querySelector("[data-showcase-markdown] .showcase-markdown-content") !== null;
+    if (this.hasHydratedArticle) {
+      this.loading = false;
+    }
+  }
 
   @OnEvent("connected", true)
   /**
@@ -53,6 +72,7 @@ export class ShowcaseViewComponent extends BaseElement {
    * Unknown routes retain the 404 render and do not request content or tracking.
    * Valid projects schedule reading progress, submit their typed aggregate metric in
    * the background, and begin the abortable Markdown load for the child renderer.
+   * A prerendered article keeps its SSG Markdown and skips the load.
    */
   initializeShowcaseView(): void {
     this.scheduleProgressRender();
@@ -67,6 +87,9 @@ export class ShowcaseViewComponent extends BaseElement {
         params: {reason: toBlogViewTrackingFailureReason(error)},
       });
     });
+    if (this.hasHydratedArticle) {
+      return;
+    }
     void this.loadShowcaseArticle(project);
   }
 
@@ -156,7 +179,7 @@ export class ShowcaseViewComponent extends BaseElement {
     const markdown = this.loadError
       ? `<article class="showcase-prose"><p class="showcase-load-error" role="alert">${escapeHtml(this.loadError)} <a href="/showcase/">Return to all showcases</a>.</p></article>`
       : `<article class="showcase-prose" data-showcase-markdown aria-busy="${this.loading}">
-          <showcase-markdown-view theme="${portfolioMarkdownTheme.name}" color="${portfolioMarkdownColor}">
+          <showcase-markdown-view>
             <p class="showcase-loading">Loading the case study…</p>
           </showcase-markdown-view>
         </article>`;

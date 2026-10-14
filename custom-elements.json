@@ -421,44 +421,10 @@
           "customElement": true,
           "tagName": "blog-markdown-view",
           "superclass": {
-            "name": "MdViewComponent"
+            "name": "BaseElement"
           },
-          "members": [
-            {
-              "kind": "field",
-              "name": "color",
-              "attribute": "color",
-              "type": {
-                "text": "string"
-              },
-              "default": "portfolioMarkdownColor"
-            },
-            {
-              "kind": "field",
-              "name": "theme",
-              "attribute": "theme",
-              "type": {
-                "text": "string"
-              }
-            }
-          ],
-          "attributes": [
-            {
-              "name": "color",
-              "fieldName": "color",
-              "type": {
-                "text": "string"
-              },
-              "default": "portfolioMarkdownColor"
-            },
-            {
-              "name": "theme",
-              "fieldName": "theme",
-              "type": {
-                "text": "string"
-              }
-            }
-          ]
+          "members": [],
+          "attributes": []
         }
       ],
       "exports": [
@@ -3022,44 +2988,10 @@
           "customElement": true,
           "tagName": "news-markdown-view",
           "superclass": {
-            "name": "MdViewComponent"
+            "name": "BaseElement"
           },
-          "members": [
-            {
-              "kind": "field",
-              "name": "color",
-              "attribute": "color",
-              "type": {
-                "text": "string"
-              },
-              "default": "portfolioMarkdownColor"
-            },
-            {
-              "kind": "field",
-              "name": "theme",
-              "attribute": "theme",
-              "type": {
-                "text": "string"
-              }
-            }
-          ],
-          "attributes": [
-            {
-              "name": "color",
-              "fieldName": "color",
-              "type": {
-                "text": "string"
-              },
-              "default": "portfolioMarkdownColor"
-            },
-            {
-              "name": "theme",
-              "fieldName": "theme",
-              "type": {
-                "text": "string"
-              }
-            }
-          ]
+          "members": [],
+          "attributes": []
         }
       ],
       "exports": [
@@ -4262,44 +4194,10 @@
           "customElement": true,
           "tagName": "privacy-markdown-view",
           "superclass": {
-            "name": "MdViewComponent"
+            "name": "BaseElement"
           },
-          "members": [
-            {
-              "kind": "field",
-              "name": "color",
-              "attribute": "color",
-              "type": {
-                "text": "string"
-              },
-              "default": "portfolioMarkdownColor"
-            },
-            {
-              "kind": "field",
-              "name": "theme",
-              "attribute": "theme",
-              "type": {
-                "text": "string"
-              }
-            }
-          ],
-          "attributes": [
-            {
-              "name": "color",
-              "fieldName": "color",
-              "type": {
-                "text": "string"
-              },
-              "default": "portfolioMarkdownColor"
-            },
-            {
-              "name": "theme",
-              "fieldName": "theme",
-              "type": {
-                "text": "string"
-              }
-            }
-          ]
+          "members": [],
+          "attributes": []
         }
       ],
       "exports": [
@@ -4653,44 +4551,10 @@
           "customElement": true,
           "tagName": "showcase-markdown-view",
           "superclass": {
-            "name": "MdViewComponent"
+            "name": "BaseElement"
           },
-          "members": [
-            {
-              "kind": "field",
-              "name": "color",
-              "attribute": "color",
-              "type": {
-                "text": "string"
-              },
-              "default": "portfolioMarkdownColor"
-            },
-            {
-              "kind": "field",
-              "name": "theme",
-              "attribute": "theme",
-              "type": {
-                "text": "string"
-              }
-            }
-          ],
-          "attributes": [
-            {
-              "name": "color",
-              "fieldName": "color",
-              "type": {
-                "text": "string"
-              },
-              "default": "portfolioMarkdownColor"
-            },
-            {
-              "name": "theme",
-              "fieldName": "theme",
-              "type": {
-                "text": "string"
-              }
-            }
-          ]
+          "members": [],
+          "attributes": []
         }
       ],
       "exports": [
@@ -5827,44 +5691,10 @@
           "customElement": true,
           "tagName": "terms-markdown-view",
           "superclass": {
-            "name": "MdViewComponent"
+            "name": "BaseElement"
           },
-          "members": [
-            {
-              "kind": "field",
-              "name": "color",
-              "attribute": "color",
-              "type": {
-                "text": "string"
-              },
-              "default": "portfolioMarkdownColor"
-            },
-            {
-              "kind": "field",
-              "name": "theme",
-              "attribute": "theme",
-              "type": {
-                "text": "string"
-              }
-            }
-          ],
-          "attributes": [
-            {
-              "name": "color",
-              "fieldName": "color",
-              "type": {
-                "text": "string"
-              },
-              "default": "portfolioMarkdownColor"
-            },
-            {
-              "name": "theme",
-              "fieldName": "theme",
-              "type": {
-                "text": "string"
-              }
-            }
-          ]
+          "members": [],
+          "attributes": []
         }
       ],
       "exports": [

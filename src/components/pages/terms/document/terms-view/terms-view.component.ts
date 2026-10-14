@@ -1,4 +1,4 @@
-import {ApplicationEventService, BindEvent, BaseElement, Component, WindowListener} from "@ayu-sh-kr/dota-wrap/core";
+import {ApplicationEventService, BeforeInit, BindEvent, BaseElement, Component, WindowListener} from "@ayu-sh-kr/dota-wrap/core";
 import {html, trustedHTML} from "@ayu-sh-kr/dota-wrap/rendering";
 import {OnEvent} from "@ayu-sh-kr/dota-wrap/event";
 import {
@@ -7,7 +7,7 @@ import {
   type TermsMarkdownSource,
 } from "@app/events/terms.events.ts";
 import {TermsLoaderService, type TermsDocument} from "@app/service/terms-loader.service.ts";
-import {escapeHtml} from "@app/utils/html.utils.ts";
+import {escapeHtml, readJsonScript, serializeJsonForScript} from "@app/utils/html.utils.ts";
 import {
   MarkdownProgressLifecycle,
   MarkdownSourceLifecycle,
@@ -36,6 +36,10 @@ const formatDate = (value: string): string => {
  * It also owns audience-scope scrolling and reading progress, and aborts
  * pending work when disconnected.
  *
+ * The loaded shell embeds the parsed document as JSON. A prerendered page
+ * restores it before the first client render, so hydration keeps the SSG
+ * markup and the Markdown is neither fetched nor rendered again.
+ *
  * Selector: `terms-view`.
  */
 @Component({
@@ -59,9 +63,33 @@ export class TermsViewComponent extends BaseElement {
   private activeScope = "use";
   /** User-facing load error shown in place of the terms shell. */
   private loadError = "";
+  /** True when this view hydrated SSG output whose Markdown is already rendered. */
+  private hasPrerenderedDocument = false;
 
   constructor() {
     super();
+  }
+
+  /**
+   * Restores the terms document embedded in prerendered output.
+   *
+   * Runs before the first client render. Without it, hydration would render the
+   * loading state, mismatch the SSG shell, and rebuild the whole page. The
+   * restored state matches what the server rendered, including the default
+   * audience scope. Client-side navigation has no embedded data and loads normally.
+   */
+  @BeforeInit()
+  beforeViewInit(): void {
+    if (!this.hasAttribute("data-dh-c")) {
+      return;
+    }
+    const terms = readJsonScript<TermsDocument>(this, "script[data-terms-document]");
+    if (!terms) {
+      return;
+    }
+    this.terms = terms;
+    this.activeScope = terms.metadata.switches[0]?.target ?? terms.sections[0]?.id ?? "";
+    this.hasPrerenderedDocument = true;
   }
 
   @OnEvent("connected", true)
@@ -69,7 +97,10 @@ export class TermsViewComponent extends BaseElement {
   initializeTermsView(): void {
     this.scheduleProgressRender();
     if (this.terms) {
-      this.sourceLifecycle.schedule(() => this.publishSource());
+      // Prerendered Markdown is already in place; republishing would re-render it.
+      if (!this.hasPrerenderedDocument) {
+        this.sourceLifecycle.schedule(() => this.publishSource());
+      }
       requestAnimationFrame(() => this.positionScopeThumb());
       return;
     }
@@ -228,6 +259,7 @@ export class TermsViewComponent extends BaseElement {
 
     return html`
       <div class="terms-progress" data-terms-progress aria-hidden="true"></div>
+      ${trustedHTML(`<script type="application/json" data-terms-document>${serializeJsonForScript(this.terms)}</script>`)}
       <main id="top" class="terms-shell layout-page layout-section-hero" data-terms-page>
         <terms-document-header metadata="${JSON.stringify(metadata)}"></terms-document-header>
 
@@ -242,7 +274,7 @@ export class TermsViewComponent extends BaseElement {
         <div class="terms-reader-layout">
           <terms-toc></terms-toc>
           <article class="terms-prose" data-terms-markdown aria-busy="true">
-            <terms-markdown-view theme="portfolio" color="primary">
+            <terms-markdown-view>
               <p class="terms-status">Loading the terms text…</p>
             </terms-markdown-view>
           </article>

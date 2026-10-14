@@ -46,16 +46,6 @@
       "permanent": true
     },
     {
-      "source": "/blog",
-      "destination": "/blog/",
-      "permanent": true
-    },
-    {
-      "source": "/blog/aws-app-config-spring-boot-integration",
-      "destination": "/blog/aws-app-config-spring-boot-integration/",
-      "permanent": true
-    },
-    {
       "source": "/blog/aws-lambda-web-functions",
       "destination": "/news/aws-lambda-web-functions/",
       "permanent": true
@@ -66,8 +56,13 @@
       "permanent": true
     },
     {
-      "source": "/news/aws-lambda-web-functions",
-      "destination": "/news/aws-lambda-web-functions/",
+      "source": "/blog",
+      "destination": "/blog/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/aws-app-config-spring-boot-integration",
+      "destination": "/blog/aws-app-config-spring-boot-integration/",
       "permanent": true
     },
     {
@@ -248,6 +243,11 @@
     {
       "source": "/news/antiburn-coding-agent-token-usage",
       "destination": "/news/antiburn-coding-agent-token-usage/",
+      "permanent": true
+    },
+    {
+      "source": "/news/aws-lambda-web-functions",
+      "destination": "/news/aws-lambda-web-functions/",
       "permanent": true
     },
     {

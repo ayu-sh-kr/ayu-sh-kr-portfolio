@@ -1,8 +1,9 @@
-import {BaseElement, Component, HostListener, WindowListener} from "@ayu-sh-kr/dota-wrap/core";
+import {BaseElement, BeforeInit, Component, HostListener, WindowListener} from "@ayu-sh-kr/dota-wrap/core";
 import {html, trustedHTML} from "@ayu-sh-kr/dota-wrap/rendering";
 import {type ApplicationEvent, OnEvent} from "@ayu-sh-kr/dota-wrap/event";
 import {TERMS_MARKDOWN_RENDER_EVENT, type TermsSection} from "@app/events/terms.events.ts";
-import {escapeHtml} from "@app/utils/html.utils.ts";
+import type {TermsDocument} from "@app/service/terms-loader.service.ts";
+import {escapeHtml, readJsonScript} from "@app/utils/html.utils.ts";
 
 /**
  * Provides grouped navigation for the rendered terms sections.
@@ -25,6 +26,23 @@ export class TermsTocComponent extends BaseElement {
 
   constructor() {
     super();
+  }
+
+  /**
+   * Seeds sections from the document `terms-view` embedded in the page.
+   *
+   * On a prerendered page this runs before the first client render, so the TOC
+   * hydrates with the same links SSG produced instead of an empty placeholder.
+   * When nothing is embedded yet, the TOC waits for the Markdown render event.
+   */
+  @BeforeInit()
+  beforeViewInit(): void {
+    const embedded = readJsonScript<Pick<TermsDocument, "sections">>(document, "script[data-terms-document]");
+    if (!embedded) {
+      return;
+    }
+    this.sections = embedded.sections;
+    this.activeId = this.sections[0]?.id ?? "";
   }
 
   @OnEvent(TERMS_MARKDOWN_RENDER_EVENT)

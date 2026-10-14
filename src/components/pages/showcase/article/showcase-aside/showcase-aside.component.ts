@@ -1,4 +1,5 @@
-import {BeforeInit, BaseElement, Component, HTML, Property, String} from "@ayu-sh-kr/dota-wrap/core";
+import {BeforeInit, BaseElement, Component, Property, String} from "@ayu-sh-kr/dota-wrap/core";
+import {html, TemplateResult, trustedHTML} from "@ayu-sh-kr/dota-wrap/rendering";
 
 /** Visual variants supported by an authored aside in showcase Markdown. */
 type AsideKind = "note" | "warn" | "quote";
@@ -29,20 +30,34 @@ export class ShowcaseAsideComponent extends BaseElement {
   }
 
   @BeforeInit()
-  /** Saves Markdown-provided child content before the component renders over it. */
+  /**
+   * Saves Markdown-provided child content before the component renders over it.
+   *
+   * Prerendered showcase pages keep their SSG Markdown, so the host may already
+   * contain its own rendered callout. In that case the body is read from the
+   * callout's content `<div>`; capturing the whole host would nest a second
+   * callout inside the first.
+   */
   beforeViewInit(): void {
-    this.content = this.innerHTML.trim();
+    const renderedBody = this.querySelector(":scope > aside.showcase-aside > div");
+    this.content = (renderedBody ?? this).innerHTML.trim();
   }
 
-  /** Renders the captured content with a safe, known visual variant and label. */
-  render(): string {
+  /**
+   * Renders the captured content with a safe, known visual variant and label.
+   *
+   * Uses the hydrating `html` template, so a prerendered callout keeps its SSG
+   * nodes instead of being rebuilt on load. The captured body is authored
+   * Markdown output and is inserted as trusted HTML.
+   */
+  render(): TemplateResult {
     const kind: AsideKind = this.kind === "warn" || this.kind === "quote" ? this.kind : "note";
     const label = kind === "quote" ? "Field note" : kind === "warn" ? "Watch for this" : "Worth knowing";
 
-    return HTML`
+    return html`
       <aside class="showcase-aside showcase-aside-${kind}">
         <span class="showcase-aside-label">${label}</span>
-        <div>${this.content}</div>
+        <div>${trustedHTML(this.content)}</div>
       </aside>
     `;
   }
