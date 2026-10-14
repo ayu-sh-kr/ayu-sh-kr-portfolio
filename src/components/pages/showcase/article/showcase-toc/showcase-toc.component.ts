@@ -16,9 +16,10 @@ const flattenEntries = (entries: readonly TocEntry[], depth = 0): FlatTocEntry[]
 /**
  * Shows the active level-two headings for a rendered showcase case study.
  *
- * It listens to the shared Markdown render event for fresh TOC data, tracks the
- * heading nearest the reading threshold during scroll, and smooth-scrolls to a
- * heading when a reader selects a link. Short articles intentionally render a
+ * It takes fresh TOC data from the `md:render` event that
+ * `showcase-markdown-view` publishes after rendering, tracks the heading nearest
+ * the reading threshold during scroll, and smooth-scrolls to a heading when a
+ * reader selects a link. Short articles intentionally render a
  * placeholder instead of an empty navigation panel.
  *
  * Selector: `showcase-toc`.
