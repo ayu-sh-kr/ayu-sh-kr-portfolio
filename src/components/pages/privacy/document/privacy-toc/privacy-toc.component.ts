@@ -1,8 +1,9 @@
-import {BaseElement, Component, HostListener, WindowListener} from "@ayu-sh-kr/dota-wrap/core";
+import {BaseElement, BeforeInit, Component, HostListener, WindowListener} from "@ayu-sh-kr/dota-wrap/core";
 import {html, trustedHTML} from "@ayu-sh-kr/dota-wrap/rendering";
 import {type ApplicationEvent, OnEvent} from "@ayu-sh-kr/dota-wrap/event";
 import {PRIVACY_MARKDOWN_RENDER_EVENT, type PrivacySection} from "@app/events/privacy.events.ts";
-import {escapeHtml} from "@app/utils/html.utils.ts";
+import type {PrivacyDocument} from "@app/service/privacy-loader.service.ts";
+import {escapeHtml, readJsonScript} from "@app/utils/html.utils.ts";
 
 /**
  * Provides grouped navigation for the rendered privacy policy sections.
@@ -25,6 +26,23 @@ export class PrivacyTocComponent extends BaseElement {
 
   constructor() {
     super();
+  }
+
+  /**
+   * Seeds sections from the document `privacy-view` embedded in the page.
+   *
+   * On a prerendered page this runs before the first client render, so the TOC
+   * hydrates with the same links SSG produced instead of an empty placeholder.
+   * When nothing is embedded yet, the TOC waits for the Markdown render event.
+   */
+  @BeforeInit()
+  beforeViewInit(): void {
+    const embedded = readJsonScript<Pick<PrivacyDocument, "sections">>(document, "script[data-privacy-document]");
+    if (!embedded) {
+      return;
+    }
+    this.sections = embedded.sections;
+    this.activeId = this.sections[0]?.id ?? "";
   }
 
   @OnEvent(PRIVACY_MARKDOWN_RENDER_EVENT)
