@@ -32,16 +32,37 @@ export class PrivacyMarkdownViewComponent extends BaseElement {
   private readonly publisher = ApplicationEventService.getInstance().getPublisher();
   /** Section metadata matching the headings in the currently rendered document. */
   private sections: readonly PrivacySection[] = [];
+  /** True when SSG already rendered and decorated this document's Markdown. */
+  private hasHydratedContent = false;
 
   constructor() {
     super();
   }
 
-  /** Captures the loading placeholder before the host renders its skeleton. */
+  /** Captures the loading placeholder and bounds the skeleton unless the document was prerendered. */
   @BeforeInit()
   beforeViewInit(): void {
+    this.hasHydratedContent = this.hasAttribute("data-dh-c") && this.querySelector(".privacy-markdown-content") !== null;
     this.markdownLifecycle.captureInitialContent();
-    this.markdownLifecycle.startSkeletonTimeout();
+    if (!this.hasHydratedContent) {
+      this.markdownLifecycle.startSkeletonTimeout();
+    }
+  }
+
+  /**
+   * Reattaches client-only behavior to prerendered Markdown.
+   *
+   * SSG output already has section wrappers, anchors, and table labels, but no
+   * reveal observer, so its `.privacy-reveal` sections would stay hidden. Hash
+   * navigation also needs one pass now that no `md-rendered` event will arrive.
+   */
+  @OnEvent("connected", true)
+  resumePrerenderedContent(): void {
+    if (!this.hasHydratedContent) {
+      return;
+    }
+    this.markdownLifecycle.setupReveals(".privacy-reveal");
+    this.markdownLifecycle.scheduleHashScroll();
   }
 
   /** Receives the loaded policy source and begins the shared Markdown render flow. */
