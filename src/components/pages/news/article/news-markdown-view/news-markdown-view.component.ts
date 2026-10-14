@@ -1,38 +1,34 @@
-import {BeforeInit, Component, Property, String} from "@ayu-sh-kr/dota-wrap/core";
+import {BaseElement, BeforeInit, BindEvent, Component} from "@ayu-sh-kr/dota-wrap/core";
 import {type ApplicationEvent, OnEvent} from "@ayu-sh-kr/dota-wrap/event";
 import {html, trustedHTML} from "@ayu-sh-kr/dota-wrap/rendering";
-import {type ColorName, MdViewComponent, type ThemeName} from "@ayu-sh-kr/dota-md";
-import {portfolioMarkdownColor, portfolioMarkdownTheme} from "@app/configs/markdown-theme.config.ts";
+import {MD_RENDERED_EVENT, type MdRenderedDetail} from "@ayu-sh-kr/dota-md";
 import {NEWS_MARKDOWN_SOURCE_EVENT} from "@app/events/news.events.ts";
 import {MarkdownLifecycleUtils} from "@app/utils/markdown-lifecycle.utils.ts";
 
 /**
  * Renders a short Dispatch document through the portfolio Markdown theme.
- * The component shares the established Markdown lifecycle while applying only
- * note-specific semantics: no duplicate H1 and keyboard-reachable code blocks.
+ *
+ * Hosts a dota-md `<md-view>` inside the shared article skeleton. The source
+ * arrives through {@link NEWS_MARKDOWN_SOURCE_EVENT}; once `<md-view>` reports
+ * `md-rendered`, this host applies note-specific semantics: no duplicate H1 and
+ * keyboard-reachable code blocks.
  *
  * Selector: `news-markdown-view`.
  */
 @Component({selector: "news-markdown-view", shadow: false})
-export class NewsMarkdownViewComponent extends MdViewComponent {
-  /** Theme stays configurable for hydration while defaulting to the portfolio contract. */
-  @Property({name: "theme", type: String})
-  override theme: ThemeName = portfolioMarkdownTheme.name as ThemeName;
-
-  /** Accent role follows the same registered color mapping as blog documents. */
-  @Property({name: "color", type: String})
-  override color: ColorName = portfolioMarkdownColor;
-
+export class NewsMarkdownViewComponent extends BaseElement {
   readonly markdownLifecycle = new MarkdownLifecycleUtils(this);
-  hasHydratedContent = false;
+
+  constructor() {
+    super();
+  }
 
   /** Preserves SSG content and starts a bounded loading skeleton only when needed. */
   @BeforeInit()
   beforeViewInit(): void {
-    this.hasHydratedContent = this.hasAttribute("data-dh-c")
-      && this.querySelector(".news-markdown-content") !== null;
+    const hasHydratedContent = this.hasAttribute("data-dh-c") && this.querySelector(".news-markdown-content") !== null;
     this.markdownLifecycle.captureInitialContent();
-    if (!this.hasHydratedContent) {
+    if (!hasHydratedContent) {
       this.markdownLifecycle.startSkeletonTimeout();
     }
   }
@@ -44,17 +40,13 @@ export class NewsMarkdownViewComponent extends MdViewComponent {
   }
 
   /** Removes source-level title duplication and completes accessible Markdown setup. */
-  @OnEvent("md:render")
-  override onContentChange(event: ApplicationEvent<"md:render">): void {
-    super.onContentChange(event);
+  @BindEvent({event: MD_RENDERED_EVENT, id: "md-view"})
+  decorateMarkdown(event: CustomEvent<MdRenderedDetail>): void {
+    const {container} = event.detail;
     this.markdownLifecycle.revealSkeleton();
-    this.querySelector("h1")?.remove();
-    this.querySelectorAll("pre").forEach((pre) => {
+    container.querySelector("h1")?.remove();
+    container.querySelectorAll("pre").forEach((pre) => {
       pre.tabIndex = 0;
-    });
-    this.querySelectorAll("img").forEach((image) => {
-      image.loading = "lazy";
-      image.decoding = "async";
     });
     this.closest("[data-news-document]")?.setAttribute("aria-busy", "false");
     this.markdownLifecycle.scheduleHashScroll();
@@ -66,8 +58,8 @@ export class NewsMarkdownViewComponent extends MdViewComponent {
     this.markdownLifecycle.disconnect();
   }
 
-  override render() {
-    const skeleton = this.markdownLifecycle.renderArticleSkeleton("news-markdown-content");
-    return html`${trustedHTML(skeleton)}`;
+  /** Renders the article skeleton around the themed `<md-view>`. */
+  render() {
+    return html`${trustedHTML(this.markdownLifecycle.renderArticleSkeleton("news-markdown-content"))}`;
   }
 }
