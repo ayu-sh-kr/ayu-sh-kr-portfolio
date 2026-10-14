@@ -4,7 +4,6 @@ import {OnEvent} from "@ayu-sh-kr/dota-wrap/event";
 import {blogPosts, formatBlogDate, getBlogPath, getBlogPost, getBlogSlug, labelForCategory, type BlogPost} from "@app/configs/blogs.config.ts";
 import {blogArticleContent, blogIndexContent} from "@app/data/blog-content.ts";
 import {BLOG_MARKDOWN_SOURCE_EVENT, type BlogMarkdownSource} from "@app/events/blog.events.ts";
-import {portfolioMarkdownColor, portfolioMarkdownTheme} from "@app/configs/markdown-theme.config.ts";
 import {escapeHtml} from "@app/utils/html.utils.ts";
 import {MarkdownProgressLifecycle} from "@app/utils/markdown-lifecycle.utils.ts";
 import {BlogLoaderService} from "@app/service/blog-loader.service.ts";
@@ -141,7 +140,7 @@ export class BlogArticleComponent extends BaseElement {
     const markdown = this.loadError
       ? `<article class="blog-prose"><p class="blog-load-error">${escapeHtml(this.loadError)} <a href="/blog/">${blogArticleContent.returnToPostsLabel}</a>.</p></article>`
       : `<article class="blog-prose" data-blog-markdown aria-busy="true">
-           <blog-markdown-view theme="${portfolioMarkdownTheme.name}" color="${portfolioMarkdownColor}">
+           <blog-markdown-view>
              <p class="blog-loading">${blogArticleContent.loadingArticle}</p>
            </blog-markdown-view>
          </article>`;
