@@ -1,8 +1,7 @@
-import {BeforeInit, BindEvent, Component, Property, String} from "@ayu-sh-kr/dota-wrap/core";
+import {BaseElement, BeforeInit, BindEvent, Component} from "@ayu-sh-kr/dota-wrap/core";
 import {html, trustedHTML} from "@ayu-sh-kr/dota-wrap/rendering";
 import {type ApplicationEvent, OnEvent} from "@ayu-sh-kr/dota-wrap/event";
-import {MdViewComponent, type ColorName, type ThemeName} from "@ayu-sh-kr/dota-md";
-import {portfolioMarkdownColor, portfolioMarkdownTheme} from "@app/configs/markdown-theme.config.ts";
+import {MD_RENDERED_EVENT, type MdRenderedDetail} from "@ayu-sh-kr/dota-md";
 import {blogArticleContent} from "@app/data/blog-content.ts";
 import {BLOG_MARKDOWN_SOURCE_EVENT} from "@app/events/blog.events.ts";
 import {MarkdownLifecycleUtils} from "@app/utils/markdown-lifecycle.utils.ts";
@@ -10,10 +9,11 @@ import {MarkdownLifecycleUtils} from "@app/utils/markdown-lifecycle.utils.ts";
 /**
  * Renders blog Markdown with portfolio styling and article-specific enhancements.
  *
- * It captures any authored fallback content before initialization, renders source
- * published through {@link BLOG_MARKDOWN_SOURCE_EVENT}, and post-processes Markdown output with lazy images,
- * copy-code buttons, and hash scrolling. The shared lifecycle utility owns theme,
- * source, progress, and disconnect behavior; this component adds blog-only details.
+ * Hosts a dota-md `<md-view>` inside the shared article skeleton. Source published
+ * through {@link BLOG_MARKDOWN_SOURCE_EVENT} is rendered into that view; when it
+ * reports `md-rendered`, this host removes the duplicate H1, adds copy-code
+ * buttons, and completes hash scrolling. The shared lifecycle utility owns
+ * fallback, skeleton, and disconnect behavior.
  *
  * Selector: `blog-markdown-view`.
  */
@@ -21,29 +21,19 @@ import {MarkdownLifecycleUtils} from "@app/utils/markdown-lifecycle.utils.ts";
   selector: "blog-markdown-view",
   shadow: false,
 })
-export class BlogMarkdownViewComponent extends MdViewComponent {
-  /** Markdown theme attribute consumed by the portfolio lifecycle; defaults to the registered portfolio theme. */
-  @Property({name: "theme", type: String})
-  override theme: ThemeName = portfolioMarkdownTheme.name as ThemeName;
-
-  /** Markdown accent attribute consumed by the portfolio lifecycle; defaults to the portfolio primary color. */
-  @Property({name: "color", type: String})
-  override color: ColorName = portfolioMarkdownColor;
-
+export class BlogMarkdownViewComponent extends BaseElement {
   private readonly markdownLifecycle = new MarkdownLifecycleUtils(this);
-  private hasHydratedContent = false;
 
   constructor() {
     super();
   }
 
-  /** Captures fallback Markdown before the renderer replaces the initial content. */
+  /** Captures fallback content and bounds the loading skeleton unless the article was prerendered. */
   @BeforeInit()
   beforeViewInit(): void {
-    this.hasHydratedContent = this.hasAttribute("data-dh-c")
-      && this.querySelector(".blog-markdown-content") !== null;
+    const hasHydratedContent = this.hasAttribute("data-dh-c") && this.querySelector(".blog-markdown-content") !== null;
     this.markdownLifecycle.captureInitialContent();
-    if (!this.hasHydratedContent) {
+    if (!hasHydratedContent) {
       this.markdownLifecycle.startSkeletonTimeout();
     }
   }
@@ -55,15 +45,15 @@ export class BlogMarkdownViewComponent extends MdViewComponent {
   }
 
   /**
-   * Adds blog-specific behavior after Dota Markdown renders: removes the duplicate
-   * H1, enables code-copy controls, prepares images, and completes hash scrolling.
+   * Adds blog-specific behavior after `<md-view>` renders: removes the duplicate
+   * H1, wraps code blocks with copy controls, and completes hash scrolling.
    */
-  @OnEvent("md:render")
-  override onContentChange(event: ApplicationEvent<"md:render">): void {
-    super.onContentChange(event);
+  @BindEvent({event: MD_RENDERED_EVENT, id: "md-view"})
+  decorateMarkdown(event: CustomEvent<MdRenderedDetail>): void {
+    const {container} = event.detail;
     this.markdownLifecycle.revealSkeleton();
-    this.querySelector("h1")?.remove();
-    this.querySelectorAll("pre").forEach((pre) => {
+    container.querySelector("h1")?.remove();
+    container.querySelectorAll("pre").forEach((pre) => {
       pre.tabIndex = 0;
       if (pre.parentElement?.classList.contains("blog-code-block")) {
         return;
@@ -81,12 +71,7 @@ export class BlogMarkdownViewComponent extends MdViewComponent {
       button.className = "blog-copy-button";
       codeBlock.append(button);
     });
-    this.querySelectorAll("img").forEach((image) => {
-      image.loading = "lazy";
-      image.decoding = "async";
-    });
     this.closest("[data-blog-markdown]")?.setAttribute("aria-busy", "false");
-
     this.markdownLifecycle.scheduleHashScroll();
   }
 
@@ -108,8 +93,8 @@ export class BlogMarkdownViewComponent extends MdViewComponent {
     this.markdownLifecycle.disconnect();
   }
 
-  /** Returns the themed Markdown container produced by the shared lifecycle utility. */
-  override render() {
+  /** Renders the article skeleton around the themed `<md-view>`. */
+  render() {
     return html`${trustedHTML(this.markdownLifecycle.renderArticleSkeleton("blog-markdown-content"))}`;
   }
 }
