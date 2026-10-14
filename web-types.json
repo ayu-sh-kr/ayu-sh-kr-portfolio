@@ -579,7 +579,7 @@
           "name": "blog-article",
           "source": {
             "file": "./src/components/pages/blog/article/blog-article/blog-article.component.ts",
-            "offset": 1661
+            "offset": 1559
           },
           "attributes": [],
           "js": {
@@ -753,53 +753,11 @@
           "name": "blog-markdown-view",
           "source": {
             "file": "./src/components/pages/blog/article/blog-markdown-view/blog-markdown-view.component.ts",
-            "offset": 1207
+            "offset": 1099
           },
-          "attributes": [
-            {
-              "name": "color",
-              "default": "portfolioMarkdownColor",
-              "required": false,
-              "value": {
-                "type": "string"
-              },
-              "source": {
-                "file": "./src/components/pages/blog/article/blog-markdown-view/blog-markdown-view.component.ts",
-                "offset": 1657
-              }
-            },
-            {
-              "name": "theme",
-              "required": false,
-              "value": {
-                "type": "string"
-              },
-              "source": {
-                "file": "./src/components/pages/blog/article/blog-markdown-view/blog-markdown-view.component.ts",
-                "offset": 1428
-              }
-            }
-          ],
+          "attributes": [],
           "js": {
-            "properties": [
-              {
-                "name": "color",
-                "type": "string",
-                "default": "portfolioMarkdownColor",
-                "source": {
-                  "file": "./src/components/pages/blog/article/blog-markdown-view/blog-markdown-view.component.ts",
-                  "offset": 1657
-                }
-              },
-              {
-                "name": "theme",
-                "type": "string",
-                "source": {
-                  "file": "./src/components/pages/blog/article/blog-markdown-view/blog-markdown-view.component.ts",
-                  "offset": 1428
-                }
-              }
-            ]
+            "properties": []
           }
         },
         {
@@ -1807,7 +1765,7 @@
           "name": "news-article",
           "source": {
             "file": "./src/components/pages/news/article/news-article/news-article.component.ts",
-            "offset": 3055
+            "offset": 2953
           },
           "attributes": [],
           "js": {
@@ -1840,53 +1798,11 @@
           "name": "news-markdown-view",
           "source": {
             "file": "./src/components/pages/news/article/news-markdown-view/news-markdown-view.component.ts",
-            "offset": 914
+            "offset": 929
           },
-          "attributes": [
-            {
-              "name": "color",
-              "default": "portfolioMarkdownColor",
-              "required": false,
-              "value": {
-                "type": "string"
-              },
-              "source": {
-                "file": "./src/components/pages/news/article/news-markdown-view/news-markdown-view.component.ts",
-                "offset": 1310
-              }
-            },
-            {
-              "name": "theme",
-              "required": false,
-              "value": {
-                "type": "string"
-              },
-              "source": {
-                "file": "./src/components/pages/news/article/news-markdown-view/news-markdown-view.component.ts",
-                "offset": 1112
-              }
-            }
-          ],
+          "attributes": [],
           "js": {
-            "properties": [
-              {
-                "name": "color",
-                "type": "string",
-                "default": "portfolioMarkdownColor",
-                "source": {
-                  "file": "./src/components/pages/news/article/news-markdown-view/news-markdown-view.component.ts",
-                  "offset": 1310
-                }
-              },
-              {
-                "name": "theme",
-                "type": "string",
-                "source": {
-                  "file": "./src/components/pages/news/article/news-markdown-view/news-markdown-view.component.ts",
-                  "offset": 1112
-                }
-              }
-            ]
+            "properties": []
           }
         },
         {
@@ -2531,53 +2447,11 @@
           "name": "privacy-markdown-view",
           "source": {
             "file": "./src/components/pages/privacy/document/privacy-markdown-view/privacy-markdown-view.component.ts",
-            "offset": 1234
+            "offset": 1120
           },
-          "attributes": [
-            {
-              "name": "color",
-              "default": "portfolioMarkdownColor",
-              "required": false,
-              "value": {
-                "type": "string"
-              },
-              "source": {
-                "file": "./src/components/pages/privacy/document/privacy-markdown-view/privacy-markdown-view.component.ts",
-                "offset": 1609
-              }
-            },
-            {
-              "name": "theme",
-              "required": false,
-              "value": {
-                "type": "string"
-              },
-              "source": {
-                "file": "./src/components/pages/privacy/document/privacy-markdown-view/privacy-markdown-view.component.ts",
-                "offset": 1418
-              }
-            }
-          ],
+          "attributes": [],
           "js": {
-            "properties": [
-              {
-                "name": "color",
-                "type": "string",
-                "default": "portfolioMarkdownColor",
-                "source": {
-                  "file": "./src/components/pages/privacy/document/privacy-markdown-view/privacy-markdown-view.component.ts",
-                  "offset": 1609
-                }
-              },
-              {
-                "name": "theme",
-                "type": "string",
-                "source": {
-                  "file": "./src/components/pages/privacy/document/privacy-markdown-view/privacy-markdown-view.component.ts",
-                  "offset": 1418
-                }
-              }
-            ]
+            "properties": []
           }
         },
         {
@@ -3151,53 +3025,11 @@
           "name": "showcase-markdown-view",
           "source": {
             "file": "./src/components/pages/showcase/article/showcase-markdown-view/showcase-markdown-view.component.ts",
-            "offset": 1100
+            "offset": 1040
           },
-          "attributes": [
-            {
-              "name": "color",
-              "default": "portfolioMarkdownColor",
-              "required": false,
-              "value": {
-                "type": "string"
-              },
-              "source": {
-                "file": "./src/components/pages/showcase/article/showcase-markdown-view/showcase-markdown-view.component.ts",
-                "offset": 1476
-              }
-            },
-            {
-              "name": "theme",
-              "required": false,
-              "value": {
-                "type": "string"
-              },
-              "source": {
-                "file": "./src/components/pages/showcase/article/showcase-markdown-view/showcase-markdown-view.component.ts",
-                "offset": 1285
-              }
-            }
-          ],
+          "attributes": [],
           "js": {
-            "properties": [
-              {
-                "name": "color",
-                "type": "string",
-                "default": "portfolioMarkdownColor",
-                "source": {
-                  "file": "./src/components/pages/showcase/article/showcase-markdown-view/showcase-markdown-view.component.ts",
-                  "offset": 1476
-                }
-              },
-              {
-                "name": "theme",
-                "type": "string",
-                "source": {
-                  "file": "./src/components/pages/showcase/article/showcase-markdown-view/showcase-markdown-view.component.ts",
-                  "offset": 1285
-                }
-              }
-            ]
+            "properties": []
           }
         },
         {
@@ -3395,7 +3227,7 @@
           "name": "showcase-toc",
           "source": {
             "file": "./src/components/pages/showcase/article/showcase-toc/showcase-toc.component.ts",
-            "offset": 1172
+            "offset": 1216
           },
           "attributes": [],
           "js": {
@@ -3406,7 +3238,7 @@
           "name": "showcase-view",
           "source": {
             "file": "./src/components/pages/showcase/article/showcase-view/showcase-view.component.ts",
-            "offset": 1767
+            "offset": 1665
           },
           "attributes": [],
           "js": {
@@ -3794,53 +3626,11 @@
           "name": "terms-markdown-view",
           "source": {
             "file": "./src/components/pages/terms/document/terms-markdown-view/terms-markdown-view.component.ts",
-            "offset": 1187
+            "offset": 1026
           },
-          "attributes": [
-            {
-              "name": "color",
-              "default": "portfolioMarkdownColor",
-              "required": false,
-              "value": {
-                "type": "string"
-              },
-              "source": {
-                "file": "./src/components/pages/terms/document/terms-markdown-view/terms-markdown-view.component.ts",
-                "offset": 1560
-              }
-            },
-            {
-              "name": "theme",
-              "required": false,
-              "value": {
-                "type": "string"
-              },
-              "source": {
-                "file": "./src/components/pages/terms/document/terms-markdown-view/terms-markdown-view.component.ts",
-                "offset": 1369
-              }
-            }
-          ],
+          "attributes": [],
           "js": {
-            "properties": [
-              {
-                "name": "color",
-                "type": "string",
-                "default": "portfolioMarkdownColor",
-                "source": {
-                  "file": "./src/components/pages/terms/document/terms-markdown-view/terms-markdown-view.component.ts",
-                  "offset": 1560
-                }
-              },
-              {
-                "name": "theme",
-                "type": "string",
-                "source": {
-                  "file": "./src/components/pages/terms/document/terms-markdown-view/terms-markdown-view.component.ts",
-                  "offset": 1369
-                }
-              }
-            ]
+            "properties": []
           }
         },
         {
