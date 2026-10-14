@@ -1,4 +1,4 @@
-import {ApplicationEventService, BindEvent, BaseElement, Component, WindowListener} from "@ayu-sh-kr/dota-wrap/core";
+import {ApplicationEventService, BeforeInit, BindEvent, BaseElement, Component, WindowListener} from "@ayu-sh-kr/dota-wrap/core";
 import {html, trustedHTML} from "@ayu-sh-kr/dota-wrap/rendering";
 import {OnEvent} from "@ayu-sh-kr/dota-wrap/event";
 import {
@@ -7,7 +7,7 @@ import {
   type PrivacyMarkdownSource,
 } from "@app/events/privacy.events.ts";
 import {PrivacyLoaderService, type PrivacyDocument} from "@app/service/privacy-loader.service.ts";
-import {escapeHtml} from "@app/utils/html.utils.ts";
+import {escapeHtml, readJsonScript, serializeJsonForScript} from "@app/utils/html.utils.ts";
 import {
   MarkdownProgressLifecycle,
   MarkdownSourceLifecycle,
@@ -36,6 +36,10 @@ const formatDate = (value: string): string => {
  * to `privacy-markdown-view`. It also owns audience-scope scrolling and reading
  * progress, and aborts pending work when disconnected.
  *
+ * The loaded shell embeds the parsed document as JSON. A prerendered page
+ * restores it before the first client render, so hydration keeps the SSG
+ * markup and the Markdown is neither fetched nor rendered again.
+ *
  * Selector: `privacy-view`.
  */
 @Component({
@@ -59,9 +63,33 @@ export class PrivacyViewComponent extends BaseElement {
   private activeScope = "visit";
   /** User-facing load error shown in place of the policy shell. */
   private loadError = "";
+  /** True when this view hydrated SSG output whose Markdown is already rendered. */
+  private hasPrerenderedDocument = false;
 
   constructor() {
     super();
+  }
+
+  /**
+   * Restores the policy document embedded in prerendered output.
+   *
+   * Runs before the first client render. Without it, hydration would render the
+   * loading state, mismatch the SSG shell, and rebuild the whole page. The
+   * restored state matches what the server rendered, including the default
+   * audience scope. Client-side navigation has no embedded data and loads normally.
+   */
+  @BeforeInit()
+  beforeViewInit(): void {
+    if (!this.hasAttribute("data-dh-c")) {
+      return;
+    }
+    const policy = readJsonScript<PrivacyDocument>(this, "script[data-privacy-document]");
+    if (!policy) {
+      return;
+    }
+    this.policy = policy;
+    this.activeScope = policy.metadata.switches[0]?.target ?? policy.sections[0]?.id ?? "";
+    this.hasPrerenderedDocument = true;
   }
 
   @OnEvent("connected", true)
@@ -69,7 +97,10 @@ export class PrivacyViewComponent extends BaseElement {
   initializePrivacyView(): void {
     this.scheduleProgressRender();
     if (this.policy) {
-      this.sourceLifecycle.schedule(() => this.publishSource());
+      // Prerendered Markdown is already in place; republishing would re-render it.
+      if (!this.hasPrerenderedDocument) {
+        this.sourceLifecycle.schedule(() => this.publishSource());
+      }
       requestAnimationFrame(() => this.positionScopeThumb());
       return;
     }
@@ -228,6 +259,7 @@ export class PrivacyViewComponent extends BaseElement {
 
     return html`
       <div class="privacy-progress" data-privacy-progress aria-hidden="true"></div>
+      ${trustedHTML(`<script type="application/json" data-privacy-document>${serializeJsonForScript(this.policy)}</script>`)}
       <main id="top" class="privacy-shell layout-page layout-section-hero" data-privacy-page>
         <privacy-document-header metadata="${JSON.stringify(metadata)}"></privacy-document-header>
 
