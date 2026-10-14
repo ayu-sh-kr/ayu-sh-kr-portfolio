@@ -28,11 +28,14 @@ export class ShowcaseMarkdownViewComponent extends BaseElement {
     super();
   }
 
-  /** Captures the loading placeholder before the host renders its skeleton. */
+  /** Captures the loading placeholder and bounds the skeleton unless the case study was prerendered. */
   @BeforeInit()
   beforeViewInit(): void {
+    const hasHydratedContent = this.hasAttribute("data-dh-c") && this.querySelector(".showcase-markdown-content") !== null;
     this.markdownLifecycle.captureInitialContent();
-    this.markdownLifecycle.startSkeletonTimeout();
+    if (!hasHydratedContent) {
+      this.markdownLifecycle.startSkeletonTimeout();
+    }
   }
 
   /** Renders the article source published by the showcase article loader. */
