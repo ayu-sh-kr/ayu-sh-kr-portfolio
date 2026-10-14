@@ -29,9 +29,9 @@
     "vitest": "^4.1.11"
   },
   "dependencies": {
-    "@ayu-sh-kr/dota-md": "^0.0.18",
-    "@ayu-sh-kr/dota-ui": "^0.1.1",
-    "@ayu-sh-kr/dota-wrap": "^0.2.0",
+    "@ayu-sh-kr/dota-md": "^0.1.0",
+    "@ayu-sh-kr/dota-ui": "^0.1.2",
+    "@ayu-sh-kr/dota-wrap": "^0.2.1",
     "@razorpay/razorpay-js": "^1.0.0",
     "reflect-metadata": "^0.2.2"
   },
