@@ -1,4 +1,4 @@
-import {BaseElement, Component, HostListener, HTML, WindowListener} from "@ayu-sh-kr/dota-wrap/core";
+import {BaseElement, BeforeInit, Component, HostListener, HTML, WindowListener} from "@ayu-sh-kr/dota-wrap/core";
 import {type ApplicationEvent, OnEvent} from "@ayu-sh-kr/dota-wrap/event";
 import type {TocEntry} from "@ayu-sh-kr/dota-md";
 import {escapeHtml} from "@app/utils/html.utils.ts";
@@ -19,7 +19,8 @@ const flattenEntries = (entries: readonly TocEntry[], depth = 0): FlatTocEntry[]
  * It takes fresh TOC data from the `md:render` event that
  * `showcase-markdown-view` publishes after rendering, tracks the heading nearest
  * the reading threshold during scroll, and smooth-scrolls to a heading when a
- * reader selects a link. Short articles intentionally render a
+ * reader selects a link. A prerendered article publishes no `md:render`, so its
+ * entries are read from the SSG headings before the first client render. Short articles intentionally render a
  * placeholder instead of an empty navigation panel.
  *
  * Selector: `showcase-toc`.
@@ -37,6 +38,26 @@ export class ShowcaseTocComponent extends BaseElement {
   private entries: readonly TocEntry[] = [];
   /** Heading ID currently highlighted in the compact navigation. */
   private activeId = "";
+
+  /**
+   * Seeds entries from prerendered headings so a hydrated article keeps its TOC.
+   *
+   * Runs before the first render. The SSG Markdown is already in the document,
+   * so its `h2[id]` headings yield the same level-two entries the renderer would
+   * publish. On client navigation no content exists yet and the list stays
+   * empty until `md:render` arrives.
+   */
+  @BeforeInit()
+  beforeViewInit(): void {
+    const headings = document.querySelectorAll<HTMLHeadingElement>("[data-showcase-markdown] .showcase-markdown-content h2[id]");
+    this.entries = [...headings].map((heading) => ({
+      level: 2,
+      text: heading.textContent?.trim() ?? "",
+      id: heading.id,
+      children: [],
+    }));
+    this.activeId = this.visibleEntries()[0]?.id ?? "";
+  }
 
   @OnEvent("md:render")
   /** Replaces the navigation model after Markdown has rendered a new article. */
