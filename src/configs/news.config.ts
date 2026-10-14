@@ -79,6 +79,19 @@ export const newsNotes: readonly NewsNote[] = [
     reference: {label: "Koi investigation — preserved by the AI Incident Database", href: "https://incidentdatabase.ai/reports/6825/"},
   },
 
+
+  {
+    slug: "aws-lambda-web-functions",
+    date: "2026-10-13",
+    title: "AWS Lambda Web Functions: Simpler Deployment, SSR and Active CPU Pricing",
+    summary: "AWS Lambda Web Functions brings standard Node.js servers to Lambda. Explore framework support, SSR, CloudFront, pricing, regional performance and the rapid deployment ecosystem question.",
+    kind: "infra",
+    document: "/news/aws-lambda-web-functions.md",
+    keywords: ["AWS Lambda Web Functions", "Lambda Web Functions pricing", "Node.js 24", "Next.js on Lambda", "CloudFront SSR", "Lambda concurrency", "active CPU billing", "Cloudflare Workers"],
+    minutes: 4,
+    reference: {label: "AWS — Lambda Web Functions announcement", href: "https://aws.amazon.com/blogs/aws/announcing-aws-lambda-web-functions-for-fast-consistent-web-app-performance-anywhere/"},
+  },
+
   {
     slug: "malicious-ai-routers-agent-supply-chain",
     date: "2026-10-12",
