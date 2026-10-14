@@ -1,10 +1,4 @@
-import {
-  applyMarkdownTheme,
-  getSelectionClass,
-  MDService,
-  MdViewComponent,
-  THEMES,
-} from "@ayu-sh-kr/dota-md";
+import type {MdViewComponent} from "@ayu-sh-kr/dota-md";
 import {portfolioMarkdownColor, portfolioMarkdownTheme} from "@app/configs/markdown-theme.config.ts";
 
 /**
@@ -26,40 +20,43 @@ const COPY_RESET_DELAY = 1400;
 const SKELETON_TIMEOUT = 9000;
 
 /**
- * Owns the browser-side behavior shared by the app's Markdown view components.
+ * Owns the browser-side behavior shared by the app's Markdown host components.
  *
- * The concrete blog, showcase, privacy, and terms views delegate their common
- * work here: preserving fallback content, publishing raw Markdown to
- * `MDService`, applying the active theme, revealing skeletons, handling hashes,
- * decorating tables, and cleaning up asynchronous work. The helper is scoped to
- * one `MdViewComponent`, so observers, timers, and DOM changes cannot leak into
- * another Markdown surface.
+ * The blog, news, showcase, privacy, and terms hosts each render a dota-md
+ * `<md-view>` inside an article skeleton and delegate their common work here:
+ * preserving fallback content, rendering raw Markdown into the hosted view,
+ * revealing skeletons, handling hashes, decorating tables, and cleaning up
+ * asynchronous work. `<md-view>` applies the registered portfolio theme itself.
+ * The helper is scoped to one host, so observers, timers, and DOM changes
+ * cannot leak into another Markdown surface.
  */
 export class MarkdownLifecycleUtils {
   private readonly copyResetTimers = new Map<HTMLElement, number>();
   private hashFrameId: number | null = null;
   private observer: IntersectionObserver | null = null;
   private skeletonTimeoutId: number | null = null;
+  /** Authored loading markup shown inside `<md-view>` until Markdown arrives. */
+  private fallback = "";
 
   /**
-   * Creates lifecycle helpers for the supplied Markdown view.
+   * Creates lifecycle helpers for the supplied Markdown host.
    *
-   * @param view - Markdown view whose content and attributes are managed.
+   * @param view - Host element that renders the article skeleton and `<md-view>`.
    */
-  constructor(private readonly view: MdViewComponent) {}
+  constructor(private readonly view: HTMLElement) {}
 
   /**
-   * Preserves authored fallback markup before the Markdown renderer takes over.
+   * Preserves authored fallback markup before the host renders its skeleton.
    *
-   * Concrete views call this from `@BeforeInit()`. The captured value is later
-   * passed through the normal theme wrapper, which keeps an accessible loading
+   * Hosts call this from `@BeforeInit()`. The captured markup becomes the
+   * initial content of the hosted `<md-view>`, keeping an accessible loading
    * message in the real-content layer while the decorative skeleton is visible.
-   * Existing `MdViewComponent.content` is left untouched so a previously
-   * prepared view can be reconnected without losing its current source.
+   * A prerendered host already contains `<md-view>`, which adopts its own
+   * content, so nothing is captured then.
    */
   captureInitialContent(): void {
-    if (!this.view.content) {
-      this.view.content = this.view.innerHTML;
+    if (!this.fallback && !this.view.querySelector("md-view")) {
+      this.fallback = this.view.innerHTML;
     }
   }
 
@@ -92,9 +89,9 @@ export class MarkdownLifecycleUtils {
   /**
    * Cross-fades rendered Markdown into the space reserved by its skeleton.
    *
-   * Concrete views call this immediately after `MdViewComponent.onContentChange`
-   * has written the new HTML. It cancels the timeout first, then marks the real
-   * content ready and lets CSS remove the decorative skeleton layer.
+   * Hosts call this from their `md-rendered` handler, after `<md-view>` has
+   * mounted and themed the new HTML. It cancels the timeout first, then marks
+   * the real content ready and lets CSS remove the decorative skeleton layer.
    */
   revealSkeleton(): void {
     this.clearSkeletonTimeout();
@@ -103,59 +100,31 @@ export class MarkdownLifecycleUtils {
   }
 
   /**
-   * Sends raw Markdown through the shared renderer and its application event flow.
+   * Renders raw Markdown into the hosted `<md-view>` only.
    *
-   * The loader-owning parent calls this after a document request succeeds. With
-   * `publish: true`, `MDService` renders the source and publishes the resulting
-   * `md:render` payload; the concrete Markdown view receives that event and
-   * updates its own content before revealing the skeleton.
+   * The host calls this when its source event arrives. `<md-view>` renders the
+   * source without broadcasting `md:render`, so other Markdown surfaces on the
+   * page are unaffected, then dispatches `md-rendered` for host post-processing.
    *
    * @param markdown - Raw source returned by the document loader; it is rendered
    *   as Markdown rather than inserted directly into the DOM.
    */
   renderSource(markdown: string): void {
-    MDService.render(markdown, {publish: true});
+    this.view.querySelector<MdViewComponent>("md-view")?.renderMarkdown(markdown);
   }
 
   /**
-   * Builds the themed content wrapper used by a concrete Markdown view.
-   *
-   * The current theme and accent are read from the view each time so theme or
-   * color changes are reflected on the next render. If the renderer has not
-   * supplied content yet, the wrapper contains the fallback captured during
-   * initialization. This method only returns HTML; `BaseElement` performs the
-   * actual DOM update when the owning view renders.
-   *
-   * @param contentClass - View-specific class used by the blog, showcase, legal,
-   *   and other Markdown stylesheets.
-   * @returns A themed HTML wrapper around the view's current Markdown HTML.
-   */
-  renderThemedContent(contentClass: string): string {
-    const themeName = this.view.theme ?? portfolioMarkdownTheme.name;
-    const colorName = this.view.color ?? portfolioMarkdownColor;
-    const theme = THEMES[themeName] ?? portfolioMarkdownTheme;
-    const themedContent = this.view.content ? applyMarkdownTheme(this.view.content, theme, colorName) : "";
-
-    return `
-      <div class="${contentClass} ${getSelectionClass(theme, colorName)}"
-           style="font-family: ${theme.fontFamily},serif">
-        ${themedContent}
-      </div>
-    `;
-  }
-
-  /**
-   * Builds the initial article loading frame around themed Markdown content.
+   * Builds the article loading frame around the hosted `<md-view>`.
    *
    * The frame keeps the article skeleton and real content in the same grid cell,
    * so the skeleton reserves the reader measure while Markdown is being fetched
    * or rendered. The skeleton is explicitly hidden from assistive technology;
    * the separate live status announces loading and can expose the timeout state.
    *
-   * @param contentClass - Concrete Markdown content class applied by
-   *   {@link renderThemedContent}.
-   * @returns HTML containing the skeleton layer, themed content layer, and live
-   *   loading status.
+   * @param contentClass - Host-specific class for the `<md-view>` content wrapper,
+   *   used by the blog, news, showcase, and legal stylesheets.
+   * @returns HTML containing the skeleton layer, the themed `<md-view>` with the
+   *   captured fallback, and the live loading status.
    */
   renderArticleSkeleton(contentClass: string): string {
     return `
@@ -164,7 +133,7 @@ export class MarkdownLifecycleUtils {
           <sk-article></sk-article>
         </div>
         <div class="markdown-skeleton-content" data-markdown-skeleton-content>
-          ${this.renderThemedContent(contentClass)}
+          <md-view theme="${portfolioMarkdownTheme.name}" color="${portfolioMarkdownColor}" content-class="${contentClass}">${this.fallback}</md-view>
         </div>
         <p class="markdown-skeleton-status" data-markdown-skeleton-status role="status" aria-live="polite">Loading content…</p>
       </div>
