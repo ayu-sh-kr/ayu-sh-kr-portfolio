@@ -1,18 +1,18 @@
-import {BeforeInit, BindEvent, Component, Property, String} from "@ayu-sh-kr/dota-wrap/core";
+import {BaseElement, BeforeInit, BindEvent, Component} from "@ayu-sh-kr/dota-wrap/core";
 import {html, TemplateResult, trustedHTML} from "@ayu-sh-kr/dota-wrap/rendering";
 import {type ApplicationEvent, OnEvent} from "@ayu-sh-kr/dota-wrap/event";
-import {MdViewComponent, type ColorName, type ThemeName} from "@ayu-sh-kr/dota-md";
-import {portfolioMarkdownColor, portfolioMarkdownTheme} from "@app/configs/markdown-theme.config.ts";
+import {MD_RENDERED_EVENT, MDService, type MdRenderedDetail} from "@ayu-sh-kr/dota-md";
 import {SHOWCASE_MARKDOWN_SOURCE_EVENT} from "@app/events/showcase.events.ts";
 import {MarkdownLifecycleUtils} from "@app/utils/markdown-lifecycle.utils.ts";
 
 /**
- * Adapts the shared Markdown view for showcase case studies.
+ * Hosts the Markdown body of a showcase case study.
  *
  * The parent `showcase-view` publishes {@link SHOWCASE_MARKDOWN_SOURCE_EVENT}
- * after loading a project. This component hands the source to the shared
- * Markdown lifecycle utility, enhances rendered code blocks and images, and
- * keeps the article's loading state synchronized with Markdown rendering.
+ * after loading a project. This host renders the source into its dota-md
+ * `<md-view>`, then enhances the rendered code blocks, keeps the article's
+ * loading state synchronized, and shares the result with `showcase-toc` as
+ * `md:render` when the view reports `md-rendered`.
  *
  * Selector: `showcase-markdown-view`.
  */
@@ -20,15 +20,7 @@ import {MarkdownLifecycleUtils} from "@app/utils/markdown-lifecycle.utils.ts";
   selector: "showcase-markdown-view",
   shadow: false,
 })
-export class ShowcaseMarkdownViewComponent extends MdViewComponent {
-  /** Portfolio theme binding declared on this concrete Dota component. */
-  @Property({name: "theme", type: String})
-  override theme: ThemeName = portfolioMarkdownTheme.name as ThemeName;
-
-  /** Portfolio color binding declared on this concrete Dota component. */
-  @Property({name: "color", type: String})
-  override color: ColorName = portfolioMarkdownColor;
-
+export class ShowcaseMarkdownViewComponent extends BaseElement {
   /** Shared capture, rendering, hash-scroll, and feedback lifecycle for Markdown. */
   private readonly markdownLifecycle = new MarkdownLifecycleUtils(this);
 
@@ -36,31 +28,32 @@ export class ShowcaseMarkdownViewComponent extends MdViewComponent {
     super();
   }
 
+  /** Captures the loading placeholder before the host renders its skeleton. */
   @BeforeInit()
-  /** Captures the loading placeholder before Markdown replaces the initial content. */
   beforeViewInit(): void {
     this.markdownLifecycle.captureInitialContent();
     this.markdownLifecycle.startSkeletonTimeout();
   }
 
-  @OnEvent(SHOWCASE_MARKDOWN_SOURCE_EVENT)
   /** Renders the article source published by the showcase article loader. */
+  @OnEvent(SHOWCASE_MARKDOWN_SOURCE_EVENT)
   renderMarkdownSource(event: ApplicationEvent<typeof SHOWCASE_MARKDOWN_SOURCE_EVENT>): void {
     this.markdownLifecycle.renderSource(event.data.markdown);
   }
 
-  @OnEvent("md:render")
   /**
-   * Adds showcase-specific behavior after the shared Markdown renderer updates.
+   * Adds showcase-specific behavior after `<md-view>` renders.
    *
-   * Code blocks receive a copy button, images are lazy-loaded, the article is
-   * marked ready, and any pending hash navigation is scheduled afterward.
+   * Code blocks receive a copy button, the article is marked ready, the TOC
+   * receives the result once its headings exist, and any pending hash
+   * navigation is scheduled afterward.
    */
-  override onContentChange(event: ApplicationEvent<"md:render">): void {
-    super.onContentChange(event);
+  @BindEvent({event: MD_RENDERED_EVENT, id: "md-view"})
+  decorateMarkdown(event: CustomEvent<MdRenderedDetail>): void {
+    const {container} = event.detail;
     this.markdownLifecycle.revealSkeleton();
-    this.querySelector("h1")?.remove();
-    this.querySelectorAll("pre").forEach((pre) => {
+    container.querySelector("h1")?.remove();
+    container.querySelectorAll("pre").forEach((pre) => {
       pre.tabIndex = 0;
       if (pre.querySelector("[data-copy-code]")) {
         return;
@@ -72,17 +65,13 @@ export class ShowcaseMarkdownViewComponent extends MdViewComponent {
       button.className = "showcase-copy-button";
       pre.append(button);
     });
-    this.querySelectorAll("img").forEach((image) => {
-      image.loading = "lazy";
-      image.decoding = "async";
-    });
     this.closest("[data-showcase-markdown]")?.setAttribute("aria-busy", "false");
-
+    MDService.publish(event.detail.result);
     this.markdownLifecycle.scheduleHashScroll();
   }
 
-  @BindEvent({event: "click", id: "[data-copy-code]"})
   /** Copies the selected code block and gives the button temporary feedback. */
+  @BindEvent({event: "click", id: "[data-copy-code]"})
   copyCode(event: Event): void {
     const button = (event.target as HTMLElement | null)?.closest<HTMLButtonElement>("[data-copy-code]");
     if (!button) {
@@ -90,21 +79,18 @@ export class ShowcaseMarkdownViewComponent extends MdViewComponent {
     }
 
     const code = button.parentElement?.querySelector("code")?.textContent ?? "";
-    const clipboardWrite = navigator.clipboard?.writeText(code);
-    if (clipboardWrite) {
-      void clipboardWrite;
-    }
+    void navigator.clipboard?.writeText(code);
     this.markdownLifecycle.markCopied(button, "Copied", "Copy");
   }
 
-  @OnEvent("disconnected", true)
   /** Releases timers and listeners owned by the shared Markdown lifecycle. */
+  @OnEvent("disconnected", true)
   cleanupMarkdownLifecycle(): void {
     this.markdownLifecycle.disconnect();
   }
 
-  /** Renders Markdown content with the showcase article theme and content class. */
-  override render(): TemplateResult {
+  /** Renders the article skeleton around the themed `<md-view>`. */
+  render(): TemplateResult {
     return html`${trustedHTML(this.markdownLifecycle.renderArticleSkeleton("showcase-markdown-content"))}`;
   }
 }
