@@ -2469,7 +2469,7 @@
           "name": "privacy-toc",
           "source": {
             "file": "./src/components/pages/privacy/document/privacy-toc/privacy-toc.component.ts",
-            "offset": 815
+            "offset": 920
           },
           "attributes": [],
           "js": {
@@ -2480,7 +2480,7 @@
           "name": "privacy-view",
           "source": {
             "file": "./src/components/pages/privacy/document/privacy-view/privacy-view.component.ts",
-            "offset": 1491
+            "offset": 1761
           },
           "attributes": [],
           "js": {
@@ -2870,7 +2870,7 @@
           "name": "showcase-aside",
           "source": {
             "file": "./src/components/pages/showcase/article/showcase-aside/showcase-aside.component.ts",
-            "offset": 622
+            "offset": 698
           },
           "attributes": [
             {
@@ -2882,7 +2882,7 @@
               },
               "source": {
                 "file": "./src/components/pages/showcase/article/showcase-aside/showcase-aside.component.ts",
-                "offset": 796
+                "offset": 872
               }
             }
           ],
@@ -2894,7 +2894,7 @@
                 "default": "note",
                 "source": {
                   "file": "./src/components/pages/showcase/article/showcase-aside/showcase-aside.component.ts",
-                  "offset": 796
+                  "offset": 872
                 }
               }
             ]
@@ -3227,7 +3227,7 @@
           "name": "showcase-toc",
           "source": {
             "file": "./src/components/pages/showcase/article/showcase-toc/showcase-toc.component.ts",
-            "offset": 1216
+            "offset": 1357
           },
           "attributes": [],
           "js": {
@@ -3238,7 +3238,7 @@
           "name": "showcase-view",
           "source": {
             "file": "./src/components/pages/showcase/article/showcase-view/showcase-view.component.ts",
-            "offset": 1665
+            "offset": 1793
           },
           "attributes": [],
           "js": {
@@ -3648,7 +3648,7 @@
           "name": "terms-toc",
           "source": {
             "file": "./src/components/pages/terms/document/terms-toc/terms-toc.component.ts",
-            "offset": 796
+            "offset": 897
           },
           "attributes": [],
           "js": {
@@ -3659,7 +3659,7 @@
           "name": "terms-view",
           "source": {
             "file": "./src/components/pages/terms/document/terms-view/terms-view.component.ts",
-            "offset": 1465
+            "offset": 1735
           },
           "attributes": [],
           "js": {
