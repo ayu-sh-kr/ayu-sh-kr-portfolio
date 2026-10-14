@@ -242,7 +242,7 @@ export class TermsViewComponent extends BaseElement {
         <div class="terms-reader-layout">
           <terms-toc></terms-toc>
           <article class="terms-prose" data-terms-markdown aria-busy="true">
-            <terms-markdown-view theme="portfolio" color="primary">
+            <terms-markdown-view>
               <p class="terms-status">Loading the terms text…</p>
             </terms-markdown-view>
           </article>
