@@ -1,7 +1,7 @@
-import {THEMES, type ColorName, type Theme} from "@ayu-sh-kr/dota-md";
+import {registerTheme, type ColorKey, type Theme} from "@ayu-sh-kr/dota-md";
 
-/** `dota-md` accepts a color-map key at runtime; this app owns `primary`. */
-export const portfolioMarkdownColor = "primary" as ColorName;
+/** Color-map key owned by this app; `dota-md` accepts custom keys beside Tailwind color names. */
+export const portfolioMarkdownColor: ColorKey = "primary";
 
 /** Fluid reading size shared by paragraph, list, and table content. */
 const markdownProseText = "text-[clamp(1.125rem,1rem+0.3vw,1.25rem)]";
@@ -13,7 +13,7 @@ const markdownProseText = "text-[clamp(1.125rem,1rem+0.3vw,1.25rem)]";
  */
 export const portfolioMarkdownTheme: Theme = {
   name: "portfolio",
-  fontFamily: "var(--primary-font)",
+  fontFamily: "var(--primary-font), serif",
   typography: {
     h1: "text-[clamp(2.25rem,1.75rem+2vw,3.5rem)] font-bold",
     h2: "text-[clamp(1.75rem,1.5rem+0.8vw,2.25rem)] font-semibold",
@@ -55,6 +55,7 @@ export const portfolioMarkdownTheme: Theme = {
   },
 };
 
+/** Registers the portfolio theme so `<md-view theme="portfolio">` resolves it by name. */
 export const registerPortfolioMarkdownTheme = (): void => {
-  THEMES[portfolioMarkdownTheme.name] = portfolioMarkdownTheme;
+  registerTheme(portfolioMarkdownTheme);
 };
