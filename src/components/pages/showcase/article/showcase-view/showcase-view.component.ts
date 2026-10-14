@@ -4,7 +4,6 @@ import {OnEvent} from "@ayu-sh-kr/dota-wrap/event";
 import {getShowcaseProject, getShowcaseSlug, showcaseProjects, type ShowcaseProject} from "@app/data/showcase-content.ts";
 import {SHOWCASE_MARKDOWN_SOURCE_EVENT, type ShowcaseMarkdownSource} from "@app/events/showcase.events.ts";
 import {ShowcaseLoaderService} from "@app/service/showcase-loader.service.ts";
-import {portfolioMarkdownColor, portfolioMarkdownTheme} from "@app/configs/markdown-theme.config.ts";
 import {escapeHtml} from "@app/utils/html.utils.ts";
 import {MarkdownProgressLifecycle} from "@app/utils/markdown-lifecycle.utils.ts";
 import {blogViewCountService, toBlogViewTrackingFailureReason} from "@app/service/blog-view-count.service.ts";
@@ -156,7 +155,7 @@ export class ShowcaseViewComponent extends BaseElement {
     const markdown = this.loadError
       ? `<article class="showcase-prose"><p class="showcase-load-error" role="alert">${escapeHtml(this.loadError)} <a href="/showcase/">Return to all showcases</a>.</p></article>`
       : `<article class="showcase-prose" data-showcase-markdown aria-busy="${this.loading}">
-          <showcase-markdown-view theme="${portfolioMarkdownTheme.name}" color="${portfolioMarkdownColor}">
+          <showcase-markdown-view>
             <p class="showcase-loading">Loading the case study…</p>
           </showcase-markdown-view>
         </article>`;
