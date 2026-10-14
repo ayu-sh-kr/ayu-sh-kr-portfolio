@@ -36,6 +36,7 @@ const showcaseRoutes = [
   "/showcase/dota-rest",
 ];
 const newsRoutes = [
+  "/news/urban-vpn-ai-chat-harvesting",
   "/news/aws-lambda-web-functions",
   "/news/malicious-ai-routers-agent-supply-chain",
   "/news/rea-rust-app-clones-ai-reverse-engineering",

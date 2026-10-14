@@ -68,6 +68,19 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "urban-vpn-ai-chat-harvesting",
+    date: "2026-10-12",
+    title: "Urban VPN AI chat collection: what happens and how it works",
+    summary: "What Koi reported happens with the affected Urban VPN browser extension installed, how it copies AI chats, and what Urban VPN disputes.",
+    kind: "infra",
+    document: "/news/urban-vpn-ai-chat-harvesting.md",
+    keywords: ["Urban VPN AI chat harvesting", "ChatGPT conversation privacy", "browser extension data collection", "BiScience", "Urban VPN browser extension"],
+    minutes: 2,
+    reference: {label: "Koi investigation — preserved by the AI Incident Database", href: "https://incidentdatabase.ai/reports/6825/"},
+  },
+
+
+  {
     slug: "aws-lambda-web-functions",
     date: "2026-10-13",
     title: "AWS Lambda Web Functions: Simpler Deployment, SSR and Active CPU Pricing",
