@@ -9,7 +9,6 @@ import {
   labelForNewsKind,
   type NewsNote,
 } from "@app/configs/news.config.ts";
-import {portfolioMarkdownColor, portfolioMarkdownTheme} from "@app/configs/markdown-theme.config.ts";
 import {siteIdentity} from "@app/data/portfolio-content.ts";
 import {newsContent} from "@app/data/news-content.ts";
 import {NEWS_MARKDOWN_SOURCE_EVENT, type NewsMarkdownSource} from "@app/events/news.events.ts";
@@ -180,7 +179,7 @@ export class NewsArticleComponent extends BaseElement {
     const moreNotes = [...sameKindNotes, ...otherNotes].slice(0, 3);
     const documentMarkup = this.loadError
       ? `<div class="news-note-prose"><p class="news-load-error">${escapeHtml(this.loadError)} <a href="/news/">${newsContent.article.back}</a>.</p></div>`
-      : `<div class="news-note-prose layout-section layout-section-flush" data-news-document aria-busy="true"><news-markdown-view theme="${portfolioMarkdownTheme.name}" color="${portfolioMarkdownColor}"><p class="news-meta">${newsContent.article.loading}</p></news-markdown-view></div>`;
+      : `<div class="news-note-prose layout-section layout-section-flush" data-news-document aria-busy="true"><news-markdown-view><p class="news-meta">${newsContent.article.loading}</p></news-markdown-view></div>`;
 
     return html`${trustedHTML(`
       <div class="news-reading-progress" data-news-progress aria-hidden="true"></div>
