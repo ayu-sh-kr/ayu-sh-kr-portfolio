@@ -242,7 +242,7 @@ export class PrivacyViewComponent extends BaseElement {
         <div class="privacy-reader-layout">
           <privacy-toc></privacy-toc>
           <article class="privacy-prose" data-privacy-markdown aria-busy="true">
-            <privacy-markdown-view theme="portfolio" color="primary">
+            <privacy-markdown-view>
               <p class="privacy-status">Loading the policy text…</p>
             </privacy-markdown-view>
           </article>
