@@ -12,6 +12,13 @@ Keep the language on every fence so dota-md can highlight it. Inline code keeps
 its existing treatment. Copy controls update only the block and announce success
 only after the clipboard write completes.
 
+Variant selection is explicit, not inferred from the language or block length.
+Syntax colors work in all three variants. Use Focus to emphasize lines discussed
+in the surrounding explanation, Minimal for short commands, and Editorial for
+ordinary examples. `data-highlight-lines` affects Focus only; it does not change
+which words the syntax tokenizer recognizes. The AppConfig Spring Boot article
+contains examples of all three variants.
+
 For an optional filename or another presentation, wrap a fence with a div.
 Keep blank lines before and after the fence so Markdown parses its contents:
 

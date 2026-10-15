@@ -43,9 +43,13 @@ application successfully downloads new bytes but continues using the old values.
 
 AWS AppConfig organizes configuration using the following hierarchy:
 
+<div data-code-variant="minimal">
+
 ```text
 Application → Environment → Configuration profile → Deployment
 ```
+
+</div>
 
 An application is the top-level container. Environments represent deployment targets
 such as `stage` and `prod`. Configuration profiles divide settings by purpose, and a
@@ -74,12 +78,16 @@ though both are consumed by the same Spring Boot environment.
 The application will use a location with three path segments: the AppConfig
 application, environment, and configuration profile.
 
+<div data-code-variant="focus" data-filename="application.yml" data-highlight-lines="3-4">
+
 ```yaml
 spring:
   config:
     import:
       - aws-appconfig:myapp/stage/db-credentials
 ```
+
+</div>
 
 During bootstrap, Spring Boot processes this location in four steps:
 
@@ -96,6 +104,8 @@ different concern and requires a polling process or the AWS AppConfig Agent.
 The loader uses the AWS SDK for Java 2.x AppConfig Data client. If the project already
 imports the AWS SDK BOM, only the `appconfigdata` module is required.
 
+<div data-code-variant="editorial" data-filename="build.gradle.kts">
+
 ```kotlin
 dependencies {
     implementation(platform("software.amazon.awssdk:bom:<aws-sdk-version>"))
@@ -103,8 +113,12 @@ dependencies {
 }
 ```
 
+</div>
+
 Local authentication through an IAM Identity Center profile also requires the SDK's
 `sso` and `ssooidc` modules:
+
+<div data-code-variant="editorial" data-filename="build.gradle.kts">
 
 ```kotlin
 dependencies {
@@ -112,6 +126,8 @@ dependencies {
     implementation("software.amazon.awssdk:ssooidc")
 }
 ```
+
+</div>
 
 ## Give the application read access
 
@@ -143,10 +159,14 @@ customer-managed KMS key also requires `kms:Decrypt` permission for that key.
 For local development, configure an IAM Identity Center profile and sign in before
 starting the application:
 
+<div data-code-variant="minimal">
+
 ```bash
 aws sso login --profile appconfig-dev
 AWS_PROFILE=appconfig-dev AWS_REGION=us-east-1 ./gradlew bootRun
 ```
+
+</div>
 
 The profile supplies temporary credentials and the region through the same default
 provider chains used in AWS environments. Running `aws sts assume-role` separately is
@@ -159,6 +179,8 @@ A `ConfigDataResource` describes what should be loaded. It contains no AWS logic
 only carries the three identifiers from the import path through Spring Boot's bootstrap
 pipeline.
 
+<div data-code-variant="editorial" data-filename="AwsAppConfigDataResource.kt">
+
 ```kotlin
 data class AwsAppConfigDataResource(
     val application: String,
@@ -169,6 +191,8 @@ data class AwsAppConfigDataResource(
 }
 ```
 
+</div>
+
 Using a Kotlin data class gives the resource stable equality and hash-code behavior,
 which is useful when Spring Boot tracks resolved configuration resources.
 
@@ -177,6 +201,8 @@ which is useful when Spring Boot tracks resolved configuration resources.
 The `ConfigDataLocationResolver` owns the URI-like syntax. It claims only locations
 with the expected prefix, validates all three path segments, and returns a typed
 resource. It deliberately performs no network calls.
+
+<div data-code-variant="focus" data-filename="AwsAppConfigLocationResolver.kt" data-highlight-lines="13-18">
 
 ```kotlin
 class AwsAppConfigLocationResolver :
@@ -213,6 +239,8 @@ class AwsAppConfigLocationResolver :
 }
 ```
 
+</div>
+
 Keeping parsing in the resolver makes malformed imports fail early with an error that
 explains the required format.
 
@@ -221,6 +249,8 @@ explains the required format.
 The `ConfigDataLoader` performs the AWS call. `AppConfigDataClient.create()` resolves
 credentials and region through the AWS SDK's default provider chains, starts a session,
 and retrieves the current configuration using the session's initial token.
+
+<div data-code-variant="focus" data-filename="AwsAppConfigDataLoader.kt" data-highlight-lines="13-20">
 
 ```kotlin
 class AwsAppConfigDataLoader : ConfigDataLoader<AwsAppConfigDataResource> {
@@ -249,6 +279,8 @@ class AwsAppConfigDataLoader : ConfigDataLoader<AwsAppConfigDataResource> {
 }
 ```
 
+</div>
+
 The payload is parsed with Spring Boot's YAML loader, so imported values behave like
 properties from a local YAML file. If authentication fails, no deployment exists, or
 the payload is invalid YAML, application startup fails. That fail-fast behavior keeps
@@ -265,6 +297,8 @@ Spring Boot discovers custom Config Data components through
 `src/main/resources/META-INF/spring.factories`. Register both implementations with
 their fully qualified class names:
 
+<div data-code-variant="editorial" data-filename="src/main/resources/META-INF/spring.factories">
+
 ```properties
 org.springframework.boot.context.config.ConfigDataLocationResolver=\
 com.example.config.AwsAppConfigLocationResolver
@@ -272,6 +306,8 @@ com.example.config.AwsAppConfigLocationResolver
 org.springframework.boot.context.config.ConfigDataLoader=\
 com.example.config.AwsAppConfigDataLoader
 ```
+
+</div>
 
 Without this registration, Spring Boot sees `aws-appconfig:` as an unknown import
 scheme and neither class is called.
@@ -327,6 +363,8 @@ Start the polling lifecycle after Spring has finished bootstrapping. An
 `ApplicationReadyEvent` listener is a clear place to schedule the first request because
 the initial Config Data import and all application beans are available by then.
 
+<div data-code-variant="focus" data-filename="AppConfigPollingLifecycle.kt" data-highlight-lines="8-13">
+
 ```kotlin
 @Component
 class AppConfigPollingLifecycle(
@@ -350,6 +388,8 @@ class AppConfigPollingLifecycle(
 }
 ```
 
+</div>
+
 This example shows lifecycle ownership rather than the complete AppConfig protocol. A
 production poller should schedule its next call using
 `NextPollIntervalInSeconds`, serialize refresh attempts, and trigger an update only
@@ -367,9 +407,13 @@ runs beside the application, polls AppConfig asynchronously, and keeps the lates
 configuration in a local cache. The application retrieves that cache through the
 agent's HTTP endpoint, which uses port `2772` by default:
 
+<div data-code-variant="minimal">
+
 ```text
 GET http://localhost:2772/applications/myapp/environments/stage/configurations/db-credentials
 ```
+
+</div>
 
 Using the agent removes AWS session-token and cache management from application code.
 It does not, however, push a callback containing new bytes into the Spring process.
@@ -405,6 +449,8 @@ infrastructure comes from
 [Spring Cloud Context](https://docs.spring.io/spring-cloud-commons/reference/spring-cloud-commons/application-context-services.html),
 while Actuator exposes it as a management endpoint.
 
+<div data-code-variant="editorial" data-filename="build.gradle.kts">
+
 ```kotlin
 dependencies {
     implementation("org.springframework.cloud:spring-cloud-context")
@@ -412,8 +458,12 @@ dependencies {
 }
 ```
 
+</div>
+
 Manage the Spring Cloud version through the release-train BOM that matches the Spring
 Boot version. To expose the endpoint over HTTP, add it explicitly:
+
+<div data-code-variant="editorial" data-filename="application.yml">
 
 ```yaml
 management:
@@ -423,11 +473,17 @@ management:
         include: health,info,refresh
 ```
 
+</div>
+
 The endpoint is invoked with a `POST` request:
+
+<div data-code-variant="minimal">
 
 ```bash
 curl -X POST http://localhost:8080/actuator/refresh
 ```
+
+</div>
 
 Do not expose a refresh endpoint publicly without authentication and authorization. It
 changes live application behavior and should be treated as an operational control, not
@@ -435,6 +491,8 @@ as an ordinary application endpoint.
 
 An in-process poller does not need to call its own HTTP endpoint. Spring Cloud exposes
 the same operation through `ContextRefresher`:
+
+<div data-code-variant="editorial" data-filename="AppConfigRefreshCoordinator.kt">
 
 ```kotlin
 @Component
@@ -445,6 +503,8 @@ class AppConfigRefreshCoordinator(
 }
 ```
 
+</div>
+
 This works when the AppConfig property source participates in Spring Cloud's refresh
 bootstrap and can be loaded again. If the poller or agent callback already supplies the
 new bytes, the coordinator must first parse those bytes and replace the existing
@@ -453,6 +513,8 @@ beans from the same values.
 
 The payload-driven path is conceptually:
 
+<div data-code-variant="focus" data-highlight-lines="2-4">
+
 ```kotlin
 fun apply(payload: ByteArray) {
     val changedKeys = propertySourceStore.replace(payload)
@@ -460,6 +522,8 @@ fun apply(payload: ByteArray) {
     refreshScope.refreshAll()
 }
 ```
+
+</div>
 
 `propertySourceStore.replace` represents application-owned logic that parses the YAML,
 validates it, computes added, changed, and removed keys, and atomically replaces the
@@ -502,6 +566,8 @@ refresh-scoped proxy or the consumer itself is recreated.
 with constructor-bound `@ConfigurationProperties`, which is an excellent model for
 startup configuration:
 
+<div data-code-variant="focus" data-filename="CheckoutProperties.kt" data-highlight-lines="3-4">
+
 ```kotlin
 @ConfigurationProperties("checkout")
 data class CheckoutProperties(
@@ -509,6 +575,8 @@ data class CheckoutProperties(
     val timeout: Duration
 )
 ```
+
+</div>
 
 Runtime rebinding is different. `ConfigurationPropertiesRebinder` can update a mutable
 JavaBean-style object through setters or writable fields, but it cannot reset the
@@ -519,6 +587,8 @@ This is not strictly a Java-versus-Kotlin problem. A mutable Kotlin class with `
 properties can be rebound, while immutable Java records and other constructor-bound
 Java classes have the same limitation.
 
+<div data-code-variant="focus" data-filename="CheckoutProperties.kt" data-highlight-lines="3-4">
+
 ```kotlin
 @ConfigurationProperties("checkout")
 class CheckoutProperties {
@@ -526,6 +596,8 @@ class CheckoutProperties {
     var timeout: Duration = Duration.ofSeconds(2)
 }
 ```
+
+</div>
 
 The mutable form works with the rebinder because Spring can write the new values onto
 the existing instance. The tradeoff is that consumers can observe individual fields
@@ -547,6 +619,8 @@ snapshot:
 An atomic snapshot provider is explicit and works consistently for Kotlin data
 classes:
 
+<div data-code-variant="focus" data-filename="CheckoutSettingsProvider.kt" data-highlight-lines="3,7-8">
+
 ```kotlin
 @Component
 class CheckoutSettingsProvider(initial: CheckoutProperties) {
@@ -559,6 +633,8 @@ class CheckoutSettingsProvider(initial: CheckoutProperties) {
     }
 }
 ```
+
+</div>
 
 The AppConfig callback parses and validates a complete `CheckoutProperties` value
 before calling `replace`. Every reader sees either the old snapshot or the new one;
