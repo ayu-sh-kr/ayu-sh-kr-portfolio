@@ -31,7 +31,7 @@
   "dependencies": {
     "@ayu-sh-kr/dota-md": "^0.2.1",
     "@ayu-sh-kr/dota-ui": "^0.1.3",
-    "@ayu-sh-kr/dota-wrap": "^0.2.2",
+    "@ayu-sh-kr/dota-wrap": "^0.2.3",
     "@razorpay/razorpay-js": "^1.0.0",
     "highlight.js": "^11.12.0",
     "markdown-it-highlightjs": "^4.3.0",
