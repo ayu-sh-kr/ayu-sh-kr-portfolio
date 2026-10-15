@@ -19,9 +19,10 @@ its existing treatment. Copy controls update only the block and announce success
 only after the clipboard write completes.
 
 Variant selection is explicit, not inferred from the language or block length.
-Syntax colors work in all three variants. Use Focus to emphasize lines discussed
-in the surrounding explanation, Minimal for short commands, and Editorial for
-ordinary examples. `data-highlight-lines` affects Focus only; it does not change
+Syntax colors work in all three variants. Every variant uses the Editorial
+shell, spacing, and typography. Focus adds only a soft background to lines
+discussed in the explanation; it has no gutter, numbering, or accent rail.
+Minimal is retained as an authoring alias for the same Editorial presentation. `data-highlight-lines` affects Focus only; it does not change
 which words the syntax tokenizer recognizes. The AppConfig Spring Boot article
 contains examples of all three variants.
 
@@ -40,14 +41,14 @@ console.log(response);
 </div>
 ````
 
-Focus adds line numbers and a soft accent wash on the specified one-based lines
-or inclusive ranges (`2-3,5`). Minimal uses an open surface with an accent edge;
-select it with `data-code-variant="minimal"`. Unrecognized variants use Editorial.
+Focus adds a soft accent wash on the specified one-based lines or inclusive
+ranges (`2-3,5`), without changing the block geometry. Unrecognized variants use
+Editorial.
 A plain fence needs no attributes or content migration. The same attributes can
 be placed on raw `pre` elements, but raw code must be HTML-escaped and supply its
 own syntax spans; fences receive automatic highlighting from dota-md.
 
-All variants preserve source text, including a trailing newline. Numbering and
-controls are outside the copied source. Long lines scroll inside the block;
+All variants preserve source text, including a trailing newline. Controls are
+outside the copied source. Long lines scroll inside the block;
 the copy control stays in its header. Colors update through CSS on theme changes,
 without parsing or rendering the article again.

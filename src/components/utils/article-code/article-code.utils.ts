@@ -65,7 +65,7 @@ export function decorateArticleCode(container: HTMLElement): void {
 /**
  * Splits highlighted DOM at newlines while retaining nested syntax spans.
  * Newlines remain text nodes so selection and clipboard preserve the source.
- * The gutter uses CSS counters and is excluded from the copied text.
+ * Rows add only a background highlight; layout and typography match Editorial.
  */
 function decorateCodeLines(code: HTMLElement, highlights: string): void {
   const ranges = highlights.split(",").map((part) => part.trim().match(/^(\d+)(?:-(\d+))?$/))
