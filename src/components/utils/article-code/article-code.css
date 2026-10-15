@@ -1,0 +1,194 @@
+/* Shared article chrome; syntax uses app-owned semantic roles in color.css. */
+.article-code {
+  min-inline-size: 0;
+  margin-block: var(--layout-space-5);
+  overflow: hidden;
+  border: 1px solid var(--code-border-color);
+  border-radius: var(--layout-radius-lg);
+  background: var(--code-background-color);
+  color: var(--code-foreground-color);
+}
+
+.article-code .article-code-header {
+  display: flex;
+  align-items: center;
+  gap: var(--layout-space-2);
+  padding: var(--layout-space-2) var(--layout-space-3) 0 var(--layout-space-4);
+  font-family: var(--primary-font), sans-serif;
+  font-size: var(--type-eyebrow-size);
+  line-height: var(--type-compact-leading);
+}
+
+.article-code-label {
+  display: flex;
+  align-items: baseline;
+  gap: var(--layout-space-2);
+  flex: 1;
+  min-inline-size: 0;
+  color: var(--code-muted-color);
+}
+
+/* A filename is an authored hint, never inferred from the language tag. */
+.article-code-filename {
+  min-inline-size: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: var(--font-mono);
+  color: var(--code-foreground-color);
+}
+
+.article-code-language {
+  flex: 0 0 auto;
+}
+
+.article-code-status {
+  flex: 0 1 auto;
+  min-inline-size: 0;
+  color: var(--code-accent-color);
+}
+
+.article-code .article-code-copy {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  inline-size: var(--layout-space-5);
+  block-size: var(--layout-space-5);
+  border: 0;
+  border-radius: var(--layout-radius-xs);
+  padding: 0;
+  background: transparent;
+  color: var(--code-muted-color);
+  cursor: pointer;
+}
+
+.article-code .article-code-copy:hover {
+  background: var(--code-accent-wash);
+  color: var(--code-accent-color);
+}
+
+.article-code ::selection {
+  background: var(--code-accent-color);
+  color: var(--code-background-color);
+}
+
+.article-code .article-code-copy:focus-visible {
+  outline: 2px solid var(--code-accent-color);
+  outline-offset: 2px;
+}
+
+.article-code pre:focus-visible {
+  outline: 2px solid var(--code-accent-color);
+  outline-offset: -2px;
+}
+
+.article-code .article-code-copy:disabled {
+  cursor: wait;
+}
+
+/* Override prose and renderer presets only within enhanced code examples. */
+.article-code.article-code pre {
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  padding: var(--layout-space-2) var(--layout-space-4) var(--layout-space-4);
+  overflow-x: auto;
+  background: transparent;
+  color: var(--code-foreground-color);
+  font-family: var(--font-mono);
+  font-size: var(--type-code-size);
+  line-height: var(--type-code-leading);
+  white-space: pre;
+  tab-size: 2;
+  scrollbar-color: var(--code-muted-color) transparent;
+}
+
+.article-code.article-code pre code,
+.article-code.article-code .hljs {
+  display: block;
+  min-inline-size: max-content;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+}
+
+.article-code .hljs-keyword,
+.article-code .hljs-selector-tag,
+.article-code .hljs-name,
+.article-code .hljs-meta .hljs-keyword {
+  color: var(--syntax-keyword-color);
+  font-weight: var(--type-code-keyword-weight);
+}
+
+.article-code .hljs-string,
+.article-code .hljs-regexp,
+.article-code .hljs-template-variable {
+  color: var(--syntax-string-color);
+}
+
+.article-code .hljs-title,
+.article-code .hljs-title.function_ {
+  color: var(--syntax-function-color);
+}
+
+.article-code .hljs-type,
+.article-code .hljs-title.class_,
+.article-code .hljs-built_in,
+.article-code .hljs-meta {
+  color: var(--syntax-type-color);
+}
+
+.article-code .hljs-number,
+.article-code .hljs-literal,
+.article-code .hljs-symbol {
+  color: var(--syntax-value-color);
+}
+
+.article-code .hljs-comment,
+.article-code .hljs-quote {
+  color: var(--syntax-comment-color);
+}
+
+.article-code .hljs-attr,
+.article-code .hljs-attribute,
+.article-code .hljs-variable,
+.article-code .hljs-params,
+.article-code .hljs-subst,
+.article-code .hljs-punctuation,
+.article-code .hljs-operator {
+  color: var(--code-foreground-color);
+}
+
+.article-code .hljs-addition {
+  background: color-mix(in srgb, var(--code-addition-color) 12%, transparent);
+  color: var(--code-addition-color);
+}
+
+.article-code .hljs-deletion {
+  background: color-mix(in srgb, var(--code-deletion-color) 12%, transparent);
+  color: var(--code-deletion-color);
+  text-decoration: line-through;
+}
+
+/* Focus keeps Editorial geometry. Inline rows retain the source newlines;
+ * top alignment prevents inline-block baselines from adding space per line. */
+.article-code-line {
+  display: inline-block;
+  inline-size: 100%;
+  min-block-size: 1lh;
+  vertical-align: top;
+}
+
+.article-code-line.is-highlighted {
+  background: var(--code-accent-wash);
+}
+
+@media (pointer: coarse) {
+  .article-code .article-code-copy {
+    inline-size: calc(var(--layout-space-7) - var(--layout-space-1));
+    block-size: calc(var(--layout-space-7) - var(--layout-space-1));
+  }
+}

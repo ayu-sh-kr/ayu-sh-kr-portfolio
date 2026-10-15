@@ -10,8 +10,8 @@ import {MarkdownLifecycleUtils} from "@app/utils/markdown-lifecycle.utils.ts";
  *
  * The parent `showcase-view` publishes {@link SHOWCASE_MARKDOWN_SOURCE_EVENT}
  * after loading a project. This host renders the source into its dota-md
- * `<md-view>`, then enhances the rendered code blocks, keeps the article's
- * loading state synchronized, and shares the result with `showcase-toc` as
+ * `<md-view>`, keeps the article loading state synchronized, and shares the
+ * result with `showcase-toc` as
  * `md:render` when the view reports `md-rendered`.
  *
  * Selector: `showcase-markdown-view`.
@@ -47,43 +47,17 @@ export class ShowcaseMarkdownViewComponent extends BaseElement {
   /**
    * Adds showcase-specific behavior after `<md-view>` renders.
    *
-   * Code blocks receive a copy button, the article is marked ready, the TOC
-   * receives the result once its headings exist, and any pending hash
-   * navigation is scheduled afterward.
+   * The article is marked ready, the TOC receives the result once its headings
+   * exist, and any pending hash navigation is scheduled afterward.
    */
   @BindEvent({event: MD_RENDERED_EVENT, id: "md-view"})
   decorateMarkdown(event: CustomEvent<MdRenderedDetail>): void {
     const {container} = event.detail;
     this.markdownLifecycle.revealSkeleton();
     container.querySelector("h1")?.remove();
-    container.querySelectorAll("pre").forEach((pre) => {
-      pre.tabIndex = 0;
-      if (pre.querySelector("[data-copy-code]")) {
-        return;
-      }
-      const button = document.createElement("button");
-      button.type = "button";
-      button.dataset.copyCode = "true";
-      button.textContent = "Copy";
-      button.className = "showcase-copy-button";
-      pre.append(button);
-    });
     this.closest("[data-showcase-markdown]")?.setAttribute("aria-busy", "false");
     MDService.publish(event.detail.result);
     this.markdownLifecycle.scheduleHashScroll();
-  }
-
-  /** Copies the selected code block and gives the button temporary feedback. */
-  @BindEvent({event: "click", id: "[data-copy-code]"})
-  copyCode(event: Event): void {
-    const button = (event.target as HTMLElement | null)?.closest<HTMLButtonElement>("[data-copy-code]");
-    if (!button) {
-      return;
-    }
-
-    const code = button.parentElement?.querySelector("code")?.textContent ?? "";
-    void navigator.clipboard?.writeText(code);
-    this.markdownLifecycle.markCopied(button, "Copied", "Copy");
   }
 
   /** Releases timers and listeners owned by the shared Markdown lifecycle. */

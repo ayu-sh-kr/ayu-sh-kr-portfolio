@@ -77,8 +77,24 @@
   --contrast-foreground-color: light-dark(var(--color-paper-50), var(--color-inkstone-950));
   --contrast-muted-color: light-dark(var(--color-inkstone-300), var(--color-inkstone-500));
   --contrast-border-color: color-mix(in srgb, var(--contrast-foreground-color) 18%, transparent);
-  --code-background-color: var(--primary-950);
-  --code-foreground-color: var(--color-paper-50);
+  /* Code is an inverted reading surface: app dark in light mode, paper in dark. */
+  --code-background-color: light-dark(var(--color-inkstone-950), var(--color-paper-50));
+  --code-foreground-color: light-dark(var(--color-inkstone-100), var(--color-inkstone-800));
+  --code-muted-color: light-dark(var(--color-inkstone-300), var(--color-inkstone-600));
+  --code-border-color: var(--contrast-border-color);
+  --code-accent-color: light-dark(var(--primary-300), var(--primary-700));
+  --code-highlight-color: light-dark(var(--primary-400), var(--primary-500));
+  --code-accent-wash: color-mix(in srgb, var(--code-highlight-color) 18%, var(--code-background-color));
+  --code-addition-color: light-dark(var(--color-status-success-dark), var(--color-status-success-light));
+  --code-deletion-color: light-dark(var(--color-status-danger-dark), var(--color-status-danger-light));
+
+  /* Syntax colors follow the code surface, whose mode is opposite the page. */
+  --syntax-keyword-color: var(--code-accent-color);
+  --syntax-string-color: color-mix(in srgb, var(--code-foreground-color) 82%, var(--code-accent-color));
+  --syntax-function-color: var(--code-foreground-color);
+  --syntax-type-color: var(--code-foreground-color);
+  --syntax-value-color: var(--code-accent-color);
+  --syntax-comment-color: var(--code-muted-color);
 
   --success-color: light-dark(var(--color-status-success-light), var(--color-status-success-dark));
   --warning-color: light-dark(var(--color-status-warning-light), var(--color-status-warning-dark));

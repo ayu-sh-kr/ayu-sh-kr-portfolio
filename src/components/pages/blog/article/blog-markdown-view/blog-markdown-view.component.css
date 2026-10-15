@@ -78,12 +78,6 @@ blog-markdown-view {
   list-style: decimal;
 }
 
-.blog-code-block {
-  position: relative;
-  inline-size: 100%;
-  min-inline-size: 0;
-}
-
 .blog-prose blockquote {
   margin: 1.6em 0;
   border-inline-start: 3px solid var(--blog-accent);
@@ -158,27 +152,6 @@ blog-markdown-view {
   border-block-end: 0;
 }
 
-.blog-copy-button {
-  position: absolute;
-  inset-block-start: 0.7rem;
-  inset-inline-end: 0.8rem;
-  border: 1px solid color-mix(in srgb, var(--blog-code-text) 22%, transparent);
-  border-radius: 999px;
-  padding: 0.25rem 0.6rem;
-  background: color-mix(in srgb, var(--blog-code) 80%, var(--blog-code-text));
-  color: var(--blog-code-text);
-  cursor: pointer;
-  font: inherit;
-  font-size: 0.7rem;
-  opacity: 0;
-  z-index: var(--layout-z-raised);
-  transition: opacity 180ms ease;
-}
-
-.blog-code-block:hover .blog-copy-button,
-.blog-copy-button:focus-visible {
-  opacity: 1;
-}
 
 /* Authored width and height attributes reserve space for lazy images; auto keeps their aspect ratio when narrowed. */
 .blog-prose img {
@@ -192,8 +165,7 @@ blog-markdown-view {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .blog-prose a,
-  .blog-copy-button {
+  .blog-prose a {
     transition: none;
   }
 }

@@ -10,8 +10,8 @@ import {MarkdownLifecycleUtils} from "@app/utils/markdown-lifecycle.utils.ts";
  *
  * Hosts a dota-md `<md-view>` inside the shared article skeleton. The source
  * arrives through {@link NEWS_MARKDOWN_SOURCE_EVENT}; once `<md-view>` reports
- * `md-rendered`, this host applies note-specific semantics: no duplicate H1 and
- * keyboard-reachable code blocks.
+ * `md-rendered`, this host removes the duplicate H1, marks the article ready,
+ * and completes hash scrolling.
  *
  * Selector: `news-markdown-view`.
  */
@@ -45,9 +45,6 @@ export class NewsMarkdownViewComponent extends BaseElement {
     const {container} = event.detail;
     this.markdownLifecycle.revealSkeleton();
     container.querySelector("h1")?.remove();
-    container.querySelectorAll("pre").forEach((pre) => {
-      pre.tabIndex = 0;
-    });
     this.closest("[data-news-document]")?.setAttribute("aria-busy", "false");
     this.markdownLifecycle.scheduleHashScroll();
   }
