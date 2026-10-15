@@ -23,7 +23,19 @@ export function decorateArticleCode(container: HTMLElement): void {
     header.className = "article-code-header";
     const label = document.createElement("span");
     label.className = "article-code-label";
-    label.textContent = options.dataset.filename ? `${options.dataset.filename} · ${language}` : language;
+    const filename = options.dataset.filename?.trim();
+    if (filename) {
+      const hint = document.createElement("span");
+      hint.className = "article-code-filename";
+      hint.textContent = filename.split(/[\\/]/).at(-1) ?? filename;
+      hint.title = filename;
+      hint.setAttribute("aria-label", filename);
+      label.append(hint, document.createTextNode(" "));
+    }
+    const languageHint = document.createElement("span");
+    languageHint.className = "article-code-language";
+    languageHint.textContent = language;
+    label.append(languageHint);
     const button = document.createElement("button");
     button.type = "button";
     button.className = "article-code-copy";

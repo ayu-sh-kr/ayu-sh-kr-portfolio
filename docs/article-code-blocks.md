@@ -2,6 +2,12 @@
 
 Blog, Dispatch, and Showcase share the portfolio syntax palette. Ordinary fenced
 code uses Editorial: an adaptive surface, language label, and visible copy icon.
+The compact metadata row shares the code surface, without a divider or a separate
+header panel. Filenames appear only when authored: the basename is shown, with
+the full path available on hover and to assistive technology. Long names truncate
+before pushing the copy control out of view. Spacing, corners, and typography
+consume the application layout and type tokens.
+
 Keep the language on every fence so dota-md can highlight it. Inline code keeps
 its existing treatment. Copy controls update only the block and announce success
 only after the clipboard write completes.

@@ -45,7 +45,7 @@ describe("article code blocks", () => {
     expect(lines[0]?.querySelector(".hljs-comment")?.textContent).toBe("/* first");
     expect(lines[1]?.textContent).toBe("second */");
     expect(lines[1]?.querySelector(".hljs-comment span")?.textContent).toBe("second");
-    expect(article.querySelector(".article-code-label")?.textContent).toBe("sample.ts · ts");
+    expect(article.querySelector(".article-code-filename")?.textContent).toBe("sample.ts");
   });
 
   it("supports highlighted Markdown fences inside a Focus wrapper", () => {
@@ -57,7 +57,17 @@ describe("article code blocks", () => {
     expect(article.querySelector('.article-code[data-variant="focus"]')).not.toBeNull();
     expect(article.querySelector(".hljs-keyword")?.textContent).toBe("const");
     expect(article.querySelector(".is-highlighted")?.textContent).toBe("const value = 42;");
-    expect(article.querySelector(".article-code-label")?.textContent).toBe("example.ts · ts");
+    expect(article.querySelector(".article-code-filename")?.textContent).toBe("example.ts");
+  });
+
+  it("shows an authored filename as a compact hint with its full path available", () => {
+    article.innerHTML = '<pre data-filename="src/config/subscriber.ts"><code class="language-ts">const x = 1;</code></pre>';
+    decorateArticleCode(article);
+    const hint = article.querySelector<HTMLElement>(".article-code-filename");
+    expect(hint?.textContent).toBe("subscriber.ts");
+    expect(hint?.title).toBe("src/config/subscriber.ts");
+    expect(hint?.getAttribute("aria-label")).toBe("src/config/subscriber.ts");
+    expect(article.querySelector(".article-code-language")?.textContent).toBe("ts");
   });
 
   it("handles Minimal, unknown variants, and untagged code safely", () => {

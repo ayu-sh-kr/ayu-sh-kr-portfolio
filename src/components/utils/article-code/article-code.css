@@ -1,10 +1,10 @@
 /* Shared article chrome; syntax uses app-owned semantic roles in color.css. */
 .article-code {
   min-inline-size: 0;
-  margin-block: 1.6em;
+  margin-block: var(--layout-space-5);
   overflow: hidden;
   border: 1px solid var(--border-color);
-  border-radius: 1rem;
+  border-radius: var(--layout-radius-xs);
   background: var(--surface-color);
   color: var(--foreground-color);
 }
@@ -12,22 +12,39 @@
 .article-code .article-code-header {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  padding: 0.65rem 1rem;
-  border-block-end: 1px solid var(--border-color);
+  gap: var(--layout-space-2);
+  padding: var(--layout-space-2) var(--layout-space-3) 0 var(--layout-space-4);
   font-family: var(--primary-font), sans-serif;
-  font-size: 0.75rem;
-  line-height: 1.5;
+  font-size: var(--type-label-size);
+  line-height: var(--type-compact-leading);
 }
 
 .article-code-label {
+  display: flex;
+  align-items: baseline;
+  gap: var(--layout-space-2);
+  flex: 1;
   min-inline-size: 0;
-  overflow-wrap: anywhere;
   color: var(--muted-color);
 }
 
+/* A filename is an authored hint, never inferred from the language tag. */
+.article-code-filename {
+  min-inline-size: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: var(--font-mono);
+  color: var(--foreground-color);
+}
+
+.article-code-language {
+  flex: 0 0 auto;
+}
+
 .article-code-status {
-  margin-inline-start: auto;
+  flex: 0 1 auto;
+  min-inline-size: 0;
   color: var(--primary-color-strong);
 }
 
@@ -36,10 +53,10 @@
   flex: 0 0 auto;
   align-items: center;
   justify-content: center;
-  inline-size: 2rem;
-  block-size: 2rem;
-  border: 1px solid var(--border-color);
-  border-radius: 0.5rem;
+  inline-size: var(--layout-space-5);
+  block-size: var(--layout-space-5);
+  border: 0;
+  border-radius: var(--layout-radius-xs);
   padding: 0;
   background: transparent;
   color: var(--muted-color);
@@ -60,13 +77,13 @@
   margin: 0;
   border: 0;
   border-radius: 0;
-  padding: 1.25rem;
+  padding: var(--layout-space-2) var(--layout-space-4) var(--layout-space-4);
   overflow-x: auto;
   background: transparent;
   color: var(--foreground-color);
   font-family: var(--font-mono);
-  font-size: 0.875rem;
-  line-height: 1.8;
+  font-size: var(--type-compact-size);
+  line-height: var(--type-body-leading);
   white-space: pre;
   tab-size: 2;
   scrollbar-color: var(--muted-color) transparent;
@@ -88,7 +105,7 @@
 .article-code .hljs-name,
 .article-code .hljs-meta .hljs-keyword {
   color: var(--syntax-keyword-color);
-  font-weight: 600;
+  font-weight: var(--type-label-weight);
 }
 
 .article-code .hljs-string,
@@ -149,7 +166,7 @@
   display: inline-block;
   box-sizing: border-box;
   inline-size: 100%;
-  padding-inline: 3.5rem 1.25rem;
+  padding-inline: calc(var(--layout-space-7) + var(--layout-space-2)) var(--layout-space-4);
   position: relative;
   counter-increment: code-line;
 }
@@ -161,9 +178,9 @@
 .article-code-line::before {
   content: counter(code-line);
   position: absolute;
-  inset-inline-start: 1rem;
+  inset-inline-start: var(--layout-space-4);
   color: var(--muted-color);
-  font-size: 0.75rem;
+  font-size: var(--type-label-size);
   user-select: none;
 }
 
@@ -181,12 +198,11 @@
 
 .article-code[data-variant="minimal"] .article-code-header {
   border: 0;
-  padding-block-end: 0;
 }
 
 @media (pointer: coarse) {
   .article-code .article-code-copy {
-    inline-size: 2.75rem;
-    block-size: 2.75rem;
+    inline-size: calc(var(--layout-space-7) - var(--layout-space-1));
+    block-size: calc(var(--layout-space-7) - var(--layout-space-1));
   }
 }
