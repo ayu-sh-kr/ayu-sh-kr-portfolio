@@ -105,26 +105,6 @@ showcase-markdown-view {
   font-size: inherit;
 }
 
-.showcase-copy-button {
-  position: absolute;
-  inset-block-start: 0.7rem;
-  inset-inline-end: 0.8rem;
-  border: 1px solid color-mix(in srgb, var(--contrast-foreground-color) 22%, transparent);
-  border-radius: 999px;
-  padding: 0.25rem 0.6rem;
-  background: color-mix(in srgb, var(--contrast-background-color) 80%, var(--contrast-foreground-color));
-  color: var(--contrast-foreground-color);
-  cursor: pointer;
-  font: inherit;
-  font-size: 0.7rem;
-  opacity: 0;
-  transition: opacity 180ms ease;
-}
-
-.showcase-markdown-content pre:hover .showcase-copy-button,
-.showcase-copy-button:focus-visible {
-  opacity: 1;
-}
 
 .showcase-markdown-content img {
   max-inline-size: 100%;
@@ -132,8 +112,7 @@ showcase-markdown-view {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .showcase-markdown-content a,
-  .showcase-copy-button {
+  .showcase-markdown-content a {
     transition: none;
   }
 }

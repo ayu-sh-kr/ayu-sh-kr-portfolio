@@ -1,3 +1,4 @@
+import {copyArticleCode, decorateArticleCode} from "@app/components/utils/article-code/article-code.utils.ts";
 import {BaseElement, BeforeInit, BindEvent, Component} from "@ayu-sh-kr/dota-wrap/core";
 import {html, TemplateResult, trustedHTML} from "@ayu-sh-kr/dota-wrap/rendering";
 import {type ApplicationEvent, OnEvent} from "@ayu-sh-kr/dota-wrap/event";
@@ -56,34 +57,16 @@ export class ShowcaseMarkdownViewComponent extends BaseElement {
     const {container} = event.detail;
     this.markdownLifecycle.revealSkeleton();
     container.querySelector("h1")?.remove();
-    container.querySelectorAll("pre").forEach((pre) => {
-      pre.tabIndex = 0;
-      if (pre.querySelector("[data-copy-code]")) {
-        return;
-      }
-      const button = document.createElement("button");
-      button.type = "button";
-      button.dataset.copyCode = "true";
-      button.textContent = "Copy";
-      button.className = "showcase-copy-button";
-      pre.append(button);
-    });
+    decorateArticleCode(container);
     this.closest("[data-showcase-markdown]")?.setAttribute("aria-busy", "false");
     MDService.publish(event.detail.result);
     this.markdownLifecycle.scheduleHashScroll();
   }
 
-  /** Copies the selected code block and gives the button temporary feedback. */
-  @BindEvent({event: "click", id: "[data-copy-code]"})
-  copyCode(event: Event): void {
-    const button = (event.target as HTMLElement | null)?.closest<HTMLButtonElement>("[data-copy-code]");
-    if (!button) {
-      return;
-    }
-
-    const code = button.parentElement?.querySelector("code")?.textContent ?? "";
-    void navigator.clipboard?.writeText(code);
-    this.markdownLifecycle.markCopied(button, "Copied", "Copy");
+  /** Copies source text with local feedback, preserving the loaded article DOM. */
+  @BindEvent({event: "click", id: "[data-article-code-copy]"})
+  async copyCode(event: Event): Promise<void> {
+    await copyArticleCode(event);
   }
 
   /** Releases timers and listeners owned by the shared Markdown lifecycle. */
