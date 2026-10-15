@@ -15,7 +15,7 @@
   gap: var(--layout-space-2);
   padding: var(--layout-space-2) var(--layout-space-3) 0 var(--layout-space-4);
   font-family: var(--primary-font), sans-serif;
-  font-size: var(--type-label-size);
+  font-size: var(--type-eyebrow-size);
   line-height: var(--type-compact-leading);
 }
 
@@ -97,8 +97,8 @@
   background: transparent;
   color: var(--code-foreground-color);
   font-family: var(--font-mono);
-  font-size: var(--type-compact-size);
-  line-height: var(--type-body-leading);
+  font-size: var(--type-code-size);
+  line-height: var(--type-code-leading);
   white-space: pre;
   tab-size: 2;
   scrollbar-color: var(--code-muted-color) transparent;
@@ -120,7 +120,7 @@
 .article-code .hljs-name,
 .article-code .hljs-meta .hljs-keyword {
   color: var(--syntax-keyword-color);
-  font-weight: var(--type-label-weight);
+  font-weight: var(--type-code-keyword-weight);
 }
 
 .article-code .hljs-string,

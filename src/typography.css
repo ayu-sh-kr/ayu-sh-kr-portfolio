@@ -20,6 +20,10 @@
   --type-body-leading: 1.6;
   --type-compact-size: 0.875rem;
   --type-compact-leading: 1.55;
+  /* Code stays legible beside article prose rather than using compact UI text. */
+  --type-code-size: var(--type-body-size);
+  --type-code-leading: var(--type-body-leading);
+  --type-code-keyword-weight: 500;
 
   --type-card-title-size: 1.05rem;
   --type-card-title-weight: 600;
