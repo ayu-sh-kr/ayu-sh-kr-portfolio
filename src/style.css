@@ -163,6 +163,8 @@
 @import "./components/pages/subscription/subscription-preferences/subscription-preferences.component.css";
 @import "./components/pages/subscription/subscription-verify/subscription-verify.component.css";
 
+@import "./components/utils/article-code/article-code.css";
+
 /*noinspection DuplicatedCode*/
 @font-face {
   font-family: "Banana";

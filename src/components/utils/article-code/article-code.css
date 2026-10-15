@@ -1,0 +1,192 @@
+/* Shared article chrome; syntax uses app-owned semantic roles in color.css. */
+.article-code {
+  min-inline-size: 0;
+  margin-block: 1.6em;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  border-radius: 1rem;
+  background: var(--surface-color);
+  color: var(--foreground-color);
+}
+
+.article-code .article-code-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.65rem 1rem;
+  border-block-end: 1px solid var(--border-color);
+  font-family: var(--primary-font), sans-serif;
+  font-size: 0.75rem;
+  line-height: 1.5;
+}
+
+.article-code-label {
+  min-inline-size: 0;
+  overflow-wrap: anywhere;
+  color: var(--muted-color);
+}
+
+.article-code-status {
+  margin-inline-start: auto;
+  color: var(--primary-color-strong);
+}
+
+.article-code .article-code-copy {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  inline-size: 2rem;
+  block-size: 2rem;
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  padding: 0;
+  background: transparent;
+  color: var(--muted-color);
+  cursor: pointer;
+}
+
+.article-code .article-code-copy:hover {
+  background: var(--primary-color-wash);
+  color: var(--primary-color-strong);
+}
+
+.article-code .article-code-copy:disabled {
+  cursor: wait;
+}
+
+/* Override prose and renderer presets only within enhanced code examples. */
+.article-code.article-code pre {
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  padding: 1.25rem;
+  overflow-x: auto;
+  background: transparent;
+  color: var(--foreground-color);
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  line-height: 1.8;
+  white-space: pre;
+  tab-size: 2;
+  scrollbar-color: var(--muted-color) transparent;
+}
+
+.article-code.article-code pre code,
+.article-code.article-code .hljs {
+  display: block;
+  min-inline-size: max-content;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+}
+
+.article-code .hljs-keyword,
+.article-code .hljs-selector-tag,
+.article-code .hljs-name,
+.article-code .hljs-meta .hljs-keyword {
+  color: var(--syntax-keyword-color);
+  font-weight: 600;
+}
+
+.article-code .hljs-string,
+.article-code .hljs-regexp,
+.article-code .hljs-template-variable {
+  color: var(--syntax-string-color);
+}
+
+.article-code .hljs-title,
+.article-code .hljs-title.function_ {
+  color: var(--syntax-function-color);
+}
+
+.article-code .hljs-type,
+.article-code .hljs-title.class_,
+.article-code .hljs-built_in,
+.article-code .hljs-meta {
+  color: var(--syntax-type-color);
+}
+
+.article-code .hljs-number,
+.article-code .hljs-literal,
+.article-code .hljs-symbol {
+  color: var(--syntax-value-color);
+}
+
+.article-code .hljs-comment,
+.article-code .hljs-quote {
+  color: var(--syntax-comment-color);
+}
+
+.article-code .hljs-attr,
+.article-code .hljs-attribute,
+.article-code .hljs-variable,
+.article-code .hljs-params,
+.article-code .hljs-subst,
+.article-code .hljs-punctuation,
+.article-code .hljs-operator {
+  color: var(--foreground-color);
+}
+
+.article-code .hljs-addition {
+  background: var(--success-color-subtle);
+  color: var(--success-color);
+}
+
+.article-code .hljs-deletion {
+  background: var(--danger-color-subtle);
+  color: var(--danger-color);
+  text-decoration: line-through;
+}
+
+.article-code[data-variant="focus"] pre {
+  padding-inline: 0;
+}
+
+.article-code-line {
+  display: inline-block;
+  box-sizing: border-box;
+  inline-size: 100%;
+  padding-inline: 3.5rem 1.25rem;
+  position: relative;
+  counter-increment: code-line;
+}
+
+.article-code[data-variant="focus"] code {
+  counter-reset: code-line;
+}
+
+.article-code-line::before {
+  content: counter(code-line);
+  position: absolute;
+  inset-inline-start: 1rem;
+  color: var(--muted-color);
+  font-size: 0.75rem;
+  user-select: none;
+}
+
+.article-code-line.is-highlighted {
+  background: var(--primary-color-wash);
+  box-shadow: inset 3px 0 var(--primary-color);
+}
+
+.article-code[data-variant="minimal"] {
+  border: 0;
+  border-inline-start: 2px solid var(--primary-color);
+  border-radius: 0;
+  background: var(--background-color);
+}
+
+.article-code[data-variant="minimal"] .article-code-header {
+  border: 0;
+  padding-block-end: 0;
+}
+
+@media (pointer: coarse) {
+  .article-code .article-code-copy {
+    inline-size: 2.75rem;
+    block-size: 2.75rem;
+  }
+}
