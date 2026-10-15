@@ -1,4 +1,3 @@
-import {copyArticleCode, decorateArticleCode} from "@app/components/utils/article-code/article-code.utils.ts";
 import {BaseElement, BeforeInit, BindEvent, Component} from "@ayu-sh-kr/dota-wrap/core";
 import {html, TemplateResult, trustedHTML} from "@ayu-sh-kr/dota-wrap/rendering";
 import {type ApplicationEvent, OnEvent} from "@ayu-sh-kr/dota-wrap/event";
@@ -11,8 +10,8 @@ import {MarkdownLifecycleUtils} from "@app/utils/markdown-lifecycle.utils.ts";
  *
  * The parent `showcase-view` publishes {@link SHOWCASE_MARKDOWN_SOURCE_EVENT}
  * after loading a project. This host renders the source into its dota-md
- * `<md-view>`, then enhances the rendered code blocks, keeps the article's
- * loading state synchronized, and shares the result with `showcase-toc` as
+ * `<md-view>`, keeps the article loading state synchronized, and shares the
+ * result with `showcase-toc` as
  * `md:render` when the view reports `md-rendered`.
  *
  * Selector: `showcase-markdown-view`.
@@ -48,25 +47,17 @@ export class ShowcaseMarkdownViewComponent extends BaseElement {
   /**
    * Adds showcase-specific behavior after `<md-view>` renders.
    *
-   * Code blocks receive a copy button, the article is marked ready, the TOC
-   * receives the result once its headings exist, and any pending hash
-   * navigation is scheduled afterward.
+   * The article is marked ready, the TOC receives the result once its headings
+   * exist, and any pending hash navigation is scheduled afterward.
    */
   @BindEvent({event: MD_RENDERED_EVENT, id: "md-view"})
   decorateMarkdown(event: CustomEvent<MdRenderedDetail>): void {
     const {container} = event.detail;
     this.markdownLifecycle.revealSkeleton();
     container.querySelector("h1")?.remove();
-    decorateArticleCode(container);
     this.closest("[data-showcase-markdown]")?.setAttribute("aria-busy", "false");
     MDService.publish(event.detail.result);
     this.markdownLifecycle.scheduleHashScroll();
-  }
-
-  /** Copies source text with local feedback, preserving the loaded article DOM. */
-  @BindEvent({event: "click", id: "[data-article-code-copy]"})
-  async copyCode(event: Event): Promise<void> {
-    await copyArticleCode(event);
   }
 
   /** Releases timers and listeners owned by the shared Markdown lifecycle. */
