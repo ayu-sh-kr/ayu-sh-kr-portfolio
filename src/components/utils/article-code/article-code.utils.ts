@@ -1,6 +1,6 @@
 /**
- * Enhances rendered Markdown without reparsing it. Blog, Dispatch, and Showcase
- * call this after rendering; repeated calls also support adopted SSG markup.
+ * Enhances rendered Markdown without reparsing it. The document-wide Markdown
+ * service applies this to every md-view, including adopted SSG markup.
  * Authors can set data-code-variant, data-filename, and data-highlight-lines
  * on a pre element or its Markdown wrapper. Ordinary fences use Editorial.
  */

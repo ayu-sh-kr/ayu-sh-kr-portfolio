@@ -1,6 +1,12 @@
 # Article code blocks
 
-Blog, Dispatch, and Showcase share the portfolio syntax palette. Ordinary fenced
+Every `md-view` in the app shares the portfolio syntax palette, including Blog,
+Dispatch, Showcase, legal pages, and future views. `startMarkdownCode()` is
+installed once before application initialization: it handles render events,
+adopted HTML, dynamically inserted views, and copy clicks. Hosts need no
+code-specific decorators or click handlers.
+
+Ordinary fenced
 code uses Editorial: an adaptive surface, language label, and visible copy icon.
 The compact metadata row shares the code surface, without a divider or a separate
 header panel. Filenames appear only when authored: the basename is shown, with

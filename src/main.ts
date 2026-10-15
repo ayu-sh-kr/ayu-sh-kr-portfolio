@@ -14,6 +14,7 @@ import { AnalyticsEventListener } from "@app/service/analytics-event.listener.ts
 import { AnalyticsSectionTracker } from "@app/service/analytics-section-tracker.service.ts";
 import { AnalyticsJourneyTracker } from "@app/service/analytics-journey-tracker.service.ts";
 import { ActionButtonDispatcher } from "@app/service/action-button-dispatcher.service.ts";
+import { startMarkdownCode } from "@app/service/markdown-code.service.ts";
 import { ServiceState } from "@app/service/service-state.service.ts";
 import { RouterUtils } from "@app/utils/router.utils.ts";
 import { applyRouteMetadata } from "@app/utils/seo.utils.ts";
@@ -47,6 +48,8 @@ const analyticsSectionTracker = new AnalyticsSectionTracker();
 const analyticsJourneyTracker = new AnalyticsJourneyTracker();
 
 registerPortfolioMarkdownTheme();
+const stopMarkdownCode = startMarkdownCode();
+import.meta.hot?.dispose(stopMarkdownCode);
 
 // The initial router transition runs during `initializeApp`. Register the
 // analytics listener first so its page and section events are not lost.
