@@ -753,7 +753,7 @@
           "name": "blog-markdown-view",
           "source": {
             "file": "./src/components/pages/blog/article/blog-markdown-view/blog-markdown-view.component.ts",
-            "offset": 1148
+            "offset": 1012
           },
           "attributes": [],
           "js": {
@@ -1798,7 +1798,7 @@
           "name": "news-markdown-view",
           "source": {
             "file": "./src/components/pages/news/article/news-markdown-view/news-markdown-view.component.ts",
-            "offset": 1040
+            "offset": 925
           },
           "attributes": [],
           "js": {
@@ -3025,7 +3025,7 @@
           "name": "showcase-markdown-view",
           "source": {
             "file": "./src/components/pages/showcase/article/showcase-markdown-view/showcase-markdown-view.component.ts",
-            "offset": 1151
+            "offset": 998
           },
           "attributes": [],
           "js": {
