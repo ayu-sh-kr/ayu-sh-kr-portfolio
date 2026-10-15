@@ -1,8 +1,8 @@
+import {copyArticleCode, decorateArticleCode} from "@app/components/utils/article-code/article-code.utils.ts";
 import {BaseElement, BeforeInit, BindEvent, Component} from "@ayu-sh-kr/dota-wrap/core";
 import {html, trustedHTML} from "@ayu-sh-kr/dota-wrap/rendering";
 import {type ApplicationEvent, OnEvent} from "@ayu-sh-kr/dota-wrap/event";
 import {MD_RENDERED_EVENT, type MdRenderedDetail} from "@ayu-sh-kr/dota-md";
-import {blogArticleContent} from "@app/data/blog-content.ts";
 import {BLOG_MARKDOWN_SOURCE_EVENT} from "@app/events/blog.events.ts";
 import {MarkdownLifecycleUtils} from "@app/utils/markdown-lifecycle.utils.ts";
 
@@ -53,38 +53,15 @@ export class BlogMarkdownViewComponent extends BaseElement {
     const {container} = event.detail;
     this.markdownLifecycle.revealSkeleton();
     container.querySelector("h1")?.remove();
-    container.querySelectorAll("pre").forEach((pre) => {
-      pre.tabIndex = 0;
-      if (pre.parentElement?.classList.contains("blog-code-block")) {
-        return;
-      }
-
-      const codeBlock = document.createElement("div");
-      codeBlock.className = "blog-code-block";
-      pre.replaceWith(codeBlock);
-      codeBlock.append(pre);
-
-      const button = document.createElement("button");
-      button.type = "button";
-      button.dataset.copyCode = "true";
-      button.textContent = blogArticleContent.markdown.copyLabel;
-      button.className = "blog-copy-button";
-      codeBlock.append(button);
-    });
+    decorateArticleCode(container);
     this.closest("[data-blog-markdown]")?.setAttribute("aria-busy", "false");
     this.markdownLifecycle.scheduleHashScroll();
   }
 
-  /** Copies the nearest code block and delegates temporary button feedback to the lifecycle utility. */
-  @BindEvent({event: "click", id: "[data-copy-code]"})
-  copyCode(event: Event): void {
-    const button = (event.target as HTMLElement | null)?.closest<HTMLButtonElement>("[data-copy-code]");
-    if (!button) {
-      return;
-    }
-    const code = button.parentElement?.querySelector("code")?.textContent ?? "";
-    void navigator.clipboard?.writeText(code);
-    this.markdownLifecycle.markCopied(button, blogArticleContent.markdown.copiedLabel, blogArticleContent.markdown.copyLabel);
+  /** Copies source text with local feedback, preserving the loaded article DOM. */
+  @BindEvent({event: "click", id: "[data-article-code-copy]"})
+  async copyCode(event: Event): Promise<void> {
+    await copyArticleCode(event);
   }
 
   /** Cancels lifecycle timers and pending frames when the Markdown view disconnects. */
