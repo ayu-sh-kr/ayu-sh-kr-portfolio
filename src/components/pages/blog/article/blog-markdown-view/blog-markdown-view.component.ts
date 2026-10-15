@@ -1,4 +1,3 @@
-import {copyArticleCode, decorateArticleCode} from "@app/components/utils/article-code/article-code.utils.ts";
 import {BaseElement, BeforeInit, BindEvent, Component} from "@ayu-sh-kr/dota-wrap/core";
 import {html, trustedHTML} from "@ayu-sh-kr/dota-wrap/rendering";
 import {type ApplicationEvent, OnEvent} from "@ayu-sh-kr/dota-wrap/event";
@@ -11,9 +10,9 @@ import {MarkdownLifecycleUtils} from "@app/utils/markdown-lifecycle.utils.ts";
  *
  * Hosts a dota-md `<md-view>` inside the shared article skeleton. Source published
  * through {@link BLOG_MARKDOWN_SOURCE_EVENT} is rendered into that view; when it
- * reports `md-rendered`, this host removes the duplicate H1, adds copy-code
- * buttons, and completes hash scrolling. The shared lifecycle utility owns
- * fallback, skeleton, and disconnect behavior.
+ * reports `md-rendered`, this host removes the duplicate H1 and completes hash
+ * scrolling. The shared lifecycle utility owns fallback, skeleton, and disconnect
+ * behavior.
  *
  * Selector: `blog-markdown-view`.
  */
@@ -46,22 +45,15 @@ export class BlogMarkdownViewComponent extends BaseElement {
 
   /**
    * Adds blog-specific behavior after `<md-view>` renders: removes the duplicate
-   * H1, wraps code blocks with copy controls, and completes hash scrolling.
+   * H1 and completes hash scrolling.
    */
   @BindEvent({event: MD_RENDERED_EVENT, id: "md-view"})
   decorateMarkdown(event: CustomEvent<MdRenderedDetail>): void {
     const {container} = event.detail;
     this.markdownLifecycle.revealSkeleton();
     container.querySelector("h1")?.remove();
-    decorateArticleCode(container);
     this.closest("[data-blog-markdown]")?.setAttribute("aria-busy", "false");
     this.markdownLifecycle.scheduleHashScroll();
-  }
-
-  /** Copies source text with local feedback, preserving the loaded article DOM. */
-  @BindEvent({event: "click", id: "[data-article-code-copy]"})
-  async copyCode(event: Event): Promise<void> {
-    await copyArticleCode(event);
   }
 
   /** Cancels lifecycle timers and pending frames when the Markdown view disconnects. */
