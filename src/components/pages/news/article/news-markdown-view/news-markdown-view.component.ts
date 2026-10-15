@@ -1,4 +1,3 @@
-import {copyArticleCode, decorateArticleCode} from "@app/components/utils/article-code/article-code.utils.ts";
 import {BaseElement, BeforeInit, BindEvent, Component} from "@ayu-sh-kr/dota-wrap/core";
 import {type ApplicationEvent, OnEvent} from "@ayu-sh-kr/dota-wrap/event";
 import {html, trustedHTML} from "@ayu-sh-kr/dota-wrap/rendering";
@@ -11,8 +10,8 @@ import {MarkdownLifecycleUtils} from "@app/utils/markdown-lifecycle.utils.ts";
  *
  * Hosts a dota-md `<md-view>` inside the shared article skeleton. The source
  * arrives through {@link NEWS_MARKDOWN_SOURCE_EVENT}; once `<md-view>` reports
- * `md-rendered`, this host applies note-specific semantics: no duplicate H1 and
- * keyboard-reachable code blocks.
+ * `md-rendered`, this host removes the duplicate H1, marks the article ready,
+ * and completes hash scrolling.
  *
  * Selector: `news-markdown-view`.
  */
@@ -46,15 +45,8 @@ export class NewsMarkdownViewComponent extends BaseElement {
     const {container} = event.detail;
     this.markdownLifecycle.revealSkeleton();
     container.querySelector("h1")?.remove();
-    decorateArticleCode(container);
     this.closest("[data-news-document]")?.setAttribute("aria-busy", "false");
     this.markdownLifecycle.scheduleHashScroll();
-  }
-
-  /** Copies source text with local feedback, preserving the loaded article DOM. */
-  @BindEvent({event: "click", id: "[data-article-code-copy]"})
-  async copyCode(event: Event): Promise<void> {
-    await copyArticleCode(event);
   }
 
   /** Cancels pending Markdown work when navigation removes the note. */
