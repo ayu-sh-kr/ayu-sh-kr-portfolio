@@ -1,10 +1,13 @@
 import {MDService} from "@ayu-sh-kr/dota-md";
-import {afterEach, beforeEach, describe, expect, it, vi} from "vitest";
+import {afterEach, beforeAll, beforeEach, describe, expect, it, vi} from "vitest";
+import {registerPortfolioMarkdownHighlight} from "@app/configs/markdown-highlight.config.ts";
 import {copyArticleCode, decorateArticleCode} from "./article-code.utils.ts";
 
 /** Rendered Markdown fixture, scoped to a single article. */
 let article: HTMLElement;
 const clipboardDescriptor = Object.getOwnPropertyDescriptor(navigator, "clipboard");
+
+beforeAll(registerPortfolioMarkdownHighlight);
 
 beforeEach(() => {
   article = document.createElement("article");

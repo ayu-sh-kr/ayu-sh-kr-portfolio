@@ -9,6 +9,7 @@ import {DefaultApplicationEventListenerRegistry, initializeApp} from "@ayu-sh-kr
 import { Router, RouterService } from "@ayu-sh-kr/dota-wrap/router";
 import { ApplicationEventService } from "@ayu-sh-kr/dota-wrap/core";
 import { dotaHydration } from "@ayu-sh-kr/dota-wrap/ssr";
+import { registerPortfolioMarkdownHighlight } from "@app/configs/markdown-highlight.config.ts";
 import { registerPortfolioMarkdownTheme } from "@app/configs/markdown-theme.config.ts";
 import { AnalyticsEventListener } from "@app/service/analytics-event.listener.ts";
 import { AnalyticsSectionTracker } from "@app/service/analytics-section-tracker.service.ts";
@@ -48,6 +49,7 @@ const analyticsSectionTracker = new AnalyticsSectionTracker();
 const analyticsJourneyTracker = new AnalyticsJourneyTracker();
 
 registerPortfolioMarkdownTheme();
+registerPortfolioMarkdownHighlight();
 const stopMarkdownCode = startMarkdownCode();
 import.meta.hot?.dispose(stopMarkdownCode);
 
