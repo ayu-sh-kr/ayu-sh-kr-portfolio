@@ -20,7 +20,10 @@ only after the clipboard write completes.
 
 Variant selection is explicit, not inferred from the language or block length.
 Syntax colors work in all three variants. Every variant uses the Editorial
-shell, spacing, and typography. Focus adds only a soft background to lines
+shell, spacing, and typography. The shell uses the app panel radius
+(`--layout-radius-lg`). The code surface is inverted: app dark on a light page,
+paper on a dark page. Code-specific semantic colors keep text, syntax, controls,
+and the active accent wash readable on that opposite surface. Focus adds only a soft background to lines
 discussed in the explanation; it has no gutter, numbering, or accent rail.
 Minimal is retained as an authoring alias for the same Editorial presentation. `data-highlight-lines` affects Focus only; it does not change
 which words the syntax tokenizer recognizes. The AppConfig Spring Boot article

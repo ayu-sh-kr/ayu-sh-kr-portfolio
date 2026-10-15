@@ -77,16 +77,23 @@
   --contrast-foreground-color: light-dark(var(--color-paper-50), var(--color-inkstone-950));
   --contrast-muted-color: light-dark(var(--color-inkstone-300), var(--color-inkstone-500));
   --contrast-border-color: color-mix(in srgb, var(--contrast-foreground-color) 18%, transparent);
-  --code-background-color: var(--primary-950);
-  --code-foreground-color: var(--color-paper-50);
+  /* Code is an inverted reading surface: app dark in light mode, paper in dark. */
+  --code-background-color: light-dark(var(--color-inkstone-950), var(--color-paper-50));
+  --code-foreground-color: var(--contrast-foreground-color);
+  --code-muted-color: light-dark(var(--color-inkstone-300), var(--color-inkstone-600));
+  --code-border-color: var(--contrast-border-color);
+  --code-accent-color: light-dark(var(--primary-200), var(--primary-800));
+  --code-accent-wash: color-mix(in srgb, var(--code-accent-color) 14%, transparent);
+  --code-addition-color: light-dark(var(--color-status-success-dark), var(--color-status-success-light));
+  --code-deletion-color: light-dark(var(--color-status-danger-dark), var(--color-status-danger-light));
 
-  /* Syntax roles stay independent of status colors and follow the active accent. */
-  --syntax-keyword-color: var(--primary-color-strong);
-  --syntax-string-color: light-dark(var(--color-spiced-chai-700), var(--color-spiced-chai-300));
-  --syntax-function-color: light-dark(var(--color-google-lavender-800), var(--color-google-lavender-300));
-  --syntax-type-color: light-dark(var(--color-wisteria-bloom-700), var(--color-wisteria-bloom-300));
-  --syntax-value-color: light-dark(var(--color-marigold-gold-800), var(--color-marigold-gold-300));
-  --syntax-comment-color: var(--muted-color);
+  /* Syntax colors follow the code surface, whose mode is opposite the page. */
+  --syntax-keyword-color: var(--code-accent-color);
+  --syntax-string-color: light-dark(var(--color-spiced-chai-300), var(--color-spiced-chai-700));
+  --syntax-function-color: light-dark(var(--color-google-lavender-300), var(--color-google-lavender-800));
+  --syntax-type-color: light-dark(var(--color-wisteria-bloom-300), var(--color-wisteria-bloom-700));
+  --syntax-value-color: light-dark(var(--color-marigold-gold-300), var(--color-marigold-gold-800));
+  --syntax-comment-color: var(--code-muted-color);
 
   --success-color: light-dark(var(--color-status-success-light), var(--color-status-success-dark));
   --warning-color: light-dark(var(--color-status-warning-light), var(--color-status-warning-dark));
