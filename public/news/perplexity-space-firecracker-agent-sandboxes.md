@@ -14,9 +14,9 @@ For the spreadsheet task, this is the room in which code runs. The surrounding p
 
 ## Three layers divide decisions, permissions and execution
 
-The illustration opens up one worker machine. Management services sit outside the two guest workspaces; the network gate and credential store remain outside their walls. The moving marker follows a management command into the selected guest, then an outbound request through its gate.
+The illustration separates the architecture into three heights on a conceptual service chassis. A command travels from the control plane through host services to a guest. Its code runs, a request passes the sliding network gate, and a recording arm checkpoints the session. The vault stays on the host level, outside both guests. These physical mechanisms illustrate software responsibilities; they are not a literal server layout or measured timings.
 
-![Isometric cutaway of SPACE: a control plane above one worker, host services managing two separate Firecracker guests, a private command channel into the selected guest, and an outbound gate using credentials stored outside both guests.](/news/assets/perplexity-space-firecracker-agent-sandboxes/space-architecture.svg)
+![Exploded isometric service chassis with orchestration at the top, a credential vault, network shutter and checkpoint archive on the middle level, and two separate Firecracker guests below. A sequenced cycle sends a command through host services, runs guest code, admits an outbound request and records a checkpoint.](/news/assets/perplexity-space-firecracker-agent-sandboxes/space-architecture.svg)
 
 **The control plane decides what should run and where.** Its API checks access and records the requested state in a shared database. A stateless service keeps those records separate from its own process, allowing another instance to continue coordination after a restart. Here, the desired state is a running sandbox assigned to a worker.
 
