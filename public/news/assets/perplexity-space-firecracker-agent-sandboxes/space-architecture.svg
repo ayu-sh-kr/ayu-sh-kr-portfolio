@@ -1,0 +1,187 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 800" role="img" aria-labelledby="title desc">
+<title id="title">SPACE: orchestration outside, agent work inside</title>
+<desc id="desc">Conceptual cutaway of Perplexity's three-layer architecture. A stateless control plane and shared state database coordinate a worker. Host managers, snapshot storage, a credential vault and an outbound gateway sit outside two separate Firecracker guests. The open guest reveals code, files, a daemon and its own kernel. A dotted control path enters through the daemon; a solid outbound path crosses the network gate. These are separate channels. Animation sequences management then outbound traffic; reduced motion preserves the static paths.</desc>
+<style>text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;fill:#1d1d1f}.motion{opacity:0}.cmd{animation:cmd 9s linear infinite}.req{animation:req 9s linear infinite}@keyframes cmd{0%,8%{opacity:0;offset-distance:0%}10%{opacity:1}40%{opacity:1;offset-distance:100%}42%,100%{opacity:0;offset-distance:100%}}@keyframes req{0%,44%{opacity:0;offset-distance:0%}46%{opacity:1}82%{opacity:1;offset-distance:100%}84%,100%{opacity:0;offset-distance:100%}}@media(prefers-reduced-motion:reduce){.motion{display:none;animation:none}}</style>
+<rect width="1000" height="800" rx="18" fill="#fafaf8"/>
+
+<text x="32" y="42" font-size="16" fill="#1d1d1f" font-weight="650">SPACE / INSIDE ONE WORKER</text>
+<text x="32" y="78" font-size="29" fill="#1d1d1f" font-weight="650">Three layers. Separate authority.</text>
+<polygon points="555.5,162.5 689.0,239.6 613.2,283.3 479.7,206.3" fill="#fafaf8" stroke="#1d1d1f" stroke-width="1.6" stroke-linejoin="round" />
+<polygon points="479.7,256.2 613.2,333.3 613.2,283.3 479.7,206.3" fill="#e8e8e6" stroke="#1d1d1f" stroke-width="1.6" stroke-linejoin="round" />
+<polygon points="689.0,289.6 613.2,333.3 613.2,283.3 689.0,239.6" fill="#d0d0cd" stroke="#1d1d1f" stroke-width="1.6" stroke-linejoin="round" />
+<polyline points="488.4,249.6 600.9,314.6" fill="none" stroke="#1d1d1f" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+<circle cx="584.3" cy="300.8" r="1.8" fill="#1d1d1f"/>
+<circle cx="591.6" cy="305.0" r="1.8" fill="#1d1d1f"/>
+<circle cx="598.8" cy="309.2" r="1.8" fill="#1d1d1f"/>
+<polyline points="488.4,234.6 600.9,299.6" fill="none" stroke="#1d1d1f" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+<circle cx="584.3" cy="285.8" r="1.8" fill="#1d1d1f"/>
+<circle cx="591.6" cy="290.0" r="1.8" fill="#1d1d1f"/>
+<circle cx="598.8" cy="294.2" r="1.8" fill="#1d1d1f"/>
+<polyline points="488.4,219.6 600.9,284.6" fill="none" stroke="#1d1d1f" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+<circle cx="584.3" cy="270.8" r="1.8" fill="#1d1d1f"/>
+<circle cx="591.6" cy="275.0" r="1.8" fill="#1d1d1f"/>
+<circle cx="598.8" cy="279.2" r="1.8" fill="#1d1d1f"/>
+<text transform="matrix(.866 .5 -.866 .5 553.3 172.1)" font-size="14.76" font-weight="600">CONTROL API</text>
+<polygon points="703.4,296.3 755.4,326.3 708.5,353.3 656.5,323.3" fill="#fafaf8" stroke="#1d1d1f" stroke-width="1.6" stroke-linejoin="round" />
+<polygon points="656.5,333.3 708.5,363.3 708.5,353.3 656.5,323.3" fill="#e8e8e6" stroke="#1d1d1f" stroke-width="1.6" stroke-linejoin="round" />
+<polygon points="755.4,336.3 708.5,363.3 708.5,353.3 755.4,326.3" fill="#d0d0cd" stroke="#1d1d1f" stroke-width="1.6" stroke-linejoin="round" />
+<polygon points="703.4,284.6 755.4,314.6 708.5,341.7 656.5,311.7" fill="#fafaf8" stroke="#1d1d1f" stroke-width="1.6" stroke-linejoin="round" />
+<polygon points="656.5,321.7 708.5,351.7 708.5,341.7 656.5,311.7" fill="#e8e8e6" stroke="#1d1d1f" stroke-width="1.6" stroke-linejoin="round" />
+<polygon points="755.4,324.6 708.5,351.7 708.5,341.7 755.4,314.6" fill="#d0d0cd" stroke="#1d1d1f" stroke-width="1.6" stroke-linejoin="round" />
+<polygon points="703.4,272.9 755.4,302.9 708.5,330.0 656.5,300.0" fill="#fafaf8" stroke="#1d1d1f" stroke-width="1.6" stroke-linejoin="round" />
+<polygon points="656.5,310.0 708.5,340.0 708.5,330.0 656.5,300.0" fill="#e8e8e6" stroke="#1d1d1f" stroke-width="1.6" stroke-linejoin="round" />
+<polygon points="755.4,312.9 708.5,340.0 708.5,330.0 755.4,302.9" fill="#d0d0cd" stroke="#1d1d1f" stroke-width="1.6" stroke-linejoin="round" />
+<text transform="matrix(.866 .5 -.866 .5 694.0 280.8)" font-size="13.12" font-weight="600">STATE</text>
+<polyline points="652.9,289.6 674.5,302.1" fill="none" stroke="#1d1d1f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+<polygon points="440.0,284.2 829.7,509.2 598.8,642.5 209.1,417.5" fill="#f5f3ee" stroke="#1d1d1f" stroke-width="1.6" stroke-linejoin="round" />
+<polygon points="209.1,433.3 598.8,658.3 598.8,642.5 209.1,417.5" fill="#e8e8e6" stroke="#1d1d1f" stroke-width="1.6" stroke-linejoin="round" />
+<polygon points="829.7,525.0 598.8,658.3 598.8,642.5 829.7,509.2" fill="#d0d0cd" stroke="#1d1d1f" stroke-width="1.6" stroke-linejoin="round" />
+<ellipse cx="440.0" cy="293.3" rx="4" ry="2.3" fill="#afafac"/>
+<ellipse cx="812.4" cy="508.3" rx="4" ry="2.3" fill="#afafac"/>
+<ellipse cx="226.4" cy="416.7" rx="4" ry="2.3" fill="#afafac"/>
+<ellipse cx="598.8" cy="631.7" rx="4" ry="2.3" fill="#afafac"/>
+<polyline points="383.7,342.5 245.1,422.5" fill="none" stroke="#d0d0cd" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+<polyline points="566.3,447.9 427.7,527.9" fill="none" stroke="#d0d0cd" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+<polyline points="732.3,543.8 593.7,623.8" fill="none" stroke="#d0d0cd" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+<polyline points="546.1,282.1 517.2,298.8 486.9,281.3 436.4,310.4 386.6,339.2 424.1,360.8 393.1,378.8" fill="none" stroke="#5d702d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="5 6"/>
+<polygon points="438.6,247.5 568.5,322.5 517.9,351.7 388.0,276.7" fill="#fafaf8" stroke="#1d1d1f" stroke-width="1.6" stroke-linejoin="round" />
+<polygon points="388.0,322.5 517.9,397.5 517.9,351.7 388.0,276.7" fill="#e8e8e6" stroke="#1d1d1f" stroke-width="1.6" stroke-linejoin="round" />
+<polygon points="568.5,368.3 517.9,397.5 517.9,351.7 568.5,322.5" fill="#d0d0cd" stroke="#1d1d1f" stroke-width="1.6" stroke-linejoin="round" />
+<text transform="matrix(.866 .5 -.866 .5 435.7 255.8)" font-size="14.76" font-weight="600">MANAGERS</text>
+<polyline points="396.7,315.8 509.3,380.8" fill="none" stroke="#1d1d1f" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+<circle cx="492.7" cy="367.9" r="1.7" fill="#5d702d"/>
+<circle cx="499.9" cy="372.1" r="1.7" fill="#5d702d"/>
+<circle cx="507.1" cy="376.3" r="1.7" fill="#5d702d"/>
+<polyline points="396.7,303.3 509.3,368.3" fill="none" stroke="#1d1d1f" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+<circle cx="492.7" cy="355.4" r="1.7" fill="#5d702d"/>
+<circle cx="499.9" cy="359.6" r="1.7" fill="#5d702d"/>
+<circle cx="507.1" cy="363.8" r="1.7" fill="#5d702d"/>
+<polyline points="396.7,290.8 509.3,355.8" fill="none" stroke="#1d1d1f" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+<circle cx="492.7" cy="342.9" r="1.7" fill="#5d702d"/>
+<circle cx="499.9" cy="347.1" r="1.7" fill="#5d702d"/>
+<circle cx="507.1" cy="351.3" r="1.7" fill="#5d702d"/>
+<polygon points="582.2,372.9 631.2,401.3 585.8,427.5 536.7,399.2" fill="#fafaf8" stroke="#1d1d1f" stroke-width="1.6" stroke-linejoin="round" />
+<polygon points="536.7,407.5 585.8,435.8 585.8,427.5 536.7,399.2" fill="#e8e8e6" stroke="#1d1d1f" stroke-width="1.6" stroke-linejoin="round" />
+<polygon points="631.2,409.6 585.8,435.8 585.8,427.5 631.2,401.3" fill="#d0d0cd" stroke="#1d1d1f" stroke-width="1.6" stroke-linejoin="round" />
+<polygon points="582.2,362.9 631.2,391.3 585.8,417.5 536.7,389.2" fill="#fafaf8" stroke="#1d1d1f" stroke-width="1.6" stroke-linejoin="round" />
+<polygon points="536.7,397.5 585.8,425.8 585.8,417.5 536.7,389.2" fill="#e8e8e6" stroke="#1d1d1f" stroke-width="1.6" stroke-linejoin="round" />
+<polygon points="631.2,399.6 585.8,425.8 585.8,417.5 631.2,391.3" fill="#d0d0cd" stroke="#1d1d1f" stroke-width="1.6" stroke-linejoin="round" />
+<polygon points="582.2,352.9 631.2,381.3 585.8,407.5 536.7,379.2" fill="#fafaf8" stroke="#1d1d1f" stroke-width="1.6" stroke-linejoin="round" />
+<polygon points="536.7,387.5 585.8,415.8 585.8,407.5 536.7,379.2" fill="#e8e8e6" stroke="#1d1d1f" stroke-width="1.6" stroke-linejoin="round" />
+<polygon points="631.2,389.6 585.8,415.8 585.8,407.5 631.2,381.3" fill="#d0d0cd" stroke="#1d1d1f" stroke-width="1.6" stroke-linejoin="round" />
+<text transform="matrix(.866 .5 -.866 .5 577.1 355.8)" font-size="12.299999999999999" font-weight="600">DISK</text>
+<polygon points="660.1,361.3 712.1,391.3 663.7,419.2 611.8,389.2" fill="#f5f3ee" stroke="#1d1d1f" stroke-width="1.6" stroke-linejoin="round" />
+<polygon points="611.8,447.5 663.7,477.5 663.7,419.2 611.8,389.2" fill="#e8e8e6" stroke="#1d1d1f" stroke-width="1.6" stroke-linejoin="round" />
+<polygon points="712.1,449.6 663.7,477.5 663.7,419.2 712.1,391.3" fill="#d0d0cd" stroke="#1d1d1f" stroke-width="1.6" stroke-linejoin="round" />
+<polyline points="628.4,417.1 628.4,408.8 632.7,407.1 637.0,413.8 637.0,422.1" fill="none" stroke="#1d1d1f" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+<polygon points="623.3,430.0 642.1,440.8 642.1,425.0 623.3,414.2" fill="#fafaf8" stroke="#1d1d1f" stroke-width="1.6" stroke-linejoin="round" />
+<circle cx="632.7" cy="427.9" r="2.6" fill="#1d1d1f"/>
+<polyline points="686.1,447.9 717.1,465.8" fill="none" stroke="#5d702d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+<polygon points="743.1,421.7 805.2,457.5 756.8,485.4 694.8,449.6" fill="#fafaf8" stroke="#1d1d1f" stroke-width="1.6" stroke-linejoin="round" />
+<polygon points="694.8,495.4 756.8,531.3 756.8,485.4 694.8,449.6" fill="#e8e8e6" stroke="#1d1d1f" stroke-width="1.6" stroke-linejoin="round" />
+<polygon points="805.2,503.3 756.8,531.3 756.8,485.4 805.2,457.5" fill="#d0d0cd" stroke="#1d1d1f" stroke-width="1.6" stroke-linejoin="round" />
+<text transform="matrix(.866 .5 -.866 .5 738.1 427.9)" font-size="13.94" font-weight="600">GATE</text>
+<polyline points="702.0,490.4 702.0,467.9" fill="none" stroke="#1d1d1f" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+<polyline points="709.2,494.6 709.2,472.1" fill="none" stroke="#1d1d1f" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+<polyline points="716.4,498.8 716.4,476.3" fill="none" stroke="#1d1d1f" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+<polyline points="723.6,502.9 723.6,480.4" fill="none" stroke="#1d1d1f" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+<polyline points="730.8,507.1 730.8,484.6" fill="none" stroke="#1d1d1f" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+<polyline points="738.1,511.3 738.1,488.8" fill="none" stroke="#1d1d1f" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+<polyline points="745.3,515.4 745.3,492.9" fill="none" stroke="#1d1d1f" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+<polygon points="551.9,469.6 689.0,548.8 598.8,600.8 461.7,521.7" fill="#d0d0cd" stroke="#1d1d1f" stroke-width="1.6" stroke-linejoin="round" />
+<polygon points="461.7,534.2 598.8,613.3 598.8,600.8 461.7,521.7" fill="#e8e8e6" stroke="#1d1d1f" stroke-width="1.6" stroke-linejoin="round" />
+<polygon points="689.0,561.3 598.8,613.3 598.8,600.8 689.0,548.8" fill="#d0d0cd" stroke="#1d1d1f" stroke-width="1.6" stroke-linejoin="round" />
+<polygon points="551.9,399.6 689.0,478.8 682.5,482.5 545.4,403.3" fill="#fafaf8" stroke="#1d1d1f" stroke-width="1.6" stroke-linejoin="round" />
+<polygon points="545.4,473.3 682.5,552.5 682.5,482.5 545.4,403.3" fill="#e8e8e6" stroke="#1d1d1f" stroke-width="1.6" stroke-linejoin="round" />
+<polygon points="689.0,548.8 682.5,552.5 682.5,482.5 689.0,478.8" fill="#d0d0cd" stroke="#1d1d1f" stroke-width="1.6" stroke-linejoin="round" />
+<polygon points="676.0,478.8 682.5,482.5 598.8,530.8 592.3,527.1" fill="#fafaf8" stroke="#1d1d1f" stroke-width="1.6" stroke-linejoin="round" />
+<polygon points="592.3,597.1 598.8,600.8 598.8,530.8 592.3,527.1" fill="#e8e8e6" stroke="#1d1d1f" stroke-width="1.6" stroke-linejoin="round" />
+<polygon points="682.5,552.5 598.8,600.8 598.8,530.8 682.5,482.5" fill="#d0d0cd" stroke="#1d1d1f" stroke-width="1.6" stroke-linejoin="round" />
+<text transform="matrix(.866 .5 -.866 .5 562.0 557.9)" font-size="12.299999999999999" font-weight="600">KERNEL</text>
+<polygon points="541.0,488.3 598.8,521.7 562.7,542.5 505.0,509.2" fill="#e8e8e6" stroke="#1d1d1f" stroke-width="1.6" stroke-linejoin="round" />
+<polygon points="505.0,520.0 562.7,553.3 562.7,542.5 505.0,509.2" fill="#e8e8e6" stroke="#1d1d1f" stroke-width="1.6" stroke-linejoin="round" />
+<polygon points="598.8,532.5 562.7,553.3 562.7,542.5 598.8,521.7" fill="#d0d0cd" stroke="#1d1d1f" stroke-width="1.6" stroke-linejoin="round" />
+<text transform="matrix(.866 .5 -.866 .5 538.9 493.8)" font-size="12.299999999999999" font-weight="600">TASK B</text>
+<polyline points="510.0,520.4 504.2,523.8" fill="none" stroke="#1d1d1f" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+<polyline points="518.7,525.4 512.9,528.8" fill="none" stroke="#1d1d1f" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+<polyline points="527.3,530.4 521.6,533.8" fill="none" stroke="#1d1d1f" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+<polyline points="536.0,535.4 530.2,538.8" fill="none" stroke="#1d1d1f" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+<polyline points="544.6,540.4 538.9,543.8" fill="none" stroke="#1d1d1f" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+<polyline points="553.3,545.4 547.5,548.8" fill="none" stroke="#1d1d1f" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+<polygon points="468.1,507.9 598.8,583.3 592.3,587.1 461.7,511.7" fill="#fafaf8" stroke="#1d1d1f" stroke-width="1.6" stroke-linejoin="round" />
+<polygon points="461.7,521.7 592.3,597.1 592.3,587.1 461.7,511.7" fill="#e8e8e6" stroke="#1d1d1f" stroke-width="1.6" stroke-linejoin="round" />
+<polygon points="598.8,593.3 592.3,597.1 592.3,587.1 598.8,583.3" fill="#d0d0cd" stroke="#1d1d1f" stroke-width="1.6" stroke-linejoin="round" />
+<polygon points="357.0,357.1 512.2,446.7 422.0,498.8 266.8,409.2" fill="#d0d0cd" stroke="#1d1d1f" stroke-width="1.6" stroke-linejoin="round" />
+<polygon points="266.8,421.7 422.0,511.3 422.0,498.8 266.8,409.2" fill="#e8e8e6" stroke="#1d1d1f" stroke-width="1.6" stroke-linejoin="round" />
+<polygon points="512.2,459.2 422.0,511.3 422.0,498.8 512.2,446.7" fill="#d0d0cd" stroke="#1d1d1f" stroke-width="1.6" stroke-linejoin="round" />
+<polygon points="357.0,287.1 512.2,376.7 505.7,380.4 350.5,290.8" fill="#fafaf8" stroke="#1d1d1f" stroke-width="1.6" stroke-linejoin="round" />
+<polygon points="350.5,360.8 505.7,450.4 505.7,380.4 350.5,290.8" fill="#e8e8e6" stroke="#1d1d1f" stroke-width="1.6" stroke-linejoin="round" />
+<polygon points="512.2,446.7 505.7,450.4 505.7,380.4 512.2,376.7" fill="#d0d0cd" stroke="#1d1d1f" stroke-width="1.6" stroke-linejoin="round" />
+<polygon points="499.2,376.7 505.7,380.4 422.0,428.8 415.5,425.0" fill="#fafaf8" stroke="#1d1d1f" stroke-width="1.6" stroke-linejoin="round" />
+<polygon points="415.5,495.0 422.0,498.8 422.0,428.8 415.5,425.0" fill="#e8e8e6" stroke="#1d1d1f" stroke-width="1.6" stroke-linejoin="round" />
+<polygon points="505.7,450.4 422.0,498.8 422.0,428.8 505.7,380.4" fill="#d0d0cd" stroke="#1d1d1f" stroke-width="1.6" stroke-linejoin="round" />
+<text transform="matrix(.866 .5 -.866 .5 350.5 435.8)" font-size="12.299999999999999" font-weight="600">KERNEL</text>
+<polygon points="361.3,345.4 400.3,367.9 372.9,383.8 333.9,361.3" fill="#ecf0df" stroke="#1d1d1f" stroke-width="1.6" stroke-linejoin="round" />
+<polygon points="333.9,385.4 372.9,407.9 372.9,383.8 333.9,361.3" fill="#e8e8e6" stroke="#1d1d1f" stroke-width="1.6" stroke-linejoin="round" />
+<polygon points="400.3,392.1 372.9,407.9 372.9,383.8 400.3,367.9" fill="#d0d0cd" stroke="#1d1d1f" stroke-width="1.6" stroke-linejoin="round" />
+<text transform="matrix(.866 .5 -.866 .5 358.4 347.9)" font-size="11.479999999999999" font-weight="600">I/O</text>
+<polyline points="386.6,339.2 416.9,356.7 380.8,367.5" fill="none" stroke="#5d702d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="5 6"/>
+<polygon points="398.9,378.8 459.5,413.8 422.0,435.4 361.3,400.4" fill="#fafaf8" stroke="#1d1d1f" stroke-width="1.6" stroke-linejoin="round" />
+<polygon points="361.3,427.9 422.0,462.9 422.0,435.4 361.3,400.4" fill="#e8e8e6" stroke="#1d1d1f" stroke-width="1.6" stroke-linejoin="round" />
+<polygon points="459.5,441.3 422.0,462.9 422.0,435.4 459.5,413.8" fill="#d0d0cd" stroke="#1d1d1f" stroke-width="1.6" stroke-linejoin="round" />
+<text transform="matrix(.866 .5 -.866 .5 393.8 384.2)" font-size="12.299999999999999" font-weight="600">&gt;_ CODE</text>
+<polyline points="386.6,392.5 424.8,414.6" fill="none" stroke="#1d1d1f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+<polyline points="381.5,395.4 419.8,417.5" fill="none" stroke="#1d1d1f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+<polyline points="376.5,398.3 414.7,420.4" fill="none" stroke="#1d1d1f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+<polygon points="320.9,392.9 353.4,411.7 328.9,425.8 296.4,407.1" fill="#fafaf8" stroke="#1d1d1f" stroke-width="1.6" stroke-linejoin="round" />
+<polygon points="296.4,409.6 328.9,428.3 328.9,425.8 296.4,407.1" fill="#e8e8e6" stroke="#1d1d1f" stroke-width="1.6" stroke-linejoin="round" />
+<polygon points="353.4,414.2 328.9,428.3 328.9,425.8 353.4,411.7" fill="#d0d0cd" stroke="#1d1d1f" stroke-width="1.6" stroke-linejoin="round" />
+<polygon points="320.9,389.6 353.4,408.3 328.9,422.5 296.4,403.8" fill="#fafaf8" stroke="#1d1d1f" stroke-width="1.6" stroke-linejoin="round" />
+<polygon points="296.4,406.3 328.9,425.0 328.9,422.5 296.4,403.8" fill="#e8e8e6" stroke="#1d1d1f" stroke-width="1.6" stroke-linejoin="round" />
+<polygon points="353.4,410.8 328.9,425.0 328.9,422.5 353.4,408.3" fill="#d0d0cd" stroke="#1d1d1f" stroke-width="1.6" stroke-linejoin="round" />
+<polygon points="320.9,386.3 353.4,405.0 328.9,419.2 296.4,400.4" fill="#fafaf8" stroke="#1d1d1f" stroke-width="1.6" stroke-linejoin="round" />
+<polygon points="296.4,402.9 328.9,421.7 328.9,419.2 296.4,400.4" fill="#e8e8e6" stroke="#1d1d1f" stroke-width="1.6" stroke-linejoin="round" />
+<polygon points="353.4,407.5 328.9,421.7 328.9,419.2 353.4,405.0" fill="#d0d0cd" stroke="#1d1d1f" stroke-width="1.6" stroke-linejoin="round" />
+<text transform="matrix(.866 .5 -.866 .5 318.0 388.8)" font-size="11.479999999999999" font-weight="600">CSV</text>
+<polygon points="273.3,395.4 422.0,481.3 415.5,485.0 266.8,399.2" fill="#fafaf8" stroke="#1d1d1f" stroke-width="1.6" stroke-linejoin="round" />
+<polygon points="266.8,409.2 415.5,495.0 415.5,485.0 266.8,399.2" fill="#e8e8e6" stroke="#1d1d1f" stroke-width="1.6" stroke-linejoin="round" />
+<polygon points="422.0,491.3 415.5,495.0 415.5,485.0 422.0,481.3" fill="#d0d0cd" stroke="#1d1d1f" stroke-width="1.6" stroke-linejoin="round" />
+<polyline points="468.9,454.2 488.4,465.4 567.7,419.6 702.0,497.1 725.8,483.3" fill="none" stroke="#5d702d" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+<polyline points="781.4,492.1 816.7,512.5 858.6,488.3" fill="none" stroke="#5d702d" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+<polygon points="883.8,443.8 911.3,459.6 882.4,476.3 855.0,460.4" fill="#fafaf8" stroke="#1d1d1f" stroke-width="1.6" stroke-linejoin="round" />
+<polygon points="855.0,497.9 882.4,513.8 882.4,476.3 855.0,460.4" fill="#e8e8e6" stroke="#1d1d1f" stroke-width="1.6" stroke-linejoin="round" />
+<polygon points="911.3,497.1 882.4,513.8 882.4,476.3 911.3,459.6" fill="#d0d0cd" stroke="#1d1d1f" stroke-width="1.6" stroke-linejoin="round" />
+<text transform="matrix(.866 .5 -.866 .5 880.2 447.5)" font-size="10.66" font-weight="600">API</text>
+<circle class="motion cmd" r="5" fill="#5d702d" stroke="#fafaf8" stroke-width="2" style="offset-path:path('M546.1 282.1 L517.2 298.8 L486.9 281.3 L386.6 339.2 L416.9 356.7 L380.8 367.5')"/>
+<circle class="motion req" r="5" fill="#5d702d" stroke="#fafaf8" stroke-width="2" style="offset-path:path('M468.9 454.2 L488.4 465.4 L567.7 419.6 L702.0 497.1 L725.8 483.3 L750.3 469.2 L781.4 492.1 L816.7 512.5 L858.6 488.3')"/>
+<text x="32" y="150" font-size="21" fill="#1d1d1f" font-weight="700">01  CONTROL PLANE</text>
+<text x="32" y="177" font-size="18" fill="#1d1d1f" font-weight="500">Assign / pause / resume</text>
+<path d="M280 163 H396.1 L512.2 195.8" fill="none" stroke="#6e6e73" stroke-width="1.4"/>
+<circle cx="512.2" cy="195.8" r="3" fill="#1d1d1f"/>
+<text x="32" y="278" font-size="21" fill="#1d1d1f" font-weight="700">02  NODE SERVICES</text>
+<text x="32" y="304" font-size="18" fill="#1d1d1f" font-weight="500">Manage / store / authorize</text>
+<path d="M284 289 H348.6 L413.3 268.8" fill="none" stroke="#6e6e73" stroke-width="1.4"/>
+<circle cx="413.3" cy="268.8" r="3" fill="#1d1d1f"/>
+<text x="660" y="130" font-size="18" fill="#1d1d1f" font-weight="500">Shared state</text>
+<path d="M745 140 H724.2 L703.4 302.1" fill="none" stroke="#6e6e73" stroke-width="1.4"/>
+<circle cx="703.4" cy="302.1" r="3" fill="#1d1d1f"/>
+<text x="820" y="215" font-size="18" fill="#1d1d1f" font-weight="500">Approved</text>
+<text x="820" y="238" font-size="18" fill="#1d1d1f" font-weight="500">service</text>
+<path d="M865 251 H874.4 L883.8 464.6" fill="none" stroke="#6e6e73" stroke-width="1.4"/>
+<circle cx="883.8" cy="464.6" r="3" fill="#1d1d1f"/>
+<text x="776" y="333" font-size="18" fill="#1d1d1f" font-weight="500">Secrets stay</text>
+<text x="776" y="356" font-size="18" fill="#1d1d1f" font-weight="500">outside guests</text>
+<path d="M773 370 H717.6 L662.3 390.8" fill="none" stroke="#6e6e73" stroke-width="1.4"/>
+<circle cx="662.3" cy="390.8" r="3" fill="#1d1d1f"/>
+<text x="32" y="552" font-size="21" fill="#1d1d1f" font-weight="700">03  IN-SANDBOX</text>
+<text x="32" y="578" font-size="18" fill="#1d1d1f" font-weight="500">Code / files / own kernel</text>
+<path d="M257 590 H267.3 L277.6 402.1" fill="none" stroke="#6e6e73" stroke-width="1.4"/>
+<circle cx="277.6" cy="402.1" r="3" fill="#1d1d1f"/>
+<text x="340" y="560" font-size="22" fill="#1d1d1f" font-weight="650">Task A</text>
+<text x="570" y="668" font-size="22" fill="#1d1d1f" font-weight="650">Task B</text>
+<path d="M34 735 H83" fill="none" stroke="#5d702d" stroke-width="2.5" stroke-dasharray="5 6"/>
+<text x="96" y="741" font-size="18" fill="#1d1d1f" font-weight="500">Private commands</text>
+<path d="M329 735 H378" fill="none" stroke="#5d702d" stroke-width="3"/>
+<text x="391" y="741" font-size="18" fill="#1d1d1f" font-weight="500">Controlled outbound request</text>
+<text x="32" y="778" font-size="16" fill="#545457" font-weight="500">Conceptual cutaway · host services are outside both VM boundaries</text>
+</svg>
