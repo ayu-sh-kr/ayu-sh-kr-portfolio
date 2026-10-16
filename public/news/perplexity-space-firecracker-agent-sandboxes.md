@@ -14,9 +14,9 @@ For the spreadsheet task, this is the room in which code runs. The surrounding p
 
 ## Three layers divide decisions, permissions and execution
 
-The illustration separates the architecture into three heights on a conceptual service chassis. A command travels from the control plane through host services to a guest. Its code runs, a request passes the sliding network gate, and a recording arm checkpoints the session. The vault stays on the host level, outside both guests. These physical mechanisms illustrate software responsibilities; they are not a literal server layout or measured timings.
+The illustration separates the three software layers and shows an example with two parallel sandbox tasks. **Solid paths** carry instructions through the host manager and branch to both guests. **Dashed paths** bring their network requests back through host controls; **dotted paths** show checkpoints reaching storage. Credentials remain outside the guests. The paths explain responsibility and direction, rather than physical wiring or measured timing.
 
-![Exploded isometric service chassis with orchestration at the top, a credential vault, network shutter and checkpoint archive on the middle level, and two separate Firecracker guests below. A sequenced cycle sends a command through host services, runs guest code, admits an outbound request and records a checkpoint.](/news/assets/perplexity-space-firecracker-agent-sandboxes/space-architecture.svg)
+![Centered isometric SPACE architecture with control-plane modules above node services and two isolated Firecracker guests. Instructions branch to both guests concurrently; distinct dashed network paths return through the host gate, while dotted checkpoint paths reach storage. Credentials remain on the host layer.](/news/assets/perplexity-space-firecracker-agent-sandboxes/space-architecture.svg)
 
 **The control plane decides what should run and where.** Its API checks access and records the requested state in a shared database. A stateless service keeps those records separate from its own process, allowing another instance to continue coordination after a restart. Here, the desired state is a running sandbox assigned to a worker.
 
