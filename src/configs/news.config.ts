@@ -68,6 +68,18 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "perplexity-space-firecracker-agent-sandboxes",
+    date: "2026-10-16",
+    title: "Perplexity SPACE: How Firecracker sandboxes isolate AI agents",
+    summary: "How SPACE divides agent execution across a control plane, host services and Firecracker guests, keeping credentials outside the workspace and sessions resumable.",
+    kind: "infra",
+    document: "/news/perplexity-space-firecracker-agent-sandboxes.md",
+    keywords: ["Perplexity SPACE architecture", "Firecracker AI agent sandboxes", "microVM isolation", "agent credential isolation", "sandbox control plane", "Perplexity Computer"],
+    minutes: 4,
+    reference: {label: "Perplexity — Secure Sandboxes for Agents", href: "https://www.perplexity.ai/hub/blog/secure-sandboxes-for-agents"},
+  },
+
+  {
     slug: "urban-vpn-ai-chat-harvesting",
     date: "2026-10-12",
     title: "Urban VPN AI chat collection: what happens and how it works",
