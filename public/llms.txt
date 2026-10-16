@@ -49,6 +49,8 @@
 
 ## Recent Dispatch notes
 
+- [Perplexity SPACE: How Firecracker sandboxes isolate AI agents](https://www.ayu-sh-kr.com/news/perplexity-space-firecracker-agent-sandboxes/): SPACE’s three layers, Firecracker isolation, external credentials and resumable sessions, with an isometric architecture cutaway. [Article Markdown](https://www.ayu-sh-kr.com/news/perplexity-space-firecracker-agent-sandboxes.md).
+
 - [Urban VPN AI chat collection: what happens and how it works](https://www.ayu-sh-kr.com/news/urban-vpn-ai-chat-harvesting/): What Koi reported happens with the affected Urban VPN browser extension installed, how it copies AI chats, and what Urban VPN disputes. [Article Markdown](https://www.ayu-sh-kr.com/news/urban-vpn-ai-chat-harvesting.md).
 
 - [AWS Lambda Web Functions: Simpler Deployment, SSR and Active CPU Pricing](https://www.ayu-sh-kr.com/news/aws-lambda-web-functions/): AWS framework support, deployment, SSR, CloudFront, pricing and regional performance, followed by the competitive implications for Cloudflare Workers. [Article Markdown](https://www.ayu-sh-kr.com/news/aws-lambda-web-functions.md).

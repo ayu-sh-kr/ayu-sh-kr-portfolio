@@ -411,6 +411,11 @@
       "permanent": true
     },
     {
+      "source": "/news/perplexity-space-firecracker-agent-sandboxes",
+      "destination": "/news/perplexity-space-firecracker-agent-sandboxes/",
+      "permanent": true
+    },
+    {
       "source": "/news/perplexity-cobbledb",
       "destination": "/news/perplexity-cobbledb/",
       "permanent": true
