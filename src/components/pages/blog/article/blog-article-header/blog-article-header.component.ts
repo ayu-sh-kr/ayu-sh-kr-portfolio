@@ -1,6 +1,6 @@
-import { BaseElement, Component, HTML, Property, String } from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
+import { BaseElement, Component, Property, String } from "@ayu-sh-kr/dota-wrap/core";
 import { blogArticleContent } from "@app/data/blog-content.ts";
-import { escapeHtml } from "@app/utils/html.utils.ts";
 
 /** Renders the metadata and title that introduce a loaded blog article. */
 @Component({
@@ -30,15 +30,15 @@ export class BlogArticleHeaderComponent extends BaseElement {
   }
 
   /** Renders the semantic article header from route-owned article metadata. */
-  render(): string {
-    return HTML`
+  render(): TemplateResult {
+    return html`
       <header class="blog-article-header">
         <div class="blog-meta-row blog-article-meta">
-          <span class="blog-chip">${escapeHtml(this.category)}</span>
-          <span>${escapeHtml(this.metadata)}</span>
+          <span class="blog-chip">${this.category}</span>
+          <span>${this.metadata}</span>
         </div>
-        <h1>${escapeHtml(this.title)}</h1>
-        <p class="blog-article-author">${blogArticleContent.authorPrefix} ${escapeHtml(this.writer)}</p>
+        <h1>${this.title}</h1>
+        <p class="blog-article-author">${blogArticleContent.authorPrefix} ${this.writer}</p>
       </header>
     `;
   }
