@@ -54,7 +54,9 @@ export class FooterBaselineComponent extends BaseElement {
     return html`
       <div class="footer-baseline-section">
         <div class="footer-content footer-baseline-content">
-          <p class="footer-baseline-copy">© ${new Date().getFullYear()} ${copyright} · ${role} · ${availability}</p>
+          <p class="footer-baseline-copy">
+            © ${new Date().getFullYear()} ${copyright} · ${role} · ${availability}
+          </p>
           <p class="footer-clock" aria-label="Current time in India"></p>
         </div>
       </div>

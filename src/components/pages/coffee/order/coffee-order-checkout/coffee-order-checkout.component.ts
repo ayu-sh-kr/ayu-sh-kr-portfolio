@@ -214,14 +214,33 @@ export class CoffeeOrderCheckoutComponent extends BaseElement {
 
     return html`
       <form class="coffee-details-card">
-        <label class="form-label form-label"><span>${content.nameLabel}</span><input class="form-control input-md input-rounded-md input-bordered" name="name" type="text" autocomplete="name" placeholder="${content.namePlaceholder}" /></label>
-        <label class="form-label form-label"><span>${content.noteLabel}</span><textarea class="form-control input-md input-rounded-md input-bordered" name="note" rows="3" placeholder="${content.notePlaceholder}"></textarea></label>
+        <label class="form-label form-label"
+          ><span>${content.nameLabel}</span
+          ><input
+            class="form-control input-md input-rounded-md input-bordered"
+            name="name"
+            type="text"
+            autocomplete="name"
+            placeholder="${content.namePlaceholder}"
+        /></label>
+        <label class="form-label form-label"
+          ><span>${content.noteLabel}</span
+          ><textarea
+            class="form-control input-md input-rounded-md input-bordered"
+            name="note"
+            rows="3"
+            placeholder="${content.notePlaceholder}"
+          ></textarea>
+        </label>
         <div class="coffee-order-cta">
           <action-button
             id="coffee-checkout-button"
             action="coffee.order"
             variant="accent"
-            label="${content.submitLabel.replace("{total}", formatCoffeeAmount(this.getTotal(), this.currency))}"
+            label="${content.submitLabel.replace(
+              "{total}",
+              formatCoffeeAmount(this.getTotal(), this.currency)
+            )}"
             busy-label="${content.submittingLabel}"
             done-label="${content.successLabel}"
             fail-label="${content.failLabel}"

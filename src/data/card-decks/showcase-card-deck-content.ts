@@ -67,13 +67,100 @@ export const renderShowcaseCardDeckCards = (): string => {
   const restaurant = getShowcaseProject("restaurant-oms")!;
   const dota = getShowcaseProject("dota-workspace")!;
   const {conversation, introduction} = showcaseCardDeckContent;
-  return `
-    <article class="showcase-deck__card showcase-deck__card--five" data-showcase-deck-card aria-label="Card 5 of 5">
+  return ` <article
+      class="showcase-deck__card showcase-deck__card--five"
+      data-showcase-deck-card
+      aria-label="Card 5 of 5"
+    >
       <p class="showcase-deck__index">${conversation.index}</p>
-      <div class="showcase-deck__cta"><h2>${conversation.title}</h2><p>${conversation.body}</p><a class="app-link app-link--button app-link--accent" data-card-deck-link="cta" data-card-deck-destination="${conversation.href}" href="${conversation.href}">${conversation.label} <span aria-hidden="true">→</span></a></div>
+      <div class="showcase-deck__cta">
+        <h2>${conversation.title}</h2>
+        <p>${conversation.body}</p>
+        <a
+          class="app-link app-link--button app-link--accent"
+          data-card-deck-link="cta"
+          data-card-deck-destination="${conversation.href}"
+          href="${conversation.href}"
+          >${conversation.label} <span aria-hidden="true">→</span></a
+        >
+      </div>
     </article>
-    <article class="showcase-deck__card showcase-deck__card--work showcase-deck__card--dota" data-showcase-deck-card aria-label="Card 4 of 5"><div class="showcase-deck__brackets" aria-hidden="true"><i></i><i></i><i></i><i></i></div><div class="showcase-deck__head"><p class="showcase-deck__index">04</p><p>Open source</p></div><p class="showcase-deck__plate">dota-workspace</p><h2>You're <span>holding</span> it.</h2><p>Small libraries for building interfaces from the browser's own parts. This card is made with them.</p><a data-card-deck-link="project" data-card-deck-destination="/showcase/${dota.slug}" href="/showcase/${dota.slug}/">See the project →</a></article>
-    <article class="showcase-deck__card showcase-deck__card--work showcase-deck__card--restaurant" data-showcase-deck-card aria-label="Card 3 of 5"><div class="showcase-deck__head"><p class="showcase-deck__index">03</p><p>${restaurant.kind}</p></div><p class="showcase-deck__plate">${restaurant.title}</p><h2>Table to kitchen, without the shouting.</h2><div class="showcase-deck__ticket" aria-hidden="true"><span>#0412 · T6</span><b>2× thali, 1× lassi, no chilli</b><i><em></em></i><small>Placed</small></div><p>The software wasn't the hard part. Making it usable by someone holding three plates was.</p><a data-card-deck-link="project" data-card-deck-destination="/showcase/${restaurant.slug}" href="/showcase/${restaurant.slug}/">See the project →</a></article>
-    <article class="showcase-deck__card showcase-deck__card--work showcase-deck__card--sacrena" data-showcase-deck-card aria-label="Card 2 of 5"><div class="showcase-deck__head"><p class="showcase-deck__index">02</p><p>Backend · 2 years</p></div><p class="showcase-deck__plate">${sacrena.title}</p><h2>The part of a dating app nobody ever sees.</h2><p>I'm the whole backend — APIs, data, infrastructure, and the 3am pages. Done right, the app just feels quick.</p><div class="showcase-deck__trace" aria-hidden="true"></div><a data-card-deck-link="project" data-card-deck-destination="/showcase/${sacrena.slug}" href="/showcase/${sacrena.slug}/">See the project →</a></article>
-    <article class="showcase-deck__card showcase-deck__card--one" data-showcase-deck-card aria-label="Card 1 of 5"><p class="showcase-deck__index">${introduction.index}</p><h2>${introduction.title}</h2><p>${introduction.body}</p></article>`;
+    <article
+      class="showcase-deck__card showcase-deck__card--work showcase-deck__card--dota"
+      data-showcase-deck-card
+      aria-label="Card 4 of 5"
+    >
+      <div class="showcase-deck__brackets" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+      <div class="showcase-deck__head">
+        <p class="showcase-deck__index">04</p>
+        <p>Open source</p>
+      </div>
+      <p class="showcase-deck__plate">dota-workspace</p>
+      <h2>You're <span>holding</span> it.</h2>
+      <p>
+        Small libraries for building interfaces from the browser's own parts. This card is made with
+        them.
+      </p>
+      <a
+        data-card-deck-link="project"
+        data-card-deck-destination="/showcase/${dota.slug}"
+        href="/showcase/${dota.slug}/"
+        >See the project →</a
+      >
+    </article>
+    <article
+      class="showcase-deck__card showcase-deck__card--work showcase-deck__card--restaurant"
+      data-showcase-deck-card
+      aria-label="Card 3 of 5"
+    >
+      <div class="showcase-deck__head">
+        <p class="showcase-deck__index">03</p>
+        <p>${restaurant.kind}</p>
+      </div>
+      <p class="showcase-deck__plate">${restaurant.title}</p>
+      <h2>Table to kitchen, without the shouting.</h2>
+      <div class="showcase-deck__ticket" aria-hidden="true">
+        <span>#0412 · T6</span><b>2× thali, 1× lassi, no chilli</b><i><em></em></i
+        ><small>Placed</small>
+      </div>
+      <p>The software wasn't the hard part. Making it usable by someone holding three plates was.</p>
+      <a
+        data-card-deck-link="project"
+        data-card-deck-destination="/showcase/${restaurant.slug}"
+        href="/showcase/${restaurant.slug}/"
+        >See the project →</a
+      >
+    </article>
+    <article
+      class="showcase-deck__card showcase-deck__card--work showcase-deck__card--sacrena"
+      data-showcase-deck-card
+      aria-label="Card 2 of 5"
+    >
+      <div class="showcase-deck__head">
+        <p class="showcase-deck__index">02</p>
+        <p>Backend · 2 years</p>
+      </div>
+      <p class="showcase-deck__plate">${sacrena.title}</p>
+      <h2>The part of a dating app nobody ever sees.</h2>
+      <p>
+        I'm the whole backend — APIs, data, infrastructure, and the 3am pages. Done right, the app
+        just feels quick.
+      </p>
+      <div class="showcase-deck__trace" aria-hidden="true"></div>
+      <a
+        data-card-deck-link="project"
+        data-card-deck-destination="/showcase/${sacrena.slug}"
+        href="/showcase/${sacrena.slug}/"
+        >See the project →</a
+      >
+    </article>
+    <article
+      class="showcase-deck__card showcase-deck__card--one"
+      data-showcase-deck-card
+      aria-label="Card 1 of 5"
+    >
+      <p class="showcase-deck__index">${introduction.index}</p>
+      <h2>${introduction.title}</h2>
+      <p>${introduction.body}</p>
+    </article>`;
 };

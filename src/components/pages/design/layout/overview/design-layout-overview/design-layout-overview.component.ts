@@ -18,7 +18,11 @@ export class DesignLayoutOverviewComponent extends BaseElement {
     const { overview } = designLayoutContent;
 
     return html`
-      <section id="design-layout-overview" class="design-layout-overview layout-page layout-section-hero" aria-labelledby="design-layout-overview-title">
+      <section
+        id="design-layout-overview"
+        class="design-layout-overview layout-page layout-section-hero"
+        aria-labelledby="design-layout-overview-title"
+      >
         <div class="layout-stack layout-stack-lg">
           <div class="layout-stack layout-stack-sm">
             <p class="type-eyebrow">${overview.eyebrow}</p>

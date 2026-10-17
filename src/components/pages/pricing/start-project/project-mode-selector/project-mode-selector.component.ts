@@ -90,12 +90,23 @@ export class PricingProjectModeSelectorComponent extends BaseElement {
       <div class="pricing-project-question">
         <p><span>1</span>${content.modeQuestion}</p>
         <div class="pricing-project-modes" role="radiogroup" aria-label="${content.modeQuestion}">
-          ${content.modes.map((mode) => html`
-            <button class="form-choice input-lg input-rounded-md input-bordered pricing-project-mode ${mode.id === this.selectedMode ? "is-selected" : ""}" type="button" role="radio" aria-checked="${mode.id === this.selectedMode}" data-project-mode="${mode.id}">
-              <strong>${mode.label}</strong>
-              <small>${mode.description}</small>
-            </button>
-          `)}
+          ${content.modes.map(
+            (mode) => html`
+              <button
+                class="form-choice input-lg input-rounded-md input-bordered pricing-project-mode ${mode.id ===
+                this.selectedMode
+                  ? "is-selected"
+                  : ""}"
+                type="button"
+                role="radio"
+                aria-checked="${mode.id === this.selectedMode}"
+                data-project-mode="${mode.id}"
+              >
+                <strong>${mode.label}</strong>
+                <small>${mode.description}</small>
+              </button>
+            `
+          )}
         </div>
       </div>
     `;

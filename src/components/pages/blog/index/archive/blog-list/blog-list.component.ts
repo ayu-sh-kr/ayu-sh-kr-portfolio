@@ -9,7 +9,13 @@ import {publishAnalyticsEvent} from "@app/utils/analytics.utils.ts";
 
 /** Renders one archive post row with authored text escaped for HTML safety. */
 const renderPostRow = (post: BlogPost) => html`
-  <a class="blog-row blog-reveal" data-blog-reveal data-analytics-project="blog" data-analytics-slug="${post.slug}" href="${getBlogPath(post.slug)}">
+  <a
+    class="blog-row blog-reveal"
+    data-blog-reveal
+    data-analytics-project="blog"
+    data-analytics-slug="${post.slug}"
+    href="${getBlogPath(post.slug)}"
+  >
     <time class="blog-row-date" datetime="${post.date}">${formatBlogDate(post.date, true)}</time>
     <span class="blog-row-copy">
       <span class="blog-row-title">${post.header}</span>
@@ -100,11 +106,23 @@ export class BlogListComponent extends BaseElement {
       && (this.currentFilter === "all" || highlightedPost.category === this.currentFilter);
 
     return html`
-      <section class="blog-container blog-list-section" aria-label="${blogIndexContent.list.ariaLabel}" aria-busy="false">
+      <section
+        class="blog-container blog-list-section"
+        aria-label="${blogIndexContent.list.ariaLabel}"
+        aria-busy="false"
+      >
         <div class="blog-list-skeleton-frame">
           <div class="blog-list-real-layer is-ready">
             <div class="blog-list">${rows.map(renderPostRow)}</div>
-            ${rows.length || hasVisibleHighlightedPost ? "" : html`<p class="blog-empty">${blogIndexContent.list.emptyPrefix} ${this.currentFilter} ${blogIndexContent.list.emptySuffix} <button type="button" data-blog-filter-reset>${blogIndexContent.list.resetLabel}</button></p>`}
+            ${rows.length || hasVisibleHighlightedPost
+              ? ""
+              : html`<p class="blog-empty">
+                  ${blogIndexContent.list.emptyPrefix} ${this.currentFilter}
+                  ${blogIndexContent.list.emptySuffix}
+                  <button type="button" data-blog-filter-reset>
+                    ${blogIndexContent.list.resetLabel}
+                  </button>
+                </p>`}
           </div>
         </div>
       </section>

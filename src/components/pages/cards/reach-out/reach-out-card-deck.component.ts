@@ -81,6 +81,48 @@ export class ReachOutCardDeckComponent extends BaseElement {
    */
   render(): TemplateResult {
     const {page} = reachOutContent;
-    return html`<section class="reach-out-card-deck" aria-label="${page.label}"><div class="reach-out-card-deck__stage layout-content"><div class="reach-out__deck" data-reach-out-deck role="group" aria-roledescription="card deck" aria-label="${page.deckAriaLabel}" tabindex="0">${trustedHTML(renderReachOutCardDeckCards())}</div><p class="reach-out__live" data-reach-out-live aria-live="polite" aria-atomic="true"></p></div><footer class="reach-out-card-deck__controls layout-content"><div class="reach-out__helm"><div class="reach-out__navigation"><button class="reach-out__step" data-reach-out-previous type="button" aria-label="${page.previousCardAriaLabel}">←</button><nav class="reach-out__ticks" data-reach-out-ticks aria-label="${page.cardsAriaLabel}"></nav><button class="reach-out__step" data-reach-out-next type="button" aria-label="${page.nextCardAriaLabel}">→</button></div><p class="reach-out__hint" data-reach-out-hint>${page.hint}</p></div></footer></section>`;
+    return html`<section class="reach-out-card-deck" aria-label="${page.label}">
+      <div class="reach-out-card-deck__stage layout-content">
+        <div
+          class="reach-out__deck"
+          data-reach-out-deck
+          role="group"
+          aria-roledescription="card deck"
+          aria-label="${page.deckAriaLabel}"
+          tabindex="0"
+        >
+          ${trustedHTML(renderReachOutCardDeckCards())}
+        </div>
+        <p class="reach-out__live" data-reach-out-live aria-live="polite" aria-atomic="true"></p>
+      </div>
+      <footer class="reach-out-card-deck__controls layout-content">
+        <div class="reach-out__helm">
+          <div class="reach-out__navigation">
+            <button
+              class="reach-out__step"
+              data-reach-out-previous
+              type="button"
+              aria-label="${page.previousCardAriaLabel}"
+            >
+              ←
+            </button>
+            <nav
+              class="reach-out__ticks"
+              data-reach-out-ticks
+              aria-label="${page.cardsAriaLabel}"
+            ></nav>
+            <button
+              class="reach-out__step"
+              data-reach-out-next
+              type="button"
+              aria-label="${page.nextCardAriaLabel}"
+            >
+              →
+            </button>
+          </div>
+          <p class="reach-out__hint" data-reach-out-hint>${page.hint}</p>
+        </div>
+      </footer>
+    </section>`;
   }
 }

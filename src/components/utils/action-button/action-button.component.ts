@@ -152,7 +152,9 @@ export class ActionButtonComponent extends BaseElement {
         aria-disabled="${disabled ? "true" : "false"}"
         ${unsafeHTML(disabled ? "disabled" : "")}
       >
-        <span class="action-button__glyph" aria-hidden="true">${trustedHTML(this.glyphForState())}</span>
+        <span class="action-button__glyph" aria-hidden="true"
+          >${trustedHTML(this.glyphForState())}</span
+        >
         <span class="action-button__label">${label}</span>
       </button>
       <span class="sr-only" aria-live="polite">${state === "idle" ? "" : label}</span>

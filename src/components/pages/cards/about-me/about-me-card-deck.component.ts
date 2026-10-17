@@ -82,6 +82,44 @@ export class AboutMeCardDeckComponent extends BaseElement {
    */
   render(): TemplateResult {
     const content = aboutMeCardDeckContent;
-    return html`<section class="about-me-deck about-me-deck--about layout-section" aria-label="${content.sectionLabel}"><div class="about-me-deck__stage layout-content"><div class="about-me-deck__stack" data-about-me-deck role="group" aria-roledescription="card deck" aria-label="${content.deckAriaLabel}" tabindex="0">${trustedHTML(renderAboutMeCardDeckCards())}</div><p class="about-me-deck__live" data-about-me-deck-live aria-live="polite" aria-atomic="true"></p></div><footer class="about-me-deck__controls layout-content"><div><button type="button" data-about-me-deck-previous aria-label="${content.previousCardAriaLabel}">←</button><nav data-about-me-deck-ticks aria-label="${content.cardsAriaLabel}"></nav><button type="button" data-about-me-deck-next aria-label="${content.nextCardAriaLabel}">→</button></div><p data-about-me-deck-hint>${content.hint}</p></footer></section>`;
+    return html`<section
+      class="about-me-deck about-me-deck--about layout-section"
+      aria-label="${content.sectionLabel}"
+    >
+      <div class="about-me-deck__stage layout-content">
+        <div
+          class="about-me-deck__stack"
+          data-about-me-deck
+          role="group"
+          aria-roledescription="card deck"
+          aria-label="${content.deckAriaLabel}"
+          tabindex="0"
+        >
+          ${trustedHTML(renderAboutMeCardDeckCards())}
+        </div>
+        <p
+          class="about-me-deck__live"
+          data-about-me-deck-live
+          aria-live="polite"
+          aria-atomic="true"
+        ></p>
+      </div>
+      <footer class="about-me-deck__controls layout-content">
+        <div>
+          <button
+            type="button"
+            data-about-me-deck-previous
+            aria-label="${content.previousCardAriaLabel}"
+          >
+            ←
+          </button>
+          <nav data-about-me-deck-ticks aria-label="${content.cardsAriaLabel}"></nav>
+          <button type="button" data-about-me-deck-next aria-label="${content.nextCardAriaLabel}">
+            →
+          </button>
+        </div>
+        <p data-about-me-deck-hint>${content.hint}</p>
+      </footer>
+    </section>`;
   }
 }

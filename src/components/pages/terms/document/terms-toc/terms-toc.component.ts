@@ -113,11 +113,17 @@ export class TermsTocComponent extends BaseElement {
       <section class="terms-toc-group">
         <p class="terms-toc-group-label">${escapeHtml(group.title)}</p>
         <ol>
-          ${group.sections.map((section) => `
-            <li class="${section.id === this.activeId ? "is-active" : ""}">
-              <a href="#${escapeHtml(section.id)}" data-terms-toc-id="${escapeHtml(section.id)}">${escapeHtml(section.short)}</a>
-            </li>
-          `).join("")}
+          ${group.sections
+            .map(
+              (section) => `
+                <li class="${section.id === this.activeId ? "is-active" : ""}">
+                  <a href="#${escapeHtml(section.id)}" data-terms-toc-id="${escapeHtml(
+                section.id
+              )}">${escapeHtml(section.short)}</a>
+                </li>
+              `
+            )
+            .join("")}
         </ol>
       </section>
     `).join("");

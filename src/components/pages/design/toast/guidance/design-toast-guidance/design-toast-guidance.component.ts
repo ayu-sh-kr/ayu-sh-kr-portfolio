@@ -21,13 +21,26 @@ export class DesignToastGuidanceComponent extends BaseElement {
   render(): TemplateResult {
     const { guidance } = designToastContent;
     return html`
-      <section id="design-toast-guidance" class="design-toast-guidance layout-page layout-section-end layout-grid-rail" aria-labelledby="design-toast-guidance-title">
+      <section
+        id="design-toast-guidance"
+        class="design-toast-guidance layout-page layout-section-end layout-grid-rail"
+        aria-labelledby="design-toast-guidance-title"
+      >
         <div class="layout-stack layout-stack-sm">
           <p class="type-eyebrow">${guidance.eyebrow}</p>
           <h2 id="design-toast-guidance-title" class="type-section">${guidance.title}</h2>
         </div>
         <ol class="design-toast-guidance__list layout-rail">
-          ${guidance.rules.map((rule, index) => html`<li><span>${String(index + 1).padStart(2, "0")}</span><div><h3 class="type-card-title">${rule.label}</h3><p>${rule.body}</p></div></li>`)}
+          ${guidance.rules.map(
+            (rule, index) =>
+              html`<li>
+                <span>${String(index + 1).padStart(2, "0")}</span>
+                <div>
+                  <h3 class="type-card-title">${rule.label}</h3>
+                  <p>${rule.body}</p>
+                </div>
+              </li>`
+          )}
         </ol>
       </section>
     `;

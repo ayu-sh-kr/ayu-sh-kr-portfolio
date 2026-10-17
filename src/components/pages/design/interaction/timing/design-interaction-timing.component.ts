@@ -14,19 +14,24 @@ export class DesignInteractionTimingComponent extends BaseElement {
   render(): TemplateResult {
     const { timing } = designInteractionContent;
 
-    return html`
-      <section id="timing" class="design-interaction-section layout-page layout-section" aria-labelledby="timing-title">
-        <header class="design-interaction-heading layout-stack layout-stack-sm">
-          <p class="type-eyebrow">${timing.eyebrow}</p>
-          <h2 id="timing-title" class="type-section">${timing.title}</h2>
-          <p class="type-lede">${timing.lede}</p>
-        </header>
-        <dl class="design-interaction-timing">${timing.durations
-          .map((duration) => html`<div>
+    return html` <section
+      id="timing"
+      class="design-interaction-section layout-page layout-section"
+      aria-labelledby="timing-title"
+    >
+      <header class="design-interaction-heading layout-stack layout-stack-sm">
+        <p class="type-eyebrow">${timing.eyebrow}</p>
+        <h2 id="timing-title" class="type-section">${timing.title}</h2>
+        <p class="type-lede">${timing.lede}</p>
+      </header>
+      <dl class="design-interaction-timing">
+        ${timing.durations.map(
+          (duration) => html`<div>
             <dt>${duration.duration}</dt>
             <dd>${duration.use}</dd>
-          </div>`,
-          )}</dl>
-      </section>`;
+          </div>`
+        )}
+      </dl>
+    </section>`;
   }
 }

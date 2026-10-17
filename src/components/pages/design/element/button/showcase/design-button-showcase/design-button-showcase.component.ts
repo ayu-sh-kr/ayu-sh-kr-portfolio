@@ -52,21 +52,35 @@ export class DesignButtonShowcaseComponent extends BaseElement {
   render(): TemplateResult {
     const { showcase } = designElementContent;
     return html`
-      <section id="design-element-button-showcase" class="design-button-showcase layout-page layout-section" aria-labelledby="design-element-button-showcase-title">
+      <section
+        id="design-element-button-showcase"
+        class="design-button-showcase layout-page layout-section"
+        aria-labelledby="design-element-button-showcase-title"
+      >
         <div class="design-element-showcase__heading layout-stack layout-stack-sm">
           <p class="type-eyebrow">${showcase.eyebrow}</p>
           <h2 id="design-element-button-showcase-title" class="type-section">${showcase.title}</h2>
           <p class="type-lede">${showcase.lede}</p>
         </div>
         <div class="design-element-showcase__grid layout-grid-auto-sm">
-          ${showcase.actions.map((item) => html`
-            <article class="design-element-specimen-card" data-variant="${item.variant}">
-              <p class="type-label">${item.variant}</p>
-              <h3 class="type-card-title">${item.title}</h3>
-              <p>${item.body}</p>
-              <action-button id="design-button-${item.id}" action="${item.action}" variant="${item.variant}" label="${item.label}" busy-label="${item.busyLabel}" done-label="${item.doneLabel}" fail-label="${item.failLabel}"></action-button>
-            </article>
-          `)}
+          ${showcase.actions.map(
+            (item) => html`
+              <article class="design-element-specimen-card" data-variant="${item.variant}">
+                <p class="type-label">${item.variant}</p>
+                <h3 class="type-card-title">${item.title}</h3>
+                <p>${item.body}</p>
+                <action-button
+                  id="design-button-${item.id}"
+                  action="${item.action}"
+                  variant="${item.variant}"
+                  label="${item.label}"
+                  busy-label="${item.busyLabel}"
+                  done-label="${item.doneLabel}"
+                  fail-label="${item.failLabel}"
+                ></action-button>
+              </article>
+            `
+          )}
         </div>
       </section>
     `;

@@ -323,10 +323,28 @@ export class SupportTicketComponent extends BaseElement {
 
     list.innerHTML = this.files.map((file, index) => HTML`
       <div class="support-filechip">
-        <span class="support-file-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M14 3v5h5" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M14 3H6a1 1 0 00-1 1v16a1 1 0 001 1h12a1 1 0 001-1V8l-5-5z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></span>
+        <span class="support-file-icon" aria-hidden="true"
+          ><svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+            <path d="M14 3v5h5" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+            <path
+              d="M14 3H6a1 1 0 00-1 1v16a1 1 0 001 1h12a1 1 0 001-1V8l-5-5z"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linejoin="round"
+            /></svg
+        ></span>
         <span class="support-file-name">${file.name}</span>
         <span class="support-file-size">${this.formatSize(file.size)}</span>
-        <button type="button" class="support-file-remove" data-index="${index}" aria-label="Remove ${file.name}"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 3l6 6M9 3l-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+        <button
+          type="button"
+          class="support-file-remove"
+          data-index="${index}"
+          aria-label="Remove ${file.name}"
+        >
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+            <path d="M3 3l6 6M9 3l-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+          </svg>
+        </button>
       </div>
     `).join("");
     list.querySelectorAll<HTMLButtonElement>(".support-file-remove").forEach((button) => {
@@ -359,7 +377,12 @@ export class SupportTicketComponent extends BaseElement {
     return html`
       <div class="support-handoff layout-row">
         <span class="support-rule" aria-hidden="true"></span>
-        <button id="support-open-ticket" type="button" aria-expanded="false" aria-controls="support-ticket-form-shell">
+        <button
+          id="support-open-ticket"
+          type="button"
+          aria-expanded="false"
+          aria-controls="support-ticket-form-shell"
+        >
           <span id="support-open-label">${handoff.openLabel}</span>
           <span class="support-arrow" aria-hidden="true">→</span>
         </button>
@@ -380,33 +403,96 @@ export class SupportTicketComponent extends BaseElement {
             <div class="support-grid">
               <div class="support-field">
                 <label for="support-name" class="form-label type-label">${form.nameLabel}</label>
-                <input class="form-control input-md input-rounded-md input-bordered" id="support-name" name="name" type="text" autocomplete="name" placeholder="${form.namePlaceholder}" required />
+                <input
+                  class="form-control input-md input-rounded-md input-bordered"
+                  id="support-name"
+                  name="name"
+                  type="text"
+                  autocomplete="name"
+                  placeholder="${form.namePlaceholder}"
+                  required
+                />
               </div>
               <div class="support-field">
-                <label for="support-email" class="form-label type-label">${form.emailLabel} <span class="support-optional">${form.emailLabelSoft}</span></label>
-                <input class="form-control input-md input-rounded-md input-bordered" id="support-email" name="email" type="email" autocomplete="email" placeholder="${form.emailPlaceholder}" required />
+                <label for="support-email" class="form-label type-label"
+                  >${form.emailLabel}
+                  <span class="support-optional">${form.emailLabelSoft}</span></label
+                >
+                <input
+                  class="form-control input-md input-rounded-md input-bordered"
+                  id="support-email"
+                  name="email"
+                  type="email"
+                  autocomplete="email"
+                  placeholder="${form.emailPlaceholder}"
+                  required
+                />
               </div>
             </div>
 
             <div class="support-field">
               <label class="form-label type-label">${form.topicLabel}</label>
               <div class="support-topics layout-row layout-row-tight" role="group" aria-label="Topic">
-                ${form.topics.map((topic) => html`<button type="button" class="form-choice input-sm input-round input-bordered support-topic" data-topic="${topic}" aria-pressed="false">${topic}</button>`)}
+                ${form.topics.map(
+                  (topic) =>
+                    html`<button
+                      type="button"
+                      class="form-choice input-sm input-round input-bordered support-topic"
+                      data-topic="${topic}"
+                      aria-pressed="false"
+                    >
+                      ${topic}
+                    </button>`
+                )}
               </div>
             </div>
 
             <div class="support-field">
               <label for="support-message" class="form-label type-label">${form.detailsLabel}</label>
-              <textarea class="form-control input-md input-rounded-md input-bordered" id="support-message" name="message" placeholder="${form.detailsPlaceholder}" required></textarea>
+              <textarea
+                class="form-control input-md input-rounded-md input-bordered"
+                id="support-message"
+                name="message"
+                placeholder="${form.detailsPlaceholder}"
+                required
+              ></textarea>
             </div>
 
             <div class="support-field">
-              <label class="form-label type-label">${form.dropLabel} <span class="support-optional">${form.dropLabelSoft}</span></label>
-              <div class="form-upload input-lg input-rounded-md input-dashed support-drop" id="support-drop" tabindex="0" role="button" aria-label="Add files: drag and drop or press to browse">
-                <svg class="support-drop-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 16V4m0 0L8 8m4-4l4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              <label class="form-label type-label"
+                >${form.dropLabel} <span class="support-optional">${form.dropLabelSoft}</span></label
+              >
+              <div
+                class="form-upload input-lg input-rounded-md input-dashed support-drop"
+                id="support-drop"
+                tabindex="0"
+                role="button"
+                aria-label="Add files: drag and drop or press to browse"
+              >
+                <svg class="support-drop-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path
+                    d="M12 16V4m0 0L8 8m4-4l4 4"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+                </svg>
                 <div class="support-drop-key">${form.dropKey}</div>
                 <div class="support-drop-sub">${form.dropConstraint}</div>
-                <input class="form-native input-sm input-rounded-md input-bordered" type="file" id="support-file-input" multiple aria-label="Choose files" />
+                <input
+                  class="form-native input-sm input-rounded-md input-bordered"
+                  type="file"
+                  id="support-file-input"
+                  multiple
+                  aria-label="Choose files"
+                />
               </div>
               <div class="support-files" id="support-file-list" aria-live="polite"></div>
             </div>
@@ -414,14 +500,26 @@ export class SupportTicketComponent extends BaseElement {
             <div class="support-ticket-foot layout-row layout-row-split">
               <div>
                 <p class="support-assure">${form.assure}</p>
-                <p class="support-assure" id="support-submit-error" role="alert" hidden>${form.submitError}</p>
+                <p class="support-assure" id="support-submit-error" role="alert" hidden>
+                  ${form.submitError}
+                </p>
               </div>
               <button type="submit" class="support-submit">${form.submit}</button>
             </div>
           </div>
 
           <div class="support-sent" id="support-sent" hidden>
-            <div class="support-tick" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="support-tick" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M4 12l5 5L20 6"
+                  stroke="currentColor"
+                  stroke-width="2.4"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
             <h3 class="type-subsection">${success.heading}</h3>
             <p id="support-sent-sub">${success.sub}</p>
             <button type="button" class="support-ghost" id="support-again">${success.again}</button>

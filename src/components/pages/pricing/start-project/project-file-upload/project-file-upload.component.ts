@@ -375,27 +375,40 @@ export class PricingProjectFileUploadComponent extends BaseElement {
     return html`
       <label class="form-upload input-lg input-rounded-md input-dashed pricing-project-file-input">
         ${form.attachmentsLabel} <small>${form.attachmentsHint}</small>
-        <input class="form-native input-sm input-rounded-md input-bordered" data-project-files type="file" multiple>
+        <input
+          class="form-native input-sm input-rounded-md input-bordered"
+          data-project-files
+          type="file"
+          multiple
+        />
         <span>${form.attachmentsPrompt}</span>
       </label>
-      ${when(this.attachments.length > 0, html`
-        <ul class="pricing-project-files" aria-live="polite">
-          ${this.attachments.map((attachment) => html`
-            <li class="pricing-project-file ${attachment.status === "error" ? "is-error" : ""}">
-              <span class="pricing-project-file-name">${attachment.name}</span>
-              <span class="pricing-project-file-meta">${this.formatSize(attachment.size)} · ${this.statusLabel(attachment.status)}</span>
-              <button
-                class="pricing-project-file-remove"
-                type="button"
-                data-project-file-remove="${attachment.id}"
-                aria-label="${form.removeAttachmentLabel} ${attachment.name}"
-              >×</button>
-            </li>
-          `)}
-        </ul>
-      `, html`
-        <p class="pricing-project-files" aria-live="polite">${form.noAttachments}</p>
-      `)}
+      ${when(
+        this.attachments.length > 0,
+        html`
+          <ul class="pricing-project-files" aria-live="polite">
+            ${this.attachments.map(
+              (attachment) => html`
+                <li class="pricing-project-file ${attachment.status === "error" ? "is-error" : ""}">
+                  <span class="pricing-project-file-name">${attachment.name}</span>
+                  <span class="pricing-project-file-meta"
+                    >${this.formatSize(attachment.size)} · ${this.statusLabel(attachment.status)}</span
+                  >
+                  <button
+                    class="pricing-project-file-remove"
+                    type="button"
+                    data-project-file-remove="${attachment.id}"
+                    aria-label="${form.removeAttachmentLabel} ${attachment.name}"
+                  >
+                    ×
+                  </button>
+                </li>
+              `
+            )}
+          </ul>
+        `,
+        html` <p class="pricing-project-files" aria-live="polite">${form.noAttachments}</p> `
+      )}
     `;
   }
 }

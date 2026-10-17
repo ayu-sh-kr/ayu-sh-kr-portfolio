@@ -111,8 +111,12 @@ export class PricingSwitchComponent extends BaseElement {
         <p id="pricing-switch-title" class="pricing-eyebrow">${content.eyebrow}</p>
         <div class="pricing-segmented-control" role="tablist" aria-label="${content.ariaLabel}">
           <span id="pricing-switch-thumb" aria-hidden="true"></span>
-          <button class="is-active" data-pricing-destination="build" role="tab" aria-selected="true">${content.buildLabel}</button>
-          <button data-pricing-destination="speak" role="tab" aria-selected="false">${content.speakLabel}</button>
+          <button class="is-active" data-pricing-destination="build" role="tab" aria-selected="true">
+            ${content.buildLabel}
+          </button>
+          <button data-pricing-destination="speak" role="tab" aria-selected="false">
+            ${content.speakLabel}
+          </button>
         </div>
         <p id="pricing-switch-hint" class="pricing-switch-hint">${content.buildHint}</p>
       </section>

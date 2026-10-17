@@ -103,16 +103,23 @@ export class PricingEstimatorTypeOptionsComponent extends BaseElement {
       <fieldset class="pricing-estimator-question">
         <legend><span>${content.typeStep}</span>${content.typeQuestion}</legend>
         <div class="pricing-pick-grid">
-          ${content.types
-            .map(
-              (option) => html`
-                <button class="form-choice input-lg input-rounded-md input-bordered pricing-pick ${option.id === this.selectedId ? "is-selected" : ""}" type="button" data-estimator-id="${option.id}" aria-pressed="${option.id === this.selectedId}">
-                  <span class="pricing-pick-icon">${trustedHTML(option.icon)}</span>
-                  <span class="pricing-pick-label">${option.label}</span>
-                  <span class="pricing-pick-sublabel">${option.sublabel}</span>
-                </button>
-              `,
-            )}
+          ${content.types.map(
+            (option) => html`
+              <button
+                class="form-choice input-lg input-rounded-md input-bordered pricing-pick ${option.id ===
+                this.selectedId
+                  ? "is-selected"
+                  : ""}"
+                type="button"
+                data-estimator-id="${option.id}"
+                aria-pressed="${option.id === this.selectedId}"
+              >
+                <span class="pricing-pick-icon">${trustedHTML(option.icon)}</span>
+                <span class="pricing-pick-label">${option.label}</span>
+                <span class="pricing-pick-sublabel">${option.sublabel}</span>
+              </button>
+            `
+          )}
         </div>
       </fieldset>
     `;

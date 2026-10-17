@@ -31,7 +31,9 @@ export class CardPageHeaderComponent extends BaseElement {
     return html`
       <header class="card-page-header layout-page">
         <app-brand></app-brand>
-        <a class="app-link app-link--nav card-page-header__link" href="${this.linkHref}">${this.linkLabel}</a>
+        <a class="app-link app-link--nav card-page-header__link" href="${this.linkHref}"
+          >${this.linkLabel}</a
+        >
       </header>
     `;
   }

@@ -14,16 +14,19 @@ export class DesignInteractionChecklistComponent extends BaseElement {
   render(): TemplateResult {
     const { checklist } = designInteractionContent;
 
-    return html`
-      <section id="ship" class="design-interaction-section layout-page layout-section-end" aria-labelledby="ship-title">
-        <header class="design-interaction-heading layout-stack layout-stack-sm">
-          <p class="type-eyebrow">${checklist.eyebrow}</p>
-          <h2 id="ship-title" class="type-section">${checklist.title}</h2>
-          <p class="type-lede">${checklist.lede}</p>
-        </header>
-        <ol class="design-interaction-checklist">
-          ${checklist.items.map((item) => html`<li>${item}</li>`)}
-        </ol>
-      </section>`;
+    return html` <section
+      id="ship"
+      class="design-interaction-section layout-page layout-section-end"
+      aria-labelledby="ship-title"
+    >
+      <header class="design-interaction-heading layout-stack layout-stack-sm">
+        <p class="type-eyebrow">${checklist.eyebrow}</p>
+        <h2 id="ship-title" class="type-section">${checklist.title}</h2>
+        <p class="type-lede">${checklist.lede}</p>
+      </header>
+      <ol class="design-interaction-checklist">
+        ${checklist.items.map((item) => html`<li>${item}</li>`)}
+      </ol>
+    </section>`;
   }
 }

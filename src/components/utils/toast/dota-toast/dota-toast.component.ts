@@ -67,8 +67,8 @@ const NOTIFICATION_ICON = "material-symbols:notifications-rounded";
 /** Trusted closing marks plus the Dota UI notification icon used on arrival and neutral expiry. */
 const GLYPHS = {
   bell: `<dota-icon name="${NOTIFICATION_ICON}" size="sm"></dota-icon>`,
-  done: `<svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7"/></svg>`,
-  fail: `<svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg>`,
+  done: `<svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7" /></svg>`,
+  fail: `<svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" /></svg>`,
 };
 
 /**
@@ -288,12 +288,16 @@ export class DotaToastComponent extends BaseElement implements ToastHost {
     }
     element.innerHTML = HTML`
       <span class="dota-toast__fill"></span>
-      <span class="dota-toast__glyph" aria-hidden="true"><span class="dota-toast__glyph-icon"></span></span>
+      <span class="dota-toast__glyph" aria-hidden="true"
+        ><span class="dota-toast__glyph-icon"></span
+      ></span>
       <span class="dota-toast__body">
         <span class="dota-toast__message"></span>
         <span class="dota-toast__count" data-count hidden></span>
       </span>
-      <span class="dota-toast__instructions">Focused. Press Delete, Backspace, or Escape to dismiss, or swipe.</span>
+      <span class="dota-toast__instructions"
+        >Focused. Press Delete, Backspace, or Escape to dismiss, or swipe.</span
+      >
     `;
     element.querySelector<HTMLElement>(".dota-toast__message")!.textContent = message;
 
@@ -550,8 +554,21 @@ export class DotaToastComponent extends BaseElement implements ToastHost {
   /** Renders the persistent rail and a separate assertive live region for failures. */
   render(): TemplateResult {
     return html`
-      <section class="dota-toast__rail" id="dota-toast-rail" data-position="bottom-right" role="region" aria-label="Notifications" aria-live="polite" aria-relevant="additions"></section>
-      <output class="dota-toast__alerts" id="dota-toast-alerts" aria-live="assertive" aria-atomic="true"></output>
+      <section
+        class="dota-toast__rail"
+        id="dota-toast-rail"
+        data-position="bottom-right"
+        role="region"
+        aria-label="Notifications"
+        aria-live="polite"
+        aria-relevant="additions"
+      ></section>
+      <output
+        class="dota-toast__alerts"
+        id="dota-toast-alerts"
+        aria-live="assertive"
+        aria-atomic="true"
+      ></output>
     `;
   }
 }

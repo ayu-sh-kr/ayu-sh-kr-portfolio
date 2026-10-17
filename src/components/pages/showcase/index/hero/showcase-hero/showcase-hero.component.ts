@@ -28,19 +28,24 @@ export class ShowcaseHeroComponent extends BaseElement {
 
     return html`
       <div id="showcase-hero-wrap" class="layout-hero-pin-wrap">
-        <section class="layout-hero-pin-stage showcase-hero-stage" aria-labelledby="showcase-hero-title">
+        <section
+          class="layout-hero-pin-stage showcase-hero-stage"
+          aria-labelledby="showcase-hero-title"
+        >
           <div id="showcase-hero-inner" class="layout-content layout-stack layout-stack-lg text-center">
             <p class="showcase-eyebrow">${showcaseHeroContent.eyebrow}</p>
             <h1 id="showcase-hero-title" class="showcase-display mt-5">
-              ${showcaseHeroContent.titleBeforeAccent} <span class="text-[var(--primary-color)]">${showcaseHeroContent.titleAccent}</span>
+              ${showcaseHeroContent.titleBeforeAccent}
+              <span class="text-[var(--primary-color)]">${showcaseHeroContent.titleAccent}</span>
             </h1>
-            <p class="showcase-lede mx-auto mt-7 max-w-2xl">
-              ${showcaseHeroContent.summary}
-            </p>
-            <p class="showcase-count mt-7" aria-label="${showcaseProjects.length} ${counts.projects}, ${openSourceCount} ${counts.openSource}, ${clientCount} ${counts.client}">
-              <strong>${showcaseProjects.length}</strong> ${counts.projects} <span aria-hidden="true">·</span>
-              <strong>${openSourceCount}</strong> ${counts.openSource} <span aria-hidden="true">·</span>
-              <strong>${clientCount}</strong> ${counts.client}
+            <p class="showcase-lede mx-auto mt-7 max-w-2xl">${showcaseHeroContent.summary}</p>
+            <p
+              class="showcase-count mt-7"
+              aria-label="${showcaseProjects.length} ${counts.projects}, ${openSourceCount} ${counts.openSource}, ${clientCount} ${counts.client}"
+            >
+              <strong>${showcaseProjects.length}</strong> ${counts.projects}
+              <span aria-hidden="true">·</span> <strong>${openSourceCount}</strong> ${counts.openSource}
+              <span aria-hidden="true">·</span> <strong>${clientCount}</strong> ${counts.client}
             </p>
           </div>
           <scroll-hint mode="vertical"></scroll-hint>

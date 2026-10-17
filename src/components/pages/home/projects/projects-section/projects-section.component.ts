@@ -35,22 +35,27 @@ export class PortfolioWorkComponent extends BaseElement {
             <h2 id="work-title" class="motion-title mt-4">Things I’ve shipped</h2>
           </div>
           <div id="work-rail" class="work-rail">
-            ${work
-              .map(
-                (project) => html`
-                  <article class="work-card ${"cta" in project && project.cta ? "work-card-cta" : ""}">
-                    <p class="motion-eyebrow">${project.eyebrow}</p>
-                    <h3 class="mt-5 text-[1.85rem] font-semibold leading-tight tracking-tight">${project.title}</h3>
-                    <p class="mt-4 text-[0.98rem] leading-7 text-[var(--muted-color)]">${project.body}</p>
-                    <div class="mt-6 flex flex-wrap gap-2">
-                      ${project.chips.map((chip) => html`<span class="motion-chip">${chip}</span>`)}
-                    </div>
-                    <a class="app-link app-link--text app-link--card work-card-link" href="${project.link.href}" ${unsafeHTML(project.link.external ? 'target="_blank" rel="noreferrer"' : "")}>
-                      ${project.link.label}<span aria-hidden="true"> →</span>
-                    </a>
-                  </article>
-                `,
-              )}
+            ${work.map(
+              (project) => html`
+                <article class="work-card ${"cta" in project && project.cta ? "work-card-cta" : ""}">
+                  <p class="motion-eyebrow">${project.eyebrow}</p>
+                  <h3 class="mt-5 text-[1.85rem] font-semibold leading-tight tracking-tight">
+                    ${project.title}
+                  </h3>
+                  <p class="mt-4 text-[0.98rem] leading-7 text-[var(--muted-color)]">${project.body}</p>
+                  <div class="mt-6 flex flex-wrap gap-2">
+                    ${project.chips.map((chip) => html`<span class="motion-chip">${chip}</span>`)}
+                  </div>
+                  <a
+                    class="app-link app-link--text app-link--card work-card-link"
+                    href="${project.link.href}"
+                    ${unsafeHTML(project.link.external ? 'target="_blank" rel="noreferrer"' : "")}
+                  >
+                    ${project.link.label}<span aria-hidden="true"> →</span>
+                  </a>
+                </article>
+              `
+            )}
           </div>
           <p class="work-drag-hint" aria-hidden="true">Scroll to move through the work →</p>
         </section>

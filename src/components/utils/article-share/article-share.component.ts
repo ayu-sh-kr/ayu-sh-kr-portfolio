@@ -82,19 +82,40 @@ export class ArticleShareComponent extends BaseElement {
       return html``;
     }
     const icon = (name: string) => html`<dota-icon name="${icons[name]}" size="sm" aria-hidden="true"></dota-icon>`;
-    const button = (action: string, name: string, label: string) => html`<button class="article-share-button" type="button" data-share-action="${action}" aria-label="${label}" title="${label}">${icon(name)}<span class="article-share-tooltip" aria-hidden="true">${label}</span></button>`;
-    const platform = (name: SharePlatform, label: string) => html`<a class="article-share-button" href="${getArticleShareUrl(name, data)}" target="_blank" rel="noopener noreferrer" aria-label="Share on ${label} (opens in a new tab)" title="Share on ${label}">${icon(name)}<span class="article-share-tooltip" aria-hidden="true">${label}</span></a>`;
-    return html`
-      <section class="article-share-block" aria-label="Share this article">
-        <p class="article-share-label">Share this article</p>
-        <div class="article-share-actions">
-          ${button("native", "share", "Share article")}
-          ${platform("linkedin", "LinkedIn")}${platform("whatsapp", "WhatsApp")}${platform("x", "X")}
-          ${button("link", "link", "Copy link")}${button("reference", "reference", "Copy reference")}
-        </div>
-        <p class="article-share-status" data-share-status role="status" aria-live="polite"></p>
-        <textarea class="article-share-fallback" data-share-fallback aria-label="Article sharing text" readonly hidden></textarea>
-      </section>`;
+    const button = (action: string, name: string, label: string) => html`<button
+      class="article-share-button"
+      type="button"
+      data-share-action="${action}"
+      aria-label="${label}"
+      title="${label}"
+    >
+      ${icon(name)}<span class="article-share-tooltip" aria-hidden="true">${label}</span>
+    </button>`;
+    const platform = (name: SharePlatform, label: string) => html`<a
+      class="article-share-button"
+      href="${getArticleShareUrl(name, data)}"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Share on ${label} (opens in a new tab)"
+      title="Share on ${label}"
+      >${icon(name)}<span class="article-share-tooltip" aria-hidden="true">${label}</span></a
+    >`;
+    return html` <section class="article-share-block" aria-label="Share this article">
+      <p class="article-share-label">Share this article</p>
+      <div class="article-share-actions">
+        ${button("native", "share", "Share article")}
+        ${platform("linkedin", "LinkedIn")}${platform("whatsapp", "WhatsApp")}${platform("x", "X")}
+        ${button("link", "link", "Copy link")}${button("reference", "reference", "Copy reference")}
+      </div>
+      <p class="article-share-status" data-share-status role="status" aria-live="polite"></p>
+      <textarea
+        class="article-share-fallback"
+        data-share-fallback
+        aria-label="Article sharing text"
+        readonly
+        hidden
+      ></textarea>
+    </section>`;
   }
 }
 

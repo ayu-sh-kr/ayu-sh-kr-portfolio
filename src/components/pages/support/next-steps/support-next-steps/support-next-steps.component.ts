@@ -23,16 +23,20 @@ export class SupportNextStepsComponent extends BaseElement {
           <div class="support-next-heading">
             <p class="support-eyebrow">After you send</p>
             <h2 id="support-next-title" class="type-section">No black box.</h2>
-            <p>Here is the actual path a message takes, so you know when to expect what — and when to nudge me.</p>
+            <p>
+              Here is the actual path a message takes, so you know when to expect what — and when to
+              nudge me.
+            </p>
           </div>
           <ol class="support-steps layout-grid-4">
-            ${supportContent.nextSteps.map((step) => html`
-              <li class="support-step">
+            ${supportContent.nextSteps.map(
+              (step) => html` <li class="support-step">
                 <span class="support-step-number">${step.number}</span>
                 <h3>${step.title}</h3>
                 <p>${step.body}</p>
                 <span class="support-step-when">${step.when}</span>
-              </li>`)}
+              </li>`
+            )}
           </ol>
         </div>
       </section>

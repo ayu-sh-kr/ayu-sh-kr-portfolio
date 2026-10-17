@@ -48,7 +48,11 @@ export class PricingEstimatorComponent extends BaseElement {
     const content = pricingContent.estimator;
 
     return html`
-      <section id="pricing-estimate" class="pricing-estimator-section layout-page layout-section" aria-labelledby="pricing-estimate-title">
+      <section
+        id="pricing-estimate"
+        class="pricing-estimator-section layout-page layout-section"
+        aria-labelledby="pricing-estimate-title"
+      >
         <div class="pricing-section-copy">
           <p class="pricing-eyebrow">${content.eyebrow}</p>
           <h2 id="pricing-estimate-title" class="pricing-section-title mt-3">${content.title}</h2>

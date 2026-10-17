@@ -46,7 +46,12 @@ export class ShowcaseProjectCardComponent extends BaseElement {
     }
 
     return html`
-      <a class="showcase-card showcase-reveal" data-showcase-reveal data-analytics-project="showcase" href="/showcase/${project.slug}/">
+      <a
+        class="showcase-card showcase-reveal"
+        data-showcase-reveal
+        data-analytics-project="showcase"
+        href="/showcase/${project.slug}/"
+      >
         <div class="showcase-card-cover">
           <showcase-visual project-slug="${project.slug}" variant="card"></showcase-visual>
           <span class="showcase-card-arrow" aria-hidden="true">↗</span>
@@ -56,7 +61,9 @@ export class ShowcaseProjectCardComponent extends BaseElement {
           <h3 class="mt-4">${project.title}</h3>
           <p class="mt-3">${project.tagline}</p>
           <div class="showcase-chip-row mt-5" aria-label="Technology stack">
-            ${project.stack.map((item) => html`<span class="showcase-chip showcase-chip-muted">${item}</span>`)}
+            ${project.stack.map(
+              (item) => html`<span class="showcase-chip showcase-chip-muted">${item}</span>`
+            )}
           </div>
         </div>
       </a>

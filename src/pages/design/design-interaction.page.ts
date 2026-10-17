@@ -27,7 +27,10 @@ export class DesignInteractionPage extends DotaPageElement {
   /** Renders the interaction reference in the same trigger order used by its route navigation. */
   render(): TemplateResult {
     return html`
-      <service-state-strip capabilities="interaction-service-state" label="the project form"></service-state-strip>
+      <service-state-strip
+        capabilities="interaction-service-state"
+        label="the project form"
+      ></service-state-strip>
       <app-header></app-header>
       <main id="design-interaction-page-main">
         <design-interaction-hero></design-interaction-hero>

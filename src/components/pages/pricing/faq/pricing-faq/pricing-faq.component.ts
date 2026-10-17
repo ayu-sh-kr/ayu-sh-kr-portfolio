@@ -31,17 +31,16 @@ export class PricingFaqComponent extends BaseElement {
           <p class="pricing-eyebrow">${content.eyebrow}</p>
           <h2 id="pricing-faq-title" class="pricing-section-title mt-3">${content.title}</h2>
           <div class="pricing-faq-list">
-            ${content.items
-              .map(
-                (item) => html`
-                  <dota-accordion
-                    classname="${DOTA_FAQ_ACCORDION_CLASS}"
-                    header="${item.question}"
-                    description="${item.answer}"
-                    config='${DOTA_FAQ_ACCORDION_CONFIG}'
-                  ></dota-accordion>
-                `,
-              )}
+            ${content.items.map(
+              (item) => html`
+                <dota-accordion
+                  classname="${DOTA_FAQ_ACCORDION_CLASS}"
+                  header="${item.question}"
+                  description="${item.answer}"
+                  config="${DOTA_FAQ_ACCORDION_CONFIG}"
+                ></dota-accordion>
+              `
+            )}
           </div>
         </div>
       </section>

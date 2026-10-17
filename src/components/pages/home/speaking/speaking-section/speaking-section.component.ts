@@ -230,10 +230,14 @@ export class PortfolioSpeakingComponent extends BaseElement {
               <p class="sp-sub">${speaking.summary}</p>
               <p class="sp-proof">
                 ${speaking.proof
-                  .map((item) => item.prefix
-                    ? html`<span>${item.prefix}<b>${item.value}</b>${item.label}</span>`
-                    : html`<span><b>${item.value}</b> ${item.label}</span>`)
-                  .flatMap((item, index) => index ? [html`<span class="sp-proof-separator">/</span>`, item] : [item])}
+                  .map((item) =>
+                    item.prefix
+                      ? html`<span>${item.prefix}<b>${item.value}</b>${item.label}</span>`
+                      : html`<span><b>${item.value}</b> ${item.label}</span>`
+                  )
+                  .flatMap((item, index) =>
+                    index ? [html`<span class="sp-proof-separator">/</span>`, item] : [item]
+                  )}
               </p>
             </div>
           </div>
@@ -241,20 +245,19 @@ export class PortfolioSpeakingComponent extends BaseElement {
 
         <div class="speaking-content layout-page">
           <div class="sp-topics">
-            ${speaking.topics
-              .map(
-                (topic) => html`
-                  <a class="topic motion-reveal" href="#contact" data-tilt>
-                    <span class="topic-number">${topic.number}</span>
-                    <h3>${topic.title}</h3>
-                    <p class="text-sm leading-6 text-(--muted-color)">${topic.body}</p>
-                    <div class="mt-1 flex flex-wrap gap-2">
-                      ${topic.chips.map((chip) => html`<span class="motion-chip">${chip}</span>`)}
-                    </div>
-                    <span class="topic-arrow">Book this talk <span aria-hidden="true">→</span></span>
-                  </a>
-                `,
-              )}
+            ${speaking.topics.map(
+              (topic) => html`
+                <a class="topic motion-reveal" href="#contact" data-tilt>
+                  <span class="topic-number">${topic.number}</span>
+                  <h3>${topic.title}</h3>
+                  <p class="text-sm leading-6 text-(--muted-color)">${topic.body}</p>
+                  <div class="mt-1 flex flex-wrap gap-2">
+                    ${topic.chips.map((chip) => html`<span class="motion-chip">${chip}</span>`)}
+                  </div>
+                  <span class="topic-arrow">Book this talk <span aria-hidden="true">→</span></span>
+                </a>
+              `
+            )}
           </div>
 
           <div class="sp-invite motion-reveal">
@@ -262,8 +265,16 @@ export class PortfolioSpeakingComponent extends BaseElement {
             <h3 class="motion-title sp-invite-title">${speaking.invite.title}</h3>
             <p class="mx-auto mt-4 max-w-xl leading-7 text-(--muted-color)">${speaking.invite.body}</p>
             <div class="mt-8 flex flex-wrap justify-center gap-3">
-              <a class="app-link app-link--button app-link--accent" href="${speaking.invite.primaryCta.href}">${speaking.invite.primaryCta.label}</a>
-              <a class="app-link app-link--button app-link--ghost" href="${speaking.invite.secondaryCta.href}">${speaking.invite.secondaryCta.label}</a>
+              <a
+                class="app-link app-link--button app-link--accent"
+                href="${speaking.invite.primaryCta.href}"
+                >${speaking.invite.primaryCta.label}</a
+              >
+              <a
+                class="app-link app-link--button app-link--ghost"
+                href="${speaking.invite.secondaryCta.href}"
+                >${speaking.invite.secondaryCta.label}</a
+              >
             </div>
           </div>
         </div>

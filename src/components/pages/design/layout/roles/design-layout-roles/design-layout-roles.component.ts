@@ -18,21 +18,27 @@ export class DesignLayoutRolesComponent extends BaseElement {
     const { roles } = designLayoutContent;
 
     return html`
-      <section id="design-layout-roles" class="design-layout-roles layout-page layout-section" aria-labelledby="design-layout-roles-title">
+      <section
+        id="design-layout-roles"
+        class="design-layout-roles layout-page layout-section"
+        aria-labelledby="design-layout-roles-title"
+      >
         <div class="design-layout-heading layout-stack layout-stack-sm">
           <p class="type-eyebrow">${roles.eyebrow}</p>
           <h2 id="design-layout-roles-title" class="type-section">${roles.title}</h2>
           <p class="type-lede">${roles.lede}</p>
         </div>
         <div class="design-layout-role-grid layout-grid-4">
-          ${roles.items.map((item) => html`
-            <article class="design-layout-role-card">
-              <code>${item.token}</code>
-              <p class="type-label">${item.title}</p>
-              <strong>${item.value}</strong>
-              <p>${item.description}</p>
-            </article>
-          `)}
+          ${roles.items.map(
+            (item) => html`
+              <article class="design-layout-role-card">
+                <code>${item.token}</code>
+                <p class="type-label">${item.title}</p>
+                <strong>${item.value}</strong>
+                <p>${item.description}</p>
+              </article>
+            `
+          )}
         </div>
       </section>
     `;

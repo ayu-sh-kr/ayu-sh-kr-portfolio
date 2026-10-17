@@ -27,11 +27,16 @@ export class DesignInteractionNavComponent extends BaseElement {
   render(): TemplateResult {
     const { navigation } = designInteractionContent;
 
-    return html`
-      <nav class="design-interaction-nav layout-page layout-section-sm" aria-label="${navigation.ariaLabel}">
-        <div class="layout-row layout-row-tight">
-          ${navigation.groups.map((group) => html`<span class="type-label">${group}</span>${this.renderGroup(group)}`)}<a href="${navigation.useCase.href}">${navigation.useCase.label}</a><a href="${navigation.contract.href}">${navigation.contract.label}</a>
-        </div>
-      </nav>`;
+    return html` <nav
+      class="design-interaction-nav layout-page layout-section-sm"
+      aria-label="${navigation.ariaLabel}"
+    >
+      <div class="layout-row layout-row-tight">
+        ${navigation.groups.map(
+          (group) => html`<span class="type-label">${group}</span>${this.renderGroup(group)}`
+        )}<a href="${navigation.useCase.href}">${navigation.useCase.label}</a
+        ><a href="${navigation.contract.href}">${navigation.contract.label}</a>
+      </div>
+    </nav>`;
   }
 }

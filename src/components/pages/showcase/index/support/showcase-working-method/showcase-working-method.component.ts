@@ -23,16 +23,15 @@ export class ShowcaseWorkingMethodComponent extends BaseElement {
   render(): TemplateResult {
     return html`
       <div class="showcase-support-work-grid">
-        ${showcaseSupport.waysOfWorking
-          .map(
-            (way) => html`
-              <article class="showcase-support-way showcase-reveal" data-showcase-reveal>
-                <span class="showcase-support-number">${way.number}</span>
-                <h2 class="mt-6">${way.title}</h2>
-                <p class="mt-4">${way.body}</p>
-              </article>
-            `,
-          )}
+        ${showcaseSupport.waysOfWorking.map(
+          (way) => html`
+            <article class="showcase-support-way showcase-reveal" data-showcase-reveal>
+              <span class="showcase-support-number">${way.number}</span>
+              <h2 class="mt-6">${way.title}</h2>
+              <p class="mt-4">${way.body}</p>
+            </article>
+          `
+        )}
       </div>
     `;
   }

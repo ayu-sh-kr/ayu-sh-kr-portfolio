@@ -26,19 +26,24 @@ export class ShowcaseFaqComponent extends BaseElement {
     return html`
       <div class="showcase-faq-block">
         <p class="showcase-eyebrow showcase-reveal" data-showcase-reveal>Common questions</p>
-        <h2 id="showcase-support-title" class="showcase-title mt-4 showcase-reveal" data-showcase-reveal>Useful context before we start.</h2>
+        <h2
+          id="showcase-support-title"
+          class="showcase-title mt-4 showcase-reveal"
+          data-showcase-reveal
+        >
+          Useful context before we start.
+        </h2>
         <div class="showcase-faq-list mt-10">
-          ${showcaseSupport.faq
-            .map(
-              (item) => html`
-                <dota-accordion
-                  classname="${DOTA_FAQ_ACCORDION_CLASS}"
-                  header="${item.question}"
-                  description="${item.answer}"
-                  config='${DOTA_FAQ_ACCORDION_CONFIG}'
-                ></dota-accordion>
-              `,
-            )}
+          ${showcaseSupport.faq.map(
+            (item) => html`
+              <dota-accordion
+                classname="${DOTA_FAQ_ACCORDION_CLASS}"
+                header="${item.question}"
+                description="${item.answer}"
+                config="${DOTA_FAQ_ACCORDION_CONFIG}"
+              ></dota-accordion>
+            `
+          )}
         </div>
       </div>
     `;

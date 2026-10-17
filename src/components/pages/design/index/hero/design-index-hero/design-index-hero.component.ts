@@ -23,11 +23,16 @@ export class DesignIndexHeroComponent extends BaseElement {
     const { hero } = designContent;
 
     return html`
-      <section class="design-index-hero layout-page layout-section-hero" aria-labelledby="design-index-title">
+      <section
+        class="design-index-hero layout-page layout-section-hero"
+        aria-labelledby="design-index-title"
+      >
         <div class="design-index-hero__copy layout-stack layout-stack-lg">
           <div class="layout-stack layout-stack-sm">
             <p class="type-eyebrow">${hero.eyebrow}</p>
-            <h1 id="design-index-title" class="type-display">${hero.title.opening} <span>${hero.title.accent}</span> ${hero.title.closing}</h1>
+            <h1 id="design-index-title" class="type-display">
+              ${hero.title.opening} <span>${hero.title.accent}</span> ${hero.title.closing}
+            </h1>
             <p class="type-lede">${hero.lede}</p>
           </div>
           <ul class="design-index-hero__facts" aria-label="${hero.factsAriaLabel}">

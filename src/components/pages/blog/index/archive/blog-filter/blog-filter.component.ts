@@ -88,14 +88,28 @@ export class BlogFilterComponent extends BaseElement {
       <div class="blog-filterbar" aria-label="${blogIndexContent.filter.ariaLabel}">
         <div class="blog-container blog-filter-inner">
           <div class="blog-filter-pills">
-            ${blogFilters.map((filter) => html`
-              <button class="form-choice input-sm input-round input-bordered blog-pill${this.currentFilter === filter.value ? " is-active" : ""}" type="button"
-                      data-blog-filter="${filter.value}" aria-pressed="${this.currentFilter === filter.value}">
-                ${filter.label}
-              </button>
-            `)}
+            ${blogFilters.map(
+              (filter) => html`
+                <button
+                  class="form-choice input-sm input-round input-bordered blog-pill${this
+                    .currentFilter === filter.value
+                    ? " is-active"
+                    : ""}"
+                  type="button"
+                  data-blog-filter="${filter.value}"
+                  aria-pressed="${this.currentFilter === filter.value}"
+                >
+                  ${filter.label}
+                </button>
+              `
+            )}
           </div>
-          <span class="blog-count">${visibleCount} ${visibleCount === 1 ? blogIndexContent.filter.postLabel : blogIndexContent.filter.postsLabel}</span>
+          <span class="blog-count"
+            >${visibleCount}
+            ${visibleCount === 1
+              ? blogIndexContent.filter.postLabel
+              : blogIndexContent.filter.postsLabel}</span
+          >
         </div>
       </div>
     `;

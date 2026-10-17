@@ -99,12 +99,38 @@ export class PricingProjectQuoteFormComponent extends BaseElement {
         <legend>The work</legend>
         <div class="pricing-project-input-label">What kind of work is it?</div>
         <div class="pricing-project-choices" role="group">
-          ${pricingContent.startProject.workTypes.map((option) => html`
-            <button class="form-choice input-sm input-round input-bordered pricing-project-choice ${option === this.workType ? "is-selected" : ""}" type="button" data-project-work-type="${option}" aria-pressed="${option === this.workType}">${option}</button>
-          `)}
+          ${pricingContent.startProject.workTypes.map(
+            (option) => html`
+              <button
+                class="form-choice input-sm input-round input-bordered pricing-project-choice ${option ===
+                this.workType
+                  ? "is-selected"
+                  : ""}"
+                type="button"
+                data-project-work-type="${option}"
+                aria-pressed="${option === this.workType}"
+              >
+                ${option}
+              </button>
+            `
+          )}
         </div>
-        <label class="form-label form-label">What is in scope?${trustedHTML(`<textarea class="form-control input-md input-rounded-md input-bordered" data-project-field="scope" placeholder="Everything that has to exist for this to be done. Bullets are fine.">${escapeHtml(this.scope)}</textarea>`)}</label>
-        <label class="form-label form-label">Stack and constraints <small>Optional</small><input class="form-control input-md input-rounded-md input-bordered" data-project-field="constraints" value="${this.constraints}" placeholder="Postgres, AWS, must stay in eu-west-1"></label>
+        <label class="form-label form-label"
+          >What is in
+          scope?${trustedHTML(
+            `<textarea class="form-control input-md input-rounded-md input-bordered" data-project-field="scope" placeholder="Everything that has to exist for this to be done. Bullets are fine.">${escapeHtml(
+              this.scope
+            )}</textarea>`
+          )}</label
+        >
+        <label class="form-label form-label"
+          >Stack and constraints <small>Optional</small
+          ><input
+            class="form-control input-md input-rounded-md input-bordered"
+            data-project-field="constraints"
+            value="${this.constraints}"
+            placeholder="Postgres, AWS, must stay in eu-west-1"
+        /></label>
       </fieldset>
     `;
   }

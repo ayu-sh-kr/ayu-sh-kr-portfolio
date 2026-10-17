@@ -45,20 +45,54 @@ export class PortfolioContactComponent extends BaseElement {
     const { contact } = portfolioContent;
 
     return html`
-      <section id="contact" class="layout-page layout-section-end border-b border-(--border-color) text-center" aria-labelledby="contact-title">
+      <section
+        id="contact"
+        class="layout-page layout-section-end border-b border-(--border-color) text-center"
+        aria-labelledby="contact-title"
+      >
         <div class="layout-content">
           <p class="motion-eyebrow motion-reveal">${contact.eyebrow}</p>
           <h2 id="contact-title" class="motion-display motion-reveal mx-auto mt-5 max-w-5xl">
             ${contact.titleBeforeAccent} <span class="text-(--primary-color)">${contact.accent}</span>
           </h2>
-          <p class="motion-reveal mx-auto mt-7 max-w-xl text-[length:var(--type-lede-size)] leading-[var(--type-lede-leading)] text-(--muted-color)">${contact.body}</p>
+          <p
+            class="motion-reveal mx-auto mt-7 max-w-xl text-[length:var(--type-lede-size)] leading-[var(--type-lede-leading)] text-(--muted-color)"
+          >
+            ${contact.body}
+          </p>
           <div class="motion-reveal mt-10 flex flex-wrap justify-center gap-3">
-            <a class="app-link app-link--button app-link--accent" data-analytics-contact="email" href="${contact.emailHref}">Email me</a>
-            <a class="app-link app-link--button app-link--ghost" data-analytics-contact="resume" href="${contact.resumeHref}">Request résumé</a>
+            <a
+              class="app-link app-link--button app-link--accent"
+              data-analytics-contact="email"
+              href="${contact.emailHref}"
+              >Email me</a
+            >
+            <a
+              class="app-link app-link--button app-link--ghost"
+              data-analytics-contact="resume"
+              href="${contact.resumeHref}"
+              >Request résumé</a
+            >
           </div>
-          <div class="motion-reveal mt-9 flex flex-wrap justify-center gap-x-6 gap-y-3 text-sm font-medium text-(--muted-color)">
-            <a class="quiet-link" data-analytics-contact="github" href="${contact.github}" target="_blank" rel="noreferrer">GitHub</a>
-            <a class="quiet-link" data-analytics-contact="linkedin" href="${contact.linkedin}" target="_blank" rel="noreferrer">LinkedIn</a>
+          <div
+            class="motion-reveal mt-9 flex flex-wrap justify-center gap-x-6 gap-y-3 text-sm font-medium text-(--muted-color)"
+          >
+            <a
+              class="quiet-link"
+              data-analytics-contact="github"
+              href="${contact.github}"
+              target="_blank"
+              rel="noreferrer"
+              >GitHub</a
+            >
+            <a
+              class="quiet-link"
+              data-analytics-contact="linkedin"
+              href="${contact.linkedin}"
+              target="_blank"
+              rel="noreferrer"
+              >LinkedIn</a
+            >
             <span>India · IST (UTC+5:30)</span>
           </div>
         </div>

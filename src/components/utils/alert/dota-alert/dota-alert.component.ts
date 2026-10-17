@@ -39,9 +39,21 @@ type AlertJob = BuiltInAlertJob<unknown, unknown> | CustomAlertJob<unknown>;
 
 /** Tone-specific line glyphs rendered in the one shared icon circle. */
 const GLYPHS: Record<AlertTone, string> = {
-  note: `<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 11.4v5"></path><circle cx="12" cy="7.7" r="1.05"></circle></svg>`,
-  ask: `<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M9.5 9.4a2.6 2.6 0 1 1 3.3 2.7c-.6.2-.9.7-.9 1.3v.5"></path><circle cx="12" cy="16.4" r="1.05"></circle></svg>`,
-  risk: `<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 7.4v5.2"></path><circle cx="12" cy="16.5" r="1.05"></circle></svg>`,
+  note: `<svg viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="9"></circle>
+    <path d="M12 11.4v5"></path>
+    <circle cx="12" cy="7.7" r="1.05"></circle>
+  </svg>`,
+  ask: `<svg viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="9"></circle>
+    <path d="M9.5 9.4a2.6 2.6 0 1 1 3.3 2.7c-.6.2-.9.7-.9 1.3v.5"></path>
+    <circle cx="12" cy="16.4" r="1.05"></circle>
+  </svg>`,
+  risk: `<svg viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="9"></circle>
+    <path d="M12 7.4v5.2"></path>
+    <circle cx="12" cy="16.5" r="1.05"></circle>
+  </svg>`,
 };
 
 /**
@@ -249,15 +261,30 @@ export class DotaAlertComponent extends BaseElement implements AlertHost {
               </div>
               <div class="dota-alert__field" id="dota-alert-field" hidden>
                 <div class="dota-alert__field-label">
-                  <label class="form-label form-label" for="dota-alert-input" id="dota-alert-label"></label>
+                  <label
+                    class="form-label form-label"
+                    for="dota-alert-input"
+                    id="dota-alert-label"
+                  ></label>
                   <span class="dota-alert__hint" id="dota-alert-hint"></span>
                 </div>
-                <input class="form-control input-md input-rounded-md input-bordered dota-alert__input" id="dota-alert-input" type="text" autocomplete="off" />
+                <input
+                  class="form-control input-md input-rounded-md input-bordered dota-alert__input"
+                  id="dota-alert-input"
+                  type="text"
+                  autocomplete="off"
+                />
               </div>
               <p class="dota-alert__error" id="dota-alert-built-in-error" role="alert" hidden></p>
             </div>
             <footer class="dota-alert__footer">
-              <button class="dota-alert__button dota-alert__button--ghost" id="dota-alert-cancel" type="button">Cancel</button>
+              <button
+                class="dota-alert__button dota-alert__button--ghost"
+                id="dota-alert-cancel"
+                type="button"
+              >
+                Cancel
+              </button>
               <button class="dota-alert__button" id="dota-alert-confirm" type="submit">
                 <span class="dota-alert__confirm-label" id="dota-alert-confirm-label">Continue</span>
               </button>

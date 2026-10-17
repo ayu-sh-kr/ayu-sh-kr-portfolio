@@ -18,19 +18,34 @@ export class SupportResourcesComponent extends BaseElement {
   /** Renders the authored self-serve resources as accessible links. */
   render(): TemplateResult {
     return html`
-      <section id="shelf" class="support-resources layout-content layout-section" aria-labelledby="support-resources-title">
+      <section
+        id="shelf"
+        class="support-resources layout-content layout-section"
+        aria-labelledby="support-resources-title"
+      >
         <div class="support-resources-heading">
           <p class="support-eyebrow">Before you write</p>
           <h2 id="support-resources-title" class="type-section">Things that answer themselves.</h2>
-          <p>Four places worth a look first. Between them they cover most of what lands in my inbox on a normal week.</p>
+          <p>
+            Four places worth a look first. Between them they cover most of what lands in my inbox on a
+            normal week.
+          </p>
         </div>
         <div class="support-resource-list">
-          ${supportContent.resources.map((resource) => html`
-            <a class="support-resource" href="${resource.href}"${unsafeHTML(resource.href.startsWith("http") ? " target=\"_blank\" rel=\"noreferrer\"" : "")}>
+          ${supportContent.resources.map(
+            (resource) => html` <a
+              class="support-resource"
+              href="${resource.href}"
+              ${unsafeHTML(resource.href.startsWith("http") ? ' target="_blank" rel="noreferrer"' : "")}
+            >
               <span class="support-resource-icon" aria-hidden="true">↗</span>
-              <span><span class="support-resource-title">${resource.title}</span><span class="support-resource-copy">${resource.body}</span></span>
+              <span
+                ><span class="support-resource-title">${resource.title}</span
+                ><span class="support-resource-copy">${resource.body}</span></span
+              >
               <span class="support-resource-arrow" aria-hidden="true">→</span>
-            </a>`)}
+            </a>`
+          )}
         </div>
       </section>
     `;

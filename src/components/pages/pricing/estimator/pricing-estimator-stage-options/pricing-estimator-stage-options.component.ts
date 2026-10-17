@@ -102,15 +102,22 @@ export class PricingEstimatorStageOptionsComponent extends BaseElement {
       <fieldset class="pricing-estimator-question">
         <legend><span>${content.stageStep}</span>${content.stageQuestion}</legend>
         <div class="pricing-pick-grid pricing-pick-grid-three">
-          ${content.stages
-            .map(
-              (option) => html`
-                <button class="form-choice input-lg input-rounded-md input-bordered pricing-pick ${option.id === this.selectedId ? "is-selected" : ""}" type="button" data-estimator-id="${option.id}" aria-pressed="${option.id === this.selectedId}">
-                  <span class="pricing-pick-label">${option.label}</span>
-                  <span class="pricing-pick-sublabel">${option.sublabel}</span>
-                </button>
-              `,
-            )}
+          ${content.stages.map(
+            (option) => html`
+              <button
+                class="form-choice input-lg input-rounded-md input-bordered pricing-pick ${option.id ===
+                this.selectedId
+                  ? "is-selected"
+                  : ""}"
+                type="button"
+                data-estimator-id="${option.id}"
+                aria-pressed="${option.id === this.selectedId}"
+              >
+                <span class="pricing-pick-label">${option.label}</span>
+                <span class="pricing-pick-sublabel">${option.sublabel}</span>
+              </button>
+            `
+          )}
         </div>
       </fieldset>
     `;

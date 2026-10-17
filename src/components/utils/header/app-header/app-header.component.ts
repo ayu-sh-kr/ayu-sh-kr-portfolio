@@ -63,12 +63,17 @@ export class AppHeaderComponent extends BaseElement {
           <app-brand></app-brand>
           <div class="app-header-actions layout-row">
             <div class="app-header-desktop-links layout-row layout-row-loose">
-              ${nav.links
-                .map(
-                  (link) => html`
-                    <a href="${link.href}" class="app-link app-link--nav ${link.label === "Pricing" ? "app-header-nav-pricing" : ""}">${link.label}</a>
-                  `,
-                )}
+              ${nav.links.map(
+                (link) => html`
+                  <a
+                    href="${link.href}"
+                    class="app-link app-link--nav ${link.label === "Pricing"
+                      ? "app-header-nav-pricing"
+                      : ""}"
+                    >${link.label}</a
+                  >
+                `
+              )}
             </div>
             <dota-popover
               class="app-header-mobile-popover"
@@ -85,12 +90,13 @@ export class AppHeaderComponent extends BaseElement {
                 ></dota-icon>
               </button>
               <div id="mobile-nav-panel" class="app-header-mobile-panel" aria-label="Mobile navigation">
-                ${nav.links
-                  .map(
-                    (link) => html`
-                      <a href="${link.href}" class="app-link app-link--nav app-link--nav-mobile">${link.label}</a>
-                    `,
-                  )}
+                ${nav.links.map(
+                  (link) => html`
+                    <a href="${link.href}" class="app-link app-link--nav app-link--nav-mobile"
+                      >${link.label}</a
+                    >
+                  `
+                )}
               </div>
             </dota-popover>
             <dark-mode-button></dark-mode-button>

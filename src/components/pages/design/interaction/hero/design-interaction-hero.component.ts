@@ -14,18 +14,22 @@ export class DesignInteractionHeroComponent extends BaseElement {
   render(): TemplateResult {
     const { hero } = designInteractionContent;
 
-    return html`
-      <section class="design-interaction-hero layout-page layout-section-hero" aria-labelledby="design-interaction-title">
-        <div class="design-interaction-hero__copy layout-stack layout-stack-lg">
-          <div class="layout-stack layout-stack-sm">
-            <p class="type-eyebrow">${hero.eyebrow}</p>
-            <h1 id="design-interaction-title" class="type-display">${hero.title.opening} <span>${hero.title.accent}</span> ${hero.title.closing}</h1>
-            <p class="type-lede">${hero.lede}</p>
-          </div>
-          <ul class="design-interaction-tags" aria-label="${hero.tagsAriaLabel}">
-            ${hero.tags.map((tag) => html`<li>${tag}</li>`)}
-          </ul>
+    return html` <section
+      class="design-interaction-hero layout-page layout-section-hero"
+      aria-labelledby="design-interaction-title"
+    >
+      <div class="design-interaction-hero__copy layout-stack layout-stack-lg">
+        <div class="layout-stack layout-stack-sm">
+          <p class="type-eyebrow">${hero.eyebrow}</p>
+          <h1 id="design-interaction-title" class="type-display">
+            ${hero.title.opening} <span>${hero.title.accent}</span> ${hero.title.closing}
+          </h1>
+          <p class="type-lede">${hero.lede}</p>
         </div>
-      </section>`;
+        <ul class="design-interaction-tags" aria-label="${hero.tagsAriaLabel}">
+          ${hero.tags.map((tag) => html`<li>${tag}</li>`)}
+        </ul>
+      </div>
+    </section>`;
   }
 }

@@ -24,25 +24,28 @@ export class BuildOfferingComponent extends BaseElement {
     const content = pricingContent.buildOffering;
 
     return html`
-      <section id="pricing-build" class="pricing-section pricing-build-section" aria-labelledby="pricing-build-title">
+      <section
+        id="pricing-build"
+        class="pricing-section pricing-build-section"
+        aria-labelledby="pricing-build-title"
+      >
         <div class="pricing-section-copy">
           <p class="pricing-eyebrow">${content.eyebrow}</p>
           <h2 id="pricing-build-title" class="pricing-section-title mt-3">${content.title}</h2>
           <p class="pricing-section-lede mt-5">${content.body}</p>
         </div>
         <div class="pricing-value-grid">
-          ${content.rows
-            .map(
-              (row) => html`
-                <article class="pricing-value-row">
-                  <span class="pricing-value-number">${row.number}</span>
-                  <div>
-                    <h3>${row.title}</h3>
-                    <p>${row.body}</p>
-                  </div>
-                </article>
-              `,
-            )}
+          ${content.rows.map(
+            (row) => html`
+              <article class="pricing-value-row">
+                <span class="pricing-value-number">${row.number}</span>
+                <div>
+                  <h3>${row.title}</h3>
+                  <p>${row.body}</p>
+                </div>
+              </article>
+            `
+          )}
         </div>
       </section>
     `;

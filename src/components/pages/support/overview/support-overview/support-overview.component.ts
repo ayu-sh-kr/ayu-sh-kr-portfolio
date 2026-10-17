@@ -69,17 +69,23 @@ export class SupportOverviewComponent extends BaseElement {
     const { overview } = supportContent;
 
     return html`
-      <section class="support-overview layout-page layout-section-hero" aria-labelledby="support-overview-title">
+      <section
+        class="support-overview layout-page layout-section-hero"
+        aria-labelledby="support-overview-title"
+      >
         <p class="support-eyebrow">${overview.eyebrow}</p>
         <h1 id="support-overview-title" class="support-display type-display">
-          ${overview.titleBeforeAccent} <span>${overview.titleAccent}</span> ${overview.titleAfterAccent}
+          ${overview.titleBeforeAccent}
+          <span>${overview.titleAccent}</span> ${overview.titleAfterAccent}
         </h1>
         <p class="support-overview-lede">${overview.lede}</p>
 
         <div class="support-desk" aria-label="Support desk status">
           <div class="support-desk-cell">
             <p class="support-desk-key">Systems</p>
-            <p class="support-desk-value"><span class="support-status-dot" aria-hidden="true"></span>All operational</p>
+            <p class="support-desk-value">
+              <span class="support-status-dot" aria-hidden="true"></span>All operational
+            </p>
             <p class="support-desk-sub">Current hosted-service status</p>
           </div>
           <div class="support-desk-cell">

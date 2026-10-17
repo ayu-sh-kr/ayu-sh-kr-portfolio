@@ -28,9 +28,13 @@ export class ShowcasePageComponent extends BaseElement {
       <main class="showcase-page">
         <showcase-hero data-analytics-section="showcase_hero"></showcase-hero>
         <div class="showcase-spotlight-index" aria-hidden="true">
-          ${spotlights.map((project) => html`<span data-showcase-spotlight-index title="${project.title}"></span>`)}
+          ${spotlights.map(
+            (project) => html`<span data-showcase-spotlight-index title="${project.title}"></span>`
+          )}
         </div>
-        ${spotlights.map((project) => html`<showcase-spotlight project-slug="${project.slug}"></showcase-spotlight>`)}
+        ${spotlights.map(
+          (project) => html`<showcase-spotlight project-slug="${project.slug}"></showcase-spotlight>`
+        )}
         <showcase-featured data-analytics-section="showcase_projects"></showcase-featured>
         <showcase-archive data-analytics-section="showcase_projects"></showcase-archive>
         <showcase-support data-analytics-section="showcase_support"></showcase-support>

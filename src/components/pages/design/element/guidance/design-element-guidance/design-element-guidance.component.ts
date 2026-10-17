@@ -22,34 +22,45 @@ export class DesignElementGuidanceComponent extends BaseElement {
   render(): TemplateResult {
     const { guidance } = designElementContent;
     return html`
-      <section id="design-element-guidance" class="design-element-guidance layout-page layout-section-end" aria-labelledby="design-element-guidance-title">
+      <section
+        id="design-element-guidance"
+        class="design-element-guidance layout-page layout-section-end"
+        aria-labelledby="design-element-guidance-title"
+      >
         <div class="design-element-guidance__heading layout-stack layout-stack-sm">
           <p class="type-eyebrow">${guidance.eyebrow}</p>
           <h2 id="design-element-guidance-title" class="type-section">${guidance.title}</h2>
           <p class="type-lede">${guidance.lede}</p>
         </div>
         <div class="design-element-guidance__groups layout-grid-2">
-          ${guidance.groups.map((group) => html`
-            <article class="design-element-guidance__group">
-              <h3 class="type-card-title">${group.label}</h3>
-              <dl>
-                <div>
-                  <dt>${guidance.labels.use}</dt>
-                  <dd>${group.use}</dd>
-                </div>
-                <div>
-                  <dt>${guidance.labels.examples}</dt>
-                  <dd>${group.examples}</dd>
-                </div>
-              </dl>
-              <p class="design-element-guidance__rule">${group.rule}</p>
-            </article>
-          `)}
+          ${guidance.groups.map(
+            (group) => html`
+              <article class="design-element-guidance__group">
+                <h3 class="type-card-title">${group.label}</h3>
+                <dl>
+                  <div>
+                    <dt>${guidance.labels.use}</dt>
+                    <dd>${group.use}</dd>
+                  </div>
+                  <div>
+                    <dt>${guidance.labels.examples}</dt>
+                    <dd>${group.examples}</dd>
+                  </div>
+                </dl>
+                <p class="design-element-guidance__rule">${group.rule}</p>
+              </article>
+            `
+          )}
         </div>
-        <section class="design-element-guidance__lifecycle" aria-labelledby="design-element-guidance-lifecycle-title">
+        <section
+          class="design-element-guidance__lifecycle"
+          aria-labelledby="design-element-guidance-lifecycle-title"
+        >
           <div class="design-element-guidance__lifecycle-intro layout-stack layout-stack-sm">
             <p class="type-eyebrow">${guidance.lifecycle.eyebrow}</p>
-            <h3 id="design-element-guidance-lifecycle-title" class="type-subsection">${guidance.lifecycle.title}</h3>
+            <h3 id="design-element-guidance-lifecycle-title" class="type-subsection">
+              ${guidance.lifecycle.title}
+            </h3>
             <p class="type-lede">${guidance.lifecycle.lede}</p>
           </div>
           <ol class="design-element-guidance__lifecycle-steps">

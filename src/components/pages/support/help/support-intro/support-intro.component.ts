@@ -26,7 +26,8 @@ export class SupportIntroComponent extends BaseElement {
       <header class="support-head">
         <p class="support-eyebrow type-eyebrow">${opener.eyebrow}</p>
         <h2 id="support-title" class="type-section">
-          ${opener.titleBeforeAccent} <span class="support-accent">${opener.titleAccent}</span> ${opener.titleAfterAccent}
+          ${opener.titleBeforeAccent}
+          <span class="support-accent">${opener.titleAccent}</span> ${opener.titleAfterAccent}
         </h2>
         <p class="support-lede type-lede">${opener.lede}</p>
       </header>

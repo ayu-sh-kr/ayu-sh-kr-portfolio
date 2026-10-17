@@ -64,6 +64,8 @@ export class BlogMarkdownViewComponent extends BaseElement {
 
   /** Renders the article skeleton around the themed `<md-view>`. */
   render() {
-    return html`${trustedHTML(this.markdownLifecycle.renderArticleSkeleton("blog-markdown-content"))}`;
+    return html`${trustedHTML(
+      this.markdownLifecycle.renderArticleSkeleton("blog-markdown-content")
+    )}`;
   }
 }

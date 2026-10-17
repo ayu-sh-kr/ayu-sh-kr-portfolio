@@ -26,14 +26,25 @@ export class PricingProjectProcessComponent extends BaseElement {
     const content = pricingContent.startProject;
 
     return html`
-      <section class="pricing-project-process-section layout-page" aria-labelledby="pricing-project-process-title">
+      <section
+        class="pricing-project-process-section layout-page"
+        aria-labelledby="pricing-project-process-title"
+      >
         <div class="pricing-project-subsection-copy">
           <p class="pricing-eyebrow">${content.processEyebrow}</p>
           <h3 id="pricing-project-process-title">${content.processTitle}</h3>
           <p>${content.processBody}</p>
         </div>
         <div class="pricing-project-process-grid">
-          ${content.process.map((step) => html`<article><span>${step.number}</span><h4>${step.title}</h4><p>${step.body}</p><b>${step.when}</b></article>`)}
+          ${content.process.map(
+            (step) =>
+              html`<article>
+                <span>${step.number}</span>
+                <h4>${step.title}</h4>
+                <p>${step.body}</p>
+                <b>${step.when}</b>
+              </article>`
+          )}
         </div>
       </section>
     `;

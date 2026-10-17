@@ -40,16 +40,25 @@ export class BlogRelatedPostsComponent extends BaseElement {
     const items = related.map((item) => html`
       <li>
         <a class="blog-related-link" href="${getBlogPath(item.slug)}">
-          <span class="blog-related-meta">${labelForCategory(item.category)} · ${item.minutes} ${blogIndexContent.readTimeSuffix}</span>
+          <span class="blog-related-meta"
+            >${labelForCategory(item.category)} · ${item.minutes}
+            ${blogIndexContent.readTimeSuffix}</span
+          >
           <span class="blog-related-heading">${item.header}</span>
         </a>
       </li>
     `);
 
     return html`
-      <section class="blog-related" aria-labelledby="blog-related-title" data-analytics-section="blog_article_related">
+      <section
+        class="blog-related"
+        aria-labelledby="blog-related-title"
+        data-analytics-section="blog_article_related"
+      >
         <h2 id="blog-related-title" class="blog-related-title">${blogArticleContent.related.title}</h2>
-        <ul class="blog-related-list">${items}</ul>
+        <ul class="blog-related-list">
+          ${items}
+        </ul>
       </section>
     `;
   }

@@ -52,12 +52,19 @@ export class AppNoticeComponent extends BaseElement {
     const announcement = this.announce === "true" ? `role="status" aria-live="${this.live}"` : "";
 
     return html`
-      <aside class="app-notice" data-notice-surface aria-label="${ariaLabel}" ${unsafeHTML(announcement)}>
+      <aside
+        class="app-notice"
+        data-notice-surface
+        aria-label="${ariaLabel}"
+        ${unsafeHTML(announcement)}
+      >
         <div class="app-notice__content ${contentClass}">
           <p class="app-notice__label type-label" data-notice-label>${this.label}</p>
           <p class="app-notice__message" data-notice-message>${this.message}</p>
           <p class="app-notice__supporting" data-notice-supporting>${this.supporting}</p>
-          ${this.actions ? html`<div class="app-notice__actions">${trustedHTML(this.actions)}</div>` : ""}
+          ${this.actions
+            ? html`<div class="app-notice__actions">${trustedHTML(this.actions)}</div>`
+            : ""}
         </div>
       </aside>
     `;

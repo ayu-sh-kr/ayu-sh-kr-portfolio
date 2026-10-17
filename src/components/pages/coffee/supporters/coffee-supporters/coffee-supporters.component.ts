@@ -130,18 +130,42 @@ export class CoffeeSupportersComponent extends BaseElement {
     const isUnavailable = this.state === "unavailable";
     const statusSummary = isUnavailable ? content.unavailableSummary : hasEntries ? `${summary!.total} ${summary!.total === 1 ? "contribution" : "contributions"} so far.` : content.emptySummary;
     const fallback = isUnavailable
-      ? html`<h3>${content.unavailableTitle}</h3><p>${content.unavailableBody}</p>`
-      : html`<h3>${content.emptyTitle}</h3><p>${content.emptyBody}</p>`;
+      ? html`<h3>${content.unavailableTitle}</h3>
+        <p>${content.unavailableBody}</p>`
+      : html`<h3>${content.emptyTitle}</h3>
+        <p>${content.emptyBody}</p>`;
 
     return html`
-      <section id="coffee-supporters" class="coffee-supporters-section layout-content layout-section-lg layout-stack layout-stack-xl" aria-labelledby="coffee-supporters-title">
+      <section
+        id="coffee-supporters"
+        class="coffee-supporters-section layout-content layout-section-lg layout-stack layout-stack-xl"
+        aria-labelledby="coffee-supporters-title"
+      >
         <header class="layout-stack layout-stack-sm" data-coffee-reveal>
-          <p class="coffee-supporters-summary">${this.state === "loading" ? content.summary : statusSummary}</p>
+          <p class="coffee-supporters-summary">
+            ${this.state === "loading" ? content.summary : statusSummary}
+          </p>
           <h2 id="coffee-supporters-title" class="type-subsection">${content.title}</h2>
         </header>
         <div class="coffee-supporter-list" aria-live="polite">
-          ${entries.map((entry) => html`<article class="coffee-supporter-row" data-coffee-reveal><span class="coffee-supporter-initial" aria-hidden="true">${entry.name.slice(0, 1)}</span><div><h3>${entry.name}</h3>${entry.note ? html`<p>${entry.note}</p>` : ""}</div><span class="coffee-supporter-amount">${entry.amount}</span><time>${entry.when}</time></article>`)}
-          ${this.state !== "loading" && !hasEntries ? html`<div class="coffee-supporters-empty layout-stack layout-stack-sm" role="status">${fallback}</div>` : ""}
+          ${entries.map(
+            (entry) =>
+              html`<article class="coffee-supporter-row" data-coffee-reveal>
+                <span class="coffee-supporter-initial" aria-hidden="true"
+                  >${entry.name.slice(0, 1)}</span
+                >
+                <div>
+                  <h3>${entry.name}</h3>
+                  ${entry.note ? html`<p>${entry.note}</p>` : ""}
+                </div>
+                <span class="coffee-supporter-amount">${entry.amount}</span><time>${entry.when}</time>
+              </article>`
+          )}
+          ${this.state !== "loading" && !hasEntries
+            ? html`<div class="coffee-supporters-empty layout-stack layout-stack-sm" role="status">
+                ${fallback}
+              </div>`
+            : ""}
         </div>
       </section>
     `;

@@ -42,15 +42,15 @@ export class DesignTypographyGuidanceComponent extends BaseElement {
             const layout = PAIRING_LAYOUTS[index];
 
             return html`
-            <article class="design-guidance-card ${layout.cardClass}">
-              <p class="type-label">${pairing.label}</p>
-              ${layout.headingTag === "h3"
-                ? html`<h3 class="${layout.headingClass}">${pairing.heading}</h3>`
-                : html`<p class="${layout.headingClass}">${pairing.heading}</p>`}
-              <p class="${layout.bodyClass}">${pairing.body}</p>
-              <code>${pairing.token}</code>
-            </article>
-          `;
+              <article class="design-guidance-card ${layout.cardClass}">
+                <p class="type-label">${pairing.label}</p>
+                ${layout.headingTag === "h3"
+                  ? html`<h3 class="${layout.headingClass}">${pairing.heading}</h3>`
+                  : html`<p class="${layout.headingClass}">${pairing.heading}</p>`}
+                <p class="${layout.bodyClass}">${pairing.body}</p>
+                <code>${pairing.token}</code>
+              </article>
+            `;
           })}
         </div>
 
@@ -59,7 +59,10 @@ export class DesignTypographyGuidanceComponent extends BaseElement {
             <p class="type-label">${guidance.prose.label}</p>
             <h3>${guidance.prose.title}</h3>
             ${guidance.prose.paragraphs.map((paragraph) => html`<p>${paragraph}</p>`)}
-            <a href="${guidance.prose.linkHref}">${guidance.prose.linkLabel} <span aria-hidden="true">${guidance.prose.linkIndicator}</span></a>
+            <a href="${guidance.prose.linkHref}"
+              >${guidance.prose.linkLabel}
+              <span aria-hidden="true">${guidance.prose.linkIndicator}</span></a
+            >
           </article>
 
           <aside class="design-checklist" aria-label="${guidance.checklistAriaLabel}">

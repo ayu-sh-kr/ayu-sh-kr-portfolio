@@ -25,7 +25,10 @@ export class BuildPricingComponent extends BaseElement {
     const content = pricingContent.buildPricing;
 
     return html`
-      <section class="build-pricing-section layout-page layout-section" aria-labelledby="build-pricing-title">
+      <section
+        class="build-pricing-section layout-page layout-section"
+        aria-labelledby="build-pricing-title"
+      >
         <div class="build-pricing-copy">
           <p class="pricing-eyebrow">${content.eyebrow}</p>
           <h2 id="build-pricing-title" class="pricing-section-title mt-3">${content.title}</h2>
@@ -34,7 +37,9 @@ export class BuildPricingComponent extends BaseElement {
         <div class="build-pricing-grid">
           ${content.tiers.map((tier) => this.renderTier(tier, content.featuredLabel))}
         </div>
-        <p class="build-pricing-note">${content.note} <a href="#pricing-start-project">${content.noteLink}</a>.</p>
+        <p class="build-pricing-note">
+          ${content.note} <a href="#pricing-start-project">${content.noteLink}</a>.
+        </p>
       </section>
     `;
   }
@@ -48,12 +53,18 @@ export class BuildPricingComponent extends BaseElement {
         <p class="build-pricing-price">${tier.price}<small>${tier.suffix}</small></p>
         <p class="build-pricing-summary">${tier.summary}</p>
         <ul>
-          ${tier.bullets
-            .map(
-              (bullet) => html`<li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m3 8.5 3 3 7-8" /></svg>${bullet}</li>`,
-            )}
+          ${tier.bullets.map(
+            (bullet) =>
+              html`<li>
+                <svg viewBox="0 0 16 16" aria-hidden="true"><path d="m3 8.5 3 3 7-8" /></svg>${bullet}
+              </li>`
+          )}
         </ul>
-        <a class="app-link app-link--button ${tier.featured ? "app-link--accent" : "app-link--ghost"}" href="#pricing-start-project">${tier.cta}</a>
+        <a
+          class="app-link app-link--button ${tier.featured ? "app-link--accent" : "app-link--ghost"}"
+          href="#pricing-start-project"
+          >${tier.cta}</a
+        >
       </article>
     `;
   }

@@ -109,7 +109,8 @@ export class SupportFaqComponent extends BaseElement {
     if (clear) clear.classList.toggle("is-visible", Boolean(term));
     if (count) count.innerHTML = visibleCount === supportContent.faqs.length
       ? `<b>${visibleCount}</b> ${supportContent.faq.questionLabel}`
-      : `<b>${visibleCount}</b> of ${supportContent.faqs.length} ${supportContent.faq.questionLabel}`;
+      : `<b>${visibleCount}</b> of ${supportContent.faqs.length}
+        ${supportContent.faq.questionLabel}`;
     if (empty) empty.hidden = visibleCount !== 0;
   }
 
@@ -123,7 +124,11 @@ export class SupportFaqComponent extends BaseElement {
     const content = supportContent.faq;
 
     return html`
-      <section id="faq" class="support-faq layout-page layout-section" aria-labelledby="support-faq-title">
+      <section
+        id="faq"
+        class="support-faq layout-page layout-section"
+        aria-labelledby="support-faq-title"
+      >
         <div class="support-faq-content">
           <div class="support-faq-heading">
             <p class="support-eyebrow">${content.eyebrow}</p>
@@ -132,33 +137,60 @@ export class SupportFaqComponent extends BaseElement {
           </div>
           <div class="form-input-group input-md input-rounded-md input-bordered support-faq-search">
             <span aria-hidden="true">⌕</span>
-            <input class="form-control input-md input-rounded-md input-bordered" id="support-faq-search" type="search" placeholder="${content.searchPlaceholder}" aria-label="${content.searchAriaLabel}" autocomplete="off" />
-            <button id="support-faq-clear" type="button" aria-label="${content.clearAriaLabel}">×</button>
+            <input
+              class="form-control input-md input-rounded-md input-bordered"
+              id="support-faq-search"
+              type="search"
+              placeholder="${content.searchPlaceholder}"
+              aria-label="${content.searchAriaLabel}"
+              autocomplete="off"
+            />
+            <button id="support-faq-clear" type="button" aria-label="${content.clearAriaLabel}">
+              ×
+            </button>
           </div>
-          <div class="support-faq-categories layout-row layout-row-tight" role="group" aria-label="${content.categoryAriaLabel}">
-            ${content.categories.map((category, index) => html`<button class="support-faq-category${index === 0 ? " is-active" : ""}" type="button" data-support-faq-category="${category.value}">${category.label}</button>`)}
+          <div
+            class="support-faq-categories layout-row layout-row-tight"
+            role="group"
+            aria-label="${content.categoryAriaLabel}"
+          >
+            ${content.categories.map(
+              (category, index) =>
+                html`<button
+                  class="support-faq-category${index === 0 ? " is-active" : ""}"
+                  type="button"
+                  data-support-faq-category="${category.value}"
+                >
+                  ${category.label}
+                </button>`
+            )}
           </div>
-          <p id="support-faq-count" class="support-faq-count" aria-live="polite"><b>${supportContent.faqs.length}</b> ${content.questionLabel}</p>
+          <p id="support-faq-count" class="support-faq-count" aria-live="polite">
+            <b>${supportContent.faqs.length}</b> ${content.questionLabel}
+          </p>
           <div class="support-faq-list">
-            ${supportContent.faqs
-              .map(
-                (faq) => html`
-                  <dota-accordion
-                    classname="${DOTA_FAQ_ACCORDION_CLASS}"
-                    data-support-faq-item
-                    data-category="${faq.category}"
-                    data-search-text="${`${faq.question} ${faq.answer}`.replace(/<[^>]*>/g, "").toLocaleLowerCase()}"
-                    header="${faq.question}"
-                    description="${faq.answer}"
-                    config='${DOTA_FAQ_ACCORDION_CONFIG}'
-                  ></dota-accordion>
-                `,
-              )}
+            ${supportContent.faqs.map(
+              (faq) => html`
+                <dota-accordion
+                  classname="${DOTA_FAQ_ACCORDION_CLASS}"
+                  data-support-faq-item
+                  data-category="${faq.category}"
+                  data-search-text="${`${faq.question} ${faq.answer}`
+                    .replace(/<[^>]*>/g, "")
+                    .toLocaleLowerCase()}"
+                  header="${faq.question}"
+                  description="${faq.answer}"
+                  config="${DOTA_FAQ_ACCORDION_CONFIG}"
+                ></dota-accordion>
+              `
+            )}
           </div>
           <div id="support-faq-empty" class="support-faq-empty" hidden>
             <h3>${content.empty.title}</h3>
             <p>${content.empty.body}</p>
-            <a class="app-link app-link--button app-link--ink" href="#support">${content.empty.actionLabel}</a>
+            <a class="app-link app-link--button app-link--ink" href="#support"
+              >${content.empty.actionLabel}</a
+            >
           </div>
         </div>
       </section>

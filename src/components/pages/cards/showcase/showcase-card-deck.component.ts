@@ -82,6 +82,44 @@ export class ShowcaseCardDeckComponent extends BaseElement {
    */
   render(): TemplateResult {
     const content = showcaseCardDeckContent;
-    return html`<section class="showcase-deck layout-section" aria-label="${content.sectionLabel}"><div class="showcase-deck__stage layout-content"><div class="showcase-deck__stack" data-showcase-deck role="group" aria-roledescription="card deck" aria-label="${content.deckAriaLabel}" tabindex="0">${trustedHTML(renderShowcaseCardDeckCards())}</div><p class="showcase-deck__live" data-showcase-deck-live aria-live="polite" aria-atomic="true"></p></div><footer class="showcase-deck__controls layout-content"><div><button type="button" data-showcase-deck-previous aria-label="${content.previousCardAriaLabel}">←</button><nav data-showcase-deck-ticks aria-label="${content.cardsAriaLabel}"></nav><button type="button" data-showcase-deck-next aria-label="${content.nextCardAriaLabel}">→</button></div><p data-showcase-deck-hint>${content.hint}</p></footer></section>`;
+    return html`<section
+      class="showcase-deck layout-section"
+      aria-label="${content.sectionLabel}"
+    >
+      <div class="showcase-deck__stage layout-content">
+        <div
+          class="showcase-deck__stack"
+          data-showcase-deck
+          role="group"
+          aria-roledescription="card deck"
+          aria-label="${content.deckAriaLabel}"
+          tabindex="0"
+        >
+          ${trustedHTML(renderShowcaseCardDeckCards())}
+        </div>
+        <p
+          class="showcase-deck__live"
+          data-showcase-deck-live
+          aria-live="polite"
+          aria-atomic="true"
+        ></p>
+      </div>
+      <footer class="showcase-deck__controls layout-content">
+        <div>
+          <button
+            type="button"
+            data-showcase-deck-previous
+            aria-label="${content.previousCardAriaLabel}"
+          >
+            ←
+          </button>
+          <nav data-showcase-deck-ticks aria-label="${content.cardsAriaLabel}"></nav>
+          <button type="button" data-showcase-deck-next aria-label="${content.nextCardAriaLabel}">
+            →
+          </button>
+        </div>
+        <p data-showcase-deck-hint>${content.hint}</p>
+      </footer>
+    </section>`;
   }
 }

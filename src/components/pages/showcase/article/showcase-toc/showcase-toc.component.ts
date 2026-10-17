@@ -123,16 +123,13 @@ export class ShowcaseTocComponent extends BaseElement {
         <p class="showcase-toc-label">On this page</p>
         <nav aria-label="Showcase sections">
           <ol>
-            ${entries
-              .map(
-                (entry) => html`
-                  <li class="${entry.id === this.activeId ? "is-active" : ""}">
-                    <a href="#${entry.id}" data-showcase-toc-id="${entry.id}">
-                      ${entry.text}
-                    </a>
-                  </li>
-                `,
-              )}
+            ${entries.map(
+              (entry) => html`
+                <li class="${entry.id === this.activeId ? "is-active" : ""}">
+                  <a href="#${entry.id}" data-showcase-toc-id="${entry.id}"> ${entry.text} </a>
+                </li>
+              `
+            )}
           </ol>
         </nav>
       </aside>

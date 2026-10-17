@@ -24,7 +24,11 @@ export class SpeakingOfferingComponent extends BaseElement {
     const content = pricingContent.speakingOffering;
 
     return html`
-      <section id="pricing-speak" class="speaking-offering-section" aria-labelledby="speaking-offering-title">
+      <section
+        id="pricing-speak"
+        class="speaking-offering-section"
+        aria-labelledby="speaking-offering-title"
+      >
         <div class="speaking-offering-inner">
           <div class="speaking-offering-copy">
             <p class="pricing-eyebrow">${content.eyebrow}</p>
@@ -32,15 +36,14 @@ export class SpeakingOfferingComponent extends BaseElement {
             <p class="pricing-section-lede mt-5">${content.body}</p>
           </div>
           <div class="speaking-format-grid">
-            ${content.formats
-              .map(
-                (format) => html`
-                  <article class="speaking-format">
-                    <h3>${format.title}</h3>
-                    <p>${format.body}</p>
-                  </article>
-                `,
-              )}
+            ${content.formats.map(
+              (format) => html`
+                <article class="speaking-format">
+                  <h3>${format.title}</h3>
+                  <p>${format.body}</p>
+                </article>
+              `
+            )}
           </div>
           <div class="speaking-topic-list" aria-label="${content.topicsAriaLabel}">
             ${content.topics.map((topic) => html`<span>${topic}</span>`)}

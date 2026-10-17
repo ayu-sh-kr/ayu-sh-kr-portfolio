@@ -45,7 +45,12 @@ export class ShowcaseProjectRowComponent extends BaseElement {
     }
 
     return html`
-      <a class="showcase-row" data-showcase-reveal data-analytics-project="showcase" href="/showcase/${project.slug}/">
+      <a
+        class="showcase-row"
+        data-showcase-reveal
+        data-analytics-project="showcase"
+        href="/showcase/${project.slug}/"
+      >
         <span class="showcase-row-year">${project.year}</span>
         <span class="showcase-row-copy">
           <strong>${project.title}</strong>

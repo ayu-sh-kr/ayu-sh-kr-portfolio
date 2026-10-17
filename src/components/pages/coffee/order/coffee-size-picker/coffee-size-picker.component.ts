@@ -74,13 +74,26 @@ export class CoffeeSizePickerComponent extends BaseElement {
       <fieldset class="coffee-order-question">
         <legend><span>1</span>${content.sizeQuestion}</legend>
         <div class="coffee-pick-grid">
-          ${coffeeContent.sizes.map((size) => html`
-            <button class="form-choice input-lg input-rounded-md input-bordered coffee-pick ${size.id === this.selectedSizeId ? "is-selected" : ""}" type="button" data-coffee-size="${size.id}" aria-pressed="${size.id === this.selectedSizeId}">
-              ${size.featured ? html`<span class="coffee-pick-flag">${size.featured}</span>` : ""}
-              <span class="coffee-pick-title"><strong>${formatCoffeeAmount(size.price[this.currency], this.currency)}</strong> ${size.name}</span>
-              <span class="coffee-pick-description">${size.description}</span>
-            </button>
-          `)}
+          ${coffeeContent.sizes.map(
+            (size) => html`
+              <button
+                class="form-choice input-lg input-rounded-md input-bordered coffee-pick ${size.id ===
+                this.selectedSizeId
+                  ? "is-selected"
+                  : ""}"
+                type="button"
+                data-coffee-size="${size.id}"
+                aria-pressed="${size.id === this.selectedSizeId}"
+              >
+                ${size.featured ? html`<span class="coffee-pick-flag">${size.featured}</span>` : ""}
+                <span class="coffee-pick-title"
+                  ><strong>${formatCoffeeAmount(size.price[this.currency], this.currency)}</strong>
+                  ${size.name}</span
+                >
+                <span class="coffee-pick-description">${size.description}</span>
+              </button>
+            `
+          )}
         </div>
       </fieldset>
     `;

@@ -33,17 +33,22 @@ export class PortfolioJourneyComponent extends BaseElement {
         <section class="pin-stage journey-stage" aria-labelledby="journey-title">
           <h2 id="journey-title" class="sr-only">Career journey</h2>
           <div id="journey-ghost" class="journey-ghost" aria-hidden="true">01</div>
-          ${journey
-            .map(
-              (chapter, index) => html`
-                <article class="journey-chapter" data-chapter="${index}">
-                  <p class="motion-eyebrow">${chapter.label}</p>
-                  <h3 class="motion-title mx-auto mt-5 max-w-4xl">${chapter.title}</h3>
-                  <p class="mx-auto mt-6 max-w-2xl text-lg leading-8 text-(--muted-color)">${chapter.body}</p>
-                  <p class="mt-6 font-mono text-xs font-semibold uppercase tracking-[0.12em] text-(--muted-strong-color)">${chapter.meta}</p>
-                </article>
-              `,
-            )}
+          ${journey.map(
+            (chapter, index) => html`
+              <article class="journey-chapter" data-chapter="${index}">
+                <p class="motion-eyebrow">${chapter.label}</p>
+                <h3 class="motion-title mx-auto mt-5 max-w-4xl">${chapter.title}</h3>
+                <p class="mx-auto mt-6 max-w-2xl text-lg leading-8 text-(--muted-color)">
+                  ${chapter.body}
+                </p>
+                <p
+                  class="mt-6 font-mono text-xs font-semibold uppercase tracking-[0.12em] text-(--muted-strong-color)"
+                >
+                  ${chapter.meta}
+                </p>
+              </article>
+            `
+          )}
           <div class="journey-spine" aria-hidden="true">
             <div id="journey-spine-fill" class="journey-spine-fill"></div>
           </div>

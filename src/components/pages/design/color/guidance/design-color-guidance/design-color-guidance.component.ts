@@ -33,11 +33,16 @@ export class DesignColorGuidanceComponent extends BaseElement {
     const { guidance } = designColorContent;
 
     return html`
-      <section class="design-color-guidance design-section" aria-labelledby="design-color-guidance-title">
+      <section
+        class="design-color-guidance design-section"
+        aria-labelledby="design-color-guidance-title"
+      >
         <div class="design-color-guidance-layout">
           <div>
             <p class="type-eyebrow design-eyebrow">${guidance.eyebrow}</p>
-            <h2 id="design-color-guidance-title" class="type-section-heading design-section-heading">${guidance.title}</h2>
+            <h2 id="design-color-guidance-title" class="type-section-heading design-section-heading">
+              ${guidance.title}
+            </h2>
             <p class="type-body design-color-guidance-copy">${guidance.lede}</p>
           </div>
 
@@ -59,12 +64,14 @@ export class DesignColorGuidanceComponent extends BaseElement {
         </div>
 
         <div class="design-color-rule-grid">
-          ${guidance.rules.map((rule) => html`
-            <article>
-              <h3 class="type-card-title">${rule.title}</h3>
-              <p class="type-compact">${rule.body}</p>
-            </article>
-          `)}
+          ${guidance.rules.map(
+            (rule) => html`
+              <article>
+                <h3 class="type-card-title">${rule.title}</h3>
+                <p class="type-compact">${rule.body}</p>
+              </article>
+            `
+          )}
         </div>
       </section>
     `;

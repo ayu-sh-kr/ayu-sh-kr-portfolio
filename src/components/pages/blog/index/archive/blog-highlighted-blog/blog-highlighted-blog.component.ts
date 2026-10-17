@@ -71,13 +71,33 @@ export class BlogHighlightedBlogComponent extends BaseElement {
 
     const isVisible = this.currentFilter === "all" || this.highlightedPost.category === this.currentFilter;
     return html`
-      <section class="blog-container blog-featured-section" aria-label="${blogIndexContent.highlighted.ariaLabel}"${unsafeHTML(isVisible ? "" : " hidden")}>
-        <a class="blog-featured blog-reveal" data-blog-reveal data-analytics-project="blog" data-analytics-slug="${this.highlightedPost.slug}" data-blog-category="${this.highlightedPost.category}"
-           href="${getBlogPath(this.highlightedPost.slug)}">
-          <div class="blog-meta-row"><span class="blog-chip">${labelForCategory(this.highlightedPost.category)}</span><span>${this.highlightedPost.minutes} ${blogIndexContent.readTimeSuffix}</span></div>
+      <section
+        class="blog-container blog-featured-section"
+        aria-label="${blogIndexContent.highlighted.ariaLabel}"
+        ${unsafeHTML(isVisible ? "" : " hidden")}
+      >
+        <a
+          class="blog-featured blog-reveal"
+          data-blog-reveal
+          data-analytics-project="blog"
+          data-analytics-slug="${this.highlightedPost.slug}"
+          data-blog-category="${this.highlightedPost.category}"
+          href="${getBlogPath(this.highlightedPost.slug)}"
+        >
+          <div class="blog-meta-row">
+            <span class="blog-chip">${labelForCategory(this.highlightedPost.category)}</span
+            ><span>${this.highlightedPost.minutes} ${blogIndexContent.readTimeSuffix}</span>
+          </div>
           <h2>${this.highlightedPost.header}</h2>
           <p>${this.highlightedPost.description}</p>
-          <div class="blog-featured-footer"><time datetime="${this.highlightedPost.date}">${formatBlogDate(this.highlightedPost.date)}</time><span class="blog-read-link">${blogIndexContent.highlighted.readLabel} <span class="blog-arrow" aria-hidden="true">→</span></span></div>
+          <div class="blog-featured-footer">
+            <time datetime="${this.highlightedPost.date}"
+              >${formatBlogDate(this.highlightedPost.date)}</time
+            ><span class="blog-read-link"
+              >${blogIndexContent.highlighted.readLabel}
+              <span class="blog-arrow" aria-hidden="true">→</span></span
+            >
+          </div>
         </a>
       </section>
     `;

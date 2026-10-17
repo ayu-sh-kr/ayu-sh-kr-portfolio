@@ -68,9 +68,28 @@ export class PricingProjectIdeaFormComponent extends BaseElement {
     return html`
       <fieldset class="pricing-project-fieldset">
         <legend>The idea</legend>
-        <label class="form-label form-label">In one line, what should it do?<input class="form-control input-md input-rounded-md input-bordered" data-project-field="idea" value="${this.idea}" placeholder="Let staff take orders without a POS terminal"></label>
-        <label class="form-label form-label">Who is it for?<input class="form-control input-md input-rounded-md input-bordered" data-project-field="audience" value="${this.audience}" placeholder="Floor staff, currently on pen and paper"></label>
-        <label class="form-label form-label">What does success look like?${trustedHTML(`<textarea class="form-control input-md input-rounded-md input-bordered" data-project-field="success" placeholder="In three months, what is measurably different?">${escapeHtml(this.success)}</textarea>`)}</label>
+        <label class="form-label form-label"
+          >In one line, what should it do?<input
+            class="form-control input-md input-rounded-md input-bordered"
+            data-project-field="idea"
+            value="${this.idea}"
+            placeholder="Let staff take orders without a POS terminal"
+        /></label>
+        <label class="form-label form-label"
+          >Who is it for?<input
+            class="form-control input-md input-rounded-md input-bordered"
+            data-project-field="audience"
+            value="${this.audience}"
+            placeholder="Floor staff, currently on pen and paper"
+        /></label>
+        <label class="form-label form-label"
+          >What does success look
+          like?${trustedHTML(
+            `<textarea class="form-control input-md input-rounded-md input-bordered" data-project-field="success" placeholder="In three months, what is measurably different?">${escapeHtml(
+              this.success
+            )}</textarea>`
+          )}</label
+        >
       </fieldset>
     `;
   }

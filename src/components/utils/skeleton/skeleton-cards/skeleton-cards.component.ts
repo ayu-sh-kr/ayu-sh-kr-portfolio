@@ -24,18 +24,30 @@ export class SkeletonCardsComponent extends BaseElement {
 
     return html`
       <div class="sk-cards">
-        ${Array.from({length: cardCount}, (_, index) => html`
-          <div class="sk-card sk-stagger">
-            <span class="sk sk-sm" style="inline-size:${eyebrowWidths[index % eyebrowWidths.length]}"></span>
-            <span class="sk sk-line sk-card-title" style="inline-size:${titleWidths[index % titleWidths.length]}"></span>
-            <span class="sk sk-sm" style="inline-size:100%"></span>
-            <span class="sk sk-sm" style="inline-size:${descriptionWidths[index % descriptionWidths.length]}"></span>
-            <span class="sk-card-chip-row">
-              <span class="sk sk-chip sk-card-chip"></span>
-              <span class="sk sk-chip sk-card-chip"></span>
-            </span>
-          </div>
-        `)}
+        ${Array.from(
+          { length: cardCount },
+          (_, index) => html`
+            <div class="sk-card sk-stagger">
+              <span
+                class="sk sk-sm"
+                style="inline-size:${eyebrowWidths[index % eyebrowWidths.length]}"
+              ></span>
+              <span
+                class="sk sk-line sk-card-title"
+                style="inline-size:${titleWidths[index % titleWidths.length]}"
+              ></span>
+              <span class="sk sk-sm" style="inline-size:100%"></span>
+              <span
+                class="sk sk-sm"
+                style="inline-size:${descriptionWidths[index % descriptionWidths.length]}"
+              ></span>
+              <span class="sk-card-chip-row">
+                <span class="sk sk-chip sk-card-chip"></span>
+                <span class="sk sk-chip sk-card-chip"></span>
+              </span>
+            </div>
+          `
+        )}
       </div>
     `;
   }

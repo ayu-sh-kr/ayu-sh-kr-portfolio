@@ -27,7 +27,10 @@ export class ReachOutPage extends DotaPageElement {
   render(): TemplateResult {
     return html`
       <main id="reach-out-main">
-        <card-page-header link-label="${pricingContent.startProject.eyebrow}" link-href="/pricing/#pricing-start-project"></card-page-header>
+        <card-page-header
+          link-label="${pricingContent.startProject.eyebrow}"
+          link-href="/pricing/#pricing-start-project"
+        ></card-page-header>
         <reach-out-card-deck></reach-out-card-deck>
       </main>
     `;

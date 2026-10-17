@@ -26,12 +26,17 @@ export class SupportStartProjectComponent extends BaseElement {
     const content = supportContent.startProject;
 
     return html`
-      <section id="start-project" class="support-start-project layout-page layout-section-end" aria-labelledby="start-project-title">
+      <section
+        id="start-project"
+        class="support-start-project layout-page layout-section-end"
+        aria-labelledby="start-project-title"
+      >
         <div class="support-start-project-panel">
           <div>
             <p class="support-start-project-eyebrow">${content.eyebrow}</p>
             <h2 id="start-project-title" class="support-start-project-title type-section">
-              ${content.titleBeforeAccent} <span>${content.titleAccent}</span> ${content.titleAfterAccent}
+              ${content.titleBeforeAccent}
+              <span>${content.titleAccent}</span> ${content.titleAfterAccent}
             </h2>
             <p class="support-start-project-body">${content.body}</p>
           </div>
@@ -40,7 +45,9 @@ export class SupportStartProjectComponent extends BaseElement {
             <a class="app-link app-link--button app-link--accent" href="${content.primaryHref}">
               ${content.primaryLabel} <span aria-hidden="true">→</span>
             </a>
-            <a class="app-link app-link--button app-link--ghost" href="${content.secondaryHref}">${content.secondaryLabel}</a>
+            <a class="app-link app-link--button app-link--ghost" href="${content.secondaryHref}"
+              >${content.secondaryLabel}</a
+            >
             <p class="support-start-project-note">${content.note}</p>
           </div>
         </div>

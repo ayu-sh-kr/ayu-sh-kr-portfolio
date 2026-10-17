@@ -43,25 +43,36 @@ export class DesignInteractionIngestComponent extends BaseElement {
   render(): TemplateResult {
     const { ingest } = designInteractionContent;
 
-    return html`
-      <section id="ingest" class="design-interaction-section layout-page layout-section" aria-labelledby="ingest-title">
-          <header class="design-interaction-heading layout-stack layout-stack-sm">
-            <p class="type-eyebrow">${ingest.eyebrow}</p>
-            <h2 id="ingest-title" class="type-section">${ingest.title}</h2>
-            <p class="type-lede">${ingest.lede}</p>
-          </header>
-          <div class="design-interaction-upload">
-            <p class="type-label">${ingest.label}</p>
-            <strong>${this.uploadedNames.length ? ingest.acceptedTitle : ingest.emptyTitle}</strong>
-            <button type="button" data-interaction-upload>${this.uploadedNames.length ? ingest.clearLabel : ingest.acceptLabel}</button>
-          </div>
-          <div class="design-interaction-chips" aria-label="${ingest.filesAriaLabel}">${this.uploadedNames
-            .map(
-              (
-                name,
-              ) => html`<span>${name}<button type="button" data-interaction-remove="${name}" aria-label="${ingest.removeAriaLabel.replace("{name}", name)}">${ingest.removeLabel}</button>
-            </span>`,
-            )}</div>
-        </section>`;
+    return html` <section
+      id="ingest"
+      class="design-interaction-section layout-page layout-section"
+      aria-labelledby="ingest-title"
+    >
+      <header class="design-interaction-heading layout-stack layout-stack-sm">
+        <p class="type-eyebrow">${ingest.eyebrow}</p>
+        <h2 id="ingest-title" class="type-section">${ingest.title}</h2>
+        <p class="type-lede">${ingest.lede}</p>
+      </header>
+      <div class="design-interaction-upload">
+        <p class="type-label">${ingest.label}</p>
+        <strong>${this.uploadedNames.length ? ingest.acceptedTitle : ingest.emptyTitle}</strong>
+        <button type="button" data-interaction-upload>
+          ${this.uploadedNames.length ? ingest.clearLabel : ingest.acceptLabel}
+        </button>
+      </div>
+      <div class="design-interaction-chips" aria-label="${ingest.filesAriaLabel}">
+        ${this.uploadedNames.map(
+          (name) => html`<span
+            >${name}<button
+              type="button"
+              data-interaction-remove="${name}"
+              aria-label="${ingest.removeAriaLabel.replace("{name}", name)}"
+            >
+              ${ingest.removeLabel}
+            </button>
+          </span>`
+        )}
+      </div>
+    </section>`;
   }
 }

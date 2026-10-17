@@ -189,15 +189,40 @@ export class BlogSubscriptionComponent extends BaseElement {
     return html`
       <section class="blog-subscribe" aria-label="${ariaLabel}">
         <div class="blog-container blog-subscribe-inner">
-          <div><p class="blog-subscribe-title">${heading}</p><p class="blog-subscribe-copy">${description}</p></div>
+          <div>
+            <p class="blog-subscribe-title">${heading}</p>
+            <p class="blog-subscribe-copy">${description}</p>
+          </div>
           <div>
             <form class="blog-subscribe-form">
-              <label class="sr-only" for="blog-email">${blogIndexContent.subscription.emailLabel}</label>
+              <label class="sr-only" for="blog-email"
+                >${blogIndexContent.subscription.emailLabel}</label
+              >
               <div class="blog-subscribe-controls">
-                <input class="form-control input-md input-round input-bordered" id="blog-email" name="email" type="email" placeholder="${blogIndexContent.subscription.emailPlaceholder}" autocomplete="email" aria-describedby="blog-email-hint" required />
-                <action-button id="blog-subscription-submit" action="subscription.submit" guard="blog-subscription" variant="${buttonVariant}" label="${blogIndexContent.subscription.submitLabel}" busy-label="${blogIndexContent.subscription.submittingLabel}" done-label="${blogIndexContent.subscription.successLabel}" fail-label="${blogIndexContent.subscription.errorLabel}"></action-button>
+                <input
+                  class="form-control input-md input-round input-bordered"
+                  id="blog-email"
+                  name="email"
+                  type="email"
+                  placeholder="${blogIndexContent.subscription.emailPlaceholder}"
+                  autocomplete="email"
+                  aria-describedby="blog-email-hint"
+                  required
+                />
+                <action-button
+                  id="blog-subscription-submit"
+                  action="subscription.submit"
+                  guard="blog-subscription"
+                  variant="${buttonVariant}"
+                  label="${blogIndexContent.subscription.submitLabel}"
+                  busy-label="${blogIndexContent.subscription.submittingLabel}"
+                  done-label="${blogIndexContent.subscription.successLabel}"
+                  fail-label="${blogIndexContent.subscription.errorLabel}"
+                ></action-button>
               </div>
-              <p id="blog-email-hint" class="blog-subscribe-hint">${blogIndexContent.subscription.emailHint}</p>
+              <p id="blog-email-hint" class="blog-subscribe-hint">
+                ${blogIndexContent.subscription.emailHint}
+              </p>
             </form>
           </div>
         </div>

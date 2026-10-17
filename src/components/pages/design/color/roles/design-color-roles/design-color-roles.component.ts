@@ -24,29 +24,50 @@ export class DesignColorRolesComponent extends BaseElement {
     const { roles } = designColorContent;
 
     return html`
-      <section id="design-color-roles" class="design-color-roles design-section" aria-labelledby="design-color-roles-title">
+      <section
+        id="design-color-roles"
+        class="design-color-roles design-section"
+        aria-labelledby="design-color-roles-title"
+      >
         <div class="design-color-section-intro">
           <p class="type-eyebrow design-eyebrow">${roles.eyebrow}</p>
-          <h2 id="design-color-roles-title" class="type-section-heading design-section-heading">${roles.title}</h2>
+          <h2 id="design-color-roles-title" class="type-section-heading design-section-heading">
+            ${roles.title}
+          </h2>
           <p class="type-body design-color-section-copy">${roles.lede}</p>
         </div>
 
         <div class="design-color-role-grid">
-          ${roles.groups.map((group) => html`
-            <article class="design-color-role-group" aria-labelledby="design-color-role-${group.name.toLowerCase()}">
-              <h3 id="design-color-role-${group.name.toLowerCase()}" class="type-card-title design-color-role-title">${group.name}</h3>
-              <p class="type-compact design-color-role-description">${group.description}</p>
-              <ul class="design-color-role-list">
-                ${group.roles.map((role) => html`
-                  <li>
-                    <span class="design-color-role-swatch" style="--design-swatch: var(${role.token});"></span>
-                    <span class="design-color-role-label">${role.label}</span>
-                    <code>${role.token}</code>
-                  </li>
-                `)}
-              </ul>
-            </article>
-          `)}
+          ${roles.groups.map(
+            (group) => html`
+              <article
+                class="design-color-role-group"
+                aria-labelledby="design-color-role-${group.name.toLowerCase()}"
+              >
+                <h3
+                  id="design-color-role-${group.name.toLowerCase()}"
+                  class="type-card-title design-color-role-title"
+                >
+                  ${group.name}
+                </h3>
+                <p class="type-compact design-color-role-description">${group.description}</p>
+                <ul class="design-color-role-list">
+                  ${group.roles.map(
+                    (role) => html`
+                      <li>
+                        <span
+                          class="design-color-role-swatch"
+                          style="--design-swatch: var(${role.token});"
+                        ></span>
+                        <span class="design-color-role-label">${role.label}</span>
+                        <code>${role.token}</code>
+                      </li>
+                    `
+                  )}
+                </ul>
+              </article>
+            `
+          )}
         </div>
       </section>
     `;

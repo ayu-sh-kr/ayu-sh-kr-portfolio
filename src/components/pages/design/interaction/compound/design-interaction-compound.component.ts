@@ -14,16 +14,19 @@ export class DesignInteractionCompoundComponent extends BaseElement {
   render(): TemplateResult {
     const { compound } = designInteractionContent;
 
-    return html`
-      <section id="compound" class="design-interaction-section layout-page layout-section" aria-labelledby="compound-title">
-        <header class="design-interaction-heading layout-stack layout-stack-sm">
-          <p class="type-eyebrow">${compound.eyebrow}</p>
-          <h2 id="compound-title" class="type-section">${compound.title}</h2>
-          <p class="type-lede">${compound.lede}</p>
-        </header>
-        <ol class="design-interaction-sequence">
-          ${compound.steps.map((step) => html`<li>${step}</li>`)}
-        </ol>
-      </section>`;
+    return html` <section
+      id="compound"
+      class="design-interaction-section layout-page layout-section"
+      aria-labelledby="compound-title"
+    >
+      <header class="design-interaction-heading layout-stack layout-stack-sm">
+        <p class="type-eyebrow">${compound.eyebrow}</p>
+        <h2 id="compound-title" class="type-section">${compound.title}</h2>
+        <p class="type-lede">${compound.lede}</p>
+      </header>
+      <ol class="design-interaction-sequence">
+        ${compound.steps.map((step) => html`<li>${step}</li>`)}
+      </ol>
+    </section>`;
   }
 }

@@ -81,7 +81,10 @@ export class BlogHeroComponent extends BaseElement {
         <section class="layout-hero-pin-stage blog-hero-stage" aria-labelledby="blog-title">
           <div class="blog-hero-inner" data-blog-hero-inner>
             <p class="blog-eyebrow">${blogIndexContent.hero.eyebrow}</p>
-            <h1 id="blog-title" class="blog-display">${blogIndexContent.hero.titleBeforeAccent} <span>${blogIndexContent.hero.titleAccent}</span></h1>
+            <h1 id="blog-title" class="blog-display">
+              ${blogIndexContent.hero.titleBeforeAccent}
+              <span>${blogIndexContent.hero.titleAccent}</span>
+            </h1>
             <p class="blog-hero-summary">${blogIndexContent.hero.summary}</p>
           </div>
           <scroll-hint mode="vertical" label="${blogIndexContent.hero.scrollHint}"></scroll-hint>

@@ -48,29 +48,30 @@ export class DesignInteractionVerbsComponent extends BaseElement {
   render(): TemplateResult {
     const { verbReference, verbs } = designInteractionContent;
 
-    return html`
-      <section id="verbs" class="design-interaction-section layout-page layout-section" aria-labelledby="verbs-title">
-          <header class="design-interaction-heading layout-stack layout-stack-sm">
-            <p class="type-eyebrow">${verbReference.eyebrow}</p>
-            <h2 id="verbs-title" class="type-section">${verbReference.title}</h2>
-            <p class="type-lede">${verbReference.lede}</p>
-          </header>
-          <div class="design-interaction-verbs layout-grid-auto-sm">${verbs
-            .map(
-              (
-                verb,
-              ) => html`<button type="button" class="design-interaction-verb" data-verb="${verb.name}">
-              <span class="design-interaction-verb-stage">
-                <i>
-                </i>
-              </span>
-              <span>
-                <strong>${verb.name}</strong>
-                <em>${verb.value}</em>
-              </span>
-              <small>${verb.description}</small>
-            </button>`,
-            )}</div>
-        </section>`;
+    return html` <section
+      id="verbs"
+      class="design-interaction-section layout-page layout-section"
+      aria-labelledby="verbs-title"
+    >
+      <header class="design-interaction-heading layout-stack layout-stack-sm">
+        <p class="type-eyebrow">${verbReference.eyebrow}</p>
+        <h2 id="verbs-title" class="type-section">${verbReference.title}</h2>
+        <p class="type-lede">${verbReference.lede}</p>
+      </header>
+      <div class="design-interaction-verbs layout-grid-auto-sm">
+        ${verbs.map(
+          (verb) => html`<button type="button" class="design-interaction-verb" data-verb="${verb.name}">
+            <span class="design-interaction-verb-stage">
+              <i> </i>
+            </span>
+            <span>
+              <strong>${verb.name}</strong>
+              <em>${verb.value}</em>
+            </span>
+            <small>${verb.description}</small>
+          </button>`
+        )}
+      </div>
+    </section>`;
   }
 }

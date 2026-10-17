@@ -25,7 +25,10 @@ export class SpeakingPricingComponent extends BaseElement {
     const content = pricingContent.speakingPricing;
 
     return html`
-      <section class="speaking-pricing-section layout-page layout-section" aria-labelledby="speaking-pricing-title">
+      <section
+        class="speaking-pricing-section layout-page layout-section"
+        aria-labelledby="speaking-pricing-title"
+      >
         <div class="speaking-pricing-copy">
           <p class="pricing-eyebrow">${content.eyebrow}</p>
           <h2 id="speaking-pricing-title" class="pricing-section-title mt-3">${content.title}</h2>
@@ -47,12 +50,18 @@ export class SpeakingPricingComponent extends BaseElement {
         <p class="speaking-pricing-price">${tier.price}<small>${tier.suffix}</small></p>
         <p class="speaking-pricing-summary">${tier.summary}</p>
         <ul>
-          ${tier.bullets
-            .map(
-              (bullet) => html`<li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m3 8.5 3 3 7-8" /></svg>${bullet}</li>`,
-            )}
+          ${tier.bullets.map(
+            (bullet) =>
+              html`<li>
+                <svg viewBox="0 0 16 16" aria-hidden="true"><path d="m3 8.5 3 3 7-8" /></svg>${bullet}
+              </li>`
+          )}
         </ul>
-        <a class="app-link app-link--button ${tier.featured ? "app-link--accent" : "app-link--ghost"}" href="#pricing-contact">${tier.cta}</a>
+        <a
+          class="app-link app-link--button ${tier.featured ? "app-link--accent" : "app-link--ghost"}"
+          href="#pricing-contact"
+          >${tier.cta}</a
+        >
       </article>
     `;
   }

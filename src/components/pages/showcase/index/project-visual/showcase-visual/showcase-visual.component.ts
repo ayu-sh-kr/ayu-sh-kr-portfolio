@@ -44,13 +44,14 @@ export class ShowcaseVisualComponent extends BaseElement {
           : [project.kind, project.year.toString(), project.status];
 
     return html`
-      <div class="showcase-visual showcase-visual-${project.visual} showcase-visual-${this.variant}" aria-hidden="true">
+      <div
+        class="showcase-visual showcase-visual-${project.visual} showcase-visual-${this.variant}"
+        aria-hidden="true"
+      >
         <div class="showcase-visual-grid"></div>
         <div class="showcase-visual-orbit showcase-visual-orbit-one"></div>
         <div class="showcase-visual-orbit showcase-visual-orbit-two"></div>
-        <div class="showcase-visual-labels">
-          ${labels.map((label) => html`<span>${label}</span>`)}
-        </div>
+        <div class="showcase-visual-labels">${labels.map((label) => html`<span>${label}</span>`)}</div>
         <strong>${project.title}</strong>
       </div>
     `;

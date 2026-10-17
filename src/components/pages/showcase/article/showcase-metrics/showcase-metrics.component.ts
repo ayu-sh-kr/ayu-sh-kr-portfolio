@@ -46,15 +46,14 @@ export class ShowcaseMetricsComponent extends BaseElement {
   render(): TemplateResult {
     return html`
       <div class="showcase-metrics" role="group" aria-label="Key metrics">
-        ${this.metrics()
-          .map(
-            (metric) => html`
-              <div class="showcase-metric">
-                <strong>${metric.value}</strong>
-                <span>${metric.label}</span>
-              </div>
-            `,
-          )}
+        ${this.metrics().map(
+          (metric) => html`
+            <div class="showcase-metric">
+              <strong>${metric.value}</strong>
+              <span>${metric.label}</span>
+            </div>
+          `
+        )}
       </div>
     `;
   }

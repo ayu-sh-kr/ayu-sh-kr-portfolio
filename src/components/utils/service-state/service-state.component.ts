@@ -66,7 +66,14 @@ export class ServiceStateComponent extends BaseElement {
 
   render(): TemplateResult {
     return html`
-      <app-notice class="service-state__notice" data-service-notice variant="plain" label="Paused" live="off" announce="true">
+      <app-notice
+        class="service-state__notice"
+        data-service-notice
+        variant="plain"
+        label="Paused"
+        live="off"
+        announce="true"
+      >
         <div class="service-state__out">
           <a data-service-route href="mailto:${this.email}">Send it by email instead</a>
           <span data-service-until></span>

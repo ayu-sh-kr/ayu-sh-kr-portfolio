@@ -23,16 +23,25 @@ export class SkeletonListComponent extends BaseElement {
 
     return html`
       <div class="sk-list">
-        ${Array.from({length: count}, (_, index) => html`
-          <div class="sk-list-row">
-            <span class="sk sk-sm sk-list-date"></span>
-            <span class="sk-list-copy">
-              <span class="sk sk-line" style="inline-size:${titleWidths[index % titleWidths.length]}"></span>
-              <span class="sk sk-sm" style="inline-size:${summaryWidths[index % summaryWidths.length]}"></span>
-            </span>
-            <span class="sk sk-chip sk-list-chip"></span>
-          </div>
-        `)}
+        ${Array.from(
+          { length: count },
+          (_, index) => html`
+            <div class="sk-list-row">
+              <span class="sk sk-sm sk-list-date"></span>
+              <span class="sk-list-copy">
+                <span
+                  class="sk sk-line"
+                  style="inline-size:${titleWidths[index % titleWidths.length]}"
+                ></span>
+                <span
+                  class="sk sk-sm"
+                  style="inline-size:${summaryWidths[index % summaryWidths.length]}"
+                ></span>
+              </span>
+              <span class="sk sk-chip sk-list-chip"></span>
+            </div>
+          `
+        )}
       </div>
     `;
   }

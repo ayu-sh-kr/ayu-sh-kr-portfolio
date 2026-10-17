@@ -36,7 +36,7 @@ export class ShowcaseFigureComponent extends BaseElement {
 
     return html`
       <figure class="showcase-figure">
-        <img src="${safeSource}" alt="${this.caption}" loading="lazy" decoding="async">
+        <img src="${safeSource}" alt="${this.caption}" loading="lazy" decoding="async" />
         ${this.caption ? html`<figcaption>${this.caption}</figcaption>` : ""}
       </figure>
     `;

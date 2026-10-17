@@ -409,8 +409,12 @@ export class OfflinePage extends DotaPageElement {
     return html`
       <nav id="offline-nav" aria-label="${offlineContent.nav.ariaLabel}">
         <div class="offline-nav-inner">
-          <a class="offline-brand" href="${offlineContent.nav.brandHref}">${offlineContent.nav.brand}</a>
-          <span class="offline-nav-status" data-offline-nav-status>${offlineContent.nav.offlineStatus}</span>
+          <a class="offline-brand" href="${offlineContent.nav.brandHref}"
+            >${offlineContent.nav.brand}</a
+          >
+          <span class="offline-nav-status" data-offline-nav-status
+            >${offlineContent.nav.offlineStatus}</span
+          >
         </div>
       </nav>
 

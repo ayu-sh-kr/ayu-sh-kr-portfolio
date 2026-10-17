@@ -36,12 +36,19 @@ export class ErrorPage extends DotaPageElement {
   /** Renders the status message and return link around the shared footer. */
   render(): TemplateResult {
     return html`
-      <main class="relative grid min-h-[100svh] place-items-center overflow-hidden bg-[var(--background-color)] px-5 py-24 text-[var(--foreground-color)]">
+      <main
+        class="relative grid min-h-[100svh] place-items-center overflow-hidden bg-[var(--background-color)] px-5 py-24 text-[var(--foreground-color)]"
+      >
         <div class="relative z-10 w-full max-w-3xl border-t border-[var(--border-color)] pt-8">
           <p class="motion-eyebrow">Request failed / ${this.status}</p>
           <h1 class="motion-display mt-8">${this.message}.</h1>
-          <p class="mt-8 max-w-lg text-base leading-8 text-[var(--muted-color)]">That route does not lead anywhere yet. Return to the portfolio and keep exploring from there.</p>
-          <a href="/" class="app-link app-link--button app-link--ink mt-9">Return home <span aria-hidden="true">←</span></a>
+          <p class="mt-8 max-w-lg text-base leading-8 text-[var(--muted-color)]">
+            That route does not lead anywhere yet. Return to the portfolio and keep exploring from
+            there.
+          </p>
+          <a href="/" class="app-link app-link--button app-link--ink mt-9"
+            >Return home <span aria-hidden="true">←</span></a
+          >
         </div>
       </main>
       <app-footer></app-footer>

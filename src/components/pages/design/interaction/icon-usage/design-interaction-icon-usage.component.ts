@@ -27,24 +27,30 @@ export class DesignInteractionIconUsageComponent extends BaseElement {
     const { iconUsage } = designInteractionContent;
 
     return html`
-      <section id="icons" class="design-interaction-section design-interaction-icon-usage layout-page layout-section" aria-labelledby="icons-title">
+      <section
+        id="icons"
+        class="design-interaction-section design-interaction-icon-usage layout-page layout-section"
+        aria-labelledby="icons-title"
+      >
         <header class="design-interaction-heading layout-stack layout-stack-sm">
           <p class="type-eyebrow">${iconUsage.eyebrow}</p>
           <h2 id="icons-title" class="type-section">${iconUsage.title}</h2>
           <p class="type-lede">${iconUsage.lede}</p>
         </header>
         <div class="design-interaction-icon-grid layout-grid-auto">
-          ${iconUsage.examples.map((example) => html`
-            <figure class="design-interaction-icon-card">
-              <div class="design-interaction-icon-stage">
-                <img src="${example.path}" alt="" aria-hidden="true" />
-              </div>
-              <figcaption>
-                <strong>${example.label}</strong>
-                <span>${example.note}</span>
-              </figcaption>
-            </figure>
-          `)}
+          ${iconUsage.examples.map(
+            (example) => html`
+              <figure class="design-interaction-icon-card">
+                <div class="design-interaction-icon-stage">
+                  <img src="${example.path}" alt="" aria-hidden="true" />
+                </div>
+                <figcaption>
+                  <strong>${example.label}</strong>
+                  <span>${example.note}</span>
+                </figcaption>
+              </figure>
+            `
+          )}
         </div>
       </section>
     `;

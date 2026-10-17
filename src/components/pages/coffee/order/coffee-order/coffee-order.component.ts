@@ -26,7 +26,12 @@ export class CoffeeOrderComponent extends BaseElement {
     const content = coffeeContent.order;
 
     return html`
-      <section id="coffee-order" class="coffee-order-section layout-content layout-section" aria-labelledby="coffee-order-title" data-analytics-section="coffee_order">
+      <section
+        id="coffee-order"
+        class="coffee-order-section layout-content layout-section"
+        aria-labelledby="coffee-order-title"
+        data-analytics-section="coffee_order"
+      >
         <header class="coffee-order-heading">
           <p class="coffee-eyebrow">${content.eyebrow}</p>
           <h2 id="coffee-order-title" class="type-section mt-3">${content.title}</h2>

@@ -275,15 +275,23 @@ export class PricingEstimatorResultComponent extends BaseElement {
       <div class="pricing-estimator-result">
         <div class="pricing-estimator-result-main">
           <p class="pricing-estimator-result-eyebrow">${content.resultEyebrow}</p>
-          <p class="pricing-estimator-figure" aria-live="polite">${formatCurrency(low)} – ${formatCurrency(high)}</p>
-          <p class="pricing-estimator-subline">${type.description.replace(/\.$/, "")} — for ${stage.note}.</p>
+          <p class="pricing-estimator-figure" aria-live="polite">
+            ${formatCurrency(low)} – ${formatCurrency(high)}
+          </p>
+          <p class="pricing-estimator-subline">
+            ${type.description.replace(/\.$/, "")} — for ${stage.note}.
+          </p>
         </div>
         <div class="pricing-estimator-breakdown" aria-label="${content.breakdownAriaLabel}">
           <span>${content.breakdownBuildingLabel} <b>${type.label}</b></span>
           <span>${content.breakdownStageLabel} <b>${stage.label}</b></span>
         </div>
         <div class="pricing-estimator-cta">
-          <a class="app-link app-link--button app-link--accent app-link--full" href="#pricing-start-project">${content.quoteCta} <span aria-hidden="true">→</span></a>
+          <a
+            class="app-link app-link--button app-link--accent app-link--full"
+            href="#pricing-start-project"
+            >${content.quoteCta} <span aria-hidden="true">→</span></a
+          >
           <p>${content.reassurance}</p>
         </div>
       </div>

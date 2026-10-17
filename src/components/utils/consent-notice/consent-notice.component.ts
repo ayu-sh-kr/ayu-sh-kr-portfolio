@@ -95,7 +95,12 @@ export class ConsentNoticeComponent extends BaseElement {
   /** Returns the stable region shell; state-specific copy and actions are added after connection. */
   render(): TemplateResult {
     return html`
-      <section class="consent-notice layout-pinned-bottom" role="region" aria-labelledby="consent-notice-title" hidden>
+      <section
+        class="consent-notice layout-pinned-bottom"
+        role="region"
+        aria-labelledby="consent-notice-title"
+        hidden
+      >
         <div class="consent-notice__body">
           <p class="consent-notice__title" id="consent-notice-title"></p>
           <p class="consent-notice__description"></p>

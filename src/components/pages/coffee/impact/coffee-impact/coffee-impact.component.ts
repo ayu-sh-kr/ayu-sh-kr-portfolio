@@ -43,13 +43,24 @@ export class CoffeeImpactComponent extends BaseElement {
     const content = coffeeContent.impact;
 
     return html`
-      <section id="coffee-impact" class="coffee-impact-section layout-page layout-section-lg layout-stack layout-stack-xl" aria-labelledby="coffee-impact-title">
+      <section
+        id="coffee-impact"
+        class="coffee-impact-section layout-page layout-section-lg layout-stack layout-stack-xl"
+        aria-labelledby="coffee-impact-title"
+      >
         <header data-coffee-reveal>
           <p class="coffee-eyebrow">${content.eyebrow}</p>
           <h2 id="coffee-impact-title" class="type-section mt-3">${content.title}</h2>
         </header>
         <div class="coffee-impact-grid layout-grid-3 layout-grid-loose">
-          ${content.items.map((item) => html`<article class="coffee-impact-item" data-coffee-reveal><span class="coffee-impact-icon" aria-hidden="true">${trustedHTML(item.icon)}</span><h3>${item.title}</h3><p>${item.body}</p></article>`)}
+          ${content.items.map(
+            (item) =>
+              html`<article class="coffee-impact-item" data-coffee-reveal>
+                <span class="coffee-impact-icon" aria-hidden="true">${trustedHTML(item.icon)}</span>
+                <h3>${item.title}</h3>
+                <p>${item.body}</p>
+              </article>`
+          )}
         </div>
       </section>
     `;

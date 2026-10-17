@@ -26,13 +26,22 @@ export class PricingProjectAlternativesComponent extends BaseElement {
     const content = pricingContent.startProject;
 
     return html`
-      <section class="pricing-project-alternatives-section layout-page" aria-labelledby="pricing-project-alternatives-title">
+      <section
+        class="pricing-project-alternatives-section layout-page"
+        aria-labelledby="pricing-project-alternatives-title"
+      >
         <div class="pricing-project-subsection-copy">
           <p class="pricing-eyebrow">${content.alternativesEyebrow}</p>
           <h3 id="pricing-project-alternatives-title">${content.alternativesTitle}</h3>
         </div>
         <div class="pricing-project-alternatives-grid">
-          ${content.alternatives.map((item) => html`<a href="${item.href}"><strong>${item.title} <span aria-hidden="true">→</span></strong><small>${item.body}</small></a>`)}
+          ${content.alternatives.map(
+            (item) =>
+              html`<a href="${item.href}"
+                ><strong>${item.title} <span aria-hidden="true">→</span></strong
+                ><small>${item.body}</small></a
+              >`
+          )}
         </div>
       </section>
     `;

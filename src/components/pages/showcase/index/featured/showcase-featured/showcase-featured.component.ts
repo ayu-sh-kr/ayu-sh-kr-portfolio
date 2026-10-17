@@ -24,15 +24,29 @@ export class ShowcaseFeaturedComponent extends BaseElement {
     const projects = getShowcaseProjectsByTier("featured");
 
     return html`
-      <section class="showcase-featured-section layout-page layout-section" aria-labelledby="showcase-featured-title">
+      <section
+        class="showcase-featured-section layout-page layout-section"
+        aria-labelledby="showcase-featured-title"
+      >
         <div>
           <p class="showcase-eyebrow showcase-reveal" data-showcase-reveal>Featured</p>
           <div class="mt-4 flex flex-wrap items-end justify-between gap-5">
-            <h2 id="showcase-featured-title" class="showcase-title showcase-reveal" data-showcase-reveal>Selected builds</h2>
-            <p class="showcase-section-note showcase-reveal" data-showcase-reveal>Useful things, shipped with intent.</p>
+            <h2
+              id="showcase-featured-title"
+              class="showcase-title showcase-reveal"
+              data-showcase-reveal
+            >
+              Selected builds
+            </h2>
+            <p class="showcase-section-note showcase-reveal" data-showcase-reveal>
+              Useful things, shipped with intent.
+            </p>
           </div>
           <div class="showcase-card-grid mt-12">
-            ${projects.map((project) => html`<showcase-project-card project-slug="${project.slug}"></showcase-project-card>`)}
+            ${projects.map(
+              (project) =>
+                html`<showcase-project-card project-slug="${project.slug}"></showcase-project-card>`
+            )}
           </div>
         </div>
       </section>

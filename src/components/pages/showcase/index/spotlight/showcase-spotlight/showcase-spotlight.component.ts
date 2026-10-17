@@ -47,18 +47,31 @@ export class ShowcaseSpotlightComponent extends BaseElement {
 
     const metric = project.metric
       ? html`
-          <div class="showcase-metric-row mt-8">
-            <strong class="showcase-metric" data-showcase-metric data-metric-value="${project.metric.value}">0</strong>
-            <span class="showcase-lede">${project.metric.label}</span>
-          </div>
-        `
+        <div class="showcase-metric-row mt-8">
+          <strong class="showcase-metric" data-showcase-metric data-metric-value="${project.metric.value}"
+            >0</strong
+          >
+          <span class="showcase-lede">${project.metric.label}</span>
+        </div>
+      `
       : "";
 
     return html`
-      <div id="showcase-spotlight-${project.slug}" class="showcase-pin-wrap showcase-spotlight-wrap" data-showcase-spotlight>
-        <section class="showcase-pin-stage showcase-spotlight-stage" aria-labelledby="spotlight-${project.slug}-title">
-          <div class="showcase-ghost-number" aria-hidden="true">${project.year.toString().slice(-2)}</div>
-          <div class="showcase-spotlight-layout mx-auto grid w-full max-w-[var(--layout-page-max)] items-center gap-10 px-5 sm:px-8 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
+      <div
+        id="showcase-spotlight-${project.slug}"
+        class="showcase-pin-wrap showcase-spotlight-wrap"
+        data-showcase-spotlight
+      >
+        <section
+          class="showcase-pin-stage showcase-spotlight-stage"
+          aria-labelledby="spotlight-${project.slug}-title"
+        >
+          <div class="showcase-ghost-number" aria-hidden="true">
+            ${project.year.toString().slice(-2)}
+          </div>
+          <div
+            class="showcase-spotlight-layout mx-auto grid w-full max-w-[var(--layout-page-max)] items-center gap-10 px-5 sm:px-8 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16"
+          >
             <div class="showcase-spotlight-cover" data-showcase-cover>
               <showcase-visual project-slug="${project.slug}" variant="spotlight"></showcase-visual>
             </div>
@@ -67,10 +80,19 @@ export class ShowcaseSpotlightComponent extends BaseElement {
               <h2 id="spotlight-${project.slug}-title" class="showcase-title mt-4">${project.title}</h2>
               <p class="showcase-lede mt-5 max-w-xl">${project.tagline}</p>
               <div class="showcase-chip-row mt-7" aria-label="Technology stack">
-                ${project.stack.map((item, index) => html`<span class="showcase-chip" data-showcase-chip style="--chip-index:${index}">${item}</span>`)}
+                ${project.stack.map(
+                  (item, index) =>
+                    html`<span class="showcase-chip" data-showcase-chip style="--chip-index:${index}"
+                      >${item}</span
+                    >`
+                )}
               </div>
               ${metric}
-              <a class="app-link app-link--button app-link--ink mt-9" data-analytics-project="showcase" href="/showcase/${project.slug}/">
+              <a
+                class="app-link app-link--button app-link--ink mt-9"
+                data-analytics-project="showcase"
+                href="/showcase/${project.slug}/"
+              >
                 View case study <span aria-hidden="true">→</span>
               </a>
             </div>
