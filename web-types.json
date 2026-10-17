@@ -9,7 +9,7 @@
           "name": "about-me-card-deck",
           "source": {
             "file": "./src/components/pages/cards/about-me/about-me-card-deck.component.ts",
-            "offset": 1224
+            "offset": 1237
           },
           "attributes": [],
           "js": {
@@ -2491,7 +2491,7 @@
           "name": "reach-out-card-deck",
           "source": {
             "file": "./src/components/pages/cards/reach-out/reach-out-card-deck.component.ts",
-            "offset": 1260
+            "offset": 1273
           },
           "attributes": [],
           "js": {
@@ -2904,7 +2904,7 @@
           "name": "showcase-card-deck",
           "source": {
             "file": "./src/components/pages/cards/showcase/showcase-card-deck.component.ts",
-            "offset": 1259
+            "offset": 1272
           },
           "attributes": [],
           "js": {
