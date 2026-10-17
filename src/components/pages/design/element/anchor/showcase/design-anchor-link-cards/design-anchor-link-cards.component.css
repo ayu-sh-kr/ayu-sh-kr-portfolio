@@ -1,0 +1,4 @@
+/* Keep the section in the parent layout without adding a visual wrapper. */
+design-anchor-link-cards {
+  display: contents;
+}
