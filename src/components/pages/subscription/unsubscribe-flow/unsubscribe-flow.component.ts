@@ -214,8 +214,18 @@ export class UnsubscribeFlowComponent extends BaseElement {
   private renderButton(id: string, label: string, busy: string, done: string, fail: string, state: ActionState, disabled = false) {
     const currentLabel = state === "pending" ? busy : state === "success" ? done : state === "error" ? fail : label;
     return disabled || state === "pending"
-      ? html`<button class="unsubscribe-act" id="${id}" type="button" data-state="${state}" disabled>${actionGlyph(state)}<span>${currentLabel}</span></button>`
-      : html`<button class="unsubscribe-act" id="${id}" type="button" data-state="${state}">${actionGlyph(state)}<span>${currentLabel}</span></button>`;
+      ? html`<button
+        class="unsubscribe-act"
+        id="${id}"
+        type="button"
+        data-state="${state}"
+        disabled
+      >
+        ${actionGlyph(state)}<span>${currentLabel}</span>
+      </button>`
+      : html`<button class="unsubscribe-act" id="${id}" type="button" data-state="${state}">
+        ${actionGlyph(state)}<span>${currentLabel}</span>
+      </button>`;
   }
 
   /**
@@ -238,7 +248,13 @@ export class UnsubscribeFlowComponent extends BaseElement {
   private renderShell(title: string, intro: string, body: ReturnType<typeof html>) {
     return html`
       <main class="unsubscribe-page">
-        <section class="layout-content layout-section-hero unsubscribe-hero"><div class="layout-stack-lg layout-measure"><p class="type-eyebrow unsubscribe-eyebrow">${content.common.eyebrow}</p><h1 class="type-display unsubscribe-hero-title">${title}</h1><p class="type-lede unsubscribe-lead">${intro}</p></div></section>
+        <section class="layout-content layout-section-hero unsubscribe-hero">
+          <div class="layout-stack-lg layout-measure">
+            <p class="type-eyebrow unsubscribe-eyebrow">${content.common.eyebrow}</p>
+            <h1 class="type-display unsubscribe-hero-title">${title}</h1>
+            <p class="type-lede unsubscribe-lead">${intro}</p>
+          </div>
+        </section>
         ${body}
       </main>
     `;
@@ -254,9 +270,72 @@ export class UnsubscribeFlowComponent extends BaseElement {
     const confirm = content.confirm;
     const ready = this.confirmState === "ready";
     const invalid = this.confirmState === "invalid";
-    const body = ready ? html`<section class="layout-content layout-section-flush unsubscribe-section"><div class="unsubscribe-card"><p class="type-label">${confirm.addressLabel}</p><p class="unsubscribe-address"><span aria-hidden="true"></span>${this.address}</p><ul class="unsubscribe-facts">${this.renderFacts(confirm.facts)}</ul></div><div class="unsubscribe-decision"><div class="layout-row">${this.renderButton("unsubscribe-action", confirm.unsubscribeLabel, confirm.unsubscribeBusy, confirm.unsubscribeDone, confirm.unsubscribeFail, this.actionState, !this.token)}<a class="unsubscribe-quiet" href="/">${confirm.keepLabel}</a></div>${when(!!this.errorMessage, html`<p class="unsubscribe-error" role="alert">${this.errorMessage}</p>`)}</div><p class="unsubscribe-aside">${confirm.wrongAddress} <a href="/subscription/unsubscribe/">${confirm.manageDifferent}</a>.</p></section>`
-      : invalid ? html`<section class="layout-content layout-section-flush unsubscribe-section"><div class="unsubscribe-card"><h2 class="type-subsection">${confirm.invalidTitle}</h2><p class="unsubscribe-meta">${confirm.invalidBody}</p><div class="unsubscribe-field-row"><label class="visually-hidden" for="reissue-email">${confirm.emailLabel}</label><input class="form-control input-md input-rounded-md input-bordered unsubscribe-field" id="reissue-email" type="email" inputmode="email" autocomplete="email" placeholder="${confirm.emailPlaceholder}" value="${this.reissueEmail}" />${this.renderButton("reissue-action", confirm.reissueLabel, confirm.reissueBusy, confirm.reissueDone, confirm.reissueFail, this.actionState, !this.isValidEmail())}</div>${when(!!this.errorMessage, html`<p class="unsubscribe-error" role="alert">${this.errorMessage}</p>`)}${when(this.reissueSent, html`<p class="unsubscribe-success" role="status">${confirm.reissueSuccess}</p>`)}</div><p class="unsubscribe-aside">${confirm.manualHelp}</p></section>`
-      : html`<section class="layout-content layout-section-flush unsubscribe-section"><div class="unsubscribe-card"><p class="unsubscribe-meta">${confirm.loading}</p></div></section>`;
+    const body = ready ? html`<section class="layout-content layout-section-flush unsubscribe-section">
+      <div class="unsubscribe-card">
+        <p class="type-label">${confirm.addressLabel}</p>
+        <p class="unsubscribe-address"><span aria-hidden="true"></span>${this.address}</p>
+        <ul class="unsubscribe-facts">
+          ${this.renderFacts(confirm.facts)}
+        </ul>
+      </div>
+      <div class="unsubscribe-decision">
+        <div class="layout-row">
+          ${this.renderButton(
+            "unsubscribe-action",
+            confirm.unsubscribeLabel,
+            confirm.unsubscribeBusy,
+            confirm.unsubscribeDone,
+            confirm.unsubscribeFail,
+            this.actionState,
+            !this.token
+          )}<a class="unsubscribe-quiet" href="/">${confirm.keepLabel}</a>
+        </div>
+        ${when(
+          !!this.errorMessage,
+          html`<p class="unsubscribe-error" role="alert">${this.errorMessage}</p>`
+        )}
+      </div>
+      <p class="unsubscribe-aside">
+        ${confirm.wrongAddress} <a href="/subscription/unsubscribe/">${confirm.manageDifferent}</a>.
+      </p>
+    </section>`
+      : invalid ? html`<section class="layout-content layout-section-flush unsubscribe-section">
+        <div class="unsubscribe-card">
+          <h2 class="type-subsection">${confirm.invalidTitle}</h2>
+          <p class="unsubscribe-meta">${confirm.invalidBody}</p>
+          <div class="unsubscribe-field-row">
+            <label class="visually-hidden" for="reissue-email">${confirm.emailLabel}</label
+            ><input
+              class="form-control input-md input-rounded-md input-bordered unsubscribe-field"
+              id="reissue-email"
+              type="email"
+              inputmode="email"
+              autocomplete="email"
+              placeholder="${confirm.emailPlaceholder}"
+              value="${this.reissueEmail}"
+            />${this.renderButton(
+              "reissue-action",
+              confirm.reissueLabel,
+              confirm.reissueBusy,
+              confirm.reissueDone,
+              confirm.reissueFail,
+              this.actionState,
+              !this.isValidEmail()
+            )}
+          </div>
+          ${when(
+            !!this.errorMessage,
+            html`<p class="unsubscribe-error" role="alert">${this.errorMessage}</p>`
+          )}${when(
+            this.reissueSent,
+            html`<p class="unsubscribe-success" role="status">${confirm.reissueSuccess}</p>`
+          )}
+        </div>
+        <p class="unsubscribe-aside">${confirm.manualHelp}</p>
+      </section>`
+      : html`<section class="layout-content layout-section-flush unsubscribe-section">
+        <div class="unsubscribe-card"><p class="unsubscribe-meta">${confirm.loading}</p></div>
+      </section>`;
     return this.renderShell(confirm.title, confirm.intro, body);
   }
 
@@ -268,8 +347,51 @@ export class UnsubscribeFlowComponent extends BaseElement {
    */
   private renderDone() {
     const done = content.done;
-    const exits = done.exits.map(([label, description, href]) => html`<li><a href="${href}"><span>${label} <span class="unsubscribe-arrow" aria-hidden="true">→</span></span><span>${description}</span></a></li>`);
-    const body = html`<section class="layout-content layout-section-flush layout-section unsubscribe-section"><div class="unsubscribe-card"><p class="type-label">${done.addressLabel}</p><p class="unsubscribe-receipt"><span>${this.address}</span><time>${new Date().toLocaleString(undefined, { day: "numeric", month: "short", year: "numeric", hour: "2-digit", minute: "2-digit" })}</time></p><ul class="unsubscribe-facts">${this.renderFacts(done.facts)}</ul></div><div class="unsubscribe-subscribe-again"><div class="layout-row"><button class="unsubscribe-act" id="subscribe-again-action" type="button">${done.subscribeAgainLabel}</button><p class="unsubscribe-meta">${done.subscribeAgainHint}</p></div></div></section><section class="layout-content layout-section-flush layout-section-end unsubscribe-section"><div class="layout-stack-lg"><h2 class="type-subsection">${done.exitsTitle}</h2><ul class="unsubscribe-exits">${exits}</ul><p class="unsubscribe-meta">${done.exitsNote}</p></div></section>`;
+    const exits = done.exits.map(([label, description, href]) => html`<li>
+      <a href="${href}"
+        ><span>${label} <span class="unsubscribe-arrow" aria-hidden="true">→</span></span
+        ><span>${description}</span></a
+      >
+    </li>`);
+    const body = html`<section
+        class="layout-content layout-section-flush layout-section unsubscribe-section"
+      >
+        <div class="unsubscribe-card">
+          <p class="type-label">${done.addressLabel}</p>
+          <p class="unsubscribe-receipt">
+            <span>${this.address}</span
+            ><time
+              >${new Date().toLocaleString(undefined, {
+                day: "numeric",
+                month: "short",
+                year: "numeric",
+                hour: "2-digit",
+                minute: "2-digit",
+              })}</time
+            >
+          </p>
+          <ul class="unsubscribe-facts">
+            ${this.renderFacts(done.facts)}
+          </ul>
+        </div>
+        <div class="unsubscribe-subscribe-again">
+          <div class="layout-row">
+            <button class="unsubscribe-act" id="subscribe-again-action" type="button">
+              ${done.subscribeAgainLabel}
+            </button>
+            <p class="unsubscribe-meta">${done.subscribeAgainHint}</p>
+          </div>
+        </div>
+      </section>
+      <section class="layout-content layout-section-flush layout-section-end unsubscribe-section">
+        <div class="layout-stack-lg">
+          <h2 class="type-subsection">${done.exitsTitle}</h2>
+          <ul class="unsubscribe-exits">
+            ${exits}
+          </ul>
+          <p class="unsubscribe-meta">${done.exitsNote}</p>
+        </div>
+      </section>`;
     return this.renderShell(done.title, done.intro, body);
   }
 }

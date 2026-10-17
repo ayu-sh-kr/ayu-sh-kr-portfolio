@@ -1,3 +1,4 @@
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
 import {Component, DotaPageElement, SEO} from "@ayu-sh-kr/dota-wrap/core";
 import {Route} from "@ayu-sh-kr/dota-wrap/router";
 import {getBlogSeo} from "@app/data/blog-content.ts";
@@ -25,8 +26,8 @@ export class BlogPage extends DotaPageElement {
   }
 
   /** Renders the index route shell around the three blog landing sections. */
-  render(): string {
-    return `
+  render(): TemplateResult {
+    return html`
       <app-header></app-header>
       <blog-index></blog-index>
       <app-footer></app-footer>

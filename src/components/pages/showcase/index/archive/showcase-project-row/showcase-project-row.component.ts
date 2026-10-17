@@ -1,4 +1,5 @@
-import { BaseElement, BindEvent, Component, HTML, Property, String } from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
+import { BaseElement, BindEvent, Component, Property, String } from "@ayu-sh-kr/dota-wrap/core";
 import { getShowcaseProject } from "@app/data/showcase-content.ts";
 import { publishAnalyticsEvent } from "@app/utils/analytics.utils.ts";
 
@@ -37,14 +38,19 @@ export class ShowcaseProjectRowComponent extends BaseElement {
   }
 
   /** Renders the matching project summary, or nothing when the slug is unknown. */
-  render(): string {
+  render(): TemplateResult {
     const project = getShowcaseProject(this.projectSlug);
     if (!project) {
-      return "";
+      return html``;
     }
 
-    return HTML`
-      <a class="showcase-row" data-showcase-reveal data-analytics-project="showcase" href="/showcase/${project.slug}/">
+    return html`
+      <a
+        class="showcase-row"
+        data-showcase-reveal
+        data-analytics-project="showcase"
+        href="/showcase/${project.slug}/"
+      >
         <span class="showcase-row-year">${project.year}</span>
         <span class="showcase-row-copy">
           <strong>${project.title}</strong>

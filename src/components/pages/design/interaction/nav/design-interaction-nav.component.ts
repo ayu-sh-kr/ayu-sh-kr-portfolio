@@ -1,4 +1,5 @@
-import { BaseElement, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
+import {html, TemplateResult} from "@ayu-sh-kr/dota-wrap/rendering";
+import { BaseElement, Component } from "@ayu-sh-kr/dota-wrap/core";
 import {
   designInteractionContent,
   type InteractionFamily,
@@ -13,25 +14,29 @@ export class DesignInteractionNavComponent extends BaseElement {
   }
 
   /** Renders one named navigation group from the authored interaction family catalog. */
-  private renderGroup(group: InteractionFamily["group"]): string {
+  private renderGroup(group: InteractionFamily["group"]) {
     return designInteractionContent.families
       .filter((family) => family.group === group)
       .map(
         (family) =>
-          HTML`<a href="#${family.id}">${family.number} · ${family.title}</a>`,
-      )
-      .join("");
+          html`<a href="#${family.id}">${family.number} · ${family.title}</a>`,
+      );
   }
 
   /** Renders the scrollable small-screen-safe navigation strip and contract shortcut. */
-  render(): string {
+  render(): TemplateResult {
     const { navigation } = designInteractionContent;
 
-    return HTML`
-      <nav class="design-interaction-nav layout-page layout-section-sm" aria-label="${navigation.ariaLabel}">
-        <div class="layout-row layout-row-tight">
-          ${navigation.groups.map((group) => HTML`<span class="type-label">${group}</span>${this.renderGroup(group)}`).join("")}<a href="${navigation.useCase.href}">${navigation.useCase.label}</a><a href="${navigation.contract.href}">${navigation.contract.label}</a>
-        </div>
-      </nav>`;
+    return html` <nav
+      class="design-interaction-nav layout-page layout-section-sm"
+      aria-label="${navigation.ariaLabel}"
+    >
+      <div class="layout-row layout-row-tight">
+        ${navigation.groups.map(
+          (group) => html`<span class="type-label">${group}</span>${this.renderGroup(group)}`
+        )}<a href="${navigation.useCase.href}">${navigation.useCase.label}</a
+        ><a href="${navigation.contract.href}">${navigation.contract.label}</a>
+      </div>
+    </nav>`;
   }
 }

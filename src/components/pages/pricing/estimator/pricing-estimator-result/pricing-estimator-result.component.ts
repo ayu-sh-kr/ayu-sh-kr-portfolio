@@ -1,4 +1,5 @@
-import { BaseElement, Component, HTML, State } from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
+import { BaseElement, Component, State } from "@ayu-sh-kr/dota-wrap/core";
 import { type ApplicationEvent, OnEvent } from "@ayu-sh-kr/dota-wrap/event";
 import { pricingContent } from "@app/data/pricing-content.ts";
 import {
@@ -263,26 +264,34 @@ export class PricingEstimatorResultComponent extends BaseElement {
    * trace how their choices map to the number. The CTA links to the
    * start-project section so the estimate flows directly into the intake.
    */
-  render(): string {
+  render(): TemplateResult {
     const type = this.getSelectedType();
     const stage = this.getSelectedStage();
     const content = pricingContent.estimator;
     const low = type.base * stage.multiplier;
     const high = low * 1.5;
 
-    return HTML`
+    return html`
       <div class="pricing-estimator-result">
         <div class="pricing-estimator-result-main">
           <p class="pricing-estimator-result-eyebrow">${content.resultEyebrow}</p>
-          <p class="pricing-estimator-figure" aria-live="polite">${formatCurrency(low)} – ${formatCurrency(high)}</p>
-          <p class="pricing-estimator-subline">${type.description.replace(/\.$/, "")} — for ${stage.note}.</p>
+          <p class="pricing-estimator-figure" aria-live="polite">
+            ${formatCurrency(low)} – ${formatCurrency(high)}
+          </p>
+          <p class="pricing-estimator-subline">
+            ${type.description.replace(/\.$/, "")} — for ${stage.note}.
+          </p>
         </div>
         <div class="pricing-estimator-breakdown" aria-label="${content.breakdownAriaLabel}">
           <span>${content.breakdownBuildingLabel} <b>${type.label}</b></span>
           <span>${content.breakdownStageLabel} <b>${stage.label}</b></span>
         </div>
         <div class="pricing-estimator-cta">
-          <a class="app-link app-link--button app-link--accent app-link--full" href="#pricing-start-project">${content.quoteCta} <span aria-hidden="true">→</span></a>
+          <a
+            class="app-link app-link--button app-link--accent app-link--full"
+            href="#pricing-start-project"
+            >${content.quoteCta} <span aria-hidden="true">→</span></a
+          >
           <p>${content.reassurance}</p>
         </div>
       </div>

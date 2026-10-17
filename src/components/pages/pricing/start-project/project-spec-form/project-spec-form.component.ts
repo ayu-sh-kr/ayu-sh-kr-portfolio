@@ -1,9 +1,10 @@
-import { ApplicationEventService, BaseElement, Component, HostListener, HTML, Property, String } from "@ayu-sh-kr/dota-wrap/core";
+import {escapeHtml} from "@app/utils/html.utils.ts";
+import {TemplateResult, html, trustedHTML} from "@ayu-sh-kr/dota-wrap/rendering";
+import { ApplicationEventService, BaseElement, Component, HostListener, Property, String } from "@ayu-sh-kr/dota-wrap/core";
 import {
   PRICING_START_PROJECT_FIELD_EVENT,
   type PricingStartProjectField,
 } from "@app/events/pricing.events.ts";
-import { escapeHtml } from "@app/utils/html.utils.ts";
 
 /**
  * Collects the details that supplement an existing project specification.
@@ -62,13 +63,35 @@ export class PricingProjectSpecFormComponent extends BaseElement {
   }
 
   /** Renders the project name, document link, and missing-context fields for a spec. */
-  render(): string {
-    return HTML`
+  render(): TemplateResult {
+    // Textarea contents are raw text; keep renderer markers outside the editable value.
+    return html`
       <fieldset class="pricing-project-fieldset">
         <legend>The build</legend>
-        <label class="form-label form-label">Project name<input class="form-control input-md input-rounded-md input-bordered" data-project-field="projectName" value="${escapeHtml(this.projectName)}" placeholder="Orders API v2"></label>
-        <label class="form-label form-label">Link to the spec <small>Optional</small><input class="form-control input-md input-rounded-md input-bordered" data-project-field="specLink" type="url" value="${escapeHtml(this.specLink)}" placeholder="https://notion.so/…"></label>
-        <label class="form-label form-label">What the doc will not tell me<textarea class="form-control input-md input-rounded-md input-bordered" data-project-field="specNotes" placeholder="The part you are least sure about.">${escapeHtml(this.specNotes)}</textarea></label>
+        <label class="form-label form-label"
+          >Project name<input
+            class="form-control input-md input-rounded-md input-bordered"
+            data-project-field="projectName"
+            value="${this.projectName}"
+            placeholder="Orders API v2"
+        /></label>
+        <label class="form-label form-label"
+          >Link to the spec <small>Optional</small
+          ><input
+            class="form-control input-md input-rounded-md input-bordered"
+            data-project-field="specLink"
+            type="url"
+            value="${this.specLink}"
+            placeholder="https://notion.so/…"
+        /></label>
+        <label class="form-label form-label"
+          >What the doc will not tell
+          me${trustedHTML(
+            `<textarea class="form-control input-md input-rounded-md input-bordered" data-project-field="specNotes" placeholder="The part you are least sure about.">${escapeHtml(
+              this.specNotes
+            )}</textarea>`
+          )}</label
+        >
       </fieldset>
     `;
   }

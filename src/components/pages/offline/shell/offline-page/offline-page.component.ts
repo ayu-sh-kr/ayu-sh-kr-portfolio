@@ -1,4 +1,5 @@
-import { BindEvent, Component, DotaPageElement, HTML, HostListener, SEO, WindowListener } from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
+import { BindEvent, Component, DotaPageElement, HostListener, SEO, WindowListener } from "@ayu-sh-kr/dota-wrap/core";
 import { OnEvent } from "@ayu-sh-kr/dota-wrap/event";
 import { Route } from "@ayu-sh-kr/dota-wrap/router";
 import { offlineContent } from "@app/data/offline-content.ts";
@@ -404,12 +405,16 @@ export class OfflinePage extends DotaPageElement {
     this.clearConnectivityTimers();
   }
 
-  render(): string {
-    return HTML`
+  render(): TemplateResult {
+    return html`
       <nav id="offline-nav" aria-label="${offlineContent.nav.ariaLabel}">
         <div class="offline-nav-inner">
-          <a class="offline-brand" href="${offlineContent.nav.brandHref}">${offlineContent.nav.brand}</a>
-          <span class="offline-nav-status" data-offline-nav-status>${offlineContent.nav.offlineStatus}</span>
+          <a class="offline-brand" href="${offlineContent.nav.brandHref}"
+            >${offlineContent.nav.brand}</a
+          >
+          <span class="offline-nav-status" data-offline-nav-status
+            >${offlineContent.nav.offlineStatus}</span
+          >
         </div>
       </nav>
 

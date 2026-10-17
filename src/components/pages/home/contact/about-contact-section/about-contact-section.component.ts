@@ -1,4 +1,5 @@
-import { BaseElement, BindEvent, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
+import { BaseElement, BindEvent, Component } from "@ayu-sh-kr/dota-wrap/core";
 import { isAnalyticsContactMethod } from "@app/events/analytics.events.ts";
 import { portfolioContent } from "@app/data/portfolio-content.ts";
 import { publishAnalyticsEvent } from "@app/utils/analytics.utils.ts";
@@ -40,24 +41,58 @@ export class PortfolioContactComponent extends BaseElement {
    * Returns the contact section using authored content and link destinations.
    * Rendering stays pure so copy or URL changes only require updating the data source.
    */
-  render(): string {
+  render(): TemplateResult {
     const { contact } = portfolioContent;
 
-    return HTML`
-      <section id="contact" class="layout-page layout-section-end border-b border-(--border-color) text-center" aria-labelledby="contact-title">
+    return html`
+      <section
+        id="contact"
+        class="layout-page layout-section-end border-b border-(--border-color) text-center"
+        aria-labelledby="contact-title"
+      >
         <div class="layout-content">
           <p class="motion-eyebrow motion-reveal">${contact.eyebrow}</p>
           <h2 id="contact-title" class="motion-display motion-reveal mx-auto mt-5 max-w-5xl">
             ${contact.titleBeforeAccent} <span class="text-(--primary-color)">${contact.accent}</span>
           </h2>
-          <p class="motion-reveal mx-auto mt-7 max-w-xl text-[length:var(--type-lede-size)] leading-[var(--type-lede-leading)] text-(--muted-color)">${contact.body}</p>
+          <p
+            class="motion-reveal mx-auto mt-7 max-w-xl text-[length:var(--type-lede-size)] leading-[var(--type-lede-leading)] text-(--muted-color)"
+          >
+            ${contact.body}
+          </p>
           <div class="motion-reveal mt-10 flex flex-wrap justify-center gap-3">
-            <a class="app-link app-link--button app-link--accent" data-analytics-contact="email" href="${contact.emailHref}">Email me</a>
-            <a class="app-link app-link--button app-link--ghost" data-analytics-contact="resume" href="${contact.resumeHref}">Request résumé</a>
+            <a
+              class="app-link app-link--button app-link--accent"
+              data-analytics-contact="email"
+              href="${contact.emailHref}"
+              >Email me</a
+            >
+            <a
+              class="app-link app-link--button app-link--ghost"
+              data-analytics-contact="resume"
+              href="${contact.resumeHref}"
+              >Request résumé</a
+            >
           </div>
-          <div class="motion-reveal mt-9 flex flex-wrap justify-center gap-x-6 gap-y-3 text-sm font-medium text-(--muted-color)">
-            <a class="quiet-link" data-analytics-contact="github" href="${contact.github}" target="_blank" rel="noreferrer">GitHub</a>
-            <a class="quiet-link" data-analytics-contact="linkedin" href="${contact.linkedin}" target="_blank" rel="noreferrer">LinkedIn</a>
+          <div
+            class="motion-reveal mt-9 flex flex-wrap justify-center gap-x-6 gap-y-3 text-sm font-medium text-(--muted-color)"
+          >
+            <a
+              class="quiet-link"
+              data-analytics-contact="github"
+              href="${contact.github}"
+              target="_blank"
+              rel="noreferrer"
+              >GitHub</a
+            >
+            <a
+              class="quiet-link"
+              data-analytics-contact="linkedin"
+              href="${contact.linkedin}"
+              target="_blank"
+              rel="noreferrer"
+              >LinkedIn</a
+            >
             <span>India · IST (UTC+5:30)</span>
           </div>
         </div>

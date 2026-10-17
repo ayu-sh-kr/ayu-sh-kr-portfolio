@@ -1,4 +1,5 @@
-import { BaseElement, Component, HTML, WindowListener } from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
+import { BaseElement, Component, WindowListener } from "@ayu-sh-kr/dota-wrap/core";
 import { OnEvent } from "@ayu-sh-kr/dota-wrap/event";
 import { pricingContent } from "@app/data/pricing-content.ts";
 
@@ -56,21 +57,30 @@ export class PricingHeroComponent extends BaseElement {
   }
 
   /** Returns the pricing hero content and its motion-controller anchor elements. */
-  render(): string {
+  render(): TemplateResult {
     const content = pricingContent.hero;
 
-    return HTML`
+    return html`
       <div id="pricing-hero-wrap" class="layout-hero-pin-wrap">
-        <section id="pricing-hero-stage" class="layout-hero-pin-stage" aria-labelledby="pricing-hero-title">
+        <section
+          id="pricing-hero-stage"
+          class="layout-hero-pin-stage"
+          aria-labelledby="pricing-hero-title"
+        >
           <div id="pricing-hero-inner">
             <p class="pricing-eyebrow">${content.eyebrow}</p>
             <h1 id="pricing-hero-title" class="pricing-display mt-5">
-              ${content.titleBeforeBreak}<br />${content.titleAfterBreak} <span>${content.titleAccent}</span>
+              ${content.titleBeforeBreak}<br />${content.titleAfterBreak}
+              <span>${content.titleAccent}</span>
             </h1>
             <p class="pricing-lede mx-auto mt-6 max-w-2xl">${content.body}</p>
             <div class="mt-9 flex flex-wrap justify-center gap-3">
-              <a class="app-link app-link--button app-link--accent" href="${content.primaryHref}">${content.primaryCta}</a>
-              <a class="app-link app-link--button app-link--ghost" href="${content.secondaryHref}">${content.secondaryCta}</a>
+              <a class="app-link app-link--button app-link--accent" href="${content.primaryHref}"
+                >${content.primaryCta}</a
+              >
+              <a class="app-link app-link--button app-link--ghost" href="${content.secondaryHref}"
+                >${content.secondaryCta}</a
+              >
             </div>
             <p class="pricing-trust mt-6">${content.trust}</p>
           </div>

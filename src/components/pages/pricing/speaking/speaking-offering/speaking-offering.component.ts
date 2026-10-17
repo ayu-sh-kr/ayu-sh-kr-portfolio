@@ -1,4 +1,5 @@
-import { BaseElement, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
+import { BaseElement, Component } from "@ayu-sh-kr/dota-wrap/core";
 import { pricingContent } from "@app/data/pricing-content.ts";
 
 /**
@@ -19,11 +20,15 @@ export class SpeakingOfferingComponent extends BaseElement {
   }
 
   /** Returns speaking formats and topics from the pricing content source. */
-  render(): string {
+  render(): TemplateResult {
     const content = pricingContent.speakingOffering;
 
-    return HTML`
-      <section id="pricing-speak" class="speaking-offering-section" aria-labelledby="speaking-offering-title">
+    return html`
+      <section
+        id="pricing-speak"
+        class="speaking-offering-section"
+        aria-labelledby="speaking-offering-title"
+      >
         <div class="speaking-offering-inner">
           <div class="speaking-offering-copy">
             <p class="pricing-eyebrow">${content.eyebrow}</p>
@@ -31,19 +36,17 @@ export class SpeakingOfferingComponent extends BaseElement {
             <p class="pricing-section-lede mt-5">${content.body}</p>
           </div>
           <div class="speaking-format-grid">
-            ${content.formats
-              .map(
-                (format) => `
-                  <article class="speaking-format">
-                    <h3>${format.title}</h3>
-                    <p>${format.body}</p>
-                  </article>
-                `,
-              )
-              .join("")}
+            ${content.formats.map(
+              (format) => html`
+                <article class="speaking-format">
+                  <h3>${format.title}</h3>
+                  <p>${format.body}</p>
+                </article>
+              `
+            )}
           </div>
           <div class="speaking-topic-list" aria-label="${content.topicsAriaLabel}">
-            ${content.topics.map((topic) => `<span>${topic}</span>`).join("")}
+            ${content.topics.map((topic) => html`<span>${topic}</span>`)}
           </div>
         </div>
       </section>

@@ -1,4 +1,5 @@
-import { BaseElement, Component, HTML, WindowListener } from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
+import { BaseElement, Component, WindowListener } from "@ayu-sh-kr/dota-wrap/core";
 import { OnEvent } from "@ayu-sh-kr/dota-wrap/event";
 import { coffeeContent } from "@app/data/coffee-content.ts";
 
@@ -70,21 +71,30 @@ export class CoffeeHeroComponent extends BaseElement {
   }
 
   /** Returns the compact introduction and direct links into its two named sections. */
-  render(): string {
+  render(): TemplateResult {
     const content = coffeeContent.hero;
 
-    return HTML`
+    return html`
       <div id="coffee-hero-wrap" class="layout-hero-pin-wrap layout-hero-pin-wrap--long">
-        <section id="coffee-hero-stage" class="layout-hero-pin-stage" aria-labelledby="coffee-hero-title">
+        <section
+          id="coffee-hero-stage"
+          class="layout-hero-pin-stage"
+          aria-labelledby="coffee-hero-title"
+        >
           <div id="coffee-hero-inner">
             <p class="coffee-eyebrow">${content.eyebrow}</p>
             <h1 id="coffee-hero-title" class="type-display coffee-hero-title mt-5">
-              ${content.titleBeforeAccent} <span>${content.titleAccent}</span> ${content.titleAfterAccent}
+              ${content.titleBeforeAccent}
+              <span>${content.titleAccent}</span> ${content.titleAfterAccent}
             </h1>
             <p class="type-lede coffee-hero-lede mx-auto mt-6">${content.body}</p>
             <div class="mt-9 flex flex-wrap justify-center gap-3">
-              <a class="app-link app-link--button app-link--accent" href="#coffee-order">${content.primaryCta}</a>
-              <a class="app-link app-link--button app-link--ghost" href="#coffee-impact">${content.secondaryCta}</a>
+              <a class="app-link app-link--button app-link--accent" href="#coffee-order"
+                >${content.primaryCta}</a
+              >
+              <a class="app-link app-link--button app-link--ghost" href="#coffee-impact"
+                >${content.secondaryCta}</a
+              >
             </div>
             <p class="coffee-hero-trust mt-6">${content.trust}</p>
           </div>

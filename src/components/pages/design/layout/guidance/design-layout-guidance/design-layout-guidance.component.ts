@@ -1,4 +1,5 @@
-import { BaseElement, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
+import { BaseElement, Component } from "@ayu-sh-kr/dota-wrap/core";
 import { designLayoutContent } from "@app/data/design-layout-content.ts";
 
 /** Explains how route sections and narrower inner measures work together. */
@@ -13,18 +14,28 @@ export class DesignLayoutGuidanceComponent extends BaseElement {
   }
 
   /** Renders the implementation rules for shared page geometry. */
-  render(): string {
+  render(): TemplateResult {
     const { guidance } = designLayoutContent;
 
-    return HTML`
-      <section id="design-layout-guidance" class="design-layout-guidance layout-page layout-section-end layout-grid-rail" aria-labelledby="design-layout-guidance-title">
+    return html`
+      <section
+        id="design-layout-guidance"
+        class="design-layout-guidance layout-page layout-section-end layout-grid-rail"
+        aria-labelledby="design-layout-guidance-title"
+      >
         <div class="layout-stack layout-stack-sm">
           <p class="type-eyebrow">${guidance.eyebrow}</p>
           <h2 id="design-layout-guidance-title" class="type-section">${guidance.title}</h2>
           <p class="type-lede">${guidance.lede}</p>
         </div>
         <ol class="design-layout-rules layout-rail">
-          ${guidance.rules.map((rule, index) => HTML`<li><span>${String(index + 1).padStart(2, "0")}</span><p>${rule}</p></li>`).join("")}
+          ${guidance.rules.map(
+            (rule, index) =>
+              html`<li>
+                <span>${String(index + 1).padStart(2, "0")}</span>
+                <p>${rule}</p>
+              </li>`
+          )}
         </ol>
       </section>
     `;

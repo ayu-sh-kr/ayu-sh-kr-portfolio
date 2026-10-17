@@ -1,9 +1,9 @@
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
 import {
   BaseElement,
   Component,
   HostListener,
-  HTML,
-} from "@ayu-sh-kr/dota-wrap/core";
+  } from "@ayu-sh-kr/dota-wrap/core";
 import { designInteractionContent } from "@app/data/design-interaction-content.ts";
 
 const SELECTION_ACCORDION_CONFIG = JSON.stringify({
@@ -39,32 +39,40 @@ export class DesignInteractionSelectionComponent extends BaseElement {
   }
 
   /** Renders choice cards and the shared Dota accordion disclosure. */
-  render(): string {
+  render(): TemplateResult {
     const { selection } = designInteractionContent;
 
-    return HTML`
-      <section id="selection" class="design-interaction-section layout-page layout-section" aria-labelledby="selection-title">
-          <header class="design-interaction-heading layout-stack layout-stack-sm">
-            <p class="type-eyebrow">${selection.eyebrow}</p>
-            <h2 id="selection-title" class="type-section">${selection.title}</h2>
-            <p class="type-lede">${selection.lede}</p>
-          </header>
-          <div class="design-interaction-spec-grid layout-grid-auto-sm">${selection.choices
-            .map(
-              (
-                choice,
-              ) => HTML`<button type="button" class="form-choice input-lg input-rounded-md input-bordered design-interaction-choice" data-interaction-choice="${choice}" aria-pressed="${String(this.selectedChoice === choice)}">
-              <strong>${choice}</strong>
-              <span>${this.selectedChoice === choice ? selection.selectedLabel : selection.chooseLabel}</span>
-            </button>`,
-            )
-            .join("")}</div>
-          <dota-accordion
-            classname="design-interaction-disclosure"
-            header="${selection.disclosure.summary}"
-            description="${selection.disclosure.body}"
-            config='${SELECTION_ACCORDION_CONFIG}'
-          ></dota-accordion>
-        </section>`;
+    return html` <section
+      id="selection"
+      class="design-interaction-section layout-page layout-section"
+      aria-labelledby="selection-title"
+    >
+      <header class="design-interaction-heading layout-stack layout-stack-sm">
+        <p class="type-eyebrow">${selection.eyebrow}</p>
+        <h2 id="selection-title" class="type-section">${selection.title}</h2>
+        <p class="type-lede">${selection.lede}</p>
+      </header>
+      <div class="design-interaction-spec-grid layout-grid-auto-sm">
+        ${selection.choices.map(
+          (choice) => html`<button
+            type="button"
+            class="form-choice input-lg input-rounded-md input-bordered design-interaction-choice"
+            data-interaction-choice="${choice}"
+            aria-pressed="${String(this.selectedChoice === choice)}"
+          >
+            <strong>${choice}</strong>
+            <span
+              >${this.selectedChoice === choice ? selection.selectedLabel : selection.chooseLabel}</span
+            >
+          </button>`
+        )}
+      </div>
+      <dota-accordion
+        classname="design-interaction-disclosure"
+        header="${selection.disclosure.summary}"
+        description="${selection.disclosure.body}"
+        config="${SELECTION_ACCORDION_CONFIG}"
+      ></dota-accordion>
+    </section>`;
   }
 }

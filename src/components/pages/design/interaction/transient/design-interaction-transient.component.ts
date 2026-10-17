@@ -1,9 +1,9 @@
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
 import {
   BaseElement,
   Component,
   HostListener,
-  HTML,
-} from "@ayu-sh-kr/dota-wrap/core";
+  } from "@ayu-sh-kr/dota-wrap/core";
 import { Toast } from "@app/service/toast.service.ts";
 import { designInteractionContent } from "@app/data/design-interaction-content.ts";
 
@@ -28,21 +28,30 @@ export class DesignInteractionTransientComponent extends BaseElement {
   }
 
   /** Renders three production toast outcomes without introducing a second notification host. */
-  render(): string {
+  render(): TemplateResult {
     const { transient } = designInteractionContent;
 
-    return HTML`
-      <section id="transient" class="design-interaction-section layout-page layout-section" aria-labelledby="transient-title">
-          <header class="design-interaction-heading layout-stack layout-stack-sm">
-            <p class="type-eyebrow">${transient.eyebrow}</p>
-            <h2 id="transient-title" class="type-section">${transient.title}</h2>
-            <p class="type-lede">${transient.lede}</p>
-          </header>
-          <div class="design-interaction-state-controls">
-            <button type="button" data-interaction-transient="note">${transient.controls.note.label}</button>
-            <button type="button" data-interaction-transient="success">${transient.controls.success.label}</button>
-            <button type="button" data-interaction-transient="error">${transient.controls.error.label}</button>
-          </div>
-        </section>`;
+    return html` <section
+      id="transient"
+      class="design-interaction-section layout-page layout-section"
+      aria-labelledby="transient-title"
+    >
+      <header class="design-interaction-heading layout-stack layout-stack-sm">
+        <p class="type-eyebrow">${transient.eyebrow}</p>
+        <h2 id="transient-title" class="type-section">${transient.title}</h2>
+        <p class="type-lede">${transient.lede}</p>
+      </header>
+      <div class="design-interaction-state-controls">
+        <button type="button" data-interaction-transient="note">
+          ${transient.controls.note.label}
+        </button>
+        <button type="button" data-interaction-transient="success">
+          ${transient.controls.success.label}
+        </button>
+        <button type="button" data-interaction-transient="error">
+          ${transient.controls.error.label}
+        </button>
+      </div>
+    </section>`;
   }
 }

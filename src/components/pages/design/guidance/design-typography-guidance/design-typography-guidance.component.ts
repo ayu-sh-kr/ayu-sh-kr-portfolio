@@ -1,4 +1,5 @@
-import { BaseElement, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
+import { BaseElement, Component } from "@ayu-sh-kr/dota-wrap/core";
 import { designTypographyContent } from "@app/data/design-typography-content.ts";
 
 /** Preserves the distinct markup and presentation roles of the three pairing specimens. */
@@ -25,10 +26,10 @@ export class DesignTypographyGuidanceComponent extends BaseElement {
   }
 
   /** Renders role pairings, a prose sample, and a compact implementation checklist. */
-  render(): string {
+  render(): TemplateResult {
     const { guidance } = designTypographyContent;
 
-    return HTML`
+    return html`
       <section class="design-guidance design-section" aria-labelledby="design-guidance-title">
         <header class="design-section-heading">
           <p class="type-eyebrow design-eyebrow">${guidance.eyebrow}</p>
@@ -40,31 +41,34 @@ export class DesignTypographyGuidanceComponent extends BaseElement {
           ${guidance.pairings.map((pairing, index) => {
             const layout = PAIRING_LAYOUTS[index];
 
-            return HTML`
-            <article class="design-guidance-card ${layout.cardClass}">
-              <p class="type-label">${pairing.label}</p>
-              ${layout.headingTag === "h3"
-                ? HTML`<h3 class="${layout.headingClass}">${pairing.heading}</h3>`
-                : HTML`<p class="${layout.headingClass}">${pairing.heading}</p>`}
-              <p class="${layout.bodyClass}">${pairing.body}</p>
-              <code>${pairing.token}</code>
-            </article>
-          `;
-          }).join("")}
+            return html`
+              <article class="design-guidance-card ${layout.cardClass}">
+                <p class="type-label">${pairing.label}</p>
+                ${layout.headingTag === "h3"
+                  ? html`<h3 class="${layout.headingClass}">${pairing.heading}</h3>`
+                  : html`<p class="${layout.headingClass}">${pairing.heading}</p>`}
+                <p class="${layout.bodyClass}">${pairing.body}</p>
+                <code>${pairing.token}</code>
+              </article>
+            `;
+          })}
         </div>
 
         <div class="design-prose-layout">
           <article class="design-prose-sample">
             <p class="type-label">${guidance.prose.label}</p>
             <h3>${guidance.prose.title}</h3>
-            ${guidance.prose.paragraphs.map((paragraph) => HTML`<p>${paragraph}</p>`).join("")}
-            <a href="${guidance.prose.linkHref}">${guidance.prose.linkLabel} <span aria-hidden="true">${guidance.prose.linkIndicator}</span></a>
+            ${guidance.prose.paragraphs.map((paragraph) => html`<p>${paragraph}</p>`)}
+            <a href="${guidance.prose.linkHref}"
+              >${guidance.prose.linkLabel}
+              <span aria-hidden="true">${guidance.prose.linkIndicator}</span></a
+            >
           </article>
 
           <aside class="design-checklist" aria-label="${guidance.checklistAriaLabel}">
             <p class="type-label">${guidance.checklistLabel}</p>
             <ol>
-              ${guidance.checklist.map((item) => HTML`<li>${item}</li>`).join("")}
+              ${guidance.checklist.map((item) => html`<li>${item}</li>`)}
             </ol>
           </aside>
         </div>

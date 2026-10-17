@@ -1,4 +1,5 @@
-import { Component, DotaPageElement, HTML, SEO } from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
+import { Component, DotaPageElement, SEO } from "@ayu-sh-kr/dota-wrap/core";
 import { Route } from "@ayu-sh-kr/dota-wrap/router";
 import {showcaseSeo} from "@app/data/showcase-content.ts";
 import {toSEO} from "@app/utils/seo.utils.ts";
@@ -25,8 +26,8 @@ export class ShowcasePage extends DotaPageElement {
   }
 
   /** Renders the showcase content shell between the shared header and footer. */
-  render(): string {
-    return HTML`
+  render(): TemplateResult {
+    return html`
       <app-header></app-header>
       <showcase-page-content></showcase-page-content>
       <app-footer></app-footer>

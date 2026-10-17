@@ -18,7 +18,11 @@ export class DesignAlertOverviewComponent extends BaseElement {
     const { overview } = designAlertContent;
 
     return html`
-      <section id="design-alert-overview" class="design-alert-overview layout-page layout-section-hero" aria-labelledby="design-alert-overview-title">
+      <section
+        id="design-alert-overview"
+        class="design-alert-overview layout-page layout-section-hero"
+        aria-labelledby="design-alert-overview-title"
+      >
         <div class="design-alert-overview-copy layout-stack layout-stack-sm">
           <p class="type-eyebrow">${overview.eyebrow}</p>
           <h1 id="design-alert-overview-title" class="type-display">${overview.title}</h1>

@@ -1,9 +1,9 @@
+import {TemplateResult, html, unsafeHTML} from "@ayu-sh-kr/dota-wrap/rendering";
 import {BaseElement, BindEvent, Component} from "@ayu-sh-kr/dota-wrap/core";
 import {type ApplicationEvent, OnEvent} from "@ayu-sh-kr/dota-wrap/event";
 import {formatBlogDate, getBlogPath, getBlogPostsForIndex, getLatestBlogPost, labelForCategory, type BlogCategory, type BlogPost} from "@app/configs/blogs.config.ts";
 import {blogIndexContent} from "@app/data/blog-content.ts";
 import {BLOG_FILTER_CHANGE_EVENT} from "@app/events/blog.events.ts";
-import {escapeHtml} from "@app/utils/html.utils.ts";
 import {BlogRevealLifecycle} from "@app/utils/blog-reveal-lifecycle.utils.ts";
 import {publishAnalyticsEvent} from "@app/utils/analytics.utils.ts";
 
@@ -64,20 +64,40 @@ export class BlogHighlightedBlogComponent extends BaseElement {
   }
 
   /** Renders the highlighted card only when catalog data exists and matches the active filter. */
-  render(): string {
+  render(): TemplateResult {
     if (!this.highlightedPost) {
-      return "";
+      return html``;
     }
 
     const isVisible = this.currentFilter === "all" || this.highlightedPost.category === this.currentFilter;
-    return `
-      <section class="blog-container blog-featured-section" aria-label="${blogIndexContent.highlighted.ariaLabel}"${isVisible ? "" : " hidden"}>
-        <a class="blog-featured blog-reveal" data-blog-reveal data-analytics-project="blog" data-analytics-slug="${this.highlightedPost.slug}" data-blog-category="${this.highlightedPost.category}"
-           href="${getBlogPath(this.highlightedPost.slug)}">
-          <div class="blog-meta-row"><span class="blog-chip">${labelForCategory(this.highlightedPost.category)}</span><span>${this.highlightedPost.minutes} ${blogIndexContent.readTimeSuffix}</span></div>
-          <h2>${escapeHtml(this.highlightedPost.header)}</h2>
-          <p>${escapeHtml(this.highlightedPost.description)}</p>
-          <div class="blog-featured-footer"><time datetime="${this.highlightedPost.date}">${formatBlogDate(this.highlightedPost.date)}</time><span class="blog-read-link">${blogIndexContent.highlighted.readLabel} <span class="blog-arrow" aria-hidden="true">→</span></span></div>
+    return html`
+      <section
+        class="blog-container blog-featured-section"
+        aria-label="${blogIndexContent.highlighted.ariaLabel}"
+        ${unsafeHTML(isVisible ? "" : " hidden")}
+      >
+        <a
+          class="blog-featured blog-reveal"
+          data-blog-reveal
+          data-analytics-project="blog"
+          data-analytics-slug="${this.highlightedPost.slug}"
+          data-blog-category="${this.highlightedPost.category}"
+          href="${getBlogPath(this.highlightedPost.slug)}"
+        >
+          <div class="blog-meta-row">
+            <span class="blog-chip">${labelForCategory(this.highlightedPost.category)}</span
+            ><span>${this.highlightedPost.minutes} ${blogIndexContent.readTimeSuffix}</span>
+          </div>
+          <h2>${this.highlightedPost.header}</h2>
+          <p>${this.highlightedPost.description}</p>
+          <div class="blog-featured-footer">
+            <time datetime="${this.highlightedPost.date}"
+              >${formatBlogDate(this.highlightedPost.date)}</time
+            ><span class="blog-read-link"
+              >${blogIndexContent.highlighted.readLabel}
+              <span class="blog-arrow" aria-hidden="true">→</span></span
+            >
+          </div>
         </a>
       </section>
     `;

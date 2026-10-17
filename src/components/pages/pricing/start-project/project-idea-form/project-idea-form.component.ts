@@ -1,9 +1,10 @@
-import { ApplicationEventService, BaseElement, Component, HostListener, HTML, Property, String } from "@ayu-sh-kr/dota-wrap/core";
+import {escapeHtml} from "@app/utils/html.utils.ts";
+import {TemplateResult, html, trustedHTML} from "@ayu-sh-kr/dota-wrap/rendering";
+import { ApplicationEventService, BaseElement, Component, HostListener, Property, String } from "@ayu-sh-kr/dota-wrap/core";
 import {
   PRICING_START_PROJECT_FIELD_EVENT,
   type PricingStartProjectField,
 } from "@app/events/pricing.events.ts";
-import { escapeHtml } from "@app/utils/html.utils.ts";
 
 /**
  * Collects the outcome-focused questions for a visitor with an early-stage idea.
@@ -62,13 +63,33 @@ export class PricingProjectIdeaFormComponent extends BaseElement {
   }
 
   /** Renders the product purpose, intended audience, and success fields for an idea. */
-  render(): string {
-    return HTML`
+  render(): TemplateResult {
+    // Textarea contents are raw text; keep renderer markers outside the editable value.
+    return html`
       <fieldset class="pricing-project-fieldset">
         <legend>The idea</legend>
-        <label class="form-label form-label">In one line, what should it do?<input class="form-control input-md input-rounded-md input-bordered" data-project-field="idea" value="${escapeHtml(this.idea)}" placeholder="Let staff take orders without a POS terminal"></label>
-        <label class="form-label form-label">Who is it for?<input class="form-control input-md input-rounded-md input-bordered" data-project-field="audience" value="${escapeHtml(this.audience)}" placeholder="Floor staff, currently on pen and paper"></label>
-        <label class="form-label form-label">What does success look like?<textarea class="form-control input-md input-rounded-md input-bordered" data-project-field="success" placeholder="In three months, what is measurably different?">${escapeHtml(this.success)}</textarea></label>
+        <label class="form-label form-label"
+          >In one line, what should it do?<input
+            class="form-control input-md input-rounded-md input-bordered"
+            data-project-field="idea"
+            value="${this.idea}"
+            placeholder="Let staff take orders without a POS terminal"
+        /></label>
+        <label class="form-label form-label"
+          >Who is it for?<input
+            class="form-control input-md input-rounded-md input-bordered"
+            data-project-field="audience"
+            value="${this.audience}"
+            placeholder="Floor staff, currently on pen and paper"
+        /></label>
+        <label class="form-label form-label"
+          >What does success look
+          like?${trustedHTML(
+            `<textarea class="form-control input-md input-rounded-md input-bordered" data-project-field="success" placeholder="In three months, what is measurably different?">${escapeHtml(
+              this.success
+            )}</textarea>`
+          )}</label
+        >
       </fieldset>
     `;
   }

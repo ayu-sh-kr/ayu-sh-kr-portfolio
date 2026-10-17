@@ -57,6 +57,8 @@ export class NewsMarkdownViewComponent extends BaseElement {
 
   /** Renders the article skeleton around the themed `<md-view>`. */
   render() {
-    return html`${trustedHTML(this.markdownLifecycle.renderArticleSkeleton("news-markdown-content"))}`;
+    return html`${trustedHTML(
+      this.markdownLifecycle.renderArticleSkeleton("news-markdown-content")
+    )}`;
   }
 }

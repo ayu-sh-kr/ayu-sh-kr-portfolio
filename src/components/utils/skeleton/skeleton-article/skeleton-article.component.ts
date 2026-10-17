@@ -1,3 +1,4 @@
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
 import {BaseElement, Component} from "@ayu-sh-kr/dota-wrap/core";
 
 /** Renders the article-shaped placeholder used by slow Markdown views. */
@@ -11,8 +12,8 @@ export class SkeletonArticleComponent extends BaseElement {
   }
 
   /** Mirrors the category row, wrapping heading, opening prose, and first block. */
-  render(): string {
-    return `
+  render(): TemplateResult {
+    return html`
       <div class="sk-article sk-stagger">
         <div class="sk-article-chip-row">
           <span class="sk sk-chip"></span>

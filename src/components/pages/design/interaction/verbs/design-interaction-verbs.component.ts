@@ -1,9 +1,9 @@
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
 import {
   BaseElement,
   Component,
   HostListener,
-  HTML,
-} from "@ayu-sh-kr/dota-wrap/core";
+  } from "@ayu-sh-kr/dota-wrap/core";
 import { OnEvent } from "@ayu-sh-kr/dota-wrap/event";
 import { designInteractionContent } from "@app/data/design-interaction-content.ts";
 
@@ -45,33 +45,33 @@ export class DesignInteractionVerbsComponent extends BaseElement {
   }
 
   /** Renders the complete approved verb catalog from the route's authored source. */
-  render(): string {
+  render(): TemplateResult {
     const { verbReference, verbs } = designInteractionContent;
 
-    return HTML`
-      <section id="verbs" class="design-interaction-section layout-page layout-section" aria-labelledby="verbs-title">
-          <header class="design-interaction-heading layout-stack layout-stack-sm">
-            <p class="type-eyebrow">${verbReference.eyebrow}</p>
-            <h2 id="verbs-title" class="type-section">${verbReference.title}</h2>
-            <p class="type-lede">${verbReference.lede}</p>
-          </header>
-          <div class="design-interaction-verbs layout-grid-auto-sm">${verbs
-            .map(
-              (
-                verb,
-              ) => HTML`<button type="button" class="design-interaction-verb" data-verb="${verb.name}">
-              <span class="design-interaction-verb-stage">
-                <i>
-                </i>
-              </span>
-              <span>
-                <strong>${verb.name}</strong>
-                <em>${verb.value}</em>
-              </span>
-              <small>${verb.description}</small>
-            </button>`,
-            )
-            .join("")}</div>
-        </section>`;
+    return html` <section
+      id="verbs"
+      class="design-interaction-section layout-page layout-section"
+      aria-labelledby="verbs-title"
+    >
+      <header class="design-interaction-heading layout-stack layout-stack-sm">
+        <p class="type-eyebrow">${verbReference.eyebrow}</p>
+        <h2 id="verbs-title" class="type-section">${verbReference.title}</h2>
+        <p class="type-lede">${verbReference.lede}</p>
+      </header>
+      <div class="design-interaction-verbs layout-grid-auto-sm">
+        ${verbs.map(
+          (verb) => html`<button type="button" class="design-interaction-verb" data-verb="${verb.name}">
+            <span class="design-interaction-verb-stage">
+              <i> </i>
+            </span>
+            <span>
+              <strong>${verb.name}</strong>
+              <em>${verb.value}</em>
+            </span>
+            <small>${verb.description}</small>
+          </button>`
+        )}
+      </div>
+    </section>`;
   }
 }

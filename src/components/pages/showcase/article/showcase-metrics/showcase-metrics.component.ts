@@ -1,5 +1,5 @@
-import {BaseElement, Component, HTML, Property, String} from "@ayu-sh-kr/dota-wrap/core";
-import {escapeHtml} from "@app/utils/html.utils.ts";
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
+import {BaseElement, Component, Property, String} from "@ayu-sh-kr/dota-wrap/core";
 
 /** One validated metric displayed by the authored metrics list. */
 type Metric = {
@@ -43,19 +43,17 @@ export class ShowcaseMetricsComponent extends BaseElement {
   }
 
   /** Renders each validated metric with escaped value and label text. */
-  render(): string {
-    return HTML`
+  render(): TemplateResult {
+    return html`
       <div class="showcase-metrics" role="group" aria-label="Key metrics">
-        ${this.metrics()
-          .map(
-            (metric) => `
-              <div class="showcase-metric">
-                <strong>${escapeHtml(metric.value)}</strong>
-                <span>${escapeHtml(metric.label)}</span>
-              </div>
-            `,
-          )
-          .join("")}
+        ${this.metrics().map(
+          (metric) => html`
+            <div class="showcase-metric">
+              <strong>${metric.value}</strong>
+              <span>${metric.label}</span>
+            </div>
+          `
+        )}
       </div>
     `;
   }

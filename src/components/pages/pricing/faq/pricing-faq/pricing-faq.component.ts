@@ -1,4 +1,5 @@
-import { BaseElement, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
+import { BaseElement, Component } from "@ayu-sh-kr/dota-wrap/core";
 import { DOTA_FAQ_ACCORDION_CLASS, DOTA_FAQ_ACCORDION_CONFIG } from "@app/components/utils/faq/dota-faq-accordion.ts";
 import { pricingContent } from "@app/data/pricing-content.ts";
 
@@ -21,27 +22,25 @@ export class PricingFaqComponent extends BaseElement {
   }
 
   /** Returns the configured FAQ accordions from the authored pricing questions. */
-  render(): string {
+  render(): TemplateResult {
     const content = pricingContent.faq;
 
-    return HTML`
+    return html`
       <section class="pricing-faq-section layout-page" aria-labelledby="pricing-faq-title">
         <div class="pricing-faq-content">
           <p class="pricing-eyebrow">${content.eyebrow}</p>
           <h2 id="pricing-faq-title" class="pricing-section-title mt-3">${content.title}</h2>
           <div class="pricing-faq-list">
-            ${content.items
-              .map(
-                (item) => HTML`
-                  <dota-accordion
-                    classname="${DOTA_FAQ_ACCORDION_CLASS}"
-                    header="${item.question}"
-                    description="${item.answer}"
-                    config='${DOTA_FAQ_ACCORDION_CONFIG}'
-                  ></dota-accordion>
-                `,
-              )
-              .join("")}
+            ${content.items.map(
+              (item) => html`
+                <dota-accordion
+                  classname="${DOTA_FAQ_ACCORDION_CLASS}"
+                  header="${item.question}"
+                  description="${item.answer}"
+                  config="${DOTA_FAQ_ACCORDION_CONFIG}"
+                ></dota-accordion>
+              `
+            )}
           </div>
         </div>
       </section>

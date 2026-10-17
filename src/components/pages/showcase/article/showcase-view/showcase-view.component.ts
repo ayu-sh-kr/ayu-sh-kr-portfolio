@@ -177,12 +177,20 @@ export class ShowcaseViewComponent extends BaseElement {
 
     const nextProject = showcaseProjects[showcaseProjects.indexOf(project) + 1];
     const markdown = this.loadError
-      ? `<article class="showcase-prose"><p class="showcase-load-error" role="alert">${escapeHtml(this.loadError)} <a href="/showcase/">Return to all showcases</a>.</p></article>`
-      : `<article class="showcase-prose" data-showcase-markdown aria-busy="${this.loading}">
-          <showcase-markdown-view>
-            <p class="showcase-loading">Loading the case study…</p>
-          </showcase-markdown-view>
-        </article>`;
+      ? `<article class="showcase-prose">
+        <p class="showcase-load-error" role="alert">
+          ${escapeHtml(this.loadError)} <a href="/showcase/">Return to all showcases</a>.
+        </p>
+      </article>`
+      : `<article
+        class="showcase-prose"
+        data-showcase-markdown
+        aria-busy="${this.loading}"
+      >
+        <showcase-markdown-view>
+          <p class="showcase-loading">Loading the case study…</p>
+        </showcase-markdown-view>
+      </article>`;
 
     return html`
       <div class="showcase-progress" data-showcase-progress aria-hidden="true"></div>
@@ -194,15 +202,26 @@ export class ShowcaseViewComponent extends BaseElement {
           status="${formatStatus(project.status)}"
           title="${project.title}"
           tagline="${project.tagline}"
-          stack="${project.stack.join("|")}">
+          stack="${project.stack.join("|")}"
+        >
         </showcase-article-header>
         <div class="showcase-reader-layout">
           <showcase-toc></showcase-toc>
           ${trustedHTML(markdown)}
         </div>
         <footer class="showcase-article-footer">
-          <a class="showcase-quiet-card" href="/showcase/"><span>←</span><span><small>Back to</small>All showcases</span></a>
-          ${trustedHTML(nextProject ? `<a class="showcase-quiet-card showcase-quiet-card-next" href="/showcase/${nextProject.slug}/"><span><small>Next case study</small>${escapeHtml(nextProject.title)}</span><span>→</span></a>` : "")}
+          <a class="showcase-quiet-card" href="/showcase/"
+            ><span>←</span><span><small>Back to</small>All showcases</span></a
+          >
+          ${trustedHTML(
+            nextProject
+              ? `<a class="showcase-quiet-card showcase-quiet-card-next" href="/showcase/${
+                  nextProject.slug
+                }/"><span><small>Next case study</small>${escapeHtml(
+                  nextProject.title
+                )}</span><span>→</span></a>`
+              : ""
+          )}
         </footer>
       </main>
     `;

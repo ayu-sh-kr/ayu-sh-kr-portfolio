@@ -1,3 +1,4 @@
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
 import {BaseElement, Component} from "@ayu-sh-kr/dota-wrap/core";
 
 /**
@@ -19,8 +20,8 @@ export class BlogIndexComponent extends BaseElement {
   }
 
   /** Returns the three landing sections in their reading order. */
-  render(): string {
-    return `
+  render(): TemplateResult {
+    return html`
       <main class="blog-index">
         <blog-hero data-analytics-section="blog_featured"></blog-hero>
         <blog-list-section data-analytics-section="blog_archive"></blog-list-section>

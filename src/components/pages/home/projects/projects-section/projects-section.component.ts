@@ -1,4 +1,5 @@
-import { BaseElement, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html, unsafeHTML} from "@ayu-sh-kr/dota-wrap/rendering";
+import { BaseElement, Component } from "@ayu-sh-kr/dota-wrap/core";
 import { portfolioContent } from "@app/data/portfolio-content.ts";
 
 /**
@@ -23,10 +24,10 @@ export class PortfolioWorkComponent extends BaseElement {
    * Returns one card for each authored project, including its chips and link
    * attributes. The motion controller only changes the rail after this markup exists.
    */
-  render(): string {
+  render(): TemplateResult {
     const { work } = portfolioContent;
 
-    return HTML`
+    return html`
       <div id="work-wrap" class="pin-wrap work-pin-wrap">
         <section id="work-stage" class="pin-stage work-stage" aria-labelledby="work-title">
           <div class="work-heading px-5 text-center sm:px-8">
@@ -34,23 +35,27 @@ export class PortfolioWorkComponent extends BaseElement {
             <h2 id="work-title" class="motion-title mt-4">Things I’ve shipped</h2>
           </div>
           <div id="work-rail" class="work-rail">
-            ${work
-              .map(
-                (project) => `
-                  <article class="work-card ${"cta" in project && project.cta ? "work-card-cta" : ""}">
-                    <p class="motion-eyebrow">${project.eyebrow}</p>
-                    <h3 class="mt-5 text-[1.85rem] font-semibold leading-tight tracking-tight">${project.title}</h3>
-                    <p class="mt-4 text-[0.98rem] leading-7 text-[var(--muted-color)]">${project.body}</p>
-                    <div class="mt-6 flex flex-wrap gap-2">
-                      ${project.chips.map((chip) => `<span class="motion-chip">${chip}</span>`).join("")}
-                    </div>
-                    <a class="app-link app-link--text app-link--card work-card-link" href="${project.link.href}" ${project.link.external ? 'target="_blank" rel="noreferrer"' : ""}>
-                      ${project.link.label}<span aria-hidden="true"> →</span>
-                    </a>
-                  </article>
-                `,
-              )
-              .join("")}
+            ${work.map(
+              (project) => html`
+                <article class="work-card ${"cta" in project && project.cta ? "work-card-cta" : ""}">
+                  <p class="motion-eyebrow">${project.eyebrow}</p>
+                  <h3 class="mt-5 text-[1.85rem] font-semibold leading-tight tracking-tight">
+                    ${project.title}
+                  </h3>
+                  <p class="mt-4 text-[0.98rem] leading-7 text-[var(--muted-color)]">${project.body}</p>
+                  <div class="mt-6 flex flex-wrap gap-2">
+                    ${project.chips.map((chip) => html`<span class="motion-chip">${chip}</span>`)}
+                  </div>
+                  <a
+                    class="app-link app-link--text app-link--card work-card-link"
+                    href="${project.link.href}"
+                    ${unsafeHTML(project.link.external ? 'target="_blank" rel="noreferrer"' : "")}
+                  >
+                    ${project.link.label}<span aria-hidden="true"> →</span>
+                  </a>
+                </article>
+              `
+            )}
           </div>
           <p class="work-drag-hint" aria-hidden="true">Scroll to move through the work →</p>
         </section>

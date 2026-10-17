@@ -1,9 +1,9 @@
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
 import {
   BaseElement,
   Component,
   HostListener,
-  HTML,
-} from "@ayu-sh-kr/dota-wrap/core";
+  } from "@ayu-sh-kr/dota-wrap/core";
 import { designInteractionContent } from "@app/data/design-interaction-content.ts";
 
 /** Isolates the input-to-number recomputation pattern and its single polite announcement. */
@@ -35,25 +35,38 @@ export class DesignInteractionRecomputeComponent extends BaseElement {
   }
 
   /** Renders the established light-input / contrast-number composition. */
-  render(): string {
+  render(): TemplateResult {
     const { recompute } = designInteractionContent;
 
-    return HTML`
-      <section id="recompute" class="design-interaction-section layout-page layout-section" aria-labelledby="recompute-title">
-          <header class="design-interaction-heading layout-stack layout-stack-sm">
-            <p class="type-eyebrow">${recompute.eyebrow}</p>
-            <h2 id="recompute-title" class="type-section">${recompute.title}</h2>
-            <p class="type-lede">${recompute.lede}</p>
-          </header>
-          <div class="design-interaction-estimator">
-            <label class="form-label form-label" for="interaction-units">${recompute.inputLabel} <input class="form-native" id="interaction-units" data-interaction-units type="range" min="1" max="8" value="3" />
-            </label>
-            <output id="interaction-estimate" aria-live="polite">
-              <span>${recompute.investmentLabel}</span>
-              <strong>${recompute.initialInvestment}</strong>
-              <small>${recompute.daySummary.replace("{days}", "3")}</small>
-            </output>
-          </div>
-        </section>`;
+    return html` <section
+      id="recompute"
+      class="design-interaction-section layout-page layout-section"
+      aria-labelledby="recompute-title"
+    >
+      <header class="design-interaction-heading layout-stack layout-stack-sm">
+        <p class="type-eyebrow">${recompute.eyebrow}</p>
+        <h2 id="recompute-title" class="type-section">${recompute.title}</h2>
+        <p class="type-lede">${recompute.lede}</p>
+      </header>
+      <div class="design-interaction-estimator">
+        <label class="form-label form-label" for="interaction-units"
+          >${recompute.inputLabel}
+          <input
+            class="form-native"
+            id="interaction-units"
+            data-interaction-units
+            type="range"
+            min="1"
+            max="8"
+            value="3"
+          />
+        </label>
+        <output id="interaction-estimate" aria-live="polite">
+          <span>${recompute.investmentLabel}</span>
+          <strong>${recompute.initialInvestment}</strong>
+          <small>${recompute.daySummary.replace("{days}", "3")}</small>
+        </output>
+      </div>
+    </section>`;
   }
 }

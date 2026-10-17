@@ -1,4 +1,5 @@
-import { Component, DotaPageElement, HTML, SEO } from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
+import { Component, DotaPageElement, SEO } from "@ayu-sh-kr/dota-wrap/core";
 import { Route } from "@ayu-sh-kr/dota-wrap/router";
 import { pricingContent } from "@app/data/pricing-content.ts";
 import {toSEO} from "@app/utils/seo.utils.ts";
@@ -25,8 +26,8 @@ export class PricingPage extends DotaPageElement {
   }
 
   /** Renders the pricing sections in their reader-facing order. */
-  render(): string {
-    return HTML`
+  render(): TemplateResult {
+    return html`
       <app-header></app-header>
       <main id="pricing-page-main">
         <pricing-hero data-analytics-section="pricing_hero"></pricing-hero>

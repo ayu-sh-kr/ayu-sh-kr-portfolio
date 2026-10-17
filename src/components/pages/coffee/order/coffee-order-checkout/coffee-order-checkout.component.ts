@@ -1,4 +1,5 @@
-import { BaseElement, BindEvent, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
+import { BaseElement, BindEvent, Component } from "@ayu-sh-kr/dota-wrap/core";
 import { type ApplicationEvent, OnEvent } from "@ayu-sh-kr/dota-wrap/event";
 import { coffeeContent, type CoffeeSize } from "@app/data/coffee-content.ts";
 import { type ActionButtonPayload } from "@app/events/action-button.events.ts";
@@ -208,19 +209,38 @@ export class CoffeeOrderCheckoutComponent extends BaseElement {
   }
 
   /** Returns the optional feedback fields and the shared checkout action. */
-  render(): string {
+  render(): TemplateResult {
     const content = coffeeContent.order;
 
-    return HTML`
+    return html`
       <form class="coffee-details-card">
-        <label class="form-label form-label"><span>${content.nameLabel}</span><input class="form-control input-md input-rounded-md input-bordered" name="name" type="text" autocomplete="name" placeholder="${content.namePlaceholder}" /></label>
-        <label class="form-label form-label"><span>${content.noteLabel}</span><textarea class="form-control input-md input-rounded-md input-bordered" name="note" rows="3" placeholder="${content.notePlaceholder}"></textarea></label>
+        <label class="form-label form-label"
+          ><span>${content.nameLabel}</span
+          ><input
+            class="form-control input-md input-rounded-md input-bordered"
+            name="name"
+            type="text"
+            autocomplete="name"
+            placeholder="${content.namePlaceholder}"
+        /></label>
+        <label class="form-label form-label"
+          ><span>${content.noteLabel}</span
+          ><textarea
+            class="form-control input-md input-rounded-md input-bordered"
+            name="note"
+            rows="3"
+            placeholder="${content.notePlaceholder}"
+          ></textarea>
+        </label>
         <div class="coffee-order-cta">
           <action-button
             id="coffee-checkout-button"
             action="coffee.order"
             variant="accent"
-            label="${content.submitLabel.replace("{total}", formatCoffeeAmount(this.getTotal(), this.currency))}"
+            label="${content.submitLabel.replace(
+              "{total}",
+              formatCoffeeAmount(this.getTotal(), this.currency)
+            )}"
             busy-label="${content.submittingLabel}"
             done-label="${content.successLabel}"
             fail-label="${content.failLabel}"

@@ -18,14 +18,23 @@ import {publishAnalyticsEvent} from "@app/utils/analytics.utils.ts";
 import {escapeHtml} from "@app/utils/html.utils.ts";
 
 const renderFigures = (note: NewsNote): string => note.figures?.length ? `
-  <section class="news-article-block layout-section-sm layout-section-flush" aria-label="Measured outcomes">
+  <section
+    class="news-article-block layout-section-sm layout-section-flush"
+    aria-label="Measured outcomes"
+  >
     <dl class="news-figures layout-grid-3">
-      ${note.figures.map((figure) => `
+      ${note.figures
+        .map(
+          (figure) => `
         <div>
           <dt>${escapeHtml(figure.label)}</dt>
-          <dd><span class="news-figure-value news-number">${escapeHtml(figure.value)}</span>${figure.unit ? `<span class="news-figure-unit">${escapeHtml(figure.unit)}</span>` : ""}</dd>
+          <dd><span class="news-figure-value news-number">${escapeHtml(figure.value)}</span>${
+            figure.unit ? `<span class="news-figure-unit">${escapeHtml(figure.unit)}</span>` : ""
+          }</dd>
         </div>
-      `).join("")}
+      `
+        )
+        .join("")}
     </dl>
   </section>
 ` : "";
@@ -34,15 +43,24 @@ const renderReference = (note: NewsNote): string => note.reference ? `
   <div class="news-article-block">
     <div class="news-article-source layout-row layout-row-split">
       <span class="news-meta">Source of record</span>
-      <a href="${escapeHtml(note.reference.href)}" target="_blank" rel="noopener noreferrer">${escapeHtml(note.reference.label)} <span aria-hidden="true">↗</span></a>
+      <a href="${escapeHtml(note.reference.href)}" target="_blank" rel="noopener noreferrer"
+        >${escapeHtml(note.reference.label)} <span aria-hidden="true">↗</span></a
+      >
     </div>
   </div>
 ` : "";
 
 const renderAdjacentNote = (note: NewsNote | undefined, direction: "previous" | "next"): string => note ? `
   <a class="news-step ${direction === "previous" ? "is-previous" : ""}" href="/news/${note.slug}/">
-    <p class="news-label">${direction === "previous" ? newsContent.article.previous : newsContent.article.next} · ${formatNewsDate(note.date, true)}</p>
-    <p class="news-step-title">${direction === "previous" ? `<span aria-hidden="true">←</span> ` : ""}${escapeHtml(note.title)}${direction === "next" ? ` <span aria-hidden="true">→</span>` : ""}</p>
+    <p class="news-label">
+      ${direction === "previous" ? newsContent.article.previous : newsContent.article.next} ·
+      ${formatNewsDate(note.date, true)}
+    </p>
+    <p class="news-step-title">
+      ${direction === "previous" ? `<span aria-hidden="true">←</span> ` : ""}${escapeHtml(
+        note.title
+      )}${direction === "next" ? ` <span aria-hidden="true">→</span>` : ""}
+    </p>
   </a>
 ` : "";
 
@@ -162,12 +180,12 @@ export class NewsArticleComponent extends BaseElement {
     const note = this.note ?? getNewsNote(getNewsSlug(window.location.pathname)) ?? null;
     if (!note) {
       return html`${trustedHTML(`
-        <main class="layout-reading layout-section-hero news-article-missing">
-          <p class="news-eyebrow">${newsContent.article.notFoundEyebrow}</p>
-          <h1 class="type-section">${newsContent.article.notFoundTitle}</h1>
-          <a class="app-link app-link--button app-link--ink" href="/news/">${newsContent.article.notFoundAction}</a>
-        </main>
-      `)}`;
+              <main class="layout-reading layout-section-hero news-article-missing">
+                <p class="news-eyebrow">${newsContent.article.notFoundEyebrow}</p>
+                <h1 class="type-section">${newsContent.article.notFoundTitle}</h1>
+                <a class="app-link app-link--button app-link--ink" href="/news/">${newsContent.article.notFoundAction}</a>
+              </main>
+            `)}`;
     }
 
     const notes = getNewsNotes();
@@ -178,45 +196,86 @@ export class NewsArticleComponent extends BaseElement {
     const otherNotes = notes.filter((item) => item.slug !== note.slug && item.kind !== note.kind);
     const moreNotes = [...sameKindNotes, ...otherNotes].slice(0, 3);
     const documentMarkup = this.loadError
-      ? `<div class="news-note-prose"><p class="news-load-error">${escapeHtml(this.loadError)} <a href="/news/">${newsContent.article.back}</a>.</p></div>`
-      : `<div class="news-note-prose layout-section layout-section-flush" data-news-document aria-busy="true"><news-markdown-view><p class="news-meta">${newsContent.article.loading}</p></news-markdown-view></div>`;
+      ? `<div class="news-note-prose">
+        <p class="news-load-error">
+          ${escapeHtml(this.loadError)} <a href="/news/">${newsContent.article.back}</a>.
+        </p>
+      </div>`
+      : `<div
+        class="news-note-prose layout-section layout-section-flush"
+        data-news-document
+        aria-busy="true"
+      >
+        <news-markdown-view><p class="news-meta">${newsContent.article.loading}</p></news-markdown-view>
+      </div>`;
 
     return html`${trustedHTML(`
-      <div class="news-reading-progress" data-news-progress aria-hidden="true"></div>
-      <main>
-        <article data-news-article-body>
-          <header class="layout-section-hero">
-            <div class="layout-page">
-              <a class="news-back-link" href="/news/"><span aria-hidden="true">←</span> ${newsContent.article.back}</a>
+          <div class="news-reading-progress" data-news-progress aria-hidden="true"></div>
+          <main>
+            <article data-news-article-body>
+              <header class="layout-section-hero">
+                <div class="layout-page">
+                  <a class="news-back-link" href="/news/"><span aria-hidden="true">←</span> ${
+                    newsContent.article.back
+                  }</a>
+                </div>
+                <div class="news-article-block layout-grid layout-section-sm text-center">
+                  <div class="news-article-byline layout-row layout-row-tight justify-center">
+                    <span class="news-tag">${labelForNewsKind(note.kind)}</span>
+                    <time class="news-meta news-number" datetime="${note.date}">${formatNewsDate(
+      note.date
+    )}</time>
+                    <span class="news-meta">·</span>
+                    <span class="news-meta">${note.minutes} min read</span>
+                  </div>
+                  <h1 class="news-article-title type-section">${escapeHtml(note.title)}</h1>
+                  <p class="news-lede type-lede layout-center">${escapeHtml(note.summary)}</p>
+                </div>
+              </header>
+              ${renderFigures(note)}
+              ${documentMarkup}
+              ${renderReference(note)}
+              <div class="news-article-block"><article-share article-title="${escapeHtml(
+                note.title
+              )}" canonical-url="https://www.ayu-sh-kr.com/news/${encodeURIComponent(
+      note.slug
+    )}/" author="${escapeHtml(siteIdentity.name)}" publication-date="${
+      note.date
+    }"></article-share></div>
+            </article>
+
+            <nav class="news-article-block layout-section" aria-label="Adjacent Dispatch notes">
+              ${renderAdjacentNote(previousNote, "previous")}
+              ${renderAdjacentNote(nextNote, "next")}
+            </nav>
+
+            ${
+              moreNotes.length
+                ? `<section class="news-article-block layout-section layout-section-flush" aria-labelledby="news-more-heading"><h2 class="news-label" id="news-more-heading">${
+                    newsContent.article.more
+                  }</h2><div class="news-more-list">${moreNotes
+                    .map(
+                      (item) =>
+                        `<a class="news-more-row layout-row layout-row-split" href="/news/${
+                          item.slug
+                        }/"><span>${escapeHtml(
+                          item.title
+                        )}</span><time class="news-meta news-number" datetime="${
+                          item.date
+                        }">${formatNewsDate(item.date, true)}</time></a>`
+                    )
+                    .join("")}</div></section>`
+                : ""
+            }
+
+            <div class="news-article-subscription layout-content layout-section-end">
+              <blog-subscription heading="${newsContent.article.subscription.title}" description="${
+      newsContent.article.subscription.copy
+    }" aria-label-text="${
+      newsContent.article.subscription.ariaLabel
+    }" button-variant="accent"></blog-subscription>
             </div>
-            <div class="news-article-block layout-grid layout-section-sm text-center">
-              <div class="news-article-byline layout-row layout-row-tight justify-center">
-                <span class="news-tag">${labelForNewsKind(note.kind)}</span>
-                <time class="news-meta news-number" datetime="${note.date}">${formatNewsDate(note.date)}</time>
-                <span class="news-meta">·</span>
-                <span class="news-meta">${note.minutes} min read</span>
-              </div>
-              <h1 class="news-article-title type-section">${escapeHtml(note.title)}</h1>
-              <p class="news-lede type-lede layout-center">${escapeHtml(note.summary)}</p>
-            </div>
-          </header>
-          ${renderFigures(note)}
-          ${documentMarkup}
-          ${renderReference(note)}
-          <div class="news-article-block"><article-share article-title="${escapeHtml(note.title)}" canonical-url="https://www.ayu-sh-kr.com/news/${encodeURIComponent(note.slug)}/" author="${escapeHtml(siteIdentity.name)}" publication-date="${note.date}"></article-share></div>
-        </article>
-
-        <nav class="news-article-block layout-section" aria-label="Adjacent Dispatch notes">
-          ${renderAdjacentNote(previousNote, "previous")}
-          ${renderAdjacentNote(nextNote, "next")}
-        </nav>
-
-        ${moreNotes.length ? `<section class="news-article-block layout-section layout-section-flush" aria-labelledby="news-more-heading"><h2 class="news-label" id="news-more-heading">${newsContent.article.more}</h2><div class="news-more-list">${moreNotes.map((item) => `<a class="news-more-row layout-row layout-row-split" href="/news/${item.slug}/"><span>${escapeHtml(item.title)}</span><time class="news-meta news-number" datetime="${item.date}">${formatNewsDate(item.date, true)}</time></a>`).join("")}</div></section>` : ""}
-
-        <div class="news-article-subscription layout-content layout-section-end">
-          <blog-subscription heading="${newsContent.article.subscription.title}" description="${newsContent.article.subscription.copy}" aria-label-text="${newsContent.article.subscription.ariaLabel}" button-variant="accent"></blog-subscription>
-        </div>
-      </main>
-    `)}`;
+          </main>
+        `)}`;
   }
 }

@@ -1,4 +1,5 @@
-import { BaseElement, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
+import { BaseElement, Component } from "@ayu-sh-kr/dota-wrap/core";
 import { supportContent } from "@app/data/support-content.ts";
 
 /**
@@ -18,14 +19,15 @@ export class SupportIntroComponent extends BaseElement {
   }
 
   /** Returns the authored eyebrow, heading, and introductory lede. */
-  render(): string {
+  render(): TemplateResult {
     const { opener } = supportContent;
 
-    return HTML`
+    return html`
       <header class="support-head">
         <p class="support-eyebrow type-eyebrow">${opener.eyebrow}</p>
         <h2 id="support-title" class="type-section">
-          ${opener.titleBeforeAccent} <span class="support-accent">${opener.titleAccent}</span> ${opener.titleAfterAccent}
+          ${opener.titleBeforeAccent}
+          <span class="support-accent">${opener.titleAccent}</span> ${opener.titleAfterAccent}
         </h2>
         <p class="support-lede type-lede">${opener.lede}</p>
       </header>

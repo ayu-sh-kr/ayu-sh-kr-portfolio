@@ -1,4 +1,5 @@
-import { BaseElement, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
+import { BaseElement, Component } from "@ayu-sh-kr/dota-wrap/core";
 import { coffeeContent } from "@app/data/coffee-content.ts";
 
 /**
@@ -21,11 +22,16 @@ export class CoffeeOrderComponent extends BaseElement {
     super();
   }
   /** Returns the section heading and the five order responsibilities in reader-facing order. */
-  render(): string {
+  render(): TemplateResult {
     const content = coffeeContent.order;
 
-    return HTML`
-      <section id="coffee-order" class="coffee-order-section layout-content layout-section" aria-labelledby="coffee-order-title" data-analytics-section="coffee_order">
+    return html`
+      <section
+        id="coffee-order"
+        class="coffee-order-section layout-content layout-section"
+        aria-labelledby="coffee-order-title"
+        data-analytics-section="coffee_order"
+      >
         <header class="coffee-order-heading">
           <p class="coffee-eyebrow">${content.eyebrow}</p>
           <h2 id="coffee-order-title" class="type-section mt-3">${content.title}</h2>

@@ -21,7 +21,11 @@ export class DesignToastOverviewComponent extends BaseElement {
   render() {
     const { overview } = designToastContent;
     return html`
-      <section id="design-toast-overview" class="design-toast-overview layout-page layout-section-hero" aria-labelledby="design-toast-overview-title">
+      <section
+        id="design-toast-overview"
+        class="design-toast-overview layout-page layout-section-hero"
+        aria-labelledby="design-toast-overview-title"
+      >
         <div class="design-toast-overview__copy layout-stack layout-stack-sm">
           <p class="type-eyebrow">${overview.eyebrow}</p>
           <h1 id="design-toast-overview-title" class="type-display">${overview.title}</h1>

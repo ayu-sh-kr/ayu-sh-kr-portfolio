@@ -1,4 +1,5 @@
-import {BaseElement, Component, HTML} from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html, trustedHTML} from "@ayu-sh-kr/dota-wrap/rendering";
+import {BaseElement, Component} from "@ayu-sh-kr/dota-wrap/core";
 import {OnEvent} from "@ayu-sh-kr/dota-wrap/event";
 import {renderReachOutCardDeckCards} from "@app/data/card-decks/reach-out-card-deck-content.ts";
 import {reachOutContent} from "@app/data/reach-out-content.ts";
@@ -78,8 +79,50 @@ export class ReachOutCardDeckComponent extends BaseElement {
    * The service does not participate in rendering, so this stays a pure server-safe projection
    * of the content module and the existing route-level copy record.
    */
-  render(): string {
+  render(): TemplateResult {
     const {page} = reachOutContent;
-    return HTML`<section class="reach-out-card-deck" aria-label="${page.label}"><div class="reach-out-card-deck__stage layout-content"><div class="reach-out__deck" data-reach-out-deck role="group" aria-roledescription="card deck" aria-label="${page.deckAriaLabel}" tabindex="0">${renderReachOutCardDeckCards()}</div><p class="reach-out__live" data-reach-out-live aria-live="polite" aria-atomic="true"></p></div><footer class="reach-out-card-deck__controls layout-content"><div class="reach-out__helm"><div class="reach-out__navigation"><button class="reach-out__step" data-reach-out-previous type="button" aria-label="${page.previousCardAriaLabel}">←</button><nav class="reach-out__ticks" data-reach-out-ticks aria-label="${page.cardsAriaLabel}"></nav><button class="reach-out__step" data-reach-out-next type="button" aria-label="${page.nextCardAriaLabel}">→</button></div><p class="reach-out__hint" data-reach-out-hint>${page.hint}</p></div></footer></section>`;
+    return html`<section class="reach-out-card-deck" aria-label="${page.label}">
+      <div class="reach-out-card-deck__stage layout-content">
+        <div
+          class="reach-out__deck"
+          data-reach-out-deck
+          role="group"
+          aria-roledescription="card deck"
+          aria-label="${page.deckAriaLabel}"
+          tabindex="0"
+        >
+          ${trustedHTML(renderReachOutCardDeckCards())}
+        </div>
+        <p class="reach-out__live" data-reach-out-live aria-live="polite" aria-atomic="true"></p>
+      </div>
+      <footer class="reach-out-card-deck__controls layout-content">
+        <div class="reach-out__helm">
+          <div class="reach-out__navigation">
+            <button
+              class="reach-out__step"
+              data-reach-out-previous
+              type="button"
+              aria-label="${page.previousCardAriaLabel}"
+            >
+              ←
+            </button>
+            <nav
+              class="reach-out__ticks"
+              data-reach-out-ticks
+              aria-label="${page.cardsAriaLabel}"
+            ></nav>
+            <button
+              class="reach-out__step"
+              data-reach-out-next
+              type="button"
+              aria-label="${page.nextCardAriaLabel}"
+            >
+              →
+            </button>
+          </div>
+          <p class="reach-out__hint" data-reach-out-hint>${page.hint}</p>
+        </div>
+      </footer>
+    </section>`;
   }
 }

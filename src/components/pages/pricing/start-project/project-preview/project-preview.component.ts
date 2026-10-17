@@ -77,15 +77,18 @@ export class PricingProjectPreviewComponent extends BaseElement {
         </div>
 
         <dl>
-          ${rows.map((row) => html`
-            <div>
-              <dt>${row.label}</dt>
-              <dd class="${row.value ? "" : "is-empty"}">${row.value || preview.emptyValue}</dd>
-            </div>
-          `)}
+          ${rows.map(
+            (row) => html`
+              <div>
+                <dt>${row.label}</dt>
+                <dd class="${row.value ? "" : "is-empty"}">${row.value || preview.emptyValue}</dd>
+              </div>
+            `
+          )}
         </dl>
         <p class="pricing-project-preview-foot">
-          ${preview.regularEmailPrefix} <a href="mailto:${content.emailAddress}">${content.emailAddress}</a>
+          ${preview.regularEmailPrefix}
+          <a href="mailto:${content.emailAddress}">${content.emailAddress}</a>
         </p>
       </aside>
     `;

@@ -130,54 +130,81 @@ export class BlogArticleComponent extends BaseElement {
     const post = this.post ?? getBlogPost(getBlogSlug(window.location.pathname)) ?? null;
     if (!post) {
       return html`${trustedHTML(`
-        <main class="blog-article-shell layout-page layout-section-hero">
-          <a class="blog-back-link" href="/blog/">← ${blogArticleContent.allPostsLabel}</a>
-          <div class="blog-not-found"><p class="blog-eyebrow">${blogArticleContent.notFound.eyebrow}</p><h1>${blogArticleContent.notFound.title}</h1><a class="app-link app-link--button app-link--ink" href="/blog/">${blogArticleContent.notFound.browseLabel}</a></div>
-        </main>
-      `)}`;
+              <main class="blog-article-shell layout-page layout-section-hero">
+                <a class="blog-back-link" href="/blog/">← ${blogArticleContent.allPostsLabel}</a>
+                <div class="blog-not-found"><p class="blog-eyebrow">${blogArticleContent.notFound.eyebrow}</p><h1>${blogArticleContent.notFound.title}</h1><a class="app-link app-link--button app-link--ink" href="/blog/">${blogArticleContent.notFound.browseLabel}</a></div>
+              </main>
+            `)}`;
     }
 
     const markdown = this.loadError
-      ? `<article class="blog-prose"><p class="blog-load-error">${escapeHtml(this.loadError)} <a href="/blog/">${blogArticleContent.returnToPostsLabel}</a>.</p></article>`
+      ? `<article class="blog-prose">
+        <p class="blog-load-error">
+          ${escapeHtml(this.loadError)} <a href="/blog/">${blogArticleContent.returnToPostsLabel}</a>.
+        </p>
+      </article>`
       : `<article class="blog-prose" data-blog-markdown aria-busy="true">
-           <blog-markdown-view>
-             <p class="blog-loading">${blogArticleContent.loadingArticle}</p>
-           </blog-markdown-view>
-         </article>`;
+        <blog-markdown-view>
+          <p class="blog-loading">${blogArticleContent.loadingArticle}</p>
+        </blog-markdown-view>
+      </article>`;
     const nextPost = this.nextPost ?? (blogPosts.length > 1
       ? blogPosts[(blogPosts.indexOf(post) + 1) % blogPosts.length] ?? null
       : null);
     const nextLink = nextPost
-      ? `<a href="${getBlogPath(nextPost.slug)}" class="blog-quiet-card blog-quiet-card-next"><span><small>${blogArticleContent.footer.nextLabel}</small>${escapeHtml(nextPost.header)}</span><span>→</span></a>`
+      ? `<a
+        href="${getBlogPath(nextPost.slug)}"
+        class="blog-quiet-card blog-quiet-card-next"
+        ><span><small>${blogArticleContent.footer.nextLabel}</small>${escapeHtml(nextPost.header)}</span
+        ><span>→</span></a
+      >`
       : "";
 
     return html`${trustedHTML(`
-      <div class="blog-progress" data-blog-progress aria-hidden="true"></div>
-      <main class="blog-article-shell layout-page layout-section-hero" data-blog-article>
-        <a class="blog-back-link" href="/blog/">← ${blogArticleContent.allPostsLabel}</a>
-          <blog-article-header
-          category="${escapeHtml(labelForCategory(post.category))}"
-          metadata="${escapeHtml(`${post.minutes} ${blogIndexContent.readTimeSuffix} · ${formatBlogDate(post.date)}${post.updated ? ` · ${blogArticleContent.updatedPrefix} ${formatBlogDate(post.updated)}` : ""}`)}"
-          title="${escapeHtml(post.header)}"
-          writer="${escapeHtml(post.writer)}">
-        </blog-article-header>
-        ${markdown}
-        <article-share article-title="${escapeHtml(post.header)}" canonical-url="https://www.ayu-sh-kr.com/blog/${encodeURIComponent(post.slug)}/" author="${escapeHtml(post.writer)}" publication-date="${post.date}"></article-share>
-        <blog-related-posts slug="${escapeHtml(post.slug)}"></blog-related-posts>
-        <blog-subscription data-analytics-section="blog_article_subscription"></blog-subscription>
-        <aside class="blog-coffee-support" aria-labelledby="blog-coffee-support-title" data-analytics-section="blog_article_coffee">
-          <h2 id="blog-coffee-support-title" class="blog-coffee-support-title">${blogArticleContent.coffeeSupport.title}</h2>
-          <p class="blog-coffee-support-copy">${blogArticleContent.coffeeSupport.copy}</p>
-          <a class="blog-coffee-support-link" href="/coffee/">${blogArticleContent.coffeeSupport.linkLabel} <span aria-hidden="true">→</span></a>
-        </aside>
-        <footer class="blog-article-footer">
-          <div class="blog-article-footer-meta"><span class="blog-chip">${labelForCategory(post.category)}</span></div>
-          <div class="blog-post-nav">
-            <a href="/blog/" class="blog-quiet-card"><span>←</span><span><small>${blogArticleContent.footer.backLabel}</small>${blogArticleContent.allPostsLabel}</span></a>
-            ${nextLink}
-          </div>
-        </footer>
-      </main>
-    `)}`;
+          <div class="blog-progress" data-blog-progress aria-hidden="true"></div>
+          <main class="blog-article-shell layout-page layout-section-hero" data-blog-article>
+            <a class="blog-back-link" href="/blog/">← ${blogArticleContent.allPostsLabel}</a>
+              <blog-article-header
+              category="${escapeHtml(labelForCategory(post.category))}"
+              metadata="${escapeHtml(
+                `${post.minutes} ${blogIndexContent.readTimeSuffix} · ${formatBlogDate(post.date)}${
+                  post.updated
+                    ? ` · ${blogArticleContent.updatedPrefix} ${formatBlogDate(post.updated)}`
+                    : ""
+                }`
+              )}"
+              title="${escapeHtml(post.header)}"
+              writer="${escapeHtml(post.writer)}">
+            </blog-article-header>
+            ${markdown}
+            <article-share article-title="${escapeHtml(
+              post.header
+            )}" canonical-url="https://www.ayu-sh-kr.com/blog/${encodeURIComponent(
+      post.slug
+    )}/" author="${escapeHtml(post.writer)}" publication-date="${post.date}"></article-share>
+            <blog-related-posts slug="${escapeHtml(post.slug)}"></blog-related-posts>
+            <blog-subscription data-analytics-section="blog_article_subscription"></blog-subscription>
+            <aside class="blog-coffee-support" aria-labelledby="blog-coffee-support-title" data-analytics-section="blog_article_coffee">
+              <h2 id="blog-coffee-support-title" class="blog-coffee-support-title">${
+                blogArticleContent.coffeeSupport.title
+              }</h2>
+              <p class="blog-coffee-support-copy">${blogArticleContent.coffeeSupport.copy}</p>
+              <a class="blog-coffee-support-link" href="/coffee/">${
+                blogArticleContent.coffeeSupport.linkLabel
+              } <span aria-hidden="true">→</span></a>
+            </aside>
+            <footer class="blog-article-footer">
+              <div class="blog-article-footer-meta"><span class="blog-chip">${labelForCategory(
+                post.category
+              )}</span></div>
+              <div class="blog-post-nav">
+                <a href="/blog/" class="blog-quiet-card"><span>←</span><span><small>${
+                  blogArticleContent.footer.backLabel
+                }</small>${blogArticleContent.allPostsLabel}</span></a>
+                ${nextLink}
+              </div>
+            </footer>
+          </main>
+        `)}`;
   }
 }

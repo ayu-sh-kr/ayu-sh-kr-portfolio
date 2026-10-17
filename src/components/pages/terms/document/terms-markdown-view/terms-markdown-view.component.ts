@@ -171,6 +171,8 @@ export class TermsMarkdownViewComponent extends BaseElement {
 
   /** Renders the terms body using the shared themed Markdown content container. */
   render(): TemplateResult {
-    return html`${trustedHTML(this.markdownLifecycle.renderArticleSkeleton("terms-markdown-content"))}`;
+    return html`${trustedHTML(
+      this.markdownLifecycle.renderArticleSkeleton("terms-markdown-content")
+    )}`;
   }
 }

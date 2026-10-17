@@ -1,4 +1,5 @@
-import { BaseElement, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
+import { BaseElement, Component } from "@ayu-sh-kr/dota-wrap/core";
 import { portfolioContent } from "@app/data/portfolio-content.ts";
 
 /**
@@ -21,27 +22,33 @@ export class PortfolioServicesComponent extends BaseElement {
    * Returns the services grid from the authored content. No data loading or DOM
    * mutation occurs here; the base element inserts the returned markup.
    */
-  render(): string {
+  render(): TemplateResult {
     const { services } = portfolioContent;
 
-    return HTML`
-      <section id="services" class="layout-page layout-section border-y border-(--border-color)" aria-labelledby="services-title">
+    return html`
+      <section
+        id="services"
+        class="layout-page layout-section border-y border-(--border-color)"
+        aria-labelledby="services-title"
+      >
         <div class="layout-stack layout-stack-sm">
           <p class="motion-eyebrow motion-reveal">How I can help</p>
-          <h2 id="services-title" class="motion-title motion-reveal">Bring me the outcome, not a shopping list of frameworks.</h2>
+          <h2 id="services-title" class="motion-title motion-reveal">
+            Bring me the outcome, not a shopping list of frameworks.
+          </h2>
         </div>
         <div class="service-grid layout-grid-3">
-          ${services
-            .map(
-              (service) => `
-                <article class="service-row motion-reveal">
-                  <span class="font-mono text-xs text-(--muted-strong-color)">${service.number}</span>
-                  <h3 class="mt-16 text-2xl font-semibold leading-tight tracking-[-0.02em]">${service.title}</h3>
-                  <p class="mt-5 text-[0.98rem] leading-7 text-(--muted-color)">${service.body}</p>
-                </article>
-              `,
-            )
-            .join("")}
+          ${services.map(
+            (service) => html`
+              <article class="service-row motion-reveal">
+                <span class="font-mono text-xs text-(--muted-strong-color)">${service.number}</span>
+                <h3 class="mt-16 text-2xl font-semibold leading-tight tracking-[-0.02em]">
+                  ${service.title}
+                </h3>
+                <p class="mt-5 text-[0.98rem] leading-7 text-(--muted-color)">${service.body}</p>
+              </article>
+            `
+          )}
         </div>
       </section>
     `;

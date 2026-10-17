@@ -68,6 +68,8 @@ export class ShowcaseMarkdownViewComponent extends BaseElement {
 
   /** Renders the article skeleton around the themed `<md-view>`. */
   render(): TemplateResult {
-    return html`${trustedHTML(this.markdownLifecycle.renderArticleSkeleton("showcase-markdown-content"))}`;
+    return html`${trustedHTML(
+      this.markdownLifecycle.renderArticleSkeleton("showcase-markdown-content")
+    )}`;
   }
 }

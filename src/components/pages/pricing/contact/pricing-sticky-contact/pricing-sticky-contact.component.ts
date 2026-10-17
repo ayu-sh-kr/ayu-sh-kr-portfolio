@@ -1,4 +1,5 @@
-import { BaseElement, Component, HTML, WindowListener } from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
+import { BaseElement, Component, WindowListener } from "@ayu-sh-kr/dota-wrap/core";
 import { OnEvent } from "@ayu-sh-kr/dota-wrap/event";
 import { pricingContent } from "@app/data/pricing-content.ts";
 
@@ -184,17 +185,26 @@ export class PricingStickyContactComponent extends BaseElement {
   }
 
   /** Returns the sticky contact markup; state classes are applied after connection. */
-  render(): string {
+  render(): TemplateResult {
     const content = pricingContent.stickyContact;
 
-    return HTML`
+    return html`
       <div id="pricing-stickybar" role="region" aria-label="${content.ariaLabel}">
         <span class="pricing-sticky-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><path d="M4 6.5A1.5 1.5 0 0 1 5.5 5h13A1.5 1.5 0 0 1 20 6.5v11a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 4 17.5v-11Z" /><path d="m5 7 7 5 7-5" /></svg>
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M4 6.5A1.5 1.5 0 0 1 5.5 5h13A1.5 1.5 0 0 1 20 6.5v11a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 4 17.5v-11Z"
+            />
+            <path d="m5 7 7 5 7-5" />
+          </svg>
         </span>
         <span class="pricing-sticky-body">
           <span class="pricing-sticky-label"><b>${content.labelStrong}</b> ${content.label}</span>
-          <a class="app-link app-link--button app-link--accent app-link--compact" href="#pricing-contact">${content.cta}</a>
+          <a
+            class="app-link app-link--button app-link--accent app-link--compact"
+            href="#pricing-contact"
+            >${content.cta}</a
+          >
         </span>
       </div>
     `;

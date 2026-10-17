@@ -1,4 +1,5 @@
-import { BaseElement, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
+import { BaseElement, Component } from "@ayu-sh-kr/dota-wrap/core";
 import { type ApplicationEvent, OnEvent } from "@ayu-sh-kr/dota-wrap/event";
 import { coffeeContent, type CoffeeSize } from "@app/data/coffee-content.ts";
 import { COFFEE_ORDER_QUANTITY_EVENT, COFFEE_ORDER_SIZE_EVENT } from "@app/events/coffee.events.ts";
@@ -91,28 +92,63 @@ export class CoffeeOrderTotalComponent extends BaseElement {
   }
 
   /** Returns the visual cup and informational-only total panel for the current event state. */
-  render(): string {
+  render(): TemplateResult {
     const size = this.getSelectedSize();
     const total = size.price[this.currency] * this.quantity;
     const fraction = this.getCupFillFraction(size.price.USD * this.quantity);
     const liquidHeight = fraction * 88;
 
-    return HTML`
+    return html`
       <div class="coffee-cup-wrap" style="--coffee-heat:${0.25 + fraction * 0.75}" aria-hidden="true">
-        <span class="coffee-steam coffee-steam-one"></span><span class="coffee-steam coffee-steam-two"></span><span class="coffee-steam coffee-steam-three"></span>
+        <span class="coffee-steam coffee-steam-one"></span
+        ><span class="coffee-steam coffee-steam-two"></span
+        ><span class="coffee-steam coffee-steam-three"></span>
         <svg class="coffee-cup" viewBox="0 0 160 140">
-          <defs><clipPath id="coffee-cup-clip" clipPathUnits="userSpaceOnUse"><path d="M35 30h76v74a20 20 0 0 1-20 20H55a20 20 0 0 1-20-20V30Z" /></clipPath></defs>
-          <g clip-path="url(#coffee-cup-clip)"><rect x="31" y="${118 - liquidHeight}" width="84" height="${liquidHeight}" style="fill:var(--primary-color)" /></g>
-          <path d="M35 30h76v74a20 20 0 0 1-20 20H55a20 20 0 0 1-20-20V30Z" fill="none" style="stroke:var(--foreground-color)" stroke-width="3" />
-          <path d="M111 48h10a15 15 0 0 1 0 30h-10" fill="none" style="stroke:var(--foreground-color)" stroke-width="3" stroke-linecap="round" />
-          <path d="M31 30h84" style="stroke:var(--foreground-color)" stroke-width="3" stroke-linecap="round" />
+          <defs>
+            <clipPath id="coffee-cup-clip" clipPathUnits="userSpaceOnUse">
+              <path d="M35 30h76v74a20 20 0 0 1-20 20H55a20 20 0 0 1-20-20V30Z" />
+            </clipPath>
+          </defs>
+          <g clip-path="url(#coffee-cup-clip)">
+            <rect
+              x="31"
+              y="${118 - liquidHeight}"
+              width="84"
+              height="${liquidHeight}"
+              style="fill:var(--primary-color)"
+            />
+          </g>
+          <path
+            d="M35 30h76v74a20 20 0 0 1-20 20H55a20 20 0 0 1-20-20V30Z"
+            fill="none"
+            style="stroke:var(--foreground-color)"
+            stroke-width="3"
+          />
+          <path
+            d="M111 48h10a15 15 0 0 1 0 30h-10"
+            fill="none"
+            style="stroke:var(--foreground-color)"
+            stroke-width="3"
+            stroke-linecap="round"
+          />
+          <path
+            d="M31 30h84"
+            style="stroke:var(--foreground-color)"
+            stroke-width="3"
+            stroke-linecap="round"
+          />
         </svg>
       </div>
       <div class="coffee-total-panel">
         <p class="coffee-total-eyebrow">${coffeeContent.order.totalEyebrow}</p>
-        <p class="type-price coffee-total-amount is-flashing" aria-live="polite">${formatCoffeeAmount(total, this.currency)}</p>
+        <p class="type-price coffee-total-amount is-flashing" aria-live="polite">
+          ${formatCoffeeAmount(total, this.currency)}
+        </p>
         <p class="coffee-total-description">${this.describeOrder(size)}</p>
-        <div class="coffee-total-breakdown" aria-hidden="true"><span>Size: <b>${size.name}</b></span><span>Qty: <b>×${this.quantity}</b></span></div>
+        <div class="coffee-total-breakdown" aria-hidden="true">
+          <span>Size: <b>${size.name}</b></span
+          ><span>Qty: <b>×${this.quantity}</b></span>
+        </div>
       </div>
     `;
   }

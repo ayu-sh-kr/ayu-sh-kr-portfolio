@@ -1,4 +1,5 @@
-import { BaseElement, BindEvent, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
+import { BaseElement, BindEvent, Component } from "@ayu-sh-kr/dota-wrap/core";
 import { isAnalyticsContactMethod } from "@app/events/analytics.events.ts";
 import { pricingContent } from "@app/data/pricing-content.ts";
 import { publishAnalyticsEvent } from "@app/utils/analytics.utils.ts";
@@ -36,20 +37,54 @@ export class PricingContactComponent extends BaseElement {
   }
 
   /** Returns the contact section using the pricing contact content and destinations. */
-  render(): string {
+  render(): TemplateResult {
     const content = pricingContent.contact;
 
-    return HTML`
-      <section id="pricing-contact" class="pricing-contact-section" aria-labelledby="pricing-contact-title">
+    return html`
+      <section
+        id="pricing-contact"
+        class="pricing-contact-section"
+        aria-labelledby="pricing-contact-title"
+      >
         <div class="pricing-contact-inner">
           <p class="pricing-eyebrow">${content.eyebrow}</p>
-          <h2 id="pricing-contact-title" class="pricing-contact-title mt-4">${content.titleBeforeAccent} <span>${content.titleAccent}</span></h2>
+          <h2 id="pricing-contact-title" class="pricing-contact-title mt-4">
+            ${content.titleBeforeAccent} <span>${content.titleAccent}</span>
+          </h2>
           <p class="pricing-contact-copy mt-6">${content.body}</p>
           <div class="pricing-contact-actions mt-10">
-            <a class="app-link app-link--button app-link--accent" data-analytics-contact="email" href="${content.emailHref}">${content.emailLabel}</a>
-            <a class="app-link app-link--button app-link--ghost" data-analytics-contact="call" href="${content.callHref}">${content.callLabel}</a>
+            <a
+              class="app-link app-link--button app-link--accent"
+              data-analytics-contact="email"
+              href="${content.emailHref}"
+              >${content.emailLabel}</a
+            >
+            <a
+              class="app-link app-link--button app-link--ghost"
+              data-analytics-contact="call"
+              href="${content.callHref}"
+              >${content.callLabel}</a
+            >
           </div>
-          <p class="pricing-contact-trust mt-8">${content.trust} · <a data-analytics-contact="github" href="${content.githubHref}" target="_blank" rel="noreferrer">${content.githubLabel}</a> · <a data-analytics-contact="linkedin" href="${content.linkedinHref}" target="_blank" rel="noreferrer">${content.linkedinLabel}</a> · ${content.timezone}</p>
+          <p class="pricing-contact-trust mt-8">
+            ${content.trust} ·
+            <a
+              data-analytics-contact="github"
+              href="${content.githubHref}"
+              target="_blank"
+              rel="noreferrer"
+              >${content.githubLabel}</a
+            >
+            ·
+            <a
+              data-analytics-contact="linkedin"
+              href="${content.linkedinHref}"
+              target="_blank"
+              rel="noreferrer"
+              >${content.linkedinLabel}</a
+            >
+            · ${content.timezone}
+          </p>
         </div>
       </section>
     `;

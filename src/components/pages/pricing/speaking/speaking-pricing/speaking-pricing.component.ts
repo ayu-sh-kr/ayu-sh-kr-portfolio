@@ -1,4 +1,5 @@
-import { BaseElement, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
+import {html, TemplateResult} from "@ayu-sh-kr/dota-wrap/rendering";
+import { BaseElement, Component } from "@ayu-sh-kr/dota-wrap/core";
 import { pricingContent } from "@app/data/pricing-content.ts";
 
 /**
@@ -20,39 +21,47 @@ export class SpeakingPricingComponent extends BaseElement {
   }
 
   /** Returns the speaking pricing heading and all authored pricing tiers. */
-  render(): string {
+  render(): TemplateResult {
     const content = pricingContent.speakingPricing;
 
-    return HTML`
-      <section class="speaking-pricing-section layout-page layout-section" aria-labelledby="speaking-pricing-title">
+    return html`
+      <section
+        class="speaking-pricing-section layout-page layout-section"
+        aria-labelledby="speaking-pricing-title"
+      >
         <div class="speaking-pricing-copy">
           <p class="pricing-eyebrow">${content.eyebrow}</p>
           <h2 id="speaking-pricing-title" class="pricing-section-title mt-3">${content.title}</h2>
           <p class="pricing-section-lede mt-4">${content.body}</p>
         </div>
         <div class="speaking-pricing-grid">
-          ${content.tiers.map((tier) => this.renderTier(tier, content.featuredLabel)).join("")}
+          ${content.tiers.map((tier) => this.renderTier(tier, content.featuredLabel))}
         </div>
       </section>
     `;
   }
 
   /** Formats one speaking tier with its featured marker, bullets, and CTA. */
-  private renderTier(tier: (typeof pricingContent.speakingPricing.tiers)[number], featuredLabel: string): string {
-    return `
+  private renderTier(tier: (typeof pricingContent.speakingPricing.tiers)[number], featuredLabel: string) {
+    return html`
       <article class="speaking-pricing-tier ${tier.featured ? "is-featured" : ""}">
-        ${tier.featured ? `<span class="speaking-pricing-flag">${featuredLabel}</span>` : ""}
+        ${tier.featured ? html`<span class="speaking-pricing-flag">${featuredLabel}</span>` : ""}
         <p class="pricing-eyebrow">${tier.name}</p>
         <p class="speaking-pricing-price">${tier.price}<small>${tier.suffix}</small></p>
         <p class="speaking-pricing-summary">${tier.summary}</p>
         <ul>
-          ${tier.bullets
-            .map(
-              (bullet) => `<li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m3 8.5 3 3 7-8" /></svg>${bullet}</li>`,
-            )
-            .join("")}
+          ${tier.bullets.map(
+            (bullet) =>
+              html`<li>
+                <svg viewBox="0 0 16 16" aria-hidden="true"><path d="m3 8.5 3 3 7-8" /></svg>${bullet}
+              </li>`
+          )}
         </ul>
-        <a class="app-link app-link--button ${tier.featured ? "app-link--accent" : "app-link--ghost"}" href="#pricing-contact">${tier.cta}</a>
+        <a
+          class="app-link app-link--button ${tier.featured ? "app-link--accent" : "app-link--ghost"}"
+          href="#pricing-contact"
+          >${tier.cta}</a
+        >
       </article>
     `;
   }

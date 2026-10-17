@@ -1,3 +1,4 @@
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
 import {Component, DotaPageElement, SEO} from "@ayu-sh-kr/dota-wrap/core";
 import {Route} from "@ayu-sh-kr/dota-wrap/router";
 import {getNewsNote, getNewsSeo, getNewsSlug, newsNotFoundSeo} from "@app/configs/news.config.ts";
@@ -21,8 +22,8 @@ export class NewsSlugPage extends DotaPageElement {
     return toSEO(note ? getNewsSeo(note) : newsNotFoundSeo);
   }
 
-  render(): string {
-    return `
+  render(): TemplateResult {
+    return html`
       <app-header></app-header>
       <news-article></news-article>
       <app-footer></app-footer>

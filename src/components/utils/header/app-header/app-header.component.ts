@@ -1,3 +1,4 @@
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
 import { BaseElement, Component, WindowListener } from "@ayu-sh-kr/dota-wrap/core";
 import { OnEvent } from "@ayu-sh-kr/dota-wrap/event";
 import { portfolioContent } from "@app/data/portfolio-content.ts";
@@ -54,21 +55,25 @@ export class AppHeaderComponent extends BaseElement {
    * Navigation links remain authored in portfolio content, while `app-brand`
    * supplies the shared identity and owns its theme-specific asset selection.
    */
-  render(): string {
+  render(): TemplateResult {
     const { nav } = portfolioContent;
-    return `
+    return html`
       <nav id="site-nav" aria-label="Primary navigation">
         <div class="app-header-inner layout-page layout-row layout-row-split">
           <app-brand></app-brand>
           <div class="app-header-actions layout-row">
             <div class="app-header-desktop-links layout-row layout-row-loose">
-              ${nav.links
-                .map(
-                  (link) => `
-                    <a href="${link.href}" class="app-link app-link--nav ${link.label === "Pricing" ? "app-header-nav-pricing" : ""}">${link.label}</a>
-                  `,
-                )
-                .join("")}
+              ${nav.links.map(
+                (link) => html`
+                  <a
+                    href="${link.href}"
+                    class="app-link app-link--nav ${link.label === "Pricing"
+                      ? "app-header-nav-pricing"
+                      : ""}"
+                    >${link.label}</a
+                  >
+                `
+              )}
             </div>
             <dota-popover
               class="app-header-mobile-popover"
@@ -85,13 +90,13 @@ export class AppHeaderComponent extends BaseElement {
                 ></dota-icon>
               </button>
               <div id="mobile-nav-panel" class="app-header-mobile-panel" aria-label="Mobile navigation">
-                ${nav.links
-                  .map(
-                    (link) => `
-                      <a href="${link.href}" class="app-link app-link--nav app-link--nav-mobile">${link.label}</a>
-                    `,
-                  )
-                  .join("")}
+                ${nav.links.map(
+                  (link) => html`
+                    <a href="${link.href}" class="app-link app-link--nav app-link--nav-mobile"
+                      >${link.label}</a
+                    >
+                  `
+                )}
               </div>
             </dota-popover>
             <dark-mode-button></dark-mode-button>

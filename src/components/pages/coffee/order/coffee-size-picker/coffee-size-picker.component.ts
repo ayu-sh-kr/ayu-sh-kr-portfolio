@@ -1,4 +1,5 @@
-import { ApplicationEventService, BaseElement, BindEvent, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
+import { ApplicationEventService, BaseElement, BindEvent, Component } from "@ayu-sh-kr/dota-wrap/core";
 import { OnEvent } from "@ayu-sh-kr/dota-wrap/event";
 import { coffeeContent } from "@app/data/coffee-content.ts";
 import { COFFEE_ORDER_SIZE_EVENT, type CoffeeOrderSizeSelection } from "@app/events/coffee.events.ts";
@@ -66,20 +67,33 @@ export class CoffeeSizePickerComponent extends BaseElement {
   }
 
   /** Returns the size cards with the current picker-local selection marked active. */
-  render(): string {
+  render(): TemplateResult {
     const content = coffeeContent.order;
 
-    return HTML`
+    return html`
       <fieldset class="coffee-order-question">
         <legend><span>1</span>${content.sizeQuestion}</legend>
         <div class="coffee-pick-grid">
-          ${coffeeContent.sizes.map((size) => `
-            <button class="form-choice input-lg input-rounded-md input-bordered coffee-pick ${size.id === this.selectedSizeId ? "is-selected" : ""}" type="button" data-coffee-size="${size.id}" aria-pressed="${size.id === this.selectedSizeId}">
-              ${size.featured ? `<span class="coffee-pick-flag">${size.featured}</span>` : ""}
-              <span class="coffee-pick-title"><strong>${formatCoffeeAmount(size.price[this.currency], this.currency)}</strong> ${size.name}</span>
-              <span class="coffee-pick-description">${size.description}</span>
-            </button>
-          `).join("")}
+          ${coffeeContent.sizes.map(
+            (size) => html`
+              <button
+                class="form-choice input-lg input-rounded-md input-bordered coffee-pick ${size.id ===
+                this.selectedSizeId
+                  ? "is-selected"
+                  : ""}"
+                type="button"
+                data-coffee-size="${size.id}"
+                aria-pressed="${size.id === this.selectedSizeId}"
+              >
+                ${size.featured ? html`<span class="coffee-pick-flag">${size.featured}</span>` : ""}
+                <span class="coffee-pick-title"
+                  ><strong>${formatCoffeeAmount(size.price[this.currency], this.currency)}</strong>
+                  ${size.name}</span
+                >
+                <span class="coffee-pick-description">${size.description}</span>
+              </button>
+            `
+          )}
         </div>
       </fieldset>
     `;

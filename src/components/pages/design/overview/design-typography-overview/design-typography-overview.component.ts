@@ -31,23 +31,43 @@ export class DesignTypographyOverviewComponent extends BaseElement {
         <div class="design-overview-layout">
           <div class="design-overview-intro">
             <p class="type-eyebrow design-eyebrow">${overview.eyebrow}</p>
-            <h1 id="design-overview-title" class="type-display design-overview-title">${overview.title}</h1>
+            <h1 id="design-overview-title" class="type-display design-overview-title">
+              ${overview.title}
+            </h1>
             <p class="type-lede design-overview-lede">${overview.lede}</p>
             <div class="design-overview-links">
-              ${overview.links.map((link) => html`<a class="design-overview-link" href="${link.href}">${link.label} <span aria-hidden="true">${link.indicator}</span></a>`)}
+              ${overview.links.map(
+                (link) =>
+                  html`<a class="design-overview-link" href="${link.href}"
+                    >${link.label} <span aria-hidden="true">${link.indicator}</span></a
+                  >`
+              )}
             </div>
           </div>
 
           <aside class="design-overview-summary" aria-label="${overview.summaryAriaLabel}">
             <p class="type-label design-summary-label">${overview.summaryLabel}</p>
             <dl class="design-summary-list">
-              ${overview.summary.map((item, index) => html`<div><dt>${item.label}</dt><dd>${CODE_SUMMARY_ITEMS.has(index) ? html`<code>${item.value}</code>` : item.value}</dd></div>`)}
+              ${overview.summary.map(
+                (item, index) =>
+                  html`<div>
+                    <dt>${item.label}</dt>
+                    <dd>
+                      ${CODE_SUMMARY_ITEMS.has(index) ? html`<code>${item.value}</code>` : item.value}
+                    </dd>
+                  </div>`
+              )}
             </dl>
           </aside>
         </div>
 
         <div class="design-role-flow" aria-label="${overview.roleFlowAriaLabel}">
-          ${overview.roleFlow.map((role, index) => html`${index ? html`<span aria-hidden="true">→</span>` : ""}<span class="design-flow-item">${role}</span>`)}
+          ${overview.roleFlow.map(
+            (role, index) =>
+              html`${index ? html`<span aria-hidden="true">→</span>` : ""}<span class="design-flow-item"
+                  >${role}</span
+                >`
+          )}
         </div>
       </section>
     `;

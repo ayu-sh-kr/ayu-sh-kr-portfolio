@@ -50,19 +50,21 @@ export class TermsDocumentHeaderComponent extends BaseElement {
       <header class="terms-header">
         <div class="terms-chip-row">
           <span class="terms-chip">Terms</span>
-          <span class="terms-chip terms-chip-muted">Version ${escapeHtml(metadata.version)}</span>
+          <span class="terms-chip terms-chip-muted">Version ${metadata.version}</span>
         </div>
-        <h1>${escapeHtml(metadata.title)}</h1>
-        <p class="terms-tagline">${escapeHtml(metadata.tagline)}</p>
+        <h1>${metadata.title}</h1>
+        <p class="terms-tagline">${metadata.tagline}</p>
         <div class="terms-proof" aria-label="Terms dates and jurisdiction">
           <span>Last updated <strong>${formatDate(metadata.updated)}</strong></span>
           <span>In effect from <strong>${formatDate(metadata.effective)}</strong></span>
-          <span>Governed by the law of <strong>${escapeHtml(metadata.governingLaw)}</strong></span>
+          <span>Governed by the law of <strong>${metadata.governingLaw}</strong></span>
         </div>
         <section class="terms-summary" aria-labelledby="terms-summary-title">
           <p id="terms-summary-title" class="terms-eyebrow">The short version</p>
-          <ul>${trustedHTML(summary)}</ul>
-          <p class="terms-summary-note">${escapeHtml(metadata.summaryNote)}</p>
+          <ul>
+            ${trustedHTML(summary)}
+          </ul>
+          <p class="terms-summary-note">${metadata.summaryNote}</p>
         </section>
       </header>
     `;

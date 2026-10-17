@@ -173,6 +173,8 @@ export class PrivacyMarkdownViewComponent extends BaseElement {
 
   /** Renders the policy body using the shared themed Markdown content container. */
   render(): TemplateResult {
-    return html`${trustedHTML(this.markdownLifecycle.renderArticleSkeleton("privacy-markdown-content"))}`;
+    return html`${trustedHTML(
+      this.markdownLifecycle.renderArticleSkeleton("privacy-markdown-content")
+    )}`;
   }
 }

@@ -1,3 +1,4 @@
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
 import {BaseElement, Component} from "@ayu-sh-kr/dota-wrap/core";
 import {OnEvent} from "@ayu-sh-kr/dota-wrap/event";
 import {blogIndexContent} from "@app/data/blog-content.ts";
@@ -74,13 +75,16 @@ export class BlogHeroComponent extends BaseElement {
   };
 
   /** Returns the static blog introduction markup. */
-  render(): string {
-    return `
+  render(): TemplateResult {
+    return html`
       <div class="layout-hero-pin-wrap blog-hero-wrap" data-blog-hero-wrap>
         <section class="layout-hero-pin-stage blog-hero-stage" aria-labelledby="blog-title">
           <div class="blog-hero-inner" data-blog-hero-inner>
             <p class="blog-eyebrow">${blogIndexContent.hero.eyebrow}</p>
-            <h1 id="blog-title" class="blog-display">${blogIndexContent.hero.titleBeforeAccent} <span>${blogIndexContent.hero.titleAccent}</span></h1>
+            <h1 id="blog-title" class="blog-display">
+              ${blogIndexContent.hero.titleBeforeAccent}
+              <span>${blogIndexContent.hero.titleAccent}</span>
+            </h1>
             <p class="blog-hero-summary">${blogIndexContent.hero.summary}</p>
           </div>
           <scroll-hint mode="vertical" label="${blogIndexContent.hero.scrollHint}"></scroll-hint>

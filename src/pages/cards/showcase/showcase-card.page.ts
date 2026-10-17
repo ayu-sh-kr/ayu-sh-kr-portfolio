@@ -1,4 +1,5 @@
-import { Component, DotaPageElement, HTML, SEO } from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
+import { Component, DotaPageElement, SEO } from "@ayu-sh-kr/dota-wrap/core";
 import { Route } from "@ayu-sh-kr/dota-wrap/router";
 import { showcaseSeo } from "@app/data/showcase-content.ts";
 import { toSEO } from "@app/utils/seo.utils.ts";
@@ -26,8 +27,8 @@ export class ShowcaseCardPage extends DotaPageElement {
   }
 
   /** Places the persistent card-route header above the full-height selected-work deck. */
-  render(): string {
-    return HTML`
+  render(): TemplateResult {
+    return html`
       <main id="showcase-card-main">
         <card-page-header link-label="Showcase" link-href="/showcase/"></card-page-header>
         <showcase-card-deck data-analytics-section="showcase_projects"></showcase-card-deck>

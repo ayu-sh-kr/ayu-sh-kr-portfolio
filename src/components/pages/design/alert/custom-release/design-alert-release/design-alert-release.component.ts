@@ -1,4 +1,5 @@
-import { BaseElement, BindEvent, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
+import { BaseElement, BindEvent, Component } from "@ayu-sh-kr/dota-wrap/core";
 import type { AlertController } from "@app/service/alert.service.ts";
 import { designAlertContent } from "@app/data/design-alert-content.ts";
 
@@ -35,10 +36,10 @@ export class DesignAlertReleaseComponent extends BaseElement {
   }
 
   /** Renders the caller-owned body and controls without reimplementing a dialog. */
-  render(): string {
+  render(): TemplateResult {
     const { custom } = designAlertContent;
 
-    return HTML`
+    return html`
       <section class="design-alert-release" aria-labelledby="design-alert-release-title">
         <p class="type-eyebrow">${custom.eyebrow}</p>
         <h2 id="design-alert-release-title" class="type-section">${custom.title}</h2>

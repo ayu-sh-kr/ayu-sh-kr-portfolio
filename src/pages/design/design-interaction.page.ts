@@ -1,4 +1,5 @@
-import { Component, DotaPageElement, HTML, SEO } from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
+import { Component, DotaPageElement, SEO } from "@ayu-sh-kr/dota-wrap/core";
 import { Route } from "@ayu-sh-kr/dota-wrap/router";
 import { designInteractionContent } from "@app/data/design-interaction-content.ts";
 import { toSEO } from "@app/utils/seo.utils.ts";
@@ -24,9 +25,12 @@ export class DesignInteractionPage extends DotaPageElement {
   }
 
   /** Renders the interaction reference in the same trigger order used by its route navigation. */
-  render(): string {
-    return HTML`
-      <service-state-strip capabilities="interaction-service-state" label="the project form"></service-state-strip>
+  render(): TemplateResult {
+    return html`
+      <service-state-strip
+        capabilities="interaction-service-state"
+        label="the project form"
+      ></service-state-strip>
       <app-header></app-header>
       <main id="design-interaction-page-main">
         <design-interaction-hero></design-interaction-hero>

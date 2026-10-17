@@ -1,4 +1,5 @@
-import { Component, DotaPageElement, HTML, SEO } from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
+import { Component, DotaPageElement, SEO } from "@ayu-sh-kr/dota-wrap/core";
 import { Route } from "@ayu-sh-kr/dota-wrap/router";
 import { designContent } from "@app/data/design-content.ts";
 import { toSEO } from "@app/utils/seo.utils.ts";
@@ -27,8 +28,8 @@ export class DesignPage extends DotaPageElement {
   }
 
   /** Composes the design index between the shared header and footer without duplicating its content. */
-  render(): string {
-    return HTML`
+  render(): TemplateResult {
+    return html`
       <app-header></app-header>
       <main id="design-page-main">
         <design-index-hero></design-index-hero>

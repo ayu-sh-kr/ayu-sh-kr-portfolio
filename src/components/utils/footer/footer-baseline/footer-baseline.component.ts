@@ -1,4 +1,5 @@
-import { BaseElement, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
+import { BaseElement, Component } from "@ayu-sh-kr/dota-wrap/core";
 import { OnEvent } from "@ayu-sh-kr/dota-wrap/event";
 import { portfolioContent } from "@app/data/portfolio-content.ts";
 
@@ -47,13 +48,15 @@ export class FooterBaselineComponent extends BaseElement {
     }
   }
 
-  render(): string {
+  render(): TemplateResult {
     const { availability, copyright, role } = portfolioContent.footer.baseline;
 
-    return HTML`
+    return html`
       <div class="footer-baseline-section">
         <div class="footer-content footer-baseline-content">
-          <p class="footer-baseline-copy">© ${new Date().getFullYear()} ${copyright} · ${role} · ${availability}</p>
+          <p class="footer-baseline-copy">
+            © ${new Date().getFullYear()} ${copyright} · ${role} · ${availability}
+          </p>
           <p class="footer-clock" aria-label="Current time in India"></p>
         </div>
       </div>

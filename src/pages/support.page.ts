@@ -1,4 +1,5 @@
-import { Component, DotaPageElement, HTML, SEO } from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
+import { Component, DotaPageElement, SEO } from "@ayu-sh-kr/dota-wrap/core";
 import { Route } from "@ayu-sh-kr/dota-wrap/router";
 import { supportContent } from "@app/data/support-content.ts";
 import { toSEO } from "@app/utils/seo.utils.ts";
@@ -30,8 +31,8 @@ export class SupportPage extends DotaPageElement {
   }
 
   /** Renders the full support journey, its separate project handoff, and the shared footer. */
-  render(): string {
-    return HTML`
+  render(): TemplateResult {
+    return html`
       <app-header></app-header>
       <main id="support-page-main">
         <support-overview></support-overview>

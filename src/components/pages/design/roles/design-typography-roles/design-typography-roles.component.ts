@@ -1,4 +1,5 @@
-import { BaseElement, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
+import { BaseElement, Component } from "@ayu-sh-kr/dota-wrap/core";
 import { designTypographyContent } from "@app/data/design-typography-content.ts";
 
 /** Applies the presentation role that corresponds to each authored specimen card. */
@@ -22,11 +23,15 @@ export class DesignTypographyRolesComponent extends BaseElement {
   }
 
   /** Renders the shared-role catalog in the same active typography system used by pages. */
-  render(): string {
+  render(): TemplateResult {
     const { roles } = designTypographyContent;
 
-    return HTML`
-      <section id="design-roles" class="design-roles design-section" aria-labelledby="design-roles-title">
+    return html`
+      <section
+        id="design-roles"
+        class="design-roles design-section"
+        aria-labelledby="design-roles-title"
+      >
         <header class="design-section-heading">
           <p class="type-eyebrow design-eyebrow">${roles.eyebrow}</p>
           <h2 id="design-roles-title" class="type-section">${roles.title}</h2>
@@ -34,16 +39,18 @@ export class DesignTypographyRolesComponent extends BaseElement {
         </header>
 
         <div class="design-role-grid">
-          ${roles.cards.map((role, index) => HTML`
-            <article class="design-role-card design-role-card--${ROLE_CARD_CLASSES[index]}">
-              <div class="design-role-card-meta">
-                <p class="type-label">${role.label}</p>
-                <code>${role.token}</code>
-              </div>
-              <p class="design-role-sample">${role.sample}</p>
-              <p class="design-role-note">${role.note}</p>
-            </article>
-          `).join("")}
+          ${roles.cards.map(
+            (role, index) => html`
+              <article class="design-role-card design-role-card--${ROLE_CARD_CLASSES[index]}">
+                <div class="design-role-card-meta">
+                  <p class="type-label">${role.label}</p>
+                  <code>${role.token}</code>
+                </div>
+                <p class="design-role-sample">${role.sample}</p>
+                <p class="design-role-note">${role.note}</p>
+              </article>
+            `
+          )}
         </div>
       </section>
     `;

@@ -1,3 +1,4 @@
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
 import {BaseElement, Component} from "@ayu-sh-kr/dota-wrap/core";
 import {blogIndexContent} from "@app/data/blog-content.ts";
 
@@ -21,8 +22,8 @@ export class BlogListSectionComponent extends BaseElement {
   }
 
   /** Renders the filter, highlighted post, and filtered archive as one page section. */
-  render(): string {
-    return `
+  render(): TemplateResult {
+    return html`
       <section class="blog-list-section-shell" aria-label="${blogIndexContent.listSection.ariaLabel}">
         <blog-filter></blog-filter>
         <blog-highlighted-blog></blog-highlighted-blog>

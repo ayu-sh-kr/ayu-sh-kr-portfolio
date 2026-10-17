@@ -1,5 +1,5 @@
-import {BaseElement, Component, HTML, Property, String} from "@ayu-sh-kr/dota-wrap/core";
-import {escapeHtml} from "@app/utils/html.utils.ts";
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
+import {BaseElement, Component, Property, String} from "@ayu-sh-kr/dota-wrap/core";
 
 /**
  * Renders a Markdown-authored image with a caption and safe source handling.
@@ -28,16 +28,16 @@ export class ShowcaseFigureComponent extends BaseElement {
   }
 
   /** Renders the validated image source and escaped caption, or nothing if invalid. */
-  render(): string {
+  render(): TemplateResult {
     const safeSource = /^(?:https?:\/\/|\/)/.test(this.src) ? this.src : "";
     if (!safeSource) {
-      return "";
+      return html``;
     }
 
-    return HTML`
+    return html`
       <figure class="showcase-figure">
-        <img src="${escapeHtml(safeSource)}" alt="${escapeHtml(this.caption)}" loading="lazy" decoding="async">
-        ${this.caption ? `<figcaption>${escapeHtml(this.caption)}</figcaption>` : ""}
+        <img src="${safeSource}" alt="${this.caption}" loading="lazy" decoding="async" />
+        ${this.caption ? html`<figcaption>${this.caption}</figcaption>` : ""}
       </figure>
     `;
   }

@@ -9,7 +9,7 @@
           "name": "about-me-card-deck",
           "source": {
             "file": "./src/components/pages/cards/about-me/about-me-card-deck.component.ts",
-            "offset": 1161
+            "offset": 1237
           },
           "attributes": [],
           "js": {
@@ -20,7 +20,7 @@
           "name": "about-me-card-page",
           "source": {
             "file": "./src/pages/cards/about-me/about-me-card.page.ts",
-            "offset": 615
+            "offset": 678
           },
           "attributes": [],
           "js": {
@@ -31,7 +31,7 @@
           "name": "action-button",
           "source": {
             "file": "./src/components/utils/action-button/action-button.component.ts",
-            "offset": 1389
+            "offset": 1525
           },
           "attributes": [
             {
@@ -43,7 +43,7 @@
               },
               "source": {
                 "file": "./src/components/utils/action-button/action-button.component.ts",
-                "offset": 1786
+                "offset": 1922
               }
             },
             {
@@ -55,7 +55,7 @@
               },
               "source": {
                 "file": "./src/components/utils/action-button/action-button.component.ts",
-                "offset": 2552
+                "offset": 2688
               }
             },
             {
@@ -67,7 +67,7 @@
               },
               "source": {
                 "file": "./src/components/utils/action-button/action-button.component.ts",
-                "offset": 2737
+                "offset": 2873
               }
             },
             {
@@ -79,7 +79,7 @@
               },
               "source": {
                 "file": "./src/components/utils/action-button/action-button.component.ts",
-                "offset": 2923
+                "offset": 3059
               }
             },
             {
@@ -91,7 +91,7 @@
               },
               "source": {
                 "file": "./src/components/utils/action-button/action-button.component.ts",
-                "offset": 2176
+                "offset": 2312
               }
             },
             {
@@ -103,7 +103,7 @@
               },
               "source": {
                 "file": "./src/components/utils/action-button/action-button.component.ts",
-                "offset": 2361
+                "offset": 2497
               }
             },
             {
@@ -115,7 +115,7 @@
               },
               "source": {
                 "file": "./src/components/utils/action-button/action-button.component.ts",
-                "offset": 1968
+                "offset": 2104
               }
             }
           ],
@@ -127,7 +127,7 @@
                 "default": "",
                 "source": {
                   "file": "./src/components/utils/action-button/action-button.component.ts",
-                  "offset": 1786
+                  "offset": 1922
                 }
               },
               {
@@ -136,7 +136,7 @@
                 "default": "Working…",
                 "source": {
                   "file": "./src/components/utils/action-button/action-button.component.ts",
-                  "offset": 2552
+                  "offset": 2688
                 }
               },
               {
@@ -145,7 +145,7 @@
                 "default": "Done",
                 "source": {
                   "file": "./src/components/utils/action-button/action-button.component.ts",
-                  "offset": 2737
+                  "offset": 2873
                 }
               },
               {
@@ -154,7 +154,7 @@
                 "default": "Try again",
                 "source": {
                   "file": "./src/components/utils/action-button/action-button.component.ts",
-                  "offset": 2923
+                  "offset": 3059
                 }
               },
               {
@@ -163,7 +163,7 @@
                 "default": "",
                 "source": {
                   "file": "./src/components/utils/action-button/action-button.component.ts",
-                  "offset": 2176
+                  "offset": 2312
                 }
               },
               {
@@ -172,7 +172,7 @@
                 "default": "Continue",
                 "source": {
                   "file": "./src/components/utils/action-button/action-button.component.ts",
-                  "offset": 2361
+                  "offset": 2497
                 }
               },
               {
@@ -181,7 +181,7 @@
                 "default": "ink",
                 "source": {
                   "file": "./src/components/utils/action-button/action-button.component.ts",
-                  "offset": 1968
+                  "offset": 2104
                 }
               }
             ]
@@ -191,7 +191,7 @@
           "name": "app-brand",
           "source": {
             "file": "./src/components/utils/header/app-brand/app-brand.component.ts",
-            "offset": 615
+            "offset": 678
           },
           "attributes": [],
           "js": {
@@ -202,7 +202,7 @@
           "name": "app-error",
           "source": {
             "file": "./src/pages/error.page.ts",
-            "offset": 543
+            "offset": 606
           },
           "attributes": [
             {
@@ -214,7 +214,7 @@
               },
               "source": {
                 "file": "./src/pages/error.page.ts",
-                "offset": 884
+                "offset": 947
               }
             },
             {
@@ -226,7 +226,7 @@
               },
               "source": {
                 "file": "./src/pages/error.page.ts",
-                "offset": 726
+                "offset": 789
               }
             }
           ],
@@ -238,7 +238,7 @@
                 "default": "Page not found",
                 "source": {
                   "file": "./src/pages/error.page.ts",
-                  "offset": 884
+                  "offset": 947
                 }
               },
               {
@@ -247,7 +247,7 @@
                 "default": "404",
                 "source": {
                   "file": "./src/pages/error.page.ts",
-                  "offset": 726
+                  "offset": 789
                 }
               }
             ]
@@ -257,7 +257,7 @@
           "name": "app-footer",
           "source": {
             "file": "./src/components/utils/footer/app-footer/app-footer.component.ts",
-            "offset": 147
+            "offset": 210
           },
           "attributes": [],
           "js": {
@@ -268,7 +268,7 @@
           "name": "app-header",
           "source": {
             "file": "./src/components/utils/header/app-header/app-header.component.ts",
-            "offset": 652
+            "offset": 721
           },
           "attributes": [],
           "js": {
@@ -279,7 +279,7 @@
           "name": "app-home",
           "source": {
             "file": "./src/pages/home.page.ts",
-            "offset": 538
+            "offset": 601
           },
           "attributes": [],
           "js": {
@@ -290,7 +290,7 @@
           "name": "app-notice",
           "source": {
             "file": "./src/components/utils/notice/app-notice.component.ts",
-            "offset": 735
+            "offset": 823
           },
           "attributes": [
             {
@@ -302,7 +302,7 @@
               },
               "source": {
                 "file": "./src/components/utils/notice/app-notice.component.ts",
-                "offset": 1265
+                "offset": 1353
               }
             },
             {
@@ -314,7 +314,7 @@
               },
               "source": {
                 "file": "./src/components/utils/notice/app-notice.component.ts",
-                "offset": 1013
+                "offset": 1101
               }
             },
             {
@@ -326,7 +326,7 @@
               },
               "source": {
                 "file": "./src/components/utils/notice/app-notice.component.ts",
-                "offset": 821
+                "offset": 909
               }
             },
             {
@@ -338,7 +338,7 @@
               },
               "source": {
                 "file": "./src/components/utils/notice/app-notice.component.ts",
-                "offset": 1202
+                "offset": 1290
               }
             },
             {
@@ -350,7 +350,7 @@
               },
               "source": {
                 "file": "./src/components/utils/notice/app-notice.component.ts",
-                "offset": 881
+                "offset": 969
               }
             },
             {
@@ -362,7 +362,7 @@
               },
               "source": {
                 "file": "./src/components/utils/notice/app-notice.component.ts",
-                "offset": 1076
+                "offset": 1164
               }
             },
             {
@@ -374,7 +374,7 @@
               },
               "source": {
                 "file": "./src/components/utils/notice/app-notice.component.ts",
-                "offset": 946
+                "offset": 1034
               }
             },
             {
@@ -386,7 +386,7 @@
               },
               "source": {
                 "file": "./src/components/utils/notice/app-notice.component.ts",
-                "offset": 1137
+                "offset": 1225
               }
             }
           ],
@@ -398,7 +398,7 @@
                 "default": "",
                 "source": {
                   "file": "./src/components/utils/notice/app-notice.component.ts",
-                  "offset": 1265
+                  "offset": 1353
                 }
               },
               {
@@ -407,7 +407,7 @@
                 "default": "",
                 "source": {
                   "file": "./src/components/utils/notice/app-notice.component.ts",
-                  "offset": 1013
+                  "offset": 1101
                 }
               },
               {
@@ -416,7 +416,7 @@
                 "default": "",
                 "source": {
                   "file": "./src/components/utils/notice/app-notice.component.ts",
-                  "offset": 821
+                  "offset": 909
                 }
               },
               {
@@ -425,7 +425,7 @@
                 "default": "off",
                 "source": {
                   "file": "./src/components/utils/notice/app-notice.component.ts",
-                  "offset": 1202
+                  "offset": 1290
                 }
               },
               {
@@ -434,7 +434,7 @@
                 "default": "",
                 "source": {
                   "file": "./src/components/utils/notice/app-notice.component.ts",
-                  "offset": 881
+                  "offset": 969
                 }
               },
               {
@@ -443,7 +443,7 @@
                 "default": "",
                 "source": {
                   "file": "./src/components/utils/notice/app-notice.component.ts",
-                  "offset": 1076
+                  "offset": 1164
                 }
               },
               {
@@ -452,7 +452,7 @@
                 "default": "",
                 "source": {
                   "file": "./src/components/utils/notice/app-notice.component.ts",
-                  "offset": 946
+                  "offset": 1034
                 }
               },
               {
@@ -461,7 +461,7 @@
                 "default": "subtle",
                 "source": {
                   "file": "./src/components/utils/notice/app-notice.component.ts",
-                  "offset": 1137
+                  "offset": 1225
                 }
               }
             ]
@@ -482,7 +482,7 @@
           "name": "article-share",
           "source": {
             "file": "./src/components/utils/article-share/article-share.component.ts",
-            "offset": 693
+            "offset": 709
           },
           "attributes": [
             {
@@ -494,7 +494,7 @@
               },
               "source": {
                 "file": "./src/components/utils/article-share/article-share.component.ts",
-                "offset": 884
+                "offset": 900
               }
             },
             {
@@ -506,7 +506,7 @@
               },
               "source": {
                 "file": "./src/components/utils/article-share/article-share.component.ts",
-                "offset": 1186
+                "offset": 1202
               }
             },
             {
@@ -518,7 +518,7 @@
               },
               "source": {
                 "file": "./src/components/utils/article-share/article-share.component.ts",
-                "offset": 1046
+                "offset": 1062
               }
             },
             {
@@ -530,7 +530,7 @@
               },
               "source": {
                 "file": "./src/components/utils/article-share/article-share.component.ts",
-                "offset": 1352
+                "offset": 1368
               }
             }
           ],
@@ -542,7 +542,7 @@
                 "default": "",
                 "source": {
                   "file": "./src/components/utils/article-share/article-share.component.ts",
-                  "offset": 884
+                  "offset": 900
                 }
               },
               {
@@ -551,7 +551,7 @@
                 "default": "",
                 "source": {
                   "file": "./src/components/utils/article-share/article-share.component.ts",
-                  "offset": 1186
+                  "offset": 1202
                 }
               },
               {
@@ -560,7 +560,7 @@
                 "default": "",
                 "source": {
                   "file": "./src/components/utils/article-share/article-share.component.ts",
-                  "offset": 1046
+                  "offset": 1062
                 }
               },
               {
@@ -569,7 +569,7 @@
                 "default": "",
                 "source": {
                   "file": "./src/components/utils/article-share/article-share.component.ts",
-                  "offset": 1352
+                  "offset": 1368
                 }
               }
             ]
@@ -590,7 +590,7 @@
           "name": "blog-article-header",
           "source": {
             "file": "./src/components/pages/blog/article/blog-article-header/blog-article-header.component.ts",
-            "offset": 369
+            "offset": 377
           },
           "attributes": [
             {
@@ -602,7 +602,7 @@
               },
               "source": {
                 "file": "./src/components/pages/blog/article/blog-article-header/blog-article-header.component.ts",
-                "offset": 530
+                "offset": 538
               }
             },
             {
@@ -614,7 +614,7 @@
               },
               "source": {
                 "file": "./src/components/pages/blog/article/blog-article-header/blog-article-header.component.ts",
-                "offset": 658
+                "offset": 666
               }
             },
             {
@@ -626,7 +626,7 @@
               },
               "source": {
                 "file": "./src/components/pages/blog/article/blog-article-header/blog-article-header.component.ts",
-                "offset": 754
+                "offset": 762
               }
             },
             {
@@ -638,7 +638,7 @@
               },
               "source": {
                 "file": "./src/components/pages/blog/article/blog-article-header/blog-article-header.component.ts",
-                "offset": 846
+                "offset": 854
               }
             }
           ],
@@ -650,7 +650,7 @@
                 "default": "",
                 "source": {
                   "file": "./src/components/pages/blog/article/blog-article-header/blog-article-header.component.ts",
-                  "offset": 530
+                  "offset": 538
                 }
               },
               {
@@ -659,7 +659,7 @@
                 "default": "",
                 "source": {
                   "file": "./src/components/pages/blog/article/blog-article-header/blog-article-header.component.ts",
-                  "offset": 658
+                  "offset": 666
                 }
               },
               {
@@ -668,7 +668,7 @@
                 "default": "",
                 "source": {
                   "file": "./src/components/pages/blog/article/blog-article-header/blog-article-header.component.ts",
-                  "offset": 754
+                  "offset": 762
                 }
               },
               {
@@ -677,7 +677,7 @@
                 "default": "",
                 "source": {
                   "file": "./src/components/pages/blog/article/blog-article-header/blog-article-header.component.ts",
-                  "offset": 846
+                  "offset": 854
                 }
               }
             ]
@@ -687,7 +687,7 @@
           "name": "blog-filter",
           "source": {
             "file": "./src/components/pages/blog/index/archive/blog-filter/blog-filter.component.ts",
-            "offset": 1145
+            "offset": 1214
           },
           "attributes": [],
           "js": {
@@ -698,7 +698,7 @@
           "name": "blog-hero",
           "source": {
             "file": "./src/components/pages/blog/index/hero/blog-hero/blog-hero.component.ts",
-            "offset": 592
+            "offset": 661
           },
           "attributes": [],
           "js": {
@@ -709,7 +709,7 @@
           "name": "blog-highlighted-blog",
           "source": {
             "file": "./src/components/pages/blog/index/archive/blog-highlighted-blog/blog-highlighted-blog.component.ts",
-            "offset": 1038
+            "offset": 1066
           },
           "attributes": [],
           "js": {
@@ -720,7 +720,7 @@
           "name": "blog-index",
           "source": {
             "file": "./src/components/pages/blog/index/blog-index/blog-index.component.ts",
-            "offset": 451
+            "offset": 520
           },
           "attributes": [],
           "js": {
@@ -731,7 +731,7 @@
           "name": "blog-list",
           "source": {
             "file": "./src/components/pages/blog/index/archive/blog-list/blog-list.component.ts",
-            "offset": 1821
+            "offset": 1832
           },
           "attributes": [],
           "js": {
@@ -742,7 +742,7 @@
           "name": "blog-list-section",
           "source": {
             "file": "./src/components/pages/blog/index/archive/blog-list-section/blog-list-section.component.ts",
-            "offset": 565
+            "offset": 634
           },
           "attributes": [],
           "js": {
@@ -764,7 +764,7 @@
           "name": "blog-page",
           "source": {
             "file": "./src/pages/blog/blog.page.ts",
-            "offset": 538
+            "offset": 607
           },
           "attributes": [],
           "js": {
@@ -775,7 +775,7 @@
           "name": "blog-related-posts",
           "source": {
             "file": "./src/components/pages/blog/article/blog-related-posts/blog-related-posts.component.ts",
-            "offset": 959
+            "offset": 969
           },
           "attributes": [
             {
@@ -787,7 +787,7 @@
               },
               "source": {
                 "file": "./src/components/pages/blog/article/blog-related-posts/blog-related-posts.component.ts",
-                "offset": 1148
+                "offset": 1158
               }
             }
           ],
@@ -799,7 +799,7 @@
                 "default": "",
                 "source": {
                   "file": "./src/components/pages/blog/article/blog-related-posts/blog-related-posts.component.ts",
-                  "offset": 1148
+                  "offset": 1158
                 }
               }
             ]
@@ -809,7 +809,7 @@
           "name": "blog-slug-page",
           "source": {
             "file": "./src/pages/blog/blog-slug.page.ts",
-            "offset": 723
+            "offset": 792
           },
           "attributes": [],
           "js": {
@@ -820,7 +820,7 @@
           "name": "blog-subscription",
           "source": {
             "file": "./src/components/pages/blog/index/subscription/blog-subscription/blog-subscription.component.ts",
-            "offset": 979
+            "offset": 1042
           },
           "attributes": [
             {
@@ -832,7 +832,7 @@
               },
               "source": {
                 "file": "./src/components/pages/blog/index/subscription/blog-subscription/blog-subscription.component.ts",
-                "offset": 1488
+                "offset": 1551
               }
             },
             {
@@ -844,7 +844,7 @@
               },
               "source": {
                 "file": "./src/components/pages/blog/index/subscription/blog-subscription/blog-subscription.component.ts",
-                "offset": 1646
+                "offset": 1709
               }
             },
             {
@@ -856,7 +856,7 @@
               },
               "source": {
                 "file": "./src/components/pages/blog/index/subscription/blog-subscription/blog-subscription.component.ts",
-                "offset": 1327
+                "offset": 1390
               }
             },
             {
@@ -868,7 +868,7 @@
               },
               "source": {
                 "file": "./src/components/pages/blog/index/subscription/blog-subscription/blog-subscription.component.ts",
-                "offset": 1167
+                "offset": 1230
               }
             }
           ],
@@ -880,7 +880,7 @@
                 "default": "",
                 "source": {
                   "file": "./src/components/pages/blog/index/subscription/blog-subscription/blog-subscription.component.ts",
-                  "offset": 1488
+                  "offset": 1551
                 }
               },
               {
@@ -889,7 +889,7 @@
                 "default": "ink",
                 "source": {
                   "file": "./src/components/pages/blog/index/subscription/blog-subscription/blog-subscription.component.ts",
-                  "offset": 1646
+                  "offset": 1709
                 }
               },
               {
@@ -898,7 +898,7 @@
                 "default": "",
                 "source": {
                   "file": "./src/components/pages/blog/index/subscription/blog-subscription/blog-subscription.component.ts",
-                  "offset": 1327
+                  "offset": 1390
                 }
               },
               {
@@ -907,7 +907,7 @@
                 "default": "",
                 "source": {
                   "file": "./src/components/pages/blog/index/subscription/blog-subscription/blog-subscription.component.ts",
-                  "offset": 1167
+                  "offset": 1230
                 }
               }
             ]
@@ -917,7 +917,7 @@
           "name": "build-offering",
           "source": {
             "file": "./src/components/pages/pricing/build/build-offering/build-offering.component.ts",
-            "offset": 489
+            "offset": 552
           },
           "attributes": [],
           "js": {
@@ -928,7 +928,7 @@
           "name": "build-pricing",
           "source": {
             "file": "./src/components/pages/pricing/build/build-pricing/build-pricing.component.ts",
-            "offset": 532
+            "offset": 595
           },
           "attributes": [],
           "js": {
@@ -939,7 +939,7 @@
           "name": "card-page-header",
           "source": {
             "file": "./src/components/pages/cards/utils/card-page-header/card-page-header.component.ts",
-            "offset": 591
+            "offset": 654
           },
           "attributes": [
             {
@@ -951,7 +951,7 @@
               },
               "source": {
                 "file": "./src/components/pages/cards/utils/card-page-header/card-page-header.component.ts",
-                "offset": 927
+                "offset": 990
               }
             },
             {
@@ -963,7 +963,7 @@
               },
               "source": {
                 "file": "./src/components/pages/cards/utils/card-page-header/card-page-header.component.ts",
-                "offset": 771
+                "offset": 834
               }
             }
           ],
@@ -975,7 +975,7 @@
                 "default": "/",
                 "source": {
                   "file": "./src/components/pages/cards/utils/card-page-header/card-page-header.component.ts",
-                  "offset": 927
+                  "offset": 990
                 }
               },
               {
@@ -984,7 +984,7 @@
                 "default": "",
                 "source": {
                   "file": "./src/components/pages/cards/utils/card-page-header/card-page-header.component.ts",
-                  "offset": 771
+                  "offset": 834
                 }
               }
             ]
@@ -994,7 +994,7 @@
           "name": "coffee-closing",
           "source": {
             "file": "./src/components/pages/coffee/closing/coffee-closing/coffee-closing.component.ts",
-            "offset": 688
+            "offset": 751
           },
           "attributes": [],
           "js": {
@@ -1005,7 +1005,7 @@
           "name": "coffee-hero",
           "source": {
             "file": "./src/components/pages/coffee/hero/coffee-hero/coffee-hero.component.ts",
-            "offset": 811
+            "offset": 874
           },
           "attributes": [],
           "js": {
@@ -1016,7 +1016,7 @@
           "name": "coffee-impact",
           "source": {
             "file": "./src/components/pages/coffee/impact/coffee-impact/coffee-impact.component.ts",
-            "offset": 676
+            "offset": 752
           },
           "attributes": [],
           "js": {
@@ -1027,7 +1027,7 @@
           "name": "coffee-order",
           "source": {
             "file": "./src/components/pages/coffee/order/coffee-order/coffee-order.component.ts",
-            "offset": 610
+            "offset": 673
           },
           "attributes": [],
           "js": {
@@ -1038,7 +1038,7 @@
           "name": "coffee-order-checkout",
           "source": {
             "file": "./src/components/pages/coffee/order/coffee-order-checkout/coffee-order-checkout.component.ts",
-            "offset": 1558
+            "offset": 1621
           },
           "attributes": [],
           "js": {
@@ -1049,7 +1049,7 @@
           "name": "coffee-order-total",
           "source": {
             "file": "./src/components/pages/coffee/order/coffee-order-total/coffee-order-total.component.ts",
-            "offset": 914
+            "offset": 977
           },
           "attributes": [],
           "js": {
@@ -1060,7 +1060,7 @@
           "name": "coffee-page",
           "source": {
             "file": "./src/pages/coffee.page.ts",
-            "offset": 758
+            "offset": 821
           },
           "attributes": [],
           "js": {
@@ -1071,7 +1071,7 @@
           "name": "coffee-quantity-picker",
           "source": {
             "file": "./src/components/pages/coffee/order/coffee-quantity-picker/coffee-quantity-picker.component.ts",
-            "offset": 806
+            "offset": 869
           },
           "attributes": [],
           "js": {
@@ -1082,7 +1082,7 @@
           "name": "coffee-size-picker",
           "source": {
             "file": "./src/components/pages/coffee/order/coffee-size-picker/coffee-size-picker.component.ts",
-            "offset": 971
+            "offset": 1034
           },
           "attributes": [],
           "js": {
@@ -1093,7 +1093,7 @@
           "name": "coffee-sticky",
           "source": {
             "file": "./src/components/pages/coffee/sticky/coffee-sticky/coffee-sticky.component.ts",
-            "offset": 961
+            "offset": 1024
           },
           "attributes": [],
           "js": {
@@ -1104,7 +1104,7 @@
           "name": "coffee-supporters",
           "source": {
             "file": "./src/components/pages/coffee/supporters/coffee-supporters/coffee-supporters.component.ts",
-            "offset": 1133
+            "offset": 1196
           },
           "attributes": [],
           "js": {
@@ -1115,7 +1115,7 @@
           "name": "consent-notice",
           "source": {
             "file": "./src/components/utils/consent-notice/consent-notice.component.ts",
-            "offset": 1877
+            "offset": 1940
           },
           "attributes": [
             {
@@ -1127,7 +1127,7 @@
               },
               "source": {
                 "file": "./src/components/utils/consent-notice/consent-notice.component.ts",
-                "offset": 2093
+                "offset": 2156
               }
             }
           ],
@@ -1139,7 +1139,7 @@
                 "default": "notice",
                 "source": {
                   "file": "./src/components/utils/consent-notice/consent-notice.component.ts",
-                  "offset": 2093
+                  "offset": 2156
                 }
               }
             ]
@@ -1149,7 +1149,7 @@
           "name": "dark-mode-button",
           "source": {
             "file": "./src/components/utils/theme/dark-mode-button/dark-mode-button.component.ts",
-            "offset": 234
+            "offset": 303
           },
           "attributes": [],
           "js": {
@@ -1160,7 +1160,7 @@
           "name": "design-alert-guidance",
           "source": {
             "file": "./src/components/pages/design/alert/guidance/design-alert-guidance/design-alert-guidance.component.ts",
-            "offset": 313
+            "offset": 376
           },
           "attributes": [],
           "js": {
@@ -1182,7 +1182,7 @@
           "name": "design-alert-page",
           "source": {
             "file": "./src/pages/design/design-alert.page.ts",
-            "offset": 598
+            "offset": 661
           },
           "attributes": [],
           "js": {
@@ -1193,7 +1193,7 @@
           "name": "design-alert-release",
           "source": {
             "file": "./src/components/pages/design/alert/custom-release/design-alert-release/design-alert-release.component.ts",
-            "offset": 602
+            "offset": 665
           },
           "attributes": [],
           "js": {
@@ -1204,7 +1204,40 @@
           "name": "design-alert-showcase",
           "source": {
             "file": "./src/components/pages/design/alert/showcase/design-alert-showcase/design-alert-showcase.component.ts",
-            "offset": 750
+            "offset": 813
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "design-anchor-link-actions",
+          "source": {
+            "file": "./src/components/pages/design/element/anchor/showcase/design-anchor-link-actions/design-anchor-link-actions.component.ts",
+            "offset": 549
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "design-anchor-link-cards",
+          "source": {
+            "file": "./src/components/pages/design/element/anchor/showcase/design-anchor-link-cards/design-anchor-link-cards.component.ts",
+            "offset": 543
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "design-anchor-link-navigation",
+          "source": {
+            "file": "./src/components/pages/design/element/anchor/showcase/design-anchor-link-navigation/design-anchor-link-navigation.component.ts",
+            "offset": 558
           },
           "attributes": [],
           "js": {
@@ -1215,7 +1248,18 @@
           "name": "design-anchor-link-showcase",
           "source": {
             "file": "./src/components/pages/design/element/anchor/showcase/design-anchor-link-showcase/design-anchor-link-showcase.component.ts",
-            "offset": 556
+            "offset": 619
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "design-anchor-link-text",
+          "source": {
+            "file": "./src/components/pages/design/element/anchor/showcase/design-anchor-link-text/design-anchor-link-text.component.ts",
+            "offset": 540
           },
           "attributes": [],
           "js": {
@@ -1226,7 +1270,7 @@
           "name": "design-button-showcase",
           "source": {
             "file": "./src/components/pages/design/element/button/showcase/design-button-showcase/design-button-showcase.component.ts",
-            "offset": 1060
+            "offset": 1123
           },
           "attributes": [],
           "js": {
@@ -1237,7 +1281,7 @@
           "name": "design-color-guidance",
           "source": {
             "file": "./src/components/pages/design/color/guidance/design-color-guidance/design-color-guidance.component.ts",
-            "offset": 975
+            "offset": 1038
           },
           "attributes": [],
           "js": {
@@ -1259,7 +1303,7 @@
           "name": "design-color-page",
           "source": {
             "file": "./src/pages/design/design-color.page.ts",
-            "offset": 622
+            "offset": 685
           },
           "attributes": [],
           "js": {
@@ -1270,7 +1314,7 @@
           "name": "design-color-roles",
           "source": {
             "file": "./src/components/pages/design/color/roles/design-color-roles/design-color-roles.component.ts",
-            "offset": 480
+            "offset": 543
           },
           "attributes": [],
           "js": {
@@ -1281,7 +1325,7 @@
           "name": "design-element-guidance",
           "source": {
             "file": "./src/components/pages/design/element/guidance/design-element-guidance/design-element-guidance.component.ts",
-            "offset": 622
+            "offset": 685
           },
           "attributes": [],
           "js": {
@@ -1303,7 +1347,7 @@
           "name": "design-element-page",
           "source": {
             "file": "./src/pages/design/design-element.page.ts",
-            "offset": 787
+            "offset": 850
           },
           "attributes": [],
           "js": {
@@ -1311,10 +1355,64 @@
           }
         },
         {
+          "name": "design-index-grammar-section",
+          "source": {
+            "file": "./src/components/pages/design/index/reference/design-index-grammar-section/design-index-grammar-section.component.ts",
+            "offset": 605
+          },
+          "attributes": [
+            {
+              "name": "section-key",
+              "required": false,
+              "value": {
+                "type": "string"
+              },
+              "source": {
+                "file": "./src/components/pages/design/index/reference/design-index-grammar-section/design-index-grammar-section.component.ts",
+                "offset": 806
+              }
+            }
+          ],
+          "js": {
+            "properties": [
+              {
+                "name": "sectionKey",
+                "type": "string",
+                "source": {
+                  "file": "./src/components/pages/design/index/reference/design-index-grammar-section/design-index-grammar-section.component.ts",
+                  "offset": 806
+                }
+              }
+            ]
+          }
+        },
+        {
           "name": "design-index-hero",
           "source": {
             "file": "./src/components/pages/design/index/hero/design-index-hero/design-index-hero.component.ts",
-            "offset": 507
+            "offset": 570
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "design-index-ownership",
+          "source": {
+            "file": "./src/components/pages/design/index/reference/design-index-ownership/design-index-ownership.component.ts",
+            "offset": 538
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "design-index-rail",
+          "source": {
+            "file": "./src/components/pages/design/index/reference/design-index-rail/design-index-rail.component.ts",
+            "offset": 565
           },
           "attributes": [],
           "js": {
@@ -1325,7 +1423,29 @@
           "name": "design-index-reference",
           "source": {
             "file": "./src/components/pages/design/index/reference/design-index-reference/design-index-reference.component.ts",
-            "offset": 757
+            "offset": 765
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "design-index-routes",
+          "source": {
+            "file": "./src/components/pages/design/index/reference/design-index-routes/design-index-routes.component.ts",
+            "offset": 516
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "design-index-shipping",
+          "source": {
+            "file": "./src/components/pages/design/index/reference/design-index-shipping/design-index-shipping.component.ts",
+            "offset": 518
           },
           "attributes": [],
           "js": {
@@ -1336,7 +1456,7 @@
           "name": "design-interaction-action",
           "source": {
             "file": "./src/components/pages/design/interaction/action/design-interaction-action.component.ts",
-            "offset": 484
+            "offset": 547
           },
           "attributes": [],
           "js": {
@@ -1347,7 +1467,7 @@
           "name": "design-interaction-checklist",
           "source": {
             "file": "./src/components/pages/design/interaction/checklist/design-interaction-checklist.component.ts",
-            "offset": 341
+            "offset": 404
           },
           "attributes": [],
           "js": {
@@ -1358,7 +1478,7 @@
           "name": "design-interaction-compound",
           "source": {
             "file": "./src/components/pages/design/interaction/compound/design-interaction-compound.component.ts",
-            "offset": 338
+            "offset": 401
           },
           "attributes": [],
           "js": {
@@ -1369,7 +1489,7 @@
           "name": "design-interaction-focus",
           "source": {
             "file": "./src/components/pages/design/interaction/focus/design-interaction-focus.component.ts",
-            "offset": 327
+            "offset": 390
           },
           "attributes": [],
           "js": {
@@ -1380,7 +1500,7 @@
           "name": "design-interaction-guardrails",
           "source": {
             "file": "./src/components/pages/design/interaction/guardrails/design-interaction-guardrails.component.ts",
-            "offset": 342
+            "offset": 405
           },
           "attributes": [],
           "js": {
@@ -1391,7 +1511,7 @@
           "name": "design-interaction-hero",
           "source": {
             "file": "./src/components/pages/design/interaction/hero/design-interaction-hero.component.ts",
-            "offset": 337
+            "offset": 400
           },
           "attributes": [],
           "js": {
@@ -1402,7 +1522,7 @@
           "name": "design-interaction-icon-usage",
           "source": {
             "file": "./src/components/pages/design/interaction/icon-usage/design-interaction-icon-usage.component.ts",
-            "offset": 612
+            "offset": 675
           },
           "attributes": [],
           "js": {
@@ -1413,7 +1533,7 @@
           "name": "design-interaction-ingest",
           "source": {
             "file": "./src/components/pages/design/interaction/ingest/design-interaction-ingest.component.ts",
-            "offset": 356
+            "offset": 419
           },
           "attributes": [],
           "js": {
@@ -1424,7 +1544,7 @@
           "name": "design-interaction-interrupt",
           "source": {
             "file": "./src/components/pages/design/interaction/interrupt/design-interaction-interrupt.component.ts",
-            "offset": 424
+            "offset": 487
           },
           "attributes": [],
           "js": {
@@ -1435,7 +1555,7 @@
           "name": "design-interaction-nav",
           "source": {
             "file": "./src/components/pages/design/interaction/nav/design-interaction-nav.component.ts",
-            "offset": 354
+            "offset": 417
           },
           "attributes": [],
           "js": {
@@ -1446,7 +1566,7 @@
           "name": "design-interaction-page",
           "source": {
             "file": "./src/pages/design/design-interaction.page.ts",
-            "offset": 688
+            "offset": 751
           },
           "attributes": [],
           "js": {
@@ -1457,7 +1577,7 @@
           "name": "design-interaction-pointer",
           "source": {
             "file": "./src/components/pages/design/interaction/pointer/design-interaction-pointer.component.ts",
-            "offset": 480
+            "offset": 543
           },
           "attributes": [],
           "js": {
@@ -1468,7 +1588,7 @@
           "name": "design-interaction-recompute",
           "source": {
             "file": "./src/components/pages/design/interaction/recompute/design-interaction-recompute.component.ts",
-            "offset": 361
+            "offset": 424
           },
           "attributes": [],
           "js": {
@@ -1479,7 +1599,7 @@
           "name": "design-interaction-reduced",
           "source": {
             "file": "./src/components/pages/design/interaction/reduced/design-interaction-reduced.component.ts",
-            "offset": 414
+            "offset": 477
           },
           "attributes": [],
           "js": {
@@ -1490,7 +1610,7 @@
           "name": "design-interaction-scroll",
           "source": {
             "file": "./src/components/pages/design/interaction/scroll/design-interaction-scroll.component.ts",
-            "offset": 344
+            "offset": 407
           },
           "attributes": [],
           "js": {
@@ -1501,7 +1621,7 @@
           "name": "design-interaction-selection",
           "source": {
             "file": "./src/components/pages/design/interaction/selection/design-interaction-selection.component.ts",
-            "offset": 663
+            "offset": 726
           },
           "attributes": [],
           "js": {
@@ -1512,7 +1632,7 @@
           "name": "design-interaction-service-state",
           "source": {
             "file": "./src/components/pages/design/interaction/service-state/design-interaction-service-state.component.ts",
-            "offset": 1262
+            "offset": 1325
           },
           "attributes": [],
           "js": {
@@ -1523,7 +1643,7 @@
           "name": "design-interaction-timing",
           "source": {
             "file": "./src/components/pages/design/interaction/timing/design-interaction-timing.component.ts",
-            "offset": 338
+            "offset": 401
           },
           "attributes": [],
           "js": {
@@ -1534,7 +1654,7 @@
           "name": "design-interaction-transient",
           "source": {
             "file": "./src/components/pages/design/interaction/transient/design-interaction-transient.component.ts",
-            "offset": 415
+            "offset": 478
           },
           "attributes": [],
           "js": {
@@ -1545,7 +1665,7 @@
           "name": "design-interaction-verbs",
           "source": {
             "file": "./src/components/pages/design/interaction/verbs/design-interaction-verbs.component.ts",
-            "offset": 395
+            "offset": 458
           },
           "attributes": [],
           "js": {
@@ -1556,7 +1676,7 @@
           "name": "design-layout-guidance",
           "source": {
             "file": "./src/components/pages/design/layout/guidance/design-layout-guidance/design-layout-guidance.component.ts",
-            "offset": 311
+            "offset": 374
           },
           "attributes": [],
           "js": {
@@ -1578,7 +1698,7 @@
           "name": "design-layout-page",
           "source": {
             "file": "./src/pages/design/design-layout.page.ts",
-            "offset": 602
+            "offset": 665
           },
           "attributes": [],
           "js": {
@@ -1589,7 +1709,7 @@
           "name": "design-layout-primitives",
           "source": {
             "file": "./src/components/pages/design/layout/primitives/design-layout-primitives/design-layout-primitives.component.ts",
-            "offset": 325
+            "offset": 388
           },
           "attributes": [],
           "js": {
@@ -1600,7 +1720,7 @@
           "name": "design-layout-roles",
           "source": {
             "file": "./src/components/pages/design/layout/roles/design-layout-roles/design-layout-roles.component.ts",
-            "offset": 283
+            "offset": 346
           },
           "attributes": [],
           "js": {
@@ -1611,7 +1731,7 @@
           "name": "design-page",
           "source": {
             "file": "./src/pages/design/design.page.ts",
-            "offset": 752
+            "offset": 815
           },
           "attributes": [],
           "js": {
@@ -1622,7 +1742,7 @@
           "name": "design-toast-guidance",
           "source": {
             "file": "./src/components/pages/design/toast/guidance/design-toast-guidance/design-toast-guidance.component.ts",
-            "offset": 529
+            "offset": 592
           },
           "attributes": [],
           "js": {
@@ -1644,7 +1764,7 @@
           "name": "design-toast-page",
           "source": {
             "file": "./src/pages/design/design-toast.page.ts",
-            "offset": 660
+            "offset": 723
           },
           "attributes": [],
           "js": {
@@ -1655,7 +1775,7 @@
           "name": "design-toast-showcase",
           "source": {
             "file": "./src/components/pages/design/toast/showcase/design-toast-showcase/design-toast-showcase.component.ts",
-            "offset": 627
+            "offset": 690
           },
           "attributes": [],
           "js": {
@@ -1666,7 +1786,7 @@
           "name": "design-typography-guidance",
           "source": {
             "file": "./src/components/pages/design/guidance/design-typography-guidance/design-typography-guidance.component.ts",
-            "offset": 1001
+            "offset": 1064
           },
           "attributes": [],
           "js": {
@@ -1688,7 +1808,7 @@
           "name": "design-typography-page",
           "source": {
             "file": "./src/pages/design/design-typography.page.ts",
-            "offset": 687
+            "offset": 750
           },
           "attributes": [],
           "js": {
@@ -1699,7 +1819,7 @@
           "name": "design-typography-roles",
           "source": {
             "file": "./src/components/pages/design/roles/design-typography-roles/design-typography-roles.component.ts",
-            "offset": 782
+            "offset": 845
           },
           "attributes": [],
           "js": {
@@ -1710,7 +1830,7 @@
           "name": "dota-alert",
           "source": {
             "file": "./src/components/utils/alert/dota-alert/dota-alert.component.ts",
-            "offset": 2674
+            "offset": 2791
           },
           "attributes": [],
           "js": {
@@ -1721,7 +1841,7 @@
           "name": "dota-toast",
           "source": {
             "file": "./src/components/utils/toast/dota-toast/dota-toast.component.ts",
-            "offset": 3635
+            "offset": 3748
           },
           "attributes": [],
           "js": {
@@ -1732,7 +1852,7 @@
           "name": "footer-baseline",
           "source": {
             "file": "./src/components/utils/footer/footer-baseline/footer-baseline.component.ts",
-            "offset": 273
+            "offset": 336
           },
           "attributes": [],
           "js": {
@@ -1743,7 +1863,7 @@
           "name": "footer-index",
           "source": {
             "file": "./src/components/utils/footer/footer-index/footer-index.component.ts",
-            "offset": 216
+            "offset": 291
           },
           "attributes": [],
           "js": {
@@ -1754,7 +1874,7 @@
           "name": "footer-support",
           "source": {
             "file": "./src/components/utils/footer/footer-support/footer-support.component.ts",
-            "offset": 349
+            "offset": 412
           },
           "attributes": [],
           "js": {
@@ -1765,7 +1885,7 @@
           "name": "news-article",
           "source": {
             "file": "./src/components/pages/news/article/news-article/news-article.component.ts",
-            "offset": 2953
+            "offset": 3088
           },
           "attributes": [],
           "js": {
@@ -1776,7 +1896,7 @@
           "name": "news-hero",
           "source": {
             "file": "./src/components/pages/news/index/hero/news-hero/news-hero.component.ts",
-            "offset": 457
+            "offset": 526
           },
           "attributes": [],
           "js": {
@@ -1787,7 +1907,7 @@
           "name": "news-index",
           "source": {
             "file": "./src/components/pages/news/index/news-index/news-index.component.ts",
-            "offset": 3040
+            "offset": 3265
           },
           "attributes": [],
           "js": {
@@ -1809,7 +1929,7 @@
           "name": "news-page",
           "source": {
             "file": "./src/pages/news/news.page.ts",
-            "offset": 499
+            "offset": 568
           },
           "attributes": [],
           "js": {
@@ -1820,7 +1940,7 @@
           "name": "news-slug-page",
           "source": {
             "file": "./src/pages/news/news-slug.page.ts",
-            "offset": 577
+            "offset": 646
           },
           "attributes": [],
           "js": {
@@ -1831,7 +1951,7 @@
           "name": "offline-hero",
           "source": {
             "file": "./src/components/pages/offline/hero/offline-hero/offline-hero.component.ts",
-            "offset": 212
+            "offset": 275
           },
           "attributes": [],
           "js": {
@@ -1842,7 +1962,7 @@
           "name": "offline-page",
           "source": {
             "file": "./src/components/pages/offline/shell/offline-page/offline-page.component.ts",
-            "offset": 658
+            "offset": 721
           },
           "attributes": [],
           "js": {
@@ -1853,7 +1973,7 @@
           "name": "offline-troubleshoot",
           "source": {
             "file": "./src/components/pages/offline/troubleshoot/offline-troubleshoot/offline-troubleshoot.component.ts",
-            "offset": 220
+            "offset": 296
           },
           "attributes": [],
           "js": {
@@ -1864,7 +1984,7 @@
           "name": "portfolio-contact",
           "source": {
             "file": "./src/components/pages/home/contact/about-contact-section/about-contact-section.component.ts",
-            "offset": 740
+            "offset": 803
           },
           "attributes": [],
           "js": {
@@ -1875,7 +1995,7 @@
           "name": "portfolio-hero",
           "source": {
             "file": "./src/components/pages/home/hero/hero-section/hero-section.component.ts",
-            "offset": 218
+            "offset": 281
           },
           "attributes": [],
           "js": {
@@ -1886,7 +2006,7 @@
           "name": "portfolio-journey",
           "source": {
             "file": "./src/components/pages/home/journey/journey-section/journey-section.component.ts",
-            "offset": 583
+            "offset": 646
           },
           "attributes": [],
           "js": {
@@ -1908,7 +2028,7 @@
           "name": "portfolio-services",
           "source": {
             "file": "./src/components/pages/home/services/services-section/services-section.component.ts",
-            "offset": 499
+            "offset": 562
           },
           "attributes": [],
           "js": {
@@ -1919,7 +2039,7 @@
           "name": "portfolio-skills",
           "source": {
             "file": "./src/components/pages/home/skills/skills-section/skills-section.component.ts",
-            "offset": 220
+            "offset": 283
           },
           "attributes": [],
           "js": {
@@ -1930,7 +2050,7 @@
           "name": "portfolio-speaking",
           "source": {
             "file": "./src/components/pages/home/speaking/speaking-section/speaking-section.component.ts",
-            "offset": 2296
+            "offset": 2359
           },
           "attributes": [],
           "js": {
@@ -1941,7 +2061,7 @@
           "name": "portfolio-work",
           "source": {
             "file": "./src/components/pages/home/projects/projects-section/projects-section.component.ts",
-            "offset": 569
+            "offset": 644
           },
           "attributes": [],
           "js": {
@@ -1952,7 +2072,7 @@
           "name": "pricing-contact",
           "source": {
             "file": "./src/components/pages/pricing/contact/pricing-contact/pricing-contact.component.ts",
-            "offset": 632
+            "offset": 695
           },
           "attributes": [],
           "js": {
@@ -1963,7 +2083,7 @@
           "name": "pricing-estimator",
           "source": {
             "file": "./src/components/pages/pricing/estimator/pricing-estimator/pricing-estimator.component.ts",
-            "offset": 1028
+            "offset": 1091
           },
           "attributes": [],
           "js": {
@@ -1974,7 +2094,7 @@
           "name": "pricing-estimator-result",
           "source": {
             "file": "./src/components/pages/pricing/estimator/pricing-estimator-result/pricing-estimator-result.component.ts",
-            "offset": 1953
+            "offset": 2016
           },
           "attributes": [],
           "js": {
@@ -1985,7 +2105,7 @@
           "name": "pricing-estimator-stage-options",
           "source": {
             "file": "./src/components/pages/pricing/estimator/pricing-estimator-stage-options/pricing-estimator-stage-options.component.ts",
-            "offset": 990
+            "offset": 1053
           },
           "attributes": [],
           "js": {
@@ -1996,7 +2116,7 @@
           "name": "pricing-estimator-type-options",
           "source": {
             "file": "./src/components/pages/pricing/estimator/pricing-estimator-type-options/pricing-estimator-type-options.component.ts",
-            "offset": 1010
+            "offset": 1086
           },
           "attributes": [],
           "js": {
@@ -2007,7 +2127,7 @@
           "name": "pricing-faq",
           "source": {
             "file": "./src/components/pages/pricing/faq/pricing-faq/pricing-faq.component.ts",
-            "offset": 633
+            "offset": 696
           },
           "attributes": [],
           "js": {
@@ -2018,7 +2138,7 @@
           "name": "pricing-hero",
           "source": {
             "file": "./src/components/pages/pricing/hero/pricing-hero/pricing-hero.component.ts",
-            "offset": 817
+            "offset": 880
           },
           "attributes": [],
           "js": {
@@ -2029,7 +2149,7 @@
           "name": "pricing-page",
           "source": {
             "file": "./src/pages/pricing/pricing.page.ts",
-            "offset": 550
+            "offset": 613
           },
           "attributes": [],
           "js": {
@@ -2040,7 +2160,7 @@
           "name": "pricing-project-alternatives",
           "source": {
             "file": "./src/components/pages/pricing/start-project/project-alternatives/project-alternatives.component.ts",
-            "offset": 675
+            "offset": 683
           },
           "attributes": [],
           "js": {
@@ -2085,7 +2205,7 @@
           "name": "pricing-project-idea-form",
           "source": {
             "file": "./src/components/pages/pricing/start-project/project-idea-form/project-idea-form.component.ts",
-            "offset": 741
+            "offset": 815
           },
           "attributes": [
             {
@@ -2097,7 +2217,7 @@
               },
               "source": {
                 "file": "./src/components/pages/pricing/start-project/project-idea-form/project-idea-form.component.ts",
-                "offset": 1059
+                "offset": 1133
               }
             },
             {
@@ -2109,7 +2229,7 @@
               },
               "source": {
                 "file": "./src/components/pages/pricing/start-project/project-idea-form/project-idea-form.component.ts",
-                "offset": 922
+                "offset": 996
               }
             },
             {
@@ -2121,7 +2241,7 @@
               },
               "source": {
                 "file": "./src/components/pages/pricing/start-project/project-idea-form/project-idea-form.component.ts",
-                "offset": 1202
+                "offset": 1276
               }
             }
           ],
@@ -2133,7 +2253,7 @@
                 "default": "",
                 "source": {
                   "file": "./src/components/pages/pricing/start-project/project-idea-form/project-idea-form.component.ts",
-                  "offset": 1059
+                  "offset": 1133
                 }
               },
               {
@@ -2142,7 +2262,7 @@
                 "default": "",
                 "source": {
                   "file": "./src/components/pages/pricing/start-project/project-idea-form/project-idea-form.component.ts",
-                  "offset": 922
+                  "offset": 996
                 }
               },
               {
@@ -2151,7 +2271,7 @@
                 "default": "",
                 "source": {
                   "file": "./src/components/pages/pricing/start-project/project-idea-form/project-idea-form.component.ts",
-                  "offset": 1202
+                  "offset": 1276
                 }
               }
             ]
@@ -2161,7 +2281,7 @@
           "name": "pricing-project-mode-selector",
           "source": {
             "file": "./src/components/pages/pricing/start-project/project-mode-selector/project-mode-selector.component.ts",
-            "offset": 857
+            "offset": 865
           },
           "attributes": [
             {
@@ -2173,7 +2293,7 @@
               },
               "source": {
                 "file": "./src/components/pages/pricing/start-project/project-mode-selector/project-mode-selector.component.ts",
-                "offset": 1077
+                "offset": 1085
               }
             }
           ],
@@ -2185,7 +2305,7 @@
                 "default": "spec",
                 "source": {
                   "file": "./src/components/pages/pricing/start-project/project-mode-selector/project-mode-selector.component.ts",
-                  "offset": 1077
+                  "offset": 1085
                 }
               }
             ]
@@ -2206,7 +2326,7 @@
           "name": "pricing-project-process",
           "source": {
             "file": "./src/components/pages/pricing/start-project/project-process/project-process.component.ts",
-            "offset": 656
+            "offset": 664
           },
           "attributes": [],
           "js": {
@@ -2217,7 +2337,7 @@
           "name": "pricing-project-quote-form",
           "source": {
             "file": "./src/components/pages/pricing/start-project/project-quote-form/project-quote-form.component.ts",
-            "offset": 809
+            "offset": 883
           },
           "attributes": [
             {
@@ -2229,7 +2349,7 @@
               },
               "source": {
                 "file": "./src/components/pages/pricing/start-project/project-quote-form/project-quote-form.component.ts",
-                "offset": 1303
+                "offset": 1377
               }
             },
             {
@@ -2241,7 +2361,7 @@
               },
               "source": {
                 "file": "./src/components/pages/pricing/start-project/project-quote-form/project-quote-form.component.ts",
-                "offset": 1140
+                "offset": 1214
               }
             },
             {
@@ -2253,7 +2373,7 @@
               },
               "source": {
                 "file": "./src/components/pages/pricing/start-project/project-quote-form/project-quote-form.component.ts",
-                "offset": 999
+                "offset": 1073
               }
             }
           ],
@@ -2265,7 +2385,7 @@
                 "default": "",
                 "source": {
                   "file": "./src/components/pages/pricing/start-project/project-quote-form/project-quote-form.component.ts",
-                  "offset": 1303
+                  "offset": 1377
                 }
               },
               {
@@ -2274,7 +2394,7 @@
                 "default": "",
                 "source": {
                   "file": "./src/components/pages/pricing/start-project/project-quote-form/project-quote-form.component.ts",
-                  "offset": 1140
+                  "offset": 1214
                 }
               },
               {
@@ -2283,7 +2403,7 @@
                 "default": "",
                 "source": {
                   "file": "./src/components/pages/pricing/start-project/project-quote-form/project-quote-form.component.ts",
-                  "offset": 999
+                  "offset": 1073
                 }
               }
             ]
@@ -2293,7 +2413,7 @@
           "name": "pricing-project-spec-form",
           "source": {
             "file": "./src/components/pages/pricing/start-project/project-spec-form/project-spec-form.component.ts",
-            "offset": 753
+            "offset": 827
           },
           "attributes": [
             {
@@ -2305,7 +2425,7 @@
               },
               "source": {
                 "file": "./src/components/pages/pricing/start-project/project-spec-form/project-spec-form.component.ts",
-                "offset": 938
+                "offset": 1012
               }
             },
             {
@@ -2317,7 +2437,7 @@
               },
               "source": {
                 "file": "./src/components/pages/pricing/start-project/project-spec-form/project-spec-form.component.ts",
-                "offset": 1087
+                "offset": 1161
               }
             },
             {
@@ -2329,7 +2449,7 @@
               },
               "source": {
                 "file": "./src/components/pages/pricing/start-project/project-spec-form/project-spec-form.component.ts",
-                "offset": 1256
+                "offset": 1330
               }
             }
           ],
@@ -2341,7 +2461,7 @@
                 "default": "",
                 "source": {
                   "file": "./src/components/pages/pricing/start-project/project-spec-form/project-spec-form.component.ts",
-                  "offset": 938
+                  "offset": 1012
                 }
               },
               {
@@ -2350,7 +2470,7 @@
                 "default": "",
                 "source": {
                   "file": "./src/components/pages/pricing/start-project/project-spec-form/project-spec-form.component.ts",
-                  "offset": 1087
+                  "offset": 1161
                 }
               },
               {
@@ -2359,7 +2479,7 @@
                 "default": "",
                 "source": {
                   "file": "./src/components/pages/pricing/start-project/project-spec-form/project-spec-form.component.ts",
-                  "offset": 1256
+                  "offset": 1330
                 }
               }
             ]
@@ -2380,7 +2500,7 @@
           "name": "pricing-start-project-intro",
           "source": {
             "file": "./src/components/pages/pricing/start-project/start-project-intro/start-project-intro.component.ts",
-            "offset": 671
+            "offset": 679
           },
           "attributes": [],
           "js": {
@@ -2391,7 +2511,7 @@
           "name": "pricing-sticky-contact",
           "source": {
             "file": "./src/components/pages/pricing/contact/pricing-sticky-contact/pricing-sticky-contact.component.ts",
-            "offset": 950
+            "offset": 1013
           },
           "attributes": [],
           "js": {
@@ -2402,7 +2522,7 @@
           "name": "pricing-switch",
           "source": {
             "file": "./src/components/pages/pricing/service-switch/pricing-switch/pricing-switch.component.ts",
-            "offset": 881
+            "offset": 944
           },
           "attributes": [],
           "js": {
@@ -2491,7 +2611,7 @@
           "name": "reach-out-card-deck",
           "source": {
             "file": "./src/components/pages/cards/reach-out/reach-out-card-deck.component.ts",
-            "offset": 1197
+            "offset": 1273
           },
           "attributes": [],
           "js": {
@@ -2502,7 +2622,7 @@
           "name": "reach-out-page",
           "source": {
             "file": "./src/pages/cards/reach-out/reach-out.page.ts",
-            "offset": 672
+            "offset": 735
           },
           "attributes": [],
           "js": {
@@ -2513,7 +2633,7 @@
           "name": "scroll-hint",
           "source": {
             "file": "./src/components/utils/scroll-hint/scroll-hint.component.ts",
-            "offset": 929
+            "offset": 939
           },
           "attributes": [
             {
@@ -2525,7 +2645,7 @@
               },
               "source": {
                 "file": "./src/components/utils/scroll-hint/scroll-hint.component.ts",
-                "offset": 1250
+                "offset": 1260
               }
             },
             {
@@ -2537,7 +2657,7 @@
               },
               "source": {
                 "file": "./src/components/utils/scroll-hint/scroll-hint.component.ts",
-                "offset": 1090
+                "offset": 1100
               }
             },
             {
@@ -2549,7 +2669,7 @@
               },
               "source": {
                 "file": "./src/components/utils/scroll-hint/scroll-hint.component.ts",
-                "offset": 1401
+                "offset": 1411
               }
             }
           ],
@@ -2561,7 +2681,7 @@
                 "default": "Scroll",
                 "source": {
                   "file": "./src/components/utils/scroll-hint/scroll-hint.component.ts",
-                  "offset": 1250
+                  "offset": 1260
                 }
               },
               {
@@ -2570,7 +2690,7 @@
                 "default": "vertical",
                 "source": {
                   "file": "./src/components/utils/scroll-hint/scroll-hint.component.ts",
-                  "offset": 1090
+                  "offset": 1100
                 }
               },
               {
@@ -2579,7 +2699,7 @@
                 "default": "0",
                 "source": {
                   "file": "./src/components/utils/scroll-hint/scroll-hint.component.ts",
-                  "offset": 1401
+                  "offset": 1411
                 }
               }
             ]
@@ -2589,7 +2709,7 @@
           "name": "service-state",
           "source": {
             "file": "./src/components/utils/service-state/service-state.component.ts",
-            "offset": 1086
+            "offset": 1162
           },
           "attributes": [
             {
@@ -2601,7 +2721,7 @@
               },
               "source": {
                 "file": "./src/components/utils/service-state/service-state.component.ts",
-                "offset": 1182
+                "offset": 1258
               }
             },
             {
@@ -2613,7 +2733,7 @@
               },
               "source": {
                 "file": "./src/components/utils/service-state/service-state.component.ts",
-                "offset": 1322
+                "offset": 1398
               }
             },
             {
@@ -2625,7 +2745,7 @@
               },
               "source": {
                 "file": "./src/components/utils/service-state/service-state.component.ts",
-                "offset": 1247
+                "offset": 1323
               }
             }
           ],
@@ -2637,7 +2757,7 @@
                 "default": "",
                 "source": {
                   "file": "./src/components/utils/service-state/service-state.component.ts",
-                  "offset": 1182
+                  "offset": 1258
                 }
               },
               {
@@ -2646,7 +2766,7 @@
                 "default": "hello@ayush.dev",
                 "source": {
                   "file": "./src/components/utils/service-state/service-state.component.ts",
-                  "offset": 1322
+                  "offset": 1398
                 }
               },
               {
@@ -2655,7 +2775,7 @@
                 "default": "this capability",
                 "source": {
                   "file": "./src/components/utils/service-state/service-state.component.ts",
-                  "offset": 1247
+                  "offset": 1323
                 }
               }
             ]
@@ -2665,7 +2785,7 @@
           "name": "service-state-strip",
           "source": {
             "file": "./src/components/utils/service-state/service-state-strip.component.ts",
-            "offset": 639
+            "offset": 702
           },
           "attributes": [
             {
@@ -2677,7 +2797,7 @@
               },
               "source": {
                 "file": "./src/components/utils/service-state/service-state-strip.component.ts",
-                "offset": 742
+                "offset": 805
               }
             },
             {
@@ -2689,7 +2809,7 @@
               },
               "source": {
                 "file": "./src/components/utils/service-state/service-state-strip.component.ts",
-                "offset": 827
+                "offset": 890
               }
             }
           ],
@@ -2701,7 +2821,7 @@
                 "default": "DEFAULT_CAPABILITIES",
                 "source": {
                   "file": "./src/components/utils/service-state/service-state-strip.component.ts",
-                  "offset": 742
+                  "offset": 805
                 }
               },
               {
@@ -2710,7 +2830,7 @@
                 "default": "",
                 "source": {
                   "file": "./src/components/utils/service-state/service-state-strip.component.ts",
-                  "offset": 827
+                  "offset": 890
                 }
               }
             ]
@@ -2720,7 +2840,7 @@
           "name": "showcase-archive",
           "source": {
             "file": "./src/components/pages/showcase/index/archive/showcase-archive/showcase-archive.component.ts",
-            "offset": 978
+            "offset": 1041
           },
           "attributes": [],
           "js": {
@@ -2731,7 +2851,7 @@
           "name": "showcase-article-header",
           "source": {
             "file": "./src/components/pages/showcase/article/showcase-article-header/showcase-article-header.component.ts",
-            "offset": 309
+            "offset": 317
           },
           "attributes": [
             {
@@ -2743,7 +2863,7 @@
               },
               "source": {
                 "file": "./src/components/pages/showcase/article/showcase-article-header/showcase-article-header.component.ts",
-                "offset": 461
+                "offset": 469
               }
             },
             {
@@ -2755,7 +2875,7 @@
               },
               "source": {
                 "file": "./src/components/pages/showcase/article/showcase-article-header/showcase-article-header.component.ts",
-                "offset": 1001
+                "offset": 1009
               }
             },
             {
@@ -2767,7 +2887,7 @@
               },
               "source": {
                 "file": "./src/components/pages/showcase/article/showcase-article-header/showcase-article-header.component.ts",
-                "offset": 668
+                "offset": 676
               }
             },
             {
@@ -2779,7 +2899,7 @@
               },
               "source": {
                 "file": "./src/components/pages/showcase/article/showcase-article-header/showcase-article-header.component.ts",
-                "offset": 863
+                "offset": 871
               }
             },
             {
@@ -2791,7 +2911,7 @@
               },
               "source": {
                 "file": "./src/components/pages/showcase/article/showcase-article-header/showcase-article-header.component.ts",
-                "offset": 753
+                "offset": 761
               }
             },
             {
@@ -2803,7 +2923,7 @@
               },
               "source": {
                 "file": "./src/components/pages/showcase/article/showcase-article-header/showcase-article-header.component.ts",
-                "offset": 568
+                "offset": 576
               }
             }
           ],
@@ -2815,7 +2935,7 @@
                 "default": "",
                 "source": {
                   "file": "./src/components/pages/showcase/article/showcase-article-header/showcase-article-header.component.ts",
-                  "offset": 461
+                  "offset": 469
                 }
               },
               {
@@ -2824,7 +2944,7 @@
                 "default": "",
                 "source": {
                   "file": "./src/components/pages/showcase/article/showcase-article-header/showcase-article-header.component.ts",
-                  "offset": 1001
+                  "offset": 1009
                 }
               },
               {
@@ -2833,7 +2953,7 @@
                 "default": "",
                 "source": {
                   "file": "./src/components/pages/showcase/article/showcase-article-header/showcase-article-header.component.ts",
-                  "offset": 668
+                  "offset": 676
                 }
               },
               {
@@ -2842,7 +2962,7 @@
                 "default": "",
                 "source": {
                   "file": "./src/components/pages/showcase/article/showcase-article-header/showcase-article-header.component.ts",
-                  "offset": 863
+                  "offset": 871
                 }
               },
               {
@@ -2851,7 +2971,7 @@
                 "default": "",
                 "source": {
                   "file": "./src/components/pages/showcase/article/showcase-article-header/showcase-article-header.component.ts",
-                  "offset": 753
+                  "offset": 761
                 }
               },
               {
@@ -2860,7 +2980,7 @@
                 "default": "",
                 "source": {
                   "file": "./src/components/pages/showcase/article/showcase-article-header/showcase-article-header.component.ts",
-                  "offset": 568
+                  "offset": 576
                 }
               }
             ]
@@ -2904,7 +3024,7 @@
           "name": "showcase-card-deck",
           "source": {
             "file": "./src/components/pages/cards/showcase/showcase-card-deck.component.ts",
-            "offset": 1196
+            "offset": 1272
           },
           "attributes": [],
           "js": {
@@ -2915,7 +3035,7 @@
           "name": "showcase-card-page",
           "source": {
             "file": "./src/pages/cards/showcase/showcase-card.page.ts",
-            "offset": 805
+            "offset": 868
           },
           "attributes": [],
           "js": {
@@ -2926,7 +3046,7 @@
           "name": "showcase-cta",
           "source": {
             "file": "./src/components/pages/showcase/index/support/showcase-cta/showcase-cta.component.ts",
-            "offset": 501
+            "offset": 564
           },
           "attributes": [],
           "js": {
@@ -2937,7 +3057,7 @@
           "name": "showcase-faq",
           "source": {
             "file": "./src/components/pages/showcase/index/support/showcase-faq/showcase-faq.component.ts",
-            "offset": 662
+            "offset": 725
           },
           "attributes": [],
           "js": {
@@ -2948,7 +3068,7 @@
           "name": "showcase-featured",
           "source": {
             "file": "./src/components/pages/showcase/index/featured/showcase-featured/showcase-featured.component.ts",
-            "offset": 494
+            "offset": 557
           },
           "attributes": [],
           "js": {
@@ -2959,7 +3079,7 @@
           "name": "showcase-figure",
           "source": {
             "file": "./src/components/pages/showcase/article/showcase-figure/showcase-figure.component.ts",
-            "offset": 524
+            "offset": 534
           },
           "attributes": [
             {
@@ -2971,7 +3091,7 @@
               },
               "source": {
                 "file": "./src/components/pages/showcase/article/showcase-figure/showcase-figure.component.ts",
-                "offset": 833
+                "offset": 843
               }
             },
             {
@@ -2983,7 +3103,7 @@
               },
               "source": {
                 "file": "./src/components/pages/showcase/article/showcase-figure/showcase-figure.component.ts",
-                "offset": 691
+                "offset": 701
               }
             }
           ],
@@ -2995,7 +3115,7 @@
                 "default": "",
                 "source": {
                   "file": "./src/components/pages/showcase/article/showcase-figure/showcase-figure.component.ts",
-                  "offset": 833
+                  "offset": 843
                 }
               },
               {
@@ -3004,7 +3124,7 @@
                 "default": "",
                 "source": {
                   "file": "./src/components/pages/showcase/article/showcase-figure/showcase-figure.component.ts",
-                  "offset": 691
+                  "offset": 701
                 }
               }
             ]
@@ -3014,7 +3134,7 @@
           "name": "showcase-hero",
           "source": {
             "file": "./src/components/pages/showcase/index/hero/showcase-hero/showcase-hero.component.ts",
-            "offset": 596
+            "offset": 659
           },
           "attributes": [],
           "js": {
@@ -3036,7 +3156,7 @@
           "name": "showcase-metrics",
           "source": {
             "file": "./src/components/pages/showcase/article/showcase-metrics/showcase-metrics.component.ts",
-            "offset": 794
+            "offset": 804
           },
           "attributes": [
             {
@@ -3048,7 +3168,7 @@
               },
               "source": {
                 "file": "./src/components/pages/showcase/article/showcase-metrics/showcase-metrics.component.ts",
-                "offset": 974
+                "offset": 984
               }
             }
           ],
@@ -3060,7 +3180,7 @@
                 "default": "",
                 "source": {
                   "file": "./src/components/pages/showcase/article/showcase-metrics/showcase-metrics.component.ts",
-                  "offset": 974
+                  "offset": 984
                 }
               }
             ]
@@ -3081,7 +3201,7 @@
           "name": "showcase-page",
           "source": {
             "file": "./src/pages/showcase/showcase.page.ts",
-            "offset": 567
+            "offset": 630
           },
           "attributes": [],
           "js": {
@@ -3092,7 +3212,7 @@
           "name": "showcase-page-content",
           "source": {
             "file": "./src/components/pages/showcase/index/showcase-page/showcase-page.component.ts",
-            "offset": 577
+            "offset": 640
           },
           "attributes": [],
           "js": {
@@ -3103,7 +3223,7 @@
           "name": "showcase-project-card",
           "source": {
             "file": "./src/components/pages/showcase/index/featured/showcase-project-card/showcase-project-card.component.ts",
-            "offset": 677
+            "offset": 740
           },
           "attributes": [
             {
@@ -3115,7 +3235,7 @@
               },
               "source": {
                 "file": "./src/components/pages/showcase/index/featured/showcase-project-card/showcase-project-card.component.ts",
-                "offset": 869
+                "offset": 932
               }
             }
           ],
@@ -3127,7 +3247,7 @@
                 "default": "",
                 "source": {
                   "file": "./src/components/pages/showcase/index/featured/showcase-project-card/showcase-project-card.component.ts",
-                  "offset": 869
+                  "offset": 932
                 }
               }
             ]
@@ -3137,7 +3257,7 @@
           "name": "showcase-project-row",
           "source": {
             "file": "./src/components/pages/showcase/index/archive/showcase-project-row/showcase-project-row.component.ts",
-            "offset": 592
+            "offset": 655
           },
           "attributes": [
             {
@@ -3149,7 +3269,7 @@
               },
               "source": {
                 "file": "./src/components/pages/showcase/index/archive/showcase-project-row/showcase-project-row.component.ts",
-                "offset": 782
+                "offset": 845
               }
             }
           ],
@@ -3161,7 +3281,7 @@
                 "default": "",
                 "source": {
                   "file": "./src/components/pages/showcase/index/archive/showcase-project-row/showcase-project-row.component.ts",
-                  "offset": 782
+                  "offset": 845
                 }
               }
             ]
@@ -3171,7 +3291,7 @@
           "name": "showcase-slug-page",
           "source": {
             "file": "./src/pages/showcase/showcase-slug.page.ts",
-            "offset": 568
+            "offset": 637
           },
           "attributes": [],
           "js": {
@@ -3182,7 +3302,7 @@
           "name": "showcase-spotlight",
           "source": {
             "file": "./src/components/pages/showcase/index/spotlight/showcase-spotlight/showcase-spotlight.component.ts",
-            "offset": 680
+            "offset": 743
           },
           "attributes": [
             {
@@ -3194,7 +3314,7 @@
               },
               "source": {
                 "file": "./src/components/pages/showcase/index/spotlight/showcase-spotlight/showcase-spotlight.component.ts",
-                "offset": 862
+                "offset": 925
               }
             }
           ],
@@ -3206,7 +3326,7 @@
                 "default": "",
                 "source": {
                   "file": "./src/components/pages/showcase/index/spotlight/showcase-spotlight/showcase-spotlight.component.ts",
-                  "offset": 862
+                  "offset": 925
                 }
               }
             ]
@@ -3216,7 +3336,7 @@
           "name": "showcase-support",
           "source": {
             "file": "./src/components/pages/showcase/index/support/showcase-support/showcase-support.component.ts",
-            "offset": 428
+            "offset": 491
           },
           "attributes": [],
           "js": {
@@ -3227,7 +3347,7 @@
           "name": "showcase-toc",
           "source": {
             "file": "./src/components/pages/showcase/article/showcase-toc/showcase-toc.component.ts",
-            "offset": 1357
+            "offset": 1367
           },
           "attributes": [],
           "js": {
@@ -3249,7 +3369,7 @@
           "name": "showcase-visual",
           "source": {
             "file": "./src/components/pages/showcase/index/project-visual/showcase-visual/showcase-visual.component.ts",
-            "offset": 576
+            "offset": 639
           },
           "attributes": [
             {
@@ -3261,7 +3381,7 @@
               },
               "source": {
                 "file": "./src/components/pages/showcase/index/project-visual/showcase-visual/showcase-visual.component.ts",
-                "offset": 758
+                "offset": 821
               }
             },
             {
@@ -3273,7 +3393,7 @@
               },
               "source": {
                 "file": "./src/components/pages/showcase/index/project-visual/showcase-visual/showcase-visual.component.ts",
-                "offset": 919
+                "offset": 982
               }
             }
           ],
@@ -3285,7 +3405,7 @@
                 "default": "",
                 "source": {
                   "file": "./src/components/pages/showcase/index/project-visual/showcase-visual/showcase-visual.component.ts",
-                  "offset": 758
+                  "offset": 821
                 }
               },
               {
@@ -3294,7 +3414,7 @@
                 "default": "card",
                 "source": {
                   "file": "./src/components/pages/showcase/index/project-visual/showcase-visual/showcase-visual.component.ts",
-                  "offset": 919
+                  "offset": 982
                 }
               }
             ]
@@ -3304,7 +3424,7 @@
           "name": "showcase-working-method",
           "source": {
             "file": "./src/components/pages/showcase/index/support/showcase-working-method/showcase-working-method.component.ts",
-            "offset": 515
+            "offset": 578
           },
           "attributes": [],
           "js": {
@@ -3315,7 +3435,7 @@
           "name": "sk-article",
           "source": {
             "file": "./src/components/utils/skeleton/skeleton-article/skeleton-article.component.ts",
-            "offset": 214
+            "offset": 283
           },
           "attributes": [],
           "js": {
@@ -3326,7 +3446,7 @@
           "name": "sk-cards",
           "source": {
             "file": "./src/components/utils/skeleton/skeleton-cards/skeleton-cards.component.ts",
-            "offset": 233
+            "offset": 302
           },
           "attributes": [
             {
@@ -3338,7 +3458,7 @@
               },
               "source": {
                 "file": "./src/components/utils/skeleton/skeleton-cards/skeleton-cards.component.ts",
-                "offset": 393
+                "offset": 462
               }
             }
           ],
@@ -3350,7 +3470,7 @@
                 "default": "3",
                 "source": {
                   "file": "./src/components/utils/skeleton/skeleton-cards/skeleton-cards.component.ts",
-                  "offset": 393
+                  "offset": 462
                 }
               }
             ]
@@ -3360,7 +3480,7 @@
           "name": "sk-list",
           "source": {
             "file": "./src/components/utils/skeleton/skeleton-list/skeleton-list.component.ts",
-            "offset": 226
+            "offset": 295
           },
           "attributes": [
             {
@@ -3372,7 +3492,7 @@
               },
               "source": {
                 "file": "./src/components/utils/skeleton/skeleton-list/skeleton-list.component.ts",
-                "offset": 399
+                "offset": 468
               }
             }
           ],
@@ -3384,7 +3504,7 @@
                 "default": "4",
                 "source": {
                   "file": "./src/components/utils/skeleton/skeleton-list/skeleton-list.component.ts",
-                  "offset": 399
+                  "offset": 468
                 }
               }
             ]
@@ -3394,7 +3514,7 @@
           "name": "speaking-offering",
           "source": {
             "file": "./src/components/pages/pricing/speaking/speaking-offering/speaking-offering.component.ts",
-            "offset": 486
+            "offset": 549
           },
           "attributes": [],
           "js": {
@@ -3405,7 +3525,7 @@
           "name": "speaking-pricing",
           "source": {
             "file": "./src/components/pages/pricing/speaking/speaking-pricing/speaking-pricing.component.ts",
-            "offset": 531
+            "offset": 594
           },
           "attributes": [],
           "js": {
@@ -3482,7 +3602,7 @@
           "name": "support-faq",
           "source": {
             "file": "./src/components/pages/support/faq/support-faq/support-faq.component.ts",
-            "offset": 648
+            "offset": 656
           },
           "attributes": [],
           "js": {
@@ -3493,7 +3613,7 @@
           "name": "support-intro",
           "source": {
             "file": "./src/components/pages/support/help/support-intro/support-intro.component.ts",
-            "offset": 526
+            "offset": 589
           },
           "attributes": [],
           "js": {
@@ -3504,7 +3624,7 @@
           "name": "support-next-steps",
           "source": {
             "file": "./src/components/pages/support/next-steps/support-next-steps/support-next-steps.component.ts",
-            "offset": 490
+            "offset": 553
           },
           "attributes": [],
           "js": {
@@ -3526,7 +3646,7 @@
           "name": "support-page",
           "source": {
             "file": "./src/pages/support.page.ts",
-            "offset": 769
+            "offset": 832
           },
           "attributes": [],
           "js": {
@@ -3537,7 +3657,7 @@
           "name": "support-quick-help",
           "source": {
             "file": "./src/components/pages/support/help/support-quick-help/support-quick-help.component.ts",
-            "offset": 900
+            "offset": 1024
           },
           "attributes": [],
           "js": {
@@ -3548,7 +3668,7 @@
           "name": "support-resources",
           "source": {
             "file": "./src/components/pages/support/resources/support-resources/support-resources.component.ts",
-            "offset": 525
+            "offset": 600
           },
           "attributes": [],
           "js": {
@@ -3559,7 +3679,7 @@
           "name": "support-section",
           "source": {
             "file": "./src/components/pages/support/help/support-section/support-section.component.ts",
-            "offset": 666
+            "offset": 729
           },
           "attributes": [],
           "js": {
@@ -3570,7 +3690,7 @@
           "name": "support-start-project",
           "source": {
             "file": "./src/components/pages/support/start-project/support-start-project/support-start-project.component.ts",
-            "offset": 588
+            "offset": 651
           },
           "attributes": [],
           "js": {
@@ -3581,7 +3701,7 @@
           "name": "support-ticket",
           "source": {
             "file": "./src/components/pages/support/help/support-ticket/support-ticket.component.ts",
-            "offset": 965
+            "offset": 1076
           },
           "attributes": [],
           "js": {

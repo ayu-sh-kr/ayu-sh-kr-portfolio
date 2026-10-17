@@ -1,9 +1,9 @@
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
 import {
   BaseElement,
   Component,
   HostListener,
-  HTML,
-} from "@ayu-sh-kr/dota-wrap/core";
+  } from "@ayu-sh-kr/dota-wrap/core";
 import { OnEvent } from "@ayu-sh-kr/dota-wrap/event";
 import { designInteractionContent } from "@app/data/design-interaction-content.ts";
 
@@ -38,17 +38,27 @@ export class DesignInteractionReducedComponent extends BaseElement {
   }
 
   /** Renders the review control and the rule that no-motion states preserve all meaning. */
-  render(): string {
+  render(): TemplateResult {
     const { reduced } = designInteractionContent;
 
-    return HTML`
-      <section id="reduced" class="design-interaction-section layout-page layout-section" aria-labelledby="reduced-title">
-        <header class="design-interaction-heading layout-stack layout-stack-sm">
-          <p class="type-eyebrow">${reduced.eyebrow}</p>
-          <h2 id="reduced-title" class="type-section">${reduced.title}</h2>
-          <p class="type-lede">${reduced.lede}</p>
-        </header>
-        <button type="button" class="design-interaction-review" data-interaction-review aria-pressed="${String(this.isReviewingReducedMotion)}">${this.isReviewingReducedMotion ? reduced.activeLabel : reduced.previewLabel}</button>
-      </section>`;
+    return html` <section
+      id="reduced"
+      class="design-interaction-section layout-page layout-section"
+      aria-labelledby="reduced-title"
+    >
+      <header class="design-interaction-heading layout-stack layout-stack-sm">
+        <p class="type-eyebrow">${reduced.eyebrow}</p>
+        <h2 id="reduced-title" class="type-section">${reduced.title}</h2>
+        <p class="type-lede">${reduced.lede}</p>
+      </header>
+      <button
+        type="button"
+        class="design-interaction-review"
+        data-interaction-review
+        aria-pressed="${String(this.isReviewingReducedMotion)}"
+      >
+        ${this.isReviewingReducedMotion ? reduced.activeLabel : reduced.previewLabel}
+      </button>
+    </section>`;
   }
 }

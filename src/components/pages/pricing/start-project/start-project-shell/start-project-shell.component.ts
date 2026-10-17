@@ -365,17 +365,23 @@ export class PricingStartProjectComponent extends BaseElement {
 
     return html`
       <div class="pricing-project-choices" role="group">
-        ${options.map((option) => html`
-          <button
-            class="form-choice input-sm input-round input-bordered pricing-project-choice ${selectedValues.includes(option) ? "is-selected" : ""}"
-            type="button"
-            data-start-choice="${choice}"
-            data-start-value="${option}"
-            aria-pressed="${selectedValues.includes(option)}"
-          >
-            ${option}
-          </button>
-        `)}
+        ${options.map(
+          (option) => html`
+            <button
+              class="form-choice input-sm input-round input-bordered pricing-project-choice ${selectedValues.includes(
+                option
+              )
+                ? "is-selected"
+                : ""}"
+              type="button"
+              data-start-choice="${choice}"
+              data-start-value="${option}"
+              aria-pressed="${selectedValues.includes(option)}"
+            >
+              ${option}
+            </button>
+          `
+        )}
       </div>
     `;
   }
@@ -460,92 +466,149 @@ export class PricingStartProjectComponent extends BaseElement {
     const form = content.form;
 
     return html`
-      <section id="pricing-start-project" class="pricing-start-project-section" aria-labelledby="pricing-start-project-title" data-analytics-section="project_brief">
+      <section
+        id="pricing-start-project"
+        class="pricing-start-project-section"
+        aria-labelledby="pricing-start-project-title"
+        data-analytics-section="project_brief"
+      >
         <div class="pricing-start-project-content layout-page">
           <pricing-start-project-intro></pricing-start-project-intro>
-          <pricing-project-mode-selector selected-mode="${this.brief.mode}"></pricing-project-mode-selector>
+          <pricing-project-mode-selector
+            selected-mode="${this.brief.mode}"
+          ></pricing-project-mode-selector>
 
-          ${when(this.isPrepared, html`
-            <div class="pricing-project-complete" role="status">
-              <span aria-hidden="true">✓</span>
-              <h3>${content.completionTitle}</h3>
-              <p>
-                ${content.completionBody}
-                ${this.submissionId !== null ? `${content.completionReferencePrefix} #${this.submissionId}.` : ""}
-              </p>
-              <div>
-                <button class="pricing-project-secondary-button" type="button" data-start-edit>
-                  ${form.submitAnotherLabel}
-                </button>
-              </div>
-            </div>
-          `, html`
-            <div class="pricing-project-workspace">
-              <form id="pricing-project-brief" class="pricing-project-form">
-                ${this.renderActiveProjectForm()}
-
-                <fieldset class="pricing-project-fieldset">
-                  <legend>${form.shapeLegend}</legend>
-                  <div class="pricing-project-input-label">
-                    ${form.existingLabel} <small>${form.existingHint}</small>
-                  </div>
-                  ${this.renderSharedChoices(content.existingOptions, "existing", this.brief.existing)}
-
-                  <div class="pricing-project-input-label">${form.budgetLabel}</div>
-                  ${this.renderSharedChoices(content.budgetOptions, "budget", this.brief.budget)}
-
-                  <div class="pricing-project-input-label">${form.timelineLabel}</div>
-                  ${this.renderSharedChoices(content.timelineOptions, "timeline", this.brief.timeline)}
-
-                  <pricing-project-file-upload files="${JSON.stringify(this.brief.files)}"></pricing-project-file-upload>
-                </fieldset>
-
-                <fieldset class="pricing-project-fieldset">
-                  <legend>${form.contactLegend}</legend>
-                  <div class="pricing-project-field-grid">
-                    <label class="form-label form-label">
-                      ${form.nameLabel}
-                      <input class="form-control input-md input-rounded-md input-bordered" data-start-field="name" value="${this.brief.name}" autocomplete="name" required placeholder="${form.namePlaceholder}">
-                    </label>
-                    <label class="form-label form-label">
-                      ${form.emailLabel}
-                      <input class="form-control input-md input-rounded-md input-bordered" data-start-field="email" value="${this.brief.email}" type="email" autocomplete="email" required placeholder="${form.emailPlaceholder}">
-                    </label>
-                  </div>
-
-                  <div class="pricing-project-field-grid">
-                    <label class="form-label form-label">
-                      ${form.companyLabel} <small>${form.optionalLabel}</small>
-                      <input class="form-control input-md input-rounded-md input-bordered" data-start-field="company" value="${this.brief.company}" autocomplete="organization" placeholder="${form.companyPlaceholder}">
-                    </label>
-                    <div>
-                      <div class="pricing-project-input-label">${form.nextStepLabel}</div>
-                      ${this.renderSharedChoices(content.nextSteps, "next-step", this.brief.nextStep)}
-                    </div>
-                  </div>
-
-                  <label class="pricing-project-checkbox">
-                    ${when(this.brief.needsNda, html`<input class="form-native" data-start-nda type="checkbox" checked>`, html`<input class="form-native" data-start-nda type="checkbox">`)}
-                    <span>${form.ndaLabel}</span>
-                  </label>
-                </fieldset>
-
-                <div class="pricing-project-submit">
-                  ${when(this.isSubmitFailed, html`
-                    <p class="pricing-project-submit-error" role="alert">
-                      ${form.submitErrorNote}
-                      <a href="${this.createEmailHref()}">${form.submitErrorEmailLabel}</a>
-                    </p>
-                  `, html`<p>${form.submitNote}</p>`)}
-                  <button class="pricing-project-primary-button" type="submit" ${this.isSubmitting ? "disabled" : ""}>
-                    ${this.isSubmitting ? form.submittingLabel : form.submitLabel} <span aria-hidden="true">→</span>
+          ${when(
+            this.isPrepared,
+            html`
+              <div class="pricing-project-complete" role="status">
+                <span aria-hidden="true">✓</span>
+                <h3>${content.completionTitle}</h3>
+                <p>
+                  ${content.completionBody}
+                  ${this.submissionId !== null
+                    ? `${content.completionReferencePrefix} #${this.submissionId}.`
+                    : ""}
+                </p>
+                <div>
+                  <button class="pricing-project-secondary-button" type="button" data-start-edit>
+                    ${form.submitAnotherLabel}
                   </button>
                 </div>
-              </form>
+              </div>
+            `,
+            html`
+              <div class="pricing-project-workspace">
+                <form id="pricing-project-brief" class="pricing-project-form">
+                  ${this.renderActiveProjectForm()}
 
-              <pricing-project-preview></pricing-project-preview>
-            </div>
-          `)}
+                  <fieldset class="pricing-project-fieldset">
+                    <legend>${form.shapeLegend}</legend>
+                    <div class="pricing-project-input-label">
+                      ${form.existingLabel} <small>${form.existingHint}</small>
+                    </div>
+                    ${this.renderSharedChoices(
+                      content.existingOptions,
+                      "existing",
+                      this.brief.existing
+                    )}
+
+                    <div class="pricing-project-input-label">${form.budgetLabel}</div>
+                    ${this.renderSharedChoices(content.budgetOptions, "budget", this.brief.budget)}
+
+                    <div class="pricing-project-input-label">${form.timelineLabel}</div>
+                    ${this.renderSharedChoices(
+                      content.timelineOptions,
+                      "timeline",
+                      this.brief.timeline
+                    )}
+
+                    <pricing-project-file-upload
+                      files="${JSON.stringify(this.brief.files)}"
+                    ></pricing-project-file-upload>
+                  </fieldset>
+
+                  <fieldset class="pricing-project-fieldset">
+                    <legend>${form.contactLegend}</legend>
+                    <div class="pricing-project-field-grid">
+                      <label class="form-label form-label">
+                        ${form.nameLabel}
+                        <input
+                          class="form-control input-md input-rounded-md input-bordered"
+                          data-start-field="name"
+                          value="${this.brief.name}"
+                          autocomplete="name"
+                          required
+                          placeholder="${form.namePlaceholder}"
+                        />
+                      </label>
+                      <label class="form-label form-label">
+                        ${form.emailLabel}
+                        <input
+                          class="form-control input-md input-rounded-md input-bordered"
+                          data-start-field="email"
+                          value="${this.brief.email}"
+                          type="email"
+                          autocomplete="email"
+                          required
+                          placeholder="${form.emailPlaceholder}"
+                        />
+                      </label>
+                    </div>
+
+                    <div class="pricing-project-field-grid">
+                      <label class="form-label form-label">
+                        ${form.companyLabel} <small>${form.optionalLabel}</small>
+                        <input
+                          class="form-control input-md input-rounded-md input-bordered"
+                          data-start-field="company"
+                          value="${this.brief.company}"
+                          autocomplete="organization"
+                          placeholder="${form.companyPlaceholder}"
+                        />
+                      </label>
+                      <div>
+                        <div class="pricing-project-input-label">${form.nextStepLabel}</div>
+                        ${this.renderSharedChoices(content.nextSteps, "next-step", this.brief.nextStep)}
+                      </div>
+                    </div>
+
+                    <label class="pricing-project-checkbox">
+                      ${when(
+                        this.brief.needsNda,
+                        html`<input class="form-native" data-start-nda type="checkbox" checked />`,
+                        html`<input class="form-native" data-start-nda type="checkbox" />`
+                      )}
+                      <span>${form.ndaLabel}</span>
+                    </label>
+                  </fieldset>
+
+                  <div class="pricing-project-submit">
+                    ${when(
+                      this.isSubmitFailed,
+                      html`
+                        <p class="pricing-project-submit-error" role="alert">
+                          ${form.submitErrorNote}
+                          <a href="${this.createEmailHref()}">${form.submitErrorEmailLabel}</a>
+                        </p>
+                      `,
+                      html`<p>${form.submitNote}</p>`
+                    )}
+                    <button
+                      class="pricing-project-primary-button"
+                      type="submit"
+                      ${this.isSubmitting ? "disabled" : ""}
+                    >
+                      ${this.isSubmitting ? form.submittingLabel : form.submitLabel}
+                      <span aria-hidden="true">→</span>
+                    </button>
+                  </div>
+                </form>
+
+                <pricing-project-preview></pricing-project-preview>
+              </div>
+            `
+          )}
         </div>
       </section>
     `;

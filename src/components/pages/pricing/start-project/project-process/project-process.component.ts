@@ -1,6 +1,6 @@
-import { BaseElement, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
+import { BaseElement, Component } from "@ayu-sh-kr/dota-wrap/core";
 import { pricingContent } from "@app/data/pricing-content.ts";
-import { escapeHtml } from "@app/utils/html.utils.ts";
 
 /**
  * Explains the four commitment points that follow a completed project brief.
@@ -22,18 +22,29 @@ export class PricingProjectProcessComponent extends BaseElement {
   }
 
   /** Renders the process introduction and ordered project-start cards. */
-  render(): string {
+  render(): TemplateResult {
     const content = pricingContent.startProject;
 
-    return HTML`
-      <section class="pricing-project-process-section layout-page" aria-labelledby="pricing-project-process-title">
+    return html`
+      <section
+        class="pricing-project-process-section layout-page"
+        aria-labelledby="pricing-project-process-title"
+      >
         <div class="pricing-project-subsection-copy">
           <p class="pricing-eyebrow">${content.processEyebrow}</p>
           <h3 id="pricing-project-process-title">${content.processTitle}</h3>
           <p>${content.processBody}</p>
         </div>
         <div class="pricing-project-process-grid">
-          ${content.process.map((step) => `<article><span>${escapeHtml(step.number)}</span><h4>${escapeHtml(step.title)}</h4><p>${escapeHtml(step.body)}</p><b>${escapeHtml(step.when)}</b></article>`).join("")}
+          ${content.process.map(
+            (step) =>
+              html`<article>
+                <span>${step.number}</span>
+                <h4>${step.title}</h4>
+                <p>${step.body}</p>
+                <b>${step.when}</b>
+              </article>`
+          )}
         </div>
       </section>
     `;

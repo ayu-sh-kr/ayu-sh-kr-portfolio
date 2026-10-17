@@ -1,4 +1,5 @@
-import { BaseElement, Component, HTML, HostListener, WindowListener } from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
+import { BaseElement, Component, HostListener, WindowListener } from "@ayu-sh-kr/dota-wrap/core";
 import { OnEvent } from "@ayu-sh-kr/dota-wrap/event";
 import {
   getShowcaseProjectsByTier,
@@ -96,38 +97,59 @@ export class ShowcaseArchiveComponent extends BaseElement {
   }
 
   /** Renders filter controls, result count, and the current archive rows. */
-  render(): string {
+  render(): TemplateResult {
     const filteredProjects = this.filteredProjects();
     const archiveCount = getShowcaseProjectsByTier("archive").length;
     const countLabel = `${filteredProjects.length} ${filteredProjects.length === 1 ? "project" : "projects"}`;
 
-    return HTML`
-      <section id="showcase-archive" class="showcase-archive-section layout-page layout-section" aria-labelledby="showcase-archive-title">
+    return html`
+      <section
+        id="showcase-archive"
+        class="showcase-archive-section layout-page layout-section"
+        aria-labelledby="showcase-archive-title"
+      >
         <div>
           <div class="showcase-archive-heading">
             <div>
               <p class="showcase-eyebrow showcase-reveal" data-showcase-reveal>Archive</p>
-              <h2 id="showcase-archive-title" class="showcase-title mt-4 showcase-reveal" data-showcase-reveal>Everything else worth keeping.</h2>
+              <h2
+                id="showcase-archive-title"
+                class="showcase-title mt-4 showcase-reveal"
+                data-showcase-reveal
+              >
+                Everything else worth keeping.
+              </h2>
             </div>
-            <span class="showcase-section-note showcase-reveal" data-showcase-reveal>${archiveCount} projects in the archive</span>
+            <span class="showcase-section-note showcase-reveal" data-showcase-reveal
+              >${archiveCount} projects in the archive</span
+            >
           </div>
           <div class="showcase-filter-row mt-10" role="group" aria-label="Filter projects by kind">
-            ${showcaseFilters
-              .map(
-                (filter) => `
-                  <button class="showcase-filter ${filter.value === this.activeFilter ? "is-active" : ""}" type="button" data-showcase-filter="${filter.value}" aria-pressed="${filter.value === this.activeFilter}">
-                    ${filter.label}
-                  </button>
-                `,
-              )
-              .join("")}
+            ${showcaseFilters.map(
+              (filter) => html`
+                <button
+                  class="showcase-filter ${filter.value === this.activeFilter ? "is-active" : ""}"
+                  type="button"
+                  data-showcase-filter="${filter.value}"
+                  aria-pressed="${filter.value === this.activeFilter}"
+                >
+                  ${filter.label}
+                </button>
+              `
+            )}
             <span class="showcase-filter-count" aria-live="polite">${countLabel}</span>
           </div>
           <div class="showcase-row-list mt-6">
-            ${filteredProjects.map((project) => `<showcase-project-row project-slug="${project.slug}"></showcase-project-row>`).join("")}
+            ${filteredProjects.map(
+              (project) =>
+                html`<showcase-project-row project-slug="${project.slug}"></showcase-project-row>`
+            )}
           </div>
           ${filteredProjects.length === 0
-            ? `<p class="showcase-empty-state" data-showcase-reveal data-showcase-reveal-now>No projects in this category yet. <button type="button" data-showcase-filter="all">Show all</button></p>`
+            ? html`<p class="showcase-empty-state" data-showcase-reveal data-showcase-reveal-now>
+                No projects in this category yet.
+                <button type="button" data-showcase-filter="all">Show all</button>
+              </p>`
             : ""}
         </div>
       </section>

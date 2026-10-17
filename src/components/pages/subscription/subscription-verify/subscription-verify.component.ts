@@ -223,28 +223,113 @@ export class SubscriptionVerifyComponent extends BaseElement {
   private renderState() {
     if (this.state === "working") {
       const working = content.states.working;
-      return html`<section class="layout-content layout-section-flush layout-section subscription-verify-state" role="status" aria-live="polite"><div class="subscription-verify-card"><p class="type-label">${working.loading}</p><div class="subscription-verify-pulse" aria-hidden="true"><span></span></div></div></section>`;
+      return html`<section
+        class="layout-content layout-section-flush layout-section subscription-verify-state"
+        role="status"
+        aria-live="polite"
+      >
+        <div class="subscription-verify-card">
+          <p class="type-label">${working.loading}</p>
+          <div class="subscription-verify-pulse" aria-hidden="true"><span></span></div>
+        </div>
+      </section>`;
     }
     if (this.state === "verified") {
       const verified = content.states.verified;
       const facts = verified.facts.map(([title, body]) => html`<li><b>${title}</b><span>${body}</span></li>`);
-      return html`<section class="layout-content layout-section-flush layout-section subscription-verify-state"><div class="subscription-verify-card"><p class="type-label">${verified.addressLabel}</p><p class="subscription-verify-address"><span aria-hidden="true"></span>${this.email || "the confirmed address"}</p><ul class="subscription-verify-facts">${facts}</ul></div>${this.renderExits()}</section>`;
+      return html`<section
+        class="layout-content layout-section-flush layout-section subscription-verify-state"
+      >
+        <div class="subscription-verify-card">
+          <p class="type-label">${verified.addressLabel}</p>
+          <p class="subscription-verify-address">
+            <span aria-hidden="true"></span>${this.email || "the confirmed address"}
+          </p>
+          <ul class="subscription-verify-facts">
+            ${facts}
+          </ul>
+        </div>
+        ${this.renderExits()}
+      </section>`;
     }
     if (this.state === "already") {
-      return html`<section class="layout-content layout-section-flush layout-section subscription-verify-state"><div class="subscription-verify-card"><p class="subscription-verify-meta">${content.states.already.body}</p></div>${this.renderExits()}</section>`;
+      return html`<section
+        class="layout-content layout-section-flush layout-section subscription-verify-state"
+      >
+        <div class="subscription-verify-card">
+          <p class="subscription-verify-meta">${content.states.already.body}</p>
+        </div>
+        ${this.renderExits()}
+      </section>`;
     }
     if (this.state === "expired") {
       const expired = content.states.expired;
       const resendButton = !this.isValidEmail() || !!this.resendMessage || this.resendPending
-        ? html`<button class="subscription-verify-action" id="subscription-resend" type="button" disabled>${this.resendPending ? expired.resendBusy : expired.resendLabel}</button>`
-        : html`<button class="subscription-verify-action" id="subscription-resend" type="button">${expired.resendLabel}</button>`;
-      return html`<section class="layout-content layout-section-flush layout-section subscription-verify-state"><div class="subscription-verify-card"><h2 class="type-subsection">${expired.title}</h2><p class="subscription-verify-meta">${expired.body}</p><div class="subscription-verify-field-row"><label class="visually-hidden" for="subscription-resend-email">${expired.emailLabel}</label><input class="form-control input-md input-rounded-md input-bordered subscription-verify-field" id="subscription-resend-email" type="email" inputmode="email" autocomplete="email" placeholder="${expired.emailPlaceholder}" value="${this.resendEmail}" />${resendButton}</div>${when(!!this.resendError, html`<p class="subscription-verify-error" role="alert">${this.resendError}</p>`)}${when(!!this.resendMessage, html`<p class="subscription-verify-success" role="status">${this.resendMessage}</p>`)}</div></section>`;
+        ? html`<button
+          class="subscription-verify-action"
+          id="subscription-resend"
+          type="button"
+          disabled
+        >
+          ${this.resendPending ? expired.resendBusy : expired.resendLabel}
+        </button>`
+        : html`<button class="subscription-verify-action" id="subscription-resend" type="button">
+          ${expired.resendLabel}
+        </button>`;
+      return html`<section
+        class="layout-content layout-section-flush layout-section subscription-verify-state"
+      >
+        <div class="subscription-verify-card">
+          <h2 class="type-subsection">${expired.title}</h2>
+          <p class="subscription-verify-meta">${expired.body}</p>
+          <div class="subscription-verify-field-row">
+            <label class="visually-hidden" for="subscription-resend-email">${expired.emailLabel}</label
+            ><input
+              class="form-control input-md input-rounded-md input-bordered subscription-verify-field"
+              id="subscription-resend-email"
+              type="email"
+              inputmode="email"
+              autocomplete="email"
+              placeholder="${expired.emailPlaceholder}"
+              value="${this.resendEmail}"
+            />${resendButton}
+          </div>
+          ${when(
+            !!this.resendError,
+            html`<p class="subscription-verify-error" role="alert">${this.resendError}</p>`
+          )}${when(
+            !!this.resendMessage,
+            html`<p class="subscription-verify-success" role="status">${this.resendMessage}</p>`
+          )}
+        </div>
+      </section>`;
     }
     const failed = content.states.failed;
     const retryButton = this.verificationPending
-      ? html`<button class="subscription-verify-action" id="subscription-retry" type="button" disabled>${failed.retryBusy}</button>`
-      : html`<button class="subscription-verify-action" id="subscription-retry" type="button">${failed.retryLabel}</button>`;
-    return html`<section class="layout-content layout-section-flush layout-section subscription-verify-state"><div class="subscription-verify-card"><p class="subscription-verify-meta">${failed.body}</p><div class="subscription-verify-action-row">${retryButton}</div>${when(!!this.retryError, html`<p class="subscription-verify-error" role="alert">${this.retryError}</p>`)}<p class="subscription-verify-meta subscription-verify-help">${failed.manualHelp}</p></div></section>`;
+      ? html`<button
+        class="subscription-verify-action"
+        id="subscription-retry"
+        type="button"
+        disabled
+      >
+        ${failed.retryBusy}
+      </button>`
+      : html`<button class="subscription-verify-action" id="subscription-retry" type="button">
+        ${failed.retryLabel}
+      </button>`;
+    return html`<section
+      class="layout-content layout-section-flush layout-section subscription-verify-state"
+    >
+      <div class="subscription-verify-card">
+        <p class="subscription-verify-meta">${failed.body}</p>
+        <div class="subscription-verify-action-row">${retryButton}</div>
+        ${when(
+          !!this.retryError,
+          html`<p class="subscription-verify-error" role="alert">${this.retryError}</p>`
+        )}
+        <p class="subscription-verify-meta subscription-verify-help">${failed.manualHelp}</p>
+      </div>
+    </section>`;
   }
 
   /**
@@ -258,8 +343,15 @@ export class SubscriptionVerifyComponent extends BaseElement {
       const target = href === "/subscription/preference" && this.token
         ? `${href}?token=${encodeURIComponent(this.token)}`
         : href;
-      return html`<li><a href="${target}"><span>${label} <span aria-hidden="true">→</span></span><span>${description}</span></a></li>`;
+      return html`<li>
+        <a href="${target}"
+          ><span>${label} <span aria-hidden="true">→</span></span
+          ><span>${description}</span></a
+        >
+      </li>`;
     });
-    return html`<ul class="subscription-verify-exits">${exits}</ul>`;
+    return html`<ul class="subscription-verify-exits">
+      ${exits}
+    </ul>`;
   }
 }

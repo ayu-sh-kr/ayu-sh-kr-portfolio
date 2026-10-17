@@ -1,6 +1,6 @@
-import {BaseElement, Component, HTML, Property, String} from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
+import {BaseElement, Component, Property, String} from "@ayu-sh-kr/dota-wrap/core";
 import {OnEvent} from "@ayu-sh-kr/dota-wrap/event";
-import {escapeHtml} from "@app/utils/html.utils.ts";
 
 /** The direction suggested by the scroll hint animation. */
 export type ScrollHintMode = "horizontal" | "vertical";
@@ -59,12 +59,12 @@ export class ScrollHintComponent extends BaseElement {
   }
 
   /** Renders the direction-specific track and safely escaped visible label. */
-  render(): string {
+  render(): TemplateResult {
     const mode: ScrollHintMode = this.mode === "horizontal" ? "horizontal" : "vertical";
 
-    return HTML`
+    return html`
       <span class="scroll-hint scroll-hint--${mode}" aria-hidden="true">
-        <span class="scroll-hint__label">${escapeHtml(this.label || "Scroll")}</span>
+        <span class="scroll-hint__label">${this.label || "Scroll"}</span>
         <span class="scroll-hint__track"></span>
       </span>
     `;

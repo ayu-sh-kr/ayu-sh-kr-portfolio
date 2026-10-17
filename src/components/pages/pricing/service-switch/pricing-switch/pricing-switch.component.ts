@@ -1,4 +1,5 @@
-import { BaseElement, Component, HostListener, HTML, WindowListener } from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
+import { BaseElement, Component, HostListener, WindowListener } from "@ayu-sh-kr/dota-wrap/core";
 import { OnEvent } from "@ayu-sh-kr/dota-wrap/event";
 import { pricingContent } from "@app/data/pricing-content.ts";
 
@@ -102,16 +103,20 @@ export class PricingSwitchComponent extends BaseElement {
   }
 
   /** Returns the segmented service switch with the build destination active by default. */
-  render(): string {
+  render(): TemplateResult {
     const content = pricingContent.serviceSwitch;
 
-    return HTML`
+    return html`
       <section class="pricing-switch-section" aria-labelledby="pricing-switch-title">
         <p id="pricing-switch-title" class="pricing-eyebrow">${content.eyebrow}</p>
         <div class="pricing-segmented-control" role="tablist" aria-label="${content.ariaLabel}">
           <span id="pricing-switch-thumb" aria-hidden="true"></span>
-          <button class="is-active" data-pricing-destination="build" role="tab" aria-selected="true">${content.buildLabel}</button>
-          <button data-pricing-destination="speak" role="tab" aria-selected="false">${content.speakLabel}</button>
+          <button class="is-active" data-pricing-destination="build" role="tab" aria-selected="true">
+            ${content.buildLabel}
+          </button>
+          <button data-pricing-destination="speak" role="tab" aria-selected="false">
+            ${content.speakLabel}
+          </button>
         </div>
         <p id="pricing-switch-hint" class="pricing-switch-hint">${content.buildHint}</p>
       </section>

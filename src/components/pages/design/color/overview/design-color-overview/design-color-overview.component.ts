@@ -26,32 +26,55 @@ export class DesignColorOverviewComponent extends BaseElement {
     const { overview } = designColorContent;
 
     return html`
-      <section class="design-color-overview design-section" aria-labelledby="design-color-overview-title">
+      <section
+        class="design-color-overview design-section"
+        aria-labelledby="design-color-overview-title"
+      >
         <div class="design-color-overview-layout">
           <div class="design-color-overview-intro">
             <p class="type-eyebrow design-eyebrow">${overview.eyebrow}</p>
-            <h1 id="design-color-overview-title" class="type-display design-color-overview-title">${overview.title}</h1>
+            <h1 id="design-color-overview-title" class="type-display design-color-overview-title">
+              ${overview.title}
+            </h1>
             <p class="type-lede design-color-overview-lede">${overview.lede}</p>
             <div class="design-overview-links">
-              ${overview.links.map((link) => html`<a class="design-overview-link" href="${link.href}">${link.label} <span aria-hidden="true">${link.indicator}</span></a>`)}
+              ${overview.links.map(
+                (link) =>
+                  html`<a class="design-overview-link" href="${link.href}"
+                    >${link.label} <span aria-hidden="true">${link.indicator}</span></a
+                  >`
+              )}
             </div>
           </div>
 
           <aside class="design-overview-summary" aria-label="${overview.summaryAriaLabel}">
             <p class="type-label design-summary-label">${overview.summaryLabel}</p>
             <dl class="design-summary-list">
-              ${overview.summary.map((item, index) => html`<div><dt>${item.label}</dt><dd>${CODE_SUMMARY_ITEMS.has(index) ? html`<code>${item.value}</code>` : item.value}</dd></div>`)}
+              ${overview.summary.map(
+                (item, index) =>
+                  html`<div>
+                    <dt>${item.label}</dt>
+                    <dd>
+                      ${CODE_SUMMARY_ITEMS.has(index) ? html`<code>${item.value}</code>` : item.value}
+                    </dd>
+                  </div>`
+              )}
             </dl>
           </aside>
         </div>
 
         <div class="design-primary-scale" aria-label="${overview.scaleAriaLabel}">
-          ${overview.primaryShades.map((shade) => html`
-            <div class="design-primary-swatch">
-              <span class="design-primary-swatch-color" style="--design-swatch: var(--primary-${shade});"></span>
-              <span class="type-label design-primary-swatch-label">${shade}</span>
-            </div>
-          `)}
+          ${overview.primaryShades.map(
+            (shade) => html`
+              <div class="design-primary-swatch">
+                <span
+                  class="design-primary-swatch-color"
+                  style="--design-swatch: var(--primary-${shade});"
+                ></span>
+                <span class="type-label design-primary-swatch-label">${shade}</span>
+              </div>
+            `
+          )}
         </div>
       </section>
     `;

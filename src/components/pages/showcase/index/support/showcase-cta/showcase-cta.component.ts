@@ -1,4 +1,5 @@
-import { BaseElement, BindEvent, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
+import { BaseElement, BindEvent, Component } from "@ayu-sh-kr/dota-wrap/core";
 import { publishAnalyticsEvent } from "@app/utils/analytics.utils.ts";
 
 /**
@@ -33,14 +34,26 @@ export class ShowcaseCtaComponent extends BaseElement {
   }
 
   /** Renders the inquiry and pricing actions used at the end of the page. */
-  render(): string {
-    return HTML`
+  render(): TemplateResult {
+    return html`
       <div id="showcase-contact" class="showcase-cta showcase-reveal" data-showcase-reveal>
         <p class="showcase-eyebrow">Start with the outcome</p>
-        <h2 class="showcase-display mt-5">Have something to <span class="text-[var(--primary-color)]">build?</span></h2>
+        <h2 class="showcase-display mt-5">
+          Have something to <span class="text-[var(--primary-color)]">build?</span>
+        </h2>
         <div class="mt-9 flex flex-wrap justify-center gap-3">
-          <a class="app-link app-link--button app-link--accent" data-analytics-cta="conversation" href="mailto:akjaiswal2003@gmail.com?subject=Project%20inquiry">Start a conversation <span aria-hidden="true">→</span></a>
-          <a class="app-link app-link--button app-link--ghost" data-analytics-cta="pricing" href="/pricing/">See ways to work together</a>
+          <a
+            class="app-link app-link--button app-link--accent"
+            data-analytics-cta="conversation"
+            href="mailto:akjaiswal2003@gmail.com?subject=Project%20inquiry"
+            >Start a conversation <span aria-hidden="true">→</span></a
+          >
+          <a
+            class="app-link app-link--button app-link--ghost"
+            data-analytics-cta="pricing"
+            href="/pricing/"
+            >See ways to work together</a
+          >
         </div>
       </div>
     `;

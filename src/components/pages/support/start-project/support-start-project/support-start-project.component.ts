@@ -1,4 +1,5 @@
-import { BaseElement, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
+import { BaseElement, Component } from "@ayu-sh-kr/dota-wrap/core";
 import { supportContent } from "@app/data/support-content.ts";
 
 /**
@@ -21,16 +22,21 @@ export class SupportStartProjectComponent extends BaseElement {
   }
 
   /** Renders the new-work handoff using support content and semantic theme tokens. */
-  render(): string {
+  render(): TemplateResult {
     const content = supportContent.startProject;
 
-    return HTML`
-      <section id="start-project" class="support-start-project layout-page layout-section-end" aria-labelledby="start-project-title">
+    return html`
+      <section
+        id="start-project"
+        class="support-start-project layout-page layout-section-end"
+        aria-labelledby="start-project-title"
+      >
         <div class="support-start-project-panel">
           <div>
             <p class="support-start-project-eyebrow">${content.eyebrow}</p>
             <h2 id="start-project-title" class="support-start-project-title type-section">
-              ${content.titleBeforeAccent} <span>${content.titleAccent}</span> ${content.titleAfterAccent}
+              ${content.titleBeforeAccent}
+              <span>${content.titleAccent}</span> ${content.titleAfterAccent}
             </h2>
             <p class="support-start-project-body">${content.body}</p>
           </div>
@@ -39,7 +45,9 @@ export class SupportStartProjectComponent extends BaseElement {
             <a class="app-link app-link--button app-link--accent" href="${content.primaryHref}">
               ${content.primaryLabel} <span aria-hidden="true">→</span>
             </a>
-            <a class="app-link app-link--button app-link--ghost" href="${content.secondaryHref}">${content.secondaryLabel}</a>
+            <a class="app-link app-link--button app-link--ghost" href="${content.secondaryHref}"
+              >${content.secondaryLabel}</a
+            >
             <p class="support-start-project-note">${content.note}</p>
           </div>
         </div>

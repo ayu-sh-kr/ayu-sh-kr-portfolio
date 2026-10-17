@@ -1,4 +1,5 @@
-import {BaseElement, BeforeInit, Component, HTML, Property, String} from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html, unsafeHTML, trustedHTML} from "@ayu-sh-kr/dota-wrap/rendering";
+import {BaseElement, BeforeInit, Component, Property, String} from "@ayu-sh-kr/dota-wrap/core";
 
 /**
  * Presents a concise, non-blocking message in the normal page flow.
@@ -45,18 +46,25 @@ export class AppNoticeComponent extends BaseElement {
     this.actions = this.innerHTML.trim();
   }
 
-  render(): string {
+  render(): TemplateResult {
     const contentClass = this.container === "content" ? "layout-content" : "";
     const ariaLabel = this.label || "Notice";
     const announcement = this.announce === "true" ? `role="status" aria-live="${this.live}"` : "";
 
-    return HTML`
-      <aside class="app-notice" data-notice-surface aria-label="${ariaLabel}" ${announcement}>
+    return html`
+      <aside
+        class="app-notice"
+        data-notice-surface
+        aria-label="${ariaLabel}"
+        ${unsafeHTML(announcement)}
+      >
         <div class="app-notice__content ${contentClass}">
           <p class="app-notice__label type-label" data-notice-label>${this.label}</p>
           <p class="app-notice__message" data-notice-message>${this.message}</p>
           <p class="app-notice__supporting" data-notice-supporting>${this.supporting}</p>
-          ${this.actions ? `<div class="app-notice__actions">${this.actions}</div>` : ""}
+          ${this.actions
+            ? html`<div class="app-notice__actions">${trustedHTML(this.actions)}</div>`
+            : ""}
         </div>
       </aside>
     `;
