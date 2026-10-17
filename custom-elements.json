@@ -1528,6 +1528,105 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/pages/design/element/anchor/showcase/design-anchor-link-actions/design-anchor-link-actions.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "DesignAnchorLinkActionsComponent",
+          "customElement": true,
+          "tagName": "design-anchor-link-actions",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "DesignAnchorLinkActionsComponent",
+          "declaration": {
+            "name": "DesignAnchorLinkActionsComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "design-anchor-link-actions",
+          "declaration": {
+            "name": "DesignAnchorLinkActionsComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/design/element/anchor/showcase/design-anchor-link-cards/design-anchor-link-cards.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "DesignAnchorLinkCardsComponent",
+          "customElement": true,
+          "tagName": "design-anchor-link-cards",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "DesignAnchorLinkCardsComponent",
+          "declaration": {
+            "name": "DesignAnchorLinkCardsComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "design-anchor-link-cards",
+          "declaration": {
+            "name": "DesignAnchorLinkCardsComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/design/element/anchor/showcase/design-anchor-link-navigation/design-anchor-link-navigation.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "DesignAnchorLinkNavigationComponent",
+          "customElement": true,
+          "tagName": "design-anchor-link-navigation",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "DesignAnchorLinkNavigationComponent",
+          "declaration": {
+            "name": "DesignAnchorLinkNavigationComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "design-anchor-link-navigation",
+          "declaration": {
+            "name": "DesignAnchorLinkNavigationComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/pages/design/element/anchor/showcase/design-anchor-link-showcase/design-anchor-link-showcase.component.js",
       "declarations": [
         {
@@ -1555,6 +1654,39 @@
           "name": "design-anchor-link-showcase",
           "declaration": {
             "name": "DesignAnchorLinkShowcaseComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/design/element/anchor/showcase/design-anchor-link-text/design-anchor-link-text.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "DesignAnchorLinkTextComponent",
+          "customElement": true,
+          "tagName": "design-anchor-link-text",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "DesignAnchorLinkTextComponent",
+          "declaration": {
+            "name": "DesignAnchorLinkTextComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "design-anchor-link-text",
+          "declaration": {
+            "name": "DesignAnchorLinkTextComponent"
           }
         }
       ]
@@ -1726,6 +1858,122 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/pages/design/index/reference/design-index-grammar-section/design-index-grammar-section.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "DesignIndexGrammarSectionComponent",
+          "customElement": true,
+          "tagName": "design-index-grammar-section",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [
+            {
+              "kind": "field",
+              "name": "sectionKey",
+              "attribute": "section-key",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "section-key",
+              "fieldName": "sectionKey",
+              "type": {
+                "text": "string"
+              }
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "DesignIndexGrammarSectionComponent",
+          "declaration": {
+            "name": "DesignIndexGrammarSectionComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "design-index-grammar-section",
+          "declaration": {
+            "name": "DesignIndexGrammarSectionComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/design/index/reference/design-index-ownership/design-index-ownership.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "DesignIndexOwnershipComponent",
+          "customElement": true,
+          "tagName": "design-index-ownership",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "DesignIndexOwnershipComponent",
+          "declaration": {
+            "name": "DesignIndexOwnershipComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "design-index-ownership",
+          "declaration": {
+            "name": "DesignIndexOwnershipComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/design/index/reference/design-index-rail/design-index-rail.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "DesignIndexRailComponent",
+          "customElement": true,
+          "tagName": "design-index-rail",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "DesignIndexRailComponent",
+          "declaration": {
+            "name": "DesignIndexRailComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "design-index-rail",
+          "declaration": {
+            "name": "DesignIndexRailComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/pages/design/index/reference/design-index-reference/design-index-reference.component.js",
       "declarations": [
         {
@@ -1753,6 +2001,72 @@
           "name": "design-index-reference",
           "declaration": {
             "name": "DesignIndexReferenceComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/design/index/reference/design-index-routes/design-index-routes.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "DesignIndexRoutesComponent",
+          "customElement": true,
+          "tagName": "design-index-routes",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "DesignIndexRoutesComponent",
+          "declaration": {
+            "name": "DesignIndexRoutesComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "design-index-routes",
+          "declaration": {
+            "name": "DesignIndexRoutesComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pages/design/index/reference/design-index-shipping/design-index-shipping.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "DesignIndexShippingComponent",
+          "customElement": true,
+          "tagName": "design-index-shipping",
+          "superclass": {
+            "name": "BaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "DesignIndexShippingComponent",
+          "declaration": {
+            "name": "DesignIndexShippingComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "design-index-shipping",
+          "declaration": {
+            "name": "DesignIndexShippingComponent"
           }
         }
       ]

@@ -731,7 +731,7 @@
           "name": "blog-list",
           "source": {
             "file": "./src/components/pages/blog/index/archive/blog-list/blog-list.component.ts",
-            "offset": 1809
+            "offset": 1832
           },
           "attributes": [],
           "js": {
@@ -1212,10 +1212,54 @@
           }
         },
         {
+          "name": "design-anchor-link-actions",
+          "source": {
+            "file": "./src/components/pages/design/element/anchor/showcase/design-anchor-link-actions/design-anchor-link-actions.component.ts",
+            "offset": 549
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "design-anchor-link-cards",
+          "source": {
+            "file": "./src/components/pages/design/element/anchor/showcase/design-anchor-link-cards/design-anchor-link-cards.component.ts",
+            "offset": 543
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "design-anchor-link-navigation",
+          "source": {
+            "file": "./src/components/pages/design/element/anchor/showcase/design-anchor-link-navigation/design-anchor-link-navigation.component.ts",
+            "offset": 558
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
           "name": "design-anchor-link-showcase",
           "source": {
             "file": "./src/components/pages/design/element/anchor/showcase/design-anchor-link-showcase/design-anchor-link-showcase.component.ts",
             "offset": 619
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "design-anchor-link-text",
+          "source": {
+            "file": "./src/components/pages/design/element/anchor/showcase/design-anchor-link-text/design-anchor-link-text.component.ts",
+            "offset": 540
           },
           "attributes": [],
           "js": {
@@ -1311,6 +1355,38 @@
           }
         },
         {
+          "name": "design-index-grammar-section",
+          "source": {
+            "file": "./src/components/pages/design/index/reference/design-index-grammar-section/design-index-grammar-section.component.ts",
+            "offset": 605
+          },
+          "attributes": [
+            {
+              "name": "section-key",
+              "required": false,
+              "value": {
+                "type": "string"
+              },
+              "source": {
+                "file": "./src/components/pages/design/index/reference/design-index-grammar-section/design-index-grammar-section.component.ts",
+                "offset": 806
+              }
+            }
+          ],
+          "js": {
+            "properties": [
+              {
+                "name": "sectionKey",
+                "type": "string",
+                "source": {
+                  "file": "./src/components/pages/design/index/reference/design-index-grammar-section/design-index-grammar-section.component.ts",
+                  "offset": 806
+                }
+              }
+            ]
+          }
+        },
+        {
           "name": "design-index-hero",
           "source": {
             "file": "./src/components/pages/design/index/hero/design-index-hero/design-index-hero.component.ts",
@@ -1322,10 +1398,54 @@
           }
         },
         {
+          "name": "design-index-ownership",
+          "source": {
+            "file": "./src/components/pages/design/index/reference/design-index-ownership/design-index-ownership.component.ts",
+            "offset": 538
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "design-index-rail",
+          "source": {
+            "file": "./src/components/pages/design/index/reference/design-index-rail/design-index-rail.component.ts",
+            "offset": 565
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
           "name": "design-index-reference",
           "source": {
             "file": "./src/components/pages/design/index/reference/design-index-reference/design-index-reference.component.ts",
-            "offset": 820
+            "offset": 765
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "design-index-routes",
+          "source": {
+            "file": "./src/components/pages/design/index/reference/design-index-routes/design-index-routes.component.ts",
+            "offset": 516
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
+          "name": "design-index-shipping",
+          "source": {
+            "file": "./src/components/pages/design/index/reference/design-index-shipping/design-index-shipping.component.ts",
+            "offset": 518
           },
           "attributes": [],
           "js": {
@@ -1710,7 +1830,7 @@
           "name": "dota-alert",
           "source": {
             "file": "./src/components/utils/alert/dota-alert/dota-alert.component.ts",
-            "offset": 2737
+            "offset": 2791
           },
           "attributes": [],
           "js": {
@@ -1721,7 +1841,7 @@
           "name": "dota-toast",
           "source": {
             "file": "./src/components/utils/toast/dota-toast/dota-toast.component.ts",
-            "offset": 3746
+            "offset": 3748
           },
           "attributes": [],
           "js": {
@@ -1765,7 +1885,7 @@
           "name": "news-article",
           "source": {
             "file": "./src/components/pages/news/article/news-article/news-article.component.ts",
-            "offset": 2953
+            "offset": 3088
           },
           "attributes": [],
           "js": {
@@ -1787,7 +1907,7 @@
           "name": "news-index",
           "source": {
             "file": "./src/components/pages/news/index/news-index/news-index.component.ts",
-            "offset": 3090
+            "offset": 3265
           },
           "attributes": [],
           "js": {
