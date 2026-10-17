@@ -7,7 +7,11 @@ const HTML_ENTITIES: Record<string, string> = {
 };
 
 /**
- * Escapes text before it is interpolated into an HTML template string.
+ * Escapes text when building raw HTML strings for `innerHTML` or `trustedHTML`.
+ *
+ * Structured `html` templates already escape ordinary values. Passing an
+ * escaped value to those templates would display entities literally, so use
+ * the original string there. Keep this helper at raw-markup boundaries.
  *
  * @param value - Text that may contain HTML-significant characters.
  * @returns The value with `&`, `<`, `>`, `'`, and `"` replaced by HTML entities.

@@ -241,8 +241,12 @@ export class PrivacyViewComponent extends BaseElement {
     const switches = metadata.switches.length
       ? metadata.switches
         .map((item) => `
-          <button type="button" class="privacy-scope-button ${item.target === this.activeScope ? "is-active" : ""}"
-                  data-privacy-scope="${escapeHtml(item.target)}" aria-pressed="${item.target === this.activeScope}">
+          <button
+            type="button"
+            class="privacy-scope-button ${item.target === this.activeScope ? "is-active" : ""}"
+            data-privacy-scope="${escapeHtml(item.target)}"
+            aria-pressed="${item.target === this.activeScope}"
+          >
             ${escapeHtml(item.label)}
           </button>
         `)
@@ -259,7 +263,11 @@ export class PrivacyViewComponent extends BaseElement {
 
     return html`
       <div class="privacy-progress" data-privacy-progress aria-hidden="true"></div>
-      ${trustedHTML(`<script type="application/json" data-privacy-document>${serializeJsonForScript(this.policy)}</script>`)}
+      ${trustedHTML(
+        `<script type="application/json" data-privacy-document>${serializeJsonForScript(
+          this.policy
+        )}</script>`
+      )}
       <main id="top" class="privacy-shell layout-page layout-section-hero" data-privacy-page>
         <privacy-document-header metadata="${JSON.stringify(metadata)}"></privacy-document-header>
 
@@ -283,7 +291,10 @@ export class PrivacyViewComponent extends BaseElement {
         <footer class="privacy-footer">
           <div class="privacy-related-grid">${trustedHTML(related)}</div>
           <div class="privacy-footer-meta">
-            <span>Privacy Policy · Version ${escapeHtml(metadata.version)} · Updated ${formatDate(metadata.updated)}</span>
+            <span
+              >Privacy Policy · Version ${metadata.version} · Updated
+              ${formatDate(metadata.updated)}</span
+            >
             <a href="#top" data-privacy-top>Back to top ↑</a>
           </div>
         </footer>

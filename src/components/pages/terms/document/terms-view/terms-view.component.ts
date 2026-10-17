@@ -232,7 +232,9 @@ export class TermsViewComponent extends BaseElement {
     if (!this.terms) {
       return html`
         <main class="terms-shell layout-page layout-section-hero">
-          <p class="terms-status" role="status">${this.loadError || "Loading the terms and conditions…"}</p>
+          <p class="terms-status" role="status">
+            ${this.loadError || "Loading the terms and conditions…"}
+          </p>
         </main>
       `;
     }
@@ -241,8 +243,12 @@ export class TermsViewComponent extends BaseElement {
     const switches = metadata.switches.length
       ? metadata.switches
         .map((item) => `
-          <button type="button" class="terms-scope-button ${item.target === this.activeScope ? "is-active" : ""}"
-                  data-terms-scope="${escapeHtml(item.target)}" aria-pressed="${item.target === this.activeScope}">
+          <button
+            type="button"
+            class="terms-scope-button ${item.target === this.activeScope ? "is-active" : ""}"
+            data-terms-scope="${escapeHtml(item.target)}"
+            aria-pressed="${item.target === this.activeScope}"
+          >
             ${escapeHtml(item.label)}
           </button>
         `)
@@ -259,7 +265,11 @@ export class TermsViewComponent extends BaseElement {
 
     return html`
       <div class="terms-progress" data-terms-progress aria-hidden="true"></div>
-      ${trustedHTML(`<script type="application/json" data-terms-document>${serializeJsonForScript(this.terms)}</script>`)}
+      ${trustedHTML(
+        `<script type="application/json" data-terms-document>${serializeJsonForScript(
+          this.terms
+        )}</script>`
+      )}
       <main id="top" class="terms-shell layout-page layout-section-hero" data-terms-page>
         <terms-document-header metadata="${JSON.stringify(metadata)}"></terms-document-header>
 
@@ -283,7 +293,10 @@ export class TermsViewComponent extends BaseElement {
         <footer class="terms-footer">
           <div class="terms-related-grid">${trustedHTML(related)}</div>
           <div class="terms-footer-meta">
-            <span>Terms &amp; Conditions · Version ${escapeHtml(metadata.version)} · Updated ${formatDate(metadata.updated)}</span>
+            <span
+              >Terms &amp; Conditions · Version ${metadata.version} · Updated
+              ${formatDate(metadata.updated)}</span
+            >
             <a href="#top" data-terms-top>Back to top ↑</a>
           </div>
         </footer>

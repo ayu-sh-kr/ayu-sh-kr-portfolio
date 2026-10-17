@@ -50,19 +50,21 @@ export class PrivacyDocumentHeaderComponent extends BaseElement {
       <header class="privacy-header">
         <div class="privacy-chip-row">
           <span class="privacy-chip">Privacy</span>
-          <span class="privacy-chip privacy-chip-muted">Version ${escapeHtml(metadata.version)}</span>
+          <span class="privacy-chip privacy-chip-muted">Version ${metadata.version}</span>
         </div>
-        <h1>${escapeHtml(metadata.title)}</h1>
-        <p class="privacy-tagline">${escapeHtml(metadata.tagline)}</p>
+        <h1>${metadata.title}</h1>
+        <p class="privacy-tagline">${metadata.tagline}</p>
         <div class="privacy-proof" aria-label="Policy dates and scope">
           <span>Last updated <strong>${formatDate(metadata.updated)}</strong></span>
           <span>In effect from <strong>${formatDate(metadata.effective)}</strong></span>
-          <span>Applies to <strong>${escapeHtml(metadata.applies)}</strong></span>
+          <span>Applies to <strong>${metadata.applies}</strong></span>
         </div>
         <section class="privacy-summary" aria-labelledby="privacy-summary-title">
           <p id="privacy-summary-title" class="privacy-eyebrow">The short version</p>
-          <ul>${trustedHTML(summary)}</ul>
-          <p class="privacy-summary-note">${escapeHtml(metadata.summaryNote)}</p>
+          <ul>
+            ${trustedHTML(summary)}
+          </ul>
+          <p class="privacy-summary-note">${metadata.summaryNote}</p>
         </section>
       </header>
     `;
