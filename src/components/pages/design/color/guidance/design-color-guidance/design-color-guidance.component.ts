@@ -1,4 +1,5 @@
-import { BaseElement, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
+import { BaseElement, Component } from "@ayu-sh-kr/dota-wrap/core";
 import { designColorContent } from "@app/data/design-color-content.ts";
 
 /** Preserves the visual ground and control treatment for each color-pair specimen. */
@@ -28,10 +29,10 @@ export class DesignColorGuidanceComponent extends BaseElement {
   }
 
   /** Renders contrast specimens and concise implementation guidance. */
-  render(): string {
+  render(): TemplateResult {
     const { guidance } = designColorContent;
 
-    return HTML`
+    return html`
       <section class="design-color-guidance design-section" aria-labelledby="design-color-guidance-title">
         <div class="design-color-guidance-layout">
           <div>
@@ -44,26 +45,26 @@ export class DesignColorGuidanceComponent extends BaseElement {
             ${guidance.pairs.map((pair, index) => {
               const layout = PAIR_LAYOUTS[index];
 
-              return HTML`
+              return html`
                 <article class="design-color-pair ${layout.className}">
                   <p class="type-label">${pair.label}</p>
                   ${layout.usesControl
-                    ? HTML`<button class="type-control" type="button">${pair.heading}</button>`
-                    : HTML`<strong class="type-card-title">${pair.heading}</strong>`}
+                    ? html`<button class="type-control" type="button">${pair.heading}</button>`
+                    : html`<strong class="type-card-title">${pair.heading}</strong>`}
                   <span class="type-compact">${pair.token}</span>
                 </article>
               `;
-            }).join("")}
+            })}
           </div>
         </div>
 
         <div class="design-color-rule-grid">
-          ${guidance.rules.map((rule) => HTML`
+          ${guidance.rules.map((rule) => html`
             <article>
               <h3 class="type-card-title">${rule.title}</h3>
               <p class="type-compact">${rule.body}</p>
             </article>
-          `).join("")}
+          `)}
         </div>
       </section>
     `;

@@ -1,4 +1,5 @@
-import { BaseElement, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
+import { BaseElement, Component } from "@ayu-sh-kr/dota-wrap/core";
 import { pricingContent } from "@app/data/pricing-content.ts";
 
 /**
@@ -19,10 +20,10 @@ export class BuildOfferingComponent extends BaseElement {
   }
 
   /** Returns the build offering copy and value rows from the pricing data source. */
-  render(): string {
+  render(): TemplateResult {
     const content = pricingContent.buildOffering;
 
-    return HTML`
+    return html`
       <section id="pricing-build" class="pricing-section pricing-build-section" aria-labelledby="pricing-build-title">
         <div class="pricing-section-copy">
           <p class="pricing-eyebrow">${content.eyebrow}</p>
@@ -32,7 +33,7 @@ export class BuildOfferingComponent extends BaseElement {
         <div class="pricing-value-grid">
           ${content.rows
             .map(
-              (row) => `
+              (row) => html`
                 <article class="pricing-value-row">
                   <span class="pricing-value-number">${row.number}</span>
                   <div>
@@ -41,8 +42,7 @@ export class BuildOfferingComponent extends BaseElement {
                   </div>
                 </article>
               `,
-            )
-            .join("")}
+            )}
         </div>
       </section>
     `;

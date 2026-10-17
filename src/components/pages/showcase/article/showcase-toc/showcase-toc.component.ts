@@ -1,7 +1,7 @@
-import {BaseElement, BeforeInit, Component, HostListener, HTML, WindowListener} from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
+import {BaseElement, BeforeInit, Component, HostListener, WindowListener} from "@ayu-sh-kr/dota-wrap/core";
 import {type ApplicationEvent, OnEvent} from "@ayu-sh-kr/dota-wrap/event";
 import type {TocEntry} from "@ayu-sh-kr/dota-md";
-import {escapeHtml} from "@app/utils/html.utils.ts";
 
 /** A table-of-contents entry flattened with its nesting depth for navigation. */
 type FlatTocEntry = TocEntry & {depth: number};
@@ -112,28 +112,27 @@ export class ShowcaseTocComponent extends BaseElement {
   }
 
   /** Renders the TOC or an intentionally empty placeholder for short articles. */
-  render(): string {
+  render(): TemplateResult {
     const entries = this.visibleEntries();
     if (entries.length < 3) {
-      return `<div class="showcase-toc-placeholder" aria-hidden="true"></div>`;
+      return html`<div class="showcase-toc-placeholder" aria-hidden="true"></div>`;
     }
 
-    return HTML`
+    return html`
       <aside class="showcase-toc-panel" aria-label="On this page">
         <p class="showcase-toc-label">On this page</p>
         <nav aria-label="Showcase sections">
           <ol>
             ${entries
               .map(
-                (entry) => `
+                (entry) => html`
                   <li class="${entry.id === this.activeId ? "is-active" : ""}">
-                    <a href="#${escapeHtml(entry.id)}" data-showcase-toc-id="${escapeHtml(entry.id)}">
-                      ${escapeHtml(entry.text)}
+                    <a href="#${entry.id}" data-showcase-toc-id="${entry.id}">
+                      ${entry.text}
                     </a>
                   </li>
                 `,
-              )
-              .join("")}
+              )}
           </ol>
         </nav>
       </aside>

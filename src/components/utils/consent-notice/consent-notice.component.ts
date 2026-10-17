@@ -1,4 +1,5 @@
-import {BaseElement, Component, HTML, HostListener, Property, String} from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
+import {BaseElement, Component, HostListener, Property, String} from "@ayu-sh-kr/dota-wrap/core";
 import {OnEvent} from "@ayu-sh-kr/dota-wrap/event";
 import {Consent, type ConsentChoice, type ConsentMode, type ConsentState} from "@app/service/consent.service.ts";
 
@@ -92,8 +93,8 @@ export class ConsentNoticeComponent extends BaseElement {
   }
 
   /** Returns the stable region shell; state-specific copy and actions are added after connection. */
-  render(): string {
-    return HTML`
+  render(): TemplateResult {
+    return html`
       <section class="consent-notice layout-pinned-bottom" role="region" aria-labelledby="consent-notice-title" hidden>
         <div class="consent-notice__body">
           <p class="consent-notice__title" id="consent-notice-title"></p>

@@ -1,4 +1,5 @@
-import { BaseElement, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
+import { BaseElement, Component } from "@ayu-sh-kr/dota-wrap/core";
 import { designElementContent } from "@app/data/design-element-content.ts";
 
 /**
@@ -17,9 +18,9 @@ export class DesignAnchorLinkShowcaseComponent extends BaseElement {
   }
 
   /** Renders CTA, text, card, and navigation link variants from the page-owned content model. */
-  render(): string {
+  render(): TemplateResult {
     const { anchorLinks } = designElementContent;
-    return HTML`
+    return html`
       <section id="design-element-anchor-showcase" class="design-anchor-link-showcase layout-page layout-section" aria-labelledby="design-element-anchor-showcase-title">
         <div class="design-element-showcase__heading layout-stack layout-stack-sm">
           <p class="type-eyebrow">${anchorLinks.eyebrow}</p>
@@ -27,27 +28,27 @@ export class DesignAnchorLinkShowcaseComponent extends BaseElement {
           <p class="type-lede">${anchorLinks.lede}</p>
         </div>
         <div class="design-element-showcase__grid layout-grid-auto-sm">
-          ${anchorLinks.actions.map((item) => HTML`
+          ${anchorLinks.actions.map((item) => html`
             <article class="design-element-specimen-card" data-variant="${item.variant}">
               <p class="type-label">${item.variant}</p>
               <h3 class="type-card-title">${item.title}</h3>
               <p>${item.body}</p>
               <a class="app-link ${item.classes}" href="${item.href}">${item.label}</a>
             </article>
-          `).join("")}
+          `)}
         </div>
         <div class="design-anchor-link-showcase__navigation">
           <p class="type-eyebrow">${anchorLinks.navigation.eyebrow}</p>
           <h3 class="type-subsection">${anchorLinks.navigation.title}</h3>
           <p class="type-lede">${anchorLinks.navigation.lede}</p>
           <div class="design-anchor-link-showcase__navigation-grid layout-grid-2">
-            ${anchorLinks.navigation.items.map((item) => HTML`
+            ${anchorLinks.navigation.items.map((item) => html`
               <article class="design-anchor-link-navigation-card">
                 <h4 class="type-card-title">${item.title}</h4>
                 <p>${item.body}</p>
                 <a class="app-link ${item.classes}" href="${item.href}">${item.label}</a>
               </article>
-            `).join("")}
+            `)}
           </div>
         </div>
         <section class="design-anchor-link-showcase__family" aria-labelledby="design-element-anchor-text-title">
@@ -55,12 +56,12 @@ export class DesignAnchorLinkShowcaseComponent extends BaseElement {
           <h3 id="design-element-anchor-text-title" class="type-subsection">${anchorLinks.text.title}</h3>
           <p class="type-lede">${anchorLinks.text.lede}</p>
           <div class="design-anchor-link-showcase__family-grid layout-grid-2">
-            ${anchorLinks.text.items.map((item) => HTML`
+            ${anchorLinks.text.items.map((item) => html`
               <article class="design-anchor-link-text-card">
                 <h4 class="type-card-title">${item.title}</h4>
                 <p>${item.before} <a class="app-link ${item.classes}" href="${item.href}">${item.label}</a>${item.after}</p>
               </article>
-            `).join("")}
+            `)}
           </div>
         </section>
         <section class="design-anchor-link-showcase__family" aria-labelledby="design-element-anchor-card-title">
@@ -68,13 +69,13 @@ export class DesignAnchorLinkShowcaseComponent extends BaseElement {
           <h3 id="design-element-anchor-card-title" class="type-subsection">${anchorLinks.cards.title}</h3>
           <p class="type-lede">${anchorLinks.cards.lede}</p>
           <div class="design-anchor-link-showcase__family-grid layout-grid-2">
-            ${anchorLinks.cards.items.map((item) => HTML`
+            ${anchorLinks.cards.items.map((item) => html`
               <article class="design-anchor-link-card">
                 <h4 class="type-card-title">${item.title}</h4>
                 <p>${item.body}</p>
                 <a class="app-link ${item.classes}" href="${item.href}">${item.label}<span aria-hidden="true">→</span></a>
               </article>
-            `).join("")}
+            `)}
           </div>
         </section>
       </section>

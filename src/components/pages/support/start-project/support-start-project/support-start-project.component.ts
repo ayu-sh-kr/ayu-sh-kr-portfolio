@@ -1,4 +1,5 @@
-import { BaseElement, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
+import { BaseElement, Component } from "@ayu-sh-kr/dota-wrap/core";
 import { supportContent } from "@app/data/support-content.ts";
 
 /**
@@ -21,10 +22,10 @@ export class SupportStartProjectComponent extends BaseElement {
   }
 
   /** Renders the new-work handoff using support content and semantic theme tokens. */
-  render(): string {
+  render(): TemplateResult {
     const content = supportContent.startProject;
 
-    return HTML`
+    return html`
       <section id="start-project" class="support-start-project layout-page layout-section-end" aria-labelledby="start-project-title">
         <div class="support-start-project-panel">
           <div>

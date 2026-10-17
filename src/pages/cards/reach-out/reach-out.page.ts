@@ -1,4 +1,5 @@
-import { Component, DotaPageElement, HTML, SEO } from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
+import { Component, DotaPageElement, SEO } from "@ayu-sh-kr/dota-wrap/core";
 import { Route } from "@ayu-sh-kr/dota-wrap/router";
 import { reachOutContent } from "@app/data/reach-out-content.ts";
 import { pricingContent } from "@app/data/pricing-content.ts";
@@ -23,8 +24,8 @@ export class ReachOutPage extends DotaPageElement {
   }
 
   /** Composes the page header and independent interactive deck in reading order. */
-  render(): string {
-    return HTML`
+  render(): TemplateResult {
+    return html`
       <main id="reach-out-main">
         <card-page-header link-label="${pricingContent.startProject.eyebrow}" link-href="/pricing/#pricing-start-project"></card-page-header>
         <reach-out-card-deck></reach-out-card-deck>

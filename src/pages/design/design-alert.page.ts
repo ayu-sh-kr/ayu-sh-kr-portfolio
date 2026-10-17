@@ -1,4 +1,5 @@
-import { Component, DotaPageElement, HTML, SEO } from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
+import { Component, DotaPageElement, SEO } from "@ayu-sh-kr/dota-wrap/core";
 import { Route } from "@ayu-sh-kr/dota-wrap/router";
 import { designAlertContent } from "@app/data/design-alert-content.ts";
 import { toSEO } from "@app/utils/seo.utils.ts";
@@ -26,8 +27,8 @@ export class DesignAlertPage extends DotaPageElement {
   }
 
   /** Composes the alert reference sections between shared site chrome. */
-  render(): string {
-    return HTML`
+  render(): TemplateResult {
+    return html`
       <app-header></app-header>
       <main id="design-alert-page-main">
         <design-alert-overview></design-alert-overview>

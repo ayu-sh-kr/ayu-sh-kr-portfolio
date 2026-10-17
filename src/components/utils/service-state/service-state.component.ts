@@ -1,4 +1,5 @@
-import { BaseElement, BeforeInit, Component, HTML, HostListener, Property, String } from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html, trustedHTML} from "@ayu-sh-kr/dota-wrap/rendering";
+import { BaseElement, BeforeInit, Component, HostListener, Property, String } from "@ayu-sh-kr/dota-wrap/core";
 import { OnEvent } from "@ayu-sh-kr/dota-wrap/event";
 import { ServiceState, type ServiceCapabilityState, type ServiceStatus } from "@app/service/service-state.service.ts";
 
@@ -63,15 +64,15 @@ export class ServiceStateComponent extends BaseElement {
     this.reflect(this.currentState);
   }
 
-  render(): string {
-    return HTML`
+  render(): TemplateResult {
+    return html`
       <app-notice class="service-state__notice" data-service-notice variant="plain" label="Paused" live="off" announce="true">
         <div class="service-state__out">
           <a data-service-route href="mailto:${this.email}">Send it by email instead</a>
           <span data-service-until></span>
         </div>
       </app-notice>
-      <div class="service-state__live" data-service-live>${this.content}</div>
+      <div class="service-state__live" data-service-live>${trustedHTML(this.content)}</div>
     `;
   }
 

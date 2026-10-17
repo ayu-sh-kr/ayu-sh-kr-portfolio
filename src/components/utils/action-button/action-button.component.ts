@@ -1,4 +1,6 @@
-import { ApplicationEventService, BaseElement, BindEvent, Component, HTML, Property, String } from "@ayu-sh-kr/dota-wrap/core";
+import {HTML} from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html, unsafeHTML, trustedHTML} from "@ayu-sh-kr/dota-wrap/rendering";
+import { ApplicationEventService, BaseElement, BindEvent, Component, Property, String } from "@ayu-sh-kr/dota-wrap/core";
 import { OnEvent, type ApplicationEvent } from "@ayu-sh-kr/dota-wrap/event";
 import {
   ACTION_BUTTON_REFRESH_EVENT,
@@ -136,11 +138,11 @@ export class ActionButtonComponent extends BaseElement {
   }
 
   /** Renders one native button; variants change only tone while lifecycle changes label, glyph, and disabled state. */
-  render(): string {
+  render(): TemplateResult {
     const state = this.state;
     const disabled = this.isDisabled();
     const label = this.labelForState();
-    return HTML`
+    return html`
       <button
         class="action-button action-button--${this.safeVariant()}"
         type="button"
@@ -148,9 +150,9 @@ export class ActionButtonComponent extends BaseElement {
         data-state="${state}"
         aria-busy="${state === "pending" ? "true" : "false"}"
         aria-disabled="${disabled ? "true" : "false"}"
-        ${disabled ? "disabled" : ""}
+        ${unsafeHTML(disabled ? "disabled" : "")}
       >
-        <span class="action-button__glyph" aria-hidden="true">${this.glyphForState()}</span>
+        <span class="action-button__glyph" aria-hidden="true">${trustedHTML(this.glyphForState())}</span>
         <span class="action-button__label">${label}</span>
       </button>
       <span class="sr-only" aria-live="polite">${state === "idle" ? "" : label}</span>

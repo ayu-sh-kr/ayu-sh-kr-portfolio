@@ -1,5 +1,5 @@
-import { BaseElement, Component, HTML, Property, String } from "@ayu-sh-kr/dota-wrap/core";
-import { escapeHtml } from "@app/utils/html.utils.ts";
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
+import { BaseElement, Component, Property, String } from "@ayu-sh-kr/dota-wrap/core";
 
 /** Renders the metadata and title that introduce a showcase case study. */
 @Component({
@@ -37,20 +37,20 @@ export class ShowcaseArticleHeaderComponent extends BaseElement {
   }
 
   /** Renders article metadata, title, summary, and technology labels. */
-  render(): string {
+  render(): TemplateResult {
     const stack = this.stack.split("|").map((item) => item.trim()).filter(Boolean);
 
-    return HTML`
+    return html`
       <header class="showcase-article-header">
         <div class="showcase-article-meta">
-          <span class="showcase-chip">${escapeHtml(this.kind)}</span>
-          <span class="showcase-chip showcase-chip-muted">${escapeHtml(this.year)}</span>
-          <span class="showcase-chip showcase-chip-muted">${escapeHtml(this.status)}</span>
+          <span class="showcase-chip">${this.kind}</span>
+          <span class="showcase-chip showcase-chip-muted">${this.year}</span>
+          <span class="showcase-chip showcase-chip-muted">${this.status}</span>
         </div>
-        <h1>${escapeHtml(this.title)}</h1>
-        <p class="showcase-article-tagline">${escapeHtml(this.tagline)}</p>
+        <h1>${this.title}</h1>
+        <p class="showcase-article-tagline">${this.tagline}</p>
         <div class="showcase-chip-row" aria-label="Technology stack">
-          ${stack.map((item) => HTML`<span class="showcase-chip showcase-chip-muted">${escapeHtml(item)}</span>`).join("")}
+          ${stack.map((item) => html`<span class="showcase-chip showcase-chip-muted">${item}</span>`)}
         </div>
       </header>
     `;

@@ -1,4 +1,6 @@
-import { BaseElement, BindEvent, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
+import {HTML} from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html, trustedHTML} from "@ayu-sh-kr/dota-wrap/rendering";
+import { BaseElement, BindEvent, Component } from "@ayu-sh-kr/dota-wrap/core";
 import { OnEvent } from "@ayu-sh-kr/dota-wrap/event";
 import { DOTA_FAQ_ACCORDION_CLASS, DOTA_FAQ_ACCORDION_CONFIG } from "@app/components/utils/faq/dota-faq-accordion.ts";
 import { supportContent } from "@app/data/support-content.ts";
@@ -103,19 +105,19 @@ export class SupportQuickHelpComponent extends BaseElement {
   }
 
   /** Returns the route cards and their shared live answer region from authored support content. */
-  render(): string {
+  render(): TemplateResult {
     const { opener, routes } = supportContent;
 
-    return HTML`
+    return html`
       <div class="support-routes layout-grid-auto-sm layout-grid-tight" role="group" aria-label="${opener.routesLabel}">
-        ${routes.map((route) => HTML`
+        ${routes.map((route) => html`
           <button class="support-route" type="button" data-route="${route.id}" aria-expanded="false" aria-controls="support-answer">
-            <span class="support-route-icon">${route.icon}</span>
+            <span class="support-route-icon">${trustedHTML(route.icon)}</span>
             <span class="support-route-key">${route.label}</span>
             <span class="support-route-sub">${route.sublabel}</span>
             <span class="support-route-chevron" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
           </button>
-        `).join("")}
+        `)}
       </div>
       <div class="support-answer" id="support-answer" role="region" aria-live="polite">
         <div class="support-answer-inner" id="support-answer-inner"></div>

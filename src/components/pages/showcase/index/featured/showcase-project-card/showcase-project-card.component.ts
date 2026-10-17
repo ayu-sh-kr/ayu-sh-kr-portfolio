@@ -1,4 +1,5 @@
-import { BaseElement, BindEvent, Component, HTML, Property, String } from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
+import { BaseElement, BindEvent, Component, Property, String } from "@ayu-sh-kr/dota-wrap/core";
 import { getShowcaseProject } from "@app/data/showcase-content.ts";
 import { publishAnalyticsEvent } from "@app/utils/analytics.utils.ts";
 
@@ -38,13 +39,13 @@ export class ShowcaseProjectCardComponent extends BaseElement {
   }
 
   /** Renders the matching project card, or nothing when the slug is unknown. */
-  render(): string {
+  render(): TemplateResult {
     const project = getShowcaseProject(this.projectSlug);
     if (!project) {
-      return "";
+      return html``;
     }
 
-    return HTML`
+    return html`
       <a class="showcase-card showcase-reveal" data-showcase-reveal data-analytics-project="showcase" href="/showcase/${project.slug}/">
         <div class="showcase-card-cover">
           <showcase-visual project-slug="${project.slug}" variant="card"></showcase-visual>
@@ -55,7 +56,7 @@ export class ShowcaseProjectCardComponent extends BaseElement {
           <h3 class="mt-4">${project.title}</h3>
           <p class="mt-3">${project.tagline}</p>
           <div class="showcase-chip-row mt-5" aria-label="Technology stack">
-            ${project.stack.map((item) => `<span class="showcase-chip showcase-chip-muted">${item}</span>`).join("")}
+            ${project.stack.map((item) => html`<span class="showcase-chip showcase-chip-muted">${item}</span>`)}
           </div>
         </div>
       </a>

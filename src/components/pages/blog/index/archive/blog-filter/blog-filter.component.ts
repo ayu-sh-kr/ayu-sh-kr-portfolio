@@ -1,3 +1,4 @@
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
 import {ApplicationEventService, BaseElement, BindEvent, Component, WindowListener} from "@ayu-sh-kr/dota-wrap/core";
 import {type ApplicationEvent, OnEvent} from "@ayu-sh-kr/dota-wrap/event";
 import {getBlogPostsForIndex, type BlogCategory, type BlogPost} from "@app/configs/blogs.config.ts";
@@ -81,18 +82,18 @@ export class BlogFilterComponent extends BaseElement {
   }
 
   /** Renders the pills and count from local state without touching sibling DOM. */
-  render(): string {
+  render(): TemplateResult {
     const visibleCount = this.posts.filter((post) => this.currentFilter === "all" || post.category === this.currentFilter).length;
-    return `
+    return html`
       <div class="blog-filterbar" aria-label="${blogIndexContent.filter.ariaLabel}">
         <div class="blog-container blog-filter-inner">
           <div class="blog-filter-pills">
-            ${blogFilters.map((filter) => `
+            ${blogFilters.map((filter) => html`
               <button class="form-choice input-sm input-round input-bordered blog-pill${this.currentFilter === filter.value ? " is-active" : ""}" type="button"
                       data-blog-filter="${filter.value}" aria-pressed="${this.currentFilter === filter.value}">
                 ${filter.label}
               </button>
-            `).join("")}
+            `)}
           </div>
           <span class="blog-count">${visibleCount} ${visibleCount === 1 ? blogIndexContent.filter.postLabel : blogIndexContent.filter.postsLabel}</span>
         </div>

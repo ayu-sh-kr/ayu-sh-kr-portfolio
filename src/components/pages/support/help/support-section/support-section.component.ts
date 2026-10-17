@@ -1,4 +1,5 @@
-import { BaseElement, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
+import { BaseElement, Component } from "@ayu-sh-kr/dota-wrap/core";
 
 /**
  * Composes the three parts of the answers-first support experience.
@@ -19,8 +20,8 @@ export class SupportSectionComponent extends BaseElement {
   }
 
   /** Returns the support journey in the order visitors encounter it. */
-  render(): string {
-    return HTML`
+  render(): TemplateResult {
+    return html`
       <section id="support" class="support-section layout-page layout-section layout-stack layout-stack-xl" aria-labelledby="support-title" data-analytics-section="support_help">
         <support-intro></support-intro>
         <support-quick-help></support-quick-help>

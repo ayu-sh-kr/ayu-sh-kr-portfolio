@@ -1,4 +1,5 @@
-import {BaseElement, Component, HTML} from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
+import {BaseElement, Component} from "@ayu-sh-kr/dota-wrap/core";
 import {OnEvent} from "@ayu-sh-kr/dota-wrap/event";
 import {renderShowcaseCardDeckCards, showcaseCardDeckContent} from "@app/data/card-decks/showcase-card-deck-content.ts";
 import {CardDeckLifecycleService} from "@app/service/card-deck-lifecycle.service.ts";
@@ -79,8 +80,8 @@ export class ShowcaseCardDeckComponent extends BaseElement {
    * The lifecycle service adopts this light DOM only after connection, so rendering remains safe
    * for server output and future content-only updates.
    */
-  render(): string {
+  render(): TemplateResult {
     const content = showcaseCardDeckContent;
-    return HTML`<section class="showcase-deck layout-section" aria-label="${content.sectionLabel}"><div class="showcase-deck__stage layout-content"><div class="showcase-deck__stack" data-showcase-deck role="group" aria-roledescription="card deck" aria-label="${content.deckAriaLabel}" tabindex="0">${renderShowcaseCardDeckCards()}</div><p class="showcase-deck__live" data-showcase-deck-live aria-live="polite" aria-atomic="true"></p></div><footer class="showcase-deck__controls layout-content"><div><button type="button" data-showcase-deck-previous aria-label="${content.previousCardAriaLabel}">←</button><nav data-showcase-deck-ticks aria-label="${content.cardsAriaLabel}"></nav><button type="button" data-showcase-deck-next aria-label="${content.nextCardAriaLabel}">→</button></div><p data-showcase-deck-hint>${content.hint}</p></footer></section>`;
+    return html`<section class="showcase-deck layout-section" aria-label="${content.sectionLabel}"><div class="showcase-deck__stage layout-content"><div class="showcase-deck__stack" data-showcase-deck role="group" aria-roledescription="card deck" aria-label="${content.deckAriaLabel}" tabindex="0">${renderShowcaseCardDeckCards()}</div><p class="showcase-deck__live" data-showcase-deck-live aria-live="polite" aria-atomic="true"></p></div><footer class="showcase-deck__controls layout-content"><div><button type="button" data-showcase-deck-previous aria-label="${content.previousCardAriaLabel}">←</button><nav data-showcase-deck-ticks aria-label="${content.cardsAriaLabel}"></nav><button type="button" data-showcase-deck-next aria-label="${content.nextCardAriaLabel}">→</button></div><p data-showcase-deck-hint>${content.hint}</p></footer></section>`;
   }
 }

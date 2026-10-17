@@ -1,4 +1,5 @@
-import {BaseElement, Component, HTML} from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
+import {BaseElement, Component} from "@ayu-sh-kr/dota-wrap/core";
 import {OnEvent} from "@ayu-sh-kr/dota-wrap/event";
 import {aboutMeCardDeckContent, renderAboutMeCardDeckCards} from "@app/data/card-decks/about-me-card-deck-content.ts";
 import {CardDeckLifecycleService} from "@app/service/card-deck-lifecycle.service.ts";
@@ -79,8 +80,8 @@ export class AboutMeCardDeckComponent extends BaseElement {
    * The content module owns reader-facing text and destinations, preserving a clean boundary
    * between route copy and the reusable interaction system.
    */
-  render(): string {
+  render(): TemplateResult {
     const content = aboutMeCardDeckContent;
-    return HTML`<section class="about-me-deck about-me-deck--about layout-section" aria-label="${content.sectionLabel}"><div class="about-me-deck__stage layout-content"><div class="about-me-deck__stack" data-about-me-deck role="group" aria-roledescription="card deck" aria-label="${content.deckAriaLabel}" tabindex="0">${renderAboutMeCardDeckCards()}</div><p class="about-me-deck__live" data-about-me-deck-live aria-live="polite" aria-atomic="true"></p></div><footer class="about-me-deck__controls layout-content"><div><button type="button" data-about-me-deck-previous aria-label="${content.previousCardAriaLabel}">←</button><nav data-about-me-deck-ticks aria-label="${content.cardsAriaLabel}"></nav><button type="button" data-about-me-deck-next aria-label="${content.nextCardAriaLabel}">→</button></div><p data-about-me-deck-hint>${content.hint}</p></footer></section>`;
+    return html`<section class="about-me-deck about-me-deck--about layout-section" aria-label="${content.sectionLabel}"><div class="about-me-deck__stage layout-content"><div class="about-me-deck__stack" data-about-me-deck role="group" aria-roledescription="card deck" aria-label="${content.deckAriaLabel}" tabindex="0">${renderAboutMeCardDeckCards()}</div><p class="about-me-deck__live" data-about-me-deck-live aria-live="polite" aria-atomic="true"></p></div><footer class="about-me-deck__controls layout-content"><div><button type="button" data-about-me-deck-previous aria-label="${content.previousCardAriaLabel}">←</button><nav data-about-me-deck-ticks aria-label="${content.cardsAriaLabel}"></nav><button type="button" data-about-me-deck-next aria-label="${content.nextCardAriaLabel}">→</button></div><p data-about-me-deck-hint>${content.hint}</p></footer></section>`;
   }
 }

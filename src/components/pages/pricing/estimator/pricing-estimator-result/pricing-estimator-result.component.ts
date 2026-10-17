@@ -1,4 +1,5 @@
-import { BaseElement, Component, HTML, State } from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
+import { BaseElement, Component, State } from "@ayu-sh-kr/dota-wrap/core";
 import { type ApplicationEvent, OnEvent } from "@ayu-sh-kr/dota-wrap/event";
 import { pricingContent } from "@app/data/pricing-content.ts";
 import {
@@ -263,14 +264,14 @@ export class PricingEstimatorResultComponent extends BaseElement {
    * trace how their choices map to the number. The CTA links to the
    * start-project section so the estimate flows directly into the intake.
    */
-  render(): string {
+  render(): TemplateResult {
     const type = this.getSelectedType();
     const stage = this.getSelectedStage();
     const content = pricingContent.estimator;
     const low = type.base * stage.multiplier;
     const high = low * 1.5;
 
-    return HTML`
+    return html`
       <div class="pricing-estimator-result">
         <div class="pricing-estimator-result-main">
           <p class="pricing-estimator-result-eyebrow">${content.resultEyebrow}</p>

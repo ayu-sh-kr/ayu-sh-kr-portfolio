@@ -1,4 +1,5 @@
-import { BaseElement, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
+import { BaseElement, Component } from "@ayu-sh-kr/dota-wrap/core";
 import { pricingContent } from "@app/data/pricing-content.ts";
 
 /**
@@ -43,10 +44,10 @@ export class PricingEstimatorComponent extends BaseElement {
    * own after this shell mounts; this method only establishes the static
    * container and copy.
    */
-  render(): string {
+  render(): TemplateResult {
     const content = pricingContent.estimator;
 
-    return HTML`
+    return html`
       <section id="pricing-estimate" class="pricing-estimator-section layout-page layout-section" aria-labelledby="pricing-estimate-title">
         <div class="pricing-section-copy">
           <p class="pricing-eyebrow">${content.eyebrow}</p>

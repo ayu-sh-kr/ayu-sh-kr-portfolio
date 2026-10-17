@@ -1,3 +1,4 @@
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
 import {BaseElement, Component, Property, String} from "@ayu-sh-kr/dota-wrap/core";
 
 /** Renders repeated archive-row placeholders for delayed list data. */
@@ -15,14 +16,14 @@ export class SkeletonListComponent extends BaseElement {
   }
 
   /** Mirrors the archive date, title/summary, and category columns. */
-  render(): string {
+  render(): TemplateResult {
     const count = Math.min(6, Math.max(4, Number.parseInt(this.rows, 10) || 4));
     const titleWidths = ["70%", "82%", "64%", "75%", "78%", "68%"];
     const summaryWidths = ["45%", "38%", "52%", "41%", "48%", "44%"];
 
-    return `
+    return html`
       <div class="sk-list">
-        ${Array.from({length: count}, (_, index) => `
+        ${Array.from({length: count}, (_, index) => html`
           <div class="sk-list-row">
             <span class="sk sk-sm sk-list-date"></span>
             <span class="sk-list-copy">
@@ -31,7 +32,7 @@ export class SkeletonListComponent extends BaseElement {
             </span>
             <span class="sk sk-chip sk-list-chip"></span>
           </div>
-        `).join("")}
+        `)}
       </div>
     `;
   }

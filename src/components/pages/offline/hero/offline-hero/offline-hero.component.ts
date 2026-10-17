@@ -1,4 +1,5 @@
-import { BaseElement, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
+import { BaseElement, Component } from "@ayu-sh-kr/dota-wrap/core";
 import { offlineContent } from "@app/data/offline-content.ts";
 
 @Component({
@@ -10,11 +11,11 @@ export class OfflineHeroComponent extends BaseElement {
     super();
   }
 
-  render(): string {
+  render(): TemplateResult {
     const { navigation, states } = offlineContent;
     const content = states.offline;
 
-    return HTML`
+    return html`
       <section class="offline-section offline-hero-section" aria-labelledby="offline-title">
         <div class="offline-panel-inner">
           <div class="offline-glyph" data-offline-glyph role="img" aria-label="${content.glyphLabel}">

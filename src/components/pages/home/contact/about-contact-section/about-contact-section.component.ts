@@ -1,4 +1,5 @@
-import { BaseElement, BindEvent, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
+import { BaseElement, BindEvent, Component } from "@ayu-sh-kr/dota-wrap/core";
 import { isAnalyticsContactMethod } from "@app/events/analytics.events.ts";
 import { portfolioContent } from "@app/data/portfolio-content.ts";
 import { publishAnalyticsEvent } from "@app/utils/analytics.utils.ts";
@@ -40,10 +41,10 @@ export class PortfolioContactComponent extends BaseElement {
    * Returns the contact section using authored content and link destinations.
    * Rendering stays pure so copy or URL changes only require updating the data source.
    */
-  render(): string {
+  render(): TemplateResult {
     const { contact } = portfolioContent;
 
-    return HTML`
+    return html`
       <section id="contact" class="layout-page layout-section-end border-b border-(--border-color) text-center" aria-labelledby="contact-title">
         <div class="layout-content">
           <p class="motion-eyebrow motion-reveal">${contact.eyebrow}</p>

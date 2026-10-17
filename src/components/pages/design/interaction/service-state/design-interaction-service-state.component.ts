@@ -1,4 +1,5 @@
-import { BaseElement, Component, HTML, HostListener } from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
+import { BaseElement, Component, HostListener } from "@ayu-sh-kr/dota-wrap/core";
 import { designInteractionContent } from "@app/data/design-interaction-content.ts";
 import { ServiceState, type ServiceCapabilityState } from "@app/service/service-state.service.ts";
 
@@ -72,9 +73,9 @@ export class DesignInteractionServiceStateComponent extends BaseElement {
    * authored list of use cases. Purely declarative — all behavior lives in the
    * host click listener.
    */
-  render(): string {
+  render(): TemplateResult {
     const { serviceState } = designInteractionContent;
-    return HTML`
+    return html`
       <section id="service-state" class="design-interaction-section layout-page layout-section" aria-labelledby="service-state-title">
         <header class="design-interaction-heading layout-stack layout-stack-sm">
           <p class="type-eyebrow">${serviceState.eyebrow}</p>
@@ -95,12 +96,12 @@ export class DesignInteractionServiceStateComponent extends BaseElement {
             </div>
           </article>
           <div class="design-interaction-service-state__cases">
-            ${serviceState.useCases.map((useCase) => HTML`
+            ${serviceState.useCases.map((useCase) => html`
               <article>
                 <h3 class="type-card-title">${useCase.title}</h3>
                 <p>${useCase.body}</p>
               </article>
-            `).join("")}
+            `)}
           </div>
         </div>
       </section>`;

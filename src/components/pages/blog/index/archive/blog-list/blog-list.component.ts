@@ -1,19 +1,19 @@
+import {html, TemplateResult} from "@ayu-sh-kr/dota-wrap/rendering";
 import {ApplicationEventService, BaseElement, BindEvent, Component} from "@ayu-sh-kr/dota-wrap/core";
 import {type ApplicationEvent, OnEvent} from "@ayu-sh-kr/dota-wrap/event";
 import {formatBlogDate, getBlogPath, getBlogPostsForIndex, getLatestBlogPost, labelForCategory, type BlogCategory, type BlogPost} from "@app/configs/blogs.config.ts";
 import {blogIndexContent} from "@app/data/blog-content.ts";
 import {BLOG_FILTER_CHANGE_EVENT, type BlogFilterChange} from "@app/events/blog.events.ts";
-import {escapeHtml} from "@app/utils/html.utils.ts";
 import {BlogRevealLifecycle} from "@app/utils/blog-reveal-lifecycle.utils.ts";
 import {publishAnalyticsEvent} from "@app/utils/analytics.utils.ts";
 
 /** Renders one archive post row with authored text escaped for HTML safety. */
-const renderPostRow = (post: BlogPost): string => `
+const renderPostRow = (post: BlogPost) => html`
   <a class="blog-row blog-reveal" data-blog-reveal data-analytics-project="blog" data-analytics-slug="${post.slug}" href="${getBlogPath(post.slug)}">
     <time class="blog-row-date" datetime="${post.date}">${formatBlogDate(post.date, true)}</time>
     <span class="blog-row-copy">
-      <span class="blog-row-title">${escapeHtml(post.header)}</span>
-      <span class="blog-row-description">${escapeHtml(post.description)}</span>
+      <span class="blog-row-title">${post.header}</span>
+      <span class="blog-row-description">${post.description}</span>
     </span>
     <span class="blog-chip">${labelForCategory(post.category)}</span>
     <span class="blog-arrow" aria-hidden="true">→</span>
@@ -89,7 +89,7 @@ export class BlogListComponent extends BaseElement {
   }
 
   /** Renders the filtered catalog rows and an empty state when no post matches the active category. */
-  render(): string {
+  render(): TemplateResult {
     const highlightedPost = getLatestBlogPost(this.posts);
     const rows = this.posts.filter((post) => {
       const isNotHighlighted = post.slug !== highlightedPost?.slug;
@@ -99,12 +99,12 @@ export class BlogListComponent extends BaseElement {
     const hasVisibleHighlightedPost = highlightedPost !== undefined
       && (this.currentFilter === "all" || highlightedPost.category === this.currentFilter);
 
-    return `
+    return html`
       <section class="blog-container blog-list-section" aria-label="${blogIndexContent.list.ariaLabel}" aria-busy="false">
         <div class="blog-list-skeleton-frame">
           <div class="blog-list-real-layer is-ready">
-            <div class="blog-list">${rows.map(renderPostRow).join("")}</div>
-            ${rows.length || hasVisibleHighlightedPost ? "" : `<p class="blog-empty">${blogIndexContent.list.emptyPrefix} ${this.currentFilter} ${blogIndexContent.list.emptySuffix} <button type="button" data-blog-filter-reset>${blogIndexContent.list.resetLabel}</button></p>`}
+            <div class="blog-list">${rows.map(renderPostRow)}</div>
+            ${rows.length || hasVisibleHighlightedPost ? "" : html`<p class="blog-empty">${blogIndexContent.list.emptyPrefix} ${this.currentFilter} ${blogIndexContent.list.emptySuffix} <button type="button" data-blog-filter-reset>${blogIndexContent.list.resetLabel}</button></p>`}
           </div>
         </div>
       </section>

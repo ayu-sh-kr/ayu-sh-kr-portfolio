@@ -1,4 +1,5 @@
-import { BaseElement, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
+import { BaseElement, Component } from "@ayu-sh-kr/dota-wrap/core";
 import { DOTA_FAQ_ACCORDION_CLASS, DOTA_FAQ_ACCORDION_CONFIG } from "@app/components/utils/faq/dota-faq-accordion.ts";
 import { showcaseSupport } from "@app/data/showcase-content.ts";
 
@@ -21,15 +22,15 @@ export class ShowcaseFaqComponent extends BaseElement {
   }
 
   /** Renders the shared FAQ entries with the showcase accordion styling contract. */
-  render(): string {
-    return HTML`
+  render(): TemplateResult {
+    return html`
       <div class="showcase-faq-block">
         <p class="showcase-eyebrow showcase-reveal" data-showcase-reveal>Common questions</p>
         <h2 id="showcase-support-title" class="showcase-title mt-4 showcase-reveal" data-showcase-reveal>Useful context before we start.</h2>
         <div class="showcase-faq-list mt-10">
           ${showcaseSupport.faq
             .map(
-              (item) => HTML`
+              (item) => html`
                 <dota-accordion
                   classname="${DOTA_FAQ_ACCORDION_CLASS}"
                   header="${item.question}"
@@ -37,8 +38,7 @@ export class ShowcaseFaqComponent extends BaseElement {
                   config='${DOTA_FAQ_ACCORDION_CONFIG}'
                 ></dota-accordion>
               `,
-            )
-            .join("")}
+            )}
         </div>
       </div>
     `;

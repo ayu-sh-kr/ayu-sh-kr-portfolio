@@ -1,7 +1,7 @@
-import {BaseElement, Component, HTML, Property, String} from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
+import {BaseElement, Component, Property, String} from "@ayu-sh-kr/dota-wrap/core";
 import {getBlogPath, getBlogPost, getRelatedBlogPosts, labelForCategory} from "@app/configs/blogs.config.ts";
 import {blogArticleContent, blogIndexContent} from "@app/data/blog-content.ts";
-import {escapeHtml} from "@app/utils/html.utils.ts";
 
 /**
  * Lists the posts most related to the article being read.
@@ -30,23 +30,23 @@ export class BlogRelatedPostsComponent extends BaseElement {
   }
 
   /** Renders one link per related post with its category and reading time. */
-  render(): string {
+  render(): TemplateResult {
     const post = getBlogPost(this.slug);
     const related = post ? getRelatedBlogPosts(post) : [];
     if (related.length === 0) {
-      return "";
+      return html``;
     }
 
-    const items = related.map((item) => `
+    const items = related.map((item) => html`
       <li>
         <a class="blog-related-link" href="${getBlogPath(item.slug)}">
-          <span class="blog-related-meta">${escapeHtml(labelForCategory(item.category))} · ${item.minutes} ${blogIndexContent.readTimeSuffix}</span>
-          <span class="blog-related-heading">${escapeHtml(item.header)}</span>
+          <span class="blog-related-meta">${labelForCategory(item.category)} · ${item.minutes} ${blogIndexContent.readTimeSuffix}</span>
+          <span class="blog-related-heading">${item.header}</span>
         </a>
       </li>
-    `).join("");
+    `);
 
-    return HTML`
+    return html`
       <section class="blog-related" aria-labelledby="blog-related-title" data-analytics-section="blog_article_related">
         <h2 id="blog-related-title" class="blog-related-title">${blogArticleContent.related.title}</h2>
         <ul class="blog-related-list">${items}</ul>

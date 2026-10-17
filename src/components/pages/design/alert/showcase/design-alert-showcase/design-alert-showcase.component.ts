@@ -1,4 +1,5 @@
-import { BaseElement, Component, HostListener, HTML } from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
+import { BaseElement, Component, HostListener } from "@ayu-sh-kr/dota-wrap/core";
 import { Alert } from "@app/service/alert.service.ts";
 import { designAlertContent } from "@app/data/design-alert-content.ts";
 import type { DesignAlertReleaseComponent } from "@app/components/pages/design/alert/custom-release/design-alert-release/design-alert-release.component.ts";
@@ -69,10 +70,10 @@ export class DesignAlertShowcaseComponent extends BaseElement {
   }
 
   /** Renders live triggers and the last promise result without duplicating dialog markup. */
-  render(): string {
+  render(): TemplateResult {
     const { showcase } = designAlertContent;
 
-    return HTML`
+    return html`
       <section id="design-alert-showcase" class="design-alert-showcase layout-page layout-section" aria-labelledby="design-alert-showcase-title">
         <div class="design-alert-showcase-heading layout-stack layout-stack-sm">
           <p class="type-eyebrow">${showcase.eyebrow}</p>
@@ -80,14 +81,14 @@ export class DesignAlertShowcaseComponent extends BaseElement {
           <p class="type-lede">${showcase.lede}</p>
         </div>
         <div class="design-alert-showcase-grid layout-grid-auto-sm">
-          ${showcase.items.map((item) => HTML`
+          ${showcase.items.map((item) => html`
             <article class="design-alert-specimen design-alert-specimen--${item.tone}">
               <p class="type-label">${item.tone}</p>
               <h3 class="type-card-title">${item.title}</h3>
               <p>${item.body}</p>
               <button class="design-alert-trigger" type="button" data-alert-specimen="${item.id}">${item.action}</button>
             </article>
-          `).join("")}
+          `)}
         </div>
         <output class="design-alert-result" aria-live="polite"><span class="type-label">${showcase.resultLabel}</span>${this.result}</output>
       </section>

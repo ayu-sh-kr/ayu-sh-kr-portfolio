@@ -1,9 +1,9 @@
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
 import {
   BaseElement,
   Component,
   HostListener,
-  HTML,
-} from "@ayu-sh-kr/dota-wrap/core";
+  } from "@ayu-sh-kr/dota-wrap/core";
 import { Toast } from "@app/service/toast.service.ts";
 import { designInteractionContent } from "@app/data/design-interaction-content.ts";
 
@@ -28,10 +28,10 @@ export class DesignInteractionTransientComponent extends BaseElement {
   }
 
   /** Renders three production toast outcomes without introducing a second notification host. */
-  render(): string {
+  render(): TemplateResult {
     const { transient } = designInteractionContent;
 
-    return HTML`
+    return html`
       <section id="transient" class="design-interaction-section layout-page layout-section" aria-labelledby="transient-title">
           <header class="design-interaction-heading layout-stack layout-stack-sm">
             <p class="type-eyebrow">${transient.eyebrow}</p>

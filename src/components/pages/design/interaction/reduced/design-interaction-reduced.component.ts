@@ -1,9 +1,9 @@
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
 import {
   BaseElement,
   Component,
   HostListener,
-  HTML,
-} from "@ayu-sh-kr/dota-wrap/core";
+  } from "@ayu-sh-kr/dota-wrap/core";
 import { OnEvent } from "@ayu-sh-kr/dota-wrap/event";
 import { designInteractionContent } from "@app/data/design-interaction-content.ts";
 
@@ -38,10 +38,10 @@ export class DesignInteractionReducedComponent extends BaseElement {
   }
 
   /** Renders the review control and the rule that no-motion states preserve all meaning. */
-  render(): string {
+  render(): TemplateResult {
     const { reduced } = designInteractionContent;
 
-    return HTML`
+    return html`
       <section id="reduced" class="design-interaction-section layout-page layout-section" aria-labelledby="reduced-title">
         <header class="design-interaction-heading layout-stack layout-stack-sm">
           <p class="type-eyebrow">${reduced.eyebrow}</p>

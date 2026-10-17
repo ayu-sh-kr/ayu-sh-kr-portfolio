@@ -1,4 +1,5 @@
-import { BaseElement, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
+import { BaseElement, Component } from "@ayu-sh-kr/dota-wrap/core";
 import { portfolioContent } from "@app/data/portfolio-content.ts";
 
 @Component({
@@ -10,10 +11,10 @@ export class PortfolioHeroComponent extends BaseElement {
     super();
   }
 
-  render(): string {
+  render(): TemplateResult {
     const { hero } = portfolioContent;
 
-    return HTML`
+    return html`
       <div id="hero-wrap" class="layout-hero-pin-wrap layout-hero-pin-wrap--long">
         <section class="layout-hero-pin-stage hero-stage" aria-labelledby="hero-title">
           <div id="hero-inner" class="layout-content layout-stack layout-stack-lg text-center">

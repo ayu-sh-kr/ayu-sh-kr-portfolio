@@ -1,4 +1,5 @@
-import { BaseElement, BindEvent, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
+import { BaseElement, BindEvent, Component } from "@ayu-sh-kr/dota-wrap/core";
 import { isAnalyticsContactMethod } from "@app/events/analytics.events.ts";
 import { pricingContent } from "@app/data/pricing-content.ts";
 import { publishAnalyticsEvent } from "@app/utils/analytics.utils.ts";
@@ -36,10 +37,10 @@ export class PricingContactComponent extends BaseElement {
   }
 
   /** Returns the contact section using the pricing contact content and destinations. */
-  render(): string {
+  render(): TemplateResult {
     const content = pricingContent.contact;
 
-    return HTML`
+    return html`
       <section id="pricing-contact" class="pricing-contact-section" aria-labelledby="pricing-contact-title">
         <div class="pricing-contact-inner">
           <p class="pricing-eyebrow">${content.eyebrow}</p>

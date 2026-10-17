@@ -1,9 +1,9 @@
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
 import {
   BaseElement,
   Component,
   HostListener,
-  HTML,
-} from "@ayu-sh-kr/dota-wrap/core";
+  } from "@ayu-sh-kr/dota-wrap/core";
 import { designInteractionContent } from "@app/data/design-interaction-content.ts";
 
 /** Isolates the input-to-number recomputation pattern and its single polite announcement. */
@@ -35,10 +35,10 @@ export class DesignInteractionRecomputeComponent extends BaseElement {
   }
 
   /** Renders the established light-input / contrast-number composition. */
-  render(): string {
+  render(): TemplateResult {
     const { recompute } = designInteractionContent;
 
-    return HTML`
+    return html`
       <section id="recompute" class="design-interaction-section layout-page layout-section" aria-labelledby="recompute-title">
           <header class="design-interaction-heading layout-stack layout-stack-sm">
             <p class="type-eyebrow">${recompute.eyebrow}</p>

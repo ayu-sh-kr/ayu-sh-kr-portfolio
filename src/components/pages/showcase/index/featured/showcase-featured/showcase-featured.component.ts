@@ -1,4 +1,5 @@
-import { BaseElement, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
+import { BaseElement, Component } from "@ayu-sh-kr/dota-wrap/core";
 import { getShowcaseProjectsByTier } from "@app/data/showcase-content.ts";
 
 /**
@@ -19,10 +20,10 @@ export class ShowcaseFeaturedComponent extends BaseElement {
   }
 
   /** Renders the featured project section and delegates cards to child elements. */
-  render(): string {
+  render(): TemplateResult {
     const projects = getShowcaseProjectsByTier("featured");
 
-    return HTML`
+    return html`
       <section class="showcase-featured-section layout-page layout-section" aria-labelledby="showcase-featured-title">
         <div>
           <p class="showcase-eyebrow showcase-reveal" data-showcase-reveal>Featured</p>
@@ -31,7 +32,7 @@ export class ShowcaseFeaturedComponent extends BaseElement {
             <p class="showcase-section-note showcase-reveal" data-showcase-reveal>Useful things, shipped with intent.</p>
           </div>
           <div class="showcase-card-grid mt-12">
-            ${projects.map((project) => `<showcase-project-card project-slug="${project.slug}"></showcase-project-card>`).join("")}
+            ${projects.map((project) => html`<showcase-project-card project-slug="${project.slug}"></showcase-project-card>`)}
           </div>
         </div>
       </section>

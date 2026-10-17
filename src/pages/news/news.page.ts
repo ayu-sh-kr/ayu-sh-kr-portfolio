@@ -1,3 +1,4 @@
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
 import {Component, DotaPageElement, SEO} from "@ayu-sh-kr/dota-wrap/core";
 import {Route} from "@ayu-sh-kr/dota-wrap/router";
 import {getNewsSeo} from "@app/configs/news.config.ts";
@@ -19,8 +20,8 @@ export class NewsPage extends DotaPageElement {
     return toSEO(getNewsSeo());
   }
 
-  render(): string {
-    return `
+  render(): TemplateResult {
+    return html`
       <app-header></app-header>
       <news-index></news-index>
       <app-footer></app-footer>

@@ -1,4 +1,5 @@
-import { BaseElement, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
+import { BaseElement, Component } from "@ayu-sh-kr/dota-wrap/core";
 import { OnEvent } from "@ayu-sh-kr/dota-wrap/event";
 import { coffeeContent } from "@app/data/coffee-content.ts";
 import { CoffeeRevealLifecycle } from "@app/utils/coffee-reveal-lifecycle.utils.ts";
@@ -38,10 +39,10 @@ export class CoffeeClosingComponent extends BaseElement {
   }
 
   /** Returns the final link back to the one-time order controls. */
-  render(): string {
+  render(): TemplateResult {
     const content = coffeeContent.closing;
 
-    return HTML`
+    return html`
       <section class="coffee-closing-section layout-reading layout-section-end" aria-label="Support invitation">
         <div class="coffee-invite" data-coffee-reveal>
           <h2 class="type-subsection">${content.title}</h2>

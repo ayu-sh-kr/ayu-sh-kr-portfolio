@@ -1,4 +1,5 @@
-import { BaseElement, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
+import { BaseElement, Component } from "@ayu-sh-kr/dota-wrap/core";
 import { designElementContent } from "@app/data/design-element-content.ts";
 
 /**
@@ -18,9 +19,9 @@ export class DesignElementGuidanceComponent extends BaseElement {
   }
 
   /** Renders the audit groups plus the event sequence that connects a feature action to its renderer. */
-  render(): string {
+  render(): TemplateResult {
     const { guidance } = designElementContent;
-    return HTML`
+    return html`
       <section id="design-element-guidance" class="design-element-guidance layout-page layout-section-end" aria-labelledby="design-element-guidance-title">
         <div class="design-element-guidance__heading layout-stack layout-stack-sm">
           <p class="type-eyebrow">${guidance.eyebrow}</p>
@@ -28,7 +29,7 @@ export class DesignElementGuidanceComponent extends BaseElement {
           <p class="type-lede">${guidance.lede}</p>
         </div>
         <div class="design-element-guidance__groups layout-grid-2">
-          ${guidance.groups.map((group) => HTML`
+          ${guidance.groups.map((group) => html`
             <article class="design-element-guidance__group">
               <h3 class="type-card-title">${group.label}</h3>
               <dl>
@@ -43,7 +44,7 @@ export class DesignElementGuidanceComponent extends BaseElement {
               </dl>
               <p class="design-element-guidance__rule">${group.rule}</p>
             </article>
-          `).join("")}
+          `)}
         </div>
         <section class="design-element-guidance__lifecycle" aria-labelledby="design-element-guidance-lifecycle-title">
           <div class="design-element-guidance__lifecycle-intro layout-stack layout-stack-sm">
@@ -52,7 +53,7 @@ export class DesignElementGuidanceComponent extends BaseElement {
             <p class="type-lede">${guidance.lifecycle.lede}</p>
           </div>
           <ol class="design-element-guidance__lifecycle-steps">
-            ${guidance.lifecycle.steps.map((step) => HTML`<li>${step}</li>`).join("")}
+            ${guidance.lifecycle.steps.map((step) => html`<li>${step}</li>`)}
           </ol>
         </section>
       </section>

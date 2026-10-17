@@ -1,9 +1,9 @@
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
 import {
   BaseElement,
   Component,
   HostListener,
-  HTML,
-} from "@ayu-sh-kr/dota-wrap/core";
+  } from "@ayu-sh-kr/dota-wrap/core";
 import { designInteractionContent } from "@app/data/design-interaction-content.ts";
 
 /** Keeps the ingest contract separate from the later action lifecycle it hands work to. */
@@ -40,10 +40,10 @@ export class DesignInteractionIngestComponent extends BaseElement {
   }
 
   /** Renders the one sanctioned dashed surface and its immediate chip confirmation. */
-  render(): string {
+  render(): TemplateResult {
     const { ingest } = designInteractionContent;
 
-    return HTML`
+    return html`
       <section id="ingest" class="design-interaction-section layout-page layout-section" aria-labelledby="ingest-title">
           <header class="design-interaction-heading layout-stack layout-stack-sm">
             <p class="type-eyebrow">${ingest.eyebrow}</p>
@@ -59,10 +59,9 @@ export class DesignInteractionIngestComponent extends BaseElement {
             .map(
               (
                 name,
-              ) => HTML`<span>${name}<button type="button" data-interaction-remove="${name}" aria-label="${ingest.removeAriaLabel.replace("{name}", name)}">${ingest.removeLabel}</button>
+              ) => html`<span>${name}<button type="button" data-interaction-remove="${name}" aria-label="${ingest.removeAriaLabel.replace("{name}", name)}">${ingest.removeLabel}</button>
             </span>`,
-            )
-            .join("")}</div>
+            )}</div>
         </section>`;
   }
 }

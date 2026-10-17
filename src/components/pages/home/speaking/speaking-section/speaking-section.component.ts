@@ -1,4 +1,5 @@
-import { BaseElement, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
+import { BaseElement, Component } from "@ayu-sh-kr/dota-wrap/core";
 import { OnEvent } from "@ayu-sh-kr/dota-wrap/event";
 import { portfolioContent } from "@app/data/portfolio-content.ts";
 
@@ -214,10 +215,10 @@ export class PortfolioSpeakingComponent extends BaseElement {
    * Returns the speaking content and topic cards from authored portfolio data.
    * Interaction setup runs after this markup has been inserted during connection.
    */
-  render(): string {
+  render(): TemplateResult {
     const { speaking } = portfolioContent;
 
-    return HTML`
+    return html`
       <section id="speaking" class="layout-section" aria-labelledby="speaking-title">
         <div id="sp-head-wrap">
           <div id="sp-head-stage">
@@ -230,9 +231,9 @@ export class PortfolioSpeakingComponent extends BaseElement {
               <p class="sp-proof">
                 ${speaking.proof
                   .map((item) => item.prefix
-                    ? `<span>${item.prefix}<b>${item.value}</b>${item.label}</span>`
-                    : `<span><b>${item.value}</b> ${item.label}</span>`)
-                  .join('<span class="sp-proof-separator">/</span>')}
+                    ? html`<span>${item.prefix}<b>${item.value}</b>${item.label}</span>`
+                    : html`<span><b>${item.value}</b> ${item.label}</span>`)
+                  .flatMap((item, index) => index ? [html`<span class="sp-proof-separator">/</span>`, item] : [item])}
               </p>
             </div>
           </div>
@@ -242,19 +243,18 @@ export class PortfolioSpeakingComponent extends BaseElement {
           <div class="sp-topics">
             ${speaking.topics
               .map(
-                (topic) => `
+                (topic) => html`
                   <a class="topic motion-reveal" href="#contact" data-tilt>
                     <span class="topic-number">${topic.number}</span>
                     <h3>${topic.title}</h3>
                     <p class="text-sm leading-6 text-(--muted-color)">${topic.body}</p>
                     <div class="mt-1 flex flex-wrap gap-2">
-                      ${topic.chips.map((chip) => `<span class="motion-chip">${chip}</span>`).join("")}
+                      ${topic.chips.map((chip) => html`<span class="motion-chip">${chip}</span>`)}
                     </div>
                     <span class="topic-arrow">Book this talk <span aria-hidden="true">→</span></span>
                   </a>
                 `,
-              )
-              .join("")}
+              )}
           </div>
 
           <div class="sp-invite motion-reveal">

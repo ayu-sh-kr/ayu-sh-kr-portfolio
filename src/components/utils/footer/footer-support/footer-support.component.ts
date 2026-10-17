@@ -1,4 +1,5 @@
-import { BaseElement, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
+import { BaseElement, Component } from "@ayu-sh-kr/dota-wrap/core";
 import { OnEvent } from "@ayu-sh-kr/dota-wrap/event";
 import { portfolioContent } from "@app/data/portfolio-content.ts";
 
@@ -77,10 +78,10 @@ export class FooterSupportComponent extends BaseElement {
     }
   }
 
-  render(): string {
+  render(): TemplateResult {
     const { ghostWord, support } = portfolioContent.footer;
 
-    return HTML`
+    return html`
       <section class="footer-support-section" aria-labelledby="footer-support-title">
         <span class="footer-ghost-word" aria-hidden="true">${ghostWord}</span>
         <div class="footer-content footer-support-content">

@@ -1,4 +1,5 @@
-import { BaseElement, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
+import { BaseElement, Component } from "@ayu-sh-kr/dota-wrap/core";
 import { designInteractionContent } from "@app/data/design-interaction-content.ts";
 
 const POINTER_VARIANTS = ["pointer-lift", "pointer-deep", "pointer-ink", "pointer-wash", "pointer-nudge", "pointer-press"] as const;
@@ -12,9 +13,9 @@ export class DesignInteractionPointerComponent extends BaseElement {
   }
 
   /** Renders live hover/focus specimens plus the lift-versus-nudge comparison. */
-  render(): string {
+  render(): TemplateResult {
     const { pointer } = designInteractionContent;
-    return HTML`
+    return html`
       <section id="pointer" class="design-interaction-section layout-page layout-section" aria-labelledby="pointer-title">
         <header class="design-interaction-heading layout-stack layout-stack-sm">
           <p class="type-eyebrow">${pointer.eyebrow}</p>
@@ -22,12 +23,11 @@ export class DesignInteractionPointerComponent extends BaseElement {
           <p class="type-lede">${pointer.lede}</p>
         </header>
         <div class="design-interaction-spec-grid layout-grid-auto-sm">${pointer.specimens
-          .map((specimen, index) => HTML`<button type="button" class="design-interaction-pointer ${POINTER_VARIANTS[index]}">
+          .map((specimen, index) => html`<button type="button" class="design-interaction-pointer ${POINTER_VARIANTS[index]}">
             <strong>${specimen.label}</strong>
             <span>${specimen.value}</span>
           </button>`,
-          )
-          .join("")}</div>
+          )}</div>
         <div class="design-interaction-pair layout-grid-2">
           <article>
             <p class="type-label">${pointer.do.label}</p>

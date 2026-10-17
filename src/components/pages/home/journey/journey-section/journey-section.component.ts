@@ -1,4 +1,5 @@
-import { BaseElement, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
+import { BaseElement, Component } from "@ayu-sh-kr/dota-wrap/core";
 import { portfolioContent } from "@app/data/portfolio-content.ts";
 
 /**
@@ -24,17 +25,17 @@ export class PortfolioJourneyComponent extends BaseElement {
    * The content is read from `portfolioContent`, so rendering stays pure and
    * chapter changes do not require edits to the component structure.
    */
-  render(): string {
+  render(): TemplateResult {
     const { journey } = portfolioContent;
 
-    return HTML`
+    return html`
       <div id="journey-wrap" class="pin-wrap journey-pin-wrap">
         <section class="pin-stage journey-stage" aria-labelledby="journey-title">
           <h2 id="journey-title" class="sr-only">Career journey</h2>
           <div id="journey-ghost" class="journey-ghost" aria-hidden="true">01</div>
           ${journey
             .map(
-              (chapter, index) => `
+              (chapter, index) => html`
                 <article class="journey-chapter" data-chapter="${index}">
                   <p class="motion-eyebrow">${chapter.label}</p>
                   <h3 class="motion-title mx-auto mt-5 max-w-4xl">${chapter.title}</h3>
@@ -42,8 +43,7 @@ export class PortfolioJourneyComponent extends BaseElement {
                   <p class="mt-6 font-mono text-xs font-semibold uppercase tracking-[0.12em] text-(--muted-strong-color)">${chapter.meta}</p>
                 </article>
               `,
-            )
-            .join("")}
+            )}
           <div class="journey-spine" aria-hidden="true">
             <div id="journey-spine-fill" class="journey-spine-fill"></div>
           </div>

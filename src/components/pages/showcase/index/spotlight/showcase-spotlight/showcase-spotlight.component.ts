@@ -1,4 +1,5 @@
-import { BaseElement, BindEvent, Component, HTML, Property, String } from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
+import { BaseElement, BindEvent, Component, Property, String } from "@ayu-sh-kr/dota-wrap/core";
 import { getShowcaseProject } from "@app/data/showcase-content.ts";
 import { publishAnalyticsEvent } from "@app/utils/analytics.utils.ts";
 
@@ -38,14 +39,14 @@ export class ShowcaseSpotlightComponent extends BaseElement {
   }
 
   /** Renders the spotlight case study, or nothing when the slug is unknown. */
-  render(): string {
+  render(): TemplateResult {
     const project = getShowcaseProject(this.projectSlug);
     if (!project) {
-      return "";
+      return html``;
     }
 
     const metric = project.metric
-      ? `
+      ? html`
           <div class="showcase-metric-row mt-8">
             <strong class="showcase-metric" data-showcase-metric data-metric-value="${project.metric.value}">0</strong>
             <span class="showcase-lede">${project.metric.label}</span>
@@ -53,7 +54,7 @@ export class ShowcaseSpotlightComponent extends BaseElement {
         `
       : "";
 
-    return HTML`
+    return html`
       <div id="showcase-spotlight-${project.slug}" class="showcase-pin-wrap showcase-spotlight-wrap" data-showcase-spotlight>
         <section class="showcase-pin-stage showcase-spotlight-stage" aria-labelledby="spotlight-${project.slug}-title">
           <div class="showcase-ghost-number" aria-hidden="true">${project.year.toString().slice(-2)}</div>
@@ -66,7 +67,7 @@ export class ShowcaseSpotlightComponent extends BaseElement {
               <h2 id="spotlight-${project.slug}-title" class="showcase-title mt-4">${project.title}</h2>
               <p class="showcase-lede mt-5 max-w-xl">${project.tagline}</p>
               <div class="showcase-chip-row mt-7" aria-label="Technology stack">
-                ${project.stack.map((item, index) => `<span class="showcase-chip" data-showcase-chip style="--chip-index:${index}">${item}</span>`).join("")}
+                ${project.stack.map((item, index) => html`<span class="showcase-chip" data-showcase-chip style="--chip-index:${index}">${item}</span>`)}
               </div>
               ${metric}
               <a class="app-link app-link--button app-link--ink mt-9" data-analytics-project="showcase" href="/showcase/${project.slug}/">

@@ -1,3 +1,4 @@
+import {html, trustedHTML, TemplateResult} from "@ayu-sh-kr/dota-wrap/rendering";
 import {BaseElement, BindEvent, Component, WindowListener} from "@ayu-sh-kr/dota-wrap/core";
 import {OnEvent} from "@ayu-sh-kr/dota-wrap/event";
 import {
@@ -41,25 +42,25 @@ const groupNotesByMonth = (notes: readonly NewsNote[]): readonly NewsMonth[] => 
 const renderSummary = (summary: string): string =>
   escapeHtml(summary).replace(/`([^`]+)`/g, "<code>$1</code>");
 
-const renderNote = (note: NewsNote, latestSlug: string): string => `
+const renderNote = (note: NewsNote, latestSlug: string) => html`
   <article class="news-note" data-news-note data-kind="${note.kind}">
     <div class="news-note-head layout-row layout-row-tight">
       <time class="news-meta news-number" datetime="${note.date}">${formatNewsDate(note.date, true)}</time>
-      ${note.slug === latestSlug ? `<span class="news-live"><span class="news-live-dot" aria-hidden="true"></span>Latest</span>` : ""}
+      ${note.slug === latestSlug ? html`<span class="news-live"><span class="news-live-dot" aria-hidden="true"></span>Latest</span>` : ""}
     </div>
-    <h3 class="news-note-title"><a href="/news/${note.slug}/">${escapeHtml(note.title)}</a></h3>
-    <p class="news-note-body">${renderSummary(note.summary)}</p>
+    <h3 class="news-note-title"><a href="/news/${note.slug}/">${note.title}</a></h3>
+    <p class="news-note-body">${trustedHTML(renderSummary(note.summary))}</p>
     <div class="news-note-foot layout-row">
       <span class="news-tag">${labelForNewsKind(note.kind)}</span>
-      ${note.reference ? `<a class="news-source-link" href="${escapeHtml(note.reference.href)}" target="_blank" rel="noopener noreferrer">${escapeHtml(note.reference.label)} <span aria-hidden="true">↗</span></a>` : ""}
+      ${note.reference ? html`<a class="news-source-link" href="${note.reference.href}" target="_blank" rel="noopener noreferrer">${note.reference.label} <span aria-hidden="true">↗</span></a>` : ""}
     </div>
   </article>
 `;
 
-const renderMonth = (month: NewsMonth, latestSlug: string): string => `
+const renderMonth = (month: NewsMonth, latestSlug: string) => html`
   <section class="news-month" id="${month.id}" aria-labelledby="${month.id}-heading" data-news-month>
     <div class="news-month-heading"><h2 class="news-label" id="${month.id}-heading">${month.label}</h2></div>
-    ${month.notes.map((note) => renderNote(note, latestSlug)).join("")}
+    ${month.notes.map((note) => renderNote(note, latestSlug))}
   </section>
 `;
 
@@ -254,14 +255,14 @@ export class NewsIndexComponent extends BaseElement {
   }
 
   /** Renders the Dispatch feed, shared subscription boundary, blog hand-off, and filter dock. */
-  render(): string {
+  render(): TemplateResult {
     const latestSlug = this.notes[0]?.slug ?? "";
-    return `
+    return html`
       <main class="news-index-main">
         <news-hero></news-hero>
 
         <section class="layout-content layout-section" aria-label="Dispatch notes" data-analytics-section="news_feed">
-          ${this.months.map((month) => renderMonth(month, latestSlug)).join("")}
+          ${this.months.map((month) => renderMonth(month, latestSlug))}
           <p class="news-empty news-lede type-lede" data-news-empty hidden>${newsContent.index.empty} <button type="button" class="news-filter" data-news-filter="all" aria-pressed="false">Show all notes</button></p>
         </section>
 
@@ -281,13 +282,13 @@ export class NewsIndexComponent extends BaseElement {
             <div>
               <p class="news-label">${newsContent.index.filterLabel}</p>
               <div class="layout-row layout-row-tight">
-                ${newsFilters.map((filter) => `<button type="button" class="news-filter" data-news-filter="${filter.value}" aria-pressed="${filter.value === "all"}">${filter.label}</button>`).join("")}
+                ${newsFilters.map((filter) => html`<button type="button" class="news-filter" data-news-filter="${filter.value}" aria-pressed="${filter.value === "all"}">${filter.label}</button>`)}
               </div>
             </div>
             <div class="news-dock-months">
               <p class="news-label">${newsContent.index.monthLabel}</p>
               <nav aria-label="Dispatch months">
-                ${this.months.map((month) => `<a class="news-month-link" href="#${month.id}" data-news-month-link="${month.id}"><span>${month.label}</span><span class="news-number">${month.notes.length}</span></a>`).join("")}
+                ${this.months.map((month) => html`<a class="news-month-link" href="#${month.id}" data-news-month-link="${month.id}"><span>${month.label}</span><span class="news-number">${month.notes.length}</span></a>`)}
               </nav>
             </div>
           </div>

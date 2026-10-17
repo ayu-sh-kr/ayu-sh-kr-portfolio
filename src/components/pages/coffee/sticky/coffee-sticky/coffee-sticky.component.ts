@@ -1,4 +1,5 @@
-import { BaseElement, Component, HTML, WindowListener } from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
+import { BaseElement, Component, WindowListener } from "@ayu-sh-kr/dota-wrap/core";
 import { OnEvent } from "@ayu-sh-kr/dota-wrap/event";
 import { coffeeContent } from "@app/data/coffee-content.ts";
 
@@ -170,10 +171,10 @@ export class CoffeeStickyComponent extends BaseElement {
   }
 
   /** Returns the fixed icon and expanded action, which both point to the order section. */
-  render(): string {
+  render(): TemplateResult {
     const content = coffeeContent.sticky;
 
-    return HTML`
+    return html`
       <div id="coffee-stickybar" role="region" aria-label="${content.ariaLabel}">
         <span class="coffee-sticky-icon" aria-hidden="true">☕</span>
         <span class="coffee-sticky-body"><span class="coffee-sticky-label">☕ ${content.label}</span><a class="app-link app-link--button app-link--accent app-link--compact" href="#coffee-order">${content.cta}</a></span>

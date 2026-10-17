@@ -1,4 +1,5 @@
-import { BaseElement, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
+import { BaseElement, Component } from "@ayu-sh-kr/dota-wrap/core";
 import { designColorContent } from "@app/data/design-color-content.ts";
 
 /**
@@ -19,10 +20,10 @@ export class DesignColorRolesComponent extends BaseElement {
   }
 
   /** Renders the complete semantic role inventory. */
-  render(): string {
+  render(): TemplateResult {
     const { roles } = designColorContent;
 
-    return HTML`
+    return html`
       <section id="design-color-roles" class="design-color-roles design-section" aria-labelledby="design-color-roles-title">
         <div class="design-color-section-intro">
           <p class="type-eyebrow design-eyebrow">${roles.eyebrow}</p>
@@ -31,21 +32,21 @@ export class DesignColorRolesComponent extends BaseElement {
         </div>
 
         <div class="design-color-role-grid">
-          ${roles.groups.map((group) => HTML`
+          ${roles.groups.map((group) => html`
             <article class="design-color-role-group" aria-labelledby="design-color-role-${group.name.toLowerCase()}">
               <h3 id="design-color-role-${group.name.toLowerCase()}" class="type-card-title design-color-role-title">${group.name}</h3>
               <p class="type-compact design-color-role-description">${group.description}</p>
               <ul class="design-color-role-list">
-                ${group.roles.map((role) => HTML`
+                ${group.roles.map((role) => html`
                   <li>
                     <span class="design-color-role-swatch" style="--design-swatch: var(${role.token});"></span>
                     <span class="design-color-role-label">${role.label}</span>
                     <code>${role.token}</code>
                   </li>
-                `).join("")}
+                `)}
               </ul>
             </article>
-          `).join("")}
+          `)}
         </div>
       </section>
     `;

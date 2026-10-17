@@ -1,4 +1,6 @@
-import { BaseElement, Component, DocumentListener, HostListener, HTML } from "@ayu-sh-kr/dota-wrap/core";
+import {HTML} from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
+import { BaseElement, Component, DocumentListener, HostListener } from "@ayu-sh-kr/dota-wrap/core";
 import { OnEvent } from "@ayu-sh-kr/dota-wrap/event";
 import {
   Toast,
@@ -546,8 +548,8 @@ export class DotaToastComponent extends BaseElement implements ToastHost {
   }
 
   /** Renders the persistent rail and a separate assertive live region for failures. */
-  render(): string {
-    return HTML`
+  render(): TemplateResult {
+    return html`
       <section class="dota-toast__rail" id="dota-toast-rail" data-position="bottom-right" role="region" aria-label="Notifications" aria-live="polite" aria-relevant="additions"></section>
       <output class="dota-toast__alerts" id="dota-toast-alerts" aria-live="assertive" aria-atomic="true"></output>
     `;

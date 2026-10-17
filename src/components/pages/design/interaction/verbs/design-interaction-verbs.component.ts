@@ -1,9 +1,9 @@
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
 import {
   BaseElement,
   Component,
   HostListener,
-  HTML,
-} from "@ayu-sh-kr/dota-wrap/core";
+  } from "@ayu-sh-kr/dota-wrap/core";
 import { OnEvent } from "@ayu-sh-kr/dota-wrap/event";
 import { designInteractionContent } from "@app/data/design-interaction-content.ts";
 
@@ -45,10 +45,10 @@ export class DesignInteractionVerbsComponent extends BaseElement {
   }
 
   /** Renders the complete approved verb catalog from the route's authored source. */
-  render(): string {
+  render(): TemplateResult {
     const { verbReference, verbs } = designInteractionContent;
 
-    return HTML`
+    return html`
       <section id="verbs" class="design-interaction-section layout-page layout-section" aria-labelledby="verbs-title">
           <header class="design-interaction-heading layout-stack layout-stack-sm">
             <p class="type-eyebrow">${verbReference.eyebrow}</p>
@@ -59,7 +59,7 @@ export class DesignInteractionVerbsComponent extends BaseElement {
             .map(
               (
                 verb,
-              ) => HTML`<button type="button" class="design-interaction-verb" data-verb="${verb.name}">
+              ) => html`<button type="button" class="design-interaction-verb" data-verb="${verb.name}">
               <span class="design-interaction-verb-stage">
                 <i>
                 </i>
@@ -70,8 +70,7 @@ export class DesignInteractionVerbsComponent extends BaseElement {
               </span>
               <small>${verb.description}</small>
             </button>`,
-            )
-            .join("")}</div>
+            )}</div>
         </section>`;
   }
 }

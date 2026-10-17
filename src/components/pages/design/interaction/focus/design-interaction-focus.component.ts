@@ -1,4 +1,5 @@
-import { BaseElement, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
+import { BaseElement, Component } from "@ayu-sh-kr/dota-wrap/core";
 import { designInteractionContent } from "@app/data/design-interaction-content.ts";
 
 /** Shows the shared focus ring at the three offsets required by real app surfaces. */
@@ -10,11 +11,11 @@ export class DesignInteractionFocusComponent extends BaseElement {
   }
 
   /** Renders native controls that expose the focus contract without scripted focus changes. */
-  render(): string {
+  render(): TemplateResult {
     const { focus } = designInteractionContent;
     const [pill, field, flush] = focus.specimens;
 
-    return HTML`
+    return html`
       <section id="focus" class="design-interaction-section layout-page layout-section" aria-labelledby="focus-title">
         <header class="design-interaction-heading layout-stack layout-stack-sm">
           <p class="type-eyebrow">${focus.eyebrow}</p>

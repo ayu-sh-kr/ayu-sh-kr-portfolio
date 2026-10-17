@@ -1,6 +1,6 @@
-import { BaseElement, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
+import { BaseElement, Component } from "@ayu-sh-kr/dota-wrap/core";
 import { pricingContent } from "@app/data/pricing-content.ts";
-import { escapeHtml } from "@app/utils/html.utils.ts";
 
 /**
  * Renders the left-aligned introduction for the pricing project-intake section.
@@ -22,15 +22,15 @@ export class PricingStartProjectIntroComponent extends BaseElement {
   }
 
   /** Returns the authored project-start heading, description, and availability facts. */
-  render(): string {
+  render(): TemplateResult {
     const content = pricingContent.startProject;
 
-    return HTML`
+    return html`
       <header class="pricing-start-project-intro">
         <p class="pricing-eyebrow">${content.eyebrow}</p>
         <h2 id="pricing-start-project-title">${content.titleBeforeAccent} <span>${content.titleAccent}</span></h2>
         <p>${content.body}</p>
-        <ul class="pricing-start-project-facts">${content.availability.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>
+        <ul class="pricing-start-project-facts">${content.availability.map((item) => html`<li>${item}</li>`)}</ul>
       </header>
     `;
   }

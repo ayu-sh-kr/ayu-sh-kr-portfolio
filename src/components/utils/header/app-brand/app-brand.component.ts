@@ -1,4 +1,5 @@
-import { BaseElement, Component, HTML, WindowListener } from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
+import { BaseElement, Component, WindowListener } from "@ayu-sh-kr/dota-wrap/core";
 import { portfolioContent } from "@app/data/portfolio-content.ts";
 import { GeneralUtils } from "@app/utils/general.utils.ts";
 
@@ -24,10 +25,10 @@ export class AppBrandComponent extends BaseElement {
   }
 
   /** Renders the portfolio identity as a home link using the active theme's mark asset. */
-  render(): string {
+  render(): TemplateResult {
     const mark = GeneralUtils.isDarkMode() ? "mark-dark" : "mark-light";
 
-    return HTML`
+    return html`
       <a href="/" class="app-link app-brand" aria-label="${portfolioContent.nav.logo}, home">
         <img class="app-brand__mark" src="/icons/svg/${mark}.svg" alt="" aria-hidden="true" />
         <span>${portfolioContent.nav.logo}</span>

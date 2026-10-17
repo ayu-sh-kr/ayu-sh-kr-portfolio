@@ -1,4 +1,5 @@
-import { BaseElement, Component, HostListener, HTML } from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
+import { BaseElement, Component, HostListener } from "@ayu-sh-kr/dota-wrap/core";
 import { designToastContent } from "@app/data/design-toast-content.ts";
 import { Toast, type ToastPosition } from "@app/service/toast.service.ts";
 
@@ -73,9 +74,9 @@ export class DesignToastShowcaseComponent extends BaseElement {
   }
 
   /** Renders live API triggers and position controls. */
-  render(): string {
+  render(): TemplateResult {
     const { showcase } = designToastContent;
-    return HTML`
+    return html`
       <section id="design-toast-showcase" class="design-toast-showcase layout-page layout-section" aria-labelledby="design-toast-showcase-title">
         <div class="design-toast-showcase__heading layout-stack layout-stack-sm">
           <p class="type-eyebrow">${showcase.eyebrow}</p>
@@ -83,14 +84,14 @@ export class DesignToastShowcaseComponent extends BaseElement {
           <p class="type-lede">${showcase.lede}</p>
         </div>
         <div class="design-toast-showcase__grid layout-grid-auto-sm">
-          ${showcase.kinds.map((item) => HTML`
+          ${showcase.kinds.map((item) => html`
             <article class="design-toast-card design-toast-card--${item.tone}">
               <p class="type-label">${item.tone}</p>
               <h3 class="type-card-title">${item.title}</h3>
               <p>${item.body}</p>
               <button type="button" data-toast-specimen="${item.id}">${item.action}</button>
             </article>
-          `).join("")}
+          `)}
         </div>
         <div class="design-toast-position">
           <div class="layout-stack layout-stack-sm">
@@ -99,7 +100,7 @@ export class DesignToastShowcaseComponent extends BaseElement {
             <p>${showcase.position.lede}</p>
           </div>
           <div class="design-toast-position__choices" aria-label="${showcase.position.ariaLabel}">
-            ${showcase.positions.map((position) => HTML`<button type="button" data-toast-position="${position.id}" aria-pressed="${String(this.selectedPosition === position.id)}">${position.label}</button>`).join("")}
+            ${showcase.positions.map((position) => html`<button type="button" data-toast-position="${position.id}" aria-pressed="${String(this.selectedPosition === position.id)}">${position.label}</button>`)}
           </div>
         </div>
       </section>

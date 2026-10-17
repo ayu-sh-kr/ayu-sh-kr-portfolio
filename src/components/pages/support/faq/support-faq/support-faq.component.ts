@@ -1,7 +1,7 @@
-import { BaseElement, BindEvent, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
+import { BaseElement, BindEvent, Component } from "@ayu-sh-kr/dota-wrap/core";
 import { DOTA_FAQ_ACCORDION_CLASS, DOTA_FAQ_ACCORDION_CONFIG } from "@app/components/utils/faq/dota-faq-accordion.ts";
 import { supportContent } from "@app/data/support-content.ts";
-import { escapeHtml } from "@app/utils/html.utils.ts";
 
 /**
  * Renders the support reference as shared Dota accordions.
@@ -119,10 +119,10 @@ export class SupportFaqComponent extends BaseElement {
    * Search metadata is escaped before it is placed in quoted attributes; the
    * shared `dota-accordion` element remains responsible for disclosure behavior.
    */
-  render(): string {
+  render(): TemplateResult {
     const content = supportContent.faq;
 
-    return HTML`
+    return html`
       <section id="faq" class="support-faq layout-page layout-section" aria-labelledby="support-faq-title">
         <div class="support-faq-content">
           <div class="support-faq-heading">
@@ -136,25 +136,24 @@ export class SupportFaqComponent extends BaseElement {
             <button id="support-faq-clear" type="button" aria-label="${content.clearAriaLabel}">×</button>
           </div>
           <div class="support-faq-categories layout-row layout-row-tight" role="group" aria-label="${content.categoryAriaLabel}">
-            ${content.categories.map((category, index) => `<button class="support-faq-category${index === 0 ? " is-active" : ""}" type="button" data-support-faq-category="${category.value}">${category.label}</button>`).join("")}
+            ${content.categories.map((category, index) => html`<button class="support-faq-category${index === 0 ? " is-active" : ""}" type="button" data-support-faq-category="${category.value}">${category.label}</button>`)}
           </div>
           <p id="support-faq-count" class="support-faq-count" aria-live="polite"><b>${supportContent.faqs.length}</b> ${content.questionLabel}</p>
           <div class="support-faq-list">
             ${supportContent.faqs
               .map(
-                (faq) => HTML`
+                (faq) => html`
                   <dota-accordion
                     classname="${DOTA_FAQ_ACCORDION_CLASS}"
                     data-support-faq-item
                     data-category="${faq.category}"
-                    data-search-text="${escapeHtml(`${faq.question} ${faq.answer}`.replace(/<[^>]*>/g, "").toLocaleLowerCase())}"
-                    header="${escapeHtml(faq.question)}"
-                    description="${escapeHtml(faq.answer)}"
+                    data-search-text="${`${faq.question} ${faq.answer}`.replace(/<[^>]*>/g, "").toLocaleLowerCase()}"
+                    header="${faq.question}"
+                    description="${faq.answer}"
                     config='${DOTA_FAQ_ACCORDION_CONFIG}'
                   ></dota-accordion>
                 `,
-              )
-              .join("")}
+              )}
           </div>
           <div id="support-faq-empty" class="support-faq-empty" hidden>
             <h3>${content.empty.title}</h3>

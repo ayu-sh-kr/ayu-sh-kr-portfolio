@@ -1,4 +1,5 @@
-import { BaseElement, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
+import { BaseElement, Component } from "@ayu-sh-kr/dota-wrap/core";
 import { OnEvent } from "@ayu-sh-kr/dota-wrap/event";
 import { coffeeContent } from "@app/data/coffee-content.ts";
 import { COFFEE_PAYMENT_SUCCESS_EVENT } from "@app/events/coffee.events.ts";
@@ -121,7 +122,7 @@ export class CoffeeSupportersComponent extends BaseElement {
    * Renders the live rows or the authored empty/unavailable state while keeping
    * all network work in {@link loadSummary}.
    */
-  render(): string {
+  render(): TemplateResult {
     const content = coffeeContent.supporters;
     const summary = this.summary;
     const entries = summary?.latest.map((contribution) => this.toEntry(contribution)) ?? content.entries.map((entry) => ({ ...entry }));
@@ -129,18 +130,18 @@ export class CoffeeSupportersComponent extends BaseElement {
     const isUnavailable = this.state === "unavailable";
     const statusSummary = isUnavailable ? content.unavailableSummary : hasEntries ? `${summary!.total} ${summary!.total === 1 ? "contribution" : "contributions"} so far.` : content.emptySummary;
     const fallback = isUnavailable
-      ? `<h3>${content.unavailableTitle}</h3><p>${content.unavailableBody}</p>`
-      : `<h3>${content.emptyTitle}</h3><p>${content.emptyBody}</p>`;
+      ? html`<h3>${content.unavailableTitle}</h3><p>${content.unavailableBody}</p>`
+      : html`<h3>${content.emptyTitle}</h3><p>${content.emptyBody}</p>`;
 
-    return HTML`
+    return html`
       <section id="coffee-supporters" class="coffee-supporters-section layout-content layout-section-lg layout-stack layout-stack-xl" aria-labelledby="coffee-supporters-title">
         <header class="layout-stack layout-stack-sm" data-coffee-reveal>
           <p class="coffee-supporters-summary">${this.state === "loading" ? content.summary : statusSummary}</p>
           <h2 id="coffee-supporters-title" class="type-subsection">${content.title}</h2>
         </header>
         <div class="coffee-supporter-list" aria-live="polite">
-          ${entries.map((entry) => `<article class="coffee-supporter-row" data-coffee-reveal><span class="coffee-supporter-initial" aria-hidden="true">${entry.name.slice(0, 1)}</span><div><h3>${entry.name}</h3>${entry.note ? `<p>${entry.note}</p>` : ""}</div><span class="coffee-supporter-amount">${entry.amount}</span><time>${entry.when}</time></article>`).join("")}
-          ${this.state !== "loading" && !hasEntries ? `<div class="coffee-supporters-empty layout-stack layout-stack-sm" role="status">${fallback}</div>` : ""}
+          ${entries.map((entry) => html`<article class="coffee-supporter-row" data-coffee-reveal><span class="coffee-supporter-initial" aria-hidden="true">${entry.name.slice(0, 1)}</span><div><h3>${entry.name}</h3>${entry.note ? html`<p>${entry.note}</p>` : ""}</div><span class="coffee-supporter-amount">${entry.amount}</span><time>${entry.when}</time></article>`)}
+          ${this.state !== "loading" && !hasEntries ? html`<div class="coffee-supporters-empty layout-stack layout-stack-sm" role="status">${fallback}</div>` : ""}
         </div>
       </section>
     `;

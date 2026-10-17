@@ -1,4 +1,5 @@
-import { BaseElement, BindEvent, Component, HostListener, HTML } from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
+import { BaseElement, BindEvent, Component, HostListener } from "@ayu-sh-kr/dota-wrap/core";
 import { OnEvent } from "@ayu-sh-kr/dota-wrap/event";
 import {
   Alert,
@@ -233,8 +234,8 @@ export class DotaAlertComponent extends BaseElement implements AlertHost {
    * Runtime methods write request data into these nodes instead of re-rendering,
    * so a visible dialog retains its focus, transition state, and native modal session.
    */
-  render(): string {
-    return HTML`
+  render(): TemplateResult {
+    return html`
       <dialog class="dota-alert__dialog" id="dota-alert-dialog">
         <form class="dota-alert__form" id="dota-alert-form" method="dialog">
           <section class="dota-alert__built-in" id="dota-alert-built-in">

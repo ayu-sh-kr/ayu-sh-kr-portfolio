@@ -1,4 +1,5 @@
-import { BaseElement, Component, HTML, Property, String } from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
+import { BaseElement, Component, Property, String } from "@ayu-sh-kr/dota-wrap/core";
 
 /**
  * Provides the shared application identity above focused card routes.
@@ -26,8 +27,8 @@ export class CardPageHeaderComponent extends BaseElement {
   }
 
   /** Renders the persistent brand and the route-specific continuation. */
-  render(): string {
-    return HTML`
+  render(): TemplateResult {
+    return html`
       <header class="card-page-header layout-page">
         <app-brand></app-brand>
         <a class="app-link app-link--nav card-page-header__link" href="${this.linkHref}">${this.linkLabel}</a>

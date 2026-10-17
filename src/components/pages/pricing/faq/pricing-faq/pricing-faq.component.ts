@@ -1,4 +1,5 @@
-import { BaseElement, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
+import { BaseElement, Component } from "@ayu-sh-kr/dota-wrap/core";
 import { DOTA_FAQ_ACCORDION_CLASS, DOTA_FAQ_ACCORDION_CONFIG } from "@app/components/utils/faq/dota-faq-accordion.ts";
 import { pricingContent } from "@app/data/pricing-content.ts";
 
@@ -21,10 +22,10 @@ export class PricingFaqComponent extends BaseElement {
   }
 
   /** Returns the configured FAQ accordions from the authored pricing questions. */
-  render(): string {
+  render(): TemplateResult {
     const content = pricingContent.faq;
 
-    return HTML`
+    return html`
       <section class="pricing-faq-section layout-page" aria-labelledby="pricing-faq-title">
         <div class="pricing-faq-content">
           <p class="pricing-eyebrow">${content.eyebrow}</p>
@@ -32,7 +33,7 @@ export class PricingFaqComponent extends BaseElement {
           <div class="pricing-faq-list">
             ${content.items
               .map(
-                (item) => HTML`
+                (item) => html`
                   <dota-accordion
                     classname="${DOTA_FAQ_ACCORDION_CLASS}"
                     header="${item.question}"
@@ -40,8 +41,7 @@ export class PricingFaqComponent extends BaseElement {
                     config='${DOTA_FAQ_ACCORDION_CONFIG}'
                   ></dota-accordion>
                 `,
-              )
-              .join("")}
+              )}
           </div>
         </div>
       </section>

@@ -1,4 +1,5 @@
-import { BaseElement, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
+import { BaseElement, Component } from "@ayu-sh-kr/dota-wrap/core";
 import { designInteractionContent } from "@app/data/design-interaction-content.ts";
 
 /**
@@ -22,10 +23,10 @@ export class DesignInteractionIconUsageComponent extends BaseElement {
    * Each example remains data-owned so the design page can add or revise an
    * approved asset without duplicating markup or changing section composition.
    */
-  render(): string {
+  render(): TemplateResult {
     const { iconUsage } = designInteractionContent;
 
-    return HTML`
+    return html`
       <section id="icons" class="design-interaction-section design-interaction-icon-usage layout-page layout-section" aria-labelledby="icons-title">
         <header class="design-interaction-heading layout-stack layout-stack-sm">
           <p class="type-eyebrow">${iconUsage.eyebrow}</p>
@@ -33,7 +34,7 @@ export class DesignInteractionIconUsageComponent extends BaseElement {
           <p class="type-lede">${iconUsage.lede}</p>
         </header>
         <div class="design-interaction-icon-grid layout-grid-auto">
-          ${iconUsage.examples.map((example) => HTML`
+          ${iconUsage.examples.map((example) => html`
             <figure class="design-interaction-icon-card">
               <div class="design-interaction-icon-stage">
                 <img src="${example.path}" alt="" aria-hidden="true" />
@@ -43,7 +44,7 @@ export class DesignInteractionIconUsageComponent extends BaseElement {
                 <span>${example.note}</span>
               </figcaption>
             </figure>
-          `).join("")}
+          `)}
         </div>
       </section>
     `;

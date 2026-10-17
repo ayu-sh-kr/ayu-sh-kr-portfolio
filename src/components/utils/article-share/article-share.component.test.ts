@@ -1,3 +1,4 @@
+import {render} from "@ayu-sh-kr/dota-wrap/rendering";
 import {afterEach, beforeEach, describe, expect, it, vi} from "vitest";
 import {blogPosts} from "@app/configs/blogs.config.ts";
 import {ArticleShareComponent} from "./article-share.component.ts";
@@ -115,12 +116,13 @@ describe("reusable article sharing", () => {
   });
 
   it("renders labelled dota icons and hides unsafe or invalid destinations", () => {
-    article.innerHTML = article.render();
+    render(article, article.render());
     expect(article.querySelectorAll(".article-share-button")).toHaveLength(6);
     expect(article.querySelectorAll(".article-share-button dota-icon[aria-hidden='true']")).toHaveLength(6);
     expect(article.querySelectorAll(".article-share-button[aria-label]")).toHaveLength(6);
     article.canonicalUrl = "javascript:alert(1)";
-    expect(article.render()).toBe("");
+    render(article, article.render());
+    expect(article.children).toHaveLength(0);
     expect(getArticleShareData({title: "Invalid", url: "invalid"})).toBeNull();
   });
 

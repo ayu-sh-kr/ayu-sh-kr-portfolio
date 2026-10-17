@@ -1,4 +1,5 @@
-import { BaseElement, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html, trustedHTML} from "@ayu-sh-kr/dota-wrap/rendering";
+import { BaseElement, Component } from "@ayu-sh-kr/dota-wrap/core";
 import { offlineContent } from "@app/data/offline-content.ts";
 
 @Component({
@@ -10,11 +11,11 @@ export class OfflineTroubleshootComponent extends BaseElement {
     super();
   }
 
-  render(): string {
+  render(): TemplateResult {
     const { lastTry, navigation, troubleshooting, states } = offlineContent;
     const content = states.offline;
 
-    return HTML`
+    return html`
       <section class="offline-section offline-troubleshoot-section" aria-labelledby="offline-troubleshoot-title">
         <div class="offline-panel-inner offline-troubleshoot-content">
           <p class="offline-eyebrow">${troubleshooting.eyebrow}</p>
@@ -23,16 +24,15 @@ export class OfflineTroubleshootComponent extends BaseElement {
           <div class="offline-tries">
             ${troubleshooting.tries
               .map(
-                (item) => HTML`
+                (item) => html`
                   <div class="offline-try">
                     <span class="offline-try-icon" aria-hidden="true">
-                      ${item.icon}
+                      ${trustedHTML(item.icon)}
                     </span>
                     <div><h3>${item.title}</h3><p>${item.body}</p></div>
                   </div>
                 `,
-              )
-              .join("")}
+              )}
           </div>
 
           <div class="offline-actions offline-actions-secondary">

@@ -1,4 +1,5 @@
-import { BaseElement, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
+import { BaseElement, Component } from "@ayu-sh-kr/dota-wrap/core";
 import { type ApplicationEvent, OnEvent } from "@ayu-sh-kr/dota-wrap/event";
 import { coffeeContent, type CoffeeSize } from "@app/data/coffee-content.ts";
 import { COFFEE_ORDER_QUANTITY_EVENT, COFFEE_ORDER_SIZE_EVENT } from "@app/events/coffee.events.ts";
@@ -91,13 +92,13 @@ export class CoffeeOrderTotalComponent extends BaseElement {
   }
 
   /** Returns the visual cup and informational-only total panel for the current event state. */
-  render(): string {
+  render(): TemplateResult {
     const size = this.getSelectedSize();
     const total = size.price[this.currency] * this.quantity;
     const fraction = this.getCupFillFraction(size.price.USD * this.quantity);
     const liquidHeight = fraction * 88;
 
-    return HTML`
+    return html`
       <div class="coffee-cup-wrap" style="--coffee-heat:${0.25 + fraction * 0.75}" aria-hidden="true">
         <span class="coffee-steam coffee-steam-one"></span><span class="coffee-steam coffee-steam-two"></span><span class="coffee-steam coffee-steam-three"></span>
         <svg class="coffee-cup" viewBox="0 0 160 140">

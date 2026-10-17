@@ -1,4 +1,5 @@
-import { Component, DotaPageElement, HTML, SEO } from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
+import { Component, DotaPageElement, SEO } from "@ayu-sh-kr/dota-wrap/core";
 import { Route } from "@ayu-sh-kr/dota-wrap/router";
 import { designTypographyContent } from "@app/data/design-typography-content.ts";
 import { toSEO } from "@app/utils/seo.utils.ts";
@@ -27,8 +28,8 @@ export class DesignTypographyPage extends DotaPageElement {
   }
 
   /** Renders shared chrome around the typography reference sections. */
-  render(): string {
-    return HTML`
+  render(): TemplateResult {
+    return html`
       <app-header></app-header>
       <main id="design-typography-page-main">
         <design-typography-overview></design-typography-overview>

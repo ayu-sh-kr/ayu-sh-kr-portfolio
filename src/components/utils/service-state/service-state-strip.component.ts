@@ -1,4 +1,5 @@
-import { BaseElement, Component, HTML, Property, String } from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
+import { BaseElement, Component, Property, String } from "@ayu-sh-kr/dota-wrap/core";
 import { OnEvent } from "@ayu-sh-kr/dota-wrap/event";
 import { ServiceState, type ServiceStatus } from "@app/service/service-state.service.ts";
 
@@ -42,8 +43,8 @@ export class ServiceStateStripComponent extends BaseElement {
     document.documentElement.classList.remove("has-service-state-strip");
   }
 
-  render(): string {
-    return HTML`
+  render(): TemplateResult {
+    return html`
       <div class="service-state-strip" role="status" aria-live="off" hidden>
         <div class="service-state-strip__inner layout-page">
           <span class="service-state__mark" aria-hidden="true"></span>

@@ -1,4 +1,5 @@
-import { Component, DotaPageElement, HTML, SEO } from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
+import { Component, DotaPageElement, SEO } from "@ayu-sh-kr/dota-wrap/core";
 import { Route } from "@ayu-sh-kr/dota-wrap/router";
 import { designElementContent } from "@app/data/design-element-content.ts";
 import { toSEO } from "@app/utils/seo.utils.ts";
@@ -25,8 +26,8 @@ export class DesignElementPage extends DotaPageElement {
   }
 
   /** Composes the overview, button, anchor, and guidance surfaces between shared chrome without duplicating their data or interactions. */
-  render(): string {
-    return HTML`
+  render(): TemplateResult {
+    return html`
       <app-header></app-header>
       <main id="design-element-page-main">
         <design-element-overview></design-element-overview>

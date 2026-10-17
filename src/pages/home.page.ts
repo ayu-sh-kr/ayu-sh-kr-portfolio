@@ -1,4 +1,5 @@
-import { Component, DotaPageElement, HTML, SEO } from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
+import { Component, DotaPageElement, SEO } from "@ayu-sh-kr/dota-wrap/core";
 import { Route } from "@ayu-sh-kr/dota-wrap/router";
 import {portfolioContent} from "@app/data/portfolio-content.ts";
 import {toSEO} from "@app/utils/seo.utils.ts";
@@ -25,8 +26,8 @@ export class HomePage extends DotaPageElement {
   }
 
   /** Renders the home shell and its composed sections. */
-  render(): string {
-    return HTML`
+  render(): TemplateResult {
+    return html`
       <app-header></app-header>
       <main>
         <portfolio-hero data-analytics-section="home_hero"></portfolio-hero>

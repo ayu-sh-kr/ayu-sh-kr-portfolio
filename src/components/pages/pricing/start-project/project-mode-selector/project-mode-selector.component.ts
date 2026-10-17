@@ -1,10 +1,10 @@
-import { ApplicationEventService, BaseElement, Component, HostListener, HTML, Property, String } from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
+import { ApplicationEventService, BaseElement, Component, HostListener, Property, String } from "@ayu-sh-kr/dota-wrap/core";
 import { pricingContent } from "@app/data/pricing-content.ts";
 import {
   PRICING_START_PROJECT_MODE_EVENT,
   type PricingStartProjectMode,
 } from "@app/events/pricing.events.ts";
-import { escapeHtml } from "@app/utils/html.utils.ts";
 
 /**
  * Selects which project-intake form is displayed beneath the pricing introduction.
@@ -83,19 +83,19 @@ export class PricingProjectModeSelectorComponent extends BaseElement {
   }
 
   /** Renders the accessible, data-driven project starting-point cards. */
-  render(): string {
+  render(): TemplateResult {
     const content = pricingContent.startProject;
 
-    return HTML`
+    return html`
       <div class="pricing-project-question">
         <p><span>1</span>${content.modeQuestion}</p>
         <div class="pricing-project-modes" role="radiogroup" aria-label="${content.modeQuestion}">
-          ${content.modes.map((mode) => `
+          ${content.modes.map((mode) => html`
             <button class="form-choice input-lg input-rounded-md input-bordered pricing-project-mode ${mode.id === this.selectedMode ? "is-selected" : ""}" type="button" role="radio" aria-checked="${mode.id === this.selectedMode}" data-project-mode="${mode.id}">
-              <strong>${escapeHtml(mode.label)}</strong>
-              <small>${escapeHtml(mode.description)}</small>
+              <strong>${mode.label}</strong>
+              <small>${mode.description}</small>
             </button>
-          `).join("")}
+          `)}
         </div>
       </div>
     `;

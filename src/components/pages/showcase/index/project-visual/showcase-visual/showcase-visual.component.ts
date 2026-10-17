@@ -1,4 +1,5 @@
-import { BaseElement, Component, HTML, Property, String } from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
+import { BaseElement, Component, Property, String } from "@ayu-sh-kr/dota-wrap/core";
 import { getShowcaseProject } from "@app/data/showcase-content.ts";
 
 /**
@@ -28,10 +29,10 @@ export class ShowcaseVisualComponent extends BaseElement {
   }
 
   /** Renders labels for the project visual, or nothing when the slug is unknown. */
-  render(): string {
+  render(): TemplateResult {
     const project = getShowcaseProject(this.projectSlug);
     if (!project) {
-      return "";
+      return html``;
     }
 
     const labels = project.visual === "workspace"
@@ -42,13 +43,13 @@ export class ShowcaseVisualComponent extends BaseElement {
           ? ["GET /data", "typed", "cache"]
           : [project.kind, project.year.toString(), project.status];
 
-    return HTML`
+    return html`
       <div class="showcase-visual showcase-visual-${project.visual} showcase-visual-${this.variant}" aria-hidden="true">
         <div class="showcase-visual-grid"></div>
         <div class="showcase-visual-orbit showcase-visual-orbit-one"></div>
         <div class="showcase-visual-orbit showcase-visual-orbit-two"></div>
         <div class="showcase-visual-labels">
-          ${labels.map((label) => `<span>${label}</span>`).join("")}
+          ${labels.map((label) => html`<span>${label}</span>`)}
         </div>
         <strong>${project.title}</strong>
       </div>

@@ -1,4 +1,5 @@
-import { BaseElement, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
+import {html, TemplateResult} from "@ayu-sh-kr/dota-wrap/rendering";
+import { BaseElement, Component } from "@ayu-sh-kr/dota-wrap/core";
 import { OnEvent } from "@ayu-sh-kr/dota-wrap/event";
 import {
   designContent,
@@ -54,24 +55,24 @@ export class DesignIndexReferenceComponent extends BaseElement {
   }
 
   /** Renders the five grammar doors followed by the shared ownership and shipping guidance. */
-  render(): string {
+  render(): TemplateResult {
     const { index, sections } = designContent;
 
-    return HTML`
+    return html`
       <div class="design-index-reference layout-page">
         <div class="design-index-reference__shell">
           <aside class="design-index-reference__rail" aria-label="${index.rail.ariaLabel}">
             <nav class="design-index-reference__toc">
               <p class="type-label">${index.rail.structureLabel}</p>
-              ${sections.slice(0, 2).map((section) => this.renderRailLink(section)).join("")}
+              ${sections.slice(0, 2).map((section) => this.renderRailLink(section))}
               <p class="type-label">${index.rail.behaviourLabel}</p>
-              ${sections.slice(2).map((section) => this.renderRailLink(section)).join("")}
+              ${sections.slice(2).map((section) => this.renderRailLink(section))}
               <p class="type-label">${index.rail.contractLabel}</p>
-              ${index.rail.contractLinks.map((link) => HTML`<a data-design-index-nav href="${link.href}">${link.label}</a>`).join("")}
+              ${index.rail.contractLinks.map((link) => html`<a data-design-index-nav href="${link.href}">${link.label}</a>`)}
             </nav>
           </aside>
           <div class="design-index-reference__content">
-            ${sections.map((section, sectionIndex) => this.renderGrammarSection(section, sectionIndex === 0)).join("")}
+            ${sections.map((section, sectionIndex) => this.renderGrammarSection(section, sectionIndex === 0))}
             ${this.renderOwnership()}
             ${this.renderRoutes()}
             ${this.renderShipChecklist()}
@@ -89,31 +90,31 @@ export class DesignIndexReferenceComponent extends BaseElement {
   }
 
   /** Renders one rail destination so the grammar and contract groups share identical accessible links. */
-  private renderRailLink(section: Pick<DesignGrammarSection, "id" | "number" | "title">): string {
-    return HTML`<a data-design-index-nav href="#${section.id}">${section.number} · ${section.title}</a>`;
+  private renderRailLink(section: Pick<DesignGrammarSection, "id" | "number" | "title">) {
+    return html`<a data-design-index-nav href="#${section.id}">${section.number} · ${section.title}</a>`;
   }
 
   /** Renders the contextual section, its single-purpose route doors, and non-nested fragment shortcuts. */
-  private renderGrammarSection(section: DesignGrammarSection, isFirst: boolean): string {
-    return HTML`
+  private renderGrammarSection(section: DesignGrammarSection, isFirst: boolean) {
+    return html`
       <section id="${section.id}" data-design-index-section class="design-index-reference__section layout-section ${isFirst ? "layout-section-flush" : ""}" aria-labelledby="${section.id}-title">
         <p class="design-index-reference__number type-eyebrow">${section.number}</p>
         <h2 id="${section.id}-title" class="type-section">${section.title}</h2>
         <p class="type-lede">${section.lede}</p>
         <div class="design-index-reference__doors">
-          ${section.doors.map((door) => this.renderDoor(section.number, door)).join("")}
+          ${section.doors.map((door) => this.renderDoor(section.number, door))}
         </div>
         <nav class="design-index-reference__jumps" aria-label="${designContent.index.labels.sectionNavigationPrefix} ${section.title}">
           <p class="type-label">${designContent.index.labels.jump}</p>
-          ${section.jumps.map((jump) => HTML`<a href="${jump.href}">${jump.label}</a>`).join("")}
+          ${section.jumps.map((jump) => html`<a href="${jump.href}">${jump.label}</a>`)}
         </nav>
       </section>
     `;
   }
 
   /** Renders one complete route door with prose in the surface and metrics in its contrast panel. */
-  private renderDoor(number: string, door: DesignGrammarDoor): string {
-    return HTML`
+  private renderDoor(number: string, door: DesignGrammarDoor) {
+    return html`
       <a class="design-index-door" href="${door.href}">
         <span class="design-index-door__body">
           <span class="type-label">${designContent.index.labels.doorPurpose}</span>
@@ -124,7 +125,7 @@ export class DesignIndexReferenceComponent extends BaseElement {
         <span class="design-index-door__stats">
           <span class="type-label">${designContent.index.labels.grammarPrefix} ${number}</span>
           <span class="design-index-door__facts">
-            ${door.facts.map((fact) => HTML`<span><b data-count>${fact.value}</b><small>${fact.label}</small></span>`).join("")}
+            ${door.facts.map((fact) => html`<span><b data-count>${fact.value}</b><small>${fact.label}</small></span>`)}
           </span>
         </span>
       </a>
@@ -132,23 +133,23 @@ export class DesignIndexReferenceComponent extends BaseElement {
   }
 
   /** Renders the decision-boundary table and its precedence note for resolving apparent conflicts. */
-  private renderOwnership(): string {
+  private renderOwnership() {
     const { ownership } = designContent.index;
 
-    return HTML`
+    return html`
       <section id="map" data-design-index-section class="design-index-reference__section layout-section" aria-labelledby="map-title">
         <p class="design-index-reference__number type-eyebrow">${ownership.number}</p>
         <h2 id="map-title" class="type-section">${ownership.title}</h2>
         <p class="type-lede">${ownership.lede}</p>
         <div class="design-index-reference__table" role="region" aria-label="${ownership.ariaLabel}">
           <div class="design-index-reference__table-row design-index-reference__table-row--head" role="row">
-            ${ownership.headers.map((header) => HTML`<span role="columnheader">${header}</span>`).join("")}
+            ${ownership.headers.map((header) => html`<span role="columnheader">${header}</span>`)}
           </div>
-          ${designContent.ownership.map((item) => HTML`
+          ${designContent.ownership.map((item) => html`
             <div class="design-index-reference__table-row" role="row">
               <strong role="cell">${item.layer}</strong><span role="cell">${item.owns}</span><span role="cell">${item.excludes}</span><code role="cell">${item.source}</code>
             </div>
-          `).join("")}
+          `)}
         </div>
         <aside class="design-index-reference__note" aria-label="${ownership.note.ariaLabel}">
           <p class="type-label">${ownership.note.label}</p>
@@ -160,36 +161,36 @@ export class DesignIndexReferenceComponent extends BaseElement {
   }
 
   /** Renders common work as a reading path so maintainers open only the grammar they need. */
-  private renderRoutes(): string {
+  private renderRoutes() {
     const { routes } = designContent.index;
 
-    return HTML`
+    return html`
       <section id="routes" data-design-index-section class="design-index-reference__section layout-section" aria-labelledby="routes-title">
         <p class="design-index-reference__number type-eyebrow">${routes.number}</p>
         <h2 id="routes-title" class="type-section">${routes.title}</h2>
         <p class="type-lede">${routes.lede}</p>
         <dl class="design-index-reference__routes">
-          ${designContent.routes.map((route) => HTML`<div><dt>${route.task}</dt><dd>${route.path}</dd></div>`).join("")}
+          ${designContent.routes.map((route) => html`<div><dt>${route.task}</dt><dd>${route.path}</dd></div>`)}
         </dl>
       </section>
     `;
   }
 
   /** Renders the shared final checks and links back to the first grammar for the next implementation step. */
-  private renderShipChecklist(): string {
+  private renderShipChecklist() {
     const { ship } = designContent.index;
 
-    return HTML`
+    return html`
       <section id="ship" data-design-index-section class="design-index-reference__section layout-section-end" aria-labelledby="ship-title">
         <p class="design-index-reference__number type-eyebrow">${ship.number}</p>
         <h2 id="ship-title" class="type-section">${ship.title}</h2>
         <p class="type-lede">${ship.lede}</p>
         <ol class="design-index-reference__checks">
-          ${designContent.checks.map((check) => HTML`<li>${check}</li>`).join("")}
+          ${designContent.checks.map((check) => html`<li>${check}</li>`)}
         </ol>
         <p class="design-index-reference__accent-note"><strong>${ship.accentWarning}</strong> ${ship.accentResolution}</p>
         <div class="design-index-reference__actions layout-row">
-          ${ship.actions.map((action) => HTML`<a class="${action.className}" href="${action.href}">${action.label}</a>`).join("")}
+          ${ship.actions.map((action) => html`<a class="${action.className}" href="${action.href}">${action.label}</a>`)}
         </div>
       </section>
     `;

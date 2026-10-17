@@ -1,4 +1,5 @@
-import { BaseElement, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
+import { BaseElement, Component } from "@ayu-sh-kr/dota-wrap/core";
 import { designInteractionContent } from "@app/data/design-interaction-content.ts";
 
 /** Ends the reference with the release checks required for every newly introduced behaviour. */
@@ -10,10 +11,10 @@ export class DesignInteractionChecklistComponent extends BaseElement {
   }
 
   /** Renders the final implementation checks after every live specimen has been introduced. */
-  render(): string {
+  render(): TemplateResult {
     const { checklist } = designInteractionContent;
 
-    return HTML`
+    return html`
       <section id="ship" class="design-interaction-section layout-page layout-section-end" aria-labelledby="ship-title">
         <header class="design-interaction-heading layout-stack layout-stack-sm">
           <p class="type-eyebrow">${checklist.eyebrow}</p>
@@ -21,7 +22,7 @@ export class DesignInteractionChecklistComponent extends BaseElement {
           <p class="type-lede">${checklist.lede}</p>
         </header>
         <ol class="design-interaction-checklist">
-          ${checklist.items.map((item) => HTML`<li>${item}</li>`).join("")}
+          ${checklist.items.map((item) => html`<li>${item}</li>`)}
         </ol>
       </section>`;
   }

@@ -1,4 +1,5 @@
-import { BaseElement, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
+import { BaseElement, Component } from "@ayu-sh-kr/dota-wrap/core";
 import { OnEvent } from "@ayu-sh-kr/dota-wrap/event";
 import { designElementContent } from "@app/data/design-element-content.ts";
 import { actionButtonRegistry } from "@app/service/action-button-registry.service.ts";
@@ -48,9 +49,9 @@ export class DesignButtonShowcaseComponent extends BaseElement {
   }
 
   /** Renders production action-button variants from the page-owned content model. */
-  render(): string {
+  render(): TemplateResult {
     const { showcase } = designElementContent;
-    return HTML`
+    return html`
       <section id="design-element-button-showcase" class="design-button-showcase layout-page layout-section" aria-labelledby="design-element-button-showcase-title">
         <div class="design-element-showcase__heading layout-stack layout-stack-sm">
           <p class="type-eyebrow">${showcase.eyebrow}</p>
@@ -58,14 +59,14 @@ export class DesignButtonShowcaseComponent extends BaseElement {
           <p class="type-lede">${showcase.lede}</p>
         </div>
         <div class="design-element-showcase__grid layout-grid-auto-sm">
-          ${showcase.actions.map((item) => HTML`
+          ${showcase.actions.map((item) => html`
             <article class="design-element-specimen-card" data-variant="${item.variant}">
               <p class="type-label">${item.variant}</p>
               <h3 class="type-card-title">${item.title}</h3>
               <p>${item.body}</p>
               <action-button id="design-button-${item.id}" action="${item.action}" variant="${item.variant}" label="${item.label}" busy-label="${item.busyLabel}" done-label="${item.doneLabel}" fail-label="${item.failLabel}"></action-button>
             </article>
-          `).join("")}
+          `)}
         </div>
       </section>
     `;

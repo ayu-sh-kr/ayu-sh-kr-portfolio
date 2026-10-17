@@ -1,4 +1,5 @@
-import { ApplicationEventService, BaseElement, Component, HostListener, HTML, State } from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html, trustedHTML} from "@ayu-sh-kr/dota-wrap/rendering";
+import { ApplicationEventService, BaseElement, Component, HostListener, State } from "@ayu-sh-kr/dota-wrap/core";
 import { pricingContent } from "@app/data/pricing-content.ts";
 import { PRICING_ESTIMATOR_TYPE_EVENT } from "@app/events/pricing.events.ts";
 
@@ -95,24 +96,23 @@ export class PricingEstimatorTypeOptionsComponent extends BaseElement {
    * {@link pricingContent}, so adding a type is a content change, not a code
    * change.
    */
-  render(): string {
+  render(): TemplateResult {
     const content = pricingContent.estimator;
 
-    return HTML`
+    return html`
       <fieldset class="pricing-estimator-question">
         <legend><span>${content.typeStep}</span>${content.typeQuestion}</legend>
         <div class="pricing-pick-grid">
           ${content.types
             .map(
-              (option) => `
+              (option) => html`
                 <button class="form-choice input-lg input-rounded-md input-bordered pricing-pick ${option.id === this.selectedId ? "is-selected" : ""}" type="button" data-estimator-id="${option.id}" aria-pressed="${option.id === this.selectedId}">
-                  <span class="pricing-pick-icon">${option.icon}</span>
+                  <span class="pricing-pick-icon">${trustedHTML(option.icon)}</span>
                   <span class="pricing-pick-label">${option.label}</span>
                   <span class="pricing-pick-sublabel">${option.sublabel}</span>
                 </button>
               `,
-            )
-            .join("")}
+            )}
         </div>
       </fieldset>
     `;

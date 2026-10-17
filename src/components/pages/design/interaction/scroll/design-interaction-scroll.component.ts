@@ -1,4 +1,5 @@
-import { BaseElement, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
+import { BaseElement, Component } from "@ayu-sh-kr/dota-wrap/core";
 import { designInteractionContent } from "@app/data/design-interaction-content.ts";
 
 /** Collects the scroll-response rules so page-level reading state remains one coordinated concern. */
@@ -10,11 +11,11 @@ export class DesignInteractionScrollComponent extends BaseElement {
   }
 
   /** Renders the reveal, rail, and abbreviated pin specimens. */
-  render(): string {
+  render(): TemplateResult {
     const { scroll } = designInteractionContent;
     const [reveal, progress, pin] = scroll.specimens;
 
-    return HTML`
+    return html`
       <section id="scroll" class="design-interaction-section layout-page layout-section" aria-labelledby="scroll-title">
         <header class="design-interaction-heading layout-stack layout-stack-sm">
           <p class="type-eyebrow">${scroll.eyebrow}</p>

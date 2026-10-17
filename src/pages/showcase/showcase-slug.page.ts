@@ -1,3 +1,4 @@
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
 import {Component, DotaPageElement, SEO} from "@ayu-sh-kr/dota-wrap/core";
 import {Route} from "@ayu-sh-kr/dota-wrap/router";
 import {getShowcaseProject, getShowcaseSeo, getShowcaseSlug} from "@app/data/showcase-content.ts";
@@ -27,8 +28,8 @@ export class ShowcaseSlugPage extends DotaPageElement {
   }
 
   /** Renders the showcase article shell; the child view loads the selected project. */
-  render(): string {
-    return `
+  render(): TemplateResult {
+    return html`
       <app-header></app-header>
       <showcase-view data-analytics-section="showcase_article"></showcase-view>
       <app-footer></app-footer>

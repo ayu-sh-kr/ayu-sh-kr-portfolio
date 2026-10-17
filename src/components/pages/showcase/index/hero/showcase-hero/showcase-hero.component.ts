@@ -1,4 +1,5 @@
-import { BaseElement, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
+import { BaseElement, Component } from "@ayu-sh-kr/dota-wrap/core";
 import { showcaseHeroContent, showcaseProjects } from "@app/data/showcase-content.ts";
 
 /**
@@ -20,12 +21,12 @@ export class ShowcaseHeroComponent extends BaseElement {
   }
 
   /** Renders the showcase headline and counts from the current project catalog. */
-  render(): string {
+  render(): TemplateResult {
     const openSourceCount = showcaseProjects.filter((project) => project.kind === "open source").length;
     const clientCount = showcaseProjects.filter((project) => project.kind === "client work").length;
     const { counts } = showcaseHeroContent;
 
-    return HTML`
+    return html`
       <div id="showcase-hero-wrap" class="layout-hero-pin-wrap">
         <section class="layout-hero-pin-stage showcase-hero-stage" aria-labelledby="showcase-hero-title">
           <div id="showcase-hero-inner" class="layout-content layout-stack layout-stack-lg text-center">

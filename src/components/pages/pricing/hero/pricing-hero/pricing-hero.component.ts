@@ -1,4 +1,5 @@
-import { BaseElement, Component, HTML, WindowListener } from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
+import { BaseElement, Component, WindowListener } from "@ayu-sh-kr/dota-wrap/core";
 import { OnEvent } from "@ayu-sh-kr/dota-wrap/event";
 import { pricingContent } from "@app/data/pricing-content.ts";
 
@@ -56,10 +57,10 @@ export class PricingHeroComponent extends BaseElement {
   }
 
   /** Returns the pricing hero content and its motion-controller anchor elements. */
-  render(): string {
+  render(): TemplateResult {
     const content = pricingContent.hero;
 
-    return HTML`
+    return html`
       <div id="pricing-hero-wrap" class="layout-hero-pin-wrap">
         <section id="pricing-hero-stage" class="layout-hero-pin-stage" aria-labelledby="pricing-hero-title">
           <div id="pricing-hero-inner">

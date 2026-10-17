@@ -1,3 +1,4 @@
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
 import {Component, DotaPageElement, SEO} from "@ayu-sh-kr/dota-wrap/core";
 import {Route} from "@ayu-sh-kr/dota-wrap/router";
 import {getBlogPost, getBlogSlug} from "@app/configs/blogs.config.ts";
@@ -29,8 +30,8 @@ export class BlogSlugPage extends DotaPageElement {
   }
 
   /** Renders only the article surface between the shared header and footer. */
-  render(): string {
-    return `
+  render(): TemplateResult {
+    return html`
       <app-header></app-header>
       <blog-article data-analytics-section="blog_article"></blog-article>
       <app-footer></app-footer>

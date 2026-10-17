@@ -1,4 +1,5 @@
-import { Component, DotaPageElement, HTML, Property, SEO, String } from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
+import { Component, DotaPageElement, Property, SEO, String } from "@ayu-sh-kr/dota-wrap/core";
 import { Route } from "@ayu-sh-kr/dota-wrap/router";
 import {portfolioContent} from "@app/data/portfolio-content.ts";
 import {toSEO} from "@app/utils/seo.utils.ts";
@@ -33,8 +34,8 @@ export class ErrorPage extends DotaPageElement {
   }
 
   /** Renders the status message and return link around the shared footer. */
-  render(): string {
-    return HTML`
+  render(): TemplateResult {
+    return html`
       <main class="relative grid min-h-[100svh] place-items-center overflow-hidden bg-[var(--background-color)] px-5 py-24 text-[var(--foreground-color)]">
         <div class="relative z-10 w-full max-w-3xl border-t border-[var(--border-color)] pt-8">
           <p class="motion-eyebrow">Request failed / ${this.status}</p>

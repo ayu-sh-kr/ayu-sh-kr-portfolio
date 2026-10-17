@@ -1,4 +1,5 @@
-import { BaseElement, Component, HTML, WindowListener } from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
+import { BaseElement, Component, WindowListener } from "@ayu-sh-kr/dota-wrap/core";
 import { OnEvent } from "@ayu-sh-kr/dota-wrap/event";
 import { coffeeContent } from "@app/data/coffee-content.ts";
 
@@ -70,10 +71,10 @@ export class CoffeeHeroComponent extends BaseElement {
   }
 
   /** Returns the compact introduction and direct links into its two named sections. */
-  render(): string {
+  render(): TemplateResult {
     const content = coffeeContent.hero;
 
-    return HTML`
+    return html`
       <div id="coffee-hero-wrap" class="layout-hero-pin-wrap layout-hero-pin-wrap--long">
         <section id="coffee-hero-stage" class="layout-hero-pin-stage" aria-labelledby="coffee-hero-title">
           <div id="coffee-hero-inner">

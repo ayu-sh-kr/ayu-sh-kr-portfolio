@@ -1,4 +1,5 @@
-import { ApplicationEventService, BaseElement, BindEvent, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
+import { ApplicationEventService, BaseElement, BindEvent, Component } from "@ayu-sh-kr/dota-wrap/core";
 import { coffeeContent } from "@app/data/coffee-content.ts";
 import { COFFEE_ORDER_QUANTITY_EVENT, type CoffeeOrderQuantitySelection } from "@app/events/coffee.events.ts";
 import { publishAnalyticsEvent } from "@app/utils/analytics.utils.ts";
@@ -84,14 +85,14 @@ export class CoffeeQuantityPickerComponent extends BaseElement {
   }
 
   /** Returns the preset controls and an optional, keyboard-focused custom input. */
-  render(): string {
+  render(): TemplateResult {
     const content = coffeeContent.order;
 
-    return HTML`
+    return html`
       <fieldset class="coffee-order-question">
         <legend><span>2</span>${content.quantityQuestion}</legend>
         <div class="coffee-quantity-grid">
-          ${coffeeContent.quantities.map((quantity) => `<button class="form-choice input-sm input-round input-bordered coffee-quantity ${!this.isCustomQuantity && quantity === this.quantity ? "is-selected" : ""}" type="button" data-coffee-quantity="${quantity}" aria-pressed="${!this.isCustomQuantity && quantity === this.quantity}">×${quantity}</button>`).join("")}
+          ${coffeeContent.quantities.map((quantity) => html`<button class="form-choice input-sm input-round input-bordered coffee-quantity ${!this.isCustomQuantity && quantity === this.quantity ? "is-selected" : ""}" type="button" data-coffee-quantity="${quantity}" aria-pressed="${!this.isCustomQuantity && quantity === this.quantity}">×${quantity}</button>`)}
           <button class="form-choice input-sm input-round input-bordered coffee-quantity ${this.isCustomQuantity ? "is-selected" : ""}" type="button" data-coffee-quantity="custom" aria-pressed="${this.isCustomQuantity}">${content.customLabel}</button>
         </div>
         <label class="form-label coffee-custom-quantity ${this.isCustomQuantity ? "is-visible" : ""}" for="coffee-custom-quantity">

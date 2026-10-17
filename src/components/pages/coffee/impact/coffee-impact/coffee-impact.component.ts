@@ -1,4 +1,5 @@
-import { BaseElement, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html, trustedHTML} from "@ayu-sh-kr/dota-wrap/rendering";
+import { BaseElement, Component } from "@ayu-sh-kr/dota-wrap/core";
 import { OnEvent } from "@ayu-sh-kr/dota-wrap/event";
 import { coffeeContent } from "@app/data/coffee-content.ts";
 import { CoffeeRevealLifecycle } from "@app/utils/coffee-reveal-lifecycle.utils.ts";
@@ -38,17 +39,17 @@ export class CoffeeImpactComponent extends BaseElement {
   }
 
   /** Returns the unnumbered outcomes funded by a coffee order. */
-  render(): string {
+  render(): TemplateResult {
     const content = coffeeContent.impact;
 
-    return HTML`
+    return html`
       <section id="coffee-impact" class="coffee-impact-section layout-page layout-section-lg layout-stack layout-stack-xl" aria-labelledby="coffee-impact-title">
         <header data-coffee-reveal>
           <p class="coffee-eyebrow">${content.eyebrow}</p>
           <h2 id="coffee-impact-title" class="type-section mt-3">${content.title}</h2>
         </header>
         <div class="coffee-impact-grid layout-grid-3 layout-grid-loose">
-          ${content.items.map((item) => `<article class="coffee-impact-item" data-coffee-reveal><span class="coffee-impact-icon" aria-hidden="true">${item.icon}</span><h3>${item.title}</h3><p>${item.body}</p></article>`).join("")}
+          ${content.items.map((item) => html`<article class="coffee-impact-item" data-coffee-reveal><span class="coffee-impact-icon" aria-hidden="true">${trustedHTML(item.icon)}</span><h3>${item.title}</h3><p>${item.body}</p></article>`)}
         </div>
       </section>
     `;

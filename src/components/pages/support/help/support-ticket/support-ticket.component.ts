@@ -1,4 +1,6 @@
-import { BaseElement, BindEvent, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
+import {html, TemplateResult} from "@ayu-sh-kr/dota-wrap/rendering";
+import {HTML} from "@ayu-sh-kr/dota-wrap/core";
+import { BaseElement, BindEvent, Component } from "@ayu-sh-kr/dota-wrap/core";
 import { OnEvent } from "@ayu-sh-kr/dota-wrap/event";
 import { supportContent } from "@app/data/support-content.ts";
 import { publishAnalyticsEvent } from "@app/utils/analytics.utils.ts";
@@ -351,10 +353,10 @@ export class SupportTicketComponent extends BaseElement {
    * The template remains pure: it reads current state and authored copy while event handlers own
    * focus, validation, uploads, and DOM transitions.
    */
-  render(): string {
+  render(): TemplateResult {
     const { handoff, form, success } = supportContent;
 
-    return HTML`
+    return html`
       <div class="support-handoff layout-row">
         <span class="support-rule" aria-hidden="true"></span>
         <button id="support-open-ticket" type="button" aria-expanded="false" aria-controls="support-ticket-form-shell">
@@ -389,7 +391,7 @@ export class SupportTicketComponent extends BaseElement {
             <div class="support-field">
               <label class="form-label type-label">${form.topicLabel}</label>
               <div class="support-topics layout-row layout-row-tight" role="group" aria-label="Topic">
-                ${form.topics.map((topic) => `<button type="button" class="form-choice input-sm input-round input-bordered support-topic" data-topic="${topic}" aria-pressed="false">${topic}</button>`).join("")}
+                ${form.topics.map((topic) => html`<button type="button" class="form-choice input-sm input-round input-bordered support-topic" data-topic="${topic}" aria-pressed="false">${topic}</button>`)}
               </div>
             </div>
 

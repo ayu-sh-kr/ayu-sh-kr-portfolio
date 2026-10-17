@@ -1,9 +1,9 @@
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
 import {
   BaseElement,
   Component,
   HostListener,
-  HTML,
-} from "@ayu-sh-kr/dota-wrap/core";
+  } from "@ayu-sh-kr/dota-wrap/core";
 import { Alert } from "@app/service/alert.service.ts";
 import { designInteractionContent } from "@app/data/design-interaction-content.ts";
 
@@ -24,10 +24,10 @@ export class DesignInteractionInterruptComponent extends BaseElement {
   }
 
   /** Renders the one trigger that opens the production destructive confirmation. */
-  render(): string {
+  render(): TemplateResult {
     const { interrupt } = designInteractionContent;
 
-    return HTML`
+    return html`
       <section id="interrupt" class="design-interaction-section layout-page layout-section" aria-labelledby="interrupt-title">
         <header class="design-interaction-heading layout-stack layout-stack-sm">
           <p class="type-eyebrow">${interrupt.eyebrow}</p>

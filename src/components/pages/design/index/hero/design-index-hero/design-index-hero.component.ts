@@ -1,4 +1,5 @@
-import { BaseElement, Component, HTML } from "@ayu-sh-kr/dota-wrap/core";
+import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
+import { BaseElement, Component } from "@ayu-sh-kr/dota-wrap/core";
 import { designContent } from "@app/data/design-content.ts";
 
 /**
@@ -18,10 +19,10 @@ export class DesignIndexHeroComponent extends BaseElement {
   }
 
   /** Renders the index title, context, and verifiable summary facts. */
-  render(): string {
+  render(): TemplateResult {
     const { hero } = designContent;
 
-    return HTML`
+    return html`
       <section class="design-index-hero layout-page layout-section-hero" aria-labelledby="design-index-title">
         <div class="design-index-hero__copy layout-stack layout-stack-lg">
           <div class="layout-stack layout-stack-sm">
@@ -30,7 +31,7 @@ export class DesignIndexHeroComponent extends BaseElement {
             <p class="type-lede">${hero.lede}</p>
           </div>
           <ul class="design-index-hero__facts" aria-label="${hero.factsAriaLabel}">
-            ${hero.facts.map((fact) => HTML`<li>${fact}</li>`).join("")}
+            ${hero.facts.map((fact) => html`<li>${fact}</li>`)}
           </ul>
         </div>
       </section>
