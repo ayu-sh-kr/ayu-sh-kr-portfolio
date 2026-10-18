@@ -10,13 +10,17 @@ The timing gives the dispute an audience: [re:Invent runs November 30–December
 
 Cloudflare became familiar as a network that **delivers websites faster** and **filters malicious traffic**. Its expansion into application hosting makes the competitive overlap easier to see:
 
-- **The foundation:** [Workers](https://developers.cloudflare.com/workers/) runs application code, overlapping with Lambda; [R2](https://developers.cloudflare.com/r2/pricing/) stores objects, competing with S3. Workers AI adds hosted AI model responses, another area served by AWS through Bedrock. These products predate the latest announcements.
-- **September 28 — broader infrastructure control:** The [cf CLI open beta](/news/cloudflare-cf-cli-wrangler-migration/) extends beyond Worker deployment to more than 3,000 API operations. Like the AWS CLI within Amazon's ecosystem, it gives developers and coding agents a common tool for managing services.
-- **October 1 — repositories to deployment:** [Artifacts entered open beta](/news/cloudflare-artifacts-next-git-platform/), alongside a challenge to build agent-focused Git platforms. It supplies programmable repositories, while Workers Builds connects code pushes to deployments and previews.
+- **The foundation:** [Workers](https://developers.cloudflare.com/workers/) runs application code, overlapping with Lambda; [R2](https://developers.cloudflare.com/r2/pricing/) stores objects, competing with S3. Workers AI adds hosted AI model responses, another area served by AWS through Bedrock. For example, an application can run its API on Workers, keep uploaded images in R2 and call an AI model without moving those jobs onto AWS. These products predate the latest announcements.
+- **September 28 — broader infrastructure control:** The [cf CLI open beta](/news/cloudflare-cf-cli-wrangler-migration/) extends beyond Worker deployment to more than 3,000 API operations. Like the AWS CLI within Amazon's ecosystem, it gives developers and coding agents a common tool for managing services. Its structured output and command search help agents discover operations and read their results, extending the workflow beyond deploying code.
+- **October 1 — repositories to deployment:** [Artifacts entered open beta](/news/cloudflare-artifacts-next-git-platform/), alongside a challenge to build agent-focused Git platforms. It supplies programmable repositories, while Workers Builds connects code pushes to deployments and previews. The opportunity is to keep repository management, review workflows and application delivery close together, with developers building their own coordination layer above Artifacts.
 
 Together, these pieces let Cloudflare compete for **more of the application workflow**, from storing code to running it. That puts more of the same developer spending in reach of both companies.
 
 ## AWS is shortening its own deployment path
+
+AWS's effort started before those late-September Cloudflare announcements. On **September 16**, it [introduced a simplified getting-started experience](https://aws.amazon.com/blogs/aws/aws-reimagines-the-getting-started-experience/) with **Google, GitHub, Apple and Amazon sign-in**, preconfigured projects and easier invitations for collaborators. AWS is gradually rolling it out to new customers; it is not yet available to everyone.
+
+The same announcement puts the **AWS CLI and Agent Toolkit** at the center of agent-assisted setup. A supplied prompt installs and configures the tools so a coding agent can work with the project. AWS demonstrates an agent creating a Lambda function, DynamoDB table and API Gateway endpoint. That is an AWS demonstration, rather than an independent speed comparison, but it shows the direction: let the agent provision and deploy the services behind an application.
 
 On **October 12**, four days before Prince's booth announcement, AWS launched [Lambda Web Functions](/news/aws-lambda-web-functions/). Developers can deploy a standard Node.js HTTP server without converting its routes into event handlers. AWS handles scaling and multi-region routing, with active CPU and memory billed separately.
 
