@@ -67,6 +67,8 @@ OpenCode's disclosure leaves important questions for its postmortem, particularl
 
 > A retired integration is only fully retired when its remaining credentials can no longer authorize requests.
 
+A tongue-in-cheek suggestion for OpenCode's next **free model** offer: make the frontier models free too. Perhaps then the alleged distillers could use the promotion instead of customers' stolen API keys.
+
 For more on the surrounding trust boundary, see [how AI routers handle requests and credentials](/news/malicious-ai-routers-agent-supply-chain/).
 
 *Reporting checked on October 18, 2026. The intrusion mechanism and downstream use remain incompletely disclosed.*
