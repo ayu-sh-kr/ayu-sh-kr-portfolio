@@ -26,16 +26,14 @@ The [AWS announcement](https://aws.amazon.com/blogs/aws/announcing-aws-lambda-we
 
 For that small application, AWS now offers another reason to keep the web layer alongside existing AWS services. Cloudflare offers a growing set of reasons to build more of it elsewhere. That is the commercial pressure behind the rivalry, even though the timing alone cannot establish why either company made a particular decision.
 
-## The bill that kept the rivalry going
+## The competition is for the next application
 
-**Egress fees** are charges for sending data out of a provider's network. For an image-heavy application, repeated downloads make that a recurring cost.
+For the small application, the decision now reaches beyond which service runs its API. It includes how the code gets deployed, where uploaded images live, how AI features are connected and what serving users will cost. Cloudflare's recent releases make more of that workflow available within its platform; Web Functions makes staying on AWS easier for teams already using its services.
 
-Cloudflare made those charges a public battleground. Its July 2021 [AWS's Egregious Egress](https://blog.cloudflare.com/aws-egregious-egress/) post argued that wholesale bandwidth costs had fallen much faster than AWS's transfer prices, making it expensive to use other providers alongside AWS.
+**Delivery costs remain part of that choice.** R2's [pricing documentation](https://developers.cloudflare.com/r2/pricing/) lists no egress bandwidth charge for sending stored objects to users. Storage and operations remain billable. That can matter for an application serving images repeatedly, but it does not establish that the entire application will cost less on Cloudflare. Compute, databases, requests and the surrounding services still shape the total.
 
-AWS [introduced a migration waiver in March 2024](https://aws.amazon.com/blogs/aws/free-data-transfer-out-to-internet-when-moving-out-of-aws/), citing customer choice and the EU Data Act's direction. Eligible customers moving data off AWS can request transfer credits through support, subject to the program's terms. **A migration waiver and free everyday delivery solve different problems.** R2's [pricing documentation](https://developers.cloudflare.com/r2/pricing/) lists no egress bandwidth charge, while storage, operations and some retrievals remain billable.
+The stronger competitive pitch is the combination: a shorter deployment path, connected services and a bill that fits the workload. Cloudflare is assembling more of those pieces around Workers. AWS is bringing a simpler web deployment model to an ecosystem where many teams already keep their data and backend services. Each has a reason to win the application early, before its dependencies make a later move more work.
 
-That difference keeps Cloudflare's argument relevant after AWS's concession. For the small application, the question is both what it costs to leave and what it costs to keep serving users.
+That is why the recent launches give the booth dispute more context. Cloudflare is seeking a larger role in building and running applications, putting it in more direct competition with the host of re:Invent. Prince reads the cancellation as a sign that AWS feels threatened; the growing overlap explains the competitive stakes, while Amazon's reason remains unconfirmed.
 
-The egress dispute gave Cloudflare a reason to challenge the AWS bill. Its expanding platform now gives developers more places to move that spending, while Web Functions gives AWS another way to keep it. The rivalry has grown from arguing about the cost of moving data to competing over where the next application gets built.
-
-That makes Cloudflare a more direct competitor at Amazon's own developer conference. Prince presents the cancelled booth as evidence that AWS feels threatened; the product overlap explains why that reading has traction, **without establishing AWS's reason for the cancellation**. Cloudflare can still take its pitch to Las Vegas. The question for developers is whether Amazon's easier deployment path or Cloudflare's increasingly connected platform makes the stronger case for their next project.
+Cloudflare can still take that pitch to Las Vegas, even outside the expo hall. For developers, the more consequential contest is already happening in the products: **which platform makes the next application easier to build, operate and afford?**
