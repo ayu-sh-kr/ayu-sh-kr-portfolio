@@ -71,11 +71,11 @@ export const newsNotes: readonly NewsNote[] = [
     slug: "aws-cloudflare-reinvent-booth-rivalry",
     date: "2026-10-18",
     title: "AWS and Cloudflare rivalry reaches the re:Invent booth",
-    summary: "Cloudflare's CEO says AWS cancelled its re:Invent booth. How the dispute connects to competing developer platforms, R2 storage and the long fight over egress fees.",
+    summary: "Cloudflare's CEO says AWS cancelled its re:Invent booth. How recent Cloudflare releases, Lambda Web Functions and egress pricing sharpen the platform rivalry.",
     kind: "infra",
     document: "/news/aws-cloudflare-reinvent-booth-rivalry.md",
     keywords: ["AWS Cloudflare rivalry", "Cloudflare re:Invent booth cancellation", "AWS egress fees", "Cloudflare R2", "Cloudflare Workers"],
-    minutes: 3,
+    minutes: 4,
     reference: {label: "Matthew Prince — re:Invent booth cancellation post", href: "https://x.com/eastdakota/status/2111209566499184883"},
   },
 
