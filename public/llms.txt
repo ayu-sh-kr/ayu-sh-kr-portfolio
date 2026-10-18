@@ -49,6 +49,8 @@
 
 ## Recent Dispatch notes
 
+- [Cloudflare CEO says AWS cancelled its re:Invent 2026 booth](https://www.ayu-sh-kr.com/news/aws-cloudflare-reinvent-booth-rivalry/): Cloudflare's reported re:Invent 2026 booth cancellation brings its AWS rivalry into focus, as both platforms compete to help developers build and deploy applications faster. [Article Markdown](https://www.ayu-sh-kr.com/news/aws-cloudflare-reinvent-booth-rivalry.md).
+
 - [OpenCode Console breach: how exposed API keys became AI bills](https://www.ayu-sh-kr.com/news/opencode-console-breach-api-keys/): Legacy Console access, exposed provider credentials, billing abuse and the limits of the distillation claim. [Article Markdown](https://www.ayu-sh-kr.com/news/opencode-console-breach-api-keys.md).
 
 - [Perplexity SPACE: How Firecracker sandboxes isolate AI agents](https://www.ayu-sh-kr.com/news/perplexity-space-firecracker-agent-sandboxes/): SPACE’s three layers, Firecracker isolation, external credentials and resumable sessions, with an isometric architecture cutaway. [Article Markdown](https://www.ayu-sh-kr.com/news/perplexity-space-firecracker-agent-sandboxes.md).

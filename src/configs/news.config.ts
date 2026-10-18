@@ -68,6 +68,18 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "aws-cloudflare-reinvent-booth-rivalry",
+    date: "2026-10-18",
+    title: "Cloudflare CEO says AWS cancelled its re:Invent 2026 booth",
+    summary: "Cloudflare's reported re:Invent 2026 booth cancellation brings its AWS rivalry into focus, as both platforms compete to help developers build and deploy applications faster.",
+    kind: "infra",
+    document: "/news/aws-cloudflare-reinvent-booth-rivalry.md",
+    keywords: ["Cloudflare re:Invent 2026", "AWS Cloudflare booth cancellation", "Cloudflare vs AWS", "Cloudflare Workers", "AWS Lambda Web Functions"],
+    minutes: 4,
+    reference: {label: "Matthew Prince — re:Invent booth cancellation post", href: "https://x.com/eastdakota/status/2111209566499184883"},
+  },
+
+  {
     slug: "opencode-console-breach-api-keys",
     date: "2026-10-18",
     title: "OpenCode Console breach: how exposed API keys became AI bills",
