@@ -8,32 +8,24 @@ The timing gives the dispute an audience: [re:Invent runs November 30–December
 
 ## From protecting applications to hosting them
 
-Cloudflare became familiar as a network that delivers websites faster and filters malicious traffic. Its developer platform now competes for more of the application itself.
+Cloudflare became familiar as a network that **delivers websites faster** and **filters malicious traffic**. Its expansion into application hosting makes the competitive overlap easier to see:
 
-[Workers](https://developers.cloudflare.com/workers/) runs application code without developers managing servers, overlapping with AWS Lambda. R2 stores files and other objects, competing with Amazon S3. [Workers AI](https://developers.cloudflare.com/workers-ai/) adds hosted model inference: running a trained model to generate a response. That puts Cloudflare into another area served by AWS, including Amazon Bedrock, although their model catalogs and surrounding services differ.
+- **The foundation:** [Workers](https://developers.cloudflare.com/workers/) runs application code, overlapping with Lambda; [R2](https://developers.cloudflare.com/r2/pricing/) stores objects, competing with S3. Workers AI adds hosted AI model responses, another area served by AWS through Bedrock. These products predate the latest announcements.
+- **September 28 — broader infrastructure control:** The [cf CLI open beta](/news/cloudflare-cf-cli-wrangler-migration/) extends beyond Worker deployment to more than 3,000 API operations. Like the AWS CLI within Amazon's ecosystem, it gives developers and coding agents a common tool for managing services.
+- **October 1 — repositories to deployment:** [Artifacts entered open beta](/news/cloudflare-artifacts-next-git-platform/), alongside a challenge to build agent-focused Git platforms. It supplies programmable repositories, while Workers Builds connects code pushes to deployments and previews.
 
-The recent releases make that expansion easier to see. My [cf CLI coverage](/news/cloudflare-cf-cli-wrangler-migration/) followed Cloudflare's September 28 open beta: one command-line tool reaching beyond Worker deployment to more than 3,000 API operations. Developers and coding agents can manage more of the infrastructure around an application through the same interface.
-
-Then came the October 1 [Artifacts open beta and Git-platform challenge](/news/cloudflare-artifacts-next-git-platform/). Artifacts supplies programmable repositories; Workers Builds connects code changes to deployments and previews. These are different pieces of a broader offer: **write, store, deploy and operate an application on Cloudflare**. They extend the competition beyond individual compute or storage services into the developer's everyday workflow.
-
-Consider a small application with an API, uploaded images and an AI feature. Cloudflare can pitch the runtime, storage, inference and development workflow together. A provider once placed in front of an AWS application can now seek more of the spending behind it. That does not make the platforms interchangeable; runtime support, integrations and operational requirements still matter.
+Together, these pieces let Cloudflare compete for **more of the application workflow**, from storing code to running it. That puts more of the same developer spending in reach of both companies.
 
 ## AWS is shortening its own deployment path
 
-AWS's recent launch belongs in that context too. On **October 12**, four days before Prince's booth announcement, AWS introduced [Lambda Web Functions](/news/aws-lambda-web-functions/). As I covered in that dispatch, developers can deploy a standard Node.js HTTP server without converting its routes into Lambda event handlers. AWS handles scaling and multi-region routing, and meters active CPU separately from memory.
+On **October 12**, four days before Prince's booth announcement, AWS launched [Lambda Web Functions](/news/aws-lambda-web-functions/). Developers can deploy a standard Node.js HTTP server without converting its routes into event handlers. AWS handles scaling and multi-region routing, with active CPU and memory billed separately.
 
-The [AWS announcement](https://aws.amazon.com/blogs/aws/announcing-aws-lambda-web-functions-for-fast-consistent-web-app-performance-anywhere/) shows Amazon reducing the work between application code and a live endpoint. Workers approaches that same convenience through Cloudflare's distributed runtime and integrated static assets; Web Functions uses regional Node.js environments with CloudFront available for cached delivery. The architectures differ, but **simpler deployment is becoming shared competitive ground**.
-
-For that small application, AWS now offers another reason to keep the web layer alongside existing AWS services. Cloudflare offers a growing set of reasons to build more of it elsewhere. That is the commercial pressure behind the rivalry, even though the timing alone cannot establish why either company made a particular decision.
+The [launch](https://aws.amazon.com/blogs/aws/announcing-aws-lambda-web-functions-for-fast-consistent-web-app-performance-anywhere/) brings AWS closer to the deployment convenience associated with Workers, although the runtimes and infrastructure differ. Teams already keeping data and backend services on AWS gain another reason to keep their web application there.
 
 ## The competition is for the next application
 
-For the small application, the decision now reaches beyond which service runs its API. It includes how the code gets deployed, where uploaded images live, how AI features are connected and what serving users will cost. Cloudflare's recent releases make more of that workflow available within its platform; Web Functions makes staying on AWS easier for teams already using its services.
+Cloudflare's pitch now combines development tools, hosting and storage. R2's zero-egress pricing adds a delivery-cost argument, although storage and operations remain billable. AWS counters with a simpler deployment path inside its established ecosystem.
 
-**Delivery costs remain part of that choice.** R2's [pricing documentation](https://developers.cloudflare.com/r2/pricing/) lists no egress bandwidth charge for sending stored objects to users. Storage and operations remain billable. That can matter for an application serving images repeatedly, but it does not establish that the entire application will cost less on Cloudflare. Compute, databases, requests and the surrounding services still shape the total.
+The stakes are clearer than the motive behind the booth decision: **both providers want to be where the next application gets built**. Winning that choice can bring the runtime, storage and supporting services with it.
 
-The stronger competitive pitch is the combination: a shorter deployment path, connected services and a bill that fits the workload. Cloudflare is assembling more of those pieces around Workers. AWS is bringing a simpler web deployment model to an ecosystem where many teams already keep their data and backend services. Each has a reason to win the application early, before its dependencies make a later move more work.
-
-That is why the recent launches give the booth dispute more context. Cloudflare is seeking a larger role in building and running applications, putting it in more direct competition with the host of re:Invent. Prince reads the cancellation as a sign that AWS feels threatened; the growing overlap explains the competitive stakes, while Amazon's reason remains unconfirmed.
-
-Cloudflare can still take that pitch to Las Vegas, even outside the expo hall. For developers, the more consequential contest is already happening in the products: **which platform makes the next application easier to build, operate and afford?**
+Prince reads the cancellation as a sign that AWS feels threatened; Amazon's reason remains unconfirmed. But the recent releases explain why Cloudflare is becoming a more direct competitor at AWS's own conference. With Cloudflare taking its pitch outside the expo hall, which platform will make the stronger case through its products?
