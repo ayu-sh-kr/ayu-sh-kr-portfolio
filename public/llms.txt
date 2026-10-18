@@ -49,6 +49,8 @@
 
 ## Recent Dispatch notes
 
+- [AWS and Cloudflare rivalry reaches the re:Invent booth](https://www.ayu-sh-kr.com/news/aws-cloudflare-reinvent-booth-rivalry/): The reported booth cancellation, competing application platforms and the difference between migration waivers and recurring egress fees. [Article Markdown](https://www.ayu-sh-kr.com/news/aws-cloudflare-reinvent-booth-rivalry.md).
+
 - [OpenCode Console breach: how exposed API keys became AI bills](https://www.ayu-sh-kr.com/news/opencode-console-breach-api-keys/): Legacy Console access, exposed provider credentials, billing abuse and the limits of the distillation claim. [Article Markdown](https://www.ayu-sh-kr.com/news/opencode-console-breach-api-keys.md).
 
 - [Perplexity SPACE: How Firecracker sandboxes isolate AI agents](https://www.ayu-sh-kr.com/news/perplexity-space-firecracker-agent-sandboxes/): SPACE’s three layers, Firecracker isolation, external credentials and resumable sessions, with an isometric architecture cutaway. [Article Markdown](https://www.ayu-sh-kr.com/news/perplexity-space-firecracker-agent-sandboxes.md).
