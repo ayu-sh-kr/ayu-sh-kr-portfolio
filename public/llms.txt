@@ -49,7 +49,7 @@
 
 ## Recent Dispatch notes
 
-- [AWS and Cloudflare rivalry reaches the re:Invent booth](https://www.ayu-sh-kr.com/news/aws-cloudflare-reinvent-booth-rivalry/): The reported booth cancellation, competing application platforms and the difference between migration waivers and recurring egress fees. [Article Markdown](https://www.ayu-sh-kr.com/news/aws-cloudflare-reinvent-booth-rivalry.md).
+- [Cloudflare CEO says AWS cancelled its re:Invent 2026 booth](https://www.ayu-sh-kr.com/news/aws-cloudflare-reinvent-booth-rivalry/): Cloudflare's reported re:Invent 2026 booth cancellation brings its AWS rivalry into focus, as both platforms compete to help developers build and deploy applications faster. [Article Markdown](https://www.ayu-sh-kr.com/news/aws-cloudflare-reinvent-booth-rivalry.md).
 
 - [OpenCode Console breach: how exposed API keys became AI bills](https://www.ayu-sh-kr.com/news/opencode-console-breach-api-keys/): Legacy Console access, exposed provider credentials, billing abuse and the limits of the distillation claim. [Article Markdown](https://www.ayu-sh-kr.com/news/opencode-console-breach-api-keys.md).
 

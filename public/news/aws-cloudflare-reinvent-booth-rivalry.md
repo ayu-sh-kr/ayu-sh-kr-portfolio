@@ -1,4 +1,4 @@
-# AWS and Cloudflare rivalry reaches the re:Invent booth
+# Cloudflare CEO says AWS cancelled its re:Invent 2026 booth
 
 Cloudflare had a booth at AWS re:Invent last year. This year, its CEO says Amazon cancelled it. A rivalry usually fought over cloud bills and developer tools has reached the conference floor.
 
