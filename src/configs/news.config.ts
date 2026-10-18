@@ -75,7 +75,7 @@ export const newsNotes: readonly NewsNote[] = [
     kind: "infra",
     document: "/news/aws-cloudflare-reinvent-booth-rivalry.md",
     keywords: ["AWS Cloudflare rivalry", "Cloudflare re:Invent booth cancellation", "AWS egress fees", "Cloudflare R2", "Cloudflare Workers"],
-    minutes: 3,
+    minutes: 4,
     reference: {label: "Matthew Prince — re:Invent booth cancellation post", href: "https://x.com/eastdakota/status/2111209566499184883"},
   },
 
