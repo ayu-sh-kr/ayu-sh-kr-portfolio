@@ -22,10 +22,12 @@ On **October 12**, four days before Prince's booth announcement, AWS launched [L
 
 The [launch](https://aws.amazon.com/blogs/aws/announcing-aws-lambda-web-functions-for-fast-consistent-web-app-performance-anywhere/) brings AWS closer to the deployment convenience associated with Workers, although the runtimes and infrastructure differ. Teams already keeping data and backend services on AWS gain another reason to keep their web application there.
 
-## The competition is for the next application
+## The race is from agent-written code to a live application
 
-Cloudflare's pitch now combines development tools, hosting and storage. R2's zero-egress pricing adds a delivery-cost argument, although storage and operations remain billable. AWS counters with a simpler deployment path inside its established ecosystem.
+As AI agents take on more coding, the next hurdle is getting that code online and operating it safely. Cloudflare is pushing a connected path: repositories, deployment tools, application hosting and the network protection it was already known for.
 
-The stakes are clearer than the motive behind the booth decision: **both providers want to be where the next application gets built**. Winning that choice can bring the runtime, storage and supporting services with it.
+That last part strengthens its pitch. Applications can use Cloudflare's [web application firewall](https://developers.cloudflare.com/waf/concepts/) to filter unwanted requests and [bot controls](https://developers.cloudflare.com/bots/get-started/bot-management/) to challenge or block abusive automated traffic. Available protections depend on the plan and configuration, but developers can manage hosting and those defenses within the same platform.
 
-Prince reads the cancellation as a sign that AWS feels threatened; Amazon's reason remains unconfirmed. But the recent releases explain why Cloudflare is becoming a more direct competitor at AWS's own conference. With Cloudflare taking its pitch outside the expo hall, which platform will make the stronger case through its products?
+**Cloudflare is pressing ahead with a broader build, deploy and protect workflow.** AWS's Web Functions shortens its own route to deployment. The contest is increasingly about which platform lets a developer and their agents bring the next application online with less setup, then keep it running under real traffic.
+
+That makes Cloudflare a more direct competitor at re:Invent. Prince reads the cancelled booth as evidence that AWS feels threatened; Amazon's reason remains unconfirmed. Outside the expo hall, the more consequential race continues: **who makes the journey from generated code to a live, protected application simpler?**
