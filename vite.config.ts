@@ -36,6 +36,7 @@ const showcaseRoutes = [
   "/showcase/dota-rest",
 ];
 const newsRoutes = [
+  "/news/opencode-console-breach-api-keys",
   "/news/perplexity-space-firecracker-agent-sandboxes",
   "/news/urban-vpn-ai-chat-harvesting",
   "/news/aws-lambda-web-functions",

@@ -68,6 +68,18 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "opencode-console-breach-api-keys",
+    date: "2026-10-18",
+    title: "OpenCode Console breach: how exposed API keys became AI bills",
+    summary: "How access to a retiring OpenCode Console system put provider keys at risk, why copied keys can create unauthorized AI bills, and what the distillation claim establishes.",
+    kind: "infra",
+    document: "/news/opencode-console-breach-api-keys.md",
+    keywords: ["OpenCode Console breach", "OpenCode API key exposure", "AI provider credential theft", "distillation attack", "API key rotation"],
+    minutes: 5,
+    reference: {label: "OpenCode provider credential documentation", href: "https://opencode.ai/v2/docs/console/providers/"},
+  },
+
+  {
     slug: "perplexity-space-firecracker-agent-sandboxes",
     date: "2026-10-16",
     title: "Perplexity SPACE: How Firecracker sandboxes isolate AI agents",
