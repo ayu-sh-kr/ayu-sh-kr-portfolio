@@ -310,7 +310,7 @@ After `updateHTML()`, `BaseElement` rebinds `@BindEvent` methods and element ref
 
 ## Registration and the Dota Vite preloader
 
-This standalone app configures `dotaVitePlugins()` in `vite.config.ts` with the repository root as its scan root. The preloader discovers decorated custom elements and exposes them through the generated `virtual:dota-components` module. `main.ts` registers those discovered constructors by passing them to `initializeApp({ modules: components })`.
+This standalone app configures `dotaVitePlugins()` in `vite.config.ts` with the repository root as its scan root. The preloader discovers decorated custom elements and exposes them through the generated `virtual:dota-component-registry` module: one lazy loader per component plus the tags each component renders. `main.ts` defines only the root eagerly (`modules: [AppComponent]`) and passes the registry through `initializeApp({ lazyComponents })`, so each route loads and defines only the components it renders.
 
 When adding a component:
 
@@ -318,11 +318,11 @@ When adding a component:
 - Use the `<component-name>/<component-name>.component.ts` and `<component-name>/<component-name>.component.css` layout described above.
 - Add `@Component({ selector, shadow: false })` to the class.
 - Do not import component files into `app.component.ts` for side effects; the preloader owns component discovery and registration.
-- Do not add a manual component import list to `main.ts`; import `components` from `virtual:dota-components` and pass it as `modules`.
+- Do not add a manual component import list to `main.ts`; the registry from `virtual:dota-component-registry` already covers every decorated component.
 - Import the root class and any page classes explicitly in `main.ts` when `initializeApp` needs their constructors for `root`, `defaultRoute`, or `errorRoute`.
 - For pages, add `@Route` and export them through the local pages index when the app uses one. The generated `virtual:dota-routes` module supplies the route configuration.
 
-External UI components and markdown components are separate from preloaded local components. Register those constructors through `externalComponents` in `main.ts` only when the app actually uses them.
+External UI components and markdown components are separate from preloaded local components. Declare a loader for each library tag the app renders in `src/configs/components.config.ts` (`defineComponentLoaders`) before using it in a template; a tag without a loader stays undefined. Configure a library in the module its loader imports, as `md-view` does through `src/configs/markdown.config.ts`, not in `main.ts`.
 
 ## Checklist
 

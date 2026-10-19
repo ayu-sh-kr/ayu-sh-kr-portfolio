@@ -41,6 +41,11 @@ dark-mode-button {
   stroke: none;
 }
 
+html.dark .dark-mode-button-moon,
+html:not(.dark) .dark-mode-button-sun {
+  display: none;
+}
+
 @media (pointer: coarse) {
   .dark-mode-button {
     min-block-size: 2.75rem;

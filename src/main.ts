@@ -3,23 +3,19 @@ import './style.css'
 import { AppComponent } from "@app/app.component.ts";
 import { ErrorPage, HomePage, OfflinePage } from "@app/pages";
 import { RestClient } from "@ayu-sh-kr/dota-wrap/rest";
-import { AccordionComponent, IconsComponent, PopoverComponent } from "@ayu-sh-kr/dota-ui";
-import { MdViewComponent } from "@ayu-sh-kr/dota-md";
 import {DefaultApplicationEventListenerRegistry, initializeApp} from "@ayu-sh-kr/dota-wrap";
 import { Router, RouterService } from "@ayu-sh-kr/dota-wrap/router";
 import { ApplicationEventService } from "@ayu-sh-kr/dota-wrap/core";
 import { dotaHydration } from "@ayu-sh-kr/dota-wrap/ssr";
-import { registerPortfolioMarkdownHighlight } from "@app/configs/markdown-highlight.config.ts";
-import { registerPortfolioMarkdownTheme } from "@app/configs/markdown-theme.config.ts";
+import { libraryComponents } from "@app/configs/components.config.ts";
 import { AnalyticsEventListener } from "@app/service/analytics-event.listener.ts";
 import { AnalyticsSectionTracker } from "@app/service/analytics-section-tracker.service.ts";
 import { AnalyticsJourneyTracker } from "@app/service/analytics-journey-tracker.service.ts";
 import { ActionButtonDispatcher } from "@app/service/action-button-dispatcher.service.ts";
-import { startMarkdownCode } from "@app/service/markdown-code.service.ts";
 import { ServiceState } from "@app/service/service-state.service.ts";
 import { RouterUtils } from "@app/utils/router.utils.ts";
 import { applyRouteMetadata } from "@app/utils/seo.utils.ts";
-import components from "virtual:dota-components";
+import { componentRegistry } from "virtual:dota-component-registry";
 import { routeConfig } from "virtual:dota-routes";
 
 const applicationEventService = ApplicationEventService.getInstance();
@@ -48,11 +44,6 @@ let routerService!: RouterService<Router<HTMLElement>>;
 const analyticsSectionTracker = new AnalyticsSectionTracker();
 const analyticsJourneyTracker = new AnalyticsJourneyTracker();
 
-registerPortfolioMarkdownTheme();
-registerPortfolioMarkdownHighlight();
-const stopMarkdownCode = startMarkdownCode();
-import.meta.hot?.dispose(stopMarkdownCode);
-
 // The initial router transition runs during `initializeApp`. Register the
 // analytics listener first so its page and section events are not lost.
 DefaultApplicationEventListenerRegistry.setListener(applicationEventListener);
@@ -62,9 +53,10 @@ new ActionButtonDispatcher();
 ServiceState.start();
 
 export const applicationReady = initializeApp({
-  modules: components,
+  // Only the root is defined up front; each route loads the components it renders.
+  modules: [AppComponent],
+  lazyComponents: [componentRegistry, libraryComponents],
   routes: [...routeConfig, { path: "/offline", component: OfflinePage }],
-  externalComponents: [AccordionComponent, IconsComponent, PopoverComponent, MdViewComponent],
   errorRoute: { path: "/error", component: ErrorPage },
   defaultRoute: { path: "/", component: HomePage },
   root: AppComponent,
