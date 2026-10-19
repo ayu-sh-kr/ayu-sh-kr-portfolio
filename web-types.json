@@ -1149,7 +1149,7 @@
           "name": "dark-mode-button",
           "source": {
             "file": "./src/components/utils/theme/dark-mode-button/dark-mode-button.component.ts",
-            "offset": 303
+            "offset": 314
           },
           "attributes": [],
           "js": {
