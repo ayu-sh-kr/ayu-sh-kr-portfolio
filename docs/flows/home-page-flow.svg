@@ -45,7 +45,7 @@
   <g id="app-initialization">
     <rect class="card route" x="820" y="280" width="560" height="100"/>
     <text class="card-title" x="850" y="316">initializeApp()</text>
-    <text class="code" x="850" y="342">virtual:dota-components + virtual:dota-routes</text>
+    <text class="code" x="850" y="342">virtual:dota-component-registry + virtual:dota-routes</text>
     <text class="card-copy" x="850" y="364">Mounts AppComponent as the application root.</text>
   </g>
 
