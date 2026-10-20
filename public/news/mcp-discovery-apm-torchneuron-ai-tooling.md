@@ -1,4 +1,4 @@
-# Today in AI: Cloudflare Clairic, TorchNeuron and agent tools
+# Today in AI: TorchNeuron, Clairic, APM and MCP discovery
 
 Amazon is making its AI chips easier to use from PyTorch. Cloudflare's latest model turns documents into usable fields. Microsoft's **Agent Package Manager** and dynamic **MCP discovery** tackle the setup and service connections around agents. Together, these updates cover running models, using their outputs and equipping agents to work with other systems.
 
