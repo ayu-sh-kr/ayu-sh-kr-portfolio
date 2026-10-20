@@ -6,9 +6,11 @@ Clairic was announced on October 19; TorchNeuron's public beta is scheduled for 
 
 ## TorchNeuron brings familiar PyTorch code to Trainium
 
-Amazon's [TorchNeuron announcement](https://www.aboutamazon.com/news/innovation-at-amazon/torchneuron-pytorch-aws-trainium-chips-ai) addresses the effort of moving models between chips. It adds native support for **Trainium2 and Trainium3** to PyTorch, the framework used to build and run AI models.
+Amazon's [TorchNeuron announcement](https://www.aboutamazon.com/news/innovation-at-amazon/torchneuron-pytorch-aws-trainium-chips-ai) addresses the effort of moving models between chips. It adds native support for **Trainium2 and Trainium3**—the second and third generations of Amazon's custom AI chips—to PyTorch, the framework used to build and run AI models. The chips handle training, which updates a model's learned weights, and inference, which uses those weights to produce results.
 
 TorchNeuron registers Trainium as a PyTorch device named `neuron`. Developers can use familiar APIs to run operations interactively or optimize them with `torch.compile`. The [PyTorch launch post](https://pytorch.org/blog/introducing-torchneuron-native-pytorch-backend-for-aws-trainium/) schedules the Apache 2.0 open-source public beta for October 20.
+
+![PyTorch defines model operations, TorchNeuron connects them to AWS Neuron software, and Trainium2 or Trainium3 hardware executes the work. The isometric illustration distinguishes chip generations and explains training versus inference.](/news/assets/mcp-discovery-apm-torchneuron-ai-tooling/torchneuron-trainium.svg)
 
 For a team evaluating where to run a document classifier, the benefit is a shorter route to a hardware comparison. More of the existing model code and debugging workflow can remain in place while the team measures Trainium's performance and cost.
 
