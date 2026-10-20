@@ -1,6 +1,6 @@
 # Today in AI: Cloudflare Clairic, TorchNeuron and agent tools
 
-Building an AI model, using a ready-made one and giving an agent useful tools involve different kinds of work. Today's Dispatch follows that order: **TorchNeuron** brings PyTorch to Amazon's chips, **Cloudflare Clairic** extracts information from documents, and two tooling projects help configure agents and connect them to services.
+Amazon is making its AI chips easier to use from PyTorch. Cloudflare's latest model turns documents into usable fields. Microsoft's **Agent Package Manager** and dynamic **MCP discovery** tackle the setup and service connections around agents. Together, these updates cover running models, using their outputs and equipping agents to work with other systems.
 
 Clairic was announced on October 19; TorchNeuron's public beta is scheduled for October 20. Alongside them, a new walkthrough explores dynamic discovery with Google Cloud's Agent Registry, while Microsoft's existing Agent Package Manager addresses sharing agent setup across projects.
 
@@ -24,13 +24,13 @@ The difference from TypeSafe's **Jev** and Cloudflare's earlier **Clef** is the 
 
 For an expense claim, Clairic could extract the merchant, purchase date and total. A decision model could then choose between “approve”, “reject” and “review” using those values and the expense policy. An LLM could write the response.
 
-Cloudflare frames the distinction as **regression and extraction versus classification**. Regression predicts numerical values; classification scores predefined categories. The announcement does not establish that Clairic replaces reinforcement learning with a different training method. Its disclosed distinction concerns the task and output, so those should not be confused with how it was trained.
+The technical distinction is **regression and extraction versus classification**. Regression predicts a numerical value, such as an estimated repair cost. Extraction pulls a name, date or amount from the input. Classification scores predefined categories, such as whether a claim should be approved. These describe different jobs the models perform.
 
 Like Clef, Clairic answers in a single forward pass rather than generating a text response token by token. It supplies confidence information, source offsets for extracted text and uncertainty ranges for estimates. **Valid types do not guarantee correct answers**: unfamiliar inputs and multi-step arithmetic still need checks.
 
 ## Microsoft APM shares the coding agent's setup
 
-Once a team chooses its models and tools, it still needs a consistent setup for its coding agents. Microsoft's [Agent Package Manager](https://microsoft.github.io/apm/) applies dependency management to agent configuration. A repository declares its skills, instructions, prompts, plugins and MCP servers in **`apm.yml`**. Developers run `apm install` to deploy them into supported coding clients.
+Microsoft's [Agent Package Manager](https://microsoft.github.io/apm/) applies dependency management to agent configuration. A repository declares its skills, instructions, prompts, plugins and connections to external tools in **`apm.yml`**. Developers run `apm install` to deploy them into supported coding clients.
 
 A team could package its API review guidance once, choose a version for each service and review updates alongside code. The lockfile records versions and content hashes, so another checkout can retrieve the same package content.
 
@@ -40,7 +40,7 @@ Client support still varies, as APM's [support matrix](https://microsoft.github.
 
 ## Dynamic MCP discovery finds tools when an agent needs them
 
-Sharing an agent's setup and locating a running service are related but separate tasks. An agent using a delivery-tracking service usually needs that service's address in its configuration. Move the service, and every consumer may need an update.
+APM helps share an agent's configuration. Discovery addresses a different question: where is the service the agent needs right now? An agent using a delivery-tracking service usually needs that service's address in its configuration. Move the service, and every consumer may need an update.
 
 An October 19 [dynamic MCP discovery walkthrough](https://leoy.blog/posts/dynamic-mcp-server-discovery/) shows another approach using Google Cloud's **Agent Registry**. MCP, or Model Context Protocol, is an interface for connecting agents to tools. The registry holds service details, letting an agent look up a known server or search for a capability before connecting.
 
