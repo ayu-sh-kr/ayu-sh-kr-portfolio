@@ -16,15 +16,19 @@ For a team evaluating where to run a document classifier, the benefit is a short
 
 The **“no rewrite”** promise has limits. AWS's [release notes](https://awsdocs-neuron.readthedocs-hosted.com/en/latest/release-notes/components/torchneuron.html) require `dynamic=False` for compilation; changing input shapes can trigger recompilation, and some APIs remain unsupported. Easier migration makes testing more accessible. Savings still depend on the workload, compilation overhead and tuning.
 
+**What does it cost?** TorchNeuron is [Apache 2.0 open-source software](https://pytorch.org/blog/introducing-torchneuron-native-pytorch-backend-for-aws-trainium/); AWS compute is billed separately. On October 20, AWS's [Capacity Blocks pricing](https://aws.amazon.com/ec2/capacityblocks/pricing/) lists Hyderabad's single-chip `trn2.3xlarge` at an effective **$2.235/hour**, and the 16-chip `trn2.48xlarge` at **$35.7608/hour**. Capacity Blocks are reserved and paid upfront; storage, transfers and other services can add charges.
+
 ## Cloudflare Clairic extracts the fields an app needs
 
-Cloudflare's [Clairic preview](https://blog.cloudflare.com/clairic-extraction-model/) is available through **Workers AI**. It takes text or images and returns requested values such as names, dates, amounts and lists. Open weights are planned for a later release.
+Cloudflare's [Clairic preview](https://blog.cloudflare.com/clairic-extraction-model/) is available through **Workers AI**. It reads text or images and returns typed values such as names, dates, amounts and lists. Open weights are planned for a later release.
 
-An expense app, for example, could submit a receipt and ask for the merchant, purchase date and total. Clairic returns those fields in their declared types, with confidence information to help decide which results need review. Missing information can return `null`; extracted text can include its position in the source.
+The difference from TypeSafe's **Jev** and Cloudflare's earlier **Clef** is the question being answered. Jev and Clef are decision models: given options, they return probabilities for those choices. Clairic is an extraction model: it returns values without requiring every possible answer to be listed beforehand.
 
-That gives the application something it can put directly into a form. It also makes extraction a separate step from writing an explanation or deciding whether to approve the expense.
+For an expense claim, Clairic could extract the merchant, purchase date and total. A decision model could then choose between “approve”, “reject” and “review” using those values and the expense policy. An LLM could write the response.
 
-Cloudflare describes Clairic as a **System One** model that answers in a single pass, typically in under a second. It also supports calculations, estimates and forecasts. Those capabilities still need evaluation: a correctly typed amount can be the wrong amount, so confidence information helps route checks rather than replace them.
+Cloudflare frames the distinction as **regression and extraction versus classification**. Regression predicts numerical values; classification scores predefined categories. The announcement does not establish that Clairic replaces reinforcement learning with a different training method. Its disclosed distinction concerns the task and output, so those should not be confused with how it was trained.
+
+Like Clef, Clairic answers in a single forward pass rather than generating a text response token by token. It supplies confidence information, source offsets for extracted text and uncertainty ranges for estimates. **Valid types do not guarantee correct answers**: unfamiliar inputs and multi-step arithmetic still need checks.
 
 ## Microsoft APM shares the coding agent's setup
 
