@@ -43,5 +43,3 @@ A team could package its API review guidance once, choose a version for each ser
 That addresses a practical complaint raised in a [mise community discussion](https://github.com/jdx/mise/discussions/10502): repeatedly copying skills and instruction files between projects.
 
 Client support still varies, as APM's [support matrix](https://microsoft.github.io/apm/reference/targets-matrix/) shows. A shared manifest can reproduce the installed guidance; the coding application controls execution and permissions, and different models can respond differently to those same instructions.
-
-Clairic and TorchNeuron make specific jobs easier to evaluate: extracting information and running models on another chip. Discovery and APM address what happens as those experiments grow—more services to locate, more projects to configure. Their value will show up in how much routine setup disappears from the next project.
