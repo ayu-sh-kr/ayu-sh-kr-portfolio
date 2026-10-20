@@ -68,6 +68,18 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "mcp-discovery-apm-torchneuron-ai-tooling",
+    date: "2026-10-20",
+    title: "Today in AI: TorchNeuron, Clairic, APM and MCP discovery",
+    summary: "AI developer roundup: PyTorch on AWS Trainium with TorchNeuron, Cloudflare Clairic extraction, Microsoft APM agent setup, and Google Cloud dynamic MCP discovery.",
+    kind: "infra",
+    document: "/news/mcp-discovery-apm-torchneuron-ai-tooling.md",
+    keywords: ["TorchNeuron PyTorch AWS Trainium","Cloudflare Clairic extraction model","Clairic vs Clef and Jev","regression vs classification","Microsoft APM Agent Package Manager","dynamic MCP server discovery","Google Cloud Agent Registry"],
+    minutes: 4,
+    reference: {label: "Cloudflare — Introducing Clairic extraction models", href: "https://blog.cloudflare.com/clairic-extraction-model/"},
+  },
+
+  {
     slug: "aws-cloudflare-reinvent-booth-rivalry",
     date: "2026-10-18",
     title: "Cloudflare CEO says AWS cancelled its re:Invent 2026 booth",
