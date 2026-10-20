@@ -75,7 +75,7 @@ export const newsNotes: readonly NewsNote[] = [
     kind: "infra",
     document: "/news/mcp-discovery-apm-torchneuron-ai-tooling.md",
     keywords: ["Cloudflare Clairic extraction model", "TorchNeuron PyTorch Trainium", "dynamic MCP server discovery", "Microsoft APM Agent Package Manager", "AI developer tools October 2026"],
-    minutes: 6,
+    minutes: 4,
     reference: {label: "Cloudflare — Introducing Clairic extraction models", href: "https://blog.cloudflare.com/clairic-extraction-model/"},
   },
 
