@@ -68,6 +68,18 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "mcp-discovery-apm-torchneuron-ai-tooling",
+    date: "2026-10-20",
+    title: "MCP discovery, Microsoft APM and TorchNeuron: less setup around AI",
+    summary: "How dynamic MCP discovery, Microsoft APM and TorchNeuron reduce setup work, with practical examples of service lookup, shared agent configuration and PyTorch on Trainium.",
+    kind: "infra",
+    document: "/news/mcp-discovery-apm-torchneuron-ai-tooling.md",
+    keywords: ["dynamic MCP server discovery", "Google Cloud Agent Registry", "Microsoft APM Agent Package Manager", "agent configuration dependencies", "TorchNeuron PyTorch Trainium"],
+    minutes: 6,
+    reference: {label: "Dynamic MCP discovery — implementation walkthrough", href: "https://leoy.blog/posts/dynamic-mcp-server-discovery/"},
+  },
+
+  {
     slug: "aws-cloudflare-reinvent-booth-rivalry",
     date: "2026-10-18",
     title: "Cloudflare CEO says AWS cancelled its re:Invent 2026 booth",
