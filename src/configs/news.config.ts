@@ -70,13 +70,13 @@ export const newsNotes: readonly NewsNote[] = [
   {
     slug: "mcp-discovery-apm-torchneuron-ai-tooling",
     date: "2026-10-20",
-    title: "MCP discovery, Microsoft APM and TorchNeuron: less setup around AI",
-    summary: "How dynamic MCP discovery, Microsoft APM and TorchNeuron reduce setup work, with practical examples of service lookup, shared agent configuration and PyTorch on Trainium.",
+    title: "Today in AI: Cloudflare Clairic, TorchNeuron and agent tools",
+    summary: "Today's AI roundup: Cloudflare Clairic extracts document fields, TorchNeuron brings PyTorch to Trainium, and MCP discovery and Microsoft APM simplify agent tooling.",
     kind: "infra",
     document: "/news/mcp-discovery-apm-torchneuron-ai-tooling.md",
-    keywords: ["dynamic MCP server discovery", "Google Cloud Agent Registry", "Microsoft APM Agent Package Manager", "agent configuration dependencies", "TorchNeuron PyTorch Trainium"],
+    keywords: ["Cloudflare Clairic extraction model", "TorchNeuron PyTorch Trainium", "dynamic MCP server discovery", "Microsoft APM Agent Package Manager", "AI developer tools October 2026"],
     minutes: 6,
-    reference: {label: "Dynamic MCP discovery — implementation walkthrough", href: "https://leoy.blog/posts/dynamic-mcp-server-discovery/"},
+    reference: {label: "Cloudflare — Introducing Clairic extraction models", href: "https://blog.cloudflare.com/clairic-extraction-model/"},
   },
 
   {
