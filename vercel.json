@@ -14,11 +14,6 @@
   ],
   "redirects": [
     {
-      "source": "/news/aws-cloudflare-reinvent-booth-rivalry",
-      "destination": "/news/aws-cloudflare-reinvent-booth-rivalry/",
-      "permanent": true
-    },
-    {
       "source": "/:path((?:[^/.]+/)*[^/.]+)",
       "has": [
         {
@@ -246,6 +241,11 @@
       "permanent": true
     },
     {
+      "source": "/news/aws-cloudflare-reinvent-booth-rivalry",
+      "destination": "/news/aws-cloudflare-reinvent-booth-rivalry/",
+      "permanent": true
+    },
+    {
       "source": "/news/aws-lambda-web-functions",
       "destination": "/news/aws-lambda-web-functions/",
       "permanent": true
@@ -373,6 +373,11 @@
     {
       "source": "/news/malicious-ai-routers-agent-supply-chain",
       "destination": "/news/malicious-ai-routers-agent-supply-chain/",
+      "permanent": true
+    },
+    {
+      "source": "/news/mcp-discovery-apm-torchneuron-ai-tooling",
+      "destination": "/news/mcp-discovery-apm-torchneuron-ai-tooling/",
       "permanent": true
     },
     {
