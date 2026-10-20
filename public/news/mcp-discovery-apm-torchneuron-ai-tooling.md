@@ -16,8 +16,6 @@ For a team evaluating where to run a document classifier, the benefit is a short
 
 The **“no rewrite”** promise has limits. AWS's [release notes](https://awsdocs-neuron.readthedocs-hosted.com/en/latest/release-notes/components/torchneuron.html) require `dynamic=False` for compilation; changing input shapes can trigger recompilation, and some APIs remain unsupported. Easier migration makes testing more accessible. Savings still depend on the workload, compilation overhead and tuning.
 
-**What does it cost?** TorchNeuron is [Apache 2.0 open-source software](https://pytorch.org/blog/introducing-torchneuron-native-pytorch-backend-for-aws-trainium/); AWS compute is billed separately. On October 20, AWS's [Capacity Blocks pricing](https://aws.amazon.com/ec2/capacityblocks/pricing/) lists Hyderabad's single-chip `trn2.3xlarge` at an effective **$2.235/hour**, and the 16-chip `trn2.48xlarge` at **$35.7608/hour**. Capacity Blocks are reserved and paid upfront; storage, transfers and other services can add charges.
-
 ## Cloudflare Clairic extracts the fields an app needs
 
 Cloudflare's [Clairic preview](https://blog.cloudflare.com/clairic-extraction-model/) is available through **Workers AI**. It reads text or images and returns typed values such as names, dates, amounts and lists. Open weights are planned for a later release.
