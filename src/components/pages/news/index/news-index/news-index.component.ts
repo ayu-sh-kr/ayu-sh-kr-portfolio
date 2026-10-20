@@ -220,7 +220,11 @@ export class NewsIndexComponent extends BaseElement {
     const toggle = this.querySelector<HTMLButtonElement>("[data-news-dock-toggle]");
     const empty = this.querySelector<HTMLElement>("[data-news-empty]");
     if (dockLabel) dockLabel.textContent = label;
-    if (tally) tally.textContent = String(shown);
+    // Preserve the hydration comments emitted around the counter during SSG.
+    const tallyText = Array.from(tally?.childNodes ?? []).find(
+      (node) => node.nodeType === Node.TEXT_NODE && node.textContent?.trim()
+    );
+    if (tallyText) tallyText.nodeValue = String(shown);
     if (empty) empty.hidden = shown !== 0;
     toggle?.setAttribute("data-filtered", String(filter !== "all"));
     toggle?.setAttribute("aria-label", `${shown} ${shown === 1 ? "note" : "notes"} shown. ${label} filter. Open filters.`);
