@@ -8,6 +8,8 @@ import lua from "highlight.js/lib/languages/lua";
 import markdown from "highlight.js/lib/languages/markdown";
 import plaintext from "highlight.js/lib/languages/plaintext";
 import properties from "highlight.js/lib/languages/properties";
+import python from "highlight.js/lib/languages/python";
+import rust from "highlight.js/lib/languages/rust";
 import sql from "highlight.js/lib/languages/sql";
 import typescript from "highlight.js/lib/languages/typescript";
 import xml from "highlight.js/lib/languages/xml";
@@ -21,7 +23,7 @@ import {MDService} from "@ayu-sh-kr/dota-md";
  * `yml`, `html` and `text` resolve through the grammars themselves. Add a grammar here when an
  * article uses a new fence language, otherwise the block renders as plain escaped text.
  */
-const languages = {bash, java, javascript, json, kotlin, lua, markdown, plaintext, properties, sql, typescript, xml, yaml};
+const languages = {bash, java, javascript, json, kotlin, lua, markdown, plaintext, properties, python, rust, sql, typescript, xml, yaml};
 
 /**
  * Installs highlight.js on the shared Markdown renderer.
