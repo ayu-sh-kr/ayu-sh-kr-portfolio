@@ -49,7 +49,7 @@
 
 ## Recent Dispatch notes
 
-- [Cloudtoid Interprocess: shared-memory IPC across languages](https://www.ayu-sh-kr.com/news/cloudtoid-interprocess-shared-memory-ipc/): Cloudtoid connects Rust, Python, Node.js, Go, C/C++ and .NET processes on one machine. How its shared-memory queue works, what 13 ns measures, and where it fits. [Article Markdown](https://www.ayu-sh-kr.com/news/cloudtoid-interprocess-shared-memory-ipc.md).
+- [Cloudtoid Interprocess: messaging without a broker](https://www.ayu-sh-kr.com/news/cloudtoid-interprocess-shared-memory-ipc/): How Cloudtoid replaces a local broker-mediated handoff with shared-memory IPC, connects Rust and Python workers, and differs in delivery guarantees. [Article Markdown](https://www.ayu-sh-kr.com/news/cloudtoid-interprocess-shared-memory-ipc.md).
 
 - [Today in AI: TorchNeuron, Clairic, APM and MCP discovery](https://www.ayu-sh-kr.com/news/mcp-discovery-apm-torchneuron-ai-tooling/): AI developer roundup: PyTorch on AWS Trainium with TorchNeuron, Cloudflare Clairic extraction, Microsoft APM agent setup, and Google Cloud dynamic MCP discovery. [Article Markdown](https://www.ayu-sh-kr.com/news/mcp-discovery-apm-torchneuron-ai-tooling.md).
 - [Cloudflare CEO says AWS cancelled its re:Invent 2026 booth](https://www.ayu-sh-kr.com/news/aws-cloudflare-reinvent-booth-rivalry/): Cloudflare's reported re:Invent 2026 booth cancellation brings its AWS rivalry into focus, as both platforms compete to help developers build and deploy applications faster. [Article Markdown](https://www.ayu-sh-kr.com/news/aws-cloudflare-reinvent-booth-rivalry.md).
