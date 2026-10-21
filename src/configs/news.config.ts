@@ -70,8 +70,8 @@ export const newsNotes: readonly NewsNote[] = [
   {
     slug: "cloudtoid-interprocess-shared-memory-ipc",
     date: "2026-10-21",
-    title: "Cloudtoid Interprocess: messaging without a broker",
-    summary: "How Cloudtoid replaces a local broker-mediated handoff with shared-memory IPC, connects Rust and Python workers, and differs in delivery guarantees.",
+    title: "Cloudtoid Interprocess v3 connects local apps without a message broker",
+    summary: "Cloudtoid Interprocess v3 links local applications through shared memory. How it removes the broker, connects six language families and handles temporary work.",
     kind: "infra",
     document: "/news/cloudtoid-interprocess-shared-memory-ipc.md",
     keywords: ["Cloudtoid Interprocess", "shared-memory IPC", "Rust Python interprocess communication", "cross-language message queue", "brokerless messaging", "message broker vs shared memory", "Cloudtoid v3 benchmark"],

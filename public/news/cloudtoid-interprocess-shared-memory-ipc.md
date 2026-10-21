@@ -1,63 +1,54 @@
-# Cloudtoid Interprocess: messaging without a broker
+# Cloudtoid Interprocess v3 connects local apps without a message broker
 
-A Rust service hands image-processing jobs to Python workers on the same computer. Sending those jobs through a message broker means running another service for a local handoff. **Cloudtoid Interprocess** offers a shorter route: a queue in memory that both programs can access.
+**Cloudtoid's Interprocess library lets separate applications on the same computer exchange messages without running a message broker.** Its v3 protocol connects programs written in Rust, C/C++, Python, Node.js, Go and .NET through a shared queue in memory.
 
-The open-source, MIT-licensed library connects Rust, C/C++, Python, Node.js, Go and .NET through its **v3 protocol**. It supports Windows, Linux and macOS within the project's supported 64-bit environments. Its appeal is practical: separate programs can share work without deploying a broker. The comparison is between two ways of connecting separate programs: sending messages through a broker, or exchanging them through shared memory.
+The open-source project's pitch is a smaller messaging setup for applications that already run together. Instead of sending work through another service, one program places a message in memory that another can read. Version 3 also changes how waiting readers are notified, with the project reporting improvements over its previous .NET version.
 
-## With a broker: a service receives and delivers the job
+That makes Interprocess relevant to local worker systems: an application can keep its main service and specialist workers separate, even when they use different languages, without adding a messaging server to connect them. The important boundary is **the same machine**. This is local communication, rather than a replacement for messaging across servers.
 
-A **message broker** is a running service between the programs sending and receiving messages. The Rust producer connects to it and sends a job. The broker puts that message in a queue and delivers it to a Python consumer through another client connection. The worker then reads the job and creates the thumbnail.
+## What removing the broker changes
 
-The first illustration shows that arrangement with all three processes on one machine. The middle enclosure is a separate broker process: its queue belongs to the service, and the applications communicate with it through connections. It is not memory directly shared by the producer and worker.
+A process is a running instance of a program, with its own private memory. A Rust service cannot ordinarily read a Python worker's memory simply because both run on the same computer. Exchanging information between them is called **interprocess communication**, or IPC—the category from which Cloudtoid's library takes its name.
+
+A message broker is one way to connect those programs. It is a separate service that receives messages, holds them in a queue and delivers them to consumers. Depending on the product and configuration, it can also retain work, track acknowledgements and connect applications across machines.
+
+Consider a service that asks Python workers to resize uploaded images. In the broker arrangement below, the service sends a job describing the image and required size. The broker queues it, then passes it to a worker that produces the thumbnail.
 
 ![Isometric view of a Rust producer sending an image job through a separate message broker, whose queue delivers it to a Python worker that creates a thumbnail.](/news/assets/cloudtoid-interprocess-shared-memory-ipc/broker-mediated.svg)
 
-That intermediary can be useful. Depending on the broker and its configuration, it may connect workers on different machines, retain messages, route work or track [acknowledgements and redelivery](https://www.rabbitmq.com/tutorials/tutorial-two-python). It also needs to be deployed, configured and kept running—even when the producer and worker share a computer.
+Those delivery features can justify running the broker. But when the programs share one computer and need only a temporary handoff, the intermediary is another service to deploy and maintain. Cloudtoid offers a shared-memory route for that narrower job.
 
-Cloudtoid targets that local case. Its proposal is to make the handoff directly through a shared queue when a separate messaging service is unnecessary.
+## How Interprocess connects the applications
 
-## With Cloudtoid: the queue is shared memory
+With Interprocess, the producer and worker open the same named queue. The operating system makes a common region of memory accessible to both, while the rest of each program's memory stays private. The queue has a fixed capacity, keeping its memory use bounded.
 
-Both arrangements are **interprocess communication**, or IPC: exchanging information between separate running programs. Cloudtoid keeps the Rust service and Python workers separate. Each still has private memory, but they explicitly share the region holding the queue.
-
-Cloudtoid maps a common memory region into the participating processes. Each opens the same queue name and capacity. On Unix, they must also agree on the backing directory; an explicit absolute path avoids differences between language runtimes' temporary directories.
-
-The second illustration keeps private memory on separate platforms. Soft green streams follow the job bytes; faint dashed links identify access to the same shared mapping. Rust encodes an image path and resize operation, copies those bytes into the queue, and publishes the message. Python copies a received message into its own buffer, interprets the job and creates the thumbnail.
+The image job now follows the second illustration. Rust writes a message into the shared queue; Python receives it and creates the thumbnail. **The broker process disappears**, while the two applications remain separate. Multiple workers can share the queue, with each message taken by one competing receiver during ordinary operation.
 
 ![Isometric view of separate Rust and Python processes with private buffers, both mapping one shared circular queue. Job bytes are copied into the queue and out to the worker, which produces a thumbnail.](/news/assets/cloudtoid-interprocess-shared-memory-ipc/interprocess.svg)
 
-Both sides must agree on a format, such as JSON. Cloudtoid transports **bytes**, without supplying a serializer. Rust provides the native engine behind the C, Python, Node.js and Go interfaces; .NET separately implements the same queue protocol.
+The library carries bytes, so the applications still need an agreed message format. A small JSON message could contain an image path and resize dimensions; the image itself need not travel through the queue. Payloads are copied into and out of the queue, so shared memory does not make this entire path zero-copy.
 
-## How the queue hands work to a receiver
+Cloudtoid publishes packages for the six language families and supports Windows, Linux and macOS on documented 64-bit platforms. Rust supplies the native engine used by the C, Python, Node.js and Go interfaces. .NET implements the same protocol separately, allowing the languages to communicate through a common queue layout.
 
-The buffer is circular: consumed storage becomes reusable, and physical positions wrap around at its end. The [v3 protocol](https://cloudtoid.com/docs/protocol/) distinguishes reserving space from publishing a finished record. A publisher atomically reserves a range, writes the payload and marks it ready. A receiver claims a ready record, copies it out and releases the consumed space.
+## What v3's performance figures actually show
 
-Subscribers **compete for work**. During ordinary operation, one Python worker takes each image job; the queue does not deliver a copy to every worker. Broadcasting requires separate queues. Atomic publisher reservations also do not make the complete queue formally lock-free: consumption is serialized, and a paused live owner can block progress.
+Version 3 groups notifications to avoid repeatedly calling the operating system while readers are already active. In the project's .NET tests on an Apple M5 Max, an eight-byte send-and-receive operation measured **17.82 ns**, compared with **214.6 ns** for v2. Its concurrent test rose from 1.04 million to 2.42 million messages per second.
 
-The fixed capacity limits memory use, but it also means a send can report that space is unavailable. The application needs a retry deadline, waiting strategy or rejection policy. Receive-buffer sizing matters too: the documented native receive path **truncates and consumes** a message when the buffer is too small.
+The repository also reports a **12.98 ns** Rust send-and-receive result for a three-byte message with reused receive storage. That figure comes from an in-process microbenchmark: the timed operations run inside one program, with queue creation and cleanup excluded. It does not measure the complete Rust-to-Python exchange shown above.
 
-## What the 13 ns benchmark measures
+These are project-reported measurements. They support the case for evaluating v3, but establish neither application-level latency nor a measured speedup over a broker. Message size, language bindings, scheduling and the way idle workers wait all affect the eventual result.
 
-Cloudtoid reports **12.98 nanoseconds** for a Rust send plus receive of a three-byte message on an Apple M5 Max, using reused receive storage. This is an **in-process microbenchmark**: the timed send and receive run inside one process, with queue creation and cleanup excluded. That describes the benchmark setup, not a replacement for interprocess messaging. It measures neither the Rust-to-Python handoff illustrated above nor a speedup over a broker.
+## The smaller setup comes with a narrower delivery contract
 
-Version 3 also groups notifications to reduce repeated operating-system calls while readers are active. The project's .NET comparison reports an eight-byte send-and-receive time of 17.82 ns for v3 against 214.6 ns for v2 on the same Mac. These are project measurements, not independently reproduced results.
+Interprocess queues are **transient**. When every publisher and subscriber disconnects or exits, unread messages are lost. Receiving a job also does not prove that the worker completed it; durable acknowledgements and exactly-once effects are not built into this handoff.
 
-Message size, binding overhead, scheduling and idle waiting all affect application performance. The documentation notes that Node.js and Go use adaptive timer backoff while idle, which can add 1–10 milliseconds plus scheduling delay. A small queue-operation measurement therefore cannot predict every application's response time.
+For the thumbnail example, that can be acceptable if the original image and job record remain elsewhere, allowing failed work to be recreated. A full queue still needs an application policy for waiting, retrying or rejecting new work. Tasks that must survive failures need persistent tracking and recovery beyond the shared queue.
 
-## The job still needs a lifetime and recovery policy
-
-The [Rust queue's copy helpers](https://github.com/cloudtoid/interprocess/blob/3f6ed2a25580ba8b686a007daa02ca300d1998dc/src/rust/src/queue.rs) explicitly copy payloads into and out of the circular buffer. The shared-memory route removes the broker hop while retaining those copies.
-
-The queue is also **transient**. Once every publisher and subscriber disconnects or exits, unread messages are lost. Recovery can lose messages too. There are no durable acknowledgements or exactly-once effects built into that handoff.
-
-> Receiving a job is different from proving that its work finished.
-
-For the image workers, Cloudtoid fits when all participants stay on one machine and jobs can be recreated or tracked elsewhere. Work that must survive a restart needs a durable record and an explicit retry policy. A broker remains useful when its cross-machine reach or delivery features are part of the requirement. Cloudtoid asks a narrower question: if both programs share a machine and the work can be recovered elsewhere, does this handoff need another service?
+Cloudtoid's contribution is a way to connect local applications across languages with less messaging infrastructure. For workers that share a machine and can recover their jobs elsewhere, removing the broker can simplify the setup. When messages must cross machines or survive restarts, those requirements still determine the messaging system.
 
 ## Sources
 
-- [Cloudtoid repository and benchmark methodology](https://github.com/cloudtoid/interprocess): supported languages, v3 changes and project measurements from September 2026.
-- [Queue concepts](https://cloudtoid.com/docs/concepts/): capacity, competing subscribers, waiting and message lifetime.
+- [Cloudtoid repository, language packages and v3 benchmarks](https://github.com/cloudtoid/interprocess): supported environments, implementation structure and project-reported measurements, including September 2026 benchmark conditions.
+- [Queue concepts](https://cloudtoid.com/docs/concepts/): shared queues, capacity, competing subscribers and message lifetime.
 - [Protocol v3](https://cloudtoid.com/docs/protocol/): shared-memory layout, publication, consumption and recovery rules.
-
-- [RabbitMQ work queues](https://www.rabbitmq.com/tutorials/tutorial-two-python): a concrete broker-mediated example, including acknowledgement and persistence settings.
+- [RabbitMQ work queues](https://www.rabbitmq.com/tutorials/tutorial-two-python): broker-mediated delivery, acknowledgements and persistence settings.
