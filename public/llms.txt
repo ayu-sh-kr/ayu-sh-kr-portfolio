@@ -49,6 +49,7 @@
 
 ## Recent Dispatch notes
 
+- [eMudhra certificate compromise: how a signing key became the number 4](https://www.ayu-sh-kr.com/news/emudhra-weak-certificate-signing-keys/): Required key properties, observed weak secrets, preliminary cause and trust-store response. [Article Markdown](https://www.ayu-sh-kr.com/news/emudhra-weak-certificate-signing-keys.md).
 - [Cloudtoid Interprocess v3 connects local apps without a message broker](https://www.ayu-sh-kr.com/news/cloudtoid-interprocess-shared-memory-ipc/): How Cloudtoid replaces a local broker-mediated handoff with shared-memory IPC, connects Rust and Python workers, and differs in delivery guarantees. [Article Markdown](https://www.ayu-sh-kr.com/news/cloudtoid-interprocess-shared-memory-ipc.md).
 
 - [Today in AI: TorchNeuron, Clairic, APM and MCP discovery](https://www.ayu-sh-kr.com/news/mcp-discovery-apm-torchneuron-ai-tooling/): AI developer roundup: PyTorch on AWS Trainium with TorchNeuron, Cloudflare Clairic extraction, Microsoft APM agent setup, and Google Cloud dynamic MCP discovery. [Article Markdown](https://www.ayu-sh-kr.com/news/mcp-discovery-apm-torchneuron-ai-tooling.md).

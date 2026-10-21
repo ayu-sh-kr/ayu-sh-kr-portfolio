@@ -36,6 +36,7 @@ const showcaseRoutes = [
   "/showcase/dota-rest",
 ];
 const newsRoutes = [
+  "/news/emudhra-weak-certificate-signing-keys",
   "/news/cloudtoid-interprocess-shared-memory-ipc",
   "/news/mcp-discovery-apm-torchneuron-ai-tooling",
   "/news/aws-cloudflare-reinvent-booth-rivalry",
