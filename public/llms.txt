@@ -49,6 +49,7 @@
 
 ## Recent Dispatch notes
 
+- [PingCAP breach exposes TiDB Cloud records and SQL editor history](https://www.ayu-sh-kr.com/news/pingcap-tidb-cloud-security-breach/): Stolen service-account credentials exposed PingCAP customer records and source code. What SQL history reveals, what remains uncertain, and what TiDB Cloud users should check. [Article Markdown](https://www.ayu-sh-kr.com/news/pingcap-tidb-cloud-security-breach.md).
 - [eMudhra certificate compromise: how a signing key became the number 4](https://www.ayu-sh-kr.com/news/emudhra-weak-certificate-signing-keys/): How domains, certificate authorities and Firefox fit together, where eMudhra’s signing keys failed, and what blocks website impersonation. [Article Markdown](https://www.ayu-sh-kr.com/news/emudhra-weak-certificate-signing-keys.md).
 - [Cloudtoid Interprocess v3 connects local apps without a message broker](https://www.ayu-sh-kr.com/news/cloudtoid-interprocess-shared-memory-ipc/): How Cloudtoid replaces a local broker-mediated handoff with shared-memory IPC, connects Rust and Python workers, and differs in delivery guarantees. [Article Markdown](https://www.ayu-sh-kr.com/news/cloudtoid-interprocess-shared-memory-ipc.md).
 
