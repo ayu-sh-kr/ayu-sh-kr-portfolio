@@ -68,6 +68,18 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "pingcap-tidb-cloud-security-breach",
+    date: "2026-10-21",
+    title: "PingCAP breach exposes TiDB Cloud records and SQL editor history",
+    summary: "Stolen service-account credentials exposed PingCAP customer records and source code. What SQL history reveals, what remains uncertain, and what TiDB Cloud users should check.",
+    kind: "infra",
+    document: "/news/pingcap-tidb-cloud-security-breach.md",
+    keywords: ["PingCAP data breach", "TiDB Cloud security incident", "SQL editor history exposure", "stolen service account credentials", "TiDB Cloud API key rotation"],
+    minutes: 3,
+    reference: {label: "PingCAP — October 2026 security incident report", href: "https://www.pingcap.com/trust-hub/security/security-update-october-2026/"},
+  },
+
+  {
     slug: "emudhra-weak-certificate-signing-keys",
     date: "2026-10-21",
     title: "eMudhra certificate compromise: how a signing key became the number 4",

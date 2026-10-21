@@ -14,6 +14,11 @@
   ],
   "redirects": [
     {
+      "source": "/news/pingcap-tidb-cloud-security-breach",
+      "destination": "/news/pingcap-tidb-cloud-security-breach/",
+      "permanent": true
+    },
+    {
       "source": "/:path((?:[^/.]+/)*[^/.]+)",
       "has": [
         {
