@@ -68,6 +68,18 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "cloudtoid-interprocess-shared-memory-ipc",
+    date: "2026-10-21",
+    title: "Cloudtoid Interprocess v3 connects local apps without a message broker",
+    summary: "Cloudtoid Interprocess v3 links local applications through shared memory. How it removes the broker, connects six language families and handles temporary work.",
+    kind: "infra",
+    document: "/news/cloudtoid-interprocess-shared-memory-ipc.md",
+    keywords: ["Cloudtoid Interprocess", "shared-memory IPC", "Rust Python interprocess communication", "cross-language message queue", "brokerless messaging", "message broker vs shared memory", "Cloudtoid v3 benchmark"],
+    minutes: 5,
+    reference: {label: "Cloudtoid — Interprocess documentation and benchmarks", href: "https://github.com/cloudtoid/interprocess"},
+  },
+
+  {
     slug: "mcp-discovery-apm-torchneuron-ai-tooling",
     date: "2026-10-20",
     title: "Today in AI: TorchNeuron, Clairic, APM and MCP discovery",
