@@ -32,6 +32,26 @@ Cloudtoid publishes packages for the six language families and supports Windows,
 
 > **One Rust engine, language-specific bindings.** Python, Node.js, Go and C/C++ use bindings—adapters that let each language call the Rust engine. The engine runs inside each application; there is no separate server or broker to host. **.NET is the exception:** it implements the same shared-memory protocol separately, so it can still exchange messages with applications using the Rust engine.
 
+### Configuring both apps to meet
+
+These setup excerpts open **the same queue**, named `image-jobs`, with a 64 KiB capacity.
+
+Rust producer:
+
+```rust
+use cloudtoid_interprocess::{Options, Publisher};
+let publisher = Publisher::open(&Options::new("image-jobs", 65536))?;
+```
+
+Python worker:
+
+```python
+from cloudtoid_interprocess import Subscriber
+subscriber = Subscriber("image-jobs", 65536)
+```
+
+Both use protocol v3. On Linux and macOS, their storage directories must also match; these examples use the default temporary directory. The first participant initializes the queue, and the other joins it. Keep the endpoints open during the handoff.
+
 ## What v3's performance figures actually show
 
 Version 3 groups notifications to avoid repeatedly calling the operating system while readers are already active. In the project's .NET tests on an Apple M5 Max, an eight-byte send-and-receive operation measured **17.82 ns**, compared with **214.6 ns** for v2. Its concurrent test rose from 1.04 million to 2.42 million messages per second.
