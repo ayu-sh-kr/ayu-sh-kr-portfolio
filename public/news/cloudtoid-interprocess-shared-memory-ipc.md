@@ -2,6 +2,8 @@
 
 **Cloudtoid's Interprocess library lets separate applications on the same computer exchange messages without running a message broker.** Its v3 protocol connects programs written in Rust, C/C++, Python, Node.js, Go and .NET through a shared queue in memory.
 
+The [repository credits Pedram Rezaei as its author](https://github.com/cloudtoid/interprocess#author). Rezaei, a former Microsoft Copilot CTO and corporate vice president, [joined AWS as a distinguished engineer in October 2026](https://www.geekwire.com/2026/amazon-hires-a-microsoft-ai-leader-to-help-build-its-tools-for-coding-and-work/).
+
 The open-source project's pitch is a smaller messaging setup for applications that already run together. Instead of sending work through another service, one program places a message in memory that another can read. Version 3 also changes how waiting readers are notified, with the project reporting improvements over its previous .NET version.
 
 That makes Interprocess relevant to local worker systems: an application can keep its main service and specialist workers separate, even when they use different languages, without adding a messaging server to connect them. The important boundary is **the same machine**. This is local communication, rather than a replacement for messaging across servers.
