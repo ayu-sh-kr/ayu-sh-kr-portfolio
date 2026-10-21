@@ -71,11 +71,11 @@ export const newsNotes: readonly NewsNote[] = [
     slug: "emudhra-weak-certificate-signing-keys",
     date: "2026-10-21",
     title: "eMudhra certificate compromise: how a signing key became the number 4",
-    summary: "What eMudhra signing keys needed to be, how eight became trivially recoverable, and the script flaw and key-selection errors described in its preliminary account.",
+    summary: "How eMudhra’s weak signing keys broke certificate trust: follow the setup failure, an HTTPS payment connection and the point where an impersonator could be accepted.",
     kind: "infra",
     document: "/news/emudhra-weak-certificate-signing-keys.md",
     keywords: ["eMudhra certificate compromise", "eMudhra weak private keys", "P-384 key generation", "intermediate CA signing keys", "TLS certificate trust"],
-    minutes: 4,
+    minutes: 6,
     reference: {label: "Mozilla — eMudhra intermediate certificate incident", href: "https://bugzilla.mozilla.org/show_bug.cgi?id=2083449"},
   },
 

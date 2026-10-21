@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="540" viewBox="0 0 760 540" role="img" aria-labelledby="title desc">
+<title id="title">Where the signing authority went wrong</title><desc id="desc">Earlier setup, based on eMudhra's preliminary account. Faults create and select weak keys; published public keys let outsiders recover the signing secrets.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10" fill="#afafac"/></marker></defs>
+<rect width="760" height="540" rx="12" fill="#101011"/>
+<g font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" fill="#fafaf8">
+<text x="28" y="40" font-size="24" font-weight="700">Where the signing authority went wrong</text>
+<path d="M358 125H402" fill="none" stroke="#afafac" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M567 180V240" fill="none" stroke="#afafac" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M402 295H358" fill="none" stroke="#afafac" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M193 350V410" fill="none" stroke="#afafac" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M358 465H402" fill="none" stroke="#afafac" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="28" y="70" width="330" height="110" rx="7" fill="#1d1d1f" stroke="#545457" stroke-width="1.5"/><text x="44" y="98" font-size="16" fill="#afafac">1 · SETUP</text><text x="44" y="129" font-size="20" font-weight="600">Generate proper keys</text><text x="44" y="157" font-size="17">Protected inside the HSM</text>
+<rect x="402" y="70" width="330" height="110" rx="7" fill="#2c2722" stroke="#ff9870" stroke-width="2.5"/><text x="418" y="98" font-size="16" fill="#ff9870">2 · SCRIPT FAULT</text><text x="418" y="129" font-size="20" font-weight="600">Create weak alternatives</text><text x="418" y="157" font-size="17">Secrets are below 256</text>
+<rect x="402" y="240" width="330" height="110" rx="7" fill="#2c2722" stroke="#ff9870" stroke-width="2.5"/><text x="418" y="268" font-size="16" fill="#ff9870">3 · SELECTION ERROR</text><text x="418" y="299" font-size="20" font-weight="600">Use the wrong keys</text><text x="418" y="327" font-size="17">Similar labels cause a mix-up</text>
+<rect x="28" y="240" width="330" height="110" rx="7" fill="#1d1d1f" stroke="#545457" stroke-width="1.5"/><text x="44" y="268" font-size="16" fill="#afafac">4 · TRUST GRANTED</text><text x="44" y="299" font-size="20" font-weight="600">Root signs the intermediate</text><text x="44" y="327" font-size="17">Weak key becomes CA authority</text>
+<rect x="28" y="410" width="330" height="110" rx="7" fill="#1d1d1f" stroke="#545457" stroke-width="1.5"/><text x="44" y="438" font-size="16" fill="#afafac">5 · PUBLIC INFORMATION</text><text x="44" y="469" font-size="20" font-weight="600">Publish the certificates</text><text x="44" y="497" font-size="17">Public keys are visible to all</text>
+<rect x="402" y="410" width="330" height="110" rx="7" fill="#2c2722" stroke="#ff9870" stroke-width="2.5"/><text x="418" y="438" font-size="16" fill="#ff9870">6 · COMPROMISE</text><text x="418" y="469" font-size="20" font-weight="600">Recover signing secrets</text><text x="418" y="497" font-size="17">Outsiders can forge certificates</text>
+<text x="28" y="210" font-size="16" fill="#afafac">These steps precede any customer connection.</text>
+</g></svg>

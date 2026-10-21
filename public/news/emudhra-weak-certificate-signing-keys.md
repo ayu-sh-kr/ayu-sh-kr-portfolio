@@ -4,7 +4,17 @@ One of eMudhra's certificate-signing private keys was **4**. A secret meant to b
 
 Mozilla disclosed the compromise on **October 20, 2026**, after receiving a report on October 17. Eight intermediate certificate-authority keys were affected: six for HTTPS certificates and two for code signing. The failure began in key generation, before any attacker needed to steal a secret.
 
-> **Terminology — certificate authority and intermediate:** A certificate authority, or CA, signs digital certificates that associate an identity with a public key. A trusted root can authorize an intermediate CA to issue certificates beneath it. Compromising an intermediate's signing key can therefore affect trust in many identities, rather than one website.
+> **Who vouches for a website?** A certificate authority, or CA, signs digital certificates that associate an identity with a public key. A trusted root can authorize an intermediate CA to issue certificates beneath it. Compromising an intermediate's signing key can therefore affect trust in many identities, rather than one website.
+
+## Where an HTTPS transaction begins
+
+Imagine a shopping app contacting a payment service. Before sending a payment request on a new HTTPS connection, it establishes a secure connection using TLS, the protocol behind HTTPS. The server presents a certificate naming the website and proves it controls the corresponding private key.
+
+A certificate is a signed identity document. The app checks the requested hostname, validity period, signatures and a path back to a root it already trusts. Depending on the client, additional checks include whether certificates have been revoked.
+
+> **What is a chain of trust?** A website certificate is usually signed by an intermediate CA, whose certificate is signed by a root CA. The root is already in the app's or operating system's trusted collection. The server supplies the intermediate certificates; the client checks the chain locally.
+
+**eMudhra is not a relay carrying the payment.** Its role is earlier: providing signing authority that clients rely on when judging a server's identity. Compromising an intermediate signing key lets someone else sign new certificates.
 
 ## What the signing keys needed to be
 
@@ -12,7 +22,7 @@ These keys used **P-384**, an elliptic-curve cryptographic system. Its private k
 
 For a website certificate, the CA signs the certificate's contents with its private key. A client checks that signature and the chain leading back to a trusted root. Imagine an application contacting a payment API: this check helps establish that the server presenting the certificate represents the requested hostname.
 
-> **Terminology — signing and encryption:** A signing key proves who authorized a statement. It does not directly encrypt every HTTPS message. This incident undermined server authentication: whether the endpoint on the other side could be trusted.
+> **Signing is different from encryption.** A signing key proves who authorized a statement. It does not directly encrypt every HTTPS message. This incident undermined server authentication: whether the endpoint on the other side could be trusted.
 
 The requirement was unpredictable key material across the proper range. “384-bit” does not mean choosing a number between 1 and 384, nor does security depend on having exactly 116 decimal digits.
 
@@ -36,15 +46,29 @@ In its **preliminary incident account**, eMudhra says its ceremony first generat
 
 Similar labels then led staff to select those weak keys for certificate-signing requests. The root signed the requests, and copies also went to Sectigo for cross-signing.
 
-> **Terminology — HSM and CSR:** A hardware security module, or HSM, protects cryptographic operations and key storage. A certificate-signing request, or CSR, asks an issuer to certify a public key. Protecting a weak key inside hardware cannot make the underlying secret harder to guess.
+> **What do HSM and CSR mean?** A hardware security module, or HSM, protects cryptographic operations and key storage. A certificate-signing request, or CSR, asks an issuer to certify a public key. Protecting a weak key inside hardware cannot make the underlying secret harder to guess.
+
+The first flowchart follows that earlier setup process. The marked stages show the script failure and selection error. The intermediate certificate could look valid even though its signing secret was weak.
+
+![Certificate setup: generate proper keys, create weak alternatives through a script flaw, select the wrong keys, certify them under the root, publish certificates, and expose recoverable signing secrets.](/news/assets/emudhra-weak-certificate-signing-keys/issuance-failure.svg)
 
 The precise code-level mistake remained under investigation. The viral claim that staff misunderstood “384-bit” as “pick 1–384” is speculation.
 
 ## What an attacker could do, and what was blocked
 
-Recovered signing keys could let an attacker create a fraudulent HTTPS certificate. If the attacker could also intercept the payment application's connection, a client still trusting the affected chain might accept the impersonation and expose requests or responses.
+The compromised component was **the intermediate CA's signing secret**. An attacker recovering it could create a certificate naming the payment service, containing a public key whose matching private key the attacker controls. Its CA signature would verify under the compromised intermediate.
 
-**Key recovery alone does not redirect traffic or prove that customer data was stolen.**
+The attacker still needs a separate way to intercept or redirect the connection, such as control of a network path. Downloading a public certificate does not move the victim's traffic.
+
+The next flowchart starts when the app connects. It shows a possible impersonation attempt, not a confirmed payment-service breach. A client that distrusts the affected chain rejects it; one still accepting it may send its request to the impersonator.
+
+![A shopping app starts an HTTPS connection; an attacker on its network path presents a forged certificate; the client checks trust, then either rejects the affected chain or accepts the impersonator and sends the request.](/news/assets/emudhra-weak-certificate-signing-keys/connection-trust-check.svg)
+
+If accepted, the app establishes encryption with **the attacker's server**. Encryption still operates, but protects a connection to the wrong party, who can read the request after receiving it. An attacker relaying requests onward could also alter them.
+
+> **Does this decrypt old traffic?** Recovering a CA signing key does not by itself reveal previously recorded modern TLS sessions. The danger here is server impersonation during a connection while a client still trusts the compromised authority.
+
+**Key recovery alone does not prove that customer data was stolen or that a payment was changed.**
 
 Mozilla distributed Firefox blocks within three hours of receiving the report, then released additional browser and certificate-library updates. eMudhra revoked the affected certificates. Applications with separate trust stores need their own relevant updates; browser protection does not automatically protect a backend process.
 
