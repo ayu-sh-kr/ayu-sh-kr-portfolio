@@ -301,6 +301,11 @@
       "permanent": true
     },
     {
+      "source": "/news/emudhra-weak-certificate-signing-keys",
+      "destination": "/news/emudhra-weak-certificate-signing-keys/",
+      "permanent": true
+    },
+    {
       "source": "/news/github-copilot-computer-use",
       "destination": "/news/github-copilot-computer-use/",
       "permanent": true

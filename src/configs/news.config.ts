@@ -68,6 +68,18 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "emudhra-weak-certificate-signing-keys",
+    date: "2026-10-21",
+    title: "eMudhra certificate compromise: how a signing key became the number 4",
+    summary: "From a domain to a trusted HTTPS website: how eMudhra’s weak signing keys enabled forged certificates, why Firefox blocked them, and what the failure means for users.",
+    kind: "infra",
+    document: "/news/emudhra-weak-certificate-signing-keys.md",
+    keywords: ["eMudhra certificate compromise", "eMudhra weak private keys", "P-384 key generation", "intermediate CA signing keys", "TLS certificate trust"],
+    minutes: 6,
+    reference: {label: "Mozilla — eMudhra intermediate certificate incident", href: "https://bugzilla.mozilla.org/show_bug.cgi?id=2083449"},
+  },
+
+  {
     slug: "cloudtoid-interprocess-shared-memory-ipc",
     date: "2026-10-21",
     title: "Cloudtoid Interprocess v3 connects local apps without a message broker",
