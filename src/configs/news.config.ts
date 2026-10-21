@@ -74,8 +74,8 @@ export const newsNotes: readonly NewsNote[] = [
     summary: "Cloudtoid connects Rust, Python, Node.js, Go, C/C++ and .NET processes on one machine. How its shared-memory queue works, what 13 ns measures, and where it fits.",
     kind: "infra",
     document: "/news/cloudtoid-interprocess-shared-memory-ipc.md",
-    keywords: ["Cloudtoid Interprocess", "shared-memory IPC", "Rust Python interprocess communication", "cross-language message queue", "Cloudtoid v3 benchmark"],
-    minutes: 4,
+    keywords: ["Cloudtoid Interprocess", "shared-memory IPC", "Rust Python interprocess communication", "cross-language message queue", "intraprocess vs interprocess communication", "Cloudtoid v3 benchmark"],
+    minutes: 5,
     reference: {label: "Cloudtoid — Interprocess documentation and benchmarks", href: "https://github.com/cloudtoid/interprocess"},
   },
 
