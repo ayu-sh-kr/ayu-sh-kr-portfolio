@@ -28,7 +28,9 @@ The image job now follows the second illustration. Rust writes a message into th
 
 The library carries bytes, so the applications still need an agreed message format. A small JSON message could contain an image path and resize dimensions; the image itself need not travel through the queue. Payloads are copied into and out of the queue, so shared memory does not make this entire path zero-copy.
 
-Cloudtoid publishes packages for the six language families and supports Windows, Linux and macOS on documented 64-bit platforms. Rust supplies the native engine used by the C, Python, Node.js and Go interfaces. .NET implements the same protocol separately, allowing the languages to communicate through a common queue layout.
+Cloudtoid publishes packages for the six language families and supports Windows, Linux and macOS on documented 64-bit platforms.
+
+> **One Rust engine, language-specific bindings.** Python, Node.js, Go and C/C++ use bindings—adapters that let each language call the Rust engine. The engine runs inside each application; there is no separate server or broker to host. **.NET is the exception:** it implements the same shared-memory protocol separately, so it can still exchange messages with applications using the Rust engine.
 
 ## What v3's performance figures actually show
 
