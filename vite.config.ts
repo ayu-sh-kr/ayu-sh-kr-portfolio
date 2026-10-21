@@ -5,6 +5,7 @@ import {fileURLToPath} from "node:url";
 import tailwindcss from "@tailwindcss/vite";
 import {dotaVitePlugins} from "@ayu-sh-kr/dota-wrap/vite";
 import { createLocalApiProxy } from "./src/configs/local-api-proxy.config.ts";
+import { iconAssets } from "./src/configs/icon-assets.config.ts";
 
 const projectRoot = fileURLToPath(new URL(".", import.meta.url));
 const blogRoutes = [
@@ -149,6 +150,12 @@ export default defineConfig(({ mode }) => {
     plugins: [
       tailwindcss(),
       previewSsgRedirects,
+      iconAssets([
+        resolve(projectRoot, "src"),
+        resolve(projectRoot, "public"),
+        resolve(projectRoot, "node_modules/@ayu-sh-kr/dota-ui/dist"),
+        resolve(projectRoot, "node_modules/@ayu-sh-kr/dota-md/dist"),
+      ]),
       ...dotaVitePlugins({
         root: projectRoot,
         logType: "info",
