@@ -1,29 +1,33 @@
 # PingCAP breach exposes TiDB Cloud records and SQL editor history
 
-PingCAP, the company behind the TiDB database and its managed TiDB Cloud service, says an intruder used **stolen service-account credentials** to copy internal data and obtain source code. The exposed records included customer information and SQL editor text. Its October 19 [security report](https://www.pingcap.com/trust-hub/security/security-update-october-2026/) says there is **no evidence that data stored in TiDB was affected**.
+An intruder stole customer records and source code from **PingCAP's internal systems** using compromised credentials. PingCAP, which develops TiDB and runs the managed TiDB Cloud service, disclosed the breach on October 19. It says investigators have found **no evidence that data stored in TiDB was affected**.
 
-That distinction matters: a database provider also holds information around the database, from account details to troubleshooting records. Those records can be sensitive even when the stored application data is unaffected.
+The exposed information included SQL editor history: the commands customers wrote to work with their databases. That creates a separate privacy problem even without evidence of someone reading the databases themselves.
 
-## Where the access happened
+## What was copied?
 
-A service account is an identity used by software to access other systems. Stealing its credentials can let an intruder act with that identity's permissions. PingCAP has not explained how the credentials were stolen.
+PingCAP's [Japanese notice, updated October 21](https://pingcap.co.jp/trust-hub/security/security-update-october-2026/), identifies account names and email addresses, organization and project associations, SQL history and errors, support tickets, customer contacts, and contract details. It reports up to approximately **50,000 personal-information records in Japan**. The figure is specific to Japan, and the exposed categories vary by customer.
 
-The reported access ran from September 9 to October 7, when PingCAP detected the incident and began disabling credentials. By October 14, it says all identified compromised credentials were invalidated and known access paths blocked. Investigators also found four vulnerabilities, fixed by that date; earlier exploitation remains under review.
+SQL is the language used to read and change database records. Consider a developer looking up an order by a customer's email address. If that address is typed into the command, a saved copy of the command contains it too. Someone reading that history could learn the address without receiving the query results. This is an illustration of the risk, not a disclosed customer query.
 
-## Why SQL editor history matters
+Support conversations and project details can also give a fraudulent email enough context to look familiar. A message about an actual support request is harder to dismiss than an unrelated password-reset email.
 
-SQL is the language used to query a database. A saved query can reveal table names, business logic and values typed into it. For example, a hypothetical query looking up an order by email address could expose that address in its text without exposing the query's returned rows. PingCAP has not published individual queries or established that this example occurred.
+## How the intruder got in
 
-Its [Japanese notice, updated October 21](https://pingcap.co.jp/trust-hub/security/security-update-october-2026/), lists account details, SQL execution history and errors, support tickets, customer contacts and contract information. It reports up to approximately **50,000 personal-information records in Japan**, rather than a worldwide customer count. Exposure varies by customer.
+According to the [English incident report](https://www.pingcap.com/trust-hub/security/security-update-october-2026/), the intruder used **stolen service-account credentials** between September 9 and October 7. A service account gives software permission to access systems; its credentials let that software identify itself. Stealing them can give someone else the same access.
 
-## What the API-key findings establish
+PingCAP detected the breach on October 7. By October 14, it says the identified compromised credentials and access paths had been disabled. It also removed excessive permissions between cloud projects and fixed four vulnerabilities found during the investigation. The report does not explain how the credentials were stolen or establish whether those vulnerabilities were exploited.
 
-The English report identifies encrypted API-key values in an exported table. One tested value could not be used directly; whether other usable credentials were exposed remains unresolved.
+## Could the stolen API keys be used?
 
-The Japanese notice describes encrypted public portions of API keys and says private portions were not leaked, so the public portions alone cannot operate TiDB Cloud. These statements have different scopes: the Japanese explanation should not erase the English report's remaining uncertainty.
+API keys are credentials that applications use to authenticate requests to a service. A usable stolen key can let someone make requests with its permissions.
 
-## What customers should do
+The Japanese notice says the exported API-key data contained encrypted public portions, with private portions not leaked. Those public portions alone cannot operate TiDB Cloud, it says.
 
-PingCAP's Japanese notice asks customers to **rotate TiDB Cloud API keys**, inspect access logs, review organization members and permissions, and watch for phishing. It says PingCAP will not request passwords or access keys by email.
+The English report is more cautious: one encrypted value tested by investigators did not work directly as an API key, but **whether other usable credentials were exposed remains unresolved**. That single test does not establish that every credential in the stolen material was unusable.
 
-An email mentioning a real project or support issue can look convincing. Verify incident messages through a known channel. The practical response is to review access and replace keys while PingCAP determines each customer's exposure; the absence of evidence of database access does not make copied operational records harmless.
+## What customers need to check
+
+PingCAP asks customers to rotate TiDB Cloud API keys, inspect access logs, review organization members and permissions, and watch for phishing. Rotation means replacing an existing key and revoking the old one; applications using it need the replacement.
+
+For teams assessing their exposure, the review should include what they put into SQL commands and support tickets. A working database does not tell them whether copies of those records have left the provider. Unexpected messages about those records should be checked through a known support channel.
