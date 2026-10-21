@@ -66,6 +66,21 @@ Interprocess queues are **transient**. When every publisher and subscriber disco
 
 For the thumbnail example, that can be acceptable if the original image and job record remain elsewhere, allowing failed work to be recreated. A full queue still needs an application policy for waiting, retrying or rejecting new work. Tasks that must survive failures need persistent tracking and recovery beyond the shared queue.
 
+### Capabilities at a glance
+
+Benchmarks below are [Cloudtoid's own measurements](https://github.com/cloudtoid/interprocess#performance) on an Apple M5 Max, not independent tests or measured broker speedups.
+
+| Area | Reported result or capability | Practical limit |
+| --- | --- | --- |
+| Rust benchmark | 12.98 ns send + receive; 3-byte message, reused buffer. | In-process microbenchmark; excludes cross-language binding overhead. |
+| .NET v3 vs v2 | 17.82 vs 214.6 ns for 8-byte send + receive; 2.42M vs 1.04M messages/s with four publishers and four subscribers. | Separate workloads; neither measures the illustrated Rust-to-Python path. |
+| Deployment | Library inside each app; shared queue on one machine. | No central engine or cross-machine messaging. |
+| Queue configuration | Matching name, capacity and protocol; matching storage directory on Unix. | Apps must explicitly join the same queue. |
+| Concurrency | Senders reserve space atomically; receivers coordinate through a shared reader lock. | Workers compete for messages; this is not broadcast. |
+| Persistence | Queue remains while at least one endpoint stays connected. | All endpoints gone: unread messages lost; reopening starts empty. No reboot durability. |
+| Database backing | No built-in database persistence. | Applications must add durable job records, completion tracking and retries. |
+| Worker failure | Pending messages remain if another endpoint stays connected. | A consumed job is not automatically requeued if its worker crashes. |
+
 Cloudtoid's contribution is a way to connect local applications across languages with less messaging infrastructure. For workers that share a machine and can recover their jobs elsewhere, removing the broker can simplify the setup. When messages must cross machines or survive restarts, those requirements still determine the messaging system.
 
 ## Sources
