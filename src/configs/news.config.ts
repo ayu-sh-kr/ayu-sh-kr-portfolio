@@ -71,7 +71,7 @@ export const newsNotes: readonly NewsNote[] = [
     slug: "emudhra-weak-certificate-signing-keys",
     date: "2026-10-21",
     title: "eMudhra certificate compromise: how a signing key became the number 4",
-    summary: "How eMudhra’s weak signing keys broke certificate trust: follow the setup failure, an HTTPS payment connection and the point where an impersonator could be accepted.",
+    summary: "How eMudhra’s weak CA signing keys enabled website impersonation: the separate website keys, the setup failure, and what protects users from forged certificates.",
     kind: "infra",
     document: "/news/emudhra-weak-certificate-signing-keys.md",
     keywords: ["eMudhra certificate compromise", "eMudhra weak private keys", "P-384 key generation", "intermediate CA signing keys", "TLS certificate trust"],
