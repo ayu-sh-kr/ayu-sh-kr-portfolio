@@ -286,6 +286,11 @@
       "permanent": true
     },
     {
+      "source": "/news/cloudtoid-interprocess-shared-memory-ipc",
+      "destination": "/news/cloudtoid-interprocess-shared-memory-ipc/",
+      "permanent": true
+    },
+    {
       "source": "/news/decision-models-openai-typesafe-cloudflare",
       "destination": "/news/decision-models-openai-typesafe-cloudflare/",
       "permanent": true

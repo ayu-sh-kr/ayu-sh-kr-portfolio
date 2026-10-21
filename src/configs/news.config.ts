@@ -68,6 +68,18 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "cloudtoid-interprocess-shared-memory-ipc",
+    date: "2026-10-21",
+    title: "Cloudtoid Interprocess: shared-memory IPC across languages",
+    summary: "Cloudtoid connects Rust, Python, Node.js, Go, C/C++ and .NET processes on one machine. How its shared-memory queue works, what 13 ns measures, and where it fits.",
+    kind: "infra",
+    document: "/news/cloudtoid-interprocess-shared-memory-ipc.md",
+    keywords: ["Cloudtoid Interprocess", "shared-memory IPC", "Rust Python interprocess communication", "cross-language message queue", "Cloudtoid v3 benchmark"],
+    minutes: 4,
+    reference: {label: "Cloudtoid — Interprocess documentation and benchmarks", href: "https://github.com/cloudtoid/interprocess"},
+  },
+
+  {
     slug: "mcp-discovery-apm-torchneuron-ai-tooling",
     date: "2026-10-20",
     title: "Today in AI: TorchNeuron, Clairic, APM and MCP discovery",
