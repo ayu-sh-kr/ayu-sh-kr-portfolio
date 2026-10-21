@@ -22,7 +22,7 @@ Both arrangements are **interprocess communication**, or IPC: exchanging informa
 
 Cloudtoid maps a common memory region into the participating processes. Each opens the same queue name and capacity. On Unix, they must also agree on the backing directory; an explicit absolute path avoids differences between language runtimes' temporary directories.
 
-The second illustration keeps private memory on separate platforms. Solid arrows follow the job bytes; dashed links identify access to the same shared mapping. Rust encodes an image path and resize operation, copies those bytes into the queue, and publishes the message. Python copies a received message into its own buffer, interprets the job and creates the thumbnail.
+The second illustration keeps private memory on separate platforms. Soft green streams follow the job bytes; faint dashed links identify access to the same shared mapping. Rust encodes an image path and resize operation, copies those bytes into the queue, and publishes the message. Python copies a received message into its own buffer, interprets the job and creates the thumbnail.
 
 ![Isometric view of separate Rust and Python processes with private buffers, both mapping one shared circular queue. Job bytes are copied into the queue and out to the worker, which produces a thumbnail.](/news/assets/cloudtoid-interprocess-shared-memory-ipc/interprocess.svg)
 
