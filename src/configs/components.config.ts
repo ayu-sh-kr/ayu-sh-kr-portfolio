@@ -13,7 +13,12 @@ const md = () => import("@app/configs/markdown.config.ts").then(() => import("@a
  */
 export const libraryComponents = defineComponentLoaders({
   "dota-accordion": () => ui().then((module) => module.AccordionComponent),
-  "dota-icon": () => ui().then((module) => module.IconsComponent),
+  "dota-icon": () =>
+    ui().then((module) => {
+      // Same-origin SVGs emitted by `iconAssets()`; Iconify refuses requests once rate limited.
+      module.IconsComponent.baseUrl = `${import.meta.env.BASE_URL}assets/icons`;
+      return module.IconsComponent;
+    }),
   "dota-popover": () => ui().then((module) => module.PopoverComponent),
   "md-view": () => md().then((module) => module.MdViewComponent),
 });
