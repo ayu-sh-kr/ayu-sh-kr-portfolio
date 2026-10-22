@@ -22,7 +22,7 @@ Railway still needs to explain **the entry point, which secrets were accessible,
 
 ## What stopped working, and what needs attention?
 
-Railway's [status page](https://status.railway.com/incident/QH8L8B3E) tracks the recovery. **As of its October 22, 06:29 UTC update (11:59 a.m. IST)**, the incident was still marked Identified:
+Railway's [status page](https://status.railway.com/incident/QH8L8B3E) tracks the recovery. **As of its October 22, 06:29 UTC update**, the incident was still marked Identified:
 
 | Area | Reported impact | Customer action |
 | --- | --- | --- |
