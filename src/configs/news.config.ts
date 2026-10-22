@@ -68,6 +68,30 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "php-critical-rce-october-2026",
+    date: "2026-10-22",
+    title: "PHP patches two critical remote code execution flaws",
+    summary: "PHP fixes CVE-2026-109618 and CVE-2026-109619. How web requests reach the runtime flaws, which versions are patched, and what operators need to verify.",
+    kind: "infra",
+    document: "/news/php-critical-rce-october-2026.md",
+    keywords: ["PHP critical vulnerabilities October 2026", "CVE-2026-109618", "CVE-2026-109619", "PHP remote code execution patch", "PHP 8.5.12 8.4.27 8.3.36 8.2.35"],
+    minutes: 3,
+    reference: {label: "PHP — October 2026 security releases", href: "https://www.php.net/archive/2026.php"},
+  },
+
+  {
+    slug: "railway-environment-variables-security-breach",
+    date: "2026-10-22",
+    title: "Railway breach puts customer environment variable secrets at risk",
+    summary: "Railway says an intruder may have decrypted some customer variables. What the exposure could reach, why rotating provider credentials matters, and what Railway reset.",
+    kind: "infra",
+    document: "/news/railway-environment-variables-security-breach.md",
+    keywords: ["Railway security breach October 2026", "Railway environment variables exposure", "Railway API key rotation", "Railway customer secrets", "Railway GitHub token reset"],
+    minutes: 3,
+    reference: {label: "Railway — October 21 security disclosure", href: "https://blog.railway.com/p/security-disclosure-wednesday-october-21st"},
+  },
+
+  {
     slug: "pingcap-tidb-cloud-security-breach",
     date: "2026-10-21",
     title: "PingCAP breach exposes TiDB Cloud records and SQL editor history",
