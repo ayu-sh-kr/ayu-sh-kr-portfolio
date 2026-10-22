@@ -49,6 +49,9 @@
 
 ## Recent Dispatch notes
 
+- [PHP2Shell: PHP RCE flaws, request flow and patched versions](https://www.ayu-sh-kr.com/news/php-critical-rce-october-2026/): How PHP2Shell reaches startup and cleanup, why Apache and PHP-FPM differ, and which PHP versions fix CVE-2026-109618 and CVE-2026-109619. [Article Markdown](https://www.ayu-sh-kr.com/news/php-critical-rce-october-2026.md).
+- [Railway breach puts customer environment variable secrets at risk](https://www.ayu-sh-kr.com/news/railway-environment-variables-security-breach/): Railway says an intruder may have decrypted some customer variables. What the exposure could reach, why rotating provider credentials matters, and what Railway reset. [Article Markdown](https://www.ayu-sh-kr.com/news/railway-environment-variables-security-breach.md).
+
 - [PingCAP breach exposes TiDB Cloud records and SQL editor history](https://www.ayu-sh-kr.com/news/pingcap-tidb-cloud-security-breach/): Stolen service-account credentials exposed PingCAP customer records and source code. What SQL history reveals, what remains uncertain, and what TiDB Cloud users should check. [Article Markdown](https://www.ayu-sh-kr.com/news/pingcap-tidb-cloud-security-breach.md).
 - [eMudhra certificate compromise: how a signing key became the number 4](https://www.ayu-sh-kr.com/news/emudhra-weak-certificate-signing-keys/): How domains, certificate authorities and Firefox fit together, where eMudhra’s signing keys failed, and what blocks website impersonation. [Article Markdown](https://www.ayu-sh-kr.com/news/emudhra-weak-certificate-signing-keys.md).
 - [Cloudtoid Interprocess v3 connects local apps without a message broker](https://www.ayu-sh-kr.com/news/cloudtoid-interprocess-shared-memory-ipc/): How Cloudtoid replaces a local broker-mediated handoff with shared-memory IPC, connects Rust and Python workers, and differs in delivery guarantees. [Article Markdown](https://www.ayu-sh-kr.com/news/cloudtoid-interprocess-shared-memory-ipc.md).
