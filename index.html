@@ -84,8 +84,7 @@
         "knowsAbout": ["Kotlin", "Spring Boot", "AWS", "PostgreSQL", "Redis", "Backend Engineering"]
       }
     </script>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G8LHZYKN4P"></script>
+    <!-- Google tag (gtag.js): the stub queues calls in dataLayer; the library loads after first paint. -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
@@ -97,6 +96,25 @@
         allow_google_signals: false,
         allow_ad_personalization_signals: false
       });
+      // Defer the ~150 KB tag until the page has loaded and the main thread is idle,
+      // or until the first interaction, so it never competes with the app bundle.
+      (() => {
+        let loaded = false;
+        const loadTag = () => {
+          if (loaded) return;
+          loaded = true;
+          const script = document.createElement('script');
+          script.async = true;
+          script.src = 'https://www.googletagmanager.com/gtag/js?id=G-G8LHZYKN4P';
+          document.head.appendChild(script);
+        };
+        const whenIdle = () =>
+          'requestIdleCallback' in window ? requestIdleCallback(loadTag, { timeout: 4000 }) : setTimeout(loadTag, 2000);
+        ['pointerdown', 'keydown', 'scroll'].forEach((type) =>
+          addEventListener(type, loadTag, { once: true, passive: true }));
+        if (document.readyState === 'complete') whenIdle();
+        else addEventListener('load', whenIdle, { once: true });
+      })();
     </script>
   </head>
   <body>
