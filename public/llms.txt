@@ -49,7 +49,7 @@
 
 ## Recent Dispatch notes
 
-- [PHP patches two critical remote code execution flaws](https://www.ayu-sh-kr.com/news/php-critical-rce-october-2026/): PHP fixes CVE-2026-109618 and CVE-2026-109619. How web requests reach the runtime flaws, which versions are patched, and what operators need to verify. [Article Markdown](https://www.ayu-sh-kr.com/news/php-critical-rce-october-2026.md).
+- [PHP2Shell: PHP RCE flaws, request flow and patched versions](https://www.ayu-sh-kr.com/news/php-critical-rce-october-2026/): How PHP2Shell reaches startup and cleanup, why Apache and PHP-FPM differ, and which PHP versions fix CVE-2026-109618 and CVE-2026-109619. [Article Markdown](https://www.ayu-sh-kr.com/news/php-critical-rce-october-2026.md).
 - [Railway breach puts customer environment variable secrets at risk](https://www.ayu-sh-kr.com/news/railway-environment-variables-security-breach/): Railway says an intruder may have decrypted some customer variables. What the exposure could reach, why rotating provider credentials matters, and what Railway reset. [Article Markdown](https://www.ayu-sh-kr.com/news/railway-environment-variables-security-breach.md).
 
 - [PingCAP breach exposes TiDB Cloud records and SQL editor history](https://www.ayu-sh-kr.com/news/pingcap-tidb-cloud-security-breach/): Stolen service-account credentials exposed PingCAP customer records and source code. What SQL history reveals, what remains uncertain, and what TiDB Cloud users should check. [Article Markdown](https://www.ayu-sh-kr.com/news/pingcap-tidb-cloud-security-breach.md).

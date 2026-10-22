@@ -70,13 +70,13 @@ export const newsNotes: readonly NewsNote[] = [
   {
     slug: "php-critical-rce-october-2026",
     date: "2026-10-22",
-    title: "PHP patches two critical remote code execution flaws",
-    summary: "PHP fixes CVE-2026-109618 and CVE-2026-109619. How web requests reach the runtime flaws, which versions are patched, and what operators need to verify.",
+    title: "PHP2Shell: PHP RCE flaws, request flow and patched versions",
+    summary: "How PHP2Shell reaches startup and cleanup, why Apache and PHP-FPM differ, and which PHP versions fix CVE-2026-109618 and CVE-2026-109619.",
     kind: "infra",
     document: "/news/php-critical-rce-october-2026.md",
-    keywords: ["PHP critical vulnerabilities October 2026", "CVE-2026-109618", "CVE-2026-109619", "PHP remote code execution patch", "PHP 8.5.12 8.4.27 8.3.36 8.2.35"],
-    minutes: 3,
-    reference: {label: "PHP — October 2026 security releases", href: "https://www.php.net/archive/2026.php"},
+    keywords: ["PHP2Shell", "CVE-2026-109618", "CVE-2026-109619", "PHP remote code execution", "Apache mod_php vulnerability", "PHP-FPM security update", "PHP patched versions"],
+    minutes: 4,
+    reference: {label: "PHP — October 2026 security advisory", href: "https://www.php.net/archive/2026.php#2026-10-21-5"},
   },
 
   {
