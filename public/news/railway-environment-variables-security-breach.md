@@ -8,7 +8,13 @@ An environment variable is a setting supplied to an application when it runs. On
 
 Railway detected unusual activity in systems that store those variables on October 21. It says its initial review suggests the impact may be limited to a subset of users, but it cannot yet give a customer-specific scope. **Encrypted storage did not rule out exposure:** the company says some decrypted contents may have been obtained. It has not described the entry point or confirmed that every stored secret was read.
 
-Railway believes the activity may be part of attacks on platforms aimed at AI inference providers. That is the company's assessment, not a finding that all affected customers used an AI service. It said it notified those providers to revoke keys proactively.
+## The AI-targeting claim leaves the entry point unexplained
+
+Railway says it believes the intrusion belongs to a wider campaign targeting platforms to compromise **AI inference providers**: services that run models and return their outputs. That describes a suspected target, not how someone entered Railway or obtained usable customer secrets. Its disclosure does not establish that stolen keys were used for model distillation.
+
+**The unresolved security question is how protected variables became accessible in decrypted form.** Railway has not publicly identified the entry point, the permissions abused, or the path used to obtain those values in the disclosure linked above. Encryption at rest alone does not explain the exposure: a hosting platform must also control who or what can retrieve usable secrets. The available disclosure does not establish which control failed.
+
+Railway says it notified upstream AI providers to revoke keys. That response addresses possible downstream misuse; it does not answer how customer credentials were exposed on Railway. The suspected AI target also does not narrow the risk of database passwords, cloud keys or registry tokens stored alongside them.
 
 ## What stopped working, and what needs attention?
 
