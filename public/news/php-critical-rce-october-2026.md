@@ -14,7 +14,13 @@ The normal cycle below shows where application code runs. The two failure paths 
 
 ## A — memory exhaustion during startup
 
-Before the application runs, PHP parses incoming form data into structures it can use. A multipart request splits form fields and uploads into parts with their own headers. Those headers and file metadata can take substantially more memory inside PHP than they occupy in the request, so even a body within the configured size limit can exhaust PHP's request memory budget. The [CVE-2026-109618 advisory](https://github.com/php/php-src/security/advisories/GHSA-w8hw-w9fx-j79w) describes an abrupt abort that can leave internal data only partly initialized. Apache's `mod_php`, which runs PHP inside Apache, still invokes cleanup after failed startup. Cleanup then acts on invalid memory. Researchers demonstrated remote code execution through this path before application code ran.
+**Input processing.** Before the application runs, PHP parses incoming form data into structures it can use. A multipart request splits form fields and uploads into parts with their own headers.
+
+**Memory exhaustion.** Those headers and file metadata can take substantially more memory inside PHP than they occupy in the request. Even a body within the configured size limit can therefore exhaust PHP's request memory budget.
+
+**Interrupted startup.** The [CVE-2026-109618 advisory](https://github.com/php/php-src/security/advisories/GHSA-w8hw-w9fx-j79w) describes an abrupt abort that can leave internal data only partly initialized.
+
+**Unsafe cleanup.** Apache's `mod_php`, which runs PHP inside Apache, still invokes cleanup after failed startup. Cleanup then acts on invalid memory. Researchers demonstrated remote code execution through this path **before application code ran**.
 
 ![Path A: crafted multipart headers and file metadata expand in memory until allocation fails, startup aborts and Apache cleanup processes incomplete state before application code runs.](/news/assets/php-critical-rce-october-2026/startup-memory-failure.svg)
 
@@ -22,11 +28,17 @@ A memory error does not automatically give every visitor control. Exploitation d
 
 ## B — a reference outlives its data
 
-A pointer records where data lives in memory. The [CVE-2026-109619 advisory](https://github.com/php/php-src/security/advisories/GHSA-6wmf-4rv5-p3rp) describes paths where a worker keeps a pointer after that request's memory has been released. A fatal error can interrupt an operation before it clears that reference. Early processing of a later request uses it before normal initialization clears it. Treating that stale reference as valid can lead to code execution.
+**A reference is stored.** A pointer records where data lives in memory. The [CVE-2026-109619 advisory](https://github.com/php/php-src/security/advisories/GHSA-6wmf-4rv5-p3rp) describes paths where a worker retains a pointer to data belonging to one request.
+
+**The reset is missed.** A fatal error can interrupt an operation before it clears that reference. PHP releases the request's memory, but the worker still holds the pointer.
+
+**A later request uses it.** When the **same worker** handles another request, early processing can use the stale reference before normal initialization clears it. Treating that reference as valid can lead to code execution.
 
 ![Path B: a fatal error leaves a reference to freed request data, and early processing of a later request on the same worker uses that stale reference.](/news/assets/php-critical-rce-october-2026/cross-request-stale-reference.svg)
 
-The server setup changes the path. **PHP-FPM** manages a pool of PHP workers and terminates a child when startup fails, blocking the exact Apache startup sequence shown in A. The second advisory nevertheless documents a validated FPM path involving an application operation, a fatal error and a later request. Switching to FPM is therefore not a substitute for patching.
+The server setup changes the path. **PHP-FPM** manages a pool of PHP workers and terminates a child when startup fails, blocking the exact Apache startup sequence shown in A.  
+
+The second advisory nevertheless documents a validated FPM path involving an application operation, a fatal error and a later request. Switching to FPM is therefore not a substitute for patching.
 
 ## Patched PHP versions
 
