@@ -8,13 +8,15 @@ An environment variable is a setting supplied to an application when it runs. On
 
 Railway detected unusual activity in systems that store those variables on October 21. It says its initial review suggests the impact may be limited to a subset of users, but it cannot yet give a customer-specific scope. **Encrypted storage did not rule out exposure:** the company says some decrypted contents may have been obtained. It has not described the entry point or confirmed that every stored secret was read.
 
-## The AI-targeting claim leaves the entry point unexplained
+## An AI target does not explain the secret exposure
 
-Railway says it believes the intrusion belongs to a wider campaign targeting platforms to compromise **AI inference providers**: services that run models and return their outputs. That describes a suspected target, not how someone entered Railway or obtained usable customer secrets. Its disclosure does not establish that stolen keys were used for model distillation.
+Railway links the incident to a campaign targeting **AI inference providers**, which run models and return their outputs. That is its assessment of the attackers' objective. **It does not explain how they entered Railway or obtained decrypted customer secrets**, and the disclosure does not establish model distillation.
 
-**The unresolved security question is how protected variables became accessible in decrypted form.** Railway has not publicly identified the entry point, the permissions abused, or the path used to obtain those values in the disclosure linked above. Encryption at rest alone does not explain the exposure: a hosting platform must also control who or what can retrieve usable secrets. The available disclosure does not establish which control failed.
+Encryption protects stored values, but applications still need usable credentials. An intruder could obtain those values without breaking the encryption itself if they reached a component authorized to retrieve them. That is a general possibility, **not a confirmed account of this breach**. Railway has not disclosed the entry point, the access controls bypassed or the decryption path.
 
-Railway says it notified upstream AI providers to revoke keys. That response addresses possible downstream misuse; it does not answer how customer credentials were exposed on Railway. The suspected AI target also does not narrow the risk of database passwords, cloud keys or registry tokens stored alongside them.
+In [public developer discussion](https://www.reddit.com/r/devops/comments/1xc6bbp/railways_security_incident_is_more_serious_than_a/), customers ask for those details and describe the rotation dilemma: revoke credentials and risk breaking an application that cannot yet redeploy, or leave potentially exposed credentials active. These accounts describe customer concerns, not forensic proof.
+
+A satisfactory postmortem needs to explain **how access happened, which secrets were reachable, the exposure window and what changed to prevent a repeat**. Naming the suspected AI target does not answer those questions.
 
 ## What stopped working, and what needs attention?
 
