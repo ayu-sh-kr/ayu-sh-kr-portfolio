@@ -2,7 +2,7 @@
 
 PHP's **October 21 emergency release** fixes two flaws that can let someone run code on a web server without logging in: **unauthenticated remote code execution (RCE)**. Tracked as **CVE-2026-109618** and **CVE-2026-109619**, and widely called [PHP2Shell](https://digital.nhs.uk/cyber-alerts/2026/cc-4875), they affect the runtime that executes PHP applications. In a demonstrated Apache attack, the failure occurs before the site's own code starts.
 
-That puts the problem underneath WordPress, Laravel and other PHP software. A login check inside the application cannot stop a failure that happens before PHP reaches it.
+The flaws are in **PHP itself**, the software that runs applications built with WordPress, Laravel and other PHP tools. In the demonstrated Apache attack, PHP fails while preparing the incoming request, before the application's login checks can run.
 
 ## Where PHP sits in the request and response cycle
 
