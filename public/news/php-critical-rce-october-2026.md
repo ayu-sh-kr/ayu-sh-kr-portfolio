@@ -8,17 +8,23 @@ The flaws are in **PHP itself**, the software that runs applications built with 
 
 When a browser sends a request, the web server passes the PHP work to a **worker**: a running process that handles it. PHP prepares request data, the application runs, and its output becomes an HTTP response. PHP also cleans up the request's memory. A worker may stay alive to handle another request, so it must clear references to the previous request's data.
 
-The diagram separates the normal request from two failure paths. **A** follows a crafted form request through input parsing, memory exhaustion and unsafe cleanup before application code runs. **B** follows a stale reference across two requests handled by the same worker. The numbered arrows show the order within each path; these are separate flaws, not consecutive stages of one attack.
+The normal cycle below shows where application code runs. The two failure paths are illustrated separately beside their explanations.
 
-![Numbered PHP failure paths: A shows multipart headers and file metadata expanding in memory until allocation fails, startup aborts and Apache cleanup uses incomplete state before application login. B shows a reference surviving freed request memory and being used by early processing of a later request on the same worker.](/news/assets/php-critical-rce-october-2026/request-response-failure-points.svg)
+![Normal PHP request cycle: PHP prepares input, application code runs and produces a response, and cleanup releases request memory before the worker handles another request.](/news/assets/php-critical-rce-october-2026/normal-request-cycle.svg)
 
-## What goes wrong at each marked point?
+## A — memory exhaustion during startup
 
-**A — memory exhaustion during startup.** Before the application runs, PHP parses incoming form data into structures it can use. A multipart request splits form fields and uploads into parts with their own headers. Those headers and file metadata can take substantially more memory inside PHP than they occupy in the request, so even a body within the configured size limit can exhaust PHP's request memory budget. The [CVE-2026-109618 advisory](https://github.com/php/php-src/security/advisories/GHSA-w8hw-w9fx-j79w) describes an abrupt abort that can leave internal data only partly initialized. Apache's `mod_php`, which runs PHP inside Apache, still invokes cleanup after failed startup. Cleanup then acts on invalid memory. Researchers demonstrated remote code execution through this path before application code ran.
+Before the application runs, PHP parses incoming form data into structures it can use. A multipart request splits form fields and uploads into parts with their own headers. Those headers and file metadata can take substantially more memory inside PHP than they occupy in the request, so even a body within the configured size limit can exhaust PHP's request memory budget. The [CVE-2026-109618 advisory](https://github.com/php/php-src/security/advisories/GHSA-w8hw-w9fx-j79w) describes an abrupt abort that can leave internal data only partly initialized. Apache's `mod_php`, which runs PHP inside Apache, still invokes cleanup after failed startup. Cleanup then acts on invalid memory. Researchers demonstrated remote code execution through this path before application code ran.
+
+![Path A: crafted multipart headers and file metadata expand in memory until allocation fails, startup aborts and Apache cleanup processes incomplete state before application code runs.](/news/assets/php-critical-rce-october-2026/startup-memory-failure.svg)
 
 A memory error does not automatically give every visitor control. Exploitation depends on arranging memory so that PHP's mistaken operations use attacker-controlled values. The demonstrated code runs with the **web worker's permissions**, which determine what files and credentials it can reach.
 
-**B — a reference outlives its data.** A pointer records where data lives in memory. The [CVE-2026-109619 advisory](https://github.com/php/php-src/security/advisories/GHSA-6wmf-4rv5-p3rp) describes paths where a worker keeps a pointer after that request's memory has been released. A fatal error can interrupt an operation before it clears that reference. Early processing of a later request uses it before normal initialization clears it. Treating that stale reference as valid can lead to code execution.
+## B — a reference outlives its data
+
+A pointer records where data lives in memory. The [CVE-2026-109619 advisory](https://github.com/php/php-src/security/advisories/GHSA-6wmf-4rv5-p3rp) describes paths where a worker keeps a pointer after that request's memory has been released. A fatal error can interrupt an operation before it clears that reference. Early processing of a later request uses it before normal initialization clears it. Treating that stale reference as valid can lead to code execution.
+
+![Path B: a fatal error leaves a reference to freed request data, and early processing of a later request on the same worker uses that stale reference.](/news/assets/php-critical-rce-october-2026/cross-request-stale-reference.svg)
 
 The server setup changes the path. **PHP-FPM** manages a pool of PHP workers and terminates a child when startup fails, blocking the exact Apache startup sequence shown in A. The second advisory nevertheless documents a validated FPM path involving an application operation, a fatal error and a later request. Switching to FPM is therefore not a substitute for patching.
 
