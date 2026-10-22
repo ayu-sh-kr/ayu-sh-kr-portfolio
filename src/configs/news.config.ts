@@ -87,7 +87,7 @@ export const newsNotes: readonly NewsNote[] = [
     kind: "infra",
     document: "/news/railway-environment-variables-security-breach.md",
     keywords: ["Railway security breach October 2026", "Railway environment variables exposure", "Railway API key rotation", "Railway customer secrets", "Railway GitHub token reset"],
-    minutes: 3,
+    minutes: 4,
     reference: {label: "Railway — October 21 security disclosure", href: "https://blog.railway.com/p/security-disclosure-wednesday-october-21st"},
   },
 
