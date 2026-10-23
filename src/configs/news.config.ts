@@ -71,7 +71,7 @@ export const newsNotes: readonly NewsNote[] = [
     slug: "deepseek-fireworks-deepinfer-faster-inference",
     date: "2026-10-23",
     title: "The race to faster AI inference: Meta, Fireworks and DeepSeek",
-    summary: "Meta and Paradigm offer $100,000 to speed up Muse Spark Open as Fireworks claims 1,521+ tokens/s. How kernels, caching and speculative decoding improve AI inference.",
+    summary: "Meta offers inference-speed prizes as Fireworks claims 1,521+ tokens/s. The gains behind faster AI, and the security concerns raised by this week’s breaches.",
     kind: "infra",
     document: "/news/deepseek-fireworks-deepinfer-faster-inference.md",
     keywords: ["faster AI inference", "Muse Spark Open Kernel Challenge", "Meta Paradigm 100000 prize", "Helion GPU kernels", "Fireworks Ultrafast", "DeepSeek V4.1 Flash 1017", "Claude Opus 5.5 speed", "DeepInfer speculative decoding"],
