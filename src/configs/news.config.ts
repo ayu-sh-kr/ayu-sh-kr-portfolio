@@ -68,6 +68,18 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "deepseek-fireworks-deepinfer-faster-inference",
+    date: "2026-10-23",
+    title: "The race to faster AI inference: Meta, Fireworks and DeepSeek",
+    summary: "Meta offers inference-speed prizes as Fireworks claims 1,521+ tokens/s. The gains behind faster AI, and the security concerns raised by this week’s breaches.",
+    kind: "infra",
+    document: "/news/deepseek-fireworks-deepinfer-faster-inference.md",
+    keywords: ["faster AI inference", "Muse Spark Open Kernel Challenge", "Meta Paradigm 100000 prize", "Helion GPU kernels", "Fireworks Ultrafast", "DeepSeek V4.1 Flash 1017", "Claude Opus 5.5 speed", "DeepInfer speculative decoding"],
+    minutes: 4,
+    reference: {label: "Muse Spark Open Kernel Challenge", href: "https://openkernelchallenge.dev/"},
+  },
+
+  {
     slug: "php-critical-rce-october-2026",
     date: "2026-10-22",
     title: "PHP2Shell: PHP RCE flaws, request flow and patched versions",

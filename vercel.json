@@ -306,6 +306,11 @@
       "permanent": true
     },
     {
+      "source": "/news/deepseek-fireworks-deepinfer-faster-inference",
+      "destination": "/news/deepseek-fireworks-deepinfer-faster-inference/",
+      "permanent": true
+    },
+    {
       "source": "/news/decision-models-openai-typesafe-cloudflare",
       "destination": "/news/decision-models-openai-typesafe-cloudflare/",
       "permanent": true

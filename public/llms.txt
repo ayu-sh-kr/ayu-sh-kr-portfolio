@@ -49,118 +49,197 @@
 
 ## Recent Dispatch notes
 
-- [PHP2Shell: PHP RCE flaws, request flow and patched versions](https://www.ayu-sh-kr.com/news/php-critical-rce-october-2026/): How PHP2Shell reaches startup and cleanup, why Apache and PHP-FPM differ, and which PHP versions fix CVE-2026-109618 and CVE-2026-109619. [Article Markdown](https://www.ayu-sh-kr.com/news/php-critical-rce-october-2026.md).
-- [Railway breach puts customer environment variable secrets at risk](https://www.ayu-sh-kr.com/news/railway-environment-variables-security-breach/): Railway says an intruder may have decrypted some customer variables. What the exposure could reach, why rotating provider credentials matters, and what Railway reset. [Article Markdown](https://www.ayu-sh-kr.com/news/railway-environment-variables-security-breach.md).
+- [AI inference race: Meta’s $100K challenge and DeepSeek’s speed push](https://www.ayu-sh-kr.com/news/deepseek-fireworks-deepinfer-faster-inference/): Meta launches a $100K Muse Spark challenge as Fireworks claims 1,521+ tokens/s with D…16667 tokens truncated… Autopilot to turn work requests into finished tasks",
+    summary: "Microsoft is bringing Chat, Cowork, app building, and a persistent agent into one Copilot experience. Home and Code are headed to Frontier, while Autopilot enters private preview.",
+    kind: "reading",
+    document: "/news/microsoft-copilot-home-code-autopilot.md",
+    keywords: ["Microsoft Copilot Home", "Microsoft Copilot Code", "Microsoft Copilot Autopilot", "Copilot Managed Runtime", "Microsoft 365 Copilot agents", "Copilot Frontier program"],
+    minutes: 2,
+    reference: {label: "Microsoft — Introducing the new Copilot with Home, Code and Autopilot", href: "https://blogs.microsoft.com/blog/2026/09/25/introducing-the-new-copilot-with-home-code-and-autopilot/"},
+  },
+  {
+    slug: "docker-sandbox-kit-aws-lambda-microvms-agent-coding",
+    date: "2026-09-25",
+    title: "Docker Sandbox Kit and AWS Lambda MicroVMs make private AI coding agents more practical",
+    summary: "Docker's open agent kit format and AWS's isolated MicroVMs point toward a future where organizations package, run, and govern coding agents on their own terms. Here is what they solve—and what they don't.",
+    kind: "infra",
+    document: "/news/docker-sandbox-kit-aws-lambda-microvms-agent-coding.md",
+    keywords: ["Docker Sandbox Kit Spec", "AWS Lambda MicroVMs", "AI coding agent sandbox", "private coding agents", "agentic development", "agent permissions", "Firecracker microVM"],
+    minutes: 5,
+    reference: {label: "Docker — Sandbox Kit Spec announcement", href: "https://www.docker.com/blog/docker-sandbox-kit-spec-cncf/"},
+  },
+  {
+    slug: "claude-opus-5-5-cost-coding",
+    date: "2026-09-25",
+    title: "Claude Opus 5.5 gets cheaper as Claude Code adds cloud-session credits",
+    summary: "Anthropic says Claude Opus 5.5 costs about 40% less on typical work, while existing Pro and Max subscribers can claim $100 or $250 for Claude Code cloud sessions by October 7.",
+    kind: "reading",
+    document: "/news/claude-opus-5-5-cost-coding.md",
+    keywords: ["Claude Opus 5.5", "Claude Opus 5.5 pricing", "Claude Code cloud sessions", "Claude Code free credit", "Claude Code claim-credit", "Claude Pro credit", "Claude Max credit", "AI coding agents", "code-generated animation"],
+    minutes: 4,
+    figures: [
+      {label: "Typical workload cost", value: "40% less"},
+      {label: "Input / output", value: "$4 / $20 per M"},
+      {label: "Cache-read cost", value: "60% less"},
+    ],
+    reference: {label: "Anthropic — Introducing Claude Opus 5.5", href: "https://www.anthropic.com/claude-opus-5-5"},
+  },
+  {
+    slug: "jev-typesafe-system-one-model",
+    date: "2026-09-21",
+    title: "Jev gives AI agents a fast gut check before the expensive thinking begins",
+    summary: "LangChain has added Jev, TypeSafe AI’s non-generative System One model, for fast structured decisions such as model routing and tool-call risk checks inside an agent harness.",
+    kind: "reading",
+    document: "/news/jev-typesafe-system-one-model.md",
+    keywords: ["Jev model", "TypeSafe AI", "LangChain Jev", "System One model", "AI agent harness", "agent model routing", "AI tool-call safety", "structured AI decisions"],
+    minutes: 2,
+    reference: {label: "LangChain — Building a Harness with Jev", href: "https://www.langchain.com/blog/building-a-harness-with-jev"},
+  },
+  {
+    slug: "jhipster-online-infostealer-malware",
+    date: "2026-09-21",
+    title: "JHipster Online warns users after infostealer malware exposes credentials",
+    summary: "JHipster Online says exposed credentials point to infostealer malware on affected devices, not a breach of its own database. The response shows why device cleanup matters before password rotation.",
+    kind: "reading",
+    document: "/news/jhipster-online-infostealer-malware.md",
+    keywords: ["JHipster Online malware", "infostealer malware", "JHipster credential exposure", "browser password theft", "credential security", "device compromise", "password reset", "session invalidation"],
+    minutes: 2,
+    reference: {label: "JHipster Online warning shared by Julien Dubois", href: "https://gist.github.com/jdubois/19ffaf2c8a994fd8e4b5f638342269d9"},
+  },
+  {
+    slug: "cloudflare-trycloudflare-quick-tunnel",
+    date: "2026-09-20",
+    title: "Cloudflare Quick Tunnels take localhost to the internet",
+    summary: "Shared localhost:3000 and wondered why nobody could open it? Cloudflare Quick Tunnels give your local app a free public HTTPS link for demos and feedback.",
+    kind: "reading",
+    document: "/news/cloudflare-trycloudflare-quick-tunnel.md",
+    keywords: ["Cloudflare Quick Tunnels", "trycloudflare.com", "cloudflared tunnel", "share localhost", "local development tunnel", "temporary public URL", "share local app online", "developer demos"],
+    minutes: 2,
+    reference: {label: "Cloudflare documentation — TryCloudflare", href: "https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/do-more-with-tunnels/trycloudflare/"},
+  },
+  {
+    slug: "zcode-user-code-upload-key",
+    date: "2026-09-20",
+    title: "Z.ai's ZCode was caught stealing user code — silently uploading a 313MB project snapshot with a server-only key",
+    summary: "Z.ai's ZCode was caught staging an encrypted 313MB workspace archive — Git history included — for upload to Alibaba cloud storage, decryptable only by a private key on Z.ai's server. Z.ai apologised and called it a bug.",
+    kind: "reading",
+    document: "/news/zcode-user-code-upload-key.md",
+    keywords: ["Z.ai ZCode", "Zhipu ZCode upload", "AI coding tool privacy", "ZCode Git history upload", "Ferstar ZCode investigation", "Alibaba cloud upload", "AI coding assistant data collection", "developer tool telemetry"],
+    minutes: 2,
+    reference: {label: "Ferstar — Inside ZCode", href: "https://blog.ferstar.org/en/posts/zcode-silent-workspace-snapshot-upload/"},
+  },
+  {
+    slug: "openbot-self-hosted-ai-coworkers",
+    date: "2026-09-19",
+    title: "CopilotKit OpenBot: self-hosted AI coworkers and agent controls",
+    summary: "CopilotKit OpenBot is an open-source, self-hosted AI coworker template with isolated browsers, AG-UI agents, policy checks, and audit trails. It is currently alpha.",
+    kind: "reading",
+    document: "/news/openbot-self-hosted-ai-coworkers.md",
+    keywords: ["CopilotKit OpenBot", "open-source AI coworkers", "self-hosted AI agents", "AG-UI protocol", "AI browser agents", "agent policy enforcement", "AI agent audit trails", "human-in-the-loop control"],
+    minutes: 2,
+    reference: {label: "CopilotKit/OpenBot on GitHub", href: "https://github.com/CopilotKit/openbot"},
+  },
+  {
+    slug: "perplexity-cobbledb",
+    date: "2026-09-20",
+    title: "Perplexity CobbleDB: why AI search moved beyond DynamoDB",
+    summary: "Why Perplexity replaced DynamoDB with CobbleDB: a RocksDB-backed hot store with Pillar and Lorry for batched updates and low-latency reads for AI search.",
+    kind: "reading",
+    document: "/news/perplexity-cobbledb.md",
+    keywords: ["Perplexity CobbleDB", "CobbleDB architecture", "Perplexity DynamoDB replacement", "RocksDB MultiGet", "AI search storage", "distributed key-value store", "Pillar Lorry pipeline", "batched ingestion", "replica read latency"],
+    minutes: 3,
+    reference: {label: "Perplexity engineering — CobbleDB", href: "https://www.perplexity.ai/hub/blog/cobbledb-storage-infrastructure-for-ai-native-search-at-scale"},
+  },
+  {
+    slug: "qorl-postgres-query-optimizer-rl",
+    date: "2026-09-19",
+    title: "A 4B open-weights model, retrained on one task, beats the Postgres query planner",
+    summary: "One person, one sabbatical, $1,200: a small open-weights model retrained on a single dedicated task — planning Postgres queries — beat the planner by 1.81x. The interesting units of AI progress are getting small, specialized, and cheap.",
+    kind: "reading",
+    document: "/news/qorl-postgres-query-optimizer-rl.md",
+    keywords: ["small specialized models", "open-weights AI", "reinforcement learning", "PostgreSQL", "AI accessibility"],
+    minutes: 2,
+    figures: [
+      {label: "Geo mean speedup", value: "1.81x"},
+      {label: "Latency reduction", value: "44.7%"},
+      {label: "Training cost", value: "~$1,200"},
+    ],
+    reference: {label: "Rohan Bansal — QoRL write-up", href: "https://rohanbansal.com/qorl"},
+  },
+  {
+    slug: "prismml-bonsai-2-27b",
+    date: "2026-09-18",
+    title: "PrismML's Bonsai 2 27B: near-lossless ternary compression at a 5.9GB footprint",
+    summary: "1.76 bits per weight, 98.2% of full-precision benchmark performance at 9x smaller, 143 tokens/second on a 5090. Local inference just got interesting again.",
+    kind: "reading",
+    document: "/news/prismml-bonsai-2-27b.md",
+    keywords: ["PrismML Bonsai 2 27B", "ternary quantization", "local AI inference"],
+    minutes: 2,
+    figures: [
+      {label: "Retention", value: "98.2%"},
+      {label: "Footprint", value: "5.9GB"},
+      {label: "Throughput", value: "143 tok/s"},
+    ],
+    reference: {label: "PrismML announcement", href: "https://prismml.com/news/bonsai-2-27b"},
+  },
 
-- [PingCAP breach exposes TiDB Cloud records and SQL editor history](https://www.ayu-sh-kr.com/news/pingcap-tidb-cloud-security-breach/): Stolen service-account credentials exposed PingCAP customer records and source code. What SQL history reveals, what remains uncertain, and what TiDB Cloud users should check. [Article Markdown](https://www.ayu-sh-kr.com/news/pingcap-tidb-cloud-security-breach.md).
-- [eMudhra certificate compromise: how a signing key became the number 4](https://www.ayu-sh-kr.com/news/emudhra-weak-certificate-signing-keys/): How domains, certificate authorities and Firefox fit together, where eMudhra’s signing keys failed, and what blocks website impersonation. [Article Markdown](https://www.ayu-sh-kr.com/news/emudhra-weak-certificate-signing-keys.md).
-- [Cloudtoid Interprocess v3 connects local apps without a message broker](https://www.ayu-sh-kr.com/news/cloudtoid-interprocess-shared-memory-ipc/): How Cloudtoid replaces a local broker-mediated handoff with shared-memory IPC, connects Rust and Python workers, and differs in delivery guarantees. [Article Markdown](https://www.ayu-sh-kr.com/news/cloudtoid-interprocess-shared-memory-ipc.md).
+];
 
-- [Today in AI: TorchNeuron, Clairic, APM and MCP discovery](https://www.ayu-sh-kr.com/news/mcp-discovery-apm-torchneuron-ai-tooling/): AI developer roundup: PyTorch on AWS Trainium with TorchNeuron, Cloudflare Clairic extraction, Microsoft APM agent setup, and Google Cloud dynamic MCP discovery. [Article Markdown](https://www.ayu-sh-kr.com/news/mcp-discovery-apm-torchneuron-ai-tooling.md).
-- [Cloudflare CEO says AWS cancelled its re:Invent 2026 booth](https://www.ayu-sh-kr.com/news/aws-cloudflare-reinvent-booth-rivalry/): Cloudflare's reported re:Invent 2026 booth cancellation brings its AWS rivalry into focus, as both platforms compete to help developers build and deploy applications faster. [Article Markdown](https://www.ayu-sh-kr.com/news/aws-cloudflare-reinvent-booth-rivalry.md).
+const NEWS_INDEX_KEYWORDS = [siteIdentity.name, ...newsContent.seo.keywords] as const;
 
-- [OpenCode Console breach: how exposed API keys became AI bills](https://www.ayu-sh-kr.com/news/opencode-console-breach-api-keys/): Legacy Console access, exposed provider credentials, billing abuse and the limits of the distillation claim. [Article Markdown](https://www.ayu-sh-kr.com/news/opencode-console-breach-api-keys.md).
+/** Orders the authored catalogue newest-first for every consumer. */
+export const getNewsNotes = (): readonly NewsNote[] =>
+  [...newsNotes].sort((first, second) => second.date.localeCompare(first.date));
 
-- [Perplexity SPACE: How Firecracker sandboxes isolate AI agents](https://www.ayu-sh-kr.com/news/perplexity-space-firecracker-agent-sandboxes/): SPACE’s three layers, Firecracker isolation, external credentials and resumable sessions, with an isometric architecture cutaway. [Article Markdown](https://www.ayu-sh-kr.com/news/perplexity-space-firecracker-agent-sandboxes.md).
+/** Resolves the note consumed by the permalink route and loader boundary. */
+export const getNewsNote = (slug: string): NewsNote | undefined =>
+  newsNotes.find((note) => note.slug === slug);
 
-- [Urban VPN AI chat collection: what happens and how it works](https://www.ayu-sh-kr.com/news/urban-vpn-ai-chat-harvesting/): What Koi reported happens with the affected Urban VPN browser extension installed, how it copies AI chats, and what Urban VPN disputes. [Article Markdown](https://www.ayu-sh-kr.com/news/urban-vpn-ai-chat-harvesting.md).
+/** Extracts a safe decoded slug from the canonical news detail path. */
+export const getNewsSlug = (pathname: string): string => {
+  const match = /^\/news\/([^/]+)\/?$/.exec(pathname);
+  if (!match) {
+    return "";
+  }
 
-- [AWS Lambda Web Functions: Simpler Deployment, SSR and Active CPU Pricing](https://www.ayu-sh-kr.com/news/aws-lambda-web-functions/): AWS framework support, deployment, SSR, CloudFront, pricing and regional performance, followed by the competitive implications for Cloudflare Workers. [Article Markdown](https://www.ayu-sh-kr.com/news/aws-lambda-web-functions.md).
+  try {
+    return decodeURIComponent(match[1]);
+  } catch {
+    return "";
+  }
+};
 
-- [Unverified AI routers: credential leaks and pip install tampering](https://www.ayu-sh-kr.com/news/malicious-ai-routers-agent-supply-chain/): How AI routers see requests, retain conversations and leak credentials—and where a changed pip install command can turn a reply into an unsafe action. [Article Markdown](https://www.ayu-sh-kr.com/news/malicious-ai-routers-agent-supply-chain.md).
+/** Formats an authored date consistently across feed and permalink metadata. */
+export const formatNewsDate = (date: string, short = false): string =>
+  new Intl.DateTimeFormat("en-US", {
+    month: short ? "short" : "long",
+    day: "numeric",
+    year: short ? undefined : "numeric",
+  }).format(new Date(`${date}T00:00:00`));
 
-- [Anatomy brings interactive SVG and 3D machine illustrations to Claude Code](https://www.ayu-sh-kr.com/news/anatomy-claude-code-isometric-svg-webgl/): Anatomy’s isometric SVG kit, WebGL effects, beta 3D motion, editable source and visual checks. [Article Markdown](https://www.ayu-sh-kr.com/news/anatomy-claude-code-isometric-svg-webgl.md).
+/** Converts a stable kind into the editorial label shown to readers. */
+export const labelForNewsKind = (kind: NewsKind): string =>
+  newsFilters.find((filter) => filter.value === kind)?.label ?? kind;
 
-- [Tamagui 3: Tailwind styling for React Native and web](https://www.ayu-sh-kr.com/news/tamagui-3-tailwind-native-runtime/): Tamagui 3 brings Tailwind styling to React Native and web. Understand its Rust compiler, optional C++ runtime, release timeline and free Bento and Takeout kits. [Article Markdown](https://www.ayu-sh-kr.com/news/tamagui-3-tailwind-native-runtime.md).
+/** Derives index and note metadata from the same catalogue that renders the UI. */
+export const getNewsSeo = (note?: NewsNote): PageSeoContent => {
+  const title = note ? `${note.title} — ${siteIdentity.domain}` : newsContent.seo.title;
+  const description = note?.summary ?? newsContent.seo.description;
 
-- [JetBrains Mellum2.1: open coding model, benchmarks and local use](https://www.ayu-sh-kr.com/news/jetbrains-mellum-2-1-coding-agents/): JetBrains Mellum2.1 explained: repository training, 12B MoE architecture, SWE-bench results and local GGUF deployment with Ollama, including memory trade-offs. [Article Markdown](https://www.ayu-sh-kr.com/news/jetbrains-mellum-2-1-coding-agents.md).
-- [Weft brings live coordination to AI coding agents working with Git](https://www.ayu-sh-kr.com/news/weft-ai-coding-agent-coordination/): Built for Cloudflare’s Git platform competition, Weft coordinates parallel coding agents during edits. Follow its workspaces, adapters, WCP feedback loop and path to tested Git changes. [Article Markdown](https://www.ayu-sh-kr.com/news/weft-ai-coding-agent-coordination.md).
+  return {
+    title,
+    description,
+    keywords: note ? [...note.keywords] : [...NEWS_INDEX_KEYWORDS],
+    ogTitle: title,
+    ogDescription: description,
+  };
+};
 
-- [Surface Laptop Ultra and Windows AI: Microsoft’s October 2026 launch](https://www.ayu-sh-kr.com/news/microsoft-surface-laptop-ultra-windows-hybrid-ai/): Microsoft’s October 2026 launch explained: Surface Laptop Ultra pricing, local AI models, Copilot integration, Windows Search updates and release dates. [Article Markdown](https://www.ayu-sh-kr.com/news/microsoft-surface-laptop-ultra-windows-hybrid-ai.md).
-
-- [GitHub Copilot local AI models: BYOK now, automatic cloud routing next](https://www.ayu-sh-kr.com/news/github-copilot-local-model-routing-hydrafusion/): Copilot already supports local models and BYOK. Explore provider setup, offline mode and telemetry, then the planned local/cloud routing and HydraFusion’s role in saving AI credits. [Article Markdown](https://www.ayu-sh-kr.com/news/github-copilot-local-model-routing-hydrafusion.md).
-
-- [AWS Strands Box adds policy controls to AI agent sandboxing](https://www.ayu-sh-kr.com/news/aws-strands-box-ai-agent-sandbox/): AWS Strands Box combines macOS isolation with Dogwood rules for files, tools and network requests. See how it controls action sequences and keeps API secrets outside agents. [Article Markdown](https://www.ayu-sh-kr.com/news/aws-strands-box-ai-agent-sandbox.md).
-
-- [GitHub redesigns Git storage as AI agents push write demand higher](https://www.ayu-sh-kr.com/news/github-git-infrastructure-agent-scale/): GitHub explains its read-replica bottleneck and planned storage redesign for agent-scale development. [Article Markdown](https://www.ayu-sh-kr.com/news/github-git-infrastructure-agent-scale.md).
-
-- [Reflection Beam, EmbeddingGemma 2 and flow-1: Features and Release Status](https://www.ayu-sh-kr.com/news/beam-embeddinggemma-2-flow-1/): Beam’s open-weight preview, EmbeddingGemma 2’s local multimodal search and flow-1’s agent debugging: release status, capabilities, memory requirements and reported costs. [Article Markdown](https://www.ayu-sh-kr.com/news/beam-embeddinggemma-2-flow-1.md).
-
-- [Mistral Large 4 ‘Le Chonk’: API preview and open-weight plans](https://www.ayu-sh-kr.com/news/mistral-large-4-le-chonk-preview/): Mistral Large 4 ‘Le Chonk’ enters API preview with open weights planned for October. Explore its MoE design, multimodal capabilities and sovereign AI focus. [Article Markdown](https://www.ayu-sh-kr.com/news/mistral-large-4-le-chonk-preview.md).
-
-- [Google’s Fervo geothermal deal tackles AI’s data center power problem](https://www.ayu-sh-kr.com/news/google-fervo-geothermal-396mw/): Google’s Fervo geothermal deal targets reliable power for AI data centers. Oracle’s power-delay concerns show why contracts alone cannot deliver capacity. [Article Markdown](https://www.ayu-sh-kr.com/news/google-fervo-geothermal-396mw.md).
-- [Yarrtube replaces YouTube recommendations with a feed you choose](https://www.ayu-sh-kr.com/news/yarrtube-self-hosted-youtube-no-recommendations/): Yarrtube tracks selected YouTube channels and playlists, then downloads new videos to a home server. How this subscription-driven feed changes the algorithmic default—and what self-hosting requires. [Article Markdown](https://www.ayu-sh-kr.com/news/yarrtube-self-hosted-youtube-no-recommendations.md).
-- [Angular Native brings native iOS and Android apps to Angular](https://www.ayu-sh-kr.com/news/angular-native-mobile-apps/): Angular Native builds iOS and Android apps with Angular, React Native Fabric and Expo. How it differs from Capacitor, its enterprise appeal and alpha limits. [Article Markdown](https://www.ayu-sh-kr.com/news/angular-native-mobile-apps.md).
-- [Aleph Alpha releases Kolibri 1: 78B open weights and 1M context](https://www.ayu-sh-kr.com/news/aleph-alpha-kolibri-open-weight-model/): Kolibri 1 brings Apache 2.0 weights, German-English reasoning and up to 1M tokens of context. Here’s what its MoE design means for GPU memory and deployment. [Article Markdown](https://www.ayu-sh-kr.com/news/aleph-alpha-kolibri-open-weight-model.md).
-- [GitLab.com limits unauthenticated requests to 60 per hour from October 19](https://www.ayu-sh-kr.com/news/gitlab-unauthenticated-rate-limits/): GitLab.com cuts unauthenticated requests to 60 per hour per IP on October 19, 2026. See the new tier limits, the October brownouts, and how to prepare scripts and CI jobs. [Article Markdown](https://www.ayu-sh-kr.com/news/gitlab-unauthenticated-rate-limits.md).
-- [Claude Code mods: TypeScript plugins for prompts, tool calls and UI](https://www.ayu-sh-kr.com/news/claude-code-mods-typescript/): Claude Code mods are TypeScript plugins that rewrite prompts, guard tool calls and draw panes. Learn how they work, how they differ from hooks, and their risks. [Article Markdown](https://www.ayu-sh-kr.com/news/claude-code-mods-typescript.md).
-- [Cloudflare opens Artifacts beta for GitHub alternatives built around AI agents](https://www.ayu-sh-kr.com/news/cloudflare-artifacts-next-git-platform/): Cloudflare Artifacts enters open beta with Git repository automation and Workers deployment. How it supports AI agents and the contest to build a GitHub alternative. [Article Markdown](https://www.ayu-sh-kr.com/news/cloudflare-artifacts-next-git-platform.md).
-- [Cloudflare launches cf CLI: what changes for Wrangler?](https://www.ayu-sh-kr.com/news/cloudflare-cf-cli-wrangler-migration/): Cloudflare's cf CLI enters open beta. Explore its API coverage, TypeScript config, Vite defaults and Wrangler migration with 18 months of maintenance after beta. [Article Markdown](https://www.ayu-sh-kr.com/news/cloudflare-cf-cli-wrangler-migration.md).
-- [GitHub Copilot adds computer use for desktop apps](https://www.ayu-sh-kr.com/news/github-copilot-computer-use/): GitHub Copilot’s computer use preview automates desktop apps on macOS and Windows. Learn how it works, where it helps, and what users can control. [Article Markdown](https://www.ayu-sh-kr.com/news/github-copilot-computer-use.md).
-
-- [Pyronaut launches Python services on Micronaut and GraalVM](https://www.ayu-sh-kr.com/news/pyronaut-python-micronaut-graalvm/): Pyronaut launches Python services on Micronaut and GraalVM. How GraalPy runs the code, Crema reuses a native base, and what the launch benchmarks show. [Article Markdown](https://www.ayu-sh-kr.com/news/pyronaut-python-micronaut-graalvm.md).
-
-- [Why OpenAI, TypeSafe and Cloudflare are racing to make AI decide](https://www.ayu-sh-kr.com/news/decision-models-openai-typesafe-cloudflare/): Jev arrived first, OpenAI followed with Decisions API, and Cloudflare answered with open Clef models. Their launches show why AI companies are chasing fast, structured judgments inside agents. [Article Markdown](https://www.ayu-sh-kr.com/news/decision-models-openai-typesafe-cloudflare.md).
-
-
-- [Google announces Gemini 4 Argon: capabilities, pricing and access](https://www.ayu-sh-kr.com/news/google-gemini-4-argon-pricing-capabilities/): Google announces Gemini 4 Argon with limited early access. A three-minute look at its coding benchmarks, one-million-token output limit, API prices and later rate increases. [Article Markdown](https://www.ayu-sh-kr.com/news/google-gemini-4-argon-pricing-capabilities.md).
-
-- [InstaCloud brings deployment into the AI coding agent workflow](https://www.ayu-sh-kr.com/news/instacloud-agent-native-serverless-cloud/): InstaCloud connects AI coding agents to serverless deployment, databases, logs, and environment branching. How the workflow takes an API from code to a running service. [Article Markdown](https://www.ayu-sh-kr.com/news/instacloud-agent-native-serverless-cloud.md).
-
-- [Kafgres runs a Kafka-compatible broker inside PostgreSQL](https://www.ayu-sh-kr.com/news/kafgres-kafka-broker-postgres-700mbs/): Kafgres embeds a Kafka-compatible broker in PostgreSQL. An order-event example explains the design, its 700 MB/s benchmark, and durability and failover trade-offs. [Article Markdown](https://www.ayu-sh-kr.com/news/kafgres-kafka-broker-postgres-700mbs.md).
-
-- [Phonon-2 brings local English speech recognition to a 164 MB model](https://www.ayu-sh-kr.com/news/phonon-2-small-local-speech-recognition/): Fermion Research’s Phonon-2 compresses English speech recognition into 164 MB. Compare its word error rate with Whisper turbo and understand local transcription speed. [Article Markdown](https://www.ayu-sh-kr.com/news/phonon-2-small-local-speech-recognition.md).
-
-- [PageIndex vs Vector RAG: How Tree Search Finds Relevant Pages](https://www.ayu-sh-kr.com/news/pageindex-tree-based-rag-relevance/): A four-minute conceptual guide using a deployment rollback question to explain semantic search, document trees, and source evidence, with a diagram in the app’s dark theme. [Article Markdown](https://www.ayu-sh-kr.com/news/pageindex-tree-based-rag-relevance.md).
-
-- [Why RAG Misses the Right Passage: Anthropic’s Contextual Retrieval](https://www.ayu-sh-kr.com/news/anthropic-contextual-retrieval-rag/): A four-minute explanation of how missing context in document chunks affects RAG search, using an everyday return-policy example, plus Anthropic’s retrieval results. [Article Markdown](https://www.ayu-sh-kr.com/news/anthropic-contextual-retrieval-rag.md).
-
-- [AntiBurn shows where AI coding agents spend their tokens](https://www.ayu-sh-kr.com/news/antiburn-coding-agent-token-usage/): A three-minute look at local session analysis, context growth, cost estimates, and a practical stopping rule for stalled coding-agent work. [Article Markdown](https://www.ayu-sh-kr.com/news/antiburn-coding-agent-token-usage.md).
-
-- [OpenScience exits beta: an AI workbench for scientific research](https://www.ayu-sh-kr.com/news/openscience-ai-research-workbench-stable/): A 2-minute brief on OpenScience's research agent, who it serves, its literature and experiment workflow, model choices, and reproducible outputs. [Article Markdown](https://www.ayu-sh-kr.com/news/openscience-ai-research-workbench-stable.md).
-
-- [Hacktron researcher reports $115,000 Meta bounty for HEIC image flaw](https://www.ayu-sh-kr.com/news/hacktron-meta-heic-image-bounty/): A four-minute report on Harsh Jaiswal’s reported Meta bounty, the earlier OpenAI forum exploit, and image-processing risks across services. [Article Markdown](https://www.ayu-sh-kr.com/news/hacktron-meta-heic-image-bounty.md).
-
-- [Jevgrep targets coding agent costs with smarter code search](https://www.ayu-sh-kr.com/news/jevgrep-jev-agent-code-search/): A 5-minute news story explaining Jevgrep's code search, TypeSafe AI's relevance decisions, three CLI examples, and the scope of its coding-agent cost benchmark. [Article Markdown](https://www.ayu-sh-kr.com/news/jevgrep-jev-agent-code-search.md).
-
-- [Microsoft Titan flaw let a researcher pose as an admin](https://www.ayu-sh-kr.com/news/microsoft-titan-unsigned-jwt-analytics/): A 2-minute news brief explaining the missing JWT signature check, actual employee-data and Bing analytics access, the 17.3 trillion row estimate, and Microsoft's response. [Article Markdown](https://www.ayu-sh-kr.com/news/microsoft-titan-unsigned-jwt-analytics.md).
-
-- [prek: an open-source pre-commit alternative built in Rust](https://www.ayu-sh-kr.com/news/prek-rust-pre-commit-hooks/): A 2-minute news brief explaining prek's Git hooks, pre-commit compatibility, shared toolchains, uv integration, and monorepo support. [Article Markdown](https://www.ayu-sh-kr.com/news/prek-rust-pre-commit-hooks.md).
-
-- [GitHub moves Copilot’s agent runtime from TypeScript to Rust](https://www.ayu-sh-kr.com/news/github-copilot-runtime-rust-migration/): A 2-minute engineering news brief on the SDK architecture, incremental migration, and measured startup and memory gains. [Article Markdown](https://www.ayu-sh-kr.com/news/github-copilot-runtime-rust-migration.md).
-- [Homa revisits TCP’s place in the datacenter as AI waits on tiny messages](https://www.ayu-sh-kr.com/news/homa-protocol-tcp-datacenter-ai-latency/): A 3-minute news explanation of Stanford’s Homa transport, its measured tail-latency comparison with TCP, and the relevance to short AI service requests. [Article Markdown](https://www.ayu-sh-kr.com/news/homa-protocol-tcp-datacenter-ai-latency.md).
-- [Microsoft Copilot adds Code and Autopilot to turn work requests into finished tasks](https://www.ayu-sh-kr.com/news/microsoft-copilot-home-code-autopilot/): A 2-minute news brief on Copilot Home, Code, Autopilot, staged previews, and usage-based billing. [Article Markdown](https://www.ayu-sh-kr.com/news/microsoft-copilot-home-code-autopilot.md).
-- [Docker Sandbox Kit and AWS Lambda MicroVMs make private AI coding agents more practical](https://www.ayu-sh-kr.com/news/docker-sandbox-kit-aws-lambda-microvms-agent-coding/): A 5-minute news analysis of portable agent permissions, isolated code execution, and what organizations must control to keep source private. [Article Markdown](https://www.ayu-sh-kr.com/news/docker-sandbox-kit-aws-lambda-microvms-agent-coding.md).
-- [Claude Opus 5.5 gets cheaper as Claude Code adds cloud-session credits](https://www.ayu-sh-kr.com/news/claude-opus-5-5-cost-coding/): A 4-minute news brief on Opus 5.5 pricing, code-made animation, and the limited-time $100 Pro / $250 Max Claude Code cloud-session credit. [Article Markdown](https://www.ayu-sh-kr.com/news/claude-opus-5-5-cost-coding.md).
-
-- [Jev gives AI agents a fast gut check before the expensive thinking begins](https://www.ayu-sh-kr.com/news/jev-typesafe-system-one-model/): A short note on LangChain’s Jev integration and TypeSafe AI’s non-generative System One model for structured decisions, model routing, and pre-execution tool-call checks. [Article Markdown](https://www.ayu-sh-kr.com/news/jev-typesafe-system-one-model.md).
-- [JHipster Online warns users after infostealer malware exposes credentials](https://www.ayu-sh-kr.com/news/jhipster-online-infostealer-malware/): JHipster Online says exposed credentials point to infostealer malware on affected devices, not a breach of its own database; a short security note on device cleanup, password reuse, session invalidation, and phishing follow-ups.
-- [Cloudflare Quick Tunnels take localhost to the internet](https://www.ayu-sh-kr.com/news/cloudflare-trycloudflare-quick-tunnel/): News brief on sharing localhost apps with Cloudflare's free TryCloudflare HTTPS links, including the command and what it means for demos and developer feedback. [Article Markdown](https://www.ayu-sh-kr.com/news/cloudflare-trycloudflare-quick-tunnel.md).
-- [Z.ai's ZCode was caught stealing user code — silently uploading a 313MB project snapshot with a server-only key](https://www.ayu-sh-kr.com/news/zcode-user-code-upload-key/): Covers the Ferstar report of ZCode staging an encrypted workspace archive for upload to Alibaba cloud storage, the server-held private key, and what developers should check in AI coding tools. [Article Markdown](https://www.ayu-sh-kr.com/news/zcode-user-code-upload-key.md).
-- [CopilotKit OpenBot: self-hosted AI coworkers and agent controls](https://www.ayu-sh-kr.com/news/openbot-self-hosted-ai-coworkers/): Explains CopilotKit's open-source alpha template, AG-UI agents, isolated browsers, policy enforcement, audit trails, and human takeover. [Article Markdown](https://www.ayu-sh-kr.com/news/openbot-self-hosted-ai-coworkers.md).
-- [Perplexity CobbleDB: why AI search moved beyond DynamoDB](https://www.ayu-sh-kr.com/news/perplexity-cobbledb/): Explains the DynamoDB replacement, Pillar and Lorry update pipeline, RocksDB MultiGet reads, replica selection, and storage trade-offs for AI search. [Article Markdown](https://www.ayu-sh-kr.com/news/perplexity-cobbledb.md).
-- [A 4B open-weights model, retrained on one task, beats the Postgres query planner](https://www.ayu-sh-kr.com/news/qorl-postgres-query-optimizer-rl/): A small Qwen model retrained on a single dedicated task — query planning — beat Postgres's planner by 1.81x; a case for small, specialized, affordable AI.
-- [PrismML's Bonsai 2 27B: near-lossless ternary compression at a 5.9GB footprint](https://www.ayu-sh-kr.com/news/prismml-bonsai-2-27b/): 1.76 bits per weight, 98.2% of full-precision benchmark performance at 9x smaller, 143 tokens/second on a 5090.
-
-## Design-system reference
-
-- [Design index](https://www.ayu-sh-kr.com/design/)
-- [Typography](https://www.ayu-sh-kr.com/design/typography/)
-- [Colour](https://www.ayu-sh-kr.com/design/color/)
-- [Elements](https://www.ayu-sh-kr.com/design/element/)
-- [Layout](https://www.ayu-sh-kr.com/design/layout/)
-- [Alerts](https://www.ayu-sh-kr.com/design/alert/)
-- [Toasts](https://www.ayu-sh-kr.com/design/toast/)
-- [Interaction](https://www.ayu-sh-kr.com/design/interaction/)
-
-## Policies and complete route list
-
-- [Privacy policy](https://www.ayu-sh-kr.com/legal/privacy/)
-- [Terms and conditions](https://www.ayu-sh-kr.com/legal/terms/)
-- [XML sitemap](https://www.ayu-sh-kr.com/sitemap.xml): Complete list of public URLs.
-
-## Notes for AI use
-
-- Treat the linked pages as the source of truth for current services, availability, and technical experience.
-- Case studies and articles describe scoped work and technical judgement; do not infer unlisted clients, metrics, or capabilities.
-- The site contains no public API or agent action endpoint.
+/** SEO fallback used when a news slug has no matching catalogue entry. */
+export const newsNotFoundSeo: PageSeoContent = {
+  title: `Note not found — ${siteIdentity.domain}`,
+  description: "The requested Dispatch note could not be found.",
+  keywords: NEWS_INDEX_KEYWORDS,
+  ogTitle: `Note not found — ${siteIdentity.domain}`,
+  ogDescription: "The requested Dispatch note could not be found.",
+};
