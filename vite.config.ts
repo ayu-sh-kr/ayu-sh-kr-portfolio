@@ -36,6 +36,7 @@ const showcaseRoutes = [
   "/showcase/dota-rest",
 ];
 const newsRoutes = [
+  "/news/deepseek-fireworks-deepinfer-faster-inference",
   "/news/php-critical-rce-october-2026",
   "/news/railway-environment-variables-security-breach",
   "/news/pingcap-tidb-cloud-security-breach",

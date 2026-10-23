@@ -68,6 +68,18 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "deepseek-fireworks-deepinfer-faster-inference",
+    date: "2026-10-23",
+    title: "DeepSeek, Fireworks and the race to faster AI inference",
+    summary: "Fireworks claims 1,521+ tokens/s for DeepSeek V4.1 Flash 1017. How its Opus 5.5 demo compares with DeepInfer, and why streaming speed differs from task time.",
+    kind: "infra",
+    document: "/news/deepseek-fireworks-deepinfer-faster-inference.md",
+    keywords: ["DeepSeek V4.1 Flash 1017", "Fireworks Ultrafast", "DeepSeek 1521 tokens per second", "Claude Opus 5.5 inference speed", "DeepInfer", "speculative decoding", "AI inference latency"],
+    minutes: 4,
+    reference: {label: "DeepSeek — DeepInfer inference framework", href: "https://github.com/deepseek-ai/DeepInfer"},
+  },
+
+  {
     slug: "php-critical-rce-october-2026",
     date: "2026-10-22",
     title: "PHP2Shell: PHP RCE flaws, request flow and patched versions",
