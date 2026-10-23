@@ -70,13 +70,13 @@ export const newsNotes: readonly NewsNote[] = [
   {
     slug: "deepseek-fireworks-deepinfer-faster-inference",
     date: "2026-10-23",
-    title: "DeepSeek, Fireworks and the race to faster AI inference",
-    summary: "Fireworks claims 1,521+ tokens/s for DeepSeek V4.1 Flash 1017. How its Opus 5.5 demo compares with DeepInfer, and why streaming speed differs from task time.",
+    title: "The race to faster AI inference: Meta, Fireworks and DeepSeek",
+    summary: "Meta and Paradigm offer $100,000 to speed up Muse Spark Open as Fireworks claims 1,521+ tokens/s. How kernels, caching and speculative decoding improve AI inference.",
     kind: "infra",
     document: "/news/deepseek-fireworks-deepinfer-faster-inference.md",
-    keywords: ["DeepSeek V4.1 Flash 1017", "Fireworks Ultrafast", "DeepSeek 1521 tokens per second", "Claude Opus 5.5 inference speed", "DeepInfer", "speculative decoding", "AI inference latency"],
+    keywords: ["faster AI inference", "Muse Spark Open Kernel Challenge", "Meta Paradigm 100000 prize", "Helion GPU kernels", "Fireworks Ultrafast", "DeepSeek V4.1 Flash 1017", "Claude Opus 5.5 speed", "DeepInfer speculative decoding"],
     minutes: 4,
-    reference: {label: "DeepSeek — DeepInfer inference framework", href: "https://github.com/deepseek-ai/DeepInfer"},
+    reference: {label: "Muse Spark Open Kernel Challenge", href: "https://openkernelchallenge.dev/"},
   },
 
   {

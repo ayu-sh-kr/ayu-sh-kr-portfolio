@@ -49,7 +49,7 @@
 
 ## Recent Dispatch notes
 
-- [DeepSeek, Fireworks and the race to faster AI inference](https://www.ayu-sh-kr.com/news/deepseek-fireworks-deepinfer-faster-inference/): Fireworks claims 1,521+ tokens/s for DeepSeek V4.1 Flash 1017. How its Opus 5.5 demo compares with DeepInfer, and why streaming speed differs from task time. [Article Markdown](https://www.ayu-sh-kr.com/news/deepseek-fireworks-deepinfer-faster-inference.md).
+- [The race to faster AI inference: Meta, Fireworks and DeepSeek](https://www.ayu-sh-kr.com/news/deepseek-fireworks-deepinfer-faster-inference/): Meta and Paradigm offer $100,000 to speed up Muse Spark Open as Fireworks claims 1,521+ tokens/s. How kernels, caching and speculative decoding improve AI inference. [Article Markdown](https://www.ayu-sh-kr.com/news/deepseek-fireworks-deepinfer-faster-inference.md).
 
 - [PHP2Shell: PHP RCE flaws, request flow and patched versions](https://www.ayu-sh-kr.com/news/php-critical-rce-october-2026/): How PHP2Shell reaches startup and cleanup, why Apache and PHP-FPM differ, and which PHP versions fix CVE-2026-109618 and CVE-2026-109619. [Article Markdown](https://www.ayu-sh-kr.com/news/php-critical-rce-october-2026.md).
 - [Railway breach puts customer environment variable secrets at risk](https://www.ayu-sh-kr.com/news/railway-environment-variables-security-breach/): Railway says an intruder may have decrypted some customer variables. What the exposure could reach, why rotating provider credentials matters, and what Railway reset. [Article Markdown](https://www.ayu-sh-kr.com/news/railway-environment-variables-security-breach.md).
