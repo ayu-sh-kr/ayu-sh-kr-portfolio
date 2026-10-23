@@ -1,3 +1,4 @@
+import "./about-contact-section.component.css";
 import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
 import { BaseElement, BindEvent, Component } from "@ayu-sh-kr/dota-wrap/core";
 import { isAnalyticsContactMethod } from "@app/events/analytics.events.ts";

@@ -1,3 +1,5 @@
+import "./news-index.component.css";
+import "../../news-shared.css";
 import {html, trustedHTML, TemplateResult} from "@ayu-sh-kr/dota-wrap/rendering";
 import {BaseElement, BindEvent, Component, WindowListener} from "@ayu-sh-kr/dota-wrap/core";
 import {OnEvent} from "@ayu-sh-kr/dota-wrap/event";

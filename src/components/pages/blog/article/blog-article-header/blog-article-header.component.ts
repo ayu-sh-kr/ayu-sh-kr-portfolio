@@ -1,3 +1,5 @@
+import "../../blog-shared.css";
+import "./blog-article-header.component.css";
 import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
 import { BaseElement, Component, Property, String } from "@ayu-sh-kr/dota-wrap/core";
 import { blogArticleContent } from "@app/data/blog-content.ts";

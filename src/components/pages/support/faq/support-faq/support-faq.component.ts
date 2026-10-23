@@ -1,3 +1,4 @@
+import "./support-faq.component.css";
 import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
 import { BaseElement, BindEvent, Component } from "@ayu-sh-kr/dota-wrap/core";
 import { DOTA_FAQ_ACCORDION_CLASS, DOTA_FAQ_ACCORDION_CONFIG } from "@app/components/utils/faq/dota-faq-accordion.ts";

@@ -1,3 +1,4 @@
+import "./design-alert-release.component.css";
 import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
 import { BaseElement, BindEvent, Component } from "@ayu-sh-kr/dota-wrap/core";
 import type { AlertController } from "@app/service/alert.service.ts";

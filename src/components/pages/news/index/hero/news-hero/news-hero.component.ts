@@ -1,3 +1,5 @@
+import "./news-hero.component.css";
+import "../../../news-shared.css";
 import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
 import {BaseElement, Component} from "@ayu-sh-kr/dota-wrap/core";
 import {newsContent} from "@app/data/news-content.ts";

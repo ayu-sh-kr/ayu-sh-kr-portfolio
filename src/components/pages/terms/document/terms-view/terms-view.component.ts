@@ -1,3 +1,4 @@
+import "./terms-view.component.css";
 import {ApplicationEventService, BeforeInit, BindEvent, BaseElement, Component, WindowListener} from "@ayu-sh-kr/dota-wrap/core";
 import {html, trustedHTML} from "@ayu-sh-kr/dota-wrap/rendering";
 import {OnEvent} from "@ayu-sh-kr/dota-wrap/event";

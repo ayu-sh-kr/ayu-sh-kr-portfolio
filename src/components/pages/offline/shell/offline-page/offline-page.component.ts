@@ -1,3 +1,4 @@
+import "./offline-page.component.css";
 import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
 import { BindEvent, Component, DotaPageElement, HostListener, SEO, WindowListener } from "@ayu-sh-kr/dota-wrap/core";
 import { OnEvent } from "@ayu-sh-kr/dota-wrap/event";

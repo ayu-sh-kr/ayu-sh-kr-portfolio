@@ -1,3 +1,4 @@
+import "./design-index-reference.component.css";
 import {html, TemplateResult} from "@ayu-sh-kr/dota-wrap/rendering";
 import { BaseElement, Component } from "@ayu-sh-kr/dota-wrap/core";
 import { OnEvent } from "@ayu-sh-kr/dota-wrap/event";

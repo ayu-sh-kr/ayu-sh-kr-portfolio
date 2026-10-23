@@ -1,3 +1,4 @@
+import "./design-index-grammar-section.component.css";
 import {BaseElement, Component, Property, String} from "@ayu-sh-kr/dota-wrap/core";
 import {html, type TemplateResult} from "@ayu-sh-kr/dota-wrap/rendering";
 import {designContent, type DesignGrammarDoor} from "@app/data/design-content.ts";

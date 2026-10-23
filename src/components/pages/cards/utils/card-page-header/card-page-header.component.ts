@@ -1,3 +1,4 @@
+import "./card-page-header.component.css";
 import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
 import { BaseElement, Component, Property, String } from "@ayu-sh-kr/dota-wrap/core";
 

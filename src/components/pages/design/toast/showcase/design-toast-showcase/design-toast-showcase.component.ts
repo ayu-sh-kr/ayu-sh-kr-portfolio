@@ -1,3 +1,4 @@
+import "./design-toast-showcase.component.css";
 import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
 import { BaseElement, Component, HostListener } from "@ayu-sh-kr/dota-wrap/core";
 import { designToastContent } from "@app/data/design-toast-content.ts";

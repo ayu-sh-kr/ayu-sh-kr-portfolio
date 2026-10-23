@@ -1,3 +1,4 @@
+import "./subscription-verify.component.css";
 import { BaseElement, BindEvent, Component } from "@ayu-sh-kr/dota-wrap/core";
 import { html, when } from "@ayu-sh-kr/dota-wrap/rendering";
 import { OnEvent } from "@ayu-sh-kr/dota-wrap/event";

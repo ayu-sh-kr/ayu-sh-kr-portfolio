@@ -1,3 +1,4 @@
+import "./pricing-estimator-type-options.component.css";
 import {TemplateResult, html, trustedHTML} from "@ayu-sh-kr/dota-wrap/rendering";
 import { ApplicationEventService, BaseElement, Component, HostListener, State } from "@ayu-sh-kr/dota-wrap/core";
 import { pricingContent } from "@app/data/pricing-content.ts";

@@ -1,3 +1,4 @@
+import "./motion-controller.component.css";
 import {
   BaseElement,
   Component,

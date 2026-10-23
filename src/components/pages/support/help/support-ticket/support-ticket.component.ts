@@ -1,3 +1,4 @@
+import "./support-ticket.component.css";
 import {html, TemplateResult} from "@ayu-sh-kr/dota-wrap/rendering";
 import {HTML} from "@ayu-sh-kr/dota-wrap/core";
 import { BaseElement, BindEvent, Component } from "@ayu-sh-kr/dota-wrap/core";

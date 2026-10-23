@@ -1,3 +1,4 @@
+import "./project-preview.component.css";
 import { BaseElement, Component } from "@ayu-sh-kr/dota-wrap/core";
 import { type ApplicationEvent, OnEvent } from "@ayu-sh-kr/dota-wrap/event";
 import { html } from "@ayu-sh-kr/dota-wrap/rendering";

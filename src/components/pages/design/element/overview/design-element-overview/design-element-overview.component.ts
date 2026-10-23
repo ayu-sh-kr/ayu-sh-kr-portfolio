@@ -1,3 +1,5 @@
+import "./design-element-overview.component.css";
+import "../../design-element.css";
 import { BaseElement, Component } from "@ayu-sh-kr/dota-wrap/core";
 import { html } from "@ayu-sh-kr/dota-wrap/rendering";
 import { designElementContent } from "@app/data/design-element-content.ts";

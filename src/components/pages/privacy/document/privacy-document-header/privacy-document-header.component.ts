@@ -1,3 +1,4 @@
+import "./privacy-document-header.component.css";
 import { BaseElement, Component, Property, String } from "@ayu-sh-kr/dota-wrap/core";
 import { html, trustedHTML } from "@ayu-sh-kr/dota-wrap/rendering";
 import type { PrivacyMetadata } from "@app/service/privacy-loader.service.ts";

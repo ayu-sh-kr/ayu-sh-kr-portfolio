@@ -1,3 +1,4 @@
+import "./support-overview.component.css";
 import { BaseElement, Component } from "@ayu-sh-kr/dota-wrap/core";
 import { html } from "@ayu-sh-kr/dota-wrap/rendering";
 import { OnEvent } from "@ayu-sh-kr/dota-wrap/event";

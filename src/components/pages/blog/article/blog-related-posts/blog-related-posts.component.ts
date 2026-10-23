@@ -1,3 +1,5 @@
+import "../../blog-shared.css";
+import "./blog-related-posts.component.css";
 import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
 import {BaseElement, Component, Property, String} from "@ayu-sh-kr/dota-wrap/core";
 import {getBlogPath, getBlogPost, getRelatedBlogPosts, labelForCategory} from "@app/configs/blogs.config.ts";

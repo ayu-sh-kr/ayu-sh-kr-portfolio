@@ -1,3 +1,4 @@
+import "./coffee-order.component.css";
 import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
 import { BaseElement, Component } from "@ayu-sh-kr/dota-wrap/core";
 import { coffeeContent } from "@app/data/coffee-content.ts";

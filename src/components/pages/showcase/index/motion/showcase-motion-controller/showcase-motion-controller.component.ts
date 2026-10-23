@@ -1,3 +1,4 @@
+import "./showcase-motion-controller.component.css";
 import { BaseElement, Component, WindowListener } from "@ayu-sh-kr/dota-wrap/core";
 import { OnEvent } from "@ayu-sh-kr/dota-wrap/event";
 

@@ -1,3 +1,4 @@
+import "./showcase-card-deck.component.css";
 import {TemplateResult, html, trustedHTML} from "@ayu-sh-kr/dota-wrap/rendering";
 import {BaseElement, Component} from "@ayu-sh-kr/dota-wrap/core";
 import {OnEvent} from "@ayu-sh-kr/dota-wrap/event";

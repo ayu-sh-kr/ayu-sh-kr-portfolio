@@ -1,3 +1,4 @@
+import "./coffee-quantity-picker.component.css";
 import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
 import { ApplicationEventService, BaseElement, BindEvent, Component } from "@ayu-sh-kr/dota-wrap/core";
 import { coffeeContent } from "@app/data/coffee-content.ts";

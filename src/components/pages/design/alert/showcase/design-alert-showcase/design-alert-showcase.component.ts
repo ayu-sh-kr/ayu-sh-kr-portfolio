@@ -1,3 +1,4 @@
+import "./design-alert-showcase.component.css";
 import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
 import { BaseElement, Component, HostListener } from "@ayu-sh-kr/dota-wrap/core";
 import { Alert } from "@app/service/alert.service.ts";

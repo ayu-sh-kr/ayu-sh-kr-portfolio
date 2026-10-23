@@ -1,3 +1,4 @@
+import "./showcase-featured.component.css";
 import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
 import { BaseElement, Component } from "@ayu-sh-kr/dota-wrap/core";
 import { getShowcaseProjectsByTier } from "@app/data/showcase-content.ts";

@@ -1,3 +1,4 @@
+import "./support-quick-help.component.css";
 import {HTML} from "@ayu-sh-kr/dota-wrap/core";
 import {TemplateResult, html, trustedHTML} from "@ayu-sh-kr/dota-wrap/rendering";
 import { BaseElement, BindEvent, Component } from "@ayu-sh-kr/dota-wrap/core";

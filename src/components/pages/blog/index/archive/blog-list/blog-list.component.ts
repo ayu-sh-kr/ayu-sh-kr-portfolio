@@ -1,3 +1,5 @@
+import "./blog-list.component.css";
+import "../../../blog-shared.css";
 import {html, TemplateResult} from "@ayu-sh-kr/dota-wrap/rendering";
 import {ApplicationEventService, BaseElement, BindEvent, Component} from "@ayu-sh-kr/dota-wrap/core";
 import {type ApplicationEvent, OnEvent} from "@ayu-sh-kr/dota-wrap/event";

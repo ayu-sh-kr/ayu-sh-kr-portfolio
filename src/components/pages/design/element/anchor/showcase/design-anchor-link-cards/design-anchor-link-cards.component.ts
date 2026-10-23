@@ -1,3 +1,5 @@
+import "../../../design-element.css";
+import "./design-anchor-link-cards.component.css";
 import {BaseElement, Component} from "@ayu-sh-kr/dota-wrap/core";
 import {html, type TemplateResult} from "@ayu-sh-kr/dota-wrap/rendering";
 import {designElementContent} from "@app/data/design-element-content.ts";

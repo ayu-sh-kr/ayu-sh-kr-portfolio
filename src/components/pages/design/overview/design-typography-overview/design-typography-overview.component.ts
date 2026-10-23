@@ -1,3 +1,4 @@
+import "./design-typography-overview.component.css";
 import { BaseElement, Component } from "@ayu-sh-kr/dota-wrap/core";
 import { html } from "@ayu-sh-kr/dota-wrap/rendering";
 import { designTypographyContent } from "@app/data/design-typography-content.ts";

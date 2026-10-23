@@ -1,3 +1,4 @@
+import "./showcase-aside.component.css";
 import {BeforeInit, BaseElement, Component, Property, String} from "@ayu-sh-kr/dota-wrap/core";
 import {html, TemplateResult, trustedHTML} from "@ayu-sh-kr/dota-wrap/rendering";
 

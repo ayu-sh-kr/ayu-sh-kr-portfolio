@@ -1,3 +1,4 @@
+import "./design-typography-guidance.component.css";
 import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
 import { BaseElement, Component } from "@ayu-sh-kr/dota-wrap/core";
 import { designTypographyContent } from "@app/data/design-typography-content.ts";

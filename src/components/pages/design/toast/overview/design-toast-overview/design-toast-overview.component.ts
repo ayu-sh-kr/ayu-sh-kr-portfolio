@@ -1,3 +1,4 @@
+import "./design-toast-overview.component.css";
 import { BaseElement, Component } from "@ayu-sh-kr/dota-wrap/core";
 import { html } from "@ayu-sh-kr/dota-wrap/rendering";
 import { designToastContent } from "@app/data/design-toast-content.ts";

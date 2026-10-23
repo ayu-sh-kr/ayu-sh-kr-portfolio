@@ -1,3 +1,4 @@
+import "./support-start-project.component.css";
 import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
 import { BaseElement, Component } from "@ayu-sh-kr/dota-wrap/core";
 import { supportContent } from "@app/data/support-content.ts";

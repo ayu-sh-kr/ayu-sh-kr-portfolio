@@ -1,3 +1,4 @@
+import "./terms-document-header.component.css";
 import { BaseElement, Component, Property, String } from "@ayu-sh-kr/dota-wrap/core";
 import { html, trustedHTML } from "@ayu-sh-kr/dota-wrap/rendering";
 import type { TermsMetadata } from "@app/service/terms-loader.service.ts";

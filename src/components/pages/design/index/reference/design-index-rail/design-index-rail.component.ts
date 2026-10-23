@@ -1,3 +1,4 @@
+import "./design-index-rail.component.css";
 import {BaseElement, Component} from "@ayu-sh-kr/dota-wrap/core";
 import {html, type TemplateResult} from "@ayu-sh-kr/dota-wrap/rendering";
 import {designContent, type DesignGrammarSection} from "@app/data/design-content.ts";

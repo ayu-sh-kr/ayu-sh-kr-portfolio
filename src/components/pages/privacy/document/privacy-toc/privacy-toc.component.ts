@@ -1,3 +1,4 @@
+import "./privacy-toc.component.css";
 import {BaseElement, BeforeInit, Component, HostListener, WindowListener} from "@ayu-sh-kr/dota-wrap/core";
 import {html, trustedHTML} from "@ayu-sh-kr/dota-wrap/rendering";
 import {type ApplicationEvent, OnEvent} from "@ayu-sh-kr/dota-wrap/event";

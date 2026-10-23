@@ -1,3 +1,4 @@
+import "./design-alert-overview.component.css";
 import { BaseElement, Component } from "@ayu-sh-kr/dota-wrap/core";
 import { html } from "@ayu-sh-kr/dota-wrap/rendering";
 import { designAlertContent } from "@app/data/design-alert-content.ts";

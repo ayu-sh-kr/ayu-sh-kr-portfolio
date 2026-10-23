@@ -1,3 +1,4 @@
+import "./design-index-hero.component.css";
 import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
 import { BaseElement, Component } from "@ayu-sh-kr/dota-wrap/core";
 import { designContent } from "@app/data/design-content.ts";

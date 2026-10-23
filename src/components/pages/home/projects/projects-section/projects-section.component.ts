@@ -1,3 +1,4 @@
+import "./projects-section.component.css";
 import {TemplateResult, html, unsafeHTML} from "@ayu-sh-kr/dota-wrap/rendering";
 import { BaseElement, Component } from "@ayu-sh-kr/dota-wrap/core";
 import { portfolioContent } from "@app/data/portfolio-content.ts";

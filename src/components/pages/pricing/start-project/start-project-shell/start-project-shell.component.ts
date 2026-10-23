@@ -1,3 +1,4 @@
+import "./start-project-shell.component.css";
 import { ApplicationEventService, BaseElement, Component, HostListener } from "@ayu-sh-kr/dota-wrap/core";
 import { type ApplicationEvent, OnEvent } from "@ayu-sh-kr/dota-wrap/event";
 import { html, when } from "@ayu-sh-kr/dota-wrap/rendering";
