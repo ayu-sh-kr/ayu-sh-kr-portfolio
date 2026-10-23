@@ -20,11 +20,7 @@ The [PyTorch engineering post](https://pytorch.org/blog/muse-spark-open/) also d
 
 Fireworks says **DeepSeek V4.1 Flash 1017** runs at more than **1,521 tokens/s** on its Ultrafast platform. In the [company's Tetris demonstration](https://x.com/FireworksAI_HQ/status/2112973992097468795), the game was ready in **11 seconds**, with a claimed **sevenfold task-time advantage over Claude Opus 5.5**.
 
-> A **token** is a small piece of text, such as a word, part of a word or punctuation. Tokens per second measures how quickly the model generates those pieces while producing its answer.
-
 The [DeepSeek update](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) also reports shorter outputs and reduced task execution time. Both output length and generation speed affect completion time.
-
-> **Throughput** measures work completed per second, often across many users. A higher total does not necessarily mean a shorter wait for each user.
 
 | Development | Reported result | Measurement |
 | --- | --- | --- |
