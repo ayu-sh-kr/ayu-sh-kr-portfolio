@@ -1,4 +1,6 @@
-@import url("https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bevan&family=Exo:wght@100..900&family=Geologica:wght@100..900&family=Lexend+Deca:wght@400..700&family=Merriweather+Sans:ital,wght@0,400..800;1,400..800&family=Montserrat:wght@400;500;600;700&family=Nunito:wght@400..800&family=Poppins:wght@400;500;600;700&family=Rubik:wght@400..700&family=Varela+Round&display=swap");
+/* Only the primary font (Lexend Deca) is downloaded. The other families keep their tokens in
+   theme.css but stay dormant; add a family here when a page starts using its token. */
+@import url("https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@400..700&display=swap");
 
 @import "tailwindcss";
 @import "./theme.css";
