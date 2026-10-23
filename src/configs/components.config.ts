@@ -13,7 +13,11 @@ const md = () => import("@app/configs/markdown.config.ts").then(() => import("@a
  */
 export const libraryComponents = defineComponentLoaders({
   "dota-accordion": () => ui().then((module) => module.AccordionComponent),
-  "dota-icon": () => ui().then((module) => module.IconsComponent),
+  "dota-icon": () => ui().then((module) => {
+    // Icons are emitted by the local-icons Vite plugin, so no request leaves the site.
+    module.IconsComponent.baseUrl = `${import.meta.env.BASE_URL}assets/icons`;
+    return module.IconsComponent;
+  }),
   "dota-popover": () => ui().then((module) => module.PopoverComponent),
   "md-view": () => md().then((module) => module.MdViewComponent),
 });
