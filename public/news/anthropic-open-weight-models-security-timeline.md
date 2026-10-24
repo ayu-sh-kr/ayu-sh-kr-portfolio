@@ -42,15 +42,9 @@ The framing favored controlled access: Claude's restricted version was available
 
 ## Safety concerns also serve a competitive narrative
 
-Dario's [July 27 position statement](https://www.anthropic.com/news/position-open-weights-models) explicitly rejected a blanket open-weight ban and recognized benefits for developers and researchers. Portraying it as a demand to ban all open models would misrepresent his position.
+Dario [rejects a blanket open-weight ban](https://www.anthropic.com/news/position-open-weights-models), but **Anthropic's preferred restrictions also serve its competitive interests**: chip controls constrain rival development, and blocking distillation protects Claude. Those interests deserve scrutiny alongside its safety arguments.
 
-The narrower criticism remains: **Anthropic's safety arguments also support its competitive interests**. Restricting chips can constrain rival development. Blocking distillation can protect Claude's capabilities. Emphasizing removable safeguards can make controlled access look like the more responsible purchase. That alignment does not prove the warnings are fabricated; it makes their evidence and proposed remedies worth examining.
-
-Against that backdrop, the [Kimi K3.1 Pro launch](/news/kimi-k3-1-pro-frontier-model-comparison/) raises a question: will Anthropic respond with another public warning or take its concerns to lawmakers? Its earlier interventions make a further response conceivable, but **that remains an expectation drawn from the pattern**, not a confirmed move against K3.1 Pro.
-
-Calling the pattern panic is an editorial reading. The documented pattern is more concrete: Anthropic repeatedly challenges the legitimacy and safety of Chinese frontier competition through public messaging, enforcement and policy advocacy.
-
-When the next open-weight model arrives, the question is whose evidence establishes the risk, what was actually demonstrated, and whether the proposed restriction addresses that finding. A competitor's warning deserves scrutiny alongside its benchmark.
+Given that pattern, will the [Kimi K3.1 Pro launch](/news/kimi-k3-1-pro-frontier-model-comparison/) prompt another warning or outreach to lawmakers? A further response is conceivable, but none specific to this launch has been verified.
 
 ## OpenAI welcomed the competition, with its guard up
 
