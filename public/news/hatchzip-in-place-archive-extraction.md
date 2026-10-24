@@ -12,7 +12,7 @@ It saves the archive index separately, then extracts batches from the end. Once 
 
 ![Hatchzip saves archive metadata, checks peak space, extracts the last batch, flushes files, commits its progress journal and trims the archive before processing the next batch.](/news/assets/hatchzip-in-place-archive-extraction/extraction-architecture.svg)
 
-In the [engine I inspected](https://github.com/xevrion/hatchzip/blob/main/crates/core/src/engine.rs), output reaches durable storage **before** the progress journal is saved, and truncation follows that commit. The journal records completed work so an interrupted run can resume. The [tests](https://github.com/xevrion/hatchzip/blob/main/crates/cli/tests/extract.rs) exercise crashes around those boundaries; I reviewed their code but did not run them.
+Hatchzip’s [documented design](https://github.com/xevrion/hatchzip/blob/main/docs/how-it-works.md) puts flushing output **before** saving the progress journal, followed by trimming the archive. That ordering is intended to let an interrupted run resume without discarding data that has not been safely written. The project also includes [crash-recovery tests](https://github.com/xevrion/hatchzip/blob/main/crates/cli/tests/extract.rs) for these stages.
 
 ## What the published benchmarks show
 
