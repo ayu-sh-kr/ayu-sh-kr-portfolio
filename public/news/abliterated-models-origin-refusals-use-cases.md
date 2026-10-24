@@ -1,8 +1,8 @@
 # Abliterated models: what they change, origins and use cases
 
-An AI model that answers questions its original version refuses sounds like a new release. **Abliterated models** are usually modified versions of existing open-weight models: their learned tendency to decline requests has been weakened through edits to the model itself.
+**Abliterated models** are drawing attention for answering requests their original versions decline. They are typically derivatives of existing open-weight models, edited to weaken learned refusal behaviour.
 
-That distinction matters for the DeepSeek claims circulating on social media. Answering more requests can make a model more useful for some tasks—and more available for misuse. It does not establish that it refuses nothing or retains every capability unchanged.
+The DeepSeek claims circulating on social media bring that trade-off into focus. Answering more requests can make a model more useful for some tasks—and more available for misuse. It does not establish that it refuses nothing or retains every capability unchanged.
 
 ## The idea dates back to 2024
 
@@ -18,7 +18,7 @@ At a high level, researchers compare internal activity on requests the model ans
 
 The change is primarily **willingness to respond**. An edited model may continue a sensitive fictional scene, discuss a controversial subject more directly, or engage with security-research material that the original rejects. The same reduction can also make it comply with genuinely harmful requests.
 
-These are possible differences, not guaranteed outcomes for every model or prompt. Many original models already handle legitimate sensitive questions well.
+Whether you gain anything depends on the task: many original models already handle legitimate sensitive questions well.
 
 | Version or technique | What changes |
 | --- | --- |
@@ -33,15 +33,15 @@ These are possible differences, not guaranteed outcomes for every model or promp
 
 **Safety research and adversarial testing** are concrete applications: comparing original and edited versions helps researchers examine how refusal works and how easily it breaks. A [cross-architecture study](https://arxiv.org/abs/2512.13655) also identifies cognitive modelling and security analysis as research uses.
 
-For creative writing or analysis of sensitive documents, a potential benefit is fewer unnecessary refusals interrupting legitimate work. These are task-dependent benefits to evaluate, rather than capabilities the label guarantees. Self-hosting can give an operator control over the surrounding application policy; privacy comes from the deployment, not abliteration itself.
+For creative writing or analysis of sensitive documents, a potential benefit is fewer unnecessary refusals interrupting legitimate work. You still need to compare the outputs on representative tasks. Self-hosting can give an operator control over the surrounding application policy; privacy comes from the deployment, not abliteration itself.
 
 ## Does it stay just as intelligent?
 
 **Capability preservation needs measurement.** Labonne reported degraded benchmark performance after editing Daredevil-8B and used additional training to recover much of it. The cross-architecture study, covering four tools and sixteen 7B–14B models with quantitative tests on supported subsets, likewise found that effects depended on the model and method, with mathematical reasoning particularly sensitive.
 
-A low refusal score measures willingness on a tested prompt set. It cannot establish factual accuracy, reliable code or universal compliance. This article reviews published evidence; it does not independently benchmark the DeepSeek variant in the circulating post.
+As with the [recent database benchmark dispute](/news/clickbench-removes-pgrust-benchmark-dispute/), the metric needs to match the claim. A low refusal score measures willingness on a tested prompt set. It cannot establish factual accuracy, reliable code or universal compliance. The circulating DeepSeek comparison should therefore be read as a claim about its test conditions, not proof that every capability is preserved.
 
-Abliteration makes an existing model more willing to answer. Its value depends on whether those additional answers are useful and correct for the intended task. The meaningful comparison is the original and edited versions doing the same work—not simply which one says yes more often.
+Abliteration makes an existing model more willing to answer. Its value depends on whether those additional answers are useful and correct for the intended task. If you evaluate a derivative, compare the quality of its answers with the original on the same tasks, including the requests that previously failed.
 
 ## Sources
 
