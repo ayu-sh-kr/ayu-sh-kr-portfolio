@@ -68,6 +68,18 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "anthropic-open-weight-models-security-timeline",
+    date: "2026-10-24",
+    title: "Anthropic and open-weight AI: why competition keeps becoming a security debate",
+    summary: "From DeepSeek to GLM, a timeline of Anthropic's distillation allegations, security warnings and policy advocacy—and how they frame open-weight competition.",
+    kind: "take",
+    document: "/news/anthropic-open-weight-models-security-timeline.md",
+    keywords: ["Anthropic open-weight models", "Dario Amodei DeepSeek", "AI distillation allegations", "GLM-5.3 security", "Qwen distillation", "Kimi open weights"],
+    minutes: 5,
+    reference: {label: "Anthropic — Position on open-weight models", href: "https://www.anthropic.com/news/position-open-weights-models"},
+  },
+
+  {
     slug: "hatchzip-in-place-archive-extraction",
     date: "2026-10-24",
     title: "Hatchzip shrinks archives while extracting: claims, benchmarks and design",

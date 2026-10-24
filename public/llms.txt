@@ -49,6 +49,8 @@
 
 ## Recent Dispatch notes
 
+- [Anthropic and open-weight AI: why competition keeps becoming a security debate](https://www.ayu-sh-kr.com/news/anthropic-open-weight-models-security-timeline/): From DeepSeek to GLM, a timeline of Anthropic's distillation allegations, security warnings and policy advocacy—and how they frame open-weight competition. [Article Markdown](https://www.ayu-sh-kr.com/news/anthropic-open-weight-models-security-timeline.md).
+
 - [Hatchzip shrinks archives while extracting: claims, benchmarks and design](https://www.ayu-sh-kr.com/news/hatchzip-in-place-archive-extraction/): Hatchzip reclaims archive space as files are extracted. Its reported benchmarks, shared Rust engine and crash-recovery design explain the gains and limits. [Article Markdown](https://www.ayu-sh-kr.com/news/hatchzip-in-place-archive-extraction.md).
 - [Kimi K3.1 Pro launches: specs and comparison with frontier AI models](https://www.ayu-sh-kr.com/news/kimi-k3-1-pro-frontier-model-comparison/): Kimi K3.1 Pro brings 2.8T total and 104B active parameters. Compare its launch benchmarks with Opus 5.5, GPT-6 Astra and other peers, plus pricing and weight availability. [Article Markdown](https://www.ayu-sh-kr.com/news/kimi-k3-1-pro-frontier-model-comparison.md).
 - [Abliterated models: what they change, origins and use cases](https://www.ayu-sh-kr.com/news/abliterated-models-origin-refusals-use-cases/): Abliterated models edit existing AI weights to reduce refusals. Where the technique began, what the original may decline, practical uses and the capability trade-offs.
