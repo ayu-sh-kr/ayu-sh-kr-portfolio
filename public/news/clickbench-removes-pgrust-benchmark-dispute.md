@@ -1,12 +1,12 @@
 # ClickBench removes pgrust over benchmark cheating allegations
 
-**ClickBench has removed pgrust**, a project rebuilding PostgreSQL in Rust, after maintainer Alexey Milovidov alleged that its submission used code tailored to the benchmark and replayed cached work. The removal is merged. The pgrust creator disputes the central allegations and has submitted a newer version for inclusion.
+**ClickBench has removed pgrust**, a project rebuilding PostgreSQL in Rust, after maintainer Alexey Milovidov alleged that its submission used code tailored to the benchmark and replayed cached work. The pgrust creator disputes the central allegations and has submitted a newer version for inclusion.
 
 The dispute resurfaced on October 23, when the creator responded publicly. It concerns **v0.4-preview**, not every version of pgrust, and raises a concrete question about database rankings: how much of a fast repeat query comes from executing the request, and how much comes from remembering the earlier run?
 
 ## What ClickBench says it found
 
-[ClickBench](https://github.com/ClickHouse/ClickBench#readme) tests analytical databases with **43 SQL queries over nearly 100 million rows** of web-traffic data. The workload includes counting, filtering, grouping and sorting—the operations behind reports and dashboards.
+[ClickBench](https://github.com/ClickHouse/ClickBench#readme) tests analytical databases with **43 SQL queries over nearly 100 million rows** of web-traffic data. Its workload covers scans, aggregations and sorting.
 
 In [removal PR #2165](https://github.com/ClickHouse/ClickBench/pull/2165), Milovidov reports inspecting the published preview binary and the older public v0.3 source. He identifies query-numbered Rust files embedded in the binary and execution plans specifically matching ClickBench queries. The submission was marked as untuned.
 
@@ -24,13 +24,13 @@ In his [October 23 response](https://news.ycombinator.com/item?id=50209450), lin
 
 He also disputes the description of the cache. His explanation is that pgrust remembers which distinct strings match a filter in its compressed text dictionaries, avoiding repeated checks of the same strings. He argues that this is intermediate work permitted by the benchmark.
 
-The creator acknowledges submitting the preview too early, with narrow SQL support. He says the newer **v0.4-beta** provides broader coverage and public source. Those statements explain the project's position; they do not independently settle what executed inside the earlier preview binary.
+The creator acknowledges submitting the preview too early, with narrow SQL support. He says the newer **v0.4-beta** provides broader coverage and public source. His response leaves the earlier binary’s execution paths disputed.
 
-## The new submission makes the cache boundary visible
+## What the replacement submission caches
 
-The replacement [PR #2751](https://github.com/ClickHouse/ClickBench/pull/2751) remains open at the time of writing. Its cache disclosures and [submitted installation script](https://github.com/malisper/ClickBench/blob/deabb4a553195570e1ad3e738146759cafa4ae02/pgrust/install) show why the distinction matters. The script explicitly enables `condition_cache=full`, `dict_filter_cache=on` and `zone_store=on`; these are declared settings, rather than an independent measurement of their effect.
+The replacement [PR #2751](https://github.com/ClickHouse/ClickBench/pull/2751) remains open at the time of writing. Its cache disclosures and [submitted installation script](https://github.com/malisper/ClickBench/blob/deabb4a553195570e1ad3e738146759cafa4ae02/pgrust/install) show why the distinction matters. The script explicitly enables `condition_cache=full`, `dict_filter_cache=on` and `zone_store=on`.
 
-Consider the same request: count URLs containing `google`. Remembering that a block of data contains no matches lets the engine skip that block. Remembering every matching row removes more work. Remembering the matching count can let it answer the repeated count directly.
+For the URL-count query, the distinction is how much work survives between runs: a list of blocks to skip, matching rows, or the count itself.
 
 The new submission documents these choices separately:
 
@@ -43,13 +43,13 @@ The new submission documents these choices separately:
 
 The creator also confirms that the preview's dictionary filter cache **stayed enabled when the condition cache was switched off**. He says the new version fixes that control and documents how to disable each cache. The replacement submission nevertheless runs with caches enabled by default, leaving their suitability for ClickBench to review.
 
-These are materially different amounts of saved work. A repeat count that uses stored counts cannot be read as the speed of scanning and filtering the data again. That is the comparison readers need before treating milliseconds on a chart as a database-wide advantage.
+If you compare these timings, the cache policy belongs alongside the hardware and query. Reusing a count measures different work from scanning the data again—a scope issue I also covered in [Cloudtoid’s messaging benchmarks](/news/cloudtoid-interprocess-shared-memory-ipc/).
 
 ## Removal is confirmed; reinstatement is pending
 
-The merged removal establishes ClickBench's decision about the preview entry. The open replacement PR establishes an attempt to return with a more auditable submission. Neither establishes a verdict about every pgrust workload, and the measurements above are Milovidov's reported tests, not independent tests performed for this article.
+ClickBench has rejected the preview entry; pgrust is seeking reinstatement with public source and explicit cache controls. The timings reported here come from Milovidov’s tests and apply to that disputed preview.
 
-For the URL-count example, the useful question remains the same: **what work did the database do during the timed run?** Public source, explicit cache settings and tests with changed queries give reviewers a way to answer it. Until that review is resolved, the replacement submission should be read as a proposal, rather than restored validation of the earlier speed claims.
+The next submission needs to make its advantage reproducible under an accepted cache policy. Until then, its proposed return does not resolve the earlier findings. When you read a database ranking, the time matters only alongside **the work that was actually timed**.
 
 ## Sources
 

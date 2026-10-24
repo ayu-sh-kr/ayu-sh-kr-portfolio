@@ -38,6 +38,7 @@ const showcaseRoutes = [
 ];
 const newsRoutes = [
   "/news/hatchzip-in-place-archive-extraction",
+  "/news/abliterated-models-origin-refusals-use-cases",
   "/news/clickbench-removes-pgrust-benchmark-dispute",
   "/news/deepseek-fireworks-deepinfer-faster-inference",
   "/news/php-critical-rce-october-2026",

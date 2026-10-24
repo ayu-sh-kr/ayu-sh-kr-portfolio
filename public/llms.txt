@@ -50,7 +50,7 @@
 ## Recent Dispatch notes
 
 - [Hatchzip shrinks archives while extracting: claims, benchmarks and design](https://www.ayu-sh-kr.com/news/hatchzip-in-place-archive-extraction/): Hatchzip reclaims archive space as files are extracted. Its reported benchmarks, shared Rust engine and crash-recovery design explain the gains and limits. [Article Markdown](https://www.ayu-sh-kr.com/news/hatchzip-in-place-archive-extraction.md).
-
+- [Abliterated models: what they change, origins and use cases](https://www.ayu-sh-kr.com/news/abliterated-models-origin-refusals-use-cases/): Abliterated models edit existing AI weights to reduce refusals. Where the technique began, what the original may decline, practical uses and the capability trade-offs.
 - [ClickBench removes pgrust over benchmark cheating allegations](https://www.ayu-sh-kr.com/news/clickbench-removes-pgrust-benchmark-dispute/): ClickBench removed pgrust over query-specific code and caching. Its creator disputes the findings and has submitted a public v0.4-beta with documented cache controls.
 - [AI inference race: Meta’s $100K challenge and DeepSeek’s speed push](https://www.ayu-sh-kr.com/news/deepseek-fireworks-deepinfer-faster-inference/): Meta launches a $100K Muse Spark challenge as Fireworks claims 1,521+ tokens/s with D…16667 tokens truncated… Autopilot to turn work requests into finished tasks",
     summary: "Microsoft is bringing Chat, Cowork, app building, and a persistent agent into one Copilot experience. Home and Code are headed to Frontier, while Autopilot enters private preview.",
