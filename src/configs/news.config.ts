@@ -68,6 +68,18 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "clickbench-removes-pgrust-benchmark-dispute",
+    date: "2026-10-24",
+    title: "ClickBench removes pgrust over benchmark cheating allegations",
+    summary: "ClickBench removed pgrust over query-specific code and caching. Its creator disputes the findings and has submitted a public v0.4-beta with documented cache controls.",
+    kind: "infra",
+    document: "/news/clickbench-removes-pgrust-benchmark-dispute.md",
+    keywords: ["ClickBench pgrust removal", "pgrust benchmark cheating allegations", "pgrust v0.4-preview", "database benchmark caching", "pgrust v0.4-beta", "PostgreSQL Rust rewrite"],
+    minutes: 4,
+    reference: {label: "ClickBench — pgrust removal PR #2165", href: "https://github.com/ClickHouse/ClickBench/pull/2165"},
+  },
+
+  {
     slug: "deepseek-fireworks-deepinfer-faster-inference",
     date: "2026-10-23",
     title: "The race to faster AI inference: Meta, Fireworks and DeepSeek",
