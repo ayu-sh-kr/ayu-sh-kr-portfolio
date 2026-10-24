@@ -49,6 +49,7 @@
 
 ## Recent Dispatch notes
 
+- [ClickBench removes pgrust over benchmark cheating allegations](https://www.ayu-sh-kr.com/news/clickbench-removes-pgrust-benchmark-dispute/): ClickBench removed pgrust over query-specific code and caching. Its creator disputes the findings and has submitted a public v0.4-beta with documented cache controls.
 - [AI inference race: Meta’s $100K challenge and DeepSeek’s speed push](https://www.ayu-sh-kr.com/news/deepseek-fireworks-deepinfer-faster-inference/): Meta launches a $100K Muse Spark challenge as Fireworks claims 1,521+ tokens/s with D…16667 tokens truncated… Autopilot to turn work requests into finished tasks",
     summary: "Microsoft is bringing Chat, Cowork, app building, and a persistent agent into one Copilot experience. Home and Code are headed to Frontier, while Autopilot enters private preview.",
     kind: "reading",

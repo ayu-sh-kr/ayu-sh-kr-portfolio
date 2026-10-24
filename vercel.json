@@ -14,6 +14,11 @@
   ],
   "redirects": [
     {
+      "source": "/news/clickbench-removes-pgrust-benchmark-dispute",
+      "destination": "/news/clickbench-removes-pgrust-benchmark-dispute/",
+      "permanent": true
+    },
+    {
       "source": "/news/php-critical-rce-october-2026",
       "destination": "/news/php-critical-rce-october-2026/",
       "permanent": true
