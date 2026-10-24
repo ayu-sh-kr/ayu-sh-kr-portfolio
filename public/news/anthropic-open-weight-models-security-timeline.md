@@ -46,7 +46,7 @@ Dario's [July 27 position statement](https://www.anthropic.com/news/position-ope
 
 The narrower criticism remains: **Anthropic's safety arguments also support its competitive interests**. Restricting chips can constrain rival development. Blocking distillation can protect Claude's capabilities. Emphasizing removable safeguards can make controlled access look like the more responsible purchase. That alignment does not prove the warnings are fabricated; it makes their evidence and proposed remedies worth examining.
 
-The latest [Kimi K3.1 Pro launch](/news/kimi-k3-1-pro-frontier-model-comparison/) does not justify inventing another episode. As of October 24, no new Anthropic court filing or legal threat specifically about that model was verified for this article.
+Against that backdrop, the [Kimi K3.1 Pro launch](/news/kimi-k3-1-pro-frontier-model-comparison/) raises a question: will Anthropic respond with another public warning or take its concerns to lawmakers? Its earlier interventions make a further response conceivable, but **that remains an expectation drawn from the pattern**, not a confirmed move against K3.1 Pro.
 
 Calling the pattern panic is an editorial reading. The documented pattern is more concrete: Anthropic repeatedly challenges the legitimacy and safety of Chinese frontier competition through public messaging, enforcement and policy advocacy.
 
