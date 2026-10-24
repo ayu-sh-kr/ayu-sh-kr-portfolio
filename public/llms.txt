@@ -49,6 +49,7 @@
 
 ## Recent Dispatch notes
 
+- [Kimi K3.1 Pro launches: specs and comparison with frontier AI models](https://www.ayu-sh-kr.com/news/kimi-k3-1-pro-frontier-model-comparison/): Kimi K3.1 Pro brings 2.8T total and 104B active parameters. Compare its launch benchmarks with Opus 5.5, GPT-6 Astra and other peers, plus pricing and weight availability. [Article Markdown](https://www.ayu-sh-kr.com/news/kimi-k3-1-pro-frontier-model-comparison.md).
 - [Abliterated models: what they change, origins and use cases](https://www.ayu-sh-kr.com/news/abliterated-models-origin-refusals-use-cases/): Abliterated models edit existing AI weights to reduce refusals. Where the technique began, what the original may decline, practical uses and the capability trade-offs.
 - [ClickBench removes pgrust over benchmark cheating allegations](https://www.ayu-sh-kr.com/news/clickbench-removes-pgrust-benchmark-dispute/): ClickBench removed pgrust over query-specific code and caching. Its creator disputes the findings and has submitted a public v0.4-beta with documented cache controls.
 - [AI inference race: Meta’s $100K challenge and DeepSeek’s speed push](https://www.ayu-sh-kr.com/news/deepseek-fireworks-deepinfer-faster-inference/): Meta launches a $100K Muse Spark challenge as Fireworks claims 1,521+ tokens/s with D…16667 tokens truncated… Autopilot to turn work requests into finished tasks",

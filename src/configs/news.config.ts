@@ -68,6 +68,18 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "kimi-k3-1-pro-frontier-model-comparison",
+    date: "2026-10-24",
+    title: "Kimi K3.1 Pro launches: specs and comparison with frontier AI models",
+    summary: "Kimi K3.1 Pro brings 2.8T total and 104B active parameters. Compare its launch benchmarks with Opus 5.5, GPT-6 Astra and other peers, plus pricing and weight availability.",
+    kind: "shipped",
+    document: "/news/kimi-k3-1-pro-frontier-model-comparison.md",
+    keywords: ["Kimi K3.1 Pro", "Kimi K3.1 benchmarks", "Kimi vs Claude Opus 5.5", "Kimi vs GPT-6 Astra", "Kimi active parameters", "Kimi open weights release", "Kimi API pricing"],
+    minutes: 4,
+    reference: {label: "Moonshot — Kimi K3.1 Pro launch and evaluation notes", href: "https://www.kimi.ai/blog/kimi-k3-1-pro"},
+  },
+
+  {
     slug: "abliterated-models-origin-refusals-use-cases",
     date: "2026-10-24",
     title: "Abliterated models: what they change, origins and use cases",
