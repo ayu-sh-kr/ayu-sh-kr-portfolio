@@ -14,6 +14,11 @@
   ],
   "redirects": [
     {
+      "source": "/news/abliterated-models-origin-refusals-use-cases",
+      "destination": "/news/abliterated-models-origin-refusals-use-cases/",
+      "permanent": true
+    },
+    {
       "source": "/news/clickbench-removes-pgrust-benchmark-dispute",
       "destination": "/news/clickbench-removes-pgrust-benchmark-dispute/",
       "permanent": true

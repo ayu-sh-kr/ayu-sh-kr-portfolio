@@ -68,6 +68,18 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "abliterated-models-origin-refusals-use-cases",
+    date: "2026-10-24",
+    title: "Abliterated models: what they change, origins and use cases",
+    summary: "Abliterated models edit existing AI weights to reduce refusals. Where the technique began, what the original may decline, practical uses and the capability trade-offs.",
+    kind: "explainer",
+    document: "/news/abliterated-models-origin-refusals-use-cases.md",
+    keywords: ["abliterated models", "what is abliteration", "abliteration origin", "abliterated vs uncensored models", "AI refusal removal", "DeepSeek abliterated", "abliteration use cases"],
+    minutes: 3,
+    reference: {label: "Arditi et al. — Refusal in Language Models Is Mediated by a Single Direction", href: "https://arxiv.org/abs/2406.11717"},
+  },
+
+  {
     slug: "clickbench-removes-pgrust-benchmark-dispute",
     date: "2026-10-24",
     title: "ClickBench removes pgrust over benchmark cheating allegations",
