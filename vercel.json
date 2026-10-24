@@ -25,8 +25,35 @@
   ],
   "redirects": [
     {
+      "source": "/assets/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
+  ],
+  "redirects": [
+    {
       "source": "/news/hatchzip-in-place-archive-extraction",
       "destination": "/news/hatchzip-in-place-archive-extraction/",
+      "permanent": true
+    },
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/news/kimi-k3-1-pro-frontier-model-comparison",
+      "destination": "/news/kimi-k3-1-pro-frontier-model-comparison/",
       "permanent": true
     },
     {

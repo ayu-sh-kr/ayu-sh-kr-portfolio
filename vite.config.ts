@@ -38,6 +38,7 @@ const showcaseRoutes = [
 ];
 const newsRoutes = [
   "/news/hatchzip-in-place-archive-extraction",
+  "/news/kimi-k3-1-pro-frontier-model-comparison",
   "/news/abliterated-models-origin-refusals-use-cases",
   "/news/clickbench-removes-pgrust-benchmark-dispute",
   "/news/deepseek-fireworks-deepinfer-faster-inference",
