@@ -60,4 +60,12 @@ Calling the pattern panic is an editorial reading. The documented pattern is mor
 
 When the next open-weight model arrives, the question is whose evidence establishes the risk, what was actually demonstrated, and whether the proposed restriction addresses that finding. A competitor's warning deserves scrutiny alongside its benchmark.
 
+## OpenAI welcomed the competition, with its guard up
+
+Where Anthropic's warnings can read as alarm, OpenAI's initial response sounded more welcoming. Sam Altman [praised DeepSeek R1](https://x.com/sama/status/1884066337103962416) for what it delivered at its price and described the competition as invigorating.
+
+But the welcome came with caution. OpenAI also [raised distillation allegations with US lawmakers](https://www.reuters.com/world/china/openai-accuses-deepseek-distilling-us-models-gain-advantage-bloomberg-news-2026-02-12/) and later [linked reasoning-extraction attempts to people associated with Moonshot](https://openai.com/index/disrupting-a-coordinated-model-distillation-campaign/).
+
+**OpenAI welcomed the competition while keeping its guard up; Anthropic put the warnings more prominently in view.** The public tone differed, even as both companies acted to protect their models and commercial position.
+
 *Timeline checked through October 24, 2026. January and February 2025 provide background; the main timeline covers 2026.*
