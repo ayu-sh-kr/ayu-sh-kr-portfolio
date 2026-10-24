@@ -60,10 +60,6 @@ But the welcome came with caution. OpenAI also [raised distillation allegations 
 
 **OpenAI welcomed the competition while keeping its guard up; Anthropic put the warnings more prominently in view.** The public tone differed, even as both companies acted to protect their models and commercial position.
 
-## Protect the service, keep the criticism specific
-
-Abusing a paid service to train a rival, then competing in the same market, is a legitimate concern. Anthropic has reason to investigate unauthorized extraction and protect access to Claude. That concern does not make every advance by an open-weight competitor evidence of abuse.
-
-Its own [anti-distillation work](https://www.anthropic.com/news/distillation-defenses) offers a more concrete response: protect reasoning traces, detect extraction attempts and block persistent abuse. Anthropic reports that these measures reduced harvested reasoning data by **90–99%**, though it expects attackers to keep adapting. That is progress toward limiting extraction, not proof that distillation has been disabled. **Stronger defenses and specific evidence make a better case than repeatedly casting competing releases as security warnings.**
+Abusing Anthropic's service to distill Claude into a competing model is wrong, and the company has every reason to protect its work. But its repeated warnings about open-weight rivals can also come across as **childish panic over competition**, especially when attention shifts from what a new model offers to why it should be feared. Anthropic's own [anti-distillation defenses](https://www.anthropic.com/news/distillation-defenses), which it says reduced extracted reasoning data by **90–99%**, show a more constructive response: secure the service, substantiate the accusations, and let competing models stand on their merits.
 
 *Timeline checked through October 24, 2026. January and February 2025 provide background; the main timeline covers 2026.*
