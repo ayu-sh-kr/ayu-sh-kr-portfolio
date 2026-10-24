@@ -37,6 +37,7 @@ const showcaseRoutes = [
   "/showcase/dota-rest",
 ];
 const newsRoutes = [
+  "/news/kimi-k3-1-pro-frontier-model-comparison",
   "/news/deepseek-fireworks-deepinfer-faster-inference",
   "/news/php-critical-rce-october-2026",
   "/news/railway-environment-variables-security-breach",

@@ -68,6 +68,30 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "kimi-k3-1-pro-frontier-model-comparison",
+    date: "2026-10-24",
+    title: "Kimi K3.1 Pro launches: specs and comparison with frontier AI models",
+    summary: "Kimi K3.1 Pro brings 2.8T total and 104B active parameters. Compare its launch benchmarks with Opus 5.5, GPT-6 Astra and other peers, plus pricing and weight availability.",
+    kind: "shipped",
+    document: "/news/kimi-k3-1-pro-frontier-model-comparison.md",
+    keywords: ["Kimi K3.1 Pro", "Kimi K3.1 benchmarks", "Kimi vs Claude Opus 5.5", "Kimi vs GPT-6 Astra", "Kimi active parameters", "Kimi open weights release", "Kimi API pricing"],
+    minutes: 4,
+    reference: {label: "Moonshot — Kimi K3.1 Pro launch and evaluation notes", href: "https://www.kimi.ai/blog/kimi-k3-1-pro"},
+  },
+
+  {
+    slug: "clickbench-removes-pgrust-benchmark-dispute",
+    date: "2026-10-24",
+    title: "ClickBench removes pgrust over benchmark cheating allegations",
+    summary: "ClickBench removed pgrust over query-specific code and caching. Its creator disputes the findings and has submitted a public v0.4-beta with documented cache controls.",
+    kind: "infra",
+    document: "/news/clickbench-removes-pgrust-benchmark-dispute.md",
+    keywords: ["ClickBench pgrust removal", "pgrust benchmark cheating allegations", "pgrust v0.4-preview", "database benchmark caching", "pgrust v0.4-beta", "PostgreSQL Rust rewrite"],
+    minutes: 4,
+    reference: {label: "ClickBench — pgrust removal PR #2165", href: "https://github.com/ClickHouse/ClickBench/pull/2165"},
+  },
+
+  {
     slug: "deepseek-fireworks-deepinfer-faster-inference",
     date: "2026-10-23",
     title: "The race to faster AI inference: Meta, Fireworks and DeepSeek",
