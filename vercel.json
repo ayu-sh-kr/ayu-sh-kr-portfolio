@@ -14,6 +14,16 @@
   ],
   "redirects": [
     {
+      "source": "/news/kimi-k3-1-pro-frontier-model-comparison",
+      "destination": "/news/kimi-k3-1-pro-frontier-model-comparison/",
+      "permanent": true
+    },
+    {
+      "source": "/news/clickbench-removes-pgrust-benchmark-dispute",
+      "destination": "/news/clickbench-removes-pgrust-benchmark-dispute/",
+      "permanent": true
+    },
+    {
       "source": "/news/php-critical-rce-october-2026",
       "destination": "/news/php-critical-rce-october-2026/",
       "permanent": true
@@ -398,11 +408,6 @@
     {
       "source": "/news/kafgres-kafka-broker-postgres-700mbs",
       "destination": "/news/kafgres-kafka-broker-postgres-700mbs/",
-      "permanent": true
-    },
-    {
-      "source": "/news/kimi-k3-1-pro-frontier-model-comparison",
-      "destination": "/news/kimi-k3-1-pro-frontier-model-comparison/",
       "permanent": true
     },
     {
