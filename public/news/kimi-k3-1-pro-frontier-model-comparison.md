@@ -1,12 +1,12 @@
 # Kimi K3.1 Pro launches: specs and comparison with frontier AI models
 
-Moonshot has launched **Kimi K3.1 Pro**, putting its next open-weight model within reach of Claude Opus 5.5 on terminal coding and ahead on several longer tasks in its launch chart. The pitch extends beyond writing code: the company is targeting complete game projects, editable 3D models and financial research.
+Moonshot has launched **Kimi K3.1 Pro**, with reported terminal-coding results close to Claude Opus 5.5 and stronger scores on extended engineering tasks. Moonshot is targeting complete game projects, editable 3D models and financial research.
 
-The model is available through Kimi’s apps, Kimi Work, Kimi Code and API. **The weights arrive later, by November 4, 2026**. That distinction matters for anyone planning to run it on their own infrastructure.
+The model is available through Kimi’s apps, Kimi Work, Kimi Code and API. Moonshot plans to release **downloadable weights by November 4, 2026**.
 
 ## What is inside Kimi K3.1 Pro?
 
-K3.1 Pro is a post-trained K3: Moonshot increased reinforcement-learning work across many domains, rather than announcing a larger base architecture. Reinforcement learning improves behavior through feedback on attempted tasks.
+K3.1 Pro builds on K3 with more [reinforcement learning across different tasks](/blog/reinforcement-learning-from-rlhf-to-rlsc/). Its gains come from further training at the same model scale.
 
 The [K3 technical report](https://arxiv.org/abs/2607.24653) documents the underlying mixture-of-experts architecture. The launch retains its 2.8-trillion-parameter scale and million-token context.
 
@@ -20,9 +20,9 @@ The [K3 technical report](https://arxiv.org/abs/2607.24653) documents the underl
 | Hosted access | Available now |
 | Downloadable weights | Scheduled by November 4, 2026 |
 
-> **Parameters**, also called weights, are the learned numerical values in a model. A **mixture of experts** routes each token through selected specialist parts of the network. Total parameters describe the whole model; active parameters describe the portion used for that step.
+> **MoE** activates selected parts of the network for each token. Kimi uses 104B parameters at a time, but the full 2.8T model still has to be stored.
 
-The active share is approximately **3.7%**. That reduces computation compared with activating the entire network, but does not make the other weights disappear from storage. The K3 report describes 16 selected experts from 896 routed experts; that expert count is separate from the parameter ratio because shared components also contribute.
+Its active parameters amount to approximately **3.7%** of the total. The K3 report describes 16 selected experts from 896; shared components also contribute to the active parameter count.
 
 For a rough storage illustration, 2.8 trillion values at two bytes each would occupy **5.6 TB**, or **1.4 TB at four bits each**, before extra data and runtime memory. These are arithmetic estimates, not K3.1 download sizes or deployment requirements. The final checkpoint format and serving setup determine the actual footprint.
 
@@ -43,12 +43,12 @@ Higher is better. Figures are from [Moonshot’s launch chart and evaluation not
 
 > These are **launch-reported comparisons**, combining internal evaluations with published scores. Harnesses—the software controlling tools and execution—differ across some tests. Kimi generally uses maximum reasoning effort. The table does not establish a universal winner or equal cost per task.
 
-The useful contrast is the shape of the results. Kimi is **0.7 percentage points behind Opus** on terminal coding and leads this group on SWE Marathon. Yet it trails Astra by **30 points** on scientific terminal tasks. A team choosing an agent for repository maintenance could reach a different decision from one automating scientific analysis.
+Kimi is **0.7 percentage points behind Opus** on terminal coding and leads this group on SWE Marathon. Yet it trails Astra by **30 points** on scientific terminal tasks. A team choosing an agent for repository maintenance could reach a different decision from one automating scientific analysis.
 
 ## Price and the open-weight question
 
 The [Kimi API platform](https://platform.kimi.ai/) lists Pro at **$2 per million input tokens and $10 per million output tokens**, with cached input at **$0.20 per million**. Its [pricing documentation](https://platform.kimi.ai/docs/pricing/chat) distinguishes API billing from app memberships and Kimi Code subscriptions.
 
-Moonshot also offers **Pro Highspeed**, claiming two to three times the speed. That is a provider claim, rather than a measured completion-time improvement for every project. As the [recent inference-speed Dispatch](/news/deepseek-fireworks-deepinfer-faster-inference/) explored, response speed alone does not tell how quickly an agent finishes correct work.
+Moonshot also offers **Pro Highspeed**, claiming two to three times the speed. The claim concerns serving speed; [task completion also depends on reasoning time, output length and retries](/news/deepseek-fireworks-deepinfer-faster-inference/).
 
-For the game project in the launch pitch, the practical comparison is whether the agent produces a working build, how much repair it needs and what the complete run costs. Kimi’s numbers make it a credible candidate for that comparison. November’s weight release will add another decision: whether the control of running it independently justifies the infrastructure required by a model this large.
+Kimi’s reported gains are strongest on extended engineering and document-analysis tasks, while scientific terminal work remains a clear weakness against Astra. Its planned weight release adds the option of independent deployment, though the model’s size makes that a substantial infrastructure commitment.
