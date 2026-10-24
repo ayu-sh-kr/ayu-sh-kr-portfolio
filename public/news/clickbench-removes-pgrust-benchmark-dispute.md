@@ -28,7 +28,7 @@ The creator acknowledges submitting the preview too early, with narrow SQL suppo
 
 ## What the replacement submission caches
 
-The replacement [PR #2751](https://github.com/ClickHouse/ClickBench/pull/2751) remains open at the time of writing. Its cache disclosures and [submitted installation script](https://github.com/malisper/ClickBench/blob/deabb4a553195570e1ad3e738146759cafa4ae02/pgrust/install) show why the distinction matters. The script explicitly enables `condition_cache=full`, `dict_filter_cache=on` and `zone_store=on`.
+The replacement [PR #2751](https://github.com/ClickHouse/ClickBench/pull/2751) remains open at the time of writing. The submission’s cache disclosures and [installation script](https://github.com/malisper/ClickBench/blob/deabb4a553195570e1ad3e738146759cafa4ae02/pgrust/install) list `condition_cache=full`, `dict_filter_cache=on` and `zone_store=on` as enabled settings. These describe the submitted configuration; they do not establish how much each cache contributes to its timings.
 
 For the URL-count query, the distinction is how much work survives between runs: a list of blocks to skip, matching rows, or the count itself.
 
@@ -43,7 +43,7 @@ The new submission documents these choices separately:
 
 The creator also confirms that the preview's dictionary filter cache **stayed enabled when the condition cache was switched off**. He says the new version fixes that control and documents how to disable each cache. The replacement submission nevertheless runs with caches enabled by default, leaving their suitability for ClickBench to review.
 
-If you compare these timings, the cache policy belongs alongside the hardware and query. Reusing a count measures different work from scanning the data again—a scope issue I also covered in [Cloudtoid’s messaging benchmarks](/news/cloudtoid-interprocess-shared-memory-ipc/).
+If you compare these timings, the cache policy belongs alongside the hardware and query. Reusing a count measures different work from scanning the data again—a distinction also relevant to [Cloudtoid’s messaging benchmarks](/news/cloudtoid-interprocess-shared-memory-ipc/).
 
 ## Removal is confirmed; reinstatement is pending
 

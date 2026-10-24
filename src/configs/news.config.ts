@@ -68,6 +68,18 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "hatchzip-in-place-archive-extraction",
+    date: "2026-10-24",
+    title: "Hatchzip shrinks archives while extracting: claims, benchmarks and design",
+    summary: "Hatchzip reclaims archive space as files are extracted. Its reported benchmarks, shared Rust engine and crash-recovery design explain the gains and limits.",
+    kind: "shipped",
+    document: "/news/hatchzip-in-place-archive-extraction.md",
+    keywords: ["Hatchzip", "extract archive without enough disk space", "in-place archive extraction", "Hatchzip benchmark", "ZIP 7z extraction", "Hatchzip architecture"],
+    minutes: 2,
+    reference: {label: "Hatchzip — source, design and reported benchmarks", href: "https://github.com/xevrion/hatchzip"},
+  },
+
+  {
     slug: "kimi-k3-1-pro-frontier-model-comparison",
     date: "2026-10-24",
     title: "Kimi K3.1 Pro launches: specs and comparison with frontier AI models",
