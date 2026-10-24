@@ -14,6 +14,11 @@
   ],
   "redirects": [
     {
+      "source": "/news/hatchzip-in-place-archive-extraction",
+      "destination": "/news/hatchzip-in-place-archive-extraction/",
+      "permanent": true
+    },
+    {
       "source": "/news/clickbench-removes-pgrust-benchmark-dispute",
       "destination": "/news/clickbench-removes-pgrust-benchmark-dispute/",
       "permanent": true
