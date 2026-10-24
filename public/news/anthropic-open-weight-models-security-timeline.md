@@ -6,15 +6,11 @@ That sequence can look like **panic over open-weight competition**. Across DeepS
 
 The criticism worth examining is how those interventions frame a competitor's progress. A cheaper alternative becomes a suspected beneficiary of unauthorized training. Downloadable weights become an irreversible security exposure. The risks may deserve scrutiny; the company describing them also sells the closed alternative.
 
-## DeepSeek: the breakthrough becomes an export-control argument
+## DeepSeek: praise followed by warnings
 
-In [January 2025](https://darioamodei.com/post/on-deepseek-and-export-controls), Dario Amodei argued that DeepSeek's progress made chip export controls more necessary. He acknowledged its engineering and explicitly declined to take a position on distillation allegations in that essay.
+Dario Amodei [responded to DeepSeek's breakthrough](https://darioamodei.com/post/on-deepseek-and-export-controls) by arguing for stronger chip export controls. He credited its engineers and declined to endorse distillation allegations in that essay, but framed its progress as another reason to restrict China's access to advanced compute.
 
-His [February 5 ChinaTalk interview](https://www.chinatalk.media/p/anthropics-dario-amodei-on-ai-competition) added a safety argument. He said DeepSeek performed worst in Anthropic's evaluations of protections against sensitive biological information. He also said he did not think the models were literally dangerous in that way at the time.
-
-That qualification matters. A weakness in an evaluation and a demonstrated ability to cause real-world harm are different findings.
-
-Dario also said the consequential development was a Chinese company producing a strong model; much of his argument would have applied even if DeepSeek had offered only an API. The concern was therefore broader than openness.
+In a subsequent [ChinaTalk interview](https://www.chinatalk.media/p/anthropics-dario-amodei-on-ai-competition), he criticized DeepSeek's protections against sensitive biological information, while saying he did not consider the models dangerous in that way at the time. The overall tone combined recognition of its engineering with warnings about safety and China's growing capabilities.
 
 ## The 2026 timeline: accusations, lawmakers and security tests
 
@@ -36,17 +32,13 @@ Sources: [February disclosure](https://www.anthropic.com/news/detecting-and-prev
 
 The progression is significant. Anthropic moved beyond protecting an API to asking lawmakers to treat alleged extraction as a strategic problem. Its own February disclosure explicitly connected distillation to preserving the competitive advantage that export controls were intended to maintain.
 
-## GLM: a competitor becomes the security case study
+## GLM: a rival gets a dedicated security study
 
-The [September 29 GLM-5.3 assessment](https://www.anthropic.com/research/glm-5-3-and-the-spread-of-advanced-cyber-capabilities) is the clearest example of direct security criticism.
+With GLM-5.3, Anthropic went further than mentioning security concerns in a wider report. Its Frontier Red Team published a [dedicated assessment of the rival's cyber capabilities and safeguards](https://www.anthropic.com/research/glm-5-3-and-the-spread-of-advanced-cyber-capabilities), testing exploit development and several ways to bypass or remove protections. It returned to those findings in its later anti-distillation update, giving GLM repeated attention.
 
-Anthropic reported that GLM-5.3 produced working exploits in **50 of 410 attempts** on a Chrome V8 benchmark, versus **56 of 410** for Claude Mythos Preview. Its tests also found that GLM's safeguards could be bypassed or removed, with engagement rates of **64–100%** depending on the technique. Those percentages describe particular simulated tests, not success rates against arbitrary live targets.
+In sandboxed evaluations, Anthropic reported working exploits in **50 of 410 attempts**, compared with **56 of 410** for Claude Mythos Preview. It also reported safeguard-bypass engagement rates of **64–100%**, depending on the technique. The effort devoted to testing and publishing the findings made GLM a prominent example in Anthropic's argument about openly available cyber capabilities.
 
-The comparison gave Anthropic a powerful framing: similar dangerous capabilities, different access controls. Its restricted model was presented as a tool for vetted defenders; GLM's downloadable weights were presented as a capability available to attackers.
-
-There is a substantive distinction here. Hosted providers can block accounts and update protections. Downloaded weights can be modified, including through [abliteration to reduce refusals](/news/abliterated-models-origin-refusals-use-cases/). Anthropic also acknowledged that GLM's capabilities could benefit defenders.
-
-But a controlled demonstration does not establish an observed wave of GLM-powered attacks. The warning and the incident record need separate treatment.
+The framing favored controlled access: Claude's restricted version was available to vetted defenders, while GLM's weights could be downloaded and modified, including through [abliteration to reduce refusals](/news/abliterated-models-origin-refusals-use-cases/). Anthropic acknowledged the benefits for defenders too, but its emphasis was the risk of releasing those capabilities without safeguards it considered adequate.
 
 ## Safety concerns also serve a competitive narrative
 
