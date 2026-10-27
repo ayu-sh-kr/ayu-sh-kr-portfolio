@@ -191,7 +191,7 @@ export const newsNotes: readonly NewsNote[] = [
     slug: "jakub-krehel-teardown-technical-illustration-skill",
     date: "2026-10-27",
     title: "Jakub Krehel’s teardown skill makes editable technical illustrations",
-    summary: "Jakub Krehel’s teardown skill builds configurable technical drawings. How its geometry workflow, evidence checks, exports and MIT license fit documentation.",
+    summary: "Jakub Krehel’s teardown skill builds configurable technical drawings. An isometric teardown example shows how its editable parts, assembled views and SVG exports fit documentation.",
     kind: "shipped",
     document: "/news/jakub-krehel-teardown-technical-illustration-skill.md",
     keywords: [
@@ -201,7 +201,7 @@ export const newsNotes: readonly NewsNote[] = [
       "teardown skill MIT",
       "editable technical drawings"
     ],
-    minutes: 4,
+    minutes: 2.5,
     reference: {
       label: "Jakub Krehel — Skills and examples",
       href: "https://jakub.kr/skills"
