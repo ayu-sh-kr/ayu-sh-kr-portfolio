@@ -4,51 +4,28 @@ ui-ascii-showcase {
   margin: 1.5rem auto 2rem;
 }
 
-.ui-ascii-study {
+ui-ascii-showcase .ui-ascii-study {
   margin: 0;
 }
 
-.ui-ascii-stage {
-  display: grid;
+ui-ascii-showcase .ui-ascii-stage {
   aspect-ratio: 1;
-  container-type: inline-size;
   overflow: hidden;
   border: 1px solid var(--border-color);
   border-radius: var(--layout-radius-lg, 1rem);
-  background: var(--surface-color);
-  color: color-mix(in srgb, var(--foreground-color) 72%, var(--primary-color));
+  /* This fixed night-sky palette belongs to the illustration, in both themes. */
+  background: #081b24;
 }
 
-.ui-ascii-stage pre {
-  grid-area: 1 / 1;
-  align-self: center;
-  margin: 0 !important;
-  padding: 0 !important;
-  border: 0 !important;
-  border-radius: 0 !important;
-  background: transparent !important;
-  color: inherit !important;
-  box-shadow: none !important;
-  white-space: pre;
-  text-align: center;
-  font: 500 1.736111cqi/0.9 var(--font-mono) !important;
-  letter-spacing: 0;
-  opacity: 0;
-  animation: ascii-bird-frame 4s step-end infinite;
+ui-ascii-showcase canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
 }
 
-.ui-ascii-study figcaption {
+ui-ascii-showcase .ui-ascii-study figcaption {
   margin-top: 0.65rem;
   font: 0.8125rem/1.5 var(--font-sans);
   color: var(--muted-strong-color);
-}
-
-@keyframes ascii-bird-frame {
-  0% { opacity: 1; }
-  2.0833333333%, 100% { opacity: 0; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .ui-ascii-stage pre { animation: none; opacity: 0; }
-  .ui-ascii-stage pre:first-child { opacity: 1; }
 }

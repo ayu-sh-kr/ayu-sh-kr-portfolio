@@ -1,91 +1,107 @@
 import { Component } from "@ayu-sh-kr/dota-wrap/core";
+import { OnEvent } from "@ayu-sh-kr/dota-wrap/event";
 import { html } from "@ayu-sh-kr/dota-wrap/rendering";
 import { ArticleShowcaseElement } from "../article-showcase.element.ts";
+import { AsciiWoodland } from "./ascii-woodland.ts";
 
 /**
- * Original hummingbird animation embedded as a compact square article asset.
- * A shaded body, fine beak, fanned tail and feathered wings make the subject
- * recognizable before its character texture. Forty-eight deterministic frames
- * loop through CSS without controls or runtime drawing. Reduced motion retains
- * the first frame. Selector: ui-ascii-showcase; no attributes are required.
+ * Compact original ASCII woodland for the animation article. Three detailed
+ * birds share a colored tree and meadow; a low-resolution painting supplies
+ * colors for actual canvas text glyphs. One canvas replaces serialized frame
+ * stacks. Playback stops offscreen and reduced motion keeps a still scene.
+ * Selector: ui-ascii-showcase; no attributes or reader controls.
  */
 @Component({ selector: "ui-ascii-showcase", shadow: false })
 export class UiAsciiShowcaseComponent extends ArticleShowcaseElement {
-  /** Shades an elliptical body part with a fixed upper-left light and a soft rim. */
-  private ellipsoid(x: number, y: number, cx: number, cy: number, rx: number, ry: number, angle = 0): number {
-    const dx = x - cx;
-    const dy = y - cy;
-    const u = (dx * Math.cos(angle) + dy * Math.sin(angle)) / rx;
-    const v = (-dx * Math.sin(angle) + dy * Math.cos(angle)) / ry;
-    const radius = u * u + v * v;
-    if (radius >= 1) return 0;
-    const depth = Math.sqrt(1 - radius);
-    return Math.min(1, 0.18 + depth * 0.55 - u * 0.15 - v * 0.18);
+  private animationId = 0;
+  private observer: IntersectionObserver | null = null;
+  private motion: MediaQueryList | null = null;
+  private visible = true;
+  private lastPaint = -Infinity;
+  private readonly artwork = new AsciiWoodland();
+  private source: CanvasRenderingContext2D | null = null;
+  private output: CanvasRenderingContext2D | null = null;
+
+  /** Starts only after Dota has mounted the one canvas; SSG has no drawing context. */
+  @OnEvent("connected", true)
+  startScene(): void {
+    if (import.meta.env.SSR) return;
+    this.stopScene();
+    const canvas = this.querySelector("canvas");
+    this.output = canvas?.getContext("2d") ?? null;
+    if (!this.output) return;
+    const source = document.createElement("canvas");
+    source.width = 144;source.height = 96;
+    this.source = source.getContext("2d", { willReadFrequently: true });
+    this.motion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    this.motion.addEventListener("change", this.restartPlayback);
+    this.drawScene(0);
+    this.observer = new IntersectionObserver(entries => {
+      this.visible = entries[0]?.isIntersecting ?? false;
+      this.restartPlayback();
+    });
+    this.observer.observe(this);
   }
 
-  /** Samples a tapered wing; narrow longitudinal ridges separate its flight feathers. */
-  private wing(x: number, y: number, phase: number, far = false): number {
-    const rootX = -0.09;
-    const rootY = 0.025;
-    const tipX = far ? 0.01 + 0.12 * Math.sin(phase) : -0.56 - 0.08 * Math.sin(phase);
-    const tipY = far ? -0.14 - 0.57 * Math.cos(phase - 0.28) : -0.12 - 0.66 * Math.cos(phase);
-    const dx = tipX - rootX;
-    const dy = tipY - rootY;
-    const length = Math.hypot(dx, dy);
-    const t = ((x - rootX) * dx + (y - rootY) * dy) / (length * length);
-    if (t <= 0 || t >= 1) return 0;
-    const across = ((x - rootX) * -dy + (y - rootY) * dx) / length;
-    const width = 0.155 * Math.pow(Math.sin(t * Math.PI), 0.72);
-    const edge = across / width;
-    if (Math.abs(edge) >= 1) return 0;
-    const feathers = 0.5 + 0.5 * Math.cos((edge + t * 0.4) * 23);
-    const light = 0.18 + 0.3 * (1 - Math.abs(edge)) + 0.25 * feathers;
-    return light * (far ? 0.58 : 1);
+  /** Cancels the loop before a visibility or accessibility change starts another. */
+  private readonly restartPlayback = (): void => {
+    cancelAnimationFrame(this.animationId);
+    this.animationId = 0;
+    if (this.motion?.matches) this.drawScene(0);
+    else if (this.visible && this.isConnected) this.animationId = requestAnimationFrame(this.tick);
+  };
+
+  /** Limits redraws to twelve per second while keeping motion tied to elapsed time. */
+  private readonly tick = (time: number): void => {
+    if (!this.isConnected || !this.visible || this.motion?.matches) return;
+    if (time - this.lastPaint >= 1000 / 12) {
+      this.drawScene(time / 1000);
+      this.lastPaint = time;
+    }
+    this.animationId = requestAnimationFrame(this.tick);
+  };
+
+  /** Samples the original painting into a 144 by 96 grid of colored ASCII glyphs. */
+  private drawScene(time: number): void {
+    const source = this.source, output = this.output;
+    if (!source || !output) return;
+    source.setTransform(144 / 600,0,0,96 / 600,0,0);
+    this.artwork.paint(source,time);
+    const pixels = source.getImageData(0,0,144,96).data;
+    output.clearRect(0,0,864,864);
+    output.font = '600 10px monospace';
+    output.textBaseline = 'top';
+    const ramp = '.,:;=+*ox%#@';
+    for(let row=0;row<96;row++)for(let col=0;col<144;col++) {
+      const i=(row*144+col)*4;
+      const alpha=pixels[i+3]/255;
+      if(alpha<0.12)continue;
+      const light=(pixels[i]*0.21+pixels[i+1]*0.72+pixels[i+2]*0.07)/255;
+      const texture = ((col * 17 + row * 31) % 13) / 13;
+      const density=Math.min(0.99,(0.24+light*0.64+texture*0.16)*alpha);
+      output.fillStyle=`rgba(${Math.min(255,pixels[i]*1.55+15)},${Math.min(255,pixels[i+1]*1.45+15)},${Math.min(255,pixels[i+2]*1.4+15)},${Math.min(1,alpha+0.25)})`;
+      output.fillText(ramp[Math.floor(density*ramp.length)],col*6,row*9);
+    }
   }
 
-  /** Composes the bird in depth order, keeping the eye, beak and split tail legible. */
-  private frame(phase: number): string {
-    const ramp = " .,:;irsx%#@";
-    const bob = 0.025 * Math.sin(phase * 2);
-    return Array.from({ length: 64 }, (_, row) =>
-      Array.from({ length: 96 }, (_, col) => {
-        const x = (col + 0.5) / 48 - 1;
-        const y = (row + 0.5) / 32 - 1 - bob;
-        let light = this.wing(x, y, phase, true);
-        // A narrow fan extends from the rump and resolves into three tail feathers.
-        for (let feather = 0; feather < 3; feather++) {
-          const endX = -0.69 + feather * 0.065;
-          const endY = 0.32 + feather * 0.09;
-          const dx = endX + 0.22;
-          const dy = endY - 0.15;
-          const t = ((x + 0.22) * dx + (y - 0.15) * dy) / (dx * dx + dy * dy);
-          const distance = Math.abs((x + 0.22) * dy - (y - 0.15) * dx) / Math.hypot(dx, dy);
-          if (t > 0 && t < 1 && distance < 0.029 * Math.sin(t * Math.PI)) {
-            light = Math.max(light, 0.42 + 0.22 * (1 - t));
-          }
-        }
-        const body = this.ellipsoid(x, y, -0.075, 0.115, 0.285, 0.155, -0.42);
-        const chest = this.ellipsoid(x, y, 0.105, 0.07, 0.13, 0.145, -0.35);
-        const head = this.ellipsoid(x, y, 0.225, -0.035, 0.125, 0.115, -0.2);
-        light = Math.max(light, body, chest, head);
-        light = Math.max(light, this.wing(x, y, phase));
-        // The tapered beak and dark eye distinguish the silhouette from an abstract wing study.
-        if (x > 0.31 && x < 0.72 && Math.abs(y + 0.047) < 0.004 + 0.012 * (0.72 - x) / 0.41) {
-          light = 0.75;
-        }
-        if ((x - 0.265) ** 2 + (y + 0.058) ** 2 < 0.00048) light = 0.06;
-        return ramp[Math.min(ramp.length - 1, Math.floor(light * ramp.length))];
-      }).join("")
-    ).join("\n");
+  /** Releases every observer, media listener and frame when Markdown replaces the scene. */
+  @OnEvent("disconnected", true)
+  stopScene(): void {
+    cancelAnimationFrame(this.animationId);
+    this.animationId = 0;
+    this.observer?.disconnect();this.observer = null;
+    this.motion?.removeEventListener("change", this.restartPlayback);this.motion = null;
+    this.source = null;this.output = null;
+    this.lastPaint = -Infinity;
   }
 
-  /** Renders one accessible bird study with an automatic four-second loop and no playback UI. */
+  /** Keeps the artwork in one square figure without playback or illustration controls. */
   render() {
     return html`<figure class="ui-ascii-study">
-      <div class="ui-ascii-stage" role="img" aria-label="Animated ASCII hummingbird hovering in profile, with feathered wings, a fine beak and a fanned tail.">
-        ${Array.from({ length: 48 }, (_, index) => html`<pre aria-hidden="true" style="animation-delay: ${-((48 - index) % 48) / 12}s">${this.frame(index * Math.PI / 24)}</pre>`)}
+      <div class="ui-ascii-stage">
+        <canvas width="864" height="864" role="img" aria-label="Colorful ASCII woodland: two hummingbirds fly above a third bird perched in a leafy tree, with wildflowers and swaying grass below.">Three colorful birds, a branching tree and a wildflower meadow, drawn with text characters.</canvas>
       </div>
-      <figcaption>A hummingbird in flight, drawn entirely with characters. Original animation.</figcaption>
+      <figcaption>Wingbeats above the meadow. Three birds, a tree and wildflowers, drawn in colored ASCII.</figcaption>
     </figure>`;
   }
 }
