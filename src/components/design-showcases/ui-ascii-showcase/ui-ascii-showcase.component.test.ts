@@ -8,11 +8,11 @@ it("keeps a single accessible study after reconnect and renders deterministic AS
   document.body.append(host);
   await Promise.resolve();
   const original = [...host.querySelectorAll("pre")].map(frame => frame.textContent);
-  expect(original).toHaveLength(16);
+  expect(original).toHaveLength(48);
   expect(new Set(original).size).toBeGreaterThan(1);
-  expect(original.every(frame => /^[ .,:;ox%#@\n]+$/.test(frame ?? ""))).toBe(true);
-  expect(host.querySelector('[role="img"]')?.getAttribute("aria-label")).toContain("sphere");
-  expect(host.querySelector('input[type="checkbox"]')).not.toBeNull();
+  expect(original.every(frame => /^[ .,:;irsx%#@\n]+$/.test(frame ?? ""))).toBe(true);
+  expect(host.querySelector('[role="img"]')?.getAttribute("aria-label")).toContain("hummingbird");
+  expect(host.querySelector('input, button')).toBeNull();
   host.remove();
   document.body.append(host);
   await Promise.resolve();
