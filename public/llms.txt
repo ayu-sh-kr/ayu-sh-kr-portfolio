@@ -49,6 +49,8 @@
 
 ## Recent Dispatch notes
 
+- [Fern, Maya-2 and Pomerado: new AI models and developer tools](https://www.ayu-sh-kr.com/news/fern-maya2-quicksand-pomerado-developer-tools/): Fern previews 10M-token context, Maya-2 opens speech weights, and Pomerado, Quicksand and FlashRaw target practical workflows. Features, licenses and alternatives. [Article Markdown](https://www.ayu-sh-kr.com/news/fern-maya2-quicksand-pomerado-developer-tools.md).
+
 - [Anthropic and open-weight AI: why competition keeps becoming a security debate](https://www.ayu-sh-kr.com/news/anthropic-open-weight-models-security-timeline/): From DeepSeek to GLM, a timeline of Anthropic's distillation allegations, security warnings and policy advocacy—and how they frame open-weight competition. [Article Markdown](https://www.ayu-sh-kr.com/news/anthropic-open-weight-models-security-timeline.md).
 
 - [Hatchzip shrinks archives while extracting: claims, benchmarks and design](https://www.ayu-sh-kr.com/news/hatchzip-in-place-archive-extraction/): Hatchzip reclaims archive space as files are extracted. Its reported benchmarks, shared Rust engine and crash-recovery design explain the gains and limits. [Article Markdown](https://www.ayu-sh-kr.com/news/hatchzip-in-place-archive-extraction.md).

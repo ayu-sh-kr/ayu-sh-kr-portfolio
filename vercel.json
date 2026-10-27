@@ -52,6 +52,11 @@
   ],
   "redirects": [
     {
+      "source": "/news/fern-maya2-quicksand-pomerado-developer-tools",
+      "destination": "/news/fern-maya2-quicksand-pomerado-developer-tools/",
+      "permanent": true
+    },
+    {
       "source": "/news/anthropic-open-weight-models-security-timeline",
       "destination": "/news/anthropic-open-weight-models-security-timeline/",
       "permanent": true

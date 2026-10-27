@@ -37,6 +37,7 @@ const showcaseRoutes = [
   "/showcase/dota-rest",
 ];
 const newsRoutes = [
+  "/news/fern-maya2-quicksand-pomerado-developer-tools",
   "/news/anthropic-open-weight-models-security-timeline",
   "/news/hatchzip-in-place-archive-extraction",
   "/news/kimi-k3-1-pro-frontier-model-comparison",

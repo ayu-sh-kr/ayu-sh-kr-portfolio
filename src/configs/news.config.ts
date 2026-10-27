@@ -68,6 +68,17 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "fern-maya2-quicksand-pomerado-developer-tools",
+    date: "2026-10-27",
+    title: "Fern, Maya-2 and Pomerado: new AI models and developer tools",
+    summary: "Fern previews 10M-token context, Maya-2 opens speech weights, and Pomerado, Quicksand and FlashRaw target practical workflows. Features, licenses and alternatives.",
+    kind: "shipped",
+    document: "/news/fern-maya2-quicksand-pomerado-developer-tools.md",
+    keywords: ["Fern 0.1", "Mirendil 10M context", "Maya-2 Native open weights", "Pomerado browser automation", "Microsoft Quicksand", "FlashRaw Rust RAW decoder", "teardown skill", "Asonix App Store optimization"],
+    minutes: 7,
+    reference: {label: "Maya Research — Maya-2 Native weights and model card", href: "https://huggingface.co/maya-research/maya2-native"},
+  },
+  {
     slug: "anthropic-open-weight-models-security-timeline",
     date: "2026-10-24",
     title: "Anthropic and open-weight AI: why competition keeps becoming a security debate",
