@@ -1,61 +1,37 @@
-# Mirendil Fern: what a 10-million-token context means for coding AI
+# Mirendil’s Fern puts 10 million tokens of context to work on AI research
 
-Mirendil’s first model, **Fern 0.1**, is built around a problem familiar to anyone investigating a large software system: the relevant evidence can be scattered across code, logs and earlier attempts to fix it. Announced on October 26, Fern accepts **up to 10 million tokens of model context**, with AI research and coding workflows as its intended use.
+Mirendil has introduced **Fern 0.1**, an AI model designed to investigate research code, training logs and agent histories with **up to 10 million tokens of context**. Announced on October 26, the preview addresses a familiar difficulty in long investigations: evidence disappears from an agent’s working context before its significance becomes clear.
 
-That is a capacity claim worth understanding. It tells us how much material the model can receive together. The accompanying evaluations begin to show what it can do with that material—and where its early capabilities fall short.
+A failed training run can leave clues across configuration files, data-processing code and hours of logs. Fern’s premise is that more of that record can remain available during the investigation, reducing the need to repeatedly select files or summarize earlier findings.
 
-## The context belongs to the model’s current task
+## Keeping the investigation together
 
-A language model’s **context window** is the material available to it while producing a response: instructions, supplied documents, conversation history, code and tool results. Its size is measured in tokens, the pieces into which a model divides that material. It is different from the information learned during training, and it does not imply permanent memory between sessions.
+The context window holds the material a model can use during a response, including supplied code, documents and tool results. Increasing it gives Fern more evidence to work with; it does not give the model permanent memory or guarantee that it will connect the evidence correctly.
 
-For a coding agent, context might include the user’s request, files it has opened, terminal output and the changes it has already tried. A long session accumulates evidence. When that evidence no longer fits, the surrounding application must select passages, summarize earlier steps or fetch files again.
+Mirendil illustrates the capacity as roughly 23 MB of code, or half a million lines. Those figures depend on the material being processed, but they convey the scale of the intended workloads: tracing failures through research software, reviewing training data and examining the sequence of actions behind an agent’s mistake.
 
-Consider a training job that starts producing invalid results several hours into a run. The explanation might involve a data transformation, a configuration change and an earlier warning that only becomes meaningful later. More context gives a model the opportunity to consider those pieces together. Whether it connects them correctly is a separate capability.
+The company is led by **Behnam Neyshabur and Harsh Mehta**. Fern builds on Mirendil-Base with a short post-training stage. Mirendil discloses a broad size range of 100–500 billion parameters, without an exact count or active-parameter figure.
 
-Mirendil’s [launch announcement](https://mirendil.com/news/introducing-fern/) equates Fern’s capacity with roughly **23 MB of code, or half a million lines**. Those are workload-specific illustrations, not fixed conversions between file size, lines and tokens.
+## Finding evidence is easier than connecting it
 
-## A model aimed at the work behind other models
+The launch’s long-context evaluation makes that distinction visible. At 10 million tokens, Mirendil reports these results for **Mirendil-Base**:
 
-Fern’s stated jobs include research-code changes, training-log debugging, agent-trace analysis and training-data audits. A trace is the recorded sequence of an agent’s decisions, tool calls and results. Reading the full sequence can help explain how an apparently reasonable step led to a wrong outcome.
-
-Its creator, **Mirendil**, is led by Behnam Neyshabur and Harsh Mehta, with Shayan Salehian and Tara Rezaei among its co-founders. [The Wall Street Journal’s June reporting](https://www.wsj.com/tech/ai/anthropic-veterans-startup-seeks-to-help-scientists-develop-their-own-ai-09e2f3e5) placed the company’s goal in context: making AI-assisted research available beyond the largest AI laboratories.
-
-Fern follows Mirendil-Base, which the company [describes as an experiment in agent-assisted pretraining](https://mirendil.com/news/pretraining-at-scale-without-a-pretraining-team/). Mirendil says one researcher built it with agents in 3.5 months using less than $10 million of compute, including experiments, agent usage and data processing. That is the company’s account of the project, rather than an independently audited cost comparison.
-
-The disclosed size range is **100–500 billion parameters**. An exact count, active-parameter count and sufficiently detailed architecture for independent deployment are not provided. Fern 0.1 adds a short post-training stage to the base model.
-
-## Retrieval and coding results answer different questions
-
-The [RULER research](https://arxiv.org/abs/2404.06654) explains why finding one fact inside a long input is an incomplete test of understanding. Its tasks also examine following relationships and combining information. A model can retrieve a name successfully while struggling to reason across several distant passages.
-
-At the full 10-million-token length, Mirendil reports the following results for **Mirendil-Base**, rather than a separate comprehensive evaluation of the post-trained Fern release:
-
-| Long-context task | Reported result |
+| Task | Reported result |
 | --- | ---: |
 | Find a single embedded fact | 100% |
 | Retrieve information associated with multiple keys | 90% |
-| Multi-hop question answering | 45% |
+| Answer questions requiring multiple reasoning steps | 45% |
 
-There are **20 examples per result at 10M**, with thinking disabled and exact-answer matching. [Startup Fortune’s October 27 coverage](https://startupfortune.com/mirendil-unveils-fern-an-ai-model-claiming-a-10-million-token-context-window/) also highlights the drop on multi-hop questions. The sample is small, and the scores describe particular tasks rather than a general accuracy rate.
+Each result uses just 20 examples, with thinking disabled and exact-answer matching. The decline on questions requiring several steps matters: locating a warning in a long log is only part of explaining why a run failed. These are also base-model results, rather than a comprehensive evaluation of the post-trained Fern release.
 
-The separate agent evaluation measures work performed with code and tools. Mirendil reports these Fern results using **OpenCode and one attempt**:
+Fern’s separate coding evaluation is similarly uneven. Using OpenCode with one attempt, Mirendil reports **73.4% on SWE-bench Verified**, **53.2% on SWE Atlas Codebase QnA** and **6.1% on Terminal-Bench 4.0**. The benchmarks cover different kinds of work, from repository issues to terminal tasks. Together, they show why the size of the context window cannot describe the model’s overall ability.
 
-| Benchmark | Work being evaluated | Fern pass rate |
-| --- | --- | ---: |
-| [SWE-bench Verified](https://www.swebench.com/) | Resolve real repository issues | 73.4% |
-| [SWE Atlas Codebase QnA](https://labs.scale.com/leaderboard/sweatlas-qna) | Explain systems through code exploration and execution | 53.2% |
-| [Terminal-Bench 4.0](https://snorkel.ai/leaderboard/terminal-bench/) | Complete software tasks in terminal environments | 6.1% |
+## A preview of longer investigations
 
-These results show why context capacity should not stand in for overall coding ability. Mirendil’s comparison table also mixes agent setups and score sources, so it should not be read as a controlled head-to-head experiment.
+Most coding agents already use search and selective retrieval to bring relevant material into context. Fern explores how much of that selection can be avoided when the model can read a larger record. The underlying challenge is related to the one discussed in the [PageIndex explainer](/news/pageindex-tree-based-rag-relevance/): useful evidence must both be available and lead to the right conclusion.
 
-## Where Fern could fit beside retrieval-based agents
+**Access is listed as coming soon**, with early-access requests open. The announcement provides no public pricing, downloadable weights or open-source license.
 
-An alternative is to keep a stronger general coding model supplied with carefully selected files and search results. That can avoid processing a huge input on every request, but it depends on selecting the right evidence. The [PageIndex explainer](/news/pageindex-tree-based-rag-relevance/) examines that selection problem for documents; [flow-1’s trace-analysis approach](/news/beam-embeddinggemma-2-flow-1/) applies a specialized model to investigating agent histories.
-
-Fern proposes another option for tasks where the relationships are hard to identify before reading the whole record. A fair comparison would give both approaches the same failed run, then measure the explanation, fix, latency and cost.
-
-**Access remains “coming soon,” with early-access requests open.** No downloadable weights, open-source license or public pricing are supplied with the announcement. Fern is therefore a model preview with early evidence, not a tool readers can already self-host.
-
-For the failed training run, the promise is understandable: keep more of the investigation available while reasoning about it. The unresolved question is how reliably Fern can turn that additional evidence into a correct diagnosis.
+Fern’s contribution is a larger working context for investigations that span many files and events. Its early results also expose the harder task ahead: turning the additional material into a reliable explanation of what went wrong.
 
 Sources: [Fern announcement and evaluations](https://mirendil.com/news/introducing-fern/), [Mirendil’s pretraining account](https://mirendil.com/news/pretraining-at-scale-without-a-pretraining-team/), [RULER paper](https://arxiv.org/abs/2404.06654), [WSJ company reporting](https://www.wsj.com/tech/ai/anthropic-veterans-startup-seeks-to-help-scientists-develop-their-own-ai-09e2f3e5), and [Startup Fortune’s launch coverage](https://startupfortune.com/mirendil-unveils-fern-an-ai-model-claiming-a-10-million-token-context-window/).

@@ -1,50 +1,40 @@
-# FlashRaw’s Rust RAW decoder: what its LibRaw benchmarks measure
+# FlashRaw targets faster camera RAW processing in Rust and the browser
 
-Camera RAW support sits underneath photo editors, upload previews and media-processing pipelines. The file contains sensor measurements and camera-specific metadata; turning it into a usable image requires more work than opening a finished JPEG.
+**FlashRaw 0.1.0 is a new Rust library for reading and developing camera RAW files**, with native interfaces and WebAssembly support for browsers. Created by Yassine Bouanane, it reports large speedups over LibRaw, including a 15.4× median improvement for RAW-to-sRGB conversion on an Apple M1 Ultra.
 
-Yassine Bouanane’s **FlashRaw 0.1.0** offers a new implementation of that work in Rust, with native and browser interfaces. Its launch claims large speed improvements over LibRaw. The interesting details are which stages it combines, where the gains appear and which camera files remain exceptions.
+The claim concerns work that sits beneath photo editors and preview services. RAW files contain sensor measurements and camera metadata; producing a viewable photograph requires decoding that data and applying an image-development pipeline. FlashRaw changes how those stages are implemented.
 
-## From sensor values to a photograph on screen
+## Doing more of the conversion in one pass
 
-[FlashRaw](https://github.com/ybouane/flashraw) can return decoded sensor samples, metadata and embedded previews, or develop the RAW file into a display-ready image. Those are different outputs with different costs.
+FlashRaw can return sensor samples, metadata or an embedded preview, or develop the file into a display-ready image. These outputs serve different purposes: an editor may need unprocessed samples, while an upload preview may only need an existing thumbnail.
 
-A photo editor may want sensor data so it can apply its own processing. An upload service may only need the embedded preview. A browser application may want the complete conversion to sRGB, the color space commonly used for web images. Comparing the time for one of these operations with another would give a misleading impression of speed.
+For full development, the library combines color reconstruction, white balance and color conversion into a fused stage. Avoiding a succession of full-size intermediate images reduces the memory traffic involved in processing large files.
 
-The release provides **Rust, C, C++, Python and JavaScript interfaces**, with WebAssembly for execution in browsers. That makes it a library developers can integrate, rather than a replacement photo-editing application. Bouanane also builds the browser tools LightFlow and ImageFlow, which the repository identifies as users of the decoder.
+Parallel decoding and vectorized routines handle other parts of the workload. Supported GPU backends can accelerate development, although decoding compressed sensor data can still dominate the time spent on a file.
 
-## A fused development pass changes the amount of work
+The library exposes Rust, C, C++, Python and JavaScript interfaces. Its browser version allows processing to happen locally without uploading the photograph for that operation. Browser performance remains a separate measurement from the native results.
 
-The [architecture documentation](https://github.com/ybouane/flashraw/blob/main/docs/architecture.md) describes parallel decoding and vectorized routines, alongside a combined image-development stage. That stage reconstructs color pixels from the sensor pattern, applies white balance and color conversion, and writes the output without storing a succession of full-size intermediate images.
+## Where the reported speedups appear
 
-For a large camera file, avoiding those buffers can reduce memory traffic as well as memory consumption. The GPU can accelerate the development stage on supported backends. That does not mean every part of every RAW file is decoded on the GPU: compressed sensor data can still leave CPU decoding as the dominant cost.
+The project compares files from **62 cameras, phones and drones**, measuring each library on the same machine and supported files. It reports these median gains over LibRaw using all CPU cores:
 
-The [WebAssembly documentation](https://github.com/ybouane/flashraw/blob/main/docs/wasm.md) adds another deployment option. An editor can process a file within the browser, avoiding an upload for that operation. Its native benchmark results should not be treated as browser timings, since the runtime, threading setup and GPU transfer costs differ.
-
-## What the 15.4× claim actually compares
-
-FlashRaw’s published comparison uses files from **62 popular cameras, phones and drones**, with each library measured on the same machine and on files it supports. Results are reported separately for a **Ryzen 7 9700X on Linux** and an **Apple M1 Ultra on macOS**, using all cores.
-
-The project reports the following median speedups against LibRaw:
-
-| Work performed | Linux Ryzen 7 9700X | macOS M1 Ultra |
+| Output | Ryzen 7 9700X, Linux | M1 Ultra, macOS |
 | --- | ---: | ---: |
-| RAW to decoded sensor samples | 7.9× | 11.4× |
-| RAW to an sRGB image | 8.8× | 15.4× |
+| Decoded sensor samples | 7.9× | 11.4× |
+| Developed sRGB image | 8.8× | 15.4× |
 
-The Canon EOS R5 example in the launch image is a narrower result: approximately **109 ms for FlashRaw versus 737 ms for LibRaw** for RAW-to-sRGB processing on the M1 Ultra, about 6.7× on that file. It illustrates one conversion, rather than contradicting the median across a larger set.
+The distinction between the rows matters. A faster full conversion does not necessarily imply the same gain for an editor using only the decoder.
 
-These are **author-produced benchmarks**. The [published methodology and result files](https://github.com/ybouane/flashraw/blob/main/docs/benchmarks.md) make the comparison more inspectable, including build settings, repeated runs and exceptions. The project’s [Show HN appearance](https://buzz0.com/daily/2026-10-25) documents public launch attention, not an independent performance replication.
+The launch’s Canon EOS R5 example illustrates that variation: roughly **109 ms versus 737 ms** on the M1 Ultra, about 6.7× for that file. The larger headline figure is a median across the tested set.
 
-Output quality remains a separate question. Timing two development pipelines does not establish identical color rendering or demosaicing—the reconstruction of full-color pixels from the camera’s sensor pattern. An editor needs to compare the results visually and check the stages it actually intends to use.
+These are author-produced benchmarks, with methodology and result files published in the repository. They measure speed, rather than establishing identical color rendering or reconstruction quality between the pipelines.
 
-## Alternatives and compatibility still decide adoption
+## Compatibility remains part of the result
 
-**LibRaw** is the direct alternative for decoding and development. **RawSpeed**, used in darktable, focuses on RAW decoding; **rawler**, used by dnglab, offers another Rust implementation. Their responsibilities overlap without matching exactly.
+FlashRaw reports decoding **1,980 of 2,016 files** in the raw.pixls.us test corpus. That provides a useful indication of coverage while leaving exceptions across formats and camera variations.
 
-FlashRaw’s benchmark notes include cases where RawSpeed wins, particularly some uncompressed or lossless formats, and a JPEG XL DNG where rawler is faster. A plain parallel decode can also use more memory than LibRaw because of per-thread buffers. The attractive full-conversion result does not imply a win in every stage.
+The benchmark documentation also records cases where other decoders are faster, including some formats handled by RawSpeed and a JPEG XL DNG handled by rawler. Their relevance is specific to the processing stage and file involved; the results do not establish one universal winner.
 
-The repository reports decoding 1,980 of 2,016 files in the raw.pixls.us test corpus. That describes the supplied corpus, not a guarantee for every camera, firmware variation or damaged file. The parser uses Rust, resource limits and fuzz tests; those are meaningful protections for untrusted uploads, with ongoing testing still necessary.
-
-**FlashRaw is available under MIT or Apache 2.0**, with packages on crates.io, PyPI and npm. For a new image pipeline, it is a credible option to benchmark against the existing decoder. Start with the cameras your users upload and the exact output your application needs. That is where its implementation choices can turn into a visible improvement in preview time or server capacity.
+FlashRaw is available under **MIT or Apache 2.0**, with packages on crates.io, PyPI and npm. Its release offers a new implementation for a demanding part of imaging software, particularly where native and browser processing need to share a library. The published gains are substantial, but their practical significance depends on the camera files and image output being processed.
 
 Sources: [FlashRaw release and APIs](https://github.com/ybouane/flashraw), [benchmark methodology and exceptions](https://github.com/ybouane/flashraw/blob/main/docs/benchmarks.md), [architecture](https://github.com/ybouane/flashraw/blob/main/docs/architecture.md), [browser runtime documentation](https://github.com/ybouane/flashraw/blob/main/docs/wasm.md), and [October 25 Show HN listing](https://buzz0.com/daily/2026-10-25).

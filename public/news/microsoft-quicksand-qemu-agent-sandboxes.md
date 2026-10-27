@@ -1,54 +1,44 @@
-# Microsoft Quicksand gives AI agents local Linux VMs and rollback
+# Microsoft Quicksand adds host connections to reversible agent VMs
 
-An agent testing a dependency upgrade may need to install packages, change configuration and run commands. Giving it a disposable environment is useful; being able to return that environment to a known state makes the experiment easier to repeat.
+**Microsoft’s Quicksand lets AI agents run commands inside disposable Linux virtual machines and return them to an earlier state.** Its October 14 update adds bidirectional port forwarding, allowing a guest to reach selected services on the host as well as exposing services in the other direction.
 
-Microsoft’s **Quicksand** supplies that environment through a Python API. It launches full Linux virtual machines using QEMU, runs commands inside them and supports checkpoints, saved environments and desktop control. The project is already available, with its October 14 update adding connections from guests back to selected host services.
+That extends the kind of experiment an agent can perform locally. A dependency upgrade, for example, can run inside a prepared VM while connecting to a development API outside it. The same connection also establishes an important limit: restoring the VM cannot undo changes already made to that external service.
 
-## A Python-controlled VM rather than another agent framework
+## A complete Linux environment behind a Python API
 
-[Quicksand](https://github.com/microsoft/quicksand) is infrastructure for an agent’s actions. It does not choose a model or decide which commands to run. Your application creates a sandbox, gives it work, reads the result and determines what comes next.
+Quicksand uses **QEMU** to run guests with their own Linux kernel, filesystem and package manager. An asynchronous Python API exposes commands, file exchange, checkpoints and saved environments, leaving the surrounding application to decide what the agent should do.
 
-The guest has its own **Linux kernel**, filesystem and package manager. QEMU provides the virtual machine; Quicksand packages the images and exposes operations such as command execution, file exchange and rollback through asynchronous Python calls. That allows an orchestrator to manage multiple environments without blocking on every operation.
+Ubuntu and Alpine images support headless work. Desktop variants add screenshots, keyboard input and mouse control for computer-use tasks. The project documents host support for macOS, Linux and Windows, subject to its supported architecture combinations.
 
-Ubuntu and Alpine images are available for headless work. Desktop variants add a graphical environment with screenshots, keyboard and mouse input, making them relevant to computer-use agents as well as coding tools. The documented host platforms are macOS, Linux and Windows, with supported architecture combinations described in the installation guide.
+The setup requires neither Docker nor host root privileges, although the QEMU runtime and guest-image packages remain dependencies. The separate guest kernel is central to the design: Quicksand provides a VM boundary around the work an agent executes.
 
-Running a sandbox requires neither Docker nor host root privileges. The QEMU runtime and guest-image packages are still required, so this is a packaged virtualization setup rather than an environment with no dependencies.
+## Returning to a known state
 
-## Checkpoint an experiment before changing its environment
+A **checkpoint** captures RAM and disk state, allowing a failed experiment to be reverted. A persistent save retains a prepared disk environment for a later session. These mechanisms make it possible to start several attempts from a consistent baseline.
 
-For the dependency upgrade, you can prepare a working application, record a **checkpoint**, then let the agent attempt the change. If installation or configuration fails, reverting restores the guest’s RAM and disk state. A persistent save serves a different purpose: retaining a prepared disk environment for a later session.
+Copy-on-write overlays record changes above a shared base image. Multiple sandboxes can therefore start from that image without each storing a complete independent copy; their memory allocations remain separate.
 
-Quicksand uses copy-on-write disk overlays, which record changes above a shared base image. Several sandboxes can therefore begin with the same image without each needing a separate full copy of it. Their RAM allocations remain separate.
+The networking update, released as `quick-sandbox` 0.13.0 with `quicksand-core` 0.14.0, adds explicitly configured connections to host-side databases, proxies or APIs. This makes local integration testing more flexible, but rollback remains confined to the guest. External writes need their own cleanup or disposable test data.
 
-The [October 14 release](https://github.com/microsoft/quicksand/blob/main/CHANGELOG.md), `quick-sandbox` 0.13.0 with `quicksand-core` 0.14.0, adds **bidirectional port forwarding**. A guest can reach a host-side proxy, database or API through an explicitly configured connection. [New Runtime’s October 23 coverage](https://newruntime.com/posts/microsoft-quicksand-core-0-14-0-adds-bidirectional-08d1ef/) focuses on this addition; it is an update to the existing project, rather than its first release.
+## Fast startup depends on the host
 
-That connection is useful when testing against a local development service. It also marks a boundary for rollback: reverting the VM cannot reverse an operation already committed to an external database. Experiments that write outside the guest still need disposable external state or application-level cleanup.
+Quicksand’s performance guide reports these results from **five runs on an Apple M3 Max with hardware virtualization**:
 
-## The published startup numbers depend on acceleration
-
-Quicksand’s [performance guide](https://github.com/microsoft/quicksand/blob/main/docs/user-guide/08-performance.md) reports these boot measurements from **five runs on an Apple M3 Max using macOS hardware virtualization**:
-
-| Guest image | Median boot | 95th-percentile boot |
+| Guest | Median boot | 95th-percentile boot |
 | --- | ---: | ---: |
 | Alpine | 0.37 s | 0.45 s |
 | Ubuntu | 0.88 s | 0.91 s |
 
-Boot is measured from starting the sandbox until its agent has connected and mounts are configured. These project measurements do not include downloading images or installing the application’s dependencies, and they are not cross-platform guarantees.
+The measurement ends when the guest agent has connected and mounts are configured. It excludes image downloads and application dependency installation.
 
-The host’s virtualization support is especially important. Quicksand can use Linux KVM, macOS HVF or Windows WHPX; its documentation describes software emulation through QEMU’s TCG as a much slower fallback. A CI container without access to virtualization should not be expected to match the laptop results.
+Those conditions matter because Quicksand can use Linux KVM, macOS HVF or Windows WHPX for acceleration. Software emulation is a much slower fallback; a CI environment without virtualization access will not necessarily resemble the published laptop results.
 
-The guide lists typical checkpoint and revert times of around one to two seconds, with memory determined by the configured guest allocation plus QEMU overhead. Those figures help estimate an experiment’s lifecycle, but need measuring on the actual host.
+The guide also gives typical checkpoint and revert times of around one to two seconds. These figures describe the lifecycle of the local VM, whereas the [Sandbox Bench results](/news/ai-sandbox-bench-regions-provider-comparison/) examine remote services and their network overhead.
 
-## Choosing between local VMs, containers and hosted sandboxes
+## Making experiments repeatable
 
-Containers remain an alternative for reproducible builds and tests, especially where existing tooling assumes Docker. Their usual isolation model shares a kernel with the host environment; Quicksand runs a separate guest kernel.
+Quicksand is available as **`quick-sandbox`**, with MIT-licensed project code and separate terms for bundled runtimes and guest packages.
 
-Firecracker-based systems emphasize lightweight Linux microVMs and cloud-scale execution. The [Perplexity SPACE article](/news/perplexity-space-firecracker-agent-sandboxes/) shows the scheduling, networking and credential services needed around such a runtime. Quicksand’s immediate focus is the developer controlling a VM through Python, not supplying that complete hosted platform.
-
-Managed sandbox providers are another option when remote capacity, preview URLs and service operations matter more than local control. The [Sandbox Bench comparison](/news/ai-sandbox-bench-regions-provider-comparison/) examines some of those lifecycle measurements.
-
-**Quicksand’s code is MIT-licensed**; bundled runtimes, guest distributions and their packages retain their own licenses. The project can be installed now as `quick-sandbox`.
-
-For the upgrade experiment, its value is concrete: start from a prepared environment, observe the change and recover the guest state when needed. The VM makes that loop repeatable. The access you grant to files and external services determines how much of the experiment remains inside it.
+Its value lies in combining execution and recovery through one interface. An agent can attempt a change, inspect the result and return to a known state. The new host connections make those experiments more representative of real applications, while making the boundary of that recovery more important to understand.
 
 Sources: [Microsoft Quicksand](https://github.com/microsoft/quicksand), [release history](https://github.com/microsoft/quicksand/blob/main/CHANGELOG.md), [performance guide](https://github.com/microsoft/quicksand/blob/main/docs/user-guide/08-performance.md), [installation requirements](https://github.com/microsoft/quicksand/blob/main/docs/user-guide/01-installation.md), and [New Runtime’s update coverage](https://newruntime.com/posts/microsoft-quicksand-core-0-14-0-adds-bidirectional-08d1ef/).

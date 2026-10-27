@@ -70,8 +70,8 @@ export const newsNotes: readonly NewsNote[] = [
   {
     slug: "mirendil-fern-10-million-token-context-model",
     date: "2026-10-27",
-    title: "Mirendil Fern: what a 10-million-token context means for coding AI",
-    summary: "Fern’s 10M-token context targets large codebases and agent traces. What the window holds, what its benchmarks show, and what remains unavailable.",
+    title: "Mirendil’s Fern puts 10 million tokens of context to work on AI research",
+    summary: "Fern targets research code, training logs and agent histories with a 10-million-token context window. Its early results show the gap between retaining evidence and reasoning across it.",
     kind: "reading",
     document: "/news/mirendil-fern-10-million-token-context-model.md",
     keywords: [
@@ -81,7 +81,7 @@ export const newsNotes: readonly NewsNote[] = [
       "long context AI model",
       "AI research code"
     ],
-    minutes: 5,
+    minutes: 3,
     reference: {
       label: "Mirendil — Introducing Fern",
       href: "https://mirendil.com/news/introducing-fern/"
@@ -90,8 +90,8 @@ export const newsNotes: readonly NewsNote[] = [
   {
     slug: "maya-2-native-open-weight-indian-language-speech",
     date: "2026-10-27",
-    title: "Maya-2 Native opens its speech model: languages, benchmarks and self-hosting",
-    summary: "Maya-2 Native releases speech weights for 12 languages. Capabilities, streaming results, Apache 2.0 licensing and the hardware behind self-hosting.",
+    title: "Maya-2 Native releases downloadable speech generation for 12 languages",
+    summary: "Maya Research has released speech-model weights and a streaming engine for 11 Indic languages and English, with voice cloning and published quality and serving results.",
     kind: "shipped",
     document: "/news/maya-2-native-open-weight-indian-language-speech.md",
     keywords: [
@@ -101,7 +101,7 @@ export const newsNotes: readonly NewsNote[] = [
       "Maya 2 benchmarks",
       "self hosted text to speech"
     ],
-    minutes: 5,
+    minutes: 3,
     reference: {
       label: "Maya Research — Maya-2 Native model card",
       href: "https://huggingface.co/maya-research/maya2-native"
@@ -110,18 +110,18 @@ export const newsNotes: readonly NewsNote[] = [
   {
     slug: "pomerado-browser-automation-reusable-mcp-tools",
     date: "2026-10-27",
-    title: "Pomerado turns repeated browser tasks into reusable MCP tools",
-    summary: "Pomerado uses an agent to build reusable website integrations. How the MIT core works, what its cost claims cover, and where Browser Use or Playwright fit.",
+    title: "Pomerado turns browser workflows into tools agents can reuse",
+    summary: "Pomerado generates website integrations from browser tasks, moving repeated navigation into saved code. Its launch raises a practical question about the cost of reuse and maintenance.",
     kind: "shipped",
     document: "/news/pomerado-browser-automation-reusable-mcp-tools.md",
     keywords: [
       "Pomerado",
       "browser automation MCP",
       "Pomerado MIT license",
-      "Browser Use alternative",
+      "generated browser integrations",
       "reusable website integrations"
     ],
-    minutes: 4,
+    minutes: 3,
     reference: {
       label: "Pomerado — Core and documentation",
       href: "https://github.com/Pomerado/pomerado"
@@ -130,8 +130,8 @@ export const newsNotes: readonly NewsNote[] = [
   {
     slug: "microsoft-quicksand-qemu-agent-sandboxes",
     date: "2026-10-27",
-    title: "Microsoft Quicksand gives AI agents local Linux VMs and rollback",
-    summary: "Microsoft Quicksand controls local Linux VMs through Python. Checkpoints, networking, startup benchmarks and the choice between local and hosted sandboxes.",
+    title: "Microsoft Quicksand adds host connections to reversible agent VMs",
+    summary: "Quicksand’s networking update lets local Linux guests reach selected host services. Its Python API combines command execution, desktop control and checkpoints for agent experiments.",
     kind: "infra",
     document: "/news/microsoft-quicksand-qemu-agent-sandboxes.md",
     keywords: [
@@ -141,7 +141,7 @@ export const newsNotes: readonly NewsNote[] = [
       "agent VM checkpoints",
       "local agent sandbox"
     ],
-    minutes: 4,
+    minutes: 3,
     reference: {
       label: "Microsoft — Quicksand",
       href: "https://github.com/microsoft/quicksand"
@@ -150,8 +150,8 @@ export const newsNotes: readonly NewsNote[] = [
   {
     slug: "flashraw-rust-camera-raw-decoder-benchmarks",
     date: "2026-10-27",
-    title: "FlashRaw’s Rust RAW decoder: what its LibRaw benchmarks measure",
-    summary: "FlashRaw adds Rust and browser APIs for camera RAW files. Its pipeline, LibRaw benchmark conditions, camera compatibility and licensing explained.",
+    title: "FlashRaw targets faster camera RAW processing in Rust and the browser",
+    summary: "FlashRaw combines parallel decoding with a fused image-development stage. Its published LibRaw comparisons show large speedups, with results varying by hardware, format and output.",
     kind: "shipped",
     document: "/news/flashraw-rust-camera-raw-decoder-benchmarks.md",
     keywords: [
@@ -161,7 +161,7 @@ export const newsNotes: readonly NewsNote[] = [
       "camera RAW benchmarks",
       "WebAssembly photo processing"
     ],
-    minutes: 4,
+    minutes: 3,
     reference: {
       label: "FlashRaw — Release and benchmarks",
       href: "https://github.com/ybouane/flashraw"
@@ -170,8 +170,8 @@ export const newsNotes: readonly NewsNote[] = [
   {
     slug: "ai-sandbox-bench-regions-provider-comparison",
     date: "2026-10-27",
-    title: "AI Sandbox Bench adds regional tests: how to read the provider results",
-    summary: "Sandbox Bench adds regional calls and more providers. Read its machine tracks, agent-tool replay, cost estimates and failure accounting before comparing results.",
+    title: "AI Sandbox Bench shows how regional latency adds up in agent workflows",
+    summary: "Sandbox Bench adds Florida and Frankfurt callers alongside more provider configurations. Its results show why repeated tool calls can matter more than startup speed alone.",
     kind: "infra",
     document: "/news/ai-sandbox-bench-regions-provider-comparison.md",
     keywords: [
@@ -181,7 +181,7 @@ export const newsNotes: readonly NewsNote[] = [
       "agent sandbox latency",
       "sandbox regional comparison"
     ],
-    minutes: 5,
+    minutes: 3,
     reference: {
       label: "OpenCore — AI Sandbox Bench",
       href: "https://aisandboxbench.com/"
@@ -210,8 +210,8 @@ export const newsNotes: readonly NewsNote[] = [
   {
     slug: "asonix-app-store-keywords-ai-visibility",
     date: "2026-10-27",
-    title: "Asonix brings App Store keyword research and AI visibility into one tool",
-    summary: "Asonix combines App Store keyword research, competitor ads and ChatGPT visibility checks. Data sources, subscription price and alternatives for app discovery.",
+    title: "Asonix combines App Store keyword research with ChatGPT visibility",
+    summary: "Guilherme Rizzo’s Asonix brings App Store search data and weekly ChatGPT recommendation checks together, covering two routes through which users discover apps.",
     kind: "shipped",
     document: "/news/asonix-app-store-keywords-ai-visibility.md",
     keywords: [
@@ -221,7 +221,7 @@ export const newsNotes: readonly NewsNote[] = [
       "Asonix AI visibility",
       "Guilherme Rizzo"
     ],
-    minutes: 4,
+    minutes: 1.5,
     reference: {
       label: "Asonix — Features and data sources",
       href: "https://asonix.io/"

@@ -1,59 +1,47 @@
-# AI Sandbox Bench adds regional tests: how to read the provider results
+# AI Sandbox Bench shows how regional latency adds up in agent workflows
 
-A cloud sandbox can start quickly and still feel slow to an agent issuing dozens of commands. Each remote read, edit or test adds another round trip, so the caller’s location can change the experience even when the virtual machine is unchanged.
+A sandbox that boots in under a second can still leave an agent waiting through a long sequence of commands. **AI Sandbox Bench’s regional update makes that accumulated delay visible**, adding calls from Florida and Frankfurt alongside Boat and Upstash Ephemeral Box.
 
-That is the useful addition in **AI Sandbox Bench’s latest update**, announced by Leo, who publishes as `@leodev`. Alongside Boat and Upstash Ephemeral Box, the benchmark now includes calls from Florida and Frankfurt. It compares both the waiting time to start an environment and the work an agent performs after it is ready.
+Announced by Leo, who publishes as `@leodev`, the update broadens the comparison from startup speed to the execution path an agent repeatedly uses: reading files, editing code, running commands and checking results.
 
-## A benchmark of the agent’s execution environment
+## Measuring the work after startup
 
-[Sandbox Bench](https://aisandboxbench.com/) evaluates cloud services that give agents a remote workspace for commands, files and application processes. It does not measure whether a language model writes correct code. It measures parts of the infrastructure that carries out the model’s requested actions.
+The October 22–26 dataset covers **eight providers and nine configurations**, with Upstash Box and Ephemeral Box treated separately. Tests include cold starts, snapshots, pause and resume, file operations, package installation and development-server readiness.
 
-The published October 22–26 dataset covers **eight providers and nine configurations**, because Upstash Box and Ephemeral Box are treated as separate products. The benchmark includes cold starts, snapshots, pause and resume, file operations, package installation, development-server readiness and a replay of **100 sequential tool calls**.
+A replay of **100 sequential tool calls** ties several operations together. It writes, reads, edits, lists, searches and runs a test, measuring execution overhead without introducing differences in a model’s reasoning.
 
-That replay writes, reads, edits, lists, searches and runs a test. It is useful for estimating accumulated execution overhead without adding differences in model reasoning to the measurement. It cannot establish how often an agent completes a real software task successfully.
+That separation gives the results a clear scope. They describe how quickly infrastructure carries out a sequence of actions, rather than how often an AI agent solves a real coding task.
 
-The [site repository](https://github.com/opencoredev/sandbox-bench) belongs to OpenCore and is **MIT-licensed**. Its README links the measurement pipeline to the separate Sandbox SDK project. The website’s license does not make the compared providers free or give them identical terms.
+## Distance becomes more visible across repeated calls
 
-## Two machine tracks answer different questions
+The new regional results compare callers in **Florida and Frankfurt**. These are the locations making the requests, not a statement that every provider hosts its sandbox in both regions.
 
-The benchmark separates **“same machine”** from **“default machines.”** The former requests four virtual CPUs and 8 GB of memory; the latter uses what each service gives a caller without an explicit size selection.
+Boat, whose sandbox is in northern France, provides one example:
 
-These comparisons serve different needs. Equal requested resources help compare platforms for a planned deployment. Defaults show the experience a developer first encounters, but a default with less memory is not an equivalent machine.
-
-Exceptions are identified in the results. For example, boxd runs the same-machine track with 16 GB because it lacks an 8 GB option at four CPUs. The default E2B template used in the benchmark has two CPUs and 512 MB. Those details can affect both timing and the workload that fits.
-
-The methodology reports 100 runs for quick tests and 30 for agent or snapshot tests, with per-chart attempt counts. It records medians and uncertainty intervals, treating overlapping intervals as tied. Numbers at the top of a chart should therefore be read alongside the configuration and distribution beneath them.
-
-## Caller location can move the result
-
-The location comparison reruns network-sensitive operations from **Florida, US-East, and Frankfurt, EU-Central**. These labels describe the caller, not a guarantee that every provider’s sandbox is hosted in that region.
-
-For example, the published regional data gives Boat, whose sandbox is in northern France, these median timings:
-
-| Operation | Caller in Frankfurt | Caller in Florida |
+| Operation | Frankfurt caller | Florida caller |
 | --- | ---: | ---: |
-| Cold start | 0.78 s | 1.1 s |
-| Run a command | 0.11 s | 0.33 s |
-| 100-call agent replay | 23 s | 43 s |
+| Median cold start | 0.78 s | 1.1 s |
+| Median command execution | 0.11 s | 0.33 s |
+| Median 100-call replay | 23 s | 43 s |
 
-The comparison does not prove that geography explains every millisecond. It does show why an agent’s many small operations deserve testing from its actual application region. The larger accumulated difference is more relevant to an editing session than an isolated startup score.
+The difference is modest when viewed as a single startup, but considerably larger over the replay. Geography does not necessarily explain every millisecond; the result nevertheless shows why a sequence of small remote operations can feel slow even when the underlying machine starts quickly.
 
-The site also reports in-sandbox CPU, memory and disk tests separately. Caller distance affects the request path; it does not turn the remote CPU into a different processor.
+CPU, memory and disk tests run inside the sandbox are reported separately, helping distinguish machine performance from the request path leading to it.
 
-## Cost and failure accounting need their own reading
+## A comparison still needs comparable conditions
 
-The cost test runs one task per sandbox and uses provider charges where available, otherwise usage records or measured time at list prices. It excludes credits, tax and plan minimums. A low cost per 1,000 benchmark tasks is therefore a workload estimate rather than an invoice forecast for a complete application.
+Sandbox Bench separates a **same-machine track**, requesting four virtual CPUs and 8 GB of memory, from a **default-machine track**, using each provider’s initial allocation. The first aims to compare similar resources; the second captures what a new caller receives without specifying a size.
 
-Failure counts exclude errors attributed to the benchmark’s own setup and some ambiguous SDK timeouts. The methodology lists these exclusions and quota changes, including provider account limits raised before reruns. “Zero failures” in a chart is consequently a result under those counting rules, rather than a reliability guarantee.
+Even the same-machine track has exceptions. Boxd uses 16 GB because it lacks an 8 GB option at four CPUs. These differences are recorded alongside the results and can affect both performance and cost.
 
-The author states that providers did not pay for or decide the tests, while noting that some reviewed early results for mistakes and that future commercial relationships are possible. [Superserve’s public response](https://x.com/superserve_ai) highlights its favorable measurements; it is a provider’s reaction, not outside validation of the entire suite.
+The methodology reports 100 runs for quick tests and 30 for agent or snapshot tests, with per-chart counts and uncertainty intervals. Overlapping intervals are treated as ties, avoiding a precise ranking where the measurements do not support one.
 
-## Using it to narrow a sandbox decision
+Cost estimates exclude credits, tax and plan minimums. Failure counts also follow published exclusions, including benchmark setup errors and some ambiguous SDK timeouts. Both measures therefore need to be read within the test’s stated conditions.
 
-The value of the update is the ability to compare several stages of an agent workflow. Choose the resource track, inspect the caller region and identify the operations your application repeats. Then rerun that workload before committing to a platform.
+## A fuller picture of execution time
 
-For local execution, [Microsoft Quicksand](/news/microsoft-quicksand-qemu-agent-sandboxes/) offers a different operating model: developer-controlled VMs rather than a remote service. For hosted systems, [Perplexity SPACE](/news/perplexity-space-firecracker-agent-sandboxes/) shows why permissions, routing and credentials also matter beyond execution speed.
+The site repository is MIT-licensed, and the author states that providers did not pay for or determine the tests, although some reviewed early results for errors.
 
-Sandbox Bench helps answer how long the infrastructure takes under documented conditions. A deployment decision also needs to answer whether that infrastructure has the controls, capacity and operating model the application requires.
+The update’s main contribution is the connection between individual operations and a complete execution sequence. Alongside [local approaches such as Quicksand](/news/microsoft-quicksand-qemu-agent-sandboxes/), it helps explain where an agent spends time once it starts acting. For remote sandboxes, startup is only the beginning; the distance and frequency of subsequent calls can shape much of the wait.
 
 Sources: [live results and methodology](https://aisandboxbench.com/), [MIT-licensed site repository](https://github.com/opencoredev/sandbox-bench), [same-machine allocation data](https://github.com/opencoredev/sandbox-bench/blob/main/src/data/benchmark.same-spec.json), [Leo’s announcements](https://x.com/leodev), and [Superserve’s response](https://x.com/superserve_ai).
