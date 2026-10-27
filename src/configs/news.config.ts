@@ -231,7 +231,7 @@ export const newsNotes: readonly NewsNote[] = [
     slug: "praveen-kumar-ascii-web-section-design",
     date: "2026-10-27",
     title: "ASCII animation on the web: creatures, motion and character",
-    summary: "Recognizable creatures and observed motion drive recent ASCII web-design examples, with rendering tools and an original compact bird animation.",
+    summary: "Recognizable creatures and observed motion drive recent ASCII web-design examples, with rendering tools and an original colorful woodland animation.",
     kind: "reading",
     document: "/news/praveen-kumar-ascii-web-section-design.md",
     keywords: [

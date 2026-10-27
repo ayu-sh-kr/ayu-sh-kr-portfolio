@@ -24,13 +24,15 @@ Today’s repositories offer several starting points. [Asciify](https://github.c
 
 They solve different authoring problems. Choose a converter when the source image is the composition. Choose a procedural renderer when the object’s movement needs to be designed. A ready-made scene can be a starting point when its subject already fits the page.
 
-## An original bird study
+## Birds above a living meadow
 
-This small square illustration uses a hovering hummingbird: a fine beak, shaded breast, fanned tail and feathered wings. The body moves gently while the wing position changes, keeping the creature readable through its flight cycle.
+The square illustration below places three birds in a shared landscape. Two hummingbirds hover above a third perched beside the tree; turquoise flight feathers, warm throats and fanned tails give them distinct silhouettes. Branches, layered leaves and a wildflower meadow supply depth, while the wings and grass move at different rhythms.
 
+<div>
 <ui-ascii-showcase></ui-ascii-showcase>
+</div>
 
-It is an original character animation for this article. The illustration loops automatically, with a still frame for reduced-motion preferences. Its role is the same as a compact editorial asset: give the reader a scene to look at without turning the article into a graphics control panel.
+The scene is original artwork rendered in colored text characters. It plays automatically, holds a still composition for reduced-motion preferences and stops drawing when it leaves the viewport. Color separates plumage from foliage, and the perched bird gives the eye a quiet point of comparison against the moving wings.
 
 ## Give the scene a reason to be there
 
