@@ -3787,6 +3787,17 @@
           }
         },
         {
+          "name": "ui-ascii-showcase",
+          "source": {
+            "file": "./src/components/design-showcases/ui-ascii-showcase/ui-ascii-showcase.component.ts",
+            "offset": 627
+          },
+          "attributes": [],
+          "js": {
+            "properties": []
+          }
+        },
+        {
           "name": "ui-gauge-usecase",
           "source": {
             "file": "./src/components/design-showcases/ui-gauge-usecase/ui-gauge-usecase.component.ts",

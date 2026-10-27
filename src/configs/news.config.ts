@@ -230,21 +230,23 @@ export const newsNotes: readonly NewsNote[] = [
   {
     slug: "praveen-kumar-ascii-web-section-design",
     date: "2026-10-27",
-    title: "Praveen Kumar’s ASCII web section uses texture to organize a page",
-    summary: "Praveen Kumar’s ASCII web section pairs textured imagery with an editorial grid. The design choices, possible rendering approaches and what remains unverified.",
+    title: "ASCII art’s web revival: AI tools, animation and design",
+    summary: "Recent ASCII art and web-design examples, the role of AI, reusable rendering tools and an original animated character study.",
     kind: "reading",
     document: "/news/praveen-kumar-ascii-web-section-design.md",
     keywords: [
-      "Praveen Kumar ASCII web section",
+      "ASCII art web design trend",
       "ASCII web design",
       "dither interface design",
-      "Water Clay design",
-      "Three.js ASCII effect"
+      "AI assisted ASCII art",
+      "ascii.rest",
+      "Asciify",
+      "ASCII animation component"
     ],
-    minutes: 3,
+    minutes: 6,
     reference: {
-      label: "Praveen Kumar — Original publishing profile",
-      href: "https://x.com/praveenisomer"
+      label: "ASCII art — Recent examples and rendering tools",
+      href: "https://asciify.org/"
     }
   },
   {

@@ -1,0 +1,13 @@
+ui-ascii-showcase { display: block; margin-block: 1.5rem 2rem; }
+.ui-ascii-study { margin: 0; padding: 1rem; border: 1px solid var(--border-color); border-radius: var(--layout-radius-lg, 1rem); background: var(--surface-color); }
+.ui-ascii-control { display: block; font: 0.875rem var(--font-sans); color: var(--foreground-color); cursor: pointer; }
+.ui-ascii-control input { accent-color: var(--foreground-color); margin-inline-end: .4rem; }
+.ui-ascii-stage { display: grid; container-type: inline-size; margin-block: 1rem; overflow: hidden; border-radius: .75rem; background: var(--background-color); color: var(--foreground-color); }
+.ui-ascii-stage pre { grid-area: 1 / 1; margin: 0 !important; padding: 1rem 0 !important; border: 0 !important; background: transparent !important; box-shadow: none !important; white-space: pre; text-align: center; font: 600 clamp(5px, 2.3vw, 15px)/1.15 var(--font-mono); font-size: 2.5cqi; letter-spacing: 0; opacity: 0; animation: ascii-frame 2s step-end infinite; }
+.ui-ascii-control input:checked ~ .ui-ascii-stage pre { animation-play-state: paused; }
+.ui-ascii-study figcaption { font: .875rem/1.6 var(--font-sans); color: var(--muted-strong-color); }
+@keyframes ascii-frame { 0% { opacity: 1; } 6.25%, 100% { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) {
+  .ui-ascii-stage pre { animation: none; opacity: 0; }
+  .ui-ascii-stage pre:first-child { opacity: 1; }
+}
