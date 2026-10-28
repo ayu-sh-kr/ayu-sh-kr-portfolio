@@ -68,6 +68,189 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "mirendil-fern-10-million-token-context-model",
+    date: "2026-10-27",
+    title: "Mirendil’s Fern puts 10 million tokens of context to work on AI research",
+    summary: "Fern targets research code, training logs and agent histories with a 10-million-token context window. Its early results show the gap between retaining evidence and reasoning across it.",
+    kind: "reading",
+    document: "/news/mirendil-fern-10-million-token-context-model.md",
+    keywords: [
+      "Mirendil Fern 0.1",
+      "10 million token context window",
+      "Fern coding benchmarks",
+      "long context AI model",
+      "AI research code"
+    ],
+    minutes: 3,
+    reference: {
+      label: "Mirendil — Introducing Fern",
+      href: "https://mirendil.com/news/introducing-fern/"
+    }
+  },
+  {
+    slug: "maya-2-native-open-weight-indian-language-speech",
+    date: "2026-10-27",
+    title: "Maya-2 Native releases downloadable speech generation for 12 languages",
+    summary: "Maya Research has released speech-model weights and a streaming engine for 11 Indic languages and English, with voice cloning and published quality and serving results.",
+    kind: "shipped",
+    document: "/news/maya-2-native-open-weight-indian-language-speech.md",
+    keywords: [
+      "Maya-2 Native",
+      "open weight Indian language TTS",
+      "Maya Research",
+      "Maya 2 benchmarks",
+      "self hosted text to speech"
+    ],
+    minutes: 3,
+    reference: {
+      label: "Maya Research — Maya-2 Native model card",
+      href: "https://huggingface.co/maya-research/maya2-native"
+    }
+  },
+  {
+    slug: "pomerado-browser-automation-reusable-mcp-tools",
+    date: "2026-10-27",
+    title: "Pomerado turns browser workflows into tools agents can reuse",
+    summary: "Pomerado generates website integrations from browser tasks, moving repeated navigation into saved code. Its launch raises a practical question about the cost of reuse and maintenance.",
+    kind: "shipped",
+    document: "/news/pomerado-browser-automation-reusable-mcp-tools.md",
+    keywords: [
+      "Pomerado",
+      "browser automation MCP",
+      "Pomerado MIT license",
+      "generated browser integrations",
+      "reusable website integrations"
+    ],
+    minutes: 3,
+    reference: {
+      label: "Pomerado — Core and documentation",
+      href: "https://github.com/Pomerado/pomerado"
+    }
+  },
+  {
+    slug: "microsoft-quicksand-qemu-agent-sandboxes",
+    date: "2026-10-27",
+    title: "Microsoft Quicksand adds host connections to reversible agent VMs",
+    summary: "Quicksand’s networking update lets local Linux guests reach selected host services. Its Python API combines command execution, desktop control and checkpoints for agent experiments.",
+    kind: "infra",
+    document: "/news/microsoft-quicksand-qemu-agent-sandboxes.md",
+    keywords: [
+      "Microsoft Quicksand",
+      "QEMU AI agent sandbox",
+      "quick-sandbox Python",
+      "agent VM checkpoints",
+      "local agent sandbox"
+    ],
+    minutes: 3,
+    reference: {
+      label: "Microsoft — Quicksand",
+      href: "https://github.com/microsoft/quicksand"
+    }
+  },
+  {
+    slug: "flashraw-rust-camera-raw-decoder-benchmarks",
+    date: "2026-10-27",
+    title: "FlashRaw targets faster camera RAW processing in Rust and the browser",
+    summary: "FlashRaw combines parallel decoding with a fused image-development stage. Its published LibRaw comparisons show large speedups, with results varying by hardware, format and output.",
+    kind: "shipped",
+    document: "/news/flashraw-rust-camera-raw-decoder-benchmarks.md",
+    keywords: [
+      "FlashRaw",
+      "Rust RAW image decoder",
+      "FlashRaw vs LibRaw",
+      "camera RAW benchmarks",
+      "WebAssembly photo processing"
+    ],
+    minutes: 3,
+    reference: {
+      label: "FlashRaw — Release and benchmarks",
+      href: "https://github.com/ybouane/flashraw"
+    }
+  },
+  {
+    slug: "ai-sandbox-bench-regions-provider-comparison",
+    date: "2026-10-27",
+    title: "AI Sandbox Bench: comparing the infrastructure behind agent sandboxes",
+    summary: "As agent sandboxes multiply, Sandbox Bench compares cloud providers on startup, file operations and agent workflows. Its regional results show how latency adds up.",
+    kind: "infra",
+    document: "/news/ai-sandbox-bench-regions-provider-comparison.md",
+    keywords: [
+      "AI Sandbox Bench",
+      "cloud sandbox benchmark",
+      "Boat Upstash Ephemeral Box",
+      "agent sandbox latency",
+      "sandbox regional comparison"
+    ],
+    minutes: 4,
+    reference: {
+      label: "OpenCore — AI Sandbox Bench",
+      href: "https://aisandboxbench.com/"
+    }
+  },
+  {
+    slug: "jakub-krehel-teardown-technical-illustration-skill",
+    date: "2026-10-27",
+    title: "Jakub Krehel’s teardown skill makes editable technical illustrations",
+    summary: "Jakub Krehel’s teardown skill builds configurable technical drawings. An isometric teardown example shows how its editable parts, assembled views and SVG exports fit documentation.",
+    kind: "shipped",
+    document: "/news/jakub-krehel-teardown-technical-illustration-skill.md",
+    keywords: [
+      "Jakub Krehel teardown",
+      "technical illustration agent skill",
+      "exploded view SVG",
+      "teardown skill MIT",
+      "editable technical drawings"
+    ],
+    minutes: 2.5,
+    reference: {
+      label: "Jakub Krehel — Skills and examples",
+      href: "https://jakub.kr/skills"
+    }
+  },
+  {
+    slug: "asonix-app-store-keywords-ai-visibility",
+    date: "2026-10-27",
+    title: "Asonix combines App Store keyword research with ChatGPT visibility",
+    summary: "Guilherme Rizzo’s Asonix brings App Store search data and weekly ChatGPT recommendation checks together, covering two routes through which users discover apps.",
+    kind: "shipped",
+    document: "/news/asonix-app-store-keywords-ai-visibility.md",
+    keywords: [
+      "Asonix",
+      "App Store optimization",
+      "ASO keyword research",
+      "Asonix AI visibility",
+      "Guilherme Rizzo"
+    ],
+    minutes: 1.5,
+    reference: {
+      label: "Asonix — Features and data sources",
+      href: "https://asonix.io/"
+    }
+  },
+  {
+    slug: "praveen-kumar-ascii-web-section-design",
+    date: "2026-10-27",
+    title: "AI-assisted ASCII animation is finding a place on the web",
+    summary: "Recent ASCII experiments turn creatures and scenes into live web animations. How character-based rendering works, and how AI tools are helping people build it.",
+    kind: "reading",
+    document: "/news/praveen-kumar-ascii-web-section-design.md",
+    keywords: [
+      "ASCII art web design trend",
+      "ASCII web design",
+      "dither interface design",
+      "AI assisted ASCII art",
+      "ascii.rest",
+      "Asciify",
+      "ASCII animation component",
+      "ASCII bird animation"
+    ],
+    minutes: 3,
+    reference: {
+      label: "ASCII art — Recent examples and rendering tools",
+      href: "https://asciify.org/"
+    }
+  },
+  {
     slug: "anthropic-open-weight-models-security-timeline",
     date: "2026-10-24",
     title: "Anthropic and open-weight AI: why competition keeps becoming a security debate",

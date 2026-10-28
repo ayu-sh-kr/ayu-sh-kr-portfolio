@@ -52,6 +52,51 @@
   ],
   "redirects": [
     {
+      "source": "/news/mirendil-fern-10-million-token-context-model",
+      "destination": "/news/mirendil-fern-10-million-token-context-model/",
+      "permanent": true
+    },
+    {
+      "source": "/news/maya-2-native-open-weight-indian-language-speech",
+      "destination": "/news/maya-2-native-open-weight-indian-language-speech/",
+      "permanent": true
+    },
+    {
+      "source": "/news/pomerado-browser-automation-reusable-mcp-tools",
+      "destination": "/news/pomerado-browser-automation-reusable-mcp-tools/",
+      "permanent": true
+    },
+    {
+      "source": "/news/microsoft-quicksand-qemu-agent-sandboxes",
+      "destination": "/news/microsoft-quicksand-qemu-agent-sandboxes/",
+      "permanent": true
+    },
+    {
+      "source": "/news/flashraw-rust-camera-raw-decoder-benchmarks",
+      "destination": "/news/flashraw-rust-camera-raw-decoder-benchmarks/",
+      "permanent": true
+    },
+    {
+      "source": "/news/ai-sandbox-bench-regions-provider-comparison",
+      "destination": "/news/ai-sandbox-bench-regions-provider-comparison/",
+      "permanent": true
+    },
+    {
+      "source": "/news/jakub-krehel-teardown-technical-illustration-skill",
+      "destination": "/news/jakub-krehel-teardown-technical-illustration-skill/",
+      "permanent": true
+    },
+    {
+      "source": "/news/asonix-app-store-keywords-ai-visibility",
+      "destination": "/news/asonix-app-store-keywords-ai-visibility/",
+      "permanent": true
+    },
+    {
+      "source": "/news/praveen-kumar-ascii-web-section-design",
+      "destination": "/news/praveen-kumar-ascii-web-section-design/",
+      "permanent": true
+    },
+    {
       "source": "/news/anthropic-open-weight-models-security-timeline",
       "destination": "/news/anthropic-open-weight-models-security-timeline/",
       "permanent": true

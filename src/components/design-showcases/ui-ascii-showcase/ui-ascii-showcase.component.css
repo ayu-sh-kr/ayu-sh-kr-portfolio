@@ -1,0 +1,31 @@
+ui-ascii-showcase {
+  display: block;
+  width: min(100%, 22rem);
+  margin: 1.5rem auto 2rem;
+}
+
+ui-ascii-showcase .ui-ascii-study {
+  margin: 0;
+}
+
+ui-ascii-showcase .ui-ascii-stage {
+  aspect-ratio: 1;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  border-radius: var(--layout-radius-lg, 1rem);
+  /* This fixed night-sky palette belongs to the illustration, in both themes. */
+  background: #081b24;
+}
+
+ui-ascii-showcase canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+}
+
+ui-ascii-showcase .ui-ascii-study figcaption {
+  margin-top: 0.65rem;
+  font: 0.8125rem/1.5 var(--font-sans);
+  color: var(--muted-strong-color);
+}

@@ -1,28 +1,40 @@
 import { BaseElement } from "@ayu-sh-kr/dota-wrap/core";
 
 /**
- * Lets serialized article children finish parsing before Dota mounts or hydrates.
- * Registered showcases can connect while a Markdown HTML insertion is still
- * adding their server-rendered children. A synchronous mount would then leave
- * its new figure alongside the later parsed copy. The microtask keeps those
- * children available to the normal framework mount strategy instead.
+ * Defers article illustration mounting until its serialized children exist.
+ * A microtask is enough for Markdown fragment insertion, but a streaming HTML
+ * parser can yield between the opening custom-element tag and its children.
+ * During initial browser parsing, wait for DOMContentLoaded before hydration;
+ * otherwise mounting early leaves both new and subsequently parsed figures.
  */
 export abstract class ArticleShowcaseElement extends BaseElement {
   private connectionGeneration = 0;
+  private parserReady: (() => void) | null = null;
 
-  /** Mounts only the most recent connection, after the current insertion completes. */
+  /** Mounts the latest connection after parsing, without delaying SSG rendering. */
   override connectedCallback(): void {
     const generation = ++this.connectionGeneration;
-    queueMicrotask(() => {
+    const mount = () => queueMicrotask(() => {
       if (this.isConnected && generation === this.connectionGeneration) {
         super.connectedCallback();
       }
     });
+    if (!import.meta.env.SSR && this.ownerDocument.readyState === "loading") {
+      this.parserReady = () => {
+        this.parserReady = null;
+        mount();
+      };
+      this.ownerDocument.addEventListener("DOMContentLoaded", this.parserReady, { once: true });
+    } else mount();
   }
 
-  /** Invalidates a pending mount before releasing the framework's connection state. */
+  /** Cancels a pending parse listener and invalidates work when Markdown replaces us. */
   override disconnectedCallback(): void {
     this.connectionGeneration++;
+    if (this.parserReady) {
+      this.ownerDocument.removeEventListener("DOMContentLoaded", this.parserReady);
+      this.parserReady = null;
+    }
     super.disconnectedCallback();
   }
 }

@@ -37,6 +37,15 @@ const showcaseRoutes = [
   "/showcase/dota-rest",
 ];
 const newsRoutes = [
+  "/news/mirendil-fern-10-million-token-context-model",
+  "/news/maya-2-native-open-weight-indian-language-speech",
+  "/news/pomerado-browser-automation-reusable-mcp-tools",
+  "/news/microsoft-quicksand-qemu-agent-sandboxes",
+  "/news/flashraw-rust-camera-raw-decoder-benchmarks",
+  "/news/ai-sandbox-bench-regions-provider-comparison",
+  "/news/jakub-krehel-teardown-technical-illustration-skill",
+  "/news/asonix-app-store-keywords-ai-visibility",
+  "/news/praveen-kumar-ascii-web-section-design",
   "/news/anthropic-open-weight-models-security-timeline",
   "/news/hatchzip-in-place-archive-extraction",
   "/news/kimi-k3-1-pro-frontier-model-comparison",
