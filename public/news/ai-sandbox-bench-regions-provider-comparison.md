@@ -1,47 +1,57 @@
-# AI Sandbox Bench shows how regional latency adds up in agent workflows
+# AI Sandbox Bench: comparing the infrastructure behind agent sandboxes
 
-A sandbox that boots in under a second can still leave an agent waiting through a long sequence of commands. **AI Sandbox Bench’s regional update makes that accumulated delay visible**, adding calls from Florida and Frankfurt alongside Boat and Upstash Ephemeral Box.
+Agent sandboxes have been appearing across the AI stack, each addressing a different part of the same problem: **how do we let an agent work without giving it unrestricted access to everything around it?**
 
-Announced by Leo, who publishes as `@leodev`, the update broadens the comparison from startup speed to the execution path an agent repeatedly uses: reading files, editing code, running commands and checking results.
+[AWS Strands Box](/news/aws-strands-box-ai-agent-sandbox/) applies policies to actions in a local environment. [Perplexity SPACE](/news/perplexity-space-firecracker-agent-sandboxes/) runs tasks in isolated microVMs with controls around credentials and network access. [Docker Sandbox Kit and AWS Lambda MicroVMs](/news/docker-sandbox-kit-aws-lambda-microvms-agent-coding/) approach the problem through portable permissions and isolated execution.
 
-## Measuring the work after startup
+With more options, the next question is how they behave during actual work. **AI Sandbox Bench** compares cloud sandbox providers on startup, file and command operations, and a simulated agent workflow. Its recent update adds Boat and Upstash Ephemeral Box, along with measurements from Florida and Frankfurt.
 
-The October 22–26 dataset covers **eight providers and nine configurations**, with Upstash Box and Ephemeral Box treated separately. Tests include cold starts, snapshots, pause and resume, file operations, package installation and development-server readiness.
+## Why agents need boundaries
 
-A replay of **100 sequential tool calls** ties several operations together. It writes, reads, edits, lists, searches and runs a test, measuring execution overhead without introducing differences in a model’s reasoning.
+A coding agent may read a repository, edit files, install dependencies and run commands while trying to fix a bug. A mistake or a malicious instruction could turn those capabilities against the workspace. A sandbox gives the work a defined environment; policies determine which files, tools and network destinations it can reach.
 
-That separation gives the results a clear scope. They describe how quickly infrastructure carries out a sequence of actions, rather than how often an AI agent solves a real coding task.
+The concern extends beyond an agent making a bad edit. In the [ZCode workspace-upload incident](/news/zcode-user-code-upload-key/), a researcher reported that Z.ai’s coding tool had staged a project archive, including Git history, for upload. Z.ai apologized and described the behavior as a bug. It was **ZCode**, not OpenCode.
 
-## Distance becomes more visible across repeated calls
+A network policy can restrict outbound transfers, but only if the process making the request is actually inside the enforced boundary. An isolated workspace with unrestricted network access or exposed credentials can still send data out.
 
-The new regional results compare callers in **Florida and Frankfurt**. These are the locations making the requests, not a statement that every provider hosts its sandbox in both regions.
+These projects do not all provide the same product. Strands Box is a local policy-controlled environment; SPACE is infrastructure Perplexity built for its own agent service; cloud sandbox providers supply remote execution environments. **Sandbox Bench measures the latter**, not all of these systems head to head.
 
-Boat, whose sandbox is in northern France, provides one example:
+## What matters once an agent starts working
+
+The security boundary is only one part of a sandbox’s usefulness. An agent also needs a workspace it can start, inspect and change without spending most of its time waiting for infrastructure.
+
+A typical coding task may start an environment, read and edit files, search the repository, run tests and contact a package registry or API. Startup time affects the first step; repeated tool calls and network round trips affect everything that follows. Snapshots and pause/resume matter when work spans sessions or needs to be recovered.
+
+Sandbox Bench’s October 22–26 dataset covers **eight providers and nine configurations**, counting Upstash Box and Ephemeral Box separately. It measures cold starts, snapshots, pause/resume, file operations, package installation and development-server readiness. A **100-call replay** combines writes, reads, edits, directory listings, searches and a test into a sequential workload.
+
+That replay exposes the accumulated cost of ordinary operations without mixing in model reasoning. It does not show whether an agent would solve the task correctly, nor does the benchmark establish how well a provider enforces security policies.
+
+## Regional results show how the wait adds up
+
+The update includes callers in **Frankfurt and Florida**. Those are the locations issuing requests; they do not mean every sandbox is hosted in both regions.
+
+For Boat, whose measured sandbox is in northern France, the published median results show the effect across an entire sequence:
 
 | Operation | Frankfurt caller | Florida caller |
 | --- | ---: | ---: |
-| Median cold start | 0.78 s | 1.1 s |
-| Median command execution | 0.11 s | 0.33 s |
-| Median 100-call replay | 23 s | 43 s |
+| Cold start | 0.78 s | 1.1 s |
+| Run a command | 0.11 s | 0.33 s |
+| 100-call agent replay | 23 s | 43 s |
 
-The difference is modest when viewed as a single startup, but considerably larger over the replay. Geography does not necessarily explain every millisecond; the result nevertheless shows why a sequence of small remote operations can feel slow even when the underlying machine starts quickly.
+The geographic difference does not explain every millisecond, but it illustrates why a quick boot alone is an incomplete picture. Small waits on commands and file operations can accumulate over a long agent session. The benchmark’s in-sandbox CPU, memory and disk tests are reported separately from those request-path timings.
 
-CPU, memory and disk tests run inside the sandbox are reported separately, helping distinguish machine performance from the request path leading to it.
+## Reading the comparison
 
-## A comparison still needs comparable conditions
+Sandbox Bench offers a **same-machine track**, requesting four virtual CPUs and 8 GB of memory, and a **default-machine track**, using each provider’s default allocation. The former makes resource comparisons more consistent; the latter shows what a developer receives without specifying a size.
 
-Sandbox Bench separates a **same-machine track**, requesting four virtual CPUs and 8 GB of memory, from a **default-machine track**, using each provider’s initial allocation. The first aims to compare similar resources; the second captures what a new caller receives without specifying a size.
+There are exceptions even in the same-machine track: boxd uses 16 GB because it does not offer an 8 GB option at four CPUs. The benchmark records those differences, along with medians and uncertainty intervals. Its methodology reports 100 runs for quick tests and 30 for agent or snapshot tests, with counts shown per chart.
 
-Even the same-machine track has exceptions. Boxd uses 16 GB because it lacks an 8 GB option at four CPUs. These differences are recorded alongside the results and can affect both performance and cost.
+The cost test estimates one task per sandbox and excludes credits, taxes and plan minimums. Failure counts also follow stated exclusions, including benchmark setup errors and some ambiguous SDK timeouts. Those figures describe the measured workload and counting rules, not a complete bill or a reliability guarantee.
 
-The methodology reports 100 runs for quick tests and 30 for agent or snapshot tests, with per-chart counts and uncertainty intervals. Overlapping intervals are treated as ties, avoiding a precise ranking where the measurements do not support one.
+## The benchmark is a starting point
 
-Cost estimates exclude credits, tax and plan minimums. Failure counts also follow published exclusions, including benchmark setup errors and some ambiguous SDK timeouts. Both measures therefore need to be read within the test’s stated conditions.
+Sandbox Bench helps narrow the performance question: how long an environment takes to start, how its basic operations behave and how those delays add up from a particular region. Its [results and methodology](https://aisandboxbench.com/) provide the context behind each chart.
 
-## A fuller picture of execution time
+The security decision still requires examining the controls around the workload: what the agent can read or change, where it can connect, how credentials are supplied and which process is actually confined. The right sandbox must support both the work the agent needs to do and the boundaries that make that work acceptable.
 
-The site repository is MIT-licensed, and the author states that providers did not pay for or determine the tests, although some reviewed early results for errors.
-
-The update’s main contribution is the connection between individual operations and a complete execution sequence. Alongside [local approaches such as Quicksand](/news/microsoft-quicksand-qemu-agent-sandboxes/), it helps explain where an agent spends time once it starts acting. For remote sandboxes, startup is only the beginning; the distance and frequency of subsequent calls can shape much of the wait.
-
-Sources: [live results and methodology](https://aisandboxbench.com/), [MIT-licensed site repository](https://github.com/opencoredev/sandbox-bench), [same-machine allocation data](https://github.com/opencoredev/sandbox-bench/blob/main/src/data/benchmark.same-spec.json), [Leo’s announcements](https://x.com/leodev), and [Superserve’s response](https://x.com/superserve_ai).
+Sources: [Sandbox Bench results and methodology](https://aisandboxbench.com/), [benchmark site repository](https://github.com/opencoredev/sandbox-bench), [same-machine allocation data](https://github.com/opencoredev/sandbox-bench/blob/main/src/data/benchmark.same-spec.json), [AWS Strands Box](https://aws.amazon.com/blogs/opensource/introducing-strands-box-ai-agent-sandboxes-powered-by-dogwood/), [Perplexity SPACE](https://www.perplexity.ai/hub/blog/making-space-secure-and-efficient-runtimes-for-long-running-agents), and [Ferstar’s ZCode investigation](https://blog.ferstar.org/en/posts/zcode-silent-workspace-snapshot-upload/).

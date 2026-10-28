@@ -170,8 +170,8 @@ export const newsNotes: readonly NewsNote[] = [
   {
     slug: "ai-sandbox-bench-regions-provider-comparison",
     date: "2026-10-27",
-    title: "AI Sandbox Bench shows how regional latency adds up in agent workflows",
-    summary: "Sandbox Bench adds Florida and Frankfurt callers alongside more provider configurations. Its results show why repeated tool calls can matter more than startup speed alone.",
+    title: "AI Sandbox Bench: comparing the infrastructure behind agent sandboxes",
+    summary: "As agent sandboxes multiply, Sandbox Bench compares cloud providers on startup, file operations and agent workflows. Its regional results show how latency adds up.",
     kind: "infra",
     document: "/news/ai-sandbox-bench-regions-provider-comparison.md",
     keywords: [
@@ -181,7 +181,7 @@ export const newsNotes: readonly NewsNote[] = [
       "agent sandbox latency",
       "sandbox regional comparison"
     ],
-    minutes: 3,
+    minutes: 4,
     reference: {
       label: "OpenCore — AI Sandbox Bench",
       href: "https://aisandboxbench.com/"
