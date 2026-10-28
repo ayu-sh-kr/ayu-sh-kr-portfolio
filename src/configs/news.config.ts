@@ -230,8 +230,8 @@ export const newsNotes: readonly NewsNote[] = [
   {
     slug: "praveen-kumar-ascii-web-section-design",
     date: "2026-10-27",
-    title: "ASCII animation on the web: creatures, motion and character",
-    summary: "Recognizable creatures and observed motion drive recent ASCII web-design examples, with rendering tools and an original colorful woodland animation.",
+    title: "AI-assisted ASCII animation is finding a place on the web",
+    summary: "Recent ASCII experiments turn creatures and scenes into live web animations. How character-based rendering works, and how AI tools are helping people build it.",
     kind: "reading",
     document: "/news/praveen-kumar-ascii-web-section-design.md",
     keywords: [
@@ -244,7 +244,7 @@ export const newsNotes: readonly NewsNote[] = [
       "ASCII animation component",
       "ASCII bird animation"
     ],
-    minutes: 4,
+    minutes: 3,
     reference: {
       label: "ASCII art — Recent examples and rendering tools",
       href: "https://asciify.org/"
