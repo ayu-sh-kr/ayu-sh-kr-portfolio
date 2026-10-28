@@ -18,6 +18,8 @@ export class UiAsciiShowcaseComponent extends ArticleShowcaseElement {
   private motion: MediaQueryList | null = null;
   private visible = true;
   private lastPaint = -Infinity;
+  private previousTick: number | null = null;
+  private elapsed = 0;
   private readonly artwork = new AsciiWoodland();
   private source: CanvasRenderingContext2D | null = null;
   private output: CanvasRenderingContext2D | null = null;
@@ -31,7 +33,7 @@ export class UiAsciiShowcaseComponent extends ArticleShowcaseElement {
     this.output = canvas?.getContext("2d") ?? null;
     if (!this.output) return;
     const source = document.createElement("canvas");
-    source.width = 144;source.height = 96;
+    source.width = 216;source.height = 144;
     this.source = source.getContext("2d", { willReadFrequently: true });
     this.motion = window.matchMedia("(prefers-reduced-motion: reduce)");
     this.motion.addEventListener("change", this.restartPlayback);
@@ -47,33 +49,37 @@ export class UiAsciiShowcaseComponent extends ArticleShowcaseElement {
   private readonly restartPlayback = (): void => {
     cancelAnimationFrame(this.animationId);
     this.animationId = 0;
+    this.previousTick = null;
+    this.lastPaint = -Infinity;
     if (this.motion?.matches) this.drawScene(0);
     else if (this.visible && this.isConnected) this.animationId = requestAnimationFrame(this.tick);
   };
 
-  /** Limits redraws to twelve per second while keeping motion tied to elapsed time. */
+  /** Uses active elapsed time at 24 fps; background tabs and offscreen pauses cannot skip the flight. */
   private readonly tick = (time: number): void => {
     if (!this.isConnected || !this.visible || this.motion?.matches) return;
-    if (time - this.lastPaint >= 1000 / 12) {
-      this.drawScene(time / 1000);
+    if (this.previousTick !== null) this.elapsed += Math.min(time - this.previousTick, 100) / 1000;
+    this.previousTick = time;
+    if (time - this.lastPaint >= 1000 / 24) {
+      this.drawScene(this.elapsed);
       this.lastPaint = time;
     }
     this.animationId = requestAnimationFrame(this.tick);
   };
 
-  /** Samples the original painting into a 144 by 96 grid of colored ASCII glyphs. */
+  /** Samples the original painting into a 216 by 144 grid of colored ASCII glyphs. */
   private drawScene(time: number): void {
     const source = this.source, output = this.output;
     if (!source || !output) return;
-    source.setTransform(144 / 600,0,0,96 / 600,0,0);
+    source.setTransform(216 / 600,0,0,144 / 600,0,0);
     this.artwork.paint(source,time);
-    const pixels = source.getImageData(0,0,144,96).data;
-    output.clearRect(0,0,864,864);
+    const pixels = source.getImageData(0,0,216,144).data;
+    output.clearRect(0,0,1296,1296);
     output.font = '600 10px monospace';
     output.textBaseline = 'top';
     const ramp = '.,:;=+*ox%#@';
-    for(let row=0;row<96;row++)for(let col=0;col<144;col++) {
-      const i=(row*144+col)*4;
+    for(let row=0;row<144;row++)for(let col=0;col<216;col++) {
+      const i=(row*216+col)*4;
       const alpha=pixels[i+3]/255;
       if(alpha<0.12)continue;
       const light=(pixels[i]*0.21+pixels[i+1]*0.72+pixels[i+2]*0.07)/255;
@@ -93,13 +99,15 @@ export class UiAsciiShowcaseComponent extends ArticleShowcaseElement {
     this.motion?.removeEventListener("change", this.restartPlayback);this.motion = null;
     this.source = null;this.output = null;
     this.lastPaint = -Infinity;
+    this.previousTick = null;
+    this.elapsed = 0;
   }
 
   /** Keeps the artwork in one square figure without playback or illustration controls. */
   render() {
     return html`<figure class="ui-ascii-study">
       <div class="ui-ascii-stage">
-        <canvas width="864" height="864" role="img" aria-label="Colorful ASCII woodland: two hummingbirds fly above a third bird perched in a leafy tree, with wildflowers and swaying grass below.">Three colorful birds, a branching tree and a wildflower meadow, drawn with text characters.</canvas>
+        <canvas width="1296" height="1296" role="img" aria-label="Colorful ASCII woodland: two hummingbirds circle above a third bird flying beside a leafy tree, with wildflowers and swaying grass below.">Three colorful birds, a branching tree and a wildflower meadow, drawn with text characters.</canvas>
       </div>
       <figcaption>Wingbeats above the meadow. Three birds, a tree and wildflowers, drawn in colored ASCII.</figcaption>
     </figure>`;

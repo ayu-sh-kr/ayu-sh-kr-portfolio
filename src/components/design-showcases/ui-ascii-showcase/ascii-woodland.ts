@@ -4,6 +4,38 @@
  * are involved. Keep this painter independent of component lifecycle.
  */
 export class AsciiWoodland {
+  /** Arc-length samples keep each flight at a steady scene-unit speed through turns. */
+  private readonly flights = [
+    this.flightPath(358, 216, 157, 105),
+    this.flightPath(320, 156, 175, 80),
+    this.flightPath(330, 345, 116, 35),
+  ];
+
+  /** Samples a closed oval once, recording distance so playback does not accelerate at its sides. */
+  private flightPath(cx: number, cy: number, rx: number, ry: number) {
+    let distance = 0;
+    const points = Array.from({ length: 257 }, (_, i) => {
+      const angle = i / 256 * Math.PI * 2;
+      const previous = (i - 1) / 256 * Math.PI * 2;
+      if (i) distance += Math.hypot(rx * (Math.cos(angle) - Math.cos(previous)), ry * (Math.sin(angle) - Math.sin(previous)));
+      return { x: cx + rx * Math.cos(angle), y: cy + ry * Math.sin(angle), distance, angle };
+    });
+    return { points, length: distance };
+  }
+
+  /** Interpolates distance along a loop; heading narrows smoothly as the bird turns toward the viewer. */
+  private flyingBird(ctx: CanvasRenderingContext2D, time: number, index: number): void {
+    const path = this.flights[index];
+    const distance = ((time * 24 + path.length * [0.12, 0.68, 0.38][index]) % path.length + path.length) % path.length;
+    const nextIndex = path.points.findIndex(point => point.distance > distance);
+    const a = path.points[nextIndex - 1], b = path.points[nextIndex];
+    const fraction = (distance - a.distance) / (b.distance - a.distance);
+    const angle = a.angle + (b.angle - a.angle) * fraction;
+    const facing = -Math.sin(angle);
+    this.bird(ctx, a.x + (b.x - a.x) * fraction, a.y + (b.y - a.y) * fraction,
+      [0.35, 0.29, 0.30][index], time * 9 + index * 2, facing);
+  }
+
   /** Draws a filled, rotated oval for plumage, leaves and meadow layers. */
   private oval(ctx: CanvasRenderingContext2D, x: number, y: number, rx: number, ry: number, color: string | CanvasGradient, angle = 0): void {
     ctx.fillStyle = color;
@@ -103,9 +135,9 @@ export class AsciiWoodland {
     this.oval(ctx,100,565,420,132,'#285d494d');
     this.oval(ctx,470,618,420,137,'#36765055');
     this.tree(ctx,time);
-    this.bird(ctx,390,245+Math.sin(time*1.4)*7,1.05,time*7);
-    this.bird(ctx,306+Math.sin(time*0.5)*10,112+Math.sin(time)*5,0.47,time*7+2,-1);
-    this.bird(ctx,252,327,0.64,0,1,true);
+    this.flyingBird(ctx, time, 1);
+    this.flyingBird(ctx, time, 0);
+    this.flyingBird(ctx, time, 2);
     for(let i=0;i<410;i++) {
       const x=(i*41.77)%600;
       const y=434+(i*17.31)%166;
