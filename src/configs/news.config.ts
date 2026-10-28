@@ -228,12 +228,12 @@ export const newsNotes: readonly NewsNote[] = [
     }
   },
   {
-    slug: "praveen-kumar-ascii-web-section-design",
+    slug: "ascii-animation-web-design",
     date: "2026-10-27",
     title: "AI-assisted ASCII animation is finding a place on the web",
     summary: "Recent ASCII experiments turn creatures and scenes into live web animations. How character-based rendering works, and how AI tools are helping people build it.",
     kind: "reading",
-    document: "/news/praveen-kumar-ascii-web-section-design.md",
+    document: "/news/ascii-animation-web-design.md",
     keywords: [
       "ASCII art web design trend",
       "ASCII web design",
