@@ -71,7 +71,7 @@ it("keeps all fifteen block showcases outside Markdown paragraphs before SSG and
 
 
 it("keeps exactly one ASCII figure in the entire Dispatch article after serialization", async () => {
-  const markdown = readFileSync("public/news/praveen-kumar-ascii-web-section-design.md", "utf8");
+  const markdown = readFileSync("public/news/ascii-animation-web-design.md", "utf8");
   const article = document.createElement("article");
   article.innerHTML = MDService.renderHtml(markdown);
   expect(article.querySelector("ui-ascii-showcase")?.closest("p")).toBeNull();

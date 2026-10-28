@@ -45,7 +45,7 @@ const newsRoutes = [
   "/news/ai-sandbox-bench-regions-provider-comparison",
   "/news/jakub-krehel-teardown-technical-illustration-skill",
   "/news/asonix-app-store-keywords-ai-visibility",
-  "/news/praveen-kumar-ascii-web-section-design",
+  "/news/ascii-animation-web-design",
   "/news/anthropic-open-weight-models-security-timeline",
   "/news/hatchzip-in-place-archive-extraction",
   "/news/kimi-k3-1-pro-frontier-model-comparison",

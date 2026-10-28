@@ -93,7 +93,22 @@
     },
     {
       "source": "/news/praveen-kumar-ascii-web-section-design",
-      "destination": "/news/praveen-kumar-ascii-web-section-design/",
+      "destination": "/news/ascii-animation-web-design/",
+      "permanent": true
+    },
+    {
+      "source": "/news/praveen-kumar-ascii-web-section-design/",
+      "destination": "/news/ascii-animation-web-design/",
+      "permanent": true
+    },
+    {
+      "source": "/news/praveen-kumar-ascii-web-section-design.md",
+      "destination": "/news/ascii-animation-web-design.md",
+      "permanent": true
+    },
+    {
+      "source": "/news/ascii-animation-web-design",
+      "destination": "/news/ascii-animation-web-design/",
       "permanent": true
     },
     {
