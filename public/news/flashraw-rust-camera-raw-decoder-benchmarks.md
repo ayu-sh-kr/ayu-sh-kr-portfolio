@@ -33,7 +33,15 @@ These are author-produced benchmarks, with methodology and result files publishe
 
 FlashRaw reports decoding **1,980 of 2,016 files** in the raw.pixls.us test corpus. That provides a useful indication of coverage while leaving exceptions across formats and camera variations.
 
+> **What is raw.pixls.us?** [raw.pixls.us](https://raw.pixls.us/) is a collection of sample RAW files from many cameras and formats. Projects use the files to check decoder compatibility and catch regressions; FlashRaw’s result counts files decoded, rather than measuring processing speed.
+
 The benchmark documentation also records cases where other decoders are faster, including some formats handled by RawSpeed and a JPEG XL DNG handled by rawler. Their relevance is specific to the processing stage and file involved; the results do not establish one universal winner.
+
+> **Other RAW decoders**
+>
+> **[RawSpeed](https://github.com/darktable-org/rawspeed)** is the RAW decoding library used by darktable. It extracts sensor data for an application to process, rather than producing a finished image on its own.
+>
+> **[rawler](https://github.com/dnglab/dnglab)** is a Rust RAW decoding library used by DNGLab, a tool for converting camera RAW files to DNG. It provides another implementation for reading camera formats.
 
 FlashRaw is available under **MIT or Apache 2.0**, with packages on crates.io, PyPI and npm. Its release offers a new implementation for a demanding part of imaging software, particularly where native and browser processing need to share a library. The published gains are substantial, but their practical significance depends on the camera files and image output being processed.
 
