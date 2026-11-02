@@ -1,4 +1,4 @@
-# Tibo’s 28-day Codex challenge ends as fans wait for the next model
+# Tibo’s 28-day Codex challenge ends with GPT-6.2 Astra rumors
 
 For 28 days, Codex users had a reason to check Tibo’s feed: a product improvement, a usage reset, or both. As the final days approached, some hoped for something bigger—a new OpenAI model to answer Claude Opus 5.5.
 
@@ -6,13 +6,13 @@ The challenge ended on **November 1 with a banked reset**, not a frontier-model 
 
 By November 2, neither name had a confirmed public launch. The challenge had delivered updates; the hoped-for finale was still missing.
 
-## A promise that became a daily event
+## What Tibo promised in the 28-day Codex challenge
 
 On October 4, OpenAI’s Thibault “Tibo” Sottiaux [promised](https://codexreset.ai/28-day-challenge/) that for the next 28 days the team would either ship an improvement relevant to most Codex and ChatGPT Work users or give a full usage reset. A reset refreshes a covered allowance; a **banked reset** can be saved and redeemed later, subject to its terms.
 
 The series mixed practical fixes with resets and model updates. GPT-6 reached Chat, Terra returned, and the team worked on speed, context and reliability. What did not arrive at the finish was the new flagship some followers had imagined.
 
-### What the challenge delivered
+### Codex challenge summary: resets and feature updates
 
 The announcements fall into a few practical groups. Resets offered temporary relief; the feature and allowance changes affected how people could keep using the product.
 
@@ -30,7 +30,7 @@ Sources: announcement text collected in [Nepenthe’s daily log](https://nepenth
 
 A daily schedule also creates a daily audience. Independent trackers appeared, users compared updates, and speculation gathered around the final days. Tibo’s tease about saving the last two resets encouraged that anticipation, although his original pledge never promised a flagship launch. The series worked as marketing as well as product communication: it kept people returning, but also gave their expectations time to grow.
 
-## Gratitude, disappointment and an unfinished wish
+## Why some OpenAI fans wanted an answer to Opus 5.5
 
 The response was mixed. In one [X discussion](https://xitter.cf/TokenGremlin/status/2116820985873571993), Token Gremlin said they appreciated the updates but felt something was unfinished, later naming a model above the Terra tier as something they wanted. Replies ranged from appreciation for the resets and shipped changes to disappointment that no bigger model arrived.
 
@@ -38,7 +38,7 @@ Those replies are **individual reactions, not a representative survey**. They sh
 
 There was a concrete reason to want more. Anthropic launched [Claude Opus 5.5](https://www.anthropic.com/claude-opus-5-5) on September 22. Anthropic says it matches GPT-6 Astra on Terminal-Bench 4.0 for roughly 40% of the cost in its evaluation; that is the company’s reported comparison for a specific benchmark and settings, not proof that one model wins every task.
 
-## The names in the usage logs
+## GPT-6.2 Astra and Claude Fable 5.5: what is confirmed?
 
 On November 1, users shared [screenshots](https://enjoyagentic.com/blog/gpt-6-2-astra/) showing `gpt-6.2-astra` alongside `gpt-6-astra` in usage history, while their model selector still showed Astra. One shared response snippet also carried the name. The screenshots have not been independently authenticated against the accounts, and the plan tier is not established for all of them; there is **no verified basis to say the label is exclusive to $500 subscribers**.
 
@@ -46,7 +46,7 @@ A label could reflect a test, a routing or reporting change, or something else. 
 
 The anticipation was not confined to OpenAI. A [LiteLLM change](https://github.com/BerriAI/litellm/pull/46201) briefly added an Azure entry named `claude-fable-5-5` in October; a later removal and [independent tracking](https://cellcog.ai/blog/fable-5-5-release-date/) show why a catalog entry alone cannot establish a launch. As of November 2, Anthropic’s [model documentation](https://platform.claude.com/docs/en/models/overview) lists **Fable 5.1**, alongside the released Opus 5.5. Fable 5.5 has not been announced there, and no performance comparison with it can be made from a catalog label.
 
-## Why the timing attracts attention
+## Anthropic’s IPO adds pressure to the model race
 
 There is more at stake than a leaderboard. Anthropic [filed for an IPO on October 26](https://www.sec.gov/Archives/edgar/data/2130357/000162828026067168/anthropicpbc-sx1.htm), while OpenAI has said it does not plan to go public in 2026. In September, [Reuters reported](https://www.reuters.com/business/anthropic-considers-releasing-new-ai-model-ahead-ipo-sources-say-2026-09-19/) that Anthropic was considering a model release amid competitive pressure from Astra and an expected IPO. That report preceded Opus 5.5; it did not establish a Fable 5.5 release or a launch timed to the filing.
 
