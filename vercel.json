@@ -311,6 +311,11 @@
       "permanent": true
     },
     {
+      "source": "/news/overflow-design-isometric-drawings",
+      "destination": "/news/overflow-design-isometric-drawings/",
+      "permanent": true
+    },
+    {
       "source": "/news/aleph-alpha-kolibri-open-weight-model",
       "destination": "/news/aleph-alpha-kolibri-open-weight-model/",
       "permanent": true
