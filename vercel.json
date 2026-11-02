@@ -311,6 +311,11 @@
       "permanent": true
     },
     {
+      "source": "/news/tibo-codex-challenge-gpt-6-2-astra-fable-5-5",
+      "destination": "/news/tibo-codex-challenge-gpt-6-2-astra-fable-5-5/",
+      "permanent": true
+    },
+    {
       "source": "/news/overflow-design-isometric-drawings",
       "destination": "/news/overflow-design-isometric-drawings/",
       "permanent": true

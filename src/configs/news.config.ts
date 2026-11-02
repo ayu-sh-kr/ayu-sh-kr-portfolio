@@ -68,6 +68,20 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "tibo-codex-challenge-gpt-6-2-astra-fable-5-5",
+    date: "2026-11-02",
+    title: "Tibo’s 28-day Codex challenge ends with GPT-6.2 Astra rumors",
+    summary: "What Tibo’s 28-day Codex challenge delivered, why fans wanted more, and what GPT-6.2 Astra and Claude Fable 5.5 rumors mean amid Anthropic’s IPO plans.",
+    kind: "reading",
+    document: "/news/tibo-codex-challenge-gpt-6-2-astra-fable-5-5.md",
+    keywords: ["Tibo 28-day Codex challenge", "Codex challenge summary", "Codex usage resets", "GPT-6.2 Astra rumors", "Claude Fable 5.5 release rumors", "Claude Opus 5.5", "Anthropic IPO"],
+    minutes: 5,
+    reference: {
+      label: "Tibo’s 28-day Codex challenge — Daily tracker",
+      href: "https://nepentheplay.com/games/codex-28"
+    }
+  },
+  {
     slug: "overflow-design-isometric-drawings",
     date: "2026-11-02",
     title: "Overflow Design refreshes its isometric illustration library",
