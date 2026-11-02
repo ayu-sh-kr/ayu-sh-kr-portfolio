@@ -75,7 +75,7 @@ export const newsNotes: readonly NewsNote[] = [
     kind: "reading",
     document: "/news/tibo-codex-challenge-gpt-6-2-astra-fable-5-5.md",
     keywords: ["Tibo 28 day Codex challenge", "GPT-6.2 Astra", "Claude Fable 5.5", "Claude Opus 5.5", "Anthropic IPO"],
-    minutes: 4,
+    minutes: 5,
     reference: {
       label: "Tibo’s 28-day Codex challenge — Daily tracker",
       href: "https://nepentheplay.com/games/codex-28"
