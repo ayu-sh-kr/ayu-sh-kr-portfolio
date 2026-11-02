@@ -12,42 +12,21 @@ On October 4, OpenAI’s Thibault “Tibo” Sottiaux [promised](https://codexre
 
 The series mixed practical fixes with resets and model updates. GPT-6 reached Chat, Terra returned, and the team worked on speed, context and reliability. What did not arrive at the finish was the new flagship some followers had imagined.
 
-### The 28 days at a glance
+### What the challenge delivered
 
-This summary follows the numbered announcements, using Pacific-time dates. It records the main item each day, rather than every related release. Reset delivery sometimes crossed into the following UTC date.
+The announcements fall into a few practical groups. Resets offered temporary relief; the feature and allowance changes affected how people could keep using the product.
 
-| Day | Date | Main announcement |
+| Area | Main changes | What users gained |
 | --- | --- | --- |
-| 1 | Oct 5 | Faster default Astra/Sol generation. |
-| 2 | Oct 6 | Auto-review, API and meetings updates; reset. |
-| 3 | Oct 7 | GPT-6 in Chat; banked reset. |
-| 4 | Oct 8 | Instant steering; Sol ultrafast. |
-| 5 | Oct 9 | Desktop composer predictions. |
-| 6 | Oct 10 | Reset. |
-| 7 | Oct 11 | Sol’s default context increased to 500k. |
-| 8 | Oct 12 | Reset. |
-| 9 | Oct 13 | Reduced desktop disk usage. |
-| 10 | Oct 14 | Reset. |
-| 11 | Oct 15 | Fewer capacity errors; automatic recovery. |
-| 12 | Oct 16 | Better context reuse and caching. |
-| 13 | Oct 17 | Reset. |
-| 14 | Oct 18 | Edit earlier desktop messages. |
-| 15 | Oct 19 | Reset. |
-| 16 | Oct 20 | Longer API and conversation caching. |
-| 17 | Oct 21 | Reset. |
-| 18 | Oct 22 | Decisions API general availability; reset. |
-| 19 | Oct 23 | Faster dot calls, cache fix, CLI updates. |
-| 20 | Oct 24 | Reset. |
-| 21 | Oct 25 | Reset. |
-| 22 | Oct 26 | GPT-6.1 Terra returns. |
-| 23 | Oct 27 | Reset. |
-| 24 | Oct 28 | Text messaging for dots. |
-| 25 | Oct 29 | Pro allowance increase; planned Pro 200 cut cancelled. |
-| 26 | Oct 30 | Mobile account switching. |
-| 27 | Oct 31 | First of two closing banked resets. |
-| 28 | Nov 1 | Second closing banked reset. |
+| Usage resets | Repeated allowance refreshes, ending with two banked resets. | More time to work; banked resets could be saved for later. |
+| Speed and reliability | Faster Astra/Sol generation, instant steering, Sol ultrafast and fewer capacity errors. | Less waiting and quicker course corrections. |
+| Longer, more efficient work | Sol’s default context grew to 500k; better context reuse and longer caching. | Longer sessions with less repeated processing. |
+| Models and access | GPT-6 in Chat and GPT-6.1 Terra’s return. | Broader access and another model option, but no new flagship at the finale. |
+| Lasting allowance changes | Higher Pro allowances and cancellation of the planned Pro 200 cut. | Changes to ongoing capacity beyond one-off resets. |
+| Everyday features | Message editing, composer predictions, mobile account switching, dot texting and CLI updates. | More convenient daily workflows. |
+| Developer tools | Decisions API reached general availability; API and auto-review changes. | More options for building and supervising agent workflows. |
 
-Sources: numbered posts collected by [Nepenthe’s daily log](https://nepentheplay.com/games/codex-28/) and [TiboSay](https://tibosay.com/tibo-28), with the closing reset sequence also recorded in the [community discussion](https://community.openai.com/t/banked-reset-day-28-of-28-days-of-quality-of-life-improvements-and-or-a-full-reset/1403525). Tracker labels are inconsistent, so the table follows the announcement text rather than their automatic classifications.
+Sources: announcement text collected in [Nepenthe’s daily log](https://nepentheplay.com/games/codex-28/) and [TiboSay](https://tibosay.com/tibo-28), plus the [community discussion](https://community.openai.com/t/banked-reset-day-28-of-28-days-of-quality-of-life-improvements-and-or-a-full-reset/1403525).
 
 A daily schedule also creates a daily audience. Independent trackers appeared, users compared updates, and speculation gathered around the final days. Tibo’s tease about saving the last two resets encouraged that anticipation, although his original pledge never promised a flagship launch. The series worked as marketing as well as product communication: it kept people returning, but also gave their expectations time to grow.
 
