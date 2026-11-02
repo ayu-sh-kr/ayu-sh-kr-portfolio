@@ -70,11 +70,11 @@ export const newsNotes: readonly NewsNote[] = [
   {
     slug: "tibo-codex-challenge-gpt-6-2-astra-fable-5-5",
     date: "2026-11-02",
-    title: "Tibo’s 28-day Codex challenge ends as fans wait for the next model",
-    summary: "Tibo’s month of Codex improvements and resets ended without a new flagship announcement. Usage screenshots, Fable rumors and Anthropic’s IPO add context to the wait.",
+    title: "Tibo’s 28-day Codex challenge ends with GPT-6.2 Astra rumors",
+    summary: "What Tibo’s 28-day Codex challenge delivered, why fans wanted more, and what GPT-6.2 Astra and Claude Fable 5.5 rumors mean amid Anthropic’s IPO plans.",
     kind: "reading",
     document: "/news/tibo-codex-challenge-gpt-6-2-astra-fable-5-5.md",
-    keywords: ["Tibo 28 day Codex challenge", "GPT-6.2 Astra", "Claude Fable 5.5", "Claude Opus 5.5", "Anthropic IPO"],
+    keywords: ["Tibo 28-day Codex challenge", "Codex challenge summary", "Codex usage resets", "GPT-6.2 Astra rumors", "Claude Fable 5.5 release rumors", "Claude Opus 5.5", "Anthropic IPO"],
     minutes: 5,
     reference: {
       label: "Tibo’s 28-day Codex challenge — Daily tracker",
