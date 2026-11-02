@@ -37,6 +37,7 @@ const showcaseRoutes = [
   "/showcase/dota-rest",
 ];
 const newsRoutes = [
+  "/news/overflow-design-isometric-drawings",
   "/news/mirendil-fern-10-million-token-context-model",
   "/news/maya-2-native-open-weight-indian-language-speech",
   "/news/pomerado-browser-automation-reusable-mcp-tools",

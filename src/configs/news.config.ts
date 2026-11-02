@@ -68,6 +68,20 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "overflow-design-isometric-drawings",
+    date: "2026-11-02",
+    title: "Overflow Design refreshes its isometric illustration library",
+    summary: "Overflow Design's refreshed isometric catalogue adds custom colors and light and dark previews, with free stills and paid animated drawings.",
+    kind: "shipped",
+    document: "/news/overflow-design-isometric-drawings.md",
+    keywords: ["Overflow Design", "isometric illustrations", "Zafar Ismatullaev", "design assets", "animated isometric drawings"],
+    minutes: 1.5,
+    reference: {
+      label: "Overflow Design — Isometric drawings",
+      href: "https://www.overflow.design/"
+    }
+  },
+  {
     slug: "mirendil-fern-10-million-token-context-model",
     date: "2026-10-27",
     title: "Mirendil’s Fern puts 10 million tokens of context to work on AI research",
