@@ -29,10 +29,17 @@ AI pipelines, BCI signal paths, architecture summaries, and concept flows.
    ![Short, descriptive explanation of the diagram](/blogs/news/assets/<blog-slug>/example.svg)
    ```
 
+## Choose the view and trace the source
+
+- **HLD:** Show actors, components, stores, external providers, ownership and trust boundaries. Label connections with the protocol, data or permission involved. Keep the view at the component level.
+- **LLD:** Trace one endpoint or bounded workflow. Group by responsibility and follow the actual order of guards, decisions, early returns, state changes, responses and side effects. Continue vertically within each group and branch sideways for errors or alternatives.
+- Verify the flow against implementation or primary architecture documentation. Label proposals and deployed behavior explicitly. Plan box bounds and connector corridors before drawing.
+
 ## Visual grammar
 
 - Default to the current project theme and an Excalidraw-style hand-drawn appearance unless the user requests another style. Read `src/theme.css` and the semantic mappings in `src/style.css` before choosing colors; current theme values take precedence over the examples below.
-- Use slightly irregular outlines, rounded stroke caps, simple arrows, and sparse hatching or flat fills. Keep text crisp and geometry deliberate; sketch styling must not distort connectors, charts, or labels. Use a bundled handwriting font only when it renders reliably in standalone SVGs, with a readable fallback.
+- Use one clean outline per box, a shared corner radius, aligned edges and consistent stroke weights. Keep the sketch character in a slight curve along otherwise regular edges. Avoid duplicate strokes, skewed sides, gradients and shadows.
+- Use flat fills from the project’s accent scale to show emphasis. Keep typography crisp and readable with native SVG text and explicit line breaks. Enlarge the canvas when labels need room.
 - SVGs loaded through Markdown images do not inherit the page's CSS variables. Embed resolved theme colors or explicit fallbacks inside each SVG and verify contrast against its own canvas.
 - The portfolio’s matcha palette provides example standalone fallbacks:
   - background `#f8faf2`;
@@ -65,6 +72,9 @@ AI pipelines, BCI signal paths, architecture summaries, and concept flows.
   text baselines and card edges.
 - Reduce the `viewBox` height after layout is correct; do not compress text to
   make a tall diagram fit.
+
+- Use solid connectors for synchronous calls or transfers and dashed connectors only for asynchronous work. Label decisions and alternative outcomes. Fan out independent listeners from the same event. Include a legend when line styles carry meaning.
+- Match naming, box styles, arrowheads and color roles across companion HLD and LLD diagrams.
 
 ## Repair checklist
 
