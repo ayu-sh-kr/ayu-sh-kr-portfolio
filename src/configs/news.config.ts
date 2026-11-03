@@ -68,6 +68,20 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "openai-pando-git-backend-anthropic-scion",
+    date: "2026-11-03",
+    title: "OpenAI Pando: how its Git backend scales pushes and fetches",
+    summary: "Why OpenAI built Pando, how its Git backend scales pushes and fetches with reusable packfiles, and how its design compares with Anthropic’s Scion.",
+    kind: "infra",
+    document: "/news/openai-pando-git-backend-anthropic-scion.md",
+    keywords: ["OpenAI Pando", "Pando Git backend architecture", "Git packfile URI", "scaling Git monorepos", "Pando vs Anthropic Scion", "AI agent source control"],
+    minutes: 7,
+    reference: {
+      label: "OpenAI — Scaling Git at OpenAI",
+      href: "https://openai.com/index/scaling-git-at-openai/"
+    }
+  },
+  {
     slug: "mit-weight-space-programming-gpt-6-astra-qwen",
     date: "2026-11-03",
     title: "MIT researchers use GPT-6 Astra to edit Qwen’s weights",

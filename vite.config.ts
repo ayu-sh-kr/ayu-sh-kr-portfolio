@@ -37,6 +37,7 @@ const showcaseRoutes = [
   "/showcase/dota-rest",
 ];
 const newsRoutes = [
+  "/news/openai-pando-git-backend-anthropic-scion",
   "/news/mit-weight-space-programming-gpt-6-astra-qwen",
   "/news/tibo-codex-challenge-gpt-6-2-astra-fable-5-5",
   "/news/overflow-design-isometric-drawings",
