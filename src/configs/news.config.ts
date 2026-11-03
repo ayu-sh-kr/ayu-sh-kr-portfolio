@@ -68,6 +68,20 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "mit-weight-space-programming-gpt-6-astra-qwen",
+    date: "2026-11-03",
+    title: "MIT researchers use GPT-6 Astra to edit Qwen’s weights",
+    summary: "MIT researchers report that GPT-6 Astra edited Qwen’s weights to reduce reasoning loops, lifting benchmark scores. Here is what the experiment shows and where it falls short.",
+    kind: "reading",
+    document: "/news/mit-weight-space-programming-gpt-6-astra-qwen.md",
+    keywords: ["weight-space programming", "GPT-6 Astra Qwen weights", "MIT CSAIL AI research", "Qwen reasoning loops", "MATH-500 benchmark"],
+    minutes: 2,
+    reference: {
+      label: "MIT CSAIL — Sparks of Weight-Space Programming",
+      href: "https://rikiyat.github.io/blog/weight-space-programming/"
+    }
+  },
+  {
     slug: "tibo-codex-challenge-gpt-6-2-astra-fable-5-5",
     date: "2026-11-02",
     title: "Tibo’s 28-day Codex challenge ends with GPT-6.2 Astra rumors",
