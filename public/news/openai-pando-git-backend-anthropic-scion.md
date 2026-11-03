@@ -4,6 +4,12 @@ An agent finishes a change and pushes its branch. That push triggers tests, whil
 
 At OpenAI, growing demand on its monorepo made pushes and fetches slow and caused merges to fail. The company says reliability sometimes fell below 90%. On November 2, it described **Pando**, a Git backend built to handle more concurrent work while letting engineers and agents continue using Git.
 
+## A familiar Git exchange
+
+A push sends new commits and objects to a Git server, which updates the branch reference. A fetch goes the other way: the client tells the server what it has and wants, and the server sends the missing history. This simplified flow shows the exchange before adding many simultaneous clients.
+
+![A Git push updates the remote repository; a fetch negotiates missing history and returns a pack to the client.](/news/assets/git-regular-flow.svg)
+
 ## Why Git hosting came under pressure
 
 The pressure comes from two directions. Agents create branches and push changes in parallel. Meanwhile, CI jobs, fresh agent environments and developers repeatedly fetch overlapping repository history. A single change can lead to many readers asking for the same code.
@@ -12,13 +18,17 @@ A Git server must both accept writes and deliver the objects that make up a repo
 
 Writes bring a different problem. A branch name is a **reference** to a commit. Updating that reference safely matters: two writers must not silently overwrite each other’s changes to the same branch. But requiring unrelated branch updates to participate in a single repository-wide order can introduce coordination that grows with the workload.
 
+The two lanes below separate the pressures: coordinating concurrent writes and repeatedly preparing data for readers. They illustrate possible bottlenecks, not a claim that every Git host uses the same architecture.
+
+![Concurrent agent pushes add coordination pressure while repeated CI fetches can require servers to prepare overlapping packs.](/news/assets/git-scale-pressure.svg)
+
 OpenAI does not claim every Git server has the same bottleneck, or that Git itself cannot scale. Its question was how to serve its particular monorepo: accept many independent pushes and deliver the same history to many readers without repeating as much work.
 
 ## The idea behind Pando
 
 Pando separates **branch metadata** from the Git data clients transfer. It stores pushed packfiles in blob storage, records branch versions in a metadata store and serves reusable packs through regional caches. It also treats updates to different branches independently.
 
-The diagram follows one push into storage and a later fetch by agents or CI. The text below walks through each step and the problem it addresses.
+The diagram follows a push into storage and a later fetch by agents or CI. Compaction runs in the background; the text below explains how each step addresses the pressures above.
 
 ![Pando stores pushed packfiles and branch metadata, then serves reusable packs to agents and CI through regional caches. Background compaction groups small packs.](/news/assets/pando-git-flow.svg)
 
