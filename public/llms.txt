@@ -49,6 +49,8 @@
 
 ## Recent Dispatch notes
 
+- [OpenAI’s Pando scales Git as Anthropic takes a different path](https://www.ayu-sh-kr.com/news/openai-pando-git-backend-anthropic-scion/): OpenAI’s Git backend, its comparison with Anthropic’s Scion, and earlier source-control efforts. [Article Markdown](https://www.ayu-sh-kr.com/news/openai-pando-git-backend-anthropic-scion.md).
+
 - [MIT researchers use GPT-6 Astra to edit Qwen’s weights](https://www.ayu-sh-kr.com/news/mit-weight-space-programming-gpt-6-astra-qwen/): How Astra edited Qwen to reduce reasoning loops, what the benchmark gains show, and the limits of the experiment. [Article Markdown](https://www.ayu-sh-kr.com/news/mit-weight-space-programming-gpt-6-astra-qwen.md).
 
 - [Mirendil’s Fern puts 10 million tokens of context to work on AI research](https://www.ayu-sh-kr.com/news/mirendil-fern-10-million-token-context-model/): Fern targets research code, training logs and agent histories with a 10-million-token context window. Its early results show the gap between retaining evidence and reasoning across it. [Article Markdown](https://www.ayu-sh-kr.com/news/mirendil-fern-10-million-token-context-model.md).

@@ -531,6 +531,11 @@
       "permanent": true
     },
     {
+      "source": "/news/openai-pando-git-backend-anthropic-scion",
+      "destination": "/news/openai-pando-git-backend-anthropic-scion/",
+      "permanent": true
+    },
+    {
       "source": "/news/opencode-console-breach-api-keys",
       "destination": "/news/opencode-console-breach-api-keys/",
       "permanent": true
