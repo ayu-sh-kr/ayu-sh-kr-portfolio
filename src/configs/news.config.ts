@@ -70,12 +70,12 @@ export const newsNotes: readonly NewsNote[] = [
   {
     slug: "openai-pando-git-backend-anthropic-scion",
     date: "2026-11-03",
-    title: "OpenAI’s Pando scales Git as Anthropic takes a different path",
-    summary: "OpenAI’s Pando keeps Git while scaling concurrent agent work. Compare its push and fetch architecture with Anthropic’s Scion, Meta’s Mononoke and Cloudflare Artifacts.",
+    title: "OpenAI Pando: how its Git backend scales pushes and fetches",
+    summary: "Why OpenAI built Pando, how its Git backend scales pushes and fetches with reusable packfiles, and how its design compares with Anthropic’s Scion.",
     kind: "infra",
     document: "/news/openai-pando-git-backend-anthropic-scion.md",
-    keywords: ["OpenAI Pando", "Pando Git backend architecture", "Pando vs Anthropic Scion", "AI agent source control", "Meta Mononoke", "Cloudflare Artifacts"],
-    minutes: 2.5,
+    keywords: ["OpenAI Pando", "Pando Git backend architecture", "Git packfile URI", "scaling Git monorepos", "Pando vs Anthropic Scion", "AI agent source control"],
+    minutes: 7,
     reference: {
       label: "OpenAI — Scaling Git at OpenAI",
       href: "https://openai.com/index/scaling-git-at-openai/"
