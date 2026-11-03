@@ -4,15 +4,27 @@ When hundreds of coding agents work at once, the bottleneck can move from writin
 
 Its answer is **Pando**, a new Git backend designed for concurrent agent work. Announced on November 2, it now serves OpenAI’s monorepo while engineers and agents continue using familiar Git commands.
 
+## Why ordinary Git traffic became a problem
+
+A developer fetching a branch is one request. At OpenAI, many agents work on separate changes at once, and a single push can trigger several CI jobs, each fetching the same commit. More branches mean more concurrent updates; more jobs mean the same history is requested again and again.
+
+Traditional Git servers may calculate and compress a tailored pack for each fetch. That keeps transfers focused, but repeating the work consumes compute. On the write side, systems that coordinate every branch update through shared infrastructure can make unrelated pushes compete. OpenAI says its previous system struggled as those demands grew.
+
+![Pando stores pushed packfiles and branch metadata, then serves reusable packs to agents and CI through regional caches. Background compaction groups small packs.](/news/assets/pando-git-flow.svg)
+
 ## How Pando handles a push and a fetch
 
 A push sends Git objects in a compressed bundle called a **packfile** and updates a branch reference, the pointer to its latest commit. Pando stores the pack in blob storage, then records the new branch version and updates its pointer in a metadata store. Updates to different branches can proceed independently instead of waiting for a repository-wide ordering.
 
-When another agent fetches that branch, Pando selects stored packs containing the history it needs. Rather than generating a custom bundle for every request, it returns links to reusable packs through Git’s **packfile-URI** feature. A service called Express delivers them through regional caches. Background compaction combines smaller packs to keep a fast-moving history practical to fetch.
+When another agent fetches that branch, Pando selects stored packs containing the history it needs. Rather than generating a custom bundle for every request, it returns links to reusable packs through Git’s **packfile-URI** feature. A service called Express delivers them through regional caches. Background compaction combines smaller packs so a client catching up after many changes does not have to download tens of thousands of individual files.
+
+> **What is a packfile URI?** A packfile bundles compressed Git objects, such as commits and file contents. The Git protocol can return URLs for packs alongside a fetch response, allowing the client to download them separately. Pando chooses existing packs and points clients to them, so the same bytes can be cached and reused across requests.
 
 The design makes trade-offs. Reusing packs can send a client some objects it already has; limiting the history advertised during a push can also make repeated pushes larger. And a view across several branches can reflect different points in time, even though a reader can fetch the history needed for a particular branch version.
 
-OpenAI reports that Pando reduced **median push latency by nearly 80%** and now delivers nearly **one petabyte of Git data per day**. These are results from its own workload, not a general benchmark. The company says it built the Rust backend with Codex in ten weeks and has contributed some Git client improvements upstream.
+OpenAI reports that Pando reduced **median push latency by nearly 80%** and now delivers nearly **one petabyte of Git data per day**.
+
+> **Median push latency** is the middle push duration: half of measured pushes were faster and half slower. An 80% reduction describes that middle value, not every push; OpenAI does not give the before-and-after times in its report. These are results from its own workload, not a general benchmark. The company says it built the Rust backend with Codex in ten weeks and has contributed some Git client improvements upstream.
 
 ## Pando vs. Anthropic’s Scion
 
