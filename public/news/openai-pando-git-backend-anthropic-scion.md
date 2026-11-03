@@ -24,7 +24,9 @@ The design makes trade-offs. Reusing packs can send a client some objects it alr
 
 OpenAI reports that Pando reduced **median push latency by nearly 80%** and now delivers nearly **one petabyte of Git data per day**.
 
-> **Median push latency** is the middle push duration: half of measured pushes were faster and half slower. An 80% reduction describes that middle value, not every push; OpenAI does not give the before-and-after times in its report. These are results from its own workload, not a general benchmark. The company says it built the Rust backend with Codex in ten weeks and has contributed some Git client improvements upstream.
+> **Median push latency** is the middle push duration: half of measured pushes were faster and half slower. An 80% reduction describes that middle value, not every push; OpenAI does not give the before-and-after times in its report.
+
+These are results from OpenAI’s own workload, not a general benchmark. The company says it built the Rust backend with Codex in ten weeks and has contributed some Git client improvements upstream.
 
 ## Pando vs. Anthropic’s Scion
 
