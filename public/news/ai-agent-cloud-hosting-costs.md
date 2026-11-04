@@ -71,3 +71,5 @@ For that weekend webhook, verify that the public URL can wake the guest or pay t
 ![Two-panel unmasking comic showing Cheap Agent Sandbox revealed as Firecracker.](/news/assets/ai-agent-cloud-hosting-costs/firecracker-reveal.webp)
 
 *The joke applies to the Firecracker-based services discussed above. Agent37’s cheapest tier uses gVisor. Firecracker is AWS-developed open-source software that other operators can host independently.*
+
+[Original Scooby-Doo unmasking template](https://imgflip.com/memetemplate/145139900/Scooby-doo-mask-reveal). The illustration above is an original redraw.
