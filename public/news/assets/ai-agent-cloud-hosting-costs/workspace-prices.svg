@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="486" viewBox="0 0 720 486" role="img" aria-labelledby="title description">
+  <title id="title">What one workspace costs per month</title>
+  <desc id="description">USD for one retained workspace over 730 hours, before models. Values for 40 and 730 awake hours respectively: Maritime 2 and 2; Agent37 0.60 and 4.76; Cube 4.44 and 12; DigitalOcean 24 and 24; Manus 30 and 30.</desc>
+  <style>
+    text { font-family: system-ui, sans-serif; fill: #f7f7f6; font-size: 17px; }
+    .title { font-size: 27px; font-weight: 700; }
+    .subtitle, .tick { fill: #d0d0cd; font-size: 15px; }
+    .label, .value { font-weight: 650; }
+    .value { font-variant-numeric: tabular-nums; }
+  </style>
+  <rect x="1" y="1" width="718" height="484" rx="20" fill="#101011" stroke="#3e3e41" stroke-width="2"/>
+  <text x="28" y="44" class="title">What one workspace costs per month</text>
+  <text x="28" y="72" class="subtitle" >About 4 GB RAM. Disk, CPU priority and wake behavior vary by provider.</text>
+  <rect x="28" y="91" width="16.00" height="13" rx="3" fill="#545457"/>
+  <text x="53" y="103" class="subtitle" >40 hours awake</text>
+  <rect x="211" y="91" width="16.00" height="13" rx="3" fill="#bdce8a"/>
+  <text x="236" y="103" class="subtitle" >730 hours awake</text>
+  <path d="M186 125V426" stroke="#3e3e41" stroke-width="1"/>
+  <text x="186" y="449" class="tick" text-anchor="middle">$0</text>
+  <path d="M256 125V426" stroke="#3e3e41" stroke-width="1"/>
+  <text x="256" y="449" class="tick" text-anchor="middle">$5</text>
+  <path d="M326 125V426" stroke="#3e3e41" stroke-width="1"/>
+  <text x="326" y="449" class="tick" text-anchor="middle">$10</text>
+  <path d="M396 125V426" stroke="#3e3e41" stroke-width="1"/>
+  <text x="396" y="449" class="tick" text-anchor="middle">$15</text>
+  <path d="M466 125V426" stroke="#3e3e41" stroke-width="1"/>
+  <text x="466" y="449" class="tick" text-anchor="middle">$20</text>
+  <path d="M536 125V426" stroke="#3e3e41" stroke-width="1"/>
+  <text x="536" y="449" class="tick" text-anchor="middle">$25</text>
+  <path d="M606 125V426" stroke="#3e3e41" stroke-width="1"/>
+  <text x="606" y="449" class="tick" text-anchor="middle">$30</text>
+  <text x="28" y="158" class="label" >Maritime</text>
+  <rect x="186" y="134" width="28.00" height="15" rx="3" fill="#545457"/>
+  <text x="223.00" y="147" class="value" >$2.00</text>
+  <rect x="186" y="157" width="28.00" height="15" rx="3" fill="#bdce8a"/>
+  <text x="223.00" y="170" class="value" >$2.00</text>
+  <text x="28" y="216" class="label" >Agent37</text>
+  <rect x="186" y="192" width="8.40" height="15" rx="3" fill="#545457"/>
+  <text x="203.40" y="205" class="value" >$0.60</text>
+  <rect x="186" y="215" width="66.64" height="15" rx="3" fill="#bdce8a"/>
+  <text x="261.64" y="228" class="value" >$4.76</text>
+  <text x="28" y="274" class="label" >Cube</text>
+  <rect x="186" y="250" width="62.16" height="15" rx="3" fill="#545457"/>
+  <text x="257.16" y="263" class="value" >$4.44</text>
+  <rect x="186" y="273" width="168.00" height="15" rx="3" fill="#bdce8a"/>
+  <text x="363.00" y="286" class="value" >$12.00</text>
+  <text x="28" y="332" class="label" >DigitalOcean</text>
+  <rect x="186" y="308" width="336.00" height="15" rx="3" fill="#545457"/>
+  <text x="531.00" y="321" class="value" >$24.00</text>
+  <rect x="186" y="331" width="336.00" height="15" rx="3" fill="#bdce8a"/>
+  <text x="531.00" y="344" class="value" >$24.00</text>
+  <text x="28" y="390" class="label" >Manus</text>
+  <rect x="186" y="366" width="420.00" height="15" rx="3" fill="#545457"/>
+  <text x="615.00" y="379" class="value" >$30.00</text>
+  <rect x="186" y="389" width="420.00" height="15" rx="3" fill="#bdce8a"/>
+  <text x="615.00" y="402" class="value" >$30.00</text>
+  <text x="28" y="473" class="subtitle" >USD per 730-hour month, excluding model usage and taxes.</text>
+</svg>

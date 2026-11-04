@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="416" viewBox="0 0 720 416" role="img" aria-labelledby="title description">
+  <title id="title">When the bill counts active CPU</title>
+  <desc id="description">Over 40 provisioned hours with 4 GB of RAM, at 20 active core-hours Upstash meters 2 dollars and Vercel meters 5.95 dollars. At 80 active core-hours Upstash meters 8 dollars and Vercel meters 13.63 dollars. Vercel totals each include 3.39 dollars of provisioned memory.</desc>
+  <style>
+    text { font-family: system-ui, sans-serif; fill: #f7f7f6; font-size: 17px; }
+    .title { font-size: 27px; font-weight: 700; }
+    .subtitle, .tick { fill: #d0d0cd; font-size: 15px; }
+    .label, .value { font-weight: 650; }
+    .value { font-variant-numeric: tabular-nums; }
+  </style>
+  <rect x="1" y="1" width="718" height="414" rx="20" fill="#101011" stroke="#3e3e41" stroke-width="2"/>
+  <text x="28" y="44" class="title">When the bill counts active CPU</text>
+  <text x="28" y="72" class="subtitle" >40 sandbox hours with 4 GB RAM. Each pair uses the same CPU time.</text>
+  <rect x="28" y="91" width="16.00" height="13" rx="3" fill="#bdce8a"/>
+  <text x="53" y="103" class="subtitle" >Active CPU</text>
+  <rect x="166" y="91" width="16.00" height="13" rx="3" fill="#545457"/>
+  <text x="191" y="103" class="subtitle" >Provisioned memory</text>
+  <path d="M186 127V348" stroke="#3e3e41" stroke-width="1"/>
+  <text x="186" y="371" class="tick" text-anchor="middle">$0</text>
+  <path d="M246 127V348" stroke="#3e3e41" stroke-width="1"/>
+  <text x="246" y="371" class="tick" text-anchor="middle">$2</text>
+  <path d="M306 127V348" stroke="#3e3e41" stroke-width="1"/>
+  <text x="306" y="371" class="tick" text-anchor="middle">$4</text>
+  <path d="M366 127V348" stroke="#3e3e41" stroke-width="1"/>
+  <text x="366" y="371" class="tick" text-anchor="middle">$6</text>
+  <path d="M426 127V348" stroke="#3e3e41" stroke-width="1"/>
+  <text x="426" y="371" class="tick" text-anchor="middle">$8</text>
+  <path d="M486 127V348" stroke="#3e3e41" stroke-width="1"/>
+  <text x="486" y="371" class="tick" text-anchor="middle">$10</text>
+  <path d="M546 127V348" stroke="#3e3e41" stroke-width="1"/>
+  <text x="546" y="371" class="tick" text-anchor="middle">$12</text>
+  <path d="M606 127V348" stroke="#3e3e41" stroke-width="1"/>
+  <text x="606" y="371" class="tick" text-anchor="middle">$14</text>
+  <text x="28" y="145" class="label" >20 core-hours</text>
+  <text x="44" y="174" class="" >Upstash</text>
+  <rect x="186" y="158" width="60.00" height="18" rx="3" fill="#bdce8a"/>
+  <text x="255.00" y="173" class="value" >$2.00</text>
+  <text x="44" y="202" class="" >Vercel</text>
+  <rect x="186" y="186" width="76.80" height="18" rx="0" fill="#bdce8a"/>
+  <rect x="262.8" y="186" width="101.76" height="18" rx="0" fill="#545457"/>
+  <text x="373.56" y="201" class="value" >$5.95</text>
+  <text x="28" y="252" class="label" >80 core-hours</text>
+  <text x="44" y="281" class="" >Upstash</text>
+  <rect x="186" y="265" width="240.00" height="18" rx="3" fill="#bdce8a"/>
+  <text x="435.00" y="280" class="value" >$8.00</text>
+  <text x="44" y="309" class="" >Vercel</text>
+  <rect x="186" y="293" width="307.20" height="18" rx="0" fill="#bdce8a"/>
+  <rect x="493.2" y="293" width="101.76" height="18" rx="0" fill="#545457"/>
+  <text x="603.96" y="308" class="value" >$13.63</text>
+  <text x="28" y="402" class="subtitle" >USD before storage, credits, plan fees, models and taxes.</text>
+</svg>

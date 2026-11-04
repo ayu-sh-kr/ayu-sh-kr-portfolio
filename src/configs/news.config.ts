@@ -68,6 +68,20 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "ai-agent-cloud-hosting-costs",
+    date: "2026-11-04",
+    title: "AI Agent Cloud Hosting: What a $5 Sandbox Buys",
+    summary: "Compare nine ways to run AI agents, what their cloud sandboxes cost, where the compute comes from, and how they compare with Claude Code, Codex and larger clouds.",
+    kind: "infra",
+    document: "/news/ai-agent-cloud-hosting-costs.md",
+    keywords: ["AI agent cloud hosting", "AI sandbox pricing", "persistent agent sandboxes", "Claude Code cloud hosting", "Codex cloud hosting", "agent compute providers"],
+    minutes: 8,
+    reference: {
+      label: "Agent37 Cloud — Published sandbox rates",
+      href: "https://www.agent37.com/pricing"
+    }
+  },
+  {
     slug: "openai-pando-git-backend-anthropic-scion",
     date: "2026-11-03",
     title: "OpenAI Pando: how its Git backend scales pushes and fetches",
