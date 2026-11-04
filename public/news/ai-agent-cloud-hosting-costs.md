@@ -10,7 +10,7 @@ Several of these products run on **Firecracker**, a virtual machine monitor that
 
 InstaBox says its Firecracker machines run on its **own bare metal**. Superserve publishes the Firecracker daemon that runs on its hosts, while its managed hardware supplier is unclear. Cube names **Fly.io** as the operator of its cloud machines and filesystems, and Fly documents Firecracker for its Machines. **Agent37’s $4.76 tier uses gVisor**, and its full-VM offering is separate. Manus documents a persistent Ubuntu VM with SSH. AWS’s partnership announcement covers the Manus agent platform and leaves the specific Cloud Computer hypervisor and fleet unconfirmed. [InstaBox machines](https://instabox.sh/docs/machines) · [InstaBox on its fleet](https://instabox.sh/blog/instabox-pricing) · [Superserve source](https://github.com/superserve-ai/sandbox) · [Cube privacy](https://cube.computer/privacy/) · [Fly Machines](https://fly.io/machines/) · [Agent37 launch discussion](https://news.ycombinator.com/item?id=50059096) · [Manus SSH](https://help.manus.im/en/articles/15392128-how-to-set-up-and-access-your-cloud-computer) · [AWS and Manus](https://press.aboutamazon.com/aws/2025/12/manus-selects-aws-to-power-general-purpose-ai-agent-serving-millions-globally)
 
-Firecracker provides the VM boundary. The service around it decides who gets an SSH key, whether a webhook reaches a sleeping guest, how snapshots are stored and which workloads share a host. That service is what you’re paying for when you choose an agent-focused machine over a plain server.
+Firecracker provides the VM boundary. The service around it decides who gets an SSH key, whether a webhook reaches a sleeping guest, how snapshots are stored and which workloads share a host. That service is part of what you pay for alongside compute. Some hosts install an existing agent harness, while others add orchestration, credentials and lifecycle APIs. Reusing Firecracker does not by itself establish that those features have little value, or that the hardware is supplied by AWS.
 
 ## Five ways to rent the machine
 
@@ -32,7 +32,31 @@ The **$11.36 Agent37 VM and $12 Cube machine** are close on paper. Cube gives th
 
 Claude Code and Codex already offer hosted coding tasks. If all you need is a patch, those workflows can set up an isolated workspace for the job. Rent a persistent machine when you need a process you can keep running, the ability to switch harnesses in the same environment, or files you can reach independently of the agent. Model usage still needs its own budget. [Claude Code in the cloud](https://support.claude.com/en/articles/12618689-use-claude-code-in-the-cloud) · [Codex Cloud](https://help.openai.com/en/articles/20001545-using-codex-cloud)
 
+## What the basic machine can actually do
+
+A 2-vCPU, 4 GB machine is a plausible starting point for one coding agent calling a remote model, editing a modest repository and running a small test suite. A webhook bot or scheduled API task can also fit. These are workload estimates, not measured benchmarks of the providers above. The model runs elsewhere, so the machine mainly needs enough memory for the harness and its tools.
+
+| Workflow | What to check on a basic machine |
+| --- | --- |
+| One Claude Code or Codex session | Repository size, dependency installation and peak test memory. Model access is billed separately. |
+| A lightweight bot or scheduled task | Whether the process remains awake, or an external trigger wakes it. A timer inside a sleeping VM cannot do that. |
+| Browser automation | A browser adds memory pressure. Start with one session and measure its peak before adding concurrency. |
+| Several agents, a large JVM build or Docker Compose | Shared CPU, RAM and disk can become the constraint. Agent37 requires its full VM for Docker workloads. |
+| Running model inference locally | These CPU offers provide no basis for claiming performance comparable to a GPU inference host. |
+
+Cheap can be usable when the workload fits. To compare with your own hosted machine, run the same checkout, build and browser task on both. Record elapsed time, peak RAM, disk use and failures under concurrency. Then leave the bot idle and send an event. That tests both performance and the wake behavior the headline price leaves out. A matching vCPU count alone cannot establish matching performance. [Agent37 capabilities](https://www.agent37.com/pricing) · [Cube specifications](https://docs.cube.computer/docs/billing/)
+
+## The bill behind the CPU headline
+
+The stronger criticism is how easily a small starting price becomes a comparison of unlike services. An active-CPU rate, an allocated VM-hour and a fixed monthly server pay for different amounts of reserved capacity. The invoice can also include memory, retained disk, snapshots, outbound traffic, a plan minimum and model calls.
+
+Those charges are often published. InstaBox lists memory, storage and egress alongside CPU. Superserve lists memory and retained storage separately. Cube bundles RAM and disk with its vCPU rate. Calling all of these hidden charges would overstate the evidence. A CPU-only headline becomes misleading when it is presented as the total cost of running the advertised workload. [InstaBox billing](https://instabox.sh/docs/billing) · [Superserve pricing](https://www.superserve.ai/pricing/) · [Cube billing](https://docs.cube.computer/docs/billing/)
+
+The same distinction applies to uptime. InstaBox’s free machine pauses after inactivity, while its paid plans allow idle pause to be disabled. Cube can keep running, Superserve advertises unlimited runtime, and Manus explicitly offers 24/7 operation. The claim that these machines all activate only on demand is therefore too broad. The question is which plan you bought and what state the provider meters. [InstaBox lifecycle](https://instabox.sh/docs/machines) · [Superserve plans](https://www.superserve.ai/pricing/) · [Manus uptime](https://help.manus.im/en/articles/15392111-what-is-the-cloud-computer)
+
 ## What happens when every agent wakes up?
+
+An upstream supplier still has to cover hardware, power and operations. That does not force every reseller to charge the same retail price. Bulk purchasing, shared capacity and better utilization can lower the cost per customer, while credits or subsidies can temporarily lower the bill. The published offers do not disclose enough financial information to separate those effects for every provider.
 
 The launch pitch is plausible because a lot of agent work is bursty. A machine runs Git and the build locally, then waits while a model elsewhere generates the next step. Providers can share CPU among those bursts and move sleeping state off RAM. Firecracker helps make small VMs practical. It still takes physical RAM to keep their active working sets resident, and memory-hungry builds or browsers can peak together.
 
@@ -40,6 +64,10 @@ Agent37’s founder says the hosts can restart memory-heavy sandboxes under crit
 
 The capacity needed for the next batch of customers can also cost more than the fleet already running. Hetzner raised rates for new orders and resizes in June, citing procurement costs, while preserving existing contracts on their terms. TrendForce projected **10–15% quarter-on-quarter growth in conventional DRAM contract prices** in Q4 and tied rising CPU and DDR5 demand to inference and agents. The retail price can change before that bill arrives. In October, Manus removed its **$10 Basic** computer, leaving **$30** as the lowest listed tier. Those are separate developments with no disclosed causal link. [Hetzner adjustment](https://www.hetzner.com/pressroom/standardization-and-price-adjustment-of-our-server-products/) · [TrendForce DRAM forecast](https://www.trendforce.com/presscenter/news/20260930-13258.html) · [TrendForce CPU and DDR5 research](https://www.trendforce.com/presscenter/news/20261029-13284.html) · [Manus pricing history](https://www.usagepricing.com/blueprint/activity/manus-2026-10-15-cloud-computer-basic-tier-dropped)
 
+The marketing earns scrutiny when a cheap entry price stands in for sustained performance, an always-awake machine or a complete bill. The evidence supports asking for those conditions up front. It does not establish that every low price is a loss leader or that every provider will raise it.
+
 For that weekend webhook, verify that the public URL can wake the guest or pay to keep it awake. Then try restarting the machine and recovering your repo, service and data. If the price changes, being able to take that setup to another VPS may be worth more than the launch discount.
 
-![Two-panel unmasking comic. A detective lifts a mask labeled Cheap Agent Sandbox, revealing Firecracker underneath.](/news/assets/ai-agent-cloud-hosting-costs/firecracker-reveal.webp)
+![Two-panel unmasking comic showing Cheap Agent Sandbox revealed as Firecracker.](/news/assets/ai-agent-cloud-hosting-costs/firecracker-reveal.webp)
+
+*The joke applies to the Firecracker-based services discussed above. Agent37’s cheapest tier uses gVisor. Firecracker is AWS-developed open-source software that other operators can host independently.*
