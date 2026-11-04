@@ -1,176 +1,125 @@
 # Ayush Kumar Portfolio
 
-The source for [ayu-sh-kr.com](https://ayu-sh-kr.com): a fast, content-driven portfolio for backend engineer Ayush Kumar. It presents selected work, writing, services and pricing, speaking, support, and legal information in a TypeScript single-page application.
+Source for [ayu-sh-kr.com](https://ayu-sh-kr.com), Ayush Kumar’s personal portfolio and technical writing site. It brings together selected projects, engineering articles, Dispatch news, service enquiries, and support.
 
-The app is built with native web components through [Dota Wrap](https://www.npmjs.com/package/@ayu-sh-kr/dota-wrap), Vite, and Tailwind CSS.
+The frontend uses TypeScript and native custom elements through Dota Wrap, with Vite and Tailwind CSS. Public pages are prerendered for deployment, then run in the browser with client-side navigation. Newsletter subscriptions, enquiries, support tickets, and coffee payments connect to a separate backend.
 
-## What is included
+## Getting started
 
-- Portfolio, career journey, skills, services, contact, and speaking sections
-- Project showcase with filterable project cards and Markdown case studies
-- Blog index, category filtering, article pages, and Markdown rendering
-- Dispatch news feed, kind filtering, and slug-based Markdown note pages
-- Pricing, estimate, project-start, coffee-support, and support flows
-- Light/dark theme preference, offline route, toast and alert primitives, and responsive navigation
-- Route-specific SEO metadata, canonical URLs, Open Graph metadata, sitemap, and robots directives
-- GA4 event and section tracking behind a typed application-event boundary
-- Public Markdown documents for terms and privacy policy
-
-## Technology
-
-| Area | Choice |
-| --- | --- |
-| Language | TypeScript (strict mode) |
-| Build and development server | Vite 8 with Dota Wrap's composed integrations |
-| UI model | Native custom elements via Dota Wrap |
-| Styling | Tailwind CSS 4 plus shared CSS tokens |
-| Markdown | `@ayu-sh-kr/dota-md` with a local theme configuration |
-| Component utilities | `@ayu-sh-kr/dota-ui` |
-| Package manager | pnpm |
-| Hosting configuration | Vercel static deployment |
-
-## Requirements
-
-- Node.js `^20.19.0` or `>=22.12.0` (required by Vite 8)
-- pnpm 11 or newer
-
-## Run locally
+Use Node.js 22.12 or newer and pnpm. Install dependencies and start Vite:
 
 ```bash
 pnpm install
 pnpm dev
 ```
 
-Open the URL Vite prints, normally `http://localhost:5173`.
+Open the URL printed in the terminal, usually `http://localhost:5173`. Use `pnpm dev:host` to expose the development server on your local network.
 
-To make the development server available on the local network:
+### Backend configuration
 
-```bash
-pnpm dev:host
+The backend is not included in this repository. In development, Vite proxies API paths to `http://localhost:8080` by default. Content pages can be explored without it; API-dependent features need a running backend.
+
+To change the local target or simulated visitor region, create `.env.local`:
+
+```dotenv
+VITE_DEV_API_TARGET=http://localhost:8080
+VITE_DEV_CLIENT_REGION=IN
 ```
 
-Create a production build and preview it locally:
+The proxy adds local region, country, locale, and timezone headers. See [the proxy configuration](src/configs/local-api-proxy.config.ts) for supported paths and region handling.
+
+`VITE_API_BASE_URL` sets the API base URL used by the application. For local proxying, keep API requests on the Vite origin; an external base URL bypasses that proxy. Deployment must supply the appropriate API base URL. Variables prefixed with `VITE_` are exposed to the frontend and must not contain secrets.
+
+## Commands
+
+| Command | Purpose |
+| --- | --- |
+| `pnpm dev` | Start the development server |
+| `pnpm dev:host` | Start development with network access |
+| `pnpm lint` | Check TypeScript types without emitting files |
+| `pnpm lint:imports` | Run ESLint |
+| `pnpm lint:fix` | Apply automatic ESLint fixes |
+| `pnpm test` | Run the Vitest suite once |
+| `pnpm build` | Type-check and build the client application |
+| `pnpm build:ssg` | Type-check, prerender pages, and check internal links |
+| `pnpm check:links` | Check internal links in an existing `dist/` build |
+| `pnpm preview` | Serve the production build locally |
+
+To preview the deployment build:
 
 ```bash
-pnpm build
+pnpm build:ssg
 pnpm preview
 ```
 
-`pnpm build` type-checks the application, generates Dota component/route and event metadata, and writes the static site to `dist/`.
+Build output goes to `dist/`. Dota’s Vite integrations also generate component, route, and event metadata.
 
-### Build benchmark
+## What’s in the site
 
-Wall-clock time of `pnpm build` and `pnpm build:ssg` (includes the internal link check), three runs each from a clean `dist/`, before and after bumping `dota-md` 0.0.17 → 0.0.18, `dota-ui` 0.1.0 → 0.1.1 and `dota-wrap` 0.1.0 → 0.2.0 (Apple Silicon Mac, pnpm 11):
+- **Portfolio and showcase:** career, skills, services, and project case studies.
+- **Blog and Dispatch:** technical articles and shorter news briefs, authored in Markdown.
+- **Enquiries and support:** pricing estimates, project enquiries, support tickets, and coffee checkout.
+- **Newsletter:** subscription, verification, preferences, and unsubscribe flows.
+- **Design references:** live examples of the site’s typography, colors, components, and interactions.
+- **Shared UI:** responsive navigation, light and dark themes, privacy notice, alerts, and toasts.
 
-| Build | Before | After |
-| --- | --- | --- |
-| `pnpm build` | 2.98 / 2.51 / 2.46 s | 5.78 / 1.13 / 1.12 s (first run was cold) |
-| `pnpm build:ssg` | 33.40 / 30.83 / 30.43 s | 9.91 / 9.90 / 11.46 s |
-
-Output is unchanged: `build` emits 238 files (~8.0 MB) and `build:ssg` 331 files (~12.3 MB), both with about 2.11 MB of JavaScript.
-
-## Routes
-
-| Route | Purpose |
-| --- | --- |
-| `/` | Portfolio landing page |
-| `/showcase` and `/showcase/:slug` | Project catalogue and Markdown case studies |
-| `/blog` and `/blog/:slug` | Writing index and Markdown articles |
-| `/news` and `/news/:slug` | Dispatch feed and permalinked short notes |
-| `/pricing` | Services, pricing, estimator, and project enquiry flow |
-| `/coffee` | One-time support flow |
-| `/support` | Support and project handoff information |
-| `/subscription/verify`, `/subscription/preference`, `/subscription/unsubscribe` | Token-linked newsletter verification and management flows |
-| `/legal/privacy`, `/legal/terms` | Legal Markdown documents |
-| `/design` | Design-system overview |
-| `/design/typography`, `/design/color`, `/design/element`, `/design/layout`, `/design/alert`, `/design/toast`, `/design/interaction` | Live design-system references |
-| `/offline`, `/error` | Connection and error states |
-
-Direct navigation to these client-side routes is rewritten to `index.html` by Vercel, then the browser-side router renders the matching page. See [Vercel routing](docs/vercel-routing.md) for the static request flow.
-
-## Content workflow
-
-Keep authored copy in the corresponding data module under `src/data/`; routes and components should compose that data rather than own content literals.
-
-- Add or edit blog post metadata in [src/configs/blogs.config.ts](src/configs/blogs.config.ts), then add its Markdown source in `public/blogs/<category>/`.
-- Add or edit Dispatch metadata and SEO in [src/configs/news.config.ts](src/configs/news.config.ts), then add its Markdown source in `public/news/`.
-- Add or edit showcase metadata in [src/data/showcase-content.ts](src/data/showcase-content.ts), then add its Markdown source in `public/showcases/`.
-- Edit terms and privacy policy in `public/legal/`.
-- Update [public/sitemap.xml](public/sitemap.xml) whenever a public, indexable route or article changes.
-
-Markdown is fetched from `public/` at runtime; a missing source file will render the associated article error state.
-See [Markdown pages](docs/markdown-pages.md) for the page-family contracts, supported authoring patterns, and the editing checklist.
-See [Content automation plugin](docs/content-automation-plugin.md) for the audited plan to generate typed catalogues, routes, grouping, and sitemap entries from Markdown.
-
-## Project layout
+## Project structure
 
 ```text
 src/
-  components/      Page sections and shared custom elements
-  configs/         Blog catalogue and Markdown theme configuration
-  data/            Page copy, SEO, pricing, portfolio, and email content
-  events/          Typed application event definitions
-  pages/           Route shells
-  service/         Markdown loaders, analytics, alerts, and toasts
-  utils/           SEO, routing, analytics, DOM, and lifecycle helpers
-  main.ts          Application bootstrap and global route hooks
+  pages/           Route components
+  components/      Page sections, design references, and shared UI
+  configs/         Content catalogues, Markdown configuration, and integrations
+  data/            Authored page copy, SEO metadata, and site configuration
+  service/         Content loaders, API flows, analytics, and UI services
+  events/          Typed application events
+  utils/           Shared routing, SEO, DOM, and lifecycle helpers
+  main.ts          Application bootstrap
+  theme.css        Theme palette
+  style.css        Global styles and semantic tokens
 public/
-  blogs/           Article Markdown sources
-  showcases/       Case-study Markdown sources
-  legal/           Privacy and terms Markdown sources
-  fonts/           Self-hosted font assets and licences
-docs/flows/        Architecture and interaction-flow diagrams
+  blogs/           Blog Markdown and article assets
+  news/            Dispatch Markdown and assets
+  showcases/       Project case studies
+  legal/           Privacy policy and terms
+  fonts/           Self-hosted fonts and their licences
+docs/              Implementation notes and architecture diagrams
+scripts/           Build checks and benchmarks
 ```
+
+The main libraries are `@ayu-sh-kr/dota-wrap` for components and routing, `@ayu-sh-kr/dota-md` for Markdown rendering, and `@ayu-sh-kr/dota-ui` for shared UI utilities. See [package.json](package.json) for dependency versions and scripts.
+
+## Editing content
+
+Keep page copy in the corresponding module under `src/data/`. Article metadata and Markdown live separately:
+
+| Content | Metadata | Markdown |
+| --- | --- | --- |
+| Blog | [blogs.config.ts](src/configs/blogs.config.ts) | `public/blogs/<category>/` |
+| Dispatch | [news.config.ts](src/configs/news.config.ts) | `public/news/` |
+| Showcase | [showcase-content.ts](src/data/showcase-content.ts) | `public/showcases/` |
+| Legal | Page-owned configuration | `public/legal/` |
+
+When adding a public article, register its metadata and source, add its prerender route in [vite.config.ts](vite.config.ts), and update [sitemap.xml](public/sitemap.xml) and [llms.txt](public/llms.txt). Check canonical URLs and redirects in [vercel.json](vercel.json), then run `pnpm build:ssg` to verify the output and internal links.
+
+See [Markdown pages](docs/markdown-pages.md) for rendering and authoring conventions. Repository-specific publishing guidance lives in [AGENTS.md](AGENTS.md) and the skills it references.
 
 ## Deployment
 
-For Vercel, `vercel.json` runs the static Dota SSG build, deploys `dist/`, rewrites client-side routes to `index.html`, and caches fingerprinted `/assets/` files for one year. See [Vercel routing](docs/vercel-routing.md) for the request flow.
+[Vercel configuration](vercel.json) runs `pnpm build:ssg` and publishes `dist/`. The build prerenders configured routes; routing configuration provides canonical redirects and an `index.html` fallback for client-side navigation. See [Vercel routing](docs/vercel-routing.md) for details.
 
-The deployed domain is encoded in [src/data/portfolio-content.ts](src/data/portfolio-content.ts) and [src/utils/seo.utils.ts](src/utils/seo.utils.ts). Change both the site identity and `SITE_ORIGIN` before deploying a fork to another domain. The root package is named `ayu-sh-kr-portfolio` and remains private, so it is not publishable to npm.
+The Vite development proxy does not run in production. Backend connectivity must be configured separately from static hosting.
 
-## Static deployment
+Site identity and canonical-origin settings live in [portfolio-content.ts](src/data/portfolio-content.ts) and [seo.utils.ts](src/utils/seo.utils.ts). Analytics configuration and the privacy policy should match the deployed environment; see [analytics documentation](docs/analytics.md).
 
-The portfolio has no server API routes. The article-updates call to action opens the visitor's email client instead of collecting email addresses in the site.
+## Further documentation
 
-## Analytics and privacy
-
-GA4 is loaded in [index.html](index.html). Components publish typed, privacy-conscious application events; [src/service/analytics-event.listener.ts](src/service/analytics-event.listener.ts) is the only layer that forwards them to Google.
-
-Before deploying, confirm that the privacy policy accurately reflects the chosen analytics and hosting configuration, and update the GA measurement ID when deploying a separate site.
-
-### Emitted GA4 events
-
-The application uses one internal `analytics:track` event to carry typed facts to the Google Analytics listener. That internal event is not sent to GA4 directly. The listener forwards these event names through `gtag("event", ...)` and adds `page_title` and `page_location` to every event:
-
-| Event | Emitted when | Custom parameters |
-| --- | --- | --- |
-| `page_view` | A route finishes rendering | `page`, `page_path`, optional `slug` |
-| `section_view` | A marked section enters the viewport | `section`, `page_path` |
-| `contact_click` | A contact or profile destination is selected | `method`, `surface` |
-| `cta_click` | A showcase call-to-action is selected | `action`, `surface` |
-| `project_open` | A blog article or showcase project is opened | `kind`, `slug`, `surface` |
-
-The current parameter values are intentionally stable identifiers rather than visible copy. Contact methods are `email`, `resume`, `call`, `github`, and `linkedin`; project kinds are `blog` and `showcase`; CTA actions are `conversation` and `pricing`. Section identifiers are declared in [src/events/analytics.events.ts](src/events/analytics.events.ts).
-
-### GA4 registration
-
-These application events do not need to be created in the GA4 interface before the site sends them. Once the Google tag is loaded, GA4 can collect an event sent with `gtag("event", eventName, parameters)`. Use Realtime or DebugView to verify the events after deployment.
-
-Register an event parameter as an event-scoped custom dimension only when it needs to be used in detailed reports, explorations, or audiences. Mark an event as a key event only when it represents an important business outcome, such as a qualified contact action.
-
-See Google’s guides for [setting up GA4 events](https://developers.google.com/analytics/devguides/collection/ga4/events), [event parameters](https://support.google.com/analytics/answer/13675006), [custom dimensions](https://support.google.com/analytics/answer/14239696), and [key events](https://support.google.com/analytics/answer/13128484).
-
-## Project audit — August 2026
-
-The repository currently passes `pnpm build`; `pnpm audit --prod` reports no known production dependency vulnerabilities. The build reports 19 decorated route candidates, with `/offline` added explicitly during bootstrap, and emits a single client JavaScript bundle of about 1.90 MB (540 kB gzip), which still triggers Vite's 500 kB warning.
-
-Items to address before a public deployment:
-
-1. **Privacy-policy alignment:** the policy now describes the deployed Vercel hosting and the standard GA4 tag at an abstract level. Before public deployment, verify the actual GA4 property retention and regional consent requirements against the live configuration.
-2. **Initial JavaScript size:** the production entry bundle is about 1.90 MB (540 kB gzip), above Vite's 500 kB warning threshold. Lazy-loading non-core routes such as design references, articles, or pricing flows would reduce first-load cost.
-3. **Quality automation:** Vitest now runs the repository's `src/**/*.test.ts` and `test/**/*.test.ts` suites. Add a lint/format command, then run both checks in CI alongside `pnpm build`.
-The current `public/sitemap.xml` contains 50 URLs, including all configured blog posts, Dispatch notes, showcase projects, design references, and public legal and product routes. Recheck it whenever a public route or catalogue entry changes.
+- [Markdown pages and content authoring](docs/markdown-pages.md)
+- [Analytics events and tracking](docs/analytics.md)
+- [Pricing and project-enquiry backend contract](docs/pricing-start-project-backend.md)
+- [Vercel routing and static delivery](docs/vercel-routing.md)
+- [Architecture and interaction diagrams](docs/flows/)
 
 ## Licence
 
-The repository uses the [Portfolio Source and Design Licence](LICENSE). It allows people to read, study, and reuse adapted technical code, including in their own projects, but it does not allow publishing this repository as-is, selling it as a template, or reusing this project's distinctive UI design, content, branding, illustrations, or other project-specific creative assets. Third-party fonts and assets remain under their own licences.
+This is a source-available project under the [Portfolio Source and Design Licence](LICENSE). It permits studying the source and reusing adapted technical code subject to its terms. It does not permit redistributing the repository as a template or reproducing its distinctive design, content, branding, or creative assets. Third-party assets retain their own licences.
