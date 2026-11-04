@@ -70,12 +70,12 @@ export const newsNotes: readonly NewsNote[] = [
   {
     slug: "ai-agent-cloud-hosting-costs",
     date: "2026-11-04",
-    title: "AI Agent Cloud Hosting: How Long Can a $5 Sandbox Last?",
-    summary: "Compare nine AI agent hosting options, test Agent37’s $4.76 claim, and see how shared capacity, upstream prices and plan changes can affect what you pay.",
+    title: "VPS Hosting for AI Agents: What’s Under the Sandbox?",
+    summary: "Compare VPS hosting for AI agents, what Agent37’s full VM costs, where Firecracker fits, and how shared hardware and pricing affect always-on workloads.",
     kind: "infra",
     document: "/news/ai-agent-cloud-hosting-costs.md",
-    keywords: ["AI agent cloud hosting", "AI sandbox pricing", "persistent agent sandboxes", "Claude Code cloud hosting", "Codex cloud hosting", "agent compute providers"],
-    minutes: 8,
+    keywords: ["VPS hosting for AI agents", "Firecracker microVM", "Agent37 VM pricing", "persistent cloud computer", "Claude Code VPS", "Codex VPS"],
+    minutes: 7,
     reference: {
       label: "Agent37 Cloud — Published sandbox rates",
       href: "https://www.agent37.com/pricing"
