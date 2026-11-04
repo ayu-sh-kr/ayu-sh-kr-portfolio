@@ -68,6 +68,20 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "ai-agent-cloud-hosting-costs",
+    date: "2026-11-04",
+    title: "VPS Hosting for AI Agents: What’s Under the Sandbox?",
+    summary: "Compare VPS hosting for AI agents, what Agent37’s full VM costs, where Firecracker fits, and how shared hardware and pricing affect always-on workloads.",
+    kind: "infra",
+    document: "/news/ai-agent-cloud-hosting-costs.md",
+    keywords: ["VPS hosting for AI agents", "Firecracker microVM", "Agent37 VM pricing", "persistent cloud computer", "Claude Code VPS", "Codex VPS"],
+    minutes: 7,
+    reference: {
+      label: "Agent37 Cloud — Published sandbox rates",
+      href: "https://www.agent37.com/pricing"
+    }
+  },
+  {
     slug: "openai-pando-git-backend-anthropic-scion",
     date: "2026-11-03",
     title: "OpenAI Pando: how its Git backend scales pushes and fetches",
