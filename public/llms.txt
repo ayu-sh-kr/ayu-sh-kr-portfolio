@@ -49,7 +49,7 @@
 
 ## Recent Dispatch notes
 
-- [AI Agent Cloud Hosting: What a $5 Sandbox Buys](https://www.ayu-sh-kr.com/news/ai-agent-cloud-hosting-costs/): Compare nine AI agent hosting options, sandbox pricing, upstream compute, and the trade-offs against Claude Code, Codex and major clouds. [Article Markdown](https://www.ayu-sh-kr.com/news/ai-agent-cloud-hosting-costs.md).
+- [AI Agent Cloud Hosting: How Long Can a $5 Sandbox Last?](https://www.ayu-sh-kr.com/news/ai-agent-cloud-hosting-costs/): Compare nine AI agent hosting options and investigate what makes low sandbox prices possible, what the prices buy, and how they could change. [Article Markdown](https://www.ayu-sh-kr.com/news/ai-agent-cloud-hosting-costs.md).
 - [OpenAI Pando: how its Git backend scales pushes and fetches](https://www.ayu-sh-kr.com/news/openai-pando-git-backend-anthropic-scion/): OpenAI’s Git backend, its comparison with Anthropic’s Scion, and earlier source-control efforts. [Article Markdown](https://www.ayu-sh-kr.com/news/openai-pando-git-backend-anthropic-scion.md).
 
 - [MIT researchers use GPT-6 Astra to edit Qwen’s weights](https://www.ayu-sh-kr.com/news/mit-weight-space-programming-gpt-6-astra-qwen/): How Astra edited Qwen to reduce reasoning loops, what the benchmark gains show, and the limits of the experiment. [Article Markdown](https://www.ayu-sh-kr.com/news/mit-weight-space-programming-gpt-6-astra-qwen.md).

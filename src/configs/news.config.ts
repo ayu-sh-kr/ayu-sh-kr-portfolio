@@ -70,8 +70,8 @@ export const newsNotes: readonly NewsNote[] = [
   {
     slug: "ai-agent-cloud-hosting-costs",
     date: "2026-11-04",
-    title: "AI Agent Cloud Hosting: What a $5 Sandbox Buys",
-    summary: "Compare nine ways to run AI agents, what their cloud sandboxes cost, where the compute comes from, and how they compare with Claude Code, Codex and larger clouds.",
+    title: "AI Agent Cloud Hosting: How Long Can a $5 Sandbox Last?",
+    summary: "Compare nine AI agent hosting options, test Agent37’s $4.76 claim, and see how shared capacity, upstream prices and plan changes can affect what you pay.",
     kind: "infra",
     document: "/news/ai-agent-cloud-hosting-costs.md",
     keywords: ["AI agent cloud hosting", "AI sandbox pricing", "persistent agent sandboxes", "Claude Code cloud hosting", "Codex cloud hosting", "agent compute providers"],
