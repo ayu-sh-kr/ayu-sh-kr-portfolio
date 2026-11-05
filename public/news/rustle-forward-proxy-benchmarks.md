@@ -2,11 +2,19 @@
 
 Édouard Courty says he built **Rustle**, an open-source forward proxy in Rust, in a few days with substantial help from Claude. In his launch benchmark, it handled **55,258 requests per second on one core** with 1 KB HTTP responses. The architecture behind that result starts with a simple decision about who owns each connection.
 
-> **Forward and reverse proxies.** A forward proxy handles outbound requests for clients. A build runner, for example, might use Rustle to reach a package registry. A reverse proxy handles inbound requests for a service. The registry might put one in front of its own servers to distribute incoming traffic.
+## Forward proxy
+
+A forward proxy sends requests to other services on behalf of a client. For example, when a company build runner downloads a dependency, it can ask Rustle to contact the package registry through a controlled network exit.
+
+## Reverse proxy
+
+A reverse proxy receives requests on behalf of a service and sends them to one of its backend servers. When you open an online shop, your browser requests the shop’s public address. A reverse proxy can pass that request to an available shop server and return the page.
 
 ## Each connection stays with one worker
 
-Rustle runs one Tokio worker per CPU core. The kernel hands an incoming connection to one worker, which keeps it for its lifetime. Each worker has its own event loop, listening socket and upstream connection pool. If the build runner sends another request over the same open connection, the same worker can handle it with reused buffers and little coordination with other cores.
+Rustle runs one worker thread with its own Tokio runtime per CPU core. The kernel hands an incoming connection to one worker, which keeps it for its lifetime. Each worker has its own event loop, listening socket and upstream connection pool. If the build runner sends another request over the same open connection, the same worker can handle it with reused buffers and little coordination with other cores.
+
+> **What is a Tokio worker?** Tokio is a Rust runtime for asynchronous work. In Rustle, each worker runs a Tokio event loop on its own thread. While one connection waits for bytes, the loop can advance another connection that’s ready, so one core can handle many open connections.
 
 ![Isometric view of two client connections carrying repeated requests. Each stream stays on its assigned Rustle worker, which has a listening socket, event loop and upstream connection pool.](/news/assets/rustle-forward-proxy-benchmarks/connection-per-core.svg)
 
@@ -29,3 +37,4 @@ The next step is to see whether that design holds up when someone else runs the 
 - [Courty’s launch write-up](https://medium.com/@edouard.courty/rustle-the-fastest-forward-proxy-written-in-rust-764e983f3b73) and his LinkedIn launch post.
 - [Rustle source and benchmark results](https://github.com/EdouardCourty/rustle#benchmarks) and [benchmark methodology and tuning](https://github.com/EdouardCourty/rustle/blob/main/benchmarks/documentation/FAIRNESS.md).
 - [MDN’s guide to forward and reverse proxies](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Proxy_servers_and_tunneling).
+- [Tokio runtime documentation](https://docs.rs/tokio/latest/tokio/runtime/).
