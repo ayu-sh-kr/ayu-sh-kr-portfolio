@@ -531,6 +531,11 @@
       "permanent": true
     },
     {
+      "source": "/news/kawa-kafka-gateway",
+      "destination": "/news/kawa-kafka-gateway/",
+      "permanent": true
+    },
+    {
       "source": "/news/rustle-forward-proxy-benchmarks",
       "destination": "/news/rustle-forward-proxy-benchmarks/",
       "permanent": true
