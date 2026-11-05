@@ -4,15 +4,15 @@
 
 > **Forward proxy.** A forward proxy sits on the client’s side and relays its outgoing requests.
 >
-> Say you open an online shop on a work laptop. Your employer has set up the browser to use its proxy, so the request goes there first. The proxy checks the destination against the company’s browsing rules and, if allowed, connects you to the shop.
+> For example, you want to check the weather. If your phone uses a forward proxy, it asks the proxy to connect to the weather site. The proxy makes that connection for you.
 
 > **Reverse proxy.** A reverse proxy sits on the website’s side and routes incoming requests to the servers behind it.
 >
-> Say that same shop runs a flash sale. Shoppers all use the same web address, and the shop’s proxy spreads their requests across several servers so one machine doesn’t have to handle the rush alone.
+> For example, you open a weather app to see tomorrow’s forecast. The app sends its request to the weather service, whose reverse proxy picks a server to answer it and relays the forecast back.
 
 ## Each connection stays with one worker
 
-Rustle runs one worker thread with its own Tokio runtime per CPU core. The kernel hands an incoming connection to one worker, which keeps it for its lifetime. Each worker has its own event loop, listening socket and upstream connection pool. If a browser sends another request over the same open connection, the same worker can handle it with reused buffers and little coordination with other cores.
+Rustle runs one worker thread with its own Tokio runtime per CPU core. The kernel hands an incoming connection to one worker, which keeps it for its lifetime. Each worker has its own event loop, listening socket and upstream connection pool. If a client sends another request over the same open connection, the same worker can handle it with reused buffers and little coordination with other cores.
 
 > **What is a Tokio worker?** Tokio is a Rust runtime for asynchronous work. In Rustle, each worker runs a Tokio event loop on its own thread. While one connection waits for bytes, the loop can advance another connection that’s ready, so one core can handle many open connections.
 
