@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="418" viewBox="0 0 720 418" role="img" aria-labelledby="title desc">
+<title id="title">From virtual topic to Kafka broker</title>
+<desc id="desc">An order service sends a Kafka request for orders to Kawa. Kawa maps the virtual name to orders-v2 and sends the request to the Kafka broker. The two dashed paths connect three isometric components in sequence.</desc>
+<style>
+text { font-family: Arial, sans-serif; font-size: 20px; fill: #f7f7f6; }
+.heading { font-size: 26px; font-weight: 600; }
+.note { font-size: 18px; fill: #d0d0cd; }
+.hardware { stroke: #858589; stroke-width: 1.4; stroke-linejoin: round; }
+.leader { fill: none; stroke: #a2a2a4; stroke-width: 1.3; }
+.rail { fill: none; stroke: #f7f7f6; stroke-width: 2.5; stroke-linecap: round; stroke-dasharray: 5 5; }
+.packet { fill: #f7f7f6; stroke: #101011; stroke-width: 1.4; }
+@media (prefers-reduced-motion: reduce) { .packet { display: none; } }
+</style>
+<defs><marker id="arrow" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="4" markerHeight="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#f7f7f6"/></marker></defs>
+<rect x="1" y="1" width="718" height="416" rx="19" fill="#101011" stroke="#3e3e41" stroke-width="2"/>
+<text x="25" y="45" class="heading">From virtual topic to Kafka broker</text>
+<g class="hardware">
+<polygon points="110.6,171.0 477.8,383.0 477.8,392.0 110.6,180.0" fill="#252528"/>
+<polygon points="611.2,306.0 477.8,383.0 477.8,392.0 611.2,315.0" fill="#3a3a3d"/>
+<polygon points="244.0,94.0 611.2,306.0 477.8,383.0 110.6,171.0" fill="#222225"/>
+</g>
+<path d="M270.0,186.0 L326.3,218.5" class="rail" marker-end="url(#arrow)"/>
+<path d="M395.6,258.5 L454.4,292.5" class="rail" marker-end="url(#arrow)"/>
+<g class="hardware">
+<polygon points="179.0,150.5 245.7,189.0 245.7,200.0 179.0,161.5" fill="#262629"/>
+<polygon points="294.2,161.0 245.7,189.0 245.7,200.0 294.2,172.0" fill="#343438"/>
+<polygon points="227.5,122.5 294.2,161.0 245.7,189.0 179.0,150.5" fill="#454549"/>
+<polygon points="189.4,119.5 198.1,124.5 198.1,158.5 189.4,153.5" fill="#262629"/>
+<polygon points="241.4,99.5 198.1,124.5 198.1,158.5 241.4,133.5" fill="#343438"/>
+<polygon points="232.7,94.5 241.4,99.5 198.1,124.5 189.4,119.5" fill="#454549"/>
+<polygon points="236.2,109.5 203.3,128.5 203.3,150.5 236.2,131.5" fill="#d0d0cd"/>
+<polygon points="295.1,224.5 364.4,264.5 364.4,276.5 295.1,236.5" fill="#262629"/>
+<polygon points="426.7,228.5 364.4,264.5 364.4,276.5 426.7,240.5" fill="#343438"/>
+<polygon points="357.4,188.5 426.7,228.5 364.4,264.5 295.1,224.5" fill="#454549"/>
+<polygon points="305.5,214.5 364.4,248.5 364.4,258.5 305.5,224.5" fill="#262629"/>
+<polygon points="416.3,218.5 364.4,248.5 364.4,258.5 416.3,228.5" fill="#343438"/>
+<polygon points="357.4,184.5 416.3,218.5 364.4,248.5 305.5,214.5" fill="#454549"/>
+<polygon points="322.8,207.5 361.8,230.0 361.8,238.0 322.8,215.5" fill="#56565a"/>
+<polygon points="398.2,209.0 361.8,230.0 361.8,238.0 398.2,217.0" fill="#77777b"/>
+<polygon points="359.2,186.5 398.2,209.0 361.8,230.0 322.8,207.5" fill="#a6a6aa"/>
+<polygon points="426.7,296.5 489.1,332.5 489.1,344.5 426.7,308.5" fill="#262629"/>
+<polygon points="544.5,300.5 489.1,332.5 489.1,344.5 544.5,312.5" fill="#343438"/>
+<polygon points="482.2,264.5 544.5,300.5 489.1,332.5 426.7,296.5" fill="#454549"/>
+<path d="M438.0,309.0 L457.0,320.0" class="leader"/>
+<polygon points="426.7,282.5 489.1,318.5 489.1,330.5 426.7,294.5" fill="#262629"/>
+<polygon points="544.5,286.5 489.1,318.5 489.1,330.5 544.5,298.5" fill="#343438"/>
+<polygon points="482.2,250.5 544.5,286.5 489.1,318.5 426.7,282.5" fill="#454549"/>
+<path d="M438.0,295.0 L457.0,306.0" class="leader"/>
+<polygon points="426.7,268.5 489.1,304.5 489.1,316.5 426.7,280.5" fill="#262629"/>
+<polygon points="544.5,272.5 489.1,304.5 489.1,316.5 544.5,284.5" fill="#343438"/>
+<polygon points="482.2,236.5 544.5,272.5 489.1,304.5 426.7,268.5" fill="#454549"/>
+<path d="M438.0,281.0 L457.0,292.0" class="leader"/>
+</g>
+<circle r="4.5" class="packet"><animate attributeName="opacity" values="1;1;0;0" keyTimes="0;.36;.37;1" begin="0s" dur="5.5s" repeatCount="indefinite"/><animateMotion path="M270.0,186.0 L326.3,218.5" keyPoints="0;1;1" keyTimes="0;.36;1" calcMode="linear" begin="0s" dur="5.5s" repeatCount="indefinite"/></circle>
+<circle r="4.5" opacity="0" class="packet"><animate attributeName="opacity" values="1;1;0;0" keyTimes="0;.36;.37;1" begin="2.1s" dur="5.5s" repeatCount="indefinite"/><animateMotion path="M395.6,258.5 L454.4,292.5" keyPoints="0;1;1" keyTimes="0;.36;1" calcMode="linear" begin="2.1s" dur="5.5s" repeatCount="indefinite"/></circle>
+<path d="M160 111H184 L218.9,114.5" class="leader"/>
+<text x="40" y="116">Order service</text>
+<path d="M374 126V149 L360.0,208.0" class="leader"/>
+<text x="348" y="117">Kawa</text>
+<path d="M579 271H544 L505.5,305.0" class="leader"/>
+<text x="590" y="278">Kafka broker</text>
+<text x="25" y="405" class="note">The client sends orders. Kawa routes it to orders-v2.</text>
+</svg>
