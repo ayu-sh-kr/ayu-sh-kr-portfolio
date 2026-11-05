@@ -14,7 +14,7 @@ Kawa understands those Kafka requests and replies. It replaces broker and group 
 
 That position lets Kawa apply rules to requests and translate the topic names services use. Both the order service’s writes and its subscribers’ reads can go through the same mapping.
 
-![Isometric diagram showing the order service sending a request for the virtual topic orders to Kawa, which routes it to the physical orders-v2 topic in Kafka.](/news/assets/kawa-kafka-gateway/virtual-topic-route.svg)
+![Centered isometric view of the order service publishing events and shipping and billing reading them through Kawa. The gateway applies access rules and maps orders to orders-v2 across an illustrative two-broker Kafka cluster.](/news/assets/kawa-kafka-gateway/virtual-topic-route.svg)
 
 ## A stable name for the services consuming orders
 
