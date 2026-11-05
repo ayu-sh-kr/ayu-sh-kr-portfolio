@@ -68,6 +68,20 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "kawa-kafka-gateway",
+    date: "2026-11-05",
+    title: "Kawa puts virtual topics and access rules in front of Kafka",
+    summary: "How the Kawa Kafka gateway rewrites broker addresses, maps virtual topics and applies access rules, and what to measure before putting it in the request path.",
+    kind: "infra",
+    document: "/news/kawa-kafka-gateway.md",
+    keywords: ["Kawa Kafka gateway", "Kafka virtual topics", "Kafka broker address rewriting", "Kafka access control"],
+    minutes: 2.5,
+    reference: {
+      label: "Kawa — v0.1.0 source",
+      href: "https://github.com/kawa-platform/kawa-gateway/tree/v0.1.0"
+    }
+  },
+  {
     slug: "rustle-forward-proxy-benchmarks",
     date: "2026-11-05",
     title: "Rustle hits 55,258 requests per second in a single-core proxy benchmark",

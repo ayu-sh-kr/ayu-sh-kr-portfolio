@@ -49,6 +49,7 @@
 
 ## Recent Dispatch notes
 
+- [Kawa puts virtual topics and access rules in front of Kafka](https://www.ayu-sh-kr.com/news/kawa-kafka-gateway/): Kafka broker routing, virtual topics, and access rules. [Article Markdown](https://www.ayu-sh-kr.com/news/kawa-kafka-gateway.md).
 - [Rustle hits 55,258 requests per second in a single-core proxy benchmark](https://www.ayu-sh-kr.com/news/rustle-forward-proxy-benchmarks/): The Rust forward proxy’s one-core benchmark, connection ownership, and Claude-assisted development. [Article Markdown](https://www.ayu-sh-kr.com/news/rustle-forward-proxy-benchmarks.md).
 - [VPS Hosting for AI Agents: What’s Under the Sandbox?](https://www.ayu-sh-kr.com/news/ai-agent-cloud-hosting-costs/): Compare persistent agent VMs, see where AWS’s Firecracker fits, and trace the costs behind cheap always-on hosting. [Article Markdown](https://www.ayu-sh-kr.com/news/ai-agent-cloud-hosting-costs.md).
 - [OpenAI Pando: how its Git backend scales pushes and fetches](https://www.ayu-sh-kr.com/news/openai-pando-git-backend-anthropic-scion/): OpenAI’s Git backend, its comparison with Anthropic’s Scion, and earlier source-control efforts. [Article Markdown](https://www.ayu-sh-kr.com/news/openai-pando-git-backend-anthropic-scion.md).
