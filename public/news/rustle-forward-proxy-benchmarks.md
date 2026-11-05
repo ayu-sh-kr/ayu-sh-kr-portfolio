@@ -14,7 +14,11 @@ From the commands you use to copy a file to the library that develops a camera�
 
 ## Each connection stays with one worker
 
-When a client connects to Rustle, the proxy has to relay traffic between that client and its destination. Rustle divides that work across CPU cores, with one worker thread and its own Tokio runtime per core. The kernel hands an incoming connection to one worker, which keeps it for its lifetime. Each worker has its own event loop, listening socket and upstream connection pool. If a client sends another request over the same open connection, the same worker can handle it with reused buffers and little coordination with other cores.
+Rustle runs one worker thread per core, each with its own single-threaded Tokio runtime and listening socket. The listeners share a port, so clients can all connect to the same address. The operating system hands each new connection to one listener. From there, the worker that accepted it handles that connection until it closes.
+
+On an open HTTP connection, the worker reads the request from a buffer it can reuse on the next request. It also keeps its own pool of connections to destination servers. When a suitable connection is already open, the worker can borrow it from its pool and send the request without opening a new one or coordinating with another core.
+
+The workers still share a few things, including a DNS cache for hostname lookups, but most of the forwarding work stays local. Large transfers take a different path on Linux. Once a flow is sustained, Rustle can use `splice()` to relay bytes through a kernel pipe without copying the payload through the proxy’s memory.
 
 > **What is a Tokio worker?** Tokio is a Rust runtime for asynchronous work. In Rustle, each worker runs a Tokio event loop on its own thread. While one connection waits for bytes, the loop can advance another connection that’s ready, so one core can handle many open connections.
 
@@ -22,11 +26,13 @@ When a client connects to Rustle, the proxy has to relay traffic between that cl
 
 ## What the benchmark measured
 
-Keeping connections local to a worker cuts down on coordination. Courty’s benchmark put that design up against four existing proxies. He reports that Rustle led in **all 41 tests it could run** against 3proxy, Squid, gost and Tinyproxy. In the plain HTTP test with 1 KB responses, it delivered **2.6×** the throughput of 3proxy, the runner-up in that test.
+The 1 KB test is a useful place to look for the effect of that design. With a small response, reading the request, finding an upstream connection and sending the reply account for more of the work than they do in a large download. Rustle completed **55,258 requests per second** on one core, about **2.6×** 3proxy’s 21,032. The chart shows throughput for the whole proxy under that workload. It can’t isolate how much of the lead came from any one design choice.
 
 ![Single-core HTTP throughput with 1 KB responses. Rustle 55,258, 3proxy 21,032, Squid 15,140, Tinyproxy 7,580 and gost 4,755 requests per second.](/news/assets/rustle-forward-proxy-benchmarks/single-core-throughput.svg)
 
-The project pinned each proxy to one core, enabled authentication and reported the median of three runs across three bare-metal servers. In a separate test, Rustle used **95 MB for 25,000 idle tunnels**, compared with Tinyproxy’s 274 MB. The figures come from the project’s own test campaign. Bulk transfers approached the test network’s capacity, so the 1 KB result tells you more about this small-response workload than about large downloads.
+The project ran the load generator, proxy and origin on separate machines. It pinned each proxy to one core, enabled authentication and reported the median of three runs. Each proxy was tested at several connection counts, and the published result uses its best run level without client errors. Courty reports that Rustle led in **all 41 tests it could run**, though some competitors lacked features needed for particular tests.
+
+Two other results show how the workload changes the comparison. With **25,000 idle tunnels**, Rustle used **95 MB** of memory and Tinyproxy used **274 MB**. That measures the cost of holding connections open. For active bulk transfers, Rustle reached about **22 Gbit/s** on a link measured at **23.5 Gbit/s**, leaving little room to see how fast the proxy itself could go. All of these figures come from the project’s own test campaign.
 
 ## What backend experience brought to the project
 

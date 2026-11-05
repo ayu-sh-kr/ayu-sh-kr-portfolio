@@ -75,7 +75,7 @@ export const newsNotes: readonly NewsNote[] = [
     kind: "infra",
     document: "/news/rustle-forward-proxy-benchmarks.md",
     keywords: ["Rustle forward proxy", "Rust proxy benchmark", "Tokio per-core architecture", "forward vs reverse proxy"],
-    minutes: 2,
+    minutes: 3,
     reference: {
       label: "Rustle — Source and benchmark results",
       href: "https://github.com/EdouardCourty/rustle#benchmarks"
