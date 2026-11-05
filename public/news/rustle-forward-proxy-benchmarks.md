@@ -8,7 +8,7 @@
 
 Rustle runs one Tokio worker per CPU core. The kernel hands an incoming connection to one worker, which keeps it for its lifetime. Each worker has its own event loop, listening socket and upstream connection pool. If the build runner sends another request over the same open connection, the same worker can handle it with reused buffers and little coordination with other cores.
 
-![Isometric view of a client connection assigned to one of two Rustle workers. The highlighted path stays on core 2 on its way to an upstream server.](/news/assets/rustle-forward-proxy-benchmarks/connection-per-core.svg)
+![Isometric view of two client connections carrying repeated requests. Each stream stays on its assigned Rustle worker, which has a listening socket, event loop and upstream connection pool.](/news/assets/rustle-forward-proxy-benchmarks/connection-per-core.svg)
 
 ## What the benchmark measured
 
