@@ -1,0 +1,206 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="420" viewBox="0 0 720 420" role="img" aria-labelledby="title desc">
+<title id="title">One connection stays on one core</title>
+<desc id="desc">Isometric board with a client, two separate Rustle worker lanes and upstream origins. A highlighted connection enters at the client, takes the kernel branch to core 2, and reaches an origin through the same worker lane.</desc>
+<style>
+text { font: 650 23px system-ui, sans-serif; fill: #242c12; }
+.heading { font-size: 31px; font-weight: 700; }
+.note { font-size: 20px; font-weight: 500; }
+.edge { stroke: #5d702d; stroke-width: 1.5; stroke-linejoin: round; }
+.route { fill: none; stroke: #65783c; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+.active { stroke: #395222; stroke-width: 3; }
+.leader { fill: none; stroke: #73864c; stroke-width: 1.4; }
+.packet { fill: #354c22; stroke: #f8faf2; stroke-width: 1.5; }
+@media (prefers-reduced-motion: reduce) { .packet { display: none; } }
+</style>
+<defs><marker id="arrow" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="4" markerHeight="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#65783c"/></marker></defs>
+<rect x="1" y="1" width="718" height="418" rx="19" fill="#f8faf2" stroke="#d9e2bd" stroke-width="2"/>
+<text x="24" y="46" class="heading" text-anchor="start">One connection stays on one core</text>
+<polygon points="45.62,144.84 423.90,363.24 423.90,371.04 45.62,152.64" fill="#bdce8a" class="edge"/>
+<polygon points="529.28,302.40 423.90,363.24 423.90,371.04 529.28,310.20" fill="#d9e2bd" class="edge"/>
+<polygon points="151.00,84.00 529.28,302.40 423.90,363.24 45.62,144.84" fill="#edf2e0" class="edge"/>
+<path d="M157.75,148.74 L203.69,175.26" class="route active" marker-end="url(#arrow)"/>
+<path d="M203.69,175.26 L226.66,162.00 L267.19,185.40 L267.19,176.04 L368.51,234.54 L368.51,243.90 L440.11,285.24" class="route" marker-end="url(#arrow)"/>
+<path d="M203.69,175.26 L180.72,188.52 L221.25,211.92 L221.25,202.56 L322.58,261.06 L322.58,270.42 L394.18,311.76" class="route active" marker-end="url(#arrow)"/>
+<polygon points="252.32,184.62 353.65,243.12 353.65,252.48 252.32,193.98" fill="#a9ba76" class="edge"/>
+<polygon points="383.37,225.96 353.65,243.12 353.65,252.48 383.37,235.32" fill="#bdce8a" class="edge"/>
+<polygon points="282.05,167.46 383.37,225.96 353.65,243.12 252.32,184.62" fill="#d9e2bd" class="edge"/>
+<path d="M267.19,176.04 L368.51,234.54" class="route"/>
+<polygon points="286.10,177.60 300.29,185.79 300.29,188.13 286.10,179.94" fill="#a9ba76" class="edge"/>
+<polygon points="307.04,181.89 300.29,185.79 300.29,188.13 307.04,184.23" fill="#bdce8a" class="edge"/>
+<polygon points="292.85,173.70 307.04,181.89 300.29,185.79 286.10,177.60" fill="#eaf0dc" class="edge"/>
+<polygon points="267.19,188.52 281.37,196.71 281.37,199.05 267.19,190.86" fill="#a9ba76" class="edge"/>
+<polygon points="288.13,192.81 281.37,196.71 281.37,199.05 288.13,195.15" fill="#bdce8a" class="edge"/>
+<polygon points="273.94,184.62 288.13,192.81 281.37,196.71 267.19,188.52" fill="#eaf0dc" class="edge"/>
+<polygon points="317.17,195.54 331.36,203.73 331.36,206.07 317.17,197.88" fill="#a9ba76" class="edge"/>
+<polygon points="338.11,199.83 331.36,203.73 331.36,206.07 338.11,202.17" fill="#bdce8a" class="edge"/>
+<polygon points="323.93,191.64 338.11,199.83 331.36,203.73 317.17,195.54" fill="#eaf0dc" class="edge"/>
+<polygon points="298.26,206.46 312.44,214.65 312.44,216.99 298.26,208.80" fill="#a9ba76" class="edge"/>
+<polygon points="319.20,210.75 312.44,214.65 312.44,216.99 319.20,213.09" fill="#bdce8a" class="edge"/>
+<polygon points="305.01,202.56 319.20,210.75 312.44,214.65 298.26,206.46" fill="#eaf0dc" class="edge"/>
+<polygon points="348.25,213.48 362.43,221.67 362.43,224.01 348.25,215.82" fill="#a9ba76" class="edge"/>
+<polygon points="369.19,217.77 362.43,221.67 362.43,224.01 369.19,220.11" fill="#bdce8a" class="edge"/>
+<polygon points="355.00,209.58 369.19,217.77 362.43,221.67 348.25,213.48" fill="#eaf0dc" class="edge"/>
+<polygon points="329.33,224.40 343.52,232.59 343.52,234.93 329.33,226.74" fill="#a9ba76" class="edge"/>
+<polygon points="350.27,228.69 343.52,232.59 343.52,234.93 350.27,231.03" fill="#bdce8a" class="edge"/>
+<polygon points="336.09,220.50 350.27,228.69 343.52,232.59 329.33,224.40" fill="#eaf0dc" class="edge"/>
+<polygon points="427.95,283.68 462.41,303.57 462.41,312.15 427.95,292.26" fill="#a9ba76" class="edge"/>
+<polygon points="486.72,289.53 462.41,303.57 462.41,312.15 486.72,298.11" fill="#bdce8a" class="edge"/>
+<polygon points="452.27,269.64 486.72,289.53 462.41,303.57 427.95,283.68" fill="#d9e2bd" class="edge"/>
+<polygon points="427.95,273.54 462.41,293.43 462.41,302.01 427.95,282.12" fill="#a9ba76" class="edge"/>
+<polygon points="486.72,279.39 462.41,293.43 462.41,302.01 486.72,287.97" fill="#bdce8a" class="edge"/>
+<polygon points="452.27,259.50 486.72,279.39 462.41,293.43 427.95,273.54" fill="#d9e2bd" class="edge"/>
+<polygon points="427.95,263.40 462.41,283.29 462.41,291.87 427.95,271.98" fill="#a9ba76" class="edge"/>
+<polygon points="486.72,269.25 462.41,283.29 462.41,291.87 486.72,277.83" fill="#bdce8a" class="edge"/>
+<polygon points="452.27,249.36 486.72,269.25 462.41,283.29 427.95,263.40" fill="#d9e2bd" class="edge"/>
+<polygon points="206.39,211.14 307.72,269.64 307.72,279.00 206.39,220.50" fill="#a9ba76" class="edge"/>
+<polygon points="337.44,252.48 307.72,269.64 307.72,279.00 337.44,261.84" fill="#bdce8a" class="edge"/>
+<polygon points="236.11,193.98 337.44,252.48 307.72,269.64 206.39,211.14" fill="#d9e2bd" class="edge"/>
+<path d="M221.25,202.56 L322.58,261.06" class="route active"/>
+<polygon points="240.17,204.12 254.35,212.31 254.35,214.65 240.17,206.46" fill="#a9ba76" class="edge"/>
+<polygon points="261.11,208.41 254.35,212.31 254.35,214.65 261.11,210.75" fill="#bdce8a" class="edge"/>
+<polygon points="246.92,200.22 261.11,208.41 254.35,212.31 240.17,204.12" fill="#eaf0dc" class="edge"/>
+<polygon points="221.25,215.04 235.44,223.23 235.44,225.57 221.25,217.38" fill="#a9ba76" class="edge"/>
+<polygon points="242.19,219.33 235.44,223.23 235.44,225.57 242.19,221.67" fill="#bdce8a" class="edge"/>
+<polygon points="228.01,211.14 242.19,219.33 235.44,223.23 221.25,215.04" fill="#eaf0dc" class="edge"/>
+<polygon points="271.24,222.06 285.42,230.25 285.42,232.59 271.24,224.40" fill="#a9ba76" class="edge"/>
+<polygon points="292.18,226.35 285.42,230.25 285.42,232.59 292.18,228.69" fill="#bdce8a" class="edge"/>
+<polygon points="277.99,218.16 292.18,226.35 285.42,230.25 271.24,222.06" fill="#eaf0dc" class="edge"/>
+<polygon points="252.32,232.98 266.51,241.17 266.51,243.51 252.32,235.32" fill="#a9ba76" class="edge"/>
+<polygon points="273.27,237.27 266.51,241.17 266.51,243.51 273.27,239.61" fill="#bdce8a" class="edge"/>
+<polygon points="259.08,229.08 273.27,237.27 266.51,241.17 252.32,232.98" fill="#eaf0dc" class="edge"/>
+<polygon points="302.31,240.00 316.50,248.19 316.50,250.53 302.31,242.34" fill="#a9ba76" class="edge"/>
+<polygon points="323.25,244.29 316.50,248.19 316.50,250.53 323.25,246.63" fill="#bdce8a" class="edge"/>
+<polygon points="309.07,236.10 323.25,244.29 316.50,248.19 302.31,240.00" fill="#eaf0dc" class="edge"/>
+<polygon points="283.40,250.92 297.58,259.11 297.58,261.45 283.40,253.26" fill="#a9ba76" class="edge"/>
+<polygon points="304.34,255.21 297.58,259.11 297.58,261.45 304.34,257.55" fill="#bdce8a" class="edge"/>
+<polygon points="290.15,247.02 304.34,255.21 297.58,259.11 283.40,250.92" fill="#eaf0dc" class="edge"/>
+<polygon points="382.02,310.20 416.47,330.09 416.47,338.67 382.02,318.78" fill="#a9ba76" class="edge"/>
+<polygon points="440.79,316.05 416.47,330.09 416.47,338.67 440.79,324.63" fill="#bdce8a" class="edge"/>
+<polygon points="406.34,296.16 440.79,316.05 416.47,330.09 382.02,310.20" fill="#d9e2bd" class="edge"/>
+<polygon points="382.02,300.06 416.47,319.95 416.47,328.53 382.02,308.64" fill="#a9ba76" class="edge"/>
+<polygon points="440.79,305.91 416.47,319.95 416.47,328.53 440.79,314.49" fill="#bdce8a" class="edge"/>
+<polygon points="406.34,286.02 440.79,305.91 416.47,319.95 382.02,300.06" fill="#d9e2bd" class="edge"/>
+<polygon points="382.02,289.92 416.47,309.81 416.47,318.39 382.02,298.50" fill="#a9ba76" class="edge"/>
+<polygon points="440.79,295.77 416.47,309.81 416.47,318.39 440.79,304.35" fill="#bdce8a" class="edge"/>
+<polygon points="406.34,275.88 440.79,295.77 416.47,309.81 382.02,289.92" fill="#d9e2bd" class="edge"/>
+<polygon points="101.69,122.61 145.60,147.96 145.60,155.76 101.69,130.41" fill="#a9ba76" class="edge"/>
+<polygon points="169.91,133.92 145.60,147.96 145.60,155.76 169.91,141.72" fill="#bdce8a" class="edge"/>
+<polygon points="126.01,108.57 169.91,133.92 145.60,147.96 101.69,122.61" fill="#d9e2bd" class="edge"/>
+<polygon points="107.09,106.23 113.17,109.74 113.17,128.46 107.09,124.95" fill="#a9ba76" class="edge"/>
+<polygon points="136.14,96.48 113.17,109.74 113.17,128.46 136.14,115.20" fill="#bdce8a" class="edge"/>
+<polygon points="130.06,92.97 136.14,96.48 113.17,109.74 107.09,106.23" fill="#d9e2bd" class="edge"/>
+<
+p
+o
+l
+y
+g
+o
+n
+ 
+p
+o
+i
+n
+t
+s
+=
+"
+1
+3
+3
+.
+4
+4
+,
+1
+0
+1
+.
+1
+6
+ 
+1
+1
+5
+.
+8
+7
+,
+1
+1
+1
+.
+3
+0
+ 
+1
+1
+5
+.
+8
+7
+,
+1
+2
+3
+.
+0
+0
+ 
+1
+3
+3
+.
+4
+4
+,
+1
+1
+2
+.
+8
+6
+"
+ 
+f
+i
+l
+l
+=
+"
+#
+6
+4
+7
+9
+4
+1
+"
+ 
+c
+l
+a
+s
+s
+=
+"
+e
+d
+g
+e
+"
+/
+>
+<path d="M108 95H129 L129.38,120.66" class="leader"/>
+<text x="43" y="99" class="" text-anchor="start">Client</text>
+<path d="M370 103V124 L323.25,198.27" class="leader"/>
+<text x="332" y="96" class="" text-anchor="start">Core 1</text>
+<path d="M203 273H234 L257.05,236.49" class="leader"/>
+<text x="122" y="281" class="" text-anchor="start">Core 2</text>
+<path d="M590 307H549 L430.66,307.86" class="leader"/>
+<text x="598" y="313" class="" text-anchor="start">Origins</text>
+<circle cx="203.69" cy="175.26" r="5" fill="#395222"/>
+<circle r="5.5" class="packet"><animateMotion dur="6s" repeatCount="indefinite" path="M157.75,148.74 L203.69,175.26 L180.72,188.52 L221.25,211.92 L221.25,202.56 L322.58,261.06 L322.58,270.42 L394.18,311.76" keyPoints="0;0;1;1" keyTimes="0;.08;.76;1" calcMode="linear"/></circle>
+<text x="24" y="391" class="note" text-anchor="start">The kernel assigns a worker at connection setup.</text>
+</svg>
