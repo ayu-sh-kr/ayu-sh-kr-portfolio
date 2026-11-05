@@ -68,6 +68,20 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "rustle-forward-proxy-benchmarks",
+    date: "2026-11-05",
+    title: "Rustle hits 55,258 requests per second in a single-core proxy benchmark",
+    summary: "How Rustle keeps each connection on one core, what its forward proxy benchmarks measured, and how backend design guided the Claude-assisted build.",
+    kind: "infra",
+    document: "/news/rustle-forward-proxy-benchmarks.md",
+    keywords: ["Rustle forward proxy", "Rust proxy benchmark", "Tokio per-core architecture", "forward vs reverse proxy"],
+    minutes: 2,
+    reference: {
+      label: "Rustle — Source and benchmark results",
+      href: "https://github.com/EdouardCourty/rustle#benchmarks"
+    }
+  },
+  {
     slug: "ai-agent-cloud-hosting-costs",
     date: "2026-11-04",
     title: "VPS Hosting for AI Agents: What’s Under the Sandbox?",
