@@ -68,6 +68,20 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "rune-native-ui-framework",
+    date: "2026-11-06",
+    title: "Rune is Anomaly’s native Rust UI framework for desktop apps",
+    summary: "How Anomaly’s Rune UI framework uses Taffy layout and GPU rendering, where Hex uses it today, and what OpenCode Desktop would test.",
+    kind: "reading",
+    document: "/news/rune-native-ui-framework.md",
+    keywords: ["Anomaly Rune UI framework", "Rust native desktop UI", "Rune Taffy layout", "OpenCode Desktop", "Hex dictation app"],
+    minutes: 2,
+    reference: {
+      label: "Rune on GitHub",
+      href: "https://github.com/anomalyco/rune"
+    }
+  },
+  {
     slug: "kawa-kafka-gateway",
     date: "2026-11-05",
     title: "Kawa puts virtual topics and access rules in front of Kafka",

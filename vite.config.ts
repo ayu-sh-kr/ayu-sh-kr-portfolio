@@ -37,6 +37,7 @@ const showcaseRoutes = [
   "/showcase/dota-rest",
 ];
 const newsRoutes = [
+  "/news/rune-native-ui-framework",
   "/news/kawa-kafka-gateway",
   "/news/rustle-forward-proxy-benchmarks",
   "/news/ai-agent-cloud-hosting-costs",

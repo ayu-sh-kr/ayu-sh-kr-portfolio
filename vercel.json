@@ -531,6 +531,11 @@
       "permanent": true
     },
     {
+      "source": "/news/rune-native-ui-framework",
+      "destination": "/news/rune-native-ui-framework/",
+      "permanent": true
+    },
+    {
       "source": "/news/kawa-kafka-gateway",
       "destination": "/news/kawa-kafka-gateway/",
       "permanent": true

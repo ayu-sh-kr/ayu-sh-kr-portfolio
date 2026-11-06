@@ -49,6 +49,7 @@
 
 ## Recent Dispatch notes
 
+- [Rune is Anomaly’s native Rust UI framework for desktop apps](https://www.ayu-sh-kr.com/news/rune-native-ui-framework/): How Anomaly’s Rune UI framework uses Taffy layout and GPU rendering, where Hex uses it today, and what OpenCode Desktop would test. [Article Markdown](https://www.ayu-sh-kr.com/news/rune-native-ui-framework.md).
 - [Kawa puts virtual topics and access rules in front of Kafka](https://www.ayu-sh-kr.com/news/kawa-kafka-gateway/): Kafka broker routing, virtual topics, and access rules. [Article Markdown](https://www.ayu-sh-kr.com/news/kawa-kafka-gateway.md).
 - [Rustle hits 55,258 requests per second in a single-core proxy benchmark](https://www.ayu-sh-kr.com/news/rustle-forward-proxy-benchmarks/): The Rust forward proxy’s one-core benchmark, connection ownership, and Claude-assisted development. [Article Markdown](https://www.ayu-sh-kr.com/news/rustle-forward-proxy-benchmarks.md).
 - [VPS Hosting for AI Agents: What’s Under the Sandbox?](https://www.ayu-sh-kr.com/news/ai-agent-cloud-hosting-costs/): Compare persistent agent VMs, see where AWS’s Firecracker fits, and trace the costs behind cheap always-on hosting. [Article Markdown](https://www.ayu-sh-kr.com/news/ai-agent-cloud-hosting-costs.md).
