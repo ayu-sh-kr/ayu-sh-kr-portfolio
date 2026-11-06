@@ -1,10 +1,12 @@
 # Rune is Anomaly’s native Rust UI framework for desktop apps
 
-**Rune is an open-source framework for building native desktop interfaces in Rust.** Anomaly is developing it under the MIT license. The framework provides windows, controls, text and animation, and draws its own widgets. Apps can use Rune’s controls with their own theme.
+Building a native desktop interface means getting text input, scrolling, keyboard navigation and animation to work together across operating systems. Drawing the window is only one part of that work. A shared framework can carry those responsibilities across apps, which is what Anomaly is building with Rune.
+
+**Rune is an open-source framework for building native desktop interfaces in Rust.** Anomaly is developing it under the MIT license. It brings the native window, text rendering, controls and motion into one toolkit. Rune draws its own widgets, and apps can supply their own theme.
 
 ## How Rune renders a Rust interface
 
-Rune splits the work between the application and the renderer. The application describes what the interface should look like. The renderer draws it and handles how it moves between states. The illustration follows that handoff from the Rust view tree to a settings window on screen.
+Rune splits the work between the application and the renderer. The application describes what the interface should look like. The renderer draws the result and handles movement between states. That handoff connects the Rust view tree to the settings window shown below.
 
 ![Isometric illustration of Rune’s rendering pipeline, from Rust views and Taffy layout through scene updates to a GPU-rendered settings window.](/news/assets/rune-native-ui-framework/rendering-pipeline.svg)
 
@@ -16,7 +18,9 @@ The **render thread** advances animations and draws each frame on the GPU. When 
 
 Anomaly already uses Rune for the settings window and floating dictation overlay in **Hex**. Hex pins Rune and the separately packaged OpenCode theme to a Git revision, giving Anomaly a place to test changes to the toolkit against a working desktop app.
 
-**OpenCode Desktop** is the larger test on the roadmap. Anomaly has left the decision about replacing Electron open. Hex shows how Rune handles settings and overlays. OpenCode Desktop would test that same rendering stack against long scrolling transcripts, text selection and keyboard-heavy work across platforms.
+**OpenCode Desktop** is the larger test on the roadmap, with the decision about replacing Electron still open. It would put Rune through longer sessions with scrolling transcripts, text selection and frequent keyboard interaction.
+
+That brings Rune back to the work of making a desktop interface feel native. Hex gives Anomaly a working foundation. OpenCode Desktop would test whether the same toolkit can deliver responsive rendering and dependable everyday interactions across a more demanding app.
 
 ## Sources
 
