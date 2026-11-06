@@ -1,17 +1,21 @@
-# Anomaly builds Rune, a Rust UI framework for its desktop apps
+# Rune is Anomaly’s native Rust UI framework for desktop apps
 
-OpenCode has a terminal interface and a desktop app. Anomaly is now building **Rune**, an MIT-licensed Rust UI framework that could give the desktop app a native rendering stack. The project’s roadmap calls OpenCode Desktop its flagship test, while Anomaly’s Hex dictation app already uses Rune for its desktop interface. [Rune roadmap](https://github.com/anomalyco/rune/blob/dev/PLAN.md#11-where-rune-fits-at-anomaly) · [Hex desktop UI notes](https://github.com/anomalyco/hex/blob/dev/AGENTS.md)
+Open a settings window and slide out a panel. The app decides where the panel goes, but the renderer can handle the movement from there. That split is central to **Rune**, the open-source Rust UI framework Anomaly is building for its desktop apps.
 
-## How Rune draws a desktop app
+## Anomaly is building Rune for Hex and OpenCode Desktop
 
-Take a settings window with a sidebar, toggles and a scrolling pane. Rune describes those views in Rust, then uses **Taffy** to calculate their sizes and positions. Its renderer draws the controls and text on the GPU, with a native shell providing the window and platform services. On macOS, Rune defaults to its own Metal backend and can also use wgpu. The controls come from Rune’s own widget kit, so the same theme can carry through from a settings screen to a floating overlay. [Core crate](https://github.com/anomalyco/rune/tree/dev/crates/rune) · [Settings example](https://github.com/anomalyco/rune/tree/dev/examples/settings)
+Rune gives the team behind OpenCode a shared toolkit for windows, controls, text and motion. It’s MIT-licensed, and its widgets are drawn by Rune. An app can use the toolkit’s controls while supplying its own theme. Anomaly keeps the OpenCode theme in a separate crate so it can reuse the same colors and styles across apps. [Rune repository](https://github.com/anomalyco/rune) · [Design plan](https://github.com/anomalyco/rune/blob/dev/PLAN.md#7-the-design-language)
 
-That separation also shapes how Rune handles motion. The app can tell the renderer where a panel should end up, and the renderer can advance the spring animation between frames. A moving panel can keep animating without asking the app to rebuild its view tree or recalculate layout on every tick. [Rune architecture](https://github.com/anomalyco/rune/blob/dev/PLAN.md)
+The first example is **Hex**, Anomaly’s desktop dictation app. Its settings and floating overlays already use Rune, and the app pins the framework and OpenCode theme to a specific Git revision. That gives the team a real app in which to work through changes to the toolkit. [Hex desktop UI notes](https://github.com/anomalyco/hex/blob/dev/AGENTS.md)
 
-## Why Hex is the first test
+## How Rune turns Rust views into frames
 
-Hex puts that architecture to work in its settings and dictation overlays. It pins Rune and the OpenCode theme to a Git revision, which gives Anomaly a way to evolve both together. Hex also uses **named scenes** to render repeatable screenshots in light and dark modes. A developer or coding agent can open a particular state directly and compare it against a saved baseline without starting a live dictation session. [Hex development notes](https://github.com/anomalyco/hex/blob/dev/AGENTS.md)
+When you open that settings panel, the app updates its state and describes the new view in Rust. **Taffy** works out the target size and position of the panel and its controls. The app side sends scene updates and animation targets through a command channel to the render thread. [Rune architecture](https://github.com/anomalyco/rune/blob/dev/PLAN.md)
 
-That close coupling also shows how early Rune is. Hex’s own instructions call out breaking changes when updating its pin. Rune’s browser target is experimental, rendering to a single WebGPU canvas, with accessibility mirroring still listed as follow-up work. [Rune changelog](https://github.com/anomalyco/rune/blob/dev/CHANGELOG.md) · [Web target](https://github.com/anomalyco/rune/blob/dev/WEB.md)
+![Isometric illustration of Rune’s rendering pipeline, from Rust views and Taffy layout through scene updates to a GPU-rendered settings window.](/news/assets/rune-native-ui-framework/rendering-pipeline.svg)
 
-Hex shows what Rune can do for settings and overlays today. OpenCode Desktop will ask more of it. The roadmap leaves the Electron decision open, and the stronger test will be how the native build handles long sessions, text selection and keyboard navigation across platforms.
+The render thread advances the panel’s spring animation and draws each frame on the GPU. The app can calculate the panel’s destination once, leaving the renderer to draw the movement between positions without rebuilding the view tree on each frame. On macOS, Rune uses its own Metal backend by default and also offers wgpu. [Rune core crate](https://github.com/anomalyco/rune/tree/dev/crates/rune)
+
+## What OpenCode Desktop would test
+
+Hex shows how the toolkit fits a settings window and an overlay. OpenCode Desktop would put the same approach to work on longer sessions, scrolling transcripts and keyboard-heavy interaction across platforms. Anomaly’s roadmap leaves the decision about replacing Electron open. The question is whether the rendering approach that works for a sliding panel can carry a full desktop app. [OpenCode Desktop roadmap](https://github.com/anomalyco/rune/blob/dev/PLAN.md#11-where-rune-fits-at-anomaly)

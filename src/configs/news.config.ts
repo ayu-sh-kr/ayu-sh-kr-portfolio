@@ -70,11 +70,11 @@ export const newsNotes: readonly NewsNote[] = [
   {
     slug: "rune-native-ui-framework",
     date: "2026-11-06",
-    title: "Anomaly builds Rune, a Rust UI framework for its desktop apps",
-    summary: "How Anomaly’s Rune framework renders native Rust interfaces, where Hex uses it today, and what it could mean for OpenCode Desktop.",
+    title: "Rune is Anomaly’s native Rust UI framework for desktop apps",
+    summary: "How Anomaly’s Rune UI framework uses Taffy layout and GPU rendering, where Hex uses it today, and what OpenCode Desktop would test.",
     kind: "reading",
     document: "/news/rune-native-ui-framework.md",
-    keywords: ["Anomaly Rune", "Rune Rust UI framework", "OpenCode Desktop", "Hex dictation app"],
+    keywords: ["Anomaly Rune UI framework", "Rust native desktop UI", "Rune Taffy layout", "OpenCode Desktop", "Hex dictation app"],
     minutes: 2,
     reference: {
       label: "Rune on GitHub",
