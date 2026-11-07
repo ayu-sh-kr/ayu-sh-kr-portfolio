@@ -49,6 +49,7 @@
 
 ## Recent Dispatch notes
 
+- [Whisker takes Rust’s native UI push to iOS and Android](https://www.ayu-sh-kr.com/news/whisker-rust-native-mobile-apps/): How Whisker shares Rust UI code across native mobile views, the web and desktop, with hot reload and important pre-alpha platform limits. [Article Markdown](https://www.ayu-sh-kr.com/news/whisker-rust-native-mobile-apps.md).
 - [Discord, GPUI and Rune: Rust’s native desktop push](https://www.ayu-sh-kr.com/news/rust-native-apps-discord-gpui-rune/): Why Discord and Cap are moving beyond browser-rendered interfaces, how GPUI and GPUI Kit work, and where Anomaly’s Rune fits. Includes Cap’s playback benchmarks. [Article Markdown](https://www.ayu-sh-kr.com/news/rust-native-apps-discord-gpui-rune.md).
 - [Rune is Anomaly’s native Rust UI framework for desktop apps](https://www.ayu-sh-kr.com/news/rune-native-ui-framework/): How Anomaly’s Rune UI framework uses Taffy layout and GPU rendering, where Hex uses it today, and what OpenCode Desktop would test. [Article Markdown](https://www.ayu-sh-kr.com/news/rune-native-ui-framework.md).
 - [Kawa puts virtual topics and access rules in front of Kafka](https://www.ayu-sh-kr.com/news/kawa-kafka-gateway/): Kafka broker routing, virtual topics, and access rules. [Article Markdown](https://www.ayu-sh-kr.com/news/kawa-kafka-gateway.md).

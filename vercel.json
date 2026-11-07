@@ -531,6 +531,11 @@
       "permanent": true
     },
     {
+      "source": "/news/whisker-rust-native-mobile-apps",
+      "destination": "/news/whisker-rust-native-mobile-apps/",
+      "permanent": true
+    },
+    {
       "source": "/news/rust-native-apps-discord-gpui-rune",
       "destination": "/news/rust-native-apps-discord-gpui-rune/",
       "permanent": true
