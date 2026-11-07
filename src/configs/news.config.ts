@@ -68,6 +68,20 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "rust-native-apps-discord-gpui-rune",
+    date: "2026-11-07",
+    title: "Discord, GPUI and Rune: Rust’s native desktop push",
+    summary: "Why Discord and Cap are moving beyond browser-rendered interfaces, how GPUI and GPUI Kit work, and where Anomaly’s Rune fits. Includes Cap’s playback benchmarks.",
+    kind: "explainer",
+    document: "/news/rust-native-apps-discord-gpui-rune.md",
+    keywords: ["Discord Rust rewrite", "GPUI framework", "GPUI Kit components", "Rune Anomaly OpenCode", "Cap Tauri GPUI benchmark", "Rust native desktop apps"],
+    minutes: 6,
+    reference: {
+      label: "GPUI — framework and documentation",
+      href: "https://gpui.rs/"
+    }
+  },
+  {
     slug: "rune-native-ui-framework",
     date: "2026-11-06",
     title: "Rune is Anomaly’s native Rust UI framework for desktop apps",
