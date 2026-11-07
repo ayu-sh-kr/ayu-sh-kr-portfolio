@@ -1,8 +1,8 @@
 # Whisker takes Rust’s native UI push to iOS and Android
 
-The Rust UI conversation is moving beyond desktop windows. As [GPUI and GPUI Kit attract attention](/news/rust-native-apps-discord-gpui-rune/), developer **itome** is pointing mobile developers toward **Whisker**, an open-source framework for writing applications in Rust across iOS, Android, web and desktop.
+**Whisker brings the Rust native UI push to mobile.** Alongside the desktop work around [GPUI and GPUI Kit](/news/rust-native-apps-discord-gpui-rune/), the open-source framework offers a shared Rust application model for iOS, Android, web and desktop.
 
-Its approach puts interface declarations, application state and layout in Rust, then hands the result to each platform. On phones, that means native views. Whisker is still **pre-alpha**, but it offers a different direction from building a shared GPU renderer for every screen.
+Its guiding principle is to **keep application state, interface declarations and layout in Rust, while letting each platform handle presentation**. On iOS and Android, that means native views; on the web, browser elements; on desktop, GPU drawing. The shared code describes the interface without requiring every platform to draw it the same way. Whisker remains **pre-alpha**.
 
 ## One Rust interface, different platform renderers
 
@@ -29,7 +29,7 @@ The project also reports **sub-second hot patches** for eligible edits: changed 
 
 Those conveniences have boundaries. The documented desktop run path currently ships for **macOS**. iOS hot reload works in the Simulator, not on physical iPhones or iPads; those use the normal Xcode build-and-install workflow. APIs and platform coverage can still change before 1.0.
 
-Whisker extends the Rust UI discussion from controlling desktop pixels to sharing mobile application code and native views. For a team considering that route, the useful next step is a small screen with real input, scrolling and device integration. Those everyday interactions will reveal more about its readiness than the language choice alone.
+Whisker’s contribution to the Rust UI trend is that division of responsibility: shared application behaviour and layout, with presentation handled by platform Hosts. It gives mobile developers a way to carry more of their application in Rust while retaining native views. Its readiness will depend on how consistently those pieces work together across devices as the framework matures.
 
 ## Sources
 
