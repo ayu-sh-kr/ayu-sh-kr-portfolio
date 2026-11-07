@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 700" role="img" aria-labelledby="title desc"><title id="title">From Rust controls to a desktop window</title><desc id="desc">A detailed isometric assembly shows optional GPUI Kit controls and application state feeding GPUI layout and text. Glyph cache and drawing primitives feed the GPU renderer and a platform window. Operating system input and accessibility connect alongside the rendering path. Three packets travel in sequence through controls, layout and rendering.</desc><style>.packet{opacity:0}@media(prefers-reduced-motion:reduce){.packet{display:none}}</style><defs><marker id="arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0 0 7 3.5 0 7Z" fill="#e8e8e6"/></marker></defs>
+<rect x="1" y="1" width="958" height="698" rx="22" fill="#101011" stroke="#3e3e41" stroke-width="2"/>
+<text x="32" y="46" font-family="Arial,sans-serif" font-size="29" fill="#f7f7f6" font-weight="600" text-anchor="start">From Rust controls to a desktop window</text>
+<text x="32" y="77" font-family="Arial,sans-serif" font-size="19" fill="#afafac" font-weight="400" text-anchor="start">GPUI rendering foundation · GPUI Kit is an optional control layer</text>
+<polygon points="869.71,375.00 480.00,600.00 480.00,614.00 869.71,389.00" fill="#242427" stroke="#97979c" stroke-width="1.4" stroke-linejoin="round"/>
+<polygon points="480.00,600.00 90.29,375.00 90.29,389.00 480.00,614.00" fill="#2b2b2e" stroke="#97979c" stroke-width="1.4" stroke-linejoin="round"/>
+<polygon points="480.00,150.00 869.71,375.00 480.00,600.00 90.29,375.00" fill="#1d1d1f" stroke="#97979c" stroke-width="1.4" stroke-linejoin="round"/>
+<polyline points="484.33,171.50 129.26,376.50" fill="none" stroke="#3e3e41" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="830.74,371.50 475.67,576.50" fill="none" stroke="#3e3e41" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="475.67,171.50 830.74,376.50" fill="none" stroke="#3e3e41" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="129.26,371.50 484.33,576.50" fill="none" stroke="#3e3e41" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="289.47,386.00 306.79,396.00 384.74,351.00 397.73,358.50" fill="none" stroke="#d0d0cd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<polyline points="523.30,386.00 536.29,393.50 614.23,348.50 631.55,358.50" fill="none" stroke="#d0d0cd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<polygon points="800.43,347.00 713.83,397.00 713.83,415.00 800.43,365.00" fill="#1d1d1f" stroke="#97979c" stroke-width="1.4" stroke-linejoin="round"/>
+<polygon points="713.83,397.00 627.22,347.00 627.22,365.00 713.83,415.00" fill="#2b2b2e" stroke="#97979c" stroke-width="1.4" stroke-linejoin="round"/>
+<polygon points="713.83,297.00 800.43,347.00 713.83,397.00 627.22,347.00" fill="#343438" stroke="#97979c" stroke-width="1.4" stroke-linejoin="round"/>
+<polygon points="784.84,329.00 713.83,370.00 713.83,388.00 784.84,347.00" fill="#545457" stroke="#97979c" stroke-width="1.4" stroke-linejoin="round"/>
+<polygon points="713.83,370.00 642.81,329.00 642.81,347.00 713.83,388.00" fill="#8b8b88" stroke="#97979c" stroke-width="1.4" stroke-linejoin="round"/>
+<polygon points="713.83,288.00 784.84,329.00 713.83,370.00 642.81,329.00" fill="#d0d0cd" stroke="#97979c" stroke-width="1.4" stroke-linejoin="round"/>
+<g transform="matrix(.866025 .5 -.866025 .5 713.8268590217984 288.0)" stroke="#545457" stroke-width="2" fill="none">
+<rect x="17" y="15" width="50" height="43" rx="4" fill="#2b2b2e"/>
+<path d="M21 6V15M21 58V68"/>
+<path d="M29 6V15M29 58V68"/>
+<path d="M37 6V15M37 58V68"/>
+<path d="M45 6V15M45 58V68"/>
+<path d="M53 6V15M53 58V68"/>
+<path d="M61 6V15M61 58V68"/>
+<path d="M7 21H17M67 21H78"/>
+<path d="M7 31H17M67 31H78"/>
+<path d="M7 41H17M67 41H78"/>
+<path d="M7 51H17M67 51H78"/>
+<path d="M27 27H55M27 36H55M27 45H45" stroke="#e8e8e6"/>
+</g>
+<polygon points="791.77,213.00 786.57,216.00 786.57,328.00 791.77,325.00" fill="#343438" stroke="#97979c" stroke-width="1.4" stroke-linejoin="round"/>
+<polygon points="786.57,216.00 717.29,176.00 717.29,288.00 786.57,328.00" fill="#545457" stroke="#97979c" stroke-width="1.4" stroke-linejoin="round"/>
+<polygon points="722.49,173.00 791.77,213.00 786.57,216.00 717.29,176.00" fill="#afafac" stroke="#97979c" stroke-width="1.4" stroke-linejoin="round"/>
+<polygon points="721.62,185.50 782.24,220.50 782.24,299.50 721.62,264.50" fill="#101011" stroke="#e8e8e6" stroke-width="1.4" stroke-linejoin="round"/>
+<polyline points="726.82,198.50 774.45,226.00" fill="none" stroke="#afafac" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="726.82,212.50 737.21,218.50" fill="none" stroke="#afafac" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="741.54,221.00 775.31,240.50" fill="none" stroke="#afafac" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="741.54,232.00 767.52,247.00" fill="none" stroke="#afafac" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="741.54,243.00 772.72,261.00" fill="none" stroke="#afafac" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="726.82,248.50 774.45,276.00" fill="none" stroke="#afafac" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="740.67,302.50 728.55,309.50 728.55,325.50 740.67,318.50" fill="#1d1d1f" stroke="#97979c" stroke-width="1.4" stroke-linejoin="round"/>
+<polygon points="728.55,309.50 718.16,303.50 718.16,319.50 728.55,325.50" fill="#2b2b2e" stroke="#97979c" stroke-width="1.4" stroke-linejoin="round"/>
+<polygon points="730.28,296.50 740.67,302.50 728.55,309.50 718.16,303.50" fill="#8b8b88" stroke="#97979c" stroke-width="1.4" stroke-linejoin="round"/>
+<polygon points="566.60,343.00 480.00,393.00 480.00,415.00 566.60,365.00" fill="#1d1d1f" stroke="#97979c" stroke-width="1.4" stroke-linejoin="round"/>
+<polygon points="480.00,393.00 393.40,343.00 393.40,365.00 480.00,415.00" fill="#2b2b2e" stroke="#97979c" stroke-width="1.4" stroke-linejoin="round"/>
+<polygon points="480.00,293.00 566.60,343.00 480.00,393.00 393.40,343.00" fill="#343438" stroke="#97979c" stroke-width="1.4" stroke-linejoin="round"/>
+<polygon points="554.48,313.00 480.00,356.00 480.00,386.00 554.48,343.00" fill="#545457" stroke="#97979c" stroke-width="1.4" stroke-linejoin="round"/>
+<polygon points="480.00,356.00 405.52,313.00 405.52,343.00 480.00,386.00" fill="#8b8b88" stroke="#97979c" stroke-width="1.4" stroke-linejoin="round"/>
+<polygon points="480.00,270.00 554.48,313.00 480.00,356.00 405.52,313.00" fill="#d0d0cd" stroke="#97979c" stroke-width="1.4" stroke-linejoin="round"/>
+<g transform="matrix(.866025 .5 -.866025 .5 480.0 270.0)" stroke="#545457" stroke-width="2" fill="none">
+<rect x="10" y="10" width="66" height="55" rx="3"/><path d="M30 10V65M30 27H76M30 47H76"/><path d="M38 18H65M38 37H65M38 56H56" stroke-width="3"/>
+</g>
+<polygon points="544.95,292.50 521.57,306.00 521.57,325.00 544.95,311.50" fill="#6e6e73" stroke="#97979c" stroke-width="1.4" stroke-linejoin="round"/>
+<polygon points="521.57,306.00 459.22,270.00 459.22,289.00 521.57,325.00" fill="#afafac" stroke="#97979c" stroke-width="1.4" stroke-linejoin="round"/>
+<polygon points="482.60,256.50 544.95,292.50 521.57,306.00 459.22,270.00" fill="#f7f7f6" stroke="#97979c" stroke-width="1.4" stroke-linejoin="round"/>
+<polygon points="482.60,260.50 488.66,264.00 475.67,271.50 469.61,268.00" fill="#545457" stroke="#8b8b88" stroke-width="0.8" stroke-linejoin="round"/>
+<polygon points="491.26,265.50 497.32,269.00 484.33,276.50 478.27,273.00" fill="#545457" stroke="#8b8b88" stroke-width="0.8" stroke-linejoin="round"/>
+<polygon points="499.92,270.50 505.98,274.00 492.99,281.50 486.93,278.00" fill="#545457" stroke="#8b8b88" stroke-width="0.8" stroke-linejoin="round"/>
+<polygon points="508.58,275.50 514.64,279.00 501.65,286.50 495.59,283.00" fill="#545457" stroke="#8b8b88" stroke-width="0.8" stroke-linejoin="round"/>
+<polygon points="517.24,280.50 523.30,284.00 510.31,291.50 504.25,288.00" fill="#545457" stroke="#8b8b88" stroke-width="0.8" stroke-linejoin="round"/>
+<polygon points="525.90,285.50 531.96,289.00 518.97,296.50 512.91,293.00" fill="#545457" stroke="#8b8b88" stroke-width="0.8" stroke-linejoin="round"/>
+<polygon points="332.78,343.00 246.17,393.00 246.17,415.00 332.78,365.00" fill="#1d1d1f" stroke="#97979c" stroke-width="1.4" stroke-linejoin="round"/>
+<polygon points="246.17,393.00 159.57,343.00 159.57,365.00 246.17,415.00" fill="#2b2b2e" stroke="#97979c" stroke-width="1.4" stroke-linejoin="round"/>
+<polygon points="246.17,293.00 332.78,343.00 246.17,393.00 159.57,343.00" fill="#343438" stroke="#97979c" stroke-width="1.4" stroke-linejoin="round"/>
+<polygon points="320.65,325.00 246.17,368.00 246.17,386.00 320.65,343.00" fill="#545457" stroke="#97979c" stroke-width="1.4" stroke-linejoin="round"/>
+<polygon points="246.17,368.00 171.69,325.00 171.69,343.00 246.17,386.00" fill="#8b8b88" stroke="#97979c" stroke-width="1.4" stroke-linejoin="round"/>
+<polygon points="246.17,282.00 320.65,325.00 246.17,368.00 171.69,325.00" fill="#afafac" stroke="#97979c" stroke-width="1.4" stroke-linejoin="round"/>
+<polygon points="320.65,297.00 246.17,340.00 246.17,360.00 320.65,317.00" fill="#6e6e73" stroke="#97979c" stroke-width="1.4" stroke-linejoin="round"/>
+<polygon points="246.17,340.00 171.69,297.00 171.69,317.00 246.17,360.00" fill="#afafac" stroke="#97979c" stroke-width="1.4" stroke-linejoin="round"/>
+<polygon points="246.17,254.00 320.65,297.00 246.17,340.00 171.69,297.00" fill="#f7f7f6" stroke="#97979c" stroke-width="1.4" stroke-linejoin="round"/>
+<g transform="matrix(.866025 .5 -.866025 .5 246.17314097820156 254.0)" stroke="#545457" stroke-width="2" fill="none">
+<rect x="8" y="9" width="70" height="54" rx="5" fill="#e8e8e6"/><rect x="15" y="17" width="37" height="7" rx="3" fill="#545457"/><rect x="15" y="33" width="28" height="18" rx="4"/><rect x="49" y="33" width="20" height="18" rx="4" fill="#afafac"/>
+</g>
+<polygon points="249.64,280.00 246.17,282.00 246.17,290.00 249.64,288.00" fill="#1d1d1f" stroke="#97979c" stroke-width="1.4" stroke-linejoin="round"/>
+<polygon points="246.17,282.00 242.71,280.00 242.71,288.00 246.17,290.00" fill="#2b2b2e" stroke="#97979c" stroke-width="1.4" stroke-linejoin="round"/>
+<polygon points="246.17,278.00 249.64,280.00 246.17,282.00 242.71,280.00" fill="#e8e8e6" stroke="#97979c" stroke-width="1.4" stroke-linejoin="round"/>
+<polygon points="311.99,316.00 308.53,318.00 308.53,326.00 311.99,324.00" fill="#1d1d1f" stroke="#97979c" stroke-width="1.4" stroke-linejoin="round"/>
+<polygon points="308.53,318.00 305.06,316.00 305.06,324.00 308.53,326.00" fill="#2b2b2e" stroke="#97979c" stroke-width="1.4" stroke-linejoin="round"/>
+<polygon points="308.53,314.00 311.99,316.00 308.53,318.00 305.06,316.00" fill="#e8e8e6" stroke="#97979c" stroke-width="1.4" stroke-linejoin="round"/>
+<polygon points="187.28,316.00 183.82,318.00 183.82,326.00 187.28,324.00" fill="#1d1d1f" stroke="#97979c" stroke-width="1.4" stroke-linejoin="round"/>
+<polygon points="183.82,318.00 180.36,316.00 180.36,324.00 183.82,326.00" fill="#2b2b2e" stroke="#97979c" stroke-width="1.4" stroke-linejoin="round"/>
+<polygon points="183.82,314.00 187.28,316.00 183.82,318.00 180.36,316.00" fill="#e8e8e6" stroke="#97979c" stroke-width="1.4" stroke-linejoin="round"/>
+<polygon points="249.64,352.00 246.17,354.00 246.17,362.00 249.64,360.00" fill="#1d1d1f" stroke="#97979c" stroke-width="1.4" stroke-linejoin="round"/>
+<polygon points="246.17,354.00 242.71,352.00 242.71,360.00 246.17,362.00" fill="#2b2b2e" stroke="#97979c" stroke-width="1.4" stroke-linejoin="round"/>
+<polygon points="246.17,350.00 249.64,352.00 246.17,354.00 242.71,352.00" fill="#e8e8e6" stroke="#97979c" stroke-width="1.4" stroke-linejoin="round"/>
+<polyline points="169.96,362.00 176.03,365.50" fill="none" stroke="#afafac" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="181.22,368.50 187.28,372.00" fill="none" stroke="#afafac" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="192.48,375.00 198.54,378.50" fill="none" stroke="#afafac" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="203.74,381.50 209.80,385.00" fill="none" stroke="#afafac" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="403.79,362.00 409.85,365.50" fill="none" stroke="#afafac" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="415.05,368.50 421.11,372.00" fill="none" stroke="#afafac" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="426.31,375.00 432.37,378.50" fill="none" stroke="#afafac" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="437.56,381.50 443.63,385.00" fill="none" stroke="#afafac" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="637.62,362.00 643.68,365.50" fill="none" stroke="#afafac" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="648.87,368.50 654.94,372.00" fill="none" stroke="#afafac" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="660.13,375.00 666.20,378.50" fill="none" stroke="#afafac" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="671.39,381.50 677.45,385.00" fill="none" stroke="#afafac" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="566.60,480.00 510.31,512.50 510.31,532.50 566.60,500.00" fill="#1d1d1f" stroke="#97979c" stroke-width="1.4" stroke-linejoin="round"/>
+<polygon points="510.31,512.50 410.72,455.00 410.72,475.00 510.31,532.50" fill="#2b2b2e" stroke="#97979c" stroke-width="1.4" stroke-linejoin="round"/>
+<polygon points="467.01,422.50 566.60,480.00 510.31,512.50 410.72,455.00" fill="#343438" stroke="#97979c" stroke-width="1.4" stroke-linejoin="round"/>
+<polygon points="485.20,438.00 459.22,453.00 459.22,460.00 485.20,445.00" fill="#545457" stroke="#97979c" stroke-width="1.4" stroke-linejoin="round"/>
+<polygon points="459.22,453.00 441.89,443.00 441.89,450.00 459.22,460.00" fill="#6e6e73" stroke="#97979c" stroke-width="1.4" stroke-linejoin="round"/>
+<polygon points="467.88,428.00 485.20,438.00 459.22,453.00 441.89,443.00" fill="#afafac" stroke="#97979c" stroke-width="1.4" stroke-linejoin="round"/>
+<polygon points="512.04,453.50 486.06,468.50 486.06,475.50 512.04,460.50" fill="#545457" stroke="#97979c" stroke-width="1.4" stroke-linejoin="round"/>
+<polygon points="486.06,468.50 468.74,458.50 468.74,465.50 486.06,475.50" fill="#6e6e73" stroke="#97979c" stroke-width="1.4" stroke-linejoin="round"/>
+<polygon points="494.72,443.50 512.04,453.50 486.06,468.50 468.74,458.50" fill="#afafac" stroke="#97979c" stroke-width="1.4" stroke-linejoin="round"/>
+<polygon points="538.89,469.00 512.91,484.00 512.91,491.00 538.89,476.00" fill="#545457" stroke="#97979c" stroke-width="1.4" stroke-linejoin="round"/>
+<polygon points="512.91,484.00 495.59,474.00 495.59,481.00 512.91,491.00" fill="#6e6e73" stroke="#97979c" stroke-width="1.4" stroke-linejoin="round"/>
+<polygon points="521.57,459.00 538.89,469.00 512.91,484.00 495.59,474.00" fill="#afafac" stroke="#97979c" stroke-width="1.4" stroke-linejoin="round"/>
+<polyline points="439.30,452.50 430.64,447.50 480.00,419.00 428.04,389.00 436.70,384.00" fill="none" stroke="#97979c" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="527.63,471.50 661.87,394.00 657.54,391.50 670.53,384.00" fill="none" stroke="#97979c" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="36" y="243" font-family="Arial,sans-serif" font-size="23" fill="#f7f7f6" font-weight="600" text-anchor="start">01  App + controls</text>
+<text x="36" y="271" font-family="Arial,sans-serif" font-size="18" fill="#afafac" font-weight="400" text-anchor="start">GPUI Kit · Rust state</text>
+<polyline points="216.00,269.00 249.64,257.00" fill="none" stroke="#8b8b88" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="363" y="192" font-family="Arial,sans-serif" font-size="23" fill="#f7f7f6" font-weight="600" text-anchor="start">02  GPUI</text>
+<text x="363" y="218" font-family="Arial,sans-serif" font-size="18" fill="#afafac" font-weight="400" text-anchor="start">Layout · text · glyph cache</text>
+<polyline points="491.00,226.00 512.04,284.50" fill="none" stroke="#8b8b88" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="730" y="122" font-family="Arial,sans-serif" font-size="23" fill="#f7f7f6" font-weight="600" text-anchor="start">03  Present</text>
+<text x="730" y="150" font-family="Arial,sans-serif" font-size="18" fill="#afafac" font-weight="400" text-anchor="start">GPU → window</text>
+<polyline points="810.00,157.00 786.57,223.00" fill="none" stroke="#8b8b88" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="662" y="525" font-family="Arial,sans-serif" font-size="22" fill="#f7f7f6" font-weight="600" text-anchor="start">Platform bridge</text>
+<text x="662" y="552" font-family="Arial,sans-serif" font-size="18" fill="#afafac" font-weight="400" text-anchor="start">Input · windows</text>
+<text x="662" y="577" font-family="Arial,sans-serif" font-size="18" fill="#afafac" font-weight="400" text-anchor="start">Accessibility</text>
+<polyline points="654.00,522.00 538.89,496.00" fill="none" stroke="#8b8b88" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+<circle class="packet" r="4.5" fill="#f7f7f6"><animate attributeName="opacity" values="0;1;1;0;0" keyTimes="0;0.05;0.34;0.4;1" dur="6s" repeatCount="indefinite"/><animateMotion path="M289.47,386.00 L306.79,396.00 L384.74,351.00 L397.73,358.50" keyPoints="0;0;1;1" keyTimes="0;0.0;0.4;1" calcMode="linear" dur="6s" repeatCount="indefinite"/></circle>
+<circle class="packet" r="4.5" fill="#f7f7f6"><animate attributeName="opacity" values="0;1;1;0;0" keyTimes="0;0.45;0.74;0.8;1" dur="6s" repeatCount="indefinite"/><animateMotion path="M523.30,386.00 L536.29,393.50 L614.23,348.50 L631.55,358.50" keyPoints="0;0;1;1" keyTimes="0;0.4;0.8;1" calcMode="linear" dur="6s" repeatCount="indefinite"/></circle>
+<path d="M32 624H928" stroke="#3e3e41"/>
+<text x="32" y="656" font-family="Arial,sans-serif" font-size="20" fill="#f7f7f6" font-weight="400" text-anchor="start">Controls → layout and text → drawing primitives → GPU → platform window</text>
+<text x="32" y="682" font-family="Arial,sans-serif" font-size="16" fill="#afafac" font-weight="400" text-anchor="start">Conceptual assembly; optional libraries and platform services are shown separately.</text>
+</svg>
