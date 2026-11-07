@@ -1,94 +1,95 @@
 # Discord, GPUI and Rune: Rust’s native desktop push
 
-Discord wants opening a channel to feel instant. Cap has removed the web view from its screen recorder. Anomaly, the team behind OpenCode, is building its own native UI framework. After years of Rust rewrites beneath the interface, the interface itself is becoming the next target.
+The “rewrite it in Rust” trend is reaching the interface itself. Zed built a native editor around Rust, Anomaly—the team behind OpenCode—is developing Rune, and Discord has announced a Rust rewrite of its clients. The question is moving from which language runs behind the window to what draws it.
 
-The connection is **control over how an app reaches the screen**. Electron and Tauri helped teams share web interfaces across operating systems. A growing set of projects now wants to own layout, text and drawing too. GPUI gives them a reusable foundation; GPUI Kit supplies the controls around it. Rune explores a separate approach with animation and agent-driven verification built into its design.
+For years, **Electron** gave teams a practical answer: build an interface with the same HTML, CSS and JavaScript used for websites, then package it with Chromium, the browser engine behind Chrome. One web interface could become an app for Windows, macOS and Linux. **Tauri** kept that familiar approach while using the operating system’s web view and a Rust backend, avoiding the need to bundle Chromium. The web layer also brings memory overhead, layout work and, with different system browsers, platform-specific quirks.
 
-## Discord makes the shift visible
+> **Web view:** a browser surface embedded inside an application. It can display an entire interface without showing browser tabs or an address bar.
 
-On November 4, Discord CTO **Stanislav Vishnevskiy confirmed a Rust client rewrite**, replacing Electron on desktop and React Native on mobile. Desktop uses GPUI. Mobile keeps native interfaces while sharing application code through Rust. This extends adoption that already includes Discord’s infrastructure and voice technology.
+The newer Rust stacks take over the drawing too. They arrange text and controls, then send drawing instructions to the graphics processor. This gives teams more control over memory use, frame timing and the handoff between the interface and application code.
 
-His follow-up showed the client opening on older laptops. A development screenshot circulating with the announcement showed about **290 MB** of memory, reportedly with two accounts running. It is an encouraging preview, but there is no published, controlled comparison establishing a universal reduction. User testing is still ahead; this is not a replacement everyone can download today.
+Discord made that direction particularly visible on November 4, when CTO Stanislav Vishnevskiy confirmed its desktop client would replace Electron with **GPUI**. Mobile keeps native interfaces while sharing Rust application code. Testing is still ahead, and embedded Activities will retain a web view. GPUI supplies the main interface’s machinery.
 
-The main interface moves away from the browser, while embedded Activities still use a system web view. Discord also maintains patches over GPUI. Its announcement confirms GPUI, **not the separate GPUI Kit library** mentioned in some posts.
+## GPUI: from application state to pixels
 
-This puts a widely used communication app alongside a smaller group already testing the same architectural choice:
+[GPUI](https://gpui.rs/) is a Rust framework for building interfaces that it draws through the GPU. It grew out of Zed, whose founders had previously worked on the Electron-based Atom editor. Zed needed to respond consistently as you typed and scrolled, which meant controlling the path between an input and the next image on screen.
 
-| Project | What changed | Status of the evidence |
-| --- | --- | --- |
-| Discord | Electron desktop client → Rust and GPUI | Announced rewrite; development demonstrations |
-| Cap | Tauri interface → GPUI, retaining its Rust recording engine | Shipped in 0.6.1; developer-published measurements |
-| Zed | A Rust editor built around GPUI after its founders’ experience with Atom and Electron | Existing native app; foundation for the framework |
-| Anomaly’s Hex / Rune | Rune supplies Hex’s shared desktop UI; OpenCode Desktop is a flagship roadmap test | Existing integration plus pre-release framework work |
+> **CPU and GPU:** the CPU runs general application work; the GPU is designed to carry out many graphics calculations in parallel. A **frame** is one image presented on screen. At 120 refreshes per second, each frame has about 8.3 milliseconds to arrive on time.
 
-These are different stages of adoption. Together they show interest extending from editors into recording, communication and developer tools, without establishing an industry-wide exodus.
+GPUI connects remembering what the app is doing, deciding where things belong, and drawing the result. Follow one interaction through those steps.
 
-## What changes when the browser leaves
+### Describe what the window should show
 
-**Electron** bundles Chromium and Node.js, allowing one HTML, CSS and JavaScript interface to run across desktops. **Tauri** usually pairs a Rust backend with the operating system’s web view. It can avoid shipping a browser engine, but its interface still follows the web’s rendering model.
+Imagine a chat app with a channel list, a conversation and a message box. The application remembers the selected channel and its messages. A view describes channels on the left, messages in the centre and a composer below. GPUI manages the persistent state while views build the elements needed to display it.
 
-GPUI changes that boundary. Rust code describes an element tree; the framework measures and positions it, handles input and turns the visible interface into drawing commands. The GPU draws the result inside a platform window. There is no browser DOM between that tree and the renderer, and event handlers can call application Rust code directly.
+When you select another channel, an event handler changes the selection and asks GPUI to update. The handler runs Rust code directly, so it can call the application’s Rust functions without a browser-to-Rust messaging bridge.
 
-> A Rust backend and a Rust-rendered interface are separate architectural choices. Tauri already gives you the first.
+> **State and element tree:** state is the information an app remembers, such as your selected channel. An element tree describes how visible pieces sit inside one another: a window contains panels, and a panel contains text or buttons.
 
-Browsers also use GPU acceleration. The distinction is who owns the rendering pipeline and which layers an interaction crosses. Nor does GPUI’s “native” mean that every button comes from AppKit or WinUI: the framework draws its own controls.
+### Work out the layout, then draw it
 
-## GPUI supplies the rendering foundation
+That description still needs measurements. GPUI works out how much space each panel gets, where text wraps and where the controls sit. Its Rust styling methods cover familiar layout ideas such as rows, columns, spacing and alignment.
 
-[GPUI](https://gpui.rs/) grew out of Zed’s work on a responsive editor. Its hybrid design combines persistent application state with views that describe the elements to render. Layout and styling use Rust methods familiar to anyone who has composed flex layouts or Tailwind utilities.
+The drawing stage turns that arrangement into a scene of **rectangles, shadows, text, icons and images**. GPUI prepares those pieces for specialized GPU programs to draw. Prepared letter images can be cached and reused as the conversation scrolls, rather than recreated for every occurrence.
 
-The drawing side reduces an interface to primitives such as rectangles, shadows, glyphs, icons and images. Specialized shaders draw them, while cached glyphs and images avoid repeating preparation unnecessarily. Platform integration connects windows and input to the renderer; current documentation lists Metal on macOS, DirectX 11 on Windows and wgpu on Linux.
+> **Shader and glyph cache:** a shader is a small program running on the GPU to draw part of an image. A glyph is the visible shape of a character; a glyph cache keeps prepared character images available for reuse.
 
-The assembly below follows a GPUI application that chooses GPUI Kit. Controls and application state feed the framework; text and shapes become a GPU scene. Platform input returns to the app through the operating system integration.
+The illustration follows application state and optional GPUI Kit controls through layout, text and drawing. The platform bridge connects operating-system services.
 
 ![Isometric GPUI assembly: application state and GPUI Kit controls feed layout and text, cached drawing primitives reach the GPU, and a desktop window presents the result alongside platform input and accessibility integration.](/news/assets/rust-native-apps-discord-gpui-rune/native-rendering-assembly.svg)
 
-GPUI’s original 120 FPS rendering work gives this architecture a concrete motivation: a 120 Hz screen leaves roughly **8.3 milliseconds per frame** for state updates, layout and drawing. That is a budget to engineer against, rather than a promise that every GPUI app meets it.
+### Keep the application connected to the desktop
 
-## GPUI Kit fills in the application around it
+GPUI still needs real windows, keyboard and mouse input, and platform text services. Platform-specific graphics backends connect that shared drawing code to each operating system.
 
-A renderer does not automatically provide a usable date picker or keyboard-friendly command palette. [Longbridge’s GPUI Kit](https://gpui-kit.com/) packages **75-plus components and primitives**, with software under Apache-2.0. Longbridge says the toolkit has powered its Pro desktop application from the beginning.
+Developers gain access to the rendering path, but selecting text, typing in different languages or navigating with a keyboard must still work correctly. GPUI draws its own controls rather than adopting every operating system’s standard widgets.
 
-Its collection extends well beyond basic buttons:
+Browsers already accelerate graphics with the GPU. GPUI’s advantage is the opportunity to build a more focused interface pipeline and keep it close to the application’s Rust code. Whether that produces a faster app depends on the work placed on that path. GPUI Kit builds on that foundation.
 
-| Collection | Examples |
+## GPUI Kit: the controls around the renderer
+
+A working renderer still leaves a team needing inputs, menus, dialogs and all the interactions around them. [GPUI Kit](https://gpui-kit.com/), developed by Longbridge, packages **75-plus components and primitives** for that work. Its software uses the permissive Apache-2.0 licence, and Longbridge says it has powered its Pro desktop application from the beginning.
+
+Its collection covers ordinary forms and denser editor or dashboard interfaces:
+
+| Collection | What it provides |
 | --- | --- |
 | Forms | Inputs, textareas, selects, comboboxes, date and colour pickers |
-| Navigation and overlays | Menus, command palette, sidebar, dialogs, popovers, sheets |
-| Data and workspaces | Tables, trees, virtual lists, resizable panels, persistent docking |
-| Rich content | Code editor, diff viewer, Markdown/HTML text view, charts |
+| Navigation and overlays | Menus, command palette, sidebar, dialogs, popovers and sheets |
+| Data and workspaces | Tables, trees, virtual lists, resizable panels and persistent docking |
+| Rich content | Code editor, diff viewer, Markdown/HTML text view and charts |
 | Shared behaviour | Themes, focus handling, accessibility and UI testing |
 
-The toolkit separates responsibilities. **`gpui-base`** provides interaction primitives for teams creating their own visual system. **`gpui-component`** adds styled controls. **`gpui-shell`** allows capability-controlled JavaScript extensions to create interfaces within the Rust host. Native rendering therefore need not exclude scripting.
+> **Virtual lists and docking:** a virtual list creates the visible portion of a long list instead of every row at once. Docking lets you rearrange, split and save panels, as you might in an editor.
 
-This is how the ecosystem can make adoption easier: another team can reuse focus, selection, overlays and virtualization instead of rebuilding every interaction. It does not establish that Discord or Cap uses the whole kit.
+Teams can use **`gpui-component`** for styled controls or build their own appearance over **`gpui-base`**, which supplies interaction behaviour. **`gpui-shell`** adds JavaScript extensions inside the Rust host, with permissions explicitly granted to each extension.
 
-## Rune takes its own route at Anomaly
+Teams can reuse difficult interactions while choosing how their product looks. GPUI Kit is a separate project built on GPUI; Discord’s announcement confirms the framework, without establishing that it uses Longbridge’s kit.
 
-[Rune, covered in the previous Dispatch](/news/rune-native-ui-framework/), is Anomaly’s **separate native Rust UI framework**. It is not an OpenCode plugin or a GPUI Kit theme. Its own renderer, text system, layout and animation machinery sit behind a Rust view API.
+## Benchmarks show what changing the path can buy
 
-Views describe the target interface, Taffy calculates layout, and scene updates reach the render thread. Spring animation tracks move properties toward their targets while preserving velocity when interrupted. That separation lets motion advance without rebuilding the application view for every animation frame.
-
-Rune also makes verification part of the workflow: an app can render headlessly to PNG, expose its element tree and accept scripted input. Agents can check the interface they generate. Hex, Anomaly’s voice dictation app, supplies real desktop surfaces; recreating OpenCode Desktop is a flagship test in the plan, rather than evidence that its public desktop client has completed a migration. Rune remains pre-release.
-
-## What the benchmark actually supports
-
-Cap published a useful comparison: editor playback of the same recording on an **M4 Max**, using release builds, one warm-up and four runs per build. The chart preserves its reported CPU percentages and memory in MiB.
+Cap, the screen recorder, offers a shipped example. It moved from Tauri to GPUI in version 0.6.1 while retaining its Rust recording engine. Its developer compared editor playback across the Tauri app, an Electron experiment and an early GPUI build on an **M4 Max**, with release builds, one warm-up and four runs each.
 
 ![Cap’s developer-reported editor playback benchmark: Tauri uses 76.6 percent CPU and 3724 MiB, the Electron experiment 53.2 percent and 1035 MiB, and the first GPUI build 17.5 percent and 440 MiB. Lower is better.](/news/assets/rust-native-apps-discord-gpui-rune/cap-playback-benchmark.svg)
 
-These compare Cap implementations, not interchangeable framework benchmarks. The Electron experiment had its own optimizations. The GPUI version also changed the video-frame path, avoiding a GPU-to-CPU-to-browser round trip on macOS. Architecture and implementation changed together. Neither Discord’s screenshot nor Rune’s performance targets belongs on these measured bars.
+The GPUI build reported **17.5% CPU and 440 MiB of memory**, against Tauri’s 76.6% and 3,724 MiB. The result reflects a redesigned application path: on macOS, video frames could stay on the GPU instead of travelling through regular memory and back into the browser. The Electron experiment also had its own optimizations. These are Cap’s implementation measurements, rather than scores every app will inherit by switching frameworks.
 
-## The work moves into the native stack
+## Rune approaches the same change through motion
 
-Owning the renderer also means owning more behaviour. Text selection, input methods, focus, screen-reader information and platform conventions need deliberate implementation. GPUI remains under active development alongside Zed. Libraries reduce that work, but they cannot prove an entire application behaves correctly.
+GPUI is one route into this newer native stack. [Anomaly’s Rune](/news/rune-native-ui-framework/) develops another, with its own renderer, text, layout and animation systems. It belongs to the team behind OpenCode; recreating OpenCode Desktop is a flagship roadmap test, while Hex, its voice dictation app, already supplies desktop surfaces. Rune remains pre-release.
 
-The recent shift is compelling because reusable foundations are appearing beneath it. GPUI carries rendering across applications; GPUI Kit carries common controls; Rune couples its own native stack to motion and verification. For users, the test remains straightforward: opening a channel, scrolling a conversation or editing a recording should feel faster while preserving the interactions they rely on. That is what these rewrites still have to deliver beyond the first impressive launch video.
+Rune places particular emphasis on what happens between two interface states. Views describe the destination. Taffy, its layout library, calculates sizes and positions, while a separate drawing thread advances movement toward those targets. Opening a panel can therefore animate without rebuilding the application view on every frame. Interrupted movements preserve their velocity as they head toward a new target.
+
+> **Spring animation and headless testing:** a spring models movement toward a target, including how it settles. Headless testing runs without an interactive window; Rune can produce screenshots and expose its element tree for scripted checks.
+
+Those checks also let coding agents inspect the interfaces they generate. That makes verification part of the native interface workflow, alongside rendering and motion.
+
+The Rust rewrite trend has reached a part of applications users feel immediately: typing, scrolling and opening a window. Electron and Tauri made shared desktop interfaces accessible to many teams. These newer stacks let teams take more control of the result, provided they also take responsibility for the behaviour the browser used to supply. Shipped apps now have to turn that control into smoother everyday interactions.
 
 ## Sources
 
 - [Discord CTO’s November 4 announcement and replies](https://x.com/svishnevskiy/status/2118081920194203799) and [November 5 demonstration](https://x.com/svishnevskiy/status/2118398632236073156).
 - [Cap’s October 21 migration report and benchmark methodology](https://cap.so/blog/rebuilding-cap-in-gpui).
-- [GPUI’s current documentation](https://gpui.rs/examples/) and [Zed’s original rendering architecture](https://zed.dev/blog/videogame).
+- [GPUI’s current documentation](https://gpui.rs/examples/), [core framework overview](https://github.com/zed-industries/zed/blob/main/crates/gpui/README.md) and [Zed’s original rendering architecture](https://zed.dev/blog/videogame).
 - [GPUI Kit component collection](https://gpui-kit.com/component/), [repository](https://github.com/longbridge/gpui-kit) and [architecture](https://github.com/longbridge/gpui-kit/blob/main/docs/ARCHITECTURE.md).
 - [Rune’s repository](https://github.com/anomalyco/rune), [core documentation](https://github.com/anomalyco/rune/blob/dev/crates/rune/README.md), [roadmap](https://github.com/anomalyco/rune/blob/dev/PLAN.md) and [Hex integration](https://github.com/anomalyco/hex/blob/dev/AGENTS.md).
