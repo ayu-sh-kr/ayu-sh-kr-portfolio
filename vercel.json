@@ -531,6 +531,11 @@
       "permanent": true
     },
     {
+      "source": "/news/rust-native-apps-discord-gpui-rune",
+      "destination": "/news/rust-native-apps-discord-gpui-rune/",
+      "permanent": true
+    },
+    {
       "source": "/news/rune-native-ui-framework",
       "destination": "/news/rune-native-ui-framework/",
       "permanent": true

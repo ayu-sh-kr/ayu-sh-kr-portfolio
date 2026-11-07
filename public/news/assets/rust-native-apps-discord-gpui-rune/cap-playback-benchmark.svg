@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 670" role="img" aria-labelledby="title desc"><title id="title">Cap editor playback: three implementations</title><desc id="desc">Developer measurements on an M4 Max. CPU: Tauri 76.6 percent, Electron experiment 53.2 percent, GPUI first build 17.5 percent. Memory: 3724, 1035 and 440 MiB respectively. Separate zero-based scales; lower is better. Release builds, one warm-up, four runs each. August 2026 measurements, published October 21.</desc><rect x="1" y="1" width="818" height="668" rx="22" fill="#101011" stroke="#3e3e41" stroke-width="2"/>
+<text x="30" y="43" font-family="Arial,sans-serif" font-size="27" fill="#f7f7f6" font-weight="600" text-anchor="start">Cap: three builds, one playback workload</text>
+<text x="30" y="74" font-family="Arial,sans-serif" font-size="18" fill="#afafac" font-weight="400" text-anchor="start">Developer-reported · M4 Max · lower is better</text>
+<text x="30" y="118" font-family="Arial,sans-serif" font-size="22" fill="#f7f7f6" font-weight="600" text-anchor="start">CPU usage</text>
+<path d="M224.0 140V285" stroke="#3e3e41"/>
+<text x="224.0" y="309" font-family="Arial,sans-serif" font-size="15" fill="#afafac" font-weight="400" text-anchor="middle">0</text>
+<path d="M340.5 140V285" stroke="#3e3e41"/>
+<text x="340.5" y="309" font-family="Arial,sans-serif" font-size="15" fill="#afafac" font-weight="400" text-anchor="middle">20</text>
+<path d="M457.0 140V285" stroke="#3e3e41"/>
+<text x="457.0" y="309" font-family="Arial,sans-serif" font-size="15" fill="#afafac" font-weight="400" text-anchor="middle">40</text>
+<path d="M573.5 140V285" stroke="#3e3e41"/>
+<text x="573.5" y="309" font-family="Arial,sans-serif" font-size="15" fill="#afafac" font-weight="400" text-anchor="middle">60</text>
+<path d="M690.0 140V285" stroke="#3e3e41"/>
+<text x="690.0" y="309" font-family="Arial,sans-serif" font-size="15" fill="#afafac" font-weight="400" text-anchor="middle">80</text>
+<text x="30" y="171" font-family="Arial,sans-serif" font-size="18" fill="#f7f7f6" font-weight="400" text-anchor="start">Tauri 0.6.0</text>
+<rect x="224" y="151" width="446.195" height="28" rx="5" fill="#6e6e73"/>
+<text x="679.1949999999999" y="171" font-family="Arial,sans-serif" font-size="17" fill="#f7f7f6" font-weight="400" text-anchor="start">76.6%</text>
+<text x="30" y="220" font-family="Arial,sans-serif" font-size="18" fill="#f7f7f6" font-weight="400" text-anchor="start">Electron trial</text>
+<rect x="224" y="200" width="309.89" height="28" rx="5" fill="#afafac"/>
+<text x="542.89" y="220" font-family="Arial,sans-serif" font-size="17" fill="#f7f7f6" font-weight="400" text-anchor="start">53.2%</text>
+<text x="30" y="269" font-family="Arial,sans-serif" font-size="18" fill="#f7f7f6" font-weight="400" text-anchor="start">GPUI first build</text>
+<rect x="224" y="249" width="101.9375" height="28" rx="5" fill="#f7f7f6"/>
+<text x="334.9375" y="269" font-family="Arial,sans-serif" font-size="17" fill="#f7f7f6" font-weight="400" text-anchor="start">17.5%</text>
+<text x="30" y="355" font-family="Arial,sans-serif" font-size="22" fill="#f7f7f6" font-weight="600" text-anchor="start">Memory</text>
+<path d="M224.0 377V522" stroke="#3e3e41"/>
+<text x="224.0" y="546" font-family="Arial,sans-serif" font-size="15" fill="#afafac" font-weight="400" text-anchor="middle">0</text>
+<path d="M340.5 377V522" stroke="#3e3e41"/>
+<text x="340.5" y="546" font-family="Arial,sans-serif" font-size="15" fill="#afafac" font-weight="400" text-anchor="middle">1000</text>
+<path d="M457.0 377V522" stroke="#3e3e41"/>
+<text x="457.0" y="546" font-family="Arial,sans-serif" font-size="15" fill="#afafac" font-weight="400" text-anchor="middle">2000</text>
+<path d="M573.5 377V522" stroke="#3e3e41"/>
+<text x="573.5" y="546" font-family="Arial,sans-serif" font-size="15" fill="#afafac" font-weight="400" text-anchor="middle">3000</text>
+<path d="M690.0 377V522" stroke="#3e3e41"/>
+<text x="690.0" y="546" font-family="Arial,sans-serif" font-size="15" fill="#afafac" font-weight="400" text-anchor="middle">4000</text>
+<text x="30" y="408" font-family="Arial,sans-serif" font-size="18" fill="#f7f7f6" font-weight="400" text-anchor="start">Tauri 0.6.0</text>
+<rect x="224" y="388" width="433.846" height="28" rx="5" fill="#6e6e73"/>
+<text x="666.846" y="408" font-family="Arial,sans-serif" font-size="17" fill="#f7f7f6" font-weight="400" text-anchor="start">3724 MiB</text>
+<text x="30" y="457" font-family="Arial,sans-serif" font-size="18" fill="#f7f7f6" font-weight="400" text-anchor="start">Electron trial</text>
+<rect x="224" y="437" width="120.5775" height="28" rx="5" fill="#afafac"/>
+<text x="353.5775" y="457" font-family="Arial,sans-serif" font-size="17" fill="#f7f7f6" font-weight="400" text-anchor="start">1035 MiB</text>
+<text x="30" y="506" font-family="Arial,sans-serif" font-size="18" fill="#f7f7f6" font-weight="400" text-anchor="start">GPUI first build</text>
+<rect x="224" y="486" width="51.26" height="28" rx="5" fill="#f7f7f6"/>
+<text x="284.26" y="506" font-family="Arial,sans-serif" font-size="17" fill="#f7f7f6" font-weight="400" text-anchor="start">440 MiB</text>
+<path d="M30 574H790" stroke="#3e3e41"/>
+<text x="30" y="604" font-family="Arial,sans-serif" font-size="17" fill="#d0d0cd" font-weight="400" text-anchor="start">Release builds · same recording · one warm-up + four runs each</text>
+<text x="30" y="631" font-family="Arial,sans-serif" font-size="16" fill="#afafac" font-weight="400" text-anchor="start">August 2026 tests · published Oct 21 · Source: Cap migration report</text>
+<text x="30" y="654" font-family="Arial,sans-serif" font-size="16" fill="#afafac" font-weight="400" text-anchor="start">App implementations changed too; these are not framework-wide scores.</text>
+</svg>
