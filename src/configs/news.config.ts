@@ -68,6 +68,20 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "whisker-rust-native-mobile-apps",
+    date: "2026-11-07",
+    title: "Whisker takes Rust’s native UI push to iOS and Android",
+    summary: "How Whisker shares Rust UI code across native mobile views, the web and desktop, with hot reload and important pre-alpha platform limits.",
+    kind: "reading",
+    document: "/news/whisker-rust-native-mobile-apps.md",
+    keywords: ["Whisker Rust UI", "Rust iOS Android apps", "Whisker native Host", "Taffy layout", "Rust hot reload"],
+    minutes: 2,
+    reference: {
+      label: "Whisker on GitHub",
+      href: "https://github.com/whiskerrs/whisker"
+    }
+  },
+  {
     slug: "rust-native-apps-discord-gpui-rune",
     date: "2026-11-07",
     title: "Discord, GPUI and Rune: Rust’s native desktop push",
