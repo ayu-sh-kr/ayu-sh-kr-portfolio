@@ -68,6 +68,20 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "tinytraffic-self-hosted-web-analytics",
+    date: "2026-11-10",
+    title: "Tiny Traffic puts self-hosted web analytics in one binary",
+    summary: "How Tiny Traffic combines Go, DuckDB and a cookie-free tracker for small sites, with daily visitor counting and an optional ClickHouse backend.",
+    kind: "shipped",
+    document: "/news/tinytraffic-self-hosted-web-analytics.md",
+    keywords: ["Tiny Traffic analytics", "self-hosted web analytics", "DuckDB analytics", "cookie-free analytics", "Tiny Traffic ClickHouse"],
+    minutes: 1.5,
+    reference: {
+      label: "Tiny Traffic on GitHub",
+      href: "https://github.com/egoist/tinytraffic"
+    }
+  },
+  {
     slug: "whisker-rust-native-mobile-apps",
     date: "2026-11-07",
     title: "Whisker takes Rust’s native UI push to iOS and Android",

@@ -14,6 +14,11 @@
   ],
   "redirects": [
     {
+      "source": "/news/tinytraffic-self-hosted-web-analytics",
+      "destination": "/news/tinytraffic-self-hosted-web-analytics/",
+      "permanent": true
+    },
+    {
       "source": "/news/mirendil-fern-10-million-token-context-model",
       "destination": "/news/mirendil-fern-10-million-token-context-model/",
       "permanent": true
