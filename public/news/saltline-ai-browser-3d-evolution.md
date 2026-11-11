@@ -2,7 +2,7 @@
 
 Open a link and you can be standing in a rain-soaked cargo port, moving between containers with a weapon in view. Felix Rieseberg’s [Saltline](https://x.com/felixrieseberg/status/2119925633564463609), made with Claude Fable 5.2, makes that experience available in a browser. The first impression is visual. The more interesting change is in the work behind it.
 
-Saltline did not introduce 3D websites or AI-generated assets. It makes an existing progression easier to see: browser graphics, increasingly capable coding demos, then more connected experiences built around something a visitor can do.
+Behind every scene like this is a long list of things to build: objects, surfaces, lighting and the rules that make the world respond. Understanding that work helps explain how AI is changing the path from an idea to a place someone can explore.
 
 ![Saltline gameplay inside a corrugated-metal warehouse, with shelves, crates and a first-person weapon in view.](/news/assets/saltline-ai-browser-3d-evolution/saltline-creator-demo.webp)
 
