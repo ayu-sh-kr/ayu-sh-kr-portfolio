@@ -34,7 +34,7 @@ The [published game](https://claude.ai/artifact/BGY1SztrAYcJQHSsnHHGmp) bundles 
 
 The Hound enemy shows the same approach in motion. Its code defines bones for the body, head and legs, giving the program joints to animate. Sound generators produce audio data for Web Audio buffers. These are still assets, even when their definition is a function rather than a separately downloaded art file.
 
-Credit belongs to Rieseberg for the experiment and published game, Anthropic’s model for the reported generation work, and the Three.js contributors and browser platform underneath. The current artifact also notes **two additional hours of weapon, sound and gameplay improvements**, and links the original build. A focused shooter still leaves content scale, combat quality and device testing to evaluate; its first-person view does not make it equivalent to Call of Duty.
+The current artifact also notes **two additional hours of weapon, sound and gameplay improvements**, and links the original build. A focused shooter still leaves content scale, combat quality and device testing to evaluate; its first-person view does not make it equivalent to Call of Duty.
 
 [**Gulmohar Local**](https://gulmohar-local.pages.dev/), shared by Shardul Nandedkar (@pracosm), offers a complementary example. His [September launch](https://x.com/pracosm/status/2103387804281745459) introduced miniature Mumbai and Bengaluru worlds with Claude Opus 5.5; the site now lists seven cities. His [technical explanation](https://x.com/pracosm/status/2103496707195687220) describes Three.js code generating buildings, trains and characters through a Claude Code workflow. He also [credits code from GMI Cloud’s Sakura Crossing](https://x.com/pracosm/status/2103388178807980273). It is an adapted city experience with a predecessor, not evidence that every part began from an empty file.
 
@@ -49,3 +49,10 @@ The progression is easier to see when you return to Saltline’s port. Browser g
 For a smaller starting point, [isometric illustration and motion on the web](/blog/ui-design-trends-skeuomorphism-isometric-glass/) offer ways to make a page feel spatial without building an entire explorable world.
 
 Creativity has more room to lead, but a convincing, enjoyable world still needs judgement and refinement. That is the shift worth watching: more people can attempt the work before the first frame, without having to author every shape and behaviour themselves.
+
+## Sources and projects
+
+- [Saltline by Felix Rieseberg](https://claude.ai/artifact/BGY1SztrAYcJQHSsnHHGmp), with the [original build](https://claude.ai/artifact/2UXyB49DrVHFfhTMdNDFTA) linked separately.
+- [Gulmohar Local by Shardul Nandedkar](https://gulmohar-local.pages.dev/), building on [GMI Cloud’s Sakura Crossing](https://github.com/Kenton-GMI/sakura-crossing).
+- [City Tour by Joel Strait](https://github.com/jstrait/city-tour).
+- [Quake 3 WebGL renderer by Brandon Jones](https://github.com/toji/webgl-quake3).
