@@ -70,12 +70,12 @@ export const newsNotes: readonly NewsNote[] = [
   {
     slug: "saltline-ai-browser-3d-evolution",
     date: "2026-11-11",
-    title: "Saltline: how AI is changing 3D browser game creation",
-    summary: "From early WebGL worlds to Saltline and Gulmohar Local: how AI-assisted code changes 3D asset creation, and how browser rendering differs from cloud gaming.",
+    title: "Saltline: from AI 3D demos to playable browser worlds",
+    summary: "From early browser worlds and AI aquarium tests to Saltline and Gulmohar Local: how code-generated 3D is becoming a creative workflow for playable experiences.",
     kind: "explainer",
     document: "/news/saltline-ai-browser-3d-evolution.md",
-    keywords: ["Saltline", "AI browser games", "Three.js procedural assets", "Gulmohar Local", "WebGL", "cloud gaming"],
-    minutes: 5,
+    keywords: ["Saltline", "AI browser games", "AI 3D demos", "Three.js procedural assets", "Gulmohar Local", "WebGL", "cloud gaming"],
+    minutes: 4,
     reference: {
       label: "Saltline by Felix Rieseberg",
       href: "https://claude.ai/artifact/BGY1SztrAYcJQHSsnHHGmp"
