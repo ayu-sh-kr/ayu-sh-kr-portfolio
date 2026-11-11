@@ -4,6 +4,10 @@ Open a link and you can be standing in a rain-soaked cargo port, moving between 
 
 Saltline did not introduce 3D websites or AI-generated assets. It makes an existing progression easier to see: browser graphics, increasingly capable coding demos, then more connected experiences built around something a visitor can do.
 
+![Saltline gameplay inside a corrugated-metal warehouse, with shelves, crates and a first-person weapon in view.](/news/assets/saltline-ai-browser-3d-evolution/saltline-creator-demo.webp)
+
+*Saltline, from [Felix Rieseberg’s published gameplay demo](https://x.com/felixrieseberg/status/2119925633564463609).*
+
 ## The browser could draw it. Someone still had to build it.
 
 A 3D world starts with objects. Walls, wheels and windows are assembled from geometry, often triangles joined into surfaces called meshes. Textures add detail; lighting gives depth; code supplies movement and interaction. Artists can create models in graphics software and export files, while developers can also generate shapes directly in code. Either way, building a coherent scene takes time.
@@ -28,6 +32,10 @@ What changes the perception is their combination: a setting, movement, enemies a
 
 [**Gulmohar Local**](https://gulmohar-local.pages.dev/), by Shardul Nandedkar, offers the same idea through exploration. Its [launch](https://x.com/pracosm/status/2103387804281745459) presented miniature Mumbai and Bengaluru worlds made with Claude Opus 5.5, with code-generated buildings, trains and characters. Shardul [credits an earlier project](https://x.com/pracosm/status/2103388178807980273), GMI Cloud’s Sakura Crossing. The appeal is the place you can explore, built on existing work, rather than a claim to have invented the technique.
 
+![Gulmohar Local’s Mumbai scene, looking from inside a train towards Charni Road station.](/news/assets/saltline-ai-browser-3d-evolution/gulmohar-creator-demo.webp)
+
+*Gulmohar Local, from [Shardul Nandedkar’s published demo](https://x.com/pracosm/status/2103387804281745459).*
+
 ## A shorter path from an idea to a world
 
 These locally rendered scenes also differ from [cloud gaming](https://www.nvidia.com/en-us/geforce-now/faq/), where a remote computer runs the game and streams its picture. Nor does AI-written code automatically make a [world model](https://deepmind.google/blog/genie-3-a-new-frontier-for-world-models/), which generates an environment’s evolution in response to actions.
@@ -36,6 +44,6 @@ The shift is in creation: more people can describe, generate and revise the piec
 
 ## Sources and projects
 
-- [Saltline by Felix Rieseberg](https://claude.ai/artifact/BGY1SztrAYcJQHSsnHHGmp).
+- [Play Saltline by Felix Rieseberg](https://claude.ai/artifact/BGY1SztrAYcJQHSsnHHGmp).
 - [Gulmohar Local by Shardul Nandedkar](https://gulmohar-local.pages.dev/) and its predecessor, [Sakura Crossing](https://github.com/Kenton-GMI/sakura-crossing).
 - [City Tour](https://github.com/jstrait/city-tour) and [Quake 3 WebGL renderer](https://github.com/toji/webgl-quake3).
