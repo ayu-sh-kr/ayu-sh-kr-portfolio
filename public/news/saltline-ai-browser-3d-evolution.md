@@ -1,6 +1,6 @@
 # Saltline: from AI 3D demos to playable browser worlds
 
-A glass aquarium. A koi pond where fish swim towards food. Scenes like these became a way to test what an AI model could build in a browser. Felix Rieseberg’s [Saltline](https://claude.ai/artifact/BGY1SztrAYcJQHSsnHHGmp) invites a different response: you are in a rain-soaked port, moving between containers and playing a shooter. The interest shifts from judging an output to spending time inside it.
+Open a link and you can be standing in a rain-soaked cargo port, moving between containers with a weapon in view. Felix Rieseberg’s [Saltline](https://x.com/felixrieseberg/status/2119925633564463609), made with Claude Fable 5.2, makes that experience available in a browser. The first impression is visual. The more interesting change is in the work behind it.
 
 Saltline did not introduce 3D websites or AI-generated assets. It makes an existing progression easier to see: browser graphics, increasingly capable coding demos, then more connected experiences built around something a visitor can do.
 
