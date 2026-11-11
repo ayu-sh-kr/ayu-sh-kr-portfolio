@@ -49,6 +49,8 @@
 
 ## Recent Dispatch notes
 
+- [Saltline and the shift from building 3D assets to describing them](https://www.ayu-sh-kr.com/news/saltline-ai-browser-3d-evolution/): From early WebGL worlds to Saltline and Gulmohar Local: how AI-assisted code changes 3D asset creation, and how browser rendering differs from cloud gaming. [Article Markdown](https://www.ayu-sh-kr.com/news/saltline-ai-browser-3d-evolution.md).
+
 - [Tiny Traffic puts self-hosted web analytics in one binary](https://www.ayu-sh-kr.com/news/tinytraffic-self-hosted-web-analytics/): How Tiny Traffic combines Go, DuckDB and a cookie-free tracker for small sites, with daily visitor counting and an optional ClickHouse backend. [Article Markdown](https://www.ayu-sh-kr.com/news/tinytraffic-self-hosted-web-analytics.md).
 
 - [Whisker takes Rust’s native UI push to iOS and Android](https://www.ayu-sh-kr.com/news/whisker-rust-native-mobile-apps/): How Whisker shares Rust UI code across native mobile views, the web and desktop, with hot reload and important pre-alpha platform limits. [Article Markdown](https://www.ayu-sh-kr.com/news/whisker-rust-native-mobile-apps.md).

@@ -68,6 +68,20 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "saltline-ai-browser-3d-evolution",
+    date: "2026-11-11",
+    title: "Saltline and the shift from building 3D assets to describing them",
+    summary: "From early WebGL worlds to Saltline and Gulmohar Local: how AI-assisted code changes 3D asset creation, and how browser rendering differs from cloud gaming.",
+    kind: "explainer",
+    document: "/news/saltline-ai-browser-3d-evolution.md",
+    keywords: ["Saltline", "AI browser games", "Three.js procedural assets", "Gulmohar Local", "WebGL", "cloud gaming"],
+    minutes: 5,
+    reference: {
+      label: "Saltline by Felix Rieseberg",
+      href: "https://claude.ai/artifact/BGY1SztrAYcJQHSsnHHGmp"
+    }
+  },
+  {
     slug: "tinytraffic-self-hosted-web-analytics",
     date: "2026-11-10",
     title: "Tiny Traffic puts self-hosted web analytics in one binary",

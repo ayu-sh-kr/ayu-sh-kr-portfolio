@@ -14,6 +14,11 @@
   ],
   "redirects": [
     {
+      "source": "/news/saltline-ai-browser-3d-evolution",
+      "destination": "/news/saltline-ai-browser-3d-evolution/",
+      "permanent": true
+    },
+    {
       "source": "/news/tinytraffic-self-hosted-web-analytics",
       "destination": "/news/tinytraffic-self-hosted-web-analytics/",
       "permanent": true
