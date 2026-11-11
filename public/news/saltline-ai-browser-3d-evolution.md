@@ -1,4 +1,4 @@
-# Saltline: from AI 3D demos to playable browser worlds
+# Saltline: how AI is changing 3D browser games
 
 Open a link and you can be standing in a rain-soaked cargo port, moving between containers with a weapon in view. Felix Rieseberg’s [Saltline](https://x.com/felixrieseberg/status/2119925633564463609), made with Claude Fable 5.2, makes that experience available in a browser. The first impression is visual. The more interesting change is in the work behind it.
 
@@ -24,7 +24,7 @@ AI coding tools began making parts of that work easier to attempt. Instead of mo
 
 The progression now extends from generating a small scene to coordinating more of an experience: a place to move through, things to interact with, and sound and behaviour that support the setting. Earlier craftsmanship still matters, but more of the construction can be delegated and revised. Saltline brings that change into focus through a playable world.
 
-## Saltline makes that change tangible
+## Saltline and Gulmohar Local: 3D worlds built with AI
 
 Rieseberg’s [Saltline announcement](https://x.com/felixrieseberg/status/2119925633564463609) credits Claude Fable 5.2 with generating models, textures and sounds. The game uses **Three.js r180 and WebGL**. Its code constructs geometry, draws texture atlases on canvases and generates sound data. A corrugated-steel surface comes from mathematical ridges and noise; the Hound enemy has a code-defined skeleton with joints that can animate. These are assets created through code, rather than every object arriving as a finished model file.
 
@@ -40,7 +40,7 @@ What changes the perception is their combination: a setting, movement, enemies a
 
 These locally rendered scenes also differ from [cloud gaming](https://www.nvidia.com/en-us/geforce-now/faq/), where a remote computer runs the game and streams its picture. Nor does AI-written code automatically make a [world model](https://deepmind.google/blog/genie-3-a-new-frontier-for-world-models/), which generates an environment’s evolution in response to actions.
 
-The shift is in creation: more people can describe, generate and revise the pieces of an interactive world without writing every step themselves. Smaller experiments in [spatial illustration and motion](/blog/ui-design-trends-skeuomorphism-isometric-glass/) offer a starting point too. The fish tank demonstrated a capability. Saltline makes it easier to picture what someone might choose to create with it.
+The shift is in creation: more people can describe, generate and revise the pieces of an interactive world without writing every step themselves. For developers and designers, that can make a small interactive prototype more approachable; performance, controls and accessibility still need testing before it is useful to visitors. Smaller experiments in [spatial illustration and motion](/blog/ui-design-trends-skeuomorphism-isometric-glass/) offer a starting point too. The fish tank demonstrated a capability. Saltline makes it easier to picture what someone might choose to create with it.
 
 ## Sources and projects
 

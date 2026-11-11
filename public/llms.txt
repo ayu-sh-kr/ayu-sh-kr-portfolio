@@ -49,7 +49,7 @@
 
 ## Recent Dispatch notes
 
-- [Saltline: from AI 3D demos to playable browser worlds](https://www.ayu-sh-kr.com/news/saltline-ai-browser-3d-evolution/): From early browser worlds and AI aquarium tests to Saltline and Gulmohar Local: how code-generated 3D is becoming a creative workflow for playable experiences. [Article Markdown](https://www.ayu-sh-kr.com/news/saltline-ai-browser-3d-evolution.md).
+- [Saltline: how AI is changing 3D browser games](https://www.ayu-sh-kr.com/news/saltline-ai-browser-3d-evolution/): How Saltline and Gulmohar Local use AI-generated code, Three.js and WebGL to build on earlier 3D websites and turn small demos into playable browser worlds. [Article Markdown](https://www.ayu-sh-kr.com/news/saltline-ai-browser-3d-evolution.md).
 
 - [Tiny Traffic puts self-hosted web analytics in one binary](https://www.ayu-sh-kr.com/news/tinytraffic-self-hosted-web-analytics/): How Tiny Traffic combines Go, DuckDB and a cookie-free tracker for small sites, with daily visitor counting and an optional ClickHouse backend. [Article Markdown](https://www.ayu-sh-kr.com/news/tinytraffic-self-hosted-web-analytics.md).
 
