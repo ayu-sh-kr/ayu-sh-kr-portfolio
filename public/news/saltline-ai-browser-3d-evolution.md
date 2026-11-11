@@ -1,4 +1,4 @@
-# Saltline and the shift from building 3D assets to describing them
+# Saltline: how AI is changing 3D browser game creation
 
 Open a link and you can be standing in a rain-soaked cargo port, moving between containers with a weapon in view. Felix Rieseberg’s [Saltline](https://x.com/felixrieseberg/status/2119925633564463609), made with Claude Fable 5.2, makes that experience available in a browser. The first impression is visual. The more interesting change is in the work behind it.
 
@@ -45,5 +45,7 @@ Opening a game through a link can hide different architectures. With cloud gamin
 AI-assisted construction is a separate distinction again. A coding model can produce a conventional program that later runs without asking it to generate each frame. A world model such as [Google DeepMind’s Genie 3](https://deepmind.google/blog/genie-3-a-new-frontier-for-world-models/) generates an interactive environment’s evolution in response to actions. Using AI to build a scene does not automatically make that scene a world model.
 
 The progression is easier to see when you return to Saltline’s port. Browser graphics made the scene accessible through a link. Libraries and procedural techniques made its construction more manageable. AI now helps produce and revise more of that construction code, giving creators a shorter path from an idea to something explorable.
+
+For a smaller starting point, [isometric illustration and motion on the web](/blog/ui-design-trends-skeuomorphism-isometric-glass/) offer ways to make a page feel spatial without building an entire explorable world.
 
 Creativity has more room to lead, but a convincing, enjoyable world still needs judgement and refinement. That is the shift worth watching: more people can attempt the work before the first frame, without having to author every shape and behaviour themselves.

@@ -70,7 +70,7 @@ export const newsNotes: readonly NewsNote[] = [
   {
     slug: "saltline-ai-browser-3d-evolution",
     date: "2026-11-11",
-    title: "Saltline and the shift from building 3D assets to describing them",
+    title: "Saltline: how AI is changing 3D browser game creation",
     summary: "From early WebGL worlds to Saltline and Gulmohar Local: how AI-assisted code changes 3D asset creation, and how browser rendering differs from cloud gaming.",
     kind: "explainer",
     document: "/news/saltline-ai-browser-3d-evolution.md",
