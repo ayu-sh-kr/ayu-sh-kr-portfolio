@@ -75,7 +75,7 @@ export const newsNotes: readonly NewsNote[] = [
     kind: "shipped",
     document: "/news/aws-emulator-localstack-local-testing.md",
     keywords: ["AWS Emulator", "local AWS testing", "AWS Emulator AI agents", "AWS API emulator", "LocalStack", "Testcontainers"],
-    minutes: 1.5,
+    minutes: 2,
     reference: {
       label: "AWS Emulator announcement",
       href: "https://aws.amazon.com/about-aws/whats-new/2026/11/aws-emulator-now-available/"

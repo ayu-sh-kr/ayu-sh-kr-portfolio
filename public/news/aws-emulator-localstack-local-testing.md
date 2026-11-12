@@ -8,9 +8,14 @@ A coding agent can change your application in seconds. Testing its next S3 uploa
 
 AWS’s [walkthrough](https://aws.amazon.com/blogs/aws/test-your-applications-against-aws-locally-with-aws-emulator/) demonstrates a practical development loop:
 
-- **Storage:** create an S3 bucket, upload an object and list it.
-- **Database operations:** create a DynamoDB table, write an item and read it back.
-- **Isolated Rust tests:** embed separate emulator instances inside test processes, without a shared server.
+| Capability | What it lets you do |
+| --- | --- |
+| S3 storage | Create a bucket, upload an object and list it |
+| DynamoDB | Create a table, write an item and read it back |
+| CLI and SDK integration | Use familiar API calls against a local HTTPS endpoint |
+| Embedded Rust tests | Run isolated instances inside test processes without a shared server |
+
+> **Download and speed:** AWS’s [Linux x86-64 RPM](https://downloads.aws.com/aws-emulator/packages/aws-emulator/LTS/latest/aws-emulator-x86_64.rpm) reported a 166,735,193-byte download, about **167 MB**, when checked on November 12. This is package size, not the installed binary or Docker image. AWS describes API responses in milliseconds; that is not a cold-start benchmark. The launch sources do not specify a measured service startup time.
 
 The [CLI setup](https://docs.aws.amazon.com/emulator/latest/userguide/point-sdk-to-emulator.html) sets `AWS_ENDPOINT_URL` to localhost and uses emulator-generated credentials and certificates, with real credentials removed. This redirects requests; it does not mirror your existing cloud infrastructure. You create emulated resources, and [their in-memory state disappears when the emulator stops](https://docs.aws.amazon.com/emulator/latest/userguide/what-is-service.html#limitations).
 
@@ -22,4 +27,4 @@ Unsupported operations return **HTTP 501**. IAM policy enforcement and cross-acc
 
 Local testing already has options. [LocalStack](https://www.localstack.cloud/pricing) offers persistence and IAM testing on paid tiers; its free Hobby plan is non-commercial. [Testcontainers](https://testcontainers.com/modules/localstack/) can manage LocalStack containers, while [Moto](https://github.com/getmoto/moto) provides Python mocks. AWS adds a first-party choice, not a new category.
 
-Alongside [Lambda Web Functions simplifying deployment](/news/aws-lambda-web-functions/), this suggests a broader direction: **less setup between writing code and seeing it work**. That connection is an interpretation, but the immediate benefit is concrete: test AWS interactions before provisioning cloud resources.
+Alongside [Lambda Web Functions simplifying deployment](/news/aws-lambda-web-functions/), this points toward **less setup between writing code and seeing it work**. That is a reading of AWS’s direction, not an announced roadmap. The practical change is simpler: developers and agents can catch more mistakes before deployment, while real AWS remains the final check for permissions, integration and production behavior.
