@@ -68,6 +68,20 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "pan-2-world-model-physical-intelligence",
+    date: "2026-11-12",
+    title: "PAN 2: an open world model for testing actions before taking them",
+    summary: "MBZUAI’s PAN 2 combines language reasoning with a 29B video model to simulate actions, with open weights, training code and clear limits on multi-step reliability.",
+    kind: "shipped",
+    document: "/news/pan-2-world-model-physical-intelligence.md",
+    keywords: ["PAN 2 world model", "MBZUAI", "physical intelligence", "action simulation", "open world model", "robotics simulation"],
+    minutes: 2,
+    reference: {
+      label: "PAN 2 announcement by IFM",
+      href: "https://ifm.ai/pan2/press-release/"
+    }
+  },
+  {
     slug: "saltline-ai-browser-3d-evolution",
     date: "2026-11-11",
     title: "Saltline: how AI is changing 3D browser games",
