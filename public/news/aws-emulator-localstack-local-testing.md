@@ -2,16 +2,25 @@
 
 Testing an S3 upload or a DynamoDB write should not require a deployment for every change. LocalStack already gives developers a local version of AWS services. Now AWS is offering its own: **AWS Emulator**, launched on November 11, runs existing SDK and CLI calls against your computer without an AWS account.
 
-The Rust implementation keeps resources in memory and charges no additional service fee. Its source carries a **CC0 public-domain dedication**. Point your tools at its local endpoint, create a bucket or table, and test the interaction before deploying. See the [AWS announcement](https://aws.amazon.com/about-aws/whats-new/2026/11/aws-emulator-now-available/).
+The Rust implementation runs local tests without provisioning cloud resources. Its [launch announcement](https://aws.amazon.com/about-aws/whats-new/2026/11/aws-emulator-now-available/) describes in-memory state and a CC0 public-domain dedication.
 
-## An established space, with a new first-party option
+## What it offers beside LocalStack
 
-If you have used AWS services through Testcontainers, you may recognize its [LocalStack module](https://testcontainers.com/modules/localstack/): Testcontainers manages the container’s lifecycle, while LocalStack emulates the services. LocalStack’s current [Hobby plan](https://www.localstack.cloud/pricing) is free for non-commercial use; commercial use requires a paid plan. [Moto](https://github.com/getmoto/moto) is another established, Apache-2.0-licensed option for mocking AWS interactions in Python tests.
+AWS’s [technical walkthrough](https://aws.amazon.com/blogs/aws/test-your-applications-against-aws-locally-with-aws-emulator/) demonstrates S3 bucket uploads and DynamoDB reads and writes through a local HTTPS endpoint. Rust tests can also embed isolated emulator instances directly.
 
-AWS’s entry adds a first-party implementation, rather than establishing local cloud testing. Coverage still matters: unsupported operations return **HTTP 501**, behavior varies by service, and AWS Emulator does not reproduce IAM policy enforcement or cross-account and cross-Region behavior. Passing locally remains a reason to continue testing on AWS, not proof of production correctness.
+| Capability | AWS Emulator | LocalStack’s current plans |
+| --- | --- | --- |
+| API coverage | Generated from AWS API models; unimplemented operations return HTTP 501 | 30+ services in Hobby, 55+ in Base, 110+ in Ultimate |
+| Saved state | Resources held in memory | Persistence in Base and above |
+| IAM policy testing | No policy enforcement | Basic in Base; advanced in Ultimate |
+| Cost and access | No AWS account or additional service fee; CC0 source | Free Hobby for non-commercial use; paid plans for commercial use |
+
+LocalStack details come from its [current plan comparison](https://www.localstack.cloud/pricing). Service counts do not establish API parity: check the operations your application needs. AWS Emulator also lacks cross-account and cross-Region behavior; production validation still belongs on AWS.
+
+If you remember testing through [Testcontainers](https://testcontainers.com/modules/localstack/), its LocalStack module manages the container lifecycle, while LocalStack emulates AWS. [Moto](https://github.com/getmoto/moto) remains another option for Python tests under Apache 2.0.
 
 ## Why this fits AWS’s wider direction
 
-AWS’s [stated rationale](https://aws.amazon.com/blogs/aws/test-your-applications-against-aws-locally-with-aws-emulator/) emphasizes faster iteration for developers and coding agents. It also says agents build and maintain the emulator, comparing behavior with real AWS through published fidelity tests. That describes its development process, not a guarantee of complete compatibility.
+AWS’s [stated rationale](https://aws.amazon.com/blogs/aws/test-your-applications-against-aws-locally-with-aws-emulator/) emphasizes faster iteration for developers and coding agents. It also says agents build and maintain the emulator, comparing behavior with real AWS through published fidelity tests.
 
-Alongside [Lambda Web Functions simplifying deployment](/news/aws-lambda-web-functions/), this suggests AWS is reducing the work around using its cloud: test locally, then deploy through a shorter path. That broader connection is an interpretation, not an announced motive to displace LocalStack. For developers, the useful change is another option for testing AWS interactions before paying for, configuring and waiting on cloud resources.
+Alongside [Lambda Web Functions simplifying deployment](/news/aws-lambda-web-functions/), this suggests AWS is reducing the work around using its cloud: test locally, then deploy through a shorter path. That broader connection is an interpretation, not an announced motive to displace LocalStack.
