@@ -70,11 +70,11 @@ export const newsNotes: readonly NewsNote[] = [
   {
     slug: "aws-emulator-localstack-local-testing",
     date: "2026-11-12",
-    title: "AWS Emulator vs LocalStack: local AWS testing compared",
-    summary: "Compare AWS Emulator and LocalStack for local AWS testing: coverage, IAM limits, free and paid access, and how AI agents build and use AWS’s new emulator.",
+    title: "AWS Emulator brings the cloud testing loop to your laptop",
+    summary: "AWS Emulator lets developers and coding agents test AWS APIs locally. Explore its capabilities, agent-built development process, limits and deployment context.",
     kind: "shipped",
     document: "/news/aws-emulator-localstack-local-testing.md",
-    keywords: ["AWS Emulator", "LocalStack", "local AWS testing", "AWS Emulator AI agents", "Testcontainers", "Moto"],
+    keywords: ["AWS Emulator", "local AWS testing", "AWS Emulator AI agents", "AWS API emulator", "LocalStack", "Testcontainers"],
     minutes: 1.5,
     reference: {
       label: "AWS Emulator announcement",
