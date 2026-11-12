@@ -68,6 +68,20 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "aws-emulator-localstack-local-testing",
+    date: "2026-11-12",
+    title: "AWS Emulator brings the cloud testing loop to your laptop",
+    summary: "AWS Emulator lets developers and coding agents test AWS APIs locally. Explore its capabilities, agent-built development process, limits and deployment context.",
+    kind: "shipped",
+    document: "/news/aws-emulator-localstack-local-testing.md",
+    keywords: ["AWS Emulator", "local AWS testing", "AWS Emulator AI agents", "AWS API emulator", "LocalStack", "Testcontainers"],
+    minutes: 2,
+    reference: {
+      label: "AWS Emulator announcement",
+      href: "https://aws.amazon.com/about-aws/whats-new/2026/11/aws-emulator-now-available/"
+    }
+  },
+  {
     slug: "pan-2-world-model-physical-intelligence",
     date: "2026-11-12",
     title: "PAN 2: an open world model for testing actions before taking them",

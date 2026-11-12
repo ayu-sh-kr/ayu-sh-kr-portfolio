@@ -14,6 +14,11 @@
   ],
   "redirects": [
     {
+      "source": "/news/aws-emulator-localstack-local-testing",
+      "destination": "/news/aws-emulator-localstack-local-testing/",
+      "permanent": true
+    },
+    {
       "source": "/news/pan-2-world-model-physical-intelligence",
       "destination": "/news/pan-2-world-model-physical-intelligence/",
       "permanent": true
