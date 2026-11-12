@@ -49,6 +49,7 @@
 
 ## Recent Dispatch notes
 
+- [PAN 2: an open world model for testing actions before taking them](https://www.ayu-sh-kr.com/news/pan-2-world-model-physical-intelligence/): MBZUAI’s PAN 2 combines language reasoning with a 29B video model to simulate actions, with open weights, training code and clear limits on multi-step reliability. [Article Markdown](https://www.ayu-sh-kr.com/news/pan-2-world-model-physical-intelligence.md).
 - [Saltline: how AI is changing 3D browser games](https://www.ayu-sh-kr.com/news/saltline-ai-browser-3d-evolution/): How Saltline and Gulmohar Local use AI-generated code, Three.js and WebGL to build on earlier 3D websites and turn small demos into playable browser worlds. [Article Markdown](https://www.ayu-sh-kr.com/news/saltline-ai-browser-3d-evolution.md).
 
 - [Tiny Traffic puts self-hosted web analytics in one binary](https://www.ayu-sh-kr.com/news/tinytraffic-self-hosted-web-analytics/): How Tiny Traffic combines Go, DuckDB and a cookie-free tracker for small sites, with daily visitor counting and an optional ClickHouse backend. [Article Markdown](https://www.ayu-sh-kr.com/news/tinytraffic-self-hosted-web-analytics.md).
