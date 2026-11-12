@@ -16,9 +16,9 @@ A **world model** predicts how an environment changes when something happens. PA
 | Individual steps completed | **75.1%** in IFM's evaluation |
 | Full plans completed | **34%**, versus MiniMax-H3's 32.5% |
 
-Specifications: [model card](https://huggingface.co/IFM/PAN2). Results: [IFM evaluation](https://ifm.ai/blog/pan2/), using 100 everyday tasks in both image- and text-conditioned settings, covering 456 ordered steps, averaged over three seeds with Kimi K3 as PAN 2’s reasoner.
+The model size, inputs and video specifications above come from the [PAN 2 model card](https://huggingface.co/IFM/PAN2). For the completion scores, IFM tested **100 everyday tasks containing 456 ordered steps**. Each task was presented twice: once with a starting image and once with text alone. That produced 200 prompts. PAN 2 used Kimi K3 to reason through the actions, and its scores were averaged over three runs with different random seeds. The [evaluation report](https://ifm.ai/blog/pan2/) explains how each step was checked and counted.
 
-> **Reading the numbers:** These are IFM's model-judged results, not independently verified robot success rates. Video frame rate describes playback, not generation speed.
+> **What the scores mean:** Automated judges assessed the generated videos; these percentages are not real-world robot success rates. Likewise, 24 fps describes the video's playback, not how quickly the model generates it.
 
 For the pouring example, the description establishes who moves the container and when. The video model supplies the visible motion and changing liquid levels. The research goal is to compare possible actions through their predicted consequences. That is a different role from [AI helping write a browser game's code](/news/saltline-ai-browser-3d-evolution/): here, the model itself generates the unfolding scene.
 
