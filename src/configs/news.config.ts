@@ -68,6 +68,20 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "aws-emulator-localstack-local-testing",
+    date: "2026-11-12",
+    title: "AWS Emulator enters LocalStack’s local-testing territory",
+    summary: "AWS Emulator brings local AWS API testing to developers and coding agents. How it compares with LocalStack and Moto, its limits, and AWS’s simpler deployment direction.",
+    kind: "shipped",
+    document: "/news/aws-emulator-localstack-local-testing.md",
+    keywords: ["AWS Emulator", "LocalStack alternative", "local AWS testing", "Testcontainers", "Moto", "AWS developer tools"],
+    minutes: 1.5,
+    reference: {
+      label: "AWS Emulator announcement",
+      href: "https://aws.amazon.com/about-aws/whats-new/2026/11/aws-emulator-now-available/"
+    }
+  },
+  {
     slug: "saltline-ai-browser-3d-evolution",
     date: "2026-11-11",
     title: "Saltline: how AI is changing 3D browser games",
