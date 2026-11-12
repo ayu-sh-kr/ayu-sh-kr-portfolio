@@ -75,7 +75,7 @@ export const newsNotes: readonly NewsNote[] = [
     kind: "shipped",
     document: "/news/pan-2-world-model-physical-intelligence.md",
     keywords: ["PAN 2 world model", "MBZUAI", "physical intelligence", "action simulation", "open world model", "robotics simulation"],
-    minutes: 2,
+    minutes: 2.5,
     reference: {
       label: "PAN 2 announcement by IFM",
       href: "https://ifm.ai/pan2/press-release/"
