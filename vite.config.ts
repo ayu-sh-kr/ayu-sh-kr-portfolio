@@ -37,6 +37,7 @@ const showcaseRoutes = [
   "/showcase/dota-rest",
 ];
 const newsRoutes = [
+  "/news/pan-2-world-model-physical-intelligence",
   "/news/saltline-ai-browser-3d-evolution",
   "/news/tinytraffic-self-hosted-web-analytics",
   "/news/whisker-rust-native-mobile-apps",
