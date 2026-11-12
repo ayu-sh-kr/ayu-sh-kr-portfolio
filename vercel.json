@@ -19,6 +19,11 @@
       "permanent": true
     },
     {
+      "source": "/news/pan-2-world-model-physical-intelligence",
+      "destination": "/news/pan-2-world-model-physical-intelligence/",
+      "permanent": true
+    },
+    {
       "source": "/news/saltline-ai-browser-3d-evolution",
       "destination": "/news/saltline-ai-browser-3d-evolution/",
       "permanent": true
