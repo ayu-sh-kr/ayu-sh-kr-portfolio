@@ -49,7 +49,7 @@
 
 ## Recent Dispatch notes
 
-- [AWS Emulator vs LocalStack: local AWS testing compared](https://www.ayu-sh-kr.com/news/aws-emulator-localstack-local-testing/): Compare AWS Emulator and LocalStack for local AWS testing: API coverage, saved state, IAM limits, free and paid access, and why AWS is entering this space. [Article Markdown](https://www.ayu-sh-kr.com/news/aws-emulator-localstack-local-testing.md).
+- [AWS Emulator vs LocalStack: local AWS testing compared](https://www.ayu-sh-kr.com/news/aws-emulator-localstack-local-testing/): Compare AWS Emulator and LocalStack for local AWS testing: coverage, IAM limits, free and paid access, and how AI agents build and use AWS’s new emulator. [Article Markdown](https://www.ayu-sh-kr.com/news/aws-emulator-localstack-local-testing.md).
 
 - [Saltline: how AI is changing 3D browser games](https://www.ayu-sh-kr.com/news/saltline-ai-browser-3d-evolution/): How Saltline and Gulmohar Local use AI-generated code, Three.js and WebGL to build on earlier 3D websites and turn small demos into playable browser worlds. [Article Markdown](https://www.ayu-sh-kr.com/news/saltline-ai-browser-3d-evolution.md).
 

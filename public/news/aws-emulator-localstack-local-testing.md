@@ -19,8 +19,8 @@ LocalStack details come from its [current plan comparison](https://www.localstac
 
 For tests using [Testcontainers](https://testcontainers.com/modules/localstack/), the LocalStack module manages the container lifecycle, while LocalStack emulates AWS. [Moto](https://github.com/getmoto/moto) remains another option for Python tests under Apache 2.0.
 
-## Why this fits AWS’s wider direction
+## Built for coding agents, and by them
 
-AWS’s [stated rationale](https://aws.amazon.com/blogs/aws/test-your-applications-against-aws-locally-with-aws-emulator/) emphasizes faster iteration for developers and coding agents. It also says agents build and maintain the emulator, comparing behavior with real AWS through published fidelity tests.
+AWS’s [stated rationale](https://aws.amazon.com/blogs/aws/test-your-applications-against-aws-locally-with-aws-emulator/) emphasizes faster iteration for developers and coding agents. It also describes an **AI-agent development pipeline**: agents identify gaps, write tests and implement changes, with fidelity tests comparing behavior against real AWS before release.
 
 Alongside [Lambda Web Functions simplifying deployment](/news/aws-lambda-web-functions/), this suggests AWS is reducing the work around using its cloud: **test locally, then deploy through a shorter path**. That broader connection is an interpretation, not an announced motive to displace LocalStack.
