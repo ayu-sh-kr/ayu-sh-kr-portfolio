@@ -68,6 +68,20 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "openorange-cloudflare-workers-self-hosting",
+    date: "2026-11-14",
+    title: "OpenOrange brings Cloudflare Workers to your own cloud",
+    summary: "How Rivet’s OpenOrange runs Workers on Node.js and Rivet Actors, what moves with your data, and what its cheaper-compute claims actually compare.",
+    kind: "infra",
+    document: "/news/openorange-cloudflare-workers-self-hosting.md",
+    keywords: ["OpenOrange", "self-host Cloudflare Workers", "Rivet Actors", "Durable Objects migration", "Cloudflare Workers Node.js", "workerd"],
+    minutes: 3.5,
+    reference: {
+      label: "OpenOrange announcement by Rivet",
+      href: "https://rivet.dev/changelog/2026-11-12-introducing-openorange/"
+    }
+  },
+  {
     slug: "aws-emulator-localstack-local-testing",
     date: "2026-11-12",
     title: "AWS Emulator brings the cloud testing loop to your laptop",
