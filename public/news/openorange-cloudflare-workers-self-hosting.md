@@ -1,12 +1,14 @@
 # OpenOrange brings Cloudflare Workers to your own cloud
 
-A Cloudflare Worker can be a small piece of JavaScript, but moving it also means finding a home for the services it uses. **Rivet launched OpenOrange on November 12** to run supported Workers applications outside Cloudflare while retaining their existing application code and configuration.
+Ever thought about moving your Cloudflare Workers out of Cloudflare? For many developers, the answer might be: ‘Why would I?’ Cloudflare already provides the runtime and infrastructure to deploy them. But some teams may want to run the same application in their own cloud account or on their own servers. That’s the choice Rivet is aiming to offer with OpenOrange.
+
+Cloudflare’s [workerd runtime](https://github.com/cloudflare/workerd) was already open source; OpenOrange adds an alternative runtime and infrastructure for supported services.
 
 The [Apache-2.0 project](https://github.com/rivet-dev/open-orange) provides a runtime and deployment tools for AWS, Google Cloud, Azure or your own servers. It reads the project’s Wrangler configuration and supplies alternatives for supported databases, storage and background services. The scope depends on which of those services your application uses.
 
 ## How Workers run on Rivet
 
-Cloudflare already publishes [workerd](https://github.com/cloudflare/workerd), the open-source runtime behind Workers, for local development and self-hosting. OpenOrange takes another route: it implements Workers APIs on **Node.js** and uses Rivet to coordinate stateful services across machines.
+OpenOrange takes a different route from workerd: it implements Workers APIs on **Node.js** and uses Rivet to coordinate stateful services across machines.
 
 A **Durable Object** combines application code with its own persistent state, useful for something like a chat room. OpenOrange maps each object to a Rivet Actor. When a request needs that room, Rivet locates its actor, starts it if necessary and routes the request to it. The room’s code accesses its SQLite database through the familiar storage API.
 
