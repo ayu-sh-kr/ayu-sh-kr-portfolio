@@ -1,14 +1,16 @@
 # OpenOrange brings Cloudflare Workers to your own cloud
 
-Moving a Cloudflare application is rarely just moving its JavaScript. Its database, stored objects and background jobs may depend on Cloudflare too. **OpenOrange**, launched by Rivet on November 12, aims to move that whole application without rewriting its code around another cloud’s APIs.
+A Cloudflare Worker can be a small piece of JavaScript, but moving it also means finding a home for the services it uses. **Rivet launched OpenOrange on November 12** to run supported Workers applications outside Cloudflare while retaining their existing application code and configuration.
 
-The [Apache-2.0 project](https://github.com/rivet-dev/open-orange) reads existing Wrangler configuration and runs supported Workers applications on AWS, Google Cloud, Azure or your own servers. It offers a way to keep the Workers programming model while choosing where the application lives, including beside a database already running elsewhere.
+The [Apache-2.0 project](https://github.com/rivet-dev/open-orange) provides a runtime and deployment tools for AWS, Google Cloud, Azure or your own servers. It reads the project’s Wrangler configuration and supplies alternatives for supported databases, storage and background services. The scope depends on which of those services your application uses.
 
-## Same APIs, different machinery
+## How Workers run on Rivet
 
 Cloudflare already publishes [workerd](https://github.com/cloudflare/workerd), the open-source runtime behind Workers, for local development and self-hosting. OpenOrange takes another route: it implements Workers APIs on **Node.js** and uses Rivet to coordinate stateful services across machines.
 
-A **Durable Object** combines application code with its own persistent state, useful for something like a chat room. On OpenOrange, that room becomes a Rivet Actor: a unit of code and state that Rivet locates, starts and routes requests to. The [deployment architecture](https://openorange.dev/docs/architecture/) packages application code into Docker containers, with Rivet managing actors and S3 backing their storage.
+A **Durable Object** combines application code with its own persistent state, useful for something like a chat room. OpenOrange maps each object to a Rivet Actor. When a request needs that room, Rivet locates its actor, starts it if necessary and routes the request to it. The room’s code accesses its SQLite database through the familiar storage API.
+
+The [deployment architecture](https://openorange.dev/docs/architecture/) packages the Worker and runtime into Docker containers. Rivet coordinates the actors, with S3 backing their storage. You can operate that infrastructure yourself or use Rivet’s managed deployment options.
 
 Bindings are the connections through which a Worker accesses a database, bucket or other service. OpenOrange maps those connections onto different implementations:
 
@@ -19,7 +21,7 @@ Bindings are the connections through which a Worker accesses a database, bucket 
 | D1 and KV | Actor-backed databases and key-value namespaces |
 | R2 object storage | An actor-backed bucket or a configured S3-compatible store |
 
-That mapping is broader than moving a runtime, but it is not complete equivalence. The [module documentation](https://github.com/rivet-dev/open-orange/tree/main/docs/modules) lists gaps: Durable Object point-in-time recovery is missing, D1 lacks read replicas, and unsupported bindings such as Images throw when called. Node.js removes Cloudflare’s particular runtime limits; **your hardware and deployment still impose limits**.
+The implementations have differences. The [module documentation](https://github.com/rivet-dev/open-orange/tree/main/docs/modules) lists gaps: Durable Object point-in-time recovery is missing, D1 lacks read replicas, and unsupported bindings such as Images throw when called. Memory and execution capacity depend on your machines rather than Cloudflare’s Workers quotas; **the deployment still has resource limits**.
 
 ## What the cheaper-compute claim compares
 
@@ -31,11 +33,11 @@ As with [low-cost agent hosting](/news/ai-agent-cloud-hosting-costs/), a cheaper
 
 ## Moving code is only part of moving an app
 
-The [migration guide](https://openorange.dev/docs/migrate/) is more specific than the launch slogan. SQLite-backed Durable Objects have a live-migration path. **D1 migration interrupts writes**, and queries fail during Cloudflare’s export. KV and R2 data are not copied by `orange migrate`; they need a separate transfer. Writes made after moving to OpenOrange do not automatically sync back to Cloudflare.
+The [migration guide](https://openorange.dev/docs/migrate/) describes different paths for different data. SQLite-backed Durable Objects have a live-migration path. **D1 migration interrupts writes**, and queries fail during Cloudflare’s export. KV and R2 data are not copied by `orange migrate`; they need a separate transfer. Writes made after moving to OpenOrange do not automatically sync back to Cloudflare.
 
 For the chat-room example, that means checking both the room’s behavior and its saved history before switching traffic. The documented `orange doctor` command reports bindings that work, need another service or are unsupported; a staging rehearsal must then cover the application and its data.
 
-OpenOrange makes the hosting choice less tied to the API choice. That is valuable for teams that want Workers-style development near their existing infrastructure or on their own servers. The decision is not simply whether the code starts elsewhere: it is whether the application stays correct, its data moves safely, and the new operating costs justify the move.
+For a team that wants its Workers application near an existing database or on its own servers, OpenOrange offers another deployment path. The useful change is the ability to retain supported application APIs while replacing the infrastructure behind them. Whether that move is worthwhile comes down to the services the application needs, the data it must carry over and the cost of operating its new home.
 
 ## Sources
 
