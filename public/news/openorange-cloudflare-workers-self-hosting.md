@@ -8,38 +8,36 @@ OpenOrange brings those pieces together for supported applications. [Released un
 
 ## How Workers run on Rivet
 
-OpenOrange takes a different route from workerd: it implements Workers APIs on **Node.js** and uses Rivet to coordinate stateful services across machines.
+OpenOrange implements Workers APIs on **Node.js** rather than workerd. A **Durable Object**, which keeps application code and persistent state together, becomes a Rivet Actor. For a chat room, Rivet locates the room’s actor, starts it when needed and routes requests to it. The code accesses SQLite through the familiar storage API.
 
-A **Durable Object** combines application code with its own persistent state, useful for something like a chat room. OpenOrange maps each object to a Rivet Actor. When a request needs that room, Rivet locates its actor, starts it if necessary and routes the request to it. The room’s code accesses its SQLite database through the familiar storage API.
+The [architecture](https://openorange.dev/docs/architecture/) packages the Worker and runtime in Docker containers, with Rivet coordinating actors and S3 backing storage. You can operate this infrastructure yourself or use Rivet’s managed deployment options.
 
-The [deployment architecture](https://openorange.dev/docs/architecture/) packages the Worker and runtime into Docker containers. Rivet coordinates the actors, with S3 backing their storage. You can operate that infrastructure yourself or use Rivet’s managed deployment options.
+Bindings connect a Worker to other services:
 
-Bindings are the connections through which a Worker accesses a database, bucket or other service. OpenOrange maps those connections onto different implementations:
-
-| Cloudflare capability | Where it runs on OpenOrange |
+| Cloudflare capability | OpenOrange implementation |
 | --- | --- |
-| Worker request handlers | A Node.js process in your container |
-| Durable Objects | Rivet Actors with per-object SQLite databases |
+| Worker request handlers | Node.js in your container |
+| Durable Objects | Rivet Actors with per-object SQLite |
 | D1 and KV | Actor-backed databases and key-value namespaces |
-| R2 object storage | An actor-backed bucket or a configured S3-compatible store |
+| R2 storage | Actor-backed bucket or configured S3-compatible store |
 
-The implementations have differences. The [module documentation](https://github.com/rivet-dev/open-orange/tree/main/docs/modules) lists gaps: Durable Object point-in-time recovery is missing, D1 lacks read replicas, and unsupported bindings such as Images throw when called. Memory and execution capacity depend on your machines rather than Cloudflare’s Workers quotas; **the deployment still has resource limits**.
+[Compatibility gaps](https://github.com/rivet-dev/open-orange/tree/main/docs/modules) include Durable Object point-in-time recovery, D1 read replicas and unsupported bindings such as Images. Capacity depends on your machines; self-hosting does not remove resource limits.
 
-## What the cheaper-compute claim compares
+## What the pricing figures mean
 
-Rivet’s [launch announcement](https://rivet.dev/changelog/2026-11-12-introducing-openorange/) advertises **4.8× cheaper compute and 8.7× cheaper storage**. Both headline ratios refer specifically to Durable Objects: memory-duration charges and SQLite storage. Its separate comparison for ordinary Workers CPU is **1.4×**, not 4.8×.
+Rivet’s [November 12 announcement](https://rivet.dev/changelog/2026-11-12-introducing-openorange/) advertises **4.8× cheaper compute and 8.7× cheaper storage** for Durable Objects: memory-duration charges and SQLite storage. Its separate comparison for ordinary Workers CPU is **1.4×**.
 
-> **Cost-model context:** Rivet compares Cloudflare list rates with raw on-demand AWS Graviton and S3 prices in `us-east-1`, allowing 40% compute headroom and using prices checked October 8. These are unit-cost calculations, not an independent benchmark of an identical production application. Capacity utilization, network charges, operations and any managed-service fees still belong in your own estimate.
+> **Behind the figures:** Rivet calculated these ratios from Cloudflare list rates and on-demand AWS Graviton and S3 prices in `us-east-1`, checked October 8, with 40% compute headroom. Your application’s savings will depend on utilization, network costs and the cost of operating or paying someone to manage the infrastructure.
 
-As with [low-cost agent hosting](/news/ai-agent-cloud-hosting-costs/), a cheaper resource unit is useful evidence, but not the whole bill.
+As with [low-cost agent hosting](/news/ai-agent-cloud-hosting-costs/), cheaper resources are only part of the bill.
 
-## Moving code is only part of moving an app
+## What moves with the application
 
-The [migration guide](https://openorange.dev/docs/migrate/) describes different paths for different data. SQLite-backed Durable Objects have a live-migration path. **D1 migration interrupts writes**, and queries fail during Cloudflare’s export. KV and R2 data are not copied by `orange migrate`; they need a separate transfer. Writes made after moving to OpenOrange do not automatically sync back to Cloudflare.
+The [migration guide](https://openorange.dev/docs/migrate/) describes live migration for SQLite-backed Durable Objects. **D1 migration interrupts writes**, and queries fail during Cloudflare’s export. KV and R2 need separate transfers; `orange migrate` does not copy them. Writes after migration do not automatically sync back to Cloudflare.
 
-For the chat-room example, that means checking both the room’s behavior and its saved history before switching traffic. The documented `orange doctor` command reports bindings that work, need another service or are unsupported; a staging rehearsal must then cover the application and its data.
+The `orange doctor` command checks which bindings work, need another service or are unsupported. For the chat room, testing must cover both its behavior and saved history before switching traffic.
 
-For a team that wants its Workers application near an existing database or on its own servers, OpenOrange offers another deployment path. The useful change is the ability to retain supported application APIs while replacing the infrastructure behind them. Whether that move is worthwhile comes down to the services the application needs, the data it must carry over and the cost of operating its new home.
+OpenOrange gives teams a way to keep supported Workers APIs while running the application on infrastructure they choose. If that control matters to you, start with compatibility and a migration rehearsal, then compare the full operating cost.
 
 ## Sources
 
