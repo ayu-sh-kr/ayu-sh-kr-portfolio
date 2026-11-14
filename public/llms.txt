@@ -49,6 +49,7 @@
 
 ## Recent Dispatch notes
 
+- [Thinking Machines details how Inkling 2 Small trains with fewer bits](https://www.ayu-sh-kr.com/news/inkling-2-four-bit-training/): Thinking Machines explains Inkling 2 Small’s mixed-precision training: a 4-bit forward pass, 8-bit gradients and reported training speedups on NVIDIA Blackwell. [Article Markdown](https://www.ayu-sh-kr.com/news/inkling-2-four-bit-training.md).
 - [AWS Emulator brings the cloud testing loop to your laptop](https://www.ayu-sh-kr.com/news/aws-emulator-localstack-local-testing/): AWS Emulator lets developers and coding agents test AWS APIs locally. Explore its capabilities, agent-built development process, limits and deployment context. [Article Markdown](https://www.ayu-sh-kr.com/news/aws-emulator-localstack-local-testing.md).
 
 - [PAN 2: an open world model for testing actions before taking them](https://www.ayu-sh-kr.com/news/pan-2-world-model-physical-intelligence/): MBZUAI’s PAN 2 combines language reasoning with a 29B video model to simulate actions, with open weights, training code and clear limits on multi-step reliability. [Article Markdown](https://www.ayu-sh-kr.com/news/pan-2-world-model-physical-intelligence.md).

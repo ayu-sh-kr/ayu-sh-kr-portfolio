@@ -68,6 +68,20 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "inkling-2-four-bit-training",
+    date: "2026-11-14",
+    title: "Thinking Machines details how Inkling 2 Small trains with fewer bits",
+    summary: "Thinking Machines explains Inkling 2 Small’s mixed-precision training: a 4-bit forward pass, 8-bit gradients and reported training speedups on NVIDIA Blackwell.",
+    kind: "infra",
+    document: "/news/inkling-2-four-bit-training.md",
+    keywords: ["Inkling 2 Small", "Thinking Machines", "4-bit training", "NVFP4", "MXFP8", "mixed-precision training", "NVIDIA Blackwell"],
+    minutes: 3,
+    reference: {
+      label: "Thinking Machines training report",
+      href: "https://thinkingmachines.ai/blog/end-to-end-4-bit-training/"
+    }
+  },
+  {
     slug: "aws-emulator-localstack-local-testing",
     date: "2026-11-12",
     title: "AWS Emulator brings the cloud testing loop to your laptop",
