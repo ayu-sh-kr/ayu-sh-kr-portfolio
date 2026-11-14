@@ -10,7 +10,9 @@ The model itself [launched on November 5](https://thinkingmachines.ai/news/inkli
 
 **Quantization** represents numbers using a smaller set of possible values. NVIDIA's [NVFP4 format](https://docs.nvidia.com/deeplearning/transformer-engine/features/low_precision_training/nvfp4/nvfp4.html) combines 4-bit values with shared scaling factors, allowing groups of numbers to cover different ranges. Blackwell hardware accelerates this arithmetic, but rounding still loses information.
 
-Think of a prediction and its correction as two different jobs. The **forward pass** produces the prediction; the **backward pass** calculates gradients, which guide changes to the model's weights. Thinking Machines uses different precision for those jobs:
+> **Forward and backward passes:** In a forward pass, the model processes an input and makes a prediction. During training, that prediction is scored. The backward pass traces how the model’s weights contributed to the error and calculates gradients: signals an optimizer uses to adjust those weights. One produces an answer; the other helps the model learn from it.
+
+Thinking Machines uses different precision for these two jobs:
 
 | Part of the recipe | What the team uses |
 | --- | --- |
