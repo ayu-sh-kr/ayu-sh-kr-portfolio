@@ -2,9 +2,9 @@
 
 Ever thought about moving your Cloudflare Workers out of Cloudflare? For many developers, the answer might be: ‘Why would I?’ Cloudflare already provides the runtime and infrastructure to deploy them. But some teams may want to run the same application in their own cloud account or on their own servers. That’s the choice Rivet is aiming to offer with OpenOrange.
 
-Cloudflare’s [workerd runtime](https://github.com/cloudflare/workerd) was already open source; OpenOrange adds an alternative runtime and infrastructure for supported services.
+Cloudflare’s [workerd runtime](https://github.com/cloudflare/workerd) was already open source. But running an application elsewhere can also mean replacing the databases, storage and background services it relies on.
 
-The [Apache-2.0 project](https://github.com/rivet-dev/open-orange) provides a runtime and deployment tools for AWS, Google Cloud, Azure or your own servers. It reads the project’s Wrangler configuration and supplies alternatives for supported databases, storage and background services. The scope depends on which of those services your application uses.
+OpenOrange brings those pieces together for supported applications. [Released under Apache 2.0](https://github.com/rivet-dev/open-orange), it pairs an alternative runtime with deployment tools for AWS, Google Cloud, Azure or your own servers. It reads the project’s Wrangler configuration and supplies alternatives for supported services. How much of an application can move depends on which services it uses.
 
 ## How Workers run on Rivet
 
