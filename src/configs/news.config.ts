@@ -75,7 +75,7 @@ export const newsNotes: readonly NewsNote[] = [
     kind: "infra",
     document: "/news/openorange-cloudflare-workers-self-hosting.md",
     keywords: ["OpenOrange", "self-host Cloudflare Workers", "Rivet Actors", "Durable Objects migration", "Cloudflare Workers Node.js", "workerd"],
-    minutes: 3.5,
+    minutes: 3,
     reference: {
       label: "OpenOrange announcement by Rivet",
       href: "https://rivet.dev/changelog/2026-11-12-introducing-openorange/"
