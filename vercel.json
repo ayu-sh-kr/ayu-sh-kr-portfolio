@@ -14,6 +14,11 @@
   ],
   "redirects": [
     {
+      "source": "/news/openorange-cloudflare-workers-self-hosting",
+      "destination": "/news/openorange-cloudflare-workers-self-hosting/",
+      "permanent": true
+    },
+    {
       "source": "/news/aws-emulator-localstack-local-testing",
       "destination": "/news/aws-emulator-localstack-local-testing/",
       "permanent": true
