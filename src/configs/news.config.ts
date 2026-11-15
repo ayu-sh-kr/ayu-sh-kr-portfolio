@@ -75,7 +75,7 @@ export const newsNotes: readonly NewsNote[] = [
     kind: "explainer",
     document: "/news/gemini-4-argon-carbon-hydrogen-comparison.md",
     keywords: ["Gemini 4", "Gemini 4 Hydrogen", "Gemini 4 Carbon", "Gemini 4 Argon", "AI model benchmarks", "Gemini API pricing", "model retirement"],
-    minutes: 7,
+    minutes: 6,
     reference: {
       label: "Google’s Gemini 4 Hydrogen announcement",
       href: "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-hydrogen/"
