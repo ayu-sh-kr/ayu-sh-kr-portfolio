@@ -34,19 +34,17 @@ That is a claim about **available choices**, not measured market share. A benchm
 
 There is a difference between having another API key and having an alternative you can actually use. The latter needs to pass the same tests, work with your tools and fit your operating budget. Carbon's result makes that effort worth considering; it does not remove the effort.
 
-## Match the model to the task
+## Different flavours of frontier work
 
-A routine code change and a stubborn production bug need different kinds of work. One may require a small edit and a test run; the other may involve tracing a failure across several systems. Google's lineup suggests three candidates to evaluate:
+A service-maintenance workflow illustrates what that evaluation could look like. Most changes are routine: understanding a module, drafting a fix and checking the tests. Occasionally, a failure crosses several systems and needs a longer investigation. Treating both jobs identically can mean paying for reasoning that the first task does not need, or rushing the second.
 
-- **Argon:** everyday coding and knowledge work.
-- **Carbon:** difficult investigations that benefit from deeper reasoning.
-- **Hydrogen:** faster execution, with an adjustable reasoning budget.
+![An animated isometric task tray connects to Carbon, Argon and Hydrogen workstations and a shared review bench. Light packets show input, processing and reviewed output. The scene is illustrative.](/news/assets/gemini-4-argon-carbon-hydrogen-comparison/workflow.svg)
 
-![An isometric task tray branches to Carbon, Argon and Hydrogen workstations, then converges on a shared review bench. Compare each candidate against the current model using the same tasks and tests, checking correctness, review effort and cost.](/news/assets/gemini-4-argon-carbon-hydrogen-comparison/workflow.svg)
+That is where the Argon–Carbon distinction becomes useful. Based on Google's positioning, **Argon is a candidate for the everyday path; Carbon is a candidate for escalation** when the problem needs deeper exploration. These are starting hypotheses for evaluation, not results from a test of that service.
 
-The illustration is a way to plan an evaluation, based on Google's positioning. Start with a few tasks your current model struggles with, then compare the finished results. Keep the existing setup where it works; bring in another model where it reduces retries or review effort.
+The comparison with peers should follow the same logic. If a team's current Claude or OpenAI setup already handles routine changes reliably, replacing it wholesale adds risk without a clear benefit. A narrower experiment is more informative: give Carbon a small set of difficult cases that currently require retries or substantial human intervention. Compare accepted fixes, review effort and the complete bill, not just how impressive the first answer looks.
 
-These choices can also work together. Google's [Hydrogen announcement describes four thinking levels and Orchestrator integration](https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-hydrogen/), which can route between Hydrogen and Carbon within an agent session. That offers a way to reserve deeper reasoning for a hard decision and use faster execution around it. The handoff still needs to preserve context and produce a result you can trust.
+Hydrogen adds a third option. Its [four thinking levels and Orchestrator integration](https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-hydrogen/) let developers vary reasoning depth or route between Hydrogen and Carbon during an agent session. The interesting possibility is a mixed workflow: spend more reasoning on the uncertain decision, then use faster execution for the surrounding steps. Whether that helps depends on how well the handoff preserves context and correctness.
 
 ## The choice extends beyond capability
 
