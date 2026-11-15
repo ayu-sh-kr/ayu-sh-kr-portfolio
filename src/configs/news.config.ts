@@ -70,8 +70,8 @@ export const newsNotes: readonly NewsNote[] = [
   {
     slug: "gemini-4-argon-carbon-hydrogen-comparison",
     date: "2026-11-15",
-    title: "Gemini 4 gives developers more reasons to look beyond their default model",
-    summary: "What Argon, Carbon and Hydrogen add to the frontier-model shortlist, and how developers can use that choice without replacing everything.",
+    title: "Gemini 4 expands the frontier-model shortlist",
+    summary: "How Gemini 4 Carbon, Argon and Hydrogen broaden the choice alongside Claude and GPT, from demanding reasoning to everyday work and faster execution.",
     kind: "explainer",
     document: "/news/gemini-4-argon-carbon-hydrogen-comparison.md",
     keywords: ["Gemini 4", "Gemini 4 Hydrogen", "Gemini 4 Carbon", "Gemini 4 Argon", "AI model benchmarks", "Gemini API pricing", "model retirement"],
