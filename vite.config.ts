@@ -37,6 +37,7 @@ const showcaseRoutes = [
   "/showcase/dota-rest",
 ];
 const newsRoutes = [
+  "/news/gemini-4-argon-carbon-hydrogen-comparison",
   "/news/inkling-2-four-bit-training",
   "/news/openorange-cloudflare-workers-self-hosting",
   "/news/aws-emulator-localstack-local-testing",
