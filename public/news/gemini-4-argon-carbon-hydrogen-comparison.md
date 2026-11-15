@@ -44,7 +44,7 @@ That gives the shortlist a direction: Carbon merits testing on multi-step automa
 
 The practical benefit of another competitive model is having somewhere else to take a difficult task. A team can compare Carbon with its existing Claude or GPT setup while keeping the workflow that already works. That is a more useful form of competition than choosing a provider solely because it leads a headline ranking.
 
-This is about **available alternatives**, rather than evidence of customers switching or market share changing. To become a real alternative, a model still needs to work with the team's tools, pass its tests and fit its budget. The next step is to turn that wider shortlist into a focused evaluation.
+Google's broader lineup adds another dimension to that competition: Carbon's reasoning focus sits alongside Argon's general-purpose role and Hydrogen's faster execution. The choice becomes less about picking one flagship for everything and more about matching a model to the work.
 
 ## Different flavours of frontier work
 
