@@ -6,7 +6,7 @@ The lineup arrived in stages: Argon reached broader availability on October 13 a
 
 ## Where Carbon is competitive
 
-The **Artificial Analysis Intelligence Index v5.0.1** combines [nine evaluations of coding, knowledge work, science and reasoning](https://artificialanalysis.ai/methodology/intelligence-benchmarking). On November 15, its [leaderboard](https://artificialanalysis.ai/leaderboards/models) put Carbon high at **60**, ahead of Opus 5.5 max at **59** and GPT-6 Astra max at **57**, behind Fable 5.2 max at **65**. These are composite scores at the stated thinking settings; Claude entries use the provider's default fallback configuration.
+The **Artificial Analysis Intelligence Index v5.0.1** combines [nine evaluations of coding, knowledge work, science and reasoning](https://artificialanalysis.ai/methodology/intelligence-benchmarking) into an overall score. On November 15, its [leaderboard](https://artificialanalysis.ai/leaderboards/models) put Carbon high at **60**, ahead of Opus 5.5 max at **59** and GPT-6 Astra max at **57**, behind Fable 5.2 max at **65**. The high and max labels refer to each model's reasoning setting. Claude results use the provider's default fallback configuration.
 
 ![Artificial Analysis Intelligence Index: Fable 5.2 65, Carbon 60, Opus 5.5 59, GPT-6 Astra 57, Hydrogen 54, Argon 50 and Kimi K3.1 Pro 46.](/news/assets/gemini-4-argon-carbon-hydrogen-comparison/capability.svg)
 
