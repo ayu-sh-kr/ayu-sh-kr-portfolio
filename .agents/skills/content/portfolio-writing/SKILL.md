@@ -58,6 +58,13 @@ Treat one substantial blog every ten days as an editorial planning rhythm, not a
 
 Prefer connected prose over stacked bullets. Highlight a few meaningful terms or outcomes in bold for scanning; avoid bolding whole sentences. Keep code fences tagged and preceded by a sentence explaining the example. Follow the requested read time by checking the actual word count and the article's complexity, rather than padding to a number.
 
+## Source links and chart attribution
+
+- Weave source links into meaningful words in complete, natural sentences. When several references would interrupt the narrative, consolidate them in a concise end Sources section instead.
+- Avoid dangling labels such as “Argon disclosure”, “Carbon model card”, or “Source: …” as standalone fragments after a paragraph. Preserve clear attribution without making the reader step through a list of document names.
+- Review every chart, table, caption, and its adjacent paragraphs together. Attribute the data naturally in the introduction or interpretation, including the producer, snapshot date, benchmark version, and essential settings where needed. Do not repeat the same source/date block beneath the visual when that context is already clear.
+- Keep captions useful: explain what the visual shows or how to read it, rather than adding another cluttered bibliography. Retain source links and uncertainty that readers need to assess the evidence; do not remove attribution merely to shorten the page.
+
 ## SEO and publishing
 
 Follow [content-seo-publishing](../content-seo-publishing/SKILL.md) for titles, metadata, catalog ownership, and all route surfaces. Choose the title and description only after the story's angle and evidence are clear. For a revision, keep the established URL unless the user requests a migration. If an SVG is requested, follow [blog-svg-diagrams](../../documentation/blog-svg-diagrams/SKILL.md) and verify its root-relative URL and rendered layout.
