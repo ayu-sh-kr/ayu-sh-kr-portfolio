@@ -12,8 +12,6 @@ The rollout began with restricted access. Argon and Carbon each spent 13 days wi
 | Carbon | October 28 | November 10 | Harder, longer-running tasks |
 | Hydrogen | November 12 | November 12 | Faster execution with adjustable reasoning |
 
-Rollout sources: Google's [Argon introduction](https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/) and [expanded access](https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-argon/), [Carbon introduction](https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/) and [expanded access](https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-carbon-now-available/), and [Hydrogen launch](https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-hydrogen/). Dates are in 2026.
-
 Argon provides the foundation. Carbon builds on it with more reasoning capacity and a one-million-token context window, sometimes trading response speed for deeper work. [Argon disclosure](https://storage.googleapis.com/transparencyreport/report-downloads/pdf-report-ii_Gemini_4_2026-10-13_2026-10-13_en_v1.pdf), [Carbon model card](https://storage.googleapis.com/deepmind-media/Model-Cards/Gemini-4-Carbon-Model-Card.pdf).
 
 Hydrogen offers four thinking levels: low, medium, high and xhigh. Google's Orchestrator can route between Carbon and Hydrogen within one agent session, reserving deeper reasoning for harder steps. That division of work is also what the independent comparisons help examine. [Hydrogen announcement](https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-hydrogen/).
