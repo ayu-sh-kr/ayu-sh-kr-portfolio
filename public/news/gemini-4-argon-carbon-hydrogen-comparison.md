@@ -1,8 +1,8 @@
 # Gemini 4 expands the frontier-model shortlist
 
-Google's **Gemini 4** lineup gives developers more to consider alongside Claude and GPT. Carbon strengthens its offer for demanding reasoning, Argon targets general-purpose work, and Hydrogen prioritises faster execution. The opportunity is both another competitive provider and more ways to divide work between models.
+Google's **Gemini 4** lineup gives developers a stronger alternative alongside Claude and GPT. Carbon's independent results put it alongside leading Claude and GPT models, while Argon and Hydrogen extend Google's offer beyond demanding reasoning. For developers, the question becomes where each option fits in the work they already do.
 
-Argon reached broader availability on October 13 and Carbon on November 10, each after 13 days of restricted access through Google's Fairwind cybersecurity programme. Hydrogen followed on November 12. Google [positions Argon for most software and knowledge work, and Carbon for harder, multi-step problems](https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-carbon-now-available/).
+The lineup arrived in stages: Argon reached broader availability on October 13 and Carbon on November 10, each after 13 days of restricted access through Google's Fairwind cybersecurity programme. Hydrogen followed on November 12. Google [positions Argon for most software and knowledge work, and Carbon for harder, multi-step problems](https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-carbon-now-available/).
 
 ## Where Carbon is competitive
 
@@ -10,7 +10,7 @@ The **Artificial Analysis Intelligence Index v5.0.1** combines [nine evaluations
 
 ![Artificial Analysis Intelligence Index: Fable 5.2 65, Carbon 60, Opus 5.5 59, GPT-6 Astra 57, Hydrogen 54, Argon 50 and Kimi K3.1 Pro 46.](/news/assets/gemini-4-argon-carbon-hydrogen-comparison/capability.svg)
 
-The same index's [Opus](https://artificialanalysis.ai/models/comparisons/gemini-4-carbon-vs-claude-opus-5-5) and [Astra comparisons](https://artificialanalysis.ai/models/comparisons/gemini-4-carbon-vs-gpt-6-astra) show where that advantage lies:
+Looking inside that overall score reveals a more useful distinction. The index's [Opus](https://artificialanalysis.ai/models/comparisons/gemini-4-carbon-vs-claude-opus-5-5) and [Astra comparisons](https://artificialanalysis.ai/models/comparisons/gemini-4-carbon-vs-gpt-6-astra) break down performance by task:
 
 | Component | Carbon high | Opus 5.5 max | Astra max |
 | --- | --- | --- | --- |
@@ -20,26 +20,26 @@ The same index's [Opus](https://artificialanalysis.ai/models/comparisons/gemini-
 
 [AutomationBench-AA](https://artificialanalysis.ai/evaluations/automationbench-aa) measures objectives completed without guardrail violations. [Terminal-Bench 4.0](https://artificialanalysis.ai/evaluations/terminalbench-4-0) requires every test to pass; [FrontierCode-AA 2.0](https://artificialanalysis.ai/evaluations/frontiercode-2-0) grades repository changes against tests and a maintainer-oriented rubric. Both coding evaluations average three attempts per task.
 
-Carbon leads these peers on automation and terminal work, while Opus and Astra score higher on repository changes. That makes Google's challenge particularly relevant to agents working across tools, rather than a simple replacement for every coding workflow.
+Carbon leads these peers on automation and terminal work; Opus and Astra score higher on repository changes. The clearest opening for Google in these results is therefore cross-tool agent work, where completing a sequence of actions matters.
 
 ## Different flavours of frontier work
 
-Google also offers a choice about how much reasoning each stage needs: **Argon for general-purpose work, Carbon for deeper investigation, Hydrogen for faster execution**.
+Cross-tool work also involves different demands within the same task. Google's lineup addresses that range: **Argon for general-purpose work, Carbon for deeper investigation, Hydrogen for faster execution**.
 
 ![An animated isometric task tray connects to Carbon, Argon and Hydrogen workstations and a shared review bench. Light packets show input, processing and reviewed output. The scene is illustrative.](/news/assets/gemini-4-argon-carbon-hydrogen-comparison/workflow.svg)
 
 Consider an agent handling a delayed order across support, inventory and delivery systems. Summarising the case is general-purpose work; investigating conflicting records calls for deeper reasoning; carrying out the agreed next steps emphasises execution.
 
-Hydrogen's [four thinking levels and Orchestrator integration](https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-hydrogen/) support adjustable reasoning and routing between Hydrogen and Carbon within an agent session. That opens a practical division: reason longer over uncertain decisions, then execute surrounding steps faster.
+Hydrogen's [four thinking levels and Orchestrator integration](https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-hydrogen/) support adjustable reasoning and routing between Hydrogen and Carbon within an agent session. This brings the division into one session: longer reasoning for uncertain decisions, faster execution for surrounding steps.
 
 ## Cost and availability shape the choice
 
-[Standard Developer API prices](https://aistudio.google.com/docs/pricing) for Argon and Carbon are $2 per million input tokens and $10 per million output tokens, rising to $4/$20 on December 1. Hydrogen costs $1.50/$7.50. Output includes thinking tokens. As with the [Opus 5.5 pricing changes](/news/claude-opus-5-5-cost-coding/), the useful comparison is the cost of completing a task, including retries.
+That division also affects the bill. [Standard Developer API prices](https://aistudio.google.com/docs/pricing) for Argon and Carbon are $2 per million input tokens and $10 per million output tokens, rising to $4/$20 on December 1. Hydrogen costs $1.50/$7.50. Output includes thinking tokens. As with the [Opus 5.5 pricing changes](/news/claude-opus-5-5-cost-coding/), the useful comparison is the cost of completing a task, including retries.
 
-For standard generally available versions, [Google Cloud's Agent Platform](https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/model-versions) commits to Argon availability until October 13, 2027 or later. Carbon and Hydrogen are short-term models with no retirement date announced on November 15. Once retirement is scheduled, Cloud gives **at least 45 days' notice**.
+Keeping those models in a longer-lived workflow introduces another choice: support duration. For standard generally available versions, [Google Cloud's Agent Platform](https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/model-versions) commits to Argon availability until October 13, 2027 or later. Carbon and Hydrogen are short-term models with no retirement date announced on November 15. Once retirement is scheduled, Cloud gives **at least 45 days' notice**.
 
 The separate [Gemini Developer API schedule](https://aistudio.google.com/docs/deprecations) lists no shutdown date for any of the three and promises advance notice without that stated minimum. These are developer-platform terms, not Gemini app commitments.
 
 ## More choice where it matters
 
-Carbon's results give Google a stronger place alongside frontier peers; Argon and Hydrogen broaden the ways developers can use that alternative. The shift is from choosing one flagship for everything to choosing how the work gets done: deeper reasoning where it earns its cost, faster execution where it does not.
+Google's stronger shortlist position rests on something concrete: Carbon's automation and terminal results, alongside a lineup spanning general work, deeper reasoning and faster execution. That gives developers more than another flagship to compare. It gives them another provider to build around, choosing the models, costs and support commitments that fit their workflow.
