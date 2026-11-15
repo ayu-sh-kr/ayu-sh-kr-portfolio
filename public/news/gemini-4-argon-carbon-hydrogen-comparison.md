@@ -42,19 +42,17 @@ The split gives developers a concrete reason to consider Carbon for multi-step a
 
 ## Different flavours of frontier work
 
-Carbon is only one part of that choice. Consider a service-maintenance workflow: routine changes involve understanding a module, drafting a fix and checking tests. A failure spanning several systems needs a longer investigation. Those jobs call for different amounts of reasoning.
+Google's broader offer is a choice about how much reasoning a task needs. Argon targets general-purpose work, Carbon is positioned for harder investigations, and Hydrogen prioritises faster execution. That gives developers options both between providers and within Google's own lineup.
 
 ![An animated isometric task tray connects to Carbon, Argon and Hydrogen workstations and a shared review bench. Light packets show input, processing and reviewed output. The scene is illustrative.](/news/assets/gemini-4-argon-carbon-hydrogen-comparison/workflow.svg)
 
-Google's positioning maps onto that distinction: **Argon for general-purpose work; Carbon for deeper investigation**. A team could use the two as an everyday path and an escalation path, rather than sending every request to the most reasoning-intensive model.
+Consider an agent handling a delayed customer order across support, inventory and delivery systems. Summarising the case is general-purpose work; investigating conflicting records calls for deeper reasoning; carrying out the agreed next steps puts the emphasis on execution. A workflow like this offers a reason to use different models for different stages.
 
-For a team already using Claude or GPT, that creates a practical opening. Compare Carbon on difficult cases that require retries or substantial human intervention, while keeping routine work on the existing setup. Accepted fixes, review effort and the complete bill reveal what the extra option contributes.
-
-Hydrogen adds a third option. Its [four thinking levels and Orchestrator integration](https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-hydrogen/) let developers vary reasoning depth or route between Hydrogen and Carbon during an agent session. That opens up a mixed workflow: spend more reasoning on an uncertain decision, then use faster execution for the surrounding steps.
+Google also supports switching models within an agent session. Hydrogen's [four thinking levels and Orchestrator integration](https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-hydrogen/) let developers vary reasoning depth or route between Hydrogen and Carbon during an agent session. That opens up a mixed workflow: spend more reasoning on an uncertain decision, then use faster execution for the surrounding steps.
 
 ## The choice extends beyond capability
 
-Dividing work between models also changes its cost. [Google's standard Developer API rates](https://aistudio.google.com/docs/pricing) currently put Argon and Carbon at $2 per million input tokens and $10 per million output tokens, rising to $4 and $20 on December 1. Hydrogen is $1.50 and $7.50. Output charges include thinking tokens, so equal token prices can still produce different bills.
+The cost of that workflow depends on which model handles each stage and how much reasoning it uses. [Google's standard Developer API rates](https://aistudio.google.com/docs/pricing) currently put Argon and Carbon at $2 per million input tokens and $10 per million output tokens, rising to $4 and $20 on December 1. Hydrogen is $1.50 and $7.50. Output charges include thinking tokens, so equal token prices can still produce different bills.
 
 As with the earlier [Opus 5.5 pricing changes](/news/claude-opus-5-5-cost-coding/), the useful unit is a completed task. Longer reasoning can cost more per attempt while saving a retry; routine work may finish just as well with less reasoning.
 
