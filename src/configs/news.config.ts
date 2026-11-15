@@ -70,12 +70,12 @@ export const newsNotes: readonly NewsNote[] = [
   {
     slug: "gemini-4-argon-carbon-hydrogen-comparison",
     date: "2026-11-15",
-    title: "Google’s Gemini 4 lineup: Argon, Carbon and Hydrogen compared",
-    summary: "Google’s Gemini 4 rollout, compared across independent benchmarks, coding agents, speed, API pricing and model retirement commitments.",
+    title: "Gemini 4 gives developers more reasons to look beyond their default model",
+    summary: "What Argon, Carbon and Hydrogen add to the frontier-model shortlist, and how developers can use that choice without replacing everything.",
     kind: "explainer",
     document: "/news/gemini-4-argon-carbon-hydrogen-comparison.md",
     keywords: ["Gemini 4", "Gemini 4 Hydrogen", "Gemini 4 Carbon", "Gemini 4 Argon", "AI model benchmarks", "Gemini API pricing", "model retirement"],
-    minutes: 5,
+    minutes: 6,
     reference: {
       label: "Google’s Gemini 4 Hydrogen announcement",
       href: "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-hydrogen/"
