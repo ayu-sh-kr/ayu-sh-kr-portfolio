@@ -68,6 +68,20 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "gemini-4-argon-carbon-hydrogen-comparison",
+    date: "2026-11-15",
+    title: "Gemini 4 compared: what Argon, Carbon and Hydrogen change",
+    summary: "Google’s Gemini 4 rollout, compared across independent benchmarks, coding agents, speed, API pricing and model retirement commitments.",
+    kind: "explainer",
+    document: "/news/gemini-4-argon-carbon-hydrogen-comparison.md",
+    keywords: ["Gemini 4", "Gemini 4 Hydrogen", "Gemini 4 Carbon", "Gemini 4 Argon", "AI model benchmarks", "Gemini API pricing", "model retirement"],
+    minutes: 6,
+    reference: {
+      label: "Google’s Gemini 4 Hydrogen announcement",
+      href: "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-hydrogen/"
+    }
+  },
+  {
     slug: "inkling-2-four-bit-training",
     date: "2026-11-14",
     title: "Thinking Machines details how Inkling 2 Small trains with fewer bits",
