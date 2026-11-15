@@ -70,7 +70,7 @@ export const newsNotes: readonly NewsNote[] = [
   {
     slug: "gemini-4-argon-carbon-hydrogen-comparison",
     date: "2026-11-15",
-    title: "Gemini 4 compared: what Argon, Carbon and Hydrogen change",
+    title: "Google’s Gemini 4 lineup: Argon, Carbon and Hydrogen compared",
     summary: "Google’s Gemini 4 rollout, compared across independent benchmarks, coding agents, speed, API pricing and model retirement commitments.",
     kind: "explainer",
     document: "/news/gemini-4-argon-carbon-hydrogen-comparison.md",

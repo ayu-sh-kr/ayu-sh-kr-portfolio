@@ -1,8 +1,8 @@
-# Gemini 4 compared: what Argon, Carbon and Hydrogen change
+# Google’s Gemini 4 lineup: Argon, Carbon and Hydrogen compared
 
-Three names, several launch dates, and no single upgrade path. Google's **Gemini 4** rollout makes more sense as a choice between general-purpose work, longer reasoning and faster execution than as three successive replacements.
+Google's **Gemini 4** family now spans three priorities: general-purpose work with Argon, longer reasoning with Carbon, and faster tasks with Hydrogen. The latest arrival makes the choice less about picking the newest model and more about matching it to the job.
 
-Hydrogen arrived on November 12, two days after Carbon became broadly available. The rollout started weeks earlier, with access expanding in stages.
+The rollout began with restricted access. Argon and Carbon each spent 13 days with selected cybersecurity defenders through Google's Fairwind initiative before reaching paying developers, enterprises and eligible subscribers. Hydrogen followed on November 12, just two days after Carbon's broader release on November 10.
 
 ## One family, different jobs
 
@@ -12,13 +12,13 @@ Hydrogen arrived on November 12, two days after Carbon became broadly available.
 | Carbon | October 28 | November 10 | Harder, longer-running tasks |
 | Hydrogen | November 12 | November 12 | Faster execution with adjustable reasoning |
 
-Argon and Carbon first reached selected cybersecurity defenders through Fairwind, before expanding to paying developers, enterprises and eligible subscribers. The [Argon launch](https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/) and [broader release](https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-argon/), like [Carbon's introduction](https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/) and [expansion](https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-carbon-now-available/), mark different access stages.
+Rollout sources: Google's [Argon introduction](https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/) and [expanded access](https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-argon/), [Carbon introduction](https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/) and [expanded access](https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-carbon-now-available/), and [Hydrogen launch](https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-hydrogen/). Dates are in 2026.
 
-Google identifies [Argon as a new foundation model](https://storage.googleapis.com/transparencyreport/report-downloads/pdf-report-ii_Gemini_4_2026-10-13_2026-10-13_en_v1.pdf). [Carbon builds on it](https://storage.googleapis.com/deepmind-media/Model-Cards/Gemini-4-Carbon-Model-Card.pdf), adding reasoning capacity within a one-million-token context window, sometimes at the cost of slower responses.
+Argon provides the foundation. Carbon builds on it with more reasoning capacity and a one-million-token context window, sometimes trading response speed for deeper work. [Argon disclosure](https://storage.googleapis.com/transparencyreport/report-downloads/pdf-report-ii_Gemini_4_2026-10-13_2026-10-13_en_v1.pdf), [Carbon model card](https://storage.googleapis.com/deepmind-media/Model-Cards/Gemini-4-Carbon-Model-Card.pdf).
 
-[Hydrogen](https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-hydrogen/) offers four thinking levels: low, medium, high and xhigh. Google's Orchestrator can route between Carbon and Hydrogen within one agent session, reserving deeper reasoning for harder steps.
+Hydrogen offers four thinking levels: low, medium, high and xhigh. Google's Orchestrator can route between Carbon and Hydrogen within one agent session, reserving deeper reasoning for harder steps. That division of work is also what the independent comparisons help examine. [Hydrogen announcement](https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-hydrogen/).
 
-## Capability is only one comparison
+## How Gemini 4 compares on capability and coding
 
 The chart below uses **Artificial Analysis Intelligence Index v5.0.1**, captured November 15, 2026. These are selected peers, not an exhaustive ranking.
 
