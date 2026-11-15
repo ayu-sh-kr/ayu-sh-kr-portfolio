@@ -20,13 +20,25 @@ For a developer, those differences affect how much time and reasoning to spend o
 
 ## Where Carbon stands among frontier models
 
-How does that deeper-reasoning option compare with other frontier models? The [Artificial Analysis Intelligence Index v5.0.1](https://artificialanalysis.ai/leaderboards/models) offers an independent reference point. On November 15, Carbon high scored 60, above Opus 5.5 max at 59 and GPT-6 Astra max at 57, while Fable 5.2 max remained ahead at 65. The chart includes selected peers and their reported thinking settings; Claude entries use the provider's default fallback configuration.
+The **Artificial Analysis Intelligence Index v5.0.1** tests how models handle knowledge work, coding, science and reasoning. Its [nine component evaluations](https://artificialanalysis.ai/methodology/intelligence-benchmarking) include completing software tasks, working across business applications, interpreting professional documents and answering difficult knowledge questions. The final number is a composite score, not the percentage of tasks a model solves.
+
+On November 15, the [independent leaderboard](https://artificialanalysis.ai/leaderboards/models) put Carbon high at **60**, ahead of Opus 5.5 max at **59** and GPT-6 Astra max at **57**, but behind Fable 5.2 max at **65**. The chart shows selected peers at their stated thinking settings; Claude entries use the provider's default fallback configuration.
 
 ![Artificial Analysis Intelligence Index: Fable 5.2 65, Carbon 60, Opus 5.5 59, GPT-6 Astra 57, Hydrogen 54, Argon 50 and Kimi K3.1 Pro 46.](/news/assets/gemini-4-argon-carbon-hydrogen-comparison/capability.svg)
 
-The [index combines nine evaluations](https://artificialanalysis.ai/methodology/intelligence-benchmarking) across knowledge work, coding, science and reasoning, primarily in English and text with some image inputs. These are composite scores at different reasoning settings. A small gap is a reason to test, rather than evidence that one model will consistently beat another on your work.
+The component results explain why that overall position is useful without making Carbon the best choice for every job. Artificial Analysis's [Opus comparison](https://artificialanalysis.ai/models/comparisons/gemini-4-carbon-vs-claude-opus-5-5) and [Astra comparison](https://artificialanalysis.ai/models/comparisons/gemini-4-carbon-vs-gpt-6-astra) report these results from the same index:
 
-Carbon's position supports including it alongside OpenAI and Anthropic in a frontier-model evaluation. Argon's lower score also makes the distinction within Google's lineup visible: choosing the general-purpose option is a different decision from choosing its strongest reasoning model.
+| Selected component | Carbon high | Opus 5.5 max | GPT-6 Astra max |
+| --- | --- | --- | --- |
+| AutomationBench-AA: business-app objectives completed | 77.8% | 69.5% | 68.5% |
+| Terminal-Bench 4.0: terminal tasks passed | 65.2% | 59.6% | 59.1% |
+| FrontierCode-AA 2.0: repository-change score | 40.6% | 46.4% | 42.4% |
+
+Carbon leads these two peers on [business-app automation](https://artificialanalysis.ai/evaluations/automationbench-aa), where the score measures the average share of objectives completed without guardrail violations. It also leads on [terminal work](https://artificialanalysis.ai/evaluations/terminalbench-4-0), where each task must pass every test; results average three attempts per task.
+
+The order reverses for [changes to real open-source repositories](https://artificialanalysis.ai/evaluations/frontiercode-2-0). There, three attempts per task are graded against tests and a maintainer-oriented rubric. Carbon trails both peers, so its higher overall index score does not establish better repository coding.
+
+That gives the shortlist a direction: Carbon merits testing on multi-step automation and terminal workflows, while the repository result is a reason to retain Opus and Astra in coding evaluations. These are selected components of the one composite index, with different grading rules and model settings, rather than interchangeable success rates.
 
 ## A wider shortlist changes the decision
 
