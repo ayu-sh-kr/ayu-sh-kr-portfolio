@@ -16,7 +16,7 @@ The rollout began with restricted access. Argon and Carbon each spent 13 days wi
 
 Google describes [Argon as its new foundation model](https://storage.googleapis.com/transparencyreport/report-downloads/pdf-report-ii_Gemini_4_2026-10-13_2026-10-13_en_v1.pdf). [Carbon builds on it](https://storage.googleapis.com/deepmind-media/Model-Cards/Gemini-4-Carbon-Model-Card.pdf) with more reasoning capacity and a one-million-token context window. Google still positions Argon for most software and knowledge work, while Carbon spends more tokens exploring difficult problems and checking its work, according to its [broader release announcement](https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-carbon-now-available/).
 
-## One benchmark, one useful signal
+## Where Carbon stands among frontier models
 
 The [Artificial Analysis Intelligence Index v5.0.1](https://artificialanalysis.ai/leaderboards/models) provides a useful independent check on that positioning. On November 15, Carbon high scored 60, above Opus 5.5 max at 59 and GPT-6 Astra max at 57, while Fable 5.2 max remained ahead at 65. The chart includes selected peers and their reported thinking settings; Claude entries use the provider's default fallback configuration.
 
