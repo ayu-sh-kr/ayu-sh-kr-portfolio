@@ -1,10 +1,10 @@
-# PyBot: DeepSeek agents build a chatbot that runs on Python rules
+# PyBot: a Python chatbot built by DeepSeek agents
 
 A thousand AI agents spent a week building a chatbot that would answer without calling an AI model. That is the premise of **PyBot**, the Hugging Face experiment introduced by Leandro von Werra: DeepSeek Flash agents wrote the software, while ordinary Python rules handle the conversation afterwards.
 
 The [published repository](https://github.com/huggingface/pybot) describes more than 1,000 agents producing and evaluating over 5,000 versions. The result is roughly **640,000 lines of Python**, using conditions, text patterns and stored facts instead of neural-network weights.
 
-## How a message becomes a reply
+## How PyBot answers with Python rules
 
 Rule-based chatbots long predate modern language models. Their difficulty is coverage: every new topic or phrasing can require more logic. PyBot explores how far that approach goes when agents do the writing.
 
@@ -14,7 +14,7 @@ Its modules share four building blocks: an understanding layer for interpreting 
 
 That means a follow-up can use earlier conversation state rather than treating every message as a fresh lookup. The intelligence used to create this machinery and the machinery answering the user are separate parts of the experiment.
 
-## What matching a small model means
+## PyBot vs SmolLM on SmolTalkBench
 
 The team reports a **26% win rate on SmolTalkBench**, comparable to SmolLM-360M-Instruct. In this evaluation, a language-model judge compares replies against reference answers. The result concerns that conversational benchmark; it does not establish equal reasoning ability or reliability across unfamiliar tasks.
 

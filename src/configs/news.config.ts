@@ -70,11 +70,11 @@ export const newsNotes: readonly NewsNote[] = [
   {
     slug: "openai-research-access-safety-assessments",
     date: "2026-11-16",
-    title: "OpenAI expands research access and opens its safety work to scrutiny",
-    summary: "OpenAI’s 50,000 research grants offer Plus for small teams, alongside embedded model assessments and a free child-abuse detection tool.",
+    title: "OpenAI: ChatGPT research grants and new safety assessments",
+    summary: "OpenAI offers 50,000 ChatGPT Plus research grants, adds embedded model assessments and releases a free child-abuse detection tool. What changes for users.",
     kind: "shipped",
     document: "/news/openai-research-access-safety-assessments.md",
-    keywords: ["OpenAI research access", "ChatGPT Academic Researchers", "embedded assessments", "OpenAI child safety", "Transluce"],
+    keywords: ["ChatGPT for Academic Researchers", "ChatGPT Plus research grants", "OpenAI embedded assessments", "OpenAI research data privacy", "CSAM detection"],
     minutes: 3,
     reference: {
       label: "OpenAI’s academic research expansion",
@@ -84,11 +84,11 @@ export const newsNotes: readonly NewsNote[] = [
   {
     slug: "kiri-rust-container-runtime",
     date: "2026-11-16",
-    title: "Kiri puts a Rust runtime behind familiar Docker commands",
-    summary: "How Kiri rebuilds container startup in Rust while retaining Docker commands, with its architecture and reported lifecycle benchmarks.",
+    title: "Kiri: a Rust Docker Desktop alternative built for fast startup",
+    summary: "Kiri rebuilds container startup in Rust while supporting Docker CLI, Compose and buildx. Explore its runtime architecture and reported startup benchmarks.",
     kind: "infra",
     document: "/news/kiri-rust-container-runtime.md",
-    keywords: ["Kiri container runtime", "Rust Docker alternative", "Kiri benchmark", "Docker Desktop", "container startup"],
+    keywords: ["Kiri container runtime", "Docker Desktop alternative", "Kiri vs Docker Desktop", "Rust container runtime", "container startup benchmarks"],
     minutes: 2,
     reference: {
       label: "Kiri repository and architecture",
@@ -98,11 +98,11 @@ export const newsNotes: readonly NewsNote[] = [
   {
     slug: "lemon-squeezy-shutdown-stripe-migration",
     date: "2026-11-16",
-    title: "Lemon Squeezy is closing, leaving merchants a migration deadline",
-    summary: "Lemon Squeezy ends payments on March 31, 2027. The migration dates, Stripe Managed Payments eligibility and subscription limits merchants need to check.",
+    title: "Lemon Squeezy shutdown: dates and Stripe migration",
+    summary: "Lemon Squeezy stops payments on March 31, 2027. Key migration dates, Stripe Managed Payments eligibility and subscription-transfer limits for merchants.",
     kind: "infra",
     document: "/news/lemon-squeezy-shutdown-stripe-migration.md",
-    keywords: ["Lemon Squeezy shutdown", "Stripe Managed Payments", "Lemon Squeezy migration", "subscription migration"],
+    keywords: ["Lemon Squeezy shutdown", "Lemon Squeezy shutdown date", "Stripe Managed Payments", "Lemon Squeezy migration", "subscription migration"],
     minutes: 2,
     reference: {
       label: "Lemon Squeezy’s wind-down announcement",
@@ -112,11 +112,11 @@ export const newsNotes: readonly NewsNote[] = [
   {
     slug: "pybot-deepseek-agent-swarm-python",
     date: "2026-11-16",
-    title: "PyBot: DeepSeek agents build a chatbot that runs on Python rules",
-    summary: "Hugging Face’s PyBot turns a DeepSeek agent swarm’s work into a Python chatbot. How its rule-based replies work and what the SmolTalkBench result shows.",
+    title: "PyBot: a Python chatbot built by DeepSeek agents",
+    summary: "Hugging Face’s PyBot is a rule-based Python chatbot built by DeepSeek agents. How it answers without an LLM and compares with SmolLM on SmolTalkBench.",
     kind: "reading",
     document: "/news/pybot-deepseek-agent-swarm-python.md",
-    keywords: ["PyBot", "DeepSeek Flash agents", "Hugging Face agent swarm", "Python rule-based chatbot", "SmolTalkBench"],
+    keywords: ["Hugging Face PyBot", "DeepSeek agent swarm", "rule-based Python chatbot", "chatbot without an LLM", "SmolTalkBench"],
     minutes: 2,
     reference: {
       label: "PyBot repository",

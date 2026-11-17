@@ -1,10 +1,10 @@
-# Kiri puts a Rust runtime behind familiar Docker commands
+# Kiri: a Rust Docker Desktop alternative built for fast startup
 
-Running a container usually starts with a familiar Docker command. **Kiri changes the engine that answers it.** The Rust project runs Docker images and supports the Docker Engine API, so CLI commands, Compose projects and buildx workflows can connect to its runtime.
+Running a container usually starts with a familiar Docker command. **Kiri changes the engine that answers it.** The Rust container runtime runs Docker images and supports the Docker Engine API, so CLI commands, Compose projects and buildx workflows can connect to its runtime.
 
 The [Apache-2.0 project](https://github.com/libracoder/kiri) offers an alternative to Docker Desktop and OrbStack on macOS, Windows and Linux. Its first launch creates a `kiri` Docker context, which tells your tools where to send requests. Its approach is to rebuild container startup behind an established interface.
 
-## Reworking the path beneath Docker commands
+## How Kiri’s Rust container runtime works
 
 A fresh implementation gives Kiri room to choose a different process layout. Its [architecture](https://github.com/libracoder/kiri/blob/main/docs/development.md#architecture) brings container creation into a small Rust guest agent, leaving out dockerd, runc and per-container shims. Those choices shorten the machinery a request passes through.
 
@@ -14,7 +14,7 @@ On macOS, the host daemon manages a Linux virtual machine and forwards requests 
 
 > **How this differs by platform.** The diagram shows macOS, where a Linux virtual machine supplies the kernel containers need. Linux runs Kiri directly on its own kernel; Windows uses WSL2 to provide the Linux environment. In each case, Docker tools send requests to Kiri’s engine, which manages the containers underneath.
 
-## The speed reported by Kiri
+## Kiri vs Docker Desktop: startup benchmarks
 
 Kiri’s README reports **2.55 ms versus Docker Desktop’s 213 ms** for an Alpine container running `true` and being removed through the Docker API—the basis of its roughly **80×** figure. These are medians from 30 runs.
 
