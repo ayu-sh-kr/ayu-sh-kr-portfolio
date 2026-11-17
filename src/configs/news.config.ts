@@ -68,6 +68,62 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "openai-research-access-safety-assessments",
+    date: "2026-11-16",
+    title: "OpenAI: ChatGPT research grants and new safety assessments",
+    summary: "OpenAI offers 50,000 ChatGPT Plus research grants, adds embedded model assessments and releases a free child-abuse detection tool. What changes for users.",
+    kind: "shipped",
+    document: "/news/openai-research-access-safety-assessments.md",
+    keywords: ["ChatGPT for Academic Researchers", "ChatGPT Plus research grants", "OpenAI embedded assessments", "OpenAI research data privacy", "CSAM detection"],
+    minutes: 3,
+    reference: {
+      label: "OpenAI’s academic research expansion",
+      href: "https://openai.com/index/expanding-chatgpt-for-academic-researchers/"
+    }
+  },
+  {
+    slug: "kiri-rust-container-runtime",
+    date: "2026-11-16",
+    title: "Kiri: a Rust Docker Desktop alternative built for fast startup",
+    summary: "Kiri rebuilds container startup in Rust while supporting Docker CLI, Compose and buildx. Explore its runtime architecture and reported startup benchmarks.",
+    kind: "infra",
+    document: "/news/kiri-rust-container-runtime.md",
+    keywords: ["Kiri container runtime", "Docker Desktop alternative", "Kiri vs Docker Desktop", "Rust container runtime", "container startup benchmarks"],
+    minutes: 2,
+    reference: {
+      label: "Kiri repository and architecture",
+      href: "https://github.com/libracoder/kiri"
+    }
+  },
+  {
+    slug: "lemon-squeezy-shutdown-stripe-migration",
+    date: "2026-11-16",
+    title: "Lemon Squeezy shutdown: dates and Stripe migration",
+    summary: "Lemon Squeezy stops payments on March 31, 2027. Key migration dates, Stripe Managed Payments eligibility and subscription-transfer limits for merchants.",
+    kind: "infra",
+    document: "/news/lemon-squeezy-shutdown-stripe-migration.md",
+    keywords: ["Lemon Squeezy shutdown", "Lemon Squeezy shutdown date", "Stripe Managed Payments", "Lemon Squeezy migration", "subscription migration"],
+    minutes: 2,
+    reference: {
+      label: "Lemon Squeezy’s wind-down announcement",
+      href: "https://www.lemonsqueezy.com/blog/saying-goodbye-to-lemon-squeezy"
+    }
+  },
+  {
+    slug: "pybot-deepseek-agent-swarm-python",
+    date: "2026-11-16",
+    title: "PyBot: a Python chatbot built by DeepSeek agents",
+    summary: "Hugging Face’s PyBot tests how far DeepSeek agents can take a rule-based Python chatbot, from its reply-selection architecture to SmolTalkBench results.",
+    kind: "reading",
+    document: "/news/pybot-deepseek-agent-swarm-python.md",
+    keywords: ["Hugging Face PyBot", "DeepSeek agent swarm", "rule-based Python chatbot", "chatbot without an LLM", "SmolTalkBench"],
+    minutes: 2,
+    reference: {
+      label: "PyBot repository",
+      href: "https://github.com/huggingface/pybot"
+    }
+  },
+  {
     slug: "gemini-4-argon-carbon-hydrogen-comparison",
     date: "2026-11-15",
     title: "Gemini 4 expands the frontier-model shortlist",

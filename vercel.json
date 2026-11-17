@@ -14,6 +14,26 @@
   ],
   "redirects": [
     {
+      "source": "/news/openai-research-access-safety-assessments",
+      "destination": "/news/openai-research-access-safety-assessments/",
+      "permanent": true
+    },
+    {
+      "source": "/news/kiri-rust-container-runtime",
+      "destination": "/news/kiri-rust-container-runtime/",
+      "permanent": true
+    },
+    {
+      "source": "/news/lemon-squeezy-shutdown-stripe-migration",
+      "destination": "/news/lemon-squeezy-shutdown-stripe-migration/",
+      "permanent": true
+    },
+    {
+      "source": "/news/pybot-deepseek-agent-swarm-python",
+      "destination": "/news/pybot-deepseek-agent-swarm-python/",
+      "permanent": true
+    },
+    {
       "source": "/news/gemini-4-argon-carbon-hydrogen-comparison",
       "destination": "/news/gemini-4-argon-carbon-hydrogen-comparison/",
       "permanent": true
