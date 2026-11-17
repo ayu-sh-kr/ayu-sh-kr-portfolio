@@ -1,5 +1,7 @@
 # PyBot: a Python chatbot built by DeepSeek agents
 
+Apparently, the web needed another PyBot. With the name already attached to [IRC](https://labix.org/pybot) and [Discord bots](https://github.com/RexBluefox/PyBot), Hugging Face has joined the collection.
+
 How far can a rule-based chatbot go when a swarm of AI agents writes the rules? **PyBot** is Hugging Face’s experiment in that question: agents repeatedly build and evaluate a conversational program whose replies come entirely from Python code.
 
 Leandro von Werra’s announcement attributes the week-long build to **1,000 DeepSeek Flash agents**. The [published repository](https://github.com/huggingface/pybot) describes more than 5,000 evaluated versions, resulting in roughly **640,000 lines of Python**.
