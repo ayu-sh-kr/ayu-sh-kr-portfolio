@@ -71,11 +71,11 @@ export const newsNotes: readonly NewsNote[] = [
     slug: "openai-research-access-safety-assessments",
     date: "2026-11-16",
     title: "OpenAI expands research access and opens its safety work to scrutiny",
-    summary: "OpenAI expands academic access, announces embedded safety assessments and releases child-safety tools. What changes, who qualifies and what remains to be measured.",
+    summary: "OpenAI’s 50,000 research grants offer Plus for small teams, alongside embedded model assessments and a free child-abuse detection tool.",
     kind: "shipped",
     document: "/news/openai-research-access-safety-assessments.md",
     keywords: ["OpenAI research access", "ChatGPT Academic Researchers", "embedded assessments", "OpenAI child safety", "Transluce"],
-    minutes: 4,
+    minutes: 3,
     reference: {
       label: "OpenAI’s academic research expansion",
       href: "https://openai.com/index/expanding-chatgpt-for-academic-researchers/"

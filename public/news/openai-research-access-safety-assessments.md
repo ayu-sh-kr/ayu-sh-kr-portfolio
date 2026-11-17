@@ -1,50 +1,32 @@
 # OpenAI expands research access and opens its safety work to scrutiny
 
-Giving more scientists access to AI raises a second question: how much can they trust the systems they are bringing into their work? **OpenAI’s November 16 announcements** address both sides, expanding its academic programme while inviting outside researchers deeper into its safety evaluations. A separate child-safety release brings detection tools to organisations handling abuse.
+OpenAI is widening access on two fronts: more scientists can use ChatGPT, and outside evaluators can examine selected internal models. Its **November 16 announcements** also introduce a free tool for organisations detecting child sexual abuse material. Here is what each changes.
 
-Together, these updates concern the conditions around using AI: who gets access, who can inspect its behaviour, and who handles the consequences when it is misused.
+## Research grants move from Pro to Plus
 
-## More researchers, a different access tier
+Applications for [ChatGPT for Academic Researchers](https://openai.com/index/expanding-chatgpt-for-academic-researchers/) reopen **November 23**, with **50,000 grants** available to eligible applicants on a first-come, first-served basis. Each covers free **ChatGPT Plus for the recipient and up to two collaborators**, alongside training. This round can reach 150,000 people toward the programme’s overall goal of 200,000 researchers.
 
-[ChatGPT for Academic Researchers](https://openai.com/index/expanding-chatgpt-for-academic-researchers/) now aims to reach **up to 200,000 researchers worldwide**, double its original goal. The next application round opens **November 23**, with 50,000 grants awarded to eligible applicants in application order rather than by lottery.
+The summer pilot offered **Pro**. OpenAI says most participants’ usage would have fitted within Plus limits, so new grants offer Plus to extend access to more teams. The announcement changes the tier for new grants; it does not announce a downgrade of existing pilot accounts.
 
-Each grant covers one recipient and up to two collaborators, potentially adding 150,000 people. That distinction matters: the headline is the programme’s overall reach, not 200,000 new individual grants opening next week.
+> **Unpublished research and confidentiality.** OpenAI says programme data is not used for model training by default. That assurance matters when researchers share work before publication. During September’s Navier–Stokes dispute, mathematician [Tristan Buckmaster questioned whether drafts he and Levent Alpöge had put into Codex influenced OpenAI’s work](https://cims.nyu.edu/~tristanb/statement.pdf), while explicitly saying he did not know whether their data had been used. [OpenAI’s subsequent response](https://openai.com/index/navier-stokes-solution/#concurrent-work) said its investigation ruled out influence from his preceding two months of Codex prompts, including through training. The episode puts confidentiality and research credit alongside access as questions for scientists choosing these tools.
 
-New grants provide **ChatGPT Plus**, whereas the summer pilot offered Pro. OpenAI says most pilot participants’ usage would have fitted within Plus limits, allowing it to spread access across more teams. Training accompanies the accounts, and programme data is not used for model training by default.
+## Outside researchers examine internal models
 
-For a researcher bringing colleagues into a project, the offer is therefore broader collaboration with a different usage allowance. It should not be read as an extension of the pilot’s Pro entitlement to everyone.
-
-## What the pilot actually tells us
-
-The accompanying [Science at the Frontier report](https://openai.com/index/science-at-the-frontier/) examines more than **580,000 scientific messages from 1,819 scientists**, alongside a survey of 251 participants. Their work ranged from reviewing literature and writing code to analysing evidence and developing research ideas.
-
-Survey participants estimated that equivalent work would have taken **1.9 times as long without AI**. That is a self-reported estimate, not a controlled measurement of scientific productivity. Likewise, expectations of faster discovery do not establish that discoveries have already accelerated.
-
-The report also tracks scientists following up to clarify, check and revise answers. Access can shorten parts of a research workflow, but interpreting results and testing an idea still require people, funding and experimental capacity. That makes scrutiny of the underlying models part of the same story.
-
-## Outside evaluators move further inside
-
-OpenAI has signed agreements with four organisations for [embedded assessments](https://openai.com/index/our-first-phase-of-embedded-assessments/): extended investigations using selected internal models, records and systems. **Alignment** here means whether a model behaves consistently with its intended instructions and constraints.
+Alongside wider public access, OpenAI has signed [embedded-assessment agreements](https://openai.com/index/our-first-phase-of-embedded-assessments/) with **Apollo Research, METR, Transluce and Goodfire**. These give evaluators access to selected internal models, training records, code and monitoring systems to investigate behaviour and safeguards over time.
 
 | Assessor | Planned focus |
 | --- | --- |
-| Apollo Research | Covertly working against developers’ intentions and whether safeguards detect it |
-| METR | Misaligned behaviour in a major reinforcement-learning run; a further monitoring assessment remains subject to scope agreement |
-| Transluce | Quality and coverage of post-training alignment evaluations |
+| Apollo Research | Whether models covertly work against developers’ intentions and safeguards detect it |
+| METR | Misaligned behaviour during a major reinforcement-learning run |
+| Transluce | Coverage and quality of post-training alignment evaluations |
 | Goodfire | Model internals, training monitoring and debugging |
 
-These are investigations being arranged, not completed safety certifications. Access depends on each agreement. OpenAI retains confidentiality redactions and can request delays for responsible disclosure; its board’s Safety and Security Committee receives unredacted reports.
+Each agreement defines the access and publication terms. OpenAI’s board safety committee receives unredacted reports; public findings can undergo confidentiality redactions and responsible-disclosure delays. [Transluce’s six-week pilot](https://transluce.org/embedded-assessment-pilot-with-openai), due to start in December, will report access restrictions but excludes findings about internal-only models from publication.
 
-[Transluce’s own account](https://transluce.org/embedded-assessment-pilot-with-openai) makes the boundary clearer. Its six-week pilot is due to begin in December, and it explicitly distinguishes its access from employee-level access. OpenAI decides on requests for additional material. Transluce plans to report what was allowed or declined, but cannot publish results concerning internal-only models.
+## A free child-abuse detection tool
 
-That still gives evaluators evidence unavailable through an ordinary chatbot interface. The eventual reports will be most useful when readers can see both the findings and the limits of the investigation.
+The third release takes safety work into other organisations’ products. OpenAI’s [new image classifier](https://openai.com/index/strengthening-online-child-safety/) gives vetted organisations free API access to flag potential **child sexual abuse material, including AI-generated images**. Its scores help human reviewers prioritise cases.
 
-## Detection tools reach beyond ChatGPT
+In OpenAI’s evaluation of uploaded images, it estimated **48% fewer images would need review** while identifying roughly the same amount of abusive material as its existing tool. The package also includes ChatGPT warnings, developer guidance and support for authorised investigators.
 
-The third announcement addresses abuse in deployed products. OpenAI is offering vetted organisations a [free image classifier through its API](https://openai.com/index/strengthening-online-child-safety/) to flag potential **child sexual abuse material**, including AI-generated images. It produces scores to help human reviewers prioritise cases.
-
-In OpenAI’s evaluation of uploaded images, the classifier was estimated to flag **48% fewer images** while identifying roughly the same amount of abusive material as its existing tool. This is a comparison of review workload, not a universal accuracy rate.
-
-The release also includes developer guidance, new ChatGPT warnings and restrictions, and tools and training for authorised child-safety investigators. Detection is one part of that response; review, reporting and support remain operational responsibilities.
-
-For scientists, developers and evaluators, the announcements create different opportunities to participate. Their value will emerge in what follows: useful research, assessments that expose weaknesses, and safety tools that improve real review work. Wider access makes those outcomes more important to measure.
+The three updates reach different users: research teams get subsidised access, assessors get a closer view of model behaviour, and safety teams get another detection tool. For researchers deciding whether to join, the immediate offer is straightforward: Plus access for a small team, with the programme’s data-use terms as relevant as the subscription itself.
