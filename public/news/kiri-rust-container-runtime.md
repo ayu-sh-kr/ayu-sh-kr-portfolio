@@ -12,7 +12,7 @@ On macOS, the host daemon manages a Linux virtual machine and forwards requests 
 
 ![Animated isometric macOS architecture: Docker tools reach the Kiri host daemon, a vsock request crosses into the Linux VM, and its guest agent starts isolated container processes.](/news/assets/kiri-rust-container-runtime/runtime.svg)
 
-Linux runs the engine directly on its kernel, while Windows uses WSL2. Existing Docker tools supply the requests; Kiri supplies its own implementation underneath.
+> **How this differs by platform.** The diagram shows macOS, where a Linux virtual machine supplies the kernel containers need. Linux runs Kiri directly on its own kernel; Windows uses WSL2 to provide the Linux environment. In each case, Docker tools send requests to Kiri’s engine, which manages the containers underneath.
 
 ## The speed reported by Kiri
 
