@@ -113,7 +113,7 @@ export const newsNotes: readonly NewsNote[] = [
     slug: "pybot-deepseek-agent-swarm-python",
     date: "2026-11-16",
     title: "PyBot: a Python chatbot built by DeepSeek agents",
-    summary: "Hugging Face’s PyBot is a rule-based Python chatbot built by DeepSeek agents. How it answers without an LLM and compares with SmolLM on SmolTalkBench.",
+    summary: "Hugging Face’s PyBot tests how far DeepSeek agents can take a rule-based Python chatbot, from its reply-selection architecture to SmolTalkBench results.",
     kind: "reading",
     document: "/news/pybot-deepseek-agent-swarm-python.md",
     keywords: ["Hugging Face PyBot", "DeepSeek agent swarm", "rule-based Python chatbot", "chatbot without an LLM", "SmolTalkBench"],

@@ -1,25 +1,27 @@
 # PyBot: a Python chatbot built by DeepSeek agents
 
-A thousand AI agents spent a week building a chatbot that would answer without calling an AI model. That is the premise of **PyBot**, the Hugging Face experiment introduced by Leandro von Werra: DeepSeek Flash agents wrote the software, while ordinary Python rules handle the conversation afterwards.
+How far can a rule-based chatbot go when a swarm of AI agents writes the rules? **PyBot** is Hugging Face’s experiment in that question: agents repeatedly build and evaluate a conversational program whose replies come entirely from Python code.
 
-The [published repository](https://github.com/huggingface/pybot) describes more than 1,000 agents producing and evaluating over 5,000 versions. The result is roughly **640,000 lines of Python**, using conditions, text patterns and stored facts instead of neural-network weights.
+Leandro von Werra’s announcement attributes the week-long build to **1,000 DeepSeek Flash agents**. The [published repository](https://github.com/huggingface/pybot) describes more than 5,000 evaluated versions, resulting in roughly **640,000 lines of Python**.
 
-## How PyBot answers with Python rules
+## What PyBot is
 
-Rule-based chatbots long predate modern language models. Their difficulty is coverage: every new topic or phrasing can require more logic. PyBot explores how far that approach goes when agents do the writing.
+The [repository](https://github.com/huggingface/pybot#pybot-can-python-be-a-chatbot) places the experiment in the tradition of ELIZA, the early chatbot that matched text patterns to response templates. Extending that approach meant writing more rules by hand. PyBot gives that work to agents and measures the resulting conversational performance.
 
-Its modules share four building blocks: an understanding layer for interpreting messages, conversation memory, a knowledge base and a response composer. On each turn, modules can propose answers; an **arbiter selects the reply**.
+PyBot is a **rule-based chatbot**, rather than a large language model. Its runtime uses conditions, text patterns and lookup tables. The LLMs did the development work; the finished program runs locally with Python 3.8 or newer and the standard library.
 
-![Isometric PyBot runtime: a message enters shared understanding, memory and knowledge components; candidate replies reach an arbiter, which selects the response. No language model runs in this path.](/news/assets/pybot-deepseek-agent-swarm-python/conversation.svg)
+Developers can inspect the rules, change stored facts and trace an answer to its module. The browser demo shows which module produced each reply.
 
-That means a follow-up can use earlier conversation state rather than treating every message as a fresh lookup. The intelligence used to create this machinery and the machinery answering the user are separate parts of the experiment.
+## How its Python rules produce a reply
 
-## PyBot vs SmolLM on SmolTalkBench
+An understanding layer interprets the message, including its topic and references to earlier turns. Modules draw on conversation memory, stored knowledge and a response composer to propose answers. An **arbiter selects a candidate**, using rules for topic relevance, priority and repetition.
 
-The team reports a **26% win rate on SmolTalkBench**, comparable to SmolLM-360M-Instruct. In this evaluation, a language-model judge compares replies against reference answers. The result concerns that conversational benchmark; it does not establish equal reasoning ability or reliability across unfamiliar tasks.
+![Animated isometric PyBot assembly: a message reaches shared context and reply modules, candidate answers travel to an arbiter, and one selected reply leaves the system.](/news/assets/pybot-deepseek-agent-swarm-python/conversation.svg)
 
-There is also a substantial maintenance burden behind the apparently simple runtime. Hundreds of thousands of lines can encode many cases without providing the flexibility to handle an unexpected one. More generated code is not, by itself, evidence of better software.
+> **Following the conversation.** Memory carries context between messages. The project’s demo follows kettle-cleaning instructions with a question about duration, which PyBot answers from that context. The diagram groups understanding, memory, knowledge and composition code into the shared assembly.
 
-The Apache-2.0 release needs **Python 3.8 or newer**, with no model download or external packages. The documented command `python -m pybot` starts a local conversation; the project notes several seconds of startup and roughly a second per reply.
+## How far the experiment reached
 
-Like [AWS’s agent-built emulator](/news/aws-emulator-localstack-local-testing/), PyBot separates how software is produced from how it runs. Its contribution is an inspectable experiment in turning agent work into ordinary code. The chatbot no longer needs its builders on the other end of each message.
+On **SmolTalkBench**, where an LLM judge compares replies with reference answers, the team reports its win rate rising from **0% to 26%** across development. The project places that result alongside **SmolLM-360M-Instruct** on the same conversational evaluation. Its documented runtime takes a few seconds to start and about a second per reply.
+
+The question was how much further agents could take an approach once expanded by hand. PyBot leaves a measured result and a runnable codebase: a record of the rules the swarm produced, how they work together and how their answers improved through repeated evaluation.
