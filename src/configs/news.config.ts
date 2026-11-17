@@ -68,6 +68,20 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "gpt-6-2-astra-sol-mai-code-2-flash",
+    date: "2026-11-18",
+    title: "GPT-6.2 Astra and Sol meet Microsoft’s MAI Code 2 and Flash",
+    summary: "OpenAI and Microsoft both released two models. Here’s how their coding results, speed and launch prices line up for everyday fixes and more demanding work.",
+    kind: "shipped",
+    document: "/news/gpt-6-2-astra-sol-mai-code-2-flash.md",
+    keywords: ["GPT-6.2 Astra", "GPT-6.2 Sol", "MAI Code 2", "MAI Code 2 Flash", "GitHub Copilot pricing", "AI coding benchmarks"],
+    minutes: 2.5,
+    reference: {
+      label: "OpenAI’s GPT-6.2 launch",
+      href: "https://openai.com/index/introducing-gpt-6-2-astra-sol/"
+    }
+  },
+  {
     slug: "openai-research-access-safety-assessments",
     date: "2026-11-16",
     title: "OpenAI: ChatGPT research grants and new safety assessments",

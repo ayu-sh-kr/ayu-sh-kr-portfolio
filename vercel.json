@@ -14,6 +14,11 @@
   ],
   "redirects": [
     {
+      "source": "/news/gpt-6-2-astra-sol-mai-code-2-flash",
+      "destination": "/news/gpt-6-2-astra-sol-mai-code-2-flash/",
+      "permanent": true
+    },
+    {
       "source": "/news/openai-research-access-safety-assessments",
       "destination": "/news/openai-research-access-safety-assessments/",
       "permanent": true
