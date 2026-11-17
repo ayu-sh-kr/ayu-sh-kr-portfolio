@@ -16,7 +16,7 @@ On macOS, the host daemon manages a Linux virtual machine and forwards requests 
 
 ## Kiri vs Docker Desktop: startup benchmarks
 
-Kiri’s README reports **2.55 ms versus Docker Desktop’s 213 ms** for an Alpine container running `true` and being removed through the Docker API—the basis of its roughly **80×** figure. These are medians from 30 runs.
+[Kiri’s README](https://github.com/libracoder/kiri/blob/main/README.md) reports **2.55 ms versus Docker Desktop’s 213 ms** for an Alpine container running `true` and being removed through the Docker API—the basis of its roughly **80×** figure. These are medians from 30 runs.
 
 The project’s separate [November 2 benchmark](https://runkiri.com/benchmarks/) records the following medians with images already present:
 

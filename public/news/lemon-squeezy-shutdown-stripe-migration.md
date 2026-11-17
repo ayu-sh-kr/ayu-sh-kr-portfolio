@@ -6,13 +6,13 @@ On November 16, CEO JR Farr [announced the wind-down](https://www.lemonsqueezy.c
 
 ## Why Lemon Squeezy is shutting down
 
-Stripe [acquired Lemon Squeezy in July 2024](https://www.lemonsqueezy.com/blog/stripe-acquires-lemon-squeezy). Its team went on to build **Stripe Managed Payments**, a merchant-of-record service that handles responsibilities such as transaction taxes, fraud and disputes for digital businesses.
+Stripe [acquired Lemon Squeezy in July 2024](https://www.lemonsqueezy.com/blog/stripe-acquires-lemon-squeezy). Its team went on to build [**Stripe Managed Payments**](https://docs.stripe.com/payments/managed-payments), a merchant-of-record service that handles responsibilities such as transaction taxes, fraud and disputes for digital businesses.
 
 Farr says maintaining both platforms duplicates engineering, security and compliance work. The team is concentrating on Managed Payments. For merchants, however, that consolidation creates a move rather than an automatic continuation of the service they already use.
 
 ## Stripe Managed Payments: eligibility and migration dates
 
-Managed Payments does **not support every country** Lemon Squeezy serves. Businesses outside its coverage need another provider. Even eligible merchants must check features: storefronts and digital fulfilment require separate tools rather than moving across as equivalent built-in capabilities.
+Managed Payments does [**not support every country**](https://docs.stripe.com/payments/managed-payments/eligibility) Lemon Squeezy serves. Businesses outside its coverage need another provider. Even eligible merchants must check features: [storefronts and digital fulfilment require separate tools](https://docs.lemonsqueezy.com/migration#review-whats-supported) rather than moving across as equivalent built-in capabilities.
 
 The [migration documentation](https://docs.lemonsqueezy.com/migration) sets out the schedule:
 
