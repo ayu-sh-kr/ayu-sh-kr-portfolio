@@ -85,7 +85,7 @@ export const newsNotes: readonly NewsNote[] = [
     slug: "kiri-rust-container-runtime",
     date: "2026-11-16",
     title: "Kiri puts a Rust runtime behind familiar Docker commands",
-    summary: "How Kiri runs Docker-compatible containers, what its 80× claim measures, and why its API and CLI benchmarks tell different stories.",
+    summary: "How Kiri rebuilds container startup in Rust while retaining Docker commands, with its architecture and reported lifecycle benchmarks.",
     kind: "infra",
     document: "/news/kiri-rust-container-runtime.md",
     keywords: ["Kiri container runtime", "Rust Docker alternative", "Kiri benchmark", "Docker Desktop", "container startup"],
