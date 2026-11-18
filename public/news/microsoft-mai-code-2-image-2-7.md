@@ -1,6 +1,8 @@
-# Microsoft takes the spotlight with MAI Code 2 and Image 2.7
+# Microsoft’s MAI Code 2 and Image 2.7 target cheaper everyday work
 
-OpenAI released **GPT-6.2 Astra and Sol** on November 17. At Ignite the same day, Microsoft brought **MAI Code 2 and Code 2 Flash** to GitHub Copilot and launched two image models. **MAI Image 2.7** topped an independent editing leaderboard at roughly one-sixth of the listed price of the OpenAI model just behind it. For teams making hundreds of edits or running a coding agent across a backlog, that price gap has practical consequences.
+Editing a product catalog or working through a backlog of bug fixes can mean running a model hundreds of times. Microsoft’s November 17 Ignite releases target that repeated work. **MAI Code 2 and Code 2 Flash** are in GitHub Copilot, while **MAI Image 2.7 and Image 2.7 Flash** bring image generation and editing to Microsoft Foundry.
+
+The image release gives Microsoft a particularly strong result. Image 2.7 topped an independent editing leaderboard at roughly **one-sixth of the listed price** of the OpenAI model just behind it. The coding models make a similar pitch around the cost of everyday software work.
 
 ## MAI Image 2.7 leads in image editing
 
@@ -32,26 +34,11 @@ Across four tests, including FrontierCode 1.1, Microsoft reports Code 2 reached 
 
 Those comparisons use Microsoft’s half-price launch rates. Copilot charges **$0.50 input / $2.50 output** per million tokens for Code 2 and **$0.05 / $0.25** for Flash. Both rates double on May 17, 2027. Microsoft also announced **MAI Licensed Weights**, which will let participating companies customize models and run them in their own Azure environments.
 
-## Where GPT-6.2 Astra and Sol fit
+## What the lower prices change
 
-OpenAI also gives developers a choice between deeper work and cheaper iterations. Two weeks after Astra’s name appeared in [Codex usage screenshots](/news/tibo-codex-challenge-gpt-6-2-astra-fable-5-5/), both models are available in ChatGPT Work, Codex and the API. Astra targets deeper investigations and work such as building a spreadsheet to a supplied template. Sol covers everyday coding, writing and tool use. Pro 200 gets Ultrafast for Sol, and Pro 500 gets it for both.
+For a product team, the appeal is being able to revise a catalog of photos within a smaller budget. For a developer, Flash offers a cheap place to start on fixes that are easy to verify, while Code 2 gives harder patches more capacity.
 
-On **FrontierCode 2.0**, which tests whether patches meet maintainers’ standards, OpenAI’s launch run put Sol within half a point of Astra at about **one-fifth of the cost per task**. Artificial Analysis found a wider gap in its independent Codex tests. Both models ran at maximum reasoning effort except where marked.
-
-| Benchmark or metric | GPT-6.2 Astra | GPT-6.2 Sol |
-| --- | ---: | ---: |
-| FrontierCode 2.0 (OpenAI, score / cost per task) | 44.2% / $5.97 | 43.8% / $1.29 |
-| Agents’ Last Exam v1.1 (OpenAI, partial-credit score) | 78.3% (xhigh) | 73.0% |
-| Coding Agent Index (Artificial Analysis, Codex) | 53 | 49 |
-| Intelligence Index v5.0.1 (Artificial Analysis) | 62 | 57 |
-| Intelligence Index cost per task | $4.00 | $1.01 |
-| Intelligence Index time per task | 10.4 min | 7.9 min |
-
-At standard short-context API rates, a million input and output tokens cost $8 and $40 respectively for Astra, or $2 and $10 for Sol.
-
-## What the launch day changes for teams
-
-Microsoft gets the spotlight because the savings apply to work teams can already do in Foundry and Copilot. A product team can price a batch of photo edits with Image 2.7, and a developer can try Code 2 Flash on fixes that are easy to verify. In either case, compare **cost per accepted result** by counting retries and the edits a person still has to make.
+Microsoft’s case depends on those repeated jobs. The image result has independent preference votes behind it, and the coding price comparisons come from specific benchmark setups and promotional rates. Try the work you actually repeat and count **cost per accepted result**, including retries and the changes a person still has to make.
 
 ## Sources
 
@@ -60,5 +47,3 @@ Microsoft gets the spotlight because the savings apply to work teams can already
 - Microsoft details the cost comparison and Foundry preview in its [MAI Code 2 release notes](https://microsoft.ai/news/introducing-mai-code-2-and-mai-code-2-flash/) and publishes raw pass rates in the [model card](https://microsoft.ai/pdf/MAI-Code-2-And-MAI-Code-2-Flash-Model-Card.pdf?v=2).
 - Microsoft describes the product strategy and customization program in its [Ignite keynote transcript](https://microsoft.ai/news/microsoft-ignite-2026-mai-keynote/) and [Licensed Weights announcement](https://microsoft.ai/news/introducing-mai-licensed-weights/).
 - GitHub lists supported plans and the end of the promotion in its [Copilot changelog](https://github.blog/changelog/2026-11-17-mai-code-2-and-mai-code-2-flash-in-github-copilot/) and [billing documentation](https://docs.github.com/en/copilot/reference/copilot-billing/models-and-pricing).
-- OpenAI publishes the FrontierCode 2.0 and Agents’ Last Exam charts in its [GPT-6.2 launch post](https://openai.com/index/introducing-gpt-6-2-astra-sol/) and lists the token rates on its [API pricing page](https://developers.openai.com/api/docs/pricing).
-- Artificial Analysis publishes the independent results in its [Coding Agent Index comparison](https://artificialanalysis.ai/agents/coding-agents/comparisons/claude-code-vs-codex) and [OpenAI provider benchmarks](https://artificialanalysis.ai/providers/openai/).
