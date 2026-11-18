@@ -14,8 +14,13 @@
   ],
   "redirects": [
     {
-      "source": "/news/gpt-6-2-astra-sol-mai-code-2-flash",
-      "destination": "/news/gpt-6-2-astra-sol-mai-code-2-flash/",
+      "source": "/news/microsoft-mai-code-2-image-2-7",
+      "destination": "/news/microsoft-mai-code-2-image-2-7/",
+      "permanent": true
+    },
+    {
+      "source": "/news/openai-gpt-6-2-astra-sol",
+      "destination": "/news/openai-gpt-6-2-astra-sol/",
       "permanent": true
     },
     {

@@ -68,17 +68,31 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
-    slug: "gpt-6-2-astra-sol-mai-code-2-flash",
+    slug: "microsoft-mai-code-2-image-2-7",
     date: "2026-11-18",
-    title: "Microsoft takes the spotlight with MAI Code 2 and Image 2.7",
-    summary: "Microsoft’s MAI Code 2 and Image 2.7 make a case for cheaper coding and image editing as OpenAI ships GPT-6.2 Astra and Sol.",
+    title: "Microsoft’s MAI Code 2 and Image 2.7 target cheaper everyday work",
+    summary: "Microsoft’s MAI Code 2 and Image 2.7 bring lower prices to coding and image editing. Compare benchmarks, Copilot rates and Foundry preview access.",
     kind: "shipped",
-    document: "/news/gpt-6-2-astra-sol-mai-code-2-flash.md",
-    keywords: ["MAI Image 2.7", "MAI Image 2.7 Flash", "MAI Code 2", "MAI Code 2 Flash", "GPT-6.2 Astra", "GPT-6.2 Sol", "AI image editing benchmarks"],
-    minutes: 3.5,
+    document: "/news/microsoft-mai-code-2-image-2-7.md",
+    keywords: ["MAI Code 2", "MAI Code 2 Flash", "MAI Image 2.7", "MAI Image 2.7 Flash", "GitHub Copilot pricing", "AI image editing benchmarks"],
+    minutes: 3,
     reference: {
       label: "Microsoft’s Ignite model announcements",
       href: "https://microsoft.ai/news/microsoft-ignite-2026/"
+    }
+  },
+  {
+    slug: "openai-gpt-6-2-astra-sol",
+    date: "2026-11-18",
+    title: "GPT-6.2 Astra and Sol arrive after weeks of Codex anticipation",
+    summary: "OpenAI launches GPT-6.2 Astra and Sol in Codex, ChatGPT Work and the API. Compare coding benchmarks, task costs, availability and Ultrafast access.",
+    kind: "shipped",
+    document: "/news/openai-gpt-6-2-astra-sol.md",
+    keywords: ["GPT-6.2 Astra", "GPT-6.2 Sol", "OpenAI coding benchmarks", "Codex models", "GPT-6.2 API pricing", "Ultrafast"],
+    minutes: 2,
+    reference: {
+      label: "OpenAI’s GPT-6.2 launch",
+      href: "https://openai.com/index/introducing-gpt-6-2-astra-sol/"
     }
   },
   {
