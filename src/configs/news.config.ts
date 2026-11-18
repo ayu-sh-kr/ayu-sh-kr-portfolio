@@ -70,15 +70,15 @@ export const newsNotes: readonly NewsNote[] = [
   {
     slug: "gpt-6-2-astra-sol-mai-code-2-flash",
     date: "2026-11-18",
-    title: "GPT-6.2 Astra and Sol meet Microsoft’s MAI Code 2 and Flash",
-    summary: "OpenAI and Microsoft both released two models. Here’s how their coding results, speed and launch prices line up for everyday fixes and more demanding work.",
+    title: "Microsoft takes the spotlight with MAI Code 2 and Image 2.7",
+    summary: "Microsoft’s MAI Code 2 and Image 2.7 make a case for cheaper coding and image editing as OpenAI ships GPT-6.2 Astra and Sol.",
     kind: "shipped",
     document: "/news/gpt-6-2-astra-sol-mai-code-2-flash.md",
-    keywords: ["GPT-6.2 Astra", "GPT-6.2 Sol", "MAI Code 2", "MAI Code 2 Flash", "GitHub Copilot pricing", "AI coding benchmarks"],
-    minutes: 2.5,
+    keywords: ["MAI Image 2.7", "MAI Image 2.7 Flash", "MAI Code 2", "MAI Code 2 Flash", "GPT-6.2 Astra", "GPT-6.2 Sol", "AI image editing benchmarks"],
+    minutes: 3.5,
     reference: {
-      label: "OpenAI’s GPT-6.2 launch",
-      href: "https://openai.com/index/introducing-gpt-6-2-astra-sol/"
+      label: "Microsoft’s Ignite model announcements",
+      href: "https://microsoft.ai/news/microsoft-ignite-2026/"
     }
   },
   {
