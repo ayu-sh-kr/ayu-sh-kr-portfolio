@@ -61,7 +61,7 @@ Prefer connected prose over stacked bullets. Highlight a few meaningful terms or
 ## Source links and chart attribution
 
 - Weave source links into meaningful words in complete, natural sentences. When several references would interrupt the narrative, consolidate them in a concise end Sources section instead.
-- Avoid dangling labels such as “Argon disclosure”, “Carbon model card”, or “Source: …” as standalone fragments after a paragraph. Preserve clear attribution without making the reader step through a list of document names.
+- Avoid dangling labels such as “Argon disclosure”, “Carbon model card”, or “Source: …” as standalone fragments after a paragraph. During proofreading, check the last sentence of every paragraph and table note. If a linked document title follows a completed sentence, integrate the link into the claim it supports or move it to a bulleted Sources section after the closure.
 - Review every chart, table, caption, and its adjacent paragraphs together. Attribute the data naturally in the introduction or interpretation, including the producer, snapshot date, benchmark version, and essential settings where needed. Do not repeat the same source/date block beneath the visual when that context is already clear.
 - Keep captions useful: explain what the visual shows or how to read it, rather than adding another cluttered bibliography. Retain source links and uncertainty that readers need to assess the evidence; do not remove attribution merely to shorten the page.
 
