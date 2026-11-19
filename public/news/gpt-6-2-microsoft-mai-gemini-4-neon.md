@@ -75,13 +75,23 @@ Google [released Gemini 4 Neon](https://blog.google/innovation-and-ai/models-and
 
 [Artificial Analysis](https://artificialanalysis.ai/articles/gemini-4-neon-intelligence-gain) found Neon at high effort matched Carbon at high on its Intelligence Index. Raising Neon to extra-high lifted it just one point, to 61, while averaging about 21 minutes and $6.44 per benchmark task versus Carbon’s 36 minutes and $7.76 at standard prices.
 
-For coding specifically, [Google’s evaluation](https://storage.googleapis.com/deepmind-media/gemini/gemini_4_neon_model_evaluation.pdf) puts Neon at 65.2% on Terminal-Bench 4.1, a test of completing multi-step tasks in a terminal.
+[DeepMind’s benchmark table](https://deepmind.google/models/gemini/#performance) puts Neon ahead of the reported Opus 5.5 result on CursorBench’s multi-file coding tasks, but slightly behind Opus on terminal tasks and repository patches.
+
+| Coding benchmark | Gemini 4 Neon | Claude Opus 5.5 | GPT-6.2 Sol |
+| --- | ---: | ---: | ---: |
+| [CursorBench 4.1](https://cursor.com/cursorbench) (multi-file coding) | 65.4% | 58.1% | Not reported |
+| Terminal-Bench 4.1 (terminal tasks) | 65.2% | 65.8% | 61.5% |
+| FrontierCode 2.0 (repository patches) | 46.2% | 47.3% | 43.8% |
 
 ### What extra thinking buys
 
 For workflow automation, [Zapier’s AutomationBench](https://zapier.com/benchmarks/gemini-neon-4-report) offers a separate test: Neon at high passed **54.3%** of 657 tasks versus Carbon’s **53.9%**, at an estimated $0.88 versus $1.94 per attempt. Moving Neon to extra-high solved 13 more tasks but took the estimated cost to $1.69 per attempt. That makes high the sensible starting point for workflows like these, with extra-high reserved for cases where the extra passes are worth paying for.
 
-Start with the tasks you repeat: a repository patch with tests, an image edit with constraints, or an automation with a verifiable final state. Log the time and money spent before the result passes review, including any restarts. That will tell you when to pay for the stronger model and when to stop at the cheaper one.
+## What more competition means for buyers
+
+OpenAI and Anthropic have long been reference points for the best closed-weight models. Google’s Gemini 4 range now gives teams more choices at different prices, and Neon’s CursorBench result shows Google can lead on some coding work. Microsoft is gaining ground in specific jobs such as image editing and routine Copilot fixes. Mistral covers both sides of the market with [hosted commercial tools such as Codestral](https://docs.mistral.ai/models/codestral-25-08) and downloadable [Mistral Large 4 weights](https://mistral.ai/news/mistral-large-4/).
+
+List prices at the top have already moved. [Claude Fable 5.2](https://www.anthropic.com/claude/fable) went from its predecessor’s $10 input and $50 output per million tokens to $8 and $40. [GPT-6.2 Astra](https://openai.com/index/introducing-gpt-6-2-astra-sol/) made the same cut from GPT-6 Astra’s rates. The advantage for paying customers is the ability to move a workload when another model gets it done for less. The more credible that option becomes, the more pressure providers face to keep their rates competitive.
 
 ## Sources
 
