@@ -23,15 +23,15 @@ At standard short-context API rates, a million input and output tokens cost $8 a
 
 The independent **Coding Agent Index** also gives a reason to test beyond patch generation. Artificial Analysis found Astra level with the previous Astra and Sol three points below GPT-6.1 Sol in Codex at maximum effort. Sol’s decline was driven by a repository question-answering test, where it more often omitted key facts.
 
-### Early users report task loops and confusing explanations
+### Where early users had to step in
 
-The launch also drew criticism on X about how Astra behaves during longer work. In a November 17 article, developer **Theo Browne** described a compiler project where Astra kept running without useful progress and became fixated on reducing size while performance worsened. He also reported explanations buried in implementation details, including a four-paragraph answer about package-manager internals when he wanted to understand why one computer was slow.
+On a compiler project, developer **Theo Browne** said Astra kept working without making progress. It focused on making the compiler smaller even as performance got worse. When Browne asked why one computer was slow, he got four paragraphs about how the package manager worked instead of a clear answer.
 
-Other users described related problems. **Max Weinbach** said the GPT-6.2 models could produce excellent work but repeatedly needed prompts to continue and sometimes declared a goal blocked instead of trying another approach. **Token Gremlin** praised Astra’s 3D output while reporting that its explanations became difficult to understand during long workflows. These reports make supervision part of the comparison.
+**Max Weinbach** saw a different problem: the GPT-6.2 models sometimes stopped and said they were blocked rather than trying another approach, so he had to ask them to continue. **Token Gremlin** liked Astra’s 3D output but found its explanations hard to follow during longer jobs. For developers, that’s extra time spent checking whether the model is still solving the right problem and figuring out what it did.
 
-OpenAI acknowledged the usability complaints. On November 17, **Sam Altman** said making the models easier to work with would be a priority for upcoming releases. The following day, **Thibault “Tibo” Sottiaux** suggested some early reviews reflected older behavior because OpenAI had made substantial changes in the final three to four days. That explanation was disputed. **Dan Shipper** said Every retested release candidates until the launch and had received no notice of those changes.
+**Sam Altman** said on November 17 that making the models easier to work with was a priority. The next day, OpenAI’s **Thibault “Tibo” Sottiaux** said changes in the final three to four days might explain some early reviews. **Dan Shipper** pushed back: Every had tested release candidates through launch and hadn’t been told about the changes.
 
-OpenAI’s developer guide recommends prompting Astra to continue through authorized steps, verify completion and write for someone who hasn’t followed its internal shorthand. Both models are available on eligible paid plans; Ultrafast has separate plan limits and API prices.
+OpenAI’s developer guide recommends telling Astra to keep going through the steps it has permission to take, check that it finished, and explain what it did in plain language. Both models are available on eligible paid plans; Ultrafast has separate plan limits and API prices.
 
 ## Microsoft: MAI Code 2 and Image 2.7
 
