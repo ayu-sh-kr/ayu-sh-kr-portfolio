@@ -85,11 +85,11 @@ export const newsNotes: readonly NewsNote[] = [
     slug: "openai-gpt-6-2-astra-sol",
     date: "2026-11-18",
     title: "GPT-6.2 Astra and Sol arrive after weeks of Codex anticipation",
-    summary: "OpenAI launches GPT-6.2 Astra and Sol in Codex, ChatGPT Work and the API. Compare coding benchmarks, task costs, availability and Ultrafast access.",
+    summary: "GPT-6.2 Astra and Sol arrive with lower task costs and early complaints about stalled work and confusing explanations. Benchmarks and OpenAI’s response.",
     kind: "shipped",
     document: "/news/openai-gpt-6-2-astra-sol.md",
     keywords: ["GPT-6.2 Astra", "GPT-6.2 Sol", "OpenAI coding benchmarks", "Codex models", "GPT-6.2 API pricing", "Ultrafast"],
-    minutes: 2,
+    minutes: 3.5,
     reference: {
       label: "OpenAI’s GPT-6.2 launch",
       href: "https://openai.com/index/introducing-gpt-6-2-astra-sol/"
