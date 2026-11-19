@@ -23,7 +23,7 @@ On **FrontierCode 2.0**, which tests whether patches meet maintainers’ standar
 
 > **API pricing.** At standard short-context rates per million tokens, Astra costs $8 for input and $40 for output. Sol costs $2 and $10. Both are available on eligible paid plans; Ultrafast has separate limits and pricing.
 
-**GPT-6.2 Astra’s early reviews and 3D demos**
+### GPT-6.2 Astra’s early reviews and 3D demos
 
 OpenAI launched GPT-6.2 Astra on November 17, and early reviewers described having to steer it back on task. [Theo Browne](https://x.com/theo/status/2122760447103484410) said Astra spent days shrinking a compiler he’d asked it to speed up. The result ran slower. A question about why one computer was slow drew four paragraphs about the package manager, while [Max Weinbach](https://x.com/mweinbach/status/2122834783650676806) said he had to prompt the models to continue after they said they were blocked. [Artificial Analysis’s writing tests](https://artificialanalysis.ai/evaluations/aa-personalitybench) add context: at maximum effort, Astra’s average reply fell from 352 words in GPT-6 to 210 in GPT-6.2, and Sol’s fell from 337 in GPT-6.1 to 223 in GPT-6.2. Both put the answer first more often but scored lower for organization.
 
