@@ -23,7 +23,7 @@ On **FrontierCode 2.0**, which tests whether patches meet maintainers’ standar
 
 > **API pricing.** At standard short-context rates per million tokens, Astra costs $8 for input and $40 for output. Sol costs $2 and $10. Both are available on eligible paid plans; Ultrafast has separate limits and pricing.
 
-### Where early users had to step in
+**Early users stepped in when Astra stalled.**
 
 **What early users reported.** On a compiler project, **Theo Browne** said Astra kept making the compiler smaller even as it ran slower. When he asked why one computer was slow, he got four paragraphs about the package manager instead of a clear answer. **Max Weinbach** said he had to prompt the GPT-6.2 models to continue after they declared themselves blocked. **Token Gremlin** liked Astra’s 3D output but found its explanations hard to follow on longer tasks.
 
