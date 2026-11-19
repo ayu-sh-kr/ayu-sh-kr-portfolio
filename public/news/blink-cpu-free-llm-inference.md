@@ -15,20 +15,29 @@ An operator can reserve CPU cores to keep replies responsive, but those cores co
 | vLLM | 54% |
 | Blink | 100% |
 
-Each percentage compares an engine with its own run on an otherwise idle host. The result describes how each handled interference at that load. [Experiment and methodology, Figure 1](https://arxiv.org/html/2604.07609v1#S1.F1)
+Each percentage compares an engine with its own run on an otherwise idle host. The result describes how each handled interference at that load.
 
 ## From an HTTP request to a stream of tokens
 
-At startup, the host loads the model and records the GPU operations needed to run it. After that, three steps carry a reply back to the client.
+At startup, the host loads the model and records the GPU operations needed to run it. Once setup finishes, the network card and GPU handle each request together.
+
+![A prompt crosses from BlueField-3 to the H100 scheduler over RDMA. Generated tokens return to the card for streaming.](/news/assets/blink-cpu-free-llm-inference/inference-loop.svg)
 
 1. **The network card receives the prompt.** Its onboard processor handles HTTP and can tokenize text. It writes the input directly into GPU memory using remote direct memory access (RDMA).
 2. **The GPU decides what runs next.** A scheduler stays running on the GPU. It groups requests into batches, launches the recorded operations, and manages the cached attention data each request reuses as its answer grows.
 3. **The card streams the reply.** As the GPU produces tokens, the card sends results over the client’s open connection. The host is free to run another workload throughout generation.
 
-Part of this path already ships. NVIDIA’s DOCA examples demonstrate a network card delivering packets directly to GPU memory. Blink tackles the next decision too: once a token is ready, the GPU can schedule the work for the following one. [NVIDIA’s GPU packet-processing example](https://networking-docs.nvidia.com/doca/archive/2-8-0/nvidia-doca-gpu-packet-processing-application-guide)
+NVIDIA already ships a DOCA example that delivers packets directly into GPU memory. Blink extends that idea beyond moving data. Once the GPU generates a token, its scheduler can start the next round while the network card streams the result.
 
-## What you can try today
+## Availability
 
-The April 8 preprint describes a working prototype tested with one H100 and a BlueField-3 network processor on a separate machine. The authors say they plan to release the code upon publication. I could verify the paper and its benchmark configuration, but no public Blink release. Serving a model across multiple GPUs remains future work. [Paper, implementation and evaluation](https://arxiv.org/html/2604.07609v1)
+The April 8 preprint describes a prototype tested with one H100 and a BlueField-3 on a separate machine. The researchers plan to release their code upon publication. Their preprint includes the hardware and benchmark settings. Multi-GPU serving remains future work.
 
-One reader, Yue Yu, suggested putting an agent’s sandbox on the freed CPU so its tools and model could share a server. That proposal gives Blink a practical next test. Can an agent compile code on the host while another user’s answer keeps streaming smoothly? The paper shows why that is plausible on one GPU. A run with real sandboxes would tell operators how much host capacity they could put back to work. [Yue Yu’s discussion](https://www.linkedin.com/posts/yue-yu-4609b8197_blink-cpu-free-llm-inference-by-delegating-activity-7451256636272324608-5BBB)
+## What the experiment changes
+
+On a shared server, even a brief wait for the CPU can recur throughout an answer. Blink shows what happens when the GPU can start each round itself. In the Qwen experiment, the host took on a second workload and the model kept serving requests at the same rate. For an operator weighing how much CPU capacity to reserve, that is the result worth testing at a larger scale.
+
+## Sources
+
+- [Blink preprint, architecture and evaluation](https://arxiv.org/html/2604.07609v1)
+- [NVIDIA DOCA GPU packet-processing application guide](https://networking-docs.nvidia.com/doca/archive/2-8-0/nvidia-doca-gpu-packet-processing-application-guide)
