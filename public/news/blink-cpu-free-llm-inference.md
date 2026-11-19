@@ -1,12 +1,12 @@
 # How Blink keeps the host CPU out of LLM inference
 
-A language model can slow down even when the time its GPU spends on matrix multiplication barely changes. Researchers at KTH and RISE saw this when they ran a second workload on an inference server. The delay was between GPU operations. The host CPU took longer to send the next piece of work, and the GPU waited.
+When researchers at KTH and RISE ran a second workload on an inference server, the model slowed down. Yet the GPU took about as long as before to multiply its matrices. The extra wait came **between GPU operations**, while the busy host CPU prepared the next one.
 
-**Blink** is their answer to that delay. It pairs a programmable network card with a GPU and gives them enough control to serve a request from arrival to final token. The host still starts the system. Once a user sends a prompt, generating the reply can proceed without another instruction from the host.
+Their prototype, **Blink**, moves that decision onto the GPU and gives a programmable network card responsibility for receiving prompts and streaming replies. The host CPU still sets everything up. After that, it can run other work while the model answers.
 
-## Why share an inference server?
+## What happens when another workload shares the CPU?
 
-An operator can reserve CPU cores to keep replies responsive, but those cores could be doing other work. Sharing them is attractive until a busy neighbour slows the stream of tokens a user sees. The authors measured that trade-off with Qwen3-30B-A3B at an offered load of four requests per second.
+Reserving CPU cores for inference helps keep replies responsive. Sharing those cores lets an operator get more work out of the same server. To measure the trade-off, the researchers sent four requests per second to Qwen3-30B-A3B, first with the host CPU available for inference and then with another workload competing for it.
 
 | Serving engine | Throughput retained when sharing the CPU |
 | --- | ---: |
@@ -15,31 +15,31 @@ An operator can reserve CPU cores to keep replies responsive, but those cores co
 | vLLM | 54% |
 | Blink | 100% |
 
-Each percentage compares an engine with its own run on an otherwise idle host. The result describes how each handled interference at that load.
+Each percentage compares an engine with **its own throughput in the first run**. Blink completed requests at the same rate in both runs. Its architecture explains why a busy host made so little difference.
 
-## From an HTTP request to a stream of tokens
+## From a prompt to a streamed reply
 
-At startup, the host loads the model and records the GPU operations needed to run it. Once setup finishes, the network card and GPU handle each request together.
+At startup, the host loads the model and records sequences of GPU operations as **CUDA graphs**. The GPU can then launch those sequences itself. Here’s how a request moves through the system.
 
 ![A prompt crosses from BlueField-3 to the H100 scheduler over RDMA. Generated tokens return to the card for streaming.](/news/assets/blink-cpu-free-llm-inference/inference-loop.svg)
 
-1. **The network card receives the prompt.** Its onboard processor handles HTTP and can tokenize text. It writes the input directly into GPU memory using remote direct memory access (RDMA).
-2. **The GPU decides what runs next.** A scheduler stays running on the GPU. It groups requests into batches, launches the recorded operations, and manages the cached attention data each request reuses as its answer grows.
-3. **The card streams the reply.** As the GPU produces tokens, the card sends results over the client’s open connection. The host is free to run another workload throughout generation.
+1. **Receive the prompt.** The BlueField-3 network card handles HTTP and can split text into tokens. It writes the input straight into GPU memory using remote direct memory access (RDMA).
+2. **Schedule the work.** A program called a persistent kernel stays active on the GPU. It groups requests into batches, launches the appropriate graph, and manages the attention data each request reuses as its answer grows.
+3. **Stream the reply.** The card reads newly generated tokens and streams them to the client. Meanwhile, the GPU can start the next round.
 
-NVIDIA already ships a DOCA example that delivers packets directly into GPU memory. Blink extends that idea beyond moving data. Once the GPU generates a token, its scheduler can start the next round while the network card streams the result.
+NVIDIA already ships a DOCA example that delivers network packets directly into GPU memory. Blink goes a step further by moving the decision about **which request runs next** onto the GPU as well.
 
-## Could a serving team adopt Blink?
+## What would it take to adopt Blink?
 
-For an application developer, the familiar part is the network endpoint. Blink’s prototype accepts OpenAI-compatible HTTP requests and streams replies using server-sent events. Most of the integration work falls to whoever runs the inference server. To follow the tested design, that team would compile its model with TensorRT, capture the operations as CUDA graphs, and connect a BlueField-3 frontend to GPU memory over RDMA. Installing a network card alone would still leave the existing serving engine scheduling work on the host.
+On the application side, Blink exposes an OpenAI-compatible HTTP endpoint and streams replies using server-sent events. Most of the work is on the server. To reproduce the prototype, a team would compile its model with TensorRT, capture CUDA graphs, and connect BlueField-3 to GPU memory over RDMA.
 
-The handoff between the card and GPU is what another team would have to implement. They share a queue in GPU memory. The card fills a slot with a prompt and marks it ready. The GPU claims the slot and updates it as tokens become available. The paper describes who can change each slot and when those changes become visible. That gives implementers a design to follow. As of November 19, the authors had announced plans to open-source Blink, but a public code release or a versioned interface specification for independently built components could not be verified.
+The two devices coordinate through a **shared queue in GPU memory**. The card writes a prompt into a free slot and marks it ready. The GPU claims the slot and updates it as tokens become available. The paper describes these handoffs in enough detail to guide an independent implementation. The authors plan to open-source Blink. As of November 19, a public code release and a versioned specification for that interface remain unconfirmed.
 
-## How far has the scheduler been tested?
+## How mature is the GPU scheduler?
 
-Blink’s persistent kernel is a working GPU scheduler. It admits new prompts while other replies are in progress and preserves their state when it restarts its CUDA graph to stay within a launch limit. The authors evaluated four models on one H100. Coordinating several GPUs to serve a larger model remains future work.
+The kernel can admit a new prompt while earlier replies are streaming. It also preserves requests in progress when it restarts a CUDA graph to stay within a launch limit. The authors tested it with **four models on a single H100**.
 
-That boundary matters when reading the throughput table. For a model that fits on one GPU, the Qwen run shows that sharing the host CPU need not slow the stream of completed requests at the tested load. A team with similar hardware has a concrete experiment to repeat. A team serving one model across several GPUs still needs evidence that the benefit survives coordination between them.
+That puts the opening result in perspective. At the tested load, Blink kept serving Qwen at the same rate even as another workload used the host CPU. For teams whose models fit on one GPU, that gives them a reason to reconsider how many CPU cores to reserve. For larger models, the open question is whether Blink can sustain that rate when several GPUs must coordinate every step.
 
 ## Sources
 
