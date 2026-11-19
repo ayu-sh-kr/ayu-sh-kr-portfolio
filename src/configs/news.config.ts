@@ -70,11 +70,11 @@ export const newsNotes: readonly NewsNote[] = [
   {
     slug: "gpt-6-2-microsoft-mai-gemini-4-neon",
     date: "2026-11-19",
-    title: "GPT-6.2, Microsoft MAI and Gemini 4 Neon: what changed for developers",
-    summary: "OpenAI’s Astra and Sol, Microsoft’s MAI coding and image models, and Google’s Gemini 4 Neon put different prices on everyday work. Here’s what the launch tests show.",
+    title: "GPT-6.2, MAI Code 2 and Gemini 4 Neon: Benchmarks and Pricing",
+    summary: "Compare benchmarks and API pricing for GPT-6.2 Astra and Sol, Microsoft MAI Code 2 and Image 2.7, and Gemini 4 Neon.",
     kind: "shipped",
     document: "/news/gpt-6-2-microsoft-mai-gemini-4-neon.md",
-    keywords: ["GPT-6.2 Astra", "GPT-6.2 Sol", "MAI Code 2", "MAI Image 2.7", "Gemini 4 Neon", "AI model benchmarks", "AI model pricing"],
+    keywords: ["GPT-6.2 Astra", "GPT-6.2 Sol", "MAI Code 2", "MAI Image 2.7", "Gemini 4 Neon", "GPT-6.2 API pricing", "MAI Code 2 Flash", "Gemini 4 Neon benchmarks", "AI model pricing"],
     minutes: 6,
     reference: {
       label: "Google’s Gemini 4 Neon launch",

@@ -1,4 +1,4 @@
-# GPT-6.2, Microsoft MAI and Gemini 4 Neon: what changed for developers
+# GPT-6.2, MAI Code 2 and Gemini 4 Neon: Benchmarks and Pricing
 
 Three releases in two days give developers more ways to decide what a task is worth. OpenAI puts a cheaper Sol beside Astra, Microsoft prices for jobs that repeat, and Google’s Neon goes after work that previously called for Carbon. The useful comparison is what it takes to get a result you can ship.
 
@@ -23,7 +23,7 @@ On **FrontierCode 2.0**, which tests whether patches meet maintainers’ standar
 
 > **API pricing.** At standard short-context rates per million tokens, Astra costs $8 for input and $40 for output. Sol costs $2 and $10. Both are available on eligible paid plans; Ultrafast has separate limits and pricing.
 
-**Early users stepped in when Astra stalled.**
+**GPT-6.2 Astra’s early reviews and 3D demos**
 
 OpenAI launched GPT-6.2 Astra on November 17, and early reviewers described having to steer it back on task. [Theo Browne](https://x.com/theo/status/2122760447103484410) said Astra spent days shrinking a compiler he’d asked it to speed up. The result ran slower. A question about why one computer was slow drew four paragraphs about the package manager, while [Max Weinbach](https://x.com/mweinbach/status/2122834783650676806) said he had to prompt the models to continue after they said they were blocked.
 
@@ -75,7 +75,7 @@ Google [released Gemini 4 Neon](https://blog.google/innovation-and-ai/models-and
 
 ### Where Neon catches Carbon
 
-[Artificial Analysis](https://artificialanalysis.ai/articles/gemini-4-neon-intelligence-gain) found Neon at high effort matched Carbon at high on its Intelligence Index. Raising Neon to extra-high lifted it just one point, to 61, while averaging about 21 minutes and $6.44 per benchmark task versus Carbon’s 36 minutes and $7.76 at standard prices.
+[Artificial Analysis](https://artificialanalysis.ai/articles/gemini-4-neon-intelligence-gain) found Neon at high effort matched Carbon at high on its Intelligence Index. Raising Neon to extra-high lifted it just one point, to 61. In the same tests, Neon at extra-high averaged about 21 minutes and $6.44 per task. Carbon averaged 36 minutes and $7.76 at standard prices.
 
 [DeepMind’s benchmark table](https://deepmind.google/models/gemini/#performance) puts Neon ahead of the reported Opus 5.5 result on CursorBench’s multi-file coding tasks, but slightly behind Opus on terminal tasks and repository patches.
 
