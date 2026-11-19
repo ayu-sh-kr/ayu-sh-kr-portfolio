@@ -8,7 +8,7 @@ OpenAI [released Astra and Sol](https://openai.com/index/introducing-gpt-6-2-ast
 
 ### How close is Sol on coding?
 
-On **FrontierCode 2.0**, which tests whether patches meet maintainers’ standards, OpenAI’s launch run put Sol within half a point of Astra at about **one-fifth of the cost per task**. Artificial Analysis found a wider gap in its independent Codex tests. The launch and independent runs used maximum reasoning effort except where marked.
+On **FrontierCode 2.0**, which tests whether patches meet maintainers’ standards, OpenAI’s launch run put Sol within half a point of Astra at about **one-fifth of the cost per task**. Artificial Analysis found a wider gap in its independent Codex tests.
 
 | Benchmark or metric | GPT-6.2 Astra | GPT-6.2 Sol |
 | --- | ---: | ---: |
@@ -19,11 +19,9 @@ On **FrontierCode 2.0**, which tests whether patches meet maintainers’ standar
 | Intelligence Index cost per task | $4.00 | $1.01 |
 | Intelligence Index time per task | 10.4 min | 7.9 min |
 
-At standard short-context API rates, a million input and output tokens cost $8 and $40 respectively for Astra, or $2 and $10 for Sol.
+**Start with Sol when you know the change and can check it with tests.** It came close to Astra on repository patches and finished the broader benchmark tasks faster and for less. For a bug that spans several files or a task where the right approach isn’t clear, Astra is the better candidate to try: it scored higher in the independent coding tests and on Agents’ Last Exam, which measures multi-step professional work.
 
-The independent **Coding Agent Index** also gives a reason to test beyond patch generation. Artificial Analysis found Astra level with the previous Astra and Sol three points below GPT-6.1 Sol in Codex at maximum effort. Sol’s decline was driven by a repository question-answering test, where it more often omitted key facts.
-
-Both models are available on eligible paid plans; Ultrafast has separate plan limits and API prices.
+> **API pricing.** At standard short-context rates per million tokens, Astra costs $8 for input and $40 for output. Sol costs $2 and $10. Both are available on eligible paid plans; Ultrafast has separate limits and pricing.
 
 ### Where early users had to step in
 
