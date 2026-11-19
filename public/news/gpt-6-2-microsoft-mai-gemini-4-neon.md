@@ -1,6 +1,6 @@
 # GPT-6.2, MAI Code 2 and Gemini 4 Neon: Benchmarks and Pricing
 
-Three releases in two days give developers more ways to decide what a task is worth. OpenAI puts a cheaper Sol beside Astra, Microsoft prices for jobs that repeat, and Google’s Neon goes after work that previously called for Carbon. The useful comparison is what it takes to get a result you can ship.
+Three model launches in two days give developers more ways to get work done without paying flagship rates for every task. OpenAI pairs Astra with a cheaper Sol, Microsoft targets repeat jobs in Copilot and Foundry, and Google’s Neon takes on work that previously called for Carbon.
 
 ## OpenAI: GPT-6.2 Astra and Sol
 
@@ -8,14 +8,13 @@ OpenAI [released Astra and Sol](https://openai.com/index/introducing-gpt-6-2-ast
 
 ### How close is Sol on coding?
 
-On **FrontierCode 2.0**, which tests whether patches meet maintainers’ standards, OpenAI’s launch run put Sol within half a point of Astra at about **one-fifth of the cost per task**. Artificial Analysis found a wider gap in its independent Codex tests.
+**FrontierCode 2.0** tests whether patches meet maintainers’ standards. Sol came close to Astra in OpenAI’s run, while Artificial Analysis found a wider gap in its independent Codex tests.
 
 | Benchmark or metric | GPT-6.2 Astra | GPT-6.2 Sol |
 | --- | ---: | ---: |
 | FrontierCode 2.0 (OpenAI, score / cost per task) | 44.2% / $5.97 | 43.8% / $1.29 |
 | Agents’ Last Exam v1.1 (OpenAI, partial-credit score) | 78.3% (xhigh) | 73.0% |
 | Coding Agent Index (Artificial Analysis, Codex) | 53 | 49 |
-| Intelligence Index v5.0.1 (Artificial Analysis) | 62 | 57 |
 | Intelligence Index cost per task | $4.00 | $1.01 |
 | Intelligence Index time per task | 10.4 min | 7.9 min |
 
@@ -25,7 +24,7 @@ On **FrontierCode 2.0**, which tests whether patches meet maintainers’ standar
 
 ### GPT-6.2 Astra’s early reviews and 3D demos
 
-OpenAI launched GPT-6.2 Astra on November 17, and early reviewers described having to steer it back on task. [Theo Browne](https://x.com/theo/status/2122760447103484410) said Astra spent days shrinking a compiler he’d asked it to speed up. The result ran slower. A question about why one computer was slow drew four paragraphs about the package manager, while [Max Weinbach](https://x.com/mweinbach/status/2122834783650676806) said he had to prompt the models to continue after they said they were blocked. [Artificial Analysis’s writing tests](https://artificialanalysis.ai/evaluations/aa-personalitybench) add context: at maximum effort, Astra’s average reply fell from 352 words in GPT-6 to 210 in GPT-6.2, and Sol’s fell from 337 in GPT-6.1 to 223 in GPT-6.2. Both put the answer first more often but scored lower for organization.
+When OpenAI launched GPT-6.2 Astra, early reviewers described how often they had to steer it back on task. [Theo Browne](https://x.com/theo/status/2122760447103484410) said Astra spent days shrinking a compiler he’d asked it to speed up. The result ran slower. A question about why one computer was slow drew four paragraphs about the package manager, while [Max Weinbach](https://x.com/mweinbach/status/2122834783650676806) said he had to prompt the models to continue after they said they were blocked. [Artificial Analysis’s writing tests](https://artificialanalysis.ai/evaluations/aa-personalitybench) add context: at maximum effort, Astra’s average reply fell from 352 words in GPT-6 to 210 in GPT-6.2, and Sol’s fell from 337 in GPT-6.1 to 223 in GPT-6.2. Both put the answer first more often but scored lower for organization.
 
 Astra found a warmer reception in 3D. In a prelaunch test, Ethan Mollick used it to make an [explorable space-elevator ride](https://t.co/7eL0alO7Bp) with Blender and Unity. [Token Gremlin](https://x.com/TokenGremlin/status/2122786802402754829) singled out its Blender and Three.js work. Separately, [OpenAI’s internal 3D tests](https://openai.com/index/introducing-gpt-6-2-astra-sol/) put Astra’s first-try success rate at 73%.
 
@@ -41,7 +40,7 @@ Microsoft introduced **MAI Code 2 and Code 2 Flash** in GitHub Copilot on Novemb
 
 Both image models generate and edit images. Flash also powers **Canvas** in MAI Labs, where you can select and revise just one part of an image.
 
-Artificial Analysis’s **AA-Image-Editing v2.1** uses blind preference votes to assign Elo scores. Its launch snapshot put Image 2.7 first and Flash seventh.
+In Artificial Analysis’s **AA-Image-Editing v2.1**, reviewers vote on edits without seeing which model made them.
 
 | Model | Editing Elo | Listed price per 1,000 images |
 | --- | ---: | ---: |
@@ -49,7 +48,7 @@ Artificial Analysis’s **AA-Image-Editing v2.1** uses blind preference votes to
 | GPT Image 2.6 Sunburst (max) | 1,211 | $210.72 |
 | MAI Image 2.7 Flash | 1,179 | $10.24 |
 
-MAI Image 2.7 scored four points above OpenAI’s GPT Image 2.6 Sunburst on editing and cost about one-sixth as much at the listed prices. On the same evaluator’s text-to-image leaderboard, Sunburst ranked first and MAI Image 2.7 ranked fourth.
+MAI Image 2.7 edged past OpenAI’s GPT Image 2.6 Sunburst on editing at about one-sixth of the listed price. Sunburst still ranked first for generating images from text, where MAI Image 2.7 came fourth.
 
 ### MAI Code 2 Flash makes routine edits cheaper
 
@@ -75,7 +74,7 @@ Google [released Gemini 4 Neon](https://blog.google/innovation-and-ai/models-and
 
 ### Where Neon catches Carbon
 
-[Artificial Analysis](https://artificialanalysis.ai/articles/gemini-4-neon-intelligence-gain) found Neon at high effort matched Carbon at high on its Intelligence Index. Raising Neon to extra-high lifted it just one point, to 61. In the same tests, Neon at extra-high averaged about 21 minutes and $6.44 per task. Carbon averaged 36 minutes and $7.76 at standard prices.
+[Artificial Analysis](https://artificialanalysis.ai/articles/gemini-4-neon-intelligence-gain) found Neon at high effort matched Carbon at high on its Intelligence Index. At extra-high effort, Neon edged ahead and averaged about 21 minutes and $6.44 per task. Carbon averaged 36 minutes and $7.76 at standard prices.
 
 [DeepMind’s benchmark table](https://deepmind.google/models/gemini/#performance) puts Neon ahead of the reported Opus 5.5 result on CursorBench’s multi-file coding tasks, but slightly behind Opus on terminal tasks and repository patches.
 
@@ -87,7 +86,7 @@ Google [released Gemini 4 Neon](https://blog.google/innovation-and-ai/models-and
 
 ### What extra thinking buys
 
-For workflow automation, [Zapier’s AutomationBench](https://zapier.com/benchmarks/gemini-neon-4-report) offers a separate test: Neon at high passed **54.3%** of 657 tasks versus Carbon’s **53.9%**, at an estimated $0.88 versus $1.94 per attempt. Moving Neon to extra-high solved 13 more tasks but took the estimated cost to $1.69 per attempt. That makes high the sensible starting point for workflows like these, with extra-high reserved for cases where the extra passes are worth paying for.
+For workflow automation, [Zapier’s AutomationBench](https://zapier.com/benchmarks/gemini-neon-4-report) offers a separate test: Neon at high effort passed slightly more of the 657 tasks than Carbon, at an estimated $0.88 versus $1.94 per attempt. Extra-high effort solved 13 more tasks but nearly doubled Neon’s cost per attempt. High is the sensible starting point for workflows like these.
 
 ## What more competition means for buyers
 
