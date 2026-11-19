@@ -23,15 +23,13 @@ At standard short-context API rates, a million input and output tokens cost $8 a
 
 The independent **Coding Agent Index** also gives a reason to test beyond patch generation. Artificial Analysis found Astra level with the previous Astra and Sol three points below GPT-6.1 Sol in Codex at maximum effort. Sol’s decline was driven by a repository question-answering test, where it more often omitted key facts.
 
+Both models are available on eligible paid plans; Ultrafast has separate plan limits and API prices.
+
 ### Where early users had to step in
 
-On a compiler project, developer **Theo Browne** said Astra kept working without making progress. It focused on making the compiler smaller even as performance got worse. When Browne asked why one computer was slow, he got four paragraphs about how the package manager worked instead of a clear answer.
+On a compiler project, **Theo Browne** said Astra kept making the compiler smaller even as it ran slower. When he asked why one computer was slow, he got four paragraphs about the package manager instead of a clear answer. **Max Weinbach** said he had to prompt the GPT-6.2 models to continue after they declared themselves blocked. **Token Gremlin** liked Astra’s 3D output but found its explanations hard to follow on longer tasks.
 
-**Max Weinbach** saw a different problem: the GPT-6.2 models sometimes stopped and said they were blocked rather than trying another approach, so he had to ask them to continue. **Token Gremlin** liked Astra’s 3D output but found its explanations hard to follow during longer jobs. For developers, that’s extra time spent checking whether the model is still solving the right problem and figuring out what it did.
-
-**Sam Altman** said on November 17 that making the models easier to work with was a priority. The next day, OpenAI’s **Thibault “Tibo” Sottiaux** said changes in the final three to four days might explain some early reviews. **Dan Shipper** pushed back: Every had tested release candidates through launch and hadn’t been told about the changes.
-
-OpenAI’s developer guide recommends telling Astra to keep going through the steps it has permission to take, check that it finished, and explain what it did in plain language. Both models are available on eligible paid plans; Ultrafast has separate plan limits and API prices.
+**Sam Altman** said on November 17 that making the models easier to work with was a priority. The next day, OpenAI’s **Thibault “Tibo” Sottiaux** said last-minute changes might explain some early reviews. **Dan Shipper** said Every tested release candidates through launch and hadn’t heard about those changes. OpenAI’s developer guide recommends telling Astra when to keep going, how to verify it’s done, and what to explain in the final answer.
 
 ## Microsoft: MAI Code 2 and Image 2.7
 
@@ -49,7 +47,7 @@ Artificial Analysis’s **AA-Image-Editing v2.1** uses blind preference votes to
 | GPT Image 2.6 Sunburst (max) | 1,211 | $210.72 |
 | MAI Image 2.7 Flash | 1,179 | $10.24 |
 
-The four-point gap between Image 2.7 and Sunburst comes with overlapping 95% confidence intervals. The listed price difference is about sixfold. For generating images from text, the same evaluator ranked Sunburst first and Image 2.7 fourth, making editing the stronger case for Microsoft’s model.
+MAI Image 2.7 scored four points above OpenAI’s GPT Image 2.6 Sunburst on editing and cost about one-sixth as much at the listed prices. On the same evaluator’s text-to-image leaderboard, Sunburst ranked first and MAI Image 2.7 ranked fourth.
 
 ### MAI Code 2 Flash makes routine edits cheaper
 
@@ -61,9 +59,9 @@ Code 2 targets cross-file changes and debugging. Flash uses **12 billion active 
 | Terminal-Bench 2.1 | 84.6% | 78.3% |
 | SWE Atlas | 43.1% | 44.8% |
 
-Across four tests, including FrontierCode 1.1, Microsoft reports Code 2 reached **98% of GPT-6.1 Sol’s score at 40% of the cost** and **96% of Claude Opus 5.5’s score at 5% of the cost**. Over the three tests above, Microsoft reports Flash performed comparably to GPT-6 Luna and Claude Haiku 5.5, at **65% and 20% of their respective costs**.
+At its introductory Copilot rates, Microsoft reports that Code 2 reached **98% of GPT-6.1 Sol’s score at 40% of its cost** and **96% of Claude Opus 5.5’s score at 5% of its cost** across four tests, including FrontierCode 1.1. Across the three tests in the table, Microsoft reports that Flash scored about as well as GPT-6 Luna and Claude Haiku 5.5, at **65% of Luna’s cost** and **20% of Haiku’s**.
 
-Those comparisons use Microsoft’s half-price launch rates. Copilot charges **$0.50 input / $2.50 output** per million tokens for Code 2 and **$0.05 / $0.25** for Flash. Both rates double on May 17, 2027. Microsoft also announced **MAI Licensed Weights**, which will let participating companies customize models and run them in their own Azure environments.
+Copilot charges **$0.50 per million input tokens and $2.50 per million output tokens** for Code 2, and **$0.05 input and $0.25 output** for Flash. These rates double on May 17, 2027. Microsoft also announced **MAI Licensed Weights**, which will let participating companies customize models and run them in their own Azure environments.
 
 ## Google: Gemini 4 Neon closes the gap with Carbon
 
