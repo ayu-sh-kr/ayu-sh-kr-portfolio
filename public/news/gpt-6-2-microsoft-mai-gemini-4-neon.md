@@ -25,9 +25,9 @@ On **FrontierCode 2.0**, which tests whether patches meet maintainers’ standar
 
 ### Where early users had to step in
 
-On a compiler project, **Theo Browne** said Astra kept making the compiler smaller even as it ran slower. When he asked why one computer was slow, he got four paragraphs about the package manager instead of a clear answer. **Max Weinbach** said he had to prompt the GPT-6.2 models to continue after they declared themselves blocked. **Token Gremlin** liked Astra’s 3D output but found its explanations hard to follow on longer tasks.
+**What early users reported.** On a compiler project, **Theo Browne** said Astra kept making the compiler smaller even as it ran slower. When he asked why one computer was slow, he got four paragraphs about the package manager instead of a clear answer. **Max Weinbach** said he had to prompt the GPT-6.2 models to continue after they declared themselves blocked. **Token Gremlin** liked Astra’s 3D output but found its explanations hard to follow on longer tasks.
 
-**Sam Altman** said on November 17 that making the models easier to work with was a priority. The next day, OpenAI’s **Thibault “Tibo” Sottiaux** said last-minute changes might explain some early reviews. **Dan Shipper** said Every tested release candidates through launch and hadn’t heard about those changes. OpenAI’s developer guide recommends telling Astra when to keep going, how to verify it’s done, and what to explain in the final answer.
+**How OpenAI responded.** **Sam Altman** said on November 17 that making the models easier to work with was a priority. The next day, OpenAI’s **Thibault “Tibo” Sottiaux** said last-minute changes might explain some early reviews. **Dan Shipper** said Every tested release candidates through launch and hadn’t heard about those changes. OpenAI’s developer guide recommends telling Astra when to keep going, how to verify it’s done, and what to explain in the final answer.
 
 ## Microsoft: MAI Code 2 and Image 2.7
 
