@@ -71,7 +71,7 @@ export const newsNotes: readonly NewsNote[] = [
     slug: "blink-cpu-free-llm-inference",
     date: "2026-11-19",
     title: "How Blink keeps the host CPU out of LLM inference",
-    summary: "Blink moves token scheduling onto the GPU and request handling onto a SmartNIC. A single-H100 experiment shows what that buys when other workloads share the host.",
+    summary: "KTH and RISE researchers tested whether moving token scheduling onto a GPU and request handling onto a SmartNIC changes how a model performs on a shared server.",
     kind: "reading",
     document: "/news/blink-cpu-free-llm-inference.md",
     keywords: ["Blink LLM inference", "GPU scheduling", "SmartNIC", "BlueField-3", "CPU interference"],
