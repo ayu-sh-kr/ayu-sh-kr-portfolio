@@ -1,24 +1,27 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="740" height="766" viewBox="0 0 740 766" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" width="592" height="650" viewBox="132 59 592 650" role="img" aria-labelledby="title desc">
 <title id="title">Blink’s serving stack, layer by layer</title>
 <desc id="desc">Logical exploded view. BlueField separates prompt and reply staging. RDMA writes fill slots in GPU memory. Parallel scanning claims a slot, then the GPU scheduler selects a captured graph and extends a decode batch. Sampled tokens return through the shared queue. The layers depict software responsibilities, not chip packaging.</desc>
 <style>
-text{font-family:Arial,sans-serif;fill:#efefed}.name{font-weight:600;font-size:22px}.note{font-size:17px;fill:#b7b7b9}.metal{stroke:#a0a0a5;stroke-width:1;stroke-linejoin:round}.wire{fill:none;stroke:#888990;stroke-width:1.45;stroke-linejoin:round}.active{fill:none;stroke:#fff;stroke-width:3;stroke-dasharray:10 8;opacity:0}
+text{font:17px Arial,sans-serif;fill:#b9b9bd}.pointer{fill:none;stroke:#828289;stroke-width:1.1;stroke-linejoin:round}.metal{stroke:#a0a0a5;stroke-width:1;stroke-linejoin:round}.wire{fill:none;stroke:#888990;stroke-width:1.45;stroke-linejoin:round}.active{fill:none;stroke:#fff;stroke-width:3;stroke-dasharray:10 8;opacity:0}
 @media(prefers-reduced-motion:reduce){.motion{display:none}.lift{animation:none!important;transform:none!important}}
 </style>
-<rect x="1" y="1" width="738" height="764" rx="18" fill="#161618" stroke="#404044"/>
-<text x="25" y="44" font-size="29" font-weight="600">Blink’s serving stack</text>
-<text x="26" y="72" class="note">Exploded view of a request after host setup</text>
+<rect x="133" y="60" width="590" height="648" rx="18" fill="#161618" stroke="#404044"/>
 <path d="M343.0,146.0V445.0" stroke="#55555b" stroke-width="1" stroke-dasharray="3 6"/>
 <path d="M647.0,321.5V620.5" stroke="#55555b" stroke-width="1" stroke-dasharray="3 6"/>
 <path d="M244.3,203.0V502.0" stroke="#55555b" stroke-width="1" stroke-dasharray="3 6"/>
 <path d="M548.2,378.5V677.5" stroke="#55555b" stroke-width="1" stroke-dasharray="3 6"/>
-<polygon points="234.7,501.5 550.8,684.0 550.8,693.0 234.7,510.5" fill="#26272b" class="metal"/>
-<polygon points="659.1,621.5 550.8,684.0 550.8,693.0 659.1,630.5" fill="#36373c" class="metal"/>
-<polygon points="343.0,439.0 659.1,621.5 550.8,684.0 234.7,501.5" fill="#333439" class="metal"/>
-<polygon points="241.7,498.5 550.8,677.0 550.8,680.0 241.7,501.5" fill="#26272b" class="metal"/>
-<polygon points="652.2,618.5 550.8,677.0 550.8,680.0 652.2,621.5" fill="#36373c" class="metal"/>
-<polygon points="343.0,440.0 652.2,618.5 550.8,677.0 241.7,498.5" fill="#424349" class="metal"/>
-<text transform="matrix(.866 .5 0 1 245.1 515.5)" font-size="13" letter-spacing="1">GPU EXECUTION</text>
+<polygon points="642.6,612.0 642.6,631.0 642.6,640.0 642.6,621.0" fill="#37383d" class="metal"/>
+<polygon points="642.6,631.0 567.3,674.5 567.3,683.5 642.6,640.0" fill="#36373c" class="metal"/>
+<polygon points="567.3,674.5 534.4,674.5 534.4,683.5 567.3,683.5" fill="#303135" class="metal"/>
+<polygon points="534.4,674.5 251.2,511.0 251.2,520.0 534.4,683.5" fill="#26272b" class="metal"/>
+<polygon points="251.2,511.0 251.2,492.0 251.2,501.0 251.2,520.0" fill="#333438" class="metal"/>
+<polygon points="359.5,448.5 642.6,612.0 642.6,631.0 567.3,674.5 534.4,674.5 251.2,511.0 251.2,492.0 326.5,448.5" fill="#333439" class="metal"/>
+<polygon points="635.7,609.0 635.7,628.0 635.7,631.0 635.7,612.0" fill="#37383d" class="metal"/>
+<polygon points="635.7,628.0 567.3,667.5 567.3,670.5 635.7,631.0" fill="#36373c" class="metal"/>
+<polygon points="567.3,667.5 534.4,667.5 534.4,670.5 567.3,670.5" fill="#303135" class="metal"/>
+<polygon points="534.4,667.5 258.1,508.0 258.1,511.0 534.4,670.5" fill="#26272b" class="metal"/>
+<polygon points="258.1,508.0 258.1,489.0 258.1,492.0 258.1,511.0" fill="#333438" class="metal"/>
+<polygon points="359.5,449.5 635.7,609.0 635.7,628.0 567.3,667.5 534.4,667.5 258.1,508.0 258.1,489.0 326.5,449.5" fill="#424349" class="metal"/>
 <polygon points="335.2,442.5 343.0,447.0 343.0,449.0 335.2,444.5" fill="#26272b" class="metal"/>
 <polygon points="349.9,443.0 343.0,447.0 343.0,449.0 349.9,445.0" fill="#36373c" class="metal"/>
 <polygon points="342.1,438.5 349.9,443.0 343.0,447.0 335.2,442.5" fill="#a2a2a4" class="metal"/>
@@ -250,13 +253,18 @@ text{font-family:Arial,sans-serif;fill:#efefed}.name{font-weight:600;font-size:2
 <polygon points="535.3,638.0 543.9,643.0 543.9,646.0 535.3,641.0" fill="#26272b" class="metal"/>
 <polygon points="556.0,636.0 543.9,643.0 543.9,646.0 556.0,639.0" fill="#36373c" class="metal"/>
 <polygon points="547.4,631.0 556.0,636.0 543.9,643.0 535.3,638.0" fill="#3d3e44" class="metal"/>
-<polygon points="234.7,328.5 550.8,511.0 550.8,520.0 234.7,337.5" fill="#26272b" class="metal"/>
-<polygon points="659.1,448.5 550.8,511.0 550.8,520.0 659.1,457.5" fill="#36373c" class="metal"/>
-<polygon points="343.0,266.0 659.1,448.5 550.8,511.0 234.7,328.5" fill="#333439" class="metal"/>
-<polygon points="241.7,325.5 550.8,504.0 550.8,507.0 241.7,328.5" fill="#26272b" class="metal"/>
-<polygon points="652.2,445.5 550.8,504.0 550.8,507.0 652.2,448.5" fill="#36373c" class="metal"/>
-<polygon points="343.0,267.0 652.2,445.5 550.8,504.0 241.7,325.5" fill="#424349" class="metal"/>
-<text transform="matrix(.866 .5 0 1 245.1 342.5)" font-size="13" letter-spacing="1">GPU MEMORY</text>
+<polygon points="647.8,442.0 647.8,455.0 647.8,464.0 647.8,451.0" fill="#37383d" class="metal"/>
+<polygon points="647.8,455.0 562.1,504.5 562.1,513.5 647.8,464.0" fill="#36373c" class="metal"/>
+<polygon points="562.1,504.5 539.6,504.5 539.6,513.5 562.1,513.5" fill="#303135" class="metal"/>
+<polygon points="539.6,504.5 246.0,335.0 246.0,344.0 539.6,513.5" fill="#26272b" class="metal"/>
+<polygon points="246.0,335.0 246.0,322.0 246.0,331.0 246.0,344.0" fill="#333438" class="metal"/>
+<polygon points="354.3,272.5 647.8,442.0 647.8,455.0 562.1,504.5 539.6,504.5 246.0,335.0 246.0,322.0 331.7,272.5" fill="#333439" class="metal"/>
+<polygon points="640.9,439.0 640.9,452.0 640.9,455.0 640.9,442.0" fill="#37383d" class="metal"/>
+<polygon points="640.9,452.0 562.1,497.5 562.1,500.5 640.9,455.0" fill="#36373c" class="metal"/>
+<polygon points="562.1,497.5 539.6,497.5 539.6,500.5 562.1,500.5" fill="#303135" class="metal"/>
+<polygon points="539.6,497.5 252.9,332.0 252.9,335.0 539.6,500.5" fill="#26272b" class="metal"/>
+<polygon points="252.9,332.0 252.9,319.0 252.9,322.0 252.9,335.0" fill="#333438" class="metal"/>
+<polygon points="354.3,273.5 640.9,439.0 640.9,452.0 562.1,497.5 539.6,497.5 252.9,332.0 252.9,319.0 331.7,273.5" fill="#424349" class="metal"/>
 <polygon points="335.2,269.5 343.0,274.0 343.0,276.0 335.2,271.5" fill="#26272b" class="metal"/>
 <polygon points="349.9,270.0 343.0,274.0 343.0,276.0 349.9,272.0" fill="#36373c" class="metal"/>
 <polygon points="342.1,265.5 349.9,270.0 343.0,274.0 335.2,269.5" fill="#a2a2a4" class="metal"/>
@@ -450,13 +458,18 @@ text{font-family:Arial,sans-serif;fill:#efefed}.name{font-weight:600;font-size:2
 <path d="M471.2,365.0 L490.2,376.0" class="active motion"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.260;0.278;0.420;0.438;1" dur="9s" repeatCount="indefinite"/><animate attributeName="stroke-dashoffset" from="36" to="0" dur="1s" repeatCount="indefinite"/></path>
 <path d="M433.9,386.5 L453.0,397.5" class="wire"/>
 <path d="M433.9,386.5 L453.0,397.5" class="active motion"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.260;0.278;0.420;0.438;1" dur="9s" repeatCount="indefinite"/><animate attributeName="stroke-dashoffset" from="36" to="0" dur="1s" repeatCount="indefinite"/></path>
-<polygon points="234.7,156.5 550.8,339.0 550.8,348.0 234.7,165.5" fill="#26272b" class="metal"/>
-<polygon points="659.1,276.5 550.8,339.0 550.8,348.0 659.1,285.5" fill="#36373c" class="metal"/>
-<polygon points="343.0,94.0 659.1,276.5 550.8,339.0 234.7,156.5" fill="#333439" class="metal"/>
-<polygon points="241.7,153.5 550.8,332.0 550.8,335.0 241.7,156.5" fill="#26272b" class="metal"/>
-<polygon points="652.2,273.5 550.8,332.0 550.8,335.0 652.2,276.5" fill="#36373c" class="metal"/>
-<polygon points="343.0,95.0 652.2,273.5 550.8,332.0 241.7,153.5" fill="#424349" class="metal"/>
-<text transform="matrix(.866 .5 0 1 245.1 170.5)" font-size="13" letter-spacing="1">BLUEFIELD-3</text>
+<polygon points="651.3,272.0 651.3,281.0 651.3,290.0 651.3,281.0" fill="#37383d" class="metal"/>
+<polygon points="651.3,281.0 558.6,334.5 558.6,343.5 651.3,290.0" fill="#36373c" class="metal"/>
+<polygon points="558.6,334.5 543.1,334.5 543.1,343.5 558.6,343.5" fill="#303135" class="metal"/>
+<polygon points="543.1,334.5 242.5,161.0 242.5,170.0 543.1,343.5" fill="#26272b" class="metal"/>
+<polygon points="242.5,161.0 242.5,152.0 242.5,161.0 242.5,170.0" fill="#333438" class="metal"/>
+<polygon points="350.8,98.5 651.3,272.0 651.3,281.0 558.6,334.5 543.1,334.5 242.5,161.0 242.5,152.0 335.2,98.5" fill="#333439" class="metal"/>
+<polygon points="644.4,269.0 644.4,278.0 644.4,281.0 644.4,272.0" fill="#37383d" class="metal"/>
+<polygon points="644.4,278.0 558.6,327.5 558.6,330.5 644.4,281.0" fill="#36373c" class="metal"/>
+<polygon points="558.6,327.5 543.1,327.5 543.1,330.5 558.6,330.5" fill="#303135" class="metal"/>
+<polygon points="543.1,327.5 249.5,158.0 249.5,161.0 543.1,330.5" fill="#26272b" class="metal"/>
+<polygon points="249.5,158.0 249.5,149.0 249.5,152.0 249.5,161.0" fill="#333438" class="metal"/>
+<polygon points="350.8,99.5 644.4,269.0 644.4,278.0 558.6,327.5 543.1,327.5 249.5,158.0 249.5,149.0 335.2,99.5" fill="#424349" class="metal"/>
 <polygon points="335.2,97.5 343.0,102.0 343.0,104.0 335.2,99.5" fill="#26272b" class="metal"/>
 <polygon points="349.9,98.0 343.0,102.0 343.0,104.0 349.9,100.0" fill="#36373c" class="metal"/>
 <polygon points="342.1,93.5 349.9,98.0 343.0,102.0 335.2,97.5" fill="#a2a2a4" class="metal"/>
@@ -587,16 +600,8 @@ text{font-family:Arial,sans-serif;fill:#efefed}.name{font-weight:600;font-size:2
 <path d="M609.7,274.0 L641.8,292.5 L641.8,462.5 L614.9,447.0" class="active motion"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.150;0.168;0.290;0.308;1" dur="9s" repeatCount="indefinite"/><animate attributeName="stroke-dashoffset" from="36" to="0" dur="1s" repeatCount="indefinite"/></path>
 <path d="M573.4,471.0 L608.9,491.5 L608.9,321.5 L568.2,298.0" class="wire"/>
 <path d="M573.4,471.0 L608.9,491.5 L608.9,321.5 L568.2,298.0" class="active motion"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.740;0.758;0.880;0.898;1" dur="9s" repeatCount="indefinite"/><animate attributeName="stroke-dashoffset" from="36" to="0" dur="1s" repeatCount="indefinite"/></path>
-<text x="25" y="153" class="name">Network card</text>
-<text x="26" y="182" class="note">Tokenize a prompt.</text>
-<text x="26" y="204" class="note">Stage input and</text>
-<text x="26" y="226" class="note">stream replies.</text>
-<text x="25" y="326" class="name">Shared queue</text>
-<text x="26" y="355" class="note">Claim a request slot.</text>
-<text x="26" y="377" class="note">Read and write</text>
-<text x="26" y="399" class="note">token buffers.</text>
-<text x="25" y="500" class="name">GPU scheduler</text>
-<text x="26" y="529" class="note">Select a graph.</text>
-<text x="26" y="551" class="note">Admit a prompt.</text>
-<text x="26" y="573" class="note">Extend the batch.</text>
-<path d="M26 707H714" stroke="#454549"/><text x="26" y="738" class="note">Logical layers · BlueField and H100 communicate over RDMA.</text></svg>
+<path class="pointer" d="M171 132h58l53 31"/><text x="169" y="121">BlueField-3</text>
+<path class="pointer" d="M483 118h67l120 69v124l-28 16"/><text x="482" y="108">RDMA link</text>
+<path class="pointer" d="M155 302h53l78 45"/><text x="153" y="292">Request slots</text>
+<path class="pointer" d="M156 581h69l49 28 137 -79"/><text x="154" y="570">GPU scheduler</text>
+</svg>
