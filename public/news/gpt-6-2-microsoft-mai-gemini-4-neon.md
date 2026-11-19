@@ -102,8 +102,6 @@ List prices at the top have already moved. [Claude Fable 5.2](https://www.anthro
 - OpenAI’s public responses came from [Sam Altman](https://x.com/sama/status/2122798042734633452) and [Tibo Sottiaux](https://x.com/thsottiaux/status/2122929634916679820). [Dan Shipper replied](https://x.com/danshipper/status/2123036037077201068) about Every’s testing schedule.
 - OpenAI gives task-completion and writing guidance in its [GPT-6.2 developer guide](https://developers.openai.com/api/docs/guides/latest-model?model=gpt-6.2-astra).
 
-*Public X posts checked November 19, 2026 through indexed mirrors. Direct X access was unavailable.*
-
 ### Microsoft
 
 - Microsoft describes image editing, Canvas and Foundry access in its [MAI Image 2.7 launch post](https://microsoft.ai/news/introducing-mai-image-2-7/) and [Foundry model guide](https://learn.microsoft.com/en-us/azure/foundry/foundry-models/how-to/use-foundry-models-mai-image).
