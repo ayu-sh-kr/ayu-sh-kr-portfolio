@@ -23,6 +23,8 @@ On **FrontierCode 2.0**, which tests whether patches meet maintainers’ standar
 
 > **API pricing.** At standard short-context rates per million tokens, Astra costs $8 for input and $40 for output. Sol costs $2 and $10. Both are available on eligible paid plans; Ultrafast has separate limits and pricing.
 
+**Early users stepped in when Astra stalled.**
+
 OpenAI launched GPT-6.2 Astra on November 17, and early reviewers described having to steer it back on task. [Theo Browne](https://x.com/theo/status/2122760447103484410) said Astra spent days shrinking a compiler he’d asked it to speed up. The result ran slower. A question about why one computer was slow drew four paragraphs about the package manager, while [Max Weinbach](https://x.com/mweinbach/status/2122834783650676806) said he had to prompt the models to continue after they said they were blocked.
 
 Astra found a warmer reception in 3D. In a prelaunch test, Ethan Mollick used it to make an [explorable space-elevator ride](https://t.co/7eL0alO7Bp) with Blender and Unity. [Token Gremlin](https://x.com/TokenGremlin/status/2122786802402754829) singled out its Blender and Three.js work. Separately, [OpenAI’s internal 3D tests](https://openai.com/index/introducing-gpt-6-2-astra-sol/) put Astra’s first-try success rate at 73%.
