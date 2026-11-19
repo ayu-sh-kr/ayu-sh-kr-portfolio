@@ -14,6 +14,11 @@
   ],
   "redirects": [
     {
+      "source": "/news/gpt-6-2-microsoft-mai-gemini-4-neon",
+      "destination": "/news/gpt-6-2-microsoft-mai-gemini-4-neon/",
+      "permanent": true
+    },
+    {
       "source": "/news/openai-research-access-safety-assessments",
       "destination": "/news/openai-research-access-safety-assessments/",
       "permanent": true
