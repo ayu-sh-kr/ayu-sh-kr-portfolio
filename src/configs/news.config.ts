@@ -68,6 +68,20 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "blink-cpu-free-llm-inference",
+    date: "2026-11-19",
+    title: "How Blink keeps the host CPU out of LLM inference",
+    summary: "Blink moves token scheduling onto the GPU and request handling onto a SmartNIC. A single-H100 experiment shows what that buys when other workloads share the host.",
+    kind: "reading",
+    document: "/news/blink-cpu-free-llm-inference.md",
+    keywords: ["Blink LLM inference", "GPU scheduling", "SmartNIC", "BlueField-3", "CPU interference"],
+    minutes: 3,
+    reference: {
+      label: "Blink research paper",
+      href: "https://arxiv.org/abs/2604.07609"
+    }
+  },
+  {
     slug: "gpt-6-2-microsoft-mai-gemini-4-neon",
     date: "2026-11-19",
     title: "GPT-6.2, MAI Code 2 and Gemini 4 Neon: Benchmarks and Pricing",

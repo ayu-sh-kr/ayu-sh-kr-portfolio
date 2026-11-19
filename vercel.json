@@ -621,6 +621,11 @@
       "permanent": true
     },
     {
+      "source": "/news/blink-cpu-free-llm-inference",
+      "destination": "/news/blink-cpu-free-llm-inference/",
+      "permanent": true
+    },
+    {
       "source": "/news/openai-pando-git-backend-anthropic-scion",
       "destination": "/news/openai-pando-git-backend-anthropic-scion/",
       "permanent": true

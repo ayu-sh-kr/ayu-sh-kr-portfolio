@@ -55,6 +55,7 @@ const newsRoutes = [
   "/news/kawa-kafka-gateway",
   "/news/rustle-forward-proxy-benchmarks",
   "/news/ai-agent-cloud-hosting-costs",
+  "/news/blink-cpu-free-llm-inference",
   "/news/openai-pando-git-backend-anthropic-scion",
   "/news/mit-weight-space-programming-gpt-6-astra-qwen",
   "/news/tibo-codex-challenge-gpt-6-2-astra-fable-5-5",
