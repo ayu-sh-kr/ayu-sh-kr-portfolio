@@ -25,9 +25,9 @@ On **FrontierCode 2.0**, which tests whether patches meet maintainers’ standar
 
 **Early users stepped in when Astra stalled.**
 
-**What early users reported.** On a compiler project, **Theo Browne** said Astra kept making the compiler smaller even as it ran slower. When he asked why one computer was slow, he got four paragraphs about the package manager instead of a clear answer. **Max Weinbach** said he had to prompt the GPT-6.2 models to continue after they declared themselves blocked. **Token Gremlin** liked Astra’s 3D output but found its explanations hard to follow on longer tasks.
+**What early users reported.** In his launch-day review, **Theo Browne** said Astra spent days shrinking a compiler he’d asked it to speed up. The result ran slower. He also got four paragraphs about the package manager when he asked why one computer was slow. **Max Weinbach** said the models sometimes stopped and needed another prompt to continue. At **Every**, **Dan Shipper** found Astra matched its predecessor on most coding benchmarks but stopped too early on some end-to-end builds.
 
-**How OpenAI responded.** **Sam Altman** said on November 17 that making the models easier to work with was a priority. The next day, OpenAI’s **Thibault “Tibo” Sottiaux** said last-minute changes might explain some early reviews. **Dan Shipper** said Every tested release candidates through launch and hadn’t heard about those changes. OpenAI’s developer guide recommends telling Astra when to keep going, how to verify it’s done, and what to explain in the final answer.
+**How OpenAI responded.** On November 17, **Sam Altman** said making the models easier to work with was a priority. The next day, **Thibault “Tibo” Sottiaux** said OpenAI had made many changes in the last three to four days before launch and suggested some reviewers may have tested an earlier build. Shipper said Every had tested release candidates through launch and hadn’t been told about the changes. He then [announced a live retest](https://x.com/danshipper/status/2123074507443196364) of both models.
 
 ## Microsoft: MAI Code 2 and Image 2.7
 
@@ -98,7 +98,7 @@ List prices at the top have already moved. [Claude Fable 5.2](https://www.anthro
 - OpenAI publishes the FrontierCode 2.0 and Agents’ Last Exam charts in its [GPT-6.2 launch post](https://openai.com/index/introducing-gpt-6-2-astra-sol/) and lists the token rates on its [API pricing page](https://developers.openai.com/api/docs/pricing).
 - Artificial Analysis publishes the independent results in its [Coding Agent Index comparison](https://artificialanalysis.ai/agents/coding-agents/comparisons/claude-code-vs-codex) and [OpenAI provider benchmarks](https://artificialanalysis.ai/providers/openai/).
 - Artificial Analysis explains the change from the previous models in its [GPT-6.2 evaluation report](https://artificialanalysis.ai/articles/openai-has-the-2-model-in-the-intelligence-index-with-the-release-of-gpt-6-2-astra-and-gpt-6-2-sol/).
-- The firsthand usability accounts are in [Theo Browne’s X article](https://x.com/theo/status/2122760447103484410), [Max Weinbach’s post](https://x.com/mweinbach/status/2122834783650676806) and [Token Gremlin’s post](https://x.com/TokenGremlin/status/2122786802402754829).
+- The firsthand usability accounts are in [Theo Browne’s X article](https://x.com/theo/status/2122760447103484410), [Max Weinbach’s post](https://x.com/mweinbach/status/2122834783650676806) and [Dan Shipper’s launch-day report](https://x.com/danshipper/status/2122754729012777052).
 - OpenAI’s public responses came from [Sam Altman](https://x.com/sama/status/2122798042734633452) and [Tibo Sottiaux](https://x.com/thsottiaux/status/2122929634916679820). [Dan Shipper replied](https://x.com/danshipper/status/2123036037077201068) about Every’s testing schedule.
 - OpenAI gives task-completion and writing guidance in its [GPT-6.2 developer guide](https://developers.openai.com/api/docs/guides/latest-model?model=gpt-6.2-astra).
 
