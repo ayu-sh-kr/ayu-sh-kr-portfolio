@@ -37,8 +37,7 @@ const showcaseRoutes = [
   "/showcase/dota-rest",
 ];
 const newsRoutes = [
-  "/news/microsoft-mai-code-2-image-2-7",
-  "/news/openai-gpt-6-2-astra-sol",
+  "/news/gpt-6-2-microsoft-mai-gemini-4-neon",
   "/news/openai-research-access-safety-assessments",
   "/news/kiri-rust-container-runtime",
   "/news/lemon-squeezy-shutdown-stripe-migration",
