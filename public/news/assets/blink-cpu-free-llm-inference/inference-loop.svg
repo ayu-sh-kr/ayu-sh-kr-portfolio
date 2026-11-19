@@ -1,11 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="592" height="650" viewBox="132 59 592 650" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" width="1360" height="1472" viewBox="106 0 680 736" role="img" aria-labelledby="title desc">
 <title id="title">Blink’s serving stack, layer by layer</title>
 <desc id="desc">Logical exploded view. BlueField separates prompt and reply staging. RDMA writes fill slots in GPU memory. Parallel scanning claims a slot, then the GPU scheduler selects a captured graph and extends a decode batch. Sampled tokens return through the shared queue. The layers depict software responsibilities, not chip packaging.</desc>
 <style>
-text{font:17px Arial,sans-serif;fill:#b9b9bd}.pointer{fill:none;stroke:#828289;stroke-width:1.1;stroke-linejoin:round}.metal{stroke:#a0a0a5;stroke-width:1;stroke-linejoin:round}.wire{fill:none;stroke:#888990;stroke-width:1.45;stroke-linejoin:round}.active{fill:none;stroke:#fff;stroke-width:3;stroke-dasharray:10 8;opacity:0}
+text{font:17px Arial,sans-serif;fill:#92a951}.pointer{fill:none;stroke:#828289;stroke-width:1.1;stroke-linejoin:round}.metal{stroke:#a0a0a5;stroke-width:1;stroke-linejoin:round}.wire{fill:none;stroke:#888990;stroke-width:1.45;stroke-linejoin:round}.active{fill:none;stroke:#fff;stroke-width:3;stroke-dasharray:10 8;opacity:0}
 @media(prefers-reduced-motion:reduce){.motion{display:none}.lift{animation:none!important;transform:none!important}}
 </style>
-<rect x="133" y="60" width="590" height="648" rx="18" fill="#161618" stroke="#404044"/>
+<rect x="107" y="1" width="678" height="734" rx="18" fill="#161618" stroke="#404044"/>
+<text x="446" y="45" text-anchor="middle" style="font-size:25px;font-weight:600">Inside Blink’s inference loop</text>
 <path d="M343.0,146.0V445.0" stroke="#55555b" stroke-width="1" stroke-dasharray="3 6"/>
 <path d="M647.0,321.5V620.5" stroke="#55555b" stroke-width="1" stroke-dasharray="3 6"/>
 <path d="M244.3,203.0V502.0" stroke="#55555b" stroke-width="1" stroke-dasharray="3 6"/>
@@ -604,4 +605,5 @@ text{font:17px Arial,sans-serif;fill:#b9b9bd}.pointer{fill:none;stroke:#828289;s
 <path class="pointer" d="M483 118h67l120 69v124l-28 16"/><text x="482" y="108">RDMA link</text>
 <path class="pointer" d="M155 302h53l78 45"/><text x="153" y="292">Request slots</text>
 <path class="pointer" d="M156 581h69l49 28 137 -79"/><text x="154" y="570">GPU scheduler</text>
+<text x="446" y="711" text-anchor="middle" style="font-size:16px;opacity:.88">BlueField streams the reply as the GPU schedules the next token.</text>
 </svg>
