@@ -61,15 +61,25 @@ Code 2 targets cross-file changes and debugging. Flash uses **12 billion active 
 
 At its introductory Copilot rates, Microsoft reports that Code 2 reached **98% of GPT-6.1 Sol’s score at 40% of its cost** and **96% of Claude Opus 5.5’s score at 5% of its cost** across four tests, including FrontierCode 1.1. Across the three tests in the table, Microsoft reports that Flash scored about as well as GPT-6 Luna and Claude Haiku 5.5, at **65% of Luna’s cost** and **20% of Haiku’s**.
 
-Copilot charges **$0.50 per million input tokens and $2.50 per million output tokens** for Code 2, and **$0.05 input and $0.25 output** for Flash. These rates double on May 17, 2027. Microsoft also announced **MAI Licensed Weights**, which will let participating companies customize models and run them in their own Azure environments.
+Copilot charges **$0.50 per million input tokens and $2.50 per million output tokens** for Code 2, and **$0.05 input and $0.25 output** for Flash. Microsoft also announced **MAI Licensed Weights**, which will let participating companies customize models and run them in their own Azure environments.
+
+> **Copilot pricing.** The two introductory rates double on May 17, 2027.
 
 ## Google: Gemini 4 Neon closes the gap with Carbon
 
-Google [released Gemini 4 Neon](https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-neon/) on November 18, rolling it out through the Gemini API and AI Studio, Gemini for business, and the Gemini app and Antigravity for Google AI Pro and Ultra subscribers. It lists at **$3 input and $15 output per million tokens**. Carbon’s regular rates are $4 and $20, though its promotion makes its token rates lower than Neon’s until November 30.
+Google [released Gemini 4 Neon](https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-neon/) on November 18, rolling it out through the Gemini API and AI Studio, Gemini for business, and the Gemini app and Antigravity for Google AI Pro and Ultra subscribers. It lists at **$3 input and $15 output per million tokens**.
+
+> **Carbon pricing.** Carbon normally costs $4 per million input tokens and $20 per million output tokens. Its $2 input and $10 output promotion runs through November 30.
+
+### Where Neon catches Carbon
 
 [Artificial Analysis](https://artificialanalysis.ai/articles/gemini-4-neon-intelligence-gain) found Neon at high effort matched Carbon at high on its Intelligence Index. Raising Neon to extra-high lifted it just one point, to 61, while averaging about 21 minutes and $6.44 per benchmark task versus Carbon’s 36 minutes and $7.76 at standard prices.
 
-For coding specifically, [Google’s evaluation](https://storage.googleapis.com/deepmind-media/gemini/gemini_4_neon_model_evaluation.pdf) puts Neon at 65.2% on Terminal-Bench 4.1, a test of completing multi-step tasks in a terminal. For workflow automation, [Zapier’s AutomationBench](https://zapier.com/benchmarks/gemini-neon-4-report) offers a separate test: Neon at high passed **54.3%** of 657 tasks versus Carbon’s **53.9%**, at an estimated $0.88 versus $1.94 per attempt. Moving Neon to extra-high solved 13 more tasks but took the estimated cost to $1.69 per attempt. That makes high the sensible starting point for workflows like these, with extra-high reserved for cases where the extra passes are worth paying for.
+For coding specifically, [Google’s evaluation](https://storage.googleapis.com/deepmind-media/gemini/gemini_4_neon_model_evaluation.pdf) puts Neon at 65.2% on Terminal-Bench 4.1, a test of completing multi-step tasks in a terminal.
+
+### What extra thinking buys
+
+For workflow automation, [Zapier’s AutomationBench](https://zapier.com/benchmarks/gemini-neon-4-report) offers a separate test: Neon at high passed **54.3%** of 657 tasks versus Carbon’s **53.9%**, at an estimated $0.88 versus $1.94 per attempt. Moving Neon to extra-high solved 13 more tasks but took the estimated cost to $1.69 per attempt. That makes high the sensible starting point for workflows like these, with extra-high reserved for cases where the extra passes are worth paying for.
 
 Start with the tasks you repeat: a repository patch with tests, an image edit with constraints, or an automation with a verifiable final state. Log the time and money spent before the result passes review, including any restarts. That will tell you when to pay for the stronger model and when to stop at the cheaper one.
 
