@@ -6,7 +6,7 @@ text{font:17px Arial,sans-serif;fill:#92a951}.pointer{fill:none;stroke:#828289;s
 @media(prefers-reduced-motion:reduce){.motion{display:none}.lift{animation:none!important;transform:none!important}}
 </style>
 <rect x="107" y="1" width="678" height="734" rx="18" fill="#161618" stroke="#404044"/>
-<text x="446" y="45" text-anchor="middle" style="font-size:25px;font-weight:600">Inside Blink’s inference loop</text>
+<text x="446" y="45" text-anchor="middle" style="font-size:25px;font-weight:600;fill:#fafaf8">Inside Blink’s inference loop</text>
 <path d="M343.0,146.0V445.0" stroke="#55555b" stroke-width="1" stroke-dasharray="3 6"/>
 <path d="M647.0,321.5V620.5" stroke="#55555b" stroke-width="1" stroke-dasharray="3 6"/>
 <path d="M244.3,203.0V502.0" stroke="#55555b" stroke-width="1" stroke-dasharray="3 6"/>
@@ -605,5 +605,5 @@ text{font:17px Arial,sans-serif;fill:#92a951}.pointer{fill:none;stroke:#828289;s
 <path class="pointer" d="M483 118h67l120 69v124l-28 16"/><text x="482" y="108">RDMA link</text>
 <path class="pointer" d="M155 302h53l78 45"/><text x="153" y="292">Request slots</text>
 <path class="pointer" d="M156 581h69l49 28 137 -79"/><text x="154" y="570">GPU scheduler</text>
-<text x="446" y="711" text-anchor="middle" style="font-size:16px;opacity:.88">BlueField streams the reply as the GPU schedules the next token.</text>
+<text x="446" y="711" text-anchor="middle" style="font-size:14px;fill:#fafaf8;opacity:.62">BlueField streams the reply as the GPU schedules the next token.</text>
 </svg>
