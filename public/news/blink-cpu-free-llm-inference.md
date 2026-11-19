@@ -8,6 +8,8 @@ Their prototype, **Blink**, moves scheduling onto the GPU and uses a programmabl
 
 Reserving CPU cores for inference helps keep replies responsive. Sharing those cores lets an operator get more work out of the same server. To measure the trade-off, the researchers sent four requests per second to Qwen3-30B-A3B, first with the host CPU available for inference and then with another workload competing for it.
 
+> A **serving engine** is the software that runs a model for incoming requests. It groups prompts into batches, schedules work on the GPU, and returns generated tokens to callers. Here, all four engines served the same Qwen model.
+
 | Serving engine | Throughput retained when sharing the CPU |
 | --- | ---: |
 | TensorRT-LLM | 28% |
