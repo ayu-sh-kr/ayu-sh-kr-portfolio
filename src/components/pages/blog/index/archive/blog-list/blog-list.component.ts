@@ -1,10 +1,8 @@
-import {archivePageNumber, archiveSlice} from "@app/utils/archive-page.utils.ts";
-import {renderArchivePagination} from "@app/components/navigation/archive-pagination/archive-pagination.ts";
 import {html, TemplateResult} from "@ayu-sh-kr/dota-wrap/rendering";
 import {ApplicationEventService, BaseElement, BindEvent, Component} from "@ayu-sh-kr/dota-wrap/core";
 import {type ApplicationEvent, OnEvent} from "@ayu-sh-kr/dota-wrap/event";
 import {formatBlogDate, getBlogPath, getBlogPostsForIndex, getLatestBlogPost, labelForCategory, type BlogCategory, type BlogPost} from "@app/configs/blogs.config.ts";
-import {blogIndexContent, categoryFromHash} from "@app/data/blog-content.ts";
+import {blogIndexContent} from "@app/data/blog-content.ts";
 import {BLOG_FILTER_CHANGE_EVENT, type BlogFilterChange} from "@app/events/blog.events.ts";
 import {BlogRevealLifecycle} from "@app/utils/blog-reveal-lifecycle.utils.ts";
 import {publishAnalyticsEvent} from "@app/utils/analytics.utils.ts";
@@ -45,7 +43,7 @@ export class BlogListComponent extends BaseElement {
   private readonly publisher = ApplicationEventService.getInstance().getPublisher();
   private readonly revealLifecycle = new BlogRevealLifecycle(this);
   private readonly posts: readonly BlogPost[] = getBlogPostsForIndex();
-  private currentFilter: BlogCategory | "all" = categoryFromHash(window.location.hash);
+  private currentFilter: BlogCategory | "all" = "all";
 
   constructor() {
     super();
@@ -99,9 +97,7 @@ export class BlogListComponent extends BaseElement {
   /** Renders the filtered catalog rows and an empty state when no post matches the active category. */
   render(): TemplateResult {
     const highlightedPost = getLatestBlogPost(this.posts);
-    const page = archivePageNumber(window.location.pathname, "blog", this.posts.length) ?? 1;
-    const candidates = this.currentFilter === "all" ? archiveSlice(this.posts, page) : this.posts;
-    const rows = candidates.filter((post) => {
+    const rows = this.posts.filter((post) => {
       const isNotHighlighted = post.slug !== highlightedPost?.slug;
       const matchesFilter = this.currentFilter === "all" || post.category === this.currentFilter;
       return isNotHighlighted && matchesFilter;
@@ -118,7 +114,6 @@ export class BlogListComponent extends BaseElement {
         <div class="blog-list-skeleton-frame">
           <div class="blog-list-real-layer is-ready">
             <div class="blog-list">${rows.map(renderPostRow)}</div>
-            ${this.currentFilter === "all" ? renderArchivePagination("blog", page, this.posts) : ""}
             ${rows.length || hasVisibleHighlightedPost
               ? ""
               : html`<p class="blog-empty">

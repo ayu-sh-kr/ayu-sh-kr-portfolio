@@ -687,7 +687,7 @@
           "name": "blog-filter",
           "source": {
             "file": "./src/components/pages/blog/index/archive/blog-filter/blog-filter.component.ts",
-            "offset": 845
+            "offset": 1214
           },
           "attributes": [],
           "js": {
@@ -709,7 +709,7 @@
           "name": "blog-highlighted-blog",
           "source": {
             "file": "./src/components/pages/blog/index/archive/blog-highlighted-blog/blog-highlighted-blog.component.ts",
-            "offset": 1163
+            "offset": 1066
           },
           "attributes": [],
           "js": {
@@ -731,7 +731,7 @@
           "name": "blog-list",
           "source": {
             "file": "./src/components/pages/blog/index/archive/blog-list/blog-list.component.ts",
-            "offset": 2041
+            "offset": 1832
           },
           "attributes": [],
           "js": {
@@ -809,7 +809,7 @@
           "name": "blog-slug-page",
           "source": {
             "file": "./src/pages/blog/blog-slug.page.ts",
-            "offset": 657
+            "offset": 792
           },
           "attributes": [],
           "js": {

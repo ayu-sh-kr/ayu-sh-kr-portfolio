@@ -1,9 +1,9 @@
 import { html } from "@ayu-sh-kr/dota-wrap/rendering";
-import type { ArchiveSection, PageSummary } from "./pager-contract.ts";
+import type { PageSummary } from "./pager-contract.ts";
 
 /** A single page bookmark opens a native modal for both exact entry and scrubbing the whole archive. */
-export function renderPageFinder(section: ArchiveSection, current: number, total: number) {
-  const id = section + "-page-finder";
+export function renderPageFinder(current: number, total: number) {
+  const id = "news-page-finder";
   return html`
     <button type="button" class="pager-bookmark" aria-haspopup="dialog" aria-controls="${id}">
       <span class="bookmark-mark" aria-hidden="true"></span>Jump to page

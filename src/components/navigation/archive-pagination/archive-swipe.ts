@@ -1,10 +1,9 @@
-import { getBlogPostsForIndex } from "@app/configs/blogs.config.ts";
 import { getNewsNotes } from "@app/configs/news.config.ts";
 import { resolvePagerVariant } from "@app/configs/archive-pagination.config.ts";
 import { archivePagePath } from "@app/utils/archive-page.utils.ts";
 import { RouterUtils } from "@app/utils/router.utils.ts";
 import { openPageFinder } from "./page-finder.ts";
-import { bound, summarizePage, type ArchiveEntry, type ArchiveSection, type MountedVisual, type PageSummary, type VisualContext } from "./pager-contract.ts";
+import { bound, summarizePage, type ArchiveEntry, type MountedVisual, type PageSummary, type VisualContext } from "./pager-contract.ts";
 import { pagerVisuals } from "./visuals/index.ts";
 
 /** Owns intent, selection and navigation; each visual only paints the temporary gesture surface. */
@@ -21,7 +20,6 @@ export class ArchiveSwipe extends HTMLElement {
 
   private get current() { return Number(this.dataset.page); }
   private get total() { return Number(this.dataset.total); }
-  private get section(): ArchiveSection { return this.dataset.section === "blog" ? "blog" : "news"; }
   private get design() { return pagerVisuals[resolvePagerVariant(this.dataset.variant)]; }
   private get reduced() { return window.matchMedia("(prefers-reduced-motion: reduce)").matches; }
 
@@ -55,13 +53,13 @@ export class ArchiveSwipe extends HTMLElement {
   private summary = (page: number): PageSummary => {
     const cached = this.summaries.get(page);
     if (cached) return cached;
-    this.entries ??= this.section === "news" ? getNewsNotes() : getBlogPostsForIndex();
+    this.entries ??= getNewsNotes();
     const result = summarizePage(this.entries, page);
     this.summaries.set(page, result);
     return result;
   };
 
-  private navigate = (page: number) => RouterUtils.navigate(archivePagePath(this.section, page));
+  private navigate = (page: number) => RouterUtils.navigate(archivePagePath(page));
 
   private begin(): VisualContext {
     if (this.session) return this.session.context;

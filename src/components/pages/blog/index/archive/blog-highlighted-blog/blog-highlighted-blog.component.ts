@@ -1,9 +1,8 @@
-import {archivePageNumber} from "@app/utils/archive-page.utils.ts";
 import {TemplateResult, html, unsafeHTML} from "@ayu-sh-kr/dota-wrap/rendering";
 import {BaseElement, BindEvent, Component} from "@ayu-sh-kr/dota-wrap/core";
 import {type ApplicationEvent, OnEvent} from "@ayu-sh-kr/dota-wrap/event";
-import {blogPosts, formatBlogDate, getBlogPath, getBlogPostsForIndex, getLatestBlogPost, labelForCategory, type BlogCategory, type BlogPost} from "@app/configs/blogs.config.ts";
-import {blogIndexContent, categoryFromHash} from "@app/data/blog-content.ts";
+import {formatBlogDate, getBlogPath, getBlogPostsForIndex, getLatestBlogPost, labelForCategory, type BlogCategory, type BlogPost} from "@app/configs/blogs.config.ts";
+import {blogIndexContent} from "@app/data/blog-content.ts";
 import {BLOG_FILTER_CHANGE_EVENT} from "@app/events/blog.events.ts";
 import {BlogRevealLifecycle} from "@app/utils/blog-reveal-lifecycle.utils.ts";
 import {publishAnalyticsEvent} from "@app/utils/analytics.utils.ts";
@@ -23,7 +22,7 @@ import {publishAnalyticsEvent} from "@app/utils/analytics.utils.ts";
 export class BlogHighlightedBlogComponent extends BaseElement {
   private readonly revealLifecycle = new BlogRevealLifecycle(this);
   private readonly highlightedPost: BlogPost | null = getLatestBlogPost(getBlogPostsForIndex()) ?? null;
-  private currentFilter: BlogCategory | "all" = categoryFromHash(window.location.hash);
+  private currentFilter: BlogCategory | "all" = "all";
 
   constructor() {
     super();
@@ -66,8 +65,7 @@ export class BlogHighlightedBlogComponent extends BaseElement {
 
   /** Renders the highlighted card only when catalog data exists and matches the active filter. */
   render(): TemplateResult {
-    const page = archivePageNumber(window.location.pathname, "blog", blogPosts.length) ?? 1;
-    if (!this.highlightedPost || (this.currentFilter === "all" && page !== 1)) {
+    if (!this.highlightedPost) {
       return html``;
     }
 

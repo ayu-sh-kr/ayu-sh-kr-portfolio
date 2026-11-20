@@ -137,11 +137,9 @@ const newsRoutes = [
   "/news/prismml-bonsai-2-27b",
 ];
 
-// The existing article route lists also determine how many archive documents SSG emits.
-const archiveRoutes = (["blog", "news"] as const).flatMap(section => {
-  const total = archivePageCount(section === "blog" ? blogRoutes.length : newsRoutes.length);
-  return Array.from({length: total - 1}, (_, index) => archivePagePath(section, index + 2).slice(0, -1));
-});
+const archiveRoutes = Array.from({length: archivePageCount(newsRoutes.length) - 1}, (_, index) =>
+  archivePagePath(index + 2).slice(0, -1)
+);
 
 /**
  * Makes Vite preview serve SSG routes through the same canonical URL shape as production.

@@ -14,11 +14,6 @@
   ],
   "redirects": [
     {
-      "source": "/blog/2",
-      "destination": "/blog/2/",
-      "permanent": true
-    },
-    {
       "source": "/news/2",
       "destination": "/news/2/",
       "permanent": true
@@ -46,21 +41,6 @@
     {
       "source": "/news/7",
       "destination": "/news/7/",
-      "permanent": true
-    },
-    {
-      "source": "/news/8",
-      "destination": "/news/8/",
-      "permanent": true
-    },
-    {
-      "source": "/news/9",
-      "destination": "/news/9/",
-      "permanent": true
-    },
-    {
-      "source": "/news/10",
-      "destination": "/news/10/",
       "permanent": true
     },
     {

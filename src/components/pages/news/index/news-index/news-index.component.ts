@@ -249,7 +249,7 @@ export class NewsIndexComponent extends BaseElement {
 
   /** Renders the Dispatch feed, shared subscription boundary, blog hand-off, and filter dock. */
   render(): TemplateResult {
-    const page = archivePageNumber(window.location.pathname, "news", this.notes.length) ?? 1;
+    const page = archivePageNumber(window.location.pathname, this.notes.length) ?? 1;
     const visible = this.currentFilter === "all"
       ? archiveSlice(this.notes, page)
       : this.notes.filter(note => note.kind === this.currentFilter);
@@ -272,7 +272,7 @@ export class NewsIndexComponent extends BaseElement {
               Show all notes
             </button>
           </p>`}
-          ${this.currentFilter === "all" ? renderArchivePagination("news", page, this.notes) : ""}
+          ${this.currentFilter === "all" ? renderArchivePagination(page, this.notes) : ""}
         </section>
 
         <div

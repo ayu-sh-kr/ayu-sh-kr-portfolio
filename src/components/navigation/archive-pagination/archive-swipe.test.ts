@@ -18,7 +18,7 @@ afterEach(() => {
 
 function fixture(variant: PagerVariant = "date-reel") {
   const root = document.createElement("div");
-  render(root, renderArchivePagination("news", 2, getNewsNotes()));
+  render(root, renderArchivePagination(2, getNewsNotes()));
   const host = root.querySelector<HTMLElement>("archive-swipe")!;
   host.dataset.variant = variant;
   document.body.append(root);
@@ -46,9 +46,9 @@ describe("archive pagination contract", () => {
   });
 
   it("uses real entries for partial-page previews", () => {
-    const entries = Array.from({ length: 11 }, (_, i) => ({ header: "Post " + i, date: "2026-11-20" }));
+    const entries = Array.from({ length: 16 }, (_, i) => ({ title: "Post " + i, date: "2026-11-20" }));
     expect(summarizePage(entries, 2)).toEqual({
-      dates: "Nov 20, 2026", count: 1, headlines: ["Post 10"], first: 11, last: 11,
+      dates: "Nov 20, 2026", count: 1, headlines: ["Post 15"], first: 16, last: 16,
     });
   });
 
@@ -97,7 +97,7 @@ describe("archive pagination contract", () => {
     slider.value = "3";
     slider.dispatchEvent(new Event("input"));
     expect(number.value).toBe("3");
-    expect(dialog.querySelector(".finder-preview")?.textContent).toContain("Entries 21–30");
+    expect(dialog.querySelector(".finder-preview")?.textContent).toContain("Entries 31–45");
     number.value = "1";
     number.dispatchEvent(new Event("input"));
     expect(slider.value).toBe("1");

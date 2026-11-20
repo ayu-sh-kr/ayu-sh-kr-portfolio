@@ -1,8 +1,7 @@
 import { archivePageSize, archiveSlice } from "@app/utils/archive-page.utils.ts";
 
 export type PagerVariant = "index-lens" | "date-reel" | "story-stack";
-export type ArchiveSection = "blog" | "news";
-export type ArchiveEntry = { date: string } & ({ title: string } | { header: string });
+export type ArchiveEntry = { date: string; title: string };
 
 export interface PageSummary {
   dates: string;
@@ -25,7 +24,7 @@ export function summarizePage(entries: readonly ArchiveEntry[], page: number): P
   const offset = (page - 1) * archivePageSize;
   return {
     dates, count: slice.length, first: offset + 1, last: offset + slice.length,
-    headlines: slice.slice(0, 2).map(entry => "title" in entry ? entry.title : entry.header)
+    headlines: slice.slice(0, 2).map(entry => entry.title)
   };
 }
 

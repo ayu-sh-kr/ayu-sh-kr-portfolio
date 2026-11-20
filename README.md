@@ -126,7 +126,7 @@ This is a source-available project under the [Portfolio Source and Design Licenc
 
 ## Archive pagination
 
-Blog and Dispatch each show up to ten entries per page. Their existing index URLs serve page one. Subsequent pages use numbered paths such as `/news/2/` and `/blog/2/`.
+Dispatch shows up to 15 articles per page. The first page keeps `/news/`, and subsequent pages use numbered paths such as `/news/2/`. The full blog archive is available at `/blog/`.
 
 Set the default in `src/configs/archive-pagination.config.ts`. A valid `VITE_ARCHIVE_PAGINATION_VARIANT` overrides it for both the static build and the browser. An empty or unrecognized value uses the configured default. Restart the dev server or rebuild after changing the environment.
 

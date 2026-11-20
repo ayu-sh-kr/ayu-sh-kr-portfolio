@@ -1,12 +1,17 @@
-import {archivePageNumber} from "@app/utils/archive-page.utils.ts";
 import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
 import {Component, DotaPageElement, SEO} from "@ayu-sh-kr/dota-wrap/core";
 import {Route} from "@ayu-sh-kr/dota-wrap/router";
-import {blogPosts, getBlogPost, getBlogSlug} from "@app/configs/blogs.config.ts";
+import {getBlogPost, getBlogSlug} from "@app/configs/blogs.config.ts";
 import {blogNotFoundSeo, getBlogSeo} from "@app/data/blog-content.ts";
 import {toSEO} from "@app/utils/seo.utils.ts";
 
-/** Resolves numbered archive pages and article permalinks sharing the /blog/ path. */
+/**
+ * Dynamic blog article route at `/blog/:slug`.
+ *
+ * The article component owns slug resolution, Markdown loading, article states,
+ * and the event published to its Markdown child. The index route has no part in
+ * this flow, which keeps landing-page filtering separate from article reading.
+ */
 @Route({path: "/blog/:slug"})
 @Component({
   selector: "blog-slug-page",
@@ -17,28 +22,18 @@ export class BlogSlugPage extends DotaPageElement {
     super();
   }
 
-  /** Numbers outside the published archive continue through normal slug resolution. */
-  private get archivePage(): number | undefined {
-    return archivePageNumber(window.location.pathname, "blog", blogPosts.length);
-  }
-
-  /** Gives each numbered archive a distinct document title for search and sharing. */
+  /** Returns article or not-found SEO derived from the current blog record. */
   get seo(): SEO {
-    const page = this.archivePage;
-    if (page) {
-      const content = getBlogSeo();
-      const title = `${content.title} · Page ${page}`;
-      return toSEO({...content, title, ogTitle: title});
-    }
     const post = getBlogPost(getBlogSlug(window.location.pathname));
 
     return toSEO(post ? getBlogSeo(post) : blogNotFoundSeo);
   }
 
+  /** Renders only the article surface between the shared header and footer. */
   render(): TemplateResult {
     return html`
       <app-header></app-header>
-      ${this.archivePage ? html`<blog-index></blog-index>` : html`<blog-article data-analytics-section="blog_article"></blog-article>`}
+      <blog-article data-analytics-section="blog_article"></blog-article>
       <app-footer></app-footer>
     `;
   }

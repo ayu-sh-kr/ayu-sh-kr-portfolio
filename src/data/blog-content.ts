@@ -26,17 +26,6 @@ export const blogFilters: readonly BlogFilterOption[] = [
   {value: "notes", label: "Notes", hash: "notes"},
 ];
 
-/** Reads and validates the current filter hash, falling back to the full catalog. */
-export const categoryFromHash = (hash: string): BlogPost["category"] | "all" => {
-  let value = hash.replace(/^#\/?/, "");
-  try {
-    value = decodeURIComponent(value);
-  } catch {
-    return "all";
-  }
-  return blogFilters.find((filter) => filter.hash === value || filter.value === value)?.value ?? "all";
-};
-
 /**
  * Authored copy for the blog index sections.
  *

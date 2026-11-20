@@ -15,7 +15,7 @@ export class NewsSlugPage extends DotaPageElement {
 
   /** Numbers outside the published archive continue through normal slug resolution. */
   private get archivePage(): number | undefined {
-    return archivePageNumber(window.location.pathname, "news", newsNotes.length);
+    return archivePageNumber(window.location.pathname, newsNotes.length);
   }
 
   /** Gives each numbered archive a distinct document title for search and sharing. */
