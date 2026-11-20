@@ -1,0 +1,91 @@
+/* A shallow tray and a solid front edge give the keys depth without tilting their labels. */
+.archive-pager {
+  display: grid;
+  justify-items: center;
+  gap: .85rem;
+  margin-block: 2.75rem 1rem;
+  color: var(--foreground-color);
+}
+
+.archive-pager-status {
+  font: 500 .8125rem/1.4 var(--font-mono);
+  color: var(--muted-strong-color);
+}
+
+.archive-pager-controls {
+  display: flex;
+  align-items: center;
+  gap: .3rem;
+  padding: .5rem .375rem .65rem;
+  border: 1px solid var(--border-strong-color);
+  border-radius: 1rem;
+  background: var(--subtle-color);
+  box-shadow: inset 0 1px 3px var(--border-color);
+}
+
+.archive-pager :is(.archive-key, .archive-step) {
+  display: grid;
+  place-items: center;
+  inline-size: 2.75rem;
+  block-size: 2.75rem;
+  box-sizing: border-box;
+  color: inherit;
+  text-decoration: none;
+  border-radius: .6rem;
+}
+
+.archive-key {
+  border: 1px solid var(--border-strong-color);
+  background: var(--surface-color);
+  box-shadow: 0 3px 0 var(--border-strong-color);
+  font: 600 .9375rem/1 var(--font-mono);
+  transition: transform 140ms ease, box-shadow 140ms ease;
+}
+
+.archive-pager .archive-key[aria-current] {
+  color: var(--primary-color-on);
+  border-color: var(--primary-color);
+  background: var(--primary-color);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 0 color-mix(in srgb, var(--primary-color) 68%, var(--color-inkstone-950));
+}
+
+.archive-step::after {
+  content: "";
+  inline-size: .48rem;
+  block-size: .48rem;
+  border-block-start: 2px solid;
+  border-inline-end: 2px solid;
+  transform: rotate(45deg);
+}
+
+.archive-step.prev::after {
+  transform: rotate(-135deg);
+}
+
+.archive-step[aria-hidden] {
+  opacity: .25;
+}
+
+.archive-pager a:focus-visible {
+  outline: 2px solid var(--primary-color-strong);
+  outline-offset: 3px;
+}
+
+@media (hover: hover) {
+  .archive-pager a:hover {
+    background: var(--primary-color-subtle);
+    color: var(--primary-color-strong);
+  }
+}
+
+.archive-pager a.archive-key:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 var(--border-strong-color);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .archive-key {
+    transition: none;
+  }
+}
