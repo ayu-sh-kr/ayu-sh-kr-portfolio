@@ -123,3 +123,19 @@ Site identity and canonical-origin settings live in [portfolio-content.ts](src/d
 ## Licence
 
 This is a source-available project under the [Portfolio Source and Design Licence](LICENSE). It permits studying the source and reusing adapted technical code subject to its terms. It does not permit redistributing the repository as a template or reproducing its distinctive design, content, branding, or creative assets. Third-party assets retain their own licences.
+
+## Archive pagination
+
+Blog and Dispatch each show up to ten entries per page. Their existing index URLs serve page one. Subsequent pages use numbered paths such as `/news/2/` and `/blog/2/`.
+
+Set the default in `src/configs/archive-pagination.config.ts`. A valid `VITE_ARCHIVE_PAGINATION_VARIANT` overrides it for both the static build and the browser. An empty or unrecognized value uses the configured default. Restart the dev server or rebuild after changing the environment.
+
+| Value | Interaction |
+| --- | --- |
+| `index-lens` | Drag across the number strip to lift a page under the pointer. Five stops fit on wide screens and three on small screens. |
+| `date-reel` (default) | Drag a three-stop reel. One date range follows the selected page. |
+| `story-stack` | Drag through three numbered stops to preview the first two headlines and the remaining entry count. |
+
+For example, run `VITE_ARCHIVE_PAGINATION_VARIANT=story-stack pnpm build:ssg` for a Story stack build.
+
+All three render ordinary page links at rest. The host mounts the selected visual on horizontal drag or pointer activation, supplies continuous page position and interaction depth, then settles and disposes it. Only the host commits navigation. Cancellation and disconnection release the transient surface. The shared **Jump to page** bookmark opens a native dialog with numeric entry, a keyboard-operable slider and a preview of the destination’s dates and entry numbers. Escape closes the dialog and returns focus to the bookmark.

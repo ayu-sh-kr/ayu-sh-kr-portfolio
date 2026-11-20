@@ -272,7 +272,7 @@ export class NewsIndexComponent extends BaseElement {
               Show all notes
             </button>
           </p>`}
-          ${this.currentFilter === "all" ? renderArchivePagination("news", page, this.notes.length) : ""}
+          ${this.currentFilter === "all" ? renderArchivePagination("news", page, this.notes) : ""}
         </section>
 
         <div

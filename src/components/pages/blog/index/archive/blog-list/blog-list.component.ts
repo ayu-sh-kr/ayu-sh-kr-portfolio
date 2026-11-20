@@ -118,7 +118,7 @@ export class BlogListComponent extends BaseElement {
         <div class="blog-list-skeleton-frame">
           <div class="blog-list-real-layer is-ready">
             <div class="blog-list">${rows.map(renderPostRow)}</div>
-            ${this.currentFilter === "all" ? renderArchivePagination("blog", page, this.posts.length) : ""}
+            ${this.currentFilter === "all" ? renderArchivePagination("blog", page, this.posts) : ""}
             ${rows.length || hasVisibleHighlightedPost
               ? ""
               : html`<p class="blog-empty">

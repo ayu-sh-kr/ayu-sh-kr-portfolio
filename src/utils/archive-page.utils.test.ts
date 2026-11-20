@@ -13,7 +13,7 @@ describe("archive URL ownership", () => {
 
   it("places the final item on the next page exactly once", () => {
     const catalog = Array.from({length: 13}, (_, index) => index);
-    expect(archiveSlice(catalog, 1)).toHaveLength(12);
-    expect(archiveSlice(catalog, 2)).toEqual([12]);
+    expect(archiveSlice(catalog, 1)).toHaveLength(10);
+    expect(archiveSlice(catalog, 2)).toEqual([10, 11, 12]);
   });
 });

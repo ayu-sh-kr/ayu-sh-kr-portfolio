@@ -1,5 +1,5 @@
 /** The same boundary drives the static routes, page links and visible catalogue slice. */
-export const archivePageSize = 12;
+export const archivePageSize = 10;
 
 export const archivePageCount = (count: number): number => Math.ceil(count / archivePageSize);
 

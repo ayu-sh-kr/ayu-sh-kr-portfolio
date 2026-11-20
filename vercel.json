@@ -59,6 +59,11 @@
       "permanent": true
     },
     {
+      "source": "/news/10",
+      "destination": "/news/10/",
+      "permanent": true
+    },
+    {
       "source": "/news/gpt-6-2-microsoft-mai-gemini-4-neon",
       "destination": "/news/gpt-6-2-microsoft-mai-gemini-4-neon/",
       "permanent": true
