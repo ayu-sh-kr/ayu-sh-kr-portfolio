@@ -14,6 +14,51 @@
   ],
   "redirects": [
     {
+      "source": "/blog/2",
+      "destination": "/blog/2/",
+      "permanent": true
+    },
+    {
+      "source": "/news/2",
+      "destination": "/news/2/",
+      "permanent": true
+    },
+    {
+      "source": "/news/3",
+      "destination": "/news/3/",
+      "permanent": true
+    },
+    {
+      "source": "/news/4",
+      "destination": "/news/4/",
+      "permanent": true
+    },
+    {
+      "source": "/news/5",
+      "destination": "/news/5/",
+      "permanent": true
+    },
+    {
+      "source": "/news/6",
+      "destination": "/news/6/",
+      "permanent": true
+    },
+    {
+      "source": "/news/7",
+      "destination": "/news/7/",
+      "permanent": true
+    },
+    {
+      "source": "/news/8",
+      "destination": "/news/8/",
+      "permanent": true
+    },
+    {
+      "source": "/news/9",
+      "destination": "/news/9/",
+      "permanent": true
+    },
+    {
       "source": "/news/gpt-6-2-microsoft-mai-gemini-4-neon",
       "destination": "/news/gpt-6-2-microsoft-mai-gemini-4-neon/",
       "permanent": true

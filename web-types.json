@@ -687,7 +687,7 @@
           "name": "blog-filter",
           "source": {
             "file": "./src/components/pages/blog/index/archive/blog-filter/blog-filter.component.ts",
-            "offset": 1214
+            "offset": 845
           },
           "attributes": [],
           "js": {
@@ -709,7 +709,7 @@
           "name": "blog-highlighted-blog",
           "source": {
             "file": "./src/components/pages/blog/index/archive/blog-highlighted-blog/blog-highlighted-blog.component.ts",
-            "offset": 1066
+            "offset": 1163
           },
           "attributes": [],
           "js": {
@@ -731,7 +731,7 @@
           "name": "blog-list",
           "source": {
             "file": "./src/components/pages/blog/index/archive/blog-list/blog-list.component.ts",
-            "offset": 1832
+            "offset": 2041
           },
           "attributes": [],
           "js": {
@@ -809,7 +809,7 @@
           "name": "blog-slug-page",
           "source": {
             "file": "./src/pages/blog/blog-slug.page.ts",
-            "offset": 792
+            "offset": 657
           },
           "attributes": [],
           "js": {
@@ -1907,7 +1907,7 @@
           "name": "news-index",
           "source": {
             "file": "./src/components/pages/news/index/news-index/news-index.component.ts",
-            "offset": 3265
+            "offset": 3457
           },
           "attributes": [],
           "js": {
@@ -1940,7 +1940,7 @@
           "name": "news-slug-page",
           "source": {
             "file": "./src/pages/news/news-slug.page.ts",
-            "offset": 646
+            "offset": 607
           },
           "attributes": [],
           "js": {
