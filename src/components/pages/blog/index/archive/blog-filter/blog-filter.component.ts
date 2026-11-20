@@ -2,22 +2,11 @@ import {TemplateResult, html} from "@ayu-sh-kr/dota-wrap/rendering";
 import {ApplicationEventService, BaseElement, BindEvent, Component, WindowListener} from "@ayu-sh-kr/dota-wrap/core";
 import {type ApplicationEvent, OnEvent} from "@ayu-sh-kr/dota-wrap/event";
 import {getBlogPostsForIndex, type BlogCategory, type BlogPost} from "@app/configs/blogs.config.ts";
-import {blogFilters, blogIndexContent} from "@app/data/blog-content.ts";
+import {blogFilters, blogIndexContent, categoryFromHash} from "@app/data/blog-content.ts";
 import {
   BLOG_FILTER_CHANGE_EVENT,
   type BlogFilterChange,
 } from "@app/events/blog.events.ts";
-
-/** Reads and validates the current filter hash, falling back to the full catalog. */
-const categoryFromHash = (): BlogCategory | "all" => {
-  let value = window.location.hash.replace(/^#\/?/, "");
-  try {
-    value = decodeURIComponent(value);
-  } catch {
-    return "all";
-  }
-  return blogFilters.find((filter) => filter.hash === value || filter.value === value)?.value ?? "all";
-};
 
 /**
  * Renders category controls and publishes filter changes for the highlighted card
@@ -32,7 +21,7 @@ const categoryFromHash = (): BlogCategory | "all" => {
 export class BlogFilterComponent extends BaseElement {
   private readonly publisher = ApplicationEventService.getInstance().getPublisher();
   private readonly posts: readonly BlogPost[] = getBlogPostsForIndex();
-  private currentFilter: BlogCategory | "all" = categoryFromHash();
+  private currentFilter: BlogCategory | "all" = categoryFromHash(window.location.hash);
 
   constructor() {
     super();
@@ -53,7 +42,7 @@ export class BlogFilterComponent extends BaseElement {
   /** Restores the filter from browser hash navigation and notifies sibling components. */
   @WindowListener({event: "hashchange"})
   syncFilterWithHash(): void {
-    this.publishFilterChange(categoryFromHash());
+    this.publishFilterChange(categoryFromHash(window.location.hash));
   }
 
   /** Updates the hash and publishes a category selected by a user-facing control. */

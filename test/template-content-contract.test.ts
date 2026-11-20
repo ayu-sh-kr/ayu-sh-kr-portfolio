@@ -51,15 +51,30 @@ it.each([PrivacyDocumentHeaderComponent, TermsDocumentHeaderComponent])("does no
 });
 
 it("keeps archive rows ordered, complete, and free from array separators", () => {
-  const root = document.createElement("div");
-  const component = new BlogListComponent();
-  render(root, component.render());
   const posts = getBlogPostsForIndex();
-  const latest = getLatestBlogPost(posts);
-  const expected = posts.filter((post) => post.slug !== latest?.slug);
-  expect([...root.querySelectorAll(".blog-row")].map((row) => row.getAttribute("data-analytics-slug"))).toEqual(expected.map((post) => post.slug));
-  expect([...root.querySelectorAll(".blog-row-title")].map((title) => title.textContent?.trim())).toEqual(expected.map((post) => post.header));
-  expect([...root.querySelector(".blog-list")!.childNodes].filter((node) => node.nodeType === Node.TEXT_NODE).every((node) => !node.textContent?.trim())).toBe(true);
+  const expected = posts.filter(post => post.slug !== getLatestBlogPost(posts)?.slug);
+  const slugs: (string | null)[] = [];
+  const titles: (string | undefined)[] = [];
+  const previousUrl = window.location.href;
+  try {
+    let path: string | null = "/blog/";
+    const visited = new Set<string>();
+    while (path) {
+      expect(visited.has(path)).toBe(false);
+      visited.add(path);
+      window.history.replaceState(null, "", path);
+      const root = document.createElement("div");
+      render(root, new BlogListComponent().render());
+      slugs.push(...[...root.querySelectorAll(".blog-row")].map(row => row.getAttribute("data-analytics-slug")));
+      titles.push(...[...root.querySelectorAll(".blog-row-title")].map(title => title.textContent?.trim()));
+      expect([...root.querySelector(".blog-list")!.childNodes].every(node => node.nodeType !== Node.TEXT_NODE || !node.textContent?.trim())).toBe(true);
+      path = root.querySelector('a[rel="next"]')?.getAttribute("href") ?? null;
+    }
+  } finally {
+    window.history.replaceState(null, "", previousUrl);
+  }
+  expect(slugs).toEqual(expected.map(post => post.slug));
+  expect(titles).toEqual(expected.map(post => post.header));
 });
 
 it("renders coffee template arrays as sibling buttons with nested featured flags", () => {
