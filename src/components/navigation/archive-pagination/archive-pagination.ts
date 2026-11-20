@@ -10,17 +10,21 @@ export function renderArchivePagination(section: "blog" | "news", current: numbe
   return html`
     <nav class="archive-pager" aria-label="Archive pages">
       <span class="archive-pager-status">Page ${current} of ${total}</span>
-      <div class="archive-pager-controls">
+      <archive-swipe class="archive-pager-controls" data-page="${current}" data-total="${total}">
         ${current > 1
           ? html`<a class="archive-step prev" rel="prev" href="${archivePagePath(section, current - 1)}" aria-label="Previous page"></a>`
           : html`<span class="archive-step prev" aria-hidden="true"></span>`}
-        ${pages.map(page => page === current
-          ? html`<span class="archive-key" aria-current="page" aria-label="Page ${page}">${page}</span>`
-          : html`<a class="archive-key" href="${archivePagePath(section, page)}" aria-label="Page ${page}">${page}</a>`)}
+        <div class="pager-stage">
+          <div class="pager-numbers">
+            ${pages.map(page => page === current
+              ? html`<span class="archive-key" aria-current="page" aria-label="Page ${page}">${page}</span>`
+              : html`<a class="archive-key" href="${archivePagePath(section, page)}" aria-label="Page ${page}">${page}</a>`)}
+          </div>
+        </div>
         ${current < total
           ? html`<a class="archive-step next" rel="next" href="${archivePagePath(section, current + 1)}" aria-label="Next page"></a>`
           : html`<span class="archive-step next" aria-hidden="true"></span>`}
-      </div>
+      </archive-swipe>
     </nav>
   `;
 }
