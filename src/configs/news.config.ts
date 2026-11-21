@@ -68,6 +68,20 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "bending-spoons-mailchimp-acquisition",
+    date: "2026-11-21",
+    title: "Bending Spoons to buy Mailchimp for $3.68 billion",
+    summary: "Intuit is selling Mailchimp for about a third of what it paid in 2021. The deal filings explain what the buyer is getting and what customers and employees can expect before the handover.",
+    kind: "explainer",
+    document: "/news/bending-spoons-mailchimp-acquisition.md",
+    keywords: ["Bending Spoons Mailchimp acquisition", "Intuit Mailchimp sale", "Mailchimp pricing", "Mailchimp customers", "Mailchimp employees"],
+    minutes: 3,
+    reference: {
+      label: "Bending Spoons’ Mailchimp acquisition announcement",
+      href: "https://investors.bendingspoons.com/newsroom/bending-spoons-to-acquire-mailchimp"
+    }
+  },
+  {
     slug: "blink-cpu-free-llm-inference",
     date: "2026-11-19",
     title: "How Blink keeps the host CPU out of LLM inference",

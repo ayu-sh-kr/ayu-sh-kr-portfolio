@@ -14,6 +14,11 @@
   ],
   "redirects": [
     {
+      "source": "/news/bending-spoons-mailchimp-acquisition",
+      "destination": "/news/bending-spoons-mailchimp-acquisition/",
+      "permanent": true
+    },
+    {
       "source": "/news/gpt-6-2-microsoft-mai-gemini-4-neon",
       "destination": "/news/gpt-6-2-microsoft-mai-gemini-4-neon/",
       "permanent": true
