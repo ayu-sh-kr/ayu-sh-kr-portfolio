@@ -656,6 +656,11 @@
       "permanent": true
     },
     {
+      "source": "/news/inkling-2-mini",
+      "destination": "/news/inkling-2-mini/",
+      "permanent": true
+    },
+    {
       "source": "/news/blink-cpu-free-llm-inference",
       "destination": "/news/blink-cpu-free-llm-inference/",
       "permanent": true
