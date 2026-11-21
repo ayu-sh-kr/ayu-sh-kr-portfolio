@@ -10,15 +10,19 @@ Imagine asking Mini which function in a code snippet returns an empty list. To b
 
 Mini stores **24 layers**. The first six run once. The next twelve form a group that the model can revisit. Going through that group from beginning to end counts as **one pass**. On the second pass, the group can use information from the first. On the third, it can use information from the second. Then the final six layers run once and the model chooses its token.
 
-> **Where does 48 come from?** Count every time a layer does its job for one token. Six at the start, twelve on each of three passes, and six at the end give **6 + 12 + 12 + 12 + 6 = 48**. The middle group uses the same stored weights on all three visits. The model then repeats this process for the next token.
+![Four six-layer blocks process one token. The middle pair runs three times, retaining access to the input block and the previous pass.](/news/assets/inkling-2-mini/layer-loop.svg)
+
+Across the four blocks, those 24 stored layers do **48 layer operations per token**. Each trip through the middle pair starts with the first block’s output. On the second and third trips, the model also reads a message from the previous pass. A gate learned during training determines how much of that message to use.
 
 In the code example, one clue might be a return statement and another might be the condition that reaches it. The loop gives information about those clues more chances to interact before Mini names the function. What happens on each pass is learned during training. The engineers don’t assign a job like “find the condition” to any particular pass.
 
 ## How the model fits in memory
 
-Mini also uses a **mixture of experts**. An expert is a group of weights inside a layer, and a routing calculation picks which groups to use for the current token. During training, the lab kept the 128 most-used experts out of 384 in each expert layer. The smaller network then trained on a trillion tokens from a larger Inkling model so the remaining experts could take over some of the work. Most expert weights use four-bit precision, with eight-bit precision in the last four layers.
+During training, Thinking Machines trimmed Mini’s **mixture of experts** from **384 experts to 128 per expert layer**, keeping the ones the model used most. Those figures count groups within a layer. The familiar billions count the individual learned parameters that make up those groups and the rest of the model. After pruning, the remaining experts trained on a trillion tokens distilled from a larger Inkling model to recover lost performance.
 
-> **Reading the model size.** A weight is a number learned during training. Mini stores **26.4 billion parameters** in total and uses **3.4 billion distinct parameters** for a token. Count repeated uses inside the loop and the figure rises to **5.4 billion weight activations**. For someone choosing hardware, all the stored weights still need room even though only a fraction participate at any one time.
+> Mini stores **26.4 billion parameters** across the whole model. Its routing selects **3.4 billion distinct parameters** per token. Counting repeated uses in the middle layers brings that to **5.4 billion weight activations**.
+
+Pruning reduced how many weights the laptop has to hold. Precision determines how much room each one takes. Most expert weights use four bits, while the final four layers use eight-bit precision.
 
 ## Where the extra passes pay off
 
