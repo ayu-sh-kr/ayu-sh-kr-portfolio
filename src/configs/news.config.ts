@@ -68,6 +68,27 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "spring-november-release-train-boot-4-2",
+    date: "2026-11-21",
+    title: "Spring Boot 4.2 and the release train behind it",
+    summary: "Spring Boot 4.2 arrives alongside Framework, Data, Security, Batch, Cloud and AI updates. How the coordinated release train brings a Java backend's dependencies forward together.",
+    kind: "shipped",
+    document: "/news/spring-november-release-train-boot-4-2.md",
+    keywords: [
+      "Spring Boot 4.2",
+      "Spring November 2026 releases",
+      "Spring release train",
+      "Spring Framework 7.1",
+      "Spring Cloud 2026.0",
+      "Spring AI 2.1"
+    ],
+    minutes: 3,
+    reference: {
+      label: "Spring’s release-train coordination",
+      href: "https://spring.io/blog/2026/09/21/releasing-spring-for-modern-challenges/"
+    }
+  },
+  {
     slug: "bending-spoons-mailchimp-acquisition",
     date: "2026-11-21",
     title: "Bending Spoons to buy Mailchimp for $3.68 billion",

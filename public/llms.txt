@@ -49,6 +49,8 @@
 
 ## Recent Dispatch notes
 
+- [Spring Boot 4.2 and the release train behind it](https://www.ayu-sh-kr.com/news/spring-november-release-train-boot-4-2/): Spring Boot 4.2 arrives alongside Framework, Data, Security, Batch, Cloud and AI updates. How the coordinated release train brings a Java backend's dependencies forward together. [Article Markdown](https://www.ayu-sh-kr.com/news/spring-november-release-train-boot-4-2.md).
+
 - [Bending Spoons to buy Mailchimp for $3.68 billion](https://www.ayu-sh-kr.com/news/bending-spoons-mailchimp-acquisition/): Bending Spoons agreed to buy Mailchimp from Intuit for $3.68 billion. The companies haven’t said what will happen to pricing, plan limits, or staffing after the sale closes. [Article Markdown](https://www.ayu-sh-kr.com/news/bending-spoons-mailchimp-acquisition.md).
 
 - [GPT-6.2, MAI Code 2 and Gemini 4 Neon: Benchmarks and Pricing](https://www.ayu-sh-kr.com/news/gpt-6-2-microsoft-mai-gemini-4-neon/): Compare benchmarks and API pricing for GPT-6.2 Astra and Sol, Microsoft MAI Code 2 and Image 2.7, and Gemini 4 Neon. [Article Markdown](https://www.ayu-sh-kr.com/news/gpt-6-2-microsoft-mai-gemini-4-neon.md).
