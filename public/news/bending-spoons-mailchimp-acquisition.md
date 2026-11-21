@@ -32,4 +32,6 @@ The [segment results](https://www.sec.gov/Archives/edgar/data/896878/00008968782
 
 ## The next renewal will tell customers more
 
-[Mailchimp says customers can keep using their usual support channels until closing](https://mailchimp.com/newsroom/intuit-mailchimp-bendingspoons/). For the shop running those three campaigns, the next renewal gives it something concrete to compare: **what it pays for the same list, sends, and automations**. That’s where the deal will start to matter to its day-to-day business.
+[Mailchimp told customers](https://mailchimp.com/newsroom/intuit-mailchimp-bendingspoons/) they can keep using the service and contacting support as usual while Intuit still owns the business. Its statement doesn’t say what plans will cost or include after Bending Spoons takes over.
+
+For the shop that runs its newsletter, welcome emails, and cart reminders on Mailchimp, the first renewal after the handover is the one to check. At the same contact count, **will the same plan still cover all three?**
