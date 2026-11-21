@@ -14,6 +14,11 @@
   ],
   "redirects": [
     {
+      "source": "/news/bending-spoons-mailchimp-acquisition",
+      "destination": "/news/bending-spoons-mailchimp-acquisition/",
+      "permanent": true
+    },
+    {
       "source": "/news/2",
       "destination": "/news/2/",
       "permanent": true
