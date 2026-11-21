@@ -1,6 +1,6 @@
 # Inkling 2 Mini runs the same layers three times. What does that buy a laptop?
 
-Qwen and GLM already give developers open-weight models they can run on their own hardware. What’s unusual about **Inkling 2 Mini** is how it uses the memory on that machine. Before it writes the next piece of an answer, it sends the work in progress through the same part of its network three times. That gives it more opportunities to connect clues in a coding problem while keeping the model’s footprint around **20 GB**.
+Open-weight models give developers a choice about where to run them. Models from families such as Qwen and GLM can run on a developer’s own hardware, provided there’s enough memory. **Inkling 2 Mini** fits in about **20 GB** and makes an unusual use of that space. Before writing the next piece of an answer, it sends its work in progress through the same twelve layers three times. Each pass can build on what the previous one found.
 
 Thinking Machines Lab released Mini on November 20. It accepts text and images, generates text and tool calls, and is available through Tinker or as an Apache 2.0 download. The release builds on [Inkling 2 Small’s four-bit training recipe](/news/inkling-2-four-bit-training/), which we covered when the lab explained how it reduced the memory needed to represent each weight. Mini takes that idea further by cutting down the number of weights it stores and reusing some of the ones it keeps.
 
