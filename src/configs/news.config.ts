@@ -71,7 +71,7 @@ export const newsNotes: readonly NewsNote[] = [
     slug: "bending-spoons-mailchimp-acquisition",
     date: "2026-11-21",
     title: "Bending Spoons to buy Mailchimp for $3.68 billion",
-    summary: "Intuit is selling Mailchimp for about a third of what it paid in 2021. The deal filings explain what the buyer is getting and what customers and employees can expect before the handover.",
+    summary: "Bending Spoons agreed to buy Mailchimp from Intuit for $3.68 billion. The companies haven’t said what will happen to pricing, plan limits, or staffing after the sale closes.",
     kind: "explainer",
     document: "/news/bending-spoons-mailchimp-acquisition.md",
     keywords: ["Bending Spoons Mailchimp acquisition", "Intuit Mailchimp sale", "Mailchimp pricing", "Mailchimp customers", "Mailchimp employees"],

@@ -14,9 +14,7 @@ The deal covers the Mailchimp business. It’s expected to close in early 2027, 
 | Mailchimp FY2026 revenue | $1.27 billion, down 1% |
 | Mailchimp FY2026 segment operating income | $604 million, up 10% |
 
-The [deal filing](https://www.sec.gov/Archives/edgar/data/896878/000119312526468834/d182669d8k.htm) also explains why the buyer calls it an all-cash deal: Intuit is separately reinvesting **$368 million** of the proceeds in Bending Spoons shares. Intuit is handing over Mailchimp but keeping a stake in its new owner.
-
-The [segment results](https://www.sec.gov/Archives/edgar/data/896878/000089687826000047/intu-20261119_d2.htm) explain what the buyer is taking on. Mailchimp lost paying customers in FY2026, and higher effective prices only partly offset the revenue decline. Lower staffing and marketing expenses helped operating income rise. Bending Spoons inherits a profitable business that needs to hold on to more of its paying customers.
+[Intuit’s FY2026 results](https://www.sec.gov/Archives/edgar/data/896878/000089687826000047/intu-20261119_d2.htm) show that Mailchimp had fewer paying customers even as operating income rose, helped by lower spending on staffing and marketing. Intuit doesn’t say how many paying customers Mailchimp lost or why. The figures show a more profitable business, but give little indication of how customers might respond if plans change after the sale.
 
 ## What could change after closing?
 
