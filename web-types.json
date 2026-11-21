@@ -1907,7 +1907,7 @@
           "name": "news-index",
           "source": {
             "file": "./src/components/pages/news/index/news-index/news-index.component.ts",
-            "offset": 3265
+            "offset": 3457
           },
           "attributes": [],
           "js": {
@@ -1940,7 +1940,7 @@
           "name": "news-slug-page",
           "source": {
             "file": "./src/pages/news/news-slug.page.ts",
-            "offset": 646
+            "offset": 607
           },
           "attributes": [],
           "js": {

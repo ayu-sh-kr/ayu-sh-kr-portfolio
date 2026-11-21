@@ -1,3 +1,4 @@
+import {archivePageCount, archivePagePath} from "./src/utils/archive-page.utils.ts";
 import { defineConfig, loadEnv, type Plugin } from "vite";
 import { existsSync } from "node:fs";
 import { resolve } from "node:path";
@@ -136,6 +137,10 @@ const newsRoutes = [
   "/news/prismml-bonsai-2-27b",
 ];
 
+const archiveRoutes = Array.from({length: archivePageCount(newsRoutes.length) - 1}, (_, index) =>
+  archivePagePath(index + 2).slice(0, -1)
+);
+
 /**
  * Makes Vite preview serve SSG routes through the same canonical URL shape as production.
  *
@@ -212,7 +217,7 @@ export default defineConfig(({ mode }) => {
         ssg: {
           entry: "/src/main.ts",
           autoDetectRoutes: true,
-          routes: ["/offline", ...blogRoutes, ...newsRoutes, ...showcaseRoutes],
+          routes: ["/offline", ...archiveRoutes, ...blogRoutes, ...newsRoutes, ...showcaseRoutes],
           // Route documents are independent, so prerender them across isolated workers.
           concurrency: 4,
           // Vercel updates the existing vercel.json; kept explicitly in the new deployment form.

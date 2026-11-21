@@ -1,6 +1,9 @@
 /// <reference types="vite/client" />
 
 interface ImportMetaEnv {
+  /** Build-time archive pagination override, shared by the client and static renderer. */
+  readonly VITE_ARCHIVE_PAGINATION_VARIANT?: "index-lens" | "date-reel" | "story-stack";
+
   /** Base URL used by the browser REST client. */
   readonly VITE_API_BASE_URL: string;
 

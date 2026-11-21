@@ -1,7 +1,8 @@
+import {archivePageNumber} from "@app/utils/archive-page.utils.ts";
 import type {SEO} from "@ayu-sh-kr/dota-wrap/core";
 import type {NavigationContext} from "@ayu-sh-kr/dota-wrap/router";
 import {getBlogPath, getBlogPost, getBlogSlug, type BlogPost} from "@app/configs/blogs.config.ts";
-import {getNewsSlug} from "@app/configs/news.config.ts";
+import {newsNotes, getNewsSlug} from "@app/configs/news.config.ts";
 import {getShowcaseSlug} from "@app/data/showcase-content.ts";
 import {siteIdentity} from "@app/data/portfolio-content.ts";
 import type {PageSeoContent} from "@app/data/seo-content.ts";
@@ -132,7 +133,7 @@ const getAnalyticsPage = (pathname: string): {page: AnalyticsPage; slug?: string
   if (pathname.startsWith("/blog/")) {
     return {page: "blog_article", slug: getBlogSlug(pathname)};
   }
-  if (pathname === "/news") {
+  if (archivePageNumber(pathname, newsNotes.length) !== undefined) {
     return {page: "news"};
   }
   if (pathname.startsWith("/news/")) {
