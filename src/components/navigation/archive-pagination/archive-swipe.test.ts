@@ -81,6 +81,31 @@ describe("archive pagination contract", () => {
     expect(navigate).not.toHaveBeenCalled();
   });
 
+  it.each(["submit", "cancel", "disconnect"])("handles %s during the picker exit transition", async action => {
+    const { host, navigate } = fixture();
+    const trigger = host.querySelector<HTMLButtonElement>(".pager-bookmark")!;
+    trigger.click();
+    const dialog = host.querySelector("dialog")!;
+    let finishExit!: () => void;
+    const finished = new Promise<void>(resolve => { finishExit = resolve; });
+    Object.defineProperty(dialog, "getAnimations", { value: () => [{ finished }] });
+    const number = dialog.querySelector<HTMLInputElement>('[type="number"]')!;
+    number.value = "3";
+    if (action === "cancel") {
+      dialog.dispatchEvent(new Event("cancel", { cancelable: true }));
+    } else {
+      dialog.querySelector("form")!.dispatchEvent(new Event("submit", { cancelable: true }));
+    }
+    expect(dialog.open).toBe(true);
+    expect(navigate).not.toHaveBeenCalled();
+    if (action === "disconnect") host.remove();
+    finishExit();
+    await new Promise(resolve => setTimeout(resolve, 0));
+    expect(dialog.open).toBe(false);
+    expect(navigate.mock.calls).toEqual(action === "submit" ? [["/news/3/"]] : []);
+    if (action === "cancel") expect(document.activeElement).toBe(trigger);
+  });
+
   it("synchronizes the bookmark inputs and commits only a valid destination", () => {
     const { host, navigate } = fixture();
     host.querySelector<HTMLButtonElement>(".pager-bookmark")!.click();
@@ -89,7 +114,7 @@ describe("archive pagination contract", () => {
     const slider = dialog.querySelector<HTMLInputElement>('[type="range"]')!;
     const form = dialog.querySelector("form")!;
     expect(dialog.open).toBe(true);
-    expect(document.activeElement).toBe(number);
+    expect(document.activeElement).toBe(dialog.querySelector("h2"));
     number.value = "999";
     number.dispatchEvent(new Event("input"));
     form.dispatchEvent(new Event("submit", { cancelable: true }));
