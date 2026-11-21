@@ -2,19 +2,17 @@
 
 Open-weight models give developers a choice about where to run them. Models from families such as Qwen and GLM can run on a developer’s own hardware, provided there’s enough memory. **Inkling 2 Mini** fits in about **20 GB**. Its architecture lets it do more work before producing each token. Before writing the next piece of an answer, it sends its work in progress through the **same twelve layers three times**. Each pass can build on what the previous one found.
 
-Thinking Machines Lab released Mini on November 20. It accepts text and images, generates text and tool calls, and is available through Tinker or as a download under **Apache 2.0**. The release builds on [Inkling 2 Small’s four-bit training recipe](/news/inkling-2-four-bit-training/), which we covered when the lab explained how it reduced the memory needed to represent each weight. Mini takes that idea further by cutting down the number of weights it stores and reusing some of the ones it keeps.
+Thinking Machines Lab released Mini on November 20. It accepts text and images, generates text and tool calls, and is available through Tinker or as a download under **Apache 2.0**. The release builds on [Inkling 2 Small’s four-bit training recipe](/news/inkling-2-four-bit-training/), which reduced the memory needed to represent each weight. Mini takes that idea further by cutting down the number of weights it stores and reusing some of the ones it keeps.
 
 ## What counts as one pass?
 
-Imagine asking Mini which function in a code snippet returns an empty list. To begin its answer, the model must choose a **token**, a small piece of text such as a word or part of a function name. That choice may depend on two clues several lines apart: a return statement and the condition that leads to it. As the input moves through the network, each layer can bring information about those clues together.
-
-Mini stores **24 layers**. The first six run once. The next twelve form a group that the model can revisit. Going through that group from beginning to end counts as **one pass**. Mini makes **three passes** through this group before the final six layers run and it chooses a token.
+Inkling generates text one **token** at a time. Thinking Machines describes a network with **24 layers** arranged in four blocks of six. For each token, the first block runs once. The two middle blocks then run together, from layer 7 through layer 18. One trip through those twelve layers is **one pass**. After three passes, the final block runs once and the model predicts the next token.
 
 ![Four six-layer blocks process one token. The middle pair runs three times, retaining access to the input block and the previous pass.](/news/assets/inkling-2-mini/layer-loop.svg)
 
 Across the four blocks, those 24 stored layers do **48 layer operations per token**. Each trip through the middle pair starts with the first block’s output. On the second and third trips, the model also reads **a message from the previous pass**. A gate learned during training determines how much of that message to use.
 
-In the code example, this gives Mini another chance to connect the condition to the return statement before naming the function. All three passes use **one stored copy** of the middle layers. The size of that copy depends in part on how many experts each layer contains.
+All three passes use **one stored copy** of the middle layers. Reusing those weights explains how Mini can do more computation per token. To reduce the memory needed to store the weights themselves, the lab also changed the expert layers during training.
 
 ## How the model fits in memory
 
@@ -28,7 +26,7 @@ The **26.4 billion** figure includes the weights inside all those expert pools a
 
 ## Where the extra passes pay off
 
-How much work can Mini do with those weights? **Qwen3.8-27B** offers a comparison at nearly the same total parameter count. On **DeepSWE**, which asks a coding agent to resolve software engineering tasks, Mini finished six percentage points ahead. Switch to terminal work and the order reverses. These figures come from Thinking Machines’ release table. Evaluation setups can vary by model.
+How much work can Mini do with those weights? **Qwen3.8-27B** offers a comparison at nearly the same total parameter count. On **DeepSWE**, which asks a coding agent to resolve software engineering tasks, Mini finished six percentage points ahead. Qwen scored higher on the terminal benchmark. These figures come from Thinking Machines’ release table. Evaluation setups can vary by model.
 
 | Benchmark | What it tests | Inkling 2 Mini | Qwen3.8-27B |
 | --- | --- | ---: | ---: |
@@ -47,7 +45,7 @@ On **Think Fast**, the researchers required the variable-loop model to answer di
 
 For someone supervising a coding agent, that gap matters. A reviewer can inspect the model’s **written reasoning**, while the calculations inside each pass are harder to see. In the lab’s initial experiments, written reasoning got shorter and remained readable. The researchers also found no clear trend toward more successful undetected side tasks as passes increased. The research model received reinforcement learning at three passes, so the study leaves open what a model trained specifically for deeper loops might learn.
 
-For someone choosing a local coding model, the most revealing comparison is the kind of work it will do every day. Mini pulled ahead of Qwen on repository fixes and web research, while Qwen retained a small lead on the terminal benchmark. The variable-loop tests help explain where Mini’s design earns its keep. When a task depends on connecting clues already present in a file or a search result, another pass can help the model make that connection. When the missing piece is a fact it never learned, the same loop has little to work with.
+Thinking Machines’ results put Mini ahead of Qwen on repository fixes and web research, with Qwen retaining a small lead on the terminal benchmark. The lab’s variable-loop experiment gives a narrower finding about the architecture itself. Extra passes helped the research model follow longer chains of references in supplied material, while its ability to recall facts from memory changed little.
 
 ## Sources
 
