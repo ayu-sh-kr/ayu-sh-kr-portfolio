@@ -49,6 +49,8 @@
 
 ## Recent Dispatch notes
 
+- [Bending Spoons to buy Mailchimp for $3.68 billion](https://www.ayu-sh-kr.com/news/bending-spoons-mailchimp-acquisition/): Bending Spoons agreed to buy Mailchimp from Intuit for $3.68 billion. The companies haven’t said what will happen to pricing, plan limits, or staffing after the sale closes. [Article Markdown](https://www.ayu-sh-kr.com/news/bending-spoons-mailchimp-acquisition.md).
+
 - [GPT-6.2, MAI Code 2 and Gemini 4 Neon: Benchmarks and Pricing](https://www.ayu-sh-kr.com/news/gpt-6-2-microsoft-mai-gemini-4-neon/): Compare benchmarks and API pricing for GPT-6.2 Astra and Sol, Microsoft MAI Code 2 and Image 2.7, and Gemini 4 Neon. [Article Markdown](https://www.ayu-sh-kr.com/news/gpt-6-2-microsoft-mai-gemini-4-neon.md).
 - [OpenAI: ChatGPT research grants and new safety assessments](https://www.ayu-sh-kr.com/news/openai-research-access-safety-assessments/): OpenAI offers 50,000 ChatGPT Plus research grants, adds embedded model assessments and releases a free child-abuse detection tool. What changes for users. [Article Markdown](https://www.ayu-sh-kr.com/news/openai-research-access-safety-assessments.md).
 - [Kiri: a Rust Docker Desktop alternative built for fast startup](https://www.ayu-sh-kr.com/news/kiri-rust-container-runtime/): Kiri rebuilds container startup in Rust while supporting Docker CLI, Compose and buildx. Explore its runtime architecture and reported startup benchmarks. [Article Markdown](https://www.ayu-sh-kr.com/news/kiri-rust-container-runtime.md).
