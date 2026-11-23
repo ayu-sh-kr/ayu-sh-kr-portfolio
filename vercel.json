@@ -14,6 +14,11 @@
   ],
   "redirects": [
     {
+      "source": "/news/crowdstrike-zscaler-acquisition",
+      "destination": "/news/crowdstrike-zscaler-acquisition/",
+      "permanent": true
+    },
+    {
       "source": "/news/rayclay-1-c-app-framework",
       "destination": "/news/rayclay-1-c-app-framework/",
       "permanent": true
