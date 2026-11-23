@@ -89,6 +89,20 @@ export const newsNotes: readonly NewsNote[] = [
     }
   },
   {
+    slug: "inkling-2-mini",
+    date: "2026-11-21",
+    title: "Inkling 2 Mini runs the same layers three times. What does that buy a laptop?",
+    summary: "Thinking Machines Lab’s open-weight model fits in about 20 GB. Coding and search benchmarks show where repeating its middle layers pays off.",
+    kind: "shipped",
+    document: "/news/inkling-2-mini.md",
+    keywords: ["Inkling 2 Mini", "Thinking Machines Lab", "looped transformer", "local coding model", "DeepSWE"],
+    minutes: 4,
+    reference: {
+      label: "Introducing Inkling 2 Mini",
+      href: "https://thinkingmachines.ai/news/inkling-2-mini/"
+    }
+  },
+  {
     slug: "bending-spoons-mailchimp-acquisition",
     date: "2026-11-21",
     title: "Bending Spoons to buy Mailchimp for $3.68 billion",
