@@ -14,6 +14,11 @@
   ],
   "redirects": [
     {
+      "source": "/news/spring-november-release-train-boot-4-2",
+      "destination": "/news/spring-november-release-train-boot-4-2/",
+      "permanent": true
+    },
+    {
       "source": "/news/bending-spoons-mailchimp-acquisition",
       "destination": "/news/bending-spoons-mailchimp-acquisition/",
       "permanent": true
