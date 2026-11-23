@@ -82,6 +82,27 @@ export const newsNotes: readonly NewsNote[] = [
     }
   },
   {
+    slug: "spring-november-release-train-boot-4-2",
+    date: "2026-11-21",
+    title: "Spring Boot 4.2 and Spring Framework 7.1: What Changed Across Spring",
+    summary: "How Spring Boot 4.2 aligns Framework 7.1 with Data, Security, Batch and messaging updates, and where the Spring Cloud and Spring AI releases fit.",
+    kind: "shipped",
+    document: "/news/spring-november-release-train-boot-4-2.md",
+    keywords: [
+      "Spring Boot 4.2 release",
+      "Spring Framework 7.1",
+      "Spring release train",
+      "Spring Boot 4.2 dependency upgrades",
+      "Spring Cloud 2026.0 compatibility",
+      "Spring AI 2.1"
+    ],
+    minutes: 3,
+    reference: {
+      label: "Spring’s release-train coordination",
+      href: "https://spring.io/blog/2026/09/21/releasing-spring-for-modern-challenges/"
+    }
+  },
+  {
     slug: "inkling-2-mini",
     date: "2026-11-21",
     title: "Inkling 2 Mini runs the same layers three times. What does that buy a laptop?",
