@@ -68,6 +68,20 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "rayclay-1-c-app-framework",
+    date: "2026-11-23",
+    title: "RayClay 1.0 brings web-style layouts to C apps",
+    summary: "RayClay combines flexbox-style layouts, widgets and networking in C. How its cross-platform rendering works, what its benchmarks show, and where v1.0 falls short.",
+    kind: "shipped",
+    document: "/news/rayclay-1-c-app-framework.md",
+    keywords: ["RayClay 1.0", "C app framework", "cross-platform GUI", "flexbox layout", "WebAssembly", "Electron alternative"],
+    minutes: 3,
+    reference: {
+      label: "RayClay v1.0 release",
+      href: "https://github.com/impizulu/rayclay/releases/tag/v1.0"
+    }
+  },
+  {
     slug: "spring-november-release-train-boot-4-2",
     date: "2026-11-21",
     title: "Spring Boot 4.2 and Spring Framework 7.1: What Changed Across Spring",
