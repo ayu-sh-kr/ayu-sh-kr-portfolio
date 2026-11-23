@@ -1,1 +1,149 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 410" role="img" aria-labelledby="t d"><title id="t">From a note selection to a frame</title><desc id="d">The selected note changes in C state, Clay sizes the sidebar and editor, and the renderer paints the note on the display.</desc><style>text{font-family:system-ui,sans-serif;fill:#edece7}.cue{animation:light 6s infinite both}.layout{animation-delay:1s}.paint{animation-delay:2s}@keyframes light{0%,90%,100%{opacity:.24}20%,62%{opacity:1}}@media(prefers-reduced-motion:reduce){.cue{animation:none}}</style><rect width="740" height="410" rx="18" fill="#202124"/><text x="370" y="41" text-anchor="middle" font-size="24">From a note selection to a frame</text><g transform="translate(34 47) scale(.91 .67)"><polygon class="" points="78.8,155.0 459.8,375.0 459.8,385.0 78.8,165.0" fill="#3a3b3f" stroke="#b5b6b3" stroke-width="1.2" stroke-linejoin="round"/><polygon class="" points="728.3,220.0 459.8,375.0 459.8,385.0 728.3,230.0" fill="#525357" stroke="#b5b6b3" stroke-width="1.2" stroke-linejoin="round"/><polygon class="" points="347.2,0.0 728.3,220.0 459.8,375.0 78.8,155.0" fill="#303135" stroke="#b5b6b3" stroke-width="1.2" stroke-linejoin="round"/><polygon class="" points="141.1,167.0 232.9,220.0 232.9,228.0 141.1,175.0" fill="#3a3b3f" stroke="#b5b6b3" stroke-width="1.2" stroke-linejoin="round"/><polygon class="" points="286.6,189.0 232.9,220.0 232.9,228.0 286.6,197.0" fill="#525357" stroke="#b5b6b3" stroke-width="1.2" stroke-linejoin="round"/><polygon class="" points="194.8,136.0 286.6,189.0 232.9,220.0 141.1,167.0" fill="#55565a" stroke="#b5b6b3" stroke-width="1.2" stroke-linejoin="round"/><polygon class="" points="148.9,162.5 232.0,210.5 232.0,215.5 148.9,167.5" fill="#3a3b3f" stroke="#b5b6b3" stroke-width="1.2" stroke-linejoin="round"/><polygon class="" points="278.8,183.5 232.0,210.5 232.0,215.5 278.8,188.5" fill="#525357" stroke="#b5b6b3" stroke-width="1.2" stroke-linejoin="round"/><polygon class="" points="195.7,135.5 278.8,183.5 232.0,210.5 148.9,162.5" fill="#393a3d" stroke="#b5b6b3" stroke-width="1.2" stroke-linejoin="round"/><polygon class="" points="196.5,143.0 259.8,179.5 252.8,183.5 189.6,147.0" fill="#67686a" stroke="#b5b6b3" stroke-width="1.2" stroke-linejoin="round"/><polygon class="cue" points="184.4,150.0 247.6,186.5 240.7,190.5 177.5,154.0" fill="#e4dfce" stroke="#b5b6b3" stroke-width="1.2" stroke-linejoin="round"/><polygon class="" points="172.3,157.0 235.5,193.5 228.6,197.5 165.4,161.0" fill="#67686a" stroke="#b5b6b3" stroke-width="1.2" stroke-linejoin="round"/><polygon class="" points="272.7,188.0 307.4,168.0 351.6,193.5 347.2,196.0 307.4,173.0 277.1,190.5" fill="#78797b" stroke="#b5b6b3" stroke-width="1.2" stroke-linejoin="round"/><polygon class="" points="342.9,189.5 434.7,242.5 434.7,250.5 342.9,197.5" fill="#3a3b3f" stroke="#b5b6b3" stroke-width="1.2" stroke-linejoin="round"/><polygon class="" points="488.4,211.5 434.7,242.5 434.7,250.5 488.4,219.5" fill="#525357" stroke="#b5b6b3" stroke-width="1.2" stroke-linejoin="round"/><polygon class="" points="396.6,158.5 488.4,211.5 434.7,242.5 342.9,189.5" fill="#55565a" stroke="#b5b6b3" stroke-width="1.2" stroke-linejoin="round"/><polygon class="" points="350.7,185.0 433.8,233.0 433.8,238.0 350.7,190.0" fill="#3a3b3f" stroke="#b5b6b3" stroke-width="1.2" stroke-linejoin="round"/><polygon class="" points="480.6,206.0 433.8,233.0 433.8,238.0 480.6,211.0" fill="#525357" stroke="#b5b6b3" stroke-width="1.2" stroke-linejoin="round"/><polygon class="" points="397.4,158.0 480.6,206.0 433.8,233.0 350.7,185.0" fill="#393a3d" stroke="#b5b6b3" stroke-width="1.2" stroke-linejoin="round"/><polygon class="" points="398.3,162.5 419.1,174.5 380.1,197.0 359.3,185.0" fill="#767779" stroke="#b5b6b3" stroke-width="1.2" stroke-linejoin="round"/><polygon class="cue layout" points="423.4,177.0 471.1,204.5 432.1,227.0 384.5,199.5" fill="#adafae" stroke="#b5b6b3" stroke-width="1.2" stroke-linejoin="round"/><polygon class="" points="397.4,165.0 411.3,173.0 408.7,174.5 394.9,166.5" fill="#454648" stroke="#b5b6b3" stroke-width="1.2" stroke-linejoin="round"/><polygon class="" points="388.8,170.0 402.6,178.0 400.0,179.5 386.2,171.5" fill="#454648" stroke="#b5b6b3" stroke-width="1.2" stroke-linejoin="round"/><polygon class="" points="380.1,175.0 394.0,183.0 391.4,184.5 377.5,176.5" fill="#454648" stroke="#b5b6b3" stroke-width="1.2" stroke-linejoin="round"/><polygon class="" points="371.5,180.0 385.3,188.0 382.7,189.5 368.9,181.5" fill="#454648" stroke="#b5b6b3" stroke-width="1.2" stroke-linejoin="round"/><polygon class="" points="474.5,210.5 509.2,190.5 553.3,216.0 549.0,218.5 509.2,195.5 478.9,213.0" fill="#78797b" stroke="#b5b6b3" stroke-width="1.2" stroke-linejoin="round"/><polygon class="" points="544.7,212.0 636.5,265.0 636.5,273.0 544.7,220.0" fill="#3a3b3f" stroke="#b5b6b3" stroke-width="1.2" stroke-linejoin="round"/><polygon class="" points="690.2,234.0 636.5,265.0 636.5,273.0 690.2,242.0" fill="#525357" stroke="#b5b6b3" stroke-width="1.2" stroke-linejoin="round"/><polygon class="" points="598.4,181.0 690.2,234.0 636.5,265.0 544.7,212.0" fill="#55565a" stroke="#b5b6b3" stroke-width="1.2" stroke-linejoin="round"/><polygon class="" points="552.5,207.5 635.6,255.5 635.6,260.5 552.5,212.5" fill="#3a3b3f" stroke="#b5b6b3" stroke-width="1.2" stroke-linejoin="round"/><polygon class="" points="682.4,228.5 635.6,255.5 635.6,260.5 682.4,233.5" fill="#525357" stroke="#b5b6b3" stroke-width="1.2" stroke-linejoin="round"/><polygon class="" points="599.2,180.5 682.4,228.5 635.6,255.5 552.5,207.5" fill="#393a3d" stroke="#b5b6b3" stroke-width="1.2" stroke-linejoin="round"/><polygon class="" points="613.1,195.5 621.7,200.5 621.7,220.5 613.1,215.5" fill="#3a3b3f" stroke="#b5b6b3" stroke-width="1.2" stroke-linejoin="round"/><polygon class="" points="627.8,197.0 621.7,200.5 621.7,220.5 627.8,217.0" fill="#525357" stroke="#b5b6b3" stroke-width="1.2" stroke-linejoin="round"/><polygon class="" points="619.1,192.0 627.8,197.0 621.7,200.5 613.1,195.5" fill="#626468" stroke="#b5b6b3" stroke-width="1.2" stroke-linejoin="round"/><polygon class="" points="576.7,168.5 672.8,224.0 672.8,145.0 576.7,89.5" fill="#68696c" stroke="#b5b6b3" stroke-width="1.2" stroke-linejoin="round"/><polygon class="" points="580.2,166.5 669.4,218.0 669.4,147.0 580.2,95.5" fill="#27282b" stroke="#b5b6b3" stroke-width="1.2" stroke-linejoin="round"/><polygon class="" points="584.5,164.0 606.2,176.5 606.2,116.5 584.5,104.0" fill="#505154" stroke="#b5b6b3" stroke-width="1.2" stroke-linejoin="round"/><polygon class="" points="587.1,114.5 602.7,123.5 602.7,120.5 587.1,111.5" fill="#848586" stroke="#b5b6b3" stroke-width="1.2" stroke-linejoin="round"/><polygon class="cue paint" points="613.1,131.5 639.9,147.0 639.9,145.0 613.1,129.5" fill="#deded9" stroke="#b5b6b3" stroke-width="1.2" stroke-linejoin="round"/><polygon class="" points="587.1,124.5 602.7,133.5 602.7,130.5 587.1,121.5" fill="#e8e6dc" stroke="#b5b6b3" stroke-width="1.2" stroke-linejoin="round"/><polygon class="cue paint" points="613.1,139.5 655.5,164.0 655.5,162.0 613.1,137.5" fill="#deded9" stroke="#b5b6b3" stroke-width="1.2" stroke-linejoin="round"/><polygon class="" points="587.1,134.5 602.7,143.5 602.7,140.5 587.1,131.5" fill="#848586" stroke="#b5b6b3" stroke-width="1.2" stroke-linejoin="round"/><polygon class="cue paint" points="613.1,147.5 652.9,170.5 652.9,168.5 613.1,145.5" fill="#deded9" stroke="#b5b6b3" stroke-width="1.2" stroke-linejoin="round"/><polygon class="" points="587.1,144.5 602.7,153.5 602.7,150.5 587.1,141.5" fill="#848586" stroke="#b5b6b3" stroke-width="1.2" stroke-linejoin="round"/><polygon class="cue paint" points="613.1,155.5 650.3,177.0 650.3,175.0 613.1,153.5" fill="#deded9" stroke="#b5b6b3" stroke-width="1.2" stroke-linejoin="round"/><polygon class="" points="587.1,154.5 602.7,163.5 602.7,160.5 587.1,151.5" fill="#848586" stroke="#b5b6b3" stroke-width="1.2" stroke-linejoin="round"/><polygon class="cue paint" points="613.1,163.5 647.7,183.5 647.7,181.5 613.1,161.5" fill="#deded9" stroke="#b5b6b3" stroke-width="1.2" stroke-linejoin="round"/></g><path d="M62 308H675" stroke="#656669"/><g text-anchor="middle" font-size="19"><text x="154" y="343">C app state</text><text x="370" y="343">Clay layout</text><text x="587" y="343">Renderer</text></g><text x="370" y="382" text-anchor="middle" font-size="15" opacity=".8">Select a note · Size the two panes · Draw the editor</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 690" role="img" aria-labelledby="title desc">
+<title id="title">Inside a RayClay frame</title><desc id="desc">Exploded view of a notes app. Selecting Trip list changes the selected ID in C. The layout pass measures the sidebar and editor, then the renderer paints Trip list on the display. The settled frame remains visible while the loop sleeps.</desc>
+<style>
+text{font-family:Arial,sans-serif;fill:#efefed}.soft{fill:#b6b6bc}.mono{font-family:monospace}.hair{fill:none;stroke:#87878f;stroke-width:1.3}.plate{stroke:#8c8c94;stroke-width:1.2;stroke-linejoin:round}
+.pick,.measure,.result,.idle{animation-duration:8s;animation-iteration-count:infinite;animation-fill-mode:both}.pick{animation-name:pick}.measure{animation-name:measure;transform-box:fill-box;transform-origin:left}.result{animation-name:result}.idle{animation-name:idle}
+@keyframes pick{0%,10%,98%,100%{opacity:0}17%,95%{opacity:1}}@keyframes measure{0%,24%,98%,100%{transform:scaleX(0);opacity:0}28%{opacity:1}48%,92%{transform:scaleX(1);opacity:1}}@keyframes result{0%,50%,98%,100%{opacity:0}60%,94%{opacity:1}}@keyframes idle{0%,62%,97%,100%{opacity:.2}68%,92%{opacity:1}}
+@media(prefers-reduced-motion:reduce){.pick,.measure,.result,.idle{animation:none;opacity:1}}
+.cursor{animation:click 8s infinite}.editor{animation:reveal 8s infinite}@keyframes click{0%,95%,100%{transform:translate(40px,25px);opacity:0}6%{opacity:1}13%,18%{transform:translate(0,0);opacity:1}24%,90%{opacity:0}}@keyframes reveal{0%,50%{transform:translateY(7px)}64%,100%{transform:translateY(0)}}@media(prefers-reduced-motion:reduce){.cursor{display:none}.editor{animation:none}}.lift{animation:lift 8s ease-in-out infinite}@keyframes lift{0%,18%,92%,100%{transform:translateY(0)}38%,68%{transform:translateY(-26px)}}@media(prefers-reduced-motion:reduce){.lift{animation:none}}</style><rect x="1" y="1" width="758" height="688" rx="22" fill="#101011" stroke="#414145"/>
+<text x="35" y="49" font-size="28" font-weight="600">Inside a RayClay frame</text><text x="35" y="78" font-size="19" class="soft">What happens when you open a different note</text>
+<path class="plate" d="M601.7,509.0 L430.3,608.0 L430.3,620.0 L601.7,521.0Z" fill="#535359"/>
+<path class="plate" d="M163.5,454.0 L430.3,608.0 L430.3,620.0 L163.5,466.0Z" fill="#303035"/>
+<path class="plate" d="M335.0,355.0 L601.7,509.0 L430.3,608.0 L163.5,454.0Z" fill="#28282d"/>
+<g transform="matrix(.866 .5 -.866 .5 335.0 364.0)">
+<rect x="10" y="164" width="5" height="8" rx="0" fill="#919196" />
+<rect x="22" y="164" width="5" height="8" rx="0" fill="#919196" />
+<rect x="34" y="164" width="5" height="8" rx="0" fill="#919196" />
+<rect x="46" y="164" width="5" height="8" rx="0" fill="#919196" />
+<rect x="58" y="164" width="5" height="8" rx="0" fill="#919196" />
+<rect x="70" y="164" width="5" height="8" rx="0" fill="#919196" />
+<rect x="82" y="164" width="5" height="8" rx="0" fill="#919196" />
+<rect x="94" y="164" width="5" height="8" rx="0" fill="#919196" />
+<rect x="106" y="164" width="5" height="8" rx="0" fill="#919196" />
+<rect x="118" y="164" width="5" height="8" rx="0" fill="#919196" />
+<rect x="130" y="164" width="5" height="8" rx="0" fill="#919196" />
+<rect x="142" y="164" width="5" height="8" rx="0" fill="#919196" />
+<rect x="154" y="164" width="5" height="8" rx="0" fill="#919196" />
+<rect x="166" y="164" width="5" height="8" rx="0" fill="#919196" />
+<rect x="178" y="164" width="5" height="8" rx="0" fill="#919196" />
+<rect x="190" y="164" width="5" height="8" rx="0" fill="#919196" />
+<rect x="202" y="164" width="5" height="8" rx="0" fill="#919196" />
+<rect x="214" y="164" width="5" height="8" rx="0" fill="#919196" />
+<rect x="226" y="164" width="5" height="8" rx="0" fill="#919196" />
+<rect x="238" y="164" width="5" height="8" rx="0" fill="#919196" />
+<rect x="250" y="164" width="5" height="8" rx="0" fill="#919196" />
+<rect x="262" y="164" width="5" height="8" rx="0" fill="#919196" />
+<rect x="274" y="164" width="5" height="8" rx="0" fill="#919196" />
+<rect x="18" y="18" width="245" height="36" rx="4" fill="#35353b" stroke="#76767f"/>
+<text x="31" y="42" font-size="17" style="fill:#ededeb">notes[0]</text>
+<text x="172" y="42" font-size="17" style="fill:#ededeb">Ideas</text>
+<rect x="18" y="62" width="245" height="36" rx="4" fill="#35353b" stroke="#76767f"/>
+<text x="31" y="86" font-size="17" style="fill:#ededeb">notes[1]</text>
+<text x="172" y="86" font-size="17" style="fill:#ededeb">Trip list</text>
+<rect x="18" y="106" width="245" height="36" rx="4" fill="#35353b" stroke="#76767f"/>
+<text x="31" y="130" font-size="17" style="fill:#ededeb">selected</text>
+<text x="172" y="130" font-size="17" style="fill:#ededeb">0</text>
+<g class="pick">
+<rect x="162" y="109" width="91" height="27" rx="3" fill="#dededb" />
+<text x="172" y="129" font-size="17" style="fill:#242426">1</text>
+</g>
+</g>
+<path d="M335.0,366.0 L335.0,282.0" stroke="#777780" stroke-dasharray="3 6"/>
+<path d="M577.5,506.0 L577.5,422.0" stroke="#777780" stroke-dasharray="3 6"/>
+<path d="M187.8,451.0 L187.8,367.0" stroke="#777780" stroke-dasharray="3 6"/>
+<path d="M430.3,591.0 L430.3,507.0" stroke="#777780" stroke-dasharray="3 6"/>
+<path class="plate" d="M584.4,415.0 L430.3,504.0 L430.3,511.0 L584.4,422.0Z" fill="#535359"/>
+<path class="plate" d="M180.9,360.0 L430.3,504.0 L430.3,511.0 L180.9,367.0Z" fill="#303035"/>
+<path class="plate" d="M335.0,271.0 L584.4,415.0 L430.3,504.0 L180.9,360.0Z" fill="#39393f"/>
+<g transform="matrix(.866 .5 -.866 .5 335.0 270.0)">
+<rect x="8" y="6" width="1" height="5" rx="0" fill="#babac0" />
+<rect x="20" y="6" width="1" height="3" rx="0" fill="#babac0" />
+<rect x="32" y="6" width="1" height="5" rx="0" fill="#babac0" />
+<rect x="44" y="6" width="1" height="3" rx="0" fill="#babac0" />
+<rect x="56" y="6" width="1" height="5" rx="0" fill="#babac0" />
+<rect x="68" y="6" width="1" height="3" rx="0" fill="#babac0" />
+<rect x="80" y="6" width="1" height="5" rx="0" fill="#babac0" />
+<rect x="92" y="6" width="1" height="3" rx="0" fill="#babac0" />
+<rect x="104" y="6" width="1" height="5" rx="0" fill="#babac0" />
+<rect x="116" y="6" width="1" height="3" rx="0" fill="#babac0" />
+<rect x="128" y="6" width="1" height="5" rx="0" fill="#babac0" />
+<rect x="140" y="6" width="1" height="3" rx="0" fill="#babac0" />
+<rect x="152" y="6" width="1" height="5" rx="0" fill="#babac0" />
+<rect x="164" y="6" width="1" height="3" rx="0" fill="#babac0" />
+<rect x="176" y="6" width="1" height="5" rx="0" fill="#babac0" />
+<rect x="188" y="6" width="1" height="3" rx="0" fill="#babac0" />
+<rect x="200" y="6" width="1" height="5" rx="0" fill="#babac0" />
+<rect x="212" y="6" width="1" height="3" rx="0" fill="#babac0" />
+<rect x="224" y="6" width="1" height="5" rx="0" fill="#babac0" />
+<rect x="236" y="6" width="1" height="3" rx="0" fill="#babac0" />
+<rect x="248" y="6" width="1" height="5" rx="0" fill="#babac0" />
+<rect x="260" y="6" width="1" height="3" rx="0" fill="#babac0" />
+<rect x="272" y="6" width="1" height="5" rx="0" fill="#babac0" />
+<rect x="10" y="20" width="78" height="147" rx="2" fill="#242429" stroke="#aaaab2" stroke-dasharray="5 4"/>
+<rect x="97" y="20" width="181" height="147" rx="2" fill="#242429" stroke="#aaaab2" stroke-dasharray="5 4"/>
+<rect x="17" y="31" width="64" height="27" rx="2" fill="#3f3f46" stroke="#6a6a73"/>
+<rect x="17" y="69" width="64" height="27" rx="2" fill="#3f3f46" stroke="#6a6a73"/>
+<rect x="17" y="107" width="64" height="27" rx="2" fill="#3f3f46" stroke="#6a6a73"/>
+<rect x="109" y="43" width="107" height="5" rx="0" fill="#62626c" />
+<rect x="109" y="67" width="148" height="5" rx="0" fill="#62626c" />
+<rect x="109" y="91" width="132" height="5" rx="0" fill="#62626c" />
+<rect x="109" y="115" width="86" height="5" rx="0" fill="#62626c" />
+<g class="measure">
+<rect x="97" y="147" width="181" height="3" rx="0" fill="#f1f1ed" />
+<rect x="97" y="140" width="2" height="15" rx="0" fill="#f1f1ed" />
+<rect x="276" y="140" width="2" height="15" rx="0" fill="#f1f1ed" />
+</g>
+</g>
+<path d="M335.0,274.0 L335.0,176.0" stroke="#777780" stroke-dasharray="3 6"/>
+<path d="M577.5,414.0 L577.5,316.0" stroke="#777780" stroke-dasharray="3 6"/>
+<path d="M187.8,359.0 L187.8,261.0" stroke="#777780" stroke-dasharray="3 6"/>
+<path d="M430.3,499.0 L430.3,401.0" stroke="#777780" stroke-dasharray="3 6"/>
+<g class="lift"><path class="plate" d="M589.6,305.0 L430.3,397.0 L430.3,408.0 L589.6,316.0Z" fill="#535359"/>
+<path class="plate" d="M175.7,250.0 L430.3,397.0 L430.3,408.0 L175.7,261.0Z" fill="#303035"/>
+<path class="plate" d="M335.0,158.0 L589.6,305.0 L430.3,397.0 L175.7,250.0Z" fill="#65656c"/>
+<g transform="matrix(.866 .5 -.866 .5 335.0 160.0)">
+<rect x="1" y="1" width="286" height="176" rx="6" fill="#1e1e22" />
+<rect x="5" y="5" width="278" height="18" rx="4" fill="#404046" />
+<rect x="12" y="12" width="5" height="5" rx="2" fill="#bcbcc1" />
+<rect x="21" y="12" width="5" height="5" rx="2" fill="#bcbcc1" />
+<rect x="30" y="12" width="5" height="5" rx="2" fill="#bcbcc1" />
+<rect x="6" y="26" width="84" height="144" rx="3" fill="#303035" />
+<text x="13" y="46" font-size="17" style="fill:#ededeb">Notes</text>
+<rect x="9" y="51" width="77" height="93" rx="0" fill="#303035" />
+<rect x="10" y="54" width="75" height="25" rx="3" fill="#c9c9c9" />
+<text x="15" y="72" font-size="14" style="fill:#171719">Ideas</text>
+<text x="15" y="101" font-size="14" style="fill:#ccc">Trip list</text>
+<text x="15" y="130" font-size="14" style="fill:#ccc">Archive</text>
+<rect x="97" y="26" width="179" height="143" rx="0" fill="#232327" />
+<text x="107" y="53" font-size="22" style="fill:#ededeb">Ideas</text>
+<rect x="108" y="74" width="130" height="4" rx="2" fill="#a6a6ac" />
+<rect x="108" y="96" width="107" height="4" rx="2" fill="#a6a6ac" />
+<rect x="108" y="118" width="143" height="4" rx="2" fill="#a6a6ac" />
+<rect x="108" y="140" width="89" height="4" rx="2" fill="#a6a6ac" />
+<g class="result"><g class="editor">
+<rect x="9" y="51" width="77" height="93" rx="0" fill="#303035" />
+<rect x="10" y="83" width="75" height="25" rx="3" fill="#c9c9c9" />
+<text x="15" y="72" font-size="14" style="fill:#ccc">Ideas</text>
+<text x="15" y="101" font-size="14" style="fill:#171719">Trip list</text>
+<text x="15" y="130" font-size="14" style="fill:#ccc">Archive</text>
+<rect x="97" y="26" width="179" height="143" rx="0" fill="#232327" />
+<text x="107" y="53" font-size="22" style="fill:#ededeb">Trip list</text>
+<rect x="108" y="72" width="9" height="9" rx="2" fill="none" stroke="#cbcbcd"/>
+<rect x="125" y="74" width="86" height="4" rx="2" fill="#a6a6ac" />
+<rect x="108" y="94" width="9" height="9" rx="2" fill="none" stroke="#cbcbcd"/>
+<rect x="125" y="96" width="112" height="4" rx="2" fill="#a6a6ac" />
+<rect x="108" y="116" width="9" height="9" rx="2" fill="none" stroke="#cbcbcd"/>
+<rect x="125" y="118" width="76" height="4" rx="2" fill="#a6a6ac" />
+</g></g><path class="cursor" d="M61 88l5 23 4-8 9-2Z" fill="#fff" stroke="#121215" stroke-width="2"/></g>
+</g><polyline class="hair" points="539,280 582,175 603,175"/>
+<text x="611" y="181" font-size="22" style="fill:#ededeb">Draw</text>
+<text x="611" y="204" font-size="16" style="fill:#b6b6bc">Paint the note</text>
+<polyline class="hair" points="552,421 583,374 603,374"/>
+<text x="611" y="380" font-size="22" style="fill:#ededeb">Layout</text>
+<text x="611" y="403" font-size="16" style="fill:#b6b6bc">Size both panes</text>
+<polyline class="hair" points="485,526 573,515 603,515"/>
+<text x="611" y="521" font-size="22" style="fill:#ededeb">C state</text>
+<text x="611" y="544" font-size="16" style="fill:#b6b6bc">Select a note</text>
+<path d="M35 630H725" stroke="#46464b"/><circle class="idle" cx="47" cy="646" r="5" fill="#efefed"/>
+<text x="64" y="652" font-size="19" style="fill:#c7c7cd">The frame stays on screen while the event loop sleeps.</text>
+</svg>
