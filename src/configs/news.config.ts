@@ -70,16 +70,16 @@ export const newsNotes: readonly NewsNote[] = [
   {
     slug: "spring-november-release-train-boot-4-2",
     date: "2026-11-21",
-    title: "Spring Boot 4.2 and the release train behind it",
-    summary: "Spring Boot 4.2 arrives alongside Framework, Data, Security, Batch, Cloud and AI updates. How the coordinated release train brings a Java backend's dependencies forward together.",
+    title: "Spring Boot 4.2 and Spring Framework 7.1: What Changed Across Spring",
+    summary: "How Spring Boot 4.2 aligns Framework 7.1 with Data, Security, Batch and messaging updates, and where the Spring Cloud and Spring AI releases fit.",
     kind: "shipped",
     document: "/news/spring-november-release-train-boot-4-2.md",
     keywords: [
-      "Spring Boot 4.2",
-      "Spring November 2026 releases",
-      "Spring release train",
+      "Spring Boot 4.2 release",
       "Spring Framework 7.1",
-      "Spring Cloud 2026.0",
+      "Spring release train",
+      "Spring Boot 4.2 dependency upgrades",
+      "Spring Cloud 2026.0 compatibility",
       "Spring AI 2.1"
     ],
     minutes: 3,
