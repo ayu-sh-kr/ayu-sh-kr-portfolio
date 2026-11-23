@@ -26,7 +26,7 @@ The **26.4 billion** figure includes the weights inside all those expert pools a
 
 ## How Gall runs Mini on a 24 GB Mac
 
-The lab reduced what the model needs to store. [Gall](https://github.com/ltrgoddard/gall) takes the next step at runtime. It serves Mini on Apple Silicon using a Rust host and custom Metal GPU kernels. The engine reads Unsloth’s more heavily quantized weights directly from a **12.7 GB** GGUF file instead of expanding them into a larger copy.
+Thinking Machines lists Apple Silicon Macs with **32 GB or more** for the [original checkpoint](https://thinkingmachines.ai/model-card/inkling-2-mini/). [Gall](https://github.com/ltrgoddard/gall) takes the next step at runtime. It serves Mini on Apple Silicon using a Rust host and custom Metal GPU kernels. The engine reads Unsloth’s more heavily quantized weights directly from a **12.7 GB** GGUF file instead of expanding them into a larger copy.
 
 On a **24 GB M2 MacBook Air**, Gall’s maintainer estimated an active budget of about **18 GB** for an 805-token prompt: a measured 5.3 GB server footprint plus up to 12.7 GB of file-backed weights. That is a budget, not the amount measured in RAM. Individual runs generated **20.5 tokens per second** at short context and **16.2–16.5** at roughly 30,000 tokens.
 
