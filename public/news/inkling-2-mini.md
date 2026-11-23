@@ -1,6 +1,6 @@
 # Inkling 2 Mini runs the same layers three times. What does that buy a laptop?
 
-Open-weight models give developers a choice about where to run them. Models from families such as Qwen and GLM can run on a developer’s own hardware, provided there’s enough memory. **Inkling 2 Mini** fits in about **20 GB**. Its architecture lets it do more work before producing each token. Before writing the next piece of an answer, it sends its work in progress through the **same twelve layers three times**. Each pass can build on what the previous one found.
+Open-weight models give developers a choice about where to run them. Models from families such as Qwen and GLM can run on a developer’s own hardware, provided there’s enough memory. **Inkling 2 Mini’s** original weights take about **20 GB** to store. Its architecture lets it do more work before producing each token. Before writing the next piece of an answer, it sends its work in progress through the **same twelve layers three times**. Each pass can build on what the previous one found.
 
 Thinking Machines Lab released Mini on November 20. It accepts text and images, generates text and tool calls, and is available through Tinker or as a download under **Apache 2.0**. The release builds on [Inkling 2 Small’s four-bit training recipe](/news/inkling-2-four-bit-training/), which reduced the memory needed to represent each weight. Mini takes that idea further by cutting down the number of weights it stores and reusing some of the ones it keeps.
 
@@ -23,6 +23,14 @@ Dropping two-thirds of each pool freed memory, but it also removed weights the m
 > Mini stores **26.4 billion parameters** across the whole model. Its routing selects **3.4 billion distinct parameters** per token. Counting repeated uses in the middle layers brings that to **5.4 billion weight activations**.
 
 The **26.4 billion** figure includes the weights inside all those expert pools as well as the rest of the network. Storing most expert weights at **four-bit precision** further reduces the memory footprint. The final four layers use eight-bit precision.
+
+## How Gall runs Mini on a 24 GB Mac
+
+The lab reduced what the model needs to store. [Gall](https://github.com/ltrgoddard/gall) takes the next step at runtime. It serves Mini on Apple Silicon using a Rust host and custom Metal GPU kernels. The engine reads Unsloth’s more heavily quantized weights directly from a **12.7 GB** GGUF file instead of expanding them into a larger copy.
+
+On a **24 GB M2 MacBook Air**, Gall’s maintainer estimated an active budget of about **18 GB** for an 805-token prompt: a measured 5.3 GB server footprint plus up to 12.7 GB of file-backed weights. That is a budget, not the amount measured in RAM. Individual runs generated **20.5 tokens per second** at short context and **16.2–16.5** at roughly 30,000 tokens.
+
+Gall also gives memory back between turns. By default, it unloads the model after one idle second and saves eligible conversation state to disk. A later request can reuse the saved prefix for conversations of at least 512 tokens. That makes the 24 GB Air a useful example of what runtime engineering adds: fitting the model during a reply and freeing working memory when the reply ends.
 
 ## Where the extra passes pay off
 
@@ -53,3 +61,4 @@ Thinking Machines’ results put Mini ahead of Qwen on repository fixes and web 
 - [Technical model card and variable-loop evaluations](https://thinkingmachines.ai/model-card/inkling-2-mini/)
 - [Model weights and license on Hugging Face](https://huggingface.co/thinkingmachines/Inkling-2-Mini)
 - [Artificial Analysis comparison of intelligence, tokens and compute](https://artificialanalysis.ai/articles/inkling-2-mini)
+- [Gall’s Metal runtime, memory budget and M2 MacBook Air measurements](https://github.com/ltrgoddard/gall)
