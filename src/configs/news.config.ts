@@ -68,6 +68,20 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "crowdstrike-zscaler-acquisition",
+    date: "2026-11-23",
+    title: "CrowdStrike agrees to buy Zscaler for $43.9 billion",
+    summary: "CrowdStrike plans to bring Zscaler’s network security and zero-trust access into Falcon. What already works together and what the deal could change for customers.",
+    kind: "explainer",
+    document: "/news/crowdstrike-zscaler-acquisition.md",
+    keywords: ["CrowdStrike Zscaler acquisition", "CrowdStrike Zscaler deal", "Falcon Flex", "Zscaler zero-trust access", "endpoint and network security"],
+    minutes: 2,
+    reference: {
+      label: "CrowdStrike and Zscaler acquisition announcement",
+      href: "https://www.crowdstrike.com/en-us/press-releases/crowdstrike-to-acquire-zscaler-bringing-network-security-and-zero-trust-to-the-falcon-platform/"
+    }
+  },
+  {
     slug: "rayclay-1-c-app-framework",
     date: "2026-11-23",
     title: "RayClay 1.0 brings web-style layouts to C apps",
