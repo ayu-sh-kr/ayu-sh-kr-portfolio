@@ -39,6 +39,7 @@ const showcaseRoutes = [
 ];
 const newsRoutes = [
   "/news/crowdstrike-zscaler-acquisition",
+  "/news/gemini-lean-quantum-circuits",
   "/news/rayclay-1-c-app-framework",
   "/news/spring-november-release-train-boot-4-2",
   "/news/bending-spoons-mailchimp-acquisition",

@@ -82,6 +82,20 @@ export const newsNotes: readonly NewsNote[] = [
     }
   },
   {
+    slug: "gemini-lean-quantum-circuits",
+    date: "2026-11-24",
+    title: "How Google used Gemini 4 and Lean to cut quantum circuit costs",
+    summary: "Gemini 4 agents designed cheaper quantum circuits that Lean could check. What the reported 290-fold reduction for inverse sine measures and why it matters.",
+    kind: "explainer",
+    document: "/news/gemini-lean-quantum-circuits.md",
+    keywords: ["Gemini 4 Carbon", "quantum circuits", "Lean formal verification", "quantum resource estimation", "fixed-point arcsin"],
+    minutes: 3,
+    reference: {
+      label: "Discovering formally verified quantum programs with AI",
+      href: "https://arxiv.org/abs/2611.09822v3"
+    }
+  },
+  {
     slug: "rayclay-1-c-app-framework",
     date: "2026-11-23",
     title: "RayClay 1.0 brings web-style layouts to C apps",

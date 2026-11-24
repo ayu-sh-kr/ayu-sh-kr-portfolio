@@ -19,6 +19,11 @@
       "permanent": true
     },
     {
+      "source": "/news/gemini-lean-quantum-circuits",
+      "destination": "/news/gemini-lean-quantum-circuits/",
+      "permanent": true
+    },
+    {
       "source": "/news/rayclay-1-c-app-framework",
       "destination": "/news/rayclay-1-c-app-framework/",
       "permanent": true
