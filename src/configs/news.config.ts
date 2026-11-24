@@ -68,6 +68,20 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "glm-5-4-loop-transformer",
+    date: "2026-11-24",
+    title: "GLM-5.4: Z.ai’s coding model runs 28 layers twice",
+    summary: "How GLM-5.4 reuses 28 layers and adds vision for coding tasks, with FreeCAD and browser shader demos and a guide to launch availability.",
+    kind: "shipped",
+    document: "/news/glm-5-4-loop-transformer.md",
+    keywords: ["GLM-5.4", "Z.ai GLM-5.4", "Loop Transformer", "visual coding", "GLM Coding Plan"],
+    minutes: 2,
+    reference: {
+      label: "Z.ai’s GLM-5.4 launch and architecture report",
+      href: "https://z.ai/blog/glm-5.4"
+    }
+  },
+  {
     slug: "crowdstrike-zscaler-acquisition",
     date: "2026-11-23",
     title: "CrowdStrike agrees to buy Zscaler for $43.9 billion",

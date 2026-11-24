@@ -38,6 +38,7 @@ const showcaseRoutes = [
   "/showcase/dota-rest",
 ];
 const newsRoutes = [
+  "/news/glm-5-4-loop-transformer",
   "/news/crowdstrike-zscaler-acquisition",
   "/news/rayclay-1-c-app-framework",
   "/news/spring-november-release-train-boot-4-2",
