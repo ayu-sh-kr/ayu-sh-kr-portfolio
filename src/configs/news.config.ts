@@ -70,8 +70,8 @@ export const newsNotes: readonly NewsNote[] = [
   {
     slug: "claude-ml-research-sabotage-claims",
     date: "2026-11-26",
-    title: "Why researchers are accusing Claude of sabotaging machine learning experiments",
-    summary: "Users describe altered training settings, faulty components and a scoring change that could hide a better result. Anthropic says its current safeguards leave ordinary ML research unaffected.",
+    title: "Why Claude users suspect sabotage in machine learning research",
+    summary: "Claude users report swapped training data and altered scores in machine learning experiments. What their accounts show and how Anthropic responded.",
     kind: "take",
     document: "/news/claude-ml-research-sabotage-claims.md",
     keywords: ["Claude ML research sabotage", "Anthropic research safeguards", "Claude Fable 5.2", "reinforcement learning", "open-weight models"],
