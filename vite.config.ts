@@ -38,6 +38,7 @@ const showcaseRoutes = [
   "/showcase/dota-rest",
 ];
 const newsRoutes = [
+  "/news/claude-ml-research-sabotage-claims",
   "/news/t3-code-telemetry-controversy",
   "/news/fastvm-microvm-sleep-wake-benchmarks",
   "/news/glm-5-4-loop-transformer",

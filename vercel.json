@@ -159,6 +159,11 @@
       "permanent": true
     },
     {
+      "source": "/news/claude-ml-research-sabotage-claims",
+      "destination": "/news/claude-ml-research-sabotage-claims/",
+      "permanent": true
+    },
+    {
       "source": "/news/t3-code-telemetry-controversy",
       "destination": "/news/t3-code-telemetry-controversy/",
       "permanent": true
