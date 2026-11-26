@@ -68,6 +68,16 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "t3-code-telemetry-controversy",
+    date: "2026-11-26",
+    title: "T3 Code promised opt-in telemetry. The app shipped it on by default.",
+    summary: "How a fork dispute drew attention to T3 Code’s opt-in promise, what older builds collected, and what the team removed after the backlash.",
+    kind: "explainer",
+    document: "/news/t3-code-telemetry-controversy.md",
+    keywords: ["T3 Code telemetry", "Theo Browne", "T3 Code privacy", "opt-in analytics", "Codex and Claude account IDs"],
+    minutes: 3
+  },
+  {
     slug: "fastvm-microvm-sleep-wake-benchmarks",
     date: "2026-11-26",
     title: "FastVM wakes idle microVMs on demand. How fast is it?",

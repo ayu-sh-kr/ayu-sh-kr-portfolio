@@ -49,6 +49,7 @@
 
 ## Recent Dispatch notes
 
+- [T3 Code promised opt-in telemetry. The app shipped it on by default.](https://www.ayu-sh-kr.com/news/t3-code-telemetry-controversy/): How a fork dispute drew attention to T3 Code’s opt-in promise, what older builds collected, and what the team removed after the backlash. [Article Markdown](https://www.ayu-sh-kr.com/news/t3-code-telemetry-controversy.md).
 - [FastVM wakes idle microVMs on demand. How fast is it?](https://www.ayu-sh-kr.com/news/fastvm-microvm-sleep-wake-benchmarks/): How FastVM wakes idle microVMs, what a Firecracker-based service measured on the first request, and how Cloud Hypervisor compares at startup. [Article Markdown](https://www.ayu-sh-kr.com/news/fastvm-microvm-sleep-wake-benchmarks.md).
 
 - [GLM-5.4: Z.ai’s coding model runs 28 layers twice](https://www.ayu-sh-kr.com/news/glm-5-4-loop-transformer/): How GLM-5.4 reuses 28 layers and adds vision for coding tasks, with FreeCAD and browser shader demos and a guide to launch availability. [Article Markdown](https://www.ayu-sh-kr.com/news/glm-5-4-loop-transformer.md).
