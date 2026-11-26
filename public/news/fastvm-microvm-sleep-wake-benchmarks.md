@@ -24,7 +24,7 @@ The [migration notes](https://github.com/tuananh/fastvm/blob/a9624faae524c82ca08
 | OpenSandbox: Kata sandbox creation on a non-nested KVM host, p50 | **560 ms** | 829 ms |
 | OpenSandbox: Kata sandbox creation in a resource-constrained nested VM, p50 | 5,462 ms | **1,335 ms** |
 
-In [AWS’s historical boot test](https://www.usenix.org/conference/nsdi20/presentation/agache), preconfigured Firecracker’s tail latency was **12 ms lower**. In [OpenSandbox’s 20-create Kata tests](https://github.com/opensandbox-group/fast-sandbox/blob/main/docs/guides/performance.md), Firecracker took **about 32% less time** on the non-nested host. On the nested setup, Cloud Hypervisor took **about 76% less time**; Firecracker spent much more time setting up its block-backed storage. Those are results for the tested stacks, and the Kata tests stopped at sandbox creation rather than application readiness.
+In [AWS’s historical boot test](https://www.usenix.org/conference/nsdi20/presentation/agache), preconfigured Firecracker’s tail latency was **12 ms lower**. [OpenSandbox timed 20 Kata sandbox creations in each setup](https://github.com/opensandbox-group/fast-sandbox/blob/main/docs/guides/performance.md). Firecracker took **about 32% less time** on the non-nested host. On the nested setup, Cloud Hypervisor took **about 76% less time**; Firecracker spent much more time setting up its block-backed storage.
 
 > FastVM separately reports **about 600 ms from cold boot to guest-agent ready** with Cloud Hypervisor v54.0. Its published wake targets predate the backend change and are awaiting remeasurement. The head-to-head tests above didn’t measure FastVM’s wake-on-request path.
 
