@@ -38,6 +38,7 @@ const showcaseRoutes = [
   "/showcase/dota-rest",
 ];
 const newsRoutes = [
+  "/news/fastvm-microvm-sleep-wake-benchmarks",
   "/news/glm-5-4-loop-transformer",
   "/news/crowdstrike-zscaler-acquisition",
   "/news/gemini-lean-quantum-circuits",
