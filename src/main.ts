@@ -1,4 +1,5 @@
 import './style.css'
+import {ArchiveSwipe} from "@app/components/navigation/archive-pagination/archive-swipe.ts";
 
 import { AppComponent } from "@app/app.component.ts";
 import { ErrorPage, HomePage, OfflinePage } from "@app/pages";
@@ -48,7 +49,10 @@ const analyticsJourneyTracker = new AnalyticsJourneyTracker();
 // analytics listener first so its page and section events are not lost.
 DefaultApplicationEventListenerRegistry.setListener(applicationEventListener);
 new AnalyticsEventListener();
-if (!import.meta.env.SSR) analyticsJourneyTracker.start();
+if (!import.meta.env.SSR) {
+  analyticsJourneyTracker.start();
+  if (!customElements.get("archive-swipe")) customElements.define("archive-swipe", ArchiveSwipe);
+}
 new ActionButtonDispatcher();
 ServiceState.start();
 

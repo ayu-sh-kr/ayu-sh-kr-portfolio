@@ -1,3 +1,4 @@
+import {archivePageCount, archivePagePath} from "./src/utils/archive-page.utils.ts";
 import { defineConfig, loadEnv, type Plugin } from "vite";
 import { existsSync } from "node:fs";
 import { resolve } from "node:path";
@@ -37,6 +38,59 @@ const showcaseRoutes = [
   "/showcase/dota-rest",
 ];
 const newsRoutes = [
+  "/news/claude-ml-research-sabotage-claims",
+  "/news/t3-code-telemetry-controversy",
+  "/news/fastvm-microvm-sleep-wake-benchmarks",
+  "/news/glm-5-4-loop-transformer",
+  "/news/crowdstrike-zscaler-acquisition",
+  "/news/gemini-lean-quantum-circuits",
+  "/news/rayclay-1-c-app-framework",
+  "/news/spring-november-release-train-boot-4-2",
+  "/news/bending-spoons-mailchimp-acquisition",
+  "/news/gpt-6-2-microsoft-mai-gemini-4-neon",
+  "/news/openai-research-access-safety-assessments",
+  "/news/kiri-rust-container-runtime",
+  "/news/lemon-squeezy-shutdown-stripe-migration",
+  "/news/pybot-deepseek-agent-swarm-python",
+  "/news/gemini-4-argon-carbon-hydrogen-comparison",
+  "/news/inkling-2-four-bit-training",
+  "/news/openorange-cloudflare-workers-self-hosting",
+  "/news/aws-emulator-localstack-local-testing",
+  "/news/pan-2-world-model-physical-intelligence",
+  "/news/saltline-ai-browser-3d-evolution",
+  "/news/tinytraffic-self-hosted-web-analytics",
+  "/news/whisker-rust-native-mobile-apps",
+  "/news/rust-native-apps-discord-gpui-rune",
+  "/news/rune-native-ui-framework",
+  "/news/kawa-kafka-gateway",
+  "/news/rustle-forward-proxy-benchmarks",
+  "/news/ai-agent-cloud-hosting-costs",
+  "/news/inkling-2-mini",
+  "/news/blink-cpu-free-llm-inference",
+  "/news/openai-pando-git-backend-anthropic-scion",
+  "/news/mit-weight-space-programming-gpt-6-astra-qwen",
+  "/news/tibo-codex-challenge-gpt-6-2-astra-fable-5-5",
+  "/news/overflow-design-isometric-drawings",
+  "/news/mirendil-fern-10-million-token-context-model",
+  "/news/maya-2-native-open-weight-indian-language-speech",
+  "/news/pomerado-browser-automation-reusable-mcp-tools",
+  "/news/microsoft-quicksand-qemu-agent-sandboxes",
+  "/news/flashraw-rust-camera-raw-decoder-benchmarks",
+  "/news/ai-sandbox-bench-regions-provider-comparison",
+  "/news/jakub-krehel-teardown-technical-illustration-skill",
+  "/news/asonix-app-store-keywords-ai-visibility",
+  "/news/ascii-animation-web-design",
+  "/news/anthropic-open-weight-models-security-timeline",
+  "/news/hatchzip-in-place-archive-extraction",
+  "/news/kimi-k3-1-pro-frontier-model-comparison",
+  "/news/abliterated-models-origin-refusals-use-cases",
+  "/news/clickbench-removes-pgrust-benchmark-dispute",
+  "/news/deepseek-fireworks-deepinfer-faster-inference",
+  "/news/php-critical-rce-october-2026",
+  "/news/railway-environment-variables-security-breach",
+  "/news/pingcap-tidb-cloud-security-breach",
+  "/news/emudhra-weak-certificate-signing-keys",
+  "/news/cloudtoid-interprocess-shared-memory-ipc",
   "/news/mcp-discovery-apm-torchneuron-ai-tooling",
   "/news/aws-cloudflare-reinvent-booth-rivalry",
   "/news/opencode-console-breach-api-keys",
@@ -92,6 +146,10 @@ const newsRoutes = [
   "/news/qorl-postgres-query-optimizer-rl",
   "/news/prismml-bonsai-2-27b",
 ];
+
+const archiveRoutes = Array.from({length: archivePageCount(newsRoutes.length) - 1}, (_, index) =>
+  archivePagePath(index + 2).slice(0, -1)
+);
 
 /**
  * Makes Vite preview serve SSG routes through the same canonical URL shape as production.
@@ -174,7 +232,7 @@ export default defineConfig(({ mode }) => {
         ssg: {
           entry: "/src/main.ts",
           autoDetectRoutes: true,
-          routes: ["/offline", ...blogRoutes, ...newsRoutes, ...showcaseRoutes],
+          routes: ["/offline", ...archiveRoutes, ...blogRoutes, ...newsRoutes, ...showcaseRoutes],
           // Route documents are independent, so prerender them across isolated workers.
           concurrency: 4,
           // Vercel updates the existing vercel.json; kept explicitly in the new deployment form.

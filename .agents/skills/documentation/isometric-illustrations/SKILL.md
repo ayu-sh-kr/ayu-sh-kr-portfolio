@@ -27,6 +27,15 @@ description: Create or repair compact isometric SVG illustrations for articles a
 - Keep static labels and evidence present. Under `prefers-reduced-motion: reduce`, hide moving overlays and provide a fixed operation indicator where needed.
 - Use standalone SVG animation for SVGs embedded through Markdown images; embed styles and colors, since page CSS does not inherit into the image. Avoid scripts.
 
+## Match the portfolio Dispatch pattern
+
+Use [Kawa’s virtual-topic illustration](../../../../public/news/assets/kawa-kafka-gateway/virtual-topic-route.svg) as the reference for dark isometric Dispatch diagrams.
+
+- Place the components on one centered isometric base. Spread visual weight across the base and give the main operation a clear position. Use stepped housings, visible side faces, and small functional details to distinguish components at article width.
+- Use the reference’s charcoal canvas, neutral gray faces, light outlines, and off-white labels and packets. Keep a short title and subtitle at the top, and use a single summary line under a divider when it helps readers follow the sequence.
+- Route thin traces through clear corridors between actual ports. Place labels near their components with short leaders where needed. Follow the subject’s own flow and use the same trace geometry for any animated packets. Keep the static path readable with reduced motion.
+- Render the reference and the new SVG at the same article width, then check the new SVG at mobile width for label collisions, detached traces, and uneven visual weight.
+
 ## Verify before delivery
 
 - Add a responsive `viewBox`, `<title>`, `<desc>`, `role="img"` and `aria-labelledby`; use descriptive Markdown alt text and a root-relative asset URL.

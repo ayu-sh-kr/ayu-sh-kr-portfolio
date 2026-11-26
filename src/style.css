@@ -1,4 +1,6 @@
-@import url("https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bevan&family=Exo:wght@100..900&family=Geologica:wght@100..900&family=Lexend+Deca:wght@400..700&family=Merriweather+Sans:ital,wght@0,400..800;1,400..800&family=Montserrat:wght@400;500;600;700&family=Nunito:wght@400..800&family=Poppins:wght@400;500;600;700&family=Rubik:wght@400..700&family=Varela+Round&display=swap");
+/* Only the primary font (Lexend Deca) is downloaded. The other families keep their tokens in
+   theme.css but stay dormant; add a family here when a page starts using its token. */
+@import url("https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@400..700&display=swap");
 
 @import "tailwindcss";
 @import "./theme.css";
@@ -10,6 +12,7 @@
 @import "./components/design-showcases/ui-gauge-usecase/ui-gauge-usecase.component.css";
 @import "./components/design-showcases/ui-isometric-usecase/ui-isometric-usecase.component.css";
 @import "./components/design-showcases/ui-motion-showcase/ui-motion-showcase.component.css";
+@import "./components/design-showcases/ui-ascii-showcase/ui-ascii-showcase.component.css";
 @import "./components/design-showcases/ui-skeuomorphic-showcase/ui-skeuomorphic-showcase.component.css";
 @import "./components/utils/action-button/action-button.component.css";
 @import "./anchor-link.css";
@@ -133,6 +136,7 @@
 @import "./components/pages/blog/index/hero/blog-hero/blog-hero.component.css";
 @import "./components/pages/blog/index/archive/blog-filter/blog-filter.component.css";
 @import "./components/pages/blog/index/archive/blog-highlighted-blog/blog-highlighted-blog.component.css";
+@import "./components/navigation/archive-pagination/archive-pagination.css";
 @import "./components/pages/blog/index/archive/blog-list-section/blog-list-section.component.css";
 @import "./components/pages/blog/index/archive/blog-list/blog-list.component.css";
 @import "./components/pages/blog/index/subscription/blog-subscription/blog-subscription.component.css";

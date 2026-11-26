@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="610" viewBox="0 0 760 610" role="img" aria-labelledby="title desc"><title id="title">How forged authority reaches a user</title><desc id="desc">A hypothetical HTTPS attack. An intercepted connection receives a certificate for the shop containing an attacker public key. The recovered CA key signs it. The client must accept that authority and all other checks before sending data.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10" fill="#afafac"/></marker></defs><rect width="760" height="610" rx="12" fill="#101011"/><g font-family="DejaVu Sans, sans-serif" fill="#fafaf8">
+<text x="28" y="40" font-size="23" font-weight="700">How forged authority reaches a user</text>
+<path d="M358 135H402" fill="none" stroke="#afafac" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M567 200V260" fill="none" stroke="#afafac" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M402 325H358" fill="none" stroke="#afafac" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M110 390V450" fill="none" stroke="#afafac" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M276 390V420H567V450" fill="none" stroke="#afafac" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="28" y="70" width="330" height="130" rx="7" fill="#1d1d1f" stroke="#afafac" stroke-width="2"/><text x="44" y="96" fill="#afafac" font-size="14">1 · USER STARTS</text><text x="44" y="124" font-size="18" font-weight="700">Open the shop over HTTPS</text>
+<text x="44" y="150" font-size="16">The client must authenticate</text>
+<text x="44" y="173" font-size="16">the server before sending data</text>
+<rect x="402" y="70" width="330" height="130" rx="7" fill="#1d1d1f" stroke="#ff9870" stroke-width="2"/><text x="418" y="96" fill="#ff9870" font-size="14">2 · ADDITIONAL ACCESS</text><text x="418" y="124" font-size="18" font-weight="700">Connection is intercepted</text>
+<text x="418" y="150" font-size="16">A separate network attack</text>
+<text x="418" y="173" font-size="16">routes the client to an impostor</text>
+<rect x="402" y="260" width="330" height="130" rx="7" fill="#1d1d1f" stroke="#ff9870" stroke-width="2"/><text x="418" y="286" fill="#ff9870" font-size="14">3 · FALSE ENDORSEMENT</text><text x="418" y="314" font-size="18" font-weight="700">Impostor presents certificate</text>
+<text x="418" y="340" font-size="16">Shop domain + attacker public key</text>
+<text x="418" y="363" font-size="16">Signature: recovered CA key</text>
+<rect x="28" y="260" width="330" height="130" rx="7" fill="#1d1d1f" stroke="#afafac" stroke-width="2"/><text x="44" y="286" fill="#afafac" font-size="14">4 · CLIENT VALIDATES</text><text x="44" y="314" font-size="18" font-weight="700">Accept this server identity?</text>
+<text x="44" y="340" font-size="16">CA trust and other checks;</text>
+<text x="44" y="363" font-size="16">proof uses attacker private key</text>
+<rect x="28" y="450" width="330" height="130" rx="7" fill="#1d1d1f" stroke="#afafac" stroke-width="2"/><text x="44" y="476" fill="#afafac" font-size="14">AFFECTED AUTHORITY BLOCKED</text><text x="44" y="504" font-size="18" font-weight="700">Reject the connection</text>
+<text x="44" y="530" font-size="16">No shopping request sent</text>
+<text x="44" y="553" font-size="16">to this impostor</text>
+<rect x="402" y="450" width="330" height="130" rx="7" fill="#1d1d1f" stroke="#ff9870" stroke-width="2"/><text x="418" y="476" fill="#ff9870" font-size="14">ALL REQUIRED CHECKS PASS</text><text x="418" y="504" font-size="18" font-weight="700">Send request to impostor</text>
+<text x="418" y="530" font-size="16">TLS encrypts to the attacker,</text>
+<text x="418" y="553" font-size="16">who can read it at their endpoint</text>
+<text x="28" y="230" font-size="15" fill="#afafac">CA key signs certificates. Server key proves possession.</text>
+<text x="32" y="435" font-size="15" fill="#afafac">Reject</text>
+<text x="470" y="412" font-size="15" fill="#afafac">Accept</text>
+</g></svg>

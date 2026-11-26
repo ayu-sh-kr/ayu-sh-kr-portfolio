@@ -68,6 +68,783 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "claude-ml-research-sabotage-claims",
+    date: "2026-11-26",
+    title: "Why Claude users suspect sabotage in machine learning research",
+    summary: "Claude users report swapped training data and altered scores in machine learning experiments. What their accounts show and how Anthropic responded.",
+    kind: "take",
+    document: "/news/claude-ml-research-sabotage-claims.md",
+    keywords: ["Claude ML research sabotage", "Anthropic research safeguards", "Claude Fable 5.2", "reinforcement learning", "open-weight models"],
+    minutes: 6,
+    reference: {label: "Anthropic on Fable 5.2 research capabilities", href: "https://www.anthropic.com/claude-fable-and-mythos-5-2"}
+  },
+  {
+    slug: "t3-code-telemetry-controversy",
+    date: "2026-11-26",
+    title: "T3 Code Telemetry Controversy: The Broken Opt-In Promise",
+    summary: "Why T3 Code’s default-on telemetry drew backlash, what v0.1.12 fixed, and how Theo Browne responded to the fork dispute and German GDPR complaint.",
+    kind: "explainer",
+    document: "/news/t3-code-telemetry-controversy.md",
+    keywords: ["T3 Code telemetry controversy", "default-on telemetry", "T3 Code telemetry opt-out", "Theo Browne", "GDPR complaint", "Codex and Claude account IDs"],
+    minutes: 3
+  },
+  {
+    slug: "fastvm-microvm-sleep-wake-benchmarks",
+    date: "2026-11-26",
+    title: "FastVM wakes idle microVMs on demand. How fast is it?",
+    summary: "How FastVM wakes idle microVMs, what a Firecracker-based service measured on the first request, and how Cloud Hypervisor compares at startup.",
+    kind: "infra",
+    document: "/news/fastvm-microvm-sleep-wake-benchmarks.md",
+    keywords: ["FastVM", "microVM wake on demand", "Cloud Hypervisor", "Firecracker benchmarks", "first-request latency", "VM snapshot restore"],
+    minutes: 4,
+    reference: {
+      label: "FastVM source and documentation",
+      href: "https://github.com/tuananh/fastvm"
+    }
+  },
+  {
+    slug: "glm-5-4-loop-transformer",
+    date: "2026-11-24",
+    title: "GLM-5.4: Z.ai’s coding model runs 28 layers twice",
+    summary: "How GLM-5.4 reuses 28 layers and adds vision for coding tasks, with FreeCAD and browser shader demos and a guide to launch availability.",
+    kind: "shipped",
+    document: "/news/glm-5-4-loop-transformer.md",
+    keywords: ["GLM-5.4", "Z.ai GLM-5.4", "Loop Transformer", "visual coding", "GLM Coding Plan"],
+    minutes: 2,
+    reference: {
+      label: "Z.ai’s GLM-5.4 launch and architecture report",
+      href: "https://z.ai/blog/glm-5.4"
+    }
+  },
+  {
+    slug: "crowdstrike-zscaler-acquisition",
+    date: "2026-11-23",
+    title: "CrowdStrike agrees to buy Zscaler for $43.9 billion",
+    summary: "CrowdStrike plans to bring Zscaler’s network security and zero-trust access into Falcon. What already works together and what the deal could change for customers.",
+    kind: "explainer",
+    document: "/news/crowdstrike-zscaler-acquisition.md",
+    keywords: ["CrowdStrike Zscaler acquisition", "CrowdStrike Zscaler deal", "Falcon Flex", "Zscaler zero-trust access", "endpoint and network security"],
+    minutes: 2,
+    reference: {
+      label: "CrowdStrike and Zscaler acquisition announcement",
+      href: "https://www.crowdstrike.com/en-us/press-releases/crowdstrike-to-acquire-zscaler-bringing-network-security-and-zero-trust-to-the-falcon-platform/"
+    }
+  },
+  {
+    slug: "gemini-lean-quantum-circuits",
+    date: "2026-11-24",
+    title: "How Google used Gemini 4 and Lean to cut quantum circuit costs",
+    summary: "Gemini 4 agents designed cheaper quantum circuits that Lean could check. What the reported 290-fold reduction for inverse sine measures and why it matters.",
+    kind: "explainer",
+    document: "/news/gemini-lean-quantum-circuits.md",
+    keywords: ["Gemini 4 Carbon", "quantum circuits", "Lean formal verification", "quantum resource estimation", "fixed-point arcsin"],
+    minutes: 3,
+    reference: {
+      label: "Discovering formally verified quantum programs with AI",
+      href: "https://arxiv.org/abs/2611.09822v3"
+    }
+  },
+  {
+    slug: "rayclay-1-c-app-framework",
+    date: "2026-11-23",
+    title: "RayClay 1.0 brings web-style layouts to C apps",
+    summary: "RayClay combines flexbox-style layouts, widgets and networking in C. How its cross-platform rendering works, what its benchmarks show, and where v1.0 falls short.",
+    kind: "shipped",
+    document: "/news/rayclay-1-c-app-framework.md",
+    keywords: ["RayClay 1.0", "C app framework", "cross-platform GUI", "flexbox layout", "WebAssembly", "Electron alternative"],
+    minutes: 3,
+    reference: {
+      label: "RayClay v1.0 release",
+      href: "https://github.com/impizulu/rayclay/releases/tag/v1.0"
+    }
+  },
+  {
+    slug: "spring-november-release-train-boot-4-2",
+    date: "2026-11-21",
+    title: "Spring Boot 4.2 and Spring Framework 7.1: What Changed Across Spring",
+    summary: "How Spring Boot 4.2 aligns Framework 7.1 with Data, Security, Batch and messaging updates, and where the Spring Cloud and Spring AI releases fit.",
+    kind: "shipped",
+    document: "/news/spring-november-release-train-boot-4-2.md",
+    keywords: [
+      "Spring Boot 4.2 release",
+      "Spring Framework 7.1",
+      "Spring release train",
+      "Spring Boot 4.2 dependency upgrades",
+      "Spring Cloud 2026.0 compatibility",
+      "Spring AI 2.1"
+    ],
+    minutes: 3,
+    reference: {
+      label: "Spring’s release-train coordination",
+      href: "https://spring.io/blog/2026/09/21/releasing-spring-for-modern-challenges/"
+    }
+  },
+  {
+    slug: "inkling-2-mini",
+    date: "2026-11-21",
+    title: "Inkling 2 Mini on Apple Silicon: Gall and Rustling",
+    summary: "How Inkling 2 Mini reuses layers, how Gall runs it on a 24 GB Mac, and how Rustling connects local inference to coding tools through an OpenAI-compatible API.",
+    kind: "shipped",
+    document: "/news/inkling-2-mini.md",
+    keywords: ["Inkling 2 Mini", "Apple Silicon local inference", "Gall runtime", "Rustling", "OpenAI-compatible local API", "looped transformer"],
+    minutes: 6,
+    reference: {
+      label: "Introducing Inkling 2 Mini",
+      href: "https://thinkingmachines.ai/news/inkling-2-mini/"
+    }
+  },
+  {
+    slug: "bending-spoons-mailchimp-acquisition",
+    date: "2026-11-21",
+    title: "Bending Spoons to buy Mailchimp for $3.68 billion",
+    summary: "Bending Spoons agreed to buy Mailchimp from Intuit for $3.68 billion. The companies haven’t said what will happen to pricing, plan limits, or staffing after the sale closes.",
+    kind: "explainer",
+    document: "/news/bending-spoons-mailchimp-acquisition.md",
+    keywords: ["Bending Spoons Mailchimp acquisition", "Intuit Mailchimp sale", "Mailchimp pricing", "Mailchimp customers", "Mailchimp employees"],
+    minutes: 3,
+    reference: {
+      label: "Bending Spoons’ Mailchimp acquisition announcement",
+      href: "https://investors.bendingspoons.com/newsroom/bending-spoons-to-acquire-mailchimp"
+    }
+  },
+  {
+    slug: "blink-cpu-free-llm-inference",
+    date: "2026-11-19",
+    title: "How Blink keeps the host CPU out of LLM inference",
+    summary: "KTH and RISE researchers tested whether moving token scheduling onto a GPU and request handling onto a SmartNIC changes how a model performs on a shared server.",
+    kind: "reading",
+    document: "/news/blink-cpu-free-llm-inference.md",
+    keywords: ["Blink LLM inference", "GPU scheduling", "SmartNIC", "BlueField-3", "CPU interference"],
+    minutes: 3,
+    reference: {
+      label: "Blink research paper",
+      href: "https://arxiv.org/abs/2604.07609"
+    }
+  },
+  {
+    slug: "gpt-6-2-microsoft-mai-gemini-4-neon",
+    date: "2026-11-19",
+    title: "GPT-6.2, MAI Code 2 and Gemini 4 Neon: Benchmarks and Pricing",
+    summary: "Compare benchmarks and API pricing for GPT-6.2 Astra and Sol, Microsoft MAI Code 2 and Image 2.7, and Gemini 4 Neon.",
+    kind: "shipped",
+    document: "/news/gpt-6-2-microsoft-mai-gemini-4-neon.md",
+    keywords: ["GPT-6.2 Astra", "GPT-6.2 Sol", "MAI Code 2", "MAI Image 2.7", "Gemini 4 Neon", "GPT-6.2 API pricing", "MAI Code 2 Flash", "Gemini 4 Neon benchmarks", "AI model pricing"],
+    minutes: 6,
+    reference: {
+      label: "Google’s Gemini 4 Neon launch",
+      href: "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-neon/"
+    }
+  },
+  {
+    slug: "openai-research-access-safety-assessments",
+    date: "2026-11-16",
+    title: "OpenAI: ChatGPT research grants and new safety assessments",
+    summary: "OpenAI offers 50,000 ChatGPT Plus research grants, adds embedded model assessments and releases a free child-abuse detection tool. What changes for users.",
+    kind: "shipped",
+    document: "/news/openai-research-access-safety-assessments.md",
+    keywords: ["ChatGPT for Academic Researchers", "ChatGPT Plus research grants", "OpenAI embedded assessments", "OpenAI research data privacy", "CSAM detection"],
+    minutes: 3,
+    reference: {
+      label: "OpenAI’s academic research expansion",
+      href: "https://openai.com/index/expanding-chatgpt-for-academic-researchers/"
+    }
+  },
+  {
+    slug: "kiri-rust-container-runtime",
+    date: "2026-11-16",
+    title: "Kiri: a Rust Docker Desktop alternative built for fast startup",
+    summary: "Kiri rebuilds container startup in Rust while supporting Docker CLI, Compose and buildx. Explore its runtime architecture and reported startup benchmarks.",
+    kind: "infra",
+    document: "/news/kiri-rust-container-runtime.md",
+    keywords: ["Kiri container runtime", "Docker Desktop alternative", "Kiri vs Docker Desktop", "Rust container runtime", "container startup benchmarks"],
+    minutes: 2,
+    reference: {
+      label: "Kiri repository and architecture",
+      href: "https://github.com/libracoder/kiri"
+    }
+  },
+  {
+    slug: "lemon-squeezy-shutdown-stripe-migration",
+    date: "2026-11-16",
+    title: "Lemon Squeezy shutdown: dates and Stripe migration",
+    summary: "Lemon Squeezy stops payments on March 31, 2027. Key migration dates, Stripe Managed Payments eligibility and subscription-transfer limits for merchants.",
+    kind: "infra",
+    document: "/news/lemon-squeezy-shutdown-stripe-migration.md",
+    keywords: ["Lemon Squeezy shutdown", "Lemon Squeezy shutdown date", "Stripe Managed Payments", "Lemon Squeezy migration", "subscription migration"],
+    minutes: 2,
+    reference: {
+      label: "Lemon Squeezy’s wind-down announcement",
+      href: "https://www.lemonsqueezy.com/blog/saying-goodbye-to-lemon-squeezy"
+    }
+  },
+  {
+    slug: "pybot-deepseek-agent-swarm-python",
+    date: "2026-11-16",
+    title: "PyBot: a Python chatbot built by DeepSeek agents",
+    summary: "Hugging Face’s PyBot tests how far DeepSeek agents can take a rule-based Python chatbot, from its reply-selection architecture to SmolTalkBench results.",
+    kind: "reading",
+    document: "/news/pybot-deepseek-agent-swarm-python.md",
+    keywords: ["Hugging Face PyBot", "DeepSeek agent swarm", "rule-based Python chatbot", "chatbot without an LLM", "SmolTalkBench"],
+    minutes: 2,
+    reference: {
+      label: "PyBot repository",
+      href: "https://github.com/huggingface/pybot"
+    }
+  },
+  {
+    slug: "gemini-4-argon-carbon-hydrogen-comparison",
+    date: "2026-11-15",
+    title: "Gemini 4 expands the frontier-model shortlist",
+    summary: "How Gemini 4 Carbon, Argon and Hydrogen broaden the choice alongside Claude and GPT, from demanding reasoning to everyday work and faster execution.",
+    kind: "explainer",
+    document: "/news/gemini-4-argon-carbon-hydrogen-comparison.md",
+    keywords: ["Gemini 4", "Gemini 4 Hydrogen", "Gemini 4 Carbon", "Gemini 4 Argon", "AI model benchmarks", "Gemini API pricing", "model retirement"],
+    minutes: 3,
+    reference: {
+      label: "Google’s Gemini 4 Hydrogen announcement",
+      href: "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-hydrogen/"
+    }
+  },
+  {
+    slug: "inkling-2-four-bit-training",
+    date: "2026-11-14",
+    title: "Thinking Machines details how Inkling 2 Small trains with fewer bits",
+    summary: "Thinking Machines explains Inkling 2 Small’s mixed-precision training: a 4-bit forward pass, 8-bit gradients and reported training speedups on NVIDIA Blackwell.",
+    kind: "infra",
+    document: "/news/inkling-2-four-bit-training.md",
+    keywords: ["Inkling 2 Small", "Thinking Machines", "4-bit training", "NVFP4", "MXFP8", "mixed-precision training", "NVIDIA Blackwell"],
+    minutes: 3,
+    reference: {
+      label: "Thinking Machines training report",
+      href: "https://thinkingmachines.ai/blog/end-to-end-4-bit-training/"
+    }
+  },
+  {
+    slug: "openorange-cloudflare-workers-self-hosting",
+    date: "2026-11-14",
+    title: "OpenOrange brings Cloudflare Workers to your own cloud",
+    summary: "How Rivet’s OpenOrange runs Workers on Node.js and Rivet Actors, what moves with your data, and what its cheaper-compute claims actually compare.",
+    kind: "infra",
+    document: "/news/openorange-cloudflare-workers-self-hosting.md",
+    keywords: ["OpenOrange", "self-host Cloudflare Workers", "Rivet Actors", "Durable Objects migration", "Cloudflare Workers Node.js", "workerd"],
+    minutes: 3,
+    reference: {
+      label: "OpenOrange announcement by Rivet",
+      href: "https://rivet.dev/changelog/2026-11-12-introducing-openorange/"
+    }
+  },
+  {
+    slug: "aws-emulator-localstack-local-testing",
+    date: "2026-11-12",
+    title: "AWS Emulator brings the cloud testing loop to your laptop",
+    summary: "AWS Emulator lets developers and coding agents test AWS APIs locally. Explore its capabilities, agent-built development process, limits and deployment context.",
+    kind: "shipped",
+    document: "/news/aws-emulator-localstack-local-testing.md",
+    keywords: ["AWS Emulator", "local AWS testing", "AWS Emulator AI agents", "AWS API emulator", "LocalStack", "Testcontainers"],
+    minutes: 2,
+    reference: {
+      label: "AWS Emulator announcement",
+      href: "https://aws.amazon.com/about-aws/whats-new/2026/11/aws-emulator-now-available/"
+    }
+  },
+  {
+    slug: "pan-2-world-model-physical-intelligence",
+    date: "2026-11-12",
+    title: "PAN 2: an open world model for testing actions before taking them",
+    summary: "MBZUAI’s PAN 2 combines language reasoning with a 29B video model to simulate actions, with open weights, training code and clear limits on multi-step reliability.",
+    kind: "shipped",
+    document: "/news/pan-2-world-model-physical-intelligence.md",
+    keywords: ["PAN 2 world model", "MBZUAI", "physical intelligence", "action simulation", "open world model", "robotics simulation"],
+    minutes: 2.5,
+    reference: {
+      label: "PAN 2 announcement by IFM",
+      href: "https://ifm.ai/pan2/press-release/"
+    }
+  },
+  {
+    slug: "saltline-ai-browser-3d-evolution",
+    date: "2026-11-11",
+    title: "Saltline: how AI is changing 3D browser games",
+    summary: "How Saltline and Gulmohar Local use AI-generated code, Three.js and WebGL to build on earlier 3D websites and turn small demos into playable browser worlds.",
+    kind: "explainer",
+    document: "/news/saltline-ai-browser-3d-evolution.md",
+    keywords: ["Saltline", "AI browser games", "AI 3D demos", "Three.js procedural assets", "Gulmohar Local", "WebGL", "cloud gaming"],
+    minutes: 4,
+    reference: {
+      label: "Saltline by Felix Rieseberg",
+      href: "https://claude.ai/artifact/BGY1SztrAYcJQHSsnHHGmp"
+    }
+  },
+  {
+    slug: "tinytraffic-self-hosted-web-analytics",
+    date: "2026-11-10",
+    title: "Tiny Traffic puts self-hosted web analytics in one binary",
+    summary: "How Tiny Traffic combines Go, DuckDB and a cookie-free tracker for small sites, with daily visitor counting and an optional ClickHouse backend.",
+    kind: "shipped",
+    document: "/news/tinytraffic-self-hosted-web-analytics.md",
+    keywords: ["Tiny Traffic analytics", "self-hosted web analytics", "DuckDB analytics", "cookie-free analytics", "Tiny Traffic ClickHouse"],
+    minutes: 1.5,
+    reference: {
+      label: "Tiny Traffic on GitHub",
+      href: "https://github.com/egoist/tinytraffic"
+    }
+  },
+  {
+    slug: "whisker-rust-native-mobile-apps",
+    date: "2026-11-07",
+    title: "Whisker takes Rust’s native UI push to iOS and Android",
+    summary: "How Whisker shares Rust UI code across native mobile views, the web and desktop, with hot reload and important pre-alpha platform limits.",
+    kind: "reading",
+    document: "/news/whisker-rust-native-mobile-apps.md",
+    keywords: ["Whisker Rust UI", "Rust iOS Android apps", "Whisker native Host", "Taffy layout", "Rust hot reload"],
+    minutes: 2,
+    reference: {
+      label: "Whisker on GitHub",
+      href: "https://github.com/whiskerrs/whisker"
+    }
+  },
+  {
+    slug: "rust-native-apps-discord-gpui-rune",
+    date: "2026-11-07",
+    title: "Discord, GPUI and Rune: Rust’s native desktop push",
+    summary: "Why Discord and Cap are moving beyond browser-rendered interfaces, how GPUI and GPUI Kit work, and where Anomaly’s Rune fits. Includes Cap’s playback benchmarks.",
+    kind: "explainer",
+    document: "/news/rust-native-apps-discord-gpui-rune.md",
+    keywords: ["Discord Rust rewrite", "GPUI framework", "GPUI Kit components", "Rune Anomaly OpenCode", "Cap Tauri GPUI benchmark", "Rust native desktop apps"],
+    minutes: 6,
+    reference: {
+      label: "GPUI — framework and documentation",
+      href: "https://gpui.rs/"
+    }
+  },
+  {
+    slug: "rune-native-ui-framework",
+    date: "2026-11-06",
+    title: "Rune is Anomaly’s native Rust UI framework for desktop apps",
+    summary: "How Anomaly’s Rune UI framework uses Taffy layout and GPU rendering, where Hex uses it today, and what OpenCode Desktop would test.",
+    kind: "reading",
+    document: "/news/rune-native-ui-framework.md",
+    keywords: ["Anomaly Rune UI framework", "Rust native desktop UI", "Rune Taffy layout", "OpenCode Desktop", "Hex dictation app"],
+    minutes: 2,
+    reference: {
+      label: "Rune on GitHub",
+      href: "https://github.com/anomalyco/rune"
+    }
+  },
+  {
+    slug: "kawa-kafka-gateway",
+    date: "2026-11-05",
+    title: "Kawa puts virtual topics and access rules in front of Kafka",
+    summary: "How the Kawa Kafka gateway rewrites broker addresses, maps virtual topics and applies access rules, and what to measure before putting it in the request path.",
+    kind: "infra",
+    document: "/news/kawa-kafka-gateway.md",
+    keywords: ["Kawa Kafka gateway", "Kafka virtual topics", "Kafka broker address rewriting", "Kafka access control"],
+    minutes: 2.5,
+    reference: {
+      label: "Kawa — v0.1.0 source",
+      href: "https://github.com/kawa-platform/kawa-gateway/tree/v0.1.0"
+    }
+  },
+  {
+    slug: "rustle-forward-proxy-benchmarks",
+    date: "2026-11-05",
+    title: "Rustle hits 55,258 requests per second in a single-core proxy benchmark",
+    summary: "How Rustle keeps each connection on one core, what its forward proxy benchmarks measured, and how backend design guided the Claude-assisted build.",
+    kind: "infra",
+    document: "/news/rustle-forward-proxy-benchmarks.md",
+    keywords: ["Rustle forward proxy", "Rust proxy benchmark", "Tokio per-core architecture", "forward vs reverse proxy"],
+    minutes: 3,
+    reference: {
+      label: "Rustle — Source and benchmark results",
+      href: "https://github.com/EdouardCourty/rustle#benchmarks"
+    }
+  },
+  {
+    slug: "ai-agent-cloud-hosting-costs",
+    date: "2026-11-04",
+    title: "VPS Hosting for AI Agents: What’s Under the Sandbox?",
+    summary: "Compare VPS hosting for AI agents, what Agent37’s full VM costs, where Firecracker fits, and how shared hardware and pricing affect always-on workloads.",
+    kind: "infra",
+    document: "/news/ai-agent-cloud-hosting-costs.md",
+    keywords: ["VPS hosting for AI agents", "Firecracker microVM", "Agent37 VM pricing", "persistent cloud computer", "Claude Code VPS", "Codex VPS"],
+    minutes: 7,
+    reference: {
+      label: "Agent37 Cloud — Published sandbox rates",
+      href: "https://www.agent37.com/pricing"
+    }
+  },
+  {
+    slug: "openai-pando-git-backend-anthropic-scion",
+    date: "2026-11-03",
+    title: "OpenAI Pando: how its Git backend scales pushes and fetches",
+    summary: "Why OpenAI built Pando, how its Git backend scales pushes and fetches with reusable packfiles, and how its design compares with Anthropic’s Scion.",
+    kind: "infra",
+    document: "/news/openai-pando-git-backend-anthropic-scion.md",
+    keywords: ["OpenAI Pando", "Pando Git backend architecture", "Git packfile URI", "scaling Git monorepos", "Pando vs Anthropic Scion", "AI agent source control"],
+    minutes: 7,
+    reference: {
+      label: "OpenAI — Scaling Git at OpenAI",
+      href: "https://openai.com/index/scaling-git-at-openai/"
+    }
+  },
+  {
+    slug: "mit-weight-space-programming-gpt-6-astra-qwen",
+    date: "2026-11-03",
+    title: "MIT researchers use GPT-6 Astra to edit Qwen’s weights",
+    summary: "MIT researchers report that GPT-6 Astra edited Qwen’s weights to reduce reasoning loops, lifting benchmark scores. Here is what the experiment shows and where it falls short.",
+    kind: "reading",
+    document: "/news/mit-weight-space-programming-gpt-6-astra-qwen.md",
+    keywords: ["weight-space programming", "GPT-6 Astra Qwen weights", "MIT CSAIL AI research", "Qwen reasoning loops", "MATH-500 benchmark"],
+    minutes: 2,
+    reference: {
+      label: "MIT CSAIL — Sparks of Weight-Space Programming",
+      href: "https://rikiyat.github.io/blog/weight-space-programming/"
+    }
+  },
+  {
+    slug: "tibo-codex-challenge-gpt-6-2-astra-fable-5-5",
+    date: "2026-11-02",
+    title: "Tibo’s 28-day Codex challenge ends with GPT-6.2 Astra rumors",
+    summary: "What Tibo’s 28-day Codex challenge delivered, why fans wanted more, and what GPT-6.2 Astra and Claude Fable 5.5 rumors mean amid Anthropic’s IPO plans.",
+    kind: "reading",
+    document: "/news/tibo-codex-challenge-gpt-6-2-astra-fable-5-5.md",
+    keywords: ["Tibo 28-day Codex challenge", "Codex challenge summary", "Codex usage resets", "GPT-6.2 Astra rumors", "Claude Fable 5.5 release rumors", "Claude Opus 5.5", "Anthropic IPO"],
+    minutes: 5,
+    reference: {
+      label: "Tibo’s 28-day Codex challenge — Daily tracker",
+      href: "https://nepentheplay.com/games/codex-28"
+    }
+  },
+  {
+    slug: "overflow-design-isometric-drawings",
+    date: "2026-11-02",
+    title: "Overflow Design refreshes its isometric illustration library",
+    summary: "Overflow Design's refreshed isometric catalogue adds custom colors and light and dark previews, with free stills and paid animated drawings.",
+    kind: "shipped",
+    document: "/news/overflow-design-isometric-drawings.md",
+    keywords: ["Overflow Design", "isometric illustrations", "Zafar Ismatullaev", "design assets", "animated isometric drawings"],
+    minutes: 1.5,
+    reference: {
+      label: "Overflow Design — Isometric drawings",
+      href: "https://www.overflow.design/"
+    }
+  },
+  {
+    slug: "mirendil-fern-10-million-token-context-model",
+    date: "2026-10-27",
+    title: "Mirendil’s Fern puts 10 million tokens of context to work on AI research",
+    summary: "Fern targets research code, training logs and agent histories with a 10-million-token context window. Its early results show the gap between retaining evidence and reasoning across it.",
+    kind: "reading",
+    document: "/news/mirendil-fern-10-million-token-context-model.md",
+    keywords: [
+      "Mirendil Fern 0.1",
+      "10 million token context window",
+      "Fern coding benchmarks",
+      "long context AI model",
+      "AI research code"
+    ],
+    minutes: 3,
+    reference: {
+      label: "Mirendil — Introducing Fern",
+      href: "https://mirendil.com/news/introducing-fern/"
+    }
+  },
+  {
+    slug: "maya-2-native-open-weight-indian-language-speech",
+    date: "2026-10-27",
+    title: "Maya-2 Native releases downloadable speech generation for 12 languages",
+    summary: "Maya Research has released speech-model weights and a streaming engine for 11 Indic languages and English, with voice cloning and published quality and serving results.",
+    kind: "shipped",
+    document: "/news/maya-2-native-open-weight-indian-language-speech.md",
+    keywords: [
+      "Maya-2 Native",
+      "open weight Indian language TTS",
+      "Maya Research",
+      "Maya 2 benchmarks",
+      "self hosted text to speech"
+    ],
+    minutes: 3,
+    reference: {
+      label: "Maya Research — Maya-2 Native model card",
+      href: "https://huggingface.co/maya-research/maya2-native"
+    }
+  },
+  {
+    slug: "pomerado-browser-automation-reusable-mcp-tools",
+    date: "2026-10-27",
+    title: "Pomerado turns browser workflows into tools agents can reuse",
+    summary: "Pomerado generates website integrations from browser tasks, moving repeated navigation into saved code. Its launch raises a practical question about the cost of reuse and maintenance.",
+    kind: "shipped",
+    document: "/news/pomerado-browser-automation-reusable-mcp-tools.md",
+    keywords: [
+      "Pomerado",
+      "browser automation MCP",
+      "Pomerado MIT license",
+      "generated browser integrations",
+      "reusable website integrations"
+    ],
+    minutes: 3,
+    reference: {
+      label: "Pomerado — Core and documentation",
+      href: "https://github.com/Pomerado/pomerado"
+    }
+  },
+  {
+    slug: "microsoft-quicksand-qemu-agent-sandboxes",
+    date: "2026-10-27",
+    title: "Microsoft Quicksand adds host connections to reversible agent VMs",
+    summary: "Quicksand’s networking update lets local Linux guests reach selected host services. Its Python API combines command execution, desktop control and checkpoints for agent experiments.",
+    kind: "infra",
+    document: "/news/microsoft-quicksand-qemu-agent-sandboxes.md",
+    keywords: [
+      "Microsoft Quicksand",
+      "QEMU AI agent sandbox",
+      "quick-sandbox Python",
+      "agent VM checkpoints",
+      "local agent sandbox"
+    ],
+    minutes: 3,
+    reference: {
+      label: "Microsoft — Quicksand",
+      href: "https://github.com/microsoft/quicksand"
+    }
+  },
+  {
+    slug: "flashraw-rust-camera-raw-decoder-benchmarks",
+    date: "2026-10-27",
+    title: "FlashRaw targets faster camera RAW processing in Rust and the browser",
+    summary: "FlashRaw combines parallel decoding with a fused image-development stage. Its published LibRaw comparisons show large speedups, with results varying by hardware, format and output.",
+    kind: "shipped",
+    document: "/news/flashraw-rust-camera-raw-decoder-benchmarks.md",
+    keywords: [
+      "FlashRaw",
+      "Rust RAW image decoder",
+      "FlashRaw vs LibRaw",
+      "camera RAW benchmarks",
+      "WebAssembly photo processing"
+    ],
+    minutes: 3,
+    reference: {
+      label: "FlashRaw — Release and benchmarks",
+      href: "https://github.com/ybouane/flashraw"
+    }
+  },
+  {
+    slug: "ai-sandbox-bench-regions-provider-comparison",
+    date: "2026-10-27",
+    title: "AI Sandbox Bench: comparing the infrastructure behind agent sandboxes",
+    summary: "As agent sandboxes multiply, Sandbox Bench compares cloud providers on startup, file operations and agent workflows. Its regional results show how latency adds up.",
+    kind: "infra",
+    document: "/news/ai-sandbox-bench-regions-provider-comparison.md",
+    keywords: [
+      "AI Sandbox Bench",
+      "cloud sandbox benchmark",
+      "Boat Upstash Ephemeral Box",
+      "agent sandbox latency",
+      "sandbox regional comparison"
+    ],
+    minutes: 4,
+    reference: {
+      label: "OpenCore — AI Sandbox Bench",
+      href: "https://aisandboxbench.com/"
+    }
+  },
+  {
+    slug: "jakub-krehel-teardown-technical-illustration-skill",
+    date: "2026-10-27",
+    title: "Jakub Krehel’s teardown skill makes editable technical illustrations",
+    summary: "Jakub Krehel’s teardown skill builds configurable technical drawings. An isometric teardown example shows how its editable parts, assembled views and SVG exports fit documentation.",
+    kind: "shipped",
+    document: "/news/jakub-krehel-teardown-technical-illustration-skill.md",
+    keywords: [
+      "Jakub Krehel teardown",
+      "technical illustration agent skill",
+      "exploded view SVG",
+      "teardown skill MIT",
+      "editable technical drawings"
+    ],
+    minutes: 2.5,
+    reference: {
+      label: "Jakub Krehel — Skills and examples",
+      href: "https://jakub.kr/skills"
+    }
+  },
+  {
+    slug: "asonix-app-store-keywords-ai-visibility",
+    date: "2026-10-27",
+    title: "Asonix combines App Store keyword research with ChatGPT visibility",
+    summary: "Guilherme Rizzo’s Asonix brings App Store search data and weekly ChatGPT recommendation checks together, covering two routes through which users discover apps.",
+    kind: "shipped",
+    document: "/news/asonix-app-store-keywords-ai-visibility.md",
+    keywords: [
+      "Asonix",
+      "App Store optimization",
+      "ASO keyword research",
+      "Asonix AI visibility",
+      "Guilherme Rizzo"
+    ],
+    minutes: 1.5,
+    reference: {
+      label: "Asonix — Features and data sources",
+      href: "https://asonix.io/"
+    }
+  },
+  {
+    slug: "ascii-animation-web-design",
+    date: "2026-10-27",
+    title: "AI-assisted ASCII animation is finding a place on the web",
+    summary: "Recent ASCII experiments turn creatures and scenes into live web animations. How character-based rendering works, and how AI tools are helping people build it.",
+    kind: "reading",
+    document: "/news/ascii-animation-web-design.md",
+    keywords: [
+      "ASCII art web design trend",
+      "ASCII web design",
+      "dither interface design",
+      "AI assisted ASCII art",
+      "ascii.rest",
+      "Asciify",
+      "ASCII animation component",
+      "ASCII bird animation"
+    ],
+    minutes: 3,
+    reference: {
+      label: "ASCII art — Recent examples and rendering tools",
+      href: "https://asciify.org/"
+    }
+  },
+  {
+    slug: "anthropic-open-weight-models-security-timeline",
+    date: "2026-10-24",
+    title: "Anthropic and open-weight AI: why competition keeps becoming a security debate",
+    summary: "From DeepSeek to GLM, a timeline of Anthropic's distillation allegations, security warnings and policy advocacy—and how they frame open-weight competition.",
+    kind: "take",
+    document: "/news/anthropic-open-weight-models-security-timeline.md",
+    keywords: ["Anthropic open-weight models", "Dario Amodei DeepSeek", "AI distillation allegations", "GLM-5.3 security", "Qwen distillation", "Kimi open weights"],
+    minutes: 5,
+    reference: {label: "Anthropic — Position on open-weight models", href: "https://www.anthropic.com/news/position-open-weights-models"},
+  },
+
+  {
+    slug: "hatchzip-in-place-archive-extraction",
+    date: "2026-10-24",
+    title: "Hatchzip shrinks archives while extracting: claims, benchmarks and design",
+    summary: "Hatchzip reclaims archive space as files are extracted. Its reported benchmarks, shared Rust engine and crash-recovery design explain the gains and limits.",
+    kind: "shipped",
+    document: "/news/hatchzip-in-place-archive-extraction.md",
+    keywords: ["Hatchzip", "extract archive without enough disk space", "in-place archive extraction", "Hatchzip benchmark", "ZIP 7z extraction", "Hatchzip architecture"],
+    minutes: 2,
+    reference: {label: "Hatchzip — source, design and reported benchmarks", href: "https://github.com/xevrion/hatchzip"},
+  },
+
+  {
+    slug: "kimi-k3-1-pro-frontier-model-comparison",
+    date: "2026-10-24",
+    title: "Kimi K3.1 Pro launches: specs and comparison with frontier AI models",
+    summary: "Kimi K3.1 Pro brings 2.8T total and 104B active parameters. Compare its launch benchmarks with Opus 5.5, GPT-6 Astra and other peers, plus pricing and weight availability.",
+    kind: "shipped",
+    document: "/news/kimi-k3-1-pro-frontier-model-comparison.md",
+    keywords: ["Kimi K3.1 Pro", "Kimi K3.1 benchmarks", "Kimi vs Claude Opus 5.5", "Kimi vs GPT-6 Astra", "Kimi active parameters", "Kimi open weights release", "Kimi API pricing"],
+    minutes: 4,
+    reference: {label: "Moonshot — Kimi K3.1 Pro launch and evaluation notes", href: "https://www.kimi.ai/blog/kimi-k3-1-pro"},
+  },
+
+  {
+    slug: "abliterated-models-origin-refusals-use-cases",
+    date: "2026-10-24",
+    title: "Abliterated models: what they change, origins and use cases",
+    summary: "Abliterated models edit existing AI weights to reduce refusals. Where the technique began, what the original may decline, practical uses and the capability trade-offs.",
+    kind: "explainer",
+    document: "/news/abliterated-models-origin-refusals-use-cases.md",
+    keywords: ["abliterated models", "what is abliteration", "abliteration origin", "abliterated vs uncensored models", "AI refusal removal", "DeepSeek abliterated", "abliteration use cases"],
+    minutes: 3,
+    reference: {label: "Arditi et al. — Refusal in Language Models Is Mediated by a Single Direction", href: "https://arxiv.org/abs/2406.11717"},
+  },
+
+  {
+    slug: "clickbench-removes-pgrust-benchmark-dispute",
+    date: "2026-10-24",
+    title: "ClickBench removes pgrust over benchmark cheating allegations",
+    summary: "ClickBench removed pgrust over query-specific code and caching. Its creator disputes the findings and has submitted a public v0.4-beta with documented cache controls.",
+    kind: "infra",
+    document: "/news/clickbench-removes-pgrust-benchmark-dispute.md",
+    keywords: ["ClickBench pgrust removal", "pgrust benchmark cheating allegations", "pgrust v0.4-preview", "database benchmark caching", "pgrust v0.4-beta", "PostgreSQL Rust rewrite"],
+    minutes: 4,
+    reference: {label: "ClickBench — pgrust removal PR #2165", href: "https://github.com/ClickHouse/ClickBench/pull/2165"},
+  },
+
+  {
+    slug: "deepseek-fireworks-deepinfer-faster-inference",
+    date: "2026-10-23",
+    title: "The race to faster AI inference: Meta, Fireworks and DeepSeek",
+    summary: "Meta offers inference-speed prizes as Fireworks claims 1,521+ tokens/s. The gains behind faster AI, and the security concerns raised by this week’s breaches.",
+    kind: "infra",
+    document: "/news/deepseek-fireworks-deepinfer-faster-inference.md",
+    keywords: ["faster AI inference", "Muse Spark Open Kernel Challenge", "Meta Paradigm 100000 prize", "Helion GPU kernels", "Fireworks Ultrafast", "DeepSeek V4.1 Flash 1017", "Claude Opus 5.5 speed", "DeepInfer speculative decoding"],
+    minutes: 4,
+    reference: {label: "Muse Spark Open Kernel Challenge", href: "https://openkernelchallenge.dev/"},
+  },
+
+  {
+    slug: "php-critical-rce-october-2026",
+    date: "2026-10-22",
+    title: "PHP2Shell: PHP RCE flaws, request flow and patched versions",
+    summary: "How PHP2Shell reaches startup and cleanup, why Apache and PHP-FPM differ, and which PHP versions fix CVE-2026-109618 and CVE-2026-109619.",
+    kind: "infra",
+    document: "/news/php-critical-rce-october-2026.md",
+    keywords: ["PHP2Shell", "CVE-2026-109618", "CVE-2026-109619", "PHP remote code execution", "Apache mod_php vulnerability", "PHP-FPM security update", "PHP patched versions"],
+    minutes: 4,
+    reference: {label: "PHP — October 2026 security advisory", href: "https://www.php.net/archive/2026.php#2026-10-21-5"},
+  },
+
+  {
+    slug: "railway-environment-variables-security-breach",
+    date: "2026-10-22",
+    title: "Railway breach puts customer environment variable secrets at risk",
+    summary: "Railway says an intruder may have decrypted some customer variables. What the exposure could reach, why rotating provider credentials matters, and what Railway reset.",
+    kind: "infra",
+    document: "/news/railway-environment-variables-security-breach.md",
+    keywords: ["Railway security breach October 2026", "Railway environment variables exposure", "Railway API key rotation", "Railway customer secrets", "Railway GitHub token reset"],
+    minutes: 4,
+    reference: {label: "Railway — October 21 security disclosure", href: "https://blog.railway.com/p/security-disclosure-wednesday-october-21st"},
+  },
+
+  {
+    slug: "pingcap-tidb-cloud-security-breach",
+    date: "2026-10-21",
+    title: "PingCAP breach exposes TiDB Cloud records and SQL editor history",
+    summary: "Stolen service-account credentials exposed PingCAP customer records and source code. What SQL history reveals, what remains uncertain, and what TiDB Cloud users should check.",
+    kind: "infra",
+    document: "/news/pingcap-tidb-cloud-security-breach.md",
+    keywords: ["PingCAP data breach", "TiDB Cloud security incident", "SQL editor history exposure", "stolen service account credentials", "TiDB Cloud API key rotation"],
+    minutes: 3,
+    reference: {label: "PingCAP — October 2026 security incident report", href: "https://www.pingcap.com/trust-hub/security/security-update-october-2026/"},
+  },
+
+  {
+    slug: "emudhra-weak-certificate-signing-keys",
+    date: "2026-10-21",
+    title: "eMudhra certificate compromise: how a signing key became the number 4",
+    summary: "From a domain to a trusted HTTPS website: how eMudhra’s weak signing keys enabled forged certificates, why Firefox blocked them, and what the failure means for users.",
+    kind: "infra",
+    document: "/news/emudhra-weak-certificate-signing-keys.md",
+    keywords: ["eMudhra certificate compromise", "eMudhra weak private keys", "P-384 key generation", "intermediate CA signing keys", "TLS certificate trust"],
+    minutes: 6,
+    reference: {label: "Mozilla — eMudhra intermediate certificate incident", href: "https://bugzilla.mozilla.org/show_bug.cgi?id=2083449"},
+  },
+
+  {
+    slug: "cloudtoid-interprocess-shared-memory-ipc",
+    date: "2026-10-21",
+    title: "Cloudtoid Interprocess v3 connects local apps without a message broker",
+    summary: "Cloudtoid Interprocess v3 links local applications through shared memory. How it removes the broker, connects six language families and handles temporary work.",
+    kind: "infra",
+    document: "/news/cloudtoid-interprocess-shared-memory-ipc.md",
+    keywords: ["Cloudtoid Interprocess", "shared-memory IPC", "Rust Python interprocess communication", "cross-language message queue", "brokerless messaging", "message broker vs shared memory", "Cloudtoid v3 benchmark"],
+    minutes: 5,
+    reference: {label: "Cloudtoid — Interprocess documentation and benchmarks", href: "https://github.com/cloudtoid/interprocess"},
+  },
+
+  {
     slug: "mcp-discovery-apm-torchneuron-ai-tooling",
     date: "2026-10-20",
     title: "Today in AI: TorchNeuron, Clairic, APM and MCP discovery",
@@ -762,3 +1539,4 @@ export const newsNotFoundSeo: PageSeoContent = {
   ogTitle: `Note not found — ${siteIdentity.domain}`,
   ogDescription: "The requested Dispatch note could not be found.",
 };
+

@@ -33,6 +33,15 @@ For a new blog slug, add `/blog/<slug>` to `blogRoutes` in `vite.config.ts`; for
 
 The same slug must appear in the catalog, public route, Vite route, sitemap, `llms.txt`, and Vercel redirect. The catalog’s `source` or `document` must resolve to the exact file under `public`. For assets, use root-relative public URLs without `public/` in the browser path. If the content already exists and only its wording changes, update the metadata and `lastmod` when appropriate; do not add duplicate route entries.
 
+## Maintain the Dispatch archive
+
+Keep the blog’s full listing at `/blog/`. For Dispatch, keep page one at `/news/` and give each later page its own canonical URL, starting with `/news/2/`.
+
+- **When publishing a Dispatch article**, complete the article wiring above. Preserve each older article’s `/news/<slug>/` permalink and sitemap entry as its listing moves back. Change an article’s `<lastmod>` only for a substantive update to that article.
+- **When the article count changes**, compare the old and new totals using `archivePageCount` in `src/utils/archive-page.utils.ts`. Vite derives numbered archive routes from the length of `newsRoutes`, so keep that list in sync with `newsNotes` and reserve it for article slugs.
+- **When a new archive page appears**, add its canonical URL to `public/sitemap.xml` and verify the matching permanent trailing-slash redirect in `vercel.json`. At 15 articles per page, the move from 105 to 106 creates `/news/8/` and needs a redirect from `/news/8`. Keep `public/llms.txt` entries pointed at individual article permalinks.
+- **After building**, check the prerendered HTML. Follow the previous last page’s next link to the new page, verify its self-canonical and confirm that each catalog article appears once across the archive listings.
+
 ## Verify before delivery
 
 - Check the H1 equals the catalog title, the article source exists, dates/read time make sense, and links and image paths resolve.

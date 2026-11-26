@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="610" viewBox="0 0 760 610" role="img" aria-labelledby="title desc"><title id="title">How weak secrets gained signing authority</title><desc id="desc">eMudhra&#x27;s preliminary account: correct keys were followed by weak alternatives, selected by mistake and certified. The recoverable secret was the intermediate CA key, not a website key.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10" fill="#afafac"/></marker></defs><rect width="760" height="610" rx="12" fill="#101011"/><g font-family="DejaVu Sans, sans-serif" fill="#fafaf8">
+<text x="28" y="40" font-size="23" font-weight="700">How weak secrets gained signing authority</text>
+<path d="M358 135H402" fill="none" stroke="#afafac" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M567 200V260" fill="none" stroke="#afafac" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M402 325H358" fill="none" stroke="#afafac" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M193 390V450" fill="none" stroke="#afafac" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M358 515H402" fill="none" stroke="#afafac" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="28" y="70" width="330" height="130" rx="7" fill="#1d1d1f" stroke="#afafac" stroke-width="2"/><text x="44" y="96" fill="#afafac" font-size="14">1 · EXPECTED SETUP</text><text x="44" y="124" font-size="18" font-weight="700">Generate proper CA keys</text>
+<text x="44" y="150" font-size="16">Private secrets protected</text>
+<text x="44" y="173" font-size="16">inside a hardware module</text>
+<rect x="402" y="70" width="330" height="130" rx="7" fill="#1d1d1f" stroke="#ff9870" stroke-width="2"/><text x="418" y="96" fill="#ff9870" font-size="14">2 · SCRIPT FAILURE</text><text x="418" y="124" font-size="18" font-weight="700">Create weak alternatives</text>
+<text x="418" y="150" font-size="16">Private numbers below 256</text>
+<text x="418" y="173" font-size="16">instead of unpredictable secrets</text>
+<rect x="402" y="260" width="330" height="130" rx="7" fill="#1d1d1f" stroke="#ff9870" stroke-width="2"/><text x="418" y="286" fill="#ff9870" font-size="14">3 · SELECTION FAILURE</text><text x="418" y="314" font-size="18" font-weight="700">Pick the weak CA keys</text>
+<text x="418" y="340" font-size="16">Similar labels lead staff</text>
+<text x="418" y="363" font-size="16">to select the wrong pair</text>
+<rect x="28" y="260" width="330" height="130" rx="7" fill="#1d1d1f" stroke="#afafac" stroke-width="2"/><text x="44" y="286" fill="#afafac" font-size="14">4 · AUTHORITY GRANTED</text><text x="44" y="314" font-size="18" font-weight="700">Root certifies those keys</text>
+<text x="44" y="340" font-size="16">Their public keys become</text>
+<text x="44" y="363" font-size="16">trusted intermediate CA keys</text>
+<rect x="28" y="450" width="330" height="130" rx="7" fill="#1d1d1f" stroke="#afafac" stroke-width="2"/><text x="44" y="476" fill="#afafac" font-size="14">5 · PUBLIC CERTIFICATES</text><text x="44" y="504" font-size="18" font-weight="700">Expose the public keys</text>
+<text x="44" y="530" font-size="16">This is normal; public keys</text>
+<text x="44" y="553" font-size="16">are meant to be shared</text>
+<rect x="402" y="450" width="330" height="130" rx="7" fill="#1d1d1f" stroke="#ff9870" stroke-width="2"/><text x="418" y="476" fill="#ff9870" font-size="14">6 · SECRET RECOVERED</text><text x="418" y="504" font-size="18" font-weight="700">Guess the CA signing key</text>
+<text x="418" y="530" font-size="16">Tiny search reveals the secret</text>
+<text x="418" y="553" font-size="16">used to sign new certificates</text>
+<text x="28" y="230" font-size="15" fill="#afafac">The compromised key belongs to the issuing CA.</text>
+</g></svg>
