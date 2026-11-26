@@ -51,6 +51,8 @@
 
 - [CrowdStrike agrees to buy Zscaler for $43.9 billion](https://www.ayu-sh-kr.com/news/crowdstrike-zscaler-acquisition/): CrowdStrike plans to bring Zscaler’s network security and zero-trust access into Falcon. What already works together and what the deal could change for customers. [Article Markdown](https://www.ayu-sh-kr.com/news/crowdstrike-zscaler-acquisition.md).
 
+- [How Google used Gemini 4 and Lean to cut quantum circuit costs](https://www.ayu-sh-kr.com/news/gemini-lean-quantum-circuits/): Gemini 4 agents designed cheaper quantum circuits that Lean could check. What the reported 290-fold reduction for inverse sine measures and why it matters. [Article Markdown](https://www.ayu-sh-kr.com/news/gemini-lean-quantum-circuits.md).
+
 - [RayClay 1.0 brings web-style layouts to C apps](https://www.ayu-sh-kr.com/news/rayclay-1-c-app-framework/): RayClay combines flexbox-style layouts, widgets and networking in C. How its cross-platform rendering works, what its benchmarks show, and where v1.0 falls short. [Article Markdown](https://www.ayu-sh-kr.com/news/rayclay-1-c-app-framework.md).
 
 - [Spring Boot 4.2 and Spring Framework 7.1: What Changed Across Spring](https://www.ayu-sh-kr.com/news/spring-november-release-train-boot-4-2/): How Spring Boot 4.2 aligns Framework 7.1 with Data, Security, Batch and messaging updates, and where the Spring Cloud and Spring AI releases fit. [Article Markdown](https://www.ayu-sh-kr.com/news/spring-november-release-train-boot-4-2.md).
