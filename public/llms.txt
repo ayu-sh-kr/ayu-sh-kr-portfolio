@@ -49,7 +49,7 @@
 
 ## Recent Dispatch notes
 
-- [FastVM wakes idle microVMs on demand. How fast is it?](https://www.ayu-sh-kr.com/news/fastvm-microvm-sleep-wake-benchmarks/): How FastVM wakes idle microVMs, why it switched to Cloud Hypervisor, and how Cloud Hypervisor compares with Firecracker in published benchmarks. [Article Markdown](https://www.ayu-sh-kr.com/news/fastvm-microvm-sleep-wake-benchmarks.md).
+- [FastVM wakes idle microVMs on demand. How fast is it?](https://www.ayu-sh-kr.com/news/fastvm-microvm-sleep-wake-benchmarks/): How FastVM wakes idle microVMs, what a Firecracker-based service measured on the first request, and how Cloud Hypervisor compares at startup. [Article Markdown](https://www.ayu-sh-kr.com/news/fastvm-microvm-sleep-wake-benchmarks.md).
 
 - [GLM-5.4: Z.ai’s coding model runs 28 layers twice](https://www.ayu-sh-kr.com/news/glm-5-4-loop-transformer/): How GLM-5.4 reuses 28 layers and adds vision for coding tasks, with FreeCAD and browser shader demos and a guide to launch availability. [Article Markdown](https://www.ayu-sh-kr.com/news/glm-5-4-loop-transformer.md).
 
