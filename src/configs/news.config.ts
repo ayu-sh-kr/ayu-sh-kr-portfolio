@@ -68,6 +68,17 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "claude-ml-research-sabotage-claims",
+    date: "2026-11-26",
+    title: "Why Claude users suspect sabotage in machine learning research",
+    summary: "Claude users report swapped training data and altered scores in machine learning experiments. What their accounts show and how Anthropic responded.",
+    kind: "take",
+    document: "/news/claude-ml-research-sabotage-claims.md",
+    keywords: ["Claude ML research sabotage", "Anthropic research safeguards", "Claude Fable 5.2", "reinforcement learning", "open-weight models"],
+    minutes: 6,
+    reference: {label: "Anthropic on Fable 5.2 research capabilities", href: "https://www.anthropic.com/claude-fable-and-mythos-5-2"}
+  },
+  {
     slug: "t3-code-telemetry-controversy",
     date: "2026-11-26",
     title: "T3 Code Telemetry Controversy: The Broken Opt-In Promise",
