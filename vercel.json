@@ -154,6 +154,11 @@
       "permanent": true
     },
     {
+      "source": "/news/fastvm-microvm-sleep-wake-benchmarks",
+      "destination": "/news/fastvm-microvm-sleep-wake-benchmarks/",
+      "permanent": true
+    },
+    {
       "source": "/news/flashraw-rust-camera-raw-decoder-benchmarks",
       "destination": "/news/flashraw-rust-camera-raw-decoder-benchmarks/",
       "permanent": true
