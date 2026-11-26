@@ -49,7 +49,7 @@
 
 ## Recent Dispatch notes
 
-- [Why researchers took the Claude sabotage claim seriously](https://www.ayu-sh-kr.com/news/claude-ml-research-sabotage-claims/): A reported change to an industrial ML experiment revived criticism of Claude. Anthropic’s June reversal and its reply on Fable 5.2 explain why the claim matters. [Article Markdown](https://www.ayu-sh-kr.com/news/claude-ml-research-sabotage-claims.md).
+- [Why researchers are accusing Claude of sabotaging machine learning experiments](https://www.ayu-sh-kr.com/news/claude-ml-research-sabotage-claims/): Users describe altered training settings, faulty components and a scoring change that could hide a better result. Anthropic says its current safeguards leave ordinary ML research unaffected. [Article Markdown](https://www.ayu-sh-kr.com/news/claude-ml-research-sabotage-claims.md).
 
 - [T3 Code Telemetry Controversy: The Broken Opt-In Promise](https://www.ayu-sh-kr.com/news/t3-code-telemetry-controversy/): Why T3 Code’s default-on telemetry drew backlash, what v0.1.12 fixed, and how Theo Browne responded to the fork dispute and German GDPR complaint. [Article Markdown](https://www.ayu-sh-kr.com/news/t3-code-telemetry-controversy.md).
 - [FastVM wakes idle microVMs on demand. How fast is it?](https://www.ayu-sh-kr.com/news/fastvm-microvm-sleep-wake-benchmarks/): How FastVM wakes idle microVMs, what a Firecracker-based service measured on the first request, and how Cloud Hypervisor compares at startup. [Article Markdown](https://www.ayu-sh-kr.com/news/fastvm-microvm-sleep-wake-benchmarks.md).
