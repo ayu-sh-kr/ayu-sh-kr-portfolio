@@ -3,10 +3,10 @@
 <desc id="desc">The virtual network holds an incoming packet and signals the FastVM daemon. The daemon resumes the microVM through Cloud Hypervisor. In deep sleep, needed memory pages return from a snapshot as the guest accesses them. The guest can then respond. The animation is schematic, not a timing measurement.</desc>
 <style>
   text { font-family: system-ui, sans-serif; font-weight: 400; }
-  .title { fill: #fafaf8; font-size: 25px; letter-spacing: -.4px; }
-  .label { fill: #bdc0c3; font-size: 21px; }
+  .title { fill: #fafaf8; font-size: 19px; letter-spacing: -.4px; }
+  .label { fill: #bdc0c3; font-size: 15px; }
   .accent { fill: #bacd85; }
-  .step { fill: #c8c9cc; font-size: 19px; }
+  .step { fill: #c8c9cc; font-size: 14px; }
   .leader { stroke: #848688; }
   .tip { fill: #a9ae9e; }
   .leader, .data, .control, .pagewire, .lit, .brush { fill: none; stroke-linecap: round; stroke-linejoin: round; }
@@ -203,18 +203,26 @@
 <g class="motion reply" opacity="0"><rect x="-7" y="-4" width="14" height="8" rx="2"/><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0.000000;0.668333;0.683333;0.819583;0.834167;1.000000" dur="12s" repeatCount="indefinite"/><animateMotion path="M363.10 236.50L270.43 183.00L207.21 146.50L188.16 135.50" dur="12s" repeatCount="indefinite" calcMode="linear" keyPoints="0;0;1;1" keyTimes="0;0.683333;0.820833;1"/></g>
 </g>
 <text x="330" y="39" class="title" text-anchor="middle">How a request wakes FastVM</text>
-<path class="leader" d="M185 110 L374.35 118.00"/>
-<circle cx="374.35" cy="118.00" r="2" class="tip"/>
-<text x="112" y="103" class="label" text-anchor="start">Daemon</text>
-<path class="leader" d="M545 111 L528.51 215.00"/>
-<circle cx="528.51" cy="215.00" r="2" class="tip"/>
-<text x="552" y="105" class="label" text-anchor="start">Snapshot</text>
-<path class="leader" d="M94 199 L199.42 140.00"/>
-<circle cx="199.42" cy="140.00" r="2" class="tip"/>
-<text x="32" y="194" class="label" text-anchor="start">Queue</text>
-<path class="leader" d="M558 257 L439.31 266.50"/>
-<circle cx="439.31" cy="266.50" r="2" class="tip"/>
-<text x="568" y="252" class="label" text-anchor="start">Guest</text>
+<g class="callout">
+  <text x="344" y="82" class="label">Daemon</text>
+  <path class="leader" d="M373 88V125"/>
+  <circle class="tip" cx="373" cy="125" r="2"/>
+</g>
+<g class="callout">
+  <text x="536" y="157" class="label">Snapshot</text>
+  <path class="leader" d="M550 163V177L518 195"/>
+  <circle class="tip" cx="518" cy="195" r="2"/>
+</g>
+<g class="callout">
+  <text x="130" y="145" class="label" text-anchor="end">Queue</text>
+  <path class="leader" d="M137 140H202"/>
+  <circle class="tip" cx="202" cy="140" r="2"/>
+</g>
+<g class="callout">
+  <text x="488" y="288" class="label">Guest</text>
+  <path class="leader" d="M481 283H467L436 265"/>
+  <circle class="tip" cx="436" cy="265" r="2"/>
+</g>
 <path class="leader" opacity=".37" d="M39 337H621"/>
 <text x="113" y="359" text-anchor="middle" class="step"><tspan class="accent">01</tspan><tspan dx="7">Packet waits</tspan></text>
 <text x="330" y="359" text-anchor="middle" class="step"><tspan class="accent">02</tspan><tspan dx="7">Guest resumes</tspan></text>
