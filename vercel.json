@@ -74,6 +74,11 @@
       "permanent": true
     },
     {
+      "source": "/news/8",
+      "destination": "/news/8/",
+      "permanent": true
+    },
+    {
       "source": "/news/gpt-6-2-microsoft-mai-gemini-4-neon",
       "destination": "/news/gpt-6-2-microsoft-mai-gemini-4-neon/",
       "permanent": true
@@ -151,6 +156,11 @@
     {
       "source": "/news/microsoft-quicksand-qemu-agent-sandboxes",
       "destination": "/news/microsoft-quicksand-qemu-agent-sandboxes/",
+      "permanent": true
+    },
+    {
+      "source": "/news/t3-code-telemetry-controversy",
+      "destination": "/news/t3-code-telemetry-controversy/",
       "permanent": true
     },
     {
