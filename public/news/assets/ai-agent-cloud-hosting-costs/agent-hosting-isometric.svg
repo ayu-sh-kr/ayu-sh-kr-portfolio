@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450" role="img" aria-labelledby="title desc">
+<title id="title">An agent’s work uses more than CPU</title>
+<desc id="desc">Illustrative host resources in a shared isometric coordinate system. The numbered sequence follows incoming dependencies through a network socket, CPU execution with RAM activity, disk writes, and outgoing results. An eight-second cycle leaves the saved result visible before resetting. Reduced motion shows the same labeled components and a completed disk write without moving packets. These resources are not dedicated hardware per sandbox.</desc>
+<defs><marker id="arrow" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0 8 4 0 8" fill="context-stroke"/></marker></defs>
+<style>text{font-family:system-ui,sans-serif;fill:#242c12}.label{font-size:20px;font-weight:650}.note{font-size:16px}.edge{stroke:#5d702d;stroke-width:1.4;stroke-linejoin:round}.route{fill:none;stroke-width:2;stroke-linejoin:round}.leader{stroke:#92a951;stroke-width:1.2;fill:none}
+.moving{fill:#5d702d;stroke:#f8faf2;stroke-width:1;opacity:0;animation-duration:8s;animation-timing-function:linear;animation-iteration-count:infinite}
+.incoming{animation-name:incoming}.received{animation-name:received}.memory-transfer{animation-name:memory-transfer}.storage-transfer{animation-name:storage-transfer}.outgoing{animation-name:outgoing;fill:#242c12}
+.cpu{animation:execute 8s linear infinite}.nic{animation:network 8s linear infinite}.ram{animation:memory 8s linear infinite}.ram-1,.ram-4{animation-delay:.15s}.ram-2,.ram-5{animation-delay:.3s}
+.disk-write{fill:none;stroke:#5d702d;stroke-width:2.5;stroke-dasharray:1;stroke-dashoffset:1;animation:write 8s linear infinite}.write-1{animation-delay:.18s}.write-2{animation-delay:.36s}
+@keyframes incoming{0%{offset-distance:0%;opacity:0}2%{opacity:1}16%{offset-distance:100%;opacity:1}17%,100%{offset-distance:100%;opacity:0}}
+@keyframes received{0%,18%{offset-distance:0%;opacity:0}19%{opacity:1}24%{offset-distance:100%;opacity:1}25%,100%{offset-distance:100%;opacity:0}}
+@keyframes memory-transfer{0%,27%{offset-distance:0%;opacity:0}28%{opacity:1}35%{offset-distance:100%;opacity:1}36%,100%{offset-distance:100%;opacity:0}}
+@keyframes storage-transfer{0%,53%{offset-distance:0%;opacity:0}54%{opacity:1}60%{offset-distance:100%;opacity:1}61%,100%{offset-distance:100%;opacity:0}}
+@keyframes outgoing{0%,77%{offset-distance:0%;opacity:0}78%{opacity:1}91%{offset-distance:100%;opacity:1}92%,100%{offset-distance:100%;opacity:0}}
+@keyframes execute{0%,23%,54%,100%{fill:#d9e2bd}28%,39%,49%{fill:#6a7f33}34%,44%{fill:#bdce8a}}
+@keyframes memory{0%,29%,56%,100%{fill:#5d702d}35%,48%{fill:#bdce8a}41%{fill:#6a7f33}}
+@keyframes network{0%,17%,76%,93%,100%{fill:#d9e2bd}10%,83%{fill:#6a7f33}}
+@keyframes write{0%,60%{stroke-dashoffset:1;opacity:.2}62%{opacity:1}72%,94%{stroke-dashoffset:0;opacity:1}100%{stroke-dashoffset:1;opacity:.2}}
+@media(prefers-reduced-motion:reduce){.moving{display:none}.cpu,.nic,.ram,.disk-write{animation:none}.cpu{fill:#6a7f33}.disk-write{stroke-dashoffset:0;opacity:1}}
+</style>
+<rect width="800" height="450" rx="18" fill="#f8faf2"/>
+<text x="24" y="34" class="label">One task: download, execute, save, upload</text>
+<polygon points="234.12,232.00 441.96,352.00 441.96,364.00 234.12,244.00" fill="#bdce8a" class="edge "/>
+<polygon points="597.85,262.00 441.96,352.00 441.96,364.00 597.85,274.00" fill="#d9e2bd" class="edge "/>
+<polygon points="390.00,142.00 597.85,262.00 441.96,352.00 234.12,232.00" fill="#f8faf2" class="edge "/>
+<path id="receive-bus" d="M331.98 217.50 L355.36 231.00" class="route" stroke="#5d702d"/>
+<path id="memory-bus" d="M437.63 248.50 L446.29 253.50 L476.60 236.00 L485.26 241.00" class="route" stroke="#5d702d"/>
+<path id="storage-bus" d="M377.01 253.50 L357.09 265.00 L400.39 290.00" class="route" stroke="#5d702d"/>
+<polygon points="442.83,261.50 456.68,269.50 456.68,272.50 442.83,264.50" fill="#bdce8a" class="edge "/>
+<polygon points="520.77,232.50 456.68,269.50 456.68,272.50 520.77,235.50" fill="#d9e2bd" class="edge "/>
+<polygon points="506.91,224.50 520.77,232.50 456.68,269.50 442.83,261.50" fill="#242c12" class="edge "/>
+<polygon points="446.29,238.50 456.68,244.50 456.68,267.50 446.29,261.50" fill="#bdce8a" class="edge "/>
+<polygon points="517.31,209.50 456.68,244.50 456.68,267.50 517.31,232.50" fill="#d9e2bd" class="edge "/>
+<polygon points="506.91,203.50 517.31,209.50 456.68,244.50 446.29,238.50" fill="#d9e2bd" class="edge "/>
+<polygon points="489.59,209.50 499.99,215.50 499.99,219.50 489.59,213.50" fill="#bdce8a" class="edge "/>
+<polygon points="510.38,209.50 499.99,215.50 499.99,219.50 510.38,213.50" fill="#d9e2bd" class="edge "/>
+<polygon points="499.99,203.50 510.38,209.50 499.99,215.50 489.59,209.50" fill="#5d702d" class="edge ram ram-0"/>
+<polygon points="474.00,218.50 484.40,224.50 484.40,228.50 474.00,222.50" fill="#bdce8a" class="edge "/>
+<polygon points="494.79,218.50 484.40,224.50 484.40,228.50 494.79,222.50" fill="#d9e2bd" class="edge "/>
+<polygon points="484.40,212.50 494.79,218.50 484.40,224.50 474.00,218.50" fill="#5d702d" class="edge ram ram-1"/>
+<polygon points="458.42,227.50 468.81,233.50 468.81,237.50 458.42,231.50" fill="#bdce8a" class="edge "/>
+<polygon points="479.20,227.50 468.81,233.50 468.81,237.50 479.20,231.50" fill="#d9e2bd" class="edge "/>
+<polygon points="468.81,221.50 479.20,227.50 468.81,233.50 458.42,227.50" fill="#5d702d" class="edge ram ram-2"/>
+<polygon points="461.88,272.50 475.74,280.50 475.74,283.50 461.88,275.50" fill="#bdce8a" class="edge "/>
+<polygon points="539.82,243.50 475.74,280.50 475.74,283.50 539.82,246.50" fill="#d9e2bd" class="edge "/>
+<polygon points="525.97,235.50 539.82,243.50 475.74,280.50 461.88,272.50" fill="#242c12" class="edge "/>
+<polygon points="465.34,249.50 475.74,255.50 475.74,278.50 465.34,272.50" fill="#bdce8a" class="edge "/>
+<polygon points="536.36,220.50 475.74,255.50 475.74,278.50 536.36,243.50" fill="#d9e2bd" class="edge "/>
+<polygon points="525.97,214.50 536.36,220.50 475.74,255.50 465.34,249.50" fill="#d9e2bd" class="edge "/>
+<polygon points="508.65,220.50 519.04,226.50 519.04,230.50 508.65,224.50" fill="#bdce8a" class="edge "/>
+<polygon points="529.43,220.50 519.04,226.50 519.04,230.50 529.43,224.50" fill="#d9e2bd" class="edge "/>
+<polygon points="519.04,214.50 529.43,220.50 519.04,226.50 508.65,220.50" fill="#5d702d" class="edge ram ram-3"/>
+<polygon points="493.06,229.50 503.45,235.50 503.45,239.50 493.06,233.50" fill="#bdce8a" class="edge "/>
+<polygon points="513.84,229.50 503.45,235.50 503.45,239.50 513.84,233.50" fill="#d9e2bd" class="edge "/>
+<polygon points="503.45,223.50 513.84,229.50 503.45,235.50 493.06,229.50" fill="#5d702d" class="edge ram ram-4"/>
+<polygon points="477.47,238.50 487.86,244.50 487.86,248.50 477.47,242.50" fill="#bdce8a" class="edge "/>
+<polygon points="498.25,238.50 487.86,244.50 487.86,248.50 498.25,242.50" fill="#d9e2bd" class="edge "/>
+<polygon points="487.86,232.50 498.25,238.50 487.86,244.50 477.47,238.50" fill="#5d702d" class="edge ram ram-5"/>
+<path d="M403.86 209.00 L399.53 211.50" class="route" stroke="#5d702d"/>
+<path d="M351.89 239.00 L347.56 241.50" class="route" stroke="#5d702d"/>
+<path d="M411.65 213.50 L407.32 216.00" class="route" stroke="#5d702d"/>
+<path d="M359.69 243.50 L355.36 246.00" class="route" stroke="#5d702d"/>
+<path d="M419.44 218.00 L415.11 220.50" class="route" stroke="#5d702d"/>
+<path d="M367.48 248.00 L363.15 250.50" class="route" stroke="#5d702d"/>
+<path d="M427.24 222.50 L422.91 225.00" class="route" stroke="#5d702d"/>
+<path d="M375.28 252.50 L370.95 255.00" class="route" stroke="#5d702d"/>
+<path d="M435.03 227.00 L430.70 229.50" class="route" stroke="#5d702d"/>
+<path d="M383.07 257.00 L378.74 259.50" class="route" stroke="#5d702d"/>
+<path d="M442.83 231.50 L438.50 234.00" class="route" stroke="#5d702d"/>
+<path d="M390.87 261.50 L386.54 264.00" class="route" stroke="#5d702d"/>
+<path d="M450.62 236.00 L446.29 238.50" class="route" stroke="#5d702d"/>
+<path d="M398.66 266.00 L394.33 268.50" class="route" stroke="#5d702d"/>
+<polygon points="346.70,229.00 402.99,261.50 402.99,269.50 346.70,237.00" fill="#bdce8a" class="edge "/>
+<polygon points="450.62,234.00 402.99,261.50 402.99,269.50 450.62,242.00" fill="#d9e2bd" class="edge "/>
+<polygon points="394.33,201.50 450.62,234.00 402.99,261.50 346.70,229.00" fill="#242c12" class="edge "/>
+<polygon points="364.02,222.00 402.99,244.50 402.99,251.50 364.02,229.00" fill="#bdce8a" class="edge "/>
+<polygon points="433.30,227.00 402.99,244.50 402.99,251.50 433.30,234.00" fill="#d9e2bd" class="edge "/>
+<polygon points="394.33,204.50 433.30,227.00 402.99,244.50 364.02,222.00" fill="#d9e2bd" class="edge cpu"/>
+<polygon points="384.80,288.00 440.23,320.00 440.23,332.00 384.80,300.00" fill="#bdce8a" class="edge "/>
+<polygon points="477.47,298.50 440.23,320.00 440.23,332.00 477.47,310.50" fill="#d9e2bd" class="edge "/>
+<polygon points="422.04,266.50 477.47,298.50 440.23,320.00 384.80,288.00" fill="#ecf0df" class="edge "/>
+<polygon points="399.53,286.50 439.36,309.50 439.36,310.50 399.53,287.50" fill="#bdce8a" class="edge "/>
+<polygon points="462.75,296.00 439.36,309.50 439.36,310.50 462.75,297.00" fill="#d9e2bd" class="edge "/>
+<polygon points="422.91,273.00 462.75,296.00 439.36,309.50 399.53,286.50" fill="#fafaf8" class="edge "/>
+<path d="M423.77 278.20 L451.49 294.20" pathLength="1" class="disk-write write-0"/>
+<path d="M417.71 281.70 L445.43 297.70" pathLength="1" class="disk-write write-1"/>
+<path d="M411.65 285.20 L439.36 301.20" pathLength="1" class="disk-write write-2"/>
+<polygon points="274.82,201.50 301.67,217.00 301.67,236.00 274.82,220.50" fill="#bdce8a" class="edge "/>
+<polygon points="340.64,194.50 301.67,217.00 301.67,236.00 340.64,213.50" fill="#d9e2bd" class="edge "/>
+<polygon points="313.79,179.00 340.64,194.50 301.67,217.00 274.82,201.50" fill="#d9e2bd" class="edge nic"/>
+<polygon points="280.01,209.50 286.94,213.50 286.94,221.50 280.01,217.50" fill="#242c12" class="edge "/>
+<polygon points="292.14,216.50 299.07,220.50 299.07,228.50 292.14,224.50" fill="#242c12" class="edge "/>
+<path id="inbound" d="M175.23 278.00 L283.48 215.50" class="route" stroke="#5d702d" marker-end="url(#arrow)"/>
+<path id="outbound" d="M295.60 222.50 L187.35 285.00" class="route" stroke="#242c12" marker-end="url(#arrow)"/>
+<text x="24" y="190" class="label">1 · Inbound</text><text x="24" y="213" class="note">Code + dependencies</text>
+<path d="M150 219 H175.23 V278.00" class="leader"/>
+<text x="24" y="328" class="label">4 · Outbound</text><text x="24" y="351" class="note">Uploads + results</text>
+<path d="M150 308 H187.35 V285.00" class="leader"/>
+<text x="342" y="72" class="label">2 · CPU</text><text x="342" y="95" class="note">Execute commands</text>
+<path d="M342 106 H402.99 V219.50" class="leader"/><circle cx="402.99" cy="219.50" r="2.5" fill="#5d702d"/>
+<text x="580" y="142" class="label">RAM</text><text x="580" y="165" class="note">Hold running tools</text>
+<path d="M580 176 H506.91 V227.50" class="leader"/><circle cx="506.91" cy="227.50" r="2.5" fill="#5d702d"/>
+<text x="586" y="300" class="label">3 · Disk</text><text x="586" y="323" class="note">Keep files + outputs</text>
+<path d="M586 334 H427.24 V295.50" class="leader"/><circle cx="427.24" cy="295.50" r="2.5" fill="#5d702d"/>
+<text x="263" y="385" class="note">Illustrative share of a host, not dedicated hardware</text>
+<circle r="3.5" class="moving incoming" style="offset-path:path('M175.23 278.00 L283.48 215.50')"/>
+<circle r="3.5" class="moving received" style="offset-path:path('M331.98 217.50 L355.36 231.00')"/>
+<circle r="3.5" class="moving memory-transfer" style="offset-path:path('M437.63 248.50 L446.29 253.50 L476.60 236.00 L485.26 241.00')"/>
+<circle r="3.5" class="moving storage-transfer" style="offset-path:path('M377.01 253.50 L357.09 265.00 L400.39 290.00')"/>
+<circle r="3.5" class="moving outgoing" style="offset-path:path('M295.60 222.50 L187.35 285.00')"/><path d="M24 402 H776" stroke="#d9e2bd"/><text x="24" y="426" class="note">Transfer allowances vary. Saved files can remain billable while compute sleeps.</text></svg>

@@ -36,6 +36,39 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/design-showcases/ui-ascii-showcase/ui-ascii-showcase.component.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "UiAsciiShowcaseComponent",
+          "customElement": true,
+          "tagName": "ui-ascii-showcase",
+          "superclass": {
+            "name": "ArticleShowcaseElement"
+          },
+          "members": [],
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "UiAsciiShowcaseComponent",
+          "declaration": {
+            "name": "UiAsciiShowcaseComponent"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ui-ascii-showcase",
+          "declaration": {
+            "name": "UiAsciiShowcaseComponent"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/design-showcases/ui-gauge-usecase/ui-gauge-usecase.component.js",
       "declarations": [
         {

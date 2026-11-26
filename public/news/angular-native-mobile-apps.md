@@ -1,10 +1,10 @@
 # Angular Native brings native iOS and Android apps to Angular
 
-**Angular Native** gives Angular developers another way to build native iOS and Android apps. The independent open-source project uses React Native’s **Fabric renderer** underneath, while developers write the interface with Angular components and TypeScript.
+**Angular Native** turns Angular templates into native iOS and Android controls using React Native’s Fabric renderer. A text input appears as a platform view. In a WebView app, an embedded browser draws those controls from HTML and CSS.
 
 Its [first public release](https://github.com/ng-native/ng-native/blob/main/CHANGELOG.md), version 0.1.0, arrived on September 29, 2026. By October 5, the project had reached 0.5.0. It remains alpha, but its approach is worth watching: Angular teams can use React Native’s native rendering infrastructure and Expo’s tooling without writing their screens in React.
 
-For teams already building Angular applications, that changes the mobile conversation. They have another way to carry their framework skills into a native app, alongside established options such as NativeScript and Ionic with Capacitor.
+To try it on a phone, follow the [Angular Native starter guide](https://ng-native.com/guide/getting-started) to create an Expo project.
 
 ## How Angular Native uses React Native Fabric
 
@@ -34,7 +34,7 @@ Angular Native carries that approach into its mobile integration. Angular Router
 
 Consider an organization with an Angular management portal and plans for a mobile companion app. Its developers already understand the services, validation rules and feature structure. Keeping those patterns can reduce the amount of new framework knowledge needed for the mobile project, even though navigation, device permissions and platform behaviour still need attention.
 
-Expo supplies the development and distribution workflow. The [starter guide](https://ng-native.com/guide/getting-started) uses `create-expo-app`; Angular CLI and Nx integrations can add a native app to an existing workspace. Angular’s mature application framework and this new mobile integration are at different stages of maturity, however. The project is independent and is not endorsed by Google, the Angular team or Expo.
+Expo supplies the development and distribution workflow. Angular CLI and Nx integrations can add a native app to an existing workspace. Angular’s mature application framework and this new mobile integration are at different stages of maturity, however. The project is independent and is not endorsed by Google, the Angular team or Expo.
 
 ## A wider mobile market, with adoption still to prove
 

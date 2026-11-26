@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="328" viewBox="0 0 680 328" role="img" aria-labelledby="title description">
+  <title id="title">What one running machine costs per month</title>
+  <desc id="description">Two vCPUs and about four GB RAM. Agent37 full VM is $11.36, Cube is $12, DigitalOcean Basic is $24 and Manus Standard is $30. Models and taxes are excluded.</desc>
+  <style>
+    text { font-family: system-ui, sans-serif; fill: #f7f7f6; font-size: 17px; }
+    .title { font-size: 26px; font-weight: 700; }
+    .note, .tick { fill: #d0d0cd; font-size: 15px; }
+    .label, .value { font-weight: 650; }
+    .value { font-variant-numeric: tabular-nums; }
+  </style>
+  <rect x="1" y="1" width="678" height="326" rx="20" fill="#101011" stroke="#3e3e41" stroke-width="2"/>
+  <text x="26" y="42" class="title">What one running machine costs per month</text>
+  <text x="26" y="69" class="note">2 vCPUs and about 4 GB RAM. Disk and CPU sharing vary.</text>
+  <path d="M208 87V263" stroke="#3e3e41"/>
+  <text x="208" y="284" class="tick" text-anchor="middle">$0</text>
+  <path d="M267 87V263" stroke="#3e3e41"/>
+  <text x="267" y="284" class="tick" text-anchor="middle">$5</text>
+  <path d="M326 87V263" stroke="#3e3e41"/>
+  <text x="326" y="284" class="tick" text-anchor="middle">$10</text>
+  <path d="M385 87V263" stroke="#3e3e41"/>
+  <text x="385" y="284" class="tick" text-anchor="middle">$15</text>
+  <path d="M444 87V263" stroke="#3e3e41"/>
+  <text x="444" y="284" class="tick" text-anchor="middle">$20</text>
+  <path d="M503 87V263" stroke="#3e3e41"/>
+  <text x="503" y="284" class="tick" text-anchor="middle">$25</text>
+  <path d="M562 87V263" stroke="#3e3e41"/>
+  <text x="562" y="284" class="tick" text-anchor="middle">$30</text>
+  <text x="26" y="114" class="label">Agent37 full VM</text>
+  <rect x="208" y="96" width="134.05" height="25" rx="4" fill="#bdce8a"/>
+  <text x="352.05" y="114" class="value">$11.36</text>
+  <text x="26" y="157" class="label">Cube</text>
+  <rect x="208" y="139" width="141.60" height="25" rx="4" fill="#bdce8a"/>
+  <text x="359.60" y="157" class="value">$12.00</text>
+  <text x="26" y="200" class="label">DigitalOcean Basic</text>
+  <rect x="208" y="182" width="283.20" height="25" rx="4" fill="#bdce8a"/>
+  <text x="501.20" y="200" class="value">$24.00</text>
+  <text x="26" y="243" class="label">Manus Standard</text>
+  <rect x="208" y="225" width="354.00" height="25" rx="4" fill="#bdce8a"/>
+  <text x="572.00" y="243" class="value">$30.00</text>
+  <text x="26" y="311" class="note">Published USD rates for a full month, excluding models and taxes.</text>
+</svg>
