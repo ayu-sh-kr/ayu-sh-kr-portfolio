@@ -8,7 +8,7 @@ FastVM is an experimental sandbox manager for a single Linux host. In November i
 
 FastVM can turn the filesystem from a container image into a bootable guest disk. When that guest goes idle, its daemon first pauses the virtual CPUs while leaving RAM resident. If it goes into **deeper sleep**, FastVM saves a snapshot and reopens it with guest memory backed by a file. The host can then reclaim cached pages under memory pressure.
 
-![FastVM sleep and wake: an inbound packet waits in the virtual network queue, the daemon tells Cloud Hypervisor to resume the Linux guest, and the guest reads needed memory pages from the snapshot.](/news/assets/fastvm-microvm-sleep-wake-benchmarks/sleep-wake-architecture.svg)
+![An incoming packet waits in the guest’s network queue while FastVM resumes the microVM. In deeper sleep, the guest reads needed memory pages from its snapshot before replying.](/news/assets/fastvm-microvm-sleep-wake-benchmarks/sleep-wake-architecture.svg)
 
 The virtual network queue stays available. An incoming packet both enters that path and [signals the daemon](https://github.com/tuananh/fastvm/blob/a9624faae524c82ca0824753690439e198ff7182/internal/daemon/daemon.go) to resume the guest. The server can pick up where it left off; if the pages it needs aren’t cached, fetching them adds to the first request’s wait.
 
