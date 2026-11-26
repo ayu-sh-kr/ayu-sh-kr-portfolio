@@ -70,11 +70,11 @@ export const newsNotes: readonly NewsNote[] = [
   {
     slug: "t3-code-telemetry-controversy",
     date: "2026-11-26",
-    title: "T3 Code promised opt-in telemetry. The app shipped it on by default.",
-    summary: "How a fork dispute drew attention to T3 Code’s opt-in promise, what older builds collected, and what the team removed after the backlash.",
+    title: "T3 Code Telemetry Controversy: The Broken Opt-In Promise",
+    summary: "Why T3 Code’s default-on telemetry drew backlash, what v0.1.12 fixed, and how Theo Browne responded to the fork dispute and German GDPR complaint.",
     kind: "explainer",
     document: "/news/t3-code-telemetry-controversy.md",
-    keywords: ["T3 Code telemetry", "Theo Browne", "T3 Code privacy", "opt-in analytics", "Codex and Claude account IDs"],
+    keywords: ["T3 Code telemetry controversy", "default-on telemetry", "T3 Code telemetry opt-out", "Theo Browne", "GDPR complaint", "Codex and Claude account IDs"],
     minutes: 3
   },
   {
