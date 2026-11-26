@@ -71,11 +71,11 @@ export const newsNotes: readonly NewsNote[] = [
     slug: "fastvm-microvm-sleep-wake-benchmarks",
     date: "2026-11-26",
     title: "FastVM wakes idle microVMs on demand. How fast is it?",
-    summary: "How FastVM wakes idle microVMs, why it switched to Cloud Hypervisor, and how Cloud Hypervisor compares with Firecracker in published benchmarks.",
+    summary: "How FastVM wakes idle microVMs, what a Firecracker-based service measured on the first request, and how Cloud Hypervisor compares at startup.",
     kind: "infra",
     document: "/news/fastvm-microvm-sleep-wake-benchmarks.md",
-    keywords: ["FastVM", "microVM wake on demand", "Cloud Hypervisor", "Firecracker benchmarks", "microVM cold start", "VM snapshot restore"],
-    minutes: 3,
+    keywords: ["FastVM", "microVM wake on demand", "Cloud Hypervisor", "Firecracker benchmarks", "first-request latency", "VM snapshot restore"],
+    minutes: 4,
     reference: {
       label: "FastVM source and documentation",
       href: "https://github.com/tuananh/fastvm"
