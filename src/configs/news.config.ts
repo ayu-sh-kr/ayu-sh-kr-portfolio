@@ -147,12 +147,12 @@ export const newsNotes: readonly NewsNote[] = [
   {
     slug: "inkling-2-mini",
     date: "2026-11-21",
-    title: "Inkling 2 Mini runs the same layers three times. What does that buy a laptop?",
-    summary: "Why Inkling 2 Mini repeats its middle layers, how it compares with Qwen, and how the Gall runtime runs it on a 24 GB Apple Silicon Mac.",
+    title: "Inkling 2 Mini on Apple Silicon: Gall and Rustling",
+    summary: "How Inkling 2 Mini reuses layers, how Gall runs it on a 24 GB Mac, and how Rustling connects local inference to coding tools through an OpenAI-compatible API.",
     kind: "shipped",
     document: "/news/inkling-2-mini.md",
-    keywords: ["Inkling 2 Mini", "Thinking Machines Lab", "looped transformer", "local coding model", "DeepSWE", "Gall runtime", "Inkling 2 Mini on Apple Silicon"],
-    minutes: 5,
+    keywords: ["Inkling 2 Mini", "Apple Silicon local inference", "Gall runtime", "Rustling", "OpenAI-compatible local API", "looped transformer"],
+    minutes: 6,
     reference: {
       label: "Introducing Inkling 2 Mini",
       href: "https://thinkingmachines.ai/news/inkling-2-mini/"

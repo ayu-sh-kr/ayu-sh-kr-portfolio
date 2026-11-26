@@ -1,8 +1,8 @@
-# Inkling 2 Mini runs the same layers three times. What does that buy a laptop?
+# Inkling 2 Mini on Apple Silicon: Gall and Rustling
 
-An open-weight model can fit on a laptop’s drive and still need more memory than the laptop has. **Inkling 2 Mini** tackles part of that problem by sending each token through the same twelve layers three times, without storing three copies of those layers. **Gall**, a separate runtime for Apple Silicon, lowers the hardware requirement further: its maintainer ran Mini on a **24 GB MacBook Air**, below the 32 GB that Thinking Machines lists for the original checkpoint.
+A coding model can fit on your laptop’s drive and still leave too little memory to work through a long prompt. **Inkling 2 Mini** approaches that problem at the model level: it does more work per token by reusing layers it already has. Two Apple Silicon runtimes take it from there. **Gall** shows what fits on a 24 GB MacBook Air, and **Rustling** shows how a coding client can talk to the model through a local API.
 
-Thinking Machines Lab released Mini on November 20. It accepts text and images, generates text and tool calls, and is available through Tinker or as an **Apache 2.0** download. It builds on [Inkling 2 Small’s four-bit training recipe](/news/inkling-2-four-bit-training/), which lets the lab store each expert weight in fewer bits. Mini also stores fewer weights and gets more work out of the ones it keeps.
+Thinking Machines Lab released Mini on November 20. The original model accepts text and images, produces text and tool calls, and is available through Tinker or as an **Apache 2.0** download. It builds on [Inkling 2 Small’s four-bit training recipe](/news/inkling-2-four-bit-training/), which stores each expert weight in fewer bits. Mini also cuts the number of weights it needs to store.
 
 ## What counts as one pass?
 
@@ -12,7 +12,7 @@ Inkling generates text one **token** at a time. Thinking Machines describes a ne
 
 Those 24 stored layers do **48 layer operations per token**. Each trip through the middle pair starts with the first block’s output. On the second and third trips, the model also reads **a message from the previous pass**. A gate learned during training determines how much of that message to use.
 
-Reusing the middle layers gives each token more processing without adding another copy of those weights. Mini also cuts the size of the layers themselves by keeping fewer experts.
+That gives each token more processing without another copy of the middle layers. To shrink the checkpoint itself, the lab also kept fewer experts.
 
 ## How the model fits in memory
 
@@ -43,17 +43,27 @@ To isolate the effect of looping, Thinking Machines tested a separate **variable
 
 The team also checked whether shorter written reasoning made the research model harder to supervise. In its initial tests, the reasoning remained readable and longer loops showed no clear pattern of making undisclosed side tasks more successful.
 
-More passes can give the model more room to work before it answers. On a laptop, that work still needs to fit in memory.
+The loop changes how the model spends its compute. Running it locally brings a different constraint: the weights and the active conversation have to share the Mac’s memory.
 
 ## How Gall runs Mini on a 24 GB Mac
 
 Thinking Machines lists Apple Silicon Macs with **32 GB or more** for the [original checkpoint](https://thinkingmachines.ai/model-card/inkling-2-mini/). [Gall](https://github.com/ltrgoddard/gall) uses a more compact version of the weights from Unsloth. Its Rust host and custom **Metal GPU kernels** read the **12.7 GB** GGUF file in place, avoiding a larger copy in memory.
 
-Gall’s maintainer measured a **5.3 GB server footprint** with an 805-token prompt on a **24 GB M2 MacBook Air**. Allowing for the full 12.7 GB weights file brings the estimated memory budget to about **18 GB**. Separate runs on that Mac reached **20.5 tokens per second** at short context and **16.2–16.5** at roughly 30,000 tokens.
+Gall’s maintainer measured a **5.3 GB server footprint** with an 805-token prompt on a **24 GB M2 MacBook Air**. Allowing for the full 12.7 GB weights file brings the estimated memory budget to about **18 GB**. The maintainer now reports **about 25 tokens per second** at short context on that Mac. Their longer-context measurements show **16.2–16.5** at roughly 30,000 tokens.
 
-Gall unloads the model after **one idle second** by default. It can save conversation state for prefixes of at least 512 tokens, so a later turn can reuse that work without keeping the model in memory between requests.
+Gall unloads the model after **one idle second** by default. It can save conversation state for prefixes of at least 512 tokens, so a later turn can reuse that work without keeping the model in memory between requests. The current macOS menu bar app also serves **OpenAI- and Anthropic-compatible APIs**, with support for image inputs and structured JSON output.
 
-Mini’s layer reuse makes more processing possible with the same stored weights. Gall changes where that work can happen: on the tested 24 GB Air, the model could answer locally and give memory back when it was idle.
+## Rustling brings a local OpenAI-compatible API to coding tools
+
+[Shown publicly on November 25](https://news.ycombinator.com/item?id=50646482), **Rustling** is another independent runtime for Inkling 2 Mini on Apple Silicon. Its Rust and Metal engine can run as a local server. An app that normally sends requests to a hosted API can point to Rustling’s local address and keep the model computation on the Mac.
+
+The [server implements](https://github.com/onatm/rustling/blob/228c4792e33a4eaf88d5902e6675f755c4ae8714/cli/src/server/mod.rs) both **Chat Completions** and **Responses**, with streamed replies and tool calls. The project shows how to point Codex, Aider and OpenCode at the default local base URL, `http://127.0.0.1:8080/v1`. Codex uses the Responses endpoint. These are OpenAI request formats; **Inkling 2 Mini** is still the model answering. Requests are processed one at a time, and the server does not implement the model’s image input.
+
+For a coding client, the first request often carries a large prompt: instructions, tool definitions and conversation history. Rustling can **cache processed prompts in memory and on disk**, so it can reuse a matching prefix on another request, even after a restart. There’s also a standalone terminal chat with file reading and search, if you want to try it without another client.
+
+> Rustling’s default weights take **16.6 GB** on disk, compared with **12.7 GB** for Gall’s quantization. Conversation state and prompt processing require more memory. Rustling’s maintainer measured on a 64 GB Mac and reports that long prompts can slow down even on 32 GB. That leaves less room for long coding sessions on a 24 GB Mac.
+
+For a **24 GB Mac**, Gall has the clearer hardware evidence: its maintainer tested that memory tier directly. Rustling is an option when you want to connect a text-based coding client to the model locally. To find out whether either fits your work, start with a prompt the size your client normally sends and check the time to the first token as well as the speed once the model starts replying.
 
 ## Sources
 
@@ -62,3 +72,4 @@ Mini’s layer reuse makes more processing possible with the same stored weights
 - [Model weights and license on Hugging Face](https://huggingface.co/thinkingmachines/Inkling-2-Mini)
 - [Artificial Analysis comparison of intelligence, tokens and compute](https://artificialanalysis.ai/articles/inkling-2-mini)
 - [Gall’s Metal runtime, memory budget and M2 MacBook Air measurements](https://github.com/ltrgoddard/gall)
+- [Rustling’s API documentation, terminal chat and memory requirements](https://github.com/onatm/rustling)
