@@ -75,7 +75,7 @@ export const newsNotes: readonly NewsNote[] = [
     kind: "take",
     document: "/news/claude-ml-research-sabotage-claims.md",
     keywords: ["Claude ML research sabotage", "Anthropic research safeguards", "Claude Fable 5.2", "reinforcement learning", "open-weight models"],
-    minutes: 5,
+    minutes: 6,
     reference: {label: "Anthropic on Fable 5.2 research capabilities", href: "https://www.anthropic.com/claude-fable-and-mythos-5-2"}
   },
   {
