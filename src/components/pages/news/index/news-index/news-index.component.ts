@@ -1,5 +1,7 @@
 import "./news-index.component.css";
 import "../../news-shared.css";
+import {archivePageNumber, archiveSlice} from "@app/utils/archive-page.utils.ts";
+import {renderArchivePagination} from "@app/components/navigation/archive-pagination/archive-pagination.ts";
 import {html, trustedHTML, TemplateResult} from "@ayu-sh-kr/dota-wrap/rendering";
 import {BaseElement, BindEvent, Component, WindowListener} from "@ayu-sh-kr/dota-wrap/core";
 import {OnEvent} from "@ayu-sh-kr/dota-wrap/event";
@@ -89,15 +91,15 @@ const renderMonth = (month: NewsMonth, latestSlug: string) => html`
 
 /**
  * Owns the complete `/news` feed and its single floating filter interaction.
- * Notes stay fully readable in the initial HTML; filtering changes visibility
- * in place so the feed remains useful before hydration and during SSG.
+ * The initial HTML contains the requested page. Category filters regroup the
+ * complete catalogue and rebuild the month shortcuts from those results.
  *
  * Selector: `news-index`.
  */
 @Component({selector: "news-index", shadow: false})
 export class NewsIndexComponent extends BaseElement {
   readonly notes = getNewsNotes();
-  readonly months = groupNotesByMonth(this.notes);
+
   currentFilter: NewsKind | "all" = "all";
   revealObserver: IntersectionObserver | null = null;
   monthObserver: IntersectionObserver | null = null;
@@ -105,8 +107,11 @@ export class NewsIndexComponent extends BaseElement {
   /** Activates filtering, month tracking, and the reduced-motion-aware feed reveal. */
   @OnEvent("connected", true)
   initializeFeed(): void {
-    this.currentFilter = filterFromHash();
-    this.applyFilter(this.currentFilter, false);
+    const filter = filterFromHash();
+    if (filter !== this.currentFilter) {
+      this.currentFilter = filter;
+      this.updateHTML();
+    }
     this.observeReveals();
     this.observeMonths();
   }
@@ -137,7 +142,7 @@ export class NewsIndexComponent extends BaseElement {
       return;
     }
 
-    this.applyFilter(filter, true);
+    this.applyFilter(filter);
   }
 
   /** Closes the dock after an in-page month destination is selected. */
@@ -191,54 +196,17 @@ export class NewsIndexComponent extends BaseElement {
     toggle.setAttribute("aria-expanded", String(isOpen));
   }
 
-  /** Filters notes and removes empty month destinations from both the feed and dock. */
-  applyFilter(filter: NewsKind | "all", closeDock: boolean): void {
+  /** Category views span the whole catalogue. Clearing a category restores the numbered page. */
+  applyFilter(filter: NewsKind | "all"): void {
+    const hash = filter === "all" ? "" : `#/${filter}`;
+    window.history.replaceState(window.history.state, "", `${window.location.pathname}${window.location.search}${hash}`);
+    this.cleanupFeed();
     this.currentFilter = filter;
-    const notes = Array.from(this.querySelectorAll<HTMLElement>("[data-news-note]"));
-    let shown = 0;
-    notes.forEach((note) => {
-      const isVisible = filter === "all" || note.dataset.kind === filter;
-      note.hidden = !isVisible;
-      if (isVisible) {
-        shown += 1;
-      }
-    });
-
-    this.querySelectorAll<HTMLButtonElement>("[data-news-filter]").forEach((button) => {
-      button.setAttribute("aria-pressed", String(button.dataset.newsFilter === filter));
-    });
-    this.querySelectorAll<HTMLElement>("[data-news-month]").forEach((month) => {
-      const isVisible = month.querySelector("[data-news-note]:not([hidden])") !== null;
-      month.hidden = !isVisible;
-      const monthLink = this.querySelector<HTMLElement>(`[data-news-month-link="${month.id}"]`);
-      if (monthLink) {
-        monthLink.hidden = !isVisible;
-      }
-    });
-
-    const label = newsFilters.find((item) => item.value === filter)?.label ?? newsFilters[0].label;
-    const dockLabel = this.querySelector<HTMLElement>("[data-news-dock-label]");
-    const tally = this.querySelector<HTMLElement>("[data-news-tally]");
-    const toggle = this.querySelector<HTMLButtonElement>("[data-news-dock-toggle]");
-    const empty = this.querySelector<HTMLElement>("[data-news-empty]");
-    if (dockLabel) dockLabel.textContent = label;
-    // Preserve the hydration comments emitted around the counter during SSG.
-    const tallyText = Array.from(tally?.childNodes ?? []).find(
-      (node) => node.nodeType === Node.TEXT_NODE && node.textContent?.trim()
-    );
-    if (tallyText) tallyText.nodeValue = String(shown);
-    if (empty) empty.hidden = shown !== 0;
-    toggle?.setAttribute("data-filtered", String(filter !== "all"));
-    toggle?.setAttribute("aria-label", `${shown} ${shown === 1 ? "note" : "notes"} shown. ${label} filter. Open filters.`);
-
-    const hasFilterHash = /^#\/(shipped|infra|reading|explainer|take)$/.test(window.location.hash);
-    if (closeDock || filter !== "all" || hasFilterHash) {
-      const hash = filter === "all" ? "" : `#/${filter}`;
-      window.history.replaceState(null, "", `${window.location.pathname}${window.location.search}${hash}`);
-    }
-    if (closeDock) {
-      this.setDockOpen(false);
-    }
+    this.updateHTML();
+    this.setDockOpen(false);
+    this.observeReveals();
+    this.observeMonths();
+    this.querySelector<HTMLButtonElement>("[data-news-dock-toggle]")?.focus();
   }
 
   /** Reveals feed rows once, with a static fallback for reduced motion and older browsers. */
@@ -283,6 +251,12 @@ export class NewsIndexComponent extends BaseElement {
 
   /** Renders the Dispatch feed, shared subscription boundary, blog hand-off, and filter dock. */
   render(): TemplateResult {
+    const page = archivePageNumber(window.location.pathname, this.notes.length) ?? 1;
+    const visible = this.currentFilter === "all"
+      ? archiveSlice(this.notes, page)
+      : this.notes.filter(note => note.kind === this.currentFilter);
+    const months = groupNotesByMonth(visible);
+    const label = newsFilters.find(filter => filter.value === this.currentFilter)!.label;
     const latestSlug = this.notes[0]?.slug ?? "";
     return html`
       <main class="news-index-main">
@@ -293,13 +267,14 @@ export class NewsIndexComponent extends BaseElement {
           aria-label="Dispatch notes"
           data-analytics-section="news_feed"
         >
-          ${this.months.map((month) => renderMonth(month, latestSlug))}
-          <p class="news-empty news-lede type-lede" data-news-empty hidden>
+          ${months.map((month) => renderMonth(month, latestSlug))}
+          ${visible.length ? "" : html`<p class="news-empty news-lede type-lede" data-news-empty>
             ${newsContent.index.empty}
             <button type="button" class="news-filter" data-news-filter="all" aria-pressed="false">
               Show all notes
             </button>
-          </p>
+          </p>`}
+          ${this.currentFilter === "all" ? renderArchivePagination(page, this.notes) : ""}
         </section>
 
         <div
@@ -334,7 +309,7 @@ export class NewsIndexComponent extends BaseElement {
                       type="button"
                       class="news-filter"
                       data-news-filter="${filter.value}"
-                      aria-pressed="${filter.value === "all"}"
+                      aria-pressed="${filter.value === this.currentFilter}"
                     >
                       ${filter.label}
                     </button>`
@@ -344,7 +319,7 @@ export class NewsIndexComponent extends BaseElement {
             <div class="news-dock-months">
               <p class="news-label">${newsContent.index.monthLabel}</p>
               <nav aria-label="Dispatch months">
-                ${this.months.map(
+                ${months.map(
                   (month) =>
                     html`<a
                       class="news-month-link"
@@ -361,13 +336,14 @@ export class NewsIndexComponent extends BaseElement {
             type="button"
             class="news-dock-toggle"
             data-news-dock-toggle
-            data-filtered="false"
+            data-filtered="${this.currentFilter !== "all"}"
+            aria-label="${visible.length} notes shown. ${label} filter. Open filters."
             aria-expanded="false"
             aria-controls="news-filter-panel"
           >
             <span class="news-dock-dot" aria-hidden="true"></span>
-            <span data-news-dock-label>All notes</span>
-            <span class="news-dock-count news-number" data-news-tally>${this.notes.length}</span>
+            <span data-news-dock-label>${label}</span>
+            <span class="news-dock-count news-number" data-news-tally>${visible.length}</span>
             <span class="news-dock-chevron" aria-hidden="true"></span>
           </button>
         </div>

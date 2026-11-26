@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="396" viewBox="0 0 640 396" role="img" aria-labelledby="title desc">
+<title id="title">HTTP throughput on one core</title>
+<desc id="desc">Requests per second with 1 KB HTTP responses. Rustle 55,258; 3proxy 21,032; Squid 15,140; Tinyproxy 7,580; gost 4,755. Auth enabled, median of three runs in the Rustle project benchmark.</desc>
+<style>
+text { font: 600 21px system-ui, sans-serif; fill: #f7f7f6; }
+.heading { font-size: 30px; font-weight: 700; }
+.note { font-size: 18px; font-weight: 450; fill: #d0d0cd; }
+.value { font-variant-numeric: tabular-nums; }
+</style>
+<rect x="1" y="1" width="638" height="394" rx="20" fill="#101011" stroke="#3e3e41" stroke-width="2"/>
+<text x="24" y="46" class="heading" text-anchor="start">HTTP throughput on one core</text>
+<text x="24" y="76" class="note" text-anchor="start">1 KB responses · Auth enabled · Median of 3 runs</text>
+<path d="M142 100V315" stroke="#414145"/>
+<text x="142.0" y="342" class="note" text-anchor="middle">0</text>
+<path d="M274 100V315" stroke="#414145"/>
+<text x="274.0" y="342" class="note" text-anchor="middle">20k</text>
+<path d="M406 100V315" stroke="#414145"/>
+<text x="406.0" y="342" class="note" text-anchor="middle">40k</text>
+<path d="M538 100V315" stroke="#414145"/>
+<text x="538.0" y="342" class="note" text-anchor="middle">60k</text>
+<text x="24" y="129" class="" text-anchor="start">Rustle</text>
+<rect x="142" y="108" width="364.70" height="27" rx="4" fill="#bdce8a"/>
+<text x="517.7" y="129" class="value" text-anchor="start">55,258</text>
+<text x="24" y="171" class="" text-anchor="start">3proxy</text>
+<rect x="142" y="150" width="138.81" height="27" rx="4" fill="#929798"/>
+<text x="291.81" y="171" class="value" text-anchor="start">21,032</text>
+<text x="24" y="213" class="" text-anchor="start">Squid</text>
+<rect x="142" y="192" width="99.92" height="27" rx="4" fill="#929798"/>
+<text x="252.92" y="213" class="value" text-anchor="start">15,140</text>
+<text x="24" y="255" class="" text-anchor="start">Tinyproxy</text>
+<rect x="142" y="234" width="50.03" height="27" rx="4" fill="#929798"/>
+<text x="203.03" y="255" class="value" text-anchor="start">7,580</text>
+<text x="24" y="297" class="" text-anchor="start">gost</text>
+<rect x="142" y="276" width="31.38" height="27" rx="4" fill="#929798"/>
+<text x="184.38" y="297" class="value" text-anchor="start">4,755</text>
+<text x="24" y="374" class="note" text-anchor="start">Requests per second · Source: Rustle project benchmark</text>
+</svg>

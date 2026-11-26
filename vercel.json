@@ -14,6 +14,226 @@
   ],
   "redirects": [
     {
+      "source": "/news/glm-5-4-loop-transformer",
+      "destination": "/news/glm-5-4-loop-transformer/",
+      "permanent": true
+    },
+    {
+      "source": "/news/crowdstrike-zscaler-acquisition",
+      "destination": "/news/crowdstrike-zscaler-acquisition/",
+      "permanent": true
+    },
+    {
+      "source": "/news/gemini-lean-quantum-circuits",
+      "destination": "/news/gemini-lean-quantum-circuits/",
+      "permanent": true
+    },
+    {
+      "source": "/news/rayclay-1-c-app-framework",
+      "destination": "/news/rayclay-1-c-app-framework/",
+      "permanent": true
+    },
+    {
+      "source": "/news/spring-november-release-train-boot-4-2",
+      "destination": "/news/spring-november-release-train-boot-4-2/",
+      "permanent": true
+    },
+    {
+      "source": "/news/bending-spoons-mailchimp-acquisition",
+      "destination": "/news/bending-spoons-mailchimp-acquisition/",
+      "permanent": true
+    },
+    {
+      "source": "/news/2",
+      "destination": "/news/2/",
+      "permanent": true
+    },
+    {
+      "source": "/news/3",
+      "destination": "/news/3/",
+      "permanent": true
+    },
+    {
+      "source": "/news/4",
+      "destination": "/news/4/",
+      "permanent": true
+    },
+    {
+      "source": "/news/5",
+      "destination": "/news/5/",
+      "permanent": true
+    },
+    {
+      "source": "/news/6",
+      "destination": "/news/6/",
+      "permanent": true
+    },
+    {
+      "source": "/news/7",
+      "destination": "/news/7/",
+      "permanent": true
+    },
+    {
+      "source": "/news/8",
+      "destination": "/news/8/",
+      "permanent": true
+    },
+    {
+      "source": "/news/gpt-6-2-microsoft-mai-gemini-4-neon",
+      "destination": "/news/gpt-6-2-microsoft-mai-gemini-4-neon/",
+      "permanent": true
+    },
+    {
+      "source": "/news/openai-research-access-safety-assessments",
+      "destination": "/news/openai-research-access-safety-assessments/",
+      "permanent": true
+    },
+    {
+      "source": "/news/kiri-rust-container-runtime",
+      "destination": "/news/kiri-rust-container-runtime/",
+      "permanent": true
+    },
+    {
+      "source": "/news/lemon-squeezy-shutdown-stripe-migration",
+      "destination": "/news/lemon-squeezy-shutdown-stripe-migration/",
+      "permanent": true
+    },
+    {
+      "source": "/news/pybot-deepseek-agent-swarm-python",
+      "destination": "/news/pybot-deepseek-agent-swarm-python/",
+      "permanent": true
+    },
+    {
+      "source": "/news/gemini-4-argon-carbon-hydrogen-comparison",
+      "destination": "/news/gemini-4-argon-carbon-hydrogen-comparison/",
+      "permanent": true
+    },
+    {
+      "source": "/news/inkling-2-four-bit-training",
+      "destination": "/news/inkling-2-four-bit-training/",
+      "permanent": true
+    },
+    {
+      "source": "/news/openorange-cloudflare-workers-self-hosting",
+      "destination": "/news/openorange-cloudflare-workers-self-hosting/",
+      "permanent": true
+    },
+    {
+      "source": "/news/aws-emulator-localstack-local-testing",
+      "destination": "/news/aws-emulator-localstack-local-testing/",
+      "permanent": true
+    },
+    {
+      "source": "/news/pan-2-world-model-physical-intelligence",
+      "destination": "/news/pan-2-world-model-physical-intelligence/",
+      "permanent": true
+    },
+    {
+      "source": "/news/saltline-ai-browser-3d-evolution",
+      "destination": "/news/saltline-ai-browser-3d-evolution/",
+      "permanent": true
+    },
+    {
+      "source": "/news/tinytraffic-self-hosted-web-analytics",
+      "destination": "/news/tinytraffic-self-hosted-web-analytics/",
+      "permanent": true
+    },
+    {
+      "source": "/news/mirendil-fern-10-million-token-context-model",
+      "destination": "/news/mirendil-fern-10-million-token-context-model/",
+      "permanent": true
+    },
+    {
+      "source": "/news/maya-2-native-open-weight-indian-language-speech",
+      "destination": "/news/maya-2-native-open-weight-indian-language-speech/",
+      "permanent": true
+    },
+    {
+      "source": "/news/pomerado-browser-automation-reusable-mcp-tools",
+      "destination": "/news/pomerado-browser-automation-reusable-mcp-tools/",
+      "permanent": true
+    },
+    {
+      "source": "/news/microsoft-quicksand-qemu-agent-sandboxes",
+      "destination": "/news/microsoft-quicksand-qemu-agent-sandboxes/",
+      "permanent": true
+    },
+    {
+      "source": "/news/claude-ml-research-sabotage-claims",
+      "destination": "/news/claude-ml-research-sabotage-claims/",
+      "permanent": true
+    },
+    {
+      "source": "/news/t3-code-telemetry-controversy",
+      "destination": "/news/t3-code-telemetry-controversy/",
+      "permanent": true
+    },
+    {
+      "source": "/news/fastvm-microvm-sleep-wake-benchmarks",
+      "destination": "/news/fastvm-microvm-sleep-wake-benchmarks/",
+      "permanent": true
+    },
+    {
+      "source": "/news/flashraw-rust-camera-raw-decoder-benchmarks",
+      "destination": "/news/flashraw-rust-camera-raw-decoder-benchmarks/",
+      "permanent": true
+    },
+    {
+      "source": "/news/ai-sandbox-bench-regions-provider-comparison",
+      "destination": "/news/ai-sandbox-bench-regions-provider-comparison/",
+      "permanent": true
+    },
+    {
+      "source": "/news/jakub-krehel-teardown-technical-illustration-skill",
+      "destination": "/news/jakub-krehel-teardown-technical-illustration-skill/",
+      "permanent": true
+    },
+    {
+      "source": "/news/asonix-app-store-keywords-ai-visibility",
+      "destination": "/news/asonix-app-store-keywords-ai-visibility/",
+      "permanent": true
+    },
+    {
+      "source": "/news/praveen-kumar-ascii-web-section-design",
+      "destination": "/news/ascii-animation-web-design/",
+      "permanent": true
+    },
+    {
+      "source": "/news/praveen-kumar-ascii-web-section-design/",
+      "destination": "/news/ascii-animation-web-design/",
+      "permanent": true
+    },
+    {
+      "source": "/news/praveen-kumar-ascii-web-section-design.md",
+      "destination": "/news/ascii-animation-web-design.md",
+      "permanent": true
+    },
+    {
+      "source": "/news/ascii-animation-web-design",
+      "destination": "/news/ascii-animation-web-design/",
+      "permanent": true
+    },
+    {
+      "source": "/news/anthropic-open-weight-models-security-timeline",
+      "destination": "/news/anthropic-open-weight-models-security-timeline/",
+      "permanent": true
+    },
+    {
+      "source": "/news/kimi-k3-1-pro-frontier-model-comparison",
+      "destination": "/news/kimi-k3-1-pro-frontier-model-comparison/",
+      "permanent": true
+    },
+    {
+      "source": "/news/abliterated-models-origin-refusals-use-cases",
+      "destination": "/news/abliterated-models-origin-refusals-use-cases/",
+      "permanent": true
+    },
+    {
+      "source": "/news/clickbench-removes-pgrust-benchmark-dispute",
+      "destination": "/news/clickbench-removes-pgrust-benchmark-dispute/",
+      "permanent": true
+    },
+    {
       "source": "/news/php-critical-rce-october-2026",
       "destination": "/news/php-critical-rce-october-2026/",
       "permanent": true
@@ -231,6 +451,16 @@
       "permanent": true
     },
     {
+      "source": "/news/tibo-codex-challenge-gpt-6-2-astra-fable-5-5",
+      "destination": "/news/tibo-codex-challenge-gpt-6-2-astra-fable-5-5/",
+      "permanent": true
+    },
+    {
+      "source": "/news/overflow-design-isometric-drawings",
+      "destination": "/news/overflow-design-isometric-drawings/",
+      "permanent": true
+    },
+    {
       "source": "/news/aleph-alpha-kolibri-open-weight-model",
       "destination": "/news/aleph-alpha-kolibri-open-weight-model/",
       "permanent": true
@@ -411,6 +641,11 @@
       "permanent": true
     },
     {
+      "source": "/news/mit-weight-space-programming-gpt-6-astra-qwen",
+      "destination": "/news/mit-weight-space-programming-gpt-6-astra-qwen/",
+      "permanent": true
+    },
+    {
       "source": "/news/microsoft-copilot-home-code-autopilot",
       "destination": "/news/microsoft-copilot-home-code-autopilot/",
       "permanent": true
@@ -433,6 +668,51 @@
     {
       "source": "/news/openbot-self-hosted-ai-coworkers",
       "destination": "/news/openbot-self-hosted-ai-coworkers/",
+      "permanent": true
+    },
+    {
+      "source": "/news/whisker-rust-native-mobile-apps",
+      "destination": "/news/whisker-rust-native-mobile-apps/",
+      "permanent": true
+    },
+    {
+      "source": "/news/rust-native-apps-discord-gpui-rune",
+      "destination": "/news/rust-native-apps-discord-gpui-rune/",
+      "permanent": true
+    },
+    {
+      "source": "/news/rune-native-ui-framework",
+      "destination": "/news/rune-native-ui-framework/",
+      "permanent": true
+    },
+    {
+      "source": "/news/kawa-kafka-gateway",
+      "destination": "/news/kawa-kafka-gateway/",
+      "permanent": true
+    },
+    {
+      "source": "/news/rustle-forward-proxy-benchmarks",
+      "destination": "/news/rustle-forward-proxy-benchmarks/",
+      "permanent": true
+    },
+    {
+      "source": "/news/ai-agent-cloud-hosting-costs",
+      "destination": "/news/ai-agent-cloud-hosting-costs/",
+      "permanent": true
+    },
+    {
+      "source": "/news/inkling-2-mini",
+      "destination": "/news/inkling-2-mini/",
+      "permanent": true
+    },
+    {
+      "source": "/news/blink-cpu-free-llm-inference",
+      "destination": "/news/blink-cpu-free-llm-inference/",
+      "permanent": true
+    },
+    {
+      "source": "/news/openai-pando-git-backend-anthropic-scion",
+      "destination": "/news/openai-pando-git-backend-anthropic-scion/",
       "permanent": true
     },
     {
