@@ -20,7 +20,7 @@ Anomaly wants a shared native UI toolkit for its apps, and its roadmap names **O
 
 Anomaly already uses Rune in **Hex, its voice dictation app**, for settings and floating overlays. That gives the framework an existing application to develop against while the broader desktop plans take shape.
 
-For developers, Rune brings layout, rendering and motion into a reusable Rust toolkit. Its value will depend on how well those pieces work together in everyday use, from selecting text to scrolling through a long conversation. OpenCode Desktop would give Anomaly a demanding place to test that.
+For a look at how another Rust framework handles the same rendering work, see [how Zed and Discord use GPUI](/news/rust-native-apps-discord-gpui-rune/).
 
 ## Sources
 
