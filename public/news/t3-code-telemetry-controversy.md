@@ -22,9 +22,15 @@ Blocking access in Germany wouldn’t answer why T3 Code broke its opt-in promis
 
 On the evening of **November 24**, Browne [published his own telemetry export](https://www.xitter.gq/theo/status/2125332390239494211) and said the account ID collection had been removed. The team also stripped IP addresses from [relay traces](https://github.com/pingdotgg/t3code/pull/42380) and separated [anonymous feedback](https://github.com/pingdotgg/t3code/pull/42466) from identified events. [Version 0.1.12](https://github.com/pingdotgg/t3code/releases/tag/v0.1.12) shipped on **November 25**. Routine analytics are [still on by default](https://github.com/pingdotgg/t3code/blob/main/docs/user/telemetry.md).
 
+## What Browne could learn from OpenAI’s GPT-6.2 response
+
+Browne had been on the other side of a public round of criticism just a week before the audit. On **November 17**, OpenAI [launched GPT-6.2](/news/gpt-6-2-microsoft-mai-gemini-4-neon/). That day, Browne [called Astra the worst model OpenAI had ever released](https://www.teapawt.net/theo/status/2122757647170703550). The next day, OpenAI’s [Thibault Sottiaux](https://www.teapawt.net/thsottiaux/status/2122929634916679820) explained what the team had changed and acknowledged the model still needed work. Browne replied that some changes helped but the model still lost track of long tasks.
+
+OpenAI didn’t have to agree with Browne to take his criticism seriously. That’s the example he could have followed when T3 Code’s users asked why the app collected data before asking them.
+
 ## The backlash comes back to Theo Browne
 
-A day after v0.1.12 shipped, the backlash brought an older dispute back into view. On **November 26, 2026**, [Dmitry Figol shared screenshots of posts](https://www.teapaw.org/dmfigol/status/2126025885740626075) and [direct messages](https://www.teapaw.org/dmfigol/status/2126025889016094829) from a **January 2025** dispute over **T3 Chat**, a separate product. Figol had criticized Browne’s threat to rally his audience against two security vendors that blocked T3 Chat. In the exchange Figol published, Browne invoked being an AWS customer after Figol criticized him. Figol says he apologized.
+By **November 26, 2026**, a day after v0.1.12 shipped, the argument had moved beyond what T3 Code collected. [Dmitry Figol shared screenshots of posts](https://www.teapaw.org/dmfigol/status/2126025885740626075) and [direct messages](https://www.teapaw.org/dmfigol/status/2126025889016094829) from a **January 2025** dispute over **T3 Chat**, a separate product. Figol had criticized Browne’s threat to rally his audience against two security vendors that blocked T3 Chat. In the exchange Figol published, Browne invoked being an AWS customer after Figol criticized him. Figol says he apologized.
 
 ![Figol’s screenshot of Browne’s January 2025 public posts about the T3 Chat block, including the post threatening to rally Browne’s audience.](/news/assets/t3-code-telemetry-controversy/figol-archived-public-posts.webp)
 
@@ -44,8 +50,4 @@ Now it was Browne’s critics drawing an audience. [One reply called for him to 
 
 [The reply about T4](https://www.teapaw.org/_Defeatable_/status/2126096598367117581) and [the call to archive the posts](https://www.teapaw.org/0xleelu/status/2126094351642321108) show where the discussion went next.
 
-## What Browne could learn from OpenAI’s GPT-6.2 response
-
-A week before the telemetry audit, on **November 17**, OpenAI [launched GPT-6.2](/news/gpt-6-2-microsoft-mai-gemini-4-neon/). That day, Browne [called Astra the worst model OpenAI had ever released](https://www.teapawt.net/theo/status/2122757647170703550). The next day, OpenAI’s [Thibault Sottiaux](https://www.teapawt.net/thsottiaux/status/2122929634916679820) explained what the team had changed and acknowledged the model still needed work. Browne replied that some changes helped but the model still lost track of long tasks.
-
-That’s the part Browne could learn from: OpenAI answered his criticism without having to agree with him. T3 Code’s users deserved an equally direct answer about why the app collected data before asking. The fork developer apologized and changed the name. The T3 team changed what it collected. It still owed users an apology for breaking its promise.
+The fork developer apologized and changed the name. T3 Code changed what it collected. What users still deserved was a plain apology for collecting it without asking in the first place.
