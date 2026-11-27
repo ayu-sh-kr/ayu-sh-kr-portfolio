@@ -1,5 +1,5 @@
-import type {PageSeoContent} from "./seo-content.ts";
-import {EMAIL, MAILTO} from "./email-config.ts";
+import type {PageSeoContent} from "@app/data/seo-content.ts";
+import {EMAIL, MAILTO} from "@app/data/email-config.ts";
 
 // Portfolio copy lives here so content can change without touching component markup.
 export const siteIdentity = {

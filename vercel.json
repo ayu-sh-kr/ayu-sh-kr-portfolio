@@ -858,7 +858,7 @@
   ],
   "rewrites": [
     {
-      "source": "/((?!api/dispatch/weekly/?$).*)",
+      "source": "/(.*)",
       "destination": "/index.html"
     }
   ]
