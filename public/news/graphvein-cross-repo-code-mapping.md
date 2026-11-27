@@ -12,4 +12,4 @@ The same index powers the local web UI, command line and a [read-only MCP server
 
 When Graphvein connects two repositories, it **labels the link as inferred** and shows how it matched them. Calls made through an unsupported wrapper or assembled dynamically can remain unresolved. In the team’s [published tests](https://github.com/graphvein/graphvein/blob/main/docs/evidence/link-precision.md), all 363 route-to-caller links it reported across three open-source projects were correct after fixes, but it still missed real callers. Owncast’s admin console, for example, used a helper the tool didn’t recognize.
 
-That makes the map a useful first stop before changing an API. Follow the callers it finds, then check what it couldn’t link before treating the list as complete.
+The useful part of **no LLM** is that Graphvein builds the map on your machine without asking a model to read your code. You can follow the links back to the source yourself, or let a coding agent query the same map through MCP. Either way, you have a place to start before changing an API.
