@@ -22,6 +22,16 @@ Blocking access in Germany wouldn’t answer why T3 Code broke its opt-in promis
 
 Later that night, Browne [published his own telemetry export](https://www.xitter.gq/theo/status/2125332390239494211) and said the account ID collection had been removed. The team also stripped IP addresses from [relay traces](https://github.com/pingdotgg/t3code/pull/42380) and separated [anonymous feedback](https://github.com/pingdotgg/t3code/pull/42466) from identified events. [Version 0.1.12](https://github.com/pingdotgg/t3code/releases/tag/v0.1.12) shipped on **November 25**. Routine analytics are [still on by default](https://github.com/pingdotgg/t3code/blob/main/docs/user/telemetry.md).
 
+## The backlash comes back to Theo Browne
+
+Fixing the telemetry didn’t end the backlash. On **November 26**, [Dmitry Figol shared screenshots of posts](https://www.teapaw.org/dmfigol/status/2126025885740626075) and [direct messages](https://www.teapaw.org/dmfigol/status/2126025889016094829) from a January 2025 dispute over **T3 Chat**, a separate product. Figol had criticized Browne’s threat to rally his audience against two security vendors that blocked T3 Chat. In the exchange Figol published, Browne invoked being an AWS customer after Figol criticized him. Figol says he apologized.
+
+[Figol said](https://www.teapaw.org/dmfigol/status/2126025881844174968) AWS HR later told him someone had filed and withdrawn a complaint about his post. He says HR found no wrongdoing and closed the case. His account does not establish who filed the complaint.
+
+Now it was Browne’s critics drawing an audience. [One reply called for him to be cancelled](https://www.teapaw.org/Damianships/status/2126054283590172976); [another called it karmic payback](https://www.teapaw.org/Zhangmuhui001/status/2126101603656913187). The irony is in the sequence: Browne had threatened to turn his audience on others. This time it was his own messages people were circulating.
+
+![Screenshot collage: an excerpt from Dmitry Figol’s post describing the direct messages, followed by two replies calling for cancellation and describing the backlash as payback.](/news/assets/t3-code-telemetry-controversy/figol-thread-and-reactions.webp)
+
 ## What Browne could learn from OpenAI’s GPT-6.2 response
 
 On **November 17**, the day OpenAI [launched GPT-6.2](/news/gpt-6-2-microsoft-mai-gemini-4-neon/), Browne [called Astra the worst model OpenAI had ever released](https://www.teapawt.net/theo/status/2122757647170703550). OpenAI’s [Thibault Sottiaux](https://www.teapawt.net/thsottiaux/status/2122929634916679820) explained what the team had changed and acknowledged the model still needed work. Browne replied that some changes helped but the model still lost track of long tasks.
