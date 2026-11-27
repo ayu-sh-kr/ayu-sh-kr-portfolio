@@ -86,7 +86,7 @@ export const newsNotes: readonly NewsNote[] = [
     kind: "explainer",
     document: "/news/t3-code-telemetry-controversy.md",
     keywords: ["T3 Code telemetry controversy", "default-on telemetry", "T3 Code telemetry opt-out", "Theo Browne", "GDPR complaint", "Codex and Claude account IDs"],
-    minutes: 4
+    minutes: 3.5
   },
   {
     slug: "fastvm-microvm-sleep-wake-benchmarks",
