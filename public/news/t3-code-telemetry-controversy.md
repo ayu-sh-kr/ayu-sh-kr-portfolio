@@ -26,11 +26,23 @@ Later that night, Browne [published his own telemetry export](https://www.xitter
 
 Fixing the telemetry didn’t end the backlash. On **November 26**, [Dmitry Figol shared screenshots of posts](https://www.teapaw.org/dmfigol/status/2126025885740626075) and [direct messages](https://www.teapaw.org/dmfigol/status/2126025889016094829) from a January 2025 dispute over **T3 Chat**, a separate product. Figol had criticized Browne’s threat to rally his audience against two security vendors that blocked T3 Chat. In the exchange Figol published, Browne invoked being an AWS customer after Figol criticized him. Figol says he apologized.
 
+![Figol’s screenshot of Browne’s January 2025 public posts about the T3 Chat block, including the post threatening to rally Browne’s audience.](/news/assets/t3-code-telemetry-controversy/figol-archived-public-posts.webp)
+
+[Open Figol’s post with the archived tweets](https://www.teapaw.org/dmfigol/status/2126025885740626075).
+
+![Screenshots of the direct messages between Browne and Figol, as published by Figol.](/news/assets/t3-code-telemetry-controversy/figol-published-dms.webp)
+
+[Open Figol’s post with the direct messages](https://www.teapaw.org/dmfigol/status/2126025889016094829).
+
 [Figol said](https://www.teapaw.org/dmfigol/status/2126025881844174968) AWS HR later told him someone had filed and withdrawn a complaint about his post. He says HR found no wrongdoing and closed the case. His account does not establish who filed the complaint.
 
 Now it was Browne’s critics drawing an audience. [One reply called for him to be cancelled](https://www.teapaw.org/Damianships/status/2126054283590172976); [another called it karmic payback](https://www.teapaw.org/Zhangmuhui001/status/2126101603656913187). The irony is in the sequence: Browne had threatened to turn his audience on others. This time it was his own messages people were circulating.
 
 ![Screenshot collage: an excerpt from Dmitry Figol’s post describing the direct messages, followed by two replies calling for cancellation and describing the backlash as payback.](/news/assets/t3-code-telemetry-controversy/figol-thread-and-reactions.webp)
+
+![Two more public replies to Figol: one recalls a separate T4 naming dispute and another asks for the screenshots to be archived.](/news/assets/t3-code-telemetry-controversy/figol-more-public-replies.webp)
+
+[The reply about T4](https://www.teapaw.org/_Defeatable_/status/2126096598367117581) and [the call to archive the posts](https://www.teapaw.org/0xleelu/status/2126094351642321108) show where the discussion went next.
 
 ## What Browne could learn from OpenAI’s GPT-6.2 response
 
