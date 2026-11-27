@@ -1,6 +1,6 @@
-import {newsContent} from "@app/data/news-content.ts";
-import {siteIdentity} from "@app/data/portfolio-content.ts";
-import type {PageSeoContent} from "@app/data/seo-content.ts";
+import {newsContent} from "../data/news-content.ts";
+import {siteIdentity} from "../data/portfolio-content.ts";
+import type {PageSeoContent} from "../data/seo-content.ts";
 
 /** Editorial role used to filter Dispatch notes and label their permalink pages. */
 export type NewsKind = "shipped" | "infra" | "reading" | "explainer" | "take";
