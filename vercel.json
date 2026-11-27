@@ -591,6 +591,11 @@
       "permanent": true
     },
     {
+      "source": "/news/graphvein-cross-repo-code-mapping",
+      "destination": "/news/graphvein-cross-repo-code-mapping/",
+      "permanent": true
+    },
+    {
       "source": "/news/hacktron-meta-heic-image-bounty",
       "destination": "/news/hacktron-meta-heic-image-bounty/",
       "permanent": true
