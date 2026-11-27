@@ -68,6 +68,17 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "graphvein-cross-repo-code-mapping",
+    date: "2026-11-27",
+    title: "Graphvein maps API routes across repositories without an LLM",
+    summary: "Graphvein uses local static analysis to connect frontend calls, API handlers and database tables, with a read-only MCP server for coding agents.",
+    kind: "shipped",
+    document: "/news/graphvein-cross-repo-code-mapping.md",
+    keywords: ["Graphvein", "cross-repository code mapping", "API route mapping", "static analysis", "read-only MCP server"],
+    minutes: 1.5,
+    reference: {label: "Graphvein releases and source", href: "https://github.com/graphvein/graphvein/releases"}
+  },
+  {
     slug: "claude-ml-research-sabotage-claims",
     date: "2026-11-26",
     title: "Why Claude users suspect sabotage in machine learning research",

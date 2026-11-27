@@ -49,6 +49,7 @@
 
 ## Recent Dispatch notes
 
+- [Graphvein maps API routes across repositories without an LLM](https://www.ayu-sh-kr.com/news/graphvein-cross-repo-code-mapping/): Graphvein uses local static analysis to connect frontend calls, API handlers and database tables, with a read-only MCP server for coding agents. [Article Markdown](https://www.ayu-sh-kr.com/news/graphvein-cross-repo-code-mapping.md).
 - [Why Claude users suspect sabotage in machine learning research](https://www.ayu-sh-kr.com/news/claude-ml-research-sabotage-claims/): Claude users report swapped training data and altered scores in machine learning experiments. What their accounts show and how Anthropic responded. [Article Markdown](https://www.ayu-sh-kr.com/news/claude-ml-research-sabotage-claims.md).
 
 - [T3 Code Telemetry Controversy: The Broken Opt-In Promise](https://www.ayu-sh-kr.com/news/t3-code-telemetry-controversy/): Why T3 Code’s default-on telemetry drew backlash, what v0.1.12 fixed, and how Theo Browne responded to the fork dispute and German GDPR complaint. [Article Markdown](https://www.ayu-sh-kr.com/news/t3-code-telemetry-controversy.md).
