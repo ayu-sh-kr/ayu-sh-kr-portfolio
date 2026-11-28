@@ -1,6 +1,6 @@
-# Inkling 2 Mini on Apple Silicon: Gall and Rustling
+# Inkling 2 Mini on Apple Silicon and NVIDIA GB10
 
-A coding model can fit on your laptop’s drive and still leave too little memory to work through a long prompt. **Inkling 2 Mini** approaches that problem at the model level: it does more work per token by reusing layers it already has. Two Apple Silicon runtimes take it from there. **Gall** shows what fits on a 24 GB MacBook Air, and **Rustling** shows how a coding client can talk to the model through a local API.
+A coding model can fit on your laptop’s drive and still leave too little memory to work through a long prompt. **Inkling 2 Mini** approaches that problem at the model level: it does more work per token by reusing layers it already has. Two Apple Silicon runtimes take it from there. **Gall** shows what fits on a 24 GB MacBook Air, and **Rustling** shows how a coding client can talk to the model through a local API. On NVIDIA hardware, an independent **GB10** test shows what a tuned vLLM setup can deliver.
 
 Thinking Machines Lab released Mini on November 20. The original model accepts text and images, produces text and tool calls, and is available through Tinker or as an **Apache 2.0** download. It builds on [Inkling 2 Small’s four-bit training recipe](/news/inkling-2-four-bit-training/), which stores each expert weight in fewer bits. Mini also cuts the number of weights it needs to store.
 
@@ -65,6 +65,19 @@ For a coding client, the first request often carries a large prompt: instruction
 
 For a **24 GB Mac**, Gall has the clearer hardware evidence: its maintainer tested that memory tier directly. Rustling is an option when you want to connect a text-based coding client to the model locally. To find out whether either fits your work, start with a prompt the size your client normally sends and check the time to the first token as well as the speed once the model starts replying.
 
+## Running Inkling 2 Mini on one NVIDIA GB10
+
+On NVIDIA hardware, the question shifts from fitting the model on a laptop to keeping it responsive under load. In its [November 27 benchmark](https://runtimenotes.com/blog/getting-101-tok-s-from-inkling-2-mini-in-vllm-on-one-gb10/), **Runtime Notes** ran Inkling 2 Mini with tuned **vLLM** on an MSI EdgeXpert with one NVIDIA GB10 chip and 128 GB of shared memory. Inkling was allocated 36% of that memory, with Qwen3.8-27B loaded but idle during the measurements.
+
+| Workload | Runtime Notes result |
+| --- | ---: |
+| One request, benchmark suite | **101 output tokens/s** |
+| Four concurrent requests, same suite | **195.7 output tokens/s combined** |
+| Coding, prose and reasoning prompts at model defaults | **About 70 output tokens/s** (geometric mean) |
+| Fresh prompt of roughly 32,000 tokens | **9.7 seconds** to the first token |
+
+The tuned setup uses **speculative decoding**: a smaller DFlash2 model guesses the next tokens and Inkling checks them together. Runtime Notes also tuned the GPU work that reads long prompts. For a coding session, those are two distinct waits: how long until the reply starts, and how quickly it arrives after that. The GB10 and Mac measurements use different runtimes and workloads, so they answer different questions rather than forming a hardware ranking.
+
 ## Sources
 
 - [Thinking Machines Lab’s release, flight demo and benchmark tables](https://thinkingmachines.ai/news/inkling-2-mini/)
@@ -73,3 +86,4 @@ For a **24 GB Mac**, Gall has the clearer hardware evidence: its maintainer test
 - [Artificial Analysis comparison of intelligence, tokens and compute](https://artificialanalysis.ai/articles/inkling-2-mini)
 - [Gall’s Metal runtime, memory budget and M2 MacBook Air measurements](https://github.com/ltrgoddard/gall)
 - [Rustling’s API documentation, terminal chat and memory requirements](https://github.com/onatm/rustling)
+- [Runtime Notes: Getting 101 tok/s from Inkling 2 Mini in vLLM on one GB10](https://runtimenotes.com/blog/getting-101-tok-s-from-inkling-2-mini-in-vllm-on-one-gb10/)

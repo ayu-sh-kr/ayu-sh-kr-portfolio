@@ -193,12 +193,12 @@ export const newsNotes: readonly NewsNote[] = [
   {
     slug: "inkling-2-mini",
     date: "2026-11-21",
-    title: "Inkling 2 Mini on Apple Silicon: Gall and Rustling",
-    summary: "How Inkling 2 Mini reuses layers, how Gall runs it on a 24 GB Mac, and how Rustling connects local inference to coding tools through an OpenAI-compatible API.",
+    title: "Inkling 2 Mini on Apple Silicon and NVIDIA GB10",
+    summary: "How Gall and Rustling run Inkling 2 Mini on Apple Silicon, and what Runtime Notes measured with tuned vLLM on a single NVIDIA GB10.",
     kind: "shipped",
     document: "/news/inkling-2-mini.md",
-    keywords: ["Inkling 2 Mini", "Apple Silicon local inference", "Gall runtime", "Rustling", "OpenAI-compatible local API", "looped transformer"],
-    minutes: 6,
+    keywords: ["Inkling 2 Mini", "Apple Silicon local inference", "Gall runtime", "Rustling", "OpenAI-compatible local API", "looped transformer", "NVIDIA GB10", "vLLM benchmark"],
+    minutes: 7,
     reference: {
       label: "Introducing Inkling 2 Mini",
       href: "https://thinkingmachines.ai/news/inkling-2-mini/"
