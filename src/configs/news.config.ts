@@ -68,6 +68,17 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "poly-dependency-manager-monorepos",
+    date: "2026-11-28",
+    title: "Poly gives monorepos one CLI for dependency updates",
+    summary: "Poly routes dependency commands to tools like pnpm, uv and Cargo, then checks whether a monorepo’s manifests and lockfiles match a shared snapshot.",
+    kind: "shipped",
+    document: "/news/poly-dependency-manager-monorepos.md",
+    keywords: ["Poly CLI", "monorepo dependency management", "polyglot package manager", "pnpm", "uv", "poly.lock"],
+    minutes: 1.5,
+    reference: {label: "Poly documentation and source", href: "https://github.com/RitualDev-Lab/poly"}
+  },
+  {
     slug: "managed-apache-spark-gke-v2",
     date: "2026-11-28",
     title: "Cloud data updates: Spark on GKE and Amazon Timestream for InfluxDB",

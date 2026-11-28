@@ -139,6 +139,11 @@
       "permanent": true
     },
     {
+      "source": "/news/poly-dependency-manager-monorepos",
+      "destination": "/news/poly-dependency-manager-monorepos/",
+      "permanent": true
+    },
+    {
       "source": "/news/managed-apache-spark-gke-v2",
       "destination": "/news/managed-apache-spark-gke-v2/",
       "permanent": true
