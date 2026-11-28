@@ -139,6 +139,11 @@
       "permanent": true
     },
     {
+      "source": "/news/managed-apache-spark-gke-v2",
+      "destination": "/news/managed-apache-spark-gke-v2/",
+      "permanent": true
+    },
+    {
       "source": "/news/mirendil-fern-10-million-token-context-model",
       "destination": "/news/mirendil-fern-10-million-token-context-model/",
       "permanent": true

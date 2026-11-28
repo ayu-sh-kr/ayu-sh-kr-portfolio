@@ -68,6 +68,17 @@ export const newsFilters: readonly {value: NewsKind | "all"; label: string}[] = 
  */
 export const newsNotes: readonly NewsNote[] = [
   {
+    slug: "managed-apache-spark-gke-v2",
+    date: "2026-11-28",
+    title: "Cloud data updates: Spark on GKE and Amazon Timestream for InfluxDB",
+    summary: "Google previews managed Apache Spark on GKE Standard, while AWS lets InfluxDB 3 Enterprise teams size readers, writers and compactors separately.",
+    kind: "infra",
+    document: "/news/managed-apache-spark-gke-v2.md",
+    keywords: ["Apache Spark on GKE", "Spark on GKE v2", "GKE Standard", "Amazon Timestream for InfluxDB", "InfluxDB 3 Enterprise", "heterogeneous clusters"],
+    minutes: 2,
+    reference: {label: "Google Cloud release notes", href: "https://docs.cloud.google.com/managed-spark/docs/release-notes#November_27_2026"}
+  },
+  {
     slug: "graphvein-cross-repo-code-mapping",
     date: "2026-11-27",
     title: "Graphvein maps API routes across repositories without an LLM",
