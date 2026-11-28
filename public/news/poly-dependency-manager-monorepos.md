@@ -4,18 +4,23 @@ In a monorepo, the web app might use pnpm while the Python API uses uv. Adding a
 
 ## Adding dependencies with Poly
 
-From the root of a repo with a pnpm app in `apps/web` and a uv project in `services/api`, run the [Poly v0.6.2 CLI](https://github.com/RitualDev-Lab/poly/blob/v0.6.2/README.md#adding-dependencies) with the native tools already installed:
+Start at the repo root with [Poly v0.6.2](https://github.com/RitualDev-Lab/poly/releases/tag/v0.6.2), pnpm and uv installed. This example uses an existing pnpm app in `apps/web` and a uv project in `services/api`:
 
 ```bash
-(cd apps/web && poly add npm:zod)
-(cd services/api && poly add pypi:fastapi)
+# Add Zod to the web app
+cd apps/web
+poly add "npm:zod"
+
+# Add FastAPI to the Python API
+cd ../../services/api
+poly add "pypi:fastapi"
 ```
 
-The directory tells Poly which project to change; the prefix tells it which package ecosystem to use. Poly’s [Node adapter](https://github.com/RitualDev-Lab/poly/blob/v0.6.2/src/engines/node.ts) detects the pnpm lockfile and runs `pnpm add zod`. Its [Python adapter](https://github.com/RitualDev-Lab/poly/blob/v0.6.2/src/engines/python.ts) delegates to `uv add fastapi` when uv is available. Each tool still manages its own dependencies and lockfile.
+Run each `poly add` from the folder whose dependencies you want to change. The prefix tells Poly which package ecosystem to use. Poly’s [Node adapter](https://github.com/RitualDev-Lab/poly/blob/v0.6.2/src/engines/node.ts) detects the pnpm lockfile and runs `pnpm add zod`. Its [Python adapter](https://github.com/RitualDev-Lab/poly/blob/v0.6.2/src/engines/python.ts) delegates to `uv add fastapi` when uv is available. Each tool still manages its own dependencies and lockfile.
 
 ## What Poly’s lockfile checks
 
-With both projects listed in `poly.toml`, run `poly sync` from the repo root to install dependencies across the workspace. Poly records hashes of the projects’ dependency declarations and detected lockfiles in **`poly.lock`**. If those files no longer match the snapshot, `poly install --frozen` stops before installing.
+Back at the repo root, run `poly sync` with both projects listed in `poly.toml` to install dependencies across the workspace. Poly records hashes of the projects’ dependency declarations and detected lockfiles in **`poly.lock`**. If those files no longer match the snapshot, `poly install --frozen` stops before installing.
 
 > **For CI:** Poly’s [v0.6.2 workspace code](https://github.com/RitualDev-Lab/poly/blob/v0.6.2/src/workspace/dispatcher.ts) checks the snapshot, then runs each package manager’s normal install. Use your package managers’ own frozen-install options if CI needs to prevent lockfile changes.
 
