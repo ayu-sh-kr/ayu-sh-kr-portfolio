@@ -202,7 +202,9 @@
 .news-note-prose .dispatch-evidence-tile img {
   display: block;
   inline-size: 100%;
-  block-size: clamp(4rem, 16vw, 8rem);
+  block-size: auto;
+  aspect-ratio: 16 / 10;
+  flex: none;
   margin: 0;
   border-radius: 0;
   object-fit: cover;
@@ -242,7 +244,7 @@
 }
 
 @media (max-width: 36rem) {
-  .dispatch-evidence-grid-more {
+  .dispatch-evidence-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
