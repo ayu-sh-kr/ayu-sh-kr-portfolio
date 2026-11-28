@@ -141,6 +141,11 @@
   color: var(--syntax-type-color);
 }
 
+/* Shell grammars classify commands such as cd as built-ins, not keywords. */
+.article-code code:is(.language-bash, .language-sh) :is(.hljs-built_in, .hljs-string) {
+  color: var(--syntax-keyword-color);
+}
+
 .article-code .hljs-number,
 .article-code .hljs-literal,
 .article-code .hljs-symbol {

@@ -38,6 +38,7 @@ const showcaseRoutes = [
   "/showcase/dota-rest",
 ];
 const newsRoutes = [
+  "/news/poly-dependency-manager-monorepos",
   "/news/managed-apache-spark-gke-v2",
   "/news/graphvein-cross-repo-code-mapping",
   "/news/claude-ml-research-sabotage-claims",
