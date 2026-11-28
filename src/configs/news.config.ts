@@ -70,12 +70,12 @@ export const newsNotes: readonly NewsNote[] = [
   {
     slug: "managed-apache-spark-gke-v2",
     date: "2026-11-28",
-    title: "Google Cloud previews managed Apache Spark on GKE Standard",
-    summary: "Spark on GKE v2 gives data teams a managed way to run Spark jobs on their own Kubernetes clusters. Here’s how it fits alongside the earlier GKE service and Serverless Spark.",
+    title: "Cloud data updates: Spark on GKE and Amazon Timestream for InfluxDB",
+    summary: "Google previews managed Apache Spark on GKE Standard, while AWS lets InfluxDB 3 Enterprise teams size readers, writers and compactors separately.",
     kind: "infra",
     document: "/news/managed-apache-spark-gke-v2.md",
-    keywords: ["Apache Spark on GKE", "Spark on GKE v2", "GKE Standard", "Google Cloud Managed Service for Apache Spark", "Serverless Spark"],
-    minutes: 1.5,
+    keywords: ["Apache Spark on GKE", "Spark on GKE v2", "GKE Standard", "Amazon Timestream for InfluxDB", "InfluxDB 3 Enterprise", "heterogeneous clusters"],
+    minutes: 2,
     reference: {label: "Google Cloud release notes", href: "https://docs.cloud.google.com/managed-spark/docs/release-notes#November_27_2026"}
   },
   {
